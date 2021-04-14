@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TokenizerBase } from "./TokenizerBase";
+import { TokenizerBase } from './TokenizerBase'
 
 export class CharGroupTokenizer extends TokenizerBase {
-  tokenize_on_chars: string[];
+  tokenize_on_chars: string[]
 }

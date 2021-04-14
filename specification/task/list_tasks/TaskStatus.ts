@@ -17,26 +17,26 @@
  * under the License.
  */
 
-import { float, long } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { TaskRetries } from "./TaskRetries";
+import { float, long } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { TaskRetries } from './TaskRetries'
 
 export class TaskStatus {
-  batches: long;
-  canceled?: string;
-  created: long;
-  deleted: long;
-  noops: long;
-  failures?: string[];
-  requests_per_second: float;
-  retries: TaskRetries;
-  throttled?: Time;
-  throttled_millis: long;
-  throttled_until?: Time;
-  throttled_until_millis: long;
-  timed_out?: boolean;
-  took?: long;
-  total: long;
-  updated: long;
-  version_conflicts: long;
+  batches: long
+  canceled?: string
+  created: long
+  deleted: long
+  noops: long
+  failures?: string[]
+  requests_per_second: float
+  retries: TaskRetries
+  throttled?: Time
+  throttled_millis: long
+  throttled_until?: Time
+  throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
+  total: long
+  updated: long
+  version_conflicts: long
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
+import { Field } from '../../../common'
 
 export class IntervalsWildcard {
-  analyzer?: string;
-  pattern?: string;
-  use_field?: Field;
+  analyzer?: string
+  pattern?: string
+  use_field?: Field
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { CatRequestBase } from "../CatBase";
+import { Names } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.snapshots
@@ -27,10 +27,10 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatSnapshotsRequest extends CatRequestBase {
   path_parts?: {
-    repository?: Names;
-  };
+    repository?: Names
+  }
   query_parameters?: {
-    ignore_unavailable?: boolean;
-  };
-  body?: {};
+    ignore_unavailable?: boolean
+  }
+  body?: {}
 }

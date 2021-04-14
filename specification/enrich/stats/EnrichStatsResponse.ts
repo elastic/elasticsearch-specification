@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { CoordinatorStats } from "./CoordinatorStats";
-import { ExecutingPolicy } from "./ExecutingPolicy";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { CoordinatorStats } from './CoordinatorStats'
+import { ExecutingPolicy } from './ExecutingPolicy'
 
 export class EnrichStatsResponse extends ResponseBase {
-  coordinator_stats: CoordinatorStats[];
-  executing_policies: ExecutingPolicy[];
+  coordinator_stats: CoordinatorStats[]
+  executing_policies: ExecutingPolicy[]
 }

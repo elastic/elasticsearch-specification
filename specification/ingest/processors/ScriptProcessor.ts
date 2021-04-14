@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ProcessorBase } from "../ProcessorBase";
+import { Id } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class ScriptProcessor extends ProcessorBase {
-  id?: Id;
-  lang?: string;
-  params?: Dictionary<string, UserDefinedValue>;
-  source: string;
+  id?: Id
+  lang?: string
+  params?: Dictionary<string, UserDefinedValue>
+  source: string
 }

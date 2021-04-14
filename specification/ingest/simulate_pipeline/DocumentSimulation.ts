@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Id, IndexName, Type } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { Ingest } from "./Ingest";
+import { Id, IndexName, Type } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Ingest } from './Ingest'
 
 export class DocumentSimulation {
-  _id: Id;
-  _index: IndexName;
-  _ingest: Ingest;
-  _parent?: string;
-  _routing?: string;
-  _source: Dictionary<string, UserDefinedValue>;
-  _type?: Type;
+  _id: Id
+  _index: IndexName
+  _ingest: Ingest
+  _parent?: string
+  _routing?: string
+  _source: Dictionary<string, UserDefinedValue>
+  _type?: Type
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Sort } from "../../../../__global/search/sort/Sort";
-import { integer } from "../../../common";
-import { Aggregation } from "../../Aggregation";
-import { GapPolicy } from "../GapPolicy";
+import { Sort } from '../../../../__global/search/sort/Sort'
+import { integer } from '../../../common'
+import { Aggregation } from '../../Aggregation'
+import { GapPolicy } from '../GapPolicy'
 
 export class BucketSortAggregation extends Aggregation {
-  from?: integer;
-  gap_policy?: GapPolicy;
-  size?: integer;
-  sort?: Sort;
+  from?: integer
+  gap_policy?: GapPolicy
+  size?: integer
+  sort?: Sort
 }

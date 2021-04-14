@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class SearchableSnapshotsUsage extends XPackUsage {
-  indices_count: integer;
-  full_copy_indices_count?: integer;
-  shared_cache_indices_count?: integer;
+  indices_count: integer
+  full_copy_indices_count?: integer
+  shared_cache_indices_count?: integer
 }

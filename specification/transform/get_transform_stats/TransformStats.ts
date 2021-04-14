@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { NodeAttributes } from "./NodeAttributes";
-import { TransformCheckpointingInfo } from "./TransformCheckpointingInfo";
-import { TransformIndexerStats } from "./TransformIndexerStats";
+import { Id } from '../../__common/common'
+import { NodeAttributes } from './NodeAttributes'
+import { TransformCheckpointingInfo } from './TransformCheckpointingInfo'
+import { TransformIndexerStats } from './TransformIndexerStats'
 
 export class TransformStats {
-  checkpointing: TransformCheckpointingInfo;
-  id: Id;
-  node?: NodeAttributes;
-  reason?: string;
-  state: string;
-  stats: TransformIndexerStats;
+  checkpointing: TransformCheckpointingInfo
+  id: Id
+  node?: NodeAttributes
+  reason?: string
+  state: string
+  stats: TransformIndexerStats
 }

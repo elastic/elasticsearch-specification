@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { ByteSize, integer } from "../../common";
+import { ByteSize, integer } from '../../common'
 
 export class QueryCacheStats {
-  cache_count: integer;
-  cache_size: integer;
-  evictions: integer;
-  hit_count: integer;
-  memory_size?: ByteSize;
-  memory_size_in_bytes: integer;
-  miss_count: integer;
-  total_count: integer;
+  cache_count: integer
+  cache_size: integer
+  evictions: integer
+  hit_count: integer
+  memory_size?: ByteSize
+  memory_size_in_bytes: integer
+  miss_count: integer
+  total_count: integer
 }

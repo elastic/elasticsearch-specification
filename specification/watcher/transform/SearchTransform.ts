@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { SearchInputRequestDefinition } from "../input/SearchInputRequestDefinition";
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { SearchInputRequestDefinition } from '../input/SearchInputRequestDefinition'
 
 export class SearchTransform {
-  request: SearchInputRequestDefinition;
-  timeout: Time;
+  request: SearchInputRequestDefinition
+  timeout: Time
 }

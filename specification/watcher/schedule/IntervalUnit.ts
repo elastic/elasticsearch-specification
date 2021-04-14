@@ -22,5 +22,5 @@ export enum IntervalUnit {
   m = 1,
   h = 2,
   d = 3,
-  w = 4,
+  w = 4
 }

@@ -30,5 +30,5 @@ export enum SimpleQueryStringFlags {
   FUZZY = 512,
   NEAR = 1024,
   SLOP = 2048,
-  ALL = 4096,
+  ALL = 4096
 }

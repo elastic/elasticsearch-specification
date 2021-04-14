@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
+import { Field } from '../../../common'
 
 export class FieldNameQuery {
-  field?: Field;
+  field?: Field
 }

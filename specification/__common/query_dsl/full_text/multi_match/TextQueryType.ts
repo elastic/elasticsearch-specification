@@ -23,5 +23,5 @@ export enum TextQueryType {
   cross_fields = 2,
   phrase = 3,
   phrase_prefix = 4,
-  bool_prefix = 5,
+  bool_prefix = 5
 }

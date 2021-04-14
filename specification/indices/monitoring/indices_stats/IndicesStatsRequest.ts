@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Fields, Indices, Metrics, Types } from "../../../__common/common";
-import { ExpandWildcards } from "../../../__common/common/ExpandWildcards";
-import { Level } from "../../../__common/common/Level";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Fields, Indices, Metrics, Types } from '../../../__common/common'
+import { ExpandWildcards } from '../../../__common/common/ExpandWildcards'
+import { Level } from '../../../__common/common/Level'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.stats
@@ -29,20 +29,20 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface IndicesStatsRequest extends RequestBase {
   path_parts?: {
-    metric?: Metrics;
-    index?: Indices;
-  };
+    metric?: Metrics
+    index?: Indices
+  }
   query_parameters?: {
-    completion_fields?: Fields;
-    expand_wildcards?: ExpandWildcards;
-    fielddata_fields?: Fields;
-    fields?: Fields;
-    forbid_closed_indices?: boolean;
-    groups?: string | string[];
-    include_segment_file_sizes?: boolean;
-    include_unloaded_segments?: boolean;
-    level?: Level;
-    types?: Types;
-  };
-  body?: {};
+    completion_fields?: Fields
+    expand_wildcards?: ExpandWildcards
+    fielddata_fields?: Fields
+    fields?: Fields
+    forbid_closed_indices?: boolean
+    groups?: string | string[]
+    include_segment_file_sizes?: boolean
+    include_unloaded_segments?: boolean
+    level?: Level
+    types?: Types
+  }
+  body?: {}
 }

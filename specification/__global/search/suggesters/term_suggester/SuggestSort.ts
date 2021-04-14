@@ -19,5 +19,5 @@
 
 export enum SuggestSort {
   score = 0,
-  frequency = 1,
+  frequency = 1
 }

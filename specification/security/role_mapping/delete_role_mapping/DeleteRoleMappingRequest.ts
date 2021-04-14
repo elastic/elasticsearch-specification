@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../../__common/common'
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.delete_role_mapping
@@ -28,10 +28,10 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface DeleteRoleMappingRequest extends RequestBase {
   path_parts?: {
-    name: Name;
-  };
+    name: Name
+  }
   query_parameters?: {
-    refresh?: Refresh;
-  };
-  body?: {};
+    refresh?: Refresh
+  }
+  body?: {}
 }

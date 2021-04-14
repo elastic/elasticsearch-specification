@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { long, TaskId } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TaskStatus } from "./TaskStatus";
+import { long, TaskId } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TaskStatus } from './TaskStatus'
 
 export class TaskState {
-  action: string;
-  cancellable: boolean;
-  description?: string;
-  headers: Dictionary<string, string>;
-  id: long;
-  node: string;
-  parent_task_id?: TaskId;
-  running_time_in_nanos: long;
-  start_time_in_millis: long;
-  status?: TaskStatus;
-  type: string;
+  action: string
+  cancellable: boolean
+  description?: string
+  headers: Dictionary<string, string>
+  id: long
+  node: string
+  parent_task_id?: TaskId
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: TaskStatus
+  type: string
 }

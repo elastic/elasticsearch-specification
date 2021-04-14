@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RolloverConditions } from "../indices/index_management/rollover_index/RolloverConditions";
+import { RolloverConditions } from '../indices/index_management/rollover_index/RolloverConditions'
 import {
   DateString,
   IndexAlias,
@@ -27,69 +27,69 @@ import {
   PropertyName,
   Uuid,
   VersionNumber,
-  VersionString,
-} from "../__common/common";
-import { Time } from "../__common/common_options/time_unit/Time";
-import { Property } from "../__common/mapping/types/Property";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
+  VersionString
+} from '../__common/common'
+import { Time } from '../__common/common_options/time_unit/Time'
+import { Property } from '../__common/mapping/types/Property'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
 
 export class ClusterStateBlocks {
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>;
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
 }
 
 export class ClusterStateBlockIndex {
-  description?: string;
-  retryable?: boolean;
-  levels?: string[];
-  aliases?: Array<IndexAlias>;
-  aliases_version?: VersionNumber;
-  version?: VersionNumber;
-  mapping_version?: VersionNumber;
-  settings_version?: VersionNumber;
-  routing_num_shards?: VersionNumber;
-  state?: string; // TODO: create export enum  of values
-  settings?: Dictionary<IndexName, ClusterStateBlockIndexSetting>;
-  in_sync_allocations?: Dictionary<string, string[]>;
-  primary_terms?: Dictionary<string, integer>;
-  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>;
-  rollover_info?: Dictionary<string, RolloverConditions>; // TODO: not sure if this is correect
-  timestamp_range?: Dictionary<string, UserDefinedValue>;
-  system?: boolean;
+  description?: string
+  retryable?: boolean
+  levels?: string[]
+  aliases?: Array<IndexAlias>
+  aliases_version?: VersionNumber
+  version?: VersionNumber
+  mapping_version?: VersionNumber
+  settings_version?: VersionNumber
+  routing_num_shards?: VersionNumber
+  state?: string // TODO: create export enum  of values
+  settings?: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  in_sync_allocations?: Dictionary<string, string[]>
+  primary_terms?: Dictionary<string, integer>
+  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  rollover_info?: Dictionary<string, RolloverConditions> // TODO: not sure if this is correect
+  timestamp_range?: Dictionary<string, UserDefinedValue>
+  system?: boolean
 }
 
 export class ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting;
-  refresh_interval?: Time;
-  number_of_shards: integer | string; // TODO: not sure this correct
-  number_of_replicas: integer | string; // TODO: not sure this correct
-  verified_before_close?: boolean | string; // TODO: check if it should be only bool
-  hidden?: boolean | string; // TODO: check if it should be only bool
-  format?: integer | string; // TODO: check if it should be only integer
-  provided_name?: Name;
-  auto_expand_replicas?: string;
-  creation_date?: DateString;
-  uuid?: Uuid;
-  version?: ClusterStateBlockIndexSettingVersion;
-  lifecycle?: ClusterStateBlockIndexSettingLifecycle;
+  routing?: ClusterStateBlockIndexSettingRouting
+  refresh_interval?: Time
+  number_of_shards: integer | string // TODO: not sure this correct
+  number_of_replicas: integer | string // TODO: not sure this correct
+  verified_before_close?: boolean | string // TODO: check if it should be only bool
+  hidden?: boolean | string // TODO: check if it should be only bool
+  format?: integer | string // TODO: check if it should be only integer
+  provided_name?: Name
+  auto_expand_replicas?: string
+  creation_date?: DateString
+  uuid?: Uuid
+  version?: ClusterStateBlockIndexSettingVersion
+  lifecycle?: ClusterStateBlockIndexSettingLifecycle
 }
 
 export class ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation;
+  allocation: ClusterStateBlockIndexSettingRoutingAllocation
 }
 
 export class ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Dictionary<string, string>;
+  include: Dictionary<string, string>
 }
 
 export class ClusterStateBlockIndexSettingVersion {
-  created: VersionString;
+  created: VersionString
 }
 
 export class ClusterStateBlockIndexMapping {
-  properties: Dictionary<PropertyName, Property>;
+  properties: Dictionary<PropertyName, Property>
 }
 
 export class ClusterStateBlockIndexSettingLifecycle {
-  name: Name;
+  name: Name
 }

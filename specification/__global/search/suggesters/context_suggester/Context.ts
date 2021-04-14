@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { GeoLocation } from "../../../../__common/query_dsl/geo/GeoLocation";
+import { GeoLocation } from '../../../../__common/query_dsl/geo/GeoLocation'
 
 /**
  * Text that we want similar documents for or a lookup to a document's field for the text.
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters
  *
  */
-export type Context = string | GeoLocation;
+export type Context = string | GeoLocation

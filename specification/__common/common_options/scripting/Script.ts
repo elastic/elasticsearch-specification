@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 export class ScriptBase {
-  lang?: string;
-  params?: Dictionary<string, UserDefinedValue>;
+  lang?: string
+  params?: Dictionary<string, UserDefinedValue>
 }
 
 export class InlineScript extends ScriptBase {
-  source: string;
+  source: string
 }
 
 export class IndexedScript extends ScriptBase {
-  id: string;
+  id: string
 }
 
-export type Script = InlineScript | IndexedScript | string;
+export type Script = InlineScript | IndexedScript | string

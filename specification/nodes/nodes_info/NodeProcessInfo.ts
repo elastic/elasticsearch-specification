@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class NodeProcessInfo {
-  id: long;
-  mlockall: boolean;
-  refresh_interval_in_millis: long;
+  id: long
+  mlockall: boolean
+  refresh_interval_in_millis: long
 }

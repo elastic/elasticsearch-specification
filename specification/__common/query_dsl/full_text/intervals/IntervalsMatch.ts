@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../common";
-import { IntervalsFilter } from "./IntervalsFilter";
+import { Field, integer } from '../../../common'
+import { IntervalsFilter } from './IntervalsFilter'
 
 export class IntervalsMatch {
-  analyzer?: string;
-  max_gaps?: integer;
-  ordered?: boolean;
-  query?: string;
-  use_field?: Field;
-  filter?: IntervalsFilter;
+  analyzer?: string
+  max_gaps?: integer
+  ordered?: boolean
+  query?: string
+  use_field?: Field
+  filter?: IntervalsFilter
 }

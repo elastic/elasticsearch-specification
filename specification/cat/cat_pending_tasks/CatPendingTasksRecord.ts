@@ -22,20 +22,20 @@ export class CatPendingTasksRecord {
    * task insertion order
    * @aliases o
    */
-  "insertOrder"?: string;
+  'insertOrder'?: string
   /**
    * how long task has been in queue
    * @aliases t
    */
-  "timeInQueue"?: string;
+  'timeInQueue'?: string
   /**
    * task priority
    * @aliases p
    */
-  "priority"?: string;
+  'priority'?: string
   /**
    * task source
    * @aliases s
    */
-  "source"?: string;
+  'source'?: string
 }

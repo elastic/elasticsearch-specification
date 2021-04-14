@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { CatRequestBase } from "../CatBase";
+import { Id } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.ml_datafeeds
@@ -27,10 +27,10 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatDatafeedsRequest extends CatRequestBase {
   path_parts?: {
-    datafeed_id?: Id;
-  };
+    datafeed_id?: Id
+  }
   query_parameters?: {
-    allow_no_datafeeds?: boolean;
-  };
-  body?: {};
+    allow_no_datafeeds?: boolean
+  }
+  body?: {}
 }

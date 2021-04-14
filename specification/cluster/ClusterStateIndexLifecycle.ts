@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { LifecycleOperationMode } from "../ilm/get_status/LifecycleOperationMode";
-import { Phases } from "../ilm/Phases";
-import { DateString, IndexName, long, VersionNumber } from "../__common/common";
-import { Dictionary } from "../__spec_utils/Dictionary";
+import { LifecycleOperationMode } from '../ilm/get_status/LifecycleOperationMode'
+import { Phases } from '../ilm/Phases'
+import { DateString, IndexName, long, VersionNumber } from '../__common/common'
+import { Dictionary } from '../__spec_utils/Dictionary'
 
 export class ClusterStateIndexLifecycle {
-  policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>;
-  operation_mode: LifecycleOperationMode;
+  policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>
+  operation_mode: LifecycleOperationMode
 }
 
 export class ClusterStateIndexLifecycleSummary {
-  policy: ClusterStateIndexLifecyclePolicy;
-  headers: Dictionary<string, string>;
-  version: VersionNumber;
-  modified_date: long;
-  modified_date_string: DateString;
+  policy: ClusterStateIndexLifecyclePolicy
+  headers: Dictionary<string, string>
+  version: VersionNumber
+  modified_date: long
+  modified_date_string: DateString
 }
 
 export class ClusterStateIndexLifecyclePolicy {
-  phases: Phases;
+  phases: Phases
 }

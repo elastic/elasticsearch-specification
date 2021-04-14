@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class NodePackagingType {
-  count: integer;
-  flavor: string;
-  type: string;
+  count: integer
+  flavor: string
+  type: string
 }

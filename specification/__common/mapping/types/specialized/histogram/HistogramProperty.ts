@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { PropertyBase } from "../../Property";
+import { PropertyBase } from '../../Property'
 
 export class HistogramProperty extends PropertyBase {
-  ignore_malformed?: boolean;
-  type: "histogram";
+  ignore_malformed?: boolean
+  type: 'histogram'
 }

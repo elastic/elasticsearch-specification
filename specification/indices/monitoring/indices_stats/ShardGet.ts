@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardGet {
-  current: long;
-  exists_time_in_millis: long;
-  exists_total: long;
-  missing_time_in_millis: long;
-  missing_total: long;
-  time_in_millis: long;
-  total: long;
+  current: long
+  exists_time_in_millis: long
+  exists_total: long
+  missing_time_in_millis: long
+  missing_total: long
+  time_in_millis: long
+  total: long
 }

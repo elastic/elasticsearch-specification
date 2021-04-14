@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class MultiplexerTokenFilter extends TokenFilterBase {
-  filters: string[];
+  filters: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
+  preserve_original: boolean
 }

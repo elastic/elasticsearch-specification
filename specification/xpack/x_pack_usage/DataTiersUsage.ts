@@ -17,26 +17,26 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { long } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class DataTiersUsage extends XPackUsage {
-  data_warm: DataTierPhaseCountUsage;
-  data_frozen?: DataTierPhaseCountUsage; // @since 7.13
-  data_cold: DataTierPhaseCountUsage;
-  data_content: DataTierPhaseCountUsage;
-  data_hot: DataTierPhaseCountUsage;
+  data_warm: DataTierPhaseCountUsage
+  data_frozen?: DataTierPhaseCountUsage // @since 7.13
+  data_cold: DataTierPhaseCountUsage
+  data_content: DataTierPhaseCountUsage
+  data_hot: DataTierPhaseCountUsage
 }
 
 export class DataTierPhaseCountUsage {
-  node_count: long;
-  index_count: long;
-  total_shard_count: long;
-  primary_shard_count: long;
-  doc_count: long;
-  total_size_bytes: long;
-  primary_size_bytes: long;
-  primary_shard_size_avg_bytes: long;
-  primary_shard_size_median_bytes: long;
-  primary_shard_size_mad_bytes: long;
+  node_count: long
+  index_count: long
+  total_shard_count: long
+  primary_shard_count: long
+  doc_count: long
+  total_size_bytes: long
+  primary_size_bytes: long
+  primary_shard_size_avg_bytes: long
+  primary_shard_size_median_bytes: long
+  primary_shard_size_mad_bytes: long
 }

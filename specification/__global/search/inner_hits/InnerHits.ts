@@ -17,27 +17,27 @@
  * under the License.
  */
 
-import { Fields, integer, Name } from "../../../__common/common";
-import { ScriptField } from "../../../__common/common_options/scripting/ScriptField";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { FieldCollapse } from "../collapsing/FieldCollapse";
-import { Highlight } from "../highlighting/Highlight";
-import { Sort } from "../sort/Sort";
-import { SourceFilter } from "../source_filtering/SourceFilter";
+import { Fields, integer, Name } from '../../../__common/common'
+import { ScriptField } from '../../../__common/common_options/scripting/ScriptField'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { FieldCollapse } from '../collapsing/FieldCollapse'
+import { Highlight } from '../highlighting/Highlight'
+import { Sort } from '../sort/Sort'
+import { SourceFilter } from '../source_filtering/SourceFilter'
 
 export class InnerHits {
-  name?: Name;
-  size?: integer;
-  from?: integer;
-  collapse?: FieldCollapse;
-  docvalue_fields?: Fields;
-  explain?: boolean;
-  highlight?: Highlight;
-  ignore_unmapped?: boolean;
-  script_fields?: Dictionary<string, ScriptField>;
-  seq_no_primary_term?: boolean;
-  fields?: Fields;
-  sort?: Sort;
-  _source?: boolean | SourceFilter;
-  version?: boolean;
+  name?: Name
+  size?: integer
+  from?: integer
+  collapse?: FieldCollapse
+  docvalue_fields?: Fields
+  explain?: boolean
+  highlight?: Highlight
+  ignore_unmapped?: boolean
+  script_fields?: Dictionary<string, ScriptField>
+  seq_no_primary_term?: boolean
+  fields?: Fields
+  sort?: Sort
+  _source?: boolean | SourceFilter
+  version?: boolean
 }

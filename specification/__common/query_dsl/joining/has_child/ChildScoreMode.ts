@@ -22,5 +22,5 @@ export enum ChildScoreMode {
   avg = 1,
   sum = 2,
   max = 3,
-  min = 4,
+  min = 4
 }

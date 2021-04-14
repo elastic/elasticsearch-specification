@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { IndexBlockStatus } from "./IndexBlockStatus";
+import { AcknowledgedResponseBase } from '../../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { IndexBlockStatus } from './IndexBlockStatus'
 
 export class IndexAddBlockResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean;
-  indices: IndexBlockStatus[];
+  shards_acknowledged: boolean
+  indices: IndexBlockStatus[]
 }

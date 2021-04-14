@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.put_calendar
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface PutCalendarRequest extends RequestBase {
   path_parts?: {
-    calendar_id: Id;
-  };
-  query_parameters?: {};
+    calendar_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    description?: string;
-  };
+    description?: string
+  }
 }

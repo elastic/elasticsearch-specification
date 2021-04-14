@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from "../../../__common/common";
-import { ExpandWildcards } from "../../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Indices } from '../../../__common/common'
+import { ExpandWildcards } from '../../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.segments
@@ -28,13 +28,13 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface SegmentsRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    verbose?: boolean;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    verbose?: boolean
+  }
+  body?: {}
 }

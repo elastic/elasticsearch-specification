@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name render_search_template
@@ -27,10 +27,10 @@ import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
  * @stability TODO
  */
 export interface RenderSearchTemplateRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    file?: string;
-    params?: Dictionary<string, UserDefinedValue>;
-    source?: string;
-  };
+    file?: string
+    params?: Dictionary<string, UserDefinedValue>
+    source?: string
+  }
 }

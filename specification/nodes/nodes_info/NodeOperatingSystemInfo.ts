@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { integer, Name, VersionString } from "../../__common/common";
-import { NodeInfoMemory } from "./NodeInfoMemory";
-import { NodeInfoOSCPU } from "./NodeInfoOSCPU";
+import { integer, Name, VersionString } from '../../__common/common'
+import { NodeInfoMemory } from './NodeInfoMemory'
+import { NodeInfoOSCPU } from './NodeInfoOSCPU'
 
 export class NodeOperatingSystemInfo {
-  arch: string;
-  available_processors: integer;
-  cpu: NodeInfoOSCPU;
-  mem: NodeInfoMemory;
-  name: string;
-  pretty_name: Name;
-  refresh_interval_in_millis: integer;
-  swap: NodeInfoMemory;
-  version: VersionString;
+  arch: string
+  available_processors: integer
+  cpu: NodeInfoOSCPU
+  mem: NodeInfoMemory
+  name: string
+  pretty_name: Name
+  refresh_interval_in_millis: integer
+  swap: NodeInfoMemory
+  version: VersionString
 }

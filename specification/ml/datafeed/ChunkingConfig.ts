@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { ChunkingMode } from "./ChunkingMode";
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { ChunkingMode } from './ChunkingMode'
 
 export class ChunkingConfig {
-  mode: ChunkingMode;
-  time_span?: Time; // default: 3h
+  mode: ChunkingMode
+  time_span?: Time // default: 3h
 }

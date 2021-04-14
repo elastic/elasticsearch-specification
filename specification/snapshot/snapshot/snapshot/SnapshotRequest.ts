@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices, Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Indices, Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name snapshot.create
@@ -30,19 +30,19 @@ import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
  */
 export interface SnapshotRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-    snapshot: Name;
-  };
+    repository: Name
+    snapshot: Name
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    wait_for_completion?: boolean;
-  };
+    master_timeout?: Time
+    wait_for_completion?: boolean
+  }
   body?: {
-    ignore_unavailable?: boolean;
-    include_global_state?: boolean;
+    ignore_unavailable?: boolean
+    include_global_state?: boolean
     /** @prop_serializer IndicesMultiSyntaxFormatter */
-    indices?: Indices;
-    metadata?: Dictionary<string, UserDefinedValue>;
-    partial?: boolean;
-  };
+    indices?: Indices
+    metadata?: Dictionary<string, UserDefinedValue>
+    partial?: boolean
+  }
 }

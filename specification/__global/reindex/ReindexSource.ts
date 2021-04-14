@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { Fields, Indices, integer } from "../../__common/common";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { SlicedScroll } from "../scroll/SlicedScroll";
-import { Sort } from "../search/sort/Sort";
-import { RemoteSource } from "./RemoteSource";
+import { Fields, Indices, integer } from '../../__common/common'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { SlicedScroll } from '../scroll/SlicedScroll'
+import { Sort } from '../search/sort/Sort'
+import { RemoteSource } from './RemoteSource'
 
 export class ReindexSource {
-  index: Indices;
-  query?: QueryContainer;
-  remote?: RemoteSource;
-  size?: integer;
-  slice?: SlicedScroll;
-  sort?: Sort;
-  _source?: Fields;
+  index: Indices
+  query?: QueryContainer
+  remote?: RemoteSource
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Sort
+  _source?: Fields
 }

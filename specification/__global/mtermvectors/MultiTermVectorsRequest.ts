@@ -23,11 +23,11 @@ import {
   IndexName,
   Routing,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { MultiTermVectorOperation } from "./MultiTermVectorOperation";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { MultiTermVectorOperation } from './MultiTermVectorOperation'
 
 /**
  * @rest_spec_name mtermvectors
@@ -36,24 +36,24 @@ import { MultiTermVectorOperation } from "./MultiTermVectorOperation";
  */
 export interface MultiTermVectorsRequest extends RequestBase {
   path_parts?: {
-    index?: IndexName;
-    type?: Type;
-  };
+    index?: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    fields?: Fields;
-    field_statistics?: boolean;
-    offsets?: boolean;
-    payloads?: boolean;
-    positions?: boolean;
-    preference?: string;
-    realtime?: boolean;
-    routing?: Routing;
-    term_statistics?: boolean;
-    version?: VersionNumber;
-    version_type?: VersionType;
-  };
+    fields?: Fields
+    field_statistics?: boolean
+    offsets?: boolean
+    payloads?: boolean
+    positions?: boolean
+    preference?: string
+    realtime?: boolean
+    routing?: Routing
+    term_statistics?: boolean
+    version?: VersionNumber
+    version_type?: VersionType
+  }
   body?: {
-    docs?: MultiTermVectorOperation[];
-    ids?: Id[];
-  };
+    docs?: MultiTermVectorOperation[]
+    ids?: Id[]
+  }
 }

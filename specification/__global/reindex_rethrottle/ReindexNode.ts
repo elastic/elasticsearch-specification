@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Name, TaskId } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ReindexTask } from "./ReindexTask";
+import { Name, TaskId } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ReindexTask } from './ReindexTask'
 
 export class ReindexNode {
-  attributes: Dictionary<string, string>;
-  host: string;
-  ip: string;
-  name: Name;
-  roles: string[];
-  tasks: Dictionary<TaskId, ReindexTask>;
-  transport_address: string;
+  attributes: Dictionary<string, string>
+  host: string
+  ip: string
+  name: Name
+  roles: string[]
+  tasks: Dictionary<TaskId, ReindexTask>
+  transport_address: string
 }

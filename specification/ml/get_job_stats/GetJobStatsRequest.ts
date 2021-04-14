@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.get_job_stats
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetJobStatsRequest extends RequestBase {
   path_parts?: {
-    job_id?: Id;
-  };
+    job_id?: Id
+  }
   query_parameters?: {
-    allow_no_jobs?: boolean;
-  };
-  body?: {};
+    allow_no_jobs?: boolean
+  }
+  body?: {}
 }

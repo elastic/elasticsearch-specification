@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { VersionNumber } from "../__common/common";
-import { ProcessorContainer } from "./ProcessorContainer";
+import { VersionNumber } from '../__common/common'
+import { ProcessorContainer } from './ProcessorContainer'
 
 export class Pipeline {
-  description?: string;
-  on_failure?: ProcessorContainer[];
-  processors?: ProcessorContainer[];
-  version?: VersionNumber;
+  description?: string
+  on_failure?: ProcessorContainer[]
+  processors?: ProcessorContainer[]
+  version?: VersionNumber
 }

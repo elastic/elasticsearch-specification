@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { ExpandWildcardOptions } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName } from '../../__common/common'
+import { ExpandWildcardOptions } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.data_streams_stats
@@ -28,11 +28,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
   path_parts?: {
-    name?: IndexName;
-  };
+    name?: IndexName
+  }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcardOptions; // default: open
-    human?: boolean; // default: false
-  };
-  body?: {};
+    expand_wildcards?: ExpandWildcardOptions // default: open
+    human?: boolean // default: false
+  }
+  body?: {}
 }

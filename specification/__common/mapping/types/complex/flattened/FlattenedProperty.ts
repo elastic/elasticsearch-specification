@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { double, integer } from "../../../../common";
-import { IndexOptions } from "../../core/text/IndexOptions";
-import { PropertyBase } from "../../Property";
+import { double, integer } from '../../../../common'
+import { IndexOptions } from '../../core/text/IndexOptions'
+import { PropertyBase } from '../../Property'
 
 export class FlattenedProperty extends PropertyBase {
-  boost?: double;
-  depth_limit?: integer;
-  doc_values?: boolean;
-  eager_global_ordinals?: boolean;
-  index?: boolean;
-  index_options?: IndexOptions;
-  null_value?: string;
-  similarity?: string;
-  split_queries_on_whitespace?: boolean;
-  type: "flattened";
+  boost?: double
+  depth_limit?: integer
+  doc_values?: boolean
+  eager_global_ordinals?: boolean
+  index?: boolean
+  index_options?: IndexOptions
+  null_value?: string
+  similarity?: string
+  split_queries_on_whitespace?: boolean
+  type: 'flattened'
 }

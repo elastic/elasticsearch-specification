@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../../__spec_utils/Dictionary";
-import { RelationName } from "../../../../common";
-import { PropertyBase } from "../../Property";
+import { Dictionary } from '../../../../../__spec_utils/Dictionary'
+import { RelationName } from '../../../../common'
+import { PropertyBase } from '../../Property'
 
 export class JoinProperty extends PropertyBase {
-  relations?: Dictionary<RelationName, RelationName | RelationName[]>;
-  type: "join";
+  relations?: Dictionary<RelationName, RelationName | RelationName[]>
+  type: 'join'
 }

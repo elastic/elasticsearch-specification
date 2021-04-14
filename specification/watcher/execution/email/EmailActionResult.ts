@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { EmailResult } from "./EmailResult";
+import { EmailResult } from './EmailResult'
 
 export class EmailActionResult {
-  account?: string;
-  message: EmailResult;
-  reason?: string; // TODO: not sure if this needed
+  account?: string
+  message: EmailResult
+  reason?: string // TODO: not sure if this needed
 }

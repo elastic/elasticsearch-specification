@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { EpochMillis, IndexName, integer } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { ConditionContainer } from "../condition/ConditionContainer";
-import { TransformContainer } from "../transform/TransformContainer";
-import { ActionType } from "./ActionType";
+import { EpochMillis, IndexName, integer } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { ConditionContainer } from '../condition/ConditionContainer'
+import { TransformContainer } from '../transform/TransformContainer'
+import { ActionType } from './ActionType'
 
 export class Action {
-  action_type?: ActionType;
-  condition?: ConditionContainer;
-  foreach?: string;
-  max_iterations?: integer;
-  name?: string;
-  throttle_period?: Time;
-  throttle_period_in_millis?: EpochMillis;
-  transform?: TransformContainer;
-  index: ActionIndex;
+  action_type?: ActionType
+  condition?: ConditionContainer
+  foreach?: string
+  max_iterations?: integer
+  name?: string
+  throttle_period?: Time
+  throttle_period_in_millis?: EpochMillis
+  transform?: TransformContainer
+  index: ActionIndex
 }
 
 export class ActionIndex {
-  index: IndexName;
+  index: IndexName
 }

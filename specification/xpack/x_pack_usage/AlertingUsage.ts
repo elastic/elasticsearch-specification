@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { AlertingExecution } from "./AlertingExecution";
-import { AlertingInput } from "./AlertingInput";
-import { UsageCount } from "./UsageCount";
-import { XPackUsage } from "./XPackUsage";
+import { AlertingExecution } from './AlertingExecution'
+import { AlertingInput } from './AlertingInput'
+import { UsageCount } from './UsageCount'
+import { XPackUsage } from './XPackUsage'
 
 export class AlertingUsage extends XPackUsage {
-  count: UsageCount;
-  execution: AlertingExecution;
-  watch: AlertingInput;
+  count: UsageCount
+  execution: AlertingExecution
+  watch: AlertingInput
 }

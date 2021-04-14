@@ -39,5 +39,5 @@ export enum SnowballLanguage {
   Russian = 18,
   Spanish = 19,
   Swedish = 20,
-  Turkish = 21,
+  Turkish = 21
 }

@@ -34,10 +34,10 @@ export enum NodeRole {
   voting_only = 10,
   transform = 11,
   remote_cluster_client = 12,
-  coordinating_only = 13,
+  coordinating_only = 13
 }
 
 /**
  * * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
  */
-export type NodeRoles = NodeRole[];
+export type NodeRoles = NodeRole[]

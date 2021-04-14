@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { DatafeedCount } from "./DatafeedCount";
-import { Job } from "./Job";
-import { MlDataFrameAnalyticsJobsUsage } from "./MlDataFrameAnalyticsJobsUsage";
-import { MlInferenceUsage } from "./MlInferenceUsage";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { DatafeedCount } from './DatafeedCount'
+import { Job } from './Job'
+import { MlDataFrameAnalyticsJobsUsage } from './MlDataFrameAnalyticsJobsUsage'
+import { MlInferenceUsage } from './MlInferenceUsage'
+import { XPackUsage } from './XPackUsage'
 
 export class MachineLearningUsage extends XPackUsage {
-  datafeeds: Dictionary<string, DatafeedCount>;
-  jobs: Dictionary<string, Job>;
-  node_count: integer;
-  data_frame_analytics_jobs: MlDataFrameAnalyticsJobsUsage;
-  inference: MlInferenceUsage;
+  datafeeds: Dictionary<string, DatafeedCount>
+  jobs: Dictionary<string, Job>
+  node_count: integer
+  data_frame_analytics_jobs: MlDataFrameAnalyticsJobsUsage
+  inference: MlInferenceUsage
 }

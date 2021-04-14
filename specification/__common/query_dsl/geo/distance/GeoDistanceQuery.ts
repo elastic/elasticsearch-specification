@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Distance } from "../../../common_options/geo/Distance";
-import { GeoDistanceType } from "../../../common_options/geo/GeoDistanceType";
-import { QueryBase } from "../../abstractions/query/Query";
-import { GeoLocation } from "../GeoLocation";
-import { GeoValidationMethod } from "../GeoValidationMethod";
+import { Distance } from '../../../common_options/geo/Distance'
+import { GeoDistanceType } from '../../../common_options/geo/GeoDistanceType'
+import { QueryBase } from '../../abstractions/query/Query'
+import { GeoLocation } from '../GeoLocation'
+import { GeoValidationMethod } from '../GeoValidationMethod'
 
 export class GeoDistanceQuery extends QueryBase {
-  distance?: Distance;
-  distance_type?: GeoDistanceType;
-  location?: GeoLocation;
-  validation_method?: GeoValidationMethod;
+  distance?: Distance
+  distance_type?: GeoDistanceType
+  location?: GeoLocation
+  validation_method?: GeoValidationMethod
 }

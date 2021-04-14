@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { integer } from '../../common'
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class FingerprintAnalyzer extends AnalyzerBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_output_size: integer;
+  max_output_size: integer
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
-  separator: string;
-  stopwords: StopWords;
-  stopwords_path: string;
+  preserve_original: boolean
+  separator: string
+  stopwords: StopWords
+  stopwords_path: string
 }

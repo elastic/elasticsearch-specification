@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Phases } from "./Phases";
+import { Phases } from './Phases'
 
 export class Policy {
-  phases: Phases;
-  name?: string;
+  phases: Phases
+  name?: string
 }

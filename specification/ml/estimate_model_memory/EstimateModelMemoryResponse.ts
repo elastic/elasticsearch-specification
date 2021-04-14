@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class EstimateModelMemoryResponse extends ResponseBase {
-  model_memory_estimate: string;
+  model_memory_estimate: string
 }

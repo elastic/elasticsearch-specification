@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ShardFailure } from "../../../../__common/common/ShardFailure";
+import { ShardFailure } from '../../../../__common/common/ShardFailure'
 
 export class CloseShardResult {
-  failures: ShardFailure[];
+  failures: ShardFailure[]
 }

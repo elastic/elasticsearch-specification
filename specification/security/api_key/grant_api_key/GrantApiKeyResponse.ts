@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { EpochMillis, Id, Name } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
+import { EpochMillis, Id, Name } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
 
 export class GrantApiKeyResponse extends ResponseBase {
-  api_key: string;
-  id: Id;
-  name: Name;
-  expiration?: EpochMillis;
+  api_key: string
+  id: Id
+  name: Name
+  expiration?: EpochMillis
 }

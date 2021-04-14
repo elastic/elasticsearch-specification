@@ -22,5 +22,5 @@ export enum Normalization {
   h1 = 1,
   h2 = 2,
   h3 = 3,
-  z = 4,
+  z = 4
 }

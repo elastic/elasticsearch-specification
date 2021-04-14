@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ConditionType } from "../condition/ConditionType";
-import { Status } from "../execution/Status";
+import { ConditionType } from '../condition/ConditionType'
+import { Status } from '../execution/Status'
 
 export class ExecutionResultCondition {
-  met: boolean;
-  status: Status;
-  type: ConditionType;
+  met: boolean
+  status: Status
+  type: ConditionType
 }

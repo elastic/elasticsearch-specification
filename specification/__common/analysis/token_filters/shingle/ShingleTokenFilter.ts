@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { TokenFilterBase } from "../TokenFilterBase";
+import { integer } from '../../../common'
+import { TokenFilterBase } from '../TokenFilterBase'
 
 export class ShingleTokenFilter extends TokenFilterBase {
-  filler_token: string;
+  filler_token: string
   /** @prop_serializer NullableStringIntFormatter */
-  max_shingle_size: integer;
+  max_shingle_size: integer
   /** @prop_serializer NullableStringIntFormatter */
-  min_shingle_size: integer;
+  min_shingle_size: integer
   /** @prop_serializer NullableStringBooleanFormatter */
-  output_unigrams: boolean;
+  output_unigrams: boolean
   /** @prop_serializer NullableStringBooleanFormatter */
-  output_unigrams_if_no_shingles: boolean;
-  token_separator: string;
+  output_unigrams_if_no_shingles: boolean
+  token_separator: string
 }

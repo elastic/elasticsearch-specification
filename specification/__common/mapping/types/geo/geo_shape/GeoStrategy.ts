@@ -19,5 +19,5 @@
 
 export enum GeoStrategy {
   recursive = 0,
-  term = 1,
+  term = 1
 }

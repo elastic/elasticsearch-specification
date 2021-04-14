@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexName, WaitForActiveShards } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../Alias";
+import { IndexName, WaitForActiveShards } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Alias } from '../../Alias'
 
 /**
  * @rest_spec_name indices.split
@@ -31,16 +31,16 @@ import { Alias } from "../../Alias";
  */
 export interface SplitIndexRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-    target: IndexName;
-  };
+    index: IndexName
+    target: IndexName
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-  };
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+  }
   body?: {
-    aliases?: Dictionary<IndexName, Alias>;
-    settings?: Dictionary<string, UserDefinedValue>;
-  };
+    aliases?: Dictionary<IndexName, Alias>
+    settings?: Dictionary<string, UserDefinedValue>
+  }
 }

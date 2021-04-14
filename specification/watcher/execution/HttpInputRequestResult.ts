@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { HttpInputRequestDefinition } from "../input/HttpInputRequestDefinition";
+import { HttpInputRequestDefinition } from '../input/HttpInputRequestDefinition'
 
 export class HttpInputRequestResult extends HttpInputRequestDefinition {}

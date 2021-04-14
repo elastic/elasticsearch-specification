@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Fields } from "../../__common/common";
+import { Fields } from '../../__common/common'
 
 export class FieldSecurity {
-  except?: Fields;
-  grant: Fields;
+  except?: Fields
+  grant: Fields
 }

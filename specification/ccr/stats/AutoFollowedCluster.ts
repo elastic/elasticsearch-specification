@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DateString, Name, VersionNumber } from "../../__common/common";
+import { DateString, Name, VersionNumber } from '../../__common/common'
 
 export class AutoFollowedCluster {
-  cluster_name: Name;
-  last_seen_metadata_version: VersionNumber;
-  time_since_last_check_millis: DateString;
+  cluster_name: Name
+  last_seen_metadata_version: VersionNumber
+  time_since_last_check_millis: DateString
 }

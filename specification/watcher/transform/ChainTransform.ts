@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TransformContainer } from "./TransformContainer";
+import { TransformContainer } from './TransformContainer'
 
 export class ChainTransform {
-  transforms: TransformContainer[];
+  transforms: TransformContainer[]
 }

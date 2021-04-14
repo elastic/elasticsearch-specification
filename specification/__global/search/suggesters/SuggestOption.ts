@@ -1,13 +1,13 @@
-import { Context } from "vm";
 import {
   double,
   IndexName,
   long,
   Routing,
-  Type,
-} from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+  Type
+} from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Context } from './context_suggester/Context'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -30,29 +30,29 @@ import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
 export type SuggestOption<TDocument> =
   | CompletionSuggestOption<TDocument>
   | PhraseSuggestOption
-  | TermSuggestOption;
+  | TermSuggestOption
 
 export class CompletionSuggestOption<TDocument> {
-  collate_match?: boolean;
-  contexts?: Dictionary<string, Context[]>;
-  fields?: Dictionary<string, UserDefinedValue>;
-  _id: string;
-  _index: IndexName;
-  _type?: Type;
-  _routing?: Routing;
-  _score: double;
-  _source: TDocument;
-  text: string;
+  collate_match?: boolean
+  contexts?: Dictionary<string, Context[]>
+  fields?: Dictionary<string, UserDefinedValue>
+  _id: string
+  _index: IndexName
+  _type?: Type
+  _routing?: Routing
+  _score: double
+  _source: TDocument
+  text: string
 }
 
 export class PhraseSuggestOption {
-  text: string;
-  highlighted: string;
-  score: double;
+  text: string
+  highlighted: string
+  score: double
 }
 
 export class TermSuggestOption {
-  text: string;
-  freq?: long;
-  score: double;
+  text: string
+  freq?: long
+  score: double
 }

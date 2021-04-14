@@ -22,5 +22,5 @@ export enum ConditionType {
   never = 1,
   script = 2,
   compare = 3,
-  array_compare = 4,
+  array_compare = 4
 }

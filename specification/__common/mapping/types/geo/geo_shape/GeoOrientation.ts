@@ -29,5 +29,5 @@ export enum GeoOrientation {
   clockwise = 8,
   CLOCKWISE = 9,
   cw = 10,
-  CW = 11,
+  CW = 11
 }

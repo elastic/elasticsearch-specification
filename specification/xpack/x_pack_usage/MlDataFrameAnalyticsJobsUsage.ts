@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { EmptyObject, long } from "../../__common/common";
-import { JobStatistics } from "./JobStatistics";
+import { EmptyObject, long } from '../../__common/common'
+import { JobStatistics } from './JobStatistics'
 
 export class MlDataFrameAnalyticsJobsUsage {
-  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage;
-  _all: MlDataFrameAnalyticsJobsCountUsage;
-  analysis_counts?: EmptyObject;
+  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage
+  _all: MlDataFrameAnalyticsJobsCountUsage
+  analysis_counts?: EmptyObject
 }
 
 export class MlDataFrameAnalyticsJobsMemoryUsage {
-  peak_usage_bytes: JobStatistics;
+  peak_usage_bytes: JobStatistics
 }
 
 export class MlDataFrameAnalyticsJobsCountUsage {
-  count: long;
+  count: long
 }

@@ -19,5 +19,5 @@
 
 export enum GapPolicy {
   skip = 0,
-  insert_zeros = 1,
+  insert_zeros = 1
 }

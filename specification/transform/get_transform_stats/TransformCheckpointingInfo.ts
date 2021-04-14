@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { DateString, long } from "../../__common/common";
-import { TransformCheckpointStats } from "./TransformCheckpointStats";
+import { DateString, long } from '../../__common/common'
+import { TransformCheckpointStats } from './TransformCheckpointStats'
 
 export class TransformCheckpointingInfo {
-  changes_last_detected_at: long;
-  changes_last_detected_at_date_time?: DateString;
-  last: TransformCheckpointStats;
-  next?: TransformCheckpointStats;
-  operations_behind?: long;
+  changes_last_detected_at: long
+  changes_last_detected_at_date_time?: DateString
+  last: TransformCheckpointStats
+  next?: TransformCheckpointStats
+  operations_behind?: long
 }

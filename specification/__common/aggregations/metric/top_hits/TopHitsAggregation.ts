@@ -17,25 +17,25 @@
  * under the License.
  */
 
-import { Highlight } from "../../../../__global/search/highlighting/Highlight";
-import { Sort } from "../../../../__global/search/sort/Sort";
-import { SourceFilter } from "../../../../__global/search/source_filtering/SourceFilter";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { Fields, integer } from "../../../common";
-import { ScriptField } from "../../../common_options/scripting/ScriptField";
-import { MetricAggregationBase } from "../MetricAggregation";
+import { Highlight } from '../../../../__global/search/highlighting/Highlight'
+import { Sort } from '../../../../__global/search/sort/Sort'
+import { SourceFilter } from '../../../../__global/search/source_filtering/SourceFilter'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { Fields, integer } from '../../../common'
+import { ScriptField } from '../../../common_options/scripting/ScriptField'
+import { MetricAggregationBase } from '../MetricAggregation'
 
 export class TopHitsAggregation extends MetricAggregationBase {
-  docvalue_fields?: Fields;
-  explain?: boolean;
-  from?: integer;
-  highlight?: Highlight;
-  script_fields?: Dictionary<string, ScriptField>;
-  size?: integer;
-  sort?: Sort;
-  _source?: boolean | SourceFilter | Fields;
-  stored_fields?: Fields;
-  track_scores?: boolean;
-  version?: boolean;
-  seq_no_primary_term?: boolean;
+  docvalue_fields?: Fields
+  explain?: boolean
+  from?: integer
+  highlight?: Highlight
+  script_fields?: Dictionary<string, ScriptField>
+  size?: integer
+  sort?: Sort
+  _source?: boolean | SourceFilter | Fields
+  stored_fields?: Fields
+  track_scores?: boolean
+  version?: boolean
+  seq_no_primary_term?: boolean
 }

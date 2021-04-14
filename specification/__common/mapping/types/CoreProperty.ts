@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { Fields } from "../../common";
-import { NestedProperty } from "./complex/nested/NestedProperty";
-import { ObjectProperty } from "./complex/object/ObjectProperty";
-import { SearchAsYouTypeProperty } from "./core/search_as_you_type/SearchAsYouTypeProperty";
-import { TextProperty } from "./core/text/TextProperty";
-import { DocValuesProperty } from "./DocValuesProperty";
-import { PropertyBase } from "./Property";
+import { Fields } from '../../common'
+import { NestedProperty } from './complex/nested/NestedProperty'
+import { ObjectProperty } from './complex/object/ObjectProperty'
+import { SearchAsYouTypeProperty } from './core/search_as_you_type/SearchAsYouTypeProperty'
+import { TextProperty } from './core/text/TextProperty'
+import { DocValuesProperty } from './DocValuesProperty'
+import { PropertyBase } from './Property'
 
 export class CorePropertyBase extends PropertyBase {
-  copy_to?: Fields;
-  similarity?: string;
-  store?: boolean;
+  copy_to?: Fields
+  similarity?: string
+  store?: boolean
 }
 
 export type CoreProperty =
@@ -36,4 +36,4 @@ export type CoreProperty =
   | NestedProperty
   | SearchAsYouTypeProperty
   | TextProperty
-  | DocValuesProperty;
+  | DocValuesProperty

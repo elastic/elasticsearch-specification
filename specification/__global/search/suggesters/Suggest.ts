@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../../__common/common";
-import { SuggestOption } from "./SuggestOption";
+import { integer } from '../../../__common/common'
+import { SuggestOption } from './SuggestOption'
 
 export class Suggest<T> {
-  length: integer;
-  offset: integer;
-  options: SuggestOption<T>[];
-  text: string;
+  length: integer
+  offset: integer
+  options: SuggestOption<T>[]
+  text: string
 }

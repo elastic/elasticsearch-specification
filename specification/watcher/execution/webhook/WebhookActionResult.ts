@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { HttpInputRequestResult } from "../HttpInputRequestResult";
-import { HttpInputResponseResult } from "../HttpInputResponseResult";
+import { HttpInputRequestResult } from '../HttpInputRequestResult'
+import { HttpInputResponseResult } from '../HttpInputResponseResult'
 
 export class WebhookActionResult {
-  request: HttpInputRequestResult;
-  response?: HttpInputResponseResult;
+  request: HttpInputRequestResult
+  response?: HttpInputResponseResult
 }

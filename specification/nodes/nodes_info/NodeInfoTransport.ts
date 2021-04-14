@@ -18,6 +18,6 @@
  */
 
 export class NodeInfoTransport {
-  bound_address: string[];
-  publish_address: string;
+  bound_address: string[]
+  publish_address: string
 }

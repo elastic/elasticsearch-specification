@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { InnerHits } from "../../../../__global/search/inner_hits/InnerHits";
-import { RelationName } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { InnerHits } from '../../../../__global/search/inner_hits/InnerHits'
+import { RelationName } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class HasParentQuery extends QueryBase {
-  ignore_unmapped?: boolean;
-  inner_hits?: InnerHits;
-  parent_type?: RelationName;
-  query?: QueryContainer;
-  score?: boolean;
+  ignore_unmapped?: boolean
+  inner_hits?: InnerHits
+  parent_type?: RelationName
+  query?: QueryContainer
+  score?: boolean
 }

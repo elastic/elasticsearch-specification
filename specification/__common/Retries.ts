@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "./common";
+import { long } from './common'
 
 export class Retries {
-  bulk: long;
-  search: long;
+  bulk: long
+  search: long
 }

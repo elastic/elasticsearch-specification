@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Defaults } from "./Defaults";
-import { Limits } from "./Limits";
-import { NativeCode } from "./NativeCode";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Defaults } from './Defaults'
+import { Limits } from './Limits'
+import { NativeCode } from './NativeCode'
 
 export class MachineLearningInfoResponse extends ResponseBase {
-  defaults: Defaults;
-  limits: Limits;
-  upgrade_mode: boolean;
-  native_code: NativeCode;
+  defaults: Defaults
+  limits: Limits
+  upgrade_mode: boolean
+  native_code: NativeCode
 }

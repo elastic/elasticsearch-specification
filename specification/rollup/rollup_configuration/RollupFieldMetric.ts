@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { RollupMetric } from "./RollupMetric";
+import { Field } from '../../__common/common'
+import { RollupMetric } from './RollupMetric'
 
 export class RollupFieldMetric {
-  field: Field;
-  metrics: RollupMetric[];
+  field: Field
+  metrics: RollupMetric[]
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Month } from "./Month";
+import { integer } from '../../__common/common'
+import { Month } from './Month'
 
 export class TimeOfYear {
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  at: string[];
+  at: string[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  int: Month[];
+  int: Month[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  on: integer[];
+  on: integer[]
 }

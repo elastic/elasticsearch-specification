@@ -22,5 +22,5 @@ export enum ScoreMode {
   max = 1,
   min = 2,
   multiply = 3,
-  total = 4,
+  total = 4
 }

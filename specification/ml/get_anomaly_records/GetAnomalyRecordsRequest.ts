@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, double, Field, Id, integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Page } from "../job/Page";
+import { DateString, double, Field, Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../job/Page'
 
 /**
  * @rest_spec_name ml.get_records
@@ -28,22 +28,22 @@ import { Page } from "../job/Page";
  */
 export interface GetAnomalyRecordsRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
+    job_id: Id
+  }
   query_parameters?: {
-    exclude_interim?: boolean; // default: false
-    from?: integer;
-    size?: integer;
-    start?: DateString;
-    end?: DateString;
-  };
+    exclude_interim?: boolean // default: false
+    from?: integer
+    size?: integer
+    start?: DateString
+    end?: DateString
+  }
   body?: {
-    desc?: boolean; // default: false
-    exclude_interim?: boolean; // default: false
-    page?: Page;
-    record_score?: double;
-    sort?: Field;
-    start?: DateString;
-    end?: DateString;
-  };
+    desc?: boolean // default: false
+    exclude_interim?: boolean // default: false
+    page?: Page
+    record_score?: double
+    sort?: Field
+    start?: DateString
+    end?: DateString
+  }
 }

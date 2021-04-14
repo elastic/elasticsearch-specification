@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { WriteResponseBase } from "../../__common/WriteResponseBase";
-import { InlineGet } from "../explain/InlineGet";
+import { WriteResponseBase } from '../../__common/WriteResponseBase'
+import { InlineGet } from '../explain/InlineGet'
 
 export class UpdateResponse<TDocument> extends WriteResponseBase {
-  get?: InlineGet<TDocument>;
+  get?: InlineGet<TDocument>
 }

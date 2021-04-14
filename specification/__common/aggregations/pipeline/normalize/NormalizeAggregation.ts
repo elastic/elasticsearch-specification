@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class NormalizeAggregation extends PipelineAggregationBase {
-  method?: NormalizeMethod;
+  method?: NormalizeMethod
 }
 
 export enum NormalizeMethod {
@@ -29,5 +29,5 @@ export enum NormalizeMethod {
   percent_of_sum,
   mean,
   zscore,
-  softmax,
+  softmax
 }

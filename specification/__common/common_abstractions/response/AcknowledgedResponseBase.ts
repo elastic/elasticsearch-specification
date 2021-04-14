@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from "./ResponseBase";
+import { ResponseBase } from './ResponseBase'
 
 export class AcknowledgedResponseBase extends ResponseBase {
-  acknowledged: boolean;
+  acknowledged: boolean
 }

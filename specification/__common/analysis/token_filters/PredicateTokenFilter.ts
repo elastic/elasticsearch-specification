@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { Script } from '../../common_options/scripting/Script'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class PredicateTokenFilter extends TokenFilterBase {
-  script: Script;
+  script: Script
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer, long } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { integer, long } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class ShardCommit {
-  generation: integer;
-  id: string;
-  num_docs: long;
-  user_data: Dictionary<string, string>;
+  generation: integer
+  id: string
+  num_docs: long
+  user_data: Dictionary<string, string>
 }

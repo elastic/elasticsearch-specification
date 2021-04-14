@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class RemovePolicyResponse extends ResponseBase {
-  failed_indexes: string[];
-  has_failures: boolean;
+  failed_indexes: string[]
+  has_failures: boolean
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.delete_forecast
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface DeleteForecastRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    forecast_id?: Id;
-  };
+    job_id: Id
+    forecast_id?: Id
+  }
   query_parameters?: {
-    allow_no_forecasts?: boolean;
-    timeout?: Time;
-  };
-  body?: {};
+    allow_no_forecasts?: boolean
+    timeout?: Time
+  }
+  body?: {}
 }

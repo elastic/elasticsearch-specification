@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.invalidate_api_key
@@ -25,13 +25,13 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  * @stability TODO
  */
 export interface InvalidateApiKeyRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    id?: string;
-    ids?: string[];
-    name?: string;
-    owner?: boolean;
-    realm_name?: string;
-    username?: string;
-  };
+    id?: string
+    ids?: string[]
+    name?: string
+    owner?: boolean
+    realm_name?: string
+    username?: string
+  }
 }

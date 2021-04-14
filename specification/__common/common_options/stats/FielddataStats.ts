@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ByteSize, long } from "../../common";
+import { ByteSize, long } from '../../common'
 
 export class FielddataStats {
-  evictions?: long;
-  memory_size?: ByteSize;
-  memory_size_in_bytes: long;
+  evictions?: long
+  memory_size?: ByteSize
+  memory_size_in_bytes: long
 }

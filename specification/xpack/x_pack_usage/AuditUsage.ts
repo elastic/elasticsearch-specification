@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SecurityFeatureToggle } from "./SecurityFeatureToggle";
+import { SecurityFeatureToggle } from './SecurityFeatureToggle'
 
 export class AuditUsage extends SecurityFeatureToggle {
-  outputs?: string[];
+  outputs?: string[]
 }

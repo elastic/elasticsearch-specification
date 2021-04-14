@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ilm.get_lifecycle
@@ -27,9 +27,9 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy?: Name;
-    policy_id?: Id;
-  };
-  query_parameters?: {};
-  body?: {};
+    policy?: Name
+    policy_id?: Id
+  }
+  query_parameters?: {}
+  body?: {}
 }

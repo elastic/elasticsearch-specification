@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { PipelineSimulation } from "./PipelineSimulation";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { PipelineSimulation } from './PipelineSimulation'
 
 export class SimulatePipelineResponse extends ResponseBase {
-  docs: PipelineSimulation[];
+  docs: PipelineSimulation[]
 }

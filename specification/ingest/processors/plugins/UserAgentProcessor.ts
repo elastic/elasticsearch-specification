@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field } from "../../../__common/common";
-import { ProcessorBase } from "../../ProcessorBase";
-import { UserAgentProperty } from "./user_agent/UserAgentProperty";
+import { Field } from '../../../__common/common'
+import { ProcessorBase } from '../../ProcessorBase'
+import { UserAgentProperty } from './user_agent/UserAgentProperty'
 
 export class UserAgentProcessor extends ProcessorBase {
-  field: Field;
-  ignore_missing: boolean;
-  options: UserAgentProperty[];
-  regex_file: string;
-  target_field: Field;
+  field: Field
+  ignore_missing: boolean
+  options: UserAgentProperty[]
+  regex_file: string
+  target_field: Field
 }

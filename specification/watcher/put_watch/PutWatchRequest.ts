@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { long, Name, VersionNumber } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { Action } from "../action/Action";
-import { ConditionContainer } from "../condition/ConditionContainer";
-import { InputContainer } from "../input/InputContainer";
-import { TransformContainer } from "../transform/TransformContainer";
-import { TriggerContainer } from "../trigger/TriggerContainer";
+import { long, Name, VersionNumber } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Action } from '../action/Action'
+import { ConditionContainer } from '../condition/ConditionContainer'
+import { InputContainer } from '../input/InputContainer'
+import { TransformContainer } from '../transform/TransformContainer'
+import { TriggerContainer } from '../trigger/TriggerContainer'
 
 /**
  * @rest_spec_name watcher.put_watch
@@ -34,21 +34,21 @@ import { TriggerContainer } from "../trigger/TriggerContainer";
  */
 export interface PutWatchRequest extends RequestBase {
   path_parts?: {
-    id: Name;
-  };
+    id: Name
+  }
   query_parameters?: {
-    active?: boolean;
-    if_primary_term?: long;
-    if_sequence_number?: long;
-    version?: VersionNumber;
-  };
+    active?: boolean
+    if_primary_term?: long
+    if_sequence_number?: long
+    version?: VersionNumber
+  }
   body?: {
-    actions?: Dictionary<string, Action>;
-    condition?: ConditionContainer;
-    input?: InputContainer;
-    metadata?: Dictionary<string, UserDefinedValue>;
-    throttle_period?: string;
-    transform?: TransformContainer;
-    trigger?: TriggerContainer;
-  };
+    actions?: Dictionary<string, Action>
+    condition?: ConditionContainer
+    input?: InputContainer
+    metadata?: Dictionary<string, UserDefinedValue>
+    throttle_period?: string
+    transform?: TransformContainer
+    trigger?: TriggerContainer
+  }
 }

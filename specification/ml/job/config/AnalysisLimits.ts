@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class AnalysisLimits {
-  categorization_examples_limit?: long;
-  model_memory_limit: string;
+  categorization_examples_limit?: long
+  model_memory_limit: string
 }

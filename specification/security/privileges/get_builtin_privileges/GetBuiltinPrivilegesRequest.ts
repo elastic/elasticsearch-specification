@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.get_builtin_privileges
@@ -25,6 +25,6 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  * @stability TODO
  */
 export interface GetBuiltinPrivilegesRequest extends RequestBase {
-  query_parameters?: {};
-  body?: {};
+  query_parameters?: {}
+  body?: {}
 }

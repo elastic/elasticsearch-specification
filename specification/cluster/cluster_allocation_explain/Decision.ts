@@ -25,5 +25,5 @@ export enum Decision {
   awaiting_info = 4,
   allocation_delayed = 5,
   no_valid_shard_copy = 6,
-  no_attempt = 7,
+  no_attempt = 7
 }

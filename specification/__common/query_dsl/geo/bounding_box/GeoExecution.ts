@@ -19,5 +19,5 @@
 
 export enum GeoExecution {
   memory = 0,
-  indexed = 1,
+  indexed = 1
 }

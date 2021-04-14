@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, long } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { AnalysisConfig } from "../job/config/AnalysisConfig";
+import { Field, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AnalysisConfig } from '../job/config/AnalysisConfig'
 
 /**
  * @rest_spec_name ml.estimate_model_memory
@@ -28,10 +28,10 @@ import { AnalysisConfig } from "../job/config/AnalysisConfig";
  * @stability TODO
  */
 export interface EstimateModelMemoryRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    analysis_config?: AnalysisConfig;
-    max_bucket_cardinality?: Dictionary<Field, long>;
-    overall_cardinality?: Dictionary<Field, long>;
-  };
+    analysis_config?: AnalysisConfig
+    max_bucket_cardinality?: Dictionary<Field, long>
+    overall_cardinality?: Dictionary<Field, long>
+  }
 }

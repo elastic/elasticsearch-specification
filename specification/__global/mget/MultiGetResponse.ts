@@ -25,26 +25,26 @@ import {
   Routing,
   SequenceNumber,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+  VersionNumber
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class MultiGetResponse<TDocument> extends ResponseBase {
-  docs: MultiGetHit<TDocument>[];
+  docs: MultiGetHit<TDocument>[]
 }
 
 export class MultiGetHit<TDocument> {
-  error?: MainError;
-  fields?: Dictionary<string, UserDefinedValue>;
-  found?: boolean;
-  _id: Id;
-  _index: IndexName;
-  _primary_term?: long;
-  _routing?: Routing;
-  _seq_no?: SequenceNumber;
-  _source?: TDocument;
-  _type?: Type;
-  _version?: VersionNumber;
+  error?: MainError
+  fields?: Dictionary<string, UserDefinedValue>
+  found?: boolean
+  _id: Id
+  _index: IndexName
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: SequenceNumber
+  _source?: TDocument
+  _type?: Type
+  _version?: VersionNumber
 }

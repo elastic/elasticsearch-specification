@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { Script } from '../../../common_options/scripting/Script'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class BucketScriptAggregation extends PipelineAggregationBase {
-  script?: Script;
+  script?: Script
 }

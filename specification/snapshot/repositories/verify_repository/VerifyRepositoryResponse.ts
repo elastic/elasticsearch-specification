@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { CompactNodeInfo } from "./CompactNodeInfo";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { CompactNodeInfo } from './CompactNodeInfo'
 
 export class VerifyRepositoryResponse extends ResponseBase {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  nodes: Dictionary<string, CompactNodeInfo>;
+  nodes: Dictionary<string, CompactNodeInfo>
 }

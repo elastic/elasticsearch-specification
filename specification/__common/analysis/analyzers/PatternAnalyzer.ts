@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class PatternAnalyzer extends AnalyzerBase {
-  flags: string;
+  flags: string
   /** @prop_serializer NullableStringBooleanFormatter */
-  lowercase: boolean;
-  pattern: string;
-  stopwords: StopWords;
+  lowercase: boolean
+  pattern: string
+  stopwords: StopWords
 }

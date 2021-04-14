@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer, VersionString } from "../../__common/common";
+import { integer, VersionString } from '../../__common/common'
 
 export class ClusterJvmVersion {
-  bundled_jdk: boolean;
-  count: integer;
-  using_bundled_jdk: boolean;
-  version: VersionString;
-  vm_name: string;
-  vm_vendor: string;
-  vm_version: VersionString;
+  bundled_jdk: boolean
+  count: integer
+  using_bundled_jdk: boolean
+  version: VersionString
+  vm_name: string
+  vm_vendor: string
+  vm_version: VersionString
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AnalyzerBase } from "../../analyzers/AnalyzerBase";
-import { KuromojiTokenizationMode } from "./KuromojiTokenizationMode";
+import { AnalyzerBase } from '../../analyzers/AnalyzerBase'
+import { KuromojiTokenizationMode } from './KuromojiTokenizationMode'
 
 export class KuromojiAnalyzer extends AnalyzerBase {
-  mode: KuromojiTokenizationMode;
-  user_dictionary: string;
+  mode: KuromojiTokenizationMode
+  user_dictionary: string
 }

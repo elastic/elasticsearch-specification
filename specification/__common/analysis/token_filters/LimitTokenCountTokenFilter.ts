@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { integer } from '../../common'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class LimitTokenCountTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */
-  consume_all_tokens: boolean;
+  consume_all_tokens: boolean
   /** @prop_serializer NullableStringIntFormatter */
-  max_token_count: integer;
+  max_token_count: integer
 }

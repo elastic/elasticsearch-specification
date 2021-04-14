@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { HitsMetadata } from "../search/hits/HitsMetadata";
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { HitsMetadata } from '../search/hits/HitsMetadata'
 
 export class SearchTemplateResponse<TDocument> extends ResponseBase {
-  _shards: ShardStatistics;
-  timed_out: boolean;
-  took: integer;
-  hits: HitsMetadata<TDocument>;
+  _shards: ShardStatistics
+  timed_out: boolean
+  took: integer
+  hits: HitsMetadata<TDocument>
 }

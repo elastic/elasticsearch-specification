@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class SetProcessor extends ProcessorBase {
-  field: Field;
-  override?: boolean;
-  value: UserDefinedValue;
+  field: Field
+  override?: boolean
+  value: UserDefinedValue
 }

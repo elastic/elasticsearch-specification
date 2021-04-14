@@ -23,16 +23,16 @@ import {
   long,
   SequenceNumber,
   Type,
-  VersionNumber,
-} from "../../../__common/common";
+  VersionNumber
+} from '../../../__common/common'
 
 export class HitMetadata<TDocument> {
-  _id: Id;
-  _index: IndexName;
-  _primary_term: long;
-  _routing: string;
-  _seq_no: SequenceNumber;
-  _source: TDocument;
-  _type: Type;
-  _version: VersionNumber;
+  _id: Id
+  _index: IndexName
+  _primary_term: long
+  _routing: string
+  _seq_no: SequenceNumber
+  _source: TDocument
+  _type: Type
+  _version: VersionNumber
 }

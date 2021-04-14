@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ClusterShardMetrics } from "./ClusterShardMetrics";
+import { ClusterShardMetrics } from './ClusterShardMetrics'
 
 export class ClusterIndicesShardsIndexStats {
-  primaries: ClusterShardMetrics;
-  replication: ClusterShardMetrics;
-  shards: ClusterShardMetrics;
+  primaries: ClusterShardMetrics
+  replication: ClusterShardMetrics
+  shards: ClusterShardMetrics
 }

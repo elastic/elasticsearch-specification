@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { uint } from "../../common";
-import { ShardFailure } from "../../common/ShardFailure";
+import { uint } from '../../common'
+import { ShardFailure } from '../../common/ShardFailure'
 
 export class ShardStatistics {
-  failed: uint;
-  successful: uint;
-  total: uint;
-  failures?: ShardFailure[];
-  skipped?: uint;
+  failed: uint
+  successful: uint
+  total: uint
+  failures?: ShardFailure[]
+  skipped?: uint
 }

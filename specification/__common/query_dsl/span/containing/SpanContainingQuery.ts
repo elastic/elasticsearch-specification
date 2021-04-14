@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { QueryBase } from "../../abstractions/query/Query";
-import { SpanQuery } from "../SpanQuery";
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanContainingQuery extends QueryBase {
-  big?: SpanQuery;
-  little?: SpanQuery;
+  big?: SpanQuery
+  little?: SpanQuery
 }

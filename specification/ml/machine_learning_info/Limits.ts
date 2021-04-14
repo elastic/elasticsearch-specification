@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ByteSize } from "../../__common/common";
+import { ByteSize } from '../../__common/common'
 
 export class Limits {
-  max_model_memory_limit?: ByteSize;
-  effective_max_model_memory_limit: ByteSize;
-  total_ml_memory: ByteSize;
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit: ByteSize
+  total_ml_memory: ByteSize
 }

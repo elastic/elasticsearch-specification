@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class StartBasicLicenseResponse extends AcknowledgedResponseBase {
-  acknowledge: Dictionary<string, string | string[]>;
-  basic_was_started: boolean;
-  error_message: string;
+  acknowledge: Dictionary<string, string | string[]>
+  basic_was_started: boolean
+  error_message: string
 }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class ScriptCondition {
-  lang: string;
-  params?: Dictionary<string, UserDefinedValue>;
-  source: string;
+  lang: string
+  params?: Dictionary<string, UserDefinedValue>
+  source: string
 }

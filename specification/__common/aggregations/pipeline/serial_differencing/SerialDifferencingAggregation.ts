@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { integer } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class SerialDifferencingAggregation extends PipelineAggregationBase {
-  lag?: integer;
+  lag?: integer
 }

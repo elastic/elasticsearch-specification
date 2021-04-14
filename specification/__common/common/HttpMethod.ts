@@ -22,5 +22,5 @@ export enum HttpMethod {
   POST = 1,
   PUT = 2,
   DELETE = 3,
-  HEAD = 4,
+  HEAD = 4
 }

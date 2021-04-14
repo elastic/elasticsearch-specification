@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { double } from "../../../../../__common/common";
+import { double } from '../../../../../__common/common'
 
 export class LinearInterpolationSmoothingModel {
-  bigram_lambda: double;
-  trigram_lambda: double;
-  unigram_lambda: double;
+  bigram_lambda: double
+  trigram_lambda: double
+  unigram_lambda: double
 }

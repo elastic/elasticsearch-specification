@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Indices, integer } from "../../../__common/common";
-import { ExpandWildcards } from "../../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Indices, integer } from '../../../__common/common'
+import { ExpandWildcards } from '../../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.put_settings
@@ -32,20 +32,20 @@ import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
  */
 export interface UpdateIndexSettingsRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    flat_settings?: boolean;
-    ignore_unavailable?: boolean;
-    master_timeout?: Time;
-    preserve_existing?: boolean;
-    timeout?: Time;
-  };
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    flat_settings?: boolean
+    ignore_unavailable?: boolean
+    master_timeout?: Time
+    preserve_existing?: boolean
+    timeout?: Time
+  }
   body?: {
-    index?: Dictionary<string, UserDefinedValue>;
-    refresh_interval?: Time;
-    number_of_replicas?: integer;
-  };
+    index?: Dictionary<string, UserDefinedValue>
+    refresh_interval?: Time
+    number_of_replicas?: integer
+  }
 }

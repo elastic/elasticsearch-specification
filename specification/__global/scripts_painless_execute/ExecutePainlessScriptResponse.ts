@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class ExecutePainlessScriptResponse<TResult> extends ResponseBase {
-  result: TResult;
+  result: TResult
 }
 
 /**
  * If a painless script fails to execute this is returned on the serialized exception
  */
 export class PainlessExecutionPosition {
-  offset: integer;
-  start: integer;
-  end: integer;
+  offset: integer
+  start: integer
+  end: integer
 }

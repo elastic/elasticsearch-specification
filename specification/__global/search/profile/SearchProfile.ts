@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { Collector } from "./Collector";
-import { QueryProfile } from "./QueryProfile";
+import { long } from '../../../__common/common'
+import { Collector } from './Collector'
+import { QueryProfile } from './QueryProfile'
 
 export class SearchProfile {
-  collector: Collector[];
-  query: QueryProfile[];
-  rewrite_time: long;
+  collector: Collector[]
+  query: QueryProfile[]
+  rewrite_time: long
 }

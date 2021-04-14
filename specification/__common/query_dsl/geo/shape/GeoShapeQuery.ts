@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { GeoShapeRelation } from "../../../common_options/geo/GeoShapeRelation";
-import { FieldLookup } from "../../abstractions/field_lookup/FieldLookup";
-import { QueryBase } from "../../abstractions/query/Query";
-import { GeoShape } from "./GeoShape";
+import { GeoShapeRelation } from '../../../common_options/geo/GeoShapeRelation'
+import { FieldLookup } from '../../abstractions/field_lookup/FieldLookup'
+import { QueryBase } from '../../abstractions/query/Query'
+import { GeoShape } from './GeoShape'
 
 export class GeoShapeQuery extends QueryBase {
-  ignore_unmapped?: boolean;
-  indexed_shape?: FieldLookup;
-  relation?: GeoShapeRelation;
-  shape?: GeoShape;
+  ignore_unmapped?: boolean
+  indexed_shape?: FieldLookup
+  relation?: GeoShapeRelation
+  shape?: GeoShape
 }

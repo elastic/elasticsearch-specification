@@ -19,5 +19,5 @@
 
 export enum IcuCollationDecomposition {
   no = 0,
-  identical = 1,
+  identical = 1
 }

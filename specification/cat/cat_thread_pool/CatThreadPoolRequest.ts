@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { Size } from "../../__common/common/Size";
-import { CatRequestBase } from "../CatBase";
+import { Names } from '../../__common/common'
+import { Size } from '../../__common/common/Size'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.thread_pool
@@ -28,10 +28,10 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatThreadPoolRequest extends CatRequestBase {
   path_parts?: {
-    thread_pool_patterns?: Names;
-  };
+    thread_pool_patterns?: Names
+  }
   query_parameters?: {
-    size?: Size | boolean;
-  };
-  body?: {};
+    size?: Size | boolean
+  }
+  body?: {}
 }

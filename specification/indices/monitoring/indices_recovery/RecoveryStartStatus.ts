@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class RecoveryStartStatus {
-  check_index_time: long;
-  total_time_in_millis: string;
+  check_index_time: long
+  total_time_in_millis: string
 }

@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { DateRangeProperty } from "./date_range/DateRangeProperty";
-import { DoubleRangeProperty } from "./double_range/DoubleRangeProperty";
-import { FloatRangeProperty } from "./float_range/FloatRangeProperty";
-import { IntegerRangeProperty } from "./integer_range/IntegerRangeProperty";
-import { IpRangeProperty } from "./ip_range/IpRangeProperty";
-import { LongRangeProperty } from "./long_range/LongRangeProperty";
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { DateRangeProperty } from './date_range/DateRangeProperty'
+import { DoubleRangeProperty } from './double_range/DoubleRangeProperty'
+import { FloatRangeProperty } from './float_range/FloatRangeProperty'
+import { IntegerRangeProperty } from './integer_range/IntegerRangeProperty'
+import { IpRangeProperty } from './ip_range/IpRangeProperty'
+import { LongRangeProperty } from './long_range/LongRangeProperty'
 
 export class RangePropertyBase extends DocValuesPropertyBase {
-  boost?: double;
-  coerce?: boolean;
-  index?: boolean;
+  boost?: double
+  coerce?: boolean
+  index?: boolean
 }
 
 export type RangeProperty =
@@ -38,4 +38,4 @@ export type RangeProperty =
   | IntegerRangeProperty
   | FloatRangeProperty
   | DoubleRangeProperty
-  | DateRangeProperty;
+  | DateRangeProperty

@@ -23,5 +23,5 @@ export enum ShapeOrientation {
   ccw = 2,
   left = 3,
   clockwise = 4,
-  cw = 5,
+  cw = 5
 }

@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { VersionString } from "../../common";
-import { PatternReplaceTokenFilter } from "../token_filters/PatternReplaceTokenFilter";
-import { HtmlStripCharFilter } from "./HtmlStripCharFilter";
-import { MappingCharFilter } from "./MappingCharFilter";
+import { VersionString } from '../../common'
+import { PatternReplaceTokenFilter } from '../token_filters/PatternReplaceTokenFilter'
+import { HtmlStripCharFilter } from './HtmlStripCharFilter'
+import { MappingCharFilter } from './MappingCharFilter'
 
 export class CharFilterBase {
-  type: string;
-  version?: VersionString;
+  type: string
+  version?: VersionString
 }
 
 export type CharFilter =
   | HtmlStripCharFilter
   | MappingCharFilter
-  | PatternReplaceTokenFilter;
+  | PatternReplaceTokenFilter

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, double, Id, integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { DateString, double, Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.get_overall_buckets
@@ -28,16 +28,16 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface GetOverallBucketsRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    allow_no_jobs?: boolean;
-    bucket_span?: Time;
-    end?: DateString;
-    exclude_interim?: boolean;
-    overall_score?: double;
-    start?: DateString;
-    top_n?: integer;
-  };
+    allow_no_jobs?: boolean
+    bucket_span?: Time
+    end?: DateString
+    exclude_interim?: boolean
+    overall_score?: double
+    start?: DateString
+    top_n?: integer
+  }
 }

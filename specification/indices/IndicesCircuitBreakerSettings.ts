@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { float } from "../__common/common";
+import { float } from '../__common/common'
 
 export class IndicesCircuitBreakerSettings {
-  fielddata_limit: string;
-  fielddata_overhead: float;
-  request_limit: string;
-  request_overhead: float;
-  total_limit: string;
+  fielddata_limit: string
+  fielddata_overhead: float
+  request_limit: string
+  request_overhead: float
+  total_limit: string
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AnalyzerDetail } from "./AnalyzerDetail";
-import { CharFilterDetail } from "./CharFilterDetail";
-import { TokenDetail } from "./TokenDetail";
+import { AnalyzerDetail } from './AnalyzerDetail'
+import { CharFilterDetail } from './CharFilterDetail'
+import { TokenDetail } from './TokenDetail'
 
 export class AnalyzeDetail {
-  analyzer?: AnalyzerDetail;
-  charfilters?: CharFilterDetail[];
-  custom_analyzer: boolean;
-  tokenfilters?: TokenDetail[];
-  tokenizer?: TokenDetail;
+  analyzer?: AnalyzerDetail
+  charfilters?: CharFilterDetail[]
+  custom_analyzer: boolean
+  tokenfilters?: TokenDetail[]
+  tokenizer?: TokenDetail
 }

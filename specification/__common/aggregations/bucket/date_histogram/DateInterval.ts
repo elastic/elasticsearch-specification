@@ -25,5 +25,5 @@ export enum DateInterval {
   week = 4,
   month = 5,
   quarter = 6,
-  year = 7,
+  year = 7
 }

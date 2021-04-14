@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { XPackUsage } from "./XPackUsage";
+import { long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { XPackUsage } from './XPackUsage'
 
 export class MonitoringUsage extends XPackUsage {
-  collection_enabled: boolean;
-  enabled_exporters: Dictionary<string, long>;
+  collection_enabled: boolean
+  enabled_exporters: Dictionary<string, long>
 }

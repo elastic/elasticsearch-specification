@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
+import { IndexName } from '../../__common/common'
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class IndicesCreateResponse extends AcknowledgedResponseBase {
-  index: IndexName;
-  shards_acknowledged: boolean;
+  index: IndexName
+  shards_acknowledged: boolean
 }

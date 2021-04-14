@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ByteSize, integer } from "../../__common/common";
-import { CategorizationAnalyzer } from "./CategorizationAnalyzer";
+import { ByteSize, integer } from '../../__common/common'
+import { CategorizationAnalyzer } from './CategorizationAnalyzer'
 
 export class AnomalyDetectors {
-  categorization_analyzer: CategorizationAnalyzer;
-  categorization_examples_limit: integer;
-  model_memory_limit: ByteSize;
-  model_snapshot_retention_days: integer;
-  daily_model_snapshot_retention_after_days: integer;
+  categorization_analyzer: CategorizationAnalyzer
+  categorization_examples_limit: integer
+  model_memory_limit: ByteSize
+  model_snapshot_retention_days: integer
+  daily_model_snapshot_retention_after_days: integer
 }

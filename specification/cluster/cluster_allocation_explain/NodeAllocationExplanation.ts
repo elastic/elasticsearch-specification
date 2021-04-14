@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { AllocationDecision } from "./AllocationDecision";
-import { AllocationStore } from "./AllocationStore";
-import { Decision } from "./Decision";
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AllocationDecision } from './AllocationDecision'
+import { AllocationStore } from './AllocationStore'
+import { Decision } from './Decision'
 
 export class NodeAllocationExplanation {
-  deciders: AllocationDecision[];
-  node_attributes: Dictionary<string, string>;
-  node_decision: Decision;
-  node_id: string;
-  node_name: string;
-  store?: AllocationStore;
-  transport_address: string;
-  weight_ranking: integer;
+  deciders: AllocationDecision[]
+  node_attributes: Dictionary<string, string>
+  node_decision: Decision
+  node_id: string
+  node_name: string
+  store?: AllocationStore
+  transport_address: string
+  weight_ranking: integer
 }

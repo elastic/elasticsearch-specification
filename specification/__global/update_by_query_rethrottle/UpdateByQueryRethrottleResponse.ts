@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UpdateByQueryRethrottleNode } from "./UpdateByQueryRethrottleNode";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UpdateByQueryRethrottleNode } from './UpdateByQueryRethrottleNode'
 
 export class UpdateByQueryRethrottleResponse extends ResponseBase {
-  nodes: Dictionary<string, UpdateByQueryRethrottleNode>;
+  nodes: Dictionary<string, UpdateByQueryRethrottleNode>
 }

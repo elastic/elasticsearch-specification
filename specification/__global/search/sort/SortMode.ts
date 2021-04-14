@@ -22,5 +22,5 @@ export enum SortMode {
   max = 1,
   sum = 2,
   avg = 3,
-  median = 4,
+  median = 4
 }

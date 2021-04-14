@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Script } from '../../../common_options/scripting/Script'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class ScriptQuery extends QueryBase {
-  script?: Script;
+  script?: Script
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name rollup.rollup
@@ -27,12 +27,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface RollupRequest extends RequestBase {
   path_parts?: {
-    stubb: integer;
-  };
+    stubb: integer
+  }
   query_parameters?: {
-    stuba: integer;
-  };
+    stuba: integer
+  }
   body?: {
-    stub: integer;
-  };
+    stub: integer
+  }
 }

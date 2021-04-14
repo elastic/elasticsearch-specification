@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { float, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { float, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.delete_expired_data
@@ -28,14 +28,14 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface DeleteExpiredDataRequest extends RequestBase {
   path_parts?: {
-    name?: Name; // job_id
-  };
+    name?: Name // job_id
+  }
   query_parameters?: {
-    requests_per_second?: float; // default: no throttling
-    timeout?: Time; // default: 8h
-  };
+    requests_per_second?: float // default: no throttling
+    timeout?: Time // default: 8h
+  }
   body?: {
-    requests_per_second?: float; // default: no throttling
-    timeout?: Time; // default: 8h
-  };
+    requests_per_second?: float // default: no throttling
+    timeout?: Time // default: 8h
+  }
 }

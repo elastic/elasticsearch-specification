@@ -17,34 +17,34 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { IndexMetaData, PropertyName } from "../common";
-import { DynamicMapping } from "./DynamicMapping";
-import { DynamicTemplate } from "./dynamic_template/DynamicTemplate";
-import { AllField } from "./meta_fields/all/AllField";
-import { FieldNamesField } from "./meta_fields/field_names/FieldNamesField";
-import { IndexField } from "./meta_fields/index/IndexField";
-import { RoutingField } from "./meta_fields/routing/RoutingField";
-import { SizeField } from "./meta_fields/size/SizeField";
-import { SourceField } from "./meta_fields/source/SourceField";
-import { RuntimeField } from "./runtime_fields/RuntimeFields";
-import { Property } from "./types/Property";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexMetaData, PropertyName } from '../common'
+import { DynamicMapping } from './DynamicMapping'
+import { DynamicTemplate } from './dynamic_template/DynamicTemplate'
+import { AllField } from './meta_fields/all/AllField'
+import { FieldNamesField } from './meta_fields/field_names/FieldNamesField'
+import { IndexField } from './meta_fields/index/IndexField'
+import { RoutingField } from './meta_fields/routing/RoutingField'
+import { SizeField } from './meta_fields/size/SizeField'
+import { SourceField } from './meta_fields/source/SourceField'
+import { RuntimeField } from './runtime_fields/RuntimeFields'
+import { Property } from './types/Property'
 
 export class TypeMapping {
-  all_field?: AllField;
-  date_detection?: boolean;
-  dynamic?: boolean | DynamicMapping;
-  dynamic_date_formats?: string[];
+  all_field?: AllField
+  date_detection?: boolean
+  dynamic?: boolean | DynamicMapping
+  dynamic_date_formats?: string[]
   dynamic_templates?:
     | Dictionary<string, DynamicTemplate>
-    | Dictionary<string, DynamicTemplate>[];
-  _field_names?: FieldNamesField;
-  index_field?: IndexField;
-  _meta?: IndexMetaData;
-  numeric_detection?: boolean;
-  properties?: Dictionary<PropertyName, Property>;
-  _routing?: RoutingField;
-  _size?: SizeField;
-  _source?: SourceField;
-  runtime?: Dictionary<string, RuntimeField>;
+    | Dictionary<string, DynamicTemplate>[]
+  _field_names?: FieldNamesField
+  index_field?: IndexField
+  _meta?: IndexMetaData
+  numeric_detection?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  _routing?: RoutingField
+  _size?: SizeField
+  _source?: SourceField
+  runtime?: Dictionary<string, RuntimeField>
 }

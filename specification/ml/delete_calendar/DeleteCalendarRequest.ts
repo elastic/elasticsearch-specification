@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.delete_calendar
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteCalendarRequest extends RequestBase {
   path_parts?: {
-    calendar_id: Id;
-  };
-  query_parameters?: {};
-  body?: {};
+    calendar_id: Id
+  }
+  query_parameters?: {}
+  body?: {}
 }

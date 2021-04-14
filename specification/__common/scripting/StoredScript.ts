@@ -18,6 +18,6 @@
  */
 
 export class StoredScript {
-  lang?: string;
-  source: string;
+  lang?: string
+  source: string
 }

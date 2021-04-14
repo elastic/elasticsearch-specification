@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { NoriDecompoundMode } from "../tokenizers/NoriDecompoundMode";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { NoriDecompoundMode } from '../tokenizers/NoriDecompoundMode'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class NoriAnalyzer extends AnalyzerBase {
-  decompound_mode: NoriDecompoundMode;
-  stoptags: string[];
-  user_dictionary: string;
+  decompound_mode: NoriDecompoundMode
+  stoptags: string[]
+  user_dictionary: string
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { QueryContainer } from '../__common/query_dsl/abstractions/container/QueryContainer'
 
 export class AliasDefinition {
-  filter?: QueryContainer;
-  index_routing?: string;
-  is_write_index?: boolean;
-  routing?: string;
-  search_routing?: string;
+  filter?: QueryContainer
+  index_routing?: string
+  is_write_index?: boolean
+  routing?: string
+  search_routing?: string
 }

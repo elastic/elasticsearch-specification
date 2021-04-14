@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Pipeline } from "../Pipeline";
-import { SimulatePipelineDocument } from "./SimulatePipelineDocument";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Pipeline } from '../Pipeline'
+import { SimulatePipelineDocument } from './SimulatePipelineDocument'
 
 /**
  * @rest_spec_name ingest.simulate
@@ -29,13 +29,13 @@ import { SimulatePipelineDocument } from "./SimulatePipelineDocument";
  */
 export interface SimulatePipelineRequest extends RequestBase {
   path_parts?: {
-    id?: Id;
-  };
+    id?: Id
+  }
   query_parameters?: {
-    verbose?: boolean;
-  };
+    verbose?: boolean
+  }
   body?: {
-    docs?: SimulatePipelineDocument[];
-    pipeline?: Pipeline;
-  };
+    docs?: SimulatePipelineDocument[]
+    pipeline?: Pipeline
+  }
 }

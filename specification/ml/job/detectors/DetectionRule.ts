@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { FilterRef } from "./FilterRef";
-import { RuleAction } from "./RuleAction";
-import { RuleCondition } from "./RuleCondition";
+import { Field } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { FilterRef } from './FilterRef'
+import { RuleAction } from './RuleAction'
+import { RuleCondition } from './RuleCondition'
 
 export class DetectionRule {
-  actions: RuleAction[];
-  conditions: RuleCondition[];
-  scope?: Dictionary<Field, FilterRef>;
+  actions: RuleAction[]
+  conditions: RuleCondition[]
+  scope?: Dictionary<Field, FilterRef>
 }

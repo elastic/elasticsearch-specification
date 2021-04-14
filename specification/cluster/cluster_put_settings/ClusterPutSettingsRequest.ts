@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name cluster.put_settings
@@ -29,12 +29,12 @@ import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
  */
 export interface ClusterPutSettingsRequest extends RequestBase {
   query_parameters?: {
-    flat_settings?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+    flat_settings?: boolean
+    master_timeout?: Time
+    timeout?: Time
+  }
   body?: {
-    persistent?: Dictionary<string, UserDefinedValue>;
-    transient?: Dictionary<string, UserDefinedValue>;
-  };
+    persistent?: Dictionary<string, UserDefinedValue>
+    transient?: Dictionary<string, UserDefinedValue>
+  }
 }

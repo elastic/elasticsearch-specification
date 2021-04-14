@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double } from "../../__common/common";
-import { ClusterIndicesShardsIndexStats } from "./ClusterIndicesShardsIndexStats";
+import { double } from '../../__common/common'
+import { ClusterIndicesShardsIndexStats } from './ClusterIndicesShardsIndexStats'
 
 export class ClusterIndicesShardsStats {
-  index?: ClusterIndicesShardsIndexStats;
-  primaries?: double;
-  replication?: double;
-  total?: double;
+  index?: ClusterIndicesShardsIndexStats
+  primaries?: double
+  replication?: double
+  total?: double
 }

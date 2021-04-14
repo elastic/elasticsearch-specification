@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Uuid } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { SnapshotIndexStats } from "./SnapshotIndexStats";
-import { SnapshotShardsStats } from "./SnapshotShardsStats";
-import { SnapshotStats } from "./SnapshotStats";
+import { Uuid } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { SnapshotIndexStats } from './SnapshotIndexStats'
+import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { SnapshotStats } from './SnapshotStats'
 
 export class SnapshotStatus {
-  include_global_state: boolean;
-  indices: Dictionary<string, SnapshotIndexStats>;
-  repository: string;
-  shards_stats: SnapshotShardsStats;
-  snapshot: string;
-  state: string;
-  stats: SnapshotStats;
-  uuid: Uuid;
+  include_global_state: boolean
+  indices: Dictionary<string, SnapshotIndexStats>
+  repository: string
+  shards_stats: SnapshotShardsStats
+  snapshot: string
+  state: string
+  stats: SnapshotStats
+  uuid: Uuid
 }

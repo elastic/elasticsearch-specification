@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../common";
+import { long } from '../../../common'
 
 export class TermsInclude {
-  num_partitions: long;
-  partition: long;
+  num_partitions: long
+  partition: long
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { DeprecationInfo } from "./DeprecationInfo";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { DeprecationInfo } from './DeprecationInfo'
 
 export class DeprecationInfoResponse extends ResponseBase {
-  cluster_settings: DeprecationInfo[];
-  index_settings: Dictionary<string, DeprecationInfo[]>;
-  node_settings: DeprecationInfo[];
-  ml_settings: DeprecationInfo[];
+  cluster_settings: DeprecationInfo[]
+  index_settings: Dictionary<string, DeprecationInfo[]>
+  node_settings: DeprecationInfo[]
+  ml_settings: DeprecationInfo[]
 }

@@ -22,5 +22,5 @@ export enum MatrixStatsMode {
   min = 1,
   max = 2,
   sum = 3,
-  median = 4,
+  median = 4
 }

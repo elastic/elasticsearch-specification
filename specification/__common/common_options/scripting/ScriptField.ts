@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Script } from "vm";
+import { Script } from './Script'
 
 export class ScriptField {
-  script: Script;
+  script: Script
 }

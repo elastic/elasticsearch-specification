@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { GeoLocation } from "../../../../query_dsl/geo/GeoLocation";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { GeoLocation } from '../../../../query_dsl/geo/GeoLocation'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
-  ignore_malformed?: boolean;
-  ignore_z_value?: boolean;
-  null_value?: GeoLocation;
-  type: "geo_point";
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  null_value?: GeoLocation
+  type: 'geo_point'
 }

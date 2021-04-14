@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { MemoryStats } from "./MemoryStats";
+import { integer } from '../../__common/common'
+import { MemoryStats } from './MemoryStats'
 
 export class ExtendedMemoryStats extends MemoryStats {
-  free_percent: integer;
-  used_percent: integer;
+  free_percent: integer
+  used_percent: integer
 }

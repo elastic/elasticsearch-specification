@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.delete_trained_model_alias
@@ -27,9 +27,9 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteTrainedModelAliasRequest extends RequestBase {
   path_parts?: {
-    model_alias: Name;
-    model_id: Id;
-  };
-  query_parameters?: {};
-  body?: {};
+    model_alias: Name
+    model_id: Id
+  }
+  query_parameters?: {}
+  body?: {}
 }

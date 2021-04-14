@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { TokenFilterBase } from "../../token_filters/TokenFilterBase";
-import { PhoneticEncoder } from "./PhoneticEncoder";
-import { PhoneticLanguage } from "./PhoneticLanguage";
-import { PhoneticNameType } from "./PhoneticNameType";
-import { PhoneticRuleType } from "./PhoneticRuleType";
+import { integer } from '../../../common'
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { PhoneticEncoder } from './PhoneticEncoder'
+import { PhoneticLanguage } from './PhoneticLanguage'
+import { PhoneticNameType } from './PhoneticNameType'
+import { PhoneticRuleType } from './PhoneticRuleType'
 
 export class PhoneticTokenFilter extends TokenFilterBase {
-  encoder: PhoneticEncoder;
-  languageset: PhoneticLanguage[];
+  encoder: PhoneticEncoder
+  languageset: PhoneticLanguage[]
   /** @prop_serializer NullableStringIntFormatter */
-  max_code_len: integer;
-  name_type: PhoneticNameType;
+  max_code_len: integer
+  name_type: PhoneticNameType
   /** @prop_serializer NullableStringBooleanFormatter */
-  replace: boolean;
-  rule_type: PhoneticRuleType;
+  replace: boolean
+  rule_type: PhoneticRuleType
 }

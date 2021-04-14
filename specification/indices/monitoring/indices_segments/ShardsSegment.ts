@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { integer } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { Segment } from "./Segment";
-import { ShardSegmentRouting } from "./ShardSegmentRouting";
+import { integer } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { Segment } from './Segment'
+import { ShardSegmentRouting } from './ShardSegmentRouting'
 
 export class ShardsSegment {
-  num_committed_segments: integer;
-  routing: ShardSegmentRouting;
-  num_search_segments: integer;
+  num_committed_segments: integer
+  routing: ShardSegmentRouting
+  num_search_segments: integer
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  segments: Dictionary<string, Segment>;
+  segments: Dictionary<string, Segment>
 }

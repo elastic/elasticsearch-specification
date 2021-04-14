@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name, Names } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Name, Names } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name snapshot.get
@@ -28,13 +28,13 @@ import { Time } from "../../../__common/common_options/time_unit/Time";
  */
 export interface GetSnapshotRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-    snapshot: Names;
-  };
+    repository: Name
+    snapshot: Names
+  }
   query_parameters?: {
-    ignore_unavailable?: boolean;
-    master_timeout?: Time;
-    verbose?: boolean;
-  };
-  body?: {};
+    ignore_unavailable?: boolean
+    master_timeout?: Time
+    verbose?: boolean
+  }
+  body?: {}
 }

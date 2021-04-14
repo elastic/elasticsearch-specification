@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class Ingest {
-  timestamp: DateString;
-  pipeline?: string;
+  timestamp: DateString
+  pipeline?: string
 }

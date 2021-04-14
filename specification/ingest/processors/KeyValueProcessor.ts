@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class KeyValueProcessor extends ProcessorBase {
-  exclude_keys?: string[];
-  field: Field;
-  field_split: string;
-  ignore_missing?: boolean;
-  include_keys?: string[];
-  prefix?: string;
-  strip_brackets?: boolean;
-  target_field?: Field;
-  trim_key?: string;
-  trim_value?: string;
-  value_split: string;
+  exclude_keys?: string[]
+  field: Field
+  field_split: string
+  ignore_missing?: boolean
+  include_keys?: string[]
+  prefix?: string
+  strip_brackets?: boolean
+  target_field?: Field
+  trim_key?: string
+  trim_value?: string
+  value_split: string
 }

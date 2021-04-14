@@ -17,52 +17,52 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { AnalyticsUsage } from "./AnalyticsUsage";
-import { CcrUsage } from "./CcrUsage";
-import { DataStreamsUsage } from "./DataStreamsUsage";
-import { DataTiersUsage } from "./DataTiersUsage";
-import { EqlUsage } from "./EqlUsage";
-import { FlattenedUsage } from "./FlattenedUsage";
-import { FrozenIndicesUsage } from "./FrozenIndicesUsage";
-import { IlmUsage } from "./IlmUsage";
-import { MachineLearningUsage } from "./MachineLearningUsage";
-import { MonitoringUsage } from "./MonitoringUsage";
-import { RuntimeFieldsUsage } from "./RuntimeFieldsUsage";
-import { SearchableSnapshotsUsage } from "./SearchableSnapshotsUsage";
-import { SecurityUsage } from "./SecurityUsage";
-import { SlmUsage } from "./SlmUsage";
-import { SqlUsage } from "./SqlUsage";
-import { VectorUsage } from "./VectorUsage";
-import { WatcherUsage } from "./WatcherUsage";
-import { XPackUsage } from "./XPackUsage";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AnalyticsUsage } from './AnalyticsUsage'
+import { CcrUsage } from './CcrUsage'
+import { DataStreamsUsage } from './DataStreamsUsage'
+import { DataTiersUsage } from './DataTiersUsage'
+import { EqlUsage } from './EqlUsage'
+import { FlattenedUsage } from './FlattenedUsage'
+import { FrozenIndicesUsage } from './FrozenIndicesUsage'
+import { IlmUsage } from './IlmUsage'
+import { MachineLearningUsage } from './MachineLearningUsage'
+import { MonitoringUsage } from './MonitoringUsage'
+import { RuntimeFieldsUsage } from './RuntimeFieldsUsage'
+import { SearchableSnapshotsUsage } from './SearchableSnapshotsUsage'
+import { SecurityUsage } from './SecurityUsage'
+import { SlmUsage } from './SlmUsage'
+import { SqlUsage } from './SqlUsage'
+import { VectorUsage } from './VectorUsage'
+import { WatcherUsage } from './WatcherUsage'
+import { XPackUsage } from './XPackUsage'
 
 export class XPackUsageResponse extends ResponseBase {
-  aggregate_metric: XPackUsage;
-  analytics: AnalyticsUsage;
-  watcher: WatcherUsage;
-  ccr: CcrUsage;
-  data_frame?: XPackUsage;
-  data_science?: XPackUsage;
-  data_streams?: DataStreamsUsage;
-  data_tiers: DataTiersUsage;
-  enrich?: XPackUsage;
-  eql: EqlUsage;
-  flattened?: FlattenedUsage;
-  frozen_indices: FrozenIndicesUsage;
-  graph: XPackUsage;
-  ilm: IlmUsage;
-  logstash: XPackUsage;
-  ml: MachineLearningUsage;
-  monitoring: MonitoringUsage;
-  rollup: XPackUsage;
-  runtime_fields?: RuntimeFieldsUsage;
-  spatial: XPackUsage;
-  searchable_snapshots: SearchableSnapshotsUsage;
-  security: SecurityUsage;
-  slm: SlmUsage;
-  sql: SqlUsage;
-  transform: XPackUsage;
-  vectors: VectorUsage;
-  voting_only: XPackUsage;
+  aggregate_metric: XPackUsage
+  analytics: AnalyticsUsage
+  watcher: WatcherUsage
+  ccr: CcrUsage
+  data_frame?: XPackUsage
+  data_science?: XPackUsage
+  data_streams?: DataStreamsUsage
+  data_tiers: DataTiersUsage
+  enrich?: XPackUsage
+  eql: EqlUsage
+  flattened?: FlattenedUsage
+  frozen_indices: FrozenIndicesUsage
+  graph: XPackUsage
+  ilm: IlmUsage
+  logstash: XPackUsage
+  ml: MachineLearningUsage
+  monitoring: MonitoringUsage
+  rollup: XPackUsage
+  runtime_fields?: RuntimeFieldsUsage
+  spatial: XPackUsage
+  searchable_snapshots: SearchableSnapshotsUsage
+  security: SecurityUsage
+  slm: SlmUsage
+  sql: SqlUsage
+  transform: XPackUsage
+  vectors: VectorUsage
+  voting_only: XPackUsage
 }

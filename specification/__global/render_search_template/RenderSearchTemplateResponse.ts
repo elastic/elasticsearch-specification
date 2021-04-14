@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class RenderSearchTemplateResponse extends ResponseBase {
-  template_output: Dictionary<string, UserDefinedValue>;
+  template_output: Dictionary<string, UserDefinedValue>
 }

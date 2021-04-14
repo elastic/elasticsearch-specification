@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "../../token_filters/TokenFilterBase";
-import { IcuTransformDirection } from "./transform/IcuTransformDirection";
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { IcuTransformDirection } from './transform/IcuTransformDirection'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
-  dir: IcuTransformDirection;
-  id: string;
+  dir: IcuTransformDirection
+  id: string
 }

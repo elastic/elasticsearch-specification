@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Id, long } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { AnalysisMemoryLimit } from "../job/config/AnalysisMemoryLimit";
-import { ModelPlotConfigEnabled } from "../job/config/ModelPlotConfigEnabled";
+import { Id, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { AnalysisMemoryLimit } from '../job/config/AnalysisMemoryLimit'
+import { ModelPlotConfigEnabled } from '../job/config/ModelPlotConfigEnabled'
 
 /**
  * @rest_spec_name ml.update_job
@@ -32,19 +32,19 @@ import { ModelPlotConfigEnabled } from "../job/config/ModelPlotConfigEnabled";
  */
 export interface UpdateJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    allow_lazy_open?: boolean;
-    analysis_limits?: AnalysisMemoryLimit;
-    background_persist_interval?: Time;
-    custom_settings?: Dictionary<string, UserDefinedValue>;
-    description?: string;
-    model_plot_config?: ModelPlotConfigEnabled;
-    model_snapshot_retention_days?: long;
-    renormalization_window_days?: long;
-    results_retention_days?: long;
-    groups?: string[];
-  };
+    allow_lazy_open?: boolean
+    analysis_limits?: AnalysisMemoryLimit
+    background_persist_interval?: Time
+    custom_settings?: Dictionary<string, UserDefinedValue>
+    description?: string
+    model_plot_config?: ModelPlotConfigEnabled
+    model_snapshot_retention_days?: long
+    renormalization_window_days?: long
+    results_retention_days?: long
+    groups?: string[]
+  }
 }

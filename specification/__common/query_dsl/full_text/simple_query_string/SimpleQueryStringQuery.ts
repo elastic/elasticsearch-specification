@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { Fields, integer } from "../../../common";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Operator } from "../../Operator";
-import { SimpleQueryStringFlags } from "./SimpleQueryStringFlags";
+import { Fields, integer } from '../../../common'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Operator } from '../../Operator'
+import { SimpleQueryStringFlags } from './SimpleQueryStringFlags'
 
 export class SimpleQueryStringQuery extends QueryBase {
-  analyzer?: string;
-  analyze_wildcard?: boolean;
-  auto_generate_synonyms_phrase_query?: boolean;
-  default_operator?: Operator;
-  fields?: Fields;
-  flags?: SimpleQueryStringFlags | string;
-  fuzzy_max_expansions?: integer;
-  fuzzy_prefix_length?: integer;
-  fuzzy_transpositions?: boolean;
-  lenient?: boolean;
-  minimum_should_match?: MinimumShouldMatch;
-  query?: string;
-  quote_field_suffix?: string;
+  analyzer?: string
+  analyze_wildcard?: boolean
+  auto_generate_synonyms_phrase_query?: boolean
+  default_operator?: Operator
+  fields?: Fields
+  flags?: SimpleQueryStringFlags | string
+  fuzzy_max_expansions?: integer
+  fuzzy_prefix_length?: integer
+  fuzzy_transpositions?: boolean
+  lenient?: boolean
+  minimum_should_match?: MinimumShouldMatch
+  query?: string
+  quote_field_suffix?: string
 }

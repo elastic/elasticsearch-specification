@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Id, long } from "../../__common/common";
-import { ExecutionThreadPool } from "./ExecutionThreadPool";
-import { WatcherState } from "./WatcherState";
-import { WatchRecordQueuedStats } from "./WatchRecordQueuedStats";
-import { WatchRecordStats } from "./WatchRecordStats";
+import { Id, long } from '../../__common/common'
+import { ExecutionThreadPool } from './ExecutionThreadPool'
+import { WatcherState } from './WatcherState'
+import { WatchRecordQueuedStats } from './WatchRecordQueuedStats'
+import { WatchRecordStats } from './WatchRecordStats'
 
 export class WatcherNodeStats {
-  current_watches?: WatchRecordStats[];
-  execution_thread_pool: ExecutionThreadPool;
-  queued_watches?: WatchRecordQueuedStats[];
-  watch_count: long;
-  watcher_state: WatcherState;
-  node_id: Id;
+  current_watches?: WatchRecordStats[]
+  execution_thread_pool: ExecutionThreadPool
+  queued_watches?: WatchRecordQueuedStats[]
+  watch_count: long
+  watcher_state: WatcherState
+  node_id: Id
 }

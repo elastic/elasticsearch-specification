@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double, float } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { double, float } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class DisMaxQuery extends QueryBase {
-  queries?: QueryContainer[];
-  tie_breaker?: double;
-  boost?: float;
+  queries?: QueryContainer[]
+  tie_breaker?: double
+  boost?: float
 }

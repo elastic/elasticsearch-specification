@@ -19,5 +19,5 @@
 
 export enum IndexSortMissing {
   _first = 0,
-  _last = 1,
+  _last = 1
 }

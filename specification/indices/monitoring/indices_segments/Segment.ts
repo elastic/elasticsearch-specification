@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { double, integer, long, VersionString } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { double, integer, long, VersionString } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class Segment {
-  attributes: Dictionary<string, string>;
-  committed: boolean;
-  compound: boolean;
-  deleted_docs: long;
-  generation: integer;
-  memory_in_bytes: double;
-  search: boolean;
-  size_in_bytes: double;
-  num_docs: long;
-  version: VersionString;
+  attributes: Dictionary<string, string>
+  committed: boolean
+  compound: boolean
+  deleted_docs: long
+  generation: integer
+  memory_in_bytes: double
+  search: boolean
+  size_in_bytes: double
+  num_docs: long
+  version: VersionString
 }

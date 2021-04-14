@@ -18,5 +18,5 @@
  */
 
 export class QueryTemplate {
-  source: string;
+  source: string
 }

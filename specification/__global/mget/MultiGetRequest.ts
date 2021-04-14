@@ -23,11 +23,11 @@ import {
   integer,
   Routing,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { SourceFilter } from "../search/source_filtering/SourceFilter";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { SourceFilter } from '../search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name mget
@@ -37,36 +37,36 @@ import { SourceFilter } from "../search/source_filtering/SourceFilter";
  */
 export interface MultiGetRequest extends RequestBase {
   path_parts?: {
-    index?: IndexName;
-    type?: Type;
-  };
+    index?: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    preference?: string;
-    realtime?: boolean; // default: true
-    refresh?: boolean; // default: false
-    routing?: Routing;
-    source_enabled?: boolean;
-    _source?: boolean | Fields;
-    _source_excludes?: Fields;
-    _source_includes?: Fields;
-    stored_fields?: Fields;
-  };
+    preference?: string
+    realtime?: boolean // default: true
+    refresh?: boolean // default: false
+    routing?: Routing
+    source_enabled?: boolean
+    _source?: boolean | Fields
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    stored_fields?: Fields
+  }
   body?: {
-    docs?: MultiGetOperation[];
-    ids?: MultiGetId[];
-  };
+    docs?: MultiGetOperation[]
+    ids?: MultiGetId[]
+  }
 }
 
 export class MultiGetOperation {
-  can_be_flattened?: boolean;
-  _id: MultiGetId;
-  _index?: IndexName;
-  routing?: Routing;
-  _source?: boolean | Fields | SourceFilter;
-  stored_fields?: Fields;
-  _type?: Type;
-  version?: VersionNumber;
-  version_type?: VersionType;
+  can_be_flattened?: boolean
+  _id: MultiGetId
+  _index?: IndexName
+  routing?: Routing
+  _source?: boolean | Fields | SourceFilter
+  stored_fields?: Fields
+  _type?: Type
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
-export type MultiGetId = string | integer;
+export type MultiGetId = string | integer

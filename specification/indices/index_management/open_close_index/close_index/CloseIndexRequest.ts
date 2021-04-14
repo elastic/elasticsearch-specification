@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices, WaitForActiveShards } from "../../../../__common/common";
-import { ExpandWildcards } from "../../../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../../__common/common_options/time_unit/Time";
+import { Indices, WaitForActiveShards } from '../../../../__common/common'
+import { ExpandWildcards } from '../../../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.close
@@ -29,15 +29,15 @@ import { Time } from "../../../../__common/common_options/time_unit/Time";
  */
 export interface CloseIndexRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-  };
+    index: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+  }
+  body?: {}
 }

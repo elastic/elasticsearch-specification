@@ -17,32 +17,32 @@
  * under the License.
  */
 
-import { NodeAttributes } from "../../transform/get_transform_stats/NodeAttributes";
+import { NodeAttributes } from '../../transform/get_transform_stats/NodeAttributes'
 import {
   EmptyObject,
   NodeName,
   Uuid,
-  VersionNumber,
-} from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ClusterStateMetadata } from "../ClusterStateMetadata";
-import { ClusterStateRoutingNodes } from "../ClusterStateRoutingNodes";
+  VersionNumber
+} from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ClusterStateMetadata } from '../ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '../ClusterStateRoutingNodes'
 import {
   ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots,
-} from "../ClusterStateSnapshots";
+  ClusterStateSnapshots
+} from '../ClusterStateSnapshots'
 
 export class ClusterRerouteState {
-  cluster_uuid: Uuid;
-  state_uuid?: Uuid;
-  master_node?: string;
-  version?: VersionNumber;
-  blocks?: EmptyObject; // TODO: this is likely wrong too
-  nodes?: Dictionary<NodeName, NodeAttributes>;
-  routing_table?: Dictionary<string, EmptyObject>; // TODO: this is wrong, but the tests are not exhaustive enough
-  routing_nodes?: ClusterStateRoutingNodes;
-  security_tokens?: Dictionary<string, string>;
-  snapshots?: ClusterStateSnapshots;
-  snapshot_deletions?: ClusterStateDeletedSnapshots;
-  metadata?: ClusterStateMetadata;
+  cluster_uuid: Uuid
+  state_uuid?: Uuid
+  master_node?: string
+  version?: VersionNumber
+  blocks?: EmptyObject // TODO: this is likely wrong too
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Dictionary<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }

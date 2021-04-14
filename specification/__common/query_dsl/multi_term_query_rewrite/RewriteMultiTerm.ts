@@ -23,5 +23,5 @@ export enum RewriteMultiTerm {
   constant_score_boolean = 2,
   top_terms_N = 3,
   top_terms_boost_N = 4,
-  top_terms_blended_freqs_N = 5,
+  top_terms_blended_freqs_N = 5
 }

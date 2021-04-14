@@ -23,5 +23,5 @@ export enum MinimumInterval {
   hour = 2,
   day = 3,
   month = 4,
-  year = 5,
+  year = 5
 }

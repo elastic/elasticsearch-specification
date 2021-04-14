@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
-import { ZeroTermsQuery } from "../multi_match/ZeroTermsQuery";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
+import { ZeroTermsQuery } from '../multi_match/ZeroTermsQuery'
 
 export class MatchPhrasePrefixQuery extends QueryBase {
-  analyzer?: string;
-  max_expansions?: integer;
-  query?: string;
-  slop?: integer;
-  zero_terms_query?: ZeroTermsQuery;
+  analyzer?: string
+  max_expansions?: integer
+  query?: string
+  slop?: integer
+  zero_terms_query?: ZeroTermsQuery
 }

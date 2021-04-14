@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ErrorCause, long } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
+import { ErrorCause, long } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
 
 export class InvalidateUserAccessTokenResponse extends ResponseBase {
-  error_count: long;
-  error_details?: ErrorCause[];
-  invalidated_tokens: long;
-  previously_invalidated_tokens: long;
+  error_count: long
+  error_details?: ErrorCause[]
+  invalidated_tokens: long
+  previously_invalidated_tokens: long
 }

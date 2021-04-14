@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { LicenseStatus } from "../get_license/LicenseStatus";
-import { LicenseAcknowledgement } from "./LicenseAcknowledgement";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { LicenseStatus } from '../get_license/LicenseStatus'
+import { LicenseAcknowledgement } from './LicenseAcknowledgement'
 
 export class PostLicenseResponse extends ResponseBase {
-  acknowledge?: LicenseAcknowledgement;
-  acknowledged: boolean;
-  license_status: LicenseStatus;
+  acknowledge?: LicenseAcknowledgement
+  acknowledged: boolean
+  license_status: LicenseStatus
 }

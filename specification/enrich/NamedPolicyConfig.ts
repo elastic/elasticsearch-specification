@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NamedPolicy } from "./NamedPolicy";
+import { NamedPolicy } from './NamedPolicy'
 
 export class NamedPolicyConfig {
-  geo_match?: NamedPolicy;
-  match: NamedPolicy;
+  geo_match?: NamedPolicy
+  match: NamedPolicy
 }

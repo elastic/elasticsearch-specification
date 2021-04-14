@@ -17,171 +17,171 @@
  * under the License.
  */
 
-import { Id, VersionString } from "../../__common/common";
+import { Id, VersionString } from '../../__common/common'
 
 export class CatTransformsRecord {
   /**
    * the id
    */
-  "id"?: Id;
+  'id'?: Id
   /**
    * transform state
    * @aliases s
    */
-  "state"?: string;
+  'state'?: string
   /**
    * checkpoint
    * @aliases c
    */
-  "checkpoint"?: string;
+  'checkpoint'?: string
   /**
    * the number of documents read from source indices and processed
    * @aliases docp, documentsProcessed
    */
-  "documents_processed"?: string;
+  'documents_processed'?: string
   /**
    * progress of the checkpoint
    * @aliases cp, checkpointProgress
    */
-  "checkpoint_progress"?: string;
+  'checkpoint_progress'?: string
   /**
    * last time transform searched for updates
    * @aliases lst, lastSearchTime
    */
-  "last_search_time"?: string;
+  'last_search_time'?: string
   /**
    * changes last detected time
    * @aliases cldt
    */
-  "changes_last_detection_time"?: string;
+  'changes_last_detection_time'?: string
   /**
    * transform creation time
    * @aliases ct, createTime
    */
-  "create_time"?: string;
+  'create_time'?: string
   /**
    * the version of Elasticsearch when the transform was created
    * @aliases v
    */
-  "version"?: VersionString;
+  'version'?: VersionString
   /**
    * source index
    * @aliases si, sourceIndex
    */
-  "source_index"?: string;
+  'source_index'?: string
   /**
    * destination index
    * @aliases di, destIndex
    */
-  "dest_index"?: string;
+  'dest_index'?: string
   /**
    * transform pipeline
    * @aliases p
    */
-  "pipeline"?: string;
+  'pipeline'?: string
   /**
    * description
    * @aliases d
    */
-  "description"?: string;
+  'description'?: string
   /**
    * batch or continuous transform
    * @aliases tt
    */
-  "transform_type"?: string;
+  'transform_type'?: string
   /**
    * frequency of transform
    * @aliases f
    */
-  "frequency"?: string;
+  'frequency'?: string
   /**
    * max page search size
    * @aliases mpsz
    */
-  "max_page_search_size"?: string;
+  'max_page_search_size'?: string
   /**
    * docs per second
    * @aliases dps
    */
-  "docs_per_second"?: string;
+  'docs_per_second'?: string
   /**
    * reason for the current state
    * @aliases r
    */
-  "reason"?: string;
+  'reason'?: string
   /**
    * total number of search phases
    * @aliases st
    */
-  "search_total"?: string;
+  'search_total'?: string
   /**
    * total number of search failures
    * @aliases sf
    */
-  "search_failure"?: string;
+  'search_failure'?: string
   /**
    * total search time
    * @aliases stime
    */
-  "search_time"?: string;
+  'search_time'?: string
   /**
    * total number of index phases done by the transform
    * @aliases it
    */
-  "index_total"?: string;
+  'index_total'?: string
   /**
    * total number of index failures
    * @aliases if
    */
-  "index_failure"?: string;
+  'index_failure'?: string
   /**
    * total time spent indexing documents
    * @aliases itime
    */
-  "index_time"?: string;
+  'index_time'?: string
   /**
    * the number of documents written to the destination index
    * @aliases doci
    */
-  "documents_indexed"?: string;
+  'documents_indexed'?: string
   /**
    * total time spent deleting documents
    * @aliases dtime
    */
-  "delete_time"?: string;
+  'delete_time'?: string
   /**
    * the number of documents deleted from the destination index
    * @aliases docd
    */
-  "documents_deleted"?: string;
+  'documents_deleted'?: string
   /**
    * the number of times the transform has been triggered
    * @aliases tc
    */
-  "trigger_count"?: string;
+  'trigger_count'?: string
   /**
    * the number of pages processed
    * @aliases pp
    */
-  "pages_processed"?: string;
+  'pages_processed'?: string
   /**
    * the total time spent processing documents
    * @aliases pt
    */
-  "processing_time"?: string;
+  'processing_time'?: string
   /**
    * exponential average checkpoint processing time (milliseconds)
    * @aliases cdtea, checkpointTimeExpAvg
    */
-  "checkpoint_duration_time_exp_avg"?: string;
+  'checkpoint_duration_time_exp_avg'?: string
   /**
    * exponential average number of documents indexed
    * @aliases idea
    */
-  "indexed_documents_exp_avg"?: string;
+  'indexed_documents_exp_avg'?: string
   /**
    * exponential average number of documents processed
    * @aliases pdea
    */
-  "processed_documents_exp_avg"?: string;
+  'processed_documents_exp_avg'?: string
 }

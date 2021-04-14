@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer, long } from "../../__common/common";
+import { integer, long } from '../../__common/common'
 
 export class HttpStats {
-  current_open: integer;
-  total_opened: long;
+  current_open: integer
+  total_opened: long
 }

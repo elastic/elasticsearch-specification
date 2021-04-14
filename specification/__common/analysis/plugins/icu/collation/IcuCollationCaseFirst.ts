@@ -19,5 +19,5 @@
 
 export enum IcuCollationCaseFirst {
   lower = 0,
-  upper = 1,
+  upper = 1
 }

@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { BulkIndexByScrollFailure } from "../../__common/BulkIndexByScrollFailure";
-import { float, long, TaskId, ulong } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Retries } from "../../__common/Retries";
+import { BulkIndexByScrollFailure } from '../../__common/BulkIndexByScrollFailure'
+import { float, long, TaskId, ulong } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Retries } from '../../__common/Retries'
 
 export class UpdateByQueryResponse extends ResponseBase {
-  batches?: long;
-  failures?: BulkIndexByScrollFailure[];
-  noops?: long;
-  deleted?: long;
-  requests_per_second?: float;
-  retries?: Retries;
-  task?: TaskId;
-  timed_out?: boolean;
-  took?: long;
-  total?: long;
-  updated?: long;
-  version_conflicts?: long;
-  throttled_millis?: ulong;
-  throttled_until_millis?: ulong;
+  batches?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  deleted?: long
+  requests_per_second?: float
+  retries?: Retries
+  task?: TaskId
+  timed_out?: boolean
+  took?: long
+  total?: long
+  updated?: long
+  version_conflicts?: long
+  throttled_millis?: ulong
+  throttled_until_millis?: ulong
 }

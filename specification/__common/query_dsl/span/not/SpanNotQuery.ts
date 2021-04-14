@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
-import { SpanQuery } from "../SpanQuery";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanNotQuery extends QueryBase {
-  dist?: integer;
-  exclude?: SpanQuery;
-  include?: SpanQuery;
-  post?: integer;
-  pre?: integer;
+  dist?: integer
+  exclude?: SpanQuery
+  include?: SpanQuery
+  post?: integer
+  pre?: integer
 }

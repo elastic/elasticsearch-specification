@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../../../common";
-import { PropertyBase } from "../../Property";
+import { Field } from '../../../../common'
+import { PropertyBase } from '../../Property'
 
 export class FieldAliasProperty extends PropertyBase {
-  path?: Field;
-  type: "alias";
+  path?: Field
+  type: 'alias'
 }

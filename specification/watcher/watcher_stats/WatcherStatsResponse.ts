@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { NodeStatistics } from "../../nodes/NodeStatistics";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { WatcherNodeStats } from "./WatcherNodeStats";
+import { NodeStatistics } from '../../nodes/NodeStatistics'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { WatcherNodeStats } from './WatcherNodeStats'
 
 export class WatcherStatsResponse extends ResponseBase {
-  cluster_name: string;
-  manually_stopped: boolean;
-  stats: WatcherNodeStats[];
-  _nodes: NodeStatistics;
+  cluster_name: string
+  manually_stopped: boolean
+  stats: WatcherNodeStats[]
+  _nodes: NodeStatistics
 }

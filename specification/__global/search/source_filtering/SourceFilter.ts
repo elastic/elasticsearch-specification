@@ -18,16 +18,16 @@
  */
 // TODO: move singular names to aliases
 
-import { Field, Fields } from "../../../__common/common";
+import { Field, Fields } from '../../../__common/common'
 
 export class SourceFilter {
-  excludes?: Fields;
-  includes?: Fields;
-  exclude?: Fields;
-  include?: Fields;
+  excludes?: Fields
+  includes?: Fields
+  exclude?: Fields
+  include?: Fields
 }
 
 export class DocValueField {
-  field: Field;
-  format?: string;
+  field: Field
+  format?: string
 }

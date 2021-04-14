@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { float } from "../../__common/common";
+import { float } from '../../__common/common'
 
 export class LoadAverageStats {
-  "15m": float;
-  "5m": float;
-  "1m": float;
+  '15m': float
+  '5m': float
+  '1m': float
 }

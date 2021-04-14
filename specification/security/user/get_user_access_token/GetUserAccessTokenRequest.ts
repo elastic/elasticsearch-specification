@@ -18,8 +18,8 @@
  */
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { AccessTokenGrantType } from "./AccessTokenGrantType";
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { AccessTokenGrantType } from './AccessTokenGrantType'
 
 /**
  * @rest_spec_name security.get_token
@@ -27,16 +27,16 @@ import { AccessTokenGrantType } from "./AccessTokenGrantType";
  * @stability TODO
  */
 export interface GetUserAccessTokenRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   // body: AccessTokenGrantTypePassword | AccessTokenGrantTypeClientCredentials | AccessTokenGrantTypeKerberos | AccessTokenGrantTypeRefresh
   body?: {
-    grant_type?: AccessTokenGrantType;
-    scope?: string;
-    password?: string;
-    kerberos_ticket?: string;
-    refresh_token?: string;
-    username?: string;
-  };
+    grant_type?: AccessTokenGrantType
+    scope?: string
+    password?: string
+    kerberos_ticket?: string
+    refresh_token?: string
+    username?: string
+  }
 }
 
 // export class AccessTokenGrantTypePassword {

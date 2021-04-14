@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { double } from "../../../common";
-import { FormatMetricAggregationBase } from "../MetricAggregation";
-import { HdrMethod, TDigest } from "../percentiles/PercentilesAggregation";
+import { double } from '../../../common'
+import { FormatMetricAggregationBase } from '../MetricAggregation'
+import { HdrMethod, TDigest } from '../percentiles/PercentilesAggregation'
 
 export class PercentileRanksAggregation extends FormatMetricAggregationBase {
-  keyed?: boolean;
-  values?: double[];
-  hdr?: HdrMethod;
-  tdigest?: TDigest;
+  keyed?: boolean
+  values?: double[]
+  hdr?: HdrMethod
+  tdigest?: TDigest
 }

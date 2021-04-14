@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { IndexName, integer, VersionNumber } from "../../../../__common/common";
-import { TypeMapping } from "../../../../__common/mapping/TypeMapping";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../../Alias";
+import { IndexName, integer, VersionNumber } from '../../../../__common/common'
+import { TypeMapping } from '../../../../__common/mapping/TypeMapping'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { Alias } from '../../../Alias'
 
 export class TemplateMapping {
-  aliases: Dictionary<IndexName, Alias>;
-  index_patterns: string[];
-  mappings: TypeMapping;
-  order: integer;
-  settings: Dictionary<string, UserDefinedValue>;
-  version?: VersionNumber;
+  aliases: Dictionary<IndexName, Alias>
+  index_patterns: string[]
+  mappings: TypeMapping
+  order: integer
+  settings: Dictionary<string, UserDefinedValue>
+  version?: VersionNumber
 }

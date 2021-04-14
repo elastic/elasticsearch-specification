@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { double, Indices, long, Routing, Types } from "../../__common/common";
-import { DefaultOperator } from "../../__common/common/DefaultOperator";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { double, Indices, long, Routing, Types } from '../../__common/common'
+import { DefaultOperator } from '../../__common/common/DefaultOperator'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name count
@@ -30,27 +30,27 @@ import { QueryContainer } from "../../__common/query_dsl/abstractions/container/
  */
 export interface CountRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types;
-  };
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    analyzer?: string;
-    analyze_wildcard?: boolean;
-    default_operator?: DefaultOperator;
-    df?: string;
-    expand_wildcards?: ExpandWildcards;
-    ignore_throttled?: boolean;
-    ignore_unavailable?: boolean;
-    lenient?: boolean;
-    min_score?: double;
-    preference?: string;
-    query_on_query_string?: string;
-    routing?: Routing;
-    terminate_after?: long;
-    q?: string;
-  };
+    allow_no_indices?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    ignore_throttled?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    min_score?: double
+    preference?: string
+    query_on_query_string?: string
+    routing?: Routing
+    terminate_after?: long
+    q?: string
+  }
   body?: {
-    query?: QueryContainer;
-  };
+    query?: QueryContainer
+  }
 }

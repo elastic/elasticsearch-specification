@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Routing } from "../__common/common";
-import { QueryContainer } from "../__common/query_dsl/abstractions/container/QueryContainer";
+import { Routing } from '../__common/common'
+import { QueryContainer } from '../__common/query_dsl/abstractions/container/QueryContainer'
 
 export class Alias {
-  filter?: QueryContainer;
-  index_routing?: Routing;
-  is_hidden?: boolean;
-  is_write_index?: boolean;
-  routing?: Routing;
-  search_routing?: Routing;
+  filter?: QueryContainer
+  index_routing?: Routing
+  is_hidden?: boolean
+  is_write_index?: boolean
+  routing?: Routing
+  search_routing?: Routing
 }

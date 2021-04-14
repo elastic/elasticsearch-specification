@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../__common/common";
-import { Time } from "../__common/common_options/time_unit/Time";
+import { integer } from '../__common/common'
+import { Time } from '../__common/common_options/time_unit/Time'
 
 export class SnapshotRetentionConfiguration {
-  expire_after: Time;
-  max_count: integer;
-  min_count: integer;
+  expire_after: Time
+  max_count: integer
+  min_count: integer
 }

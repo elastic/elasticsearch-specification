@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ProcessStats } from "../ProcessStats";
+import { ProcessStats } from '../ProcessStats'
 
 export class KeyedProcessorStats {
-  statistics: ProcessStats;
-  type: string;
+  statistics: ProcessStats
+  type: string
 }

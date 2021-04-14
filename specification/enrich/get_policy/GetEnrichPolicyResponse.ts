@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { NamedPolicyMetadata } from "../NamedPolicyMetadata";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { NamedPolicyMetadata } from '../NamedPolicyMetadata'
 
 export class GetEnrichPolicyResponse extends ResponseBase {
-  policies: NamedPolicyMetadata[];
+  policies: NamedPolicyMetadata[]
 }

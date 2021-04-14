@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { double } from "../../__common/common";
+import { double } from '../../__common/common'
 
 export class JobStatistics {
-  avg: double;
-  max: double;
-  min: double;
-  total: double;
+  avg: double
+  max: double
+  min: double
+  total: double
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndexName, VersionNumber } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ActionStatus } from "../acknowledge_watch/ActionStatus";
-import { ActivationState } from "../acknowledge_watch/ActivationState";
+import { IndexName, VersionNumber } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ActionStatus } from '../acknowledge_watch/ActionStatus'
+import { ActivationState } from '../acknowledge_watch/ActivationState'
 
 export class ActivationStatus {
-  actions: Dictionary<IndexName, ActionStatus>;
-  state: ActivationState;
-  version: VersionNumber;
+  actions: Dictionary<IndexName, ActionStatus>
+  state: ActivationState
+  version: VersionNumber
 }

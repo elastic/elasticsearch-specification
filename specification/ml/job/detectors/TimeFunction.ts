@@ -19,5 +19,5 @@
 
 export enum TimeFunction {
   TimeOfDay = 0,
-  TimeOfWeek = 1,
+  TimeOfWeek = 1
 }

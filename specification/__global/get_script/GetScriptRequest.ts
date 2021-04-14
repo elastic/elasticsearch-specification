@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name get_script
@@ -28,10 +28,10 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface GetScriptRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-  };
+    id: Id
+  }
   query_parameters?: {
-    master_timeout?: Time;
-  };
-  body?: {};
+    master_timeout?: Time
+  }
+  body?: {}
 }

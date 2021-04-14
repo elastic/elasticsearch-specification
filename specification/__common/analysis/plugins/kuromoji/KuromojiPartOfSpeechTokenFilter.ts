@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "../../token_filters/TokenFilterBase";
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
 
 export class KuromojiPartOfSpeechTokenFilter extends TokenFilterBase {
-  stoptags: string[];
+  stoptags: string[]
 }

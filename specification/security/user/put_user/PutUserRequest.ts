@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Name } from '../../../__common/common'
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name security.put_user
@@ -30,19 +30,19 @@ import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
  */
 export interface PutUserRequest extends RequestBase {
   path_parts?: {
-    username: Name;
-  };
+    username: Name
+  }
   query_parameters?: {
-    refresh?: Refresh;
-  };
+    refresh?: Refresh
+  }
   body?: {
-    username?: Name;
-    email?: string | null;
-    full_name?: string | null;
-    metadata?: Dictionary<string, UserDefinedValue>;
-    password?: string;
-    password_hash?: string;
-    roles?: string[];
-    enabled?: boolean;
-  };
+    username?: Name
+    email?: string | null
+    full_name?: string | null
+    metadata?: Dictionary<string, UserDefinedValue>
+    password?: string
+    password_hash?: string
+    roles?: string[]
+    enabled?: boolean
+  }
 }

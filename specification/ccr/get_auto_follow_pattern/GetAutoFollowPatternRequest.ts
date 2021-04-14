@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ccr.get_auto_follow_pattern
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetAutoFollowPatternRequest extends RequestBase {
   path_parts?: {
-    name?: Name; // param name in docs: auto_follow_pattern_name
-  };
-  query_parameters?: {};
-  body?: {};
+    name?: Name // param name in docs: auto_follow_pattern_name
+  }
+  query_parameters?: {}
+  body?: {}
 }

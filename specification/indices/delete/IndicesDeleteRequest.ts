@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Indices } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.delete
@@ -29,14 +29,14 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface IndicesDeleteRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-  };
+    index: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

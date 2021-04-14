@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { long, WaitForActiveShards } from "../../__common/common";
-import { Conflicts } from "../../__common/common/Conflicts";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { ReindexDestination } from "./ReindexDestination";
-import { ReindexSource } from "./ReindexSource";
+import { long, WaitForActiveShards } from '../../__common/common'
+import { Conflicts } from '../../__common/common/Conflicts'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Script } from '../../__common/common_options/scripting/Script'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { ReindexDestination } from './ReindexDestination'
+import { ReindexSource } from './ReindexSource'
 
 /**
  * @rest_spec_name reindex
@@ -32,21 +32,21 @@ import { ReindexSource } from "./ReindexSource";
  */
 export interface ReindexRequest extends RequestBase {
   query_parameters?: {
-    refresh?: boolean;
-    requests_per_second?: long;
-    scroll?: Time;
-    slices?: long;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-    wait_for_completion?: boolean;
-    require_alias?: boolean;
-  };
+    refresh?: boolean
+    requests_per_second?: long
+    scroll?: Time
+    slices?: long
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+    wait_for_completion?: boolean
+    require_alias?: boolean
+  }
   body?: {
-    conflicts?: Conflicts;
-    dest?: ReindexDestination;
-    max_docs?: long;
-    script?: Script;
-    size?: long;
-    source?: ReindexSource;
-  };
+    conflicts?: Conflicts
+    dest?: ReindexDestination
+    max_docs?: long
+    script?: Script
+    size?: long
+    source?: ReindexSource
+  }
 }

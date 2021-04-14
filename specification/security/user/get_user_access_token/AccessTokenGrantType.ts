@@ -21,5 +21,5 @@ export enum AccessTokenGrantType {
   password = 0,
   client_credentials = 1,
   _kerberos = 2,
-  refresh_token = 3,
+  refresh_token = 3
 }

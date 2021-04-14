@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { PutRoleMappingStatus } from "./PutRoleMappingStatus";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { PutRoleMappingStatus } from './PutRoleMappingStatus'
 
 export class PutRoleMappingResponse extends ResponseBase {
-  created?: boolean;
-  role_mapping: PutRoleMappingStatus;
+  created?: boolean
+  role_mapping: PutRoleMappingStatus
 }

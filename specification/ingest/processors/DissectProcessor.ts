@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class DissectProcessor extends ProcessorBase {
-  append_separator: string;
-  field: Field;
-  ignore_missing: boolean;
-  pattern: string;
+  append_separator: string
+  field: Field
+  ignore_missing: boolean
+  pattern: string
 }

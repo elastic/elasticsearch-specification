@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { AutoFollowPattern } from "./AutoFollowPattern";
+import { Name } from '../../__common/common'
+import { AutoFollowPattern } from './AutoFollowPattern'
 
 export class AutoFollowPatternItem {
-  name: Name;
-  pattern: AutoFollowPattern;
+  name: Name
+  pattern: AutoFollowPattern
 }

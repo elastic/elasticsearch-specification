@@ -31,5 +31,5 @@ export enum DateMathTimeUnit {
   /** @identifier Month */
   M = 5,
   /** @identifier Year */
-  y = 6,
+  y = 6
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { CharFilterBase } from "./CharFilterBase";
+import { CharFilterBase } from './CharFilterBase'
 
 export class PatternReplaceCharFilter extends CharFilterBase {
-  flags: string;
-  pattern: string;
-  replacement: string;
+  flags: string
+  pattern: string
+  replacement: string
 }

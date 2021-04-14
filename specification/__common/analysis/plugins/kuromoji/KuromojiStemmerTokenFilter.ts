@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { TokenFilterBase } from "../../token_filters/TokenFilterBase";
+import { integer } from '../../../common'
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
 
 export class KuromojiStemmerTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */
-  minimum_length: integer;
+  minimum_length: integer
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TransformTimeSync } from "./TransformTimeSync";
+import { TransformTimeSync } from './TransformTimeSync'
 
 export class TransformSyncContainer {
-  time: TransformTimeSync;
+  time: TransformTimeSync
 }

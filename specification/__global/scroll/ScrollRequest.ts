@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, ScrollId } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id, ScrollId } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name scroll
@@ -28,17 +28,17 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ScrollRequest extends RequestBase {
   path_parts?: {
-    scroll_id?: Id;
-  };
+    scroll_id?: Id
+  }
   query_parameters?: {
-    scroll?: Time;
-    scroll_id?: ScrollId;
-    rest_total_hits_as_int?: boolean;
-    total_hits_as_integer?: boolean;
-  };
+    scroll?: Time
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
+    total_hits_as_integer?: boolean
+  }
   body?: {
-    scroll?: Time;
-    scroll_id?: ScrollId;
-    rest_total_hits_as_int?: boolean;
-  };
+    scroll?: Time
+    scroll_id?: ScrollId
+    rest_total_hits_as_int?: boolean
+  }
 }

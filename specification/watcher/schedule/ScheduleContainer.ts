@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { CronExpression } from "./CronExpression";
-import { DailySchedule } from "./DailySchedule";
-import { HourlySchedule } from "./HourlySchedule";
-import { Interval } from "./Interval";
-import { TimeOfMonth } from "./TimeOfMonth";
-import { TimeOfWeek } from "./TimeOfWeek";
-import { TimeOfYear } from "./TimeOfYear";
+import { CronExpression } from './CronExpression'
+import { DailySchedule } from './DailySchedule'
+import { HourlySchedule } from './HourlySchedule'
+import { Interval } from './Interval'
+import { TimeOfMonth } from './TimeOfMonth'
+import { TimeOfWeek } from './TimeOfWeek'
+import { TimeOfYear } from './TimeOfYear'
 
 export class ScheduleContainer {
-  cron?: CronExpression;
-  daily?: DailySchedule;
-  hourly?: HourlySchedule;
-  interval?: Interval;
-  monthly?: TimeOfMonth[];
-  weekly?: TimeOfWeek[];
-  yearly?: TimeOfYear[];
+  cron?: CronExpression
+  daily?: DailySchedule
+  hourly?: HourlySchedule
+  interval?: Interval
+  monthly?: TimeOfMonth[]
+  weekly?: TimeOfWeek[]
+  yearly?: TimeOfYear[]
 }

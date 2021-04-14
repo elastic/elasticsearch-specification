@@ -18,6 +18,6 @@
  */
 
 export class CharFilterDetail {
-  filtered_text: string[];
-  name: string;
+  filtered_text: string[]
+  name: string
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndicesCircuitBreakerSettings } from "./IndicesCircuitBreakerSettings";
-import { FielddataSettings } from "./fielddata/FielddataSettings";
-import { IndicesRecoverySettings } from "./recovery/IndicesRecoverySettings";
+import { FielddataSettings } from './FielddataSettings'
+import { IndicesCircuitBreakerSettings } from './IndicesCircuitBreakerSettings'
+import { IndicesRecoverySettings } from './recovery/IndicesRecoverySettings'
 
 export class IndicesModuleSettings {
-  circuit_breaker_settings: IndicesCircuitBreakerSettings;
-  fielddata_settings: FielddataSettings;
-  qeueries_cache_size: string;
-  recovery_settings: IndicesRecoverySettings;
+  circuit_breaker_settings: IndicesCircuitBreakerSettings
+  fielddata_settings: FielddataSettings
+  qeueries_cache_size: string
+  recovery_settings: IndicesRecoverySettings
 }

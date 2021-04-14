@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { double } from "../../../__common/common";
-import { QueryContainer } from "../../../__common/query_dsl/abstractions/container/QueryContainer";
-import { ScoreMode } from "./ScoreMode";
+import { double } from '../../../__common/common'
+import { QueryContainer } from '../../../__common/query_dsl/abstractions/container/QueryContainer'
+import { ScoreMode } from './ScoreMode'
 
 export class RescoreQuery {
   /** @identifier Query */
-  rescore_query: QueryContainer;
-  query_weight?: double;
-  rescore_query_weight?: double;
-  score_mode?: ScoreMode;
+  rescore_query: QueryContainer
+  query_weight?: double
+  rescore_query_weight?: double
+  score_mode?: ScoreMode
 }

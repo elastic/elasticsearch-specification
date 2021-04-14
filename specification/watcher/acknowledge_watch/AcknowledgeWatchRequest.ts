@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name, Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Name, Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name watcher.ack_watch
@@ -27,9 +27,9 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface AcknowledgeWatchRequest extends RequestBase {
   path_parts?: {
-    watch_id: Name;
-    action_id?: Names;
-  };
-  query_parameters?: {};
-  body?: {};
+    watch_id: Name
+    action_id?: Names
+  }
+  query_parameters?: {}
+  body?: {}
 }

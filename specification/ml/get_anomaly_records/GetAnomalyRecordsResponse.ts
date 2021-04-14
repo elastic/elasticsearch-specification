@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { AnomalyRecord } from "../job/results/AnomalyRecord";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AnomalyRecord } from '../job/results/AnomalyRecord'
 
 export class GetAnomalyRecordsResponse extends ResponseBase {
-  count: long;
-  records: AnomalyRecord[];
+  count: long
+  records: AnomalyRecord[]
 }

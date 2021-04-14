@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { IpRangeAggregationRange } from "./IpRangeAggregationRange";
+import { Field } from '../../../common'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { IpRangeAggregationRange } from './IpRangeAggregationRange'
 
 export class IpRangeAggregation extends BucketAggregationBase {
-  field?: Field;
-  ranges?: IpRangeAggregationRange[];
+  field?: Field
+  ranges?: IpRangeAggregationRange[]
 }

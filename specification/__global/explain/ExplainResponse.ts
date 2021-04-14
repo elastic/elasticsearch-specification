@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Id, IndexName, Type } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ExplanationDetail } from "./ExplanationDetail";
-import { InlineGet } from "./InlineGet";
+import { Id, IndexName, Type } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ExplanationDetail } from './ExplanationDetail'
+import { InlineGet } from './InlineGet'
 
 export class ExplainResponse<TDocument> extends ResponseBase {
-  _index: IndexName;
-  _type?: Type;
-  _id: Id;
-  matched: boolean;
-  explanation?: ExplanationDetail;
-  get?: InlineGet<TDocument>;
+  _index: IndexName
+  _type?: Type
+  _id: Id
+  matched: boolean
+  explanation?: ExplanationDetail
+  get?: InlineGet<TDocument>
 }

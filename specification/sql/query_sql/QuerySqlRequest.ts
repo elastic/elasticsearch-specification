@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name sql.query
@@ -28,14 +28,14 @@ import { QueryContainer } from "../../__common/query_dsl/abstractions/container/
  */
 export interface QuerySqlRequest extends RequestBase {
   query_parameters?: {
-    format?: string;
-  };
+    format?: string
+  }
   body?: {
-    columnar?: boolean;
-    cursor?: string;
-    fetch_size?: integer;
-    filter?: QueryContainer;
-    query?: string;
-    time_zone?: string;
-  };
+    columnar?: boolean
+    cursor?: string
+    fetch_size?: integer
+    filter?: QueryContainer
+    query?: string
+    time_zone?: string
+  }
 }

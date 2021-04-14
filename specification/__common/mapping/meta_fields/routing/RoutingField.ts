@@ -18,5 +18,5 @@
  */
 
 export class RoutingField {
-  required: boolean;
+  required: boolean
 }

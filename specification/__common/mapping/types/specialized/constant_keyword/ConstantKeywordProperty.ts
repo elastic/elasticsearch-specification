@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../../../../../__spec_utils/UserDefinedValue";
-import { PropertyBase } from "../../Property";
+import { UserDefinedValue } from '../../../../../__spec_utils/UserDefinedValue'
+import { PropertyBase } from '../../Property'
 
 export class ConstantKeywordProperty extends PropertyBase {
-  value?: UserDefinedValue;
-  type: "constant_keyword";
+  value?: UserDefinedValue
+  type: 'constant_keyword'
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { RoleMappingRuleBase } from "../rules/role/RoleMappingRuleBase";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { RoleMappingRuleBase } from '../rules/role/RoleMappingRuleBase'
 
 export class XPackRoleMapping {
-  enabled: boolean;
-  metadata: Dictionary<string, UserDefinedValue>;
-  roles: string[];
-  rules: RoleMappingRuleBase;
+  enabled: boolean
+  metadata: Dictionary<string, UserDefinedValue>
+  roles: string[]
+  rules: RoleMappingRuleBase
 }

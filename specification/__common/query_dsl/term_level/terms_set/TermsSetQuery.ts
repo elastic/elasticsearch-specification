@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Field } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class TermsSetQuery extends QueryBase {
-  minimum_should_match_field?: Field;
-  minimum_should_match_script?: Script;
+  minimum_should_match_field?: Field
+  minimum_should_match_script?: Script
   /** @prop_serializer SourceWriteFormatter`1 */
-  terms?: string[];
+  terms?: string[]
 }

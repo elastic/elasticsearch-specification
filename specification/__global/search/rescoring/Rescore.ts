@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../../__common/common";
-import { RescoreQuery } from "./RescoreQuery";
+import { integer } from '../../../__common/common'
+import { RescoreQuery } from './RescoreQuery'
 
 export class Rescore {
-  query: RescoreQuery;
-  window_size?: integer;
+  query: RescoreQuery
+  window_size?: integer
 }

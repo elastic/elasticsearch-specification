@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../__common/common";
-import { ExcludeFrequent } from "../../put_job/ExcludeFrequent";
-import { DetectionRule } from "./DetectionRule";
+import { Field, integer } from '../../../__common/common'
+import { ExcludeFrequent } from '../../put_job/ExcludeFrequent'
+import { DetectionRule } from './DetectionRule'
 
 /**
  *
  */
 export class Detector {
-  by_field_name?: Field;
-  custom_rules?: DetectionRule[];
-  detector_description?: string;
-  detector_index?: integer;
-  exclude_frequent?: ExcludeFrequent;
-  field_name?: Field;
-  function: string;
-  use_null?: boolean;
-  over_field_name?: Field;
-  partition_field_name?: Field;
+  by_field_name?: Field
+  custom_rules?: DetectionRule[]
+  detector_description?: string
+  detector_index?: integer
+  exclude_frequent?: ExcludeFrequent
+  field_name?: Field
+  function: string
+  use_null?: boolean
+  over_field_name?: Field
+  partition_field_name?: Field
 }

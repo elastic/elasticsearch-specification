@@ -19,5 +19,5 @@
 
 export enum ModelCategorizationStatus {
   ok = 0,
-  warn = 1,
+  warn = 1
 }

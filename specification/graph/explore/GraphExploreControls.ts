@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { SampleDiversity } from "./SampleDiversity";
+import { integer } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { SampleDiversity } from './SampleDiversity'
 
 export class GraphExploreControls {
-  sample_diversity?: SampleDiversity;
-  sample_size?: integer;
-  timeout?: Time;
-  use_significance: boolean;
+  sample_diversity?: SampleDiversity
+  sample_size?: integer
+  timeout?: Time
+  use_significance: boolean
 }

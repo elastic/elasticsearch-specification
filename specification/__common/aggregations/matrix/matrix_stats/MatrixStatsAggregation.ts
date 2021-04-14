@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { MatrixAggregation } from "../MatrixAggregation";
-import { MatrixStatsMode } from "./MatrixStatsMode";
+import { MatrixAggregation } from '../MatrixAggregation'
+import { MatrixStatsMode } from './MatrixStatsMode'
 
 export class MatrixStatsAggregation extends MatrixAggregation {
-  mode?: MatrixStatsMode;
+  mode?: MatrixStatsMode
 }

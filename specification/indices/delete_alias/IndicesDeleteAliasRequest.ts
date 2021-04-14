@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices, Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Indices, Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.delete_alias
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface IndicesDeleteAliasRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-    name: Names;
-  };
+    index: Indices
+    name: Names
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
-  body?: {};
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

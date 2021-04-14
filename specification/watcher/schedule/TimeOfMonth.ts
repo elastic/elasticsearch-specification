@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class TimeOfMonth {
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  at: string[];
+  at: string[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  on: integer[];
+  on: integer[]
 }

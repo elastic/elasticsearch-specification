@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.forecast
@@ -28,11 +28,11 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ForecastJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    duration?: Time;
-    expires_in?: Time;
-  };
+    duration?: Time
+    expires_in?: Time
+  }
 }

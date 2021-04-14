@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Detector } from "../job/detectors/Detector";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Detector } from '../job/detectors/Detector'
 
 /**
  * @rest_spec_name ml.validate_detector
@@ -27,6 +27,6 @@ import { Detector } from "../job/detectors/Detector";
  * @stability TODO
  */
 export interface ValidateDetectorRequest extends RequestBase {
-  query_parameters?: {};
-  body?: Detector;
+  query_parameters?: {}
+  body?: Detector
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndexName } from "../../../__common/common";
-import { DictionaryResponseBase } from "../../../__common/common_abstractions/response/DictionaryResponseBase";
-import { ShardStatistics } from "../../../__common/common_options/hit/ShardStatistics";
+import { IndexName } from '../../../__common/common'
+import { DictionaryResponseBase } from '../../../__common/common_abstractions/response/DictionaryResponseBase'
+import { ShardStatistics } from '../../../__common/common_options/hit/ShardStatistics'
 
 export class SyncedFlushResponse extends DictionaryResponseBase<
   IndexName,
   ShardStatistics
 > {
-  _shards: ShardStatistics;
+  _shards: ShardStatistics
 }

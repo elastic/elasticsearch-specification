@@ -17,34 +17,34 @@
  * under the License.
  */
 
-import { XPackFeature } from "./XPackFeature";
+import { XPackFeature } from './XPackFeature'
 
 export class XPackFeatures {
-  aggregate_metric: XPackFeature;
-  analytics: XPackFeature;
-  ccr: XPackFeature;
-  data_frame?: XPackFeature;
-  data_science?: XPackFeature;
-  data_streams: XPackFeature;
-  data_tiers: XPackFeature;
-  enrich: XPackFeature;
-  eql: XPackFeature;
-  flattened?: XPackFeature;
-  frozen_indices: XPackFeature;
-  graph: XPackFeature;
-  ilm: XPackFeature;
-  logstash: XPackFeature;
-  ml: XPackFeature;
-  monitoring: XPackFeature;
-  rollup: XPackFeature;
-  runtime_fields?: XPackFeature;
-  searchable_snapshots: XPackFeature;
-  security: XPackFeature;
-  slm: XPackFeature;
-  spatial: XPackFeature;
-  sql: XPackFeature;
-  transform: XPackFeature;
-  vectors: XPackFeature;
-  voting_only: XPackFeature;
-  watcher: XPackFeature;
+  aggregate_metric: XPackFeature
+  analytics: XPackFeature
+  ccr: XPackFeature
+  data_frame?: XPackFeature
+  data_science?: XPackFeature
+  data_streams: XPackFeature
+  data_tiers: XPackFeature
+  enrich: XPackFeature
+  eql: XPackFeature
+  flattened?: XPackFeature
+  frozen_indices: XPackFeature
+  graph: XPackFeature
+  ilm: XPackFeature
+  logstash: XPackFeature
+  ml: XPackFeature
+  monitoring: XPackFeature
+  rollup: XPackFeature
+  runtime_fields?: XPackFeature
+  searchable_snapshots: XPackFeature
+  security: XPackFeature
+  slm: XPackFeature
+  spatial: XPackFeature
+  sql: XPackFeature
+  transform: XPackFeature
+  vectors: XPackFeature
+  voting_only: XPackFeature
+  watcher: XPackFeature
 }

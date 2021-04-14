@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from "../CatBase";
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.health
@@ -26,8 +26,8 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatHealthRequest extends CatRequestBase {
   query_parameters?: {
-    include_timestamp?: boolean;
-    ts?: boolean;
-  };
-  body?: {};
+    include_timestamp?: boolean
+    ts?: boolean
+  }
+  body?: {}
 }

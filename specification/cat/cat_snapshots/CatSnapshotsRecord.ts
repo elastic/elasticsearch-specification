@@ -17,73 +17,73 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { DateString, EpochMillis } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 export class CatSnapshotsRecord {
   /**
    * unique snapshot
    * @aliases snapshot
    */
-  "id"?: string;
+  'id'?: string
   /**
    * repository name
    * @aliases re,repo
    */
-  "repository"?: string;
+  'repository'?: string
   /**
    * snapshot name
    * @aliases s
    */
-  "status"?: string;
+  'status'?: string
   /**
    * start time in seconds since 1970-01-01 00:00:00
    * @aliases ste,startEpoch
    */
-  "start_epoch"?: EpochMillis;
+  'start_epoch'?: EpochMillis
   /**
    * start time in HH:MM:SS
    * @aliases sti,startTime
    */
-  "start_time"?: DateString;
+  'start_time'?: DateString
   /**
    * end time in seconds since 1970-01-01 00:00:00
    * @aliases ete,endEpoch
    */
-  "end_epoch"?: EpochMillis;
+  'end_epoch'?: EpochMillis
   /**
    * end time in HH:MM:SS
    * @aliases eti,endTime
    */
-  "end_time"?: DateString;
+  'end_time'?: DateString
   /**
    * duration
    * @aliases dur
    */
-  "duration"?: Time;
+  'duration'?: Time
   /**
    * number of indices
    * @aliases i
    */
-  "indices"?: string;
+  'indices'?: string
   /**
    * number of successful shards
    * @aliases ss
    */
-  "successful_shards"?: string;
+  'successful_shards'?: string
   /**
    * number of failed shards
    * @aliases fs
    */
-  "failed_shards"?: string;
+  'failed_shards'?: string
   /**
    * number of total shards
    * @aliases ts
    */
-  "total_shards"?: string;
+  'total_shards'?: string
   /**
    * reason for failures
    * @aliases r
    */
-  "reason"?: string;
+  'reason'?: string
 }

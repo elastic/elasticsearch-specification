@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { ShapeOrientation } from "./ShapeOrientation";
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { ShapeOrientation } from './ShapeOrientation'
 
 export class ShapeProperty extends DocValuesPropertyBase {
-  coerce?: boolean;
-  ignore_malformed?: boolean;
-  ignore_z_value?: boolean;
-  orientation?: ShapeOrientation;
-  type: "shape";
+  coerce?: boolean
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  orientation?: ShapeOrientation
+  type: 'shape'
 }

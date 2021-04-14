@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long, VersionNumber } from "../../../__common/common";
-import { ShardLease } from "./ShardLease";
+import { long, VersionNumber } from '../../../__common/common'
+import { ShardLease } from './ShardLease'
 
 export class ShardRetentionLeases {
-  primary_term: long;
-  version: VersionNumber;
-  leases: ShardLease[];
+  primary_term: long
+  version: VersionNumber
+  leases: ShardLease[]
 }

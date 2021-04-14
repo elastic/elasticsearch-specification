@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.get_settings
@@ -27,10 +27,10 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterGetSettingsRequest extends RequestBase {
   query_parameters?: {
-    flat_settings?: boolean;
-    include_defaults?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-  };
-  body?: {};
+    flat_settings?: boolean
+    include_defaults?: boolean
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

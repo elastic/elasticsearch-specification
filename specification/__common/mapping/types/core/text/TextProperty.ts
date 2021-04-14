@@ -17,27 +17,27 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from "../../../../../indices/fielddata/FielddataFrequencyFilter";
-import { double, integer } from "../../../../common";
-import { TermVectorOption } from "../../../TermVectorOption";
-import { CorePropertyBase } from "../../CoreProperty";
-import { IndexOptions } from "./IndexOptions";
-import { TextIndexPrefixes } from "./TextIndexPrefixes";
+import { FielddataFrequencyFilter } from '../../../../../indices/FielddataFrequencyFilter'
+import { double, integer } from '../../../../common'
+import { TermVectorOption } from '../../../TermVectorOption'
+import { CorePropertyBase } from '../../CoreProperty'
+import { IndexOptions } from './IndexOptions'
+import { TextIndexPrefixes } from './TextIndexPrefixes'
 
 export class TextProperty extends CorePropertyBase {
-  analyzer?: string;
-  boost?: double;
-  eager_global_ordinals?: boolean;
-  fielddata?: boolean;
-  fielddata_frequency_filter?: FielddataFrequencyFilter;
-  index?: boolean;
-  index_options?: IndexOptions;
-  index_phrases?: boolean;
-  index_prefixes?: TextIndexPrefixes;
-  norms?: boolean;
-  position_increment_gap?: integer;
-  search_analyzer?: string;
-  search_quote_analyzer?: string;
-  term_vector?: TermVectorOption;
-  type: "text";
+  analyzer?: string
+  boost?: double
+  eager_global_ordinals?: boolean
+  fielddata?: boolean
+  fielddata_frequency_filter?: FielddataFrequencyFilter
+  index?: boolean
+  index_options?: IndexOptions
+  index_phrases?: boolean
+  index_prefixes?: TextIndexPrefixes
+  norms?: boolean
+  position_increment_gap?: integer
+  search_analyzer?: string
+  search_quote_analyzer?: string
+  term_vector?: TermVectorOption
+  type: 'text'
 }

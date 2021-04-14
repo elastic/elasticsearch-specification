@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ClusterRerouteDecision } from "./ClusterRerouteDecision";
-import { ClusterRerouteParameters } from "./ClusterRerouteParameters";
+import { ClusterRerouteDecision } from './ClusterRerouteDecision'
+import { ClusterRerouteParameters } from './ClusterRerouteParameters'
 
 export class ClusterRerouteExplanation {
-  command: string;
-  decisions: ClusterRerouteDecision[];
-  parameters: ClusterRerouteParameters;
+  command: string
+  decisions: ClusterRerouteDecision[]
+  parameters: ClusterRerouteParameters
 }

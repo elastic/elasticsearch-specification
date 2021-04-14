@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DateString, Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { DateString, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.flush_job
@@ -27,15 +27,15 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface FlushJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
+    job_id: Id
+  }
   query_parameters?: {
-    skip_time?: string;
-  };
+    skip_time?: string
+  }
   body?: {
-    advance_time?: DateString;
-    calc_interim?: boolean;
-    end?: DateString;
-    start?: DateString;
-  };
+    advance_time?: DateString
+    calc_interim?: boolean
+    end?: DateString
+    start?: DateString
+  }
 }

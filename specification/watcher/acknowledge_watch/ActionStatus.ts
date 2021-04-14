@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { AcknowledgeState } from "./AcknowledgeState";
-import { ExecutionState } from "./ExecutionState";
-import { ThrottleState } from "./ThrottleState";
+import { AcknowledgeState } from './AcknowledgeState'
+import { ExecutionState } from './ExecutionState'
+import { ThrottleState } from './ThrottleState'
 
 export class ActionStatus {
-  ack: AcknowledgeState;
-  last_execution?: ExecutionState;
-  last_successful_execution?: ExecutionState;
-  last_throttle?: ThrottleState;
+  ack: AcknowledgeState
+  last_execution?: ExecutionState
+  last_successful_execution?: ExecutionState
+  last_throttle?: ThrottleState
 }

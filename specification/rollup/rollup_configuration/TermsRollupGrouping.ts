@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Fields } from "../../__common/common";
+import { Fields } from '../../__common/common'
 
 export class TermsRollupGrouping {
-  fields: Fields;
+  fields: Fields
 }

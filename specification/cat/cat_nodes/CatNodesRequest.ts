@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Bytes } from "../../__common/common/Bytes";
-import { CatRequestBase } from "../CatBase";
+import { Bytes } from '../../__common/common/Bytes'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.nodes
@@ -27,8 +27,8 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatNodesRequest extends CatRequestBase {
   query_parameters?: {
-    bytes?: Bytes;
-    full_id?: boolean | string;
-  };
-  body?: {};
+    bytes?: Bytes
+    full_id?: boolean | string
+  }
+  body?: {}
 }

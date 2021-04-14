@@ -23,5 +23,5 @@ export enum TransformState {
   ABORTING = 2,
   STOPPING = 3,
   STOPPED = 4,
-  FAILED = 5,
+  FAILED = 5
 }

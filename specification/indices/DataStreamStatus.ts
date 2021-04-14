@@ -32,5 +32,5 @@ export enum DataStreamHealthStatus {
   /** One or more primary shards are unassigned, so some data is unavailable. */
   RED = 4,
   /** One or more primary shards are unassigned, so some data is unavailable. */
-  red = 5,
+  red = 5
 }

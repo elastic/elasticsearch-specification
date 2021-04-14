@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { SnapshotShardsStatsStage } from "./SnapshotShardsStatsStage";
+import { long } from '../../../__common/common'
+import { SnapshotShardsStatsStage } from './SnapshotShardsStatsStage'
 
 export class SnapshotShardsStatus {
-  stage: SnapshotShardsStatsStage;
-  stats: SnapshotShardsStatsSummary;
+  stage: SnapshotShardsStatsStage
+  stats: SnapshotShardsStatsSummary
 }
 
 export class SnapshotShardsStatsSummary {
-  incremental: SnapshotShardsStatsSummaryItem;
-  total: SnapshotShardsStatsSummaryItem;
-  start_time_in_millis: long;
-  time_in_millis: long;
+  incremental: SnapshotShardsStatsSummaryItem
+  total: SnapshotShardsStatsSummaryItem
+  start_time_in_millis: long
+  time_in_millis: long
 }
 
 export class SnapshotShardsStatsSummaryItem {
-  file_count: long;
-  size_in_bytes: long;
+  file_count: long
+  size_in_bytes: long
 }

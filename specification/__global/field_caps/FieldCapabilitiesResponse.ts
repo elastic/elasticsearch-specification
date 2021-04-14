@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Field, Indices } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { FieldCapabilities } from "./FieldCapabilities";
+import { Field, Indices } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { FieldCapabilities } from './FieldCapabilities'
 
 export class FieldCapabilitiesResponse extends ResponseBase {
-  indices: Indices;
-  fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>;
+  indices: Indices
+  fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>
 }

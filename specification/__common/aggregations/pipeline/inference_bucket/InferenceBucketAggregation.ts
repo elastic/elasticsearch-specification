@@ -17,26 +17,26 @@
  * under the License.
  */
 
-import { Field, integer, Name } from "../../../common";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { Field, integer, Name } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class InferenceAggregation extends PipelineAggregationBase {
-  model_id: Name;
-  inference_config?: InferenceConfigContainer;
+  model_id: Name
+  inference_config?: InferenceConfigContainer
 }
 
 export class InferenceConfigContainer {
-  regression?: RegressionInferenceOptions;
-  classification?: ClassificationInferenceOptions;
+  regression?: RegressionInferenceOptions
+  classification?: ClassificationInferenceOptions
 }
 
 export class RegressionInferenceOptions {
-  results_field: Field;
-  num_top_feature_importance_values?: integer;
+  results_field: Field
+  num_top_feature_importance_values?: integer
 }
 
 export class ClassificationInferenceOptions {
-  num_top_classes?: integer;
-  num_top_feature_importance_values?: integer;
-  prediction_field_type?: string;
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
 }

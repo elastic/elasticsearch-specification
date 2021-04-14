@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { CatRequestBase } from "../CatBase";
+import { Name } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.templates
@@ -27,8 +27,8 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatTemplatesRequest extends CatRequestBase {
   path_parts?: {
-    name?: Name;
-  };
-  query_parameters?: {};
-  body?: {};
+    name?: Name
+  }
+  query_parameters?: {}
+  body?: {}
 }

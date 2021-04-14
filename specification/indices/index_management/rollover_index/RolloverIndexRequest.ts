@@ -20,15 +20,15 @@
 import {
   IndexAlias,
   IndexName,
-  WaitForActiveShards,
-} from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { TypeMapping } from "../../../__common/mapping/TypeMapping";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../Alias";
-import { RolloverConditions } from "./RolloverConditions";
+  WaitForActiveShards
+} from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { TypeMapping } from '../../../__common/mapping/TypeMapping'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Alias } from '../../Alias'
+import { RolloverConditions } from './RolloverConditions'
 
 /**
  * @rest_spec_name indices.rollover
@@ -37,20 +37,20 @@ import { RolloverConditions } from "./RolloverConditions";
  */
 export interface RolloverIndexRequest extends RequestBase {
   path_parts?: {
-    alias: IndexAlias;
-    new_index?: IndexName;
-  };
+    alias: IndexAlias
+    new_index?: IndexName
+  }
   query_parameters?: {
-    dry_run?: boolean;
-    include_type_name?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-  };
+    dry_run?: boolean
+    include_type_name?: boolean
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+  }
   body?: {
-    aliases?: Dictionary<IndexName, Alias>;
-    conditions?: RolloverConditions;
-    mappings?: Dictionary<string, TypeMapping> | TypeMapping;
-    settings?: Dictionary<string, UserDefinedValue>;
-  };
+    aliases?: Dictionary<IndexName, Alias>
+    conditions?: RolloverConditions
+    mappings?: Dictionary<string, TypeMapping> | TypeMapping
+    settings?: Dictionary<string, UserDefinedValue>
+  }
 }

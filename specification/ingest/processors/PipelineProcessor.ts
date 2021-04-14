@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ProcessorBase } from "../ProcessorBase";
+import { ProcessorBase } from '../ProcessorBase'
 
 export class PipelineProcessor extends ProcessorBase {
-  name: string;
+  name: string
 }

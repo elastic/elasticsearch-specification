@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { MetricAggregationBase } from "../MetricAggregation";
+import { integer } from '../../../common'
+import { MetricAggregationBase } from '../MetricAggregation'
 
 export class CardinalityAggregation extends MetricAggregationBase {
-  precision_threshold?: integer;
-  rehash?: boolean;
+  precision_threshold?: integer
+  rehash?: boolean
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, long } from "../../__common/common";
-import { TransformProgress } from "./TransformProgress";
+import { DateString, EpochMillis, long } from '../../__common/common'
+import { TransformProgress } from './TransformProgress'
 
 export class TransformCheckpointStats {
-  checkpoint: long;
-  checkpoint_progress?: TransformProgress;
-  timestamp?: DateString;
-  timestamp_millis: EpochMillis;
-  time_upper_bound?: DateString;
-  time_upper_bound_millis?: EpochMillis;
+  checkpoint: long
+  checkpoint_progress?: TransformProgress
+  timestamp?: DateString
+  timestamp_millis: EpochMillis
+  time_upper_bound?: DateString
+  time_upper_bound_millis?: EpochMillis
 }

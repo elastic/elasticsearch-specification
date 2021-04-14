@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
-import { SpanQuery } from "../SpanQuery";
+import { Field } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanFieldMaskingQuery extends QueryBase {
-  field?: Field;
-  query?: SpanQuery;
+  field?: Field
+  query?: SpanQuery
 }

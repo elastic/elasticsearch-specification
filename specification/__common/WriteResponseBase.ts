@@ -24,21 +24,21 @@ import {
   long,
   SequenceNumber,
   Type,
-  VersionNumber,
-} from "./common";
-import { ResponseBase } from "./common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "./common_options/hit/ShardStatistics";
-import { Result } from "./Result";
+  VersionNumber
+} from './common'
+import { ResponseBase } from './common_abstractions/response/ResponseBase'
+import { ShardStatistics } from './common_options/hit/ShardStatistics'
+import { Result } from './Result'
 
 export class WriteResponseBase extends ResponseBase {
-  _id: Id;
-  _index: IndexName;
-  _primary_term: long;
-  result: Result;
-  _seq_no: SequenceNumber;
-  _shards: ShardStatistics;
-  _type?: Type;
-  _version: VersionNumber;
-  forced_refresh?: boolean;
-  error?: ErrorCause;
+  _id: Id
+  _index: IndexName
+  _primary_term: long
+  result: Result
+  _seq_no: SequenceNumber
+  _shards: ShardStatistics
+  _type?: Type
+  _version: VersionNumber
+  forced_refresh?: boolean
+  error?: ErrorCause
 }

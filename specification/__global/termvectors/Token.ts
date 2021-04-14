@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class Token {
-  end_offset?: integer;
-  payload?: string;
-  position: integer;
-  start_offset?: integer;
+  end_offset?: integer
+  payload?: string
+  position: integer
+  start_offset?: integer
 }

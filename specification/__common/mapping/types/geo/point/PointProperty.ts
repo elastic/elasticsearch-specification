@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class PointProperty extends DocValuesPropertyBase {
-  ignore_malformed?: boolean;
-  ignore_z_value?: boolean;
-  null_value?: string;
-  type: "point";
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  null_value?: string
+  type: 'point'
 }

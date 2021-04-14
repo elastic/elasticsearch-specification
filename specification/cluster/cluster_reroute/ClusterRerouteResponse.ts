@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { ClusterRerouteExplanation } from "./ClusterRerouteExplanation";
-import { ClusterRerouteState } from "./ClusterRerouteState";
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ClusterRerouteExplanation } from './ClusterRerouteExplanation'
+import { ClusterRerouteState } from './ClusterRerouteState'
 
 export class ClusterRerouteResponse extends AcknowledgedResponseBase {
-  explanations?: ClusterRerouteExplanation[];
-  state: ClusterRerouteState;
+  explanations?: ClusterRerouteExplanation[]
+  state: ClusterRerouteState
 }

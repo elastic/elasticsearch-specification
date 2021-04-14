@@ -17,23 +17,23 @@
  * under the License.
  */
 
-import { DateString, Id, long, VersionString } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { TransformPivot } from "../pivot/TransformPivot";
-import { TransformDestination } from "../TransformDestination";
-import { TransformSource } from "../TransformSource";
-import { TransformSyncContainer } from "../TransformSyncContainer";
+import { DateString, Id, long, VersionString } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { TransformPivot } from '../pivot/TransformPivot'
+import { TransformDestination } from '../TransformDestination'
+import { TransformSource } from '../TransformSource'
+import { TransformSyncContainer } from '../TransformSyncContainer'
 
 export class UpdateTransformResponse extends ResponseBase {
-  create_time: long;
-  create_time_date_time: DateString;
-  description: string;
-  dest: TransformDestination;
-  frequency: Time;
-  id: Id;
-  pivot: TransformPivot;
-  source: TransformSource;
-  sync: TransformSyncContainer;
-  version: VersionString;
+  create_time: long
+  create_time_date_time: DateString
+  description: string
+  dest: TransformDestination
+  frequency: Time
+  id: Id
+  pivot: TransformPivot
+  source: TransformSource
+  sync: TransformSyncContainer
+  version: VersionString
 }

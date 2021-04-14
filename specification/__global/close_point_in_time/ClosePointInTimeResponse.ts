@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class ClosePointInTimeResponse extends ResponseBase {
-  succeeded: boolean;
-  num_freed: integer;
+  succeeded: boolean
+  num_freed: integer
 }

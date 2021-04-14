@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class PatternCaptureTokenFilter extends TokenFilterBase {
-  patterns: string[];
+  patterns: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  preserve_original: boolean;
+  preserve_original: boolean
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field } from "../../__common/common";
+import { Field } from '../../__common/common'
+import { Script } from '../../__common/common_options/scripting/Script'
 
 export class SingleGroupSource {
-  field: Field;
-  script: Script;
+  field: Field
+  script: Script
 }

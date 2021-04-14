@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from "../../../../../__common/common";
+import { double } from '../../../../../__common/common'
 
 export class LaplaceSmoothingModel {
-  alpha: double;
+  alpha: double
 }

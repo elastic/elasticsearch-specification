@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { double } from "../../common";
+import { double } from '../../common'
 
 export class AggregationRange {
-  from?: double | string;
-  key?: string;
-  to?: double | string;
+  from?: double | string
+  key?: string
+  to?: double | string
 }

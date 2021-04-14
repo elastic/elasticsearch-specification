@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Context } from "vm";
-import { double, integer } from "../../../../__common/common";
-import { Distance } from "../../../../__common/common_options/geo/Distance";
+import { double, integer } from '../../../../__common/common'
+import { Distance } from '../../../../__common/common_options/geo/Distance'
+import { Context } from './Context'
 
 export class SuggestContextQuery {
-  boost?: double;
-  context: Context;
-  neighbours?: Distance[] | integer[];
-  precision?: Distance | integer;
-  prefix?: boolean;
+  boost?: double
+  context: Context
+  neighbours?: Distance[] | integer[]
+  precision?: Distance | integer
+  prefix?: boolean
 }

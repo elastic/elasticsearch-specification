@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { LicenseType } from "../get_license/LicenseType";
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { LicenseType } from '../get_license/LicenseType'
 
 export class StartTrialLicenseResponse extends AcknowledgedResponseBase {
-  error_message?: string;
-  acknowledged: boolean;
-  trial_was_started: boolean;
-  type: LicenseType;
+  error_message?: string
+  acknowledged: boolean
+  trial_was_started: boolean
+  type: LicenseType
 }

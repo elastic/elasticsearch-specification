@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
 
 export class IndicesOptions {
-  allow_no_indices: boolean;
-  expand_wildcards: ExpandWildcards;
-  ignore_unavailable: boolean;
+  allow_no_indices: boolean
+  expand_wildcards: ExpandWildcards
+  ignore_unavailable: boolean
 }

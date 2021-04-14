@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { integer } from '../../common'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class CustomAnalyzer extends AnalyzerBase {
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  char_filter: string[];
+  char_filter: string[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  filter: string[];
+  filter: string[]
   /** @prop_serializer NullableStringIntFormatter */
-  position_increment_gap: integer;
+  position_increment_gap: integer
   /** @prop_serializer NullableStringIntFormatter */
-  position_offset_gap: integer;
-  tokenizer: string;
+  position_offset_gap: integer
+  tokenizer: string
 }

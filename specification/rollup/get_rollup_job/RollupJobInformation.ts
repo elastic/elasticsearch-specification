@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { RollupJobConfiguration } from "./RollupJobConfiguration";
-import { RollupJobStats } from "./RollupJobStats";
-import { RollupJobStatus } from "./RollupJobStatus";
+import { RollupJobConfiguration } from './RollupJobConfiguration'
+import { RollupJobStats } from './RollupJobStats'
+import { RollupJobStatus } from './RollupJobStatus'
 
 export class RollupJobInformation {
-  config: RollupJobConfiguration;
-  stats: RollupJobStats;
-  status: RollupJobStatus;
+  config: RollupJobConfiguration
+  stats: RollupJobStats
+  status: RollupJobStatus
 }

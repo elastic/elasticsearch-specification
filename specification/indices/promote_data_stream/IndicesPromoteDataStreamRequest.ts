@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.promote_data_stream
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface IndicesPromoteDataStreamRequest extends RequestBase {
   path_parts?: {
-    name: IndexName;
-  };
-  query_parameters?: {};
-  body?: {};
+    name: IndexName
+  }
+  query_parameters?: {}
+  body?: {}
 }

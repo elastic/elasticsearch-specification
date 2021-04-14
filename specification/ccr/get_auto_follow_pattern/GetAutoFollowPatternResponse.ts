@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { AutoFollowPatternItem } from "./AutoFollowPatternItem";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AutoFollowPatternItem } from './AutoFollowPatternItem'
 
 export class GetAutoFollowPatternResponse extends ResponseBase {
-  patterns: AutoFollowPatternItem[];
+  patterns: AutoFollowPatternItem[]
 }

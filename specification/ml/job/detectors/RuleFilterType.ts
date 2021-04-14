@@ -19,5 +19,5 @@
 
 export enum RuleFilterType {
   include = 0,
-  exclude = 1,
+  exclude = 1
 }

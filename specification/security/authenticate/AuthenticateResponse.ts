@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { RealmInfo } from "./RealmInfo";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { RealmInfo } from './RealmInfo'
 
 export class AuthenticateResponse extends ResponseBase {
-  authentication_realm: RealmInfo;
-  email?: string;
-  full_name?: string;
-  lookup_realm: RealmInfo;
-  metadata: Dictionary<string, UserDefinedValue>;
-  roles: string[];
-  username: string;
-  enabled: boolean;
-  authentication_type: string;
+  authentication_realm: RealmInfo
+  email?: string
+  full_name?: string
+  lookup_realm: RealmInfo
+  metadata: Dictionary<string, UserDefinedValue>
+  roles: string[]
+  username: string
+  enabled: boolean
+  authentication_type: string
 }

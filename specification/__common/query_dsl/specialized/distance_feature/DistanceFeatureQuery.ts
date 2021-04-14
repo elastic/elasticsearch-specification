@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { DateMath } from "../../../common_options/date_math/DateMath";
-import { Distance } from "../../../common_options/geo/Distance";
-import { Time } from "../../../common_options/time_unit/Time";
-import { QueryBase } from "../../abstractions/query/Query";
-import { GeoCoordinate } from "../../geo/GeoLocation";
+import { Field } from '../../../common'
+import { DateMath } from '../../../common_options/date_math/DateMath'
+import { Distance } from '../../../common_options/geo/Distance'
+import { Time } from '../../../common_options/time_unit/Time'
+import { QueryBase } from '../../abstractions/query/Query'
+import { GeoCoordinate } from '../../geo/GeoLocation'
 
 export class DistanceFeatureQuery extends QueryBase {
-  origin?: Array<number> | GeoCoordinate | DateMath;
-  pivot?: Distance | Time;
-  field?: Field;
+  origin?: Array<number> | GeoCoordinate | DateMath
+  pivot?: Distance | Time
+  field?: Field
 }

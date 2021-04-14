@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class GarbageCollectionGenerationStats {
-  collection_count: long;
-  collection_time: string;
-  collection_time_in_millis: long;
+  collection_count: long
+  collection_time: string
+  collection_time_in_millis: long
 }

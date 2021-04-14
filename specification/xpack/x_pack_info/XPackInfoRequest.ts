@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name xpack.info
@@ -26,7 +26,7 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface XPackInfoRequest extends RequestBase {
   query_parameters?: {
-    categories?: string[];
-  };
-  body?: {};
+    categories?: string[]
+  }
+  body?: {}
 }

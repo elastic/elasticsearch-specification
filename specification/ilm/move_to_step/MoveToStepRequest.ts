@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { StepKey } from "./StepKey";
+import { IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { StepKey } from './StepKey'
 
 /**
  * @rest_spec_name ilm.move_to_step
@@ -28,11 +28,11 @@ import { StepKey } from "./StepKey";
  */
 export interface MoveToStepRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-  };
-  query_parameters?: {};
+    index: IndexName
+  }
+  query_parameters?: {}
   body?: {
-    current_step?: StepKey;
-    next_step?: StepKey;
-  };
+    current_step?: StepKey
+    next_step?: StepKey
+  }
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices } from "../__common/common";
+import { Indices } from '../__common/common'
 
 export class SnapshotLifecycleConfig {
-  ignore_unavailable?: boolean;
-  include_global_state?: boolean;
-  indices: Indices;
+  ignore_unavailable?: boolean
+  include_global_state?: boolean
+  indices: Indices
 }

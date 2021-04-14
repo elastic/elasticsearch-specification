@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name sql.clear_cursor
@@ -25,8 +25,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  * @stability TODO
  */
 export interface ClearSqlCursorRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    cursor?: string;
-  };
+    cursor?: string
+  }
 }

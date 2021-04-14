@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Filter } from "./Filter";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Filter } from './Filter'
 
 export class GetFiltersResponse extends ResponseBase {
-  count: long;
-  filters: Filter[];
+  count: long
+  filters: Filter[]
 }

@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Field, Id, IndexName } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { Field, Id, IndexName } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class RollupIndexCapabilitiesJob {
-  fields: Dictionary<Field, RollupIndexCapabilitiesJobField[]>;
-  index_pattern: string;
-  job_id: Id;
-  rollup_index: IndexName;
+  fields: Dictionary<Field, RollupIndexCapabilitiesJobField[]>
+  index_pattern: string
+  job_id: Id
+  rollup_index: IndexName
 }
 
 export class RollupIndexCapabilitiesJobField {
-  agg: string;
-  time_zone?: string;
-  calendar_interval?: Time;
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }

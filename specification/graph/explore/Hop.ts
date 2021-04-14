@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { GraphVertexDefinition } from "./GraphVertexDefinition";
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { GraphVertexDefinition } from './GraphVertexDefinition'
 
 export class Hop {
-  connections?: Hop;
-  query: QueryContainer;
-  vertices: GraphVertexDefinition[];
+  connections?: Hop
+  query: QueryContainer
+  vertices: GraphVertexDefinition[]
 }

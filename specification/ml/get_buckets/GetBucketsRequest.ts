@@ -23,10 +23,10 @@ import {
   Field,
   Id,
   integer,
-  Timestamp,
-} from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Page } from "../job/Page";
+  Timestamp
+} from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../job/Page'
 
 /**
  * @rest_spec_name ml.get_buckets
@@ -35,26 +35,26 @@ import { Page } from "../job/Page";
  */
 export interface GetBucketsRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    timestamp?: Timestamp;
-  };
+    job_id: Id
+    timestamp?: Timestamp
+  }
   query_parameters?: {
-    from?: integer;
-    size?: integer;
-    exclude_interim?: boolean; // default: false
-    sort?: Field;
-    desc?: boolean; // default: false
-    start?: DateString;
-    end?: DateString;
-  };
+    from?: integer
+    size?: integer
+    exclude_interim?: boolean // default: false
+    sort?: Field
+    desc?: boolean // default: false
+    start?: DateString
+    end?: DateString
+  }
   body?: {
-    anomaly_score?: double;
-    desc?: boolean; // default: false
-    exclude_interim?: boolean; // default: false
-    expand?: boolean; // default: false
-    page?: Page;
-    sort?: Field;
-    start?: DateString;
-    end?: DateString;
-  };
+    anomaly_score?: double
+    desc?: boolean // default: false
+    exclude_interim?: boolean // default: false
+    expand?: boolean // default: false
+    page?: Page
+    sort?: Field
+    start?: DateString
+    end?: DateString
+  }
 }

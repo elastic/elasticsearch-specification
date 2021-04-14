@@ -24,5 +24,5 @@ export enum DateRounding {
   d = 3,
   w = 4,
   M = 5,
-  y = 6,
+  y = 6
 }

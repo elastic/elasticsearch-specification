@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Script } from "vm";
+import { Script } from '../../../../common_options/scripting/Script'
 
 export class ScriptedHeuristic {
-  script: Script;
+  script: Script
 }

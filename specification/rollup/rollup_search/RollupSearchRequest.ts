@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AggregationContainer } from "../../__common/aggregations/AggregationContainer";
-import { Indices, integer, Type } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { Indices, integer, Type } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 /**
  * @rest_spec_name rollup.rollup_search
@@ -30,16 +30,16 @@ import { Dictionary } from "../../__spec_utils/Dictionary";
  */
 export interface RollupSearchRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-    type?: Type;
-  };
+    index: Indices
+    type?: Type
+  }
   query_parameters?: {
-    rest_total_hits_as_int?: boolean;
-    typed_keys?: boolean;
-  };
+    rest_total_hits_as_int?: boolean
+    typed_keys?: boolean
+  }
   body?: {
-    aggs?: Dictionary<string, AggregationContainer>;
-    query?: QueryContainer;
-    size?: integer;
-  };
+    aggs?: Dictionary<string, AggregationContainer>
+    query?: QueryContainer
+    size?: integer
+  }
 }

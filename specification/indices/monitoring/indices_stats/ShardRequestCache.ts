@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardRequestCache {
-  evictions: long;
-  hit_count: long;
-  memory_size_in_bytes: long;
-  miss_count: long;
+  evictions: long
+  hit_count: long
+  memory_size_in_bytes: long
+  miss_count: long
 }

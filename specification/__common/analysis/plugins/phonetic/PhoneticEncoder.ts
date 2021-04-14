@@ -29,5 +29,5 @@ export enum PhoneticEncoder {
   koelnerphonetik = 8,
   haasephonetik = 9,
   beider_morse = 10,
-  daitch_mokotoff = 11,
+  daitch_mokotoff = 11
 }

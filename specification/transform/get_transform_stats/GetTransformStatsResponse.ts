@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { TransformStats } from "./TransformStats";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { TransformStats } from './TransformStats'
 
 export class GetTransformStatsResponse extends ResponseBase {
-  count: long;
-  transforms: TransformStats[];
+  count: long
+  transforms: TransformStats[]
 }

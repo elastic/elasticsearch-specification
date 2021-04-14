@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { double, Field } from "../../../common";
+import { double, Field } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
 
 export class WeightedAverageValue {
-  field?: Field;
-  missing?: double;
-  script?: Script;
+  field?: Field
+  missing?: double
+  script?: Script
 }

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { CompletionSuggester } from "./completion_suggester/CompletionSuggester";
-import { PhraseSuggester } from "./phrase_suggester/PhraseSuggester";
-import { TermSuggester } from "./term_suggester/TermSuggester";
+import { CompletionSuggester } from './completion_suggester/CompletionSuggester'
+import { PhraseSuggester } from './phrase_suggester/PhraseSuggester'
+import { TermSuggester } from './term_suggester/TermSuggester'
 
 export class SuggestContainer {
-  completion?: CompletionSuggester;
-  phrase?: PhraseSuggester;
-  prefix?: string;
-  regex?: string;
-  term?: TermSuggester;
-  text?: string;
+  completion?: CompletionSuggester
+  phrase?: PhraseSuggester
+  prefix?: string
+  regex?: string
+  term?: TermSuggester
+  text?: string
 }

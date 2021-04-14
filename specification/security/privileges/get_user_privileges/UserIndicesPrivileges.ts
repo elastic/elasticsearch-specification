@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { FieldSecuritySettings } from "./FieldSecuritySettings";
-import { QueryUserPrivileges } from "./QueryUserPrivileges";
+import { FieldSecuritySettings } from './FieldSecuritySettings'
+import { QueryUserPrivileges } from './QueryUserPrivileges'
 
 export class UserIndicesPrivileges {
-  field_security?: FieldSecuritySettings;
-  names: string[];
-  privileges: string[];
-  query?: QueryUserPrivileges;
-  allow_restricted_indices: boolean;
+  field_security?: FieldSecuritySettings
+  names: string[]
+  privileges: string[]
+  query?: QueryUserPrivileges
+  allow_restricted_indices: boolean
 }

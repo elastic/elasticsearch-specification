@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { NoriDecompoundMode } from "./NoriDecompoundMode";
-import { TokenizerBase } from "./TokenizerBase";
+import { NoriDecompoundMode } from './NoriDecompoundMode'
+import { TokenizerBase } from './TokenizerBase'
 
 export class NoriTokenizer extends TokenizerBase {
-  decompound_mode: NoriDecompoundMode;
+  decompound_mode: NoriDecompoundMode
   /** @prop_serializer NullableStringBooleanFormatter */
-  discard_punctuation: boolean;
-  user_dictionary: string;
-  user_dictionary_rules: string[];
+  discard_punctuation: boolean
+  user_dictionary: string
+  user_dictionary_rules: string[]
 }

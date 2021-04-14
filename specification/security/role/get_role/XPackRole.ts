@@ -17,54 +17,54 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { ApplicationPrivileges } from "../put_role/ApplicationPrivileges";
-import { IndicesPrivileges } from "../put_role/IndicesPrivileges";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { ApplicationPrivileges } from '../put_role/ApplicationPrivileges'
+import { IndicesPrivileges } from '../put_role/IndicesPrivileges'
 
 export class XPackRole {
-  cluster: string[];
-  indices: IndicesPrivileges[];
-  metadata: Dictionary<string, UserDefinedValue>;
-  run_as: string[];
-  transient_metadata: TransientMetadata;
-  applications: ApplicationPrivileges[];
-  role_templates?: RoleTemplate[];
+  cluster: string[]
+  indices: IndicesPrivileges[]
+  metadata: Dictionary<string, UserDefinedValue>
+  run_as: string[]
+  transient_metadata: TransientMetadata
+  applications: ApplicationPrivileges[]
+  role_templates?: RoleTemplate[]
 }
 
 export class TransientMetadata {
-  enabled: boolean;
+  enabled: boolean
 }
 
 export enum RoleTemplateFormat {
   string = 0,
-  json = 1,
+  json = 1
 }
 
 export class InlineRoleTemplate {
-  template: InlineRoleTemplateSource;
-  format?: RoleTemplateFormat;
+  template: InlineRoleTemplateSource
+  format?: RoleTemplateFormat
 }
 
 export class InlineRoleTemplateSource {
-  source: string;
+  source: string
 }
 
 export class StoredRoleTemplate {
-  template: StoredRoleTemplateId;
-  format?: RoleTemplateFormat;
+  template: StoredRoleTemplateId
+  format?: RoleTemplateFormat
 }
 
 export class StoredRoleTemplateId {
-  id: string;
+  id: string
 }
 
 export class InvalidRoleTemplate {
-  template: string;
-  format?: RoleTemplateFormat;
+  template: string
+  format?: RoleTemplateFormat
 }
 
 export type RoleTemplate =
   | InlineRoleTemplate
   | StoredRoleTemplate
-  | InvalidRoleTemplate;
+  | InvalidRoleTemplate

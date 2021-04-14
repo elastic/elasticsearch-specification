@@ -18,5 +18,5 @@
  */
 
 export class FielddataRegexFilter {
-  pattern: string;
+  pattern: string
 }

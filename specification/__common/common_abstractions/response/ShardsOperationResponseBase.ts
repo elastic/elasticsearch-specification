@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ShardStatistics } from "../../common_options/hit/ShardStatistics";
-import { ResponseBase } from "./ResponseBase";
+import { ShardStatistics } from '../../common_options/hit/ShardStatistics'
+import { ResponseBase } from './ResponseBase'
 
 export class ShardsOperationResponseBase extends ResponseBase {
-  _shards: ShardStatistics;
+  _shards: ShardStatistics
 }

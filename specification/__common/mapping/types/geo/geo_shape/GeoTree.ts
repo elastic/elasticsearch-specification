@@ -19,5 +19,5 @@
 
 export enum GeoTree {
   geohash = 0,
-  quadtree = 1,
+  quadtree = 1
 }

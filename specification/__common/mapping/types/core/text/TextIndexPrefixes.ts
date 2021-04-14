@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../../../common";
+import { integer } from '../../../../common'
 
 export class TextIndexPrefixes {
-  max_chars: integer;
-  min_chars: integer;
+  max_chars: integer
+  min_chars: integer
 }

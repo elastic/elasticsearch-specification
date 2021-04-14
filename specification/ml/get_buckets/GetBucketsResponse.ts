@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ResultBucket } from "../job/results/ResultBucket";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ResultBucket } from '../job/results/ResultBucket'
 
 export class GetBucketsResponse extends ResponseBase {
-  buckets: ResultBucket[];
-  count: long;
+  buckets: ResultBucket[]
+  count: long
 }

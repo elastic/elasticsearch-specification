@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class TermVectorFilter {
-  max_doc_freq?: integer;
-  max_num_terms?: integer;
-  max_term_freq?: integer;
-  max_word_length?: integer;
-  min_doc_freq?: integer;
-  min_term_freq?: integer;
-  min_word_length?: integer;
+  max_doc_freq?: integer
+  max_num_terms?: integer
+  max_term_freq?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
+  min_term_freq?: integer
+  min_word_length?: integer
 }

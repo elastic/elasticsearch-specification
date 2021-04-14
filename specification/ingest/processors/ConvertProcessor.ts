@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
-import { ConvertProcessorType } from "./ConvertProcessorType";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
+import { ConvertProcessorType } from './ConvertProcessorType'
 
 export class ConvertProcessor extends ProcessorBase {
-  field: Field;
-  ignore_missing?: boolean;
-  target_field: Field;
-  type: ConvertProcessorType;
+  field: Field
+  ignore_missing?: boolean
+  target_field: Field
+  type: ConvertProcessorType
 }

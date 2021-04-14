@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { SortOrder } from "../../../../__global/search/sort/SortOrder";
-import { Field, integer } from "../../../common";
+import { SortOrder } from '../../../../__global/search/sort/SortOrder'
+import { Field, integer } from '../../../common'
 
 export class GeoLineAggregation {
-  point: GeoLinePoint;
-  sort: GeoLineSort;
-  include_sort?: boolean;
-  sort_order?: SortOrder;
-  size?: integer;
+  point: GeoLinePoint
+  sort: GeoLineSort
+  include_sort?: boolean
+  sort_order?: SortOrder
+  size?: integer
 }
 
 export class GeoLineSort {
-  field: Field;
+  field: Field
 }
 
 export class GeoLinePoint {
-  field: Field;
+  field: Field
 }

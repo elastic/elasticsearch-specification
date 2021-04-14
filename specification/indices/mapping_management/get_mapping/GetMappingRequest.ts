@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices, Types } from "../../../__common/common";
-import { ExpandWildcards } from "../../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Indices, Types } from '../../../__common/common'
+import { ExpandWildcards } from '../../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.get_mapping
@@ -29,16 +29,16 @@ import { Time } from "../../../__common/common_options/time_unit/Time";
  */
 export interface GetMappingRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types;
-  };
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    include_type_name?: boolean;
-    local?: boolean;
-    master_timeout?: Time;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    include_type_name?: boolean
+    local?: boolean
+    master_timeout?: Time
+  }
+  body?: {}
 }

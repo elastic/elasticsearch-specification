@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { EpochMillis, long } from "../../__common/common";
-import { LicenseType } from "./LicenseType";
+import { EpochMillis, long } from '../../__common/common'
+import { LicenseType } from './LicenseType'
 
 export class License {
-  expiry_date_in_millis: EpochMillis;
-  issue_date_in_millis: EpochMillis;
-  issued_to: string;
-  issuer: string;
-  max_nodes?: long;
-  max_resource_units?: long;
-  signature: string;
-  start_date_in_millis: EpochMillis;
-  type: LicenseType;
-  uid: string;
+  expiry_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochMillis
+  issued_to: string
+  issuer: string
+  max_nodes?: long
+  max_resource_units?: long
+  signature: string
+  start_date_in_millis: EpochMillis
+  type: LicenseType
+  uid: string
 }

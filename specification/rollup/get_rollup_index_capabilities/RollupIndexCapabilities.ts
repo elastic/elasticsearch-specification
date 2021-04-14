@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RollupIndexCapabilitiesJob } from "./RollupIndexCapabilitiesJob";
+import { RollupIndexCapabilitiesJob } from './RollupIndexCapabilitiesJob'
 
 export class RollupIndexCapabilities {
-  rollup_jobs: RollupIndexCapabilitiesJob[];
+  rollup_jobs: RollupIndexCapabilitiesJob[]
 }

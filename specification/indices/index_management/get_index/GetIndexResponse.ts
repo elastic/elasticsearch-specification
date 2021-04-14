@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from "../../../__common/common";
-import { DictionaryResponseBase } from "../../../__common/common_abstractions/response/DictionaryResponseBase";
-import { IndexState } from "../../../__common/index_settings/IndexState";
+import { IndexName } from '../../../__common/common'
+import { DictionaryResponseBase } from '../../../__common/common_abstractions/response/DictionaryResponseBase'
+import { IndexState } from '../../../__common/index_settings/IndexState'
 
 export class GetIndexResponse extends DictionaryResponseBase<
   IndexName,

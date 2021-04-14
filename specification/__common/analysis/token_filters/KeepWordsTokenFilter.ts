@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class KeepWordsTokenFilter extends TokenFilterBase {
-  keep_words: string[];
+  keep_words: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  keep_words_case: boolean;
-  keep_words_path: string;
+  keep_words_case: boolean
+  keep_words_path: string
 }

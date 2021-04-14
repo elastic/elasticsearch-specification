@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../__common/common";
+import { Field, integer } from '../../../__common/common'
 
 export class NestedIdentity {
-  field: Field;
-  offset: integer;
-  _nested?: NestedIdentity;
+  field: Field
+  offset: integer
+  _nested?: NestedIdentity
 }

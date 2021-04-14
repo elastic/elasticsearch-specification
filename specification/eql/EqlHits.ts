@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { TotalHits } from "../__global/search/hits/TotalHits";
-import { EqlHitsEvent } from "./EqlHitsEvent";
-import { EqlHitsSequence } from "./EqlHitsSequence";
+import { TotalHits } from '../__global/search/hits/TotalHits'
+import { EqlHitsEvent } from './EqlHitsEvent'
+import { EqlHitsSequence } from './EqlHitsSequence'
 
 export class EqlHits<TEvent> {
-  total?: TotalHits;
-  events?: EqlHitsEvent<TEvent>[];
-  sequences?: EqlHitsSequence<TEvent>[];
+  total?: TotalHits
+  events?: EqlHitsEvent<TEvent>[]
+  sequences?: EqlHitsSequence<TEvent>[]
 }

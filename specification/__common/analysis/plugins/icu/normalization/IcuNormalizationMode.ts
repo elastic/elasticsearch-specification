@@ -19,5 +19,5 @@
 
 export enum IcuNormalizationMode {
   decompose = 0,
-  compose = 1,
+  compose = 1
 }

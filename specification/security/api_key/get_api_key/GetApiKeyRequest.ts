@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.get_api_key
@@ -26,11 +26,11 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface GetApiKeyRequest extends RequestBase {
   query_parameters?: {
-    id?: string;
-    name?: string;
-    owner?: boolean;
-    realm_name?: string;
-    username?: string;
-  };
-  body?: {};
+    id?: string
+    name?: string
+    owner?: boolean
+    realm_name?: string
+    username?: string
+  }
+  body?: {}
 }

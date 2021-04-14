@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardFielddata {
-  evictions: long;
-  memory_size_in_bytes: long;
+  evictions: long
+  memory_size_in_bytes: long
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class Page {
-  from: integer;
-  size: integer;
+  from: integer
+  size: integer
 }

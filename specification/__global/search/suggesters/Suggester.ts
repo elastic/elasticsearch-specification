@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../__common/common";
+import { Field, integer } from '../../../__common/common'
 
 export class SuggesterBase {
-  field: Field;
-  analyzer?: string;
-  size?: integer;
+  field: Field
+  analyzer?: string
+  size?: integer
 }

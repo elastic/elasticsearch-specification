@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
-import { SpanQuery } from "../SpanQuery";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanFirstQuery extends QueryBase {
-  end?: integer;
-  match?: SpanQuery;
+  end?: integer
+  match?: SpanQuery
 }

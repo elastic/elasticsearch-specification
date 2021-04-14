@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../../__spec_utils/Dictionary";
-import { PropertyName } from "../../../../common";
-import { DynamicMapping } from "../../../DynamicMapping";
-import { CorePropertyBase } from "../../CoreProperty";
-import { Property } from "../../Property";
+import { Dictionary } from '../../../../../__spec_utils/Dictionary'
+import { PropertyName } from '../../../../common'
+import { DynamicMapping } from '../../../DynamicMapping'
+import { CorePropertyBase } from '../../CoreProperty'
+import { Property } from '../../Property'
 
 export class ObjectProperty extends CorePropertyBase {
   /** @prop_serializer DynamicMappingFormatter */
-  dynamic?: boolean | DynamicMapping;
-  enabled?: boolean;
-  properties?: Dictionary<PropertyName, Property>;
-  type: "object";
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  type: 'object'
 }

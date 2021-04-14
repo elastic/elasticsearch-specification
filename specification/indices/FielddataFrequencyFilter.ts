@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { double, integer } from "../../__common/common";
+import { double, integer } from '../__common/common'
 
 export class FielddataFrequencyFilter {
-  max: double;
-  min: double;
-  min_segment_size: integer;
+  max: double
+  min: double
+  min_segment_size: integer
 }

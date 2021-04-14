@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class ExecutionState {
-  successful: boolean;
-  timestamp: DateString;
+  successful: boolean
+  timestamp: DateString
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ErrorCause, integer } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
+import { ErrorCause, integer } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
 
 export class InvalidateApiKeyResponse extends ResponseBase {
-  error_count: integer;
-  error_details?: ErrorCause[];
-  invalidated_api_keys: string[];
-  previously_invalidated_api_keys: string[];
+  error_count: integer
+  error_details?: ErrorCause[]
+  invalidated_api_keys: string[]
+  previously_invalidated_api_keys: string[]
 }

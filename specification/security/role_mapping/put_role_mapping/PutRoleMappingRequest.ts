@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { RoleMappingRuleBase } from "../rules/role/RoleMappingRuleBase";
+import { Name } from '../../../__common/common'
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { RoleMappingRuleBase } from '../rules/role/RoleMappingRuleBase'
 
 /**
  * @rest_spec_name security.put_role_mapping
@@ -31,16 +31,16 @@ import { RoleMappingRuleBase } from "../rules/role/RoleMappingRuleBase";
  */
 export interface PutRoleMappingRequest extends RequestBase {
   path_parts?: {
-    name: Name;
-  };
+    name: Name
+  }
   query_parameters?: {
-    refresh?: Refresh;
-  };
+    refresh?: Refresh
+  }
   body?: {
-    enabled?: boolean;
-    metadata?: Dictionary<string, UserDefinedValue>;
-    roles?: string[];
-    rules?: RoleMappingRuleBase;
-    run_as?: string[];
-  };
+    enabled?: boolean
+    metadata?: Dictionary<string, UserDefinedValue>
+    roles?: string[]
+    rules?: RoleMappingRuleBase
+    run_as?: string[]
+  }
 }

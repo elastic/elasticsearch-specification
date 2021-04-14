@@ -19,5 +19,5 @@
 
 export enum IBLambda {
   df = 0,
-  ttf = 1,
+  ttf = 1
 }

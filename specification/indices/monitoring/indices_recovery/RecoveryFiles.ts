@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long, Percentage } from "../../../__common/common";
-import { RecoveryFileDetails } from "./RecoveryFileDetails";
+import { long, Percentage } from '../../../__common/common'
+import { RecoveryFileDetails } from './RecoveryFileDetails'
 
 export class RecoveryFiles {
-  details?: RecoveryFileDetails[];
-  percent: Percentage;
-  recovered: long;
-  reused: long;
-  total: long;
+  details?: RecoveryFileDetails[]
+  percent: Percentage
+  recovered: long
+  reused: long
+  total: long
 }

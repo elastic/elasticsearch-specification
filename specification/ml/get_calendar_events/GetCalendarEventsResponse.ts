@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ScheduledEvent } from "../post_calendar_events/ScheduledEvent";
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ScheduledEvent } from '../post_calendar_events/ScheduledEvent'
 
 export class GetCalendarEventsResponse extends ResponseBase {
-  count: integer;
-  events: ScheduledEvent[];
+  count: integer
+  events: ScheduledEvent[]
 }

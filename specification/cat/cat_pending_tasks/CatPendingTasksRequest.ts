@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatRequestBase } from "../CatBase";
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.pending_tasks
@@ -25,6 +25,6 @@ import { CatRequestBase } from "../CatBase";
  * @stability TODO
  */
 export interface CatPendingTasksRequest extends CatRequestBase {
-  query_parameters?: {};
-  body?: {};
+  query_parameters?: {}
+  body?: {}
 }

@@ -17,23 +17,23 @@
  * under the License.
  */
 
-import { double } from "../../common";
+import { double } from '../../common'
 
 export class TwoDimensionalPoint {
-  lat: double;
-  lon: double;
+  lat: double
+  lon: double
 }
 export class ThreeDimensionalPoint {
-  lat: double;
-  lon: double;
-  z?: double;
+  lat: double
+  lon: double
+  z?: double
 }
 /**
  * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
  */
-export type GeoCoordinate = string | double[] | ThreeDimensionalPoint;
+export type GeoCoordinate = string | double[] | ThreeDimensionalPoint
 
 /**
  * Represents a Latitude/Longitude as a 2 dimensional point
  */
-export type GeoLocation = string | double[] | TwoDimensionalPoint;
+export type GeoLocation = string | double[] | TwoDimensionalPoint

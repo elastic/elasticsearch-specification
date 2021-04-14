@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName, integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name cluster.allocation_explain
@@ -27,12 +27,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ClusterAllocationExplainRequest extends RequestBase {
   query_parameters?: {
-    include_disk_info?: boolean;
-    include_yes_decisions?: boolean;
-  };
+    include_disk_info?: boolean
+    include_yes_decisions?: boolean
+  }
   body?: {
-    index?: IndexName;
-    primary?: boolean;
-    shard?: integer;
-  };
+    index?: IndexName
+    primary?: boolean
+    shard?: integer
+  }
 }

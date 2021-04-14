@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { AnalysisConfig } from "../job/config/AnalysisConfig";
-import { AnalysisLimits } from "../job/config/AnalysisLimits";
-import { DataDescription } from "../job/config/DataDescription";
-import { ModelPlotConfig } from "../job/config/ModelPlotConfig";
+import { Id, IndexName, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { AnalysisConfig } from '../job/config/AnalysisConfig'
+import { AnalysisLimits } from '../job/config/AnalysisLimits'
+import { DataDescription } from '../job/config/DataDescription'
+import { ModelPlotConfig } from '../job/config/ModelPlotConfig'
 
 /**
  * @rest_spec_name ml.put_job
@@ -31,17 +31,17 @@ import { ModelPlotConfig } from "../job/config/ModelPlotConfig";
  */
 export interface PutJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    allow_lazy_open?: boolean;
-    analysis_config?: AnalysisConfig;
-    analysis_limits?: AnalysisLimits;
-    data_description?: DataDescription;
-    description?: string;
-    model_plot?: ModelPlotConfig;
-    model_snapshot_retention_days?: long;
-    results_index_name?: IndexName;
-  };
+    allow_lazy_open?: boolean
+    analysis_config?: AnalysisConfig
+    analysis_limits?: AnalysisLimits
+    data_description?: DataDescription
+    description?: string
+    model_plot?: ModelPlotConfig
+    model_snapshot_retention_days?: long
+    results_index_name?: IndexName
+  }
 }

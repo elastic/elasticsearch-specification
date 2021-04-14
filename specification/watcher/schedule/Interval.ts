@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { IntervalUnit } from "./IntervalUnit";
-import { ScheduleBase } from "./ScheduleBase";
+import { long } from '../../__common/common'
+import { IntervalUnit } from './IntervalUnit'
+import { ScheduleBase } from './ScheduleBase'
 
 export class Interval extends ScheduleBase {
-  factor: long;
-  unit: IntervalUnit;
+  factor: long
+  unit: IntervalUnit
 }

@@ -19,5 +19,5 @@
 
 export enum TranslogDurability {
   request = 0,
-  async = 1,
+  async = 1
 }

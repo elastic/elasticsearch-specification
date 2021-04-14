@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
+import { IndexName } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 
 export class IndicesValidateQueryResponse extends ResponseBase {
-  explanations?: IndicesValidationExplanation[];
-  _shards?: ShardStatistics;
-  valid: boolean;
-  error?: string;
+  explanations?: IndicesValidationExplanation[]
+  _shards?: ShardStatistics
+  valid: boolean
+  error?: string
 }
 
 export class IndicesValidationExplanation {
-  error?: string;
-  explanation?: string;
-  index: IndexName;
-  valid: boolean;
+  error?: string
+  explanation?: string
+  index: IndexName
+  valid: boolean
 }

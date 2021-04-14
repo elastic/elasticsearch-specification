@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import { DataStreamName, Field, Indices, Name } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { DataStreamName, Field, Indices, Name } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class ResolveIndexResponse extends ResponseBase {
-  indices: ResolveIndexItem[];
-  aliases: ResolveIndexAliasItem[];
-  data_streams: ResolveIndexDataStreamsItem[];
+  indices: ResolveIndexItem[]
+  aliases: ResolveIndexAliasItem[]
+  data_streams: ResolveIndexDataStreamsItem[]
 }
 
 export class ResolveIndexItem {
-  name: Name;
-  aliases?: string[];
-  attributes: string[];
-  data_stream?: DataStreamName;
+  name: Name
+  aliases?: string[]
+  attributes: string[]
+  data_stream?: DataStreamName
 }
 
 export class ResolveIndexAliasItem {
-  name: Name;
-  indices: Indices;
+  name: Name
+  indices: Indices
 }
 
 export class ResolveIndexDataStreamsItem {
-  name: DataStreamName;
-  timestamp_field: Field;
-  backing_indices: Indices;
+  name: DataStreamName
+  timestamp_field: Field
+  backing_indices: Indices
 }

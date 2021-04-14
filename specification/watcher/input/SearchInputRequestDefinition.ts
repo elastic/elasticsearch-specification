@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { SearchType } from "../../__common/common/SearchType";
-import { SearchRequest } from "../../__global/search/SearchRequest";
-import { SearchTemplateRequest } from "../../__global/search_template/SearchTemplateRequest";
-import { IndicesOptions } from "./IndicesOptions";
+import { IndexName } from '../../__common/common'
+import { SearchType } from '../../__common/common/SearchType'
+import { SearchRequest } from '../../__global/search/SearchRequest'
+import { SearchTemplateRequest } from '../../__global/search_template/SearchTemplateRequest'
+import { IndicesOptions } from './IndicesOptions'
 
 export class SearchInputRequestDefinition {
-  body?: SearchRequest;
-  indices?: IndexName[];
-  indices_options?: IndicesOptions;
-  search_type?: SearchType;
-  template?: SearchTemplateRequest;
+  body?: SearchRequest
+  indices?: IndexName[]
+  indices_options?: IndicesOptions
+  search_type?: SearchType
+  template?: SearchTemplateRequest
 }

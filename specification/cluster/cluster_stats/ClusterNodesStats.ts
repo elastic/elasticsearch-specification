@@ -17,28 +17,28 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { PluginStats } from "../../__common/common_options/stats/PluginStats";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ClusterFileSystem } from "./ClusterFileSystem";
-import { ClusterIngestStats } from "./ClusterIngestStats";
-import { ClusterJvm } from "./ClusterJvm";
-import { ClusterNetworkTypes } from "./ClusterNetworkTypes";
-import { ClusterNodeCount } from "./ClusterNodeCount";
-import { ClusterOperatingSystemStats } from "./ClusterOperatingSystemStats";
-import { ClusterProcess } from "./ClusterProcess";
-import { NodePackagingType } from "./NodePackagingType";
+import { integer } from '../../__common/common'
+import { PluginStats } from '../../__common/common_options/stats/PluginStats'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ClusterFileSystem } from './ClusterFileSystem'
+import { ClusterIngestStats } from './ClusterIngestStats'
+import { ClusterJvm } from './ClusterJvm'
+import { ClusterNetworkTypes } from './ClusterNetworkTypes'
+import { ClusterNodeCount } from './ClusterNodeCount'
+import { ClusterOperatingSystemStats } from './ClusterOperatingSystemStats'
+import { ClusterProcess } from './ClusterProcess'
+import { NodePackagingType } from './NodePackagingType'
 
 export class ClusterNodesStats {
-  count: ClusterNodeCount;
-  discovery_types: Dictionary<string, integer>;
-  fs: ClusterFileSystem;
-  ingest: ClusterIngestStats;
-  jvm: ClusterJvm;
-  network_types: ClusterNetworkTypes;
-  os: ClusterOperatingSystemStats;
-  packaging_types: NodePackagingType[];
-  plugins: PluginStats[];
-  process: ClusterProcess;
-  versions: string[];
+  count: ClusterNodeCount
+  discovery_types: Dictionary<string, integer>
+  fs: ClusterFileSystem
+  ingest: ClusterIngestStats
+  jvm: ClusterJvm
+  network_types: ClusterNetworkTypes
+  os: ClusterOperatingSystemStats
+  packaging_types: NodePackagingType[]
+  plugins: PluginStats[]
+  process: ClusterProcess
+  versions: string[]
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IntervalsFilter } from "./IntervalsFilter";
+import { IntervalsFilter } from './IntervalsFilter'
 
 export class Intervals {
-  filter?: IntervalsFilter;
+  filter?: IntervalsFilter
 }

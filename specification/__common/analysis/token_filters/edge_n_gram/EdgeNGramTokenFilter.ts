@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { TokenFilterBase } from "../TokenFilterBase";
-import { EdgeNGramSide } from "./EdgeNGramSide";
+import { integer } from '../../../common'
+import { TokenFilterBase } from '../TokenFilterBase'
+import { EdgeNGramSide } from './EdgeNGramSide'
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_gram: integer;
+  max_gram: integer
   /** @prop_serializer NullableStringIntFormatter */
-  min_gram: integer;
-  side: EdgeNGramSide;
+  min_gram: integer
+  side: EdgeNGramSide
 }

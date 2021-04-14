@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class HttpInputResponseResult {
-  body: string;
-  headers: Dictionary<string, string[]>;
-  status: integer;
+  body: string
+  headers: Dictionary<string, string[]>
+  status: integer
 }

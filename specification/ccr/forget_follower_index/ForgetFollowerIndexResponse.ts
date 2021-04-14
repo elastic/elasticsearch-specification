@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 
 export class ForgetFollowerIndexResponse extends ResponseBase {
-  _shards: ShardStatistics;
+  _shards: ShardStatistics
 }

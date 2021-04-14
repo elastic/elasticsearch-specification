@@ -17,7 +17,7 @@
  * under the License.
  */
 
-export type Refresh = boolean | RefreshOptions;
+export type Refresh = boolean | RefreshOptions
 export enum RefreshOptions {
-  wait_for = 1,
+  wait_for = 1
 }

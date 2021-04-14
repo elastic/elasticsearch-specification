@@ -17,24 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../../__spec_utils/UserDefinedValue";
-import {
-  Field,
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-} from "../../../../common";
+import { Dictionary } from '../../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../../__spec_utils/UserDefinedValue'
+import { Field, Fields, Id, IndexName, Routing, Type } from '../../../../common'
 
 export class LikeDocument {
   /** @prop_serializer SourceFormatter`1 */
-  doc?: UserDefinedValue;
-  fields?: Fields;
-  _id?: Id | number;
-  _type?: Type;
-  _index?: IndexName;
-  per_field_analyzer?: Dictionary<Field, string>;
-  routing?: Routing;
+  doc?: UserDefinedValue
+  fields?: Fields
+  _id?: Id | number
+  _type?: Type
+  _index?: IndexName
+  per_field_analyzer?: Dictionary<Field, string>
+  routing?: Routing
 }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { IngestStats } from "./IngestStats";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { IngestStats } from './IngestStats'
 
 export class NodeIngestStats {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  pipelines: Dictionary<string, IngestStats>;
-  total: IngestStats;
+  pipelines: Dictionary<string, IngestStats>
+  total: IngestStats
 }

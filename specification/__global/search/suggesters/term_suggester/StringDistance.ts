@@ -22,5 +22,5 @@ export enum StringDistance {
   damerau_levenshtein = 1,
   levenshtein = 2,
   jaro_winkler = 3,
-  ngram = 4,
+  ngram = 4
 }

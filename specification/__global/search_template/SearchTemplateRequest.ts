@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Indices, Routing, Types } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { SearchType } from "../../__common/common/SearchType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Indices, Routing, Types } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { SearchType } from '../../__common/common/SearchType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name search_template
@@ -32,39 +32,39 @@ import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
  */
 export interface SearchTemplateRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types; // deprecated: 7.0
-  };
+    index?: Indices
+    type?: Types // deprecated: 7.0
+  }
   query_parameters?: {
     /** @server_default true */
-    allow_no_indices?: boolean;
+    allow_no_indices?: boolean
     /** @server_default false */
-    ccs_minimize_roundtrips?: boolean;
-    expand_wildcards?: ExpandWildcards;
+    ccs_minimize_roundtrips?: boolean
+    expand_wildcards?: ExpandWildcards
     /** server_default false */
-    explain?: boolean;
+    explain?: boolean
     /** @server_default true */
-    ignore_throttled?: boolean;
+    ignore_throttled?: boolean
     /** @server_default false */
-    ignore_unavailable?: boolean;
-    preference?: string;
+    ignore_unavailable?: boolean
+    preference?: string
     /** @server_default false */
-    profile?: boolean;
-    routing?: Routing;
-    scroll?: Time;
-    search_type?: SearchType;
+    profile?: boolean
+    routing?: Routing
+    scroll?: Time
+    search_type?: SearchType
     /**
      * If true, hits.total are rendered as an integer in the response.
      * @since 7.0.0
      * @server_default false
      */
-    total_hits_as_integer?: boolean;
+    total_hits_as_integer?: boolean
     /** @server_default false */
-    typed_keys?: boolean;
-  };
+    typed_keys?: boolean
+  }
   body?: {
-    id?: string;
-    params?: Dictionary<string, UserDefinedValue>;
-    source?: string;
-  };
+    id?: string
+    params?: Dictionary<string, UserDefinedValue>
+    source?: string
+  }
 }

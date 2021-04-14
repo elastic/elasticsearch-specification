@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { SnapshotLifecycleStats } from "./SnapshotLifecycleStats";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { SnapshotLifecycleStats } from './SnapshotLifecycleStats'
+import { XPackUsage } from './XPackUsage'
 
 export class SlmUsage extends XPackUsage {
-  policy_count?: integer;
-  policy_stats?: SnapshotLifecycleStats;
+  policy_count?: integer
+  policy_stats?: SnapshotLifecycleStats
 }

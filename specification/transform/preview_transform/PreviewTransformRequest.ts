@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { TransformPivot } from "../pivot/TransformPivot";
-import { TransformDestination } from "../TransformDestination";
-import { TransformSource } from "../TransformSource";
-import { TransformSyncContainer } from "../TransformSyncContainer";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { TransformPivot } from '../pivot/TransformPivot'
+import { TransformDestination } from '../TransformDestination'
+import { TransformSource } from '../TransformSource'
+import { TransformSyncContainer } from '../TransformSyncContainer'
 
 /**
  * @rest_spec_name transform.preview_transform
@@ -30,13 +30,13 @@ import { TransformSyncContainer } from "../TransformSyncContainer";
  * @stability TODO
  */
 export interface PreviewTransformRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    description?: string;
-    dest?: TransformDestination;
-    frequency?: Time;
-    pivot?: TransformPivot;
-    source?: TransformSource;
-    sync?: TransformSyncContainer;
-  };
+    description?: string
+    dest?: TransformDestination
+    frequency?: Time
+    pivot?: TransformPivot
+    source?: TransformSource
+    sync?: TransformSyncContainer
+  }
 }

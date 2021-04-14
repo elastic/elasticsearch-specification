@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { integer, long, Name, VersionString } from "../../__common/common";
-import { NodeInfoJvmMemory } from "./NodeInfoJvmMemory";
+import { integer, long, Name, VersionString } from '../../__common/common'
+import { NodeInfoJvmMemory } from './NodeInfoJvmMemory'
 
 export class NodeJvmInfo {
-  gc_collectors: string[];
-  mem: NodeInfoJvmMemory;
-  memory_pools: string[];
-  pid: integer;
-  start_time_in_millis: long;
-  version: VersionString;
-  vm_name: Name;
-  vm_vendor: string;
-  vm_version: VersionString;
+  gc_collectors: string[]
+  mem: NodeInfoJvmMemory
+  memory_pools: string[]
+  pid: integer
+  start_time_in_millis: long
+  version: VersionString
+  vm_name: Name
+  vm_vendor: string
+  vm_version: VersionString
 }

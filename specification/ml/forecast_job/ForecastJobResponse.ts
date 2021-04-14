@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class ForecastJobResponse extends AcknowledgedResponseBase {
-  forecast_id: string;
+  forecast_id: string
 }

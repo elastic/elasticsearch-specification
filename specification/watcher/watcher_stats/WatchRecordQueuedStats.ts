@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class WatchRecordQueuedStats {
-  execution_time: DateString;
+  execution_time: DateString
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { WatchStatus } from "./WatchStatus";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { WatchStatus } from './WatchStatus'
 
 export class AcknowledgeWatchResponse extends ResponseBase {
-  status: WatchStatus;
+  status: WatchStatus
 }

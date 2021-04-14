@@ -51,5 +51,5 @@ export enum Language {
   Spanish = 30,
   Swedish = 31,
   Turkish = 32,
-  Thai = 33,
+  Thai = 33
 }

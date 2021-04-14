@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SecurityFeatureToggle } from "./SecurityFeatureToggle";
+import { SecurityFeatureToggle } from './SecurityFeatureToggle'
 
 export class SslUsage {
-  http: SecurityFeatureToggle;
-  transport: SecurityFeatureToggle;
+  http: SecurityFeatureToggle
+  transport: SecurityFeatureToggle
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer, long } from "../../__common/common";
+import { integer, long } from '../../__common/common'
 
 export class FieldStatistics {
-  doc_count: integer;
-  sum_doc_freq: long;
-  sum_ttf: long;
+  doc_count: integer
+  sum_doc_freq: long
+  sum_ttf: long
 }

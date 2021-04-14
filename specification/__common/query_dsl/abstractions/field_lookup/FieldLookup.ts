@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, Id, IndexName, Routing } from "../../../common";
+import { Field, Id, IndexName, Routing } from '../../../common'
 
 export class FieldLookup {
-  id?: Id;
-  index?: IndexName;
-  path?: Field;
-  routing?: Routing;
+  id?: Id
+  index?: IndexName
+  path?: Field
+  routing?: Routing
 }

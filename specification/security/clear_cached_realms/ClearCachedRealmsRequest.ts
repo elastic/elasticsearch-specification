@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.clear_cached_realms
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ClearCachedRealmsRequest extends RequestBase {
   path_parts?: {
-    realms: Names;
-  };
+    realms: Names
+  }
   query_parameters?: {
-    usernames?: string[];
-  };
-  body?: {};
+    usernames?: string[]
+  }
+  body?: {}
 }

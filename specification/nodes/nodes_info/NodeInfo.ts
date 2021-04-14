@@ -17,38 +17,38 @@
  * under the License.
  */
 
-import { long, VersionString } from "../../__common/common";
-import { PluginStats } from "../../__common/common_options/stats/PluginStats";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { NodeInfoHttp } from "./NodeInfoHttp";
-import { NodeInfoNetwork } from "./NodeInfoNetwork";
-import { NodeInfoTransport } from "./NodeInfoTransport";
-import { NodeJvmInfo } from "./NodeJvmInfo";
-import { NodeOperatingSystemInfo } from "./NodeOperatingSystemInfo";
-import { NodeProcessInfo } from "./NodeProcessInfo";
-import { NodeRole } from "./NodeRole";
-import { NodeThreadPoolInfo } from "./NodeThreadPoolInfo";
+import { long, VersionString } from '../../__common/common'
+import { PluginStats } from '../../__common/common_options/stats/PluginStats'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { NodeInfoHttp } from './NodeInfoHttp'
+import { NodeInfoNetwork } from './NodeInfoNetwork'
+import { NodeInfoTransport } from './NodeInfoTransport'
+import { NodeJvmInfo } from './NodeJvmInfo'
+import { NodeOperatingSystemInfo } from './NodeOperatingSystemInfo'
+import { NodeProcessInfo } from './NodeProcessInfo'
+import { NodeRole } from './NodeRole'
+import { NodeThreadPoolInfo } from './NodeThreadPoolInfo'
 
 export class NodeInfo {
-  attributes: Dictionary<string, string>;
-  build_flavor: string;
-  build_hash: string;
-  build_type: string;
-  host: string;
-  http: NodeInfoHttp;
-  ip: string;
-  jvm: NodeJvmInfo;
-  name: string;
-  network: NodeInfoNetwork;
-  os: NodeOperatingSystemInfo;
-  plugins: PluginStats[];
-  process: NodeProcessInfo;
-  roles: NodeRole[];
-  settings: string[];
+  attributes: Dictionary<string, string>
+  build_flavor: string
+  build_hash: string
+  build_type: string
+  host: string
+  http: NodeInfoHttp
+  ip: string
+  jvm: NodeJvmInfo
+  name: string
+  network: NodeInfoNetwork
+  os: NodeOperatingSystemInfo
+  plugins: PluginStats[]
+  process: NodeProcessInfo
+  roles: NodeRole[]
+  settings: string[]
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  thread_pool: Dictionary<string, NodeThreadPoolInfo>;
-  total_indexing_buffer: long;
-  transport: NodeInfoTransport;
-  transport_address: string;
-  version: VersionString;
+  thread_pool: Dictionary<string, NodeThreadPoolInfo>
+  total_indexing_buffer: long
+  transport: NodeInfoTransport
+  transport_address: string
+  version: VersionString
 }

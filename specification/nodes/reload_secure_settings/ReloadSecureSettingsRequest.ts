@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodeIds } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { NodeIds } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name nodes.reload_secure_settings
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ReloadSecureSettingsRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-  };
+    node_id?: NodeIds
+  }
   query_parameters?: {
-    timeout?: Time;
-  };
+    timeout?: Time
+  }
   body?: {
-    secure_settings_password?: string;
-  };
+    secure_settings_password?: string
+  }
 }

@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { integer, long } from "../../__common/common";
-import { ErrorResponse } from "../../__common/common_abstractions/response/ErrorResponseBase";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { SearchResponse } from "../search/SearchResponse";
+import { integer, long } from '../../__common/common'
+import { ErrorResponse } from '../../__common/common_abstractions/response/ErrorResponseBase'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SearchResponse } from '../search/SearchResponse'
 
 export class MultiSearchResponse<TDocument> extends ResponseBase {
-  took: long;
-  responses: Array<MultiSearchResult<TDocument> | ErrorResponse>;
+  took: long
+  responses: Array<MultiSearchResult<TDocument> | ErrorResponse>
 }
 
 export class MultiSearchResult<TDocument> extends SearchResponse<TDocument> {
-  status: integer;
+  status: integer
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 export class XPackUser {
-  email?: string;
-  full_name?: string;
-  metadata: Dictionary<string, UserDefinedValue>;
-  roles: string[];
-  username: string;
-  enabled: boolean;
+  email?: string
+  full_name?: string
+  metadata: Dictionary<string, UserDefinedValue>
+  roles: string[]
+  username: string
+  enabled: boolean
 }

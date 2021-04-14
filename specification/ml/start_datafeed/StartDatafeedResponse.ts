@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { NodeIds } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { NodeIds } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class StartDatafeedResponse extends ResponseBase {
-  node: NodeIds;
-  started: boolean;
+  node: NodeIds
+  started: boolean
 }

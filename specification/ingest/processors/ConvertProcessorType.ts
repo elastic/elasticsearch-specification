@@ -24,5 +24,5 @@ export enum ConvertProcessorType {
   double = 3,
   string = 4,
   boolean = 5,
-  auto = 6,
+  auto = 6
 }

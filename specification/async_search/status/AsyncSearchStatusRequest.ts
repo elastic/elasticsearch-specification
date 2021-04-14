@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name async_search.status
@@ -27,7 +27,7 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface AsyncSearchStatusRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-  };
-  query_parameters?: {};
+    id: Id
+  }
+  query_parameters?: {}
 }

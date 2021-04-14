@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Id, IndexName, Routing } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Id, IndexName, Routing } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class TermsQuery extends QueryBase {
-  terms?: string[];
-  index?: IndexName;
-  id?: Id;
-  path?: string;
-  routing?: Routing;
+  terms?: string[]
+  index?: IndexName
+  id?: Id
+  path?: string
+  routing?: Routing
 }

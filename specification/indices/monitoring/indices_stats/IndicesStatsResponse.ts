@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../../__common/common_options/hit/ShardStatistics";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { IndicesStats } from "./IndicesStats";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../../__common/common_options/hit/ShardStatistics'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { IndicesStats } from './IndicesStats'
 
 export class IndicesStatsResponse extends ResponseBase {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  indices?: Dictionary<string, IndicesStats>;
-  _shards: ShardStatistics;
-  _all: IndicesStats;
+  indices?: Dictionary<string, IndicesStats>
+  _shards: ShardStatistics
+  _all: IndicesStats
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name transform.delete_transform
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id: Name;
-  };
+    transform_id: Name
+  }
   query_parameters?: {
-    force?: boolean;
-  };
-  body?: {};
+    force?: boolean
+  }
+  body?: {}
 }

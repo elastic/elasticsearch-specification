@@ -19,7 +19,7 @@
 
 export enum RecoveryInitialShards {
   quorem = 0,
-  "quorem-1" = 1,
+  'quorem-1' = 1,
   full = 2,
-  "full-1" = 3,
+  'full-1' = 3
 }

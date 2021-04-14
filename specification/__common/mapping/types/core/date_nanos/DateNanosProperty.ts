@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { DateString, double, integer } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { DateString, double, integer } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class DateNanosProperty extends DocValuesPropertyBase {
-  boost?: double;
-  format?: string;
-  ignore_malformed?: boolean;
-  index?: boolean;
-  null_value?: DateString;
-  precision_step?: integer;
-  type: "date_nanos";
+  boost?: double
+  format?: string
+  ignore_malformed?: boolean
+  index?: boolean
+  null_value?: DateString
+  precision_step?: integer
+  type: 'date_nanos'
 }

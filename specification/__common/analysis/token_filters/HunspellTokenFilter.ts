@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class HunspellTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */
-  dedup: boolean;
-  dictionary: string;
-  locale: string;
+  dedup: boolean
+  dictionary: string
+  locale: string
   /** @prop_serializer NullableStringBooleanFormatter */
-  longest_only: boolean;
+  longest_only: boolean
 }

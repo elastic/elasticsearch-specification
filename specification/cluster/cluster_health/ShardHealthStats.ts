@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Health } from "../../__common/common/Health";
+import { integer } from '../../__common/common'
+import { Health } from '../../__common/common/Health'
 
 export class ShardHealthStats {
-  active_shards: integer;
-  initializing_shards: integer;
-  primary_active: boolean;
-  relocating_shards: integer;
-  status: Health;
-  unassigned_shards: integer;
+  active_shards: integer
+  initializing_shards: integer
+  primary_active: boolean
+  relocating_shards: integer
+  status: Health
+  unassigned_shards: integer
 }

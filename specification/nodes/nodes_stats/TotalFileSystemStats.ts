@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class TotalFileSystemStats {
-  available: string;
-  available_in_bytes: long;
-  free: string;
-  free_in_bytes: long;
-  total: string;
-  total_in_bytes: long;
+  available: string
+  available_in_bytes: long
+  free: string
+  free_in_bytes: long
+  total: string
+  total_in_bytes: long
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.set_upgrade_mode
@@ -27,8 +27,8 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface SetUpgradeModeRequest extends RequestBase {
   query_parameters?: {
-    enabled?: boolean;
-    timeout?: Time;
-  };
-  body?: {};
+    enabled?: boolean
+    timeout?: Time
+  }
+  body?: {}
 }

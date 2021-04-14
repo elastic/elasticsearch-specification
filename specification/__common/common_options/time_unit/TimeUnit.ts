@@ -24,5 +24,5 @@ export enum TimeUnit {
   s = 3,
   m = 4,
   h = 5,
-  d = 6,
+  d = 6
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { double, integer } from "../../__common/common";
-import { Token } from "./Token";
+import { double, integer } from '../../__common/common'
+import { Token } from './Token'
 
 export class TermVectorTerm {
-  doc_freq?: integer;
-  score?: double;
-  term_freq: integer;
-  tokens: Token[];
-  ttf?: integer;
+  doc_freq?: integer
+  score?: double
+  term_freq: integer
+  tokens: Token[]
+  ttf?: integer
 }

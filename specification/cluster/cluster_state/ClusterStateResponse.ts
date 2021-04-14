@@ -17,35 +17,35 @@
  * under the License.
  */
 
-import { NodeAttributes } from "../../transform/get_transform_stats/NodeAttributes";
+import { NodeAttributes } from '../../transform/get_transform_stats/NodeAttributes'
 import {
   EmptyObject,
   NodeName,
   Uuid,
-  VersionNumber,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ClusterStateBlocks } from "../ClusterStateBlocks";
-import { ClusterStateMetadata } from "../ClusterStateMetadata";
-import { ClusterStateRoutingNodes } from "../ClusterStateRoutingNodes";
+  VersionNumber
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ClusterStateBlocks } from '../ClusterStateBlocks'
+import { ClusterStateMetadata } from '../ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '../ClusterStateRoutingNodes'
 import {
   ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots,
-} from "../ClusterStateSnapshots";
+  ClusterStateSnapshots
+} from '../ClusterStateSnapshots'
 
 export class ClusterStateResponse extends ResponseBase {
-  cluster_name: string;
-  cluster_uuid: Uuid;
-  master_node?: string;
-  state?: string[];
-  state_uuid?: Uuid;
-  version?: VersionNumber;
-  blocks?: ClusterStateBlocks;
-  metadata?: ClusterStateMetadata;
-  nodes?: Dictionary<NodeName, NodeAttributes>;
-  routing_table?: Dictionary<string, EmptyObject>; // TODO: this is wrong, but the tests are not exhaustive enough
-  routing_nodes?: ClusterStateRoutingNodes;
-  snapshots?: ClusterStateSnapshots;
-  snapshot_deletions?: ClusterStateDeletedSnapshots;
+  cluster_name: string
+  cluster_uuid: Uuid
+  master_node?: string
+  state?: string[]
+  state_uuid?: Uuid
+  version?: VersionNumber
+  blocks?: ClusterStateBlocks
+  metadata?: ClusterStateMetadata
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
 }

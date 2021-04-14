@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class ClusterPutSettingsResponse extends ResponseBase {
-  acknowledged: boolean;
-  persistent: Dictionary<string, UserDefinedValue>;
-  transient: Dictionary<string, UserDefinedValue>;
+  acknowledged: boolean
+  persistent: Dictionary<string, UserDefinedValue>
+  transient: Dictionary<string, UserDefinedValue>
 }

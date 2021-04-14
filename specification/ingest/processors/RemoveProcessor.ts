@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Fields } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Fields } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class RemoveProcessor extends ProcessorBase {
-  field: Fields;
-  ignore_missing?: boolean;
+  field: Fields
+  ignore_missing?: boolean
 }

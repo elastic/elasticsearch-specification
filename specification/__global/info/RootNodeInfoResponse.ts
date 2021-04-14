@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ElasticsearchVersionInfo } from "../../__common/common_abstractions/response/ElasticsearchVersionInfo";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ElasticsearchVersionInfo } from '../../__common/common_abstractions/response/ElasticsearchVersionInfo'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class RootNodeInfoResponse extends ResponseBase {
-  cluster_name: string;
-  cluster_uuid: string;
-  name: string;
-  tagline: string;
-  version: ElasticsearchVersionInfo;
+  cluster_name: string
+  cluster_uuid: string
+  name: string
+  tagline: string
+  version: ElasticsearchVersionInfo
 }

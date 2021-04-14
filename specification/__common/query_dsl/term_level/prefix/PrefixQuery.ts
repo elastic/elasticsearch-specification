@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { MultiTermQueryRewrite } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { MultiTermQueryRewrite } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class PrefixQuery extends QueryBase {
-  rewrite?: MultiTermQueryRewrite;
-  value: string;
+  rewrite?: MultiTermQueryRewrite
+  value: string
 }

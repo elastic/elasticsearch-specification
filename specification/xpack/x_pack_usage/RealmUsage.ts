@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { long } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class RealmUsage extends XPackUsage {
-  name?: string[];
-  order?: long[];
-  size?: long[];
-  cache?: RealmCacheUsage[];
-  has_authorization_realms?: boolean[];
-  has_default_username_pattern?: boolean[];
-  has_truststore?: boolean[];
-  is_authentication_delegated?: boolean[];
+  name?: string[]
+  order?: long[]
+  size?: long[]
+  cache?: RealmCacheUsage[]
+  has_authorization_realms?: boolean[]
+  has_default_username_pattern?: boolean[]
+  has_truststore?: boolean[]
+  is_authentication_delegated?: boolean[]
 }
 
 export class RealmCacheUsage {
-  size: long;
+  size: long
 }

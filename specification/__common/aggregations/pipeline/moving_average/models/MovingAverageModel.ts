@@ -17,40 +17,40 @@
  * under the License.
  */
 
-import { float, integer } from "../../../../common";
+import { float, integer } from '../../../../common'
 
 export enum MovingAverageModel {
   linear,
   simple,
   ewma,
   holt,
-  holt_winters,
+  holt_winters
 }
 
 export type MovingAverageSettings =
   | EwmaModelSettings
   | HoltLinearModelSettings
-  | HoltWintersModelSettings;
+  | HoltWintersModelSettings
 
 export class EwmaModelSettings {
-  alpha?: float;
+  alpha?: float
 }
 
 export class HoltLinearModelSettings {
-  alpha?: float;
-  beta?: float;
+  alpha?: float
+  beta?: float
 }
 export class HoltWintersModelSettings {
-  alpha?: float;
-  beta?: float;
-  gamma?: float;
-  pad?: boolean;
-  period?: integer;
-  type?: HoltWintersType;
+  alpha?: float
+  beta?: float
+  gamma?: float
+  pad?: boolean
+  period?: integer
+  type?: HoltWintersType
 }
 export enum HoltWintersType {
   /** @identifier Additive */
   add,
   /** @identifier Multiplicative */
-  mult,
+  mult
 }

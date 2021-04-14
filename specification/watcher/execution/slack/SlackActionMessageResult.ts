@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { SlackMessage } from "../../action/slack/SlackMessage";
-import { HttpInputRequestResult } from "../HttpInputRequestResult";
-import { HttpInputResponseResult } from "../HttpInputResponseResult";
+import { SlackMessage } from '../../action/slack/SlackMessage'
+import { HttpInputRequestResult } from '../HttpInputRequestResult'
+import { HttpInputResponseResult } from '../HttpInputResponseResult'
 
 export class SlackActionMessageResult {
-  message: SlackMessage;
-  request?: HttpInputRequestResult;
-  response?: HttpInputResponseResult;
+  message: SlackMessage
+  request?: HttpInputRequestResult
+  response?: HttpInputResponseResult
 }

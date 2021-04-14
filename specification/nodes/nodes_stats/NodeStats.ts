@@ -17,43 +17,43 @@
  * under the License.
  */
 
-import { IndexStats } from "../../indices/monitoring/indices_stats/IndexStats";
-import { long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { NodeRole } from "../nodes_info/NodeRole";
-import { AdaptiveSelectionStats } from "./AdaptiveSelectionStats";
-import { BreakerStats } from "./BreakerStats";
-import { FileSystemStats } from "./FileSystemStats";
-import { HttpStats } from "./HttpStats";
-import { NodeJvmStats } from "./NodeJvmStats";
-import { OperatingSystemStats } from "./OperatingSystemStats";
-import { ProcessStats } from "./ProcessStats";
-import { ScriptStats } from "./ScriptStats";
-import { NodeIngestStats } from "./statistics/NodeIngestStats";
-import { ThreadCountStats } from "./ThreadCountStats";
-import { TransportStats } from "./TransportStats";
+import { IndexStats } from '../../indices/monitoring/indices_stats/IndexStats'
+import { long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { NodeRole } from '../nodes_info/NodeRole'
+import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
+import { BreakerStats } from './BreakerStats'
+import { FileSystemStats } from './FileSystemStats'
+import { HttpStats } from './HttpStats'
+import { NodeJvmStats } from './NodeJvmStats'
+import { OperatingSystemStats } from './OperatingSystemStats'
+import { ProcessStats } from './ProcessStats'
+import { ScriptStats } from './ScriptStats'
+import { NodeIngestStats } from './statistics/NodeIngestStats'
+import { ThreadCountStats } from './ThreadCountStats'
+import { TransportStats } from './TransportStats'
 
 export class NodeStats {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  adaptive_selection: Dictionary<string, AdaptiveSelectionStats>;
+  adaptive_selection: Dictionary<string, AdaptiveSelectionStats>
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  breakers: Dictionary<string, BreakerStats>;
-  fs: FileSystemStats;
-  host: string;
-  http: HttpStats;
-  indices: IndexStats;
-  ingest: NodeIngestStats;
+  breakers: Dictionary<string, BreakerStats>
+  fs: FileSystemStats
+  host: string
+  http: HttpStats
+  indices: IndexStats
+  ingest: NodeIngestStats
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  ip: string[];
-  jvm: NodeJvmStats;
-  name: string;
-  os: OperatingSystemStats;
-  process: ProcessStats;
-  roles: NodeRole[];
-  script: ScriptStats;
+  ip: string[]
+  jvm: NodeJvmStats
+  name: string
+  os: OperatingSystemStats
+  process: ProcessStats
+  roles: NodeRole[]
+  script: ScriptStats
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  thread_pool: Dictionary<string, ThreadCountStats>;
-  timestamp: long;
-  transport: TransportStats;
-  transport_address: string;
+  thread_pool: Dictionary<string, ThreadCountStats>
+  timestamp: long
+  transport: TransportStats
+  transport_address: string
 }

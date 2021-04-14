@@ -19,5 +19,5 @@
 
 export enum EdgeNGramSide {
   front = 0,
-  back = 1,
+  back = 1
 }

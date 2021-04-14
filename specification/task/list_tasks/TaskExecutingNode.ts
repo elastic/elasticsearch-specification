@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { TaskId } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TaskState } from "./TaskState";
+import { TaskId } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TaskState } from './TaskState'
 
 export class TaskExecutingNode {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  attributes: Dictionary<string, string>;
-  host: string;
-  ip: string;
-  name: string;
-  roles: string[];
-  tasks: Dictionary<TaskId, TaskState>;
-  transport_address: string;
+  attributes: Dictionary<string, string>
+  host: string
+  ip: string
+  name: string
+  roles: string[]
+  tasks: Dictionary<TaskId, TaskState>
+  transport_address: string
 }

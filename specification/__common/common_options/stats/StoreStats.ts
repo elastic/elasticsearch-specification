@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ByteSize, integer } from "../../common";
+import { ByteSize, integer } from '../../common'
 
 export class StoreStats {
-  size?: ByteSize;
-  size_in_bytes: integer;
-  reserved?: ByteSize;
-  reserved_in_bytes: integer;
-  total_data_set_size?: ByteSize;
-  total_data_set_size_in_bytes?: integer;
+  size?: ByteSize
+  size_in_bytes: integer
+  reserved?: ByteSize
+  reserved_in_bytes: integer
+  total_data_set_size?: ByteSize
+  total_data_set_size_in_bytes?: integer
 }

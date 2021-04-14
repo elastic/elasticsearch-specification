@@ -18,5 +18,5 @@
  */
 
 export class PutRoleStatus {
-  created: boolean;
+  created: boolean
 }

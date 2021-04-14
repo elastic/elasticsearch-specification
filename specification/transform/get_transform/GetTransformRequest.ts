@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { integer, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name transform.get_transform
@@ -27,13 +27,13 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id?: Name;
-  };
+    transform_id?: Name
+  }
   query_parameters?: {
-    allow_no_match?: boolean;
-    from?: integer;
-    size?: integer;
-    exclude_generated?: boolean;
-  };
-  body?: {};
+    allow_no_match?: boolean
+    from?: integer
+    size?: integer
+    exclude_generated?: boolean
+  }
+  body?: {}
 }

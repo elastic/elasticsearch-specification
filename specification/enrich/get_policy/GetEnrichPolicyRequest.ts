@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name enrich.get_policy
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetEnrichPolicyRequest extends RequestBase {
   path_parts?: {
-    name?: Names;
-  };
-  query_parameters?: {};
-  body?: {};
+    name?: Names
+  }
+  query_parameters?: {}
+  body?: {}
 }

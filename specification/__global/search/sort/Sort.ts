@@ -17,57 +17,57 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Missing } from "../../../__common/aggregations/AggregationContainer";
-import { double, Field, long } from "../../../__common/common";
-import { DistanceUnit } from "../../../__common/common_options/geo/DistanceUnit";
-import { GeoDistanceType } from "../../../__common/common_options/geo/GeoDistanceType";
-import { FieldType } from "../../../__common/mapping/types/FieldType";
-import { GeoLocation } from "../../../__common/query_dsl/geo/GeoLocation";
-import { AdditionalProperties } from "../../../__spec_utils/behaviors";
-import { NestedSortValue } from "./NestedSort";
-import { SortMode } from "./SortMode";
-import { SortOrder } from "./SortOrder";
+import { Missing } from '../../../__common/aggregations/AggregationContainer'
+import { double, Field, long } from '../../../__common/common'
+import { DistanceUnit } from '../../../__common/common_options/geo/DistanceUnit'
+import { GeoDistanceType } from '../../../__common/common_options/geo/GeoDistanceType'
+import { Script } from '../../../__common/common_options/scripting/Script'
+import { FieldType } from '../../../__common/mapping/types/FieldType'
+import { GeoLocation } from '../../../__common/query_dsl/geo/GeoLocation'
+import { AdditionalProperties } from '../../../__spec_utils/behaviors'
+import { NestedSortValue } from './NestedSort'
+import { SortMode } from './SortMode'
+import { SortOrder } from './SortOrder'
 
 export class FieldSort {
-  missing?: Missing;
-  mode?: SortMode;
-  nested?: NestedSortValue;
-  order?: SortOrder;
-  unmapped_type?: FieldType;
+  missing?: Missing
+  mode?: SortMode
+  nested?: NestedSortValue
+  order?: SortOrder
+  unmapped_type?: FieldType
 }
 
 export class ScoreSort {
-  mode?: SortMode;
-  order?: SortOrder;
+  mode?: SortMode
+  order?: SortOrder
 }
 export class GeoDistanceSort
   implements AdditionalProperties<string, GeoLocation | GeoLocation[]> {
-  mode?: SortMode;
-  distance_type?: GeoDistanceType;
-  order?: SortOrder;
-  unit?: DistanceUnit;
+  mode?: SortMode
+  distance_type?: GeoDistanceType
+  order?: SortOrder
+  unit?: DistanceUnit
 }
 
 export class ScriptSort {
-  order?: SortOrder;
-  script: Script;
-  type?: string;
+  order?: SortOrder
+  script: Script
+  type?: string
 }
 
 export class SortContainer
   implements AdditionalProperties<string, FieldSort | SortOrder> {
-  _score?: ScoreSort;
-  _doc?: ScoreSort;
-  _geo_distance?: GeoDistanceSort;
-  _script?: ScriptSort;
+  _score?: ScoreSort
+  _doc?: ScoreSort
+  _geo_distance?: GeoDistanceSort
+  _script?: ScriptSort
 }
 
-export type SortCombinations = Field | SortContainer | SortOrder;
+export type SortCombinations = Field | SortContainer | SortOrder
 
-export type Sort = SortCombinations | SortCombinations[];
+export type Sort = SortCombinations | SortCombinations[]
 
-export type SortResults = Array<long | double | string | null>;
+export type SortResults = Array<long | double | string | null>
 
 /*
 sort?:

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexName } from "../../../../__common/common";
-import { AcknowledgedResponseBase } from "../../../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { CloseIndexResult } from "./CloseIndexResult";
+import { IndexName } from '../../../../__common/common'
+import { AcknowledgedResponseBase } from '../../../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { CloseIndexResult } from './CloseIndexResult'
 
 export class CloseIndexResponse extends AcknowledgedResponseBase {
-  indices: Dictionary<IndexName, CloseIndexResult>;
-  shards_acknowledged: boolean;
+  indices: Dictionary<IndexName, CloseIndexResult>
+  shards_acknowledged: boolean
 }

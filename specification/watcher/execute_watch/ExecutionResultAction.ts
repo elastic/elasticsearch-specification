@@ -17,25 +17,25 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { ActionType } from "../action/ActionType";
-import { EmailActionResult } from "../execution/email/EmailActionResult";
-import { IndexActionResult } from "../execution/index/IndexActionResult";
-import { LoggingActionResult } from "../execution/logging/LoggingActionResult";
-import { PagerDutyActionResult } from "../execution/pager_duty/PagerDutyActionResult";
-import { SlackActionResult } from "../execution/slack/SlackActionResult";
-import { Status } from "../execution/Status";
-import { WebhookActionResult } from "../execution/webhook/WebhookActionResult";
+import { Id } from '../../__common/common'
+import { ActionType } from '../action/ActionType'
+import { EmailActionResult } from '../execution/email/EmailActionResult'
+import { IndexActionResult } from '../execution/index/IndexActionResult'
+import { LoggingActionResult } from '../execution/logging/LoggingActionResult'
+import { PagerDutyActionResult } from '../execution/pager_duty/PagerDutyActionResult'
+import { SlackActionResult } from '../execution/slack/SlackActionResult'
+import { Status } from '../execution/Status'
+import { WebhookActionResult } from '../execution/webhook/WebhookActionResult'
 
 export class ExecutionResultAction {
-  email?: EmailActionResult;
-  id: Id;
-  index?: IndexActionResult;
-  logging?: LoggingActionResult;
-  pagerduty?: PagerDutyActionResult;
-  reason?: string;
-  slack?: SlackActionResult;
-  status: Status;
-  type: ActionType;
-  webhook?: WebhookActionResult;
+  email?: EmailActionResult
+  id: Id
+  index?: IndexActionResult
+  logging?: LoggingActionResult
+  pagerduty?: PagerDutyActionResult
+  reason?: string
+  slack?: SlackActionResult
+  status: Status
+  type: ActionType
+  webhook?: WebhookActionResult
 }

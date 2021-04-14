@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ApiKeyApplication } from "./ApiKeyApplication";
-import { ApiKeyPrivileges } from "./ApiKeyPrivileges";
+import { ApiKeyApplication } from './ApiKeyApplication'
+import { ApiKeyPrivileges } from './ApiKeyPrivileges'
 
 export class ApiKeyRole {
-  cluster: string[];
-  index: ApiKeyPrivileges[];
-  applications?: ApiKeyApplication[];
+  cluster: string[]
+  index: ApiKeyPrivileges[]
+  applications?: ApiKeyApplication[]
 }

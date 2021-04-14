@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { SearchResponse } from "../search/SearchResponse";
+import { integer } from '../../__common/common'
+import { SearchResponse } from '../search/SearchResponse'
 
 export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
-  failed_shards?: Array<ScrollResponseFailedShard>;
+  failed_shards?: Array<ScrollResponseFailedShard>
 }
 
 export class ScrollResponseFailedShard {
-  shard: integer;
-  reason: ScrollResponseErrorReason;
+  shard: integer
+  reason: ScrollResponseErrorReason
 }
 export class ScrollResponseErrorReason {
-  type: string;
-  reason: string;
+  type: string
+  reason: string
 }

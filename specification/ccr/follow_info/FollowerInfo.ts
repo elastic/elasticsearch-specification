@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { IndexName, Name } from "../../__common/common";
-import { FollowConfig } from "./FollowConfig";
-import { FollowerIndexStatus } from "./FollowerIndexStatus";
+import { IndexName, Name } from '../../__common/common'
+import { FollowConfig } from './FollowConfig'
+import { FollowerIndexStatus } from './FollowerIndexStatus'
 
 export class FollowerInfo {
-  follower_index: IndexName;
-  leader_index: IndexName;
-  parameters?: FollowConfig;
-  remote_cluster: Name;
-  status: FollowerIndexStatus;
+  follower_index: IndexName
+  leader_index: IndexName
+  parameters?: FollowConfig
+  remote_cluster: Name
+  status: FollowerIndexStatus
 }

@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ConditionContainer } from "../condition/ConditionContainer";
-import { InputContainer } from "../input/InputContainer";
-import { ActionExecutionState } from "./ActionExecutionState";
-import { ExecutionResult } from "./ExecutionResult";
-import { TriggerEventResult } from "./TriggerEventResult";
+import { Id } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ConditionContainer } from '../condition/ConditionContainer'
+import { InputContainer } from '../input/InputContainer'
+import { ActionExecutionState } from './ActionExecutionState'
+import { ExecutionResult } from './ExecutionResult'
+import { TriggerEventResult } from './TriggerEventResult'
 
 export class WatchRecord {
-  condition: ConditionContainer;
-  input: InputContainer;
-  messages: string[];
-  metadata: Dictionary<string, UserDefinedValue>;
-  node: string;
-  result: ExecutionResult;
-  state: ActionExecutionState;
-  trigger_event: TriggerEventResult;
-  user: string;
-  watch_id: Id;
+  condition: ConditionContainer
+  input: InputContainer
+  messages: string[]
+  metadata: Dictionary<string, UserDefinedValue>
+  node: string
+  result: ExecutionResult
+  state: ActionExecutionState
+  trigger_event: TriggerEventResult
+  user: string
+  watch_id: Id
 }

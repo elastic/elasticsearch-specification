@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Fields, long } from "../../__common/common";
+import { Fields, long } from '../../__common/common'
 
 export class HistogramRollupGrouping {
-  fields: Fields;
-  interval: long;
+  fields: Fields
+  interval: long
 }

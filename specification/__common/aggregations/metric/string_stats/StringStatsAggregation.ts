@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { MetricAggregationBase } from "../MetricAggregation";
+import { MetricAggregationBase } from '../MetricAggregation'
 
 export class StringStatsAggregation extends MetricAggregationBase {
-  show_distribution?: boolean;
+  show_distribution?: boolean
 }

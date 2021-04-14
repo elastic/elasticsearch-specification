@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, Fields, Indices } from "../__common/common";
+import { Field, Fields, Indices } from '../__common/common'
 
 export class EnrichPolicy {
-  enrich_fields: Fields;
-  indices: Indices;
-  match_field: Field;
-  query?: string;
+  enrich_fields: Fields
+  indices: Indices
+  match_field: Field
+  query?: string
 }

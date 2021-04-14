@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "../TokenFilterBase";
-import { DelimitedPayloadEncoding } from "./DelimitedPayloadEncoding";
+import { TokenFilterBase } from '../TokenFilterBase'
+import { DelimitedPayloadEncoding } from './DelimitedPayloadEncoding'
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
-  delimiter: string;
-  encoding: DelimitedPayloadEncoding;
+  delimiter: string
+  encoding: DelimitedPayloadEncoding
 }

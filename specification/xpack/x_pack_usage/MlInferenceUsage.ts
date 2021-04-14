@@ -17,43 +17,43 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { JobStatistics } from "./JobStatistics";
+import { long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { JobStatistics } from './JobStatistics'
 
 export class MlInferenceUsage {
-  ingest_processors: Dictionary<string, MlInferenceIngestProcessorUsage>;
-  trained_models: MlInferenceTrainedModelsUsage;
+  ingest_processors: Dictionary<string, MlInferenceIngestProcessorUsage>
+  trained_models: MlInferenceTrainedModelsUsage
 }
 
 export class MlInferenceIngestProcessorUsage {
-  num_docs_processed: MlInferenceIngestProcessorCountUsage;
-  pipelines: MlUsageCounter;
-  num_failures: MlInferenceIngestProcessorCountUsage;
-  time_ms: MlInferenceIngestProcessorCountUsage;
+  num_docs_processed: MlInferenceIngestProcessorCountUsage
+  pipelines: MlUsageCounter
+  num_failures: MlInferenceIngestProcessorCountUsage
+  time_ms: MlInferenceIngestProcessorCountUsage
 }
 
 export class MlInferenceTrainedModelsUsage {
-  estimated_operations?: JobStatistics;
-  estimated_heap_memory_usage_bytes?: JobStatistics;
-  count?: MlInferenceTrainedModelsCountUsage;
-  _all: MlUsageCounter;
+  estimated_operations?: JobStatistics
+  estimated_heap_memory_usage_bytes?: JobStatistics
+  count?: MlInferenceTrainedModelsCountUsage
+  _all: MlUsageCounter
 }
 
 export class MlInferenceIngestProcessorCountUsage {
-  max: long;
-  sum: long;
-  min: long;
+  max: long
+  sum: long
+  min: long
 }
 
 export class MlInferenceTrainedModelsCountUsage {
-  total: long;
-  prepackaged: long;
-  other: long;
-  regression: long;
-  classification: long;
+  total: long
+  prepackaged: long
+  other: long
+  regression: long
+  classification: long
 }
 
 export class MlUsageCounter {
-  count: long;
+  count: long
 }

@@ -17,107 +17,107 @@
  * under the License.
  */
 
-import { NodeId } from "../../__common/common";
+import { NodeId } from '../../__common/common'
 
 export class CatThreadPoolRecord {
   /**
    * node name
    * @aliases nn
    */
-  "node_name"?: string;
+  'node_name'?: string
   /**
    * persistent node id
    * @aliases id
    */
-  "node_id"?: NodeId;
+  'node_id'?: NodeId
   /**
    * ephemeral node id
    * @aliases eid
    */
-  "ephemeral_node_id"?: string;
+  'ephemeral_node_id'?: string
   /**
    * process id
    * @aliases p
    */
-  "pid"?: string;
+  'pid'?: string
   /**
    * host name
    * @aliases h
    */
-  "host"?: string;
+  'host'?: string
   /**
    * ip address
    * @aliases i
    */
-  "ip"?: string;
+  'ip'?: string
   /**
    * bound transport port
    * @aliases po
    */
-  "port"?: string;
+  'port'?: string
   /**
    * thread pool name
    * @aliases n
    */
-  "name"?: string;
+  'name'?: string
   /**
    * thread pool type
    * @aliases t
    */
-  "type"?: string;
+  'type'?: string
   /**
    * number of active threads
    * @aliases a
    */
-  "active"?: string;
+  'active'?: string
   /**
    * number of threads
    * @aliases psz
    */
-  "pool_size"?: string;
+  'pool_size'?: string
   /**
    * number of tasks currently in queue
    * @aliases q
    */
-  "queue"?: string;
+  'queue'?: string
   /**
    * maximum number of tasks permitted in queue
    * @aliases qs
    */
-  "queue_size"?: string;
+  'queue_size'?: string
   /**
    * number of rejected tasks
    * @aliases r
    */
-  "rejected"?: string;
+  'rejected'?: string
   /**
    * highest number of seen active threads
    * @aliases l
    */
-  "largest"?: string;
+  'largest'?: string
   /**
    * number of completed tasks
    * @aliases c
    */
-  "completed"?: string;
+  'completed'?: string
   /**
    * core number of threads in a scaling thread pool
    * @aliases cr
    */
-  "core"?: string;
+  'core'?: string
   /**
    * maximum number of threads in a scaling thread pool
    * @aliases mx
    */
-  "max"?: string;
+  'max'?: string
   /**
    * number of threads in a fixed thread pool
    * @aliases sz
    */
-  "size"?: string;
+  'size'?: string
   /**
    * thread keep alive time
    * @aliases ka
    */
-  "keep_alive"?: string;
+  'keep_alive'?: string
 }

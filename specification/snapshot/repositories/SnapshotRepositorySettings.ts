@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class SnapshotRepositorySettings {
-  chunk_size?: string;
-  compress?: string | boolean;
-  concurrent_streams?: string | integer;
-  location: string;
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
   /**
    * @aliases readonly
    */
-  read_only?: string | boolean;
+  read_only?: string | boolean
 }

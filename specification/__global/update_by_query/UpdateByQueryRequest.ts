@@ -17,23 +17,23 @@
  * under the License.
  */
 
-import { Script } from "vm";
 import {
   Fields,
   Indices,
   long,
   Routing,
   Types,
-  WaitForActiveShards,
-} from "../../__common/common";
-import { Conflicts } from "../../__common/common/Conflicts";
-import { DefaultOperator } from "../../__common/common/DefaultOperator";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { SearchType } from "../../__common/common/SearchType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { SlicedScroll } from "../scroll/SlicedScroll";
+  WaitForActiveShards
+} from '../../__common/common'
+import { Conflicts } from '../../__common/common/Conflicts'
+import { DefaultOperator } from '../../__common/common/DefaultOperator'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { SearchType } from '../../__common/common/SearchType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Script } from '../../__common/common_options/scripting/Script'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { SlicedScroll } from '../scroll/SlicedScroll'
 
 /**
  * @rest_spec_name update_by_query
@@ -42,50 +42,50 @@ import { SlicedScroll } from "../scroll/SlicedScroll";
  */
 export interface UpdateByQueryRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-    type?: Types;
-  };
+    index: Indices
+    type?: Types
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    analyzer?: string;
-    analyze_wildcard?: boolean;
-    conflicts?: Conflicts;
-    default_operator?: DefaultOperator;
-    df?: string;
-    expand_wildcards?: ExpandWildcards;
-    from?: long;
-    ignore_unavailable?: boolean;
-    lenient?: boolean;
-    pipeline?: string;
-    preference?: string;
-    query_on_query_string?: string;
-    refresh?: boolean;
-    request_cache?: boolean;
-    requests_per_second?: long;
-    routing?: Routing;
-    scroll?: Time;
-    scroll_size?: long;
-    search_timeout?: Time;
-    search_type?: SearchType;
-    size?: long;
-    slices?: long;
-    sort?: string[];
-    source_enabled?: boolean;
-    source_excludes?: Fields;
-    source_includes?: Fields;
-    stats?: string[];
-    terminate_after?: long;
-    timeout?: Time;
-    version?: boolean;
-    version_type?: boolean;
-    wait_for_active_shards?: WaitForActiveShards;
-    wait_for_completion?: boolean;
-  };
+    allow_no_indices?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    conflicts?: Conflicts
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    from?: long
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    pipeline?: string
+    preference?: string
+    query_on_query_string?: string
+    refresh?: boolean
+    request_cache?: boolean
+    requests_per_second?: long
+    routing?: Routing
+    scroll?: Time
+    scroll_size?: long
+    search_timeout?: Time
+    search_type?: SearchType
+    size?: long
+    slices?: long
+    sort?: string[]
+    source_enabled?: boolean
+    source_excludes?: Fields
+    source_includes?: Fields
+    stats?: string[]
+    terminate_after?: long
+    timeout?: Time
+    version?: boolean
+    version_type?: boolean
+    wait_for_active_shards?: WaitForActiveShards
+    wait_for_completion?: boolean
+  }
   body?: {
-    max_docs?: long;
-    query?: QueryContainer;
-    script?: Script;
-    slice?: SlicedScroll;
-    conflicts?: Conflicts;
-  };
+    max_docs?: long
+    query?: QueryContainer
+    script?: Script
+    slice?: SlicedScroll
+    conflicts?: Conflicts
+  }
 }

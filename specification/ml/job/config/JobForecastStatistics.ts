@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { JobStatistics } from "../../../xpack/x_pack_usage/JobStatistics";
-import { integer, long } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { JobStatistics } from '../../../xpack/x_pack_usage/JobStatistics'
+import { integer, long } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class JobForecastStatistics {
-  memory_bytes?: JobStatistics;
-  processing_time_ms?: JobStatistics;
-  records?: JobStatistics;
-  status?: Dictionary<string, long>;
-  total: long;
-  forecasted_jobs: integer;
+  memory_bytes?: JobStatistics
+  processing_time_ms?: JobStatistics
+  records?: JobStatistics
+  status?: Dictionary<string, long>
+  total: long
+  forecasted_jobs: integer
 }

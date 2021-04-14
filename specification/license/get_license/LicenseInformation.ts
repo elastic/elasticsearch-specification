@@ -22,22 +22,22 @@ import {
   EpochMillis,
   integer,
   long,
-  Uuid,
-} from "../../__common/common";
-import { LicenseStatus } from "./LicenseStatus";
-import { LicenseType } from "./LicenseType";
+  Uuid
+} from '../../__common/common'
+import { LicenseStatus } from './LicenseStatus'
+import { LicenseType } from './LicenseType'
 
 export class LicenseInformation {
-  expiry_date: DateString;
-  expiry_date_in_millis: EpochMillis;
-  issue_date: DateString;
-  issue_date_in_millis: EpochMillis;
-  issued_to: string;
-  issuer: string;
-  max_nodes: long;
-  max_resource_units?: integer;
-  status: LicenseStatus;
-  type: LicenseType;
-  uid: Uuid;
-  start_date_in_millis: EpochMillis;
+  expiry_date: DateString
+  expiry_date_in_millis: EpochMillis
+  issue_date: DateString
+  issue_date_in_millis: EpochMillis
+  issued_to: string
+  issuer: string
+  max_nodes: long
+  max_resource_units?: integer
+  status: LicenseStatus
+  type: LicenseType
+  uid: Uuid
+  start_date_in_millis: EpochMillis
 }

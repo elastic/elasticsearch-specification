@@ -17,34 +17,34 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { SortOrder } from "../../../../__global/search/sort/SortOrder";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { Field, integer } from "../../../common";
-import { Missing } from "../../AggregationContainer";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { TermsAggregationCollectMode } from "./TermsAggregationCollectMode";
-import { TermsAggregationExecutionHint } from "./TermsAggregationExecutionHint";
-import { TermsInclude } from "./TermsInclude";
+import { SortOrder } from '../../../../__global/search/sort/SortOrder'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { Field, integer } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { Missing } from '../../AggregationContainer'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { TermsAggregationCollectMode } from './TermsAggregationCollectMode'
+import { TermsAggregationExecutionHint } from './TermsAggregationExecutionHint'
+import { TermsInclude } from './TermsInclude'
 
 export class TermsAggregation extends BucketAggregationBase {
-  collect_mode?: TermsAggregationCollectMode;
-  exclude?: string | string[];
-  execution_hint?: TermsAggregationExecutionHint;
-  field?: Field;
-  include?: string | string[] | TermsInclude;
-  min_doc_count?: integer;
-  missing?: Missing;
-  missing_bucket?: boolean;
-  value_type?: string;
-  order?: TermsAggregationOrder;
-  script?: Script;
-  shard_size?: integer;
-  show_term_doc_count_error?: boolean;
-  size?: integer;
+  collect_mode?: TermsAggregationCollectMode
+  exclude?: string | string[]
+  execution_hint?: TermsAggregationExecutionHint
+  field?: Field
+  include?: string | string[] | TermsInclude
+  min_doc_count?: integer
+  missing?: Missing
+  missing_bucket?: boolean
+  value_type?: string
+  order?: TermsAggregationOrder
+  script?: Script
+  shard_size?: integer
+  show_term_doc_count_error?: boolean
+  size?: integer
 }
 
 export type TermsAggregationOrder =
   | SortOrder
   | Dictionary<string, SortOrder>
-  | Dictionary<string, SortOrder>[];
+  | Dictionary<string, SortOrder>[]

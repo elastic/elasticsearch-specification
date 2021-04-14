@@ -23,12 +23,12 @@ import {
   Routing,
   Type,
   VersionNumber,
-  WaitForActiveShards,
-} from "../../__common/common";
-import { Refresh } from "../../__common/common/Refresh";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+  WaitForActiveShards
+} from '../../__common/common'
+import { Refresh } from '../../__common/common/Refresh'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name create
@@ -38,18 +38,18 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface CreateRequest<TDocument> extends RequestBase {
   path_parts?: {
-    id: Id;
-    index: IndexName;
-    type?: Type;
-  };
+    id: Id
+    index: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    pipeline?: string;
-    refresh?: Refresh;
-    routing?: Routing;
-    timeout?: Time;
-    version?: VersionNumber;
-    version_type?: VersionType;
-    wait_for_active_shards?: WaitForActiveShards;
-  };
-  body?: TDocument;
+    pipeline?: string
+    refresh?: Refresh
+    routing?: Routing
+    timeout?: Time
+    version?: VersionNumber
+    version_type?: VersionType
+    wait_for_active_shards?: WaitForActiveShards
+  }
+  body?: TDocument
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name migration.deprecations
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeprecationInfoRequest extends RequestBase {
   path_parts?: {
-    index?: IndexName;
-  };
-  query_parameters?: {};
-  body?: {};
+    index?: IndexName
+  }
+  query_parameters?: {}
+  body?: {}
 }

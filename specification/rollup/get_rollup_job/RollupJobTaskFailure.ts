@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Id, TaskId } from "../../__common/common";
+import { Id, TaskId } from '../../__common/common'
 
 export class RollupJobTaskFailure {
-  task_id: TaskId;
-  node_id: Id;
-  status: string;
-  reason: RollupJobTaskFailureReason;
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupJobTaskFailureReason
 }
 
 export class RollupJobTaskFailureReason {
-  type: string;
-  reason: string;
+  type: string
+  reason: string
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class ScheduleTriggerEvent {
-  scheduled_time: DateString | string;
-  triggered_time?: DateString | string;
+  scheduled_time: DateString | string
+  triggered_time?: DateString | string
 }

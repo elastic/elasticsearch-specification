@@ -18,5 +18,5 @@
  */
 
 export class FoundUserPrivilege {
-  found: boolean;
+  found: boolean
 }

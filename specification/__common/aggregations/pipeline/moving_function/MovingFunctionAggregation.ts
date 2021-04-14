@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { integer } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class MovingFunctionAggregation extends PipelineAggregationBase {
-  script?: string;
-  shift?: integer;
-  window?: integer;
+  script?: string
+  shift?: integer
+  window?: integer
 }

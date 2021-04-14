@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from "../__common/common";
+import { IndexName } from '../__common/common'
 
 export class TransformDestination {
-  index: IndexName;
-  pipeline?: string;
+  index: IndexName
+  pipeline?: string
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name sql.translate
@@ -27,11 +27,11 @@ import { QueryContainer } from "../../__common/query_dsl/abstractions/container/
  * @stability TODO
  */
 export interface TranslateSqlRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    fetch_size?: integer;
-    filter?: QueryContainer;
-    query?: string;
-    time_zone?: string;
-  };
+    fetch_size?: integer
+    filter?: QueryContainer
+    query?: string
+    time_zone?: string
+  }
 }

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { OpType } from "../../__common/common/OpType";
-import { VersionType } from "../../__common/common/VersionType";
-import { ReindexRouting } from "./ReindexRouting";
+import { IndexName } from '../../__common/common'
+import { OpType } from '../../__common/common/OpType'
+import { VersionType } from '../../__common/common/VersionType'
+import { ReindexRouting } from './ReindexRouting'
 
 export class ReindexDestination {
-  index: IndexName;
-  op_type?: OpType;
-  pipeline?: string;
-  routing?: ReindexRouting;
-  version_type?: VersionType;
+  index: IndexName
+  op_type?: OpType
+  pipeline?: string
+  routing?: ReindexRouting
+  version_type?: VersionType
 }

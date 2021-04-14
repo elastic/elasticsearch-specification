@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class PutCalendarResponse extends ResponseBase {
-  calendar_id: string;
-  description: string;
-  job_ids: string[];
+  calendar_id: string
+  description: string
+  job_ids: string[]
 }

@@ -23,5 +23,5 @@ export enum StoreCopy {
   CORRUPT = 2,
   IO_ERROR = 3,
   STALE = 4,
-  UNKNOWN = 5,
+  UNKNOWN = 5
 }

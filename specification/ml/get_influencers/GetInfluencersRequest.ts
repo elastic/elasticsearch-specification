@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, double, Field, Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Page } from "../job/Page";
+import { DateString, double, Field, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../job/Page'
 
 /**
  * @rest_spec_name ml.get_influencers
@@ -28,18 +28,18 @@ import { Page } from "../job/Page";
  */
 export interface GetInfluencersRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    descending?: boolean;
+    descending?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: DateString;
-    exclude_interim?: boolean;
-    influencer_score?: double;
-    page?: Page;
-    sort?: Field;
+    end?: DateString
+    exclude_interim?: boolean
+    influencer_score?: double
+    page?: Page
+    sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: DateString;
-  };
+    start?: DateString
+  }
 }

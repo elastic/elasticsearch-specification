@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double, long } from "../../__common/common";
+import { double, long } from '../../__common/common'
 
 export class TransformProgress {
-  docs_indexed: long;
-  docs_processed: long;
-  docs_remaining: long;
-  percent_complete: double;
-  total_docs: long;
+  docs_indexed: long
+  docs_processed: long
+  docs_remaining: long
+  percent_complete: double
+  total_docs: long
 }

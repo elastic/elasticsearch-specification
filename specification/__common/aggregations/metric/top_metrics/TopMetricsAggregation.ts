@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Sort } from "../../../../__global/search/sort/Sort";
-import { integer } from "../../../common";
-import { MetricAggregationBase } from "../MetricAggregation";
-import { TopMetricsValue } from "./TopMetricsValue";
+import { Sort } from '../../../../__global/search/sort/Sort'
+import { integer } from '../../../common'
+import { MetricAggregationBase } from '../MetricAggregation'
+import { TopMetricsValue } from './TopMetricsValue'
 
 export class TopMetricsAggregation extends MetricAggregationBase {
-  metrics?: TopMetricsValue | TopMetricsValue[];
-  size?: integer;
-  sort?: Sort;
+  metrics?: TopMetricsValue | TopMetricsValue[]
+  size?: integer
+  sort?: Sort
 }

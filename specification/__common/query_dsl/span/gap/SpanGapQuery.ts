@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Field, integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class SpanGapQuery extends QueryBase {
-  field?: Field;
-  width?: integer;
+  field?: Field
+  width?: integer
 }

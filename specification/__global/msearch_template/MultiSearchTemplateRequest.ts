@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices, long, Types } from "../../__common/common";
-import { SearchType } from "../../__common/common/SearchType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { SearchTemplateRequest } from "../search_template/SearchTemplateRequest";
+import { Indices, long, Types } from '../../__common/common'
+import { SearchType } from '../../__common/common/SearchType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { SearchTemplateRequest } from '../search_template/SearchTemplateRequest'
 
 /**
  * @rest_spec_name msearch_template
@@ -31,17 +31,17 @@ import { SearchTemplateRequest } from "../search_template/SearchTemplateRequest"
  */
 export interface MultiSearchTemplateRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types;
-  };
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    ccs_minimize_roundtrips?: boolean;
-    max_concurrent_searches?: long;
-    search_type?: SearchType;
-    total_hits_as_integer?: boolean;
-    typed_keys?: boolean;
-  };
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    search_type?: SearchType
+    total_hits_as_integer?: boolean
+    typed_keys?: boolean
+  }
   body?: {
-    operations?: Dictionary<string, SearchTemplateRequest>;
-  };
+    operations?: Dictionary<string, SearchTemplateRequest>
+  }
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name transform.start_transform
@@ -28,10 +28,10 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface StartTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id: Name;
-  };
+    transform_id: Name
+  }
   query_parameters?: {
-    timeout?: Time;
-  };
-  body?: {};
+    timeout?: Time
+  }
+  body?: {}
 }

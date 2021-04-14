@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { integer, long } from "../../__common/common";
-import { CPUStats } from "./CPUStats";
-import { MemoryStats } from "./MemoryStats";
+import { integer, long } from '../../__common/common'
+import { CPUStats } from './CPUStats'
+import { MemoryStats } from './MemoryStats'
 
 export class ProcessStats {
-  cpu: CPUStats;
-  mem: MemoryStats;
-  open_file_descriptors: integer;
-  timestamp: long;
+  cpu: CPUStats
+  mem: MemoryStats
+  open_file_descriptors: integer
+  timestamp: long
 }

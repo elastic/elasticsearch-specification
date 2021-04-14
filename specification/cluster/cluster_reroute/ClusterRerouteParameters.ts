@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndexName, integer, NodeName } from "../../__common/common";
+import { IndexName, integer, NodeName } from '../../__common/common'
 
 export class ClusterRerouteParameters {
-  allow_primary: boolean;
-  index: IndexName;
-  node: NodeName;
-  shard: integer;
-  from_node?: NodeName;
-  to_node?: NodeName;
+  allow_primary: boolean
+  index: IndexName
+  node: NodeName
+  shard: integer
+  from_node?: NodeName
+  to_node?: NodeName
 }

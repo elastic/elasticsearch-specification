@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class StopAnalyzer extends AnalyzerBase {
-  stopwords: StopWords;
-  stopwords_path: string;
+  stopwords: StopWords
+  stopwords_path: string
 }

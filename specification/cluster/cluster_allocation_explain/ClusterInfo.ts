@@ -17,34 +17,34 @@
  * under the License.
  */
 
-import { double, long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { double, long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class ClusterInfo {
-  nodes: Dictionary<string, NodeDiskUsage>;
-  shard_sizes: Dictionary<string, long>;
-  shard_paths: Dictionary<string, string>;
-  reserved_sizes: ReservedSize[];
+  nodes: Dictionary<string, NodeDiskUsage>
+  shard_sizes: Dictionary<string, long>
+  shard_paths: Dictionary<string, string>
+  reserved_sizes: ReservedSize[]
 }
 
 export class NodeDiskUsage {
-  node_name: string;
-  least_available: DiskUsage;
-  most_available: DiskUsage;
+  node_name: string
+  least_available: DiskUsage
+  most_available: DiskUsage
 }
 
 export class DiskUsage {
-  path: string;
-  total_bytes: long;
-  used_bytes: long;
-  free_bytes: long;
-  free_disk_percent: double;
-  used_disk_percent: double;
+  path: string
+  total_bytes: long
+  used_bytes: long
+  free_bytes: long
+  free_disk_percent: double
+  used_disk_percent: double
 }
 
 export class ReservedSize {
-  node_id: string;
-  path: string;
-  total: long;
-  shards: string[];
+  node_id: string
+  path: string
+  total: long
+  shards: string[]
 }

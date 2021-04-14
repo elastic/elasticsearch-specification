@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 
 export class CountResponse extends ResponseBase {
-  count: long;
-  _shards: ShardStatistics;
+  count: long
+  _shards: ShardStatistics
 }

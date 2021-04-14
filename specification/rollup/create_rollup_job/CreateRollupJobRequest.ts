@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { RollupFieldMetric } from "../rollup_configuration/RollupFieldMetric";
-import { RollupGroupings } from "../rollup_configuration/RollupGroupings";
+import { Id, IndexName, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { RollupFieldMetric } from '../rollup_configuration/RollupFieldMetric'
+import { RollupGroupings } from '../rollup_configuration/RollupGroupings'
 
 /**
  * @rest_spec_name rollup.put_job
@@ -29,15 +29,15 @@ import { RollupGroupings } from "../rollup_configuration/RollupGroupings";
  */
 export interface CreateRollupJobRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-  };
-  query_parameters?: {};
+    id: Id
+  }
+  query_parameters?: {}
   body?: {
-    cron?: string;
-    groups?: RollupGroupings;
-    index_pattern?: string;
-    metrics?: RollupFieldMetric[];
-    page_size?: long;
-    rollup_index?: IndexName;
-  };
+    cron?: string
+    groups?: RollupGroupings
+    index_pattern?: string
+    metrics?: RollupFieldMetric[]
+    page_size?: long
+    rollup_index?: IndexName
+  }
 }

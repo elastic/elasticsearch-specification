@@ -17,67 +17,67 @@
  * under the License.
  */
 
-import { DatafeedState } from "../../ml/datafeed/DatafeedState";
+import { DatafeedState } from '../../ml/datafeed/DatafeedState'
 
 export class CatDatafeedsRecord {
   /**
    * the datafeed_id
    */
-  "id"?: string;
+  'id'?: string
   /**
    * the datafeed state
    * @aliases s
    */
-  "state"?: DatafeedState;
+  'state'?: DatafeedState
   /**
    * why the datafeed is or is not assigned to a node
    * @aliases ae
    */
-  "assignment_explanation"?: string;
+  'assignment_explanation'?: string
   /**
    * bucket count
    * @aliases bc, bucketsCount
    */
-  "buckets.count"?: string;
+  'buckets.count'?: string
   /**
    * number of searches ran by the datafeed
    * @aliases sc, searchCount
    */
-  "search.count"?: string;
+  'search.count'?: string
   /**
    * the total search time
    * @aliases st, searchTime
    */
-  "search.time"?: string;
+  'search.time'?: string
   /**
    * the average search time per bucket (millisecond)
    * @aliases sba, searchBucketAvg
    */
-  "search.bucket_avg"?: string;
+  'search.bucket_avg'?: string
   /**
    * the exponential average search time per hour (millisecond)
    * @aliases seah, searchExpAvgHour
    */
   //Node info
-  "search.exp_avg_hour"?: string;
+  'search.exp_avg_hour'?: string
   /**
    * id of the assigned node
    * @aliases ni, nodeId
    */
-  "node.id"?: string;
+  'node.id'?: string
   /**
    * name of the assigned node
    * @aliases nn, nodeName
    */
-  "node.name"?: string;
+  'node.name'?: string
   /**
    * ephemeral id of the assigned node
    * @aliases ne, nodeEphemeralId
    */
-  "node.ephemeral_id"?: string;
+  'node.ephemeral_id'?: string
   /**
    * network address of the assigned node
    * @aliases na, nodeAddress
    */
-  "node.address"?: string;
+  'node.address'?: string
 }

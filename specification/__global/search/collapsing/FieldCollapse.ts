@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../__common/common";
-import { InnerHits } from "../inner_hits/InnerHits";
+import { Field, integer } from '../../../__common/common'
+import { InnerHits } from '../inner_hits/InnerHits'
 
 export class FieldCollapse {
-  field: Field;
-  inner_hits?: InnerHits | InnerHits[];
-  max_concurrent_group_searches?: integer;
+  field: Field
+  inner_hits?: InnerHits | InnerHits[]
+  max_concurrent_group_searches?: integer
 }

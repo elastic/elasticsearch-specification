@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
 
 export class DatafeedIndicesOptions {
-  allow_no_indices?: boolean;
-  expand_wildcards?: ExpandWildcards;
-  ignore_unavailable?: boolean;
-  ignore_throttled?: boolean;
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
 }

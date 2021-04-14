@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class DateProcessor extends ProcessorBase {
-  field: Field;
-  formats: string[];
-  locale?: string;
-  target_field: Field;
-  timezone: string;
+  field: Field
+  formats: string[]
+  locale?: string
+  target_field: Field
+  timezone: string
 }

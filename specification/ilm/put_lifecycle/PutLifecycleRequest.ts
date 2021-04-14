@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Policy } from "../Policy";
+import { Id, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Policy } from '../Policy'
 
 /**
  * @rest_spec_name ilm.put_lifecycle
@@ -28,11 +28,11 @@ import { Policy } from "../Policy";
  */
 export interface PutLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy?: Name;
-    policy_id?: Id;
-  };
-  query_parameters?: {};
+    policy?: Name
+    policy_id?: Id
+  }
+  query_parameters?: {}
   body?: {
-    policy?: Policy;
-  };
+    policy?: Policy
+  }
 }

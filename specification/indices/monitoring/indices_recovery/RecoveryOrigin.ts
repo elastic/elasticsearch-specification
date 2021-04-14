@@ -22,20 +22,20 @@ import {
   IndexName,
   Name,
   Uuid,
-  VersionString,
-} from "../../../__common/common";
+  VersionString
+} from '../../../__common/common'
 
 export class RecoveryOrigin {
-  hostname?: string;
-  host?: string;
-  transport_address?: string;
-  id?: Id;
-  ip?: string;
-  name?: Name;
-  bootstrap_new_history_uuid?: boolean;
-  repository?: Name;
-  snapshot?: Name;
-  version?: VersionString;
-  restoreUUID?: Uuid;
-  index?: IndexName;
+  hostname?: string
+  host?: string
+  transport_address?: string
+  id?: Id
+  ip?: string
+  name?: Name
+  bootstrap_new_history_uuid?: boolean
+  repository?: Name
+  snapshot?: Name
+  version?: VersionString
+  restoreUUID?: Uuid
+  index?: IndexName
 }

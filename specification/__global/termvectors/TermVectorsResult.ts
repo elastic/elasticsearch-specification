@@ -22,16 +22,16 @@ import {
   Id,
   IndexName,
   long,
-  VersionNumber,
-} from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TermVector } from "./TermVector";
+  VersionNumber
+} from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TermVector } from './TermVector'
 
 export class TermVectorsResult {
-  found: boolean;
-  id: Id;
-  index: IndexName;
-  term_vectors: Dictionary<Field, TermVector>;
-  took: long;
-  version: VersionNumber;
+  found: boolean
+  id: Id
+  index: IndexName
+  term_vectors: Dictionary<Field, TermVector>
+  took: long
+  version: VersionNumber
 }

@@ -19,5 +19,5 @@
 
 export enum SynonymFormat {
   solr = 0,
-  wordnet = 1,
+  wordnet = 1
 }

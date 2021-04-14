@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name xpack.usage
@@ -27,7 +27,7 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface XPackUsageRequest extends RequestBase {
   query_parameters?: {
-    master_timeout?: Time;
-  };
-  body?: {};
+    master_timeout?: Time
+  }
+  body?: {}
 }

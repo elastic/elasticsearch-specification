@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { integer } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class MovingPercentilesAggregation extends PipelineAggregationBase {
-  window?: integer;
-  shift?: integer;
+  window?: integer
+  shift?: integer
 }

@@ -29,5 +29,5 @@ export enum MetricFunction {
   Metric = 8,
   Varp = 9,
   HighVarp = 10,
-  LowVarp = 11,
+  LowVarp = 11
 }

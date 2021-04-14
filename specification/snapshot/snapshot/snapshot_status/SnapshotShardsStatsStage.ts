@@ -25,5 +25,5 @@ export enum SnapshotShardsStatsStage {
   FAILURE = 1,
   FINALIZE = 2,
   INIT = 3,
-  STARTED = 4,
+  STARTED = 4
 }

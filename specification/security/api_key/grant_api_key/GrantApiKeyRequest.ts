@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name security.grant_api_key
@@ -29,24 +29,24 @@ import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
  * @stability TODO
  */
 export interface GrantApiKeyRequest extends RequestBase {
-  path_parts?: {};
-  query_parameters?: {};
+  path_parts?: {}
+  query_parameters?: {}
   body?: {
-    api_key: ApiKey;
-    grant_type: ApiKeyGrantType;
-    access_token?: string;
-    username?: string;
-    password?: string;
-  };
+    api_key: ApiKey
+    grant_type: ApiKeyGrantType
+    access_token?: string
+    username?: string
+    password?: string
+  }
 }
 
 export class ApiKey {
-  name: Name;
-  expiration?: Time;
-  role_descriptors?: Dictionary<string, UserDefinedValue>[];
+  name: Name
+  expiration?: Time
+  role_descriptors?: Dictionary<string, UserDefinedValue>[]
 }
 
 export enum ApiKeyGrantType {
   access_token = 0,
-  password = 1,
+  password = 1
 }

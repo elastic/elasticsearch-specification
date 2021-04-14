@@ -17,49 +17,49 @@
  * under the License.
  */
 
-import { VersionString } from "../../common";
-import { AsciiFoldingTokenFilter } from "./AsciiFoldingTokenFilter";
-import { CommonGramsTokenFilter } from "./CommonGramsTokenFilter";
-import { HyphenationDecompounderTokenFilter } from "./compound_word/HyphenationDecompounderTokenFilter";
-import { ConditionTokenFilter } from "./ConditionTokenFilter";
-import { DelimitedPayloadTokenFilter } from "./delimited_payload/DelimitedPayloadTokenFilter";
-import { EdgeNGramTokenFilter } from "./edge_n_gram/EdgeNGramTokenFilter";
-import { ElisionTokenFilter } from "./ElisionTokenFilter";
-import { FingerprintTokenFilter } from "./FingerprintTokenFilter";
-import { HunspellTokenFilter } from "./HunspellTokenFilter";
-import { KeepTypesTokenFilter } from "./KeepTypesTokenFilter";
-import { KeepWordsTokenFilter } from "./KeepWordsTokenFilter";
-import { KeywordMarkerTokenFilter } from "./KeywordMarkerTokenFilter";
-import { KStemTokenFilter } from "./KStemTokenFilter";
-import { LengthTokenFilter } from "./LengthTokenFilter";
-import { LimitTokenCountTokenFilter } from "./LimitTokenCountTokenFilter";
-import { LowercaseTokenFilter } from "./LowercaseTokenFilter";
-import { MultiplexerTokenFilter } from "./MultiplexerTokenFilter";
-import { NGramTokenFilter } from "./NGramTokenFilter";
-import { NoriPartOfSpeechTokenFilter } from "./NoriPartOfSpeechTokenFilter";
-import { PatternCaptureTokenFilter } from "./PatternCaptureTokenFilter";
-import { PatternReplaceTokenFilter } from "./PatternReplaceTokenFilter";
-import { PorterStemTokenFilter } from "./PorterStemTokenFilter";
-import { PredicateTokenFilter } from "./PredicateTokenFilter";
-import { RemoveDuplicatesTokenFilter } from "./RemoveDuplicatesTokenFilter";
-import { ReverseTokenFilter } from "./ReverseTokenFilter";
-import { ShingleTokenFilter } from "./shingle/ShingleTokenFilter";
-import { SnowballTokenFilter } from "./SnowballTokenFilter";
-import { StemmerOverrideTokenFilter } from "./StemmerOverrideTokenFilter";
-import { StemmerTokenFilter } from "./StemmerTokenFilter";
-import { StopTokenFilter } from "./stop/StopTokenFilter";
-import { SynonymGraphTokenFilter } from "./synonym/SynonymGraphTokenFilter";
-import { SynonymTokenFilter } from "./synonym/SynonymTokenFilter";
-import { TrimTokenFilter } from "./TrimTokenFilter";
-import { TruncateTokenFilter } from "./TruncateTokenFilter";
-import { UniqueTokenFilter } from "./UniqueTokenFilter";
-import { UppercaseTokenFilter } from "./UppercaseTokenFilter";
-import { WordDelimiterTokenFilter } from "./word_delimiter/WordDelimiterTokenFilter";
-import { WordDelimiterGraphTokenFilter } from "./word_delimiter_graph/WordDelimiterGraphTokenFilter";
+import { VersionString } from '../../common'
+import { AsciiFoldingTokenFilter } from './AsciiFoldingTokenFilter'
+import { CommonGramsTokenFilter } from './CommonGramsTokenFilter'
+import { HyphenationDecompounderTokenFilter } from './compound_word/HyphenationDecompounderTokenFilter'
+import { ConditionTokenFilter } from './ConditionTokenFilter'
+import { DelimitedPayloadTokenFilter } from './delimited_payload/DelimitedPayloadTokenFilter'
+import { EdgeNGramTokenFilter } from './edge_n_gram/EdgeNGramTokenFilter'
+import { ElisionTokenFilter } from './ElisionTokenFilter'
+import { FingerprintTokenFilter } from './FingerprintTokenFilter'
+import { HunspellTokenFilter } from './HunspellTokenFilter'
+import { KeepTypesTokenFilter } from './KeepTypesTokenFilter'
+import { KeepWordsTokenFilter } from './KeepWordsTokenFilter'
+import { KeywordMarkerTokenFilter } from './KeywordMarkerTokenFilter'
+import { KStemTokenFilter } from './KStemTokenFilter'
+import { LengthTokenFilter } from './LengthTokenFilter'
+import { LimitTokenCountTokenFilter } from './LimitTokenCountTokenFilter'
+import { LowercaseTokenFilter } from './LowercaseTokenFilter'
+import { MultiplexerTokenFilter } from './MultiplexerTokenFilter'
+import { NGramTokenFilter } from './NGramTokenFilter'
+import { NoriPartOfSpeechTokenFilter } from './NoriPartOfSpeechTokenFilter'
+import { PatternCaptureTokenFilter } from './PatternCaptureTokenFilter'
+import { PatternReplaceTokenFilter } from './PatternReplaceTokenFilter'
+import { PorterStemTokenFilter } from './PorterStemTokenFilter'
+import { PredicateTokenFilter } from './PredicateTokenFilter'
+import { RemoveDuplicatesTokenFilter } from './RemoveDuplicatesTokenFilter'
+import { ReverseTokenFilter } from './ReverseTokenFilter'
+import { ShingleTokenFilter } from './shingle/ShingleTokenFilter'
+import { SnowballTokenFilter } from './SnowballTokenFilter'
+import { StemmerOverrideTokenFilter } from './StemmerOverrideTokenFilter'
+import { StemmerTokenFilter } from './StemmerTokenFilter'
+import { StopTokenFilter } from './stop/StopTokenFilter'
+import { SynonymGraphTokenFilter } from './synonym/SynonymGraphTokenFilter'
+import { SynonymTokenFilter } from './synonym/SynonymTokenFilter'
+import { TrimTokenFilter } from './TrimTokenFilter'
+import { TruncateTokenFilter } from './TruncateTokenFilter'
+import { UniqueTokenFilter } from './UniqueTokenFilter'
+import { UppercaseTokenFilter } from './UppercaseTokenFilter'
+import { WordDelimiterTokenFilter } from './word_delimiter/WordDelimiterTokenFilter'
+import { WordDelimiterGraphTokenFilter } from './word_delimiter_graph/WordDelimiterGraphTokenFilter'
 
 export class TokenFilterBase {
-  type: string;
-  version?: VersionString;
+  type: string
+  version?: VersionString
 }
 
 export type TokenFilter =
@@ -101,4 +101,4 @@ export type TokenFilter =
   | UniqueTokenFilter
   | UppercaseTokenFilter
   | WordDelimiterGraphTokenFilter
-  | WordDelimiterTokenFilter;
+  | WordDelimiterTokenFilter

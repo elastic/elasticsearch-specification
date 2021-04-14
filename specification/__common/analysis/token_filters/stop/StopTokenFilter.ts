@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { StopWords } from "../../StopWords";
-import { TokenFilterBase } from "../TokenFilterBase";
+import { StopWords } from '../../StopWords'
+import { TokenFilterBase } from '../TokenFilterBase'
 
 export class StopTokenFilter extends TokenFilterBase {
-  ignore_case?: boolean;
-  remove_trailing?: boolean;
-  stopwords: StopWords;
-  stopwords_path?: string;
+  ignore_case?: boolean
+  remove_trailing?: boolean
+  stopwords: StopWords
+  stopwords_path?: string
 }

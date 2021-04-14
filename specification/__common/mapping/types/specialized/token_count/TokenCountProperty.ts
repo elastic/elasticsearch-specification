@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class TokenCountProperty extends DocValuesPropertyBase {
-  analyzer?: string;
-  boost?: double;
-  index?: boolean;
-  null_value?: double;
-  enable_position_increments?: boolean;
-  type: "token_count";
+  analyzer?: string
+  boost?: double
+  index?: boolean
+  null_value?: double
+  enable_position_increments?: boolean
+  type: 'token_count'
 }

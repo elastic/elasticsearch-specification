@@ -26,5 +26,5 @@ export enum NumberType {
   long = 5,
   short = 6,
   byte = 7,
-  unsigned_long = 8,
+  unsigned_long = 8
 }

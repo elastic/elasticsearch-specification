@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { AggregationBreakdown } from "./AggregationBreakdown";
+import { long } from '../../../__common/common'
+import { AggregationBreakdown } from './AggregationBreakdown'
 
 export class AggregationProfileDebug {}
 export class AggregationProfile {
-  breakdown: AggregationBreakdown;
-  description: string;
-  time_in_nanos: long;
-  type: string;
-  debug: AggregationProfileDebug;
-  children?: AggregationProfileDebug[];
+  breakdown: AggregationBreakdown
+  description: string
+  time_in_nanos: long
+  type: string
+  debug: AggregationProfileDebug
+  children?: AggregationProfileDebug[]
 }

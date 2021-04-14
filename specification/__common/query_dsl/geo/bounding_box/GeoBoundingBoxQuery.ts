@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { QueryBase } from "../../abstractions/query/Query";
-import { GeoValidationMethod } from "../GeoValidationMethod";
-import { BoundingBox } from "./BoundingBox";
-import { GeoExecution } from "./GeoExecution";
+import { QueryBase } from '../../abstractions/query/Query'
+import { GeoValidationMethod } from '../GeoValidationMethod'
+import { BoundingBox } from './BoundingBox'
+import { GeoExecution } from './GeoExecution'
 
 export class GeoBoundingBoxQuery extends QueryBase {
-  bounding_box?: BoundingBox;
-  type?: GeoExecution;
-  validation_method?: GeoValidationMethod;
+  bounding_box?: BoundingBox
+  type?: GeoExecution
+  validation_method?: GeoValidationMethod
 }

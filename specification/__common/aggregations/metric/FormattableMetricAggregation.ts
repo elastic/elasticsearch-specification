@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { MetricAggregationBase } from "./MetricAggregation";
+import { MetricAggregationBase } from './MetricAggregation'
 
 export class FormattableMetricAggregation extends MetricAggregationBase {
-  format?: string;
+  format?: string
 }

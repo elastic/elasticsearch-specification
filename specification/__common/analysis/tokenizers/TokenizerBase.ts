@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { VersionString } from "../../common";
-import { CharGroupTokenizer } from "./CharGroupTokenizer";
-import { KeywordTokenizer } from "./KeywordTokenizer";
-import { LetterTokenizer } from "./LetterTokenizer";
-import { LowercaseTokenizer } from "./LowercaseTokenizer";
-import { NoriTokenizer } from "./NoriTokenizer";
-import { EdgeNGramTokenizer } from "./n_gram/EdgeNGramTokenizer";
-import { NGramTokenizer } from "./n_gram/NGramTokenizer";
-import { PathHierarchyTokenizer } from "./PathHierarchyTokenizer";
-import { StandardTokenizer } from "./StandardTokenizer";
-import { UaxEmailUrlTokenizer } from "./UaxEmailUrlTokenizer";
-import { WhitespaceTokenizer } from "./WhitespaceTokenizer";
+import { VersionString } from '../../common'
+import { CharGroupTokenizer } from './CharGroupTokenizer'
+import { KeywordTokenizer } from './KeywordTokenizer'
+import { LetterTokenizer } from './LetterTokenizer'
+import { LowercaseTokenizer } from './LowercaseTokenizer'
+import { NoriTokenizer } from './NoriTokenizer'
+import { EdgeNGramTokenizer } from './n_gram/EdgeNGramTokenizer'
+import { NGramTokenizer } from './n_gram/NGramTokenizer'
+import { PathHierarchyTokenizer } from './PathHierarchyTokenizer'
+import { StandardTokenizer } from './StandardTokenizer'
+import { UaxEmailUrlTokenizer } from './UaxEmailUrlTokenizer'
+import { WhitespaceTokenizer } from './WhitespaceTokenizer'
 
 export class TokenizerBase {
-  type: string;
-  version?: VersionString;
+  type: string
+  version?: VersionString
 }
 
 export type Tokenizer =
@@ -46,4 +46,4 @@ export type Tokenizer =
   | PathHierarchyTokenizer
   | StandardTokenizer
   | UaxEmailUrlTokenizer
-  | WhitespaceTokenizer;
+  | WhitespaceTokenizer

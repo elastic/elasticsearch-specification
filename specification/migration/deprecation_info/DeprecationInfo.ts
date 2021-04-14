@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DeprecationWarningLevel } from "./DeprecationWarningLevel";
+import { DeprecationWarningLevel } from './DeprecationWarningLevel'
 
 export class DeprecationInfo {
-  details: string;
-  level: DeprecationWarningLevel;
-  message: string;
-  url: string;
+  details: string
+  level: DeprecationWarningLevel
+  message: string
+  url: string
 }

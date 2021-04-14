@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class ThrottleState {
-  reason: string;
-  timestamp: DateString;
+  reason: string
+  timestamp: DateString
 }

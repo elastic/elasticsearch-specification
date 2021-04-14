@@ -18,5 +18,5 @@
  */
 
 export class GeoShape {
-  type?: string;
+  type?: string
 }

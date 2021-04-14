@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ChainInput } from "./ChainInput";
-import { HttpInput } from "./HttpInput";
-import { SearchInput } from "./SearchInput";
-import { SimpleInput } from "./SimpleInput";
+import { ChainInput } from './ChainInput'
+import { HttpInput } from './HttpInput'
+import { SearchInput } from './SearchInput'
+import { SimpleInput } from './SimpleInput'
 
 export class InputContainer {
-  chain?: ChainInput;
-  http?: HttpInput;
-  search?: SearchInput;
-  simple?: SimpleInput;
+  chain?: ChainInput
+  http?: HttpInput
+  search?: SearchInput
+  simple?: SimpleInput
 }

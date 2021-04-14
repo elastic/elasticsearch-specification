@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { Missing } from "../../AggregationContainer";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { DateRangeExpression } from "./DateRangeExpression";
+import { Field } from '../../../common'
+import { Missing } from '../../AggregationContainer'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { DateRangeExpression } from './DateRangeExpression'
 
 export class DateRangeAggregation extends BucketAggregationBase {
-  field?: Field;
-  format?: string;
-  missing?: Missing;
-  ranges?: DateRangeExpression[];
-  time_zone?: string;
+  field?: Field
+  format?: string
+  missing?: Missing
+  ranges?: DateRangeExpression[]
+  time_zone?: string
 }

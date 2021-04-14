@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Aggregation } from "../../Aggregation";
-import { ValueType } from "./ValueType";
-import { WeightedAverageValue } from "./WeightedAverageValue";
+import { Aggregation } from '../../Aggregation'
+import { ValueType } from './ValueType'
+import { WeightedAverageValue } from './WeightedAverageValue'
 
 export class WeightedAverageAggregation extends Aggregation {
-  format?: string;
-  value?: WeightedAverageValue;
-  value_type?: ValueType;
-  weight?: WeightedAverageValue;
+  format?: string
+  value?: WeightedAverageValue
+  value_type?: ValueType
+  weight?: WeightedAverageValue
 }

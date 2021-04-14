@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field } from "../../common";
-import { Missing } from "../AggregationContainer";
+import { Field } from '../../common'
+import { Script } from '../../common_options/scripting/Script'
+import { Missing } from '../AggregationContainer'
 
 export class MetricAggregationBase {
-  field?: Field;
-  missing?: Missing;
-  script?: Script;
+  field?: Field
+  missing?: Missing
+  script?: Script
 }
 
 export class FormatMetricAggregationBase extends MetricAggregationBase {
-  format?: string;
+  format?: string
 }

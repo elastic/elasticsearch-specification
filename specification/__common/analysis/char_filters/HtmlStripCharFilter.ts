@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { CharFilterBase } from "./CharFilterBase";
+import { CharFilterBase } from './CharFilterBase'
 
 export class HtmlStripCharFilter extends CharFilterBase {}

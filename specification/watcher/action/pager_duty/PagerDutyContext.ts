@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { PagerDutyContextType } from "./PagerDutyContextType";
+import { PagerDutyContextType } from './PagerDutyContextType'
 
 export class PagerDutyContext {
-  href: string;
-  src: string;
-  type: PagerDutyContextType;
+  href: string
+  src: string
+  type: PagerDutyContextType
 }

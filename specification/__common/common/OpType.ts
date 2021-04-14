@@ -19,5 +19,5 @@
 
 export enum OpType {
   index = 0,
-  create = 1,
+  create = 1
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { FollowIndexShardStats } from "./FollowIndexShardStats";
+import { IndexName } from '../../__common/common'
+import { FollowIndexShardStats } from './FollowIndexShardStats'
 
 export class FollowIndexStats {
-  index: IndexName;
-  shards: FollowIndexShardStats[];
+  index: IndexName
+  shards: FollowIndexShardStats[]
 }

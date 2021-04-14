@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { KeyedProcessorStats } from "./KeyedProcessorStats";
+import { long } from '../../../__common/common'
+import { KeyedProcessorStats } from './KeyedProcessorStats'
 
 export class IngestStats {
-  count: long;
-  current: long;
-  failed: long;
-  processors: KeyedProcessorStats[];
-  time_in_millis: long;
+  count: long
+  current: long
+  failed: long
+  processors: KeyedProcessorStats[]
+  time_in_millis: long
 }

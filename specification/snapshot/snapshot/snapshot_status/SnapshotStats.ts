@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { FileCountSnapshotStats } from "./FileCountSnapshotStats";
+import { long } from '../../../__common/common'
+import { FileCountSnapshotStats } from './FileCountSnapshotStats'
 
 export class SnapshotStats {
-  incremental: FileCountSnapshotStats;
-  start_time_in_millis: long;
-  time_in_millis: long;
-  total: FileCountSnapshotStats;
+  incremental: FileCountSnapshotStats
+  start_time_in_millis: long
+  time_in_millis: long
+  total: FileCountSnapshotStats
 }

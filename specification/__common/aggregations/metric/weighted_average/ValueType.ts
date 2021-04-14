@@ -27,5 +27,5 @@ export enum ValueType {
   ip = 6,
   numeric = 7,
   geo_point = 8,
-  boolean = 9,
+  boolean = 9
 }

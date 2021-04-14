@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { double, Id, long } from "../../../__common/common";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { BucketInfluencer } from "./BucketInfluencer";
-import { PartitionScore } from "./PartitionScore";
+import { double, Id, long } from '../../../__common/common'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { BucketInfluencer } from './BucketInfluencer'
+import { PartitionScore } from './PartitionScore'
 
 export class ResultBucket {
-  anomaly_score: double;
-  bucket_influencers: BucketInfluencer[];
-  bucket_span: Time;
-  event_count: long;
-  initial_anomaly_score: double;
-  is_interim: boolean;
-  job_id: Id;
-  partition_scores?: PartitionScore[];
-  processing_time_ms: double;
-  result_type: string;
-  timestamp: Time;
+  anomaly_score: double
+  bucket_influencers: BucketInfluencer[]
+  bucket_span: Time
+  event_count: long
+  initial_anomaly_score: double
+  is_interim: boolean
+  job_id: Id
+  partition_scores?: PartitionScore[]
+  processing_time_ms: double
+  result_type: string
+  timestamp: Time
 }

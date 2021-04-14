@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { DatafeedState } from "./DatafeedState";
-import { DatafeedTimingStats } from "./DatafeedTimingStats";
-import { DiscoveryNode } from "./DiscoveryNode";
+import { Id } from '../../__common/common'
+import { DatafeedState } from './DatafeedState'
+import { DatafeedTimingStats } from './DatafeedTimingStats'
+import { DiscoveryNode } from './DiscoveryNode'
 
 export class DatafeedStats {
-  assignment_explanation?: string;
-  datafeed_id: Id;
-  node?: DiscoveryNode;
-  state: DatafeedState;
-  timing_stats: DatafeedTimingStats;
+  assignment_explanation?: string
+  datafeed_id: Id
+  node?: DiscoveryNode
+  state: DatafeedState
+  timing_stats: DatafeedTimingStats
 }

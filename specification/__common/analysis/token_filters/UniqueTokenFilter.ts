@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class UniqueTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */
-  only_on_same_position: boolean;
+  only_on_same_position: boolean
 }

@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { IntervalsAllOf } from "./IntervalsAllOf";
-import { IntervalsAnyOf } from "./IntervalsAnyOf";
-import { IntervalsFuzzy } from "./IntervalsFuzzy";
-import { IntervalsMatch } from "./IntervalsMatch";
-import { IntervalsPrefix } from "./IntervalsPrefix";
-import { IntervalsWildcard } from "./IntervalsWildcard";
+import { IntervalsAllOf } from './IntervalsAllOf'
+import { IntervalsAnyOf } from './IntervalsAnyOf'
+import { IntervalsFuzzy } from './IntervalsFuzzy'
+import { IntervalsMatch } from './IntervalsMatch'
+import { IntervalsPrefix } from './IntervalsPrefix'
+import { IntervalsWildcard } from './IntervalsWildcard'
 
 export class IntervalsContainer {
-  all_of?: IntervalsAllOf;
-  any_of?: IntervalsAnyOf;
-  fuzzy?: IntervalsFuzzy;
-  match?: IntervalsMatch;
-  prefix?: IntervalsPrefix;
-  wildcard?: IntervalsWildcard;
+  all_of?: IntervalsAllOf
+  any_of?: IntervalsAnyOf
+  fuzzy?: IntervalsFuzzy
+  match?: IntervalsMatch
+  prefix?: IntervalsPrefix
+  wildcard?: IntervalsWildcard
 }

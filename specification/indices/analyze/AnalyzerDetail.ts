@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ExplainAnalyzeToken } from "./ExplainAnalyzeToken";
+import { ExplainAnalyzeToken } from './ExplainAnalyzeToken'
 
 export class AnalyzerDetail {
-  name: string;
-  tokens: Array<ExplainAnalyzeToken>;
+  name: string
+  tokens: Array<ExplainAnalyzeToken>
 }

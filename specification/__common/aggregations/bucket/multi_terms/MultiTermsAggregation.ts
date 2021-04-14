@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { Field } from '../../../common'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class MultiTermsAggregation extends BucketAggregationBase {
-  terms: MultiTermLookup[];
+  terms: MultiTermLookup[]
 }
 
 export class MultiTermLookup {
-  field: Field;
+  field: Field
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double } from "../../../__common/common";
-import { AppliesTo } from "./AppliesTo";
-import { ConditionOperator } from "./ConditionOperator";
+import { double } from '../../../__common/common'
+import { AppliesTo } from './AppliesTo'
+import { ConditionOperator } from './ConditionOperator'
 
 export class RuleCondition {
-  applies_to: AppliesTo;
-  operator: ConditionOperator;
-  value: double;
+  applies_to: AppliesTo
+  operator: ConditionOperator
+  value: double
 }

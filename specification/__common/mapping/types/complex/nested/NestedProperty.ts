@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../../__spec_utils/Dictionary";
-import { PropertyName } from "../../../../common";
-import { DynamicMapping } from "../../../DynamicMapping";
-import { CorePropertyBase } from "../../CoreProperty";
-import { Property } from "../../Property";
+import { Dictionary } from '../../../../../__spec_utils/Dictionary'
+import { PropertyName } from '../../../../common'
+import { DynamicMapping } from '../../../DynamicMapping'
+import { CorePropertyBase } from '../../CoreProperty'
+import { Property } from '../../Property'
 
 export class NestedProperty extends CorePropertyBase {
-  dynamic?: boolean | DynamicMapping;
-  enabled?: boolean;
-  properties?: Dictionary<PropertyName, Property>;
-  include_in_parent?: boolean;
-  include_in_root?: boolean;
-  type: "nested";
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  include_in_parent?: boolean
+  include_in_root?: boolean
+  type: 'nested'
 }

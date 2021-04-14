@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.get_filters
@@ -27,11 +27,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetFiltersRequest extends RequestBase {
   path_parts?: {
-    filter_id?: Id;
-  };
+    filter_id?: Id
+  }
   query_parameters?: {
-    from?: integer;
-    size?: integer;
-  };
-  body?: {};
+    from?: integer
+    size?: integer
+  }
+  body?: {}
 }

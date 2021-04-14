@@ -1,5 +1,5 @@
-import { integer } from "../../common";
-import { DateMathTimeUnit } from "./DateMathTimeUnit";
+import { integer } from '../../common'
+import { DateMathTimeUnit } from './DateMathTimeUnit'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -19,8 +19,8 @@ import { DateMathTimeUnit } from "./DateMathTimeUnit";
  * specific language governing permissions and limitations
  * under the License.
  */
-export type DateMathTime = string;
+export type DateMathTime = string
 export class DateMathTimeParsed {
-  factor: integer;
-  interval: DateMathTimeUnit;
+  factor: integer
+  interval: DateMathTimeUnit
 }

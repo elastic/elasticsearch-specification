@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardWarmer {
-  current: long;
-  total: long;
-  total_time_in_millis: long;
+  current: long
+  total: long
+  total_time_in_millis: long
 }

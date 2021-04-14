@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from "../../__common/common";
-import { Bytes } from "../../__common/common/Bytes";
-import { CatRequestBase } from "../CatBase";
+import { Indices } from '../../__common/common'
+import { Bytes } from '../../__common/common/Bytes'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.recovery
@@ -28,12 +28,12 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatRecoveryRequest extends CatRequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    active_only?: boolean;
-    bytes?: Bytes;
-    detailed?: boolean;
-  };
-  body?: {};
+    active_only?: boolean
+    bytes?: Bytes
+    detailed?: boolean
+  }
+  body?: {}
 }

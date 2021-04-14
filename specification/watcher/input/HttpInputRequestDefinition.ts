@@ -17,26 +17,26 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ConnectionScheme } from "./ConnectionScheme";
-import { HttpInputAuthentication } from "./HttpInputAuthentication";
-import { HttpInputMethod } from "./HttpInputMethod";
-import { HttpInputProxy } from "./HttpInputProxy";
+import { integer } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ConnectionScheme } from './ConnectionScheme'
+import { HttpInputAuthentication } from './HttpInputAuthentication'
+import { HttpInputMethod } from './HttpInputMethod'
+import { HttpInputProxy } from './HttpInputProxy'
 
 export class HttpInputRequestDefinition {
-  auth?: HttpInputAuthentication;
-  body?: string;
-  connection_timeout?: Time;
-  headers?: Dictionary<string, string>;
-  host?: string;
-  method?: HttpInputMethod;
-  params?: Dictionary<string, string>;
-  path?: string;
-  port?: integer;
-  proxy?: HttpInputProxy;
-  read_timeout?: Time;
-  scheme?: ConnectionScheme;
-  url?: string;
+  auth?: HttpInputAuthentication
+  body?: string
+  connection_timeout?: Time
+  headers?: Dictionary<string, string>
+  host?: string
+  method?: HttpInputMethod
+  params?: Dictionary<string, string>
+  path?: string
+  port?: integer
+  proxy?: HttpInputProxy
+  read_timeout?: Time
+  scheme?: ConnectionScheme
+  url?: string
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ErrorCause } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { TaskStatus } from "../list_tasks/TaskStatus";
-import { TaskInfo } from "./TaskInfo";
+import { ErrorCause } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { TaskStatus } from '../list_tasks/TaskStatus'
+import { TaskInfo } from './TaskInfo'
 
 export class GetTaskResponse extends ResponseBase {
-  completed: boolean;
-  task: TaskInfo;
-  response?: TaskStatus;
-  error?: ErrorCause;
+  completed: boolean
+  task: TaskInfo
+  response?: TaskStatus
+  error?: ErrorCause
 }

@@ -25,5 +25,5 @@ export enum ActionExecutionState {
   executed = 4,
   failed = 5,
   deleted_while_queued = 6,
-  not_executed_already_queued = 7,
+  not_executed_already_queued = 7
 }

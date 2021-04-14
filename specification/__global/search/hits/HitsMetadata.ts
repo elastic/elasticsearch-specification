@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { double, long } from "../../../__common/common";
-import { Hit } from "./Hit";
-import { TotalHits } from "./TotalHits";
+import { double, long } from '../../../__common/common'
+import { Hit } from './Hit'
+import { TotalHits } from './TotalHits'
 
 export class HitsMetadata<T> {
-  total: TotalHits | long;
-  hits: Hit<T>[];
+  total: TotalHits | long
+  hits: Hit<T>[]
 
-  max_score?: double;
+  max_score?: double
 }

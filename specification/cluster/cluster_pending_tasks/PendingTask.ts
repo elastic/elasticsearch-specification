@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class PendingTask {
-  insert_order: integer;
-  priority: string;
-  source: string;
-  time_in_queue: string;
-  time_in_queue_millis: integer;
+  insert_order: integer
+  priority: string
+  source: string
+  time_in_queue: string
+  time_in_queue_millis: integer
 }

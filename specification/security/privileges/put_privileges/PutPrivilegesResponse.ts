@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from "../../../__common/common_abstractions/response/DictionaryResponseBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { PutPrivilegesStatus } from "./PutPrivilegesStatus";
+import { DictionaryResponseBase } from '../../../__common/common_abstractions/response/DictionaryResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { PutPrivilegesStatus } from './PutPrivilegesStatus'
 
 export class PutPrivilegesResponse extends DictionaryResponseBase<
   string,

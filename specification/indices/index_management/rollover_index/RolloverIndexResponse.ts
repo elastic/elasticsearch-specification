@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { AcknowledgedResponseBase } from '../../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class RolloverIndexResponse extends AcknowledgedResponseBase {
-  conditions: Dictionary<string, boolean>;
-  dry_run: boolean;
-  new_index: string;
-  old_index: string;
-  rolled_over: boolean;
-  shards_acknowledged: boolean;
+  conditions: Dictionary<string, boolean>
+  dry_run: boolean
+  new_index: string
+  old_index: string
+  rolled_over: boolean
+  shards_acknowledged: boolean
 }

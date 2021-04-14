@@ -17,25 +17,25 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "../../token_filters/TokenFilterBase";
-import { IcuCollationAlternate } from "./collation/IcuCollationAlternate";
-import { IcuCollationCaseFirst } from "./collation/IcuCollationCaseFirst";
-import { IcuCollationDecomposition } from "./collation/IcuCollationDecomposition";
-import { IcuCollationStrength } from "./collation/IcuCollationStrength";
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { IcuCollationAlternate } from './collation/IcuCollationAlternate'
+import { IcuCollationCaseFirst } from './collation/IcuCollationCaseFirst'
+import { IcuCollationDecomposition } from './collation/IcuCollationDecomposition'
+import { IcuCollationStrength } from './collation/IcuCollationStrength'
 
 export class IcuCollationTokenFilter extends TokenFilterBase {
-  alternate: IcuCollationAlternate;
-  caseFirst: IcuCollationCaseFirst;
+  alternate: IcuCollationAlternate
+  caseFirst: IcuCollationCaseFirst
   /** @prop_serializer NullableStringBooleanFormatter */
-  caseLevel: boolean;
-  country: string;
-  decomposition: IcuCollationDecomposition;
+  caseLevel: boolean
+  country: string
+  decomposition: IcuCollationDecomposition
   /** @prop_serializer NullableStringBooleanFormatter */
-  hiraganaQuaternaryMode: boolean;
-  language: string;
+  hiraganaQuaternaryMode: boolean
+  language: string
   /** @prop_serializer NullableStringBooleanFormatter */
-  numeric: boolean;
-  strength: IcuCollationStrength;
-  variableTop: string;
-  variant: string;
+  numeric: boolean
+  strength: IcuCollationStrength
+  variableTop: string
+  variant: string
 }

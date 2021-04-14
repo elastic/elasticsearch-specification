@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class ElisionTokenFilter extends TokenFilterBase {
-  articles: string[];
+  articles: string[]
   /** @prop_serializer NullableStringBooleanFormatter */
-  articles_case: boolean;
+  articles_case: boolean
 }

@@ -18,5 +18,5 @@
  */
 
 export class IndexField {
-  enabled: boolean;
+  enabled: boolean
 }

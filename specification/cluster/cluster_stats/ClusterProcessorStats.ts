@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ClusterProcessorStats {
-  count: long;
-  current: long;
-  failed: long;
-  time_in_millis: long;
+  count: long
+  current: long
+  failed: long
+  time_in_millis: long
 }

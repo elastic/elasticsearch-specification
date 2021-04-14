@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer, long } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { DictionaryResponseBase } from "../../__common/common_abstractions/response/DictionaryResponseBase";
+import { integer, long } from '../../__common/common'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
   string,
@@ -27,10 +27,10 @@ export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
 > {}
 
 export class ClusterRemoteInfo {
-  connected: boolean;
-  initial_connect_timeout: Time;
-  max_connections_per_cluster: integer;
-  num_nodes_connected: long;
-  seeds: string[];
-  skip_unavailable: boolean;
+  connected: boolean
+  initial_connect_timeout: Time
+  max_connections_per_cluster: integer
+  num_nodes_connected: long
+  seeds: string[]
+  skip_unavailable: boolean
 }

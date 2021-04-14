@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IntervalsContainer } from "./IntervalsContainer";
-import { IntervalsFilter } from "./IntervalsFilter";
+import { IntervalsContainer } from './IntervalsContainer'
+import { IntervalsFilter } from './IntervalsFilter'
 
 export class IntervalsAnyOf {
-  intervals?: IntervalsContainer[];
-  filter?: IntervalsFilter;
+  intervals?: IntervalsContainer[]
+  filter?: IntervalsFilter
 }

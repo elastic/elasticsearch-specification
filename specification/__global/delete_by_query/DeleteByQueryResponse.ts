@@ -17,24 +17,24 @@
  * under the License.
  */
 
-import { BulkIndexByScrollFailure } from "../../__common/BulkIndexByScrollFailure";
-import { float, integer, long, TaskId } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Retries } from "../../__common/Retries";
+import { BulkIndexByScrollFailure } from '../../__common/BulkIndexByScrollFailure'
+import { float, integer, long, TaskId } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Retries } from '../../__common/Retries'
 
 export class DeleteByQueryResponse extends ResponseBase {
-  batches?: long;
-  deleted?: long;
-  failures?: BulkIndexByScrollFailure[];
-  noops?: long;
-  requests_per_second?: float;
-  retries?: Retries;
-  slice_id?: integer;
-  task?: TaskId;
-  throttled_millis?: long;
-  throttled_until_millis?: long;
-  timed_out?: boolean;
-  took?: long;
-  total?: long;
-  version_conflicts?: long;
+  batches?: long
+  deleted?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  requests_per_second?: float
+  retries?: Retries
+  slice_id?: integer
+  task?: TaskId
+  throttled_millis?: long
+  throttled_until_millis?: long
+  timed_out?: boolean
+  took?: long
+  total?: long
+  version_conflicts?: long
 }

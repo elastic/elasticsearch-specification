@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { GarbageCollectionStats } from "./GarbageCollectionStats";
-import { JvmClassesStats } from "./JvmClassesStats";
-import { MemoryStats } from "./MemoryStats";
-import { NodeBufferPool } from "./NodeBufferPool";
-import { ThreadStats } from "./ThreadStats";
+import { long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { GarbageCollectionStats } from './GarbageCollectionStats'
+import { JvmClassesStats } from './JvmClassesStats'
+import { MemoryStats } from './MemoryStats'
+import { NodeBufferPool } from './NodeBufferPool'
+import { ThreadStats } from './ThreadStats'
 
 export class NodeJvmStats {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  buffer_pools: Dictionary<string, NodeBufferPool>;
-  classes: JvmClassesStats;
-  gc: GarbageCollectionStats;
-  mem: MemoryStats;
-  threads: ThreadStats;
-  timestamp: long;
-  uptime: string;
-  uptime_in_millis: long;
+  buffer_pools: Dictionary<string, NodeBufferPool>
+  classes: JvmClassesStats
+  gc: GarbageCollectionStats
+  mem: MemoryStats
+  threads: ThreadStats
+  timestamp: long
+  uptime: string
+  uptime_in_millis: long
 }

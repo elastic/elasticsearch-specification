@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { long } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class DataStreamsUsage extends XPackUsage {
-  data_streams: long;
-  indices_count: long;
+  data_streams: long
+  indices_count: long
 }

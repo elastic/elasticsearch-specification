@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { IndexOptions } from "../text/IndexOptions";
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { IndexOptions } from '../text/IndexOptions'
 
 export class KeywordProperty extends DocValuesPropertyBase {
-  boost?: double;
-  eager_global_ordinals?: boolean;
-  index?: boolean;
-  index_options?: IndexOptions;
-  normalizer?: string;
-  norms?: boolean;
-  null_value?: string;
-  split_queries_on_whitespace?: boolean;
-  type: "keyword";
+  boost?: double
+  eager_global_ordinals?: boolean
+  index?: boolean
+  index_options?: IndexOptions
+  normalizer?: string
+  norms?: boolean
+  null_value?: string
+  split_queries_on_whitespace?: boolean
+  type: 'keyword'
 }

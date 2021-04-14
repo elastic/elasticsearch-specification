@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndexName, WaitForActiveShards } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { TypeMapping } from "../../__common/mapping/TypeMapping";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { Alias } from "../Alias";
+import { IndexName, WaitForActiveShards } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { TypeMapping } from '../../__common/mapping/TypeMapping'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Alias } from '../Alias'
 
 /**
  * @rest_spec_name indices.create
@@ -32,17 +32,17 @@ import { Alias } from "../Alias";
  */
 export interface IndicesCreateRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-  };
+    index: IndexName
+  }
   query_parameters?: {
-    include_type_name?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-  };
+    include_type_name?: boolean
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+  }
   body?: {
-    aliases?: Dictionary<IndexName, Alias>;
-    mappings?: Dictionary<string, TypeMapping> | TypeMapping;
-    settings?: Dictionary<string, UserDefinedValue>;
-  };
+    aliases?: Dictionary<IndexName, Alias>
+    mappings?: Dictionary<string, TypeMapping> | TypeMapping
+    settings?: Dictionary<string, UserDefinedValue>
+  }
 }

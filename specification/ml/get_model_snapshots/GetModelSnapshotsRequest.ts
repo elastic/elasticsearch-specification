@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, Field, Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Page } from "../job/Page";
+import { DateString, Field, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../job/Page'
 
 /**
  * @rest_spec_name ml.get_model_snapshots
@@ -28,17 +28,17 @@ import { Page } from "../job/Page";
  */
 export interface GetModelSnapshotsRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    snapshot_id?: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+    snapshot_id?: Id
+  }
+  query_parameters?: {}
   body?: {
-    desc?: boolean;
+    desc?: boolean
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    end?: DateString;
-    page?: Page;
-    sort?: Field;
+    end?: DateString
+    page?: Page
+    sort?: Field
     /** @prop_serializer NullableDateTimeOffsetEpochMillisecondsFormatter */
-    start?: DateString;
-  };
+    start?: DateString
+  }
 }

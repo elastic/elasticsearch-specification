@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class MatchPhraseQuery extends QueryBase {
-  analyzer?: string;
-  query?: string;
-  slop?: integer;
+  analyzer?: string
+  query?: string
+  slop?: integer
 }

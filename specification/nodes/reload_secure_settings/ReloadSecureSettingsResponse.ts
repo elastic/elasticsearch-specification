@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { NodeReloadException } from "../../cluster/reload_secure_settings/NodeReloadException";
-import { Name } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { NodesResponseBase } from "../NodesResponseBase";
-import { NodeStats } from "../nodes_stats/NodeStats";
+import { Name } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { NodesResponseBase } from '../NodesResponseBase'
+import { NodeStats } from '../nodes_stats/NodeStats'
+import { NodeReloadException } from './NodeReloadException'
 
 export class ReloadSecureSettingsResponse extends NodesResponseBase {
-  cluster_name: Name;
-  nodes: Dictionary<string, NodeStats | NodeReloadException>;
+  cluster_name: Name
+  nodes: Dictionary<string, NodeStats | NodeReloadException>
 }

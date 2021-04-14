@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ScheduledEvent } from "./ScheduledEvent";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ScheduledEvent } from './ScheduledEvent'
 
 export class PostCalendarEventsResponse extends ResponseBase {
-  events: ScheduledEvent[];
+  events: ScheduledEvent[]
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ThreadCountStats {
-  active: long;
-  completed: long;
-  largest: long;
-  queue: long;
-  rejected: long;
-  threads: long;
+  active: long
+  completed: long
+  largest: long
+  queue: long
+  rejected: long
+  threads: long
 }

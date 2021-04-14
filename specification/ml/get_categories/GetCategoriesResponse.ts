@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { CategoryDefinition } from "../job/results/CategoryDefinition";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { CategoryDefinition } from '../job/results/CategoryDefinition'
 
 export class GetCategoriesResponse extends ResponseBase {
-  categories: CategoryDefinition[];
-  count: long;
+  categories: CategoryDefinition[]
+  count: long
 }

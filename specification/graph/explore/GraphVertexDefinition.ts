@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field, integer, long } from "../../__common/common";
-import { GraphVertexInclude } from "./GraphVertexInclude";
+import { Field, integer, long } from '../../__common/common'
+import { GraphVertexInclude } from './GraphVertexInclude'
 
 export class GraphVertexDefinition {
-  exclude?: string[];
-  field: Field;
-  include?: GraphVertexInclude[];
-  min_doc_count?: long;
-  shard_min_doc_count?: long;
-  size?: integer;
+  exclude?: string[]
+  field: Field
+  include?: GraphVertexInclude[]
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  size?: integer
 }

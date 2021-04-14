@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DateString } from "../__common/common";
+import { DateString } from '../__common/common'
 
 export class SnapshotLifecycleInvocationRecord {
-  snapshot_name: string;
+  snapshot_name: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  time: DateString;
+  time: DateString
 }

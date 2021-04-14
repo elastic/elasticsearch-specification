@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
+import { DateString } from '../../__common/common'
 
 export class ClusterCertificateInformation {
-  alias?: string;
-  expiry: DateString;
-  format: string;
-  has_private_key: boolean;
-  path: string;
-  serial_number: string;
-  subject_dn: string;
+  alias?: string
+  expiry: DateString
+  format: string
+  has_private_key: boolean
+  path: string
+  serial_number: string
+  subject_dn: string
 }

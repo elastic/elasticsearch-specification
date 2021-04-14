@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name get_script_languages
@@ -27,12 +27,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetScriptLanguagesRequest extends RequestBase {
   path_parts?: {
-    stub_a: integer;
-  };
+    stub_a: integer
+  }
   query_parameters?: {
-    stub_b: integer;
-  };
+    stub_b: integer
+  }
   body?: {
-    stub_c: integer;
-  };
+    stub_c: integer
+  }
 }

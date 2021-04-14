@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class AllocationStore {
-  allocation_id: string;
-  found: boolean;
-  in_sync: boolean;
-  matching_size_in_bytes: long;
-  matching_sync_id: boolean;
-  store_exception: string;
+  allocation_id: string
+  found: boolean
+  in_sync: boolean
+  matching_size_in_bytes: long
+  matching_sync_id: boolean
+  store_exception: string
 }

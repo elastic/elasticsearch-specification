@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class GsubProcessor extends ProcessorBase {
-  field: Field;
-  ignore_missing?: boolean;
-  pattern: string;
-  replacement: string;
-  target_field?: Field;
+  field: Field
+  ignore_missing?: boolean
+  pattern: string
+  replacement: string
+  target_field?: Field
 }

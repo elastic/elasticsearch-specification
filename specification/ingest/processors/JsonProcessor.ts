@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class JsonProcessor extends ProcessorBase {
-  add_to_root: boolean;
-  field: Field;
-  target_field: Field;
+  add_to_root: boolean
+  field: Field
+  target_field: Field
 }

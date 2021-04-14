@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ClusterJvmMemory {
-  heap_max_in_bytes: long;
-  heap_used_in_bytes: long;
+  heap_max_in_bytes: long
+  heap_used_in_bytes: long
 }

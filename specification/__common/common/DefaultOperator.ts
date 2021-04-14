@@ -19,5 +19,5 @@
 
 export enum DefaultOperator {
   AND = 0,
-  OR = 1,
+  OR = 1
 }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { IndexName, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { IndexName, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name searchable_snapshots.mount
@@ -30,18 +30,18 @@ import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
  */
 export interface SearchableSnapshotsMountRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-    snapshot: Name;
-  };
+    repository: Name
+    snapshot: Name
+  }
   query_parameters?: {
-    master_timeout?: Time; // default: 30s
-    wait_for_completion?: boolean; // default: false
-    storage?: string; // default: full_copy
-  };
+    master_timeout?: Time // default: 30s
+    wait_for_completion?: boolean // default: false
+    storage?: string // default: full_copy
+  }
   body?: {
-    index: IndexName;
-    renamed_index?: IndexName;
-    index_settings?: Dictionary<string, UserDefinedValue>;
-    ignore_index_settings?: string[];
-  };
+    index: IndexName
+    renamed_index?: IndexName
+    index_settings?: Dictionary<string, UserDefinedValue>
+    ignore_index_settings?: string[]
+  }
 }

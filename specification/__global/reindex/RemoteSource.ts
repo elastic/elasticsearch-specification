@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Uri } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Uri } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 export class RemoteSource {
-  connect_timeout: Time;
-  host: Uri;
-  password: string;
-  socket_timeout: Time;
-  username: string;
+  connect_timeout: Time
+  host: Uri
+  password: string
+  socket_timeout: Time
+  username: string
 }

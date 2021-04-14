@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { MinimalLicenseInformation } from "./MinimalLicenseInformation";
-import { XPackBuildInformation } from "./XPackBuildInformation";
-import { XPackFeatures } from "./XPackFeatures";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { MinimalLicenseInformation } from './MinimalLicenseInformation'
+import { XPackBuildInformation } from './XPackBuildInformation'
+import { XPackFeatures } from './XPackFeatures'
 
 export class XPackInfoResponse extends ResponseBase {
-  build: XPackBuildInformation;
-  features: XPackFeatures;
-  license: MinimalLicenseInformation;
-  tagline: string;
+  build: XPackBuildInformation
+  features: XPackFeatures
+  license: MinimalLicenseInformation
+  tagline: string
 }

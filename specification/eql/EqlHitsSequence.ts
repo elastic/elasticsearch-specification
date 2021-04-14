@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
-import { EqlHitsEvent } from "./EqlHitsEvent";
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { EqlHitsEvent } from './EqlHitsEvent'
 
 export class EqlHitsSequence<TEvent> {
-  events: EqlHitsEvent<TEvent>[];
-  join_keys: UserDefinedValue[];
+  events: EqlHitsEvent<TEvent>[]
+  join_keys: UserDefinedValue[]
 }

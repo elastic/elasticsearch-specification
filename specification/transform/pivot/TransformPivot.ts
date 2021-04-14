@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { AggregationContainer } from "../../__common/aggregations/AggregationContainer";
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { SingleGroupSource } from "./SingleGroupSource";
+import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { SingleGroupSource } from './SingleGroupSource'
 
 export class TransformPivot {
-  aggregations: Dictionary<string, AggregationContainer>;
-  group_by: Dictionary<string, SingleGroupSource>;
-  max_page_search_size?: integer;
+  aggregations: Dictionary<string, AggregationContainer>
+  group_by: Dictionary<string, SingleGroupSource>
+  max_page_search_size?: integer
 }

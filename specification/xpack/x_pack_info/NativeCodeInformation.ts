@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { VersionString } from "../../__common/common";
+import { VersionString } from '../../__common/common'
 
 export class NativeCodeInformation {
-  build_hash: string;
-  version: VersionString;
+  build_hash: string
+  version: VersionString
 }

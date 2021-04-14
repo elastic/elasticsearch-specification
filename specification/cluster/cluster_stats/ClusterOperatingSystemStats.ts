@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { ClusterOperatingSystemPrettyName } from "../../nodes/nodes_info/ClusterOperatingSystemPrettyName";
-import { integer } from "../../__common/common";
-import { ClusterOperatingSystemArchitecture } from "./ClusterOperatingSystemArchitecture";
-import { ClusterOperatingSystemName } from "./ClusterOperatingSystemName";
-import { OperatingSystemMemoryInfo } from "./OperatingSystemMemoryInfo";
+import { ClusterOperatingSystemPrettyName } from '../../nodes/nodes_info/ClusterOperatingSystemPrettyName'
+import { integer } from '../../__common/common'
+import { ClusterOperatingSystemArchitecture } from './ClusterOperatingSystemArchitecture'
+import { ClusterOperatingSystemName } from './ClusterOperatingSystemName'
+import { OperatingSystemMemoryInfo } from './OperatingSystemMemoryInfo'
 
 export class ClusterOperatingSystemStats {
-  allocated_processors: integer;
-  available_processors: integer;
-  mem: OperatingSystemMemoryInfo;
-  names: ClusterOperatingSystemName[];
-  pretty_names: ClusterOperatingSystemPrettyName[];
-  architectures?: ClusterOperatingSystemArchitecture[];
+  allocated_processors: integer
+  available_processors: integer
+  mem: OperatingSystemMemoryInfo
+  names: ClusterOperatingSystemName[]
+  pretty_names: ClusterOperatingSystemPrettyName[]
+  architectures?: ClusterOperatingSystemArchitecture[]
 }

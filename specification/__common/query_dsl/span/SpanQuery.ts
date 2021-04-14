@@ -17,28 +17,28 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { NamedQuery, QueryBase } from "../abstractions/query/Query";
-import { SpanContainingQuery } from "./containing/SpanContainingQuery";
-import { SpanFieldMaskingQuery } from "./field_masking/SpanFieldMaskingQuery";
-import { SpanFirstQuery } from "./first/SpanFirstQuery";
-import { SpanGapQuery } from "./gap/SpanGapQuery";
-import { SpanMultiTermQuery } from "./multi_term/SpanMultiTermQuery";
-import { SpanNearQuery } from "./near/SpanNearQuery";
-import { SpanNotQuery } from "./not/SpanNotQuery";
-import { SpanOrQuery } from "./or/SpanOrQuery";
-import { SpanTermQuery } from "./term/SpanTermQuery";
-import { SpanWithinQuery } from "./within/SpanWithinQuery";
+import { integer } from '../../common'
+import { NamedQuery, QueryBase } from '../abstractions/query/Query'
+import { SpanContainingQuery } from './containing/SpanContainingQuery'
+import { SpanFieldMaskingQuery } from './field_masking/SpanFieldMaskingQuery'
+import { SpanFirstQuery } from './first/SpanFirstQuery'
+import { SpanGapQuery } from './gap/SpanGapQuery'
+import { SpanMultiTermQuery } from './multi_term/SpanMultiTermQuery'
+import { SpanNearQuery } from './near/SpanNearQuery'
+import { SpanNotQuery } from './not/SpanNotQuery'
+import { SpanOrQuery } from './or/SpanOrQuery'
+import { SpanTermQuery } from './term/SpanTermQuery'
+import { SpanWithinQuery } from './within/SpanWithinQuery'
 
 export class SpanQuery extends QueryBase {
-  span_containing?: NamedQuery<SpanContainingQuery | string>;
-  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>;
-  span_first?: NamedQuery<SpanFirstQuery | string>;
-  span_gap?: NamedQuery<SpanGapQuery | integer>;
-  span_multi?: SpanMultiTermQuery;
-  span_near?: NamedQuery<SpanNearQuery | string>;
-  span_not?: NamedQuery<SpanNotQuery | string>;
-  span_or?: NamedQuery<SpanOrQuery | string>;
-  span_term?: NamedQuery<SpanTermQuery | string>;
-  span_within?: NamedQuery<SpanWithinQuery | string>;
+  span_containing?: NamedQuery<SpanContainingQuery | string>
+  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
+  span_first?: NamedQuery<SpanFirstQuery | string>
+  span_gap?: NamedQuery<SpanGapQuery | integer>
+  span_multi?: SpanMultiTermQuery
+  span_near?: NamedQuery<SpanNearQuery | string>
+  span_not?: NamedQuery<SpanNotQuery | string>
+  span_or?: NamedQuery<SpanOrQuery | string>
+  span_term?: NamedQuery<SpanTermQuery | string>
+  span_within?: NamedQuery<SpanWithinQuery | string>
 }

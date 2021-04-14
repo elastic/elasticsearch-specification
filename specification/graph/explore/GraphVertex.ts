@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { double, long } from "../../__common/common";
+import { double, long } from '../../__common/common'
 
 export class GraphVertex {
-  depth: long;
-  field: string;
-  term: string;
-  weight: double;
+  depth: long
+  field: string
+  term: string
+  weight: double
 }

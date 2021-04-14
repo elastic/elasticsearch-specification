@@ -28,5 +28,5 @@ export enum Bytes {
   t = 7,
   tb = 8,
   p = 9,
-  pb = 10,
+  pb = 10
 }

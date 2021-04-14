@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Phase } from "./Phase";
+import { Phase } from './Phase'
 
 export class Phases {
-  cold?: Phase;
-  delete?: Phase;
-  hot?: Phase;
-  warm?: Phase;
+  cold?: Phase
+  delete?: Phase
+  hot?: Phase
+  warm?: Phase
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class Aggregation {
-  meta?: Dictionary<string, UserDefinedValue>;
-  name?: string;
+  meta?: Dictionary<string, UserDefinedValue>
+  name?: string
 }

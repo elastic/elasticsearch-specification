@@ -25,13 +25,13 @@ import {
   SequenceNumber,
   Type,
   VersionNumber,
-  WaitForActiveShards,
-} from "../../__common/common";
-import { OpType } from "../../__common/common/OpType";
-import { Refresh } from "../../__common/common/Refresh";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+  WaitForActiveShards
+} from '../../__common/common'
+import { OpType } from '../../__common/common/OpType'
+import { Refresh } from '../../__common/common/Refresh'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name index
@@ -40,22 +40,22 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface IndexRequest<TDocument> extends RequestBase {
   path_parts?: {
-    id?: Id;
-    index: IndexName;
-    type?: Type;
-  };
+    id?: Id
+    index: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    if_primary_term?: long;
-    if_seq_no?: SequenceNumber;
-    op_type?: OpType;
-    pipeline?: string;
-    refresh?: Refresh;
-    routing?: Routing;
-    timeout?: Time;
-    version?: VersionNumber;
-    version_type?: VersionType;
-    wait_for_active_shards?: WaitForActiveShards;
-    require_alias?: boolean;
-  };
-  body?: TDocument;
+    if_primary_term?: long
+    if_seq_no?: SequenceNumber
+    op_type?: OpType
+    pipeline?: string
+    refresh?: Refresh
+    routing?: Routing
+    timeout?: Time
+    version?: VersionNumber
+    version_type?: VersionType
+    wait_for_active_shards?: WaitForActiveShards
+    require_alias?: boolean
+  }
+  body?: TDocument
 }

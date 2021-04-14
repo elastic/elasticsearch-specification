@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.start_datafeed
@@ -28,14 +28,14 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface StartDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Id;
-  };
+    datafeed_id: Id
+  }
   query_parameters?: {
-    start?: Time; // default ""
-  };
+    start?: Time // default ""
+  }
   body?: {
-    end?: Time; // default ""
-    start?: Time; // default ""
-    timeout?: Time; // default 20s
-  };
+    end?: Time // default ""
+    start?: Time // default ""
+    timeout?: Time // default 20s
+  }
 }

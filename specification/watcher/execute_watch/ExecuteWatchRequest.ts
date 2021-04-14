@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ActionExecutionMode } from "../execution/ActionExecutionMode";
-import { SimulatedActions } from "../execution/SimulatedActions";
-import { ScheduleTriggerEvent } from "../schedule/ScheduleTriggerEvent";
-import { Watch } from "../Watch";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ActionExecutionMode } from '../execution/ActionExecutionMode'
+import { SimulatedActions } from '../execution/SimulatedActions'
+import { ScheduleTriggerEvent } from '../schedule/ScheduleTriggerEvent'
+import { Watch } from '../Watch'
 
 /**
  * @rest_spec_name watcher.execute_watch
@@ -33,18 +33,18 @@ import { Watch } from "../Watch";
  */
 export interface ExecuteWatchRequest extends RequestBase {
   path_parts?: {
-    id?: Name;
-  };
+    id?: Name
+  }
   query_parameters?: {
-    debug?: boolean;
-  };
+    debug?: boolean
+  }
   body?: {
-    action_modes?: Dictionary<string, ActionExecutionMode>;
-    alternative_input?: Dictionary<string, UserDefinedValue>;
-    ignore_condition?: boolean;
-    record_execution?: boolean;
-    simulated_actions?: SimulatedActions;
-    trigger_data?: ScheduleTriggerEvent;
-    watch?: Watch;
-  };
+    action_modes?: Dictionary<string, ActionExecutionMode>
+    alternative_input?: Dictionary<string, UserDefinedValue>
+    ignore_condition?: boolean
+    record_execution?: boolean
+    simulated_actions?: SimulatedActions
+    trigger_data?: ScheduleTriggerEvent
+    watch?: Watch
+  }
 }

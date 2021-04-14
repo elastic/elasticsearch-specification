@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { DateString, double, Id, long } from "../../../__common/common";
+import { DateString, double, Id, long } from '../../../__common/common'
 
 export class BucketInfluencer {
-  bucket_span: long;
-  influencer_field_name: string;
-  influencer_field_value: string;
-  influencer_score: double;
-  initial_influencer_score: double;
-  is_interim: boolean;
-  job_id: Id;
-  probability: double;
-  result_type: string;
-  timestamp: DateString;
+  bucket_span: long
+  influencer_field_name: string
+  influencer_field_value: string
+  influencer_score: double
+  initial_influencer_score: double
+  is_interim: boolean
+  job_id: Id
+  probability: double
+  result_type: string
+  timestamp: DateString
 }

@@ -24,37 +24,37 @@ import {
   long,
   SequenceNumber,
   Type,
-  VersionNumber,
-} from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { Explanation } from "../../explain/Explanation";
-import { SortResults } from "../sort/Sort";
-import { InnerHitsResult } from "./InnerHitsResult";
-import { NestedIdentity } from "./NestedIdentity";
+  VersionNumber
+} from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Explanation } from '../../explain/Explanation'
+import { SortResults } from '../sort/Sort'
+import { InnerHitsResult } from './InnerHitsResult'
+import { NestedIdentity } from './NestedIdentity'
 
 export class Hit<TDocument> {
-  _index: IndexName;
-  _id: Id;
+  _index: IndexName
+  _id: Id
 
-  _score?: double;
-  _type?: Type;
+  _score?: double
+  _type?: Type
 
-  _explanation?: Explanation;
-  fields?: Dictionary<string, UserDefinedValue>;
-  highlight?: Dictionary<string, string[]>;
+  _explanation?: Explanation
+  fields?: Dictionary<string, UserDefinedValue>
+  highlight?: Dictionary<string, string[]>
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  inner_hits?: Dictionary<string, InnerHitsResult>;
-  matched_queries?: string[];
-  _nested?: NestedIdentity;
-  _ignored?: string[];
+  inner_hits?: Dictionary<string, InnerHitsResult>
+  matched_queries?: string[]
+  _nested?: NestedIdentity
+  _ignored?: string[]
 
-  _shard?: string;
-  _node?: string;
-  _routing?: string;
-  _source?: TDocument;
-  _seq_no?: SequenceNumber;
-  _primary_term?: long;
-  _version?: VersionNumber;
-  sort?: SortResults;
+  _shard?: string
+  _node?: string
+  _routing?: string
+  _source?: TDocument
+  _seq_no?: SequenceNumber
+  _primary_term?: long
+  _version?: VersionNumber
+  sort?: SortResults
 }

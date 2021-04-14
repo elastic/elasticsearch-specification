@@ -23,5 +23,5 @@ export enum FunctionBoostMode {
   sum = 2,
   avg = 3,
   max = 4,
-  min = 5,
+  min = 5
 }

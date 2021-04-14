@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { IndexingJobState } from "./IndexingJobState";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { IndexingJobState } from './IndexingJobState'
 
 export class RollupJobStatus {
-  current_position?: Dictionary<string, UserDefinedValue>;
-  job_state: IndexingJobState;
-  upgraded_doc_id?: boolean;
+  current_position?: Dictionary<string, UserDefinedValue>
+  job_state: IndexingJobState
+  upgraded_doc_id?: boolean
 }

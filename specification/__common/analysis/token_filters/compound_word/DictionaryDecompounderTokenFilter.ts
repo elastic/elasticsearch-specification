@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { CompoundWordTokenFilterBase } from "./CompoundWordTokenFilterBase";
+import { CompoundWordTokenFilterBase } from './CompoundWordTokenFilterBase'
 
 export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {}

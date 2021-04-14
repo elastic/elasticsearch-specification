@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { AlwaysCondition } from "./AlwaysCondition";
-import { ArrayCompareCondition } from "./ArrayCompareCondition";
-import { CompareCondition } from "./CompareCondition";
-import { NeverCondition } from "./NeverCondition";
-import { ScriptCondition } from "./ScriptCondition";
+import { AlwaysCondition } from './AlwaysCondition'
+import { ArrayCompareCondition } from './ArrayCompareCondition'
+import { CompareCondition } from './CompareCondition'
+import { NeverCondition } from './NeverCondition'
+import { ScriptCondition } from './ScriptCondition'
 
 export class ConditionContainer {
-  always?: AlwaysCondition;
-  array_compare?: ArrayCompareCondition;
-  compare?: CompareCondition;
-  never?: NeverCondition;
-  script?: ScriptCondition;
+  always?: AlwaysCondition
+  array_compare?: ArrayCompareCondition
+  compare?: CompareCondition
+  never?: NeverCondition
+  script?: ScriptCondition
 }

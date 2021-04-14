@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Id, long, Name } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
+import { Id, long, Name } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
 export class ApiKeys {
-  creation: long;
-  expiration?: long;
-  id: Id;
-  invalidated: boolean;
-  name: Name;
-  realm: string;
-  username: Name;
-  metadata?: Dictionary<string, UserDefinedValue>; // version: 7.13
+  creation: long
+  expiration?: long
+  id: Id
+  invalidated: boolean
+  name: Name
+  realm: string
+  username: Name
+  metadata?: Dictionary<string, UserDefinedValue> // version: 7.13
 }

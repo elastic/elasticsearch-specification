@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { FieldStatistics } from "./FieldStatistics";
-import { TermVectorTerm } from "./TermVectorTerm";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { FieldStatistics } from './FieldStatistics'
+import { TermVectorTerm } from './TermVectorTerm'
 
 export class TermVector {
-  field_statistics: FieldStatistics;
-  terms: Dictionary<string, TermVectorTerm>;
+  field_statistics: FieldStatistics
+  terms: Dictionary<string, TermVectorTerm>
 }

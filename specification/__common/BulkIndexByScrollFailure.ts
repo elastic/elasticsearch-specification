@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer, MainError } from "./common";
+import { integer, MainError } from './common'
 
 export class BulkIndexByScrollFailure {
-  cause: MainError;
-  id: string;
-  index: string;
-  status: integer;
-  type: string;
+  cause: MainError
+  id: string
+  index: string
+  status: integer
+  type: string
 }

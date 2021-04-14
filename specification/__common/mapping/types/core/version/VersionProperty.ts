@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class VersionProperty extends DocValuesPropertyBase {
-  type: "version";
+  type: 'version'
 }

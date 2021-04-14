@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../common";
+import { long } from '../../common'
 
 export class WarmerStats {
-  current: long;
-  total: long;
-  total_time?: string;
-  total_time_in_millis: long;
+  current: long
+  total: long
+  total_time?: string
+  total_time_in_millis: long
 }

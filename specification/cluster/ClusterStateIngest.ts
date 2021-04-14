@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { ProcessorContainer } from "../ingest/ProcessorContainer";
-import { Id, VersionNumber } from "../__common/common";
+import { ProcessorContainer } from '../ingest/ProcessorContainer'
+import { Id, VersionNumber } from '../__common/common'
 
 export class ClusterStateIngest {
-  pipeline: ClusterStateIngestPipeline[];
+  pipeline: ClusterStateIngestPipeline[]
 }
 
 export class ClusterStateIngestPipeline {
-  id: Id;
-  config: ClusterStateIngestPipelineConfig;
+  id: Id
+  config: ClusterStateIngestPipelineConfig
 }
 
 export class ClusterStateIngestPipelineConfig {
-  description?: string;
-  version?: VersionNumber;
-  processors: ProcessorContainer[];
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

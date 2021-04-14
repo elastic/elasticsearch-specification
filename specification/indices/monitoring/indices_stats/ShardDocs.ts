@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardDocs {
-  count: long;
-  deleted: long;
+  count: long
+  deleted: long
 }

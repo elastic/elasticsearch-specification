@@ -1,6 +1,6 @@
-import { Script } from "vm";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { Field } from "../../common";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { Field } from '../../common'
+import { Script } from '../../common_options/scripting/Script'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -20,12 +20,12 @@ import { Field } from "../../common";
  * specific language governing permissions and limitations
  * under the License.
  */
-export type RuntimeFields = Dictionary<Field, RuntimeField>;
+export type RuntimeFields = Dictionary<Field, RuntimeField>
 
 export class RuntimeField {
-  format?: string;
-  script?: Script;
-  type: RuntimeFieldType;
+  format?: string
+  script?: Script
+  type: RuntimeFieldType
 }
 
 export enum RuntimeFieldType {
@@ -35,5 +35,5 @@ export enum RuntimeFieldType {
   geo_point = 3,
   ip = 4,
   keyword = 5,
-  long = 6,
+  long = 6
 }

@@ -19,5 +19,5 @@
 
 export enum IndexSortOrder {
   asc = 0,
-  desc = 1,
+  desc = 1
 }

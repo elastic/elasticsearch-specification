@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { long } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class AnalyticsUsage extends XPackUsage {
-  stats: AnalyticsStatsUsage;
+  stats: AnalyticsStatsUsage
 }
 
 export class AnalyticsStatsUsage {
-  boxplot_usage: long;
-  cumulative_cardinality_usage: long;
-  string_stats_usage: long;
-  top_metrics_usage: long;
-  t_test_usage: long;
-  moving_percentiles_usage: long;
-  normalize_usage: long;
-  rate_usage: long;
-  multi_terms_usage?: long;
+  boxplot_usage: long
+  cumulative_cardinality_usage: long
+  string_stats_usage: long
+  top_metrics_usage: long
+  t_test_usage: long
+  moving_percentiles_usage: long
+  normalize_usage: long
+  rate_usage: long
+  multi_terms_usage?: long
 }

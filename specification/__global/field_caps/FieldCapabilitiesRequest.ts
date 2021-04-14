@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { EmptyObject, Fields, Indices, integer } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { EmptyObject, Fields, Indices, integer } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name field_caps
@@ -28,40 +28,40 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface FieldCapabilitiesRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    fields?: Fields;
-    ignore_unavailable?: boolean;
-    include_unmapped?: boolean;
-  };
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    fields?: Fields
+    ignore_unavailable?: boolean
+    include_unmapped?: boolean
+  }
   body?: {
-    index_filter?: FieldCapabilitiesBodyIndexFilter;
-  };
+    index_filter?: FieldCapabilitiesBodyIndexFilter
+  }
 }
 export class FieldCapabilitiesBodyIndexFilter {
-  range?: FieldCapabilitiesBodyIndexFilterRange;
-  match_none?: EmptyObject;
-  term?: FieldCapabilitiesBodyIndexFilterTerm;
+  range?: FieldCapabilitiesBodyIndexFilterRange
+  match_none?: EmptyObject
+  term?: FieldCapabilitiesBodyIndexFilterTerm
 }
 
 export class FieldCapabilitiesBodyIndexFilterRange {
-  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp;
+  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp
 }
 
 export class FieldCapabilitiesBodyIndexFilterRangeTimestamp {
-  gte?: integer;
-  gt?: integer;
-  lte?: integer;
-  lt?: integer;
+  gte?: integer
+  gt?: integer
+  lte?: integer
+  lt?: integer
 }
 
 export class FieldCapabilitiesBodyIndexFilterTerm {
-  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl;
+  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl
 }
 
 export class FieldCapabilitiesBodyIndexFilterTermVersionControl {
-  value: string;
+  value: string
 }

@@ -24,32 +24,32 @@ import {
   IndexName,
   integer,
   Name,
-  Uuid,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { DataStreamHealthStatus } from "../DataStreamStatus";
+  Uuid
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { DataStreamHealthStatus } from '../DataStreamStatus'
 
 export class IndicesGetDataStreamResponse extends ResponseBase {
-  data_streams: IndicesGetDataStreamItem[];
+  data_streams: IndicesGetDataStreamItem[]
 }
 
 export class IndicesGetDataStreamItem {
-  name: DataStreamName;
-  timestamp_field: IndicesGetDataStreamItemTimestampField;
-  indices: IndicesGetDataStreamItemIndex[];
-  generation: integer;
-  template: Name;
-  hidden: boolean;
-  status: DataStreamHealthStatus;
-  ilm_policy?: Name;
-  _meta?: IndexMetaData;
+  name: DataStreamName
+  timestamp_field: IndicesGetDataStreamItemTimestampField
+  indices: IndicesGetDataStreamItemIndex[]
+  generation: integer
+  template: Name
+  hidden: boolean
+  status: DataStreamHealthStatus
+  ilm_policy?: Name
+  _meta?: IndexMetaData
 }
 
 export class IndicesGetDataStreamItemTimestampField {
-  name: Field;
+  name: Field
 }
 
 export class IndicesGetDataStreamItemIndex {
-  index_name: IndexName;
-  index_uuid: Uuid;
+  index_name: IndexName
+  index_uuid: Uuid
 }

@@ -21,14 +21,14 @@ import {
   IndexName,
   integer,
   Name,
-  VersionNumber,
-} from "../../../../__common/common";
-import { RequestBase } from "../../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../../__common/common_options/time_unit/Time";
-import { TypeMapping } from "../../../../__common/mapping/TypeMapping";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../../Alias";
+  VersionNumber
+} from '../../../../__common/common'
+import { RequestBase } from '../../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../../__common/common_options/time_unit/Time'
+import { TypeMapping } from '../../../../__common/mapping/TypeMapping'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { Alias } from '../../../Alias'
 
 /**
  * @rest_spec_name indices.put_template
@@ -37,21 +37,21 @@ import { Alias } from "../../../Alias";
  */
 export interface PutIndexTemplateRequest extends RequestBase {
   path_parts?: {
-    name: Name;
-  };
+    name: Name
+  }
   query_parameters?: {
-    create?: boolean;
-    flat_settings?: boolean;
-    include_type_name?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+    create?: boolean
+    flat_settings?: boolean
+    include_type_name?: boolean
+    master_timeout?: Time
+    timeout?: Time
+  }
   body?: {
-    aliases?: Dictionary<IndexName, Alias>;
-    index_patterns?: string | string[];
-    mappings?: TypeMapping;
-    order?: integer;
-    settings?: Dictionary<string, UserDefinedValue>;
-    version?: VersionNumber;
-  };
+    aliases?: Dictionary<IndexName, Alias>
+    index_patterns?: string | string[]
+    mappings?: TypeMapping
+    order?: integer
+    settings?: Dictionary<string, UserDefinedValue>
+    version?: VersionNumber
+  }
 }

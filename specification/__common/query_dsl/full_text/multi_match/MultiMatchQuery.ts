@@ -22,31 +22,31 @@ import {
   Fields,
   Fuzziness,
   integer,
-  MultiTermQueryRewrite,
-} from "../../../common";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Operator } from "../../Operator";
-import { TextQueryType } from "./TextQueryType";
-import { ZeroTermsQuery } from "./ZeroTermsQuery";
+  MultiTermQueryRewrite
+} from '../../../common'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Operator } from '../../Operator'
+import { TextQueryType } from './TextQueryType'
+import { ZeroTermsQuery } from './ZeroTermsQuery'
 
 export class MultiMatchQuery extends QueryBase {
-  analyzer?: string;
-  auto_generate_synonyms_phrase_query?: boolean;
-  cutoff_frequency?: double;
-  fields?: Fields;
-  fuzziness?: Fuzziness;
-  fuzzy_rewrite?: MultiTermQueryRewrite;
-  fuzzy_transpositions?: boolean;
-  lenient?: boolean;
-  max_expansions?: integer;
-  minimum_should_match?: MinimumShouldMatch;
-  operator?: Operator;
-  prefix_length?: integer;
-  query?: string;
-  slop?: integer;
-  tie_breaker?: double;
-  type?: TextQueryType;
-  use_dis_max?: boolean;
-  zero_terms_query?: ZeroTermsQuery;
+  analyzer?: string
+  auto_generate_synonyms_phrase_query?: boolean
+  cutoff_frequency?: double
+  fields?: Fields
+  fuzziness?: Fuzziness
+  fuzzy_rewrite?: MultiTermQueryRewrite
+  fuzzy_transpositions?: boolean
+  lenient?: boolean
+  max_expansions?: integer
+  minimum_should_match?: MinimumShouldMatch
+  operator?: Operator
+  prefix_length?: integer
+  query?: string
+  slop?: integer
+  tie_breaker?: double
+  type?: TextQueryType
+  use_dis_max?: boolean
+  zero_terms_query?: ZeroTermsQuery
 }

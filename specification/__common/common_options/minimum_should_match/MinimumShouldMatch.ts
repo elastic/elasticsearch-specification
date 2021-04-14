@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../common";
+import { integer } from '../../common'
 
 /**
  * The minimum number of terms that should match as integer, percentage or range
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html
  */
-export type MinimumShouldMatch = integer | string;
+export type MinimumShouldMatch = integer | string

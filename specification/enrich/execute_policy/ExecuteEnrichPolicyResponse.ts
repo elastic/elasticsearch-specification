@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { TaskId } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ExecuteEnrichPolicyStatus } from "./ExecuteEnrichPolicyStatus";
+import { TaskId } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
 
 export class ExecuteEnrichPolicyResponse extends ResponseBase {
-  status: ExecuteEnrichPolicyStatus;
-  task_id?: TaskId;
+  status: ExecuteEnrichPolicyStatus
+  task_id?: TaskId
 }

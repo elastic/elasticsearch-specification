@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class CreateFollowIndexResponse extends ResponseBase {
-  follow_index_created: boolean;
-  follow_index_shards_acked: boolean;
-  index_following_started: boolean;
+  follow_index_created: boolean
+  follow_index_shards_acked: boolean
+  index_following_started: boolean
 }

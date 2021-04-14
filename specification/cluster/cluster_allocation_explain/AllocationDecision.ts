@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AllocationExplainDecision } from "./AllocationExplainDecision";
+import { AllocationExplainDecision } from './AllocationExplainDecision'
 
 export class AllocationDecision {
-  decider: string;
-  decision: AllocationExplainDecision;
-  explanation: string;
+  decider: string
+  decision: AllocationExplainDecision
+  explanation: string
 }

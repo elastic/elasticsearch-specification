@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateInterval } from "../../bucket/date_histogram/DateInterval";
-import { FormatMetricAggregationBase } from "../MetricAggregation";
+import { DateInterval } from '../../bucket/date_histogram/DateInterval'
+import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class RateAggregation extends FormatMetricAggregationBase {
-  unit?: DateInterval;
-  mode?: RateMode;
+  unit?: DateInterval
+  mode?: RateMode
 }
 export enum RateMode {
   sum,
-  value_count,
+  value_count
 }

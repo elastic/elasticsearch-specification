@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Ids } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Ids } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.clear_api_key_cache
@@ -27,8 +27,8 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface ClearApiKeyCacheRequest extends RequestBase {
   path_parts?: {
-    ids?: Ids;
-  };
-  query_parameters?: {};
-  body?: {};
+    ids?: Ids
+  }
+  query_parameters?: {}
+  body?: {}
 }

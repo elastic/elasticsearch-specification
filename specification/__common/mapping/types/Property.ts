@@ -17,28 +17,28 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { integer, PropertyName } from "../../common";
-import { DynamicMapping } from "../DynamicMapping";
-import { FlattenedProperty } from "./complex/flattened/FlattenedProperty";
-import { JoinProperty } from "./core/join/JoinProperty";
-import { PercolatorProperty } from "./core/percolator/PercolatorProperty";
-import { RankFeatureProperty } from "./core/rank_feature/RankFeatureProperty";
-import { RankFeaturesProperty } from "./core/rank_features/RankFeaturesProperty";
-import { CoreProperty } from "./CoreProperty";
-import { ConstantKeywordProperty } from "./specialized/constant_keyword/ConstantKeywordProperty";
-import { FieldAliasProperty } from "./specialized/field_alias/FieldAliasProperty";
-import { HistogramProperty } from "./specialized/histogram/HistogramProperty";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { integer, PropertyName } from '../../common'
+import { DynamicMapping } from '../DynamicMapping'
+import { FlattenedProperty } from './complex/flattened/FlattenedProperty'
+import { JoinProperty } from './core/join/JoinProperty'
+import { PercolatorProperty } from './core/percolator/PercolatorProperty'
+import { RankFeatureProperty } from './core/rank_feature/RankFeatureProperty'
+import { RankFeaturesProperty } from './core/rank_features/RankFeaturesProperty'
+import { CoreProperty } from './CoreProperty'
+import { ConstantKeywordProperty } from './specialized/constant_keyword/ConstantKeywordProperty'
+import { FieldAliasProperty } from './specialized/field_alias/FieldAliasProperty'
+import { HistogramProperty } from './specialized/histogram/HistogramProperty'
 
 export class PropertyBase {
-  local_metadata?: Dictionary<string, UserDefinedValue>;
-  meta?: Dictionary<string, string>;
-  name?: PropertyName;
-  properties?: Dictionary<PropertyName, Property>;
-  ignore_above?: integer;
-  dynamic?: boolean | DynamicMapping;
-  fields?: Dictionary<PropertyName, Property>;
+  local_metadata?: Dictionary<string, UserDefinedValue>
+  meta?: Dictionary<string, string>
+  name?: PropertyName
+  properties?: Dictionary<PropertyName, Property>
+  ignore_above?: integer
+  dynamic?: boolean | DynamicMapping
+  fields?: Dictionary<PropertyName, Property>
 }
 
 /** @variants internal tag='type' */
@@ -51,4 +51,4 @@ export type Property =
   | ConstantKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
-  | CoreProperty;
+  | CoreProperty

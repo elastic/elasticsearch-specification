@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { AdditionalProperties } from "../../../../__spec_utils/behaviors";
-import { float } from "../../../common";
+import { AdditionalProperties } from '../../../../__spec_utils/behaviors'
+import { float } from '../../../common'
 
 export class QueryBase {
-  boost?: float;
-  _name?: string;
+  boost?: float
+  _name?: string
 }
 
 /**
@@ -34,7 +34,7 @@ export class QueryBase {
 
 export class NamedQuery<TQuery>
   implements AdditionalProperties<string, TQuery> {
-  boost?: float;
-  _name?: string;
-  ignore_unmapped?: boolean;
+  boost?: float
+  _name?: string
+  ignore_unmapped?: boolean
 }

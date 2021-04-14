@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Names } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.resolve_index
@@ -28,10 +28,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ResolveIndexRequest extends RequestBase {
   path_parts?: {
-    name: Names;
-  };
+    name: Names
+  }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards;
-  };
-  body?: {};
+    expand_wildcards?: ExpandWildcards
+  }
+  body?: {}
 }

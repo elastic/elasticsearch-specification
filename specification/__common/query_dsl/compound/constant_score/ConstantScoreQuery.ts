@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { float } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { float } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class ConstantScoreQuery extends QueryBase {
-  filter?: QueryContainer;
-  boost?: float;
+  filter?: QueryContainer
+  boost?: float
 }

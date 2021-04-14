@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { PrivilegesActions } from "./PrivilegesActions";
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { PrivilegesActions } from './PrivilegesActions'
 
 /**
  * @rest_spec_name security.put_privileges
@@ -30,7 +30,7 @@ import { PrivilegesActions } from "./PrivilegesActions";
  */
 export interface PutPrivilegesRequest extends RequestBase {
   query_parameters?: {
-    refresh?: Refresh;
-  };
-  body?: Dictionary<string, Dictionary<string, PrivilegesActions>>;
+    refresh?: Refresh
+  }
+  body?: Dictionary<string, Dictionary<string, PrivilegesActions>>
 }

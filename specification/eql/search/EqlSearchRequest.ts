@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, float, IndexName, integer, uint } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { Field, float, IndexName, integer, uint } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name eql.search
@@ -30,33 +30,33 @@ import { QueryContainer } from "../../__common/query_dsl/abstractions/container/
  */
 export interface EqlSearchRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-  };
+    index: IndexName
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    keep_alive?: Time;
-    keep_on_completion?: boolean;
-    wait_for_completion_timeout?: Time;
-  };
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+  }
   body?: {
-    query: string;
-    case_sensitive?: boolean;
-    event_category_field?: Field;
-    tiebreaker_field?: Field;
-    timestamp_field?: Field;
-    fetch_size?: uint;
-    filter?: QueryContainer | QueryContainer[];
-    keep_alive?: Time;
-    keep_on_completion?: boolean;
-    wait_for_completion_timeout?: Time;
-    size?: integer | float;
-    fields?: Array<Field | EqlSearchFieldFormatted>;
-  };
+    query: string
+    case_sensitive?: boolean
+    event_category_field?: Field
+    tiebreaker_field?: Field
+    timestamp_field?: Field
+    fetch_size?: uint
+    filter?: QueryContainer | QueryContainer[]
+    keep_alive?: Time
+    keep_on_completion?: boolean
+    wait_for_completion_timeout?: Time
+    size?: integer | float
+    fields?: Array<Field | EqlSearchFieldFormatted>
+  }
 }
 
 export class EqlSearchFieldFormatted {
-  field: Field;
-  format: string;
+  field: Field
+  format: string
 }

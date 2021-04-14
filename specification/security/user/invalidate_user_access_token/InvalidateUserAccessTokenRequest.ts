@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.invalidate_token
@@ -25,11 +25,11 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  * @stability TODO
  */
 export interface InvalidateUserAccessTokenRequest extends RequestBase {
-  query_parameters?: {};
+  query_parameters?: {}
   body?: {
-    token?: string;
-    refresh_token?: string;
-    realm_name?: string;
-    username?: string;
-  };
+    token?: string
+    refresh_token?: string
+    realm_name?: string
+    username?: string
+  }
 }

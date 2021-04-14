@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { Field, Id } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field, Id } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class InferenceProcessor extends ProcessorBase {
-  model_id: Id;
-  target_field: Field;
-  field_map?: Dictionary<Field, UserDefinedValue>;
-  inference_config?: InferenceProcessorConfig;
+  model_id: Id
+  target_field: Field
+  field_map?: Dictionary<Field, UserDefinedValue>
+  inference_config?: InferenceProcessorConfig
 }
 
 export class InferenceProcessorConfig {
-  regression?: InferenceProcessorConfigRegression;
+  regression?: InferenceProcessorConfigRegression
 }
 
 export class InferenceProcessorConfigRegression {
-  results_field: string;
+  results_field: string
 }

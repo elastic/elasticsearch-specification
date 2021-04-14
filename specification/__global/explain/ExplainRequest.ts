@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Fields, Id, IndexName, Routing, Type } from "../../__common/common";
-import { DefaultOperator } from "../../__common/common/DefaultOperator";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { SourceFilter } from "../search/source_filtering/SourceFilter";
+import { Fields, Id, IndexName, Routing, Type } from '../../__common/common'
+import { DefaultOperator } from '../../__common/common/DefaultOperator'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { SourceFilter } from '../search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name explain
@@ -30,26 +30,26 @@ import { SourceFilter } from "../search/source_filtering/SourceFilter";
  */
 export interface ExplainRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-    index: IndexName;
-    type?: Type;
-  };
+    id: Id
+    index: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    analyzer?: string;
-    analyze_wildcard?: boolean;
-    default_operator?: DefaultOperator;
-    df?: string;
-    lenient?: boolean;
-    preference?: string;
-    query_on_query_string?: string;
-    routing?: Routing;
-    _source?: boolean | Fields | SourceFilter;
-    _source_excludes?: Fields;
-    _source_includes?: Fields;
-    stored_fields?: Fields;
-    q?: string;
-  };
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    lenient?: boolean
+    preference?: string
+    query_on_query_string?: string
+    routing?: Routing
+    _source?: boolean | Fields | SourceFilter
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    stored_fields?: Fields
+    q?: string
+  }
   body?: {
-    query?: QueryContainer;
-  };
+    query?: QueryContainer
+  }
 }

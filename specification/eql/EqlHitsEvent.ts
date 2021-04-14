@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field, Id, IndexName } from "../__common/common";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
+import { Field, Id, IndexName } from '../__common/common'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
 
 export class EqlHitsEvent<TEvent> {
-  _index: IndexName;
-  _id: Id;
-  _source: TEvent;
-  fields?: Dictionary<Field, UserDefinedValue[]>;
+  _index: IndexName
+  _id: Id
+  _source: TEvent
+  fields?: Dictionary<Field, UserDefinedValue[]>
 }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { CcrAutoFollowStats } from "./CcrAutoFollowStats";
-import { CcrFollowStats } from "./CcrFollowStats";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { CcrAutoFollowStats } from './CcrAutoFollowStats'
+import { CcrFollowStats } from './CcrFollowStats'
 
 export class CcrStatsResponse extends ResponseBase {
-  auto_follow_stats: CcrAutoFollowStats;
-  follow_stats: CcrFollowStats;
+  auto_follow_stats: CcrAutoFollowStats
+  follow_stats: CcrFollowStats
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ScheduleTriggerEvent } from "../schedule/ScheduleTriggerEvent";
+import { ScheduleTriggerEvent } from '../schedule/ScheduleTriggerEvent'
 
 export class TriggerEventContainer {
-  schedule: ScheduleTriggerEvent;
+  schedule: ScheduleTriggerEvent
 }

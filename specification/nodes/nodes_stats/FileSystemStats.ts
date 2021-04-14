@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { DataPathStats } from "./DataPathStats";
-import { TotalFileSystemStats } from "./TotalFileSystemStats";
+import { long } from '../../__common/common'
+import { DataPathStats } from './DataPathStats'
+import { TotalFileSystemStats } from './TotalFileSystemStats'
 
 export class FileSystemStats {
-  data: DataPathStats[];
-  timestamp: long;
-  total: TotalFileSystemStats;
+  data: DataPathStats[]
+  timestamp: long
+  total: TotalFileSystemStats
 }

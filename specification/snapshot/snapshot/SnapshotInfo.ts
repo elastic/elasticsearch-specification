@@ -23,31 +23,31 @@ import {
   IndexName,
   Uuid,
   VersionNumber,
-  VersionString,
-} from "../../__common/common";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { SnapshotInfoFeatureState } from "./SnapshotInfoFeatureState";
-import { SnapshotShardFailure } from "./SnapshotShardFailure";
+  VersionString
+} from '../../__common/common'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { SnapshotInfoFeatureState } from './SnapshotInfoFeatureState'
+import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
-  data_streams: Array<string>;
-  duration_in_millis?: EpochMillis;
-  end_time?: DateString;
-  end_time_in_millis?: EpochMillis;
-  failures?: SnapshotShardFailure[];
-  include_global_state?: boolean;
-  indices: IndexName[];
-  metadata?: Dictionary<string, UserDefinedValue>;
-  reason?: string;
-  snapshot: string;
-  shards?: ShardStatistics;
-  start_time?: DateString;
-  start_time_in_millis?: EpochMillis;
-  state?: string;
-  uuid: Uuid;
-  version?: VersionString;
-  version_id?: VersionNumber;
-  feature_states?: SnapshotInfoFeatureState[];
+  data_streams: Array<string>
+  duration_in_millis?: EpochMillis
+  end_time?: DateString
+  end_time_in_millis?: EpochMillis
+  failures?: SnapshotShardFailure[]
+  include_global_state?: boolean
+  indices: IndexName[]
+  metadata?: Dictionary<string, UserDefinedValue>
+  reason?: string
+  snapshot: string
+  shards?: ShardStatistics
+  start_time?: DateString
+  start_time_in_millis?: EpochMillis
+  state?: string
+  uuid: Uuid
+  version?: VersionString
+  version_id?: VersionNumber
+  feature_states?: SnapshotInfoFeatureState[]
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Indices, WaitForActiveShards } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { Level } from "../../__common/common/Level";
-import { WaitForEvents } from "../../__common/common/WaitForEvents";
-import { WaitForStatus } from "../../__common/common/WaitForStatus";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Indices, WaitForActiveShards } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { Level } from '../../__common/common/Level'
+import { WaitForEvents } from '../../__common/common/WaitForEvents'
+import { WaitForStatus } from '../../__common/common/WaitForStatus'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.health
@@ -32,20 +32,20 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterHealthRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards;
-    level?: Level;
-    local?: boolean;
-    master_timeout?: Time;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-    wait_for_events?: WaitForEvents;
-    wait_for_nodes?: string;
-    wait_for_no_initializing_shards?: boolean;
-    wait_for_no_relocating_shards?: boolean;
-    wait_for_status?: WaitForStatus;
-  };
-  body?: {};
+    expand_wildcards?: ExpandWildcards
+    level?: Level
+    local?: boolean
+    master_timeout?: Time
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+    wait_for_events?: WaitForEvents
+    wait_for_nodes?: string
+    wait_for_no_initializing_shards?: boolean
+    wait_for_no_relocating_shards?: boolean
+    wait_for_status?: WaitForStatus
+  }
+  body?: {}
 }

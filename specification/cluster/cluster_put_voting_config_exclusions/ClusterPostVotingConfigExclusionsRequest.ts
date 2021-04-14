@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Ids, Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Ids, Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.post_voting_config_exclusions
@@ -27,12 +27,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  * @stability TODO
  */
 export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
-  path_parts?: {};
+  path_parts?: {}
   query_parameters?: {
-    node_names?: Names;
-    node_ids?: Ids;
-    timeout?: Time; // default: 30s
-    wait_for_removal?: boolean; // default: true
-  };
-  body?: {};
+    node_names?: Names
+    node_ids?: Ids
+    timeout?: Time // default: 30s
+    wait_for_removal?: boolean // default: true
+  }
+  body?: {}
 }

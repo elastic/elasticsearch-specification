@@ -23,8 +23,8 @@
  * These are problem sets that need a custom client solution.
  */
 
-import { Names } from "../__common/common";
-import { Time } from "../__common/common_options/time_unit/Time";
+import { Names } from '../__common/common'
+import { Time } from '../__common/common_options/time_unit/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties
@@ -60,11 +60,11 @@ export interface EmptyResponseBase {}
  * @behavior Defines a common set of query parameters all API's support that alter the overall response.
  */
 export interface CommonQueryParameters {
-  error_trace?: boolean;
-  filter_path?: string | string[];
-  human?: boolean;
-  pretty?: boolean;
-  source_query_string?: string;
+  error_trace?: boolean
+  filter_path?: string | string[]
+  human?: boolean
+  pretty?: boolean
+  source_query_string?: string
 }
 
 /**
@@ -73,11 +73,11 @@ export interface CommonQueryParameters {
  * @behavior Defines a common set of query parameters all Cat API's support that alter the overall response.
  */
 export interface CommonCatQueryParameters {
-  format?: string;
-  h?: Names;
-  help?: boolean;
-  local?: boolean;
-  master_timeout?: Time;
-  s?: string[];
-  v?: boolean;
+  format?: string
+  h?: Names
+  help?: boolean
+  local?: boolean
+  master_timeout?: Time
+  s?: string[]
+  v?: boolean
 }

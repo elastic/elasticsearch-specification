@@ -17,38 +17,38 @@
  * under the License.
  */
 
-import { CompletionStats } from "../../../__common/common_options/stats/CompletionStats";
-import { DocStats } from "../../../__common/common_options/stats/DocStats";
-import { FielddataStats } from "../../../__common/common_options/stats/FielddataStats";
-import { FlushStats } from "../../../__common/common_options/stats/FlushStats";
-import { GetStats } from "../../../__common/common_options/stats/GetStats";
-import { IndexingStats } from "../../../__common/common_options/stats/IndexingStats";
-import { MergesStats } from "../../../__common/common_options/stats/MergesStats";
-import { QueryCacheStats } from "../../../__common/common_options/stats/QueryCacheStats";
-import { RecoveryStats } from "../../../__common/common_options/stats/RecoveryStats";
-import { RefreshStats } from "../../../__common/common_options/stats/RefreshStats";
-import { RequestCacheStats } from "../../../__common/common_options/stats/RequestCacheStats";
-import { SearchStats } from "../../../__common/common_options/stats/SearchStats";
-import { SegmentsStats } from "../../../__common/common_options/stats/SegmentsStats";
-import { StoreStats } from "../../../__common/common_options/stats/StoreStats";
-import { TranslogStats } from "../../../__common/common_options/stats/TranslogStats";
-import { WarmerStats } from "../../../__common/common_options/stats/WarmerStats";
+import { CompletionStats } from '../../../__common/common_options/stats/CompletionStats'
+import { DocStats } from '../../../__common/common_options/stats/DocStats'
+import { FielddataStats } from '../../../__common/common_options/stats/FielddataStats'
+import { FlushStats } from '../../../__common/common_options/stats/FlushStats'
+import { GetStats } from '../../../__common/common_options/stats/GetStats'
+import { IndexingStats } from '../../../__common/common_options/stats/IndexingStats'
+import { MergesStats } from '../../../__common/common_options/stats/MergesStats'
+import { QueryCacheStats } from '../../../__common/common_options/stats/QueryCacheStats'
+import { RecoveryStats } from '../../../__common/common_options/stats/RecoveryStats'
+import { RefreshStats } from '../../../__common/common_options/stats/RefreshStats'
+import { RequestCacheStats } from '../../../__common/common_options/stats/RequestCacheStats'
+import { SearchStats } from '../../../__common/common_options/stats/SearchStats'
+import { SegmentsStats } from '../../../__common/common_options/stats/SegmentsStats'
+import { StoreStats } from '../../../__common/common_options/stats/StoreStats'
+import { TranslogStats } from '../../../__common/common_options/stats/TranslogStats'
+import { WarmerStats } from '../../../__common/common_options/stats/WarmerStats'
 
 export class IndexStats {
-  completion?: CompletionStats;
-  docs?: DocStats;
-  fielddata?: FielddataStats;
-  flush?: FlushStats;
-  get?: GetStats;
-  indexing?: IndexingStats;
-  merges?: MergesStats;
-  query_cache?: QueryCacheStats;
-  recovery?: RecoveryStats;
-  refresh?: RefreshStats;
-  request_cache?: RequestCacheStats;
-  search?: SearchStats;
-  segments?: SegmentsStats;
-  store?: StoreStats;
-  translog?: TranslogStats;
-  warmer?: WarmerStats;
+  completion?: CompletionStats
+  docs?: DocStats
+  fielddata?: FielddataStats
+  flush?: FlushStats
+  get?: GetStats
+  indexing?: IndexingStats
+  merges?: MergesStats
+  query_cache?: QueryCacheStats
+  recovery?: RecoveryStats
+  refresh?: RefreshStats
+  request_cache?: RequestCacheStats
+  search?: SearchStats
+  segments?: SegmentsStats
+  store?: StoreStats
+  translog?: TranslogStats
+  warmer?: WarmerStats
 }

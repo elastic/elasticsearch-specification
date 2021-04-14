@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { integer } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { SuggestContext } from "./SuggestContext";
+import { integer } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { SuggestContext } from './SuggestContext'
 
 export class CompletionProperty extends DocValuesPropertyBase {
-  analyzer?: string;
-  contexts?: SuggestContext[];
-  max_input_length?: integer;
-  preserve_position_increments?: boolean;
-  preserve_separators?: boolean;
-  search_analyzer?: string;
-  type: "completion";
+  analyzer?: string
+  contexts?: SuggestContext[]
+  max_input_length?: integer
+  preserve_position_increments?: boolean
+  preserve_separators?: boolean
+  search_analyzer?: string
+  type: 'completion'
 }

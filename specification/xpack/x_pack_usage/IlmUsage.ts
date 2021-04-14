@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { IlmPolicyStatistics } from "./IlmPolicyStatistics";
+import { integer } from '../../__common/common'
+import { IlmPolicyStatistics } from './IlmPolicyStatistics'
 
 export class IlmUsage {
-  policy_count: integer;
-  policy_stats: IlmPolicyStatistics[];
+  policy_count: integer
+  policy_stats: IlmPolicyStatistics[]
 }

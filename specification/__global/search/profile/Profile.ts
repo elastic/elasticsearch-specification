@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ShardProfile } from "./ShardProfile";
+import { ShardProfile } from './ShardProfile'
 
 export class Profile {
-  shards: ShardProfile[];
+  shards: ShardProfile[]
 }

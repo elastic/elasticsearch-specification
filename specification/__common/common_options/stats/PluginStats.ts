@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { VersionString } from "../../common";
+import { VersionString } from '../../common'
 
 export class PluginStats {
-  classname: string;
-  description: string;
-  elasticsearch_version: VersionString;
-  extended_plugins: string[];
-  has_native_controller: boolean;
-  java_version: VersionString;
-  name: string;
-  version: VersionString;
-  licensed: boolean;
-  type: string;
+  classname: string
+  description: string
+  elasticsearch_version: VersionString
+  extended_plugins: string[]
+  has_native_controller: boolean
+  java_version: VersionString
+  name: string
+  version: VersionString
+  licensed: boolean
+  type: string
 }

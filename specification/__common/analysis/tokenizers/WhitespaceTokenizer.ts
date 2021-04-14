@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { TokenizerBase } from "./TokenizerBase";
+import { integer } from '../../common'
+import { TokenizerBase } from './TokenizerBase'
 
 export class WhitespaceTokenizer extends TokenizerBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_token_length: integer;
+  max_token_length: integer
 }

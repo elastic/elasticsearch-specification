@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ExecutionAction {
-  total: long;
-  total_in_ms: long;
+  total: long
+  total_in_ms: long
 }

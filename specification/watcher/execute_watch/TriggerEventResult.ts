@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
-import { TriggerEventContainer } from "../trigger/TriggerEventContainer";
+import { DateString } from '../../__common/common'
+import { TriggerEventContainer } from '../trigger/TriggerEventContainer'
 
 export class TriggerEventResult {
-  manual: TriggerEventContainer;
-  triggered_time: DateString;
-  type: string;
+  manual: TriggerEventContainer
+  triggered_time: DateString
+  type: string
 }

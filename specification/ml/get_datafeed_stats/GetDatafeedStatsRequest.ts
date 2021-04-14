@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Ids } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Ids } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.get_datafeed_stats
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetDatafeedStatsRequest extends RequestBase {
   path_parts?: {
-    datafeed_id?: Ids;
-  };
+    datafeed_id?: Ids
+  }
   query_parameters?: {
-    allow_no_datafeeds?: boolean;
-  };
-  body?: {};
+    allow_no_datafeeds?: boolean
+  }
+  body?: {}
 }

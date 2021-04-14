@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { DateString } from "../__common/common";
+import { DateString } from '../__common/common'
 
 export class SnapshotLifecycleInProgress {
-  name: string;
+  name: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  start_time_millis: DateString;
-  state: string;
-  uuid: string;
+  start_time_millis: DateString
+  state: string
+  uuid: string
 }

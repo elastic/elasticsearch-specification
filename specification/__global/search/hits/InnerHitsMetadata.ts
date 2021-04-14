@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { double, long } from "../../../__common/common";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { Hit } from "./Hit";
-import { TotalHits } from "./TotalHits";
+import { double, long } from '../../../__common/common'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
+import { Hit } from './Hit'
+import { TotalHits } from './TotalHits'
 
 export class InnerHitsMetadata {
-  total: TotalHits | long;
-  hits: Hit<Dictionary<string, UserDefinedValue>>[];
+  total: TotalHits | long
+  hits: Hit<Dictionary<string, UserDefinedValue>>[]
 
-  max_score?: double;
+  max_score?: double
 }

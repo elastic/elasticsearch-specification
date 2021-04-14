@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ShardFailure } from "../../__common/common/ShardFailure";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { GraphConnection } from "./GraphConnection";
-import { GraphVertex } from "./GraphVertex";
+import { long } from '../../__common/common'
+import { ShardFailure } from '../../__common/common/ShardFailure'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { GraphConnection } from './GraphConnection'
+import { GraphVertex } from './GraphVertex'
 
 export class GraphExploreResponse extends ResponseBase {
-  connections: GraphConnection[];
-  failures: ShardFailure[];
-  timed_out: boolean;
-  took: long;
-  vertices: GraphVertex[];
+  connections: GraphConnection[]
+  failures: ShardFailure[]
+  timed_out: boolean
+  took: long
+  vertices: GraphVertex[]
 }

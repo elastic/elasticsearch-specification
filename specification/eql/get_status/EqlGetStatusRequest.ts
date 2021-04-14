@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name eql.get_status
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface EqlGetStatusRequest extends RequestBase {
   path_parts: {
-    id: Id;
-  };
-  query_parameters?: {};
-  body?: {};
+    id: Id
+  }
+  query_parameters?: {}
+  body?: {}
 }

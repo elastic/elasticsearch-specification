@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Fuzziness, integer, MultiTermQueryRewrite } from "../../../common";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Operator } from "../../Operator";
+import { Fuzziness, integer, MultiTermQueryRewrite } from '../../../common'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Operator } from '../../Operator'
 
 export class MatchBoolPrefixQuery extends QueryBase {
-  analyzer?: string;
-  fuzziness?: Fuzziness;
-  fuzzy_rewrite?: MultiTermQueryRewrite;
-  fuzzy_transpositions?: boolean;
-  max_expansions?: integer;
-  minimum_should_match?: MinimumShouldMatch;
-  operator?: Operator;
-  prefix_length?: integer;
-  query?: string;
+  analyzer?: string
+  fuzziness?: Fuzziness
+  fuzzy_rewrite?: MultiTermQueryRewrite
+  fuzzy_transpositions?: boolean
+  max_expansions?: integer
+  minimum_should_match?: MinimumShouldMatch
+  operator?: Operator
+  prefix_length?: integer
+  query?: string
 }

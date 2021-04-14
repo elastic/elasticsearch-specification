@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Ids } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Ids } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.stop_datafeed
@@ -28,14 +28,14 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface StopDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Ids;
-  };
+    datafeed_id: Ids
+  }
   query_parameters?: {
-    allow_no_match?: boolean; // default: true
-    force?: boolean; // default: false
-  };
+    allow_no_match?: boolean // default: true
+    force?: boolean // default: false
+  }
   body?: {
-    force?: boolean; // default: false
-    timeout?: Time; // default: 20s
-  };
+    force?: boolean // default: false
+    timeout?: Time // default: 20s
+  }
 }

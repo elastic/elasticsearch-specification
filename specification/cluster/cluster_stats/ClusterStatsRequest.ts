@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodeIds } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { NodeIds } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.stats
@@ -28,11 +28,11 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterStatsRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-  };
+    node_id?: NodeIds
+  }
   query_parameters?: {
-    flat_settings?: boolean;
-    timeout?: Time; // default: no timeout
-  };
-  body?: {};
+    flat_settings?: boolean
+    timeout?: Time // default: no timeout
+  }
+  body?: {}
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { InputType } from "zlib";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { Status } from "../execution/Status";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Status } from '../execution/Status'
+import { InputType } from '../input/InputType'
 
 export class ExecutionResultInput {
-  payload: Dictionary<string, UserDefinedValue>;
-  status: Status;
-  type: InputType;
+  payload: Dictionary<string, UserDefinedValue>
+  status: Status
+  type: InputType
 }

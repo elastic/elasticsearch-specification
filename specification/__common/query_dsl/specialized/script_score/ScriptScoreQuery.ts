@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Script } from '../../../common_options/scripting/Script'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class ScriptScoreQuery extends QueryBase {
-  query?: QueryContainer;
-  script?: Script;
+  query?: QueryContainer
+  script?: Script
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { integer } from '../../common'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class LengthTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max: integer;
+  max: integer
   /** @prop_serializer NullableStringIntFormatter */
-  min: integer;
+  min: integer
 }

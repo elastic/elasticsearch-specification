@@ -22,5 +22,5 @@ export enum ActionExecutionMode {
   force_simulate = 1,
   execute = 2,
   force_execute = 3,
-  skip = 4,
+  skip = 4
 }

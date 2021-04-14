@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { double, Field, long } from "../../../common";
-import { Missing } from "../../AggregationContainer";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { TermsInclude } from "../terms/TermsInclude";
+import { double, Field, long } from '../../../common'
+import { Missing } from '../../AggregationContainer'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { TermsInclude } from '../terms/TermsInclude'
 
 export class RareTermsAggregation extends BucketAggregationBase {
-  exclude?: string | string[];
-  field?: Field;
-  include?: string | string[] | TermsInclude;
-  max_doc_count?: long;
-  missing?: Missing;
-  precision?: double;
-  value_type?: string;
+  exclude?: string | string[]
+  field?: Field
+  include?: string | string[] | TermsInclude
+  max_doc_count?: long
+  missing?: Missing
+  precision?: double
+  value_type?: string
 }

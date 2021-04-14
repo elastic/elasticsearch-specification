@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name snapshot.verify_repository
@@ -28,11 +28,11 @@ import { Time } from "../../../__common/common_options/time_unit/Time";
  */
 export interface VerifyRepositoryRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-  };
+    repository: Name
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
-  body?: {};
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

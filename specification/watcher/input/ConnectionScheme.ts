@@ -19,5 +19,5 @@
 
 export enum ConnectionScheme {
   http = 0,
-  https = 1,
+  https = 1
 }

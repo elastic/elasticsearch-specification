@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { SnapshotRestore } from "./SnapshotRestore";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SnapshotRestore } from './SnapshotRestore'
 
 export class RestoreResponse extends ResponseBase {
-  snapshot: SnapshotRestore;
+  snapshot: SnapshotRestore
 }

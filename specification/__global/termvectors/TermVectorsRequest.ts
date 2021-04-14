@@ -24,12 +24,12 @@ import {
   IndexName,
   Routing,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TermVectorFilter } from "./TermVectorFilter";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TermVectorFilter } from './TermVectorFilter'
 
 /**
  * @rest_spec_name termvectors
@@ -38,27 +38,27 @@ import { TermVectorFilter } from "./TermVectorFilter";
  */
 export interface TermVectorsRequest<TDocument> extends RequestBase {
   path_parts?: {
-    index: IndexName;
-    id?: Id;
-    type?: Type;
-  };
+    index: IndexName
+    id?: Id
+    type?: Type
+  }
   query_parameters?: {
-    fields?: Fields;
-    field_statistics?: boolean;
-    offsets?: boolean;
-    payloads?: boolean;
-    positions?: boolean;
-    preference?: string;
-    realtime?: boolean;
-    routing?: Routing;
-    term_statistics?: boolean;
-    version?: VersionNumber;
-    version_type?: VersionType;
-  };
+    fields?: Fields
+    field_statistics?: boolean
+    offsets?: boolean
+    payloads?: boolean
+    positions?: boolean
+    preference?: string
+    realtime?: boolean
+    routing?: Routing
+    term_statistics?: boolean
+    version?: VersionNumber
+    version_type?: VersionType
+  }
   body?: {
     /** @prop_serializer SourceFormatter`1 */
-    doc?: TDocument;
-    filter?: TermVectorFilter;
-    per_field_analyzer?: Dictionary<Field, string>;
-  };
+    doc?: TDocument
+    filter?: TermVectorFilter
+    per_field_analyzer?: Dictionary<Field, string>
+  }
 }

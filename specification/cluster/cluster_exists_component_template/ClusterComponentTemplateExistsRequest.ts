@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name cluster.exists_component_template
@@ -26,12 +26,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ClusterComponentTemplateExistsRequest extends RequestBase {
   path_parts?: {
-    stub_a: string;
-  };
+    stub_a: string
+  }
   query_parameters?: {
-    stub_b: string;
-  };
+    stub_b: string
+  }
   body?: {
-    stub_c: string;
-  };
+    stub_c: string
+  }
 }

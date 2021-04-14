@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { double } from "../../__common/common";
+import { double } from '../../__common/common'
 
 export class ClusterShardMetrics {
-  avg: double;
-  max: double;
-  min: double;
+  avg: double
+  max: double
+  min: double
 }

@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import { Aggregate } from "../__common/aggregations/Aggregate";
-import { double, Id, long, SuggestionName } from "../__common/common";
-import { ClusterStatistics } from "../__common/common_options/hit/ClusterStatistics";
-import { ShardStatistics } from "../__common/common_options/hit/ShardStatistics";
-import { HitsMetadata } from "../__global/search/hits/HitsMetadata";
-import { Profile } from "../__global/search/profile/Profile";
-import { Suggest } from "../__global/search/suggesters/Suggest";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
+import { Aggregate } from '../__common/aggregations/Aggregate'
+import { double, Id, long, SuggestionName } from '../__common/common'
+import { ClusterStatistics } from '../__common/common_options/hit/ClusterStatistics'
+import { ShardStatistics } from '../__common/common_options/hit/ShardStatistics'
+import { HitsMetadata } from '../__global/search/hits/HitsMetadata'
+import { Profile } from '../__global/search/profile/Profile'
+import { Suggest } from '../__global/search/suggesters/Suggest'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
 
 export class AsyncSearch<TDocument> {
-  aggregations?: Dictionary<string, Aggregate>;
-  _clusters?: ClusterStatistics;
-  fields?: Dictionary<string, UserDefinedValue>;
-  hits: HitsMetadata<TDocument>;
-  max_score?: double;
-  num_reduce_phases?: long;
-  profile?: Profile;
-  pit_id?: Id;
-  _scroll_id?: Id;
-  _shards: ShardStatistics;
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>;
-  terminated_early?: boolean;
-  timed_out: boolean;
-  took: long;
+  aggregations?: Dictionary<string, Aggregate>
+  _clusters?: ClusterStatistics
+  fields?: Dictionary<string, UserDefinedValue>
+  hits: HitsMetadata<TDocument>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  pit_id?: Id
+  _scroll_id?: Id
+  _shards: ShardStatistics
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+  terminated_early?: boolean
+  timed_out: boolean
+  took: long
 }

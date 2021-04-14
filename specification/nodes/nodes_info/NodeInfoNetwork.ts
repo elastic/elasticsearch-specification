@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { NodeInfoNetworkInterface } from "./NodeInfoNetworkInterface";
+import { integer } from '../../__common/common'
+import { NodeInfoNetworkInterface } from './NodeInfoNetworkInterface'
 
 export class NodeInfoNetwork {
-  primary_interface: NodeInfoNetworkInterface;
-  refresh_interval: integer;
+  primary_interface: NodeInfoNetworkInterface
+  refresh_interval: integer
 }

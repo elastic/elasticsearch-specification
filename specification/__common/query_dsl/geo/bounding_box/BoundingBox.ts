@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { GeoLocation } from "../GeoLocation";
+import { GeoLocation } from '../GeoLocation'
 
 export class BoundingBox {
-  bottom_right?: GeoLocation;
-  top_left?: GeoLocation;
-  wkt?: string;
+  bottom_right?: GeoLocation
+  top_left?: GeoLocation
+  wkt?: string
 }

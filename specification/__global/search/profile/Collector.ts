@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class Collector {
-  name: string;
-  reason: string;
-  time_in_nanos: long;
+  name: string
+  reason: string
+  time_in_nanos: long
 
-  children?: Collector[];
+  children?: Collector[]
 }

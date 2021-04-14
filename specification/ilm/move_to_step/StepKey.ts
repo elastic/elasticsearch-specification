@@ -18,7 +18,7 @@
  */
 
 export class StepKey {
-  action: string;
-  name: string;
-  phase: string;
+  action: string
+  name: string
+  phase: string
 }

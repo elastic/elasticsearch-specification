@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { CPUStats } from "./CPUStats";
-import { ExtendedMemoryStats } from "./ExtendedMemoryStats";
-import { MemoryStats } from "./MemoryStats";
+import { long } from '../../__common/common'
+import { CPUStats } from './CPUStats'
+import { ExtendedMemoryStats } from './ExtendedMemoryStats'
+import { MemoryStats } from './MemoryStats'
 
 export class OperatingSystemStats {
-  cpu: CPUStats;
-  mem: ExtendedMemoryStats;
-  swap: MemoryStats;
-  timestamp: long;
+  cpu: CPUStats
+  mem: ExtendedMemoryStats
+  swap: MemoryStats
+  timestamp: long
 }

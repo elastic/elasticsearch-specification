@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Time } from "../__common/common_options/time_unit/Time";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { LifecycleAction } from "./LifecycleAction";
+import { Time } from '../__common/common_options/time_unit/Time'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { LifecycleAction } from './LifecycleAction'
 
 export class Phase {
-  actions: Dictionary<string, LifecycleAction> | string[];
-  min_age?: Time;
+  actions: Dictionary<string, LifecycleAction> | string[]
+  min_age?: Time
 }

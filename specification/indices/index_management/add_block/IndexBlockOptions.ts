@@ -21,5 +21,5 @@ export enum IndexBlockOptions {
   metadata = 0,
   read = 1,
   read_only = 2,
-  write = 3,
+  write = 3
 }

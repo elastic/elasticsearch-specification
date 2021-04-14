@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { DateString, double, integer } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { NumericFielddata } from '../../../../../indices/NumericFielddata'
+import { DateString, double, integer } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class DateProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  format?: string;
-  ignore_malformed?: boolean;
-  index?: boolean;
-  null_value?: DateString;
-  precision_step?: integer;
-  type: "date";
+  boost?: double
+  fielddata?: NumericFielddata
+  format?: string
+  ignore_malformed?: boolean
+  index?: boolean
+  null_value?: DateString
+  precision_step?: integer
+  type: 'date'
 }

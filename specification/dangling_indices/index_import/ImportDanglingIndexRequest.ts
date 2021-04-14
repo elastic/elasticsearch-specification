@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name dangling_indices.import_dangling_index
@@ -26,12 +26,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ImportDanglingIndexRequest extends RequestBase {
   path_parts?: {
-    stub_a: string;
-  };
+    stub_a: string
+  }
   query_parameters?: {
-    stub_b: string;
-  };
+    stub_b: string
+  }
   body?: {
-    stub_c: string;
-  };
+    stub_c: string
+  }
 }

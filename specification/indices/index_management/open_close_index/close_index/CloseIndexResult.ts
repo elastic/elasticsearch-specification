@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { CloseShardResult } from "./CloseShardResult";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { CloseShardResult } from './CloseShardResult'
 
 export class CloseIndexResult {
-  closed: boolean;
-  shards?: Dictionary<string, CloseShardResult>;
+  closed: boolean
+  shards?: Dictionary<string, CloseShardResult>
 }

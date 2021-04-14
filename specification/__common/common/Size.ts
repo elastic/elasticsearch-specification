@@ -23,5 +23,5 @@ export enum Size {
   m = 2,
   g = 3,
   t = 4,
-  p = 5,
+  p = 5
 }

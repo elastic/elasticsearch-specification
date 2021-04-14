@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id, long } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Id, long } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class PinnedQuery extends QueryBase {
-  ids?: Id[] | long[];
-  organic?: QueryContainer;
+  ids?: Id[] | long[]
+  organic?: QueryContainer
 }

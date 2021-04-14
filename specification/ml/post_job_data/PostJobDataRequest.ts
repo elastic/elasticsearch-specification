@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { DateString, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name ml.post_data
@@ -29,13 +29,13 @@ import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
  */
 export interface PostJobDataRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
+    job_id: Id
+  }
   query_parameters?: {
-    reset_end?: DateString;
-    reset_start?: DateString;
-  };
+    reset_end?: DateString
+    reset_start?: DateString
+  }
   body?: {
-    data?: UserDefinedValue[];
-  };
+    data?: UserDefinedValue[]
+  }
 }

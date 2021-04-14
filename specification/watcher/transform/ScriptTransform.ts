@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class ScriptTransform {
-  lang: string;
-  params: Dictionary<string, UserDefinedValue>;
+  lang: string
+  params: Dictionary<string, UserDefinedValue>
 }

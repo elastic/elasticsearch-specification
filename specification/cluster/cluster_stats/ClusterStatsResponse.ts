@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { NodesResponseBase } from "../../nodes/NodesResponseBase";
-import { NodeStatistics } from "../../nodes/NodeStatistics";
-import { long, Name, Uuid } from "../../__common/common";
-import { ClusterStatus } from "../ClusterStatus";
-import { ClusterIndicesStats } from "./ClusterIndicesStats";
-import { ClusterNodesStats } from "./ClusterNodesStats";
+import { NodesResponseBase } from '../../nodes/NodesResponseBase'
+import { NodeStatistics } from '../../nodes/NodeStatistics'
+import { long, Name, Uuid } from '../../__common/common'
+import { ClusterStatus } from '../ClusterStatus'
+import { ClusterIndicesStats } from './ClusterIndicesStats'
+import { ClusterNodesStats } from './ClusterNodesStats'
 
 export class ClusterStatsResponse extends NodesResponseBase {
-  _nodes: NodeStatistics;
-  cluster_name: Name;
-  cluster_uuid: Uuid;
-  indices: ClusterIndicesStats;
-  nodes: ClusterNodesStats;
-  status: ClusterStatus;
-  timestamp: long;
+  _nodes: NodeStatistics
+  cluster_name: Name
+  cluster_uuid: Uuid
+  indices: ClusterIndicesStats
+  nodes: ClusterNodesStats
+  status: ClusterStatus
+  timestamp: long
 }

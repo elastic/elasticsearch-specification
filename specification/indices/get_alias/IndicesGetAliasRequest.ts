@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices, Names } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Indices, Names } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.get_alias
@@ -28,14 +28,14 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface IndicesGetAliasRequest extends RequestBase {
   path_parts?: {
-    name?: Names;
-    index?: Indices;
-  };
+    name?: Names
+    index?: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    local?: boolean;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    local?: boolean
+  }
+  body?: {}
 }

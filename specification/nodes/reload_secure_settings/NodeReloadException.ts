@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
+import { Name } from '../../__common/common'
 
 export class NodeReloadException {
-  name: Name;
-  reload_exception?: NodeReloadExceptionCausedBy;
+  name: Name
+  reload_exception?: NodeReloadExceptionCausedBy
 }
 
 export class NodeReloadExceptionCausedBy {
-  type: string;
-  reason: string;
-  caused_by?: NodeReloadExceptionCausedBy;
+  type: string
+  reason: string
+  caused_by?: NodeReloadExceptionCausedBy
 }

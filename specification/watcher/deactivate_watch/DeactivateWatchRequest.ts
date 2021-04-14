@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name watcher.deactivate_watch
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeactivateWatchRequest extends RequestBase {
   path_parts?: {
-    watch_id: Name;
-  };
-  query_parameters?: {};
-  body?: {};
+    watch_id: Name
+  }
+  query_parameters?: {}
+  body?: {}
 }

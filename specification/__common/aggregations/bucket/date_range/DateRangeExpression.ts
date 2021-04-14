@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { float, long } from "../../../common";
-import { DateMath } from "../../../common_options/date_math/DateMath";
+import { float, long } from '../../../common'
+import { DateMath } from '../../../common_options/date_math/DateMath'
 
 export class DateRangeExpression {
-  from?: DateMath | float;
-  from_as_string?: string;
-  to_as_string?: string;
-  key?: string;
-  to?: DateMath | float;
-  doc_count?: long;
+  from?: DateMath | float
+  from_as_string?: string
+  to_as_string?: string
+  key?: string
+  to?: DateMath | float
+  doc_count?: long
 }

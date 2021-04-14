@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { PagerDutyEvent } from "../../action/pager_duty/PagerDutyEvent";
-import { HttpInputRequestResult } from "../HttpInputRequestResult";
-import { HttpInputResponseResult } from "../HttpInputResponseResult";
+import { PagerDutyEvent } from '../../action/pager_duty/PagerDutyEvent'
+import { HttpInputRequestResult } from '../HttpInputRequestResult'
+import { HttpInputResponseResult } from '../HttpInputResponseResult'
 
 export class PagerDutyActionEventResult {
-  event: PagerDutyEvent;
-  reason: string;
-  request: HttpInputRequestResult;
-  response: HttpInputResponseResult;
+  event: PagerDutyEvent
+  reason: string
+  request: HttpInputRequestResult
+  response: HttpInputResponseResult
 }

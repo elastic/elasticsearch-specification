@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { double } from "../../__common/common";
+import { double } from '../../__common/common'
 
 export class GraphVertexInclude {
-  boost: double;
-  term: string;
+  boost: double
+  term: string
 }

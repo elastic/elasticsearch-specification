@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class SnapshotShardsStats {
-  done: long;
-  failed: long;
-  finalizing: long;
-  initializing: long;
-  started: long;
-  total: long;
+  done: long
+  failed: long
+  finalizing: long
+  initializing: long
+  started: long
+  total: long
 }

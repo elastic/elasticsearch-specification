@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name license.post_start_trial
@@ -26,8 +26,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface StartTrialLicenseRequest extends RequestBase {
   query_parameters?: {
-    acknowledge?: boolean;
-    type_query_string?: string;
-  };
-  body?: {};
+    acknowledge?: boolean
+    type_query_string?: string
+  }
+  body?: {}
 }

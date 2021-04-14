@@ -17,33 +17,33 @@
  * under the License.
  */
 
-import { ShardFileSizeInfo } from "../../../indices/monitoring/indices_stats/ShardFileSizeInfo";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { ByteSize, integer } from "../../common";
+import { ShardFileSizeInfo } from '../../../indices/monitoring/indices_stats/ShardFileSizeInfo'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { ByteSize, integer } from '../../common'
 
 export class SegmentsStats {
-  count: integer;
-  doc_values_memory?: ByteSize;
-  doc_values_memory_in_bytes: integer;
-  file_sizes: Dictionary<string, ShardFileSizeInfo>;
-  fixed_bit_set?: ByteSize;
-  fixed_bit_set_memory_in_bytes: integer;
-  index_writer_memory?: ByteSize;
-  index_writer_max_memory_in_bytes?: integer;
-  index_writer_memory_in_bytes: integer;
-  max_unsafe_auto_id_timestamp: integer;
-  memory?: ByteSize;
-  memory_in_bytes: integer;
-  norms_memory?: ByteSize;
-  norms_memory_in_bytes: integer;
-  points_memory?: ByteSize;
-  points_memory_in_bytes: integer;
-  stored_memory?: ByteSize;
-  stored_fields_memory_in_bytes: integer;
-  terms_memory_in_bytes: integer;
-  terms_memory?: ByteSize;
-  term_vectory_memory?: ByteSize;
-  term_vectors_memory_in_bytes: integer;
-  version_map_memory?: ByteSize;
-  version_map_memory_in_bytes: integer;
+  count: integer
+  doc_values_memory?: ByteSize
+  doc_values_memory_in_bytes: integer
+  file_sizes: Dictionary<string, ShardFileSizeInfo>
+  fixed_bit_set?: ByteSize
+  fixed_bit_set_memory_in_bytes: integer
+  index_writer_memory?: ByteSize
+  index_writer_max_memory_in_bytes?: integer
+  index_writer_memory_in_bytes: integer
+  max_unsafe_auto_id_timestamp: integer
+  memory?: ByteSize
+  memory_in_bytes: integer
+  norms_memory?: ByteSize
+  norms_memory_in_bytes: integer
+  points_memory?: ByteSize
+  points_memory_in_bytes: integer
+  stored_memory?: ByteSize
+  stored_fields_memory_in_bytes: integer
+  terms_memory_in_bytes: integer
+  terms_memory?: ByteSize
+  term_vectory_memory?: ByteSize
+  term_vectors_memory_in_bytes: integer
+  version_map_memory?: ByteSize
+  version_map_memory_in_bytes: integer
 }

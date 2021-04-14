@@ -22,27 +22,27 @@ import {
   IndexMetaData,
   IndexName,
   Name,
-  VersionNumber,
-} from "../__common/common";
-import { Dictionary } from "../__spec_utils/Dictionary";
+  VersionNumber
+} from '../__common/common'
+import { Dictionary } from '../__spec_utils/Dictionary'
 import {
   ClusterStateBlockIndexMapping,
-  ClusterStateBlockIndexSetting,
-} from "./ClusterStateBlocks";
+  ClusterStateBlockIndexSetting
+} from './ClusterStateBlocks'
 
 export class ComponentTemplate {
-  name: Name;
-  component_template: ComponentTemplateNode;
+  name: Name
+  component_template: ComponentTemplateNode
 }
 
 export class ComponentTemplateNode {
-  template: ComponentTemplateSummary;
+  template: ComponentTemplateSummary
 }
 
 export class ComponentTemplateSummary {
-  _meta?: IndexMetaData;
-  version?: VersionNumber;
-  settings: Dictionary<IndexName, ClusterStateBlockIndexSetting>;
-  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>;
-  aliases?: Array<IndexAlias>;
+  _meta?: IndexMetaData
+  version?: VersionNumber
+  settings: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  aliases?: Array<IndexAlias>
 }

@@ -19,5 +19,5 @@
 
 export enum HighlighterFragmenter {
   simple = 0,
-  span = 1,
+  span = 1
 }

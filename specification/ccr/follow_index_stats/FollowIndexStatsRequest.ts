@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Indices } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Indices } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ccr.follow_stats
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface FollowIndexStatsRequest extends RequestBase {
   path_parts?: {
-    index: Indices;
-  };
-  query_parameters?: {};
-  body?: {};
+    index: Indices
+  }
+  query_parameters?: {}
+  body?: {}
 }

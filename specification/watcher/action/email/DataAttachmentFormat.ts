@@ -19,5 +19,5 @@
 
 export enum DataAttachmentFormat {
   json = 0,
-  yaml = 1,
+  yaml = 1
 }

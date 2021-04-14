@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { FielddataFilter } from "./FielddataFilter";
-import { FielddataLoading } from "./FielddataLoading";
+import { FielddataFilter } from './FielddataFilter'
+import { FielddataLoading } from './FielddataLoading'
 
 export class Fielddata {
-  filter: FielddataFilter;
-  loading: FielddataLoading;
+  filter: FielddataFilter
+  loading: FielddataLoading
 }

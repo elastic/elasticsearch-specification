@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { PropertyBase } from "../../Property";
+import { PropertyBase } from '../../Property'
 
 export class RankFeatureProperty extends PropertyBase {
-  positive_score_impact?: boolean;
-  type: "rank_feature";
+  positive_score_impact?: boolean
+  type: 'rank_feature'
 }

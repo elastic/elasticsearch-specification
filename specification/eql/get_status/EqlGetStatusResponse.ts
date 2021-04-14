@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { EpochMillis, Id, integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { EpochMillis, Id, integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class EqlGetStatusResponse extends ResponseBase {
-  id: Id;
-  is_partial: boolean;
-  is_running: boolean;
-  start_time_in_millis?: EpochMillis;
-  expiration_time_in_millis?: EpochMillis;
-  completion_status?: integer;
+  id: Id
+  is_partial: boolean
+  is_running: boolean
+  start_time_in_millis?: EpochMillis
+  expiration_time_in_millis?: EpochMillis
+  completion_status?: integer
 }

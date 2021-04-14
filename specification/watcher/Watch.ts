@@ -17,23 +17,23 @@
  * under the License.
  */
 
-import { IndexName } from "../__common/common";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
-import { WatchStatus } from "./acknowledge_watch/WatchStatus";
-import { Action } from "./action/Action";
-import { ConditionContainer } from "./condition/ConditionContainer";
-import { InputContainer } from "./input/InputContainer";
-import { TransformContainer } from "./transform/TransformContainer";
-import { TriggerContainer } from "./trigger/TriggerContainer";
+import { IndexName } from '../__common/common'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { WatchStatus } from './acknowledge_watch/WatchStatus'
+import { Action } from './action/Action'
+import { ConditionContainer } from './condition/ConditionContainer'
+import { InputContainer } from './input/InputContainer'
+import { TransformContainer } from './transform/TransformContainer'
+import { TriggerContainer } from './trigger/TriggerContainer'
 
 export class Watch {
-  actions: Dictionary<IndexName, Action>;
-  condition: ConditionContainer;
-  input: InputContainer;
-  metadata?: Dictionary<string, UserDefinedValue>;
-  status?: WatchStatus;
-  throttle_period?: string;
-  transform?: TransformContainer;
-  trigger: TriggerContainer;
+  actions: Dictionary<IndexName, Action>
+  condition: ConditionContainer
+  input: InputContainer
+  metadata?: Dictionary<string, UserDefinedValue>
+  status?: WatchStatus
+  throttle_period?: string
+  transform?: TransformContainer
+  trigger: TriggerContainer
 }

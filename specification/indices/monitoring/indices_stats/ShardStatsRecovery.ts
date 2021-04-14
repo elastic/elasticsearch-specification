@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardStatsRecovery {
-  current_as_source: long;
-  current_as_target: long;
-  throttle_time_in_millis: long;
+  current_as_source: long
+  current_as_target: long
+  throttle_time_in_millis: long
 }

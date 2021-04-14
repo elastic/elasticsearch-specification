@@ -18,5 +18,5 @@
  */
 
 export class FieldNamesField {
-  enabled: boolean;
+  enabled: boolean
 }

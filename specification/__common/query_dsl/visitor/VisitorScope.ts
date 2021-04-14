@@ -26,5 +26,5 @@ export enum VisitorScope {
   Should = 5,
   PositiveQuery = 6,
   NegativeQuery = 7,
-  Span = 8,
+  Span = 8
 }

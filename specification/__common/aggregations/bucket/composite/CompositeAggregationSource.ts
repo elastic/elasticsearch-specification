@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DateHistogramAggregation } from "../date_histogram/DateHistogramAggregation";
-import { GeoTileGridAggregation } from "../geo_tile_grid/GeoTileGridAggregation";
-import { HistogramAggregation } from "../histogram/HistogramAggregation";
-import { TermsAggregation } from "../terms/TermsAggregation";
+import { DateHistogramAggregation } from '../date_histogram/DateHistogramAggregation'
+import { GeoTileGridAggregation } from '../geo_tile_grid/GeoTileGridAggregation'
+import { HistogramAggregation } from '../histogram/HistogramAggregation'
+import { TermsAggregation } from '../terms/TermsAggregation'
 
 export class CompositeAggregationSource {
   // field: Field;
@@ -28,8 +28,8 @@ export class CompositeAggregationSource {
   // name: string;
   // order: SortOrder;
   // source_type: string;
-  terms?: TermsAggregation;
-  histogram?: HistogramAggregation;
-  date_histogram?: DateHistogramAggregation;
-  geotile_grid?: GeoTileGridAggregation;
+  terms?: TermsAggregation
+  histogram?: HistogramAggregation
+  date_histogram?: DateHistogramAggregation
+  geotile_grid?: GeoTileGridAggregation
 }

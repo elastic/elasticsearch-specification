@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name transform.stop_transform
@@ -28,14 +28,14 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface StopTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id: Name;
-  };
+    transform_id: Name
+  }
   query_parameters?: {
-    allow_no_match?: boolean;
-    force?: boolean;
-    timeout?: Time;
-    wait_for_checkpoint?: boolean;
-    wait_for_completion?: boolean;
-  };
-  body?: {};
+    allow_no_match?: boolean
+    force?: boolean
+    timeout?: Time
+    wait_for_checkpoint?: boolean
+    wait_for_completion?: boolean
+  }
+  body?: {}
 }

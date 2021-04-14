@@ -17,27 +17,27 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { AuditUsage } from "./AuditUsage";
-import { IpFilterUsage } from "./IpFilterUsage";
-import { RealmUsage } from "./RealmUsage";
-import { RoleMappingUsage } from "./RoleMappingUsage";
-import { SecurityFeatureToggle } from "./SecurityFeatureToggle";
-import { SecurityRolesUsage } from "./SecurityRolesUsage";
-import { SslUsage } from "./SslUsage";
-import { XPackUsage } from "./XPackUsage";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AuditUsage } from './AuditUsage'
+import { IpFilterUsage } from './IpFilterUsage'
+import { RealmUsage } from './RealmUsage'
+import { RoleMappingUsage } from './RoleMappingUsage'
+import { SecurityFeatureToggle } from './SecurityFeatureToggle'
+import { SecurityRolesUsage } from './SecurityRolesUsage'
+import { SslUsage } from './SslUsage'
+import { XPackUsage } from './XPackUsage'
 
 export class SecurityUsage extends XPackUsage {
-  api_key_service: SecurityFeatureToggle;
-  anonymous: SecurityFeatureToggle;
-  audit: AuditUsage;
-  fips_140: SecurityFeatureToggle;
-  ipfilter: IpFilterUsage;
-  realms: Dictionary<string, RealmUsage>;
-  role_mapping: Dictionary<string, RoleMappingUsage>;
-  roles: SecurityRolesUsage;
-  ssl: SslUsage;
-  system_key?: SecurityFeatureToggle;
-  token_service: SecurityFeatureToggle;
-  operator_privileges: XPackUsage;
+  api_key_service: SecurityFeatureToggle
+  anonymous: SecurityFeatureToggle
+  audit: AuditUsage
+  fips_140: SecurityFeatureToggle
+  ipfilter: IpFilterUsage
+  realms: Dictionary<string, RealmUsage>
+  role_mapping: Dictionary<string, RoleMappingUsage>
+  roles: SecurityRolesUsage
+  ssl: SslUsage
+  system_key?: SecurityFeatureToggle
+  token_service: SecurityFeatureToggle
+  operator_privileges: XPackUsage
 }

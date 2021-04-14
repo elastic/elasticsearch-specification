@@ -17,23 +17,23 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field } from "../../../common";
-import { QueryContainer } from "../../../query_dsl/abstractions/container/QueryContainer";
-import { Aggregation } from "../../Aggregation";
+import { Field } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { QueryContainer } from '../../../query_dsl/abstractions/container/QueryContainer'
+import { Aggregation } from '../../Aggregation'
 
 export class TTestAggregation extends Aggregation {
-  a?: TestPopulation;
-  b?: TestPopulation;
-  type?: TTestType;
+  a?: TestPopulation
+  b?: TestPopulation
+  type?: TTestType
 }
 export class TestPopulation {
-  field: Field;
-  script?: Script;
-  filter?: QueryContainer;
+  field: Field
+  script?: Script
+  filter?: QueryContainer
 }
 export enum TTestType {
   paired,
   homoscedastic,
-  heteroscedastic,
+  heteroscedastic
 }

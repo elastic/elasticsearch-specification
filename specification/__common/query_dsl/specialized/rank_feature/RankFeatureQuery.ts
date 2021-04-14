@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { QueryBase } from "../../abstractions/query/Query";
-import { RankFeatureFunction } from "./RankFeatureFunction";
+import { QueryBase } from '../../abstractions/query/Query'
+import { RankFeatureFunction } from './RankFeatureFunction'
 
 export class RankFeatureQuery extends QueryBase {
-  function?: RankFeatureFunction;
+  function?: RankFeatureFunction
 }

@@ -18,5 +18,5 @@
  */
 
 export class SecurityNode {
-  name: string;
+  name: string
 }

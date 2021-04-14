@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { JobStats } from "../job/config/JobStats";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { JobStats } from '../job/config/JobStats'
 
 export class GetJobStatsResponse extends ResponseBase {
-  count: long;
-  jobs: JobStats[];
+  count: long
+  jobs: JobStats[]
 }

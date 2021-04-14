@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer, long } from "../../../__common/common";
+import { integer, long } from '../../../__common/common'
 
 export class FileCountSnapshotStats {
-  file_count: integer;
-  size_in_bytes: long;
+  file_count: integer
+  size_in_bytes: long
 }

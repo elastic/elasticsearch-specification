@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Metrics } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Metrics } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name watcher.stats
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface WatcherStatsRequest extends RequestBase {
   path_parts?: {
-    metric?: Metrics;
-  };
+    metric?: Metrics
+  }
   query_parameters?: {
-    emit_stacktraces?: boolean;
-  };
-  body?: {};
+    emit_stacktraces?: boolean
+  }
+  body?: {}
 }

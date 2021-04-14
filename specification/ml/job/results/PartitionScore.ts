@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double } from "../../../__common/common";
+import { double } from '../../../__common/common'
 
 export class PartitionScore {
-  initial_record_score: double;
-  partition_field_name: string;
-  partition_field_value: string;
-  probability: double;
-  record_score: double;
+  initial_record_score: double
+  partition_field_name: string
+  partition_field_value: string
+  probability: double
+  record_score: double
 }

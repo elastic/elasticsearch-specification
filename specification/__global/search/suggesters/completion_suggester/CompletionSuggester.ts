@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { GeoLocation } from "../../../../__common/query_dsl/geo/GeoLocation";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { SuggestContextQuery } from "../context_suggester/SuggestContextQuery";
-import { SuggesterBase } from "../Suggester";
-import { SuggestFuzziness } from "./SuggestFuzziness";
+import { GeoLocation } from '../../../../__common/query_dsl/geo/GeoLocation'
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { SuggestContextQuery } from '../context_suggester/SuggestContextQuery'
+import { SuggesterBase } from '../Suggester'
+import { SuggestFuzziness } from './SuggestFuzziness'
 
 export class CompletionSuggester extends SuggesterBase {
   contexts?: Dictionary<
     string,
     string | string[] | GeoLocation | SuggestContextQuery[]
-  >;
-  fuzzy?: SuggestFuzziness;
-  prefix?: string;
-  regex?: string;
-  skip_duplicates?: boolean;
+  >
+  fuzzy?: SuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name license.get_trial_status
@@ -25,6 +25,6 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  * @stability TODO
  */
 export interface GetTrialLicenseStatusRequest extends RequestBase {
-  query_parameters?: {};
-  body?: {};
+  query_parameters?: {}
+  body?: {}
 }

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { long, Routing, SequenceNumber } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { long, Routing, SequenceNumber } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class InlineGet<TDocument> {
-  fields?: Dictionary<string, UserDefinedValue>;
-  found: boolean;
-  _seq_no: SequenceNumber;
-  _primary_term: long;
-  _routing?: Routing;
-  _source: TDocument;
+  fields?: Dictionary<string, UserDefinedValue>
+  found: boolean
+  _seq_no: SequenceNumber
+  _primary_term: long
+  _routing?: Routing
+  _source: TDocument
 }

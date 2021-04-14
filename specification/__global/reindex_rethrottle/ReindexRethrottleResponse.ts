@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ReindexNode } from "./ReindexNode";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ReindexNode } from './ReindexNode'
 
 export class ReindexRethrottleResponse extends ResponseBase {
-  nodes: Dictionary<string, ReindexNode>;
+  nodes: Dictionary<string, ReindexNode>
 }

@@ -1,5 +1,5 @@
-import { double } from "../../common";
-import { DistanceUnit } from "./DistanceUnit";
+import { double } from '../../common'
+import { DistanceUnit } from './DistanceUnit'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -19,8 +19,8 @@ import { DistanceUnit } from "./DistanceUnit";
  * specific language governing permissions and limitations
  * under the License.
  */
-export type Distance = string;
+export type Distance = string
 export class DistanceParsed {
-  precision: double;
-  unit: DistanceUnit;
+  precision: double
+  unit: DistanceUnit
 }

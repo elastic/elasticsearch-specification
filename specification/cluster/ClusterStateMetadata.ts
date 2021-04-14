@@ -24,41 +24,41 @@ import {
   integer,
   long,
   Name,
-  Uuid,
-} from "../__common/common";
-import { Dictionary } from "../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../__spec_utils/UserDefinedValue";
-import { ClusterStateBlockIndex } from "./ClusterStateBlocks";
-import { ClusterStateIndexLifecycle } from "./ClusterStateIndexLifecycle";
-import { ClusterStateIngest } from "./ClusterStateIngest";
+  Uuid
+} from '../__common/common'
+import { Dictionary } from '../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
+import { ClusterStateBlockIndex } from './ClusterStateBlocks'
+import { ClusterStateIndexLifecycle } from './ClusterStateIndexLifecycle'
+import { ClusterStateIngest } from './ClusterStateIngest'
 
 export class ClusterStateMetadata {
-  cluster_uuid: Uuid;
-  cluster_uuid_committed: boolean;
-  templates: ClusterStateMetadataTemplate;
-  indices?: Dictionary<IndexName, ClusterStateBlockIndex>;
-  "index-graveyard": ClusterStateMetadataIndexGraveyard;
-  cluster_coordination: ClusterStateMetadataClusterCoordination;
-  ingest?: ClusterStateIngest;
-  repositories?: Dictionary<string, string>;
-  component_template?: Dictionary<string, UserDefinedValue>;
-  index_template?: Dictionary<string, UserDefinedValue>;
-  index_lifecycle?: ClusterStateIndexLifecycle;
+  cluster_uuid: Uuid
+  cluster_uuid_committed: boolean
+  templates: ClusterStateMetadataTemplate
+  indices?: Dictionary<IndexName, ClusterStateBlockIndex>
+  'index-graveyard': ClusterStateMetadataIndexGraveyard
+  cluster_coordination: ClusterStateMetadataClusterCoordination
+  ingest?: ClusterStateIngest
+  repositories?: Dictionary<string, string>
+  component_template?: Dictionary<string, UserDefinedValue>
+  index_template?: Dictionary<string, UserDefinedValue>
+  index_lifecycle?: ClusterStateIndexLifecycle
 }
 
 export class ClusterStateMetadataIndexGraveyard {
-  tombstones: Tombstone[];
+  tombstones: Tombstone[]
 }
 
 export class Tombstone {
-  index: TombstoneIndex;
-  delete_date?: DateString;
-  delete_date_in_millis: long;
+  index: TombstoneIndex
+  delete_date?: DateString
+  delete_date_in_millis: long
 }
 
 export class TombstoneIndex {
-  index_name: Name;
-  index_uuid: Uuid;
+  index_name: Name
+  index_uuid: Uuid
 }
 
 export class ClusterStateMetadataTemplate {
@@ -66,13 +66,13 @@ export class ClusterStateMetadataTemplate {
 }
 
 export class ClusterStateMetadataClusterCoordination {
-  term: integer;
-  last_committed_config: string[];
-  last_accepted_config: string[];
-  voting_config_exclusions: VotingConfigExclusionsItem[];
+  term: integer
+  last_committed_config: string[]
+  last_accepted_config: string[]
+  voting_config_exclusions: VotingConfigExclusionsItem[]
 }
 
 export class VotingConfigExclusionsItem {
-  node_id: Id;
-  node_name: Name;
+  node_id: Id
+  node_name: Name
 }

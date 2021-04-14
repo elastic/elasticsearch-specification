@@ -23,5 +23,5 @@ export enum WaitForEvents {
   high = 2,
   normal = 3,
   low = 4,
-  languid = 5,
+  languid = 5
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Fields, Indices, Types } from "../../../__common/common";
-import { ExpandWildcards } from "../../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Fields, Indices, Types } from '../../../__common/common'
+import { ExpandWildcards } from '../../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.get_field_mapping
@@ -28,17 +28,17 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface GetFieldMappingRequest extends RequestBase {
   path_parts?: {
-    fields: Fields;
-    index?: Indices;
-    type?: Types;
-  };
+    fields: Fields
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    ignore_unavailable?: boolean;
-    include_defaults?: boolean;
-    include_type_name?: boolean;
-    local?: boolean;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    include_defaults?: boolean
+    include_type_name?: boolean
+    local?: boolean
+  }
+  body?: {}
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from "../../../__common/common";
+import { IndexName } from '../../../__common/common'
 
 export class IndexBlockStatus {
-  name: IndexName;
-  blocked: boolean;
+  name: IndexName
+  blocked: boolean
 }

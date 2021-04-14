@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Indices } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Indices } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.recovery
@@ -27,11 +27,11 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface RecoveryStatusRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    active_only?: boolean;
-    detailed?: boolean;
-  };
-  body?: {};
+    active_only?: boolean
+    detailed?: boolean
+  }
+  body?: {}
 }

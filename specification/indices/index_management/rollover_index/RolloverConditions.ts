@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ByteSize, long } from "../../../__common/common";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { ByteSize, long } from '../../../__common/common'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 export class RolloverConditions {
-  max_age?: Time;
-  max_docs?: long;
-  max_size?: string;
-  max_primary_shard_size?: ByteSize;
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }

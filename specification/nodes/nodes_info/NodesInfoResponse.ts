@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { NodesResponseBase } from "../NodesResponseBase";
-import { NodeInfo } from "./NodeInfo";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { NodesResponseBase } from '../NodesResponseBase'
+import { NodeInfo } from './NodeInfo'
 
 export class NodesInfoResponse extends NodesResponseBase {
-  cluster_name: string;
+  cluster_name: string
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  nodes: Dictionary<string, NodeInfo>;
+  nodes: Dictionary<string, NodeInfo>
 }

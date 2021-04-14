@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from "./ResponseBase";
+import { ResponseBase } from './ResponseBase'
 
 export class DictionaryResponseBase<TKey, TValue> extends ResponseBase {}

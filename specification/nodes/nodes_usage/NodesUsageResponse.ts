@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { NodesResponseBase } from "../NodesResponseBase";
-import { NodeUsageInformation } from "./NodeUsageInformation";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { NodesResponseBase } from '../NodesResponseBase'
+import { NodeUsageInformation } from './NodeUsageInformation'
 
 export class NodesUsageResponse extends NodesResponseBase {
-  cluster_name: string;
-  nodes: Dictionary<string, NodeUsageInformation>;
+  cluster_name: string
+  nodes: Dictionary<string, NodeUsageInformation>
 }

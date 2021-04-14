@@ -17,28 +17,28 @@
  * under the License.
  */
 
-import { BinaryProperty } from "./core/binary/BinaryProperty";
-import { BooleanProperty } from "./core/boolean/BooleanProperty";
-import { DateProperty } from "./core/date/DateProperty";
-import { DateNanosProperty } from "./core/date_nanos/DateNanosProperty";
-import { KeywordProperty } from "./core/keyword/KeywordProperty";
-import { NumberProperty } from "./core/number/NumberProperty";
-import { RangeProperty } from "./core/range/RangeProperty";
-import { VersionProperty } from "./core/version/VersionProperty";
-import { WildcardProperty } from "./core/wildcard/WildcardProperty";
-import { CorePropertyBase } from "./CoreProperty";
-import { GeoPointProperty } from "./geo/geo_point/GeoPointProperty";
-import { GeoShapeProperty } from "./geo/geo_shape/GeoShapeProperty";
-import { PointProperty } from "./geo/point/PointProperty";
-import { CompletionProperty } from "./specialized/completion/CompletionProperty";
-import { GenericProperty } from "./specialized/generic/GenericProperty";
-import { IpProperty } from "./specialized/ip/IpProperty";
-import { Murmur3HashProperty } from "./specialized/murmur3_hash/Murmur3HashProperty";
-import { ShapeProperty } from "./specialized/shape/ShapeProperty";
-import { TokenCountProperty } from "./specialized/token_count/TokenCountProperty";
+import { BinaryProperty } from './core/binary/BinaryProperty'
+import { BooleanProperty } from './core/boolean/BooleanProperty'
+import { DateProperty } from './core/date/DateProperty'
+import { DateNanosProperty } from './core/date_nanos/DateNanosProperty'
+import { KeywordProperty } from './core/keyword/KeywordProperty'
+import { NumberProperty } from './core/number/NumberProperty'
+import { RangeProperty } from './core/range/RangeProperty'
+import { VersionProperty } from './core/version/VersionProperty'
+import { WildcardProperty } from './core/wildcard/WildcardProperty'
+import { CorePropertyBase } from './CoreProperty'
+import { GeoPointProperty } from './geo/geo_point/GeoPointProperty'
+import { GeoShapeProperty } from './geo/geo_shape/GeoShapeProperty'
+import { PointProperty } from './geo/point/PointProperty'
+import { CompletionProperty } from './specialized/completion/CompletionProperty'
+import { GenericProperty } from './specialized/generic/GenericProperty'
+import { IpProperty } from './specialized/ip/IpProperty'
+import { Murmur3HashProperty } from './specialized/murmur3_hash/Murmur3HashProperty'
+import { ShapeProperty } from './specialized/shape/ShapeProperty'
+import { TokenCountProperty } from './specialized/token_count/TokenCountProperty'
 
 export class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values?: boolean;
+  doc_values?: boolean
 }
 
 export type DocValuesProperty =
@@ -59,4 +59,4 @@ export type DocValuesProperty =
   | TokenCountProperty
   | VersionProperty
   | WildcardProperty
-  | PointProperty;
+  | PointProperty

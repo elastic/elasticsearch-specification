@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class OpenJobResponse extends ResponseBase {
-  opened: boolean;
+  opened: boolean
 }

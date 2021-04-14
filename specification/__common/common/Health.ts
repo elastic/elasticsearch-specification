@@ -20,5 +20,5 @@
 export enum Health {
   green = 0,
   yellow = 1,
-  red = 2,
+  red = 2
 }

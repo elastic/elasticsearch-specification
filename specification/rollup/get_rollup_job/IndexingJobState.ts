@@ -22,5 +22,5 @@ export enum IndexingJobState {
   indexing = 1,
   stopping = 2,
   stopped = 3,
-  aborting = 4,
+  aborting = 4
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field, integer } from "../../__common/common";
+import { Field, integer } from '../../__common/common'
 
 export class SampleDiversity {
-  field: Field;
-  max_docs_per_value: integer;
+  field: Field
+  max_docs_per_value: integer
 }

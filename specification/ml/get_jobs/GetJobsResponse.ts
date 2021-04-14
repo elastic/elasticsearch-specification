@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Job } from "../../xpack/x_pack_usage/Job";
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Job } from '../../xpack/x_pack_usage/Job'
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class GetJobsResponse extends ResponseBase {
-  count: long;
-  jobs: Job[];
+  count: long
+  jobs: Job[]
 }

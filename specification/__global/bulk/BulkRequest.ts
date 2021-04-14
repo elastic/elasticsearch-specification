@@ -22,12 +22,12 @@ import {
   IndexName,
   Routing,
   Type,
-  WaitForActiveShards,
-} from "../../__common/common";
-import { Refresh } from "../../__common/common/Refresh";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { BulkOperationContainer } from "./BulkOperation";
+  WaitForActiveShards
+} from '../../__common/common'
+import { Refresh } from '../../__common/common/Refresh'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { BulkOperationContainer } from './BulkOperation'
 
 /**
  * @rest_spec_name bulk
@@ -37,20 +37,20 @@ import { BulkOperationContainer } from "./BulkOperation";
  */
 export interface BulkRequest<TSource> extends RequestBase {
   path_parts?: {
-    index?: IndexName;
-    type?: Type;
-  };
+    index?: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    pipeline?: string;
-    refresh?: Refresh;
-    routing?: Routing;
-    _source?: boolean;
-    _source_excludes?: Fields;
-    _source_includes?: Fields;
-    timeout?: Time;
-    type_query_string?: string;
-    wait_for_active_shards?: WaitForActiveShards;
-    require_alias?: boolean;
-  };
-  body?: Array<BulkOperationContainer | TSource>;
+    pipeline?: string
+    refresh?: Refresh
+    routing?: Routing
+    _source?: boolean
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    timeout?: Time
+    type_query_string?: string
+    wait_for_active_shards?: WaitForActiveShards
+    require_alias?: boolean
+  }
+  body?: Array<BulkOperationContainer | TSource>
 }

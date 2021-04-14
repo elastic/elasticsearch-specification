@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../../../common";
+import { Field } from '../../../../common'
 
 export class SuggestContext {
-  name: string;
-  path: Field;
-  type: string;
+  name: string
+  path: Field
+  type: string
 }

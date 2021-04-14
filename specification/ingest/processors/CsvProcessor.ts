@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Field, Fields } from "../../__common/common";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field, Fields } from '../../__common/common'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class CsvProcessor extends ProcessorBase {
-  empty_value: UserDefinedValue;
-  description?: string;
-  field: Field;
-  ignore_missing?: boolean;
-  quote?: string;
-  separator?: string;
-  target_fields: Fields;
-  trim: boolean;
+  empty_value: UserDefinedValue
+  description?: string
+  field: Field
+  ignore_missing?: boolean
+  quote?: string
+  separator?: string
+  target_fields: Fields
+  trim: boolean
 }

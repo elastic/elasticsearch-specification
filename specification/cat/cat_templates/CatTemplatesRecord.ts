@@ -17,32 +17,32 @@
  * under the License.
  */
 
-import { Name, VersionString } from "../../__common/common";
+import { Name, VersionString } from '../../__common/common'
 
 export class CatTemplatesRecord {
   /**
    * template name
    * @aliases n
    */
-  "name"?: Name;
+  'name'?: Name
   /**
    * template index patterns
    * @aliases t
    */
-  "index_patterns"?: string;
+  'index_patterns'?: string
   /**
    * template application order/priority number
    * @aliases o,p
    */
-  "order"?: string;
+  'order'?: string
   /**
    * version
    * @aliases v
    */
-  "version"?: VersionString;
+  'version'?: VersionString
   /**
    * component templates comprising index template
    * @aliases c
    */
-  "composed_of"?: string;
+  'composed_of'?: string
 }

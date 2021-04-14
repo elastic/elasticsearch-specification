@@ -27,5 +27,5 @@ export enum FieldValueFactorModifier {
   ln2p = 6,
   square = 7,
   sqrt = 8,
-  reciprocal = 9,
+  reciprocal = 9
 }

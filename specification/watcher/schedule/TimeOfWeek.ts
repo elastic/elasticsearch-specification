@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Day } from "./Day";
+import { Day } from './Day'
 
 export class TimeOfWeek {
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  at: string[];
+  at: string[]
   /** @prop_serializer SingleOrEnumerableFormatter`1 */
-  on: Day[];
+  on: Day[]
 }

@@ -19,5 +19,5 @@
 
 export enum PagerDutyContextType {
   link = 0,
-  image = 1,
+  image = 1
 }

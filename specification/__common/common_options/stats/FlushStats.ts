@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../common";
+import { long } from '../../common'
 
 export class FlushStats {
-  periodic: long;
-  total: long;
-  total_time?: string;
-  total_time_in_millis: long;
+  periodic: long
+  total: long
+  total_time?: string
+  total_time_in_millis: long
 }

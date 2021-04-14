@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { NumberType } from "./NumberType";
+import { NumericFielddata } from '../../../../../indices/NumericFielddata'
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { NumberType } from './NumberType'
 
 export class NumberProperty extends DocValuesPropertyBase {
-  boost?: double;
-  coerce?: boolean;
-  fielddata?: NumericFielddata;
-  ignore_malformed?: boolean;
-  index?: boolean;
-  null_value?: double;
-  scaling_factor?: double;
-  type: NumberType;
+  boost?: double
+  coerce?: boolean
+  fielddata?: NumericFielddata
+  ignore_malformed?: boolean
+  index?: boolean
+  null_value?: double
+  scaling_factor?: double
+  type: NumberType
 }

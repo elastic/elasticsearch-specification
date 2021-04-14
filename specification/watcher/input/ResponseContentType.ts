@@ -20,5 +20,5 @@
 export enum ResponseContentType {
   json = 0,
   yaml = 1,
-  text = 2,
+  text = 2
 }

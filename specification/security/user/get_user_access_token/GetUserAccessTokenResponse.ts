@@ -17,33 +17,33 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { XPackUser } from "../get_user/XPackUser";
+import { long } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { XPackUser } from '../get_user/XPackUser'
 
 export class GetUserAccessTokenResponse extends ResponseBase {
-  access_token: string;
-  expires_in: long;
-  scope?: string;
-  type: string;
-  refresh_token: string;
-  kerberos_authentication_response_token?: string;
-  authentication: AuthenticatedUser;
+  access_token: string
+  expires_in: long
+  scope?: string
+  type: string
+  refresh_token: string
+  kerberos_authentication_response_token?: string
+  authentication: AuthenticatedUser
 }
 
 export class UserRealm {
-  name: string;
-  type: string;
+  name: string
+  type: string
 }
 
 export class AuthenticationProvider {
-  type: string;
-  name: string;
+  type: string
+  name: string
 }
 
 export class AuthenticatedUser extends XPackUser {
-  authentication_realm: UserRealm;
-  lookup_realm: UserRealm;
-  authentication_provider?: AuthenticationProvider;
-  authentication_type: string;
+  authentication_realm: UserRealm
+  lookup_realm: UserRealm
+  authentication_provider?: AuthenticationProvider
+  authentication_type: string
 }

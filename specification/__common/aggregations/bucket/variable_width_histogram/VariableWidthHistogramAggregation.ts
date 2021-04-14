@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, integer } from "../../../common";
+import { Field, integer } from '../../../common'
 
 export class VariableWidthHistogramAggregation {
-  field?: Field;
-  buckets?: integer;
-  shard_size?: integer;
-  initial_buffer?: integer;
+  field?: Field
+  buckets?: integer
+  shard_size?: integer
+  initial_buffer?: integer
 }

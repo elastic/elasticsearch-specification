@@ -19,5 +19,5 @@
 
 export enum GeoFormat {
   GeoJson = 0,
-  WellKnownText = 1,
+  WellKnownText = 1
 }

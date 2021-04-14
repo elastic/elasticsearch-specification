@@ -19,5 +19,5 @@
 
 export enum IBDistribution {
   ll = 0,
-  spl = 1,
+  spl = 1
 }

@@ -22,5 +22,5 @@ export enum NestedScoreMode {
   sum = 1,
   min = 2,
   max = 3,
-  none = 4,
+  none = 4
 }

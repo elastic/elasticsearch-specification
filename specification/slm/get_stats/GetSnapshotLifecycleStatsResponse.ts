@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { EpochMillis, long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { EpochMillis, long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class GetSnapshotLifecycleStatsResponse extends ResponseBase {
-  retention_deletion_time: string;
-  retention_deletion_time_millis: EpochMillis;
-  retention_failed: long;
-  retention_runs: long;
-  retention_timed_out: long;
-  total_snapshots_deleted: long;
-  total_snapshot_deletion_failures: long;
-  total_snapshots_failed: long;
-  total_snapshots_taken: long;
-  policy_stats: string[];
+  retention_deletion_time: string
+  retention_deletion_time_millis: EpochMillis
+  retention_failed: long
+  retention_runs: long
+  retention_timed_out: long
+  total_snapshots_deleted: long
+  total_snapshot_deletion_failures: long
+  total_snapshots_failed: long
+  total_snapshots_taken: long
+  policy_stats: string[]
 }

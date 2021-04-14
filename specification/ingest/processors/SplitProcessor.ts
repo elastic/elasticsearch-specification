@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class SplitProcessor extends ProcessorBase {
-  field: Field;
-  ignore_missing?: boolean;
-  preserve_trailing?: boolean;
-  separator: string;
-  target_field?: Field;
+  field: Field
+  ignore_missing?: boolean
+  preserve_trailing?: boolean
+  separator: string
+  target_field?: Field
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices, Names } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Indices, Names } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.get_settings
@@ -29,17 +29,17 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface IndicesGetSettingsRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    name?: Names;
-  };
+    index?: Indices
+    name?: Names
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    expand_wildcards?: ExpandWildcards;
-    flat_settings?: boolean;
-    ignore_unavailable?: boolean;
-    include_defaults?: boolean;
-    local?: boolean;
-    master_timeout?: Time;
-  };
-  body?: {};
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    flat_settings?: boolean
+    ignore_unavailable?: boolean
+    include_defaults?: boolean
+    local?: boolean
+    master_timeout?: Time
+  }
+  body?: {}
 }

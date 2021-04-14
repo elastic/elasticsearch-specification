@@ -21,5 +21,5 @@ export enum SortOrder {
   asc = 0,
   desc = 1,
   /** @identifier Document */
-  _doc = 2,
+  _doc = 2
 }

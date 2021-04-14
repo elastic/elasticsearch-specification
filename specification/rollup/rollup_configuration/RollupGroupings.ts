@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { DateHistogramRollupGrouping } from "./DateHistogramRollupGrouping";
-import { HistogramRollupGrouping } from "./HistogramRollupGrouping";
-import { TermsRollupGrouping } from "./TermsRollupGrouping";
+import { DateHistogramRollupGrouping } from './DateHistogramRollupGrouping'
+import { HistogramRollupGrouping } from './HistogramRollupGrouping'
+import { TermsRollupGrouping } from './TermsRollupGrouping'
 
 export class RollupGroupings {
-  date_histogram?: DateHistogramRollupGrouping;
-  histogram?: HistogramRollupGrouping;
-  terms?: TermsRollupGrouping;
+  date_histogram?: DateHistogramRollupGrouping
+  histogram?: HistogramRollupGrouping
+  terms?: TermsRollupGrouping
 }

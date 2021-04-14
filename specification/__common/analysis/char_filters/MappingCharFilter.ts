@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CharFilterBase } from "./CharFilterBase";
+import { CharFilterBase } from './CharFilterBase'
 
 export class MappingCharFilter extends CharFilterBase {
-  mappings: string[];
-  mappings_path: string;
+  mappings: string[]
+  mappings_path: string
 }

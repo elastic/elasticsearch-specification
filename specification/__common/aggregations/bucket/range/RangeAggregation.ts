@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field } from "../../../common";
-import { AggregationRange } from "../../../common_options/range/AggregationRange";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { Field } from '../../../common'
+import { AggregationRange } from '../../../common_options/range/AggregationRange'
+import { Script } from '../../../common_options/scripting/Script'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class RangeAggregation extends BucketAggregationBase {
-  field?: Field;
-  ranges?: AggregationRange[];
-  script?: Script;
+  field?: Field
+  ranges?: AggregationRange[]
+  script?: Script
 }

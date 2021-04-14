@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { SnowballLanguage } from "../languages/SnowballLanguage";
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { SnowballLanguage } from '../languages/SnowballLanguage'
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class SnowballAnalyzer extends AnalyzerBase {
-  language: SnowballLanguage;
-  stopwords: StopWords;
+  language: SnowballLanguage
+  stopwords: StopWords
 }

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Script } from "vm";
 import {
   Fields,
   Id,
@@ -26,12 +25,13 @@ import {
   Routing,
   SequenceNumber,
   Type,
-  WaitForActiveShards,
-} from "../../__common/common";
-import { Refresh } from "../../__common/common/Refresh";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { SourceFilter } from "../search/source_filtering/SourceFilter";
+  WaitForActiveShards
+} from '../../__common/common'
+import { Refresh } from '../../__common/common/Refresh'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Script } from '../../__common/common_options/scripting/Script'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { SourceFilter } from '../search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name update
@@ -41,34 +41,34 @@ import { SourceFilter } from "../search/source_filtering/SourceFilter";
 export interface UpdateRequest<TDocument, TPartialDocument>
   extends RequestBase {
   path_parts?: {
-    id: Id;
-    index: IndexName;
-    type?: Type;
-  };
+    id: Id
+    index: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    if_primary_term?: long;
-    if_seq_no?: SequenceNumber;
-    lang?: string;
-    refresh?: Refresh;
-    require_alias?: boolean;
-    retry_on_conflict?: long;
-    routing?: Routing;
-    source_enabled?: boolean;
-    timeout?: Time;
-    wait_for_active_shards?: WaitForActiveShards;
-    _source?: boolean | string | string[];
-    _source_excludes?: Fields;
-    _source_includes?: Fields;
-  };
+    if_primary_term?: long
+    if_seq_no?: SequenceNumber
+    lang?: string
+    refresh?: Refresh
+    require_alias?: boolean
+    retry_on_conflict?: long
+    routing?: Routing
+    source_enabled?: boolean
+    timeout?: Time
+    wait_for_active_shards?: WaitForActiveShards
+    _source?: boolean | string | string[]
+    _source_excludes?: Fields
+    _source_includes?: Fields
+  }
   body?: {
-    detect_noop?: boolean;
+    detect_noop?: boolean
     /** @prop_serializer SourceFormatter`1 */
-    doc?: TPartialDocument;
-    doc_as_upsert?: boolean;
-    script?: Script;
-    scripted_upsert?: boolean;
-    _source?: boolean | SourceFilter;
+    doc?: TPartialDocument
+    doc_as_upsert?: boolean
+    script?: Script
+    scripted_upsert?: boolean
+    _source?: boolean | SourceFilter
     /** @prop_serializer SourceFormatter`1 */
-    upsert?: TDocument;
-  };
+    upsert?: TDocument
+  }
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class JvmClassesStats {
-  current_loaded_count: long;
-  total_loaded_count: long;
-  total_unloaded_count: long;
+  current_loaded_count: long
+  total_loaded_count: long
+  total_unloaded_count: long
 }

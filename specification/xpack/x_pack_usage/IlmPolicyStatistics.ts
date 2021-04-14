@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Phases } from "../../ilm/Phases";
-import { integer } from "../../__common/common";
+import { Phases } from '../../ilm/Phases'
+import { integer } from '../../__common/common'
 
 export class IlmPolicyStatistics {
-  indices_managed: integer;
-  phases: Phases;
+  indices_managed: integer
+  phases: Phases
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../../__common/common";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Id } from '../../../__common/common'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 export class PointInTimeReference {
-  id: Id;
-  keep_alive?: Time;
+  id: Id
+  keep_alive?: Time
 }

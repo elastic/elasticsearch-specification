@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { SearchResponse } from "../search/SearchResponse";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { SearchResponse } from '../search/SearchResponse'
 
 export class MultiSearchTemplateResponse extends ResponseBase {
-  responses: SearchResponse<UserDefinedValue>[];
-  took: long;
+  responses: SearchResponse<UserDefinedValue>[]
+  took: long
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Ids } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Ids } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name clear_scroll
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ClearScrollRequest extends RequestBase {
   path_parts?: {
-    scroll_id?: Ids;
-  };
-  query_parameters?: {};
+    scroll_id?: Ids
+  }
+  query_parameters?: {}
   body?: {
-    scroll_id?: Ids;
-  };
+    scroll_id?: Ids
+  }
 }

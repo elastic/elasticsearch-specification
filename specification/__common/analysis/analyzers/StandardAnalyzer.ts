@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { integer } from '../../common'
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class StandardAnalyzer extends AnalyzerBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_token_length: integer;
-  stopwords: StopWords;
+  max_token_length: integer
+  stopwords: StopWords
 }

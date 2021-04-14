@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { QueryBreakdown } from "./QueryBreakdown";
+import { long } from '../../../__common/common'
+import { QueryBreakdown } from './QueryBreakdown'
 
 export class QueryProfile {
-  breakdown: QueryBreakdown;
-  description: string;
-  time_in_nanos: long;
-  type: string;
+  breakdown: QueryBreakdown
+  description: string
+  time_in_nanos: long
+  type: string
 
-  children?: QueryProfile[];
+  children?: QueryProfile[]
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class NodeInfoMemory {
-  total: string;
-  total_in_bytes: long;
+  total: string
+  total_in_bytes: long
 }

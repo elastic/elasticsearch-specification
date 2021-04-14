@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskId } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { TaskId } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name tasks.cancel
@@ -27,12 +27,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface CancelTasksRequest extends RequestBase {
   path_parts?: {
-    task_id?: TaskId;
-  };
+    task_id?: TaskId
+  }
   query_parameters?: {
-    actions?: string | string[];
-    nodes?: string[];
-    parent_task_id?: string;
-  };
-  body?: {};
+    actions?: string | string[]
+    nodes?: string[]
+    parent_task_id?: string
+  }
+  body?: {}
 }

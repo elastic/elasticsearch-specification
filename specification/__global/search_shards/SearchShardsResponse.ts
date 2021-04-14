@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { SearchNode } from "./SearchNode";
-import { SearchShard } from "./SearchShard";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { SearchNode } from './SearchNode'
+import { SearchShard } from './SearchShard'
 
 export class SearchShardsResponse extends ResponseBase {
-  nodes: Dictionary<string, SearchNode>;
-  shards: SearchShard[][];
+  nodes: Dictionary<string, SearchNode>
+  shards: SearchShard[][]
 }

@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { NodeStatistics } from "../../../nodes/NodeStatistics";
-import { Name } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { NodeStatistics } from '../../../nodes/NodeStatistics'
+import { Name } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class ClearApiKeyCacheResponse extends ResponseBase {
-  _nodes: NodeStatistics;
-  cluster_name: Name;
-  nodes: Dictionary<string, ClearApiKeyCacheNode>;
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Dictionary<string, ClearApiKeyCacheNode>
 }
 
 export class ClearApiKeyCacheNode {
-  name: Name;
+  name: Name
 }

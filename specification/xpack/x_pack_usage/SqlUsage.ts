@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { QueryUsage } from "./QueryUsage";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { QueryUsage } from './QueryUsage'
+import { XPackUsage } from './XPackUsage'
 
 export class SqlUsage extends XPackUsage {
-  features: Dictionary<string, integer>;
-  queries: Dictionary<string, QueryUsage>;
+  features: Dictionary<string, integer>
+  queries: Dictionary<string, QueryUsage>
 }

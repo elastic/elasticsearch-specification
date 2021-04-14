@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.update_model_snapshot
@@ -27,12 +27,12 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface UpdateModelSnapshotRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    snapshot_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+    snapshot_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    description?: string;
-    retain?: boolean;
-  };
+    description?: string
+    retain?: boolean
+  }
 }

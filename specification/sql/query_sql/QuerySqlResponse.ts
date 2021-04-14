@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { SqlRow } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { SqlColumn } from "./SqlColumn";
+import { SqlRow } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SqlColumn } from './SqlColumn'
 
 export class QuerySqlResponse extends ResponseBase {
-  columns?: SqlColumn[];
-  cursor?: string;
-  rows: SqlRow[];
+  columns?: SqlColumn[]
+  cursor?: string
+  rows: SqlRow[]
 }

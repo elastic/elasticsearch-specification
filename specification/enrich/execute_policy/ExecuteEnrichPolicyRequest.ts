@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name enrich.execute_policy
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ExecuteEnrichPolicyRequest extends RequestBase {
   path_parts?: {
-    name: Name;
-  };
+    name: Name
+  }
   query_parameters?: {
-    wait_for_completion?: boolean;
-  };
-  body?: {};
+    wait_for_completion?: boolean
+  }
+  body?: {}
 }

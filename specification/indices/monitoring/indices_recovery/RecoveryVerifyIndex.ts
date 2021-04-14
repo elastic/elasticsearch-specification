@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { EpochMillis } from "../../../__common/common";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { EpochMillis } from '../../../__common/common'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 export class RecoveryVerifyIndex {
-  check_index_time?: Time;
-  check_index_time_in_millis: EpochMillis;
-  total_time?: Time;
-  total_time_in_millis: EpochMillis;
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }

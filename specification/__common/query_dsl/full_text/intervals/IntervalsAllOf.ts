@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { IntervalsContainer } from "./IntervalsContainer";
-import { IntervalsFilter } from "./IntervalsFilter";
+import { integer } from '../../../common'
+import { IntervalsContainer } from './IntervalsContainer'
+import { IntervalsFilter } from './IntervalsFilter'
 
 export class IntervalsAllOf {
-  intervals?: IntervalsContainer[];
-  max_gaps?: integer;
-  ordered?: boolean;
-  filter?: IntervalsFilter;
+  intervals?: IntervalsContainer[]
+  max_gaps?: integer
+  ordered?: boolean
+  filter?: IntervalsFilter
 }

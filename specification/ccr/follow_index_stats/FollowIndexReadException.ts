@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ErrorCause, integer, SequenceNumber } from "../../__common/common";
+import { ErrorCause, integer, SequenceNumber } from '../../__common/common'
 
 export class FollowIndexReadException {
-  exception: ErrorCause;
-  from_seq_no: SequenceNumber;
-  retries: integer;
+  exception: ErrorCause
+  from_seq_no: SequenceNumber
+  retries: integer
 }

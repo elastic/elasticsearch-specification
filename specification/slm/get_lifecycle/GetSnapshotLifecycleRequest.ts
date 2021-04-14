@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Names } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name slm.get_lifecycle
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy_id?: Names;
-  };
-  query_parameters?: {};
-  body?: {};
+    policy_id?: Names
+  }
+  query_parameters?: {}
+  body?: {}
 }

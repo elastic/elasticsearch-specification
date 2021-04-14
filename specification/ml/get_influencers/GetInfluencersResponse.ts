@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { BucketInfluencer } from "../job/results/BucketInfluencer";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { BucketInfluencer } from '../job/results/BucketInfluencer'
 
 export class GetInfluencersResponse extends ResponseBase {
-  count: long;
-  influencers: BucketInfluencer[];
+  count: long
+  influencers: BucketInfluencer[]
 }

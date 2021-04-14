@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name snapshot.clone
@@ -28,15 +28,15 @@ import { Time } from "../../../__common/common_options/time_unit/Time";
  */
 export interface CloneSnapshotRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-    snapshot: Name;
-    target_snapshot: Name;
-  };
+    repository: Name
+    snapshot: Name
+    target_snapshot: Name
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+    master_timeout?: Time
+    timeout?: Time
+  }
   body?: {
-    indices: string;
-  };
+    indices: string
+  }
 }

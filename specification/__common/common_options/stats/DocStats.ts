@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../common";
+import { long } from '../../common'
 
 export class DocStats {
-  count: long;
-  deleted: long;
+  count: long
+  deleted: long
 }

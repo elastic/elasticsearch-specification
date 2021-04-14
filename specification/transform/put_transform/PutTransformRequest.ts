@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { TransformPivot } from "../pivot/TransformPivot";
-import { TransformDestination } from "../TransformDestination";
-import { TransformSource } from "../TransformSource";
-import { TransformSyncContainer } from "../TransformSyncContainer";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { TransformPivot } from '../pivot/TransformPivot'
+import { TransformDestination } from '../TransformDestination'
+import { TransformSource } from '../TransformSource'
+import { TransformSyncContainer } from '../TransformSyncContainer'
 
 /**
  * @rest_spec_name transform.put_transform
@@ -32,17 +32,17 @@ import { TransformSyncContainer } from "../TransformSyncContainer";
  */
 export interface PutTransformRequest extends RequestBase {
   path_parts?: {
-    transform_id: Name;
-  };
+    transform_id: Name
+  }
   query_parameters?: {
-    defer_validation?: boolean;
-  };
+    defer_validation?: boolean
+  }
   body?: {
-    description?: string;
-    dest?: TransformDestination;
-    frequency?: Time;
-    pivot?: TransformPivot;
-    source?: TransformSource;
-    sync?: TransformSyncContainer;
-  };
+    description?: string
+    dest?: TransformDestination
+    frequency?: Time
+    pivot?: TransformPivot
+    source?: TransformSource
+    sync?: TransformSyncContainer
+  }
 }

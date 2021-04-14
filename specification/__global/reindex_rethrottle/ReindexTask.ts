@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { long, Name } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ReindexStatus } from "./ReindexStatus";
+import { long, Name } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ReindexStatus } from './ReindexStatus'
 
 export class ReindexTask {
-  action: string;
-  cancellable: boolean;
-  description: string;
-  id: long;
-  node: Name;
-  running_time_in_nanos: long;
-  start_time_in_millis: long;
-  status: ReindexStatus;
-  type: string;
-  headers: Dictionary<string, string>;
+  action: string
+  cancellable: boolean
+  description: string
+  id: long
+  node: Name
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status: ReindexStatus
+  type: string
+  headers: Dictionary<string, string>
 }

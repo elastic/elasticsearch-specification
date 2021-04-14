@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices, Metrics, VersionNumber } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Indices, Metrics, VersionNumber } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.state
@@ -29,18 +29,18 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterStateRequest extends RequestBase {
   path_parts?: {
-    metric?: Metrics;
-    index?: Indices;
-  };
+    metric?: Metrics
+    index?: Indices
+  }
   query_parameters?: {
-    allow_no_indices?: boolean; // default true
-    expand_wildcards?: ExpandWildcards;
-    flat_settings?: boolean; // default false
-    ignore_unavailable?: boolean; // default false
-    local?: boolean; // default false
-    master_timeout?: Time; // default 30s
-    wait_for_metadata_version?: VersionNumber;
-    wait_for_timeout?: Time;
-  };
-  body?: {};
+    allow_no_indices?: boolean // default true
+    expand_wildcards?: ExpandWildcards
+    flat_settings?: boolean // default false
+    ignore_unavailable?: boolean // default false
+    local?: boolean // default false
+    master_timeout?: Time // default 30s
+    wait_for_metadata_version?: VersionNumber
+    wait_for_timeout?: Time
+  }
+  body?: {}
 }

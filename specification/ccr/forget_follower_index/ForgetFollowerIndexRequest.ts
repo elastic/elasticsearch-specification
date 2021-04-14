@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ccr.forget_follower
@@ -27,13 +27,13 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ForgetFollowerIndexRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-  };
-  query_parameters?: {};
+    index: IndexName
+  }
+  query_parameters?: {}
   body?: {
-    follower_cluster?: string;
-    follower_index?: IndexName;
-    follower_index_uuid?: string;
-    leader_remote_cluster?: string;
-  };
+    follower_cluster?: string
+    follower_index?: IndexName
+    follower_index_uuid?: string
+    leader_remote_cluster?: string
+  }
 }

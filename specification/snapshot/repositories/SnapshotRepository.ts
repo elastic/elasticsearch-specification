@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Uuid } from "../../__common/common";
-import { SnapshotRepositorySettings } from "./SnapshotRepositorySettings";
+import { Uuid } from '../../__common/common'
+import { SnapshotRepositorySettings } from './SnapshotRepositorySettings'
 
 export class SnapshotRepository {
-  type: string;
-  uuid?: Uuid;
-  settings: SnapshotRepositorySettings;
+  type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
 }

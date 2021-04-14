@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { ShardsSegment } from "./ShardsSegment";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { ShardsSegment } from './ShardsSegment'
 
 export class IndexSegment {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>;
+  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>
 }

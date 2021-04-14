@@ -22,5 +22,5 @@ export enum JobState {
   closed = 1,
   opened = 2,
   failed = 3,
-  opening = 4,
+  opening = 4
 }

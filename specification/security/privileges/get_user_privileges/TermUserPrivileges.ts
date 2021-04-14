@@ -18,5 +18,5 @@
  */
 
 export class TermUserPrivileges {
-  apps: boolean;
+  apps: boolean
 }

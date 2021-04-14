@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { Field } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class ExistsQuery extends QueryBase {
-  field?: Field;
+  field?: Field
 }

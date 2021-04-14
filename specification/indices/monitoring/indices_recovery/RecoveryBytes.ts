@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ByteSize, Percentage } from "../../../__common/common";
+import { ByteSize, Percentage } from '../../../__common/common'
 
 export class RecoveryBytes {
-  percent: Percentage;
-  recovered?: ByteSize;
-  recovered_in_bytes: ByteSize;
-  reused?: ByteSize;
-  reused_in_bytes: ByteSize;
-  total?: ByteSize;
-  total_in_bytes: ByteSize;
+  percent: Percentage
+  recovered?: ByteSize
+  recovered_in_bytes: ByteSize
+  reused?: ByteSize
+  reused_in_bytes: ByteSize
+  total?: ByteSize
+  total_in_bytes: ByteSize
 }

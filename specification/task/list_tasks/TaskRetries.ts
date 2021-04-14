@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class TaskRetries {
-  bulk: integer;
-  search: integer;
+  bulk: integer
+  search: integer
 }

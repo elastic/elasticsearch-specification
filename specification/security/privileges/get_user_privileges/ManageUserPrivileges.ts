@@ -18,5 +18,5 @@
  */
 
 export class ManageUserPrivileges {
-  applications: string[];
+  applications: string[]
 }

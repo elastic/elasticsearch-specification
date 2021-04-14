@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
 
 export class GetBuiltinPrivilegesResponse extends ResponseBase {
-  cluster: string[];
-  index: string[];
+  cluster: string[]
+  index: string[]
 }

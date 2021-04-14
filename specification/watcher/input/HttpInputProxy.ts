@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class HttpInputProxy {
-  host: string;
-  port: integer;
+  host: string
+  port: integer
 }

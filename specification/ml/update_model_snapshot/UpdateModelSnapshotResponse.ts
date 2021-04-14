@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
-import { ModelSnapshot } from "../job/process/ModelSnapshot";
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ModelSnapshot } from '../job/process/ModelSnapshot'
 
 export class UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
-  model: ModelSnapshot;
+  model: ModelSnapshot
 }

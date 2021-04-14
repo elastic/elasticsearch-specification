@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { IndexStats } from "./IndexStats";
-import { ShardStats } from "./ShardStats";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { IndexStats } from './IndexStats'
+import { ShardStats } from './ShardStats'
 
 export class IndicesStats {
-  primaries: IndexStats;
+  primaries: IndexStats
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  shards?: Dictionary<string, ShardStats[]>;
-  total: IndexStats;
-  uuid?: string;
+  shards?: Dictionary<string, ShardStats[]>
+  total: IndexStats
+  uuid?: string
 }

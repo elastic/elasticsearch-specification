@@ -17,30 +17,30 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { DateString, Field, integer, long } from "../../../common";
-import { DateMath } from "../../../common_options/date_math/DateMath";
-import { Time } from "../../../common_options/time_unit/Time";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { ExtendedBounds } from "../histogram/ExtendedBounds";
-import { HistogramOrder } from "../histogram/HistogramOrder";
-import { DateInterval } from "./DateInterval";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { DateString, Field, integer, long } from '../../../common'
+import { DateMath } from '../../../common_options/date_math/DateMath'
+import { Script } from '../../../common_options/scripting/Script'
+import { Time } from '../../../common_options/time_unit/Time'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { ExtendedBounds } from '../histogram/ExtendedBounds'
+import { HistogramOrder } from '../histogram/HistogramOrder'
+import { DateInterval } from './DateInterval'
 
 export class DateHistogramAggregation extends BucketAggregationBase {
-  calendar_interval?: DateInterval | Time;
-  extended_bounds?: ExtendedBounds<DateMath | long>;
-  hard_bounds?: ExtendedBounds<DateMath | long>;
-  field?: Field;
-  fixed_interval?: DateInterval | Time;
-  format?: string;
-  interval?: DateInterval | Time;
-  min_doc_count?: integer;
-  missing?: DateString;
-  offset?: Time;
-  order?: HistogramOrder;
-  params?: Dictionary<string, UserDefinedValue>;
-  script?: Script;
-  time_zone?: string;
+  calendar_interval?: DateInterval | Time
+  extended_bounds?: ExtendedBounds<DateMath | long>
+  hard_bounds?: ExtendedBounds<DateMath | long>
+  field?: Field
+  fixed_interval?: DateInterval | Time
+  format?: string
+  interval?: DateInterval | Time
+  min_doc_count?: integer
+  missing?: DateString
+  offset?: Time
+  order?: HistogramOrder
+  params?: Dictionary<string, UserDefinedValue>
+  script?: Script
+  time_zone?: string
 }

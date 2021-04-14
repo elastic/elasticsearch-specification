@@ -22,24 +22,24 @@ import {
   IndexName,
   integer,
   Routing,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
 
 export class BulkOperation {
-  _id: Id;
-  _index: IndexName;
-  retry_on_conflict: integer;
-  routing: Routing;
-  version: VersionNumber;
-  version_type: VersionType;
+  _id: Id
+  _index: IndexName
+  retry_on_conflict: integer
+  routing: Routing
+  version: VersionNumber
+  version_type: VersionType
 }
 
 export class BulkOperationContainer {
-  index?: BulkIndexOperation;
-  create?: BulkCreateOperation;
-  update?: BulkUpdateOperation;
-  delete?: BulkDeleteOperation;
+  index?: BulkIndexOperation
+  create?: BulkCreateOperation
+  update?: BulkUpdateOperation
+  delete?: BulkDeleteOperation
 }
 
 export class BulkIndexOperation extends BulkOperation {}

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../../__common/common";
+import { Field } from '../../../__common/common'
 
 export class ModelPlotConfig {
-  terms?: Field;
-  enabled: boolean;
-  annotations_enabled?: boolean;
+  terms?: Field
+  enabled: boolean
+  annotations_enabled?: boolean
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class LowercaseTokenFilter extends TokenFilterBase {
-  language: string;
+  language: string
 }

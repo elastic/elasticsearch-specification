@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../common";
+import { long } from '../../common'
 
 export class RecoveryStats {
-  current_as_source: long;
-  current_as_target: long;
-  throttle_time?: string;
-  throttle_time_in_millis: long;
+  current_as_source: long
+  current_as_target: long
+  throttle_time?: string
+  throttle_time_in_millis: long
 }

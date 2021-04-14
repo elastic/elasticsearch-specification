@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class SimpleInput {
-  payload: Dictionary<string, UserDefinedValue>;
+  payload: Dictionary<string, UserDefinedValue>
 }

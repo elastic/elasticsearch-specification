@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { integer } from '../../common'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class FingerprintTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_output_size: integer;
-  separator: string;
+  max_output_size: integer
+  separator: string
 }

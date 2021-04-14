@@ -22,780 +22,780 @@ export class CatIndicesRecord {
    * current health status
    * @aliases h
    */
-  "health"?: string;
+  'health'?: string
 
   /**
    * open/close status
    * @aliases s
    */
-  "status"?: string;
+  'status'?: string
 
   /**
    * index name
    * @aliases i,idx
    */
-  "index"?: string;
+  'index'?: string
 
   /**
    * index uuid
    * @aliases id
    */
-  "uuid"?: string;
+  'uuid'?: string
 
   /**
    * number of primary shards
    * @aliases p,shards.primary,shardsPrimary
    */
-  "pri"?: string;
+  'pri'?: string
 
   /**
    * number of replica shards
    * @aliases r,shards.replica,shardsReplica
    */
-  "rep"?: string;
+  'rep'?: string
 
   /**
    * available docs
    * @aliases dc,docsCount
    */
-  "docs.count"?: string;
+  'docs.count'?: string
 
   /**
    * deleted docs
    * @aliases dd,docsDeleted
    */
-  "docs.deleted"?: string;
+  'docs.deleted'?: string
 
   /**
    * index creation date (millisecond value)
    * @aliases cd
    */
-  "creation.date"?: string;
+  'creation.date'?: string
 
   /**
    * index creation date (as string)
    * @aliases cds
    */
-  "creation.date.string"?: string;
+  'creation.date.string'?: string
 
   /**
    * store size of primaries & replicas
    * @aliases ss,storeSize
    */
-  "store.size"?: string;
+  'store.size'?: string
 
   /**
    * store size of primaries
    */
-  "pri.store.size"?: string;
+  'pri.store.size'?: string
 
   /**
    * size of completion
    * @aliases cs,completionSize
    */
-  "completion.size"?: string;
+  'completion.size'?: string
 
   /**
    * size of completion
    */
-  "pri.completion.size"?: string;
+  'pri.completion.size'?: string
 
   /**
    * used fielddata cache
    * @aliases fm,fielddataMemory
    */
-  "fielddata.memory_size"?: string;
+  'fielddata.memory_size'?: string
 
   /**
    * used fielddata cache
    */
-  "pri.fielddata.memory_size"?: string;
+  'pri.fielddata.memory_size'?: string
 
   /**
    * fielddata evictions
    * @aliases fe,fielddataEvictions
    */
-  "fielddata.evictions"?: string;
+  'fielddata.evictions'?: string
 
   /**
    * fielddata evictions
    */
-  "pri.fielddata.evictions"?: string;
+  'pri.fielddata.evictions'?: string
 
   /**
    * used query cache
    * @aliases qcm,queryCacheMemory
    */
-  "query_cache.memory_size"?: string;
+  'query_cache.memory_size'?: string
 
   /**
    * used query cache
    */
-  "pri.query_cache.memory_size"?: string;
+  'pri.query_cache.memory_size'?: string
 
   /**
    * query cache evictions
    * @aliases qce,queryCacheEvictions
    */
-  "query_cache.evictions"?: string;
+  'query_cache.evictions'?: string
 
   /**
    * query cache evictions
    */
-  "pri.query_cache.evictions"?: string;
+  'pri.query_cache.evictions'?: string
 
   /**
    * used request cache
    * @aliases rcm,requestCacheMemory
    */
-  "request_cache.memory_size"?: string;
+  'request_cache.memory_size'?: string
 
   /**
    * used request cache
    */
-  "pri.request_cache.memory_size"?: string;
+  'pri.request_cache.memory_size'?: string
 
   /**
    * request cache evictions
    * @aliases rce,requestCacheEvictions
    */
-  "request_cache.evictions"?: string;
+  'request_cache.evictions'?: string
 
   /**
    * request cache evictions
    */
-  "pri.request_cache.evictions"?: string;
+  'pri.request_cache.evictions'?: string
 
   /**
    * request cache hit count
    * @aliases rchc,requestCacheHitCount
    */
-  "request_cache.hit_count"?: string;
+  'request_cache.hit_count'?: string
 
   /**
    * request cache hit count
    */
-  "pri.request_cache.hit_count"?: string;
+  'pri.request_cache.hit_count'?: string
 
   /**
    * request cache miss count
    * @aliases rcmc,requestCacheMissCount
    */
-  "request_cache.miss_count"?: string;
+  'request_cache.miss_count'?: string
 
   /**
    * request cache miss count
    */
-  "pri.request_cache.miss_count"?: string;
+  'pri.request_cache.miss_count'?: string
 
   /**
    * number of flushes
    * @aliases ft,flushTotal
    */
-  "flush.total"?: string;
+  'flush.total'?: string
 
   /**
    * number of flushes
    */
-  "pri.flush.total"?: string;
+  'pri.flush.total'?: string
 
   /**
    * time spent in flush
    * @aliases ftt,flushTotalTime
    */
-  "flush.total_time"?: string;
+  'flush.total_time'?: string
 
   /**
    * time spent in flush
    */
-  "pri.flush.total_time"?: string;
+  'pri.flush.total_time'?: string
 
   /**
    * number of current get ops
    * @aliases gc,getCurrent
    */
-  "get.current"?: string;
+  'get.current'?: string
 
   /**
    * number of current get ops
    */
-  "pri.get.current"?: string;
+  'pri.get.current'?: string
 
   /**
    * time spent in get
    * @aliases gti,getTime
    */
-  "get.time"?: string;
+  'get.time'?: string
 
   /**
    * time spent in get
    */
-  "pri.get.time"?: string;
+  'pri.get.time'?: string
 
   /**
    * number of get ops
    * @aliases gto,getTotal
    */
-  "get.total"?: string;
+  'get.total'?: string
 
   /**
    * number of get ops
    */
-  "pri.get.total"?: string;
+  'pri.get.total'?: string
 
   /**
    * time spent in successful gets
    * @aliases geti,getExistsTime
    */
-  "get.exists_time"?: string;
+  'get.exists_time'?: string
 
   /**
    * time spent in successful gets
    */
-  "pri.get.exists_time"?: string;
+  'pri.get.exists_time'?: string
 
   /**
    * number of successful gets
    * @aliases geto,getExistsTotal
    */
-  "get.exists_total"?: string;
+  'get.exists_total'?: string
 
   /**
    * number of successful gets
    */
-  "pri.get.exists_total"?: string;
+  'pri.get.exists_total'?: string
 
   /**
    * time spent in failed gets
    * @aliases gmti,getMissingTime
    */
-  "get.missing_time"?: string;
+  'get.missing_time'?: string
 
   /**
    * time spent in failed gets
    */
-  "pri.get.missing_time"?: string;
+  'pri.get.missing_time'?: string
 
   /**
    * number of failed gets
    * @aliases gmto,getMissingTotal
    */
-  "get.missing_total"?: string;
+  'get.missing_total'?: string
 
   /**
    * number of failed gets
    */
-  "pri.get.missing_total"?: string;
+  'pri.get.missing_total'?: string
 
   /**
    * number of current deletions
    * @aliases idc,indexingDeleteCurrent
    */
-  "indexing.delete_current"?: string;
+  'indexing.delete_current'?: string
 
   /**
    * number of current deletions
    */
-  "pri.indexing.delete_current"?: string;
+  'pri.indexing.delete_current'?: string
 
   /**
    * time spent in deletions
    * @aliases idti,indexingDeleteTime
    */
-  "indexing.delete_time"?: string;
+  'indexing.delete_time'?: string
 
   /**
    * time spent in deletions
    */
-  "pri.indexing.delete_time"?: string;
+  'pri.indexing.delete_time'?: string
 
   /**
    * number of delete ops
    * @aliases idto,indexingDeleteTotal
    */
-  "indexing.delete_total"?: string;
+  'indexing.delete_total'?: string
 
   /**
    * number of delete ops
    */
-  "pri.indexing.delete_total"?: string;
+  'pri.indexing.delete_total'?: string
 
   /**
    * number of current indexing ops
    * @aliases iic,indexingIndexCurrent
    */
-  "indexing.index_current"?: string;
+  'indexing.index_current'?: string
 
   /**
    * number of current indexing ops
    */
-  "pri.indexing.index_current"?: string;
+  'pri.indexing.index_current'?: string
 
   /**
    * time spent in indexing
    * @aliases iiti,indexingIndexTime
    */
-  "indexing.index_time"?: string;
+  'indexing.index_time'?: string
 
   /**
    * time spent in indexing
    */
-  "pri.indexing.index_time"?: string;
+  'pri.indexing.index_time'?: string
 
   /**
    * number of indexing ops
    * @aliases iito,indexingIndexTotal
    */
-  "indexing.index_total"?: string;
+  'indexing.index_total'?: string
 
   /**
    * number of indexing ops
    */
-  "pri.indexing.index_total"?: string;
+  'pri.indexing.index_total'?: string
 
   /**
    * number of failed indexing ops
    * @aliases iif,indexingIndexFailed
    */
-  "indexing.index_failed"?: string;
+  'indexing.index_failed'?: string
 
   /**
    * number of failed indexing ops
    */
-  "pri.indexing.index_failed"?: string;
+  'pri.indexing.index_failed'?: string
 
   /**
    * number of current merges
    * @aliases mc,mergesCurrent
    */
-  "merges.current"?: string;
+  'merges.current'?: string
 
   /**
    * number of current merges
    */
-  "pri.merges.current"?: string;
+  'pri.merges.current'?: string
 
   /**
    * number of current merging docs
    * @aliases mcd,mergesCurrentDocs
    */
-  "merges.current_docs"?: string;
+  'merges.current_docs'?: string
 
   /**
    * number of current merging docs
    */
-  "pri.merges.current_docs"?: string;
+  'pri.merges.current_docs'?: string
 
   /**
    * size of current merges
    * @aliases mcs,mergesCurrentSize
    */
-  "merges.current_size"?: string;
+  'merges.current_size'?: string
 
   /**
    * size of current merges
    */
-  "pri.merges.current_size"?: string;
+  'pri.merges.current_size'?: string
 
   /**
    * number of completed merge ops
    * @aliases mt,mergesTotal
    */
-  "merges.total"?: string;
+  'merges.total'?: string
 
   /**
    * number of completed merge ops
    */
-  "pri.merges.total"?: string;
+  'pri.merges.total'?: string
 
   /**
    * docs merged
    * @aliases mtd,mergesTotalDocs
    */
-  "merges.total_docs"?: string;
+  'merges.total_docs'?: string
 
   /**
    * docs merged
    */
-  "pri.merges.total_docs"?: string;
+  'pri.merges.total_docs'?: string
 
   /**
    * size merged
    * @aliases mts,mergesTotalSize
    */
-  "merges.total_size"?: string;
+  'merges.total_size'?: string
 
   /**
    * size merged
    */
-  "pri.merges.total_size"?: string;
+  'pri.merges.total_size'?: string
 
   /**
    * time spent in merges
    * @aliases mtt,mergesTotalTime
    */
-  "merges.total_time"?: string;
+  'merges.total_time'?: string
 
   /**
    * time spent in merges
    */
-  "pri.merges.total_time"?: string;
+  'pri.merges.total_time'?: string
 
   /**
    * total refreshes
    * @aliases rto,refreshTotal
    */
-  "refresh.total"?: string;
+  'refresh.total'?: string
 
   /**
    * total refreshes
    */
-  "pri.refresh.total"?: string;
+  'pri.refresh.total'?: string
 
   /**
    * time spent in refreshes
    * @aliases rti,refreshTime
    */
-  "refresh.time"?: string;
+  'refresh.time'?: string
 
   /**
    * time spent in refreshes
    */
-  "pri.refresh.time"?: string;
+  'pri.refresh.time'?: string
 
   /**
    * total external refreshes
    * @aliases reto
    */
-  "refresh.external_total"?: string;
+  'refresh.external_total'?: string
 
   /**
    * total external refreshes
    */
-  "pri.refresh.external_total"?: string;
+  'pri.refresh.external_total'?: string
 
   /**
    * time spent in external refreshes
    * @aliases reti
    */
-  "refresh.external_time"?: string;
+  'refresh.external_time'?: string
 
   /**
    * time spent in external refreshes
    */
-  "pri.refresh.external_time"?: string;
+  'pri.refresh.external_time'?: string
 
   /**
    * number of pending refresh listeners
    * @aliases rli,refreshListeners
    */
-  "refresh.listeners"?: string;
+  'refresh.listeners'?: string
 
   /**
    * number of pending refresh listeners
    */
-  "pri.refresh.listeners"?: string;
+  'pri.refresh.listeners'?: string
 
   /**
    * current fetch phase ops
    * @aliases sfc,searchFetchCurrent
    */
-  "search.fetch_current"?: string;
+  'search.fetch_current'?: string
 
   /**
    * current fetch phase ops
    */
-  "pri.search.fetch_current"?: string;
+  'pri.search.fetch_current'?: string
 
   /**
    * time spent in fetch phase
    * @aliases sfti,searchFetchTime
    */
-  "search.fetch_time"?: string;
+  'search.fetch_time'?: string
 
   /**
    * time spent in fetch phase
    */
-  "pri.search.fetch_time"?: string;
+  'pri.search.fetch_time'?: string
 
   /**
    * total fetch ops
    * @aliases sfto,searchFetchTotal
    */
-  "search.fetch_total"?: string;
+  'search.fetch_total'?: string
 
   /**
    * total fetch ops
    */
-  "pri.search.fetch_total"?: string;
+  'pri.search.fetch_total'?: string
 
   /**
    * open search contexts
    * @aliases so,searchOpenContexts
    */
-  "search.open_contexts"?: string;
+  'search.open_contexts'?: string
 
   /**
    * open search contexts
    */
-  "pri.search.open_contexts"?: string;
+  'pri.search.open_contexts'?: string
 
   /**
    * current query phase ops
    * @aliases sqc,searchQueryCurrent
    */
-  "search.query_current"?: string;
+  'search.query_current'?: string
 
   /**
    * current query phase ops
    */
-  "pri.search.query_current"?: string;
+  'pri.search.query_current'?: string
 
   /**
    * time spent in query phase
    * @aliases sqti,searchQueryTime
    */
-  "search.query_time"?: string;
+  'search.query_time'?: string
 
   /**
    * time spent in query phase
    */
-  "pri.search.query_time"?: string;
+  'pri.search.query_time'?: string
 
   /**
    * total query phase ops
    * @aliases sqto,searchQueryTotal
    */
-  "search.query_total"?: string;
+  'search.query_total'?: string
 
   /**
    * total query phase ops
    */
-  "pri.search.query_total"?: string;
+  'pri.search.query_total'?: string
 
   /**
    * open scroll contexts
    * @aliases scc,searchScrollCurrent
    */
-  "search.scroll_current"?: string;
+  'search.scroll_current'?: string
 
   /**
    * open scroll contexts
    */
-  "pri.search.scroll_current"?: string;
+  'pri.search.scroll_current'?: string
 
   /**
    * time scroll contexts held open
    * @aliases scti,searchScrollTime
    */
-  "search.scroll_time"?: string;
+  'search.scroll_time'?: string
 
   /**
    * time scroll contexts held open
    */
-  "pri.search.scroll_time"?: string;
+  'pri.search.scroll_time'?: string
 
   /**
    * completed scroll contexts
    * @aliases scto,searchScrollTotal
    */
-  "search.scroll_total"?: string;
+  'search.scroll_total'?: string
 
   /**
    * completed scroll contexts
    */
-  "pri.search.scroll_total"?: string;
+  'pri.search.scroll_total'?: string
 
   /**
    * number of segments
    * @aliases sc,segmentsCount
    */
-  "segments.count"?: string;
+  'segments.count'?: string
 
   /**
    * number of segments
    */
-  "pri.segments.count"?: string;
+  'pri.segments.count'?: string
 
   /**
    * memory used by segments
    * @aliases sm,segmentsMemory
    */
-  "segments.memory"?: string;
+  'segments.memory'?: string
 
   /**
    * memory used by segments
    */
-  "pri.segments.memory"?: string;
+  'pri.segments.memory'?: string
 
   /**
    * memory used by index writer
    * @aliases siwm,segmentsIndexWriterMemory
    */
-  "segments.index_writer_memory"?: string;
+  'segments.index_writer_memory'?: string
 
   /**
    * memory used by index writer
    */
-  "pri.segments.index_writer_memory"?: string;
+  'pri.segments.index_writer_memory'?: string
 
   /**
    * memory used by version map
    * @aliases svmm,segmentsVersionMapMemory
    */
-  "segments.version_map_memory"?: string;
+  'segments.version_map_memory'?: string
 
   /**
    * memory used by version map
    */
-  "pri.segments.version_map_memory"?: string;
+  'pri.segments.version_map_memory'?: string
 
   /**
    * memory used by fixed bit sets for nested object field types and export type filters for types referred in _parent fields
    * @aliases sfbm,fixedBitsetMemory
    */
-  "segments.fixed_bitset_memory"?: string;
+  'segments.fixed_bitset_memory'?: string
 
   /**
    * memory used by fixed bit sets for nested object field types and export type filters for types referred in _parent fields
    */
-  "pri.segments.fixed_bitset_memory"?: string;
+  'pri.segments.fixed_bitset_memory'?: string
 
   /**
    * current warmer ops
    * @aliases wc,warmerCurrent
    */
-  "warmer.current"?: string;
+  'warmer.current'?: string
 
   /**
    * current warmer ops
    */
-  "pri.warmer.current"?: string;
+  'pri.warmer.current'?: string
 
   /**
    * total warmer ops
    * @aliases wto,warmerTotal
    */
-  "warmer.total"?: string;
+  'warmer.total'?: string
 
   /**
    * total warmer ops
    */
-  "pri.warmer.total"?: string;
+  'pri.warmer.total'?: string
 
   /**
    * time spent in warmers
    * @aliases wtt,warmerTotalTime
    */
-  "warmer.total_time"?: string;
+  'warmer.total_time'?: string
 
   /**
    * time spent in warmers
    */
-  "pri.warmer.total_time"?: string;
+  'pri.warmer.total_time'?: string
 
   /**
    * number of current suggest ops
    * @aliases suc,suggestCurrent
    */
-  "suggest.current"?: string;
+  'suggest.current'?: string
 
   /**
    * number of current suggest ops
    */
-  "pri.suggest.current"?: string;
+  'pri.suggest.current'?: string
 
   /**
    * time spend in suggest
    * @aliases suti,suggestTime
    */
-  "suggest.time"?: string;
+  'suggest.time'?: string
 
   /**
    * time spend in suggest
    */
-  "pri.suggest.time"?: string;
+  'pri.suggest.time'?: string
 
   /**
    * number of suggest ops
    * @aliases suto,suggestTotal
    */
-  "suggest.total"?: string;
+  'suggest.total'?: string
 
   /**
    * number of suggest ops
    */
-  "pri.suggest.total"?: string;
+  'pri.suggest.total'?: string
 
   /**
    * total used memory
    * @aliases tm,memoryTotal
    */
-  "memory.total"?: string;
+  'memory.total'?: string
 
   /**
    * total user memory
    */
-  "pri.memory.total"?: string;
+  'pri.memory.total'?: string
 
   /**
    * indicates if the index is search throttled
    * @aliases sth
    */
-  "search.throttled"?: string;
+  'search.throttled'?: string
 
   /**
    * number of bulk shard ops
    * @aliases bto,bulkTotalOperation
    */
-  "bulk.total_operations"?: string;
+  'bulk.total_operations'?: string
 
   /**
    * number of bulk shard ops
    */
-  "pri.bulk.total_operations"?: string;
+  'pri.bulk.total_operations'?: string
 
   /**
    * time spend in shard bulk
    * @aliases btti,bulkTotalTime
    */
-  "bulk.total_time"?: string;
+  'bulk.total_time'?: string
 
   /**
    * time spend in shard bulk
    */
-  "pri.bulk.total_time"?: string;
+  'pri.bulk.total_time'?: string
 
   /**
    * total size in bytes of shard bulk
    * @aliases btsi,bulkTotalSizeInBytes
    */
-  "bulk.total_size_in_bytes"?: string;
+  'bulk.total_size_in_bytes'?: string
 
   /**
    * total size in bytes of shard bulk
    */
-  "pri.bulk.total_size_in_bytes"?: string;
+  'pri.bulk.total_size_in_bytes'?: string
 
   /**
    * average time spend in shard bulk
    * @aliases bati,bulkAvgTime
    */
-  "bulk.avg_time"?: string;
+  'bulk.avg_time'?: string
 
   /**
    * average time spend in shard bulk
    */
-  "pri.bulk.avg_time"?: string;
+  'pri.bulk.avg_time'?: string
 
   /**
    * average size in bytes of shard bulk
    * @aliases basi,bulkAvgSizeInBytes
    */
-  "bulk.avg_size_in_bytes"?: string;
+  'bulk.avg_size_in_bytes'?: string
 
   /**
    * average size in bytes of shard bulk
    */
-  "pri.bulk.avg_size_in_bytes"?: string;
+  'pri.bulk.avg_size_in_bytes'?: string
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.preview_datafeed
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface PreviewDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Id;
-  };
-  query_parameters?: {};
-  body?: {};
+    datafeed_id: Id
+  }
+  query_parameters?: {}
+  body?: {}
 }

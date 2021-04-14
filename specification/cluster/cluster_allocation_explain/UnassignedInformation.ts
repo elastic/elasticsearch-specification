@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { DateString, integer } from "../../__common/common";
-import { UnassignedInformationReason } from "./UnassignedInformationReason";
+import { DateString, integer } from '../../__common/common'
+import { UnassignedInformationReason } from './UnassignedInformationReason'
 
 export class UnassignedInformation {
-  at: DateString;
-  last_allocation_status?: string;
-  reason: UnassignedInformationReason;
-  details?: string;
-  failed_allocation_attempts?: integer;
-  delayed?: boolean;
-  allocation_status?: string;
+  at: DateString
+  last_allocation_status?: string
+  reason: UnassignedInformationReason
+  details?: string
+  failed_allocation_attempts?: integer
+  delayed?: boolean
+  allocation_status?: string
 }

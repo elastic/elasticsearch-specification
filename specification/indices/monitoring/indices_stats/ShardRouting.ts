@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ShardRoutingState } from "./ShardRoutingState";
+import { ShardRoutingState } from './ShardRoutingState'
 
 export class ShardRouting {
-  node: string;
-  primary: boolean;
-  relocating_node?: string;
-  state: ShardRoutingState;
+  node: string
+  primary: boolean
+  relocating_node?: string
+  state: ShardRoutingState
 }

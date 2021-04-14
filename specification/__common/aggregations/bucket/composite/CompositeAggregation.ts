@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { float, integer } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { CompositeAggregationSource } from "./CompositeAggregationSource";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { float, integer } from '../../../common'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { CompositeAggregationSource } from './CompositeAggregationSource'
 
 export class CompositeAggregation extends BucketAggregationBase {
-  after?: Dictionary<string, string | float | null>;
-  size?: integer;
-  sources?: Array<Dictionary<string, CompositeAggregationSource>>;
+  after?: Dictionary<string, string | float | null>
+  size?: integer
+  sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }

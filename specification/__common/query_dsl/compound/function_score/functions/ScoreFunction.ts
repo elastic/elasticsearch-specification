@@ -17,48 +17,48 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { AdditionalProperties } from "../../../../../__spec_utils/behaviors";
-import { double, Field, long } from "../../../../common";
-import { DateMath } from "../../../../common_options/date_math/DateMath";
-import { Distance } from "../../../../common_options/geo/Distance";
-import { Time } from "../../../../common_options/time_unit/Time";
-import { QueryContainer } from "../../../abstractions/container/QueryContainer";
-import { GeoLocation } from "../../../geo/GeoLocation";
-import { MultiValueMode } from "./decay/MultiValueMode";
-import { FieldValueFactorModifier } from "./field_value/FieldValueFactorModifier";
+import { AdditionalProperties } from '../../../../../__spec_utils/behaviors'
+import { double, Field, long } from '../../../../common'
+import { DateMath } from '../../../../common_options/date_math/DateMath'
+import { Distance } from '../../../../common_options/geo/Distance'
+import { Script } from '../../../../common_options/scripting/Script'
+import { Time } from '../../../../common_options/time_unit/Time'
+import { QueryContainer } from '../../../abstractions/container/QueryContainer'
+import { GeoLocation } from '../../../geo/GeoLocation'
+import { MultiValueMode } from './decay/MultiValueMode'
+import { FieldValueFactorModifier } from './field_value/FieldValueFactorModifier'
 
 export class ScoreFunctionBase {
-  filter?: QueryContainer;
-  weight?: double;
+  filter?: QueryContainer
+  weight?: double
 }
 
 export class WeightScoreFunction extends ScoreFunctionBase {}
 
 export class ScriptScoreFunction extends ScoreFunctionBase {
-  script: Script;
+  script: Script
 }
 
 export class RandomScoreFunction extends ScoreFunctionBase {
-  field?: Field;
-  seed?: long | string;
+  field?: Field
+  seed?: long | string
 }
 
 export class FieldValueFactorScoreFunction extends ScoreFunctionBase {
-  field: Field;
-  factor?: double;
-  missing?: double;
-  modifier?: FieldValueFactorModifier;
+  field: Field
+  factor?: double
+  missing?: double
+  modifier?: FieldValueFactorModifier
 }
 
 export class DecayPlacement<TOrigin, TScale> {
-  decay?: double;
-  offset?: TScale;
-  scale?: TScale;
-  origin?: TOrigin;
+  decay?: double
+  offset?: TScale
+  scale?: TScale
+  origin?: TOrigin
 }
 export class DecayFunctionBase extends ScoreFunctionBase {
-  multi_value_mode?: MultiValueMode;
+  multi_value_mode?: MultiValueMode
 }
 
 export class NumericDecayFunction
@@ -77,15 +77,15 @@ export class GeoDecayFunction
 export type DecayFunction =
   | DateDecayFunction
   | NumericDecayFunction
-  | GeoDecayFunction;
+  | GeoDecayFunction
 
 export class FunctionScoreContainer {
-  exp?: DecayFunction;
-  gauss?: DecayFunction;
-  linear?: DecayFunction;
-  field_value_factor?: FieldValueFactorScoreFunction;
-  random_score?: RandomScoreFunction;
-  script_score?: ScriptScoreFunction;
-  filter?: QueryContainer;
-  weight?: double;
+  exp?: DecayFunction
+  gauss?: DecayFunction
+  linear?: DecayFunction
+  field_value_factor?: FieldValueFactorScoreFunction
+  random_score?: RandomScoreFunction
+  script_score?: ScriptScoreFunction
+  filter?: QueryContainer
+  weight?: double
 }

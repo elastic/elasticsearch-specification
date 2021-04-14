@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class CompareCondition {
-  comparison: string;
-  path: string;
-  value: UserDefinedValue;
+  comparison: string
+  path: string
+  value: UserDefinedValue
 }

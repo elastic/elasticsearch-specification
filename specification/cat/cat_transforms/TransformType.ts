@@ -19,5 +19,5 @@
 
 export enum TransformType {
   batch = 0,
-  continuous = 1,
+  continuous = 1
 }

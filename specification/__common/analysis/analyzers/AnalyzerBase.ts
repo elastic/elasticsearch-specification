@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { VersionString } from "../../common";
+import { VersionString } from '../../common'
 
 export class AnalyzerBase {
-  type: string;
-  version: VersionString;
+  type: string
+  version: VersionString
 }

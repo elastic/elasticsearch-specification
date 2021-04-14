@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class ClusterOperatingSystemPrettyName {
-  count: integer;
-  pretty_name: string;
+  count: integer
+  pretty_name: string
 }

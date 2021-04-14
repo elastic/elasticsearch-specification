@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { QueryBase } from "../../abstractions/query/Query";
-import { GeoLocation } from "../GeoLocation";
-import { GeoValidationMethod } from "../GeoValidationMethod";
+import { QueryBase } from '../../abstractions/query/Query'
+import { GeoLocation } from '../GeoLocation'
+import { GeoValidationMethod } from '../GeoValidationMethod'
 
 export class GeoPolygonQuery extends QueryBase {
-  points?: GeoLocation[];
-  validation_method?: GeoValidationMethod;
+  points?: GeoLocation[]
+  validation_method?: GeoValidationMethod
 }

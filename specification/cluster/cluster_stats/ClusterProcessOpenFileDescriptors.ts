@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ClusterProcessOpenFileDescriptors {
-  avg: long;
-  max: long;
-  min: long;
+  avg: long
+  max: long
+  min: long
 }

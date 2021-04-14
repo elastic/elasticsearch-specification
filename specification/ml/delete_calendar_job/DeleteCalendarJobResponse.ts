@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id, Ids } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Id, Ids } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class DeleteCalendarJobResponse extends ResponseBase {
-  calendar_id: Id;
-  description?: string;
-  job_ids: Ids;
+  calendar_id: Id
+  description?: string
+  job_ids: Ids
 }

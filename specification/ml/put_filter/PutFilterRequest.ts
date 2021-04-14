@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.put_filter
@@ -27,11 +27,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface PutFilterRequest extends RequestBase {
   path_parts?: {
-    filter_id: Id;
-  };
-  query_parameters?: {};
+    filter_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    description?: string;
-    items?: string[];
-  };
+    description?: string
+    items?: string[]
+  }
 }

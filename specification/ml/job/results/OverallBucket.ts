@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { DateString, double, long } from "../../../__common/common";
-import { OverallBucketJobInfo } from "./OverallBucketJobInfo";
+import { DateString, double, long } from '../../../__common/common'
+import { OverallBucketJobInfo } from './OverallBucketJobInfo'
 
 export class OverallBucket {
-  bucket_span: long;
-  is_interim: boolean;
-  jobs: OverallBucketJobInfo[];
-  overall_score: double;
-  result_type: string;
+  bucket_span: long
+  is_interim: boolean
+  jobs: OverallBucketJobInfo[]
+  overall_score: double
+  result_type: string
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  timestamp: DateString;
+  timestamp: DateString
 }

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { NumericFielddata } from '../../../../../indices/NumericFielddata'
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+  boost?: double
+  fielddata?: NumericFielddata
+  index?: boolean
+  null_value?: boolean
+  type: 'boolean'
 }

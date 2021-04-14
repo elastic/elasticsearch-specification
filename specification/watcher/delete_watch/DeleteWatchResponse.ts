@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id, VersionNumber } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Id, VersionNumber } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class DeleteWatchResponse extends ResponseBase {
-  found: boolean;
-  _id: Id;
-  _version: VersionNumber;
+  found: boolean
+  _id: Id
+  _version: VersionNumber
 }

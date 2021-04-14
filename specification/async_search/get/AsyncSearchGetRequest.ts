@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name async_search.get
@@ -28,13 +28,13 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface AsyncSearchGetRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-    typed_keys?: boolean;
-  };
-  query_parameters?: {};
+    id: Id
+    typed_keys?: boolean
+  }
+  query_parameters?: {}
   body?: {
-    keep_alive?: Time;
-    typed_keys?: boolean;
-    wait_for_completion_timeout?: Time;
-  };
+    keep_alive?: Time
+    typed_keys?: boolean
+    wait_for_completion_timeout?: Time
+  }
 }

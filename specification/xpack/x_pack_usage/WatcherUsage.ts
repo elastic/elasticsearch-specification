@@ -17,39 +17,39 @@
  * under the License.
  */
 
-import { long, Name } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UsageCount } from "./UsageCount";
-import { XPackUsage } from "./XPackUsage";
+import { long, Name } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UsageCount } from './UsageCount'
+import { XPackUsage } from './XPackUsage'
 
 export class WatcherUsage extends XPackUsage {
-  execution: WatcherActionsUsage;
-  watch: WatcherWatchUsage;
-  count: UsageCount;
+  execution: WatcherActionsUsage
+  watch: WatcherWatchUsage
+  count: UsageCount
 }
 
 export class WatcherActionsUsage {
-  actions: Dictionary<Name, WatcherActionTotalsUsage>;
+  actions: Dictionary<Name, WatcherActionTotalsUsage>
 }
 
 export class WatcherWatchUsage {
-  input: Dictionary<Name, UsageCount>;
-  condition?: Dictionary<Name, UsageCount>;
-  action?: Dictionary<Name, UsageCount>;
-  trigger: WatcherWatchTriggerUsage;
+  input: Dictionary<Name, UsageCount>
+  condition?: Dictionary<Name, UsageCount>
+  action?: Dictionary<Name, UsageCount>
+  trigger: WatcherWatchTriggerUsage
 }
 
 export class WatcherWatchTriggerUsage {
-  schedule?: WatcherWatchTriggerScheduleUsage;
-  _all: UsageCount;
+  schedule?: WatcherWatchTriggerScheduleUsage
+  _all: UsageCount
 }
 
 export class WatcherWatchTriggerScheduleUsage extends UsageCount {
-  cron: UsageCount;
-  _all: UsageCount;
+  cron: UsageCount
+  _all: UsageCount
 }
 
 export class WatcherActionTotalsUsage {
-  total: long;
-  total_time_in_ms: long;
+  total: long
+  total_time_in_ms: long
 }

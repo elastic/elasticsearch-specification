@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { IndexSettings } from "./IndexSettings";
-import { Alias } from "../../indices/Alias";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { IndexName } from "../common";
-import { TypeMapping } from "../mapping/TypeMapping";
+import { Alias } from '../../indices/Alias'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexName } from '../common'
+import { TypeMapping } from '../mapping/TypeMapping'
+import { IndexSettings } from './IndexSettings'
 
 export class IndexState {
-  aliases: Dictionary<IndexName, Alias>;
-  mappings: TypeMapping;
-  settings: IndexSettings;
+  aliases: Dictionary<IndexName, Alias>
+  mappings: TypeMapping
+  settings: IndexSettings
 }

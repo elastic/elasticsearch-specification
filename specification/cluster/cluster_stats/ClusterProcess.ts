@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ClusterProcessCpu } from "./ClusterProcessCpu";
-import { ClusterProcessOpenFileDescriptors } from "./ClusterProcessOpenFileDescriptors";
+import { ClusterProcessCpu } from './ClusterProcessCpu'
+import { ClusterProcessOpenFileDescriptors } from './ClusterProcessOpenFileDescriptors'
 
 export class ClusterProcess {
-  cpu: ClusterProcessCpu;
-  open_file_descriptors: ClusterProcessOpenFileDescriptors;
+  cpu: ClusterProcessCpu
+  open_file_descriptors: ClusterProcessOpenFileDescriptors
 }

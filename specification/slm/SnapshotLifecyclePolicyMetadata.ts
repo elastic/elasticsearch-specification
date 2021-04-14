@@ -17,35 +17,35 @@
  * under the License.
  */
 
-import { SnapshotLifecycleStats } from "../xpack/x_pack_usage/SnapshotLifecycleStats";
+import { SnapshotLifecycleStats } from '../xpack/x_pack_usage/SnapshotLifecycleStats'
 import {
   DateString,
   EpochMillis,
   Id,
   long,
-  VersionNumber,
-} from "../__common/common";
-import { SnapshotLifecycleInProgress } from "./SnapshotLifecycleInProgress";
-import { SnapshotLifecycleInvocationRecord } from "./SnapshotLifecycleInvocationRecord";
-import { SnapshotLifecyclePolicy } from "./SnapshotLifecyclePolicy";
+  VersionNumber
+} from '../__common/common'
+import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
+import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
+import { SnapshotLifecyclePolicy } from './SnapshotLifecyclePolicy'
 
 export class SnapshotLifecyclePolicyMetadata {
-  in_progress?: SnapshotLifecycleInProgress;
-  last_failure?: SnapshotLifecycleInvocationRecord;
-  last_success?: SnapshotLifecycleInvocationRecord;
-  modified_date?: DateString;
-  modified_date_millis: EpochMillis;
-  next_execution?: DateString;
-  next_execution_millis: EpochMillis;
-  policy: SnapshotLifecyclePolicy;
-  version: VersionNumber;
-  stats: SnapshotLifecycleStats;
+  in_progress?: SnapshotLifecycleInProgress
+  last_failure?: SnapshotLifecycleInvocationRecord
+  last_success?: SnapshotLifecycleInvocationRecord
+  modified_date?: DateString
+  modified_date_millis: EpochMillis
+  next_execution?: DateString
+  next_execution_millis: EpochMillis
+  policy: SnapshotLifecyclePolicy
+  version: VersionNumber
+  stats: SnapshotLifecycleStats
 }
 
 export class SnapshotLifecyclePolicyMetadataStats {
-  policy: Id;
-  snapshots_deleted: long;
-  snapshot_deletion_failures: long;
-  snapshots_failed: long;
-  snapshots_taken: long;
+  policy: Id
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
+  snapshots_failed: long
+  snapshots_taken: long
 }

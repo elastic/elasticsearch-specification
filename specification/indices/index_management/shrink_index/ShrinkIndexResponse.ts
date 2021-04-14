@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from "../../../__common/common";
-import { AcknowledgedResponseBase } from "../../../__common/common_abstractions/response/AcknowledgedResponseBase";
+import { IndexName } from '../../../__common/common'
+import { AcknowledgedResponseBase } from '../../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class ShrinkIndexResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean;
-  index: IndexName;
+  shards_acknowledged: boolean
+  index: IndexName
 }

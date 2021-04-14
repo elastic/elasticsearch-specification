@@ -23,18 +23,18 @@ import {
   IndexName,
   long,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TermVector } from "./TermVector";
+  VersionNumber
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TermVector } from './TermVector'
 
 export class TermVectorsResponse extends ResponseBase {
-  found: boolean;
-  _id: Id;
-  _index: IndexName;
-  term_vectors?: Dictionary<Field, TermVector>;
-  took: long;
-  _type?: Type;
-  _version: VersionNumber;
+  found: boolean
+  _id: Id
+  _index: IndexName
+  term_vectors?: Dictionary<Field, TermVector>
+  took: long
+  _type?: Type
+  _version: VersionNumber
 }

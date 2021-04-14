@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { FollowerInfo } from "./FollowerInfo";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { FollowerInfo } from './FollowerInfo'
 
 export class FollowInfoResponse extends ResponseBase {
-  follower_indices: FollowerInfo[];
+  follower_indices: FollowerInfo[]
 }

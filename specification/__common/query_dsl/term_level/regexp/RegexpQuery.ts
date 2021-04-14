@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class RegexpQuery extends QueryBase {
-  flags?: string;
-  max_determinized_states?: integer;
-  value?: string;
+  flags?: string
+  max_determinized_states?: integer
+  value?: string
 }

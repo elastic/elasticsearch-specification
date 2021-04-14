@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ClusterProcessorStats } from "./ClusterProcessorStats";
+import { integer } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ClusterProcessorStats } from './ClusterProcessorStats'
 
 export class ClusterIngestStats {
-  number_of_pipelines: integer;
-  processor_stats: Dictionary<string, ClusterProcessorStats>;
+  number_of_pipelines: integer
+  processor_stats: Dictionary<string, ClusterProcessorStats>
 }

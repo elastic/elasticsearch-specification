@@ -23,5 +23,5 @@ export enum FunctionScoreMode {
   avg = 2,
   first = 3,
   max = 4,
-  min = 5,
+  min = 5
 }

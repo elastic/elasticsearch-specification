@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.get_component_template
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   path_parts?: {
-    name?: Name;
-  };
+    name?: Name
+  }
   query_parameters?: {
-    flat_settings?: boolean; // Default: false
-    local?: boolean; // Default: false
-    master_timeout?: Time; // Default: 30s
-  };
-  body?: {};
+    flat_settings?: boolean // Default: false
+    local?: boolean // Default: false
+    master_timeout?: Time // Default: 30s
+  }
+  body?: {}
 }

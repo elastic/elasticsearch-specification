@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NumericFielddataFormat } from "./NumericFielddataFormat";
+import { NumericFielddataFormat } from './NumericFielddataFormat'
 
 export class NumericFielddata {
-  format: NumericFielddataFormat;
+  format: NumericFielddataFormat
 }

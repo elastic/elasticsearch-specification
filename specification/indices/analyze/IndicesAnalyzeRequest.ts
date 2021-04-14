@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { CharFilter } from "../../__common/analysis/char_filters/CharFilterBase";
-import { Tokenizer } from "../../__common/analysis/tokenizers/TokenizerBase";
-import { TokenFilter } from "../../__common/analysis/token_filters/TokenFilterBase";
-import { Field, IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { CharFilter } from '../../__common/analysis/char_filters/CharFilterBase'
+import { Tokenizer } from '../../__common/analysis/tokenizers/TokenizerBase'
+import { TokenFilter } from '../../__common/analysis/token_filters/TokenFilterBase'
+import { Field, IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.analyze
@@ -30,20 +30,20 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface IndicesAnalyzeRequest extends RequestBase {
   path_parts?: {
-    index?: IndexName;
-  };
-  query_parameters?: {};
+    index?: IndexName
+  }
+  query_parameters?: {}
   body?: {
-    analyzer?: string;
-    attributes?: string[];
-    char_filter?: Array<string | CharFilter>;
-    explain?: boolean;
-    field?: Field;
-    filter?: Array<string | TokenFilter>;
-    normalizer?: string;
-    text?: TextToAnalyze;
-    tokenizer?: string | Tokenizer;
-  };
+    analyzer?: string
+    attributes?: string[]
+    char_filter?: Array<string | CharFilter>
+    explain?: boolean
+    field?: Field
+    filter?: Array<string | TokenFilter>
+    normalizer?: string
+    text?: TextToAnalyze
+    tokenizer?: string | Tokenizer
+  }
 }
 
-export type TextToAnalyze = string | Array<string>;
+export type TextToAnalyze = string | Array<string>

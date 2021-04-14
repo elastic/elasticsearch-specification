@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { ScheduledEvent } from "./ScheduledEvent";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { ScheduledEvent } from './ScheduledEvent'
 
 /**
  * @rest_spec_name ml.post_calendar_events
@@ -28,10 +28,10 @@ import { ScheduledEvent } from "./ScheduledEvent";
  */
 export interface PostCalendarEventsRequest extends RequestBase {
   path_parts?: {
-    calendar_id: Id;
-  };
-  query_parameters?: {};
+    calendar_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    events?: ScheduledEvent[];
-  };
+    events?: ScheduledEvent[]
+  }
 }

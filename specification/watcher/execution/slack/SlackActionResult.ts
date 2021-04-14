@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { SlackMessage } from "../../action/slack/SlackMessage";
+import { SlackMessage } from '../../action/slack/SlackMessage'
 
 export class SlackActionResult {
-  account?: string;
+  account?: string
   //  sent_messages?: SlackActionMessageResult[] TODO: not sure if this needed
-  message: SlackMessage;
+  message: SlackMessage
 }

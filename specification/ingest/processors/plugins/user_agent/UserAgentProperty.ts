@@ -27,5 +27,5 @@ export enum UserAgentProperty {
   OS_MAJOR = 6,
   OS_MINOR = 7,
   DEVICE = 8,
-  BUILD = 9,
+  BUILD = 9
 }

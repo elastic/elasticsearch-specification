@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, long } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name delete_by_query_rethrottle
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteByQueryRethrottleRequest extends RequestBase {
   path_parts?: {
-    task_id: Id;
-  };
+    task_id: Id
+  }
   query_parameters?: {
-    requests_per_second?: long;
-  };
-  body?: {};
+    requests_per_second?: long
+  }
+  body?: {}
 }

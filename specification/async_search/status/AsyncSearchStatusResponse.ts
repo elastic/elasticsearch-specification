@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { AsyncSearchResponseBase } from "../AsyncSearchResponseBase";
+import { integer } from '../../__common/common'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { AsyncSearchResponseBase } from '../AsyncSearchResponseBase'
 
 export class AsyncSearchStatusResponse<
   TDocument
 > extends AsyncSearchResponseBase {
-  _shards: ShardStatistics;
-  completion_status: integer;
+  _shards: ShardStatistics
+  completion_status: integer
 }

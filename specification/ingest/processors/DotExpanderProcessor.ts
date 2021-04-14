@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class DotExpanderProcessor extends ProcessorBase {
-  field: Field;
-  path?: string;
+  field: Field
+  path?: string
 }

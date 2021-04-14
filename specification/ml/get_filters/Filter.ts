@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
+import { Id } from '../../__common/common'
 
 export class Filter {
-  description?: string;
-  filter_id: Id;
-  items: string[];
+  description?: string
+  filter_id: Id
+  items: string[]
 }

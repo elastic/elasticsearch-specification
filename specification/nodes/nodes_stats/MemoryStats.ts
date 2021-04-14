@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class MemoryStats {
-  resident: string;
-  resident_in_bytes: long;
-  share: string;
-  share_in_bytes: long;
-  total_virtual: string;
-  total_virtual_in_bytes: long;
+  resident: string
+  resident_in_bytes: long
+  share: string
+  share_in_bytes: long
+  total_virtual: string
+  total_virtual_in_bytes: long
 }

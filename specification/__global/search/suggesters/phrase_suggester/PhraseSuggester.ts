@@ -17,25 +17,25 @@
  * under the License.
  */
 
-import { double, integer } from "../../../../__common/common";
-import { SuggesterBase } from "../Suggester";
-import { DirectGenerator } from "./DirectGenerator";
-import { PhraseSuggestCollate } from "./PhraseSuggestCollate";
-import { PhraseSuggestHighlight } from "./PhraseSuggestHighlight";
-import { SmoothingModelContainer } from "./smoothing_model/SmoothingModelContainer";
+import { double, integer } from '../../../../__common/common'
+import { SuggesterBase } from '../Suggester'
+import { DirectGenerator } from './DirectGenerator'
+import { PhraseSuggestCollate } from './PhraseSuggestCollate'
+import { PhraseSuggestHighlight } from './PhraseSuggestHighlight'
+import { SmoothingModelContainer } from './smoothing_model/SmoothingModelContainer'
 
 export class PhraseSuggester extends SuggesterBase {
-  collate?: PhraseSuggestCollate;
-  confidence?: double;
-  direct_generator?: DirectGenerator[];
-  force_unigrams?: boolean;
-  gram_size?: integer;
-  highlight?: PhraseSuggestHighlight;
-  max_errors?: double;
-  real_word_error_likelihood?: double;
-  separator?: string;
-  shard_size?: integer;
-  smoothing?: SmoothingModelContainer;
-  text?: string;
-  token_limit?: integer;
+  collate?: PhraseSuggestCollate
+  confidence?: double
+  direct_generator?: DirectGenerator[]
+  force_unigrams?: boolean
+  gram_size?: integer
+  highlight?: PhraseSuggestHighlight
+  max_errors?: double
+  real_word_error_likelihood?: double
+  separator?: string
+  shard_size?: integer
+  smoothing?: SmoothingModelContainer
+  text?: string
+  token_limit?: integer
 }

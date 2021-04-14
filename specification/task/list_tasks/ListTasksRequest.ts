@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { GroupBy } from "../../__common/common/GroupBy";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { GroupBy } from '../../__common/common/GroupBy'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name tasks.list
@@ -29,13 +29,13 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ListTasksRequest extends RequestBase {
   query_parameters?: {
-    actions?: string | string[];
-    detailed?: boolean;
-    group_by?: GroupBy;
-    nodes?: string[];
-    parent_task_id?: Id;
-    timeout?: Time;
-    wait_for_completion?: boolean;
-  };
-  body?: {};
+    actions?: string | string[]
+    detailed?: boolean
+    group_by?: GroupBy
+    nodes?: string[]
+    parent_task_id?: Id
+    timeout?: Time
+    wait_for_completion?: boolean
+  }
+  body?: {}
 }

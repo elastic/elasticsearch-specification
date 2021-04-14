@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class AggregationBreakdown {
-  build_aggregation: long;
-  build_aggregation_count: long;
-  build_leaf_collector: long;
-  build_leaf_collector_count: long;
-  collect: long;
-  collect_count: long;
-  initialize: long;
-  initialize_count: long;
-  post_collection?: long;
-  post_collection_count?: long;
-  reduce: long;
-  reduce_count: long;
+  build_aggregation: long
+  build_aggregation_count: long
+  build_leaf_collector: long
+  build_leaf_collector_count: long
+  collect: long
+  collect_count: long
+  initialize: long
+  initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
+  reduce: long
+  reduce_count: long
 }

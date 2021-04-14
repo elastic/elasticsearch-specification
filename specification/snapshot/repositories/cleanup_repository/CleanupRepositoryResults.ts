@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class CleanupRepositoryResults {
-  deleted_blobs: long;
-  deleted_bytes: long;
+  deleted_blobs: long
+  deleted_bytes: long
 }

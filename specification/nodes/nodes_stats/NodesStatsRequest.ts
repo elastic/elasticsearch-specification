@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Fields, Metrics, NodeIds } from "../../__common/common";
-import { Level } from "../../__common/common/Level";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Fields, Metrics, NodeIds } from '../../__common/common'
+import { Level } from '../../__common/common/Level'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name nodes.stats
@@ -29,19 +29,19 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface NodesStatsRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-    metric?: Metrics;
-    index_metric?: Metrics;
-  };
+    node_id?: NodeIds
+    metric?: Metrics
+    index_metric?: Metrics
+  }
   query_parameters?: {
-    completion_fields?: Fields;
-    fielddata_fields?: Fields;
-    fields?: Fields;
-    groups?: boolean;
-    include_segment_file_sizes?: boolean;
-    level?: Level;
-    timeout?: Time;
-    types?: string[];
-  };
-  body?: {};
+    completion_fields?: Fields
+    fielddata_fields?: Fields
+    fields?: Fields
+    groups?: boolean
+    include_segment_file_sizes?: boolean
+    level?: Level
+    timeout?: Time
+    types?: string[]
+  }
+  body?: {}
 }

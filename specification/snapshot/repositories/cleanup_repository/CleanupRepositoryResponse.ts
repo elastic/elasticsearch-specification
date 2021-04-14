@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { CleanupRepositoryResults } from "./CleanupRepositoryResults";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { CleanupRepositoryResults } from './CleanupRepositoryResults'
 
 export class CleanupRepositoryResponse extends ResponseBase {
-  results: CleanupRepositoryResults;
+  results: CleanupRepositoryResults
 }

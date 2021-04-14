@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { UpdateIndexSettingsRequest } from "../../indices/index_settings/update_index_settings/UpdateIndexSettingsRequest";
-import { Indices, Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { UpdateIndexSettingsRequest } from '../../indices/index_settings/update_index_settings/UpdateIndexSettingsRequest'
+import { Indices, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name snapshot.restore
@@ -29,22 +29,22 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface RestoreRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-    snapshot: Name;
-  };
+    repository: Name
+    snapshot: Name
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    wait_for_completion?: boolean;
-  };
+    master_timeout?: Time
+    wait_for_completion?: boolean
+  }
   body?: {
-    ignore_index_settings?: string[];
-    ignore_unavailable?: boolean;
-    include_aliases?: boolean;
-    include_global_state?: boolean;
-    index_settings?: UpdateIndexSettingsRequest;
-    indices?: Indices;
-    partial?: boolean;
-    rename_pattern?: string;
-    rename_replacement?: string;
-  };
+    ignore_index_settings?: string[]
+    ignore_unavailable?: boolean
+    include_aliases?: boolean
+    include_global_state?: boolean
+    index_settings?: UpdateIndexSettingsRequest
+    indices?: Indices
+    partial?: boolean
+    rename_pattern?: string
+    rename_replacement?: string
+  }
 }

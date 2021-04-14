@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { HttpInputRequestDefinition } from "./HttpInputRequestDefinition";
-import { ResponseContentType } from "./ResponseContentType";
+import { HttpInputRequestDefinition } from './HttpInputRequestDefinition'
+import { ResponseContentType } from './ResponseContentType'
 
 export class HttpInput {
-  extract: string[];
-  request: HttpInputRequestDefinition;
-  response_content_type: ResponseContentType;
+  extract: string[]
+  request: HttpInputRequestDefinition
+  response_content_type: ResponseContentType
 }

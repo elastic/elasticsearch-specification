@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Calendar } from "./Calendar";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Calendar } from './Calendar'
 
 export class GetCalendarsResponse extends ResponseBase {
-  calendars: Calendar[];
-  count: long;
+  calendars: Calendar[]
+  count: long
 }

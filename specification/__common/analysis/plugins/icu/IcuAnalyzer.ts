@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AnalyzerBase } from "../../analyzers/AnalyzerBase";
-import { IcuNormalizationMode } from "./normalization/IcuNormalizationMode";
-import { IcuNormalizationType } from "./normalization/IcuNormalizationType";
+import { AnalyzerBase } from '../../analyzers/AnalyzerBase'
+import { IcuNormalizationMode } from './normalization/IcuNormalizationMode'
+import { IcuNormalizationType } from './normalization/IcuNormalizationType'
 
 export class IcuAnalyzer extends AnalyzerBase {
-  method: IcuNormalizationType;
-  mode: IcuNormalizationMode;
+  method: IcuNormalizationType
+  mode: IcuNormalizationMode
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ComponentTemplate } from "../ComponentTemplate";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ComponentTemplate } from '../ComponentTemplate'
 
 export class ClusterGetComponentTemplateResponse extends ResponseBase {
-  component_templates: ComponentTemplate[];
+  component_templates: ComponentTemplate[]
 }

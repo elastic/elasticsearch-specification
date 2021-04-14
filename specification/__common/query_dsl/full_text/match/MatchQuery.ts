@@ -22,25 +22,25 @@ import {
   float,
   Fuzziness,
   integer,
-  MultiTermQueryRewrite,
-} from "../../../common";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Operator } from "../../Operator";
-import { ZeroTermsQuery } from "../multi_match/ZeroTermsQuery";
+  MultiTermQueryRewrite
+} from '../../../common'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Operator } from '../../Operator'
+import { ZeroTermsQuery } from '../multi_match/ZeroTermsQuery'
 
 export class MatchQuery extends QueryBase {
-  analyzer?: string;
-  auto_generate_synonyms_phrase_query?: boolean;
-  cutoff_frequency?: double;
-  fuzziness?: Fuzziness;
-  fuzzy_rewrite?: MultiTermQueryRewrite;
-  fuzzy_transpositions?: boolean;
-  lenient?: boolean;
-  max_expansions?: integer;
-  minimum_should_match?: MinimumShouldMatch;
-  operator?: Operator;
-  prefix_length?: integer;
-  query?: string | float | boolean;
-  zero_terms_query?: ZeroTermsQuery;
+  analyzer?: string
+  auto_generate_synonyms_phrase_query?: boolean
+  cutoff_frequency?: double
+  fuzziness?: Fuzziness
+  fuzzy_rewrite?: MultiTermQueryRewrite
+  fuzzy_transpositions?: boolean
+  lenient?: boolean
+  max_expansions?: integer
+  minimum_should_match?: MinimumShouldMatch
+  operator?: Operator
+  prefix_length?: integer
+  query?: string | float | boolean
+  zero_terms_query?: ZeroTermsQuery
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { EpochMillis, Id } from "../../__common/common";
+import { EpochMillis, Id } from '../../__common/common'
 
 export class ScheduledEvent {
-  calendar_id: Id;
-  description: string;
-  end_time: EpochMillis;
-  event_id: Id;
-  start_time: EpochMillis;
+  calendar_id: Id
+  description: string
+  end_time: EpochMillis
+  event_id: Id
+  start_time: EpochMillis
 }

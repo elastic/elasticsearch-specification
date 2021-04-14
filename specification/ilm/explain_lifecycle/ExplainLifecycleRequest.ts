@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { IndexName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ilm.explain_lifecycle
@@ -27,11 +27,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface ExplainLifecycleRequest extends RequestBase {
   path_parts?: {
-    index: IndexName;
-  };
+    index: IndexName
+  }
   query_parameters?: {
-    only_errors?: boolean;
-    only_managed?: boolean;
-  };
-  body?: {};
+    only_errors?: boolean
+    only_managed?: boolean
+  }
+  body?: {}
 }

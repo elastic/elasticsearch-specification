@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { QueryContainer } from "../../../query_dsl/abstractions/container/QueryContainer";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { QueryContainer } from '../../../query_dsl/abstractions/container/QueryContainer'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class FiltersAggregation extends BucketAggregationBase {
-  filters?: Dictionary<string, QueryContainer> | QueryContainer[];
-  other_bucket?: boolean;
-  other_bucket_key?: string;
+  filters?: Dictionary<string, QueryContainer> | QueryContainer[]
+  other_bucket?: boolean
+  other_bucket_key?: string
 }

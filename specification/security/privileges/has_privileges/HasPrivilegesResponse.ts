@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { IndexName, Name } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../../__spec_utils/Dictionary";
+import { IndexName, Name } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
 
 export class HasPrivilegesResponse extends ResponseBase {
-  application: ApplicationsPrivileges;
-  cluster: Dictionary<string, boolean>;
-  has_all_requested: boolean;
-  index: Dictionary<IndexName, Privileges>;
-  username: string;
+  application: ApplicationsPrivileges
+  cluster: Dictionary<string, boolean>
+  has_all_requested: boolean
+  index: Dictionary<IndexName, Privileges>
+  username: string
 }
 
-export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>;
-export type ResourcePrivileges = Dictionary<Name, Privileges>;
-export type Privileges = Dictionary<string, boolean>;
+export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>
+export type ResourcePrivileges = Dictionary<Name, Privileges>
+export type Privileges = Dictionary<string, boolean>

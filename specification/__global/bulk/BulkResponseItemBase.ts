@@ -23,34 +23,34 @@ import {
   integer,
   long,
   SequenceNumber,
-  VersionNumber,
-} from "../../__common/common";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { InlineGet } from "../explain/InlineGet";
+  VersionNumber
+} from '../../__common/common'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { InlineGet } from '../explain/InlineGet'
 
 export class BulkResponseItemBase {
-  _id?: string | null;
-  _index: string;
-  status: integer;
+  _id?: string | null
+  _index: string
+  status: integer
 
-  error?: ErrorCause;
-  _primary_term?: long;
-  result?: string;
-  _seq_no?: SequenceNumber;
-  _shards?: ShardStatistics;
-  _type?: string;
-  _version?: VersionNumber;
-  forced_refresh?: boolean;
-  get?: InlineGet<Dictionary<string, UserDefinedValue>>;
+  error?: ErrorCause
+  _primary_term?: long
+  result?: string
+  _seq_no?: SequenceNumber
+  _shards?: ShardStatistics
+  _type?: string
+  _version?: VersionNumber
+  forced_refresh?: boolean
+  get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
 export class BulkResponseItemContainer {
-  index?: BulkIndexResponseItem;
-  create?: BulkCreateResponseItem;
-  update?: BulkUpdateResponseItem;
-  delete?: BulkDeleteResponseItem;
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
 }
 
 export class BulkIndexResponseItem extends BulkResponseItemBase {}

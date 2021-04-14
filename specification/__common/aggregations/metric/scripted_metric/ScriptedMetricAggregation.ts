@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { MetricAggregationBase } from "../MetricAggregation";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { Script } from '../../../common_options/scripting/Script'
+import { MetricAggregationBase } from '../MetricAggregation'
 
 export class ScriptedMetricAggregation extends MetricAggregationBase {
-  combine_script?: Script;
-  init_script?: Script;
-  map_script?: Script;
-  params?: Dictionary<string, UserDefinedValue>;
-  reduce_script?: Script;
+  combine_script?: Script
+  init_script?: Script
+  map_script?: Script
+  params?: Dictionary<string, UserDefinedValue>
+  reduce_script?: Script
 }

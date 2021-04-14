@@ -22,5 +22,5 @@ export enum EmailPriority {
   low = 1,
   normal = 2,
   high = 3,
-  highest = 4,
+  highest = 4
 }

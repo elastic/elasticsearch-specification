@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { AnalyzeDetail } from "./AnalyzeDetail";
-import { AnalyzeToken } from "./AnalyzeToken";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AnalyzeDetail } from './AnalyzeDetail'
+import { AnalyzeToken } from './AnalyzeToken'
 
 export class IndicesAnalyzeResponse extends ResponseBase {
-  detail?: AnalyzeDetail;
-  tokens?: AnalyzeToken[];
+  detail?: AnalyzeDetail
+  tokens?: AnalyzeToken[]
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from "./FielddataFrequencyFilter";
-import { FielddataRegexFilter } from "./FielddataRegexFilter";
+import { FielddataFrequencyFilter } from './FielddataFrequencyFilter'
+import { FielddataRegexFilter } from './FielddataRegexFilter'
 
 export class FielddataFilter {
-  frequency: FielddataFrequencyFilter;
-  regex: FielddataRegexFilter;
+  frequency: FielddataFrequencyFilter
+  regex: FielddataRegexFilter
 }

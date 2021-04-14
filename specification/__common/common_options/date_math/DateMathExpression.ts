@@ -17,4 +17,4 @@
  * under the License.
  */
 
-export type DateMathExpression = string;
+export type DateMathExpression = string

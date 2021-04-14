@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class ClusterProcessCpu {
-  percent: integer;
+  percent: integer
 }

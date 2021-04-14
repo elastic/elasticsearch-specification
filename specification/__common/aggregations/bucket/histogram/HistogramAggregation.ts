@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { double, Field, integer } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { ExtendedBounds } from "./ExtendedBounds";
-import { HistogramOrder } from "./HistogramOrder";
+import { double, Field, integer } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { ExtendedBounds } from './ExtendedBounds'
+import { HistogramOrder } from './HistogramOrder'
 
 export class HistogramAggregation extends BucketAggregationBase {
-  extended_bounds?: ExtendedBounds<double>;
-  hard_bounds?: ExtendedBounds<double>;
-  field?: Field;
-  interval?: double;
-  min_doc_count?: integer;
-  missing?: double;
-  offset?: double;
-  order?: HistogramOrder;
-  script?: Script;
-  format?: string;
+  extended_bounds?: ExtendedBounds<double>
+  hard_bounds?: ExtendedBounds<double>
+  field?: Field
+  interval?: double
+  min_doc_count?: integer
+  missing?: double
+  offset?: double
+  order?: HistogramOrder
+  script?: Script
+  format?: string
 }

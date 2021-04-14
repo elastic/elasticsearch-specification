@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
-import { GeoOrientation } from "./GeoOrientation";
-import { GeoStrategy } from "./GeoStrategy";
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { GeoOrientation } from './GeoOrientation'
+import { GeoStrategy } from './GeoStrategy'
 
 export class GeoShapeProperty extends DocValuesPropertyBase {
-  coerce?: boolean;
-  ignore_malformed?: boolean;
-  ignore_z_value?: boolean;
-  orientation?: GeoOrientation;
-  strategy?: GeoStrategy;
-  type: "geo_shape";
+  coerce?: boolean
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  orientation?: GeoOrientation
+  strategy?: GeoStrategy
+  type: 'geo_shape'
 }

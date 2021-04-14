@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ThreadStats {
-  count: long;
-  peak_count: long;
+  count: long
+  peak_count: long
 }

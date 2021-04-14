@@ -22,10 +22,10 @@ export enum ExpandWildcardOptions {
   closed = 1,
   hidden = 2,
   none = 3,
-  all = 4,
+  all = 4
 }
 
 export type ExpandWildcards =
   | ExpandWildcardOptions
   | Array<ExpandWildcardOptions>
-  | string;
+  | string

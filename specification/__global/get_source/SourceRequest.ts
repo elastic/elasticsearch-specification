@@ -23,10 +23,10 @@ import {
   IndexName,
   Routing,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name get_source
@@ -35,20 +35,20 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface SourceRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-    index: IndexName;
-    type?: Type;
-  };
+    id: Id
+    index: IndexName
+    type?: Type
+  }
   query_parameters?: {
-    preference?: string;
-    realtime?: boolean;
-    refresh?: boolean;
-    routing?: Routing;
-    source_enabled?: boolean;
-    _source_excludes?: Fields;
-    _source_includes?: Fields;
-    version?: VersionNumber;
-    version_type?: VersionType;
-  };
-  body?: {};
+    preference?: string
+    realtime?: boolean
+    refresh?: boolean
+    routing?: Routing
+    source_enabled?: boolean
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    version?: VersionNumber
+    version_type?: VersionType
+  }
+  body?: {}
 }

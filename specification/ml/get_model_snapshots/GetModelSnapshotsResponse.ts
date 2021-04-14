@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ModelSnapshot } from "../job/process/ModelSnapshot";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ModelSnapshot } from '../job/process/ModelSnapshot'
 
 export class GetModelSnapshotsResponse extends ResponseBase {
-  count: long;
-  model_snapshots: ModelSnapshot[];
+  count: long
+  model_snapshots: ModelSnapshot[]
 }

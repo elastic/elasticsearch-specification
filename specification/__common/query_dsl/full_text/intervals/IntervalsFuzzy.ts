@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field, Fuzziness, integer } from "../../../common";
+import { Field, Fuzziness, integer } from '../../../common'
 
 export class IntervalsFuzzy {
-  analyzer?: string;
-  fuzziness?: Fuzziness;
-  prefix_length?: integer;
-  term?: string;
-  transpositions?: boolean;
-  use_field?: Field;
+  analyzer?: string
+  fuzziness?: Fuzziness
+  prefix_length?: integer
+  term?: string
+  transpositions?: boolean
+  use_field?: Field
 }

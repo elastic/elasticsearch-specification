@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Datafeed } from "../datafeed/Datafeed";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Datafeed } from '../datafeed/Datafeed'
 
 export class GetDatafeedsResponse extends ResponseBase {
-  count: long;
-  datafeeds: Datafeed[];
+  count: long
+  datafeeds: Datafeed[]
 }

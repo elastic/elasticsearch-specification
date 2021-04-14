@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../../__common/common'
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.change_password
@@ -28,12 +28,12 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface ChangePasswordRequest extends RequestBase {
   path_parts?: {
-    username?: Name;
-  };
+    username?: Name
+  }
   query_parameters?: {
-    refresh?: Refresh;
-  };
+    refresh?: Refresh
+  }
   body?: {
-    password?: string;
-  };
+    password?: string
+  }
 }

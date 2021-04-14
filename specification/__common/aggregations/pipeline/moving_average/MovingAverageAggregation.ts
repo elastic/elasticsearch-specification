@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { PipelineAggregationBase } from "../PipelineAggregationBase";
+import { integer } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 import {
   MovingAverageModel,
-  MovingAverageSettings,
-} from "./models/MovingAverageModel";
+  MovingAverageSettings
+} from './models/MovingAverageModel'
 
 export class MovingAverageAggregation extends PipelineAggregationBase {
-  minimize?: boolean;
-  model?: MovingAverageModel;
-  settings: MovingAverageSettings;
-  predict?: integer;
-  window?: integer;
+  minimize?: boolean
+  model?: MovingAverageModel
+  settings: MovingAverageSettings
+  predict?: integer
+  window?: integer
 }

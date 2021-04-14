@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { AggregationProfile } from "./AggregationProfile";
-import { SearchProfile } from "./SearchProfile";
+import { AggregationProfile } from './AggregationProfile'
+import { SearchProfile } from './SearchProfile'
 
 export class ShardProfile {
-  aggregations: AggregationProfile[];
-  id: string;
-  searches: SearchProfile[];
+  aggregations: AggregationProfile[]
+  id: string
+  searches: SearchProfile[]
 }

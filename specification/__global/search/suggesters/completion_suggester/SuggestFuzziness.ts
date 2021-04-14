@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Fuzziness, integer } from "../../../../__common/common";
+import { Fuzziness, integer } from '../../../../__common/common'
 
 export class SuggestFuzziness {
-  fuzziness: Fuzziness;
-  min_length: integer;
-  prefix_length: integer;
-  transpositions: boolean;
-  unicode_aware: boolean;
+  fuzziness: Fuzziness
+  min_length: integer
+  prefix_length: integer
+  transpositions: boolean
+  unicode_aware: boolean
 }

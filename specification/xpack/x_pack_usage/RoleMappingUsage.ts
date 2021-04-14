@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class RoleMappingUsage {
-  enabled: integer;
-  size: integer;
+  enabled: integer
+  size: integer
 }

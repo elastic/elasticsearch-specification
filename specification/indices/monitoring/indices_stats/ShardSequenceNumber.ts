@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long, SequenceNumber } from "../../../__common/common";
+import { long, SequenceNumber } from '../../../__common/common'
 
 export class ShardSequenceNumber {
-  global_checkpoint: long;
-  local_checkpoint: long;
-  max_seq_no: SequenceNumber;
+  global_checkpoint: long
+  local_checkpoint: long
+  max_seq_no: SequenceNumber
 }

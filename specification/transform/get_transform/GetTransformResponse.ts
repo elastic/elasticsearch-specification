@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Transform } from "stream";
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Transform } from '../../watcher/transform/Transform'
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class GetTransformResponse extends ResponseBase {
-  count: long;
-  transforms: Transform[];
+  count: long
+  transforms: Transform[]
 }

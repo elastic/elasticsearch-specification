@@ -24,5 +24,5 @@ export enum DFRBasicModel {
   if = 3,
   in = 4,
   ine = 5,
-  p = 6,
+  p = 6
 }

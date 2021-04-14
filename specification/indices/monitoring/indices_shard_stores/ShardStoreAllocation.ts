@@ -20,5 +20,5 @@
 export enum ShardStoreAllocation {
   primary = 0,
   replica = 1,
-  unused = 2,
+  unused = 2
 }

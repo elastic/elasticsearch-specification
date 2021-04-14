@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataStreamName } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { DataStreamName } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.create_data_stream
@@ -27,8 +27,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface IndicesCreateDataStreamRequest extends RequestBase {
   path_parts?: {
-    name: DataStreamName;
-  };
-  query_parameters?: {};
-  body?: {};
+    name: DataStreamName
+  }
+  query_parameters?: {}
+  body?: {}
 }

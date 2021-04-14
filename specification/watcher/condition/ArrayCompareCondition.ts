@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { Quantifier } from "./Quantifier";
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Quantifier } from './Quantifier'
 
 export class ArrayCompareCondition {
-  array_path: string;
-  comparison: string;
-  path: string;
-  quantifier: Quantifier;
-  value: UserDefinedValue;
+  array_path: string
+  comparison: string
+  path: string
+  quantifier: Quantifier
+  value: UserDefinedValue
 }

@@ -17,137 +17,137 @@
  * under the License.
  */
 
-import { IndexName, Percentage, Type } from "../../__common/common";
+import { IndexName, Percentage, Type } from '../../__common/common'
 
 export class CatRecoveryRecord {
   /**
    * index name
    * @aliases i,idx
    */
-  "index"?: IndexName;
+  'index'?: IndexName
   /**
    * shard name
    * @aliases s,sh
    */
-  "shard"?: string;
+  'shard'?: string
   /**
    * recovery start time
    * @aliases start
    */
-  "start_time"?: string;
+  'start_time'?: string
   /**
    * recovery start time in epoch milliseconds
    * @aliases start_millis
    */
-  "start_time_millis"?: string;
+  'start_time_millis'?: string
   /**
    * recovery stop time
    * @aliases stop
    */
-  "stop_time"?: string;
+  'stop_time'?: string
   /**
    * recovery stop time in epoch milliseconds
    * @aliases stop_millis
    */
-  "stop_time_millis"?: string;
+  'stop_time_millis'?: string
   /**
    * recovery time
    * @aliases t,ti
    */
-  "time"?: string;
+  'time'?: string
   /**
    * recovery type
    * @aliases ty
    */
-  "type"?: Type;
+  'type'?: Type
   /**
    * recovery stage
    * @aliases st
    */
-  "stage"?: string;
+  'stage'?: string
   /**
    * source host
    * @aliases shost
    */
-  "source_host"?: string;
+  'source_host'?: string
   /**
    * source node name
    * @aliases snode
    */
-  "source_node"?: string;
+  'source_node'?: string
   /**
    * target host
    * @aliases thost
    */
-  "target_host"?: string;
+  'target_host'?: string
   /**
    * target node name
    * @aliases tnode
    */
-  "target_node"?: string;
+  'target_node'?: string
   /**
    * repository
    * @aliases rep
    */
-  "repository"?: string;
+  'repository'?: string
   /**
    * snapshot
    * @aliases snap
    */
-  "snapshot"?: string;
+  'snapshot'?: string
   /**
    * number of files to recover
    * @aliases f
    */
-  "files"?: string;
+  'files'?: string
   /**
    * files recovered
    * @aliases fr
    */
-  "files_recovered"?: string;
+  'files_recovered'?: string
   /**
    * percent of files recovered
    * @aliases fp
    */
-  "files_percent"?: Percentage;
+  'files_percent'?: Percentage
   /**
    * total number of files
    * @aliases tf
    */
-  "files_total"?: string;
+  'files_total'?: string
   /**
    * number of bytes to recover
    * @aliases b
    */
-  "bytes"?: string;
+  'bytes'?: string
   /**
    * bytes recovered
    * @aliases br
    */
-  "bytes_recovered"?: string;
+  'bytes_recovered'?: string
   /**
    * percent of bytes recovered
    * @aliases bp
    */
-  "bytes_percent"?: Percentage;
+  'bytes_percent'?: Percentage
   /**
    * total number of bytes
    * @aliases tb
    */
-  "bytes_total"?: string;
+  'bytes_total'?: string
   /**
    * number of translog ops to recover
    * @aliases to
    */
-  "translog_ops"?: string;
+  'translog_ops'?: string
   /**
    * translog ops recovered
    * @aliases tor
    */
-  "translog_ops_recovered"?: string;
+  'translog_ops_recovered'?: string
   /**
    * percent of translog ops recovered
    * @aliases top
    */
-  "translog_ops_percent"?: Percentage;
+  'translog_ops_percent'?: Percentage
 }

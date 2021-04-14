@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Metrics } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { ClusterRerouteCommand } from "./ClusterRerouteCommand";
+import { Metrics } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { ClusterRerouteCommand } from './ClusterRerouteCommand'
 
 /**
  * @rest_spec_name cluster.reroute
@@ -29,14 +29,14 @@ import { ClusterRerouteCommand } from "./ClusterRerouteCommand";
  */
 export interface ClusterRerouteRequest extends RequestBase {
   query_parameters?: {
-    dry_run?: boolean; // default: false
-    explain?: boolean; // default: false
-    metric?: Metrics; // default: all
-    retry_failed?: boolean; // default: false
-    master_timeout?: Time; // default: 30s
-    timeout?: Time; // default: 30s
-  };
+    dry_run?: boolean // default: false
+    explain?: boolean // default: false
+    metric?: Metrics // default: all
+    retry_failed?: boolean // default: false
+    master_timeout?: Time // default: 30s
+    timeout?: Time // default: 30s
+  }
   body: {
-    commands?: ClusterRerouteCommand[];
-  };
+    commands?: ClusterRerouteCommand[]
+  }
 }

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Field, Fields, long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Sort } from "../../__global/search/sort/Sort";
-import { SourceFilter } from "../../__global/search/source_filtering/SourceFilter";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { Field, Fields, long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Sort } from '../../__global/search/sort/Sort'
+import { SourceFilter } from '../../__global/search/source_filtering/SourceFilter'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class TranslateSqlResponse extends ResponseBase {
-  size: long;
-  _source: boolean | Fields | SourceFilter;
-  fields: Array<Dictionary<Field, string>>;
-  sort: Sort;
+  size: long
+  _source: boolean | Fields | SourceFilter
+  fields: Array<Dictionary<Field, string>>
+  sort: Sort
 }

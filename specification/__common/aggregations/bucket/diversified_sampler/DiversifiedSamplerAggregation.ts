@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Field, integer } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { SamplerAggregationExecutionHint } from "./SamplerAggregationExecutionHint";
+import { Field, integer } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { SamplerAggregationExecutionHint } from './SamplerAggregationExecutionHint'
 
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
-  execution_hint?: SamplerAggregationExecutionHint;
-  max_docs_per_value?: integer;
-  script?: Script;
-  shard_size?: integer;
-  field?: Field;
+  execution_hint?: SamplerAggregationExecutionHint
+  max_docs_per_value?: integer
+  script?: Script
+  shard_size?: integer
+  field?: Field
 }

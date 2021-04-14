@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { Bytes } from "../../__common/common/Bytes";
-import { CatRequestBase } from "../CatBase";
+import { Id } from '../../__common/common'
+import { Bytes } from '../../__common/common/Bytes'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.ml_jobs
@@ -28,11 +28,11 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatJobsRequest extends CatRequestBase {
   path_parts?: {
-    job_id?: Id;
-  };
+    job_id?: Id
+  }
   query_parameters?: {
-    allow_no_jobs?: boolean;
-    bytes?: Bytes;
-  };
-  body?: {};
+    allow_no_jobs?: boolean
+    bytes?: Bytes
+  }
+  body?: {}
 }

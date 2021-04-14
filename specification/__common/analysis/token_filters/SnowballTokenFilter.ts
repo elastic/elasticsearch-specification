@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SnowballLanguage } from "../languages/SnowballLanguage";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { SnowballLanguage } from '../languages/SnowballLanguage'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class SnowballTokenFilter extends TokenFilterBase {
-  language: SnowballLanguage;
+  language: SnowballLanguage
 }

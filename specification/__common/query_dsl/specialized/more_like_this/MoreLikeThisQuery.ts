@@ -17,38 +17,38 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { StopWords } from "../../../analysis/StopWords";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { StopWords } from '../../../analysis/StopWords'
 import {
   double,
   Field,
   Fields,
   integer,
   Routing,
-  VersionNumber,
-} from "../../../common";
-import { VersionType } from "../../../common/VersionType";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Like } from "./like/Like";
+  VersionNumber
+} from '../../../common'
+import { VersionType } from '../../../common/VersionType'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Like } from './like/Like'
 
 export class MoreLikeThisQuery extends QueryBase {
-  analyzer?: string;
-  boost_terms?: double;
-  fields?: Fields;
-  include?: boolean;
-  like?: Like | Like[];
-  max_doc_freq?: integer;
-  max_query_terms?: integer;
-  max_word_length?: integer;
-  min_doc_freq?: integer;
-  minimum_should_match?: MinimumShouldMatch;
-  min_term_freq?: integer;
-  min_word_length?: integer;
-  per_field_analyzer?: Dictionary<Field, string>;
-  routing?: Routing;
-  stop_words?: StopWords;
-  unlike?: Like | Like[];
-  version?: VersionNumber;
-  version_type?: VersionType;
+  analyzer?: string
+  boost_terms?: double
+  fields?: Fields
+  include?: boolean
+  like?: Like | Like[]
+  max_doc_freq?: integer
+  max_query_terms?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
+  minimum_should_match?: MinimumShouldMatch
+  min_term_freq?: integer
+  min_word_length?: integer
+  per_field_analyzer?: Dictionary<Field, string>
+  routing?: Routing
+  stop_words?: StopWords
+  unlike?: Like | Like[]
+  version?: VersionNumber
+  version_type?: VersionType
 }

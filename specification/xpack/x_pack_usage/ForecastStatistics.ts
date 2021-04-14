@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { JobStatistics } from "./JobStatistics";
+import { long } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { JobStatistics } from './JobStatistics'
 
 export class ForecastStatistics {
-  forecasted_jobs: long;
-  memory_bytes: JobStatistics;
-  processing_time_ms: JobStatistics;
-  records: JobStatistics;
-  status: Dictionary<string, long>;
-  total: long;
+  forecasted_jobs: long
+  memory_bytes: JobStatistics
+  processing_time_ms: JobStatistics
+  records: JobStatistics
+  status: Dictionary<string, long>
+  total: long
 }

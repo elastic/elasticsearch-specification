@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { LifecycleOperationMode } from "./LifecycleOperationMode";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { LifecycleOperationMode } from './LifecycleOperationMode'
 
 export class GetIlmStatusResponse extends ResponseBase {
-  operation_mode: LifecycleOperationMode;
+  operation_mode: LifecycleOperationMode
 }

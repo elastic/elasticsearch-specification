@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { SnapshotShardsStats } from "./SnapshotShardsStats";
-import { SnapshotShardsStatus } from "./SnapshotShardsStatus";
-import { SnapshotStats } from "./SnapshotStats";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { SnapshotShardsStatus } from './SnapshotShardsStatus'
+import { SnapshotStats } from './SnapshotStats'
 
 export class SnapshotIndexStats {
-  shards: Dictionary<string, SnapshotShardsStatus>;
-  shards_stats: SnapshotShardsStats;
-  stats: SnapshotStats;
+  shards: Dictionary<string, SnapshotShardsStatus>
+  shards_stats: SnapshotShardsStats
+  stats: SnapshotStats
 }

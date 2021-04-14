@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { CronExpression } from "../watcher/schedule/CronExpression";
-import { SnapshotLifecycleConfig } from "./SnapshotLifecycleConfig";
-import { SnapshotRetentionConfiguration } from "./SnapshotRetentionConfiguration";
+import { CronExpression } from '../watcher/schedule/CronExpression'
+import { SnapshotLifecycleConfig } from './SnapshotLifecycleConfig'
+import { SnapshotRetentionConfiguration } from './SnapshotRetentionConfiguration'
 
 export class SnapshotLifecyclePolicy {
-  config: SnapshotLifecycleConfig;
-  name: string;
-  repository: string;
-  retention: SnapshotRetentionConfiguration;
-  schedule: CronExpression;
+  config: SnapshotLifecycleConfig
+  name: string
+  repository: string
+  retention: SnapshotRetentionConfiguration
+  schedule: CronExpression
 }

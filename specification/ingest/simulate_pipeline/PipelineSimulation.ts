@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Status } from "../../watcher/execution/Status";
-import { DocumentSimulation } from "./DocumentSimulation";
+import { Status } from '../../watcher/execution/Status'
+import { DocumentSimulation } from './DocumentSimulation'
 
 export class PipelineSimulation {
-  doc?: DocumentSimulation;
-  processor_results?: PipelineSimulation[];
-  tag?: string;
-  processor_type?: string;
-  status?: Status;
+  doc?: DocumentSimulation
+  processor_results?: PipelineSimulation[]
+  tag?: string
+  processor_type?: string
+  status?: Status
 }

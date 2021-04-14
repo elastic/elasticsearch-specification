@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field } from "../../../__common/common";
-import { ProcessorBase } from "../../ProcessorBase";
+import { Field } from '../../../__common/common'
+import { ProcessorBase } from '../../ProcessorBase'
 
 export class GeoIpProcessor extends ProcessorBase {
-  database_file: string;
-  field: Field;
-  first_only: boolean;
-  ignore_missing: boolean;
-  properties: string[];
-  target_field: Field;
+  database_file: string
+  field: Field
+  first_only: boolean
+  ignore_missing: boolean
+  properties: string[]
+  target_field: Field
 }

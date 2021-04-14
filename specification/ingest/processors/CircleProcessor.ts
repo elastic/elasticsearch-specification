@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { double, Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
-import { ShapeType } from "./ShapeType";
+import { double, Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
+import { ShapeType } from './ShapeType'
 
 export class CircleProcessor extends ProcessorBase {
-  error_distance: double;
-  field: Field;
-  ignore_missing: boolean;
-  shape_type: ShapeType;
-  target_field: Field;
+  error_distance: double
+  field: Field
+  ignore_missing: boolean
+  shape_type: ShapeType
+  target_field: Field
 }

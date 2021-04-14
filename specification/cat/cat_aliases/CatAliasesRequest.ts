@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { CatRequestBase } from "../CatBase";
+import { Names } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.aliases
@@ -28,10 +28,10 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatAliasesRequest extends CatRequestBase {
   path_parts?: {
-    name?: Names;
-  };
+    name?: Names
+  }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards;
-  };
-  body?: {};
+    expand_wildcards?: ExpandWildcards
+  }
+  body?: {}
 }

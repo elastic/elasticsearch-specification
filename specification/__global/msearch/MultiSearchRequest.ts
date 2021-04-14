@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { AggregationContainer } from "../../__common/aggregations/AggregationContainer";
-import { Indices, integer, long, Types } from "../../__common/common";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { SearchType } from "../../__common/common/SearchType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { PointInTimeReference } from "../search/point_in_time/PointInTimeReference";
-import { SuggestContainer } from "../search/suggesters/SuggestContainer";
+import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { Indices, integer, long, Types } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { SearchType } from '../../__common/common/SearchType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { PointInTimeReference } from '../search/point_in_time/PointInTimeReference'
+import { SuggestContainer } from '../search/suggesters/SuggestContainer'
 
 /**
  * @rest_spec_name msearch
@@ -35,41 +35,41 @@ import { SuggestContainer } from "../search/suggesters/SuggestContainer";
  */
 export interface MultiSearchRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types;
-  };
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    ccs_minimize_roundtrips?: boolean;
-    max_concurrent_searches?: long;
-    max_concurrent_shard_requests?: long;
-    pre_filter_shard_size?: long;
-    search_type?: SearchType;
-    rest_total_hits_as_int?: boolean;
-    typed_keys?: boolean;
-  };
-  body?: Array<MultiSearchHeader | MultiSearchBody>;
+    ccs_minimize_roundtrips?: boolean
+    max_concurrent_searches?: long
+    max_concurrent_shard_requests?: long
+    pre_filter_shard_size?: long
+    search_type?: SearchType
+    rest_total_hits_as_int?: boolean
+    typed_keys?: boolean
+  }
+  body?: Array<MultiSearchHeader | MultiSearchBody>
 }
 
 export class MultiSearchHeader {
-  allow_no_indices?: boolean;
-  expand_wildcards?: ExpandWildcards;
-  ignore_unavailable?: boolean;
-  index?: Indices;
-  preference?: string;
-  request_cache?: boolean;
-  routing?: string;
-  search_type?: SearchType;
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  index?: Indices
+  preference?: string
+  request_cache?: boolean
+  routing?: string
+  search_type?: SearchType
 }
 
 // Might contain the same parameters of SearchRequest['body'], but there are inconsistencies
 // https://github.com/elastic/elasticsearch/issues/4227
 export class MultiSearchBody {
-  aggregations?: Dictionary<string, AggregationContainer>;
-  aggs?: Dictionary<string, AggregationContainer>;
-  query?: QueryContainer;
-  from?: integer;
-  size?: integer;
-  pit?: PointInTimeReference;
-  track_total_hits?: boolean | integer;
-  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>;
+  aggregations?: Dictionary<string, AggregationContainer>
+  aggs?: Dictionary<string, AggregationContainer>
+  query?: QueryContainer
+  from?: integer
+  size?: integer
+  pit?: PointInTimeReference
+  track_total_hits?: boolean | integer
+  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
 }

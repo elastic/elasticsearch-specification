@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class AppendProcessor extends ProcessorBase {
-  field: Field;
-  value: UserDefinedValue[];
-  allow_duplicates?: boolean;
+  field: Field
+  value: UserDefinedValue[]
+  allow_duplicates?: boolean
 }

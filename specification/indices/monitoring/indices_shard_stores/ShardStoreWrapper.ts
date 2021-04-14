@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ShardStore } from "./ShardStore";
+import { ShardStore } from './ShardStore'
 
 export class ShardStoreWrapper {
-  stores: ShardStore[];
+  stores: ShardStore[]
 }

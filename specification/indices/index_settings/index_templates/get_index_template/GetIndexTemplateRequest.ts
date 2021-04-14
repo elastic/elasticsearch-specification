@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from "../../../../__common/common";
-import { RequestBase } from "../../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../../__common/common_options/time_unit/Time";
+import { Names } from '../../../../__common/common'
+import { RequestBase } from '../../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.get_template
@@ -28,13 +28,13 @@ import { Time } from "../../../../__common/common_options/time_unit/Time";
  */
 export interface GetIndexTemplateRequest extends RequestBase {
   path_parts?: {
-    name?: Names;
-  };
+    name?: Names
+  }
   query_parameters?: {
-    flat_settings?: boolean;
-    include_type_name?: boolean;
-    local?: boolean;
-    master_timeout?: Time;
-  };
-  body?: {};
+    flat_settings?: boolean
+    include_type_name?: boolean
+    local?: boolean
+    master_timeout?: Time
+  }
+  body?: {}
 }

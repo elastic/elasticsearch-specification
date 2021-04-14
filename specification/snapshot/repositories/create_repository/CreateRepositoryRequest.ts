@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { SnapshotRepository } from "../SnapshotRepository";
-import { SnapshotRepositorySettings } from "../SnapshotRepositorySettings";
+import { Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { SnapshotRepository } from '../SnapshotRepository'
+import { SnapshotRepositorySettings } from '../SnapshotRepositorySettings'
 
 /**
  * @rest_spec_name snapshot.create_repository
@@ -31,16 +31,16 @@ import { SnapshotRepositorySettings } from "../SnapshotRepositorySettings";
  */
 export interface CreateRepositoryRequest extends RequestBase {
   path_parts?: {
-    repository: Name;
-  };
+    repository: Name
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-    verify?: boolean;
-  };
+    master_timeout?: Time
+    timeout?: Time
+    verify?: boolean
+  }
   body?: {
-    repository?: SnapshotRepository;
-    type: string;
-    settings: SnapshotRepositorySettings;
-  };
+    repository?: SnapshotRepository
+    type: string
+    settings: SnapshotRepositorySettings
+  }
 }

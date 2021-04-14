@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { double, long } from "../../__common/common";
+import { double, long } from '../../__common/common'
 
 export class GraphConnection {
-  doc_count: long;
-  source: long;
-  target: long;
-  weight: double;
+  doc_count: long
+  source: long
+  target: long
+  weight: double
 }

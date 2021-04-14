@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Aggregation } from "../Aggregation";
-import { BucketsPath } from "./BucketsPath";
-import { GapPolicy } from "./GapPolicy";
+import { Aggregation } from '../Aggregation'
+import { BucketsPath } from './BucketsPath'
+import { GapPolicy } from './GapPolicy'
 
 export class PipelineAggregationBase extends Aggregation {
-  buckets_path?: BucketsPath;
-  format?: string;
-  gap_policy?: GapPolicy;
+  buckets_path?: BucketsPath
+  format?: string
+  gap_policy?: GapPolicy
 }

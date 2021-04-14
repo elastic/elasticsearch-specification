@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { License } from "../get_license/License";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { License } from '../get_license/License'
 
 /**
  * @rest_spec_name license.post
@@ -27,10 +27,10 @@ import { License } from "../get_license/License";
  */
 export interface PostLicenseRequest extends RequestBase {
   query_parameters?: {
-    acknowledge?: boolean;
-  };
+    acknowledge?: boolean
+  }
   body?: {
-    license?: License;
-    licenses?: Array<License>;
-  };
+    license?: License
+    licenses?: Array<License>
+  }
 }

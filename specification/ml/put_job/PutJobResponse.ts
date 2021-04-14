@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import { DateString, long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { AnalysisConfig } from "../job/config/AnalysisConfig";
-import { AnalysisLimits } from "../job/config/AnalysisLimits";
-import { DataDescription } from "../job/config/DataDescription";
-import { ModelPlotConfig } from "../job/config/ModelPlotConfig";
+import { DateString, long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { AnalysisConfig } from '../job/config/AnalysisConfig'
+import { AnalysisLimits } from '../job/config/AnalysisLimits'
+import { DataDescription } from '../job/config/DataDescription'
+import { ModelPlotConfig } from '../job/config/ModelPlotConfig'
 
 export class PutJobResponse extends ResponseBase {
-  allow_lazy_open: boolean;
-  analysis_config: AnalysisConfig;
-  analysis_limits: AnalysisLimits;
-  background_persist_interval: Time;
+  allow_lazy_open: boolean
+  analysis_config: AnalysisConfig
+  analysis_limits: AnalysisLimits
+  background_persist_interval: Time
   /** @prop_serializer DateTimeOffsetEpochMillisecondsFormatter */
-  create_time: DateString;
-  data_description: DataDescription;
-  description: string;
-  job_id: string;
-  job_type: string;
-  model_plot: ModelPlotConfig;
-  model_snapshot_id: string;
-  model_snapshot_retention_days: long;
-  renormalization_window_days: long;
-  results_index_name: string;
-  results_retention_days: long;
+  create_time: DateString
+  data_description: DataDescription
+  description: string
+  job_id: string
+  job_type: string
+  model_plot: ModelPlotConfig
+  model_snapshot_id: string
+  model_snapshot_retention_days: long
+  renormalization_window_days: long
+  results_index_name: string
+  results_retention_days: long
 }

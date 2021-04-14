@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { DateString, IndexName, VersionNumber } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ActionStatus } from "./ActionStatus";
-import { ActivationState } from "./ActivationState";
+import { DateString, IndexName, VersionNumber } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ActionStatus } from './ActionStatus'
+import { ActivationState } from './ActivationState'
 
 export class WatchStatus {
-  actions: Dictionary<IndexName, ActionStatus>;
-  last_checked?: DateString;
-  last_met_condition?: DateString;
-  state: ActivationState;
-  version: VersionNumber;
-  execution_state?: string; // TODO find execution states in export enum  in server codebase
+  actions: Dictionary<IndexName, ActionStatus>
+  last_checked?: DateString
+  last_met_condition?: DateString
+  state: ActivationState
+  version: VersionNumber
+  execution_state?: string // TODO find execution states in export enum  in server codebase
 }

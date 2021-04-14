@@ -17,51 +17,51 @@
  * under the License.
  */
 
-import { ByteSize, Percentage } from "../../__common/common";
+import { ByteSize, Percentage } from '../../__common/common'
 
 export class CatAllocationRecord {
   /**
    * number of shards on node
    * @aliases s
    */
-  shards?: string;
+  shards?: string
   /**
    * disk used by ES indices
    * @aliases di,diskIndices
    */
-  "disk.indices"?: ByteSize;
+  'disk.indices'?: ByteSize
   /**
    * disk used (total, not just ES)
    * @aliases du,diskUsed
    */
-  "disk.used"?: ByteSize;
+  'disk.used'?: ByteSize
   /**
    * disk available
    * @aliases da,diskAvail
    */
-  "disk.avail"?: ByteSize;
+  'disk.avail'?: ByteSize
   /**
    * total capacity of all volumes
    * @aliases dt,diskTotal
    */
-  "disk.total"?: ByteSize;
+  'disk.total'?: ByteSize
   /**
    * percent disk used
    * @aliases dp,diskPercent
    */
-  "disk.percent"?: Percentage;
+  'disk.percent'?: Percentage
   /**
    * host of node
    * @aliases h
    */
-  host?: string;
+  host?: string
   /**
    * ip of node
    */
-  ip?: string;
+  ip?: string
   /**
    * name of node
    * @aliases n
    */
-  node?: string;
+  node?: string
 }

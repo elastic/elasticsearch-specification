@@ -29,5 +29,5 @@ export enum PhoneticLanguage {
   polish = 8,
   romanian = 9,
   russian = 10,
-  spanish = 11,
+  spanish = 11
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
-import { ProcessorContainer } from "../ProcessorContainer";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
+import { ProcessorContainer } from '../ProcessorContainer'
 
 export class ForeachProcessor extends ProcessorBase {
-  field: Field;
-  ignore_missing?: boolean;
-  processor: ProcessorContainer;
+  field: Field
+  ignore_missing?: boolean
+  processor: ProcessorContainer
 }

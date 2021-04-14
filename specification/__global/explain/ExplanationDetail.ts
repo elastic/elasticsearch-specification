@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { float } from "../../__common/common";
+import { float } from '../../__common/common'
 
 export class ExplanationDetail {
-  description: string;
-  details?: ExplanationDetail[];
-  value: float;
+  description: string
+  details?: ExplanationDetail[]
+  value: float
 }

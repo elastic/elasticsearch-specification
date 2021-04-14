@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { StringFielddataFormat } from "./StringFielddataFormat";
+import { StringFielddataFormat } from './StringFielddataFormat'
 
 export class StringFielddata {
-  format: StringFielddataFormat;
+  format: StringFielddataFormat
 }

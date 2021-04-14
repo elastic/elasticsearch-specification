@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Field, Id, IndexName, Routing, VersionNumber } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { Field, Id, IndexName, Routing, VersionNumber } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class PercolateQuery extends QueryBase {
   /** @prop_serializer SourceFormatter`1 */
-  document?: UserDefinedValue;
+  document?: UserDefinedValue
   /** @prop_serializer SourceFormatter`1 */
-  documents?: UserDefinedValue[];
-  field?: Field;
-  id?: Id;
-  index?: IndexName;
-  preference?: string;
-  routing?: Routing;
-  version?: VersionNumber;
+  documents?: UserDefinedValue[]
+  field?: Field
+  id?: Id
+  index?: IndexName
+  preference?: string
+  routing?: Routing
+  version?: VersionNumber
 }

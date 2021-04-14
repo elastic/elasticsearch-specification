@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
-import { TotalHitsRelation } from "./TotalHitsRelation";
+import { long } from '../../../__common/common'
+import { TotalHitsRelation } from './TotalHitsRelation'
 
 export class TotalHits {
-  relation: TotalHitsRelation;
-  value: long;
+  relation: TotalHitsRelation
+  value: long
 }

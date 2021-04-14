@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { LifecycleExplain } from "./LifecycleExplain";
+import { IndexName } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { LifecycleExplain } from './LifecycleExplain'
 
 export class ExplainLifecycleResponse extends ResponseBase {
-  indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject;
+  indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
 }
 
 export class LifecycleExplainProject {
-  project: LifecycleExplainProjectSummary;
+  project: LifecycleExplainProjectSummary
 }
 
 export class LifecycleExplainProjectSummary {
-  index: IndexName;
-  managed: boolean;
+  index: IndexName
+  managed: boolean
 }

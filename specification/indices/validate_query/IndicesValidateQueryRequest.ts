@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices, Types } from "../../__common/common";
-import { DefaultOperator } from "../../__common/common/DefaultOperator";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
+import { Indices, Types } from '../../__common/common'
+import { DefaultOperator } from '../../__common/common/DefaultOperator'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name indices.validate_query
@@ -30,25 +30,25 @@ import { QueryContainer } from "../../__common/query_dsl/abstractions/container/
  */
 export interface IndicesValidateQueryRequest extends RequestBase {
   path_parts?: {
-    index?: Indices;
-    type?: Types;
-  };
+    index?: Indices
+    type?: Types
+  }
   query_parameters?: {
-    allow_no_indices?: boolean;
-    all_shards?: boolean;
-    analyzer?: string;
-    analyze_wildcard?: boolean;
-    default_operator?: DefaultOperator;
-    df?: string;
-    expand_wildcards?: ExpandWildcards;
-    explain?: boolean;
-    ignore_unavailable?: boolean;
-    lenient?: boolean;
-    query_on_query_string?: string;
-    rewrite?: boolean;
-    q?: string;
-  };
+    allow_no_indices?: boolean
+    all_shards?: boolean
+    analyzer?: string
+    analyze_wildcard?: boolean
+    default_operator?: DefaultOperator
+    df?: string
+    expand_wildcards?: ExpandWildcards
+    explain?: boolean
+    ignore_unavailable?: boolean
+    lenient?: boolean
+    query_on_query_string?: string
+    rewrite?: boolean
+    q?: string
+  }
   body?: {
-    query?: QueryContainer;
-  };
+    query?: QueryContainer
+  }
 }

@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { RollupFieldMetric } from "../rollup_configuration/RollupFieldMetric";
-import { RollupGroupings } from "../rollup_configuration/RollupGroupings";
+import { Id, IndexName, long } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { RollupFieldMetric } from '../rollup_configuration/RollupFieldMetric'
+import { RollupGroupings } from '../rollup_configuration/RollupGroupings'
 
 export class RollupJobConfiguration {
-  cron: string;
-  groups: RollupGroupings;
-  id: Id;
-  index_pattern: string;
-  metrics: RollupFieldMetric[];
-  page_size: long;
-  rollup_index: IndexName;
-  timeout: Time;
+  cron: string
+  groups: RollupGroupings
+  id: Id
+  index_pattern: string
+  metrics: RollupFieldMetric[]
+  page_size: long
+  rollup_index: IndexName
+  timeout: Time
 }

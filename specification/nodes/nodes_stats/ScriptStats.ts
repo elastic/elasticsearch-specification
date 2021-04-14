@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class ScriptStats {
-  cache_evictions: long;
-  compilations: long;
+  cache_evictions: long
+  compilations: long
 }

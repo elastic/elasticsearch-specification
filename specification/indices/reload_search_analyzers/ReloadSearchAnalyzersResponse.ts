@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { ReloadDetails } from "./ReloadDetails";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { ReloadDetails } from './ReloadDetails'
 
 export class ReloadSearchAnalyzersResponse extends ResponseBase {
-  reload_details: ReloadDetails[];
-  _shards: ShardStatistics;
+  reload_details: ReloadDetails[]
+  _shards: ShardStatistics
 }

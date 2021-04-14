@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { ProcessorBase } from "../ProcessorBase";
+import { Field } from '../../__common/common'
+import { ProcessorBase } from '../ProcessorBase'
 
 export class JoinProcessor extends ProcessorBase {
-  field: Field;
-  separator: string;
-  target_field?: Field;
+  field: Field
+  separator: string
+  target_field?: Field
 }

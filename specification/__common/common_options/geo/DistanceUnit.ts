@@ -26,5 +26,5 @@ export enum DistanceUnit {
   km = 5,
   m = 6,
   cm = 7,
-  mm = 8,
+  mm = 8
 }

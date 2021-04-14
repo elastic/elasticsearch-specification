@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { long, NodeIds } from "../../__common/common";
-import { ThreadType } from "../../__common/common/ThreadType";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { long, NodeIds } from '../../__common/common'
+import { ThreadType } from '../../__common/common/ThreadType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name nodes.hot_threads
@@ -29,15 +29,15 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface NodesHotThreadsRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-  };
+    node_id?: NodeIds
+  }
   query_parameters?: {
-    ignore_idle_threads?: boolean;
-    interval?: Time;
-    snapshots?: long;
-    threads?: long;
-    thread_type?: ThreadType;
-    timeout?: Time;
-  };
-  body?: {};
+    ignore_idle_threads?: boolean
+    interval?: Time
+    snapshots?: long
+    threads?: long
+    thread_type?: ThreadType
+    timeout?: Time
+  }
+  body?: {}
 }

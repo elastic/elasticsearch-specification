@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { PhraseSuggestCollateQuery } from "./PhraseSuggestCollateQuery";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { PhraseSuggestCollateQuery } from './PhraseSuggestCollateQuery'
 
 export class PhraseSuggestCollate {
-  params?: Dictionary<string, UserDefinedValue>;
-  prune?: boolean;
-  query: PhraseSuggestCollateQuery;
+  params?: Dictionary<string, UserDefinedValue>
+  prune?: boolean
+  query: PhraseSuggestCollateQuery
 }

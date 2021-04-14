@@ -17,31 +17,31 @@
  * under the License.
  */
 
-import { Field, Fields, integer, long } from "../../../common";
-import { QueryContainer } from "../../../query_dsl/abstractions/container/QueryContainer";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { ChiSquareHeuristic } from "../significant_terms/heuristics/ChiSquareHeuristic";
-import { GoogleNormalizedDistanceHeuristic } from "../significant_terms/heuristics/GoogleNormalizedDistanceHeuristic";
-import { MutualInformationHeuristic } from "../significant_terms/heuristics/MutualInformationHeuristic";
-import { PercentageScoreHeuristic } from "../significant_terms/heuristics/PercentageScoreHeuristic";
-import { ScriptedHeuristic } from "../significant_terms/heuristics/ScriptedHeuristic";
-import { TermsAggregationExecutionHint } from "../terms/TermsAggregationExecutionHint";
+import { Field, Fields, integer, long } from '../../../common'
+import { QueryContainer } from '../../../query_dsl/abstractions/container/QueryContainer'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { ChiSquareHeuristic } from '../significant_terms/heuristics/ChiSquareHeuristic'
+import { GoogleNormalizedDistanceHeuristic } from '../significant_terms/heuristics/GoogleNormalizedDistanceHeuristic'
+import { MutualInformationHeuristic } from '../significant_terms/heuristics/MutualInformationHeuristic'
+import { PercentageScoreHeuristic } from '../significant_terms/heuristics/PercentageScoreHeuristic'
+import { ScriptedHeuristic } from '../significant_terms/heuristics/ScriptedHeuristic'
+import { TermsAggregationExecutionHint } from '../terms/TermsAggregationExecutionHint'
 
 export class SignificantTextAggregation extends BucketAggregationBase {
-  background_filter?: QueryContainer;
-  chi_square?: ChiSquareHeuristic;
-  exclude?: string | string[];
-  execution_hint?: TermsAggregationExecutionHint;
-  field?: Field;
-  filter_duplicate_text?: boolean;
-  gnd?: GoogleNormalizedDistanceHeuristic;
-  include?: string | string[];
-  min_doc_count?: long;
-  mutual_information?: MutualInformationHeuristic;
-  percentage?: PercentageScoreHeuristic;
-  script_heuristic?: ScriptedHeuristic;
-  shard_min_doc_count?: long;
-  shard_size?: integer;
-  size?: integer;
-  source_fields?: Fields;
+  background_filter?: QueryContainer
+  chi_square?: ChiSquareHeuristic
+  exclude?: string | string[]
+  execution_hint?: TermsAggregationExecutionHint
+  field?: Field
+  filter_duplicate_text?: boolean
+  gnd?: GoogleNormalizedDistanceHeuristic
+  include?: string | string[]
+  min_doc_count?: long
+  mutual_information?: MutualInformationHeuristic
+  percentage?: PercentageScoreHeuristic
+  script_heuristic?: ScriptedHeuristic
+  shard_min_doc_count?: long
+  shard_size?: integer
+  size?: integer
+  source_fields?: Fields
 }

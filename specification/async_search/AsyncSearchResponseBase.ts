@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { EpochMillis, Id } from "../__common/common";
-import { ResponseBase } from "../__common/common_abstractions/response/ResponseBase";
-import { AsyncSearch } from "./AsyncSearch";
+import { EpochMillis, Id } from '../__common/common'
+import { ResponseBase } from '../__common/common_abstractions/response/ResponseBase'
+import { AsyncSearch } from './AsyncSearch'
 
 export class AsyncSearchResponseBase extends ResponseBase {
-  id?: Id;
-  is_partial: boolean;
-  is_running: boolean;
-  expiration_time_in_millis: EpochMillis;
-  start_time_in_millis: EpochMillis;
+  id?: Id
+  is_partial: boolean
+  is_running: boolean
+  expiration_time_in_millis: EpochMillis
+  start_time_in_millis: EpochMillis
 }
 export class AsyncSearchDocumentResponseBase<
   TDocument
 > extends AsyncSearchResponseBase {
-  response: AsyncSearch<TDocument>;
+  response: AsyncSearch<TDocument>
 }

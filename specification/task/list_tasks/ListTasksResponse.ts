@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ErrorCause } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TaskInfo } from "../get_task/TaskInfo";
-import { TaskExecutingNode } from "./TaskExecutingNode";
+import { ErrorCause } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TaskInfo } from '../get_task/TaskInfo'
+import { TaskExecutingNode } from './TaskExecutingNode'
 
 export class ListTasksResponse extends ResponseBase {
-  node_failures?: ErrorCause[];
-  nodes?: Dictionary<string, TaskExecutingNode>;
-  tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>;
+  node_failures?: ErrorCause[]
+  nodes?: Dictionary<string, TaskExecutingNode>
+  tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>
 }

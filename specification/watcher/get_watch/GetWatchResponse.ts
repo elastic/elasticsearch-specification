@@ -21,18 +21,18 @@ import {
   Id,
   integer,
   SequenceNumber,
-  VersionNumber,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { WatchStatus } from "../acknowledge_watch/WatchStatus";
-import { Watch } from "../Watch";
+  VersionNumber
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { WatchStatus } from '../acknowledge_watch/WatchStatus'
+import { Watch } from '../Watch'
 
 export class GetWatchResponse extends ResponseBase {
-  found: boolean;
-  _id: Id;
-  status?: WatchStatus;
-  watch?: Watch;
-  _primary_term?: integer;
-  _seq_no?: SequenceNumber;
-  _version?: VersionNumber;
+  found: boolean
+  _id: Id
+  status?: WatchStatus
+  watch?: Watch
+  _primary_term?: integer
+  _seq_no?: SequenceNumber
+  _version?: VersionNumber
 }

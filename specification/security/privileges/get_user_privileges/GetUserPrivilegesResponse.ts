@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { ApplicationResourcePrivileges } from "./ApplicationResourcePrivileges";
-import { GlobalPrivileges } from "./GlobalPrivileges";
-import { UserIndicesPrivileges } from "./UserIndicesPrivileges";
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { ApplicationResourcePrivileges } from './ApplicationResourcePrivileges'
+import { GlobalPrivileges } from './GlobalPrivileges'
+import { UserIndicesPrivileges } from './UserIndicesPrivileges'
 
 export class GetUserPrivilegesResponse extends ResponseBase {
-  applications: ApplicationResourcePrivileges[];
-  cluster: string[];
-  global: GlobalPrivileges[];
-  indices: UserIndicesPrivileges[];
-  run_as: string[];
+  applications: ApplicationResourcePrivileges[]
+  cluster: string[]
+  global: GlobalPrivileges[]
+  indices: UserIndicesPrivileges[]
+  run_as: string[]
 }

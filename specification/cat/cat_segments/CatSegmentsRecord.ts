@@ -21,81 +21,81 @@ import {
   ByteSize,
   IndexName,
   NodeId,
-  VersionString,
-} from "../../__common/common";
+  VersionString
+} from '../../__common/common'
 
 export class CatSegmentsRecord {
   /**
    * index name
    * @aliases i, idx
    */
-  "index"?: IndexName;
+  'index'?: IndexName
   /**
    * shard name
    * @aliases s, sh
    */
-  "shard"?: string;
+  'shard'?: string
   /**
    * primary or replica
    * @aliases p,pr,primaryOrReplica
    */
-  "prirep"?: string;
+  'prirep'?: string
   /**
    * ip of node where it lives
    */
-  "ip"?: string;
+  'ip'?: string
   /**
    * unique id of node where it lives
    */
-  "id"?: NodeId;
+  'id'?: NodeId
   /**
    * segment name
    * @aliases seg
    */
-  "segment"?: string;
+  'segment'?: string
   /**
    * segment generation
    * @aliases g,gen
    */
-  "generation"?: string;
+  'generation'?: string
   /**
    * number of docs in segment
    * @aliases dc,docsCount
    */
-  "docs.count"?: string;
+  'docs.count'?: string
   /**
    * number of deleted docs in segment
    * @aliases dd,docsDeleted
    */
-  "docs.deleted"?: string;
+  'docs.deleted'?: string
   /**
    * segment size in bytes
    * @aliases si
    */
-  "size"?: ByteSize;
+  'size'?: ByteSize
   /**
    * segment memory in bytes
    * @aliases sm,sizeMemory
    */
-  "size.memory"?: ByteSize;
+  'size.memory'?: ByteSize
   /**
    * is segment committed
    * @aliases ic,isCommitted
    */
-  "committed"?: string;
+  'committed'?: string
   /**
    * is segment searched
    * @aliases is,isSearchable
    */
-  "searchable"?: string;
+  'searchable'?: string
   /**
    * version
    * @aliases v
    */
-  "version"?: VersionString;
+  'version'?: VersionString
   /**
    * is segment compound
    * @aliases ico,isCompound
    */
-  "compound"?: string;
+  'compound'?: string
 }

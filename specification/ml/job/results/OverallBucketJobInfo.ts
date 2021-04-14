@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { double } from "../../../__common/common";
+import { double } from '../../../__common/common'
 
 export class OverallBucketJobInfo {
-  job_id: string;
-  max_anomaly_score: double;
+  job_id: string
+  max_anomaly_score: double
 }

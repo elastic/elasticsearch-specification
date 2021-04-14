@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Fuzziness, integer, MultiTermQueryRewrite } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { Fuzziness, integer, MultiTermQueryRewrite } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class FuzzyQuery extends QueryBase {
-  max_expansions?: integer;
-  prefix_length?: integer;
-  rewrite?: MultiTermQueryRewrite;
-  transpositions?: boolean;
-  fuzziness?: Fuzziness;
-  value: UserDefinedValue;
+  max_expansions?: integer
+  prefix_length?: integer
+  rewrite?: MultiTermQueryRewrite
+  transpositions?: boolean
+  fuzziness?: Fuzziness
+  value: UserDefinedValue
 }

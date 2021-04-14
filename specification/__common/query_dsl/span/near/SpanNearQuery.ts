@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { QueryBase } from "../../abstractions/query/Query";
-import { SpanQuery } from "../SpanQuery";
+import { integer } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanNearQuery extends QueryBase {
-  clauses?: SpanQuery[];
-  in_order?: boolean;
-  slop?: integer;
+  clauses?: SpanQuery[]
+  in_order?: boolean
+  slop?: integer
 }

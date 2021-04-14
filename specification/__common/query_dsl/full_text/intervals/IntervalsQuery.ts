@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { QueryBase } from "../../abstractions/query/Query";
-import { IntervalsAllOf } from "./IntervalsAllOf";
-import { IntervalsAnyOf } from "./IntervalsAnyOf";
-import { IntervalsFuzzy } from "./IntervalsFuzzy";
-import { IntervalsMatch } from "./IntervalsMatch";
-import { IntervalsPrefix } from "./IntervalsPrefix";
-import { IntervalsWildcard } from "./IntervalsWildcard";
+import { QueryBase } from '../../abstractions/query/Query'
+import { IntervalsAllOf } from './IntervalsAllOf'
+import { IntervalsAnyOf } from './IntervalsAnyOf'
+import { IntervalsFuzzy } from './IntervalsFuzzy'
+import { IntervalsMatch } from './IntervalsMatch'
+import { IntervalsPrefix } from './IntervalsPrefix'
+import { IntervalsWildcard } from './IntervalsWildcard'
 
 export class IntervalsQuery extends QueryBase {
-  all_of?: IntervalsAllOf;
-  any_of?: IntervalsAnyOf;
-  fuzzy?: IntervalsFuzzy;
-  match?: IntervalsMatch;
-  prefix?: IntervalsPrefix;
-  wildcard?: IntervalsWildcard;
+  all_of?: IntervalsAllOf
+  any_of?: IntervalsAnyOf
+  fuzzy?: IntervalsFuzzy
+  match?: IntervalsMatch
+  prefix?: IntervalsPrefix
+  wildcard?: IntervalsWildcard
 }

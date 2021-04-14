@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { CronExpression } from "../../watcher/schedule/CronExpression";
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { SnapshotLifecycleConfig } from "../SnapshotLifecycleConfig";
-import { SnapshotRetentionConfiguration } from "../SnapshotRetentionConfiguration";
+import { CronExpression } from '../../watcher/schedule/CronExpression'
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { SnapshotLifecycleConfig } from '../SnapshotLifecycleConfig'
+import { SnapshotRetentionConfiguration } from '../SnapshotRetentionConfiguration'
 
 /**
  * @rest_spec_name slm.put_lifecycle
@@ -30,14 +30,14 @@ import { SnapshotRetentionConfiguration } from "../SnapshotRetentionConfiguratio
  */
 export interface PutSnapshotLifecycleRequest extends RequestBase {
   path_parts?: {
-    policy_id: Name;
-  };
-  query_parameters?: {};
+    policy_id: Name
+  }
+  query_parameters?: {}
   body?: {
-    config?: SnapshotLifecycleConfig;
-    name?: string;
-    repository?: string;
-    retention?: SnapshotRetentionConfiguration;
-    schedule?: CronExpression;
-  };
+    config?: SnapshotLifecycleConfig
+    name?: string
+    repository?: string
+    retention?: SnapshotRetentionConfiguration
+    schedule?: CronExpression
+  }
 }

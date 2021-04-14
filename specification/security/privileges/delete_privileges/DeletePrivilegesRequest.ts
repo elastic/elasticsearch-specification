@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { Refresh } from "../../../__common/common/Refresh";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../../__common/common'
+import { Refresh } from '../../../__common/common/Refresh'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.delete_privileges
@@ -28,11 +28,11 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface DeletePrivilegesRequest extends RequestBase {
   path_parts?: {
-    application: Name;
-    name: Name;
-  };
+    application: Name
+    name: Name
+  }
   query_parameters?: {
-    refresh?: Refresh;
-  };
-  body?: {};
+    refresh?: Refresh
+  }
+  body?: {}
 }

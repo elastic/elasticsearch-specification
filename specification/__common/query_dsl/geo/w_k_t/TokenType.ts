@@ -22,5 +22,5 @@ export enum TokenType {
   Word = 1,
   LParen = 2,
   RParen = 3,
-  Comma = 4,
+  Comma = 4
 }

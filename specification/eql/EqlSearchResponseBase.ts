@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Id, integer } from "../__common/common";
-import { ResponseBase } from "../__common/common_abstractions/response/ResponseBase";
-import { EqlHits } from "./EqlHits";
+import { Id, integer } from '../__common/common'
+import { ResponseBase } from '../__common/common_abstractions/response/ResponseBase'
+import { EqlHits } from './EqlHits'
 
 export class EqlSearchResponseBase<TEvent> extends ResponseBase {
-  id?: Id;
-  is_partial?: boolean;
-  is_running?: boolean;
-  took?: integer;
-  timed_out?: boolean;
-  hits: EqlHits<TEvent>;
+  id?: Id
+  is_partial?: boolean
+  is_running?: boolean
+  took?: integer
+  timed_out?: boolean
+  hits: EqlHits<TEvent>
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexPattern, IndexPatterns, integer } from "../../__common/common";
+import { IndexPattern, IndexPatterns, integer } from '../../__common/common'
 
 export class AutoFollowPattern {
-  active: boolean;
-  remote_cluster: string;
-  follow_index_pattern?: IndexPattern;
-  leader_index_patterns: IndexPatterns;
-  max_outstanding_read_requests: integer;
+  active: boolean
+  remote_cluster: string
+  follow_index_pattern?: IndexPattern
+  leader_index_patterns: IndexPatterns
+  max_outstanding_read_requests: integer
 }

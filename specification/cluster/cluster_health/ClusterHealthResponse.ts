@@ -21,29 +21,29 @@ import {
   EpochMillis,
   IndexName,
   integer,
-  Percentage,
-} from "../../__common/common";
-import { Health } from "../../__common/common/Health";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { IndexHealthStats } from "./IndexHealthStats";
+  Percentage
+} from '../../__common/common'
+import { Health } from '../../__common/common/Health'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { IndexHealthStats } from './IndexHealthStats'
 
 export class ClusterHealthResponse extends ResponseBase {
-  active_primary_shards: integer;
-  active_shards: integer;
-  active_shards_percent_as_number: Percentage;
-  cluster_name: string;
-  delayed_unassigned_shards: integer;
+  active_primary_shards: integer
+  active_shards: integer
+  active_shards_percent_as_number: Percentage
+  cluster_name: string
+  delayed_unassigned_shards: integer
   /** @prop_serializer ResolvableReadOnlyDictionaryFormatter`2 */
-  indices?: Dictionary<IndexName, IndexHealthStats>;
-  initializing_shards: integer;
-  number_of_data_nodes: integer;
-  number_of_in_flight_fetch: integer;
-  number_of_nodes: integer;
-  number_of_pending_tasks: integer;
-  relocating_shards: integer;
-  status: Health;
-  task_max_waiting_in_queue_millis: EpochMillis;
-  timed_out: boolean;
-  unassigned_shards: integer;
+  indices?: Dictionary<IndexName, IndexHealthStats>
+  initializing_shards: integer
+  number_of_data_nodes: integer
+  number_of_in_flight_fetch: integer
+  number_of_nodes: integer
+  number_of_pending_tasks: integer
+  relocating_shards: integer
+  status: Health
+  task_max_waiting_in_queue_millis: EpochMillis
+  timed_out: boolean
+  unassigned_shards: integer
 }

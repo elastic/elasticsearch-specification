@@ -26,5 +26,5 @@ export enum LicenseType {
   silver = 5,
   gold = 6,
   platinum = 7,
-  enterprise = 8,
+  enterprise = 8
 }

@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { Field } from "../../../common";
-import { DistanceUnit } from "../../../common_options/geo/DistanceUnit";
-import { GeoDistanceType } from "../../../common_options/geo/GeoDistanceType";
-import { AggregationRange } from "../../../common_options/range/AggregationRange";
-import { GeoLocation } from "../../../query_dsl/geo/GeoLocation";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { Field } from '../../../common'
+import { DistanceUnit } from '../../../common_options/geo/DistanceUnit'
+import { GeoDistanceType } from '../../../common_options/geo/GeoDistanceType'
+import { AggregationRange } from '../../../common_options/range/AggregationRange'
+import { GeoLocation } from '../../../query_dsl/geo/GeoLocation'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class GeoDistanceAggregation extends BucketAggregationBase {
-  distance_type?: GeoDistanceType;
-  field?: Field;
-  origin?: GeoLocation | string;
-  ranges?: AggregationRange[];
-  unit?: DistanceUnit;
+  distance_type?: GeoDistanceType
+  field?: Field
+  origin?: GeoLocation | string
+  ranges?: AggregationRange[]
+  unit?: DistanceUnit
 }

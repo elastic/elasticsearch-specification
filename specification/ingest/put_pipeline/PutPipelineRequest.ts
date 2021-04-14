@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, VersionNumber } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { ProcessorContainer } from "../ProcessorContainer";
+import { Id, VersionNumber } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { ProcessorContainer } from '../ProcessorContainer'
 
 /**
  * @rest_spec_name ingest.put_pipeline
@@ -29,16 +29,16 @@ import { ProcessorContainer } from "../ProcessorContainer";
  */
 export interface PutPipelineRequest extends RequestBase {
   path_parts?: {
-    id: Id;
-  };
+    id: Id
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+    master_timeout?: Time
+    timeout?: Time
+  }
   body?: {
-    description?: string;
-    on_failure?: ProcessorContainer[];
-    processors?: ProcessorContainer[];
-    version?: VersionNumber;
-  };
+    description?: string
+    on_failure?: ProcessorContainer[]
+    processors?: ProcessorContainer[]
+    version?: VersionNumber
+  }
 }

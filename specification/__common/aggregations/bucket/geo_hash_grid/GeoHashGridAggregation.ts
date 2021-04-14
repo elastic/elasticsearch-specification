@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Field, GeoHashPrecision, integer } from "../../../common";
-import { BoundingBox } from "../../../query_dsl/geo/bounding_box/BoundingBox";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { Field, GeoHashPrecision, integer } from '../../../common'
+import { BoundingBox } from '../../../query_dsl/geo/bounding_box/BoundingBox'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class GeoHashGridAggregation extends BucketAggregationBase {
-  bounds?: BoundingBox;
-  field?: Field;
-  precision?: GeoHashPrecision;
-  shard_size?: integer;
-  size?: integer;
+  bounds?: BoundingBox
+  field?: Field
+  precision?: GeoHashPrecision
+  shard_size?: integer
+  size?: integer
 }

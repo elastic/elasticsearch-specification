@@ -17,17 +17,17 @@
  * under the License.
  */
 
-import { ErrorCause, Name } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
-import { SnapshotInfo } from "../SnapshotInfo";
+import { ErrorCause, Name } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
+import { SnapshotInfo } from '../SnapshotInfo'
 
 export class GetSnapshotResponse extends ResponseBase {
-  responses?: SnapshotResponseItem[];
-  snapshots?: SnapshotInfo[];
+  responses?: SnapshotResponseItem[]
+  snapshots?: SnapshotInfo[]
 }
 
 export class SnapshotResponseItem {
-  repository: Name;
-  snapshots?: SnapshotInfo[];
-  error?: ErrorCause;
+  repository: Name
+  snapshots?: SnapshotInfo[]
+  error?: ErrorCause
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { double } from '../../../../common'
+import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class IpProperty extends DocValuesPropertyBase {
-  boost?: double;
-  index?: boolean;
-  null_value?: string;
-  type: "ip";
+  boost?: double
+  index?: boolean
+  null_value?: string
+  type: 'ip'
 }

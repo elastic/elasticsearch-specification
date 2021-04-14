@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../../__common/common_options/time_unit/Time";
+import { Names } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name snapshot.delete_repository
@@ -28,11 +28,11 @@ import { Time } from "../../../__common/common_options/time_unit/Time";
  */
 export interface DeleteRepositoryRequest extends RequestBase {
   path_parts?: {
-    repository: Names;
-  };
+    repository: Names
+  }
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
-  body?: {};
+    master_timeout?: Time
+    timeout?: Time
+  }
+  body?: {}
 }

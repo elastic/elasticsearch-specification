@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { double } from "../../../common";
-import { FormatMetricAggregationBase } from "../MetricAggregation";
+import { double } from '../../../common'
+import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class MedianAbsoluteDeviationAggregation extends FormatMetricAggregationBase {
-  compression?: double;
+  compression?: double
 }

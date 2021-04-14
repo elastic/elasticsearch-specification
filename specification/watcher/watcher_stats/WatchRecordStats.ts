@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { DateString, Id } from "../../__common/common";
-import { ExecutionPhase } from "./ExecutionPhase";
-import { WatchRecordQueuedStats } from "./WatchRecordQueuedStats";
+import { DateString, Id } from '../../__common/common'
+import { ExecutionPhase } from './ExecutionPhase'
+import { WatchRecordQueuedStats } from './WatchRecordQueuedStats'
 
 export class WatchRecordStats extends WatchRecordQueuedStats {
-  execution_phase: ExecutionPhase;
-  triggered_time: DateString;
-  executed_actions?: Array<string>;
-  watch_id: Id;
-  watch_record_id: Id;
+  execution_phase: ExecutionPhase
+  triggered_time: DateString
+  executed_actions?: Array<string>
+  watch_id: Id
+  watch_record_id: Id
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.close_job
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface CloseJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
+    job_id: Id
+  }
   query_parameters?: {
-    allow_no_jobs?: boolean;
-    force?: boolean;
-    timeout?: Time; // default: 30s
-  };
-  body?: {};
+    allow_no_jobs?: boolean
+    force?: boolean
+    timeout?: Time // default: 30s
+  }
+  body?: {}
 }

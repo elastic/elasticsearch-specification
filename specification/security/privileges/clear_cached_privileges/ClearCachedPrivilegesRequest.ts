@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Name } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.clear_cached_privileges
@@ -27,8 +27,8 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface ClearCachedPrivilegesRequest extends RequestBase {
   path_parts?: {
-    application: Name;
-  };
-  query_parameters?: {};
-  body?: {};
+    application: Name
+  }
+  query_parameters?: {}
+  body?: {}
 }

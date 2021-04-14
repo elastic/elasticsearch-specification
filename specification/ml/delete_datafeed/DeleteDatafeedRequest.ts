@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.delete_datafeed
@@ -27,10 +27,10 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteDatafeedRequest extends RequestBase {
   path_parts?: {
-    datafeed_id: Id;
-  };
+    datafeed_id: Id
+  }
   query_parameters?: {
-    force?: boolean;
-  };
-  body?: {};
+    force?: boolean
+  }
+  body?: {}
 }

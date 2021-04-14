@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class CcrUsage extends XPackUsage {
-  auto_follow_patterns_count: integer;
-  follower_indices_count: integer;
+  auto_follow_patterns_count: integer
+  follower_indices_count: integer
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name license.get
@@ -26,8 +26,8 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface GetLicenseRequest extends RequestBase {
   query_parameters?: {
-    accept_enterprise?: boolean;
-    local?: boolean;
-  };
-  body?: {};
+    accept_enterprise?: boolean
+    local?: boolean
+  }
+  body?: {}
 }

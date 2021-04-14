@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class PutFilterResponse extends ResponseBase {
-  description: string;
-  filter_id: string;
-  items: string[];
+  description: string
+  filter_id: string
+  items: string[]
 }

@@ -56,5 +56,5 @@ export enum FieldType {
   flattened = 35,
   shape = 36,
   histogram = 37,
-  constant_keyword = 38,
+  constant_keyword = 38
 }

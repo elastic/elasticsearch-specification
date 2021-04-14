@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { integer } from "../../common";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { integer } from '../../common'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class NGramTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */
-  max_gram: integer;
+  max_gram: integer
   /** @prop_serializer NullableStringIntFormatter */
-  min_gram: integer;
+  min_gram: integer
 }

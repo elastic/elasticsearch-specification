@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { EpochMillis, long, Percentage } from "../../../__common/common";
+import { EpochMillis, long, Percentage } from '../../../__common/common'
 
 export class RecoveryTranslogStatus {
-  percent: Percentage;
-  recovered: long;
-  total: long;
-  total_on_start: long;
-  total_time?: string;
-  total_time_in_millis: EpochMillis;
+  percent: Percentage
+  recovered: long
+  total: long
+  total_on_start: long
+  total_time?: string
+  total_time_in_millis: EpochMillis
 }

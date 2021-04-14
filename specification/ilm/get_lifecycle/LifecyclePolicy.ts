@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { DateString, VersionNumber } from "../../__common/common";
-import { Policy } from "../Policy";
+import { DateString, VersionNumber } from '../../__common/common'
+import { Policy } from '../Policy'
 
 export class LifecyclePolicy {
-  modified_date: DateString;
-  policy: Policy;
-  version: VersionNumber;
+  modified_date: DateString
+  policy: Policy
+  version: VersionNumber
 }

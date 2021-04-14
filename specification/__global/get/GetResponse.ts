@@ -23,21 +23,21 @@ import {
   long,
   SequenceNumber,
   Type,
-  VersionNumber,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+  VersionNumber
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class GetResponse<TDocument> extends ResponseBase {
-  _index: IndexName;
-  fields?: Dictionary<string, UserDefinedValue>;
-  found: boolean;
-  _id: Id;
-  _primary_term?: long;
-  _routing?: string;
-  _seq_no?: SequenceNumber;
-  _source?: TDocument;
-  _type: Type;
-  _version?: VersionNumber;
+  _index: IndexName
+  fields?: Dictionary<string, UserDefinedValue>
+  found: boolean
+  _id: Id
+  _primary_term?: long
+  _routing?: string
+  _seq_no?: SequenceNumber
+  _source?: TDocument
+  _type: Type
+  _version?: VersionNumber
 }

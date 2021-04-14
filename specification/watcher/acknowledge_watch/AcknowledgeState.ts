@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DateString } from "../../__common/common";
-import { AcknowledgementState } from "./AcknowledgementState";
+import { DateString } from '../../__common/common'
+import { AcknowledgementState } from './AcknowledgementState'
 
 export class AcknowledgeState {
-  state: AcknowledgementState;
-  timestamp: DateString;
+  state: AcknowledgementState
+  timestamp: DateString
 }

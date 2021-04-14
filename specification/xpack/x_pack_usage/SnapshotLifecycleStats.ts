@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, Id, long } from "../../__common/common";
+import { DateString, EpochMillis, Id, long } from '../../__common/common'
 
 export class SnapshotLifecycleStats {
-  retention_deletion_time?: DateString;
-  retention_deletion_time_millis?: EpochMillis;
-  retention_failed?: long;
-  retention_runs?: long;
-  retention_timed_out?: long;
-  policy?: Id;
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
   /**
    * @aliases snapshots_deleted
    */
-  total_snapshots_deleted?: long;
+  total_snapshots_deleted?: long
   /**
    * @aliases snapshot_deletion_failures
    */
-  total_snapshot_deletion_failures?: long;
+  total_snapshot_deletion_failures?: long
   /**
    * @aliases snapshots_failed
    */
-  total_snapshots_failed?: long;
+  total_snapshots_failed?: long
   /**
    * @aliases snapshots_taken
    */
-  total_snapshots_taken?: long;
+  total_snapshots_taken?: long
 }

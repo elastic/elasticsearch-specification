@@ -19,5 +19,5 @@
 
 export enum MatchType {
   simple = 0,
-  regex = 1,
+  regex = 1
 }

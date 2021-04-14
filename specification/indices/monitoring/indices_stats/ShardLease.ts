@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id, long, SequenceNumber } from "../../../__common/common";
+import { Id, long, SequenceNumber } from '../../../__common/common'
 
 export class ShardLease {
-  id: Id;
-  retaining_seq_no: SequenceNumber;
-  timestamp: long;
-  source: string;
+  id: Id
+  retaining_seq_no: SequenceNumber
+  timestamp: long
+  source: string
 }

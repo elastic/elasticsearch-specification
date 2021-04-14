@@ -25,5 +25,5 @@ export enum ExecutionPhase {
   actions = 4,
   watch_transform = 5,
   aborted = 6,
-  finished = 7,
+  finished = 7
 }

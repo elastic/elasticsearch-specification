@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class BoolQuery extends QueryBase {
-  filter?: QueryContainer | QueryContainer[];
-  minimum_should_match?: MinimumShouldMatch;
-  must?: QueryContainer | QueryContainer[];
-  must_not?: QueryContainer | QueryContainer[];
-  should?: QueryContainer | QueryContainer[];
+  filter?: QueryContainer | QueryContainer[]
+  minimum_should_match?: MinimumShouldMatch
+  must?: QueryContainer | QueryContainer[]
+  must_not?: QueryContainer | QueryContainer[]
+  should?: QueryContainer | QueryContainer[]
 }

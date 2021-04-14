@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { DateString, Id } from "../../../__common/common";
-import { EmailBody } from "../../action/email/EmailBody";
-import { EmailPriority } from "../../action/email/EmailPriority";
+import { DateString, Id } from '../../../__common/common'
+import { EmailBody } from '../../action/email/EmailBody'
+import { EmailPriority } from '../../action/email/EmailPriority'
 
 export class EmailResult {
-  bcc?: string[];
-  body?: EmailBody;
-  cc?: string[];
-  from?: string;
-  id: Id;
-  priority?: EmailPriority;
-  reply_to?: string[];
-  sent_date: DateString;
-  subject: string;
-  to: string[];
+  bcc?: string[]
+  body?: EmailBody
+  cc?: string[]
+  from?: string
+  id: Id
+  priority?: EmailPriority
+  reply_to?: string[]
+  sent_date: DateString
+  subject: string
+  to: string[]
 }

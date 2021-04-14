@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class ShardCompletion {
-  size_in_bytes: long;
+  size_in_bytes: long
 }

@@ -18,5 +18,5 @@
  */
 
 export enum GeographicFunction {
-  LatLong = 0,
+  LatLong = 0
 }

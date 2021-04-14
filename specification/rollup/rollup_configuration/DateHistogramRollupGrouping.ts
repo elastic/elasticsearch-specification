@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Field } from "../../__common/common";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Field } from '../../__common/common'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 export class DateHistogramRollupGrouping {
-  delay?: Time;
-  field: Field;
-  format?: string;
-  interval?: Time;
-  calendar_interval?: Time;
-  fixed_interval?: Time;
-  time_zone?: string;
+  delay?: Time
+  field: Field
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
 }

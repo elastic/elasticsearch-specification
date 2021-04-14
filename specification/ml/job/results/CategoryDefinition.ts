@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../../__common/common";
+import { long } from '../../../__common/common'
 
 export class CategoryDefinition {
-  category_id: long;
-  examples: string[];
-  job_id: string;
-  max_matching_length: long;
-  regex: string;
-  terms: string;
+  category_id: long
+  examples: string[]
+  job_id: string
+  max_matching_length: long
+  regex: string
+  terms: string
 }

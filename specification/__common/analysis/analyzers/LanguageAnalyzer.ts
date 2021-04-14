@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Language } from "../languages/Language";
-import { StopWords } from "../StopWords";
-import { AnalyzerBase } from "./AnalyzerBase";
+import { Language } from '../languages/Language'
+import { StopWords } from '../StopWords'
+import { AnalyzerBase } from './AnalyzerBase'
 
 export class LanguageAnalyzer extends AnalyzerBase {
-  language: Language;
-  stem_exclusion: string[];
-  stopwords: StopWords;
-  stopwords_path: string;
-  type: string;
+  language: Language
+  stem_exclusion: string[]
+  stopwords: StopWords
+  stopwords_path: string
+  type: string
 }

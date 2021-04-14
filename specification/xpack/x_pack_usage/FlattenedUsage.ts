@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { XPackUsage } from "./XPackUsage";
+import { integer } from '../../__common/common'
+import { XPackUsage } from './XPackUsage'
 
 export class FlattenedUsage extends XPackUsage {
-  field_count: integer;
+  field_count: integer
 }

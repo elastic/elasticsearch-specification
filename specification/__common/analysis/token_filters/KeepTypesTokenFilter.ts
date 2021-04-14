@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { KeepTypesMode } from "./KeepTypesMode";
-import { TokenFilterBase } from "./TokenFilterBase";
+import { KeepTypesMode } from './KeepTypesMode'
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
-  mode: KeepTypesMode;
-  types: string[];
+  mode: KeepTypesMode
+  types: string[]
 }

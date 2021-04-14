@@ -17,32 +17,32 @@
  * under the License.
  */
 
-import { ByteSize, integer, long, ulong } from "../../__common/common";
+import { ByteSize, integer, long, ulong } from '../../__common/common'
 
 export class SecurityRolesUsage {
-  native: SecurityRolesNativeUsage;
-  dls: SecurityRolesDlsUsage;
-  file: SecurityRolesFileUsage;
+  native: SecurityRolesNativeUsage
+  dls: SecurityRolesDlsUsage
+  file: SecurityRolesFileUsage
 }
 
 export class SecurityRolesNativeUsage {
-  dls: boolean;
-  fls: boolean;
-  size: long;
+  dls: boolean
+  fls: boolean
+  size: long
 }
 
 export class SecurityRolesDlsUsage {
-  bit_set_cache: SecurityRolesDlsBitSetCacheUsage;
+  bit_set_cache: SecurityRolesDlsBitSetCacheUsage
 }
 
 export class SecurityRolesDlsBitSetCacheUsage {
-  count: integer;
-  memory: ByteSize;
-  memory_in_bytes: ulong;
+  count: integer
+  memory: ByteSize
+  memory_in_bytes: ulong
 }
 
 export class SecurityRolesFileUsage {
-  dls: boolean;
-  fls: boolean;
-  size: long;
+  dls: boolean
+  fls: boolean
+  size: long
 }

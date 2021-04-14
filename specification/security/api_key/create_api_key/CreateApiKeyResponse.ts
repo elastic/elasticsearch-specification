@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Id, long } from "../../../__common/common";
-import { ResponseBase } from "../../../__common/common_abstractions/response/ResponseBase";
+import { Id, long } from '../../../__common/common'
+import { ResponseBase } from '../../../__common/common_abstractions/response/ResponseBase'
 
 export class CreateApiKeyResponse extends ResponseBase {
-  api_key: string;
-  expiration?: long;
-  id: Id;
-  name: string;
+  api_key: string
+  expiration?: long
+  id: Id
+  name: string
 }

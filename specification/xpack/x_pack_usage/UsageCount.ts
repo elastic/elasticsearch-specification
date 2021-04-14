@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
+import { long } from '../../__common/common'
 
 export class UsageCount {
-  active: long;
-  total: long;
+  active: long
+  total: long
 }

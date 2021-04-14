@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { IndexName, integer } from "../../__common/common";
+import { IndexName, integer } from '../../__common/common'
 
 export class ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction;
+  cancel: ClusterRerouteCommandAction
   // TODO: check server if cancel is the only action to run
 }
 
 export class ClusterRerouteCommandAction {
-  index: IndexName;
-  shard: integer;
-  node: string;
+  index: IndexName
+  shard: integer
+  node: string
 }

@@ -23,5 +23,5 @@ export enum ActionType {
   index = 2,
   logging = 3,
   slack = 4,
-  pagerduty = 5,
+  pagerduty = 5
 }

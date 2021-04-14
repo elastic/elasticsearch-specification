@@ -18,5 +18,5 @@
  */
 
 export class SizeField {
-  enabled: boolean;
+  enabled: boolean
 }

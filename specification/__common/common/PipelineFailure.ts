@@ -27,5 +27,5 @@ export enum PipelineFailure {
   MaxRetriesReached = 6,
   Unexpected = 7,
   BadRequest = 8,
-  NoNodesAttempted = 9,
+  NoNodesAttempted = 9
 }

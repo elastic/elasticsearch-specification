@@ -17,92 +17,86 @@
  * under the License.
  */
 
-import {
-  Id,
-  IndexName,
-  Name,
-  Type,
-  VersionString,
-} from "../../__common/common";
+import { Id, IndexName, Name, Type, VersionString } from '../../__common/common'
 
 export class CatDataFrameAnalyticsRecord {
   /**
    * the id
    */
-  "id"?: Id;
+  'id'?: Id
   /**
    * analysis type
    * @aliases t
    */
-  "type"?: Type;
+  'type'?: Type
   /**
    * job creation time
    * @aliases ct, createTime
    */
-  "create_time"?: string;
+  'create_time'?: string
   /**
    * the version of Elasticsearch when the analytics was created
    * @aliases v
    */
-  "version"?: VersionString;
+  'version'?: VersionString
   /**
    * source index
    * @aliases si, sourceIndex
    */
-  "source_index"?: IndexName;
+  'source_index'?: IndexName
   /**
    * destination index
    * @aliases di, destIndex
    */
-  "dest_index"?: IndexName;
+  'dest_index'?: IndexName
   /**
    * description
    * @aliases d
    */
-  "description"?: string;
+  'description'?: string
   /**
    * model memory limit
    * @aliases mml, modelMemoryLimit
    */
-  "model_memory_limit"?: string;
+  'model_memory_limit'?: string
   /**
    * job state
    * @aliases s
    */
-  "state"?: string;
+  'state'?: string
   /**
    * failure reason
    * @aliases fr, failureReason
    */
-  "failure_reason"?: string;
+  'failure_reason'?: string
   /**
    * progress
    * @aliases p
    */
-  "progress"?: string;
+  'progress'?: string
   /**
    * why the job is or is not assigned to a node
    * @aliases ae, assignmentExplanation
    */
-  "assignment_explanation"?: string;
+  'assignment_explanation'?: string
   /**
    * id of the assigned node
    * @aliases ni, nodeId
    */
-  "node.id"?: Id;
+  'node.id'?: Id
   /**
    * name of the assigned node
    * @aliases nn, nodeName
    */
-  "node.name"?: Name;
+  'node.name'?: Name
   /**
    * ephemeral id of the assigned node
    * @aliases ne, nodeEphemeralId
    */
-  "node.ephemeral_id"?: Id;
+  'node.ephemeral_id'?: Id
   /**
    * network address of the assigned node
    * @aliases na, nodeAddress
    */
-  "node.address"?: string;
+  'node.address'?: string
 }

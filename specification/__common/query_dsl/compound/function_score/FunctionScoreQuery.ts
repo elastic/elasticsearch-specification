@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { double, float } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
-import { FunctionBoostMode } from "./functions/FunctionBoostMode";
-import { FunctionScoreMode } from "./functions/FunctionScoreMode";
-import { FunctionScoreContainer } from "./functions/ScoreFunction";
+import { double, float } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
+import { FunctionBoostMode } from './functions/FunctionBoostMode'
+import { FunctionScoreMode } from './functions/FunctionScoreMode'
+import { FunctionScoreContainer } from './functions/ScoreFunction'
 
 export class FunctionScoreQuery extends QueryBase {
-  boost_mode?: FunctionBoostMode;
-  functions?: FunctionScoreContainer[];
-  max_boost?: double;
-  min_score?: double;
-  query?: QueryContainer;
-  score_mode?: FunctionScoreMode;
-  boost?: float;
+  boost_mode?: FunctionBoostMode
+  functions?: FunctionScoreContainer[]
+  max_boost?: double
+  min_score?: double
+  query?: QueryContainer
+  score_mode?: FunctionScoreMode
+  boost?: float
 }

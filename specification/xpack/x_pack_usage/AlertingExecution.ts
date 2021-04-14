@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { ExecutionAction } from "./ExecutionAction";
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ExecutionAction } from './ExecutionAction'
 
 export class AlertingExecution {
-  actions: Dictionary<string, ExecutionAction>;
+  actions: Dictionary<string, ExecutionAction>
 }

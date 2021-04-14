@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name cluster.delete_component_template
@@ -28,11 +28,11 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
   path_parts?: {
-    name: Name;
-  };
+    name: Name
+  }
   query_parameters?: {
-    master_timeout?: Time; // Default: 30s
-    timeout?: Time; // Default: 30s
-  };
-  body?: {};
+    master_timeout?: Time // Default: 30s
+    timeout?: Time // Default: 30s
+  }
+  body?: {}
 }

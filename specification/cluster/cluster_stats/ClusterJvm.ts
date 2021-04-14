@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ClusterJvmMemory } from "./ClusterJvmMemory";
-import { ClusterJvmVersion } from "./ClusterJvmVersion";
+import { long } from '../../__common/common'
+import { ClusterJvmMemory } from './ClusterJvmMemory'
+import { ClusterJvmVersion } from './ClusterJvmVersion'
 
 export class ClusterJvm {
-  max_uptime_in_millis: long;
-  mem: ClusterJvmMemory;
-  threads: long;
-  versions: ClusterJvmVersion[];
+  max_uptime_in_millis: long
+  mem: ClusterJvmMemory
+  threads: long
+  versions: ClusterJvmVersion[]
 }

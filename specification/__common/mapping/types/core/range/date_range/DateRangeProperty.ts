@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RangePropertyBase } from "../RangeProperty";
+import { RangePropertyBase } from '../RangeProperty'
 
 export class DateRangeProperty extends RangePropertyBase {
-  format?: string;
-  type: "date_range";
+  format?: string
+  type: 'date_range'
 }

@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { CharFilter } from "../../__common/analysis/char_filters/CharFilterBase";
-import { Tokenizer } from "../../__common/analysis/tokenizers/TokenizerBase";
-import { TokenFilter } from "../../__common/analysis/token_filters/TokenFilterBase";
+import { CharFilter } from '../../__common/analysis/char_filters/CharFilterBase'
+import { Tokenizer } from '../../__common/analysis/tokenizers/TokenizerBase'
+import { TokenFilter } from '../../__common/analysis/token_filters/TokenFilterBase'
 
 export class CategorizationAnalyzer {
-  filter?: Array<string | TokenFilter>;
-  tokenizer?: string | Tokenizer;
-  char_filter?: Array<string | CharFilter>;
+  filter?: Array<string | TokenFilter>
+  tokenizer?: string | Tokenizer
+  char_filter?: Array<string | CharFilter>
 }

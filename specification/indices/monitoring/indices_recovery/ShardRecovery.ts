@@ -17,28 +17,28 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, long, Type } from "../../../__common/common";
-import { RecoveryIndexStatus } from "./RecoveryIndexStatus";
-import { RecoveryOrigin } from "./RecoveryOrigin";
-import { RecoveryStartStatus } from "./RecoveryStartStatus";
-import { RecoveryTranslogStatus } from "./RecoveryTranslogStatus";
-import { RecoveryVerifyIndex } from "./RecoveryVerifyIndex";
+import { DateString, EpochMillis, long, Type } from '../../../__common/common'
+import { RecoveryIndexStatus } from './RecoveryIndexStatus'
+import { RecoveryOrigin } from './RecoveryOrigin'
+import { RecoveryStartStatus } from './RecoveryStartStatus'
+import { RecoveryTranslogStatus } from './RecoveryTranslogStatus'
+import { RecoveryVerifyIndex } from './RecoveryVerifyIndex'
 
 export class ShardRecovery {
-  id: long;
-  index: RecoveryIndexStatus;
-  primary: boolean;
-  source: RecoveryOrigin;
-  stage: string;
-  start?: RecoveryStartStatus;
-  start_time?: DateString;
-  start_time_in_millis: EpochMillis;
-  stop_time?: DateString;
-  stop_time_in_millis: EpochMillis;
-  target: RecoveryOrigin;
-  total_time?: DateString;
-  total_time_in_millis: EpochMillis;
-  translog: RecoveryTranslogStatus;
-  type: Type;
-  verify_index: RecoveryVerifyIndex;
+  id: long
+  index: RecoveryIndexStatus
+  primary: boolean
+  source: RecoveryOrigin
+  stage: string
+  start?: RecoveryStartStatus
+  start_time?: DateString
+  start_time_in_millis: EpochMillis
+  stop_time?: DateString
+  stop_time_in_millis: EpochMillis
+  target: RecoveryOrigin
+  total_time?: DateString
+  total_time_in_millis: EpochMillis
+  translog: RecoveryTranslogStatus
+  type: Type
+  verify_index: RecoveryVerifyIndex
 }

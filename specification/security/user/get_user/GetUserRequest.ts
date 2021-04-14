@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from "../../../__common/common";
-import { RequestBase } from "../../../__common/common_abstractions/request/RequestBase";
+import { Names } from '../../../__common/common'
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name security.get_user
@@ -27,8 +27,8 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
  */
 export interface GetUserRequest extends RequestBase {
   path_parts?: {
-    username?: Names;
-  };
-  query_parameters?: {};
-  body?: {};
+    username?: Names
+  }
+  query_parameters?: {}
+  body?: {}
 }

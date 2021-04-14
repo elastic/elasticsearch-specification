@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { DictionaryResponseBase } from "../../__common/common_abstractions/response/DictionaryResponseBase";
+import { IndexName } from '../../__common/common'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { AliasDefinition } from '../AliasDefinition'
 
 export class IndicesGetAliasResponse extends DictionaryResponseBase<
   IndexName,
@@ -27,5 +28,5 @@ export class IndicesGetAliasResponse extends DictionaryResponseBase<
 > {}
 
 export class IndexAliases {
-  aliases: Dictionary<string, AliasDefinition>;
+  aliases: Dictionary<string, AliasDefinition>
 }

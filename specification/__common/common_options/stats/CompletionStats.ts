@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ByteSize, long } from "../../common";
+import { ByteSize, long } from '../../common'
 
 export class CompletionStats {
-  size_in_bytes: long;
-  size?: ByteSize;
+  size_in_bytes: long
+  size?: ByteSize
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ShardRecovery } from "./ShardRecovery";
+import { ShardRecovery } from './ShardRecovery'
 
 export class RecoveryStatus {
-  shards: ShardRecovery[];
+  shards: ShardRecovery[]
 }

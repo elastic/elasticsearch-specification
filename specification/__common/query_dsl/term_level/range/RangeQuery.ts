@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { double } from "../../../common";
-import { DateMath } from "../../../common_options/date_math/DateMath";
-import { QueryBase } from "../../abstractions/query/Query";
-import { RangeRelation } from "./RangeRelation";
+import { double } from '../../../common'
+import { DateMath } from '../../../common_options/date_math/DateMath'
+import { QueryBase } from '../../abstractions/query/Query'
+import { RangeRelation } from './RangeRelation'
 
 export class RangeQuery extends QueryBase {
-  gt?: double | DateMath;
-  gte?: double | DateMath;
-  lt?: double | DateMath;
-  lte?: double | DateMath;
-  relation?: RangeRelation;
+  gt?: double | DateMath
+  gte?: double | DateMath
+  lt?: double | DateMath
+  lte?: double | DateMath
+  relation?: RangeRelation
 
-  time_zone?: string;
+  time_zone?: string
 
   //TODO obsolete, update yaml tests to no longer use this
-  from?: double | DateMath;
-  to?: double | DateMath;
+  from?: double | DateMath
+  to?: double | DateMath
 }

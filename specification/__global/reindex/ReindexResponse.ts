@@ -17,27 +17,27 @@
  * under the License.
  */
 
-import { BulkIndexByScrollFailure } from "../../__common/BulkIndexByScrollFailure";
-import { EpochMillis, integer, long, TaskId } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
-import { Retries } from "../../__common/Retries";
+import { BulkIndexByScrollFailure } from '../../__common/BulkIndexByScrollFailure'
+import { EpochMillis, integer, long, TaskId } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { Retries } from '../../__common/Retries'
 
 export class ReindexResponse extends ResponseBase {
-  batches?: long;
-  created?: long;
-  deleted?: long;
-  failures?: BulkIndexByScrollFailure[];
-  noops?: long;
-  retries?: Retries;
-  requests_per_second?: long;
-  slice_id?: integer;
-  task?: TaskId;
-  throttled_millis?: EpochMillis;
-  throttled_until_millis?: EpochMillis;
-  timed_out?: boolean;
-  took?: Time;
-  total?: long;
-  updated?: long;
-  version_conflicts?: long;
+  batches?: long
+  created?: long
+  deleted?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  retries?: Retries
+  requests_per_second?: long
+  slice_id?: integer
+  task?: TaskId
+  throttled_millis?: EpochMillis
+  throttled_until_millis?: EpochMillis
+  timed_out?: boolean
+  took?: Time
+  total?: long
+  updated?: long
+  version_conflicts?: long
 }

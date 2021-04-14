@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Id, IndexName, Type, VersionNumber } from "../../../__common/common";
-import { Result } from "../../../__common/Result";
+import { Id, IndexName, Type, VersionNumber } from '../../../__common/common'
+import { Result } from '../../../__common/Result'
 
 export class IndexActionResultIndexResponse {
-  created: boolean;
-  id: Id;
-  index: IndexName;
-  result: Result;
-  version: VersionNumber;
-  type?: Type;
+  created: boolean
+  id: Id
+  index: IndexName
+  result: Result
+  version: VersionNumber
+  type?: Type
 }

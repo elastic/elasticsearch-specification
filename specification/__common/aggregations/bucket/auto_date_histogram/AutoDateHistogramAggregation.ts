@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import { Script } from "vm";
-import { Dictionary } from "../../../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { DateString, Field, integer } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
-import { MinimumInterval } from "./MinimumInterval";
+import { Dictionary } from '../../../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../../../__spec_utils/UserDefinedValue'
+import { DateString, Field, integer } from '../../../common'
+import { Script } from '../../../common_options/scripting/Script'
+import { BucketAggregationBase } from '../BucketAggregationBase'
+import { MinimumInterval } from './MinimumInterval'
 
 export class AutoDateHistogramAggregation extends BucketAggregationBase {
-  buckets?: integer;
-  field?: Field;
-  format?: string;
-  minimum_interval?: MinimumInterval;
-  missing?: DateString;
-  offset?: string;
-  params?: Dictionary<string, UserDefinedValue>;
-  script?: Script;
-  time_zone?: string;
+  buckets?: integer
+  field?: Field
+  format?: string
+  minimum_interval?: MinimumInterval
+  missing?: DateString
+  offset?: string
+  params?: Dictionary<string, UserDefinedValue>
+  script?: Script
+  time_zone?: string
 }

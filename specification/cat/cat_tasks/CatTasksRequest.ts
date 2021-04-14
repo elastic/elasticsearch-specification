@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { CatRequestBase } from "../CatBase";
+import { long } from '../../__common/common'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.tasks
@@ -27,10 +27,10 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatTasksRequest extends CatRequestBase {
   query_parameters?: {
-    actions?: string[];
-    detailed?: boolean;
-    node_id?: string[];
-    parent_task?: long;
-  };
-  body?: {};
+    actions?: string[]
+    detailed?: boolean
+    node_id?: string[]
+    parent_task?: long
+  }
+  body?: {}
 }

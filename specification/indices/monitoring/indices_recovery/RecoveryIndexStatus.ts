@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { EpochMillis } from "../../../__common/common";
-import { Time } from "../../../__common/common_options/time_unit/Time";
-import { RecoveryBytes } from "./RecoveryBytes";
-import { RecoveryFiles } from "./RecoveryFiles";
+import { EpochMillis } from '../../../__common/common'
+import { Time } from '../../../__common/common_options/time_unit/Time'
+import { RecoveryBytes } from './RecoveryBytes'
+import { RecoveryFiles } from './RecoveryFiles'
 
 export class RecoveryIndexStatus {
-  bytes?: RecoveryBytes;
-  files: RecoveryFiles;
-  size: RecoveryBytes;
-  source_throttle_time?: Time;
-  source_throttle_time_in_millis: EpochMillis;
-  target_throttle_time?: Time;
-  target_throttle_time_in_millis: EpochMillis;
-  total_time_in_millis: EpochMillis;
-  total_time?: Time;
+  bytes?: RecoveryBytes
+  files: RecoveryFiles
+  size: RecoveryBytes
+  source_throttle_time?: Time
+  source_throttle_time_in_millis: EpochMillis
+  target_throttle_time?: Time
+  target_throttle_time_in_millis: EpochMillis
+  total_time_in_millis: EpochMillis
+  total_time?: Time
 }

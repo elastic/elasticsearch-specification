@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {
-  flags: string;
-  pattern: string;
-  replacement: string;
+  flags: string
+  pattern: string
+  replacement: string
 }

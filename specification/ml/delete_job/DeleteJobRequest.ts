@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.delete_job
@@ -27,11 +27,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface DeleteJobRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-  };
+    job_id: Id
+  }
   query_parameters?: {
-    force?: boolean;
-    wait_for_completion?: boolean;
-  };
-  body?: {};
+    force?: boolean
+    wait_for_completion?: boolean
+  }
+  body?: {}
 }

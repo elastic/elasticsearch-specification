@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { BulkResponseItemContainer } from "./BulkResponseItemBase";
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { BulkResponseItemContainer } from './BulkResponseItemBase'
 
 export class BulkResponse extends ResponseBase {
-  errors: boolean;
-  items: BulkResponseItemContainer[];
-  took: long;
-  ingest_took?: long;
+  errors: boolean
+  items: BulkResponseItemContainer[]
+  took: long
+  ingest_took?: long
 }

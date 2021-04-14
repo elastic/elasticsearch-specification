@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "../../../__spec_utils/Dictionary";
-import { double, Field, Fields } from "../../common";
-import { Aggregation } from "../Aggregation";
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { double, Field, Fields } from '../../common'
+import { Aggregation } from '../Aggregation'
 
 export class MatrixAggregation extends Aggregation {
-  fields?: Fields;
-  missing?: Dictionary<Field, double>;
+  fields?: Fields
+  missing?: Dictionary<Field, double>
 }

@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { NodeRoles } from "../../nodes/nodes_info/NodeRole";
-import { Id, Name } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { NodeRoles } from '../../nodes/nodes_info/NodeRole'
+import { Id, Name } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class NodeAttributes {
-  attributes: Dictionary<string, string>;
-  ephemeral_id: Id;
-  id?: Id;
-  name: Name;
-  transport_address: string;
-  roles?: NodeRoles;
+  attributes: Dictionary<string, string>
+  ephemeral_id: Id
+  id?: Id
+  name: Name
+  transport_address: string
+  roles?: NodeRoles
 }

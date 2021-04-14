@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { double } from "../../../common";
-import { MinimumShouldMatch } from "../../../common_options/minimum_should_match/MinimumShouldMatch";
-import { QueryBase } from "../../abstractions/query/Query";
-import { Operator } from "../../Operator";
+import { double } from '../../../common'
+import { MinimumShouldMatch } from '../../../common_options/minimum_should_match/MinimumShouldMatch'
+import { QueryBase } from '../../abstractions/query/Query'
+import { Operator } from '../../Operator'
 
 export class CommonTermsQuery extends QueryBase {
-  analyzer?: string;
-  cutoff_frequency?: double;
-  high_freq_operator?: Operator;
-  low_freq_operator?: Operator;
-  minimum_should_match?: MinimumShouldMatch;
-  query?: string;
+  analyzer?: string
+  cutoff_frequency?: double
+  high_freq_operator?: Operator
+  low_freq_operator?: Operator
+  minimum_should_match?: MinimumShouldMatch
+  query?: string
 }

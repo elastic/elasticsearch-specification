@@ -17,20 +17,20 @@
  * under the License.
  */
 
-import { double, integer } from "../../../common";
-import { FormatMetricAggregationBase } from "../MetricAggregation";
+import { double, integer } from '../../../common'
+import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class PercentilesAggregation extends FormatMetricAggregationBase {
-  keyed?: boolean;
-  percents?: double[];
-  hdr?: HdrMethod;
-  tdigest?: TDigest;
+  keyed?: boolean
+  percents?: double[]
+  hdr?: HdrMethod
+  tdigest?: TDigest
 }
 
 export class HdrMethod {
-  number_of_significant_value_digits?: integer;
+  number_of_significant_value_digits?: integer
 }
 
 export class TDigest {
-  compression?: integer;
+  compression?: integer
 }

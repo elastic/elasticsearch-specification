@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { IndexName } from "../../__common/common";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
+import { IndexName } from '../../__common/common'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 
 export class SnapshotRestore {
-  indices: IndexName[];
-  snapshot: string;
-  shards: ShardStatistics;
+  indices: IndexName[]
+  snapshot: string
+  shards: ShardStatistics
 }

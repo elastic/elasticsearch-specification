@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TokenFilterBase } from "./TokenFilterBase";
+import { TokenFilterBase } from './TokenFilterBase'
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {
-  rules: string[];
-  rules_path: string;
+  rules: string[]
+  rules_path: string
 }

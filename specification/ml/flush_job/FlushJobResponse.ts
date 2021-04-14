@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class FlushJobResponse extends ResponseBase {
-  flushed: boolean;
-  last_finalized_bucket_end?: integer;
+  flushed: boolean
+  last_finalized_bucket_end?: integer
 }

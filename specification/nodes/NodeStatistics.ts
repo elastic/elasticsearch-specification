@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ErrorCause, integer } from "../__common/common";
+import { ErrorCause, integer } from '../__common/common'
 
 export class NodeStatistics {
-  failed: integer;
-  failures?: ErrorCause[];
-  successful: integer;
-  total: integer;
+  failed: integer
+  failures?: ErrorCause[]
+  successful: integer
+  total: integer
 }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { WatchRecord } from "./WatchRecord";
+import { Id } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { WatchRecord } from './WatchRecord'
 
 export class ExecuteWatchResponse extends ResponseBase {
-  _id: Id;
-  watch_record: WatchRecord;
+  _id: Id
+  watch_record: WatchRecord
 }

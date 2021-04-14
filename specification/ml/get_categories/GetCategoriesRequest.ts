@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CategoryId, Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Page } from "../job/Page";
+import { CategoryId, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../job/Page'
 
 /**
  * @rest_spec_name ml.get_categories
@@ -28,11 +28,11 @@ import { Page } from "../job/Page";
  */
 export interface GetCategoriesRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    category_id?: CategoryId;
-  };
-  query_parameters?: {};
+    job_id: Id
+    category_id?: CategoryId
+  }
+  query_parameters?: {}
   body?: {
-    page?: Page;
-  };
+    page?: Page
+  }
 }

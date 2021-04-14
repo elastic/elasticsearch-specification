@@ -17,39 +17,39 @@
  * under the License.
  */
 
-import { Aggregate } from "../../__common/aggregations/Aggregate";
+import { Aggregate } from '../../__common/aggregations/Aggregate'
 import {
   AggregateName,
   double,
   Id,
   long,
   ScrollId,
-  SuggestionName,
-} from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { ClusterStatistics } from "../../__common/common_options/hit/ClusterStatistics";
-import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
-import { HitsMetadata } from "./hits/HitsMetadata";
-import { Profile } from "./profile/Profile";
-import { Suggest } from "./suggesters/Suggest";
+  SuggestionName
+} from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ClusterStatistics } from '../../__common/common_options/hit/ClusterStatistics'
+import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { HitsMetadata } from './hits/HitsMetadata'
+import { Profile } from './profile/Profile'
+import { Suggest } from './suggesters/Suggest'
 
 export class SearchResponse<TDocument> extends ResponseBase {
-  took: long;
-  timed_out: boolean;
-  _shards: ShardStatistics;
-  hits: HitsMetadata<TDocument>;
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: HitsMetadata<TDocument>
 
-  aggregations?: Dictionary<AggregateName, Aggregate>;
-  _clusters?: ClusterStatistics;
-  documents?: TDocument[];
-  fields?: Dictionary<string, UserDefinedValue>;
-  max_score?: double;
-  num_reduce_phases?: long;
-  profile?: Profile;
-  pit_id?: Id;
-  _scroll_id?: ScrollId;
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>;
-  terminated_early?: boolean;
+  aggregations?: Dictionary<AggregateName, Aggregate>
+  _clusters?: ClusterStatistics
+  documents?: TDocument[]
+  fields?: Dictionary<string, UserDefinedValue>
+  max_score?: double
+  num_reduce_phases?: long
+  profile?: Profile
+  pit_id?: Id
+  _scroll_id?: ScrollId
+  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+  terminated_early?: boolean
 }

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Id, Name } from "../../__common/common";
-import { Dictionary } from "../../__spec_utils/Dictionary";
+import { Id, Name } from '../../__common/common'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class DiscoveryNode {
-  attributes: Dictionary<string, string>;
-  ephemeral_id: Id;
-  id: Id;
-  name: Name;
-  transport_address: string;
+  attributes: Dictionary<string, string>
+  ephemeral_id: Id
+  id: Id
+  name: Name
+  transport_address: string
 }

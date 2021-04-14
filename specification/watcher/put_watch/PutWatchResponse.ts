@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Id, long, SequenceNumber, VersionNumber } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { Id, long, SequenceNumber, VersionNumber } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class PutWatchResponse extends ResponseBase {
-  created: boolean;
-  _id: Id;
-  _primary_term: long;
-  _seq_no: SequenceNumber;
-  _version: VersionNumber;
+  created: boolean
+  _id: Id
+  _primary_term: long
+  _seq_no: SequenceNumber
+  _version: VersionNumber
 }

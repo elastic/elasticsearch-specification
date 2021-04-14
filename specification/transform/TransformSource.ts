@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices } from "../__common/common";
-import { QueryContainer } from "../__common/query_dsl/abstractions/container/QueryContainer";
+import { Indices } from '../__common/common'
+import { QueryContainer } from '../__common/query_dsl/abstractions/container/QueryContainer'
 
 export class TransformSource {
   /** @prop_serializer IndicesFormatter */
-  index: Indices;
-  query: QueryContainer;
+  index: Indices
+  query: QueryContainer
 }

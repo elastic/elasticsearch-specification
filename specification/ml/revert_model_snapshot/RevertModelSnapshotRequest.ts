@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name ml.revert_model_snapshot
@@ -27,11 +27,11 @@ import { RequestBase } from "../../__common/common_abstractions/request/RequestB
  */
 export interface RevertModelSnapshotRequest extends RequestBase {
   path_parts?: {
-    job_id: Id;
-    snapshot_id: Id;
-  };
-  query_parameters?: {};
+    job_id: Id
+    snapshot_id: Id
+  }
+  query_parameters?: {}
   body?: {
-    delete_intervening_results?: boolean;
-  };
+    delete_intervening_results?: boolean
+  }
 }

@@ -22,23 +22,23 @@ import {
   Id,
   IndexName,
   Routing,
-  VersionNumber,
-} from "../../__common/common";
-import { VersionType } from "../../__common/common/VersionType";
-import { TermVectorFilter } from "../termvectors/TermVectorFilter";
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { TermVectorFilter } from '../termvectors/TermVectorFilter'
 
 export class MultiTermVectorOperation {
-  doc: any;
-  fields: Fields;
-  field_statistics: boolean;
-  filter: TermVectorFilter;
-  _id: Id;
-  _index: IndexName;
-  offsets: boolean;
-  payloads: boolean;
-  positions: boolean;
-  routing: Routing;
-  term_statistics: boolean;
-  version: VersionNumber;
-  version_type: VersionType;
+  doc: any
+  fields: Fields
+  field_statistics: boolean
+  filter: TermVectorFilter
+  _id: Id
+  _index: IndexName
+  offsets: boolean
+  payloads: boolean
+  positions: boolean
+  routing: Routing
+  term_statistics: boolean
+  version: VersionNumber
+  version_type: VersionType
 }

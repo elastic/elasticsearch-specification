@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { integer } from "../../__common/common";
+import { integer } from '../../__common/common'
 
 export class QueryUsage {
-  count?: integer;
-  failed?: integer;
-  paging?: integer;
-  total?: integer;
+  count?: integer
+  failed?: integer
+  paging?: integer
+  total?: integer
 }

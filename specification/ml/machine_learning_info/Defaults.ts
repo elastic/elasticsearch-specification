@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { AnomalyDetectors } from "./AnomalyDetectors";
-import { Datafeeds } from "./Datafeeds";
+import { AnomalyDetectors } from './AnomalyDetectors'
+import { Datafeeds } from './Datafeeds'
 
 export class Defaults {
-  anomaly_detectors: AnomalyDetectors;
-  datafeeds: Datafeeds;
+  anomaly_detectors: AnomalyDetectors
+  datafeeds: Datafeeds
 }

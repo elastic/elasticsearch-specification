@@ -19,5 +19,5 @@
 
 export enum FollowerIndexStatus {
   active = 0,
-  paused = 1,
+  paused = 1
 }

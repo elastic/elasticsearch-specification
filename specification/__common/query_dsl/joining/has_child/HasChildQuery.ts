@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { InnerHits } from "../../../../__global/search/inner_hits/InnerHits";
-import { integer, RelationName } from "../../../common";
-import { QueryContainer } from "../../abstractions/container/QueryContainer";
-import { QueryBase } from "../../abstractions/query/Query";
-import { ChildScoreMode } from "./ChildScoreMode";
+import { InnerHits } from '../../../../__global/search/inner_hits/InnerHits'
+import { integer, RelationName } from '../../../common'
+import { QueryContainer } from '../../abstractions/container/QueryContainer'
+import { QueryBase } from '../../abstractions/query/Query'
+import { ChildScoreMode } from './ChildScoreMode'
 
 export class HasChildQuery extends QueryBase {
-  ignore_unmapped?: boolean;
-  inner_hits?: InnerHits;
-  max_children?: integer;
-  min_children?: integer;
-  query?: QueryContainer;
-  score_mode?: ChildScoreMode;
-  type?: RelationName;
+  ignore_unmapped?: boolean
+  inner_hits?: InnerHits
+  max_children?: integer
+  min_children?: integer
+  query?: QueryContainer
+  score_mode?: ChildScoreMode
+  type?: RelationName
 }

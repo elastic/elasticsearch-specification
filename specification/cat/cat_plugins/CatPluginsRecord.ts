@@ -17,36 +17,36 @@
  * under the License.
  */
 
-import { Name, NodeId, Type, VersionString } from "../../__common/common";
+import { Name, NodeId, Type, VersionString } from '../../__common/common'
 
 export class CatPluginsRecord {
   /**
    * unique node id
    */
-  "id"?: NodeId;
+  'id'?: NodeId
   /**
    * node name
    * @aliases n
    */
-  "name"?: Name;
+  'name'?: Name
   /**
    * component
    * @aliases c
    */
-  "component"?: string;
+  'component'?: string
   /**
    * component version
    * @aliases v
    */
-  "version"?: VersionString;
+  'version'?: VersionString
   /**
    * plugin details
    * @aliases d
    */
-  "description"?: string;
+  'description'?: string
   /**
    * plugin type
    * @aliases t
    */
-  "type"?: Type;
+  'type'?: Type
 }

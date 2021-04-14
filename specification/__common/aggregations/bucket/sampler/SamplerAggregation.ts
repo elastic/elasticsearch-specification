@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from "../../../common";
-import { BucketAggregationBase } from "../BucketAggregationBase";
+import { integer } from '../../../common'
+import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class SamplerAggregation extends BucketAggregationBase {
-  shard_size?: integer;
+  shard_size?: integer
 }

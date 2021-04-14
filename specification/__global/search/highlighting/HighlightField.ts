@@ -17,35 +17,35 @@
  * under the License.
  */
 
-import { Field, Fields, integer } from "../../../__common/common";
-import { QueryContainer } from "../../../__common/query_dsl/abstractions/container/QueryContainer";
-import { BoundaryScanner } from "./BoundaryScanner";
-import { HighlighterFragmenter } from "./HighlighterFragmenter";
-import { HighlighterOrder } from "./HighlighterOrder";
-import { HighlighterTagsSchema } from "./HighlighterTagsSchema";
-import { HighlighterType } from "./HighlighterType";
+import { Field, Fields, integer } from '../../../__common/common'
+import { QueryContainer } from '../../../__common/query_dsl/abstractions/container/QueryContainer'
+import { BoundaryScanner } from './BoundaryScanner'
+import { HighlighterFragmenter } from './HighlighterFragmenter'
+import { HighlighterOrder } from './HighlighterOrder'
+import { HighlighterTagsSchema } from './HighlighterTagsSchema'
+import { HighlighterType } from './HighlighterType'
 
 export class HighlightField {
-  boundary_chars?: string;
-  boundary_max_scan?: integer;
-  boundary_scanner?: BoundaryScanner;
-  boundary_scanner_locale?: string;
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: BoundaryScanner
+  boundary_scanner_locale?: string
   //TODO I THINK this field does not exist
-  field?: Field;
-  force_source?: boolean;
-  fragmenter?: HighlighterFragmenter;
-  fragment_offset?: integer;
-  fragment_size?: integer;
-  highlight_query?: QueryContainer;
-  matched_fields?: Fields;
-  max_fragment_length?: integer;
-  no_match_size?: integer;
-  number_of_fragments?: integer;
-  order?: HighlighterOrder;
-  phrase_limit?: integer;
-  post_tags?: string[];
-  pre_tags?: string[];
-  require_field_match?: boolean;
-  tags_schema?: HighlighterTagsSchema;
-  type?: HighlighterType | string;
+  field?: Field
+  force_source?: boolean
+  fragmenter?: HighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  highlight_query?: QueryContainer
+  matched_fields?: Fields
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: HighlighterOrder
+  phrase_limit?: integer
+  post_tags?: string[]
+  pre_tags?: string[]
+  require_field_match?: boolean
+  tags_schema?: HighlighterTagsSchema
+  type?: HighlighterType | string
 }

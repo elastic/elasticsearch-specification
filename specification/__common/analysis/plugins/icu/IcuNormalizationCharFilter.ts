@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { CharFilterBase } from "../../char_filters/CharFilterBase";
-import { IcuNormalizationMode } from "./normalization/IcuNormalizationMode";
-import { IcuNormalizationType } from "./normalization/IcuNormalizationType";
+import { CharFilterBase } from '../../char_filters/CharFilterBase'
+import { IcuNormalizationMode } from './normalization/IcuNormalizationMode'
+import { IcuNormalizationType } from './normalization/IcuNormalizationType'
 
 export class IcuNormalizationCharFilter extends CharFilterBase {
-  mode: IcuNormalizationMode;
-  name: IcuNormalizationType;
+  mode: IcuNormalizationMode
+  name: IcuNormalizationType
 }

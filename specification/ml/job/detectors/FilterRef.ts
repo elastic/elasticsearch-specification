@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../../__common/common";
-import { RuleFilterType } from "./RuleFilterType";
+import { Id } from '../../../__common/common'
+import { RuleFilterType } from './RuleFilterType'
 
 export class FilterRef {
-  filter_id: Id;
-  filter_type: RuleFilterType;
+  filter_id: Id
+  filter_type: RuleFilterType
 }

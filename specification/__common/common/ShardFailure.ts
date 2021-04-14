@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ErrorCause, integer } from "../common";
+import { ErrorCause, integer } from '../common'
 
 export class ShardFailure {
-  index: string;
-  node: string;
-  reason: ErrorCause;
-  shard: integer;
-  status?: string;
+  index: string
+  node: string
+  reason: ErrorCause
+  shard: integer
+  status?: string
 }

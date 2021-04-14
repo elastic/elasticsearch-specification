@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ErrorCause } from "../../__common/common";
-import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
-import { Dictionary } from "../../__spec_utils/Dictionary";
-import { TaskExecutingNode } from "../list_tasks/TaskExecutingNode";
+import { ErrorCause } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { TaskExecutingNode } from '../list_tasks/TaskExecutingNode'
 
 export class CancelTasksResponse extends ResponseBase {
-  node_failures?: ErrorCause[];
-  nodes: Dictionary<string, TaskExecutingNode>;
+  node_failures?: ErrorCause[]
+  nodes: Dictionary<string, TaskExecutingNode>
 }

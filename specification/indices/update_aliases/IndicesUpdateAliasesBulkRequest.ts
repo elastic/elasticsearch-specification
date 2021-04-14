@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.update_aliases
@@ -27,12 +27,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface IndicesUpdateAliasBulkRequest extends RequestBase {
   query_parameters?: {
-    master_timeout?: Time;
-    timeout?: Time;
-  };
+    master_timeout?: Time
+    timeout?: Time
+  }
   body?: {
-    actions?: IndicesUpdateAliasBulk[];
-  };
+    actions?: IndicesUpdateAliasBulk[]
+  }
 }
 
 export class IndicesUpdateAliasBulk {}

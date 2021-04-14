@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices } from "../../__common/common";
-import { Bytes } from "../../__common/common/Bytes";
-import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
-import { Health } from "../../__common/common/Health";
-import { CatRequestBase } from "../CatBase";
+import { Indices } from '../../__common/common'
+import { Bytes } from '../../__common/common/Bytes'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { Health } from '../../__common/common/Health'
+import { CatRequestBase } from '../CatBase'
 
 /**
  * @rest_spec_name cat.indices
@@ -30,14 +30,14 @@ import { CatRequestBase } from "../CatBase";
  */
 export interface CatIndicesRequest extends CatRequestBase {
   path_parts?: {
-    index?: Indices;
-  };
+    index?: Indices
+  }
   query_parameters?: {
-    bytes?: Bytes;
-    expand_wildcards?: ExpandWildcards;
-    health?: Health;
-    include_unloaded_segments?: boolean;
-    pri?: boolean;
-  };
-  body?: {};
+    bytes?: Bytes
+    expand_wildcards?: ExpandWildcards
+    health?: Health
+    include_unloaded_segments?: boolean
+    pri?: boolean
+  }
+  body?: {}
 }

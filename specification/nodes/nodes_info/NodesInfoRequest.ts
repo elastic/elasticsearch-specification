@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Metrics, NodeIds } from "../../__common/common";
-import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
-import { Time } from "../../__common/common_options/time_unit/Time";
+import { Metrics, NodeIds } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name nodes.info
@@ -28,12 +28,12 @@ import { Time } from "../../__common/common_options/time_unit/Time";
  */
 export interface NodesInfoRequest extends RequestBase {
   path_parts?: {
-    node_id?: NodeIds;
-    metric?: Metrics;
-  };
+    node_id?: NodeIds
+    metric?: Metrics
+  }
   query_parameters?: {
-    flat_settings?: boolean;
-    timeout?: Time;
-  };
-  body?: {};
+    flat_settings?: boolean
+    timeout?: Time
+  }
+  body?: {}
 }
