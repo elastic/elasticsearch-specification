@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
+import { ModelSnapshot } from '../../__common/ml/ModelSnapshot'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlUpdateModelSnapshotResponse extends AcknowledgedResponseBase {
+  model: ModelSnapshot
 }

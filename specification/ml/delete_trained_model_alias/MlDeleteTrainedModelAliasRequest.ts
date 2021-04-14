@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.delete_trained_model_alias
+ * @since 7.13.0
+ * @stability TODO
+ */
+export interface MlDeleteTrainedModelAliasRequest extends RequestBase {
+  path_parts: {
+    model_alias: Name
+    model_id: Id
+  }
 }

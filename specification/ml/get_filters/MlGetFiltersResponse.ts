@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Filter } from './Filter'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlGetFiltersResponse extends ResponseBase {
+  count: long
+  filters: Filter[]
 }

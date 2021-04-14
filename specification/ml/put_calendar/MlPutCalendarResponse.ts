@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
-export class Calendar {
+export class MlPutCalendarResponse extends ResponseBase {
   calendar_id: Id
   description: string
   job_ids: Id[]

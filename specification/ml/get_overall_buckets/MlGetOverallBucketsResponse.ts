@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { OverallBucket } from '../../__common/ml/OverallBucket'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlGetOverallBucketsResponse extends ResponseBase {
+  count: long
+  overall_buckets: OverallBucket[]
 }

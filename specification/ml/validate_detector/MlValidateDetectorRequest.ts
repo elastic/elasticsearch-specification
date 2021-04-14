@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Detector } from '../../__common/ml/Detector'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.validate_detector
+ * @since 5.4.0
+ *
+ * @stability TODO
+ */
+export interface MlValidateDetectorRequest extends RequestBase {
+  body?: Detector
 }

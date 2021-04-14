@@ -17,10 +17,26 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { DateString, Field, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../../__common/ml/Page'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_model_snapshots
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlGetModelSnapshotsRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+    snapshot_id?: Id
+  }
+  query_parameters?: {}
+  body?: {
+    desc?: boolean
+    end?: DateString
+    page?: Page
+    sort?: Field
+    start?: DateString
+  }
 }

@@ -17,10 +17,19 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Ids } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_datafeed_stats
+ * @since 5.5.0
+ * @stability TODO
+ */
+export interface MlGetDatafeedStatsRequest extends RequestBase {
+  path_parts?: {
+    datafeed_id?: Ids
+  }
+  query_parameters?: {
+    allow_no_datafeeds?: boolean
+  }
 }

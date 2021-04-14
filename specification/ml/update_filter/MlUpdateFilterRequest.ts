@@ -17,10 +17,21 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.update_filter
+ * @since 6.4.0
+ * @stability TODO
+ */
+export interface MlUpdateFilterRequest extends RequestBase {
+  path_parts: {
+    filter_id: Id
+  }
+  body?: {
+    add_items?: string[]
+    description?: string
+    remove_items?: string[]
+  }
 }

@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.delete_calendar_event
+ * @since 6.2.0
+ * @stability TODO
+ */
+export interface MlDeleteCalendarEventRequest extends RequestBase {
+  path_parts?: {
+    calendar_id: Id
+    event_id: Id
+  }
 }

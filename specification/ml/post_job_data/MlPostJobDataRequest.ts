@@ -17,10 +17,25 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { DateString, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.post_data
+ * @since 5.4.0
+ *
+ * @stability TODO
+ */
+export interface MlPostJobDataRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+  }
+  query_parameters?: {
+    reset_end?: DateString
+    reset_start?: DateString
+  }
+  body?: {
+    data?: UserDefinedValue[]
+  }
 }

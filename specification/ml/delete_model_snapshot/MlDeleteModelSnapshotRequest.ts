@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.delete_model_snapshot
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlDeleteModelSnapshotRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+    snapshot_id: Id
+  }
 }

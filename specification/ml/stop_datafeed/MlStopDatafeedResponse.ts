@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlStopDatafeedResponse extends ResponseBase {
+  stopped: boolean
 }

@@ -17,10 +17,25 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Ids } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.stop_datafeed
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlStopDatafeedRequest extends RequestBase {
+  path_parts?: {
+    datafeed_id: Ids
+  }
+  query_parameters?: {
+    allow_no_match?: boolean // default: true
+    force?: boolean // default: false
+  }
+  body?: {
+    force?: boolean // default: false
+    timeout?: Time // default: 20s
+  }
 }

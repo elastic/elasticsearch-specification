@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ScheduledEvent } from '../post_calendar_events/ScheduledEvent'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlGetCalendarEventsResponse extends ResponseBase {
+  count: integer
+  events: ScheduledEvent[]
 }

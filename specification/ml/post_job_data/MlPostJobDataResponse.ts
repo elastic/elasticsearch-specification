@@ -17,10 +17,23 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id, integer, long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlPostJobDataResponse extends ResponseBase {
+  bucket_count: long
+  earliest_record_timestamp: integer
+  empty_bucket_count: long
+  input_bytes: long
+  input_field_count: long
+  input_record_count: long
+  invalid_date_count: long
+  job_id: Id
+  last_data_time: integer
+  latest_record_timestamp: integer
+  missing_field_count: long
+  out_of_order_timestamp_count: long
+  processed_field_count: long
+  processed_record_count: long
+  sparse_bucket_count: long
 }

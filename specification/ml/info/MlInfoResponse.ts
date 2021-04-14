@@ -17,10 +17,14 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Defaults } from './Defaults'
+import { Limits } from './Limits'
+import { NativeCode } from './NativeCode'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlMachineLearningInfoResponse extends ResponseBase {
+  defaults: Defaults
+  limits: Limits
+  upgrade_mode: boolean
+  native_code: NativeCode
 }

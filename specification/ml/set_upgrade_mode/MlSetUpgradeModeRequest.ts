@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.set_upgrade_mode
+ * @since 6.7.0
+ * @stability TODO
+ */
+export interface MlSetUpgradeModeRequest extends RequestBase {
+  query_parameters?: {
+    enabled?: boolean
+    timeout?: Time
+  }
 }

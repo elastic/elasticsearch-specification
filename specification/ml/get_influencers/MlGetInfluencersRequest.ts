@@ -17,10 +17,27 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { DateString, double, Field, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../../__common/ml/Page'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_influencers
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlGetInfluencersRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+  }
+  query_parameters?: {}
+  body?: {
+    descending?: boolean
+    end?: DateString
+    exclude_interim?: boolean
+    influencer_score?: double
+    page?: Page
+    sort?: Field
+    start?: DateString
+  }
 }

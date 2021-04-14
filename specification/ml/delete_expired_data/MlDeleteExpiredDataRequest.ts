@@ -17,10 +17,27 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { float, Name } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.delete_expired_data
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlDeleteExpiredDataRequest extends RequestBase {
+  path_parts?: {
+    name?: Name
+  }
+  query_parameters?: {
+    requests_per_second?: float // default: no throttling
+    /** @server_default 8h */
+    timeout?: Time
+  }
+  body?: {
+    requests_per_second?: float // default: no throttling
+    /** @server_default 8h */
+    timeout?: Time
+  }
 }

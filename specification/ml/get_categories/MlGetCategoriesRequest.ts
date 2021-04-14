@@ -17,10 +17,21 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { CategoryId, Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../../__common/ml/Page'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_categories
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlGetCategoriesRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+    category_id?: CategoryId
+  }
+  body?: {
+    page?: Page
+  }
 }

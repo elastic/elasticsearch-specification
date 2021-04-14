@@ -17,10 +17,22 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Id } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.delete_forecast
+ * @since 6.5.0
+ * @stability TODO
+ */
+export interface MlDeleteForecastRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+    forecast_id?: Id
+  }
+  query_parameters?: {
+    allow_no_forecasts?: boolean
+    timeout?: Time
+  }
 }

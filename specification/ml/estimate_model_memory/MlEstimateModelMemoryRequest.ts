@@ -17,10 +17,20 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { Field, long } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.estimate_model_memory
+ * @since 7.7.0
+ * @stability TODO
+ */
+export interface MlEstimateModelMemoryRequest extends RequestBase {
+  body?: {
+    analysis_config?: AnalysisConfig
+    max_bucket_cardinality?: Dictionary<Field, long>
+    overall_cardinality?: Dictionary<Field, long>
+  }
 }

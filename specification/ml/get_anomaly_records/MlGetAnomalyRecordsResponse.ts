@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { long } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AnomalyRecord } from '../../__common/ml/AnomalyRecord'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+export class MlGetAnomalyRecordsResponse extends ResponseBase {
+  count: long
+  records: AnomalyRecord[]
 }

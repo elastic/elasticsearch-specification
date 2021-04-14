@@ -17,10 +17,36 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { DateString, double, Field, Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Page } from '../../__common/ml/Page'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_records
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface MlGetAnomalyRecordsRequest extends RequestBase {
+  path_parts?: {
+    job_id: Id
+  }
+  query_parameters?: {
+    /** @server_default false */
+    exclude_interim?: boolean
+    from?: integer
+    size?: integer
+    start?: DateString
+    end?: DateString
+  }
+  body?: {
+    /** @server_default false */
+    desc?: boolean
+    /** @server_default false */
+    exclude_interim?: boolean
+    page?: Page
+    record_score?: double
+    sort?: Field
+    start?: DateString
+    end?: DateString
+  }
 }

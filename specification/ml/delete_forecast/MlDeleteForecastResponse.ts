@@ -17,10 +17,6 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
-}
+export class MlDeleteForecastResponse extends AcknowledgedResponseBase {}

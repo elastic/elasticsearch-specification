@@ -17,10 +17,26 @@
  * under the License.
  */
 
-import { Id } from "../../__common/common"
+import { DateString, double, Id, integer } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
-export class Calendar {
-  calendar_id: Id
-  description: string
-  job_ids: Id[]
+/**
+ * @rest_spec_name ml.get_overall_buckets
+ * @since 6.1.0
+ * @stability TODO
+ */
+export interface MlGetOverallBucketsRequest extends RequestBase {
+  path_parts: {
+    job_id: Id
+  }
+  body?: {
+    allow_no_jobs?: boolean
+    bucket_span?: Time
+    end?: DateString
+    exclude_interim?: boolean
+    overall_score?: double
+    start?: DateString
+    top_n?: integer
+  }
 }
