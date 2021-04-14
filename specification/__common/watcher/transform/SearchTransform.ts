@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Time } from '../../common_options/time_unit/Time'
+import { SearchInputRequestDefinition } from '../input/SearchInputRequestDefinition'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class SearchTransform {
+  request: SearchInputRequestDefinition
+  timeout: Time
 }

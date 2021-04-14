@@ -18,7 +18,7 @@
  */
 
 import { DateString } from '../../__common/common'
-import { TriggerEventContainer } from '../trigger/TriggerEventContainer'
+import { TriggerEventContainer } from '../../__common/watcher/trigger/TriggerEventContainer'
 
 export class TriggerEventResult {
   manual: TriggerEventContainer

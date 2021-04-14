@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
+import { Id, long, SequenceNumber, VersionNumber } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class WatcherPutWatchResponse extends ResponseBase {
+  created: boolean
+  _id: Id
+  _primary_term: long
+  _seq_no: SequenceNumber
+  _version: VersionNumber
 }

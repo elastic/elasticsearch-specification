@@ -20,12 +20,12 @@
 import { IndexName } from '../__common/common'
 import { Dictionary } from '../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../__spec_utils/UserDefinedValue'
-import { WatchStatus } from './acknowledge_watch/WatchStatus'
-import { Action } from './action/Action'
-import { ConditionContainer } from './condition/ConditionContainer'
-import { InputContainer } from './input/InputContainer'
-import { TransformContainer } from './transform/TransformContainer'
-import { TriggerContainer } from './trigger/TriggerContainer'
+import { WatchStatus } from './ack_watch/WatchStatus'
+import { Action } from '../__common/watcher/actions/Action'
+import { ConditionContainer } from '../__common/watcher/conditions/ConditionContainer'
+import { InputContainer } from '../__common/watcher/input/InputContainer'
+import { TransformContainer } from '../__common/watcher/transform/TransformContainer'
+import { TriggerContainer } from '../__common/watcher/trigger/TriggerContainer'
 
 export class Watch {
   actions: Dictionary<IndexName, Action>

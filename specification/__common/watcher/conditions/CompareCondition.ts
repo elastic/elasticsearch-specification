@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class CompareCondition {
+  comparison: string
+  path: string
+  value: UserDefinedValue
 }

@@ -18,14 +18,14 @@
  */
 
 import { Id } from '../../__common/common'
-import { ActionType } from '../action/ActionType'
-import { EmailActionResult } from '../execution/email/EmailActionResult'
-import { IndexActionResult } from '../execution/index/IndexActionResult'
-import { LoggingActionResult } from '../execution/logging/LoggingActionResult'
-import { PagerDutyActionResult } from '../execution/pager_duty/PagerDutyActionResult'
-import { SlackActionResult } from '../execution/slack/SlackActionResult'
-import { Status } from '../execution/Status'
-import { WebhookActionResult } from '../execution/webhook/WebhookActionResult'
+import { ActionType } from '../../__common/watcher/actions/ActionType'
+import { EmailActionResult } from '../../__common/watcher/execution/email/EmailActionResult'
+import { IndexActionResult } from '../../__common/watcher/execution/index/IndexActionResult'
+import { LoggingActionResult } from '../../__common/watcher/execution/logging/LoggingActionResult'
+import { PagerDutyActionResult } from '../../__common/watcher/execution/pager_duty/PagerDutyActionResult'
+import { SlackActionResult } from '../../__common/watcher/execution/slack/SlackActionResult'
+import { Status } from '../../__common/watcher/execution/Status'
+import { WebhookActionResult } from '../../__common/watcher/execution/webhook/WebhookActionResult'
 
 export class ExecutionResultAction {
   email?: EmailActionResult

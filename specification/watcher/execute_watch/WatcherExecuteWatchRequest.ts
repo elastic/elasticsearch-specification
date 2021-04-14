@@ -17,27 +17,34 @@
  * under the License.
  */
 
-import { CronExpression } from '../../__common/watcher/schedule/CronExpression'
 import { Name } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { SnapshotLifecycleConfig } from '../SnapshotLifecycleConfig'
-import { SnapshotRetentionConfiguration } from '../SnapshotRetentionConfiguration'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { ActionExecutionMode } from '../../__common/watcher/execution/ActionExecutionMode'
+import { SimulatedActions } from '../../__common/watcher/execution/SimulatedActions'
+import { ScheduleTriggerEvent } from '../../__common/watcher/schedule/ScheduleTriggerEvent'
+import { Watch } from '../Watch'
 
 /**
- * @rest_spec_name slm.put_lifecycle
- * @since 7.4.0
+ * @rest_spec_name watcher.execute_watch
+ * @since 0.0.0
  * @stability TODO
  */
-export interface PutSnapshotLifecycleRequest extends RequestBase {
+export interface WatcherExecuteWatchRequest extends RequestBase {
   path_parts?: {
-    policy_id: Name
+    id?: Id
   }
-  query_parameters?: {}
+  query_parameters?: {
+    debug?: boolean
+  }
   body?: {
-    config?: SnapshotLifecycleConfig
-    name?: string
-    repository?: string
-    retention?: SnapshotRetentionConfiguration
-    schedule?: CronExpression
+    action_modes?: Dictionary<string, ActionExecutionMode>
+    alternative_input?: Dictionary<string, UserDefinedValue>
+    ignore_condition?: boolean
+    record_execution?: boolean
+    simulated_actions?: SimulatedActions
+    trigger_data?: ScheduleTriggerEvent
+    watch?: Watch
   }
 }

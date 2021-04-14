@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { PagerDutyEvent } from '../../actions/pager_duty/PagerDutyEvent'
+import { HttpInputRequestResult } from '../HttpInputRequestResult'
+import { HttpInputResponseResult } from '../HttpInputResponseResult'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class PagerDutyActionEventResult {
+  event: PagerDutyEvent
+  reason: string
+  request: HttpInputRequestResult
+  response: HttpInputResponseResult
 }

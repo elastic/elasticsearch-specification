@@ -17,11 +17,6 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
-}
+export class WatcherStopResponse extends AcknowledgedResponseBase {}

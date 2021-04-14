@@ -17,11 +17,16 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+/**
+ * @rest_spec_name watcher.stop
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface WatcherStopRequest extends RequestBase {
+  query_parameters?: {}
+  body?: {
+    stub: integer
+  }
 }

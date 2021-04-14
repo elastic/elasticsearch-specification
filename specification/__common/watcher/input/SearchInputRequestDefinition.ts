@@ -17,11 +17,16 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { IndexName } from '../../common'
+import { SearchType } from '../../common/SearchType'
+import { SearchRequest } from '../../../__global/search/SearchRequest'
+import { SearchTemplateRequest } from '../../../__global/search_template/SearchTemplateRequest'
+import { IndicesOptions } from './IndicesOptions'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class SearchInputRequestDefinition {
+  body?: SearchRequest
+  indices?: IndexName[]
+  indices_options?: IndicesOptions
+  search_type?: SearchType
+  template?: SearchTemplateRequest
 }

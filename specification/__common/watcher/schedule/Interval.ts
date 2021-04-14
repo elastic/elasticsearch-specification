@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { long } from '../../common'
+import { IntervalUnit } from './IntervalUnit'
+import { ScheduleBase } from './ScheduleBase'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class Interval extends ScheduleBase {
+  factor: long
+  unit: IntervalUnit
 }

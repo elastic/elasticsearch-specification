@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ExpandWildcards } from '../../common/ExpandWildcards'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class IndicesOptions {
+  allow_no_indices: boolean
+  expand_wildcards: ExpandWildcards
+  ignore_unavailable: boolean
 }

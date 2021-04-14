@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { SlackMessage } from '../../actions/slack/SlackMessage'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class SlackActionResult {
+  account?: string
+  //  sent_messages?: SlackActionMessageResult[] TODO: not sure if this needed
+  message: SlackMessage
 }

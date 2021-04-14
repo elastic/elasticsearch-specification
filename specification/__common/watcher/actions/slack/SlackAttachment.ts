@@ -17,11 +17,24 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { DateString } from '../../../common'
+import { SlackAttachmentField } from './SlackAttachmentField'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class SlackAttachment {
+  author_icon?: string
+  author_link?: string
+  author_name: string
+  color?: string
+  fallback?: string
+  fields?: SlackAttachmentField[]
+  footer?: string
+  footer_icon?: string
+  image_url?: string
+  pretext?: string
+  text?: string
+  thumb_url?: string
+  title: string
+  title_link?: string
+  /** @prop_serializer NullableDateTimeOffsetEpochSecondsFormatter */
+  ts?: DateString
 }

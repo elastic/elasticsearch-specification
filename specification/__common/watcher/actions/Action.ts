@@ -17,11 +17,24 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { EpochMillis, IndexName, integer } from '../../common'
+import { Time } from '../../common_options/time_unit/Time'
+import { ConditionContainer } from '../conditions/ConditionContainer'
+import { TransformContainer } from '../transform/TransformContainer'
+import { ActionType } from './ActionType'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class Action {
+  action_type?: ActionType
+  condition?: ConditionContainer
+  foreach?: string
+  max_iterations?: integer
+  name?: string
+  throttle_period?: Time
+  throttle_period_in_millis?: EpochMillis
+  transform?: TransformContainer
+  index: ActionIndex
+}
+
+export class ActionIndex {
+  index: IndexName
 }

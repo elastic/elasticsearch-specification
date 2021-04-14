@@ -17,11 +17,26 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { integer } from '../../common'
+import { Time } from '../../common_options/time_unit/Time'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { ConnectionScheme } from './ConnectionScheme'
+import { HttpInputAuthentication } from './HttpInputAuthentication'
+import { HttpInputMethod } from './HttpInputMethod'
+import { HttpInputProxy } from './HttpInputProxy'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class HttpInputRequestDefinition {
+  auth?: HttpInputAuthentication
+  body?: string
+  connection_timeout?: Time
+  headers?: Dictionary<string, string>
+  host?: string
+  method?: HttpInputMethod
+  params?: Dictionary<string, string>
+  path?: string
+  port?: integer
+  proxy?: HttpInputProxy
+  read_timeout?: Time
+  scheme?: ConnectionScheme
+  url?: string
 }

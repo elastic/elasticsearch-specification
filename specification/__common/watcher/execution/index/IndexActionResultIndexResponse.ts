@@ -17,11 +17,14 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Id, IndexName, Type, VersionNumber } from '../../../common'
+import { Result } from '../../../Result'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class IndexActionResultIndexResponse {
+  created: boolean
+  id: Id
+  index: IndexName
+  result: Result
+  version: VersionNumber
+  type?: Type
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Status } from '../../watcher/execution/Status'
+import { Status } from '../../__common/watcher/execution/Status'
 import { DocumentSimulation } from './DocumentSimulation'
 
 export class PipelineSimulation {

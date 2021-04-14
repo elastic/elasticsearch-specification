@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { InputContainer } from './InputContainer'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class ChainInput {
+  inputs: Dictionary<string, InputContainer>
 }

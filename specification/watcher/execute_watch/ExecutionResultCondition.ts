@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ConditionType } from '../condition/ConditionType'
-import { Status } from '../execution/Status'
+import { ConditionType } from '../../__common/watcher/conditions/ConditionType'
+import { Status } from '../../__common/watcher/execution/Status'
 
 export class ExecutionResultCondition {
   met: boolean

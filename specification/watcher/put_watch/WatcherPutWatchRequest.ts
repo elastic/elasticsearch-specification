@@ -17,24 +17,38 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
+import { long, Name, VersionNumber } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Action } from '../../__common/watcher/actions/Action'
 import { ConditionContainer } from '../../__common/watcher/conditions/ConditionContainer'
 import { InputContainer } from '../../__common/watcher/input/InputContainer'
-import { ActionExecutionState } from './ActionExecutionState'
-import { ExecutionResult } from './ExecutionResult'
-import { TriggerEventResult } from './TriggerEventResult'
+import { TransformContainer } from '../../__common/watcher/transform/TransformContainer'
+import { TriggerContainer } from '../../__common/watcher/trigger/TriggerContainer'
 
-export class WatchRecord {
-  condition: ConditionContainer
-  input: InputContainer
-  messages: string[]
-  metadata: Dictionary<string, UserDefinedValue>
-  node: string
-  result: ExecutionResult
-  state: ActionExecutionState
-  trigger_event: TriggerEventResult
-  user: string
-  watch_id: Id
+/**
+ * @rest_spec_name watcher.put_watch
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface WatcherPutWatchRequest extends RequestBase {
+  path_parts?: {
+    id: Id
+  }
+  query_parameters?: {
+    active?: boolean
+    if_primary_term?: long
+    if_sequence_number?: long
+    version?: VersionNumber
+  }
+  body?: {
+    actions?: Dictionary<string, Action>
+    condition?: ConditionContainer
+    input?: InputContainer
+    metadata?: Dictionary<string, UserDefinedValue>
+    throttle_period?: string
+    transform?: TransformContainer
+    trigger?: TriggerContainer
+  }
 }

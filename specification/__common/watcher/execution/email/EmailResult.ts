@@ -17,11 +17,19 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { DateString, Id } from '../../../common'
+import { EmailBody } from '../../actions/email/EmailBody'
+import { EmailPriority } from '../../actions/email/EmailPriority'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class EmailResult {
+  bcc?: string[]
+  body?: EmailBody
+  cc?: string[]
+  from?: string
+  id: Id
+  priority?: EmailPriority
+  reply_to?: string[]
+  sent_date: DateString
+  subject: string
+  to: string[]
 }

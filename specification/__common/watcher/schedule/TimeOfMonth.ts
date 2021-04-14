@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Transform } from '../../__common/watcher/transform/Transform'
-import { long } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { integer } from '../../common'
 
-export class GetTransformResponse extends ResponseBase {
-  count: long
-  transforms: Transform[]
+export class TimeOfMonth {
+  /** @prop_serializer SingleOrEnumerableFormatter`1 */
+  at: string[]
+  /** @prop_serializer SingleOrEnumerableFormatter`1 */
+  on: integer[]
 }

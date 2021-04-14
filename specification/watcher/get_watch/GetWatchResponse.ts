@@ -24,7 +24,7 @@ import {
   VersionNumber
 } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { WatchStatus } from '../acknowledge_watch/WatchStatus'
+import { WatchStatus } from '../ack_watch/WatchStatus'
 import { Watch } from '../Watch'
 
 export class GetWatchResponse extends ResponseBase {

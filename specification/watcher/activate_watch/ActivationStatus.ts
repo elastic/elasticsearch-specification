@@ -19,8 +19,8 @@
 
 import { IndexName, VersionNumber } from '../../__common/common'
 import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ActionStatus } from '../acknowledge_watch/ActionStatus'
-import { ActivationState } from '../acknowledge_watch/ActivationState'
+import { ActionStatus } from '../ack_watch/ActionStatus'
+import { ActivationState } from '../ack_watch/ActivationState'
 
 export class ActivationStatus {
   actions: Dictionary<IndexName, ActionStatus>
