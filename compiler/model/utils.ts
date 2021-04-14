@@ -35,6 +35,7 @@ import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
+import { dirname } from 'path'
 
 /**
  * Behaviors that the compiler recognized
@@ -661,10 +662,9 @@ export function getNameSpace (node: Node): string {
   return cleanPath(declaration.getSourceFile().getFilePath())
 
   function cleanPath (path: string): string {
-    path = path
+    path = dirname(path)
       .replace(/.*[/\\]specification[/\\]?/, '')
       .replace(/[/\\]/g, '.')
-      .slice(0, -3)
     if (path === '') path = 'internal'
     return path
   }
