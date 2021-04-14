@@ -19,7 +19,7 @@
 
 import { join } from 'path'
 import minimist from 'minimist'
-import { Project } from 'ts-morph'
+import { Project, ts } from 'ts-morph'
 
 const options = minimist(process.argv.slice(2), {
   string: ['file'],
@@ -67,8 +67,16 @@ async function fixImports (): Promise<void> {
   for (const sourceFile of project.getSourceFiles()) {
     if (typeof options.file === 'string' && !sourceFile.getFilePath().includes(options.file)) continue
     console.log(`Updating imports in ${sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, '')}`)
-    sourceFile.fixMissingImports({}, { quotePreference: 'single' })
-    sourceFile.organizeImports({}, { quotePreference: 'single' })
+    sourceFile.fixMissingImports({ semicolons: ts.SemicolonPreference.Remove }, {
+      quotePreference: 'single',
+      importModuleSpecifierPreference: 'relative',
+      includePackageJsonAutoImports: 'off'
+    })
+    sourceFile.organizeImports({ semicolons: ts.SemicolonPreference.Remove }, {
+      quotePreference: 'single',
+      importModuleSpecifierPreference: 'relative',
+      includePackageJsonAutoImports: 'off'
+    })
   }
   await project.save()
 }
