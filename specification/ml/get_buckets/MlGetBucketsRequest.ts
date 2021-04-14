@@ -17,7 +17,14 @@
  * under the License.
  */
 
-import { DateString, double, Field, Id, integer, Timestamp } from '../../__common/common'
+import {
+  DateString,
+  double,
+  Field,
+  Id,
+  integer,
+  Timestamp
+} from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Page } from '../../__common/ml/Page'
 

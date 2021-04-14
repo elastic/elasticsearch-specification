@@ -20,7 +20,10 @@
 import { Name } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 import { Time } from '../../__common/common_options/time_unit/Time'
-import { SnapshotRepository, SnapshotRepositorySettings } from '../SnapshotRepository'
+import {
+  SnapshotRepository,
+  SnapshotRepositorySettings
+} from '../SnapshotRepository'
 
 /**
  * @rest_spec_name snapshot.create_repository

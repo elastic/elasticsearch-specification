@@ -714,13 +714,6 @@ export interface ClearSqlCursorRequest extends RequestBase {
   }
 }
 
-export interface CloseJobRequest extends RequestBase {
-  job_id: Id
-  allow_no_jobs?: boolean
-  force?: boolean
-  timeout?: Time
-}
-
 export interface ClosePointInTimeRequest extends RequestBase {
   body?: {
     id: Id
@@ -1281,20 +1274,6 @@ export interface DeleteByQueryRethrottleRequest extends RequestBase {
   requests_per_second?: long
 }
 
-export interface DeleteCalendarEventRequest extends RequestBase {
-  calendar_id: Id
-  event_id: Id
-}
-
-export interface DeleteCalendarJobRequest extends RequestBase {
-  calendar_id: Id
-  job_id: Id
-}
-
-export interface DeleteCalendarRequest extends RequestBase {
-  calendar_id: Id
-}
-
 export interface DeleteDanglingIndexRequest extends RequestBase {
   stub_a: string
   stub_b: string
@@ -1303,46 +1282,8 @@ export interface DeleteDanglingIndexRequest extends RequestBase {
   }
 }
 
-export interface DeleteDataFrameAnalyticsRequest extends RequestBase {
-  id: Id
-  force?: boolean
-  timeout?: Time
-}
-
-export interface DeleteDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  force?: boolean
-}
-
 export interface DeleteEnrichPolicyRequest extends RequestBase {
   name: Name
-}
-
-export interface DeleteExpiredDataRequest extends RequestBase {
-  name?: Name
-  requests_per_second?: float
-  timeout?: Time
-  body?: {
-    requests_per_second?: float
-    timeout?: Time
-  }
-}
-
-export interface DeleteFilterRequest extends RequestBase {
-  filter_id: Id
-}
-
-export interface DeleteForecastRequest extends RequestBase {
-  job_id: Id
-  forecast_id?: Id
-  allow_no_forecasts?: boolean
-  timeout?: Time
-}
-
-export interface DeleteJobRequest extends RequestBase {
-  job_id: Id
-  force?: boolean
-  wait_for_completion?: boolean
 }
 
 export interface DeleteLicenseRequest extends RequestBase {
@@ -1351,11 +1292,6 @@ export interface DeleteLicenseRequest extends RequestBase {
 export interface DeleteLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id: Id
-}
-
-export interface DeleteModelSnapshotRequest extends RequestBase {
-  job_id: Id
-  snapshot_id: Id
 }
 
 export interface DeletePipelineRequest extends RequestBase {
@@ -1390,15 +1326,6 @@ export interface DeleteScriptRequest extends RequestBase {
 
 export interface DeleteSnapshotLifecycleRequest extends RequestBase {
   policy_id: Name
-}
-
-export interface DeleteTrainedModelAliasRequest extends RequestBase {
-  model_alias: Name
-  model_id: Id
-}
-
-export interface DeleteTrainedModelRequest extends RequestBase {
-  model_id: Id
 }
 
 export interface DeleteTransformRequest extends RequestBase {
@@ -1624,14 +1551,6 @@ export interface EqlSearchRequest extends RequestBase {
     wait_for_completion_timeout?: Time
     size?: integer | float
     fields?: Array<Field | EqlSearchFieldFormatted>
-  }
-}
-
-export interface EstimateModelMemoryRequest extends RequestBase {
-  body: {
-    analysis_config?: AnalysisConfig
-    max_bucket_cardinality?: Record<Field, long>
-    overall_cardinality?: Record<Field, long>
   }
 }
 
@@ -1898,17 +1817,6 @@ export interface FloatRangeProperty extends RangePropertyBase {
   type: 'float_range'
 }
 
-export interface FlushJobRequest extends RequestBase {
-  job_id: Id
-  skip_time?: string
-  body?: {
-    advance_time?: DateString
-    calc_interim?: boolean
-    end?: DateString
-    start?: DateString
-  }
-}
-
 export interface FollowIndexStatsRequest extends RequestBase {
   index: Indices
 }
@@ -1921,14 +1829,6 @@ export interface ForeachProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   processor: ProcessorContainer
-}
-
-export interface ForecastJobRequest extends RequestBase {
-  job_id: Id
-  body?: {
-    duration?: Time
-    expires_in?: Time
-  }
 }
 
 export interface ForgetFollowerIndexRequest extends RequestBase {
@@ -2138,24 +2038,6 @@ export type GeoTilePrecision = number
 
 export type GeoValidationMethod = 'coerce' | 'ignore_malformed' | 'strict'
 
-export interface GetAnomalyRecordsRequest extends RequestBase {
-  job_id: Id
-  exclude_interim?: boolean
-  from?: integer
-  size?: integer
-  start?: DateString
-  end?: DateString
-  body?: {
-    desc?: boolean
-    exclude_interim?: boolean
-    page?: Page
-    record_score?: double
-    sort?: Field
-    start?: DateString
-    end?: DateString
-  }
-}
-
 export interface GetAutoFollowPatternRequest extends RequestBase {
   name?: Name
 }
@@ -2179,70 +2061,7 @@ export interface GetAutoscalingPolicyRequest extends RequestBase {
 export interface GetBasicLicenseStatusRequest extends RequestBase {
 }
 
-export interface GetBucketsRequest extends RequestBase {
-  job_id: Id
-  timestamp?: Timestamp
-  from?: integer
-  size?: integer
-  exclude_interim?: boolean
-  sort?: Field
-  desc?: boolean
-  start?: DateString
-  end?: DateString
-  body?: {
-    anomaly_score?: double
-    desc?: boolean
-    exclude_interim?: boolean
-    expand?: boolean
-    page?: Page
-    sort?: Field
-    start?: DateString
-    end?: DateString
-  }
-}
-
-export interface GetCalendarEventsRequest extends RequestBase {
-  calendar_id: Id
-  job_id?: Id
-  end?: DateString
-  from?: integer
-  start?: string
-  size?: integer
-  body?: {
-    end?: DateString
-    from?: integer
-    start?: string
-    size?: integer
-  }
-}
-
-export interface GetCalendarsRequest extends RequestBase {
-  calendar_id?: Id
-  body?: {
-    page?: Page
-  }
-}
-
-export interface GetCategoriesRequest extends RequestBase {
-  job_id: Id
-  category_id?: CategoryId
-  body?: {
-    page?: Page
-  }
-}
-
 export interface GetCertificatesRequest extends RequestBase {
-}
-
-export interface GetDatafeedStatsRequest extends RequestBase {
-  datafeed_id?: Ids
-  allow_no_datafeeds?: boolean
-}
-
-export interface GetDatafeedsRequest extends RequestBase {
-  datafeed_id?: Id
-  allow_no_datafeeds?: boolean
-  exclude_generated?: boolean
 }
 
 export interface GetEnrichPolicyRequest extends RequestBase {
@@ -2257,37 +2076,7 @@ export interface GetFeaturesRequest extends RequestBase {
   }
 }
 
-export interface GetFiltersRequest extends RequestBase {
-  filter_id?: Id
-  from?: integer
-  size?: integer
-}
-
 export interface GetIlmStatusRequest extends RequestBase {
-}
-
-export interface GetInfluencersRequest extends RequestBase {
-  job_id: Id
-  body?: {
-    descending?: boolean
-    end?: DateString
-    exclude_interim?: boolean
-    influencer_score?: double
-    page?: Page
-    sort?: Field
-    start?: DateString
-  }
-}
-
-export interface GetJobStatsRequest extends RequestBase {
-  job_id?: Id
-  allow_no_jobs?: boolean
-}
-
-export interface GetJobsRequest extends RequestBase {
-  job_id?: Ids
-  allow_no_jobs?: boolean
-  exclude_generated?: boolean
 }
 
 export interface GetLicenseRequest extends RequestBase {
@@ -2298,31 +2087,6 @@ export interface GetLicenseRequest extends RequestBase {
 export interface GetLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id?: Id
-}
-
-export interface GetModelSnapshotsRequest extends RequestBase {
-  job_id: Id
-  snapshot_id?: Id
-  body?: {
-    desc?: boolean
-    end?: DateString
-    page?: Page
-    sort?: Field
-    start?: DateString
-  }
-}
-
-export interface GetOverallBucketsRequest extends RequestBase {
-  job_id: Id
-  body?: {
-    allow_no_jobs?: boolean
-    bucket_span?: Time
-    end?: DateString
-    exclude_interim?: boolean
-    overall_score?: double
-    start?: DateString
-    top_n?: integer
-  }
 }
 
 export interface GetPipelineRequest extends RequestBase {
@@ -3744,6 +3508,431 @@ export interface MissingAggregation extends BucketAggregationBase {
   missing?: Missing
 }
 
+export interface MlCloseJobRequest extends RequestBase {
+  job_id: Id
+  allow_no_jobs?: boolean
+  force?: boolean
+  timeout?: Time
+}
+
+export interface MlDeleteCalendarEventRequest extends RequestBase {
+  calendar_id: Id
+  event_id: Id
+}
+
+export interface MlDeleteCalendarJobRequest extends RequestBase {
+  calendar_id: Id
+  job_id: Id
+}
+
+export interface MlDeleteCalendarRequest extends RequestBase {
+  calendar_id: Id
+}
+
+export interface MlDeleteDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  force?: boolean
+  timeout?: Time
+}
+
+export interface MlDeleteDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  force?: boolean
+}
+
+export interface MlDeleteExpiredDataRequest extends RequestBase {
+  name?: Name
+  requests_per_second?: float
+  timeout?: Time
+  body?: {
+    requests_per_second?: float
+    timeout?: Time
+  }
+}
+
+export interface MlDeleteFilterRequest extends RequestBase {
+  filter_id: Id
+}
+
+export interface MlDeleteForecastRequest extends RequestBase {
+  job_id: Id
+  forecast_id?: Id
+  allow_no_forecasts?: boolean
+  timeout?: Time
+}
+
+export interface MlDeleteJobRequest extends RequestBase {
+  job_id: Id
+  force?: boolean
+  wait_for_completion?: boolean
+}
+
+export interface MlDeleteModelSnapshotRequest extends RequestBase {
+  job_id: Id
+  snapshot_id: Id
+}
+
+export interface MlDeleteTrainedModelAliasRequest extends RequestBase {
+  model_alias: Name
+  model_id: Id
+}
+
+export interface MlDeleteTrainedModelRequest extends RequestBase {
+  model_id: Id
+}
+
+export interface MlEstimateModelMemoryRequest extends RequestBase {
+  body: {
+    analysis_config?: AnalysisConfig
+    max_bucket_cardinality?: Record<Field, long>
+    overall_cardinality?: Record<Field, long>
+  }
+}
+
+export interface MlFlushJobRequest extends RequestBase {
+  job_id: Id
+  skip_time?: string
+  body?: {
+    advance_time?: DateString
+    calc_interim?: boolean
+    end?: DateString
+    start?: DateString
+  }
+}
+
+export interface MlForecastJobRequest extends RequestBase {
+  job_id: Id
+  body?: {
+    duration?: Time
+    expires_in?: Time
+  }
+}
+
+export interface MlGetAnomalyRecordsRequest extends RequestBase {
+  job_id: Id
+  exclude_interim?: boolean
+  from?: integer
+  size?: integer
+  start?: DateString
+  end?: DateString
+  body?: {
+    desc?: boolean
+    exclude_interim?: boolean
+    page?: Page
+    record_score?: double
+    sort?: Field
+    start?: DateString
+    end?: DateString
+  }
+}
+
+export interface MlGetBucketsRequest extends RequestBase {
+  job_id: Id
+  timestamp?: Timestamp
+  from?: integer
+  size?: integer
+  exclude_interim?: boolean
+  sort?: Field
+  desc?: boolean
+  start?: DateString
+  end?: DateString
+  body?: {
+    anomaly_score?: double
+    desc?: boolean
+    exclude_interim?: boolean
+    expand?: boolean
+    page?: Page
+    sort?: Field
+    start?: DateString
+    end?: DateString
+  }
+}
+
+export interface MlGetCalendarEventsRequest extends RequestBase {
+  calendar_id: Id
+  job_id?: Id
+  end?: DateString
+  from?: integer
+  start?: string
+  size?: integer
+  body?: {
+    end?: DateString
+    from?: integer
+    start?: string
+    size?: integer
+  }
+}
+
+export interface MlGetCalendarsRequest extends RequestBase {
+  calendar_id?: Id
+  body?: {
+    page?: Page
+  }
+}
+
+export interface MlGetCategoriesRequest extends RequestBase {
+  job_id: Id
+  category_id?: CategoryId
+  body?: {
+    page?: Page
+  }
+}
+
+export interface MlGetDatafeedStatsRequest extends RequestBase {
+  datafeed_id?: Ids
+  allow_no_datafeeds?: boolean
+}
+
+export interface MlGetDatafeedsRequest extends RequestBase {
+  datafeed_id?: Id
+  allow_no_datafeeds?: boolean
+  exclude_generated?: boolean
+}
+
+export interface MlGetFiltersRequest extends RequestBase {
+  filter_id?: Id
+  from?: integer
+  size?: integer
+}
+
+export interface MlGetInfluencersRequest extends RequestBase {
+  job_id: Id
+  body?: {
+    descending?: boolean
+    end?: DateString
+    exclude_interim?: boolean
+    influencer_score?: double
+    page?: Page
+    sort?: Field
+    start?: DateString
+  }
+}
+
+export interface MlGetJobStatsRequest extends RequestBase {
+  job_id?: Id
+  allow_no_jobs?: boolean
+}
+
+export interface MlGetJobsRequest extends RequestBase {
+  job_id?: Ids
+  allow_no_jobs?: boolean
+  exclude_generated?: boolean
+}
+
+export interface MlGetModelSnapshotsRequest extends RequestBase {
+  job_id: Id
+  snapshot_id?: Id
+  body?: {
+    desc?: boolean
+    end?: DateString
+    page?: Page
+    sort?: Field
+    start?: DateString
+  }
+}
+
+export interface MlGetOverallBucketsRequest extends RequestBase {
+  job_id: Id
+  body?: {
+    allow_no_jobs?: boolean
+    bucket_span?: Time
+    end?: DateString
+    exclude_interim?: boolean
+    overall_score?: double
+    start?: DateString
+    top_n?: integer
+  }
+}
+
+export interface MlOpenJobRequest extends RequestBase {
+  job_id: Id
+  body?: {
+    timeout?: Time
+  }
+}
+
+export interface MlPostCalendarEventsRequest extends RequestBase {
+  calendar_id: Id
+  body: {
+    events?: Array<ScheduledEvent>
+  }
+}
+
+export interface MlPostJobDataRequest extends RequestBase {
+  job_id: Id
+  reset_end?: DateString
+  reset_start?: DateString
+  body: {
+    data?: Array<any>
+  }
+}
+
+export interface MlPreviewDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+}
+
+export interface MlPutCalendarJobRequest extends RequestBase {
+  calendar_id: Id
+  job_id: Id
+}
+
+export interface MlPutCalendarRequest extends RequestBase {
+  calendar_id: Id
+  body?: {
+    description?: string
+  }
+}
+
+export interface MlPutDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  body: {
+    aggregations?: Record<string, AggregationContainer>
+    chunking_config?: ChunkingConfig
+    frequency?: Time
+    indices?: Indices
+    indexes?: Array<string>
+    job_id?: Id
+    max_empty_searches?: integer
+    query?: QueryContainer
+    query_delay?: Time
+    script_fields?: Record<string, ScriptField>
+    scroll_size?: integer
+  }
+}
+
+export interface MlPutFilterRequest extends RequestBase {
+  filter_id: Id
+  body: {
+    description?: string
+    items?: Array<string>
+  }
+}
+
+export interface MlPutJobRequest extends RequestBase {
+  job_id: Id
+  body: {
+    allow_lazy_open?: boolean
+    analysis_config?: AnalysisConfig
+    analysis_limits?: AnalysisLimits
+    data_description?: DataDescription
+    description?: string
+    model_plot?: ModelPlotConfig
+    model_snapshot_retention_days?: long
+    results_index_name?: IndexName
+  }
+}
+
+export interface MlRevertModelSnapshotRequest extends RequestBase {
+  job_id: Id
+  snapshot_id: Id
+  body?: {
+    delete_intervening_results?: boolean
+  }
+}
+
+export interface MlSetUpgradeModeRequest extends RequestBase {
+  enabled?: boolean
+  timeout?: Time
+}
+
+export interface MlStartDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  start?: Time
+  body?: {
+    end?: Time
+    start?: Time
+    timeout?: Time
+  }
+}
+
+export interface MlStopDatafeedRequest extends RequestBase {
+  datafeed_id: Ids
+  allow_no_match?: boolean
+  force?: boolean
+  body?: {
+    force?: boolean
+    timeout?: Time
+  }
+}
+
+export interface MlUpdateDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  body: {
+    aggregations?: Record<string, AggregationContainer>
+    chunking_config?: ChunkingConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
+    frequency?: Time
+    indexes?: Indices
+    indices?: Indices
+    indices_options?: DatafeedIndicesOptions
+    job_id?: Id
+    max_empty_searches?: integer
+    query?: QueryContainer
+    query_delay?: Time
+    script_fields?: Record<string, ScriptField>
+    scroll_size?: integer
+  }
+}
+
+export interface MlUpdateFilterRequest extends RequestBase {
+  filter_id: Id
+  body: {
+    add_items?: Array<string>
+    description?: string
+    remove_items?: Array<string>
+  }
+}
+
+export interface MlUpdateJobRequest extends RequestBase {
+  job_id: Id
+  body: {
+    allow_lazy_open?: boolean
+    analysis_limits?: AnalysisMemoryLimit
+    background_persist_interval?: Time
+    custom_settings?: Record<string, any>
+    description?: string
+    model_plot_config?: ModelPlotConfigEnabled
+    model_snapshot_retention_days?: long
+    renormalization_window_days?: long
+    results_retention_days?: long
+    groups?: Array<string>
+  }
+}
+
+export interface MlUpdateModelSnapshotRequest extends RequestBase {
+  job_id: Id
+  snapshot_id: Id
+  body: {
+    description?: string
+    retain?: boolean
+  }
+}
+
+export interface MlValidateDetectorRequest extends RequestBase {
+  body: Detector
+}
+
+export interface MlValidateJobRequest extends RequestBase {
+  body: {
+    job_id?: Id
+    analysis_config?: AnalysisConfig
+    analysis_limits?: AnalysisLimits
+    data_description?: DataDescription
+    description?: string
+    model_plot?: ModelPlotConfig
+    model_snapshot_retention_days?: long
+    results_index_name?: IndexName
+  }
+}
+
 export interface ModelPlotConfig {
   terms?: Field
   enabled: boolean
@@ -4119,13 +4308,6 @@ export interface ObjectProperty extends CorePropertyBase {
 
 export type OpType = 'index' | 'create'
 
-export interface OpenJobRequest extends RequestBase {
-  job_id: Id
-  body?: {
-    timeout?: Time
-  }
-}
-
 export interface OpenPointInTimeRequest extends RequestBase {
   index: Indices
   keep_alive?: Time
@@ -4313,22 +4495,6 @@ export interface Policy {
 export interface PorterStemTokenFilter extends TokenFilterBase {
 }
 
-export interface PostCalendarEventsRequest extends RequestBase {
-  calendar_id: Id
-  body: {
-    events?: Array<ScheduledEvent>
-  }
-}
-
-export interface PostJobDataRequest extends RequestBase {
-  job_id: Id
-  reset_end?: DateString
-  reset_start?: DateString
-  body: {
-    data?: Array<any>
-  }
-}
-
 export interface PostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
@@ -4344,10 +4510,6 @@ export interface PredicateTokenFilter extends TokenFilterBase {
 export interface PrefixQuery extends QueryBase {
   rewrite?: MultiTermQueryRewrite
   value: string
-}
-
-export interface PreviewDatafeedRequest extends RequestBase {
-  datafeed_id: Id
 }
 
 export interface PreviewTransformRequest extends RequestBase {
@@ -4454,66 +4616,11 @@ export interface PutAutoscalingPolicyRequest extends RequestBase {
   }
 }
 
-export interface PutCalendarJobRequest extends RequestBase {
-  calendar_id: Id
-  job_id: Id
-}
-
-export interface PutCalendarRequest extends RequestBase {
-  calendar_id: Id
-  body?: {
-    description?: string
-  }
-}
-
-export interface PutDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_throttled?: boolean
-  ignore_unavailable?: boolean
-  body: {
-    aggregations?: Record<string, AggregationContainer>
-    chunking_config?: ChunkingConfig
-    frequency?: Time
-    indices?: Array<string>
-    indexes?: Array<string>
-    job_id?: Id
-    max_empty_searches?: integer
-    query?: QueryContainer
-    query_delay?: Time
-    script_fields?: Record<string, ScriptField>
-    scroll_size?: integer
-  }
-}
-
 export interface PutEnrichPolicyRequest extends RequestBase {
   name: Name
   body: {
     geo_match?: EnrichPolicy
     match?: EnrichPolicy
-  }
-}
-
-export interface PutFilterRequest extends RequestBase {
-  filter_id: Id
-  body: {
-    description?: string
-    items?: Array<string>
-  }
-}
-
-export interface PutJobRequest extends RequestBase {
-  job_id: Id
-  body: {
-    allow_lazy_open?: boolean
-    analysis_config?: AnalysisConfig
-    analysis_limits?: AnalysisLimits
-    data_description?: DataDescription
-    description?: string
-    model_plot?: ModelPlotConfig
-    model_snapshot_retention_days?: long
-    results_index_name?: IndexName
   }
 }
 
@@ -4909,14 +5016,6 @@ export interface ReverseNestedAggregation extends BucketAggregationBase {
 }
 
 export interface ReverseTokenFilter extends TokenFilterBase {
-}
-
-export interface RevertModelSnapshotRequest extends RequestBase {
-  job_id: Id
-  snapshot_id: Id
-  body?: {
-    delete_intervening_results?: boolean
-  }
 }
 
 export interface RoleMappingRuleBase {
@@ -5505,11 +5604,6 @@ export interface SetSecurityUserProcessor extends ProcessorBase {
   properties?: Array<string>
 }
 
-export interface SetUpgradeModeRequest extends RequestBase {
-  enabled?: boolean
-  timeout?: Time
-}
-
 export type ShapeOrientation = 'right' | 'counterclockwise' | 'ccw' | 'left' | 'clockwise' | 'cw'
 
 export interface ShapeProperty extends DocValuesPropertyBase {
@@ -5917,16 +6011,6 @@ export interface StartBasicLicenseRequest extends RequestBase {
   acknowledge?: boolean
 }
 
-export interface StartDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  start?: Time
-  body?: {
-    end?: Time
-    start?: Time
-    timeout?: Time
-  }
-}
-
 export interface StartIlmRequest extends RequestBase {
   body?: {
     stub: boolean
@@ -5969,16 +6053,6 @@ export interface StepKey {
   action: string
   name: string
   phase: string
-}
-
-export interface StopDatafeedRequest extends RequestBase {
-  datafeed_id: Ids
-  allow_no_match?: boolean
-  force?: boolean
-  body?: {
-    force?: boolean
-    timeout?: Time
-  }
 }
 
 export interface StopIlmRequest extends RequestBase {
@@ -6499,63 +6573,6 @@ export interface UpdateByQueryRethrottleRequest extends RequestBase {
   requests_per_second?: long
 }
 
-export interface UpdateDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_throttled?: boolean
-  ignore_unavailable?: boolean
-  body: {
-    aggregations?: Record<string, AggregationContainer>
-    chunking_config?: ChunkingConfig
-    delayed_data_check_config?: DelayedDataCheckConfig
-    frequency?: Time
-    indexes?: Indices
-    indices?: Indices
-    indices_options?: DatafeedIndicesOptions
-    job_id?: Id
-    max_empty_searches?: integer
-    query?: QueryContainer
-    query_delay?: Time
-    script_fields?: Record<string, ScriptField>
-    scroll_size?: integer
-  }
-}
-
-export interface UpdateFilterRequest extends RequestBase {
-  filter_id: Id
-  body: {
-    add_items?: Array<string>
-    description?: string
-    remove_items?: Array<string>
-  }
-}
-
-export interface UpdateJobRequest extends RequestBase {
-  job_id: Id
-  body: {
-    allow_lazy_open?: boolean
-    analysis_limits?: AnalysisMemoryLimit
-    background_persist_interval?: Time
-    custom_settings?: Record<string, any>
-    description?: string
-    model_plot_config?: ModelPlotConfigEnabled
-    model_snapshot_retention_days?: long
-    renormalization_window_days?: long
-    results_retention_days?: long
-    groups?: Array<string>
-  }
-}
-
-export interface UpdateModelSnapshotRequest extends RequestBase {
-  job_id: Id
-  snapshot_id: Id
-  body: {
-    description?: string
-    retain?: boolean
-  }
-}
-
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
@@ -6624,23 +6641,6 @@ export interface UserAgentProcessor extends ProcessorBase {
 export type UserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export type Uuid = string
-
-export interface ValidateDetectorRequest extends RequestBase {
-  body: Detector
-}
-
-export interface ValidateJobRequest extends RequestBase {
-  body: {
-    job_id?: Id
-    analysis_config?: AnalysisConfig
-    analysis_limits?: AnalysisLimits
-    data_description?: DataDescription
-    description?: string
-    model_plot?: ModelPlotConfig
-    model_snapshot_retention_days?: long
-    results_index_name?: IndexName
-  }
-}
 
 export interface ValueCountAggregation extends FormattableMetricAggregation {
 }

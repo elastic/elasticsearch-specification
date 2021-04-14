@@ -20,5 +20,5 @@
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class MlUpdateJobResponse extends ResponseBase {
-    stub: boolean
+  stub: boolean
 }

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Id } from '../../__common/common'
 import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class MlForecastJobResponse extends AcknowledgedResponseBase {

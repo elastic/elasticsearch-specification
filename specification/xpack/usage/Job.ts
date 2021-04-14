@@ -17,7 +17,14 @@
  * under the License.
  */
 
-import { EmptyObject, Id, IndexName, integer, long, VersionString } from '../../__common/common'
+import {
+  EmptyObject,
+  Id,
+  IndexName,
+  integer,
+  long,
+  VersionString
+} from '../../__common/common'
 import { Time } from '../../__common/common_options/time_unit/Time'
 import { AnalysisConfig } from '../../__common/ml/AnalysisConfig'
 import { AnalysisLimits } from '../../__common/ml/AnalysisLimits'

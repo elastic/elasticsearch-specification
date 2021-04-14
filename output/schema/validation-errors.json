@@ -1053,29 +1053,29 @@
     },
     "ml.close_job": {
       "request": [
-        "CloseJobRequest: missing json spec query parameter 'allow_no_match'"
+        "MlCloseJobRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "Type ml.close_job.CloseJobRequest:CloseJobResponse not found"
+        "Type ml.close_job.MlCloseJobRequest:MlCloseJobResponse not found"
       ]
     },
     "ml.delete_expired_data": {
       "request": [
-        "DeleteExpiredDataRequest: path parameter 'name' does not exist in the json spec",
-        "DeleteExpiredDataRequest: missing json spec path parameter 'job_id'",
+        "MlDeleteExpiredDataRequest: path parameter 'name' does not exist in the json spec",
+        "MlDeleteExpiredDataRequest: missing json spec path parameter 'job_id'",
         "Url path property 'job_id' is missing in request definition",
         "Request path property 'name' doesn't exist in endpoint URL templates"
       ],
       "response": [
-        "Type ml.delete_expired_data.DeleteExpiredDataRequest:DeleteExpiredDataResponse not found"
+        "Type ml.delete_expired_data.MlDeleteExpiredDataRequest:MlDeleteExpiredDataResponse not found"
       ]
     },
     "ml.estimate_model_memory": {
       "request": [
-        "EstimateModelMemoryRequest: should have a body definition"
+        "MlEstimateModelMemoryRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.estimate_model_memory.EstimateModelMemoryRequest:EstimateModelMemoryResponse not found"
+        "Type ml.estimate_model_memory.MlEstimateModelMemoryRequest:MlEstimateModelMemoryResponse not found"
       ]
     },
     "ml.evaluate_data_frame": {
@@ -1104,51 +1104,51 @@
     },
     "ml.flush_job": {
       "request": [
-        "FlushJobRequest: missing json spec query parameter 'calc_interim'",
-        "FlushJobRequest: missing json spec query parameter 'start'",
-        "FlushJobRequest: missing json spec query parameter 'end'",
-        "FlushJobRequest: missing json spec query parameter 'advance_time'"
+        "MlFlushJobRequest: missing json spec query parameter 'calc_interim'",
+        "MlFlushJobRequest: missing json spec query parameter 'start'",
+        "MlFlushJobRequest: missing json spec query parameter 'end'",
+        "MlFlushJobRequest: missing json spec query parameter 'advance_time'"
       ],
       "response": [
-        "Type ml.flush_job.FlushJobRequest:FlushJobResponse not found"
+        "Type ml.flush_job.MlFlushJobRequest:MlFlushJobResponse not found"
       ]
     },
     "ml.forecast": {
       "request": [
-        "ForecastJobRequest: missing json spec query parameter 'duration'",
-        "ForecastJobRequest: missing json spec query parameter 'expires_in'",
-        "ForecastJobRequest: missing json spec query parameter 'max_model_memory'"
+        "MlForecastJobRequest: missing json spec query parameter 'duration'",
+        "MlForecastJobRequest: missing json spec query parameter 'expires_in'",
+        "MlForecastJobRequest: missing json spec query parameter 'max_model_memory'"
       ],
       "response": [
-        "Type ml.forecast_job.ForecastJobRequest:ForecastJobResponse not found"
+        "Type ml.forecast_job.MlForecastJobRequest:MlForecastJobResponse not found"
       ]
     },
     "ml.get_buckets": {
       "request": [
-        "GetBucketsRequest: missing json spec query parameter 'expand'",
-        "GetBucketsRequest: missing json spec query parameter 'anomaly_score'"
+        "MlGetBucketsRequest: missing json spec query parameter 'expand'",
+        "MlGetBucketsRequest: missing json spec query parameter 'anomaly_score'"
       ],
       "response": [
-        "Type ml.get_buckets.GetBucketsRequest:GetBucketsResponse not found"
+        "Type ml.get_buckets.MlGetBucketsRequest:MlGetBucketsResponse not found"
       ]
     },
     "ml.get_calendars": {
       "request": [
-        "GetCalendarsRequest: missing json spec query parameter 'from'",
-        "GetCalendarsRequest: missing json spec query parameter 'size'"
+        "MlGetCalendarsRequest: missing json spec query parameter 'from'",
+        "MlGetCalendarsRequest: missing json spec query parameter 'size'"
       ],
       "response": [
-        "Type ml.get_calendars.GetCalendarsRequest:GetCalendarsResponse not found"
+        "Type ml.get_calendars.MlGetCalendarsRequest:MlGetCalendarsResponse not found"
       ]
     },
     "ml.get_categories": {
       "request": [
-        "GetCategoriesRequest: missing json spec query parameter 'from'",
-        "GetCategoriesRequest: missing json spec query parameter 'size'",
-        "GetCategoriesRequest: missing json spec query parameter 'partition_field_value'"
+        "MlGetCategoriesRequest: missing json spec query parameter 'from'",
+        "MlGetCategoriesRequest: missing json spec query parameter 'size'",
+        "MlGetCategoriesRequest: missing json spec query parameter 'partition_field_value'"
       ],
       "response": [
-        "Type ml.get_categories.GetCategoriesRequest:GetCategoriesResponse not found"
+        "Type ml.get_categories.MlGetCategoriesRequest:MlGetCategoriesResponse not found"
       ]
     },
     "ml.get_data_frame_analytics": {
@@ -1169,87 +1169,87 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "GetDatafeedStatsRequest: missing json spec query parameter 'allow_no_match'"
+        "MlGetDatafeedStatsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "Type ml.get_datafeed_stats.GetDatafeedStatsRequest:GetDatafeedStatsResponse not found"
+        "Type ml.get_datafeed_stats.MlGetDatafeedStatsRequest:MlGetDatafeedStatsResponse not found"
       ]
     },
     "ml.get_datafeeds": {
       "request": [
-        "GetDatafeedsRequest: missing json spec query parameter 'allow_no_match'"
+        "MlGetDatafeedsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "Type ml.get_datafeeds.GetDatafeedsRequest:GetDatafeedsResponse not found"
+        "Type ml.get_datafeeds.MlGetDatafeedsRequest:MlGetDatafeedsResponse not found"
       ]
     },
     "ml.get_influencers": {
       "request": [
-        "GetInfluencersRequest: missing json spec query parameter 'exclude_interim'",
-        "GetInfluencersRequest: missing json spec query parameter 'from'",
-        "GetInfluencersRequest: missing json spec query parameter 'size'",
-        "GetInfluencersRequest: missing json spec query parameter 'start'",
-        "GetInfluencersRequest: missing json spec query parameter 'end'",
-        "GetInfluencersRequest: missing json spec query parameter 'influencer_score'",
-        "GetInfluencersRequest: missing json spec query parameter 'sort'",
-        "GetInfluencersRequest: missing json spec query parameter 'desc'"
+        "MlGetInfluencersRequest: missing json spec query parameter 'exclude_interim'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'from'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'size'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'start'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'end'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'influencer_score'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'sort'",
+        "MlGetInfluencersRequest: missing json spec query parameter 'desc'"
       ],
       "response": [
-        "Type ml.get_influencers.GetInfluencersRequest:GetInfluencersResponse not found"
+        "Type ml.get_influencers.MlGetInfluencersRequest:MlGetInfluencersResponse not found"
       ]
     },
     "ml.get_job_stats": {
       "request": [
-        "GetJobStatsRequest: missing json spec query parameter 'allow_no_match'"
+        "MlGetJobStatsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "Type ml.get_job_stats.GetJobStatsRequest:GetJobStatsResponse not found"
+        "Type ml.get_job_stats.MlGetJobStatsRequest:MlGetJobStatsResponse not found"
       ]
     },
     "ml.get_jobs": {
       "request": [
-        "GetJobsRequest: missing json spec query parameter 'allow_no_match'"
+        "MlGetJobsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "Type ml.get_jobs.GetJobsRequest:GetJobsResponse not found"
+        "Type ml.get_jobs.MlGetJobsRequest:MlGetJobsResponse not found"
       ]
     },
     "ml.get_model_snapshots": {
       "request": [
-        "GetModelSnapshotsRequest: missing json spec query parameter 'from'",
-        "GetModelSnapshotsRequest: missing json spec query parameter 'size'",
-        "GetModelSnapshotsRequest: missing json spec query parameter 'start'",
-        "GetModelSnapshotsRequest: missing json spec query parameter 'end'",
-        "GetModelSnapshotsRequest: missing json spec query parameter 'sort'",
-        "GetModelSnapshotsRequest: missing json spec query parameter 'desc'"
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'from'",
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'size'",
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'start'",
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'end'",
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'sort'",
+        "MlGetModelSnapshotsRequest: missing json spec query parameter 'desc'"
       ],
       "response": [
-        "Type ml.get_model_snapshots.GetModelSnapshotsRequest:GetModelSnapshotsResponse not found"
+        "Type ml.get_model_snapshots.MlGetModelSnapshotsRequest:MlGetModelSnapshotsResponse not found"
       ]
     },
     "ml.get_overall_buckets": {
       "request": [
-        "GetOverallBucketsRequest: missing json spec query parameter 'top_n'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'bucket_span'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'overall_score'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'exclude_interim'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'start'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'end'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'allow_no_match'",
-        "GetOverallBucketsRequest: missing json spec query parameter 'allow_no_jobs'"
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'top_n'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'bucket_span'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'overall_score'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'exclude_interim'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'start'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'end'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'allow_no_match'",
+        "MlGetOverallBucketsRequest: missing json spec query parameter 'allow_no_jobs'"
       ],
       "response": [
-        "Type ml.get_overall_buckets.GetOverallBucketsRequest:GetOverallBucketsResponse not found"
+        "Type ml.get_overall_buckets.MlGetOverallBucketsRequest:MlGetOverallBucketsResponse not found"
       ]
     },
     "ml.get_records": {
       "request": [
-        "GetAnomalyRecordsRequest: missing json spec query parameter 'record_score'",
-        "GetAnomalyRecordsRequest: missing json spec query parameter 'sort'",
-        "GetAnomalyRecordsRequest: missing json spec query parameter 'desc'"
+        "MlGetAnomalyRecordsRequest: missing json spec query parameter 'record_score'",
+        "MlGetAnomalyRecordsRequest: missing json spec query parameter 'sort'",
+        "MlGetAnomalyRecordsRequest: missing json spec query parameter 'desc'"
       ],
       "response": [
-        "Type ml.get_anomaly_records.GetAnomalyRecordsRequest:GetAnomalyRecordsResponse not found"
+        "Type ml.get_anomaly_records.MlGetAnomalyRecordsRequest:MlGetAnomalyRecordsResponse not found"
       ]
     },
     "ml.get_trained_models": {
@@ -1270,18 +1270,18 @@
     },
     "ml.post_calendar_events": {
       "request": [
-        "PostCalendarEventsRequest: should have a body definition"
+        "MlPostCalendarEventsRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.post_calendar_events.PostCalendarEventsRequest:PostCalendarEventsResponse not found"
+        "Type ml.post_calendar_events.MlPostCalendarEventsRequest:MlPostCalendarEventsResponse not found"
       ]
     },
     "ml.post_data": {
       "request": [
-        "PostJobDataRequest: should have a body definition"
+        "MlPostJobDataRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.post_job_data.PostJobDataRequest:PostJobDataResponse not found"
+        "Type ml.post_job_data.MlPostJobDataRequest:MlPostJobDataResponse not found"
       ]
     },
     "ml.preview_data_frame_analytics": {
@@ -1302,26 +1302,26 @@
     },
     "ml.put_datafeed": {
       "request": [
-        "PutDatafeedRequest: should have a body definition"
+        "MlPutDatafeedRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.put_datafeed.PutDatafeedRequest:PutDatafeedResponse not found"
+        "Type ml.put_datafeed.MlPutDatafeedRequest:MlPutDatafeedResponse not found"
       ]
     },
     "ml.put_filter": {
       "request": [
-        "PutFilterRequest: should have a body definition"
+        "MlPutFilterRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.put_filter.PutFilterRequest:PutFilterResponse not found"
+        "Type ml.put_filter.MlPutFilterRequest:MlPutFilterResponse not found"
       ]
     },
     "ml.put_job": {
       "request": [
-        "PutJobRequest: should have a body definition"
+        "MlPutJobRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.put_job.PutJobRequest:PutJobResponse not found"
+        "Type ml.put_job.MlPutJobRequest:MlPutJobResponse not found"
       ]
     },
     "ml.put_trained_model": {
@@ -1342,10 +1342,10 @@
     },
     "ml.revert_model_snapshot": {
       "request": [
-        "RevertModelSnapshotRequest: missing json spec query parameter 'delete_intervening_results'"
+        "MlRevertModelSnapshotRequest: missing json spec query parameter 'delete_intervening_results'"
       ],
       "response": [
-        "Type ml.revert_model_snapshot.RevertModelSnapshotRequest:RevertModelSnapshotResponse not found"
+        "Type ml.revert_model_snapshot.MlRevertModelSnapshotRequest:MlRevertModelSnapshotResponse not found"
       ]
     },
     "ml.start_data_frame_analytics": {
@@ -1358,11 +1358,11 @@
     },
     "ml.start_datafeed": {
       "request": [
-        "StartDatafeedRequest: missing json spec query parameter 'end'",
-        "StartDatafeedRequest: missing json spec query parameter 'timeout'"
+        "MlStartDatafeedRequest: missing json spec query parameter 'end'",
+        "MlStartDatafeedRequest: missing json spec query parameter 'timeout'"
       ],
       "response": [
-        "Type ml.start_datafeed.StartDatafeedRequest:StartDatafeedResponse not found"
+        "Type ml.start_datafeed.MlStartDatafeedRequest:MlStartDatafeedResponse not found"
       ]
     },
     "ml.stop_data_frame_analytics": {
@@ -1375,11 +1375,11 @@
     },
     "ml.stop_datafeed": {
       "request": [
-        "StopDatafeedRequest: missing json spec query parameter 'allow_no_datafeeds'",
-        "StopDatafeedRequest: missing json spec query parameter 'timeout'"
+        "MlStopDatafeedRequest: missing json spec query parameter 'allow_no_datafeeds'",
+        "MlStopDatafeedRequest: missing json spec query parameter 'timeout'"
       ],
       "response": [
-        "Type ml.stop_datafeed.StopDatafeedRequest:StopDatafeedResponse not found"
+        "Type ml.stop_datafeed.MlStopDatafeedRequest:MlStopDatafeedResponse not found"
       ]
     },
     "ml.update_data_frame_analytics": {
@@ -1392,34 +1392,34 @@
     },
     "ml.update_datafeed": {
       "request": [
-        "UpdateDatafeedRequest: should have a body definition"
+        "MlUpdateDatafeedRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.update_data_feed.UpdateDatafeedRequest:UpdateDatafeedResponse not found"
+        "Type ml.update_data_feed.MlUpdateDatafeedRequest:MlUpdateDatafeedResponse not found"
       ]
     },
     "ml.update_filter": {
       "request": [
-        "UpdateFilterRequest: should have a body definition"
+        "MlUpdateFilterRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.update_filter.UpdateFilterRequest:UpdateFilterResponse not found"
+        "Type ml.update_filter.MlUpdateFilterRequest:MlUpdateFilterResponse not found"
       ]
     },
     "ml.update_job": {
       "request": [
-        "UpdateJobRequest: should have a body definition"
+        "MlUpdateJobRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.update_job.UpdateJobRequest:UpdateJobResponse not found"
+        "Type ml.update_job.MlUpdateJobRequest:MlUpdateJobResponse not found"
       ]
     },
     "ml.update_model_snapshot": {
       "request": [
-        "UpdateModelSnapshotRequest: should have a body definition"
+        "MlUpdateModelSnapshotRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.update_model_snapshot.UpdateModelSnapshotRequest:UpdateModelSnapshotResponse not found"
+        "Type ml.update_model_snapshot.MlUpdateModelSnapshotRequest:MlUpdateModelSnapshotResponse not found"
       ]
     },
     "ml.upgrade_job_snapshot": {
@@ -1432,18 +1432,18 @@
     },
     "ml.validate": {
       "request": [
-        "ValidateJobRequest: should have a body definition"
+        "MlValidateJobRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.validate_job.ValidateJobRequest:ValidateJobResponse not found"
+        "Type ml.validate_job.MlValidateJobRequest:MlValidateJobResponse not found"
       ]
     },
     "ml.validate_detector": {
       "request": [
-        "ValidateDetectorRequest: should have a body definition"
+        "MlValidateDetectorRequest: should have a body definition"
       ],
       "response": [
-        "Type ml.validate_detector.ValidateDetectorRequest:ValidateDetectorResponse not found"
+        "Type ml.validate_detector.MlValidateDetectorRequest:MlValidateDetectorResponse not found"
       ]
     },
     "monitoring.bulk": {

@@ -17,7 +17,14 @@
  * under the License.
  */
 
-import { Id, IndexName, Routing, Type, VersionNumber, WaitForActiveShards } from '../../__common/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  Type,
+  VersionNumber,
+  WaitForActiveShards
+} from '../../__common/common'
 import { Refresh } from '../../__common/common/Refresh'
 import { VersionType } from '../../__common/common/VersionType'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
