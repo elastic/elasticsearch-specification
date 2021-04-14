@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
 
 export class PreviewDatafeedResponse<TDocument> extends ResponseBase {
   data: TDocument[]

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ScheduleContainer } from '../schedule/ScheduleContainer'
+import { ScheduleContainer } from '../schedule/ScheduleContainer';
 
 export class TriggerContainer {
   schedule: ScheduleContainer

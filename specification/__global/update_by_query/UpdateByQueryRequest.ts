@@ -17,23 +17,16 @@
  * under the License.
  */
 
-import {
-  Fields,
-  Indices,
-  long,
-  Routing,
-  Types,
-  WaitForActiveShards
-} from '../../__common/common'
-import { Conflicts } from '../../__common/common/Conflicts'
-import { DefaultOperator } from '../../__common/common/DefaultOperator'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { SearchType } from '../../__common/common/SearchType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Script } from '../../__common/common_options/scripting/Script'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '../scroll/SlicedScroll'
+import { Fields, Indices, long, Routing, Types, WaitForActiveShards } from '../../__common/common';
+import { Conflicts } from '../../__common/common/Conflicts';
+import { DefaultOperator } from '../../__common/common/DefaultOperator';
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards';
+import { SearchType } from '../../__common/common/SearchType';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Script } from '../../__common/common_options/scripting/Script';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer';
+import { SlicedScroll } from '../scroll/SlicedScroll';
 
 /**
  * @rest_spec_name update_by_query

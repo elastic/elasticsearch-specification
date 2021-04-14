@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  Id,
-  IndexName,
-  integer,
-  Routing,
-  VersionNumber
-} from '../../__common/common'
+import { Id, IndexName, integer, Routing, VersionNumber } from '../../__common/common'
 import { VersionType } from '../../__common/common/VersionType'
 
 export class BulkOperation {

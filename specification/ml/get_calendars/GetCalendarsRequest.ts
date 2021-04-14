@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Page } from '../job/Page'
+import { Id } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Page } from '../job/Page';
 
 /**
  * @rest_spec_name ml.get_calendars

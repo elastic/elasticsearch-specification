@@ -18,21 +18,13 @@
  */
 
 import { NodeAttributes } from '../../transform/get_transform_stats/NodeAttributes'
-import {
-  EmptyObject,
-  NodeName,
-  Uuid,
-  VersionNumber
-} from '../../__common/common'
+import { EmptyObject, NodeName, Uuid, VersionNumber } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { ClusterStateBlocks } from '../ClusterStateBlocks'
 import { ClusterStateMetadata } from '../ClusterStateMetadata'
 import { ClusterStateRoutingNodes } from '../ClusterStateRoutingNodes'
-import {
-  ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots
-} from '../ClusterStateSnapshots'
+import { ClusterStateDeletedSnapshots, ClusterStateSnapshots } from '../ClusterStateSnapshots'
 
 export class ClusterStateResponse extends ResponseBase {
   cluster_name: string

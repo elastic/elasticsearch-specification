@@ -1,10 +1,4 @@
-import {
-  double,
-  IndexName,
-  long,
-  Routing,
-  Type
-} from '../../../__common/common'
+import { double, IndexName, long, Routing, Type } from '../../../__common/common'
 import { Dictionary } from '../../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 import { Context } from './context_suggester/Context'

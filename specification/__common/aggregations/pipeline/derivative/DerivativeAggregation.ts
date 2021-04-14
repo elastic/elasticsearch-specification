@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { PipelineAggregationBase } from '../PipelineAggregationBase'
+import { PipelineAggregationBase } from '../PipelineAggregationBase';
 
 export class DerivativeAggregation extends PipelineAggregationBase {}

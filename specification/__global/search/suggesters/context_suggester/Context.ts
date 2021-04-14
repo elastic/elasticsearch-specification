@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GeoLocation } from '../../../../__common/query_dsl/geo/GeoLocation'
+import { GeoLocation } from '../../../../__common/query_dsl/geo/GeoLocation';
 
 /**
  * Text that we want similar documents for or a lookup to a document's field for the text.

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { IndexMappings } from '../IndexMappings'
+import { IndexName } from '../../__common/common';
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
+import { IndexMappings } from '../IndexMappings';
 
 export class IndicesGetMappingResponse extends DictionaryResponseBase<
   IndexName,

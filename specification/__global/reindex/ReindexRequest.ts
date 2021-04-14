@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { long, WaitForActiveShards } from '../../__common/common'
-import { Conflicts } from '../../__common/common/Conflicts'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Script } from '../../__common/common_options/scripting/Script'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { ReindexDestination } from './ReindexDestination'
-import { ReindexSource } from './ReindexSource'
+import { long, WaitForActiveShards } from '../../__common/common';
+import { Conflicts } from '../../__common/common/Conflicts';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Script } from '../../__common/common_options/scripting/Script';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { ReindexDestination } from './ReindexDestination';
+import { ReindexSource } from './ReindexSource';
 
 /**
  * @rest_spec_name reindex

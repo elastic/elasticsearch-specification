@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../../__common/common_abstractions/response/DictionaryResponseBase'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { FoundUserPrivilege } from './FoundUserPrivilege'
+import { DictionaryResponseBase } from '../../../__common/common_abstractions/response/DictionaryResponseBase';
+import { Dictionary } from '../../../__spec_utils/Dictionary';
+import { FoundUserPrivilege } from './FoundUserPrivilege';
 
 export class DeletePrivilegesResponse extends DictionaryResponseBase<
   string,

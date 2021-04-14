@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EnrichPolicy } from './EnrichPolicy'
+import { EnrichPolicy } from './EnrichPolicy';
 
 export class NamedPolicy extends EnrichPolicy {
   name: string

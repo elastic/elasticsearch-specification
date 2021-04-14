@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { QueryContainer } from '../../abstractions/container/QueryContainer'
-import { QueryBase } from '../../abstractions/query/Query'
+import { QueryContainer } from '../../abstractions/container/QueryContainer';
+import { QueryBase } from '../../abstractions/query/Query';
 
 export class SpanMultiTermQuery extends QueryBase {
   match?: QueryContainer

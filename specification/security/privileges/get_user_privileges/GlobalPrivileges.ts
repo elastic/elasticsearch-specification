@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ApplicationGlobalUserPrivileges } from './ApplicationGlobalUserPrivileges'
+import { ApplicationGlobalUserPrivileges } from './ApplicationGlobalUserPrivileges';
 
 export class GlobalPrivileges {
   application: ApplicationGlobalUserPrivileges

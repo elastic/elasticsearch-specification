@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DateString, Id } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { DateString, Id } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
 
 /**
  * @rest_spec_name ml.post_data

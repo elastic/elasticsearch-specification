@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { GarbageCollectionGenerationStats } from './GarbageCollectionGenerationStats'
+import { Dictionary } from '../../__spec_utils/Dictionary';
+import { GarbageCollectionGenerationStats } from './GarbageCollectionGenerationStats';
 
 export class GarbageCollectionStats {
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */

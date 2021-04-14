@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { BucketAggregationBase } from '../BucketAggregationBase'
+import { BucketAggregationBase } from '../BucketAggregationBase';
 
 export class GlobalAggregation extends BucketAggregationBase {}

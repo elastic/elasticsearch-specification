@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Refresh } from '../../../__common/common/Refresh'
-import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../../__common/common_options/time_unit/Time'
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { ApiKeyRole } from './ApiKeyRole'
+import { Refresh } from '../../../__common/common/Refresh';
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../../__common/common_options/time_unit/Time';
+import { Dictionary } from '../../../__spec_utils/Dictionary';
+import { ApiKeyRole } from './ApiKeyRole';
 
 /**
  * @rest_spec_name security.create_api_key

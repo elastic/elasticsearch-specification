@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../common'
-import { TokenizerBase } from './TokenizerBase'
+import { integer } from '../../common';
+import { TokenizerBase } from './TokenizerBase';
 
 export class KeywordTokenizer extends TokenizerBase {
   /** @prop_serializer NullableStringIntFormatter */

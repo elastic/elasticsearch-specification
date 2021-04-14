@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { StepKey } from './StepKey'
+import { IndexName } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { StepKey } from './StepKey';
 
 /**
  * @rest_spec_name ilm.move_to_step

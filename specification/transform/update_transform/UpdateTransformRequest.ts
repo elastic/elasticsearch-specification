@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { TransformDestination } from '../TransformDestination'
-import { TransformSource } from '../TransformSource'
-import { TransformSyncContainer } from '../TransformSyncContainer'
+import { Name } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { TransformDestination } from '../TransformDestination';
+import { TransformSource } from '../TransformSource';
+import { TransformSyncContainer } from '../TransformSyncContainer';
 
 /**
  * @rest_spec_name transform.update_transform

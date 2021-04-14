@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { TermVectorsResult } from '../termvectors/TermVectorsResult'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
+import { TermVectorsResult } from '../termvectors/TermVectorsResult';
 
 export class MultiTermVectorsResponse extends ResponseBase {
   docs: TermVectorsResult[]
