@@ -22,7 +22,7 @@ import { RequestBase } from "../../../__common/common_abstractions/request/Reque
 import { Time } from "../../../__common/common_options/time_unit/Time";
 import { Dictionary } from "../../../__spec_utils/Dictionary";
 import { UserDefinedValue } from "../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../alias_management/Alias";
+import { Alias } from "../../Alias";
 
 /**
  * @rest_spec_name indices.shrink

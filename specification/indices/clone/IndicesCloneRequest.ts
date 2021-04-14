@@ -17,14 +17,30 @@
  * under the License.
  */
 
-import { IndexSettings } from "./IndexSettings";
-import { Alias } from "../../indices/Alias";
+import { IndexName, Name, WaitForActiveShards } from "../../__common/common";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
 import { Dictionary } from "../../__spec_utils/Dictionary";
-import { IndexName } from "../common";
-import { TypeMapping } from "../mapping/TypeMapping";
+import { UserDefinedValue } from "../../__spec_utils/UserDefinedValue";
+import { Alias } from "../Alias";
 
-export class IndexState {
-  aliases: Dictionary<IndexName, Alias>;
-  mappings: TypeMapping;
-  settings: IndexSettings;
+/**
+ * @rest_spec_name indices.clone
+ * @since 7.4.0
+ * @stability TODO
+ */
+export interface IndicesCloneRequest extends RequestBase {
+  path_parts?: {
+    index: IndexName;
+    target: Name;
+  };
+  query_parameters?: {
+    master_timeout?: Time;
+    timeout?: Time;
+    wait_for_active_shards?: WaitForActiveShards;
+  };
+  body?: {
+    aliases?: Dictionary<IndexName, Alias>;
+    settings?: Dictionary<string, UserDefinedValue>;
+  };
 }

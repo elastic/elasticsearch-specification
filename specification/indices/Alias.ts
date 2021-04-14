@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { Routing } from "../__common/common";
+import { QueryContainer } from "../__common/query_dsl/abstractions/container/QueryContainer";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class Alias {
+  filter?: QueryContainer;
+  index_routing?: Routing;
+  is_hidden?: boolean;
+  is_write_index?: boolean;
+  routing?: Routing;
+  search_routing?: Routing;
 }

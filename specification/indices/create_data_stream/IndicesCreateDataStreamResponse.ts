@@ -17,14 +17,6 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { AcknowledgedResponseBase } from "../../__common/common_abstractions/response/AcknowledgedResponseBase";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
-}
+export class IndicesCreateDataStreamResponse extends AcknowledgedResponseBase {}

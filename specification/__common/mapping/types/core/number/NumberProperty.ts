@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/numeric/NumericFielddata";
+import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
 import { double } from "../../../../common";
 import { DocValuesPropertyBase } from "../../DocValuesProperty";
 import { NumberType } from "./NumberType";

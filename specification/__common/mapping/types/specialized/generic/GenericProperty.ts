@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { StringFielddata } from "../../../../../indices/fielddata/string/StringFielddata";
+import { StringFielddata } from "../../../../../indices/fielddata/StringFielddata";
 import { double, integer } from "../../../../common";
 import { TermVectorOption } from "../../../TermVectorOption";
 import { IndexOptions } from "../../core/text/IndexOptions";

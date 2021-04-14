@@ -17,14 +17,20 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { IndexName } from "../../__common/common";
+import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class IndicesValidateQueryResponse extends ResponseBase {
+  explanations?: IndicesValidationExplanation[];
+  _shards?: ShardStatistics;
+  valid: boolean;
+  error?: string;
+}
+
+export class IndicesValidationExplanation {
+  error?: string;
+  explanation?: string;
+  index: IndexName;
+  valid: boolean;
 }

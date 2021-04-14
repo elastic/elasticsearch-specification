@@ -17,14 +17,11 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { AnalyzeDetail } from "./AnalyzeDetail";
+import { AnalyzeToken } from "./AnalyzeToken";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class IndicesAnalyzeResponse extends ResponseBase {
+  detail?: AnalyzeDetail;
+  tokens?: AnalyzeToken[];
 }

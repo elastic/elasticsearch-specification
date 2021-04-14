@@ -17,14 +17,23 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { ByteSize, integer, Name } from "../../__common/common";
+import { ResponseBase } from "../../__common/common_abstractions/response/ResponseBase";
+import { ShardStatistics } from "../../__common/common_options/hit/ShardStatistics";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class IndicesDataStreamsStatsResponse extends ResponseBase {
+  _shards: ShardStatistics;
+  backing_indices: integer;
+  data_stream_count: integer;
+  total_store_sizes?: ByteSize;
+  total_store_size_bytes: integer;
+  data_streams: DataStreamsStatsItem[];
+}
+
+export class DataStreamsStatsItem {
+  backing_indices: integer;
+  data_stream: Name;
+  store_size?: ByteSize;
+  store_size_bytes: integer;
+  maximum_timestamp: integer;
 }

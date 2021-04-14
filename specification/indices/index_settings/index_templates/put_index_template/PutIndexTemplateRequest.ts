@@ -28,7 +28,7 @@ import { Time } from "../../../../__common/common_options/time_unit/Time";
 import { TypeMapping } from "../../../../__common/mapping/TypeMapping";
 import { Dictionary } from "../../../../__spec_utils/Dictionary";
 import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../../alias_management/Alias";
+import { Alias } from "../../../Alias";
 
 /**
  * @rest_spec_name indices.put_template

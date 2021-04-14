@@ -17,14 +17,21 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { IndexName } from "../../__common/common";
+import { ExpandWildcardOptions } from "../../__common/common/ExpandWildcards";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+/**
+ * @rest_spec_name indices.get_data_stream
+ * @since 7.9.0
+ * @stability TODO
+ */
+export interface IndicesGetDataStreamRequest extends RequestBase {
+  path_parts?: {
+    name?: IndexName;
+  };
+  query_parameters?: {
+    expand_wildcards?: ExpandWildcardOptions;
+  };
+  body?: {};
 }

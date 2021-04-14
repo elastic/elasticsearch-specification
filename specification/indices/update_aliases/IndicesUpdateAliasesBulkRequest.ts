@@ -17,14 +17,22 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+/**
+ * @rest_spec_name indices.update_aliases
+ * @since 1.3.0
+ * @stability TODO
+ */
+export interface IndicesUpdateAliasBulkRequest extends RequestBase {
+  query_parameters?: {
+    master_timeout?: Time;
+    timeout?: Time;
+  };
+  body?: {
+    actions?: IndicesUpdateAliasBulk[];
+  };
 }
+
+export class IndicesUpdateAliasBulk {}

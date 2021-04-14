@@ -17,14 +17,12 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { float } from "../__common/common";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class IndicesCircuitBreakerSettings {
+  fielddata_limit: string;
+  fielddata_overhead: float;
+  request_limit: string;
+  request_overhead: float;
+  total_limit: string;
 }

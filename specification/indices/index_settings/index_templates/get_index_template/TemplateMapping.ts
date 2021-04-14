@@ -21,7 +21,7 @@ import { IndexName, integer, VersionNumber } from "../../../../__common/common";
 import { TypeMapping } from "../../../../__common/mapping/TypeMapping";
 import { Dictionary } from "../../../../__spec_utils/Dictionary";
 import { UserDefinedValue } from "../../../../__spec_utils/UserDefinedValue";
-import { Alias } from "../../../alias_management/Alias";
+import { Alias } from "../../../Alias";
 
 export class TemplateMapping {
   aliases: Dictionary<IndexName, Alias>;

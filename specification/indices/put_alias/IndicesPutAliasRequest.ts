@@ -17,14 +17,30 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { Indices, Name, Routing } from "../../__common/common";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
+import { QueryContainer } from "../../__common/query_dsl/abstractions/container/QueryContainer";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+/**
+ * @rest_spec_name indices.put_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesPutAliasRequest extends RequestBase {
+  path_parts?: {
+    index: Indices;
+    name: Name;
+  };
+  query_parameters?: {
+    master_timeout?: Time;
+    timeout?: Time;
+  };
+  body?: {
+    filter?: QueryContainer;
+    index_routing?: Routing;
+    is_write_index?: boolean;
+    routing?: Routing;
+    search_routing?: Routing;
+  };
 }

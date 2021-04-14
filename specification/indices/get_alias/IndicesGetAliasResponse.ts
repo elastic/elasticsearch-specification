@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { IndexName } from "../../__common/common";
+import { Dictionary } from "../../__spec_utils/Dictionary";
+import { DictionaryResponseBase } from "../../__common/common_abstractions/response/DictionaryResponseBase";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+export class IndicesGetAliasResponse extends DictionaryResponseBase<
+  IndexName,
+  IndexAliases
+> {}
+
+export class IndexAliases {
+  aliases: Dictionary<string, AliasDefinition>;
 }

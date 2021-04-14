@@ -17,14 +17,25 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { Indices, Names } from "../../__common/common";
+import { ExpandWildcards } from "../../__common/common/ExpandWildcards";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+/**
+ * @rest_spec_name indices.get_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesGetAliasRequest extends RequestBase {
+  path_parts?: {
+    name?: Names;
+    index?: Indices;
+  };
+  query_parameters?: {
+    allow_no_indices?: boolean;
+    expand_wildcards?: ExpandWildcards;
+    ignore_unavailable?: boolean;
+    local?: boolean;
+  };
+  body?: {};
 }

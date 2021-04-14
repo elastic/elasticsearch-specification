@@ -17,14 +17,23 @@
  * under the License.
  */
 
-import { NumericFielddata } from "../../../../../indices/fielddata/NumericFielddata";
-import { double } from "../../../../common";
-import { DocValuesPropertyBase } from "../../DocValuesProperty";
+import { Indices, Names } from "../../__common/common";
+import { RequestBase } from "../../__common/common_abstractions/request/RequestBase";
+import { Time } from "../../__common/common_options/time_unit/Time";
 
-export class BooleanProperty extends DocValuesPropertyBase {
-  boost?: double;
-  fielddata?: NumericFielddata;
-  index?: boolean;
-  null_value?: boolean;
-  type: "boolean";
+/**
+ * @rest_spec_name indices.delete_alias
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface IndicesDeleteAliasRequest extends RequestBase {
+  path_parts?: {
+    index: Indices;
+    name: Names;
+  };
+  query_parameters?: {
+    master_timeout?: Time;
+    timeout?: Time;
+  };
+  body?: {};
 }
