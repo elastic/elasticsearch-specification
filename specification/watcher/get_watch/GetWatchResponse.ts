@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import {
-  Id,
-  integer,
-  SequenceNumber,
-  VersionNumber
-} from '../../__common/common'
+import { Id, integer, SequenceNumber, VersionNumber } from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { WatchStatus } from '../ack_watch/WatchStatus'
 import { Watch } from '../Watch'

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { ActivationStatus } from './ActivationStatus'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
+import { ActivationStatus } from './ActivationStatus';
 
 export class WatcherActivateWatchResponse extends ResponseBase {
   status: ActivationStatus

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 import { Status } from '../../__common/watcher/execution/Status'
 import { InputType } from '../../__common/watcher/input/InputType'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class ExecutionResultInput {
   payload: Dictionary<string, UserDefinedValue>

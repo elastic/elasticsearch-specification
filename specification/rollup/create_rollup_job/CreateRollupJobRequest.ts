@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { RollupFieldMetric } from '../rollup_configuration/RollupFieldMetric'
-import { RollupGroupings } from '../rollup_configuration/RollupGroupings'
+import { Id, IndexName, long } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { RollupFieldMetric } from '../rollup_configuration/RollupFieldMetric';
+import { RollupGroupings } from '../rollup_configuration/RollupGroupings';
 
 /**
  * @rest_spec_name rollup.put_job

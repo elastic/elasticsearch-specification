@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { RollupCapabilities } from './RollupCapabilities'
+import { IndexName } from '../../__common/common';
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
+import { RollupCapabilities } from './RollupCapabilities';
 
 export class GetRollupCapabilitiesResponse extends DictionaryResponseBase<
   IndexName,

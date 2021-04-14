@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Metrics } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { ClusterRerouteCommand } from './ClusterRerouteCommand'
+import { Metrics } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { ClusterRerouteCommand } from './ClusterRerouteCommand';
 
 /**
  * @rest_spec_name cluster.reroute

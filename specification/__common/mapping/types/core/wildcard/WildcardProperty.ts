@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { DocValuesPropertyBase } from '../../DocValuesProperty';
 
 export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'

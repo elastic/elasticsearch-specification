@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from '../../__common/common'
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
+import { Id } from '../../__common/common';
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
 
 export class OpenPointInTimeResponse extends ResponseBase {
   id: Id

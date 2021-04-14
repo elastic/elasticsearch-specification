@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { integer } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
 
 /**
  * @rest_spec_name watcher.stop

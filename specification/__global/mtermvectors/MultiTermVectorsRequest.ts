@@ -17,17 +17,10 @@
  * under the License.
  */
 
-import {
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber
-} from '../../__common/common'
-import { VersionType } from '../../__common/common/VersionType'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { MultiTermVectorOperation } from './MultiTermVectorOperation'
+import { Fields, Id, IndexName, Routing, Type, VersionNumber } from '../../__common/common';
+import { VersionType } from '../../__common/common/VersionType';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { MultiTermVectorOperation } from './MultiTermVectorOperation';
 
 /**
  * @rest_spec_name mtermvectors

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ProcessorBase } from '../ProcessorBase'
+import { ProcessorBase } from '../ProcessorBase';
 
 export class FailProcessor extends ProcessorBase {
   message: string

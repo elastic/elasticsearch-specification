@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Id, IndexName } from '../common'
+
 export class SnapshotShardFailure {
   index: IndexName
   node_id: Id

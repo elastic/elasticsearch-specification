@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName, long } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { IndexName, long } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
 
 /**
  * @rest_spec_name ccr.resume_follow

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryBase } from '../../abstractions/query/Query'
+import { QueryBase } from '../../abstractions/query/Query';
 
 export class SpanTermQuery extends QueryBase {
   value: string

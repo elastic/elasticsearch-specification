@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Indices, Name } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Indices, Name } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { Dictionary } from '../../__spec_utils/Dictionary';
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
 
 /**
  * @rest_spec_name snapshot.create

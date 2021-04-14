@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatResponseBase } from '../CatBase'
-import { CatMasterRecord } from './CatMasterRecord'
+import { CatResponseBase } from '../CatBase';
+import { CatMasterRecord } from './CatMasterRecord';
 
 export class CatMasterResponse extends CatResponseBase<CatMasterRecord> {}

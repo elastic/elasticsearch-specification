@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '../../__common/common'
-import { XPackUsage } from './XPackUsage'
+import { long } from '../../__common/common';
+import { XPackUsage } from './XPackUsage';
 
 export class FrozenIndicesUsage extends XPackUsage {
   indices_count: long

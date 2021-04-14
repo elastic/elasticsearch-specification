@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { IndexName } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 
 export class SnapshotRestoreResponse extends ResponseBase {

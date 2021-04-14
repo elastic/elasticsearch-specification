@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { IndexName, Name, WaitForActiveShards } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { Alias } from '../Alias'
+import { IndexName, Name, WaitForActiveShards } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
+import { Dictionary } from '../../__spec_utils/Dictionary';
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
+import { Alias } from '../Alias';
 
 /**
  * @rest_spec_name indices.clone

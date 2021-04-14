@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { AnalyzerBase } from './AnalyzerBase'
+import { AnalyzerBase } from './AnalyzerBase';
 
 export class WhitespaceAnalyzer extends AnalyzerBase {}

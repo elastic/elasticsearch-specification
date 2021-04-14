@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from '../../__common/common'
-import { ExpandWildcardOptions } from '../../__common/common/ExpandWildcards'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Time } from '../../__common/common_options/time_unit/Time'
+import { IndexName } from '../../__common/common';
+import { ExpandWildcardOptions } from '../../__common/common/ExpandWildcards';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { Time } from '../../__common/common_options/time_unit/Time';
 
 /**
  * @rest_spec_name indices.add_block

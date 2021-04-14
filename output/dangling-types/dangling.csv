@@ -18,10 +18,10 @@ PipelineFailure,__common/common/PipelineFailure.ts
 UrlParameter,__common/common/UrlParameter.ts
 ScriptLang,__common/scripting/ScriptLang.ts
 Normalization,__common/similarity/Normalization.ts
-SnapshotStatus,__common/snapshot/SnapshotStatus.ts
 TransformState,cat/cat_transforms/TransformState.ts
 TransformType,cat/cat_transforms/TransformType.ts
 StoreCopy,cluster/cluster_allocation_explain/StoreCopy.ts
+IndicesRolloverConditions,indices/rollover/IndicesRolloverConditions.ts
 JvmPool,nodes/nodes_stats/JvmPool.ts
 LoadAverageStats,nodes/nodes_stats/LoadAverageStats.ts
 AlertingUsage,xpack/x_pack_usage/AlertingUsage.ts

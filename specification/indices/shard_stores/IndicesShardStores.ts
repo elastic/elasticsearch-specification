@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { ShardStoreWrapper } from './ShardStoreWrapper'
+import { Dictionary } from '../../__spec_utils/Dictionary';
+import { ShardStoreWrapper } from './ShardStoreWrapper';
 
 export class IndicesShardStores {
   shards: Dictionary<string, ShardStoreWrapper>

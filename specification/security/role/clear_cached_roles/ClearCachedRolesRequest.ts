@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Names } from '../../../__common/common'
-import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase'
+import { Names } from '../../../__common/common';
+import { RequestBase } from '../../../__common/common_abstractions/request/RequestBase';
 
 /**
  * @rest_spec_name security.clear_cached_roles

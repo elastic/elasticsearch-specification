@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Uuid } from '../common'
 import { Dictionary } from '../../__spec_utils/Dictionary'
+import { Uuid } from '../common'
 import { SnapshotIndexStats } from './SnapshotIndexStats'
 import { SnapshotShardsStats } from './SnapshotShardsStats'
 import { SnapshotStats } from './SnapshotStats'

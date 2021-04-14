@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { double, Indices, long, Routing, Types } from '../../__common/common'
-import { DefaultOperator } from '../../__common/common/DefaultOperator'
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { double, Indices, long, Routing, Types } from '../../__common/common';
+import { DefaultOperator } from '../../__common/common/DefaultOperator';
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer';
 
 /**
  * @rest_spec_name count
