@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
 
 /**
  * @rest_spec_name cluster.delete_voting_config_exclusions

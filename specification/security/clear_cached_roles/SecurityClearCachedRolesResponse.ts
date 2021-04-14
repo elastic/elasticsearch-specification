@@ -19,8 +19,8 @@
 
 import { NodeStatistics } from '../../nodes/NodeStatistics'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
 import { SecurityNode } from '../../__common/security/SecurityNode'
+import { Dictionary } from '../../__spec_utils/Dictionary'
 
 export class SecurityClearCachedRolesResponse extends ResponseBase {
   cluster_name: string

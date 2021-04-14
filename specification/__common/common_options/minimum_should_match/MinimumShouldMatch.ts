@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '../../common'
+import { integer } from '../../common';
 
 /**
  * The minimum number of terms that should match as integer, percentage or range

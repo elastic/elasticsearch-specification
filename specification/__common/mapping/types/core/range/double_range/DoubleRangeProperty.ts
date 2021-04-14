@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RangePropertyBase } from '../RangeProperty'
+import { RangePropertyBase } from '../RangeProperty';
 
 export class DoubleRangeProperty extends RangePropertyBase {
   type: 'double_range'

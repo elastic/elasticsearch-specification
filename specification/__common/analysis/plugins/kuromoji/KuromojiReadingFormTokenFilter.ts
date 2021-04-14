@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TokenFilterBase } from '../../token_filters/TokenFilterBase'
+import { TokenFilterBase } from '../../token_filters/TokenFilterBase';
 
 export class KuromojiReadingFormTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringBooleanFormatter */

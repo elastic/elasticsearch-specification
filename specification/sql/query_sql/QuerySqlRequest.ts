@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { integer } from '../../__common/common';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer';
 
 /**
  * @rest_spec_name sql.query

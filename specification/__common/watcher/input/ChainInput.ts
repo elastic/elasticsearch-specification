@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary'
-import { InputContainer } from './InputContainer'
+import { Dictionary } from '../../../__spec_utils/Dictionary';
+import { InputContainer } from './InputContainer';
 
 export class ChainInput {
   inputs: Dictionary<string, InputContainer>

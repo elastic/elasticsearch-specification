@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 import { ApplicationPrivileges } from '../../security/put_role/ApplicationPrivileges'
 import { IndicesPrivileges } from '../../security/put_role/IndicesPrivileges'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 export class XPackRole {
   cluster: string[]

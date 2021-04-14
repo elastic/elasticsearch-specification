@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TermUserPrivileges } from './TermUserPrivileges'
+import { TermUserPrivileges } from './TermUserPrivileges';
 
 export class QueryUserPrivileges {
   term: TermUserPrivileges

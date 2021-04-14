@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodeIds } from '../../__common/common'
-import { Bytes } from '../../__common/common/Bytes'
-import { CatRequestBase } from '../CatBase'
+import { NodeIds } from '../../__common/common';
+import { Bytes } from '../../__common/common/Bytes';
+import { CatRequestBase } from '../CatBase';
 
 /**
  * @rest_spec_name cat.allocation

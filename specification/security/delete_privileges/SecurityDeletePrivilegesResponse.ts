@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
+import { Dictionary } from '../../__spec_utils/Dictionary';
 
 export class SecurityDeletePrivilegesResponse extends DictionaryResponseBase<
   string,

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Name } from '../../__common/common'
-import { Refresh } from '../../__common/common/Refresh'
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
-import { Dictionary } from '../../__spec_utils/Dictionary'
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
-import { TransientMetadata } from '../../__common/security/XPackRole'
-import { ApplicationPrivileges } from './ApplicationPrivileges'
-import { IndicesPrivileges } from './IndicesPrivileges'
+import { Name } from '../../__common/common';
+import { Refresh } from '../../__common/common/Refresh';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import { TransientMetadata } from '../../__common/security/XPackRole';
+import { Dictionary } from '../../__spec_utils/Dictionary';
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
+import { ApplicationPrivileges } from './ApplicationPrivileges';
+import { IndicesPrivileges } from './IndicesPrivileges';
 
 /**
  * @rest_spec_name security.put_role

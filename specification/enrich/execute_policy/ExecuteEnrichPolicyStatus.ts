@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EnrichPolicyPhase } from './EnrichPolicyPhase'
+import { EnrichPolicyPhase } from './EnrichPolicyPhase';
 
 export class ExecuteEnrichPolicyStatus {
   phase: EnrichPolicyPhase

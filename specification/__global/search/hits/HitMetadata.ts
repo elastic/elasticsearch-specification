@@ -17,14 +17,7 @@
  * under the License.
  */
 
-import {
-  Id,
-  IndexName,
-  long,
-  SequenceNumber,
-  Type,
-  VersionNumber
-} from '../../../__common/common'
+import { Id, IndexName, long, SequenceNumber, Type, VersionNumber } from '../../../__common/common'
 
 export class HitMetadata<TDocument> {
   _id: Id

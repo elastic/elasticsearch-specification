@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase'
-import { RollupJobTaskFailure } from '../get_rollup_job/RollupJobTaskFailure'
+import { AcknowledgedResponseBase } from '../../__common/common_abstractions/response/AcknowledgedResponseBase';
+import { RollupJobTaskFailure } from '../get_rollup_job/RollupJobTaskFailure';
 
 export class DeleteRollupJobResponse extends AcknowledgedResponseBase {
   task_failures?: RollupJobTaskFailure[]

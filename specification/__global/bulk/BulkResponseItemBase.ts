@@ -18,13 +18,7 @@
  */
 // TODO remap this as a good bulk response item and an error response item
 
-import {
-  ErrorCause,
-  integer,
-  long,
-  SequenceNumber,
-  VersionNumber
-} from '../../__common/common'
+import { ErrorCause, integer, long, SequenceNumber, VersionNumber } from '../../__common/common'
 import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'

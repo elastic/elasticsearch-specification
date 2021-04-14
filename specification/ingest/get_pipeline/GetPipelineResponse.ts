@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
-import { Pipeline } from '../Pipeline'
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
+import { Pipeline } from '../Pipeline';
 
 export class GetPipelineResponse extends DictionaryResponseBase<
   string,

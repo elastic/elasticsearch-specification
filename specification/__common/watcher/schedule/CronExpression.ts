@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ScheduleBase } from './ScheduleBase'
+import { ScheduleBase } from './ScheduleBase';
 
 export class CronExpression extends ScheduleBase {}

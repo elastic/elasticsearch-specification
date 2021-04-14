@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from '../../../common'
-import { FormatMetricAggregationBase } from '../MetricAggregation'
+import { double } from '../../../common';
+import { FormatMetricAggregationBase } from '../MetricAggregation';
 
 export class ExtendedStatsAggregation extends FormatMetricAggregationBase {
   sigma?: double

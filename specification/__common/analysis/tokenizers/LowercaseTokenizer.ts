@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { TokenizerBase } from './TokenizerBase'
+import { TokenizerBase } from './TokenizerBase';
 
 export class LowercaseTokenizer extends TokenizerBase {}

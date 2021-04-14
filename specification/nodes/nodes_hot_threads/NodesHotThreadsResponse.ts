@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { HotThreadInformation } from './HotThreadInformation'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
+import { HotThreadInformation } from './HotThreadInformation';
 
 export class NodesHotThreadsResponse extends ResponseBase {
   hot_threads: HotThreadInformation[]

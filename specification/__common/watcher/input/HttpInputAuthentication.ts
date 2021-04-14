@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { HttpInputBasicAuthentication } from './HttpInputBasicAuthentication'
+import { HttpInputBasicAuthentication } from './HttpInputBasicAuthentication';
 
 export class HttpInputAuthentication {
   basic: HttpInputBasicAuthentication

@@ -17,15 +17,7 @@
  * under the License.
  */
 
-import {
-  double,
-  Id,
-  IndexName,
-  long,
-  SequenceNumber,
-  Type,
-  VersionNumber
-} from '../../../__common/common'
+import { double, Id, IndexName, long, SequenceNumber, Type, VersionNumber } from '../../../__common/common'
 import { Dictionary } from '../../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../../__spec_utils/UserDefinedValue'
 import { Explanation } from '../../explain/Explanation'
