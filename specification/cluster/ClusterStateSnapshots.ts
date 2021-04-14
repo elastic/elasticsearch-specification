@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SnapshotStatus } from '../snapshot/status/SnapshotStatus'
+import { SnapshotStatus } from '../__common/snapshot/SnapshotStatus'
 
 export class ClusterStateSnapshots {
   snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough

@@ -18,7 +18,7 @@
  */
 
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
-import { SnapshotStatus } from './SnapshotStatus'
+import { SnapshotStatus } from '../../__common/snapshot/SnapshotStatus'
 
 export class SnapshotStatusResponse extends ResponseBase {
   snapshots: SnapshotStatus[]

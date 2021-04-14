@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from '../../common'
-import { SearchType } from '../../common/SearchType'
 import { SearchRequest } from '../../../__global/search/SearchRequest'
 import { SearchTemplateRequest } from '../../../__global/search_template/SearchTemplateRequest'
+import { IndexName } from '../../common'
+import { SearchType } from '../../common/SearchType'
 import { IndicesOptions } from './IndicesOptions'
 
 export class SearchInputRequestDefinition {

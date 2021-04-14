@@ -49,7 +49,7 @@ export interface IndicesRolloverRequest extends RequestBase {
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>
-    conditions?: RolloverConditions
+    conditions?: IndicesRolloverConditions
     mappings?: Dictionary<string, TypeMapping> | TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }

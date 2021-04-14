@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CronExpression } from '../../__common/watcher/schedule/CronExpression'
 import { Name } from '../../__common/common'
 import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { CronExpression } from '../../__common/watcher/schedule/CronExpression'
 import { SnapshotLifecycleConfig } from '../SnapshotLifecycleConfig'
 import { SnapshotRetentionConfiguration } from '../SnapshotRetentionConfiguration'
 

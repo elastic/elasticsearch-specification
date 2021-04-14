@@ -13,7 +13,9 @@
     "noLib": false,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": ["./**/*.ts"]
   },
-  "exclude": ["node_modules", "build", "src", "typings"]
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
 }

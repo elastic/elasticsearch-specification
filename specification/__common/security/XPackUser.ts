@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from '../common'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
+import { Name } from '../common'
 
 export class XPackUser {
   email?: string

@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Name } from '../__common/common'
+
 export class SecurityNode {
   name: Name
 }
