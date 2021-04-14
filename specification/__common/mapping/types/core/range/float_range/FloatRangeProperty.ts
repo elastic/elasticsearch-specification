@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RangePropertyBase } from '../RangeProperty';
+import { RangePropertyBase } from '../RangeProperty'
 
 export class FloatRangeProperty extends RangePropertyBase {
   type: 'float_range'

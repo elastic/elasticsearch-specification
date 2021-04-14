@@ -18,7 +18,13 @@
  */
 
 import { SnapshotLifecycleStats } from '../xpack/x_pack_usage/SnapshotLifecycleStats'
-import { DateString, EpochMillis, Id, long, VersionNumber } from '../__common/common'
+import {
+  DateString,
+  EpochMillis,
+  Id,
+  long,
+  VersionNumber
+} from '../__common/common'
 import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
 import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
 import { SnapshotLifecyclePolicy } from './SnapshotLifecyclePolicy'

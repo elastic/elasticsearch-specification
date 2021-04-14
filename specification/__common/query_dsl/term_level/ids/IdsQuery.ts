@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, long } from '../../../common';
-import { QueryBase } from '../../abstractions/query/Query';
+import { Id, long } from '../../../common'
+import { QueryBase } from '../../abstractions/query/Query'
 
 export class IdsQuery extends QueryBase {
   values?: Id[] | long[]

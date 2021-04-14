@@ -17,9 +17,16 @@
  * under the License.
  */
 
-import { Fields, Id, IndexName, Routing, Type, VersionNumber } from '../../__common/common';
-import { VersionType } from '../../__common/common/VersionType';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  Type,
+  VersionNumber
+} from '../../__common/common'
+import { VersionType } from '../../__common/common/VersionType'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name exists_source

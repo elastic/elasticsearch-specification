@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { MetricAggregationBase } from '../MetricAggregation';
+import { MetricAggregationBase } from '../MetricAggregation'
 
 export class GeoBoundsAggregation extends MetricAggregationBase {
   wrap_longitude?: boolean

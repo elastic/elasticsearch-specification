@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { Id, long, VersionNumber } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Action } from '../../__common/watcher/actions/Action';
-import { ConditionContainer } from '../../__common/watcher/conditions/ConditionContainer';
-import { InputContainer } from '../../__common/watcher/input/InputContainer';
-import { TransformContainer } from '../../__common/watcher/transform/TransformContainer';
-import { TriggerContainer } from '../../__common/watcher/trigger/TriggerContainer';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
+import { Id, long, VersionNumber } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Action } from '../../__common/watcher/actions/Action'
+import { ConditionContainer } from '../../__common/watcher/conditions/ConditionContainer'
+import { InputContainer } from '../../__common/watcher/input/InputContainer'
+import { TransformContainer } from '../../__common/watcher/transform/TransformContainer'
+import { TriggerContainer } from '../../__common/watcher/trigger/TriggerContainer'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name watcher.put_watch

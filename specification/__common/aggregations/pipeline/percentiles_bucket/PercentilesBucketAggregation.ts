@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from '../../../common';
-import { PipelineAggregationBase } from '../PipelineAggregationBase';
+import { double } from '../../../common'
+import { PipelineAggregationBase } from '../PipelineAggregationBase'
 
 export class PercentilesBucketAggregation extends PipelineAggregationBase {
   percents?: double[]

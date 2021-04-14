@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Indices, Routing, Types } from '../../__common/common';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Time } from '../../__common/common_options/time_unit/Time';
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer';
-import { GraphExploreControls } from './GraphExploreControls';
-import { GraphVertexDefinition } from './GraphVertexDefinition';
-import { Hop } from './Hop';
+import { Indices, Routing, Types } from '../../__common/common'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { GraphExploreControls } from './GraphExploreControls'
+import { GraphVertexDefinition } from './GraphVertexDefinition'
+import { Hop } from './Hop'
 
 /**
  * @rest_spec_name graph.explore

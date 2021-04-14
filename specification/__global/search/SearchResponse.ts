@@ -18,7 +18,14 @@
  */
 
 import { Aggregate } from '../../__common/aggregations/Aggregate'
-import { AggregateName, double, Id, long, ScrollId, SuggestionName } from '../../__common/common'
+import {
+  AggregateName,
+  double,
+  Id,
+  long,
+  ScrollId,
+  SuggestionName
+} from '../../__common/common'
 import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 import { ClusterStatistics } from '../../__common/common_options/hit/ClusterStatistics'
 import { ShardStatistics } from '../../__common/common_options/hit/ShardStatistics'

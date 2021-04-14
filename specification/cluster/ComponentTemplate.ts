@@ -17,9 +17,18 @@
  * under the License.
  */
 
-import { IndexAlias, IndexMetaData, IndexName, Name, VersionNumber } from '../__common/common'
+import {
+  IndexAlias,
+  IndexMetaData,
+  IndexName,
+  Name,
+  VersionNumber
+} from '../__common/common'
 import { Dictionary } from '../__spec_utils/Dictionary'
-import { ClusterStateBlockIndexMapping, ClusterStateBlockIndexSetting } from './ClusterStateBlocks'
+import {
+  ClusterStateBlockIndexMapping,
+  ClusterStateBlockIndexSetting
+} from './ClusterStateBlocks'
 
 export class ComponentTemplate {
   name: Name

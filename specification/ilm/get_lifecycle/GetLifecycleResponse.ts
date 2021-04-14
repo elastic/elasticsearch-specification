@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase';
-import { LifecyclePolicy } from './LifecyclePolicy';
+import { DictionaryResponseBase } from '../../__common/common_abstractions/response/DictionaryResponseBase'
+import { LifecyclePolicy } from './LifecyclePolicy'
 
 export class GetLifecycleResponse extends DictionaryResponseBase<
   string,

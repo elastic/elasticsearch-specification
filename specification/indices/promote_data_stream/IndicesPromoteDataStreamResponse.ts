@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '../../__common/common';
-import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase';
+import { integer } from '../../__common/common'
+import { ResponseBase } from '../../__common/common_abstractions/response/ResponseBase'
 
 export class IndicesPromoteDataStreamResponse extends ResponseBase {
   stub: integer

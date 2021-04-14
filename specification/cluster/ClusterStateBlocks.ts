@@ -17,7 +17,18 @@
  * under the License.
  */
 
-import { DateString, IndexAlias, IndexName, integer, Name, PropertyName, Uuid, VersionNumber, VersionString } from '../__common/common'
+import { IndicesRolloverConditions } from '../indices/rollover/IndicesRolloverConditions'
+import {
+  DateString,
+  IndexAlias,
+  IndexName,
+  integer,
+  Name,
+  PropertyName,
+  Uuid,
+  VersionNumber,
+  VersionString
+} from '../__common/common'
 import { Time } from '../__common/common_options/time_unit/Time'
 import { Property } from '../__common/mapping/types/Property'
 import { Dictionary } from '../__spec_utils/Dictionary'
@@ -42,7 +53,7 @@ export class ClusterStateBlockIndex {
   in_sync_allocations?: Dictionary<string, string[]>
   primary_terms?: Dictionary<string, integer>
   mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
-  rollover_info?: Dictionary<string, RolloverConditions> // TODO: not sure if this is correect
+  rollover_info?: Dictionary<string, IndicesRolloverConditions> // TODO: not sure if this is correect
   timestamp_range?: Dictionary<string, UserDefinedValue>
   system?: boolean
 }

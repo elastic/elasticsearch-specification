@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { EpochMillis, IndexName, integer, Name, VersionNumber } from '../../__common/common'
+import {
+  EpochMillis,
+  IndexName,
+  integer,
+  Name,
+  VersionNumber
+} from '../../__common/common'
 import { Time } from '../../__common/common_options/time_unit/Time'
 import { Dictionary } from '../../__spec_utils/Dictionary'
 import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'

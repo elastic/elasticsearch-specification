@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Time } from '../../__common/common_options/time_unit/Time';
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name indices.update_aliases

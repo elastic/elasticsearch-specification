@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '../../../__spec_utils/Dictionary';
-import { Aggregation } from '../Aggregation';
-import { AggregationContainer } from '../AggregationContainer';
+import { Dictionary } from '../../../__spec_utils/Dictionary'
+import { Aggregation } from '../Aggregation'
+import { AggregationContainer } from '../AggregationContainer'
 
 export class BucketAggregationBase extends Aggregation {
   aggregations?: Dictionary<string, AggregationContainer>

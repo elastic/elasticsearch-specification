@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PagerDutyActionEventResult } from './PagerDutyActionEventResult';
+import { PagerDutyActionEventResult } from './PagerDutyActionEventResult'
 
 export class PagerDutyActionResult {
   sent_event: PagerDutyActionEventResult

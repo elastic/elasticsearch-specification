@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { AggregationContainer } from '../../__common/aggregations/AggregationContainer';
-import { Id, integer } from '../../__common/common';
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { ScriptField } from '../../__common/common_options/scripting/ScriptField';
-import { Time } from '../../__common/common_options/time_unit/Time';
-import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { ChunkingConfig } from '../datafeed/ChunkingConfig';
+import { AggregationContainer } from '../../__common/aggregations/AggregationContainer'
+import { Id, integer } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { ScriptField } from '../../__common/common_options/scripting/ScriptField'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { QueryContainer } from '../../__common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { ChunkingConfig } from '../datafeed/ChunkingConfig'
 
 /**
  * @rest_spec_name ml.put_datafeed

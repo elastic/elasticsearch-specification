@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { QueryBase } from '../../abstractions/query/Query';
-import { SpanQuery } from '../SpanQuery';
+import { QueryBase } from '../../abstractions/query/Query'
+import { SpanQuery } from '../SpanQuery'
 
 export class SpanOrQuery extends QueryBase {
   clauses?: SpanQuery[]

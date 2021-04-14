@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LikeDocument } from './LikeDocument';
+import { LikeDocument } from './LikeDocument'
 
 /**
  * Text that we want similar documents for or a lookup to a document's field for the text.

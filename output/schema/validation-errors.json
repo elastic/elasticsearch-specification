@@ -1,16 +1,601 @@
 {
   "endpointErrors": {
+    "async_search.get": {
+      "request": [
+        "AsyncSearchGetRequest: path parameter 'typed_keys' does not exist in the json spec",
+        "AsyncSearchGetRequest: missing json spec query parameter 'wait_for_completion_timeout'",
+        "AsyncSearchGetRequest: missing json spec query parameter 'keep_alive'",
+        "AsyncSearchGetRequest: missing json spec query parameter 'typed_keys'",
+        "Request path property 'typed_keys' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type async_search.get.AsyncSearchGetRequest:AsyncSearchGetResponse not found"
+      ]
+    },
+    "async_search.submit": {
+      "request": [
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'keep_alive'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'request_cache'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'analyzer'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'analyze_wildcard'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'default_operator'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'df'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'explain'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'stored_fields'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'docvalue_fields'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'from'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'ignore_unavailable'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'ignore_throttled'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'allow_no_indices'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'expand_wildcards'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'lenient'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'preference'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'q'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'routing'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'search_type'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'size'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'sort'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter '_source'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter '_source_excludes'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter '_source_includes'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'terminate_after'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'stats'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'suggest_field'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'suggest_mode'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'suggest_size'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'suggest_text'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'timeout'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'track_scores'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'track_total_hits'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'allow_partial_search_results'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'version'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'seq_no_primary_term'",
+        "AsyncSearchSubmitRequest: missing json spec query parameter 'max_concurrent_shard_requests'",
+        "enum definition __common.query_dsl.Operator:Operator - Duplicate enum member identifier 'AND'",
+        "enum definition __common.query_dsl.Operator:Operator - Duplicate enum member identifier 'OR'"
+      ],
+      "response": [
+        "Type async_search.submit.AsyncSearchSubmitRequest:AsyncSearchSubmitResponse not found"
+      ]
+    },
+    "autoscaling.delete_autoscaling_policy": {
+      "request": [
+        "DeleteAutoscalingPolicyRequest: path parameter 'stub_a' does not exist in the json spec",
+        "DeleteAutoscalingPolicyRequest: missing json spec path parameter 'name'",
+        "Url path property 'name' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type autoscaling.policy_delete.DeleteAutoscalingPolicyRequest:DeleteAutoscalingPolicyResponse not found"
+      ]
+    },
+    "autoscaling.get_autoscaling_capacity": {
+      "request": [
+        "GetAutoscalingCapacityRequest: path parameter 'stub_a' does not exist in the json spec",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type autoscaling.capacity_get.GetAutoscalingCapacityRequest:GetAutoscalingCapacityResponse not found"
+      ]
+    },
+    "autoscaling.get_autoscaling_policy": {
+      "request": [
+        "GetAutoscalingPolicyRequest: path parameter 'stub_a' does not exist in the json spec",
+        "GetAutoscalingPolicyRequest: missing json spec path parameter 'name'",
+        "Url path property 'name' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type autoscaling.policy_get.GetAutoscalingPolicyRequest:GetAutoscalingPolicyResponse not found"
+      ]
+    },
+    "autoscaling.put_autoscaling_policy": {
+      "request": [
+        "PutAutoscalingPolicyRequest: path parameter 'stub_a' does not exist in the json spec",
+        "PutAutoscalingPolicyRequest: missing json spec path parameter 'name'",
+        "PutAutoscalingPolicyRequest: should have a body definition",
+        "Url path property 'name' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type autoscaling.policy_put.PutAutoscalingPolicyRequest:PutAutoscalingPolicyResponse not found"
+      ]
+    },
+    "bulk": {
+      "request": [
+        "BulkRequest: query parameter 'type_query_string' does not exist in the json spec",
+        "BulkRequest: missing json spec query parameter 'type'",
+        "BulkRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.bulk.BulkRequest:BulkResponse not found"
+      ]
+    },
+    "cat.aliases": {
+      "request": [
+        "CatAliasesRequest: missing json spec query parameter 'format'",
+        "CatAliasesRequest: missing json spec query parameter 'local'",
+        "CatAliasesRequest: missing json spec query parameter 'h'",
+        "CatAliasesRequest: missing json spec query parameter 'help'",
+        "CatAliasesRequest: missing json spec query parameter 's'",
+        "CatAliasesRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_aliases.CatAliasesRequest:CatAliasesResponse not found"
+      ]
+    },
+    "cat.allocation": {
+      "request": [
+        "CatAllocationRequest: missing json spec query parameter 'format'",
+        "CatAllocationRequest: missing json spec query parameter 'local'",
+        "CatAllocationRequest: missing json spec query parameter 'master_timeout'",
+        "CatAllocationRequest: missing json spec query parameter 'h'",
+        "CatAllocationRequest: missing json spec query parameter 'help'",
+        "CatAllocationRequest: missing json spec query parameter 's'",
+        "CatAllocationRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_allocation.CatAllocationRequest:CatAllocationResponse not found"
+      ]
+    },
+    "cat.count": {
+      "request": [
+        "CatCountRequest: missing json spec query parameter 'format'",
+        "CatCountRequest: missing json spec query parameter 'h'",
+        "CatCountRequest: missing json spec query parameter 'help'",
+        "CatCountRequest: missing json spec query parameter 's'",
+        "CatCountRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_count.CatCountRequest:CatCountResponse not found"
+      ]
+    },
+    "cat.fielddata": {
+      "request": [
+        "CatFielddataRequest: missing json spec query parameter 'format'",
+        "CatFielddataRequest: missing json spec query parameter 'h'",
+        "CatFielddataRequest: missing json spec query parameter 'help'",
+        "CatFielddataRequest: missing json spec query parameter 's'",
+        "CatFielddataRequest: missing json spec query parameter 'v'",
+        "CatFielddataRequest: missing json spec query parameter 'fields'"
+      ],
+      "response": [
+        "Type cat.cat_fielddata.CatFielddataRequest:CatFielddataResponse not found"
+      ]
+    },
+    "cat.health": {
+      "request": [
+        "CatHealthRequest: query parameter 'include_timestamp' does not exist in the json spec",
+        "CatHealthRequest: missing json spec query parameter 'format'",
+        "CatHealthRequest: missing json spec query parameter 'h'",
+        "CatHealthRequest: missing json spec query parameter 'help'",
+        "CatHealthRequest: missing json spec query parameter 's'",
+        "CatHealthRequest: missing json spec query parameter 'time'",
+        "CatHealthRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_health.CatHealthRequest:CatHealthResponse not found"
+      ]
+    },
+    "cat.help": {
+      "request": [
+        "CatHelpRequest: missing json spec query parameter 'help'",
+        "CatHelpRequest: missing json spec query parameter 's'"
+      ],
+      "response": [
+        "Type cat.cat_help.CatHelpRequest:CatHelpResponse not found"
+      ]
+    },
+    "cat.indices": {
+      "request": [
+        "CatIndicesRequest: missing json spec query parameter 'format'",
+        "CatIndicesRequest: missing json spec query parameter 'local'",
+        "CatIndicesRequest: missing json spec query parameter 'master_timeout'",
+        "CatIndicesRequest: missing json spec query parameter 'h'",
+        "CatIndicesRequest: missing json spec query parameter 'help'",
+        "CatIndicesRequest: missing json spec query parameter 's'",
+        "CatIndicesRequest: missing json spec query parameter 'time'",
+        "CatIndicesRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_indices.CatIndicesRequest:CatIndicesResponse not found"
+      ]
+    },
+    "cat.master": {
+      "request": [
+        "CatMasterRequest: missing json spec query parameter 'format'",
+        "CatMasterRequest: missing json spec query parameter 'local'",
+        "CatMasterRequest: missing json spec query parameter 'master_timeout'",
+        "CatMasterRequest: missing json spec query parameter 'h'",
+        "CatMasterRequest: missing json spec query parameter 'help'",
+        "CatMasterRequest: missing json spec query parameter 's'",
+        "CatMasterRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_master.CatMasterRequest:CatMasterResponse not found"
+      ]
+    },
+    "cat.ml_data_frame_analytics": {
+      "request": [
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 'format'",
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 'h'",
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 'help'",
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 's'",
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 'time'",
+        "CatDataFrameAnalyticsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_data_frame_analytics.CatDataFrameAnalyticsRequest:CatDataFrameAnalyticsResponse not found"
+      ]
+    },
+    "cat.ml_datafeeds": {
+      "request": [
+        "CatDatafeedsRequest: missing json spec query parameter 'allow_no_match'",
+        "CatDatafeedsRequest: missing json spec query parameter 'format'",
+        "CatDatafeedsRequest: missing json spec query parameter 'h'",
+        "CatDatafeedsRequest: missing json spec query parameter 'help'",
+        "CatDatafeedsRequest: missing json spec query parameter 's'",
+        "CatDatafeedsRequest: missing json spec query parameter 'time'",
+        "CatDatafeedsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_datafeeds.CatDatafeedsRequest:CatDatafeedsResponse not found"
+      ]
+    },
+    "cat.ml_jobs": {
+      "request": [
+        "CatJobsRequest: missing json spec query parameter 'allow_no_match'",
+        "CatJobsRequest: missing json spec query parameter 'format'",
+        "CatJobsRequest: missing json spec query parameter 'h'",
+        "CatJobsRequest: missing json spec query parameter 'help'",
+        "CatJobsRequest: missing json spec query parameter 's'",
+        "CatJobsRequest: missing json spec query parameter 'time'",
+        "CatJobsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_jobs.CatJobsRequest:CatJobsResponse not found"
+      ]
+    },
+    "cat.ml_trained_models": {
+      "request": [
+        "CatTrainedModelsRequest: missing json spec query parameter 'format'",
+        "CatTrainedModelsRequest: missing json spec query parameter 'h'",
+        "CatTrainedModelsRequest: missing json spec query parameter 'help'",
+        "CatTrainedModelsRequest: missing json spec query parameter 's'",
+        "CatTrainedModelsRequest: missing json spec query parameter 'time'",
+        "CatTrainedModelsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_trained_models.CatTrainedModelsRequest:CatTrainedModelsResponse not found"
+      ]
+    },
+    "cat.nodeattrs": {
+      "request": [
+        "CatNodeAttributesRequest: missing json spec query parameter 'format'",
+        "CatNodeAttributesRequest: missing json spec query parameter 'local'",
+        "CatNodeAttributesRequest: missing json spec query parameter 'master_timeout'",
+        "CatNodeAttributesRequest: missing json spec query parameter 'h'",
+        "CatNodeAttributesRequest: missing json spec query parameter 'help'",
+        "CatNodeAttributesRequest: missing json spec query parameter 's'",
+        "CatNodeAttributesRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_node_attributes.CatNodeAttributesRequest:CatNodeAttributesResponse not found"
+      ]
+    },
+    "cat.nodes": {
+      "request": [
+        "CatNodesRequest: missing json spec query parameter 'format'",
+        "CatNodesRequest: missing json spec query parameter 'local'",
+        "CatNodesRequest: missing json spec query parameter 'master_timeout'",
+        "CatNodesRequest: missing json spec query parameter 'h'",
+        "CatNodesRequest: missing json spec query parameter 'help'",
+        "CatNodesRequest: missing json spec query parameter 's'",
+        "CatNodesRequest: missing json spec query parameter 'time'",
+        "CatNodesRequest: missing json spec query parameter 'v'",
+        "CatNodesRequest: missing json spec query parameter 'include_unloaded_segments'"
+      ],
+      "response": [
+        "Type cat.cat_nodes.CatNodesRequest:CatNodesResponse not found"
+      ]
+    },
+    "cat.pending_tasks": {
+      "request": [
+        "CatPendingTasksRequest: missing json spec query parameter 'format'",
+        "CatPendingTasksRequest: missing json spec query parameter 'local'",
+        "CatPendingTasksRequest: missing json spec query parameter 'master_timeout'",
+        "CatPendingTasksRequest: missing json spec query parameter 'h'",
+        "CatPendingTasksRequest: missing json spec query parameter 'help'",
+        "CatPendingTasksRequest: missing json spec query parameter 's'",
+        "CatPendingTasksRequest: missing json spec query parameter 'time'",
+        "CatPendingTasksRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_pending_tasks.CatPendingTasksRequest:CatPendingTasksResponse not found"
+      ]
+    },
+    "cat.plugins": {
+      "request": [
+        "CatPluginsRequest: missing json spec query parameter 'format'",
+        "CatPluginsRequest: missing json spec query parameter 'local'",
+        "CatPluginsRequest: missing json spec query parameter 'master_timeout'",
+        "CatPluginsRequest: missing json spec query parameter 'h'",
+        "CatPluginsRequest: missing json spec query parameter 'help'",
+        "CatPluginsRequest: missing json spec query parameter 'include_bootstrap'",
+        "CatPluginsRequest: missing json spec query parameter 's'",
+        "CatPluginsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_plugins.CatPluginsRequest:CatPluginsResponse not found"
+      ]
+    },
+    "cat.recovery": {
+      "request": [
+        "CatRecoveryRequest: missing json spec query parameter 'format'",
+        "CatRecoveryRequest: missing json spec query parameter 'h'",
+        "CatRecoveryRequest: missing json spec query parameter 'help'",
+        "CatRecoveryRequest: missing json spec query parameter 'index'",
+        "CatRecoveryRequest: missing json spec query parameter 's'",
+        "CatRecoveryRequest: missing json spec query parameter 'time'",
+        "CatRecoveryRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_recovery.CatRecoveryRequest:CatRecoveryResponse not found"
+      ]
+    },
+    "cat.repositories": {
+      "request": [
+        "CatRepositoriesRequest: missing json spec query parameter 'format'",
+        "CatRepositoriesRequest: missing json spec query parameter 'local'",
+        "CatRepositoriesRequest: missing json spec query parameter 'master_timeout'",
+        "CatRepositoriesRequest: missing json spec query parameter 'h'",
+        "CatRepositoriesRequest: missing json spec query parameter 'help'",
+        "CatRepositoriesRequest: missing json spec query parameter 's'",
+        "CatRepositoriesRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_repositories.CatRepositoriesRequest:CatRepositoriesResponse not found"
+      ]
+    },
+    "cat.segments": {
+      "request": [
+        "CatSegmentsRequest: missing json spec query parameter 'format'",
+        "CatSegmentsRequest: missing json spec query parameter 'h'",
+        "CatSegmentsRequest: missing json spec query parameter 'help'",
+        "CatSegmentsRequest: missing json spec query parameter 's'",
+        "CatSegmentsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_segments.CatSegmentsRequest:CatSegmentsResponse not found"
+      ]
+    },
+    "cat.shards": {
+      "request": [
+        "CatShardsRequest: missing json spec query parameter 'format'",
+        "CatShardsRequest: missing json spec query parameter 'local'",
+        "CatShardsRequest: missing json spec query parameter 'master_timeout'",
+        "CatShardsRequest: missing json spec query parameter 'h'",
+        "CatShardsRequest: missing json spec query parameter 'help'",
+        "CatShardsRequest: missing json spec query parameter 's'",
+        "CatShardsRequest: missing json spec query parameter 'time'",
+        "CatShardsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_shards.CatShardsRequest:CatShardsResponse not found"
+      ]
+    },
+    "cat.snapshots": {
+      "request": [
+        "CatSnapshotsRequest: missing json spec query parameter 'format'",
+        "CatSnapshotsRequest: missing json spec query parameter 'master_timeout'",
+        "CatSnapshotsRequest: missing json spec query parameter 'h'",
+        "CatSnapshotsRequest: missing json spec query parameter 'help'",
+        "CatSnapshotsRequest: missing json spec query parameter 's'",
+        "CatSnapshotsRequest: missing json spec query parameter 'time'",
+        "CatSnapshotsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_snapshots.CatSnapshotsRequest:CatSnapshotsResponse not found"
+      ]
+    },
+    "cat.tasks": {
+      "request": [
+        "CatTasksRequest: query parameter 'node_id' does not exist in the json spec",
+        "CatTasksRequest: query parameter 'parent_task' does not exist in the json spec",
+        "CatTasksRequest: missing json spec query parameter 'format'",
+        "CatTasksRequest: missing json spec query parameter 'nodes'",
+        "CatTasksRequest: missing json spec query parameter 'parent_task_id'",
+        "CatTasksRequest: missing json spec query parameter 'h'",
+        "CatTasksRequest: missing json spec query parameter 'help'",
+        "CatTasksRequest: missing json spec query parameter 's'",
+        "CatTasksRequest: missing json spec query parameter 'time'",
+        "CatTasksRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_tasks.CatTasksRequest:CatTasksResponse not found"
+      ]
+    },
+    "cat.templates": {
+      "request": [
+        "CatTemplatesRequest: missing json spec query parameter 'format'",
+        "CatTemplatesRequest: missing json spec query parameter 'local'",
+        "CatTemplatesRequest: missing json spec query parameter 'master_timeout'",
+        "CatTemplatesRequest: missing json spec query parameter 'h'",
+        "CatTemplatesRequest: missing json spec query parameter 'help'",
+        "CatTemplatesRequest: missing json spec query parameter 's'",
+        "CatTemplatesRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_templates.CatTemplatesRequest:CatTemplatesResponse not found"
+      ]
+    },
+    "cat.thread_pool": {
+      "request": [
+        "CatThreadPoolRequest: missing json spec query parameter 'format'",
+        "CatThreadPoolRequest: missing json spec query parameter 'local'",
+        "CatThreadPoolRequest: missing json spec query parameter 'master_timeout'",
+        "CatThreadPoolRequest: missing json spec query parameter 'h'",
+        "CatThreadPoolRequest: missing json spec query parameter 'help'",
+        "CatThreadPoolRequest: missing json spec query parameter 's'",
+        "CatThreadPoolRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_thread_pool.CatThreadPoolRequest:CatThreadPoolResponse not found"
+      ]
+    },
+    "cat.transforms": {
+      "request": [
+        "CatTransformsRequest: missing json spec query parameter 'format'",
+        "CatTransformsRequest: missing json spec query parameter 'h'",
+        "CatTransformsRequest: missing json spec query parameter 'help'",
+        "CatTransformsRequest: missing json spec query parameter 's'",
+        "CatTransformsRequest: missing json spec query parameter 'time'",
+        "CatTransformsRequest: missing json spec query parameter 'v'"
+      ],
+      "response": [
+        "Type cat.cat_transforms.CatTransformsRequest:CatTransformsResponse not found"
+      ]
+    },
+    "ccr.follow": {
+      "request": [
+        "CreateFollowIndexRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ccr.create_follow_index.CreateFollowIndexRequest:CreateFollowIndexResponse not found"
+      ]
+    },
+    "ccr.forget_follower": {
+      "request": [
+        "ForgetFollowerIndexRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ccr.forget_follower_index.ForgetFollowerIndexRequest:ForgetFollowerIndexResponse not found"
+      ]
+    },
+    "ccr.put_auto_follow_pattern": {
+      "request": [
+        "PutAutoFollowPatternRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ccr.put_auto_follow_pattern.PutAutoFollowPatternRequest:PutAutoFollowPatternResponse not found"
+      ]
+    },
+    "cluster.delete_voting_config_exclusions": {
+      "request": [
+        "ClusterDeleteVotingConfigExclusionsRequest: missing json spec query parameter 'wait_for_removal'"
+      ],
+      "response": [
+        "Type cluster.cluster_delete_voting_config_exclusions.ClusterDeleteVotingConfigExclusionsRequest:ClusterDeleteVotingConfigExclusionsResponse not found"
+      ]
+    },
+    "cluster.exists_component_template": {
+      "request": [
+        "ClusterComponentTemplateExistsRequest: path parameter 'stub_a' does not exist in the json spec",
+        "ClusterComponentTemplateExistsRequest: missing json spec path parameter 'name'",
+        "ClusterComponentTemplateExistsRequest: query parameter 'stub_b' does not exist in the json spec",
+        "ClusterComponentTemplateExistsRequest: missing json spec query parameter 'master_timeout'",
+        "ClusterComponentTemplateExistsRequest: missing json spec query parameter 'local'",
+        "Url path property 'name' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type cluster.cluster_exists_component_template.ClusterComponentTemplateExistsRequest:ClusterComponentTemplateExistsResponse not found"
+      ]
+    },
     "cluster.get_component_template": {
       "request": [
         "ClusterGetComponentTemplateRequest: query parameter 'flat_settings' does not exist in the json spec"
       ],
       "response": [
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+        "Type cluster.cluster_get_component_template.ClusterGetComponentTemplateRequest:ClusterGetComponentTemplateResponse not found"
+      ]
+    },
+    "cluster.post_voting_config_exclusions": {
+      "request": [
+        "ClusterPostVotingConfigExclusionsRequest: query parameter 'wait_for_removal' does not exist in the json spec"
+      ],
+      "response": [
+        "Type cluster.cluster_put_voting_config_exclusions.ClusterPostVotingConfigExclusionsRequest:ClusterPostVotingConfigExclusionsResponse not found"
+      ]
+    },
+    "cluster.put_component_template": {
+      "request": [
+        "ClusterPutComponentTemplateRequest: missing json spec query parameter 'timeout'",
+        "ClusterPutComponentTemplateRequest: should have a body definition",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition __common.mapping.types.geo.geo_shape.GeoOrientation:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition __common.mapping.dynamic_template.DynamicTemplate:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '__common.mapping.types.Property:PropertyBase'"
+      ],
+      "response": [
+        "Type cluster.cluster_put_component_template.ClusterPutComponentTemplateRequest:ClusterPutComponentTemplateResponse not found"
+      ]
+    },
+    "cluster.put_settings": {
+      "request": [
+        "ClusterPutSettingsRequest: should have a body definition"
+      ],
+      "response": [
+        "Type cluster.cluster_put_settings.ClusterPutSettingsRequest:ClusterPutSettingsResponse not found"
+      ]
+    },
+    "count": {
+      "request": [
+        "CountRequest: query parameter 'query_on_query_string' does not exist in the json spec"
+      ],
+      "response": [
+        "Type __global.count.CountRequest:CountResponse not found"
+      ]
+    },
+    "create": {
+      "request": [
+        "CreateRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.create.CreateRequest:CreateResponse not found"
+      ]
+    },
+    "dangling_indices.delete_dangling_index": {
+      "request": [
+        "DeleteDanglingIndexRequest: path parameter 'stub_a' does not exist in the json spec",
+        "DeleteDanglingIndexRequest: missing json spec path parameter 'index_uuid'",
+        "DeleteDanglingIndexRequest: query parameter 'stub_b' does not exist in the json spec",
+        "DeleteDanglingIndexRequest: missing json spec query parameter 'accept_data_loss'",
+        "DeleteDanglingIndexRequest: missing json spec query parameter 'timeout'",
+        "DeleteDanglingIndexRequest: missing json spec query parameter 'master_timeout'",
+        "Url path property 'index_uuid' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type dangling_indices.index_delete.DeleteDanglingIndexRequest:DeleteDanglingIndexResponse not found"
+      ]
+    },
+    "dangling_indices.import_dangling_index": {
+      "request": [
+        "ImportDanglingIndexRequest: path parameter 'stub_a' does not exist in the json spec",
+        "ImportDanglingIndexRequest: missing json spec path parameter 'index_uuid'",
+        "ImportDanglingIndexRequest: query parameter 'stub_b' does not exist in the json spec",
+        "ImportDanglingIndexRequest: missing json spec query parameter 'accept_data_loss'",
+        "ImportDanglingIndexRequest: missing json spec query parameter 'timeout'",
+        "ImportDanglingIndexRequest: missing json spec query parameter 'master_timeout'",
+        "Url path property 'index_uuid' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type dangling_indices.index_import.ImportDanglingIndexRequest:ImportDanglingIndexResponse not found"
+      ]
+    },
+    "dangling_indices.list_dangling_indices": {
+      "request": [
+        "ListDanglingIndicesRequest: path parameter 'stub_a' does not exist in the json spec",
+        "ListDanglingIndicesRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type dangling_indices.indices_list.ListDanglingIndicesRequest:ListDanglingIndicesResponse not found"
       ]
     },
     "data_frame_transform_deprecated.delete_transform": {
@@ -77,12 +662,190 @@
         "Missing response"
       ]
     },
+    "delete_by_query": {
+      "request": [
+        "DeleteByQueryRequest: query parameter 'query_on_query_string' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_excludes' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_includes' does not exist in the json spec",
+        "DeleteByQueryRequest: missing json spec query parameter 'max_docs'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source_excludes'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source_includes'",
+        "DeleteByQueryRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.delete_by_query.DeleteByQueryRequest:DeleteByQueryResponse not found"
+      ]
+    },
+    "enrich.put_policy": {
+      "request": [
+        "PutEnrichPolicyRequest: should have a body definition",
+        "request definition enrich.put_policy.PutEnrichPolicyRequest:PutEnrichPolicyRequest / body / Property 'geo_match' / instance_of - Non-leaf type cannot be used here: 'enrich.EnrichPolicy:EnrichPolicy'",
+        "request definition enrich.put_policy.PutEnrichPolicyRequest:PutEnrichPolicyRequest / body / Property 'match' / instance_of - Non-leaf type cannot be used here: 'enrich.EnrichPolicy:EnrichPolicy'"
+      ],
+      "response": [
+        "Type enrich.put_policy.PutEnrichPolicyRequest:PutEnrichPolicyResponse not found"
+      ]
+    },
+    "eql.search": {
+      "request": [
+        "EqlSearchRequest: query parameter 'allow_no_indices' does not exist in the json spec",
+        "EqlSearchRequest: query parameter 'expand_wildcards' does not exist in the json spec",
+        "EqlSearchRequest: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "EqlSearchRequest: should have a body definition"
+      ],
+      "response": [
+        "Type eql.search.EqlSearchRequest:EqlSearchResponse not found"
+      ]
+    },
+    "exists": {
+      "request": [
+        "DocumentExistsRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "DocumentExistsRequest: query parameter 'source_excludes' does not exist in the json spec",
+        "DocumentExistsRequest: query parameter 'source_includes' does not exist in the json spec",
+        "DocumentExistsRequest: missing json spec query parameter '_source'",
+        "DocumentExistsRequest: missing json spec query parameter '_source_excludes'",
+        "DocumentExistsRequest: missing json spec query parameter '_source_includes'"
+      ],
+      "response": [
+        "Type __global.exists.DocumentExistsRequest:DocumentExistsResponse not found"
+      ]
+    },
+    "exists_source": {
+      "request": [
+        "SourceExistsRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "SourceExistsRequest: query parameter 'source_excludes' does not exist in the json spec",
+        "SourceExistsRequest: query parameter 'source_includes' does not exist in the json spec",
+        "SourceExistsRequest: missing json spec query parameter '_source'",
+        "SourceExistsRequest: missing json spec query parameter '_source_excludes'",
+        "SourceExistsRequest: missing json spec query parameter '_source_includes'"
+      ],
+      "response": [
+        "Type __global.exists_source.SourceExistsRequest:SourceExistsResponse not found"
+      ]
+    },
+    "explain": {
+      "request": [
+        "ExplainRequest: query parameter 'query_on_query_string' does not exist in the json spec"
+      ],
+      "response": [
+        "Type __global.explain.ExplainRequest:ExplainResponse not found"
+      ]
+    },
+    "features.get_features": {
+      "request": [
+        "GetFeaturesRequest: path parameter 'stub_a' does not exist in the json spec",
+        "GetFeaturesRequest: query parameter 'stub_b' does not exist in the json spec",
+        "GetFeaturesRequest: missing json spec query parameter 'master_timeout'",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type features.get_features.GetFeaturesRequest:GetFeaturesResponse not found"
+      ]
+    },
     "features.reset_features": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "get": {
+      "request": [
+        "GetRequest: query parameter 'source_enabled' does not exist in the json spec"
+      ],
+      "response": [
+        "Type __global.get.GetRequest:GetResponse not found"
+      ]
+    },
+    "get_script_context": {
+      "request": [
+        "GetScriptContextRequest: path parameter 'stub_a' does not exist in the json spec",
+        "GetScriptContextRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type __global.get_script_context.GetScriptContextRequest:GetScriptContextResponse not found"
+      ]
+    },
+    "get_script_languages": {
+      "request": [
+        "GetScriptLanguagesRequest: path parameter 'stub_a' does not exist in the json spec",
+        "GetScriptLanguagesRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type __global.get_script_languages.GetScriptLanguagesRequest:GetScriptLanguagesResponse not found"
+      ]
+    },
+    "get_source": {
+      "request": [
+        "SourceRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "SourceRequest: missing json spec query parameter '_source'"
+      ],
+      "response": [
+        "Type __global.get_source.SourceRequest:SourceResponse not found"
+      ]
+    },
+    "ilm.delete_lifecycle": {
+      "request": [
+        "DeleteLifecycleRequest: path parameter 'policy_id' does not exist in the json spec",
+        "Request path property 'policy_id' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type ilm.delete_lifecycle.DeleteLifecycleRequest:DeleteLifecycleResponse not found"
+      ]
+    },
+    "ilm.get_lifecycle": {
+      "request": [
+        "GetLifecycleRequest: path parameter 'policy_id' does not exist in the json spec",
+        "Request path property 'policy_id' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type ilm.get_lifecycle.GetLifecycleRequest:GetLifecycleResponse not found"
+      ]
+    },
+    "ilm.put_lifecycle": {
+      "request": [
+        "PutLifecycleRequest: path parameter 'policy_id' does not exist in the json spec",
+        "Request path property 'policy_id' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type ilm.put_lifecycle.PutLifecycleRequest:PutLifecycleResponse not found"
+      ]
+    },
+    "index": {
+      "request": [
+        "IndexRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.index.IndexRequest:IndexResponse not found"
+      ]
+    },
+    "indices.analyze": {
+      "request": [
+        "IndicesAnalyzeRequest: missing json spec query parameter 'index'"
+      ],
+      "response": [
+        "Type indices.analyze.IndicesAnalyzeRequest:IndicesAnalyzeResponse not found"
+      ]
+    },
+    "indices.clear_cache": {
+      "request": [
+        "IndicesClearCacheRequest: missing json spec query parameter 'index'"
+      ],
+      "response": [
+        "Type indices.clear_cache.IndicesIndicesClearCacheRequest:IndicesClearCacheResponse not found"
+      ]
+    },
+    "indices.delete_data_stream": {
+      "request": [
+        "IndicesDeleteDataStreamRequest: missing json spec query parameter 'expand_wildcards'"
+      ],
+      "response": [
+        "Type indices.delete_data_stream.IndicesDeleteDataStreamRequest:IndicesDeleteDataStreamResponse not found"
       ]
     },
     "indices.delete_index_template": {
@@ -125,6 +888,41 @@
         "Missing response"
       ]
     },
+    "indices.put_mapping": {
+      "request": [
+        "IndicesPutMappingRequest: should have a body definition"
+      ],
+      "response": [
+        "Type indices.put_mapping.IndicesPutMappingRequest:IndicesPutMappingResponse not found"
+      ]
+    },
+    "indices.put_settings": {
+      "request": [
+        "IndicesPutSettingsRequest: should have a body definition"
+      ],
+      "response": [
+        "Type indices.put_settings.IndicesPutSettingsRequest:IndicesPutSettingsResponse not found"
+      ]
+    },
+    "indices.put_template": {
+      "request": [
+        "IndicesPutTemplateRequest: query parameter 'flat_settings' does not exist in the json spec",
+        "IndicesPutTemplateRequest: query parameter 'timeout' does not exist in the json spec",
+        "IndicesPutTemplateRequest: missing json spec query parameter 'order'",
+        "IndicesPutTemplateRequest: should have a body definition"
+      ],
+      "response": [
+        "Type indices.put_template.IndicesPutTemplateRequest:IndicesPutTemplateResponse not found"
+      ]
+    },
+    "indices.shrink": {
+      "request": [
+        "IndicesShrinkRequest: missing json spec query parameter 'copy_settings'"
+      ],
+      "response": [
+        "Type indices.shrink.IndicesShrinkRequest:IndicesShrinkResponse not found"
+      ]
+    },
     "indices.simulate_index_template": {
       "request": [
         "Missing request"
@@ -141,6 +939,22 @@
         "Missing response"
       ]
     },
+    "indices.split": {
+      "request": [
+        "IndicesSplitRequest: missing json spec query parameter 'copy_settings'"
+      ],
+      "response": [
+        "Type indices.split.IndicesSplitRequest:IndicesSplitResponse not found"
+      ]
+    },
+    "indices.update_aliases": {
+      "request": [
+        "IndicesUpdateAliasBulkRequest: should have a body definition"
+      ],
+      "response": [
+        "Type indices.update_aliases.IndicesUpdateAliasesBulkRequest:IndicesUpdateAliasBulkResponse not found"
+      ]
+    },
     "indices.upgrade": {
       "request": [
         "Missing request"
@@ -149,12 +963,119 @@
         "Missing response"
       ]
     },
+    "indices.validate_query": {
+      "request": [
+        "IndicesValidateQueryRequest: query parameter 'query_on_query_string' does not exist in the json spec"
+      ],
+      "response": [
+        "Type indices.validate_query.IndicesValidateQueryRequest:IndicesValidateQueryResponse not found"
+      ]
+    },
     "ingest.geo_ip_stats": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "ingest.put_pipeline": {
+      "request": [
+        "PutPipelineRequest: should have a body definition",
+        "enum definition ingest.processors.DateRounding:DateRounding - Duplicate enum member identifier 'M'"
+      ],
+      "response": [
+        "Type ingest.put_pipeline.PutPipelineRequest:PutPipelineResponse not found"
+      ]
+    },
+    "ingest.simulate": {
+      "request": [
+        "SimulatePipelineRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ingest.simulate_pipeline.SimulatePipelineRequest:SimulatePipelineResponse not found"
+      ]
+    },
+    "license.post_start_trial": {
+      "request": [
+        "StartTrialLicenseRequest: query parameter 'type_query_string' does not exist in the json spec",
+        "StartTrialLicenseRequest: missing json spec query parameter 'type'"
+      ],
+      "response": [
+        "Type license.start_trial_license.StartTrialLicenseRequest:StartTrialLicenseResponse not found"
+      ]
+    },
+    "logstash.delete_pipeline": {
+      "request": [
+        "LogstashDeletePipelineRequest: path parameter 'stub_a' does not exist in the json spec",
+        "LogstashDeletePipelineRequest: missing json spec path parameter 'id'",
+        "LogstashDeletePipelineRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Url path property 'id' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type logstash.pipeline_delete.LogstashDeletePipelineRequest:LogstashDeletePipelineResponse not found"
+      ]
+    },
+    "logstash.get_pipeline": {
+      "request": [
+        "LogstashGetPipelineRequest: path parameter 'stub_a' does not exist in the json spec",
+        "LogstashGetPipelineRequest: missing json spec path parameter 'id'",
+        "LogstashGetPipelineRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Url path property 'id' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type logstash.pipeline_get.LogstashGetPipelineRequest:LogstashGetPipelineResponse not found"
+      ]
+    },
+    "logstash.put_pipeline": {
+      "request": [
+        "LogstashPutPipelineRequest: path parameter 'stub_a' does not exist in the json spec",
+        "LogstashPutPipelineRequest: missing json spec path parameter 'id'",
+        "LogstashPutPipelineRequest: query parameter 'stub_b' does not exist in the json spec",
+        "LogstashPutPipelineRequest: should have a body definition",
+        "Url path property 'id' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type logstash.pipeline_put.LogstashPutPipelineRequest:LogstashPutPipelineResponse not found"
+      ]
+    },
+    "mget": {
+      "request": [
+        "MultiGetRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "MultiGetRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.mget.MultiGetRequest:MultiGetResponse not found"
+      ]
+    },
+    "ml.close_job": {
+      "request": [
+        "CloseJobRequest: missing json spec query parameter 'allow_no_match'"
+      ],
+      "response": [
+        "Type ml.close_job.CloseJobRequest:CloseJobResponse not found"
+      ]
+    },
+    "ml.delete_expired_data": {
+      "request": [
+        "DeleteExpiredDataRequest: path parameter 'name' does not exist in the json spec",
+        "DeleteExpiredDataRequest: missing json spec path parameter 'job_id'",
+        "Url path property 'job_id' is missing in request definition",
+        "Request path property 'name' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type ml.delete_expired_data.DeleteExpiredDataRequest:DeleteExpiredDataResponse not found"
+      ]
+    },
+    "ml.estimate_model_memory": {
+      "request": [
+        "EstimateModelMemoryRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.estimate_model_memory.EstimateModelMemoryRequest:EstimateModelMemoryResponse not found"
       ]
     },
     "ml.evaluate_data_frame": {
@@ -181,6 +1102,55 @@
         "Missing response"
       ]
     },
+    "ml.flush_job": {
+      "request": [
+        "FlushJobRequest: missing json spec query parameter 'calc_interim'",
+        "FlushJobRequest: missing json spec query parameter 'start'",
+        "FlushJobRequest: missing json spec query parameter 'end'",
+        "FlushJobRequest: missing json spec query parameter 'advance_time'"
+      ],
+      "response": [
+        "Type ml.flush_job.FlushJobRequest:FlushJobResponse not found"
+      ]
+    },
+    "ml.forecast": {
+      "request": [
+        "ForecastJobRequest: missing json spec query parameter 'duration'",
+        "ForecastJobRequest: missing json spec query parameter 'expires_in'",
+        "ForecastJobRequest: missing json spec query parameter 'max_model_memory'"
+      ],
+      "response": [
+        "Type ml.forecast_job.ForecastJobRequest:ForecastJobResponse not found"
+      ]
+    },
+    "ml.get_buckets": {
+      "request": [
+        "GetBucketsRequest: missing json spec query parameter 'expand'",
+        "GetBucketsRequest: missing json spec query parameter 'anomaly_score'"
+      ],
+      "response": [
+        "Type ml.get_buckets.GetBucketsRequest:GetBucketsResponse not found"
+      ]
+    },
+    "ml.get_calendars": {
+      "request": [
+        "GetCalendarsRequest: missing json spec query parameter 'from'",
+        "GetCalendarsRequest: missing json spec query parameter 'size'"
+      ],
+      "response": [
+        "Type ml.get_calendars.GetCalendarsRequest:GetCalendarsResponse not found"
+      ]
+    },
+    "ml.get_categories": {
+      "request": [
+        "GetCategoriesRequest: missing json spec query parameter 'from'",
+        "GetCategoriesRequest: missing json spec query parameter 'size'",
+        "GetCategoriesRequest: missing json spec query parameter 'partition_field_value'"
+      ],
+      "response": [
+        "Type ml.get_categories.GetCategoriesRequest:GetCategoriesResponse not found"
+      ]
+    },
     "ml.get_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -197,12 +1167,89 @@
         "Missing response"
       ]
     },
+    "ml.get_datafeed_stats": {
+      "request": [
+        "GetDatafeedStatsRequest: missing json spec query parameter 'allow_no_match'"
+      ],
+      "response": [
+        "Type ml.get_datafeed_stats.GetDatafeedStatsRequest:GetDatafeedStatsResponse not found"
+      ]
+    },
+    "ml.get_datafeeds": {
+      "request": [
+        "GetDatafeedsRequest: missing json spec query parameter 'allow_no_match'"
+      ],
+      "response": [
+        "Type ml.get_datafeeds.GetDatafeedsRequest:GetDatafeedsResponse not found"
+      ]
+    },
+    "ml.get_influencers": {
+      "request": [
+        "GetInfluencersRequest: missing json spec query parameter 'exclude_interim'",
+        "GetInfluencersRequest: missing json spec query parameter 'from'",
+        "GetInfluencersRequest: missing json spec query parameter 'size'",
+        "GetInfluencersRequest: missing json spec query parameter 'start'",
+        "GetInfluencersRequest: missing json spec query parameter 'end'",
+        "GetInfluencersRequest: missing json spec query parameter 'influencer_score'",
+        "GetInfluencersRequest: missing json spec query parameter 'sort'",
+        "GetInfluencersRequest: missing json spec query parameter 'desc'"
+      ],
+      "response": [
+        "Type ml.get_influencers.GetInfluencersRequest:GetInfluencersResponse not found"
+      ]
+    },
+    "ml.get_job_stats": {
+      "request": [
+        "GetJobStatsRequest: missing json spec query parameter 'allow_no_match'"
+      ],
+      "response": [
+        "Type ml.get_job_stats.GetJobStatsRequest:GetJobStatsResponse not found"
+      ]
+    },
     "ml.get_jobs": {
       "request": [
         "GetJobsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "type_alias definition x_pack.info.x_pack_usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'x_pack.info.x_pack_usage:BaseUrlConfig'"
+        "Type ml.get_jobs.GetJobsRequest:GetJobsResponse not found"
+      ]
+    },
+    "ml.get_model_snapshots": {
+      "request": [
+        "GetModelSnapshotsRequest: missing json spec query parameter 'from'",
+        "GetModelSnapshotsRequest: missing json spec query parameter 'size'",
+        "GetModelSnapshotsRequest: missing json spec query parameter 'start'",
+        "GetModelSnapshotsRequest: missing json spec query parameter 'end'",
+        "GetModelSnapshotsRequest: missing json spec query parameter 'sort'",
+        "GetModelSnapshotsRequest: missing json spec query parameter 'desc'"
+      ],
+      "response": [
+        "Type ml.get_model_snapshots.GetModelSnapshotsRequest:GetModelSnapshotsResponse not found"
+      ]
+    },
+    "ml.get_overall_buckets": {
+      "request": [
+        "GetOverallBucketsRequest: missing json spec query parameter 'top_n'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'bucket_span'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'overall_score'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'exclude_interim'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'start'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'end'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'allow_no_match'",
+        "GetOverallBucketsRequest: missing json spec query parameter 'allow_no_jobs'"
+      ],
+      "response": [
+        "Type ml.get_overall_buckets.GetOverallBucketsRequest:GetOverallBucketsResponse not found"
+      ]
+    },
+    "ml.get_records": {
+      "request": [
+        "GetAnomalyRecordsRequest: missing json spec query parameter 'record_score'",
+        "GetAnomalyRecordsRequest: missing json spec query parameter 'sort'",
+        "GetAnomalyRecordsRequest: missing json spec query parameter 'desc'"
+      ],
+      "response": [
+        "Type ml.get_anomaly_records.GetAnomalyRecordsRequest:GetAnomalyRecordsResponse not found"
       ]
     },
     "ml.get_trained_models": {
@@ -221,6 +1268,22 @@
         "Missing response"
       ]
     },
+    "ml.post_calendar_events": {
+      "request": [
+        "PostCalendarEventsRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.post_calendar_events.PostCalendarEventsRequest:PostCalendarEventsResponse not found"
+      ]
+    },
+    "ml.post_data": {
+      "request": [
+        "PostJobDataRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.post_job_data.PostJobDataRequest:PostJobDataResponse not found"
+      ]
+    },
     "ml.preview_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -235,6 +1298,30 @@
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "ml.put_datafeed": {
+      "request": [
+        "PutDatafeedRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.put_datafeed.PutDatafeedRequest:PutDatafeedResponse not found"
+      ]
+    },
+    "ml.put_filter": {
+      "request": [
+        "PutFilterRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.put_filter.PutFilterRequest:PutFilterResponse not found"
+      ]
+    },
+    "ml.put_job": {
+      "request": [
+        "PutJobRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.put_job.PutJobRequest:PutJobResponse not found"
       ]
     },
     "ml.put_trained_model": {
@@ -253,12 +1340,29 @@
         "Missing response"
       ]
     },
+    "ml.revert_model_snapshot": {
+      "request": [
+        "RevertModelSnapshotRequest: missing json spec query parameter 'delete_intervening_results'"
+      ],
+      "response": [
+        "Type ml.revert_model_snapshot.RevertModelSnapshotRequest:RevertModelSnapshotResponse not found"
+      ]
+    },
     "ml.start_data_frame_analytics": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "ml.start_datafeed": {
+      "request": [
+        "StartDatafeedRequest: missing json spec query parameter 'end'",
+        "StartDatafeedRequest: missing json spec query parameter 'timeout'"
+      ],
+      "response": [
+        "Type ml.start_datafeed.StartDatafeedRequest:StartDatafeedResponse not found"
       ]
     },
     "ml.stop_data_frame_analytics": {
@@ -269,12 +1373,53 @@
         "Missing response"
       ]
     },
+    "ml.stop_datafeed": {
+      "request": [
+        "StopDatafeedRequest: missing json spec query parameter 'allow_no_datafeeds'",
+        "StopDatafeedRequest: missing json spec query parameter 'timeout'"
+      ],
+      "response": [
+        "Type ml.stop_datafeed.StopDatafeedRequest:StopDatafeedResponse not found"
+      ]
+    },
     "ml.update_data_frame_analytics": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "ml.update_datafeed": {
+      "request": [
+        "UpdateDatafeedRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.update_data_feed.UpdateDatafeedRequest:UpdateDatafeedResponse not found"
+      ]
+    },
+    "ml.update_filter": {
+      "request": [
+        "UpdateFilterRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.update_filter.UpdateFilterRequest:UpdateFilterResponse not found"
+      ]
+    },
+    "ml.update_job": {
+      "request": [
+        "UpdateJobRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.update_job.UpdateJobRequest:UpdateJobResponse not found"
+      ]
+    },
+    "ml.update_model_snapshot": {
+      "request": [
+        "UpdateModelSnapshotRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.update_model_snapshot.UpdateModelSnapshotRequest:UpdateModelSnapshotResponse not found"
       ]
     },
     "ml.upgrade_job_snapshot": {
@@ -285,12 +1430,347 @@
         "Missing response"
       ]
     },
+    "ml.validate": {
+      "request": [
+        "ValidateJobRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.validate_job.ValidateJobRequest:ValidateJobResponse not found"
+      ]
+    },
+    "ml.validate_detector": {
+      "request": [
+        "ValidateDetectorRequest: should have a body definition"
+      ],
+      "response": [
+        "Type ml.validate_detector.ValidateDetectorRequest:ValidateDetectorResponse not found"
+      ]
+    },
+    "monitoring.bulk": {
+      "request": [
+        "BulkMonitoringRequest: path parameter 'stub_a' does not exist in the json spec",
+        "BulkMonitoringRequest: missing json spec path parameter 'type'",
+        "BulkMonitoringRequest: query parameter 'stub_b' does not exist in the json spec",
+        "BulkMonitoringRequest: missing json spec query parameter 'system_id'",
+        "BulkMonitoringRequest: missing json spec query parameter 'system_api_version'",
+        "BulkMonitoringRequest: missing json spec query parameter 'interval'",
+        "BulkMonitoringRequest: should have a body definition",
+        "Url path property 'type' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type monitoring.bulk.BulkMonitoringRequest:BulkMonitoringResponse not found"
+      ]
+    },
+    "msearch": {
+      "request": [
+        "MultiSearchRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.msearch.MultiSearchRequest:MultiSearchResponse not found"
+      ]
+    },
+    "msearch_template": {
+      "request": [
+        "MultiSearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "MultiSearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
+        "MultiSearchTemplateRequest: should have a body definition",
+        "request definition __global.msearch_template.MultiSearchTemplateRequest:MultiSearchTemplateRequest / body / Property 'operations' / dictionary_of / instance_of - '__global.search_template.SearchTemplateRequest:SearchTemplateRequest' is a request and must only be used in endpoints"
+      ],
+      "response": [
+        "Type __global.msearch_template.MultiSearchTemplateRequest:MultiSearchTemplateResponse not found"
+      ]
+    },
+    "mtermvectors": {
+      "request": [
+        "MultiTermVectorsRequest: missing json spec query parameter 'ids'",
+        "interface definition __global.mtermvectors.MultiTermVectorOperation:MultiTermVectorOperation / Property 'doc' / instance_of - No type definition for 'internal:object'"
+      ],
+      "response": [
+        "Type __global.mtermvectors.MultiTermVectorsRequest:MultiTermVectorsResponse not found"
+      ]
+    },
+    "nodes.hot_threads": {
+      "request": [
+        "NodesHotThreadsRequest: query parameter 'thread_type' does not exist in the json spec",
+        "NodesHotThreadsRequest: missing json spec query parameter 'type'"
+      ],
+      "response": [
+        "Type nodes.nodes_hot_threads.NodesHotThreadsRequest:NodesHotThreadsResponse not found"
+      ]
+    },
+    "nodes.stats": {
+      "request": [
+        "NodesStatsRequest: missing json spec query parameter 'include_unloaded_segments'"
+      ],
+      "response": [
+        "Type nodes.nodes_stats.NodesStatsRequest:NodesStatsResponse not found"
+      ]
+    },
+    "open_point_in_time": {
+      "request": [
+        "OpenPointInTimeRequest: missing json spec query parameter 'preference'",
+        "OpenPointInTimeRequest: missing json spec query parameter 'routing'",
+        "OpenPointInTimeRequest: missing json spec query parameter 'ignore_unavailable'",
+        "OpenPointInTimeRequest: missing json spec query parameter 'expand_wildcards'"
+      ],
+      "response": [
+        "Type __global.open_point_in_time.OpenPointInTimeRequest:OpenPointInTimeResponse not found"
+      ]
+    },
+    "put_script": {
+      "request": [
+        "PutScriptRequest: missing json spec query parameter 'context'",
+        "PutScriptRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.put_script.PutScriptRequest:PutScriptResponse not found"
+      ]
+    },
     "rank_eval": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "reindex": {
+      "request": [
+        "ReindexRequest: query parameter 'require_alias' does not exist in the json spec",
+        "ReindexRequest: missing json spec query parameter 'max_docs'",
+        "ReindexRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.reindex.ReindexRequest:ReindexResponse not found"
+      ]
+    },
+    "render_search_template": {
+      "request": [
+        "RenderSearchTemplateRequest: missing json spec path parameter 'id'",
+        "Url path property 'id' is missing in request definition"
+      ],
+      "response": [
+        "Type __global.render_search_template.RenderSearchTemplateRequest:RenderSearchTemplateResponse not found"
+      ]
+    },
+    "rollup.put_job": {
+      "request": [
+        "CreateRollupJobRequest: should have a body definition"
+      ],
+      "response": [
+        "Type rollup.create_rollup_job.CreateRollupJobRequest:CreateRollupJobResponse not found"
+      ]
+    },
+    "rollup.rollup": {
+      "request": [
+        "RollupRequest: path parameter 'stubb' does not exist in the json spec",
+        "RollupRequest: missing json spec path parameter 'index'",
+        "RollupRequest: missing json spec path parameter 'rollup_index'",
+        "RollupRequest: query parameter 'stuba' does not exist in the json spec",
+        "RollupRequest: should have a body definition",
+        "Url path property 'index' is missing in request definition",
+        "Url path property 'rollup_index' is missing in request definition",
+        "Request path property 'stubb' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type rollup.rollup.RollupRequest:RollupResponse not found"
+      ]
+    },
+    "rollup.rollup_search": {
+      "request": [
+        "RollupSearchRequest: should have a body definition"
+      ],
+      "response": [
+        "Type rollup.rollup_search.RollupSearchRequest:RollupSearchResponse not found"
+      ]
+    },
+    "scroll": {
+      "request": [
+        "ScrollRequest: query parameter 'total_hits_as_integer' does not exist in the json spec"
+      ],
+      "response": [
+        "Type __global.scroll.ScrollRequest:ScrollResponse not found"
+      ]
+    },
+    "search": {
+      "request": [
+        "SearchRequest: query parameter 'query_on_query_string' does not exist in the json spec",
+        "SearchRequest: query parameter 'sequence_number_primary_term' does not exist in the json spec",
+        "SearchRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "SearchRequest: missing json spec query parameter 'explain'",
+        "SearchRequest: missing json spec query parameter '_source'",
+        "SearchRequest: missing json spec query parameter 'terminate_after'",
+        "SearchRequest: missing json spec query parameter 'timeout'",
+        "SearchRequest: missing json spec query parameter 'track_scores'",
+        "SearchRequest: missing json spec query parameter 'version'",
+        "SearchRequest: missing json spec query parameter 'min_compatible_shard_node'"
+      ],
+      "response": [
+        "Type __global.search.SearchRequest:SearchResponse not found"
+      ]
+    },
+    "search_template": {
+      "request": [
+        "SearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "SearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
+        "SearchTemplateRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.search_template.SearchTemplateRequest:SearchTemplateResponse not found"
+      ]
+    },
+    "searchable_snapshots.clear_cache": {
+      "request": [
+        "SearchableSnapshotsClearCacheRequest: path parameter 'stub_a' does not exist in the json spec",
+        "SearchableSnapshotsClearCacheRequest: missing json spec path parameter 'index'",
+        "SearchableSnapshotsClearCacheRequest: query parameter 'stub_b' does not exist in the json spec",
+        "SearchableSnapshotsClearCacheRequest: missing json spec query parameter 'ignore_unavailable'",
+        "SearchableSnapshotsClearCacheRequest: missing json spec query parameter 'allow_no_indices'",
+        "SearchableSnapshotsClearCacheRequest: missing json spec query parameter 'expand_wildcards'",
+        "SearchableSnapshotsClearCacheRequest: missing json spec query parameter 'index'",
+        "Url path property 'index' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type searchable_snapshots.clear_cache.SearchableSnapshotsClearCacheRequest:SearchableSnapshotsClearCacheResponse not found"
+      ]
+    },
+    "searchable_snapshots.mount": {
+      "request": [
+        "SearchableSnapshotsMountRequest: should have a body definition"
+      ],
+      "response": [
+        "Type searchable_snapshots.mount.SearchableSnapshotsMountRequest:SearchableSnapshotsMountResponse not found"
+      ]
+    },
+    "searchable_snapshots.repository_stats": {
+      "request": [
+        "SearchableSnapshotsRepositoryStatsRequest: path parameter 'stub_a' does not exist in the json spec",
+        "SearchableSnapshotsRepositoryStatsRequest: missing json spec path parameter 'repository'",
+        "Url path property 'repository' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type searchable_snapshots.repository_stats.SearchableSnapshotsRepositoryStatsRequest:SearchableSnapshotsRepositoryStatsResponse not found"
+      ]
+    },
+    "searchable_snapshots.stats": {
+      "request": [
+        "SearchableSnapshotsStatsRequest: path parameter 'stub_a' does not exist in the json spec",
+        "SearchableSnapshotsStatsRequest: missing json spec path parameter 'index'",
+        "SearchableSnapshotsStatsRequest: query parameter 'stub_b' does not exist in the json spec",
+        "SearchableSnapshotsStatsRequest: missing json spec query parameter 'level'",
+        "Url path property 'index' is missing in request definition",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type searchable_snapshots.stats.SearchableSnapshotsStatsRequest:SearchableSnapshotsStatsResponse not found"
+      ]
+    },
+    "security.change_password": {
+      "request": [
+        "SecurityChangePasswordRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.change_password.SecurityChangePasswordRequest:SecurityChangePasswordResponse not found"
+      ]
+    },
+    "security.create_api_key": {
+      "request": [
+        "CreateApiKeyRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.api_key.create_api_key.CreateApiKeyRequest:CreateApiKeyResponse not found"
+      ]
+    },
+    "security.get_builtin_privileges": {
+      "request": [
+        "SecurityGetBuiltinPrivilegesRequest: query parameter 'stub' does not exist in the json spec"
+      ],
+      "response": [
+        "Type security.get_builtin_privileges.SecurityGetBuiltinPrivilegesRequest:SecurityGetBuiltinPrivilegesResponse not found"
+      ]
+    },
+    "security.get_token": {
+      "request": [
+        "SecurityGetTokenRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.get_token.GetUserAccessTokenRequest:SecurityGetTokenResponse not found"
+      ]
+    },
+    "security.get_user_privileges": {
+      "request": [
+        "SecurityGetUserPrivilegesRequest: query parameter 'stub' does not exist in the json spec"
+      ],
+      "response": [
+        "Type security.get_user_privileges.SecurityGetUserPrivilegesRequest:SecurityGetUserPrivilegesResponse not found"
+      ]
+    },
+    "security.grant_api_key": {
+      "request": [
+        "GrantApiKeyRequest: missing json spec query parameter 'refresh'",
+        "GrantApiKeyRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.api_key.grant_api_key.GrantApiKeyRequest:GrantApiKeyResponse not found"
+      ]
+    },
+    "security.has_privileges": {
+      "request": [
+        "SecurityHasPrivilegesRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.has_privileges.SecurityHasPrivilegesRequest:SecurityHasPrivilegesResponse not found"
+      ]
+    },
+    "security.invalidate_api_key": {
+      "request": [
+        "InvalidateApiKeyRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.api_key.invalidate_api_key.InvalidateApiKeyRequest:InvalidateApiKeyResponse not found"
+      ]
+    },
+    "security.invalidate_token": {
+      "request": [
+        "SecurityInvalidateTokenRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.invalidate_token.SecurityInvalidateTokenRequest:SecurityInvalidateTokenResponse not found"
+      ]
+    },
+    "security.put_privileges": {
+      "request": [
+        "SecurityPutPrivilegesRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.put_privileges.SecurityPutPrivilegesRequest:SecurityPutPrivilegesResponse not found"
+      ]
+    },
+    "security.put_role": {
+      "request": [
+        "SecurityPutRoleRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.put_role.SecurityPutRoleRequest:SecurityPutRoleResponse not found"
+      ]
+    },
+    "security.put_role_mapping": {
+      "request": [
+        "SecurityPutRoleMappingRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.put_role_mapping.SecurityPutRoleMappingRequest:SecurityPutRoleMappingResponse not found"
+      ]
+    },
+    "security.put_user": {
+      "request": [
+        "SecurityPutUserRequest: should have a body definition"
+      ],
+      "response": [
+        "Type security.put_user.SecurityPutUserRequest:SecurityPutUserResponse not found"
       ]
     },
     "shutdown.delete_node": {
@@ -316,7 +1796,160 @@
       "response": [
         "Missing response"
       ]
+    },
+    "snapshot.clone": {
+      "request": [
+        "SnapshotCloneRequest: query parameter 'timeout' does not exist in the json spec",
+        "SnapshotCloneRequest: should have a body definition"
+      ],
+      "response": [
+        "Type snapshot.clone.SnapshotCloneRequest:SnapshotCloneResponse not found"
+      ]
+    },
+    "snapshot.create_repository": {
+      "request": [
+        "SnapshotCreateRepositoryRequest: should have a body definition"
+      ],
+      "response": [
+        "Type snapshot.create_repository.SnapshotCreateRepositoryRequest:SnapshotCreateRepositoryResponse not found"
+      ]
+    },
+    "snapshot.restore": {
+      "request": [
+        "request definition snapshot.restore.SnapshotRestoreRequest:SnapshotRestoreRequest / body / Property 'index_settings' / instance_of - 'indices.put_settings.IndicesPutSettingsRequest:IndicesPutSettingsRequest' is a request and must only be used in endpoints"
+      ],
+      "response": [
+        "Type snapshot.restore.SnapshotRestoreRequest:SnapshotRestoreResponse not found"
+      ]
+    },
+    "sql.clear_cursor": {
+      "request": [
+        "ClearSqlCursorRequest: should have a body definition"
+      ],
+      "response": [
+        "Type sql.clear_sql_cursor.ClearSqlCursorRequest:ClearSqlCursorResponse not found"
+      ]
+    },
+    "sql.query": {
+      "request": [
+        "QuerySqlRequest: should have a body definition"
+      ],
+      "response": [
+        "Type sql.query_sql.QuerySqlRequest:QuerySqlResponse not found"
+      ]
+    },
+    "sql.translate": {
+      "request": [
+        "TranslateSqlRequest: should have a body definition"
+      ],
+      "response": [
+        "Type sql.translate_sql.TranslateSqlRequest:TranslateSqlResponse not found"
+      ]
+    },
+    "tasks.cancel": {
+      "request": [
+        "CancelTasksRequest: missing json spec query parameter 'wait_for_completion'"
+      ],
+      "response": [
+        "Type task.cancel_tasks.CancelTasksRequest:CancelTasksResponse not found"
+      ]
+    },
+    "transform.preview_transform": {
+      "request": [
+        "PreviewTransformRequest: should have a body definition"
+      ],
+      "response": [
+        "Type transform.preview_transform.PreviewTransformRequest:PreviewTransformResponse not found"
+      ]
+    },
+    "transform.put_transform": {
+      "request": [
+        "PutTransformRequest: should have a body definition"
+      ],
+      "response": [
+        "Type transform.put_transform.PutTransformRequest:PutTransformResponse not found"
+      ]
+    },
+    "transform.update_transform": {
+      "request": [
+        "UpdateTransformRequest: should have a body definition"
+      ],
+      "response": [
+        "Type transform.update_transform.UpdateTransformRequest:UpdateTransformResponse not found"
+      ]
+    },
+    "update": {
+      "request": [
+        "UpdateRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "UpdateRequest: should have a body definition"
+      ],
+      "response": [
+        "Type __global.update.UpdateRequest:UpdateResponse not found"
+      ]
+    },
+    "update_by_query": {
+      "request": [
+        "UpdateByQueryRequest: query parameter 'query_on_query_string' does not exist in the json spec",
+        "UpdateByQueryRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "UpdateByQueryRequest: query parameter 'source_excludes' does not exist in the json spec",
+        "UpdateByQueryRequest: query parameter 'source_includes' does not exist in the json spec",
+        "UpdateByQueryRequest: missing json spec query parameter 'q'",
+        "UpdateByQueryRequest: missing json spec query parameter 'max_docs'",
+        "UpdateByQueryRequest: missing json spec query parameter '_source'",
+        "UpdateByQueryRequest: missing json spec query parameter '_source_excludes'",
+        "UpdateByQueryRequest: missing json spec query parameter '_source_includes'"
+      ],
+      "response": [
+        "Type __global.update_by_query.UpdateByQueryRequest:UpdateByQueryResponse not found"
+      ]
+    },
+    "watcher.execute_watch": {
+      "request": [
+        "interface definition __common.watcher.input.SearchInputRequestDefinition:SearchInputRequestDefinition / Property 'body' / instance_of - '__global.search.SearchRequest:SearchRequest' is a request and must only be used in endpoints",
+        "interface definition __common.watcher.input.SearchInputRequestDefinition:SearchInputRequestDefinition / Property 'template' / instance_of - '__global.search_template.SearchTemplateRequest:SearchTemplateRequest' is a request and must only be used in endpoints",
+        "interface definition __common.watcher.input.HttpInput:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: '__common.watcher.input.HttpInputRequestDefinition:HttpInputRequestDefinition'"
+      ],
+      "response": [
+        "Type watcher.execute_watch.WatcherExecuteWatchRequest:WatcherExecuteWatchResponse not found"
+      ]
+    },
+    "watcher.put_watch": {
+      "request": [
+        "WatcherPutWatchRequest: query parameter 'if_sequence_number' does not exist in the json spec",
+        "WatcherPutWatchRequest: missing json spec query parameter 'if_seq_no'"
+      ],
+      "response": [
+        "Type watcher.put_watch.WatcherPutWatchRequest:WatcherPutWatchResponse not found"
+      ]
+    },
+    "watcher.query_watches": {
+      "request": [
+        "WatcherQueryWatchesRequest: path parameter 'stub_a' does not exist in the json spec",
+        "WatcherQueryWatchesRequest: query parameter 'stub_b' does not exist in the json spec",
+        "Request path property 'stub_a' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "Type watcher.query_watches.WatcherQueryWatchesRequest:WatcherQueryWatchesResponse not found"
+      ]
+    },
+    "watcher.stats": {
+      "request": [
+        "WatcherStatsRequest: missing json spec query parameter 'metric'"
+      ],
+      "response": [
+        "Type watcher.stats.WatcherStatsRequest:WatcherStatsResponse not found"
+      ]
+    },
+    "xpack.info": {
+      "request": [
+        "XPackInfoRequest: missing json spec query parameter 'accept_enterprise'"
+      ],
+      "response": [
+        "Type xpack.x_pack_info.XPackInfoRequest:XPackInfoResponse not found"
+      ]
     }
   },
-  "generalErrors": []
+  "generalErrors": [
+    "No type definition for 'common_abstractions.response:ErrorResponse'"
+  ]
 }

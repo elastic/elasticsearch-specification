@@ -17,22 +17,22 @@
  * under the License.
  */
 
-import { Indices, PropertyName, Type } from '../../__common/common';
-import { ExpandWildcards } from '../../__common/common/ExpandWildcards';
-import { RequestBase } from '../../__common/common_abstractions/request/RequestBase';
-import { Time } from '../../__common/common_options/time_unit/Time';
-import { DynamicMapping } from '../../__common/mapping/DynamicMapping';
-import { DynamicTemplate } from '../../__common/mapping/dynamic_template/DynamicTemplate';
-import { AllField } from '../../__common/mapping/meta_fields/all/AllField';
-import { FieldNamesField } from '../../__common/mapping/meta_fields/field_names/FieldNamesField';
-import { IndexField } from '../../__common/mapping/meta_fields/index/IndexField';
-import { RoutingField } from '../../__common/mapping/meta_fields/routing/RoutingField';
-import { SizeField } from '../../__common/mapping/meta_fields/size/SizeField';
-import { SourceField } from '../../__common/mapping/meta_fields/source/SourceField';
-import { RuntimeFields } from '../../__common/mapping/runtime_fields/RuntimeFields';
-import { Property } from '../../__common/mapping/types/Property';
-import { Dictionary } from '../../__spec_utils/Dictionary';
-import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue';
+import { Indices, PropertyName, Type } from '../../__common/common'
+import { ExpandWildcards } from '../../__common/common/ExpandWildcards'
+import { RequestBase } from '../../__common/common_abstractions/request/RequestBase'
+import { Time } from '../../__common/common_options/time_unit/Time'
+import { DynamicMapping } from '../../__common/mapping/DynamicMapping'
+import { DynamicTemplate } from '../../__common/mapping/dynamic_template/DynamicTemplate'
+import { AllField } from '../../__common/mapping/meta_fields/all/AllField'
+import { FieldNamesField } from '../../__common/mapping/meta_fields/field_names/FieldNamesField'
+import { IndexField } from '../../__common/mapping/meta_fields/index/IndexField'
+import { RoutingField } from '../../__common/mapping/meta_fields/routing/RoutingField'
+import { SizeField } from '../../__common/mapping/meta_fields/size/SizeField'
+import { SourceField } from '../../__common/mapping/meta_fields/source/SourceField'
+import { RuntimeFields } from '../../__common/mapping/runtime_fields/RuntimeFields'
+import { Property } from '../../__common/mapping/types/Property'
+import { Dictionary } from '../../__spec_utils/Dictionary'
+import { UserDefinedValue } from '../../__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.put_mapping
