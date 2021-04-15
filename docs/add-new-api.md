@@ -1,7 +1,7 @@
 # How to add a new API
 
 It might happen that a new API in Elasticsearch is not yet defined
-in this repository, or we do have an endpoint definition in [`/specification/specs/_json_spec`](../specification/specs/_json_spec)
+in this repository, or we do have an endpoint definition in [`/specification/_json_spec`](../specification/_json_spec)
 but we don't have a type definition for it.
 In this document you will see how to add a new endpopint and how to add a new endpoint definition.
 
@@ -10,7 +10,7 @@ In this document you will see how to add a new endpopint and how to add a new en
 ## How to add a new endpoint
 
 Add a new endpoint is straightforward, you only need to copy-paste the json rest-api-spec defintion
-from the Elasticsearch repository inside [`/specification/specs/_json_spec`](../specification/specs/_json_spec)
+from the Elasticsearch repository inside [`/specification/_json_spec`](../specification/_json_spec)
 and you are good to go.
 
 You can find the rest-api-spec definitions [here](https://github.com/elastic/elasticsearch/tree/7.x/rest-api-spec/src/main/resources/rest-api-spec/api)
@@ -19,10 +19,10 @@ or [here](https://github.com/elastic/elasticsearch/tree/7.x/x-pack/plugin/src/te
 ## How to add the definition of an endpoint
 
 Once you have added a new endpoint definition, the next step is to add its type definition.
-First of all, you should find the most approariate place inside [`/specification/specs`](../specification/specs)
-where to put the new definition. The content of [`/specification/specs`](../specification/specs)
+First of all, you should find the most approariate place inside [`/specification`](../specification)
+where to put the new definition. The content of [`/specification`](../specification)
 tryied to mimic the Elasticsearch online documentation, so you can use it as inspiration.
-For example, the index document defintion can be found in [`/specification/specs/document/single/index`](../specification/specs/document/single/index).
+For example, the index document defintion can be found in [`/specification/__global/index`](../specification/__global/index).
 
 Once you have found the best place for the new definition, you should create a new file for it.
 The filename should be the same of the type definition you are writing, for example:
@@ -96,7 +96,7 @@ interface EndpointRequest<Generic> extends RequestBase {
 }
 ```
 And the generic will be used somewhere inside the definition.
-There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/specs/document/single/index/IndexRequest.ts).
+There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/__global/index/IndexRequest.ts).
 
 ### Add the endpoint response definition
 
