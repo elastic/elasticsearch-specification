@@ -22,7 +22,7 @@ import { ScriptField } from '@common/common_options/scripting/ScriptField'
 import { Highlight } from '@global/search/highlighting/Highlight'
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class TopHitsAggregation extends MetricAggregationBase {

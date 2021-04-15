@@ -19,7 +19,7 @@
 
 import { DateString, Id } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name ml.post_data

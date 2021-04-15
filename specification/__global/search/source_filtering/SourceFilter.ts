@@ -16,10 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// TODO: move singular names to aliases
 
 import { Field, Fields } from '@common/common'
-
-// TODO: move singular names to aliases
 
 export class SourceFilter {
   excludes?: Fields

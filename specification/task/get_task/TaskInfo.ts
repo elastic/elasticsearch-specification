@@ -18,8 +18,8 @@
  */
 
 import { Id, long } from '@common/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
-import { Dictionary } from '__spec_utils/Dictionary'
 
 export class TaskInfo {
   action: string

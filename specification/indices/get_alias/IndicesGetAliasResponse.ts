@@ -20,7 +20,7 @@
 import { IndexName } from '@common/common'
 import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
 import { AliasDefinition } from '@indices/AliasDefinition'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndicesGetAliasResponse extends DictionaryResponseBase<
   IndexName,

@@ -70,7 +70,7 @@ import { TermsQuery } from '@common/query_dsl/term_level/terms/TermsQuery'
 import { TermsSetQuery } from '@common/query_dsl/term_level/terms_set/TermsSetQuery'
 import { TypeQuery } from '@common/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@common/query_dsl/term_level/wildcard/WildcardQuery'
-import { SingleKeyDictionary } from '__spec_utils/Dictionary'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
 

@@ -20,7 +20,7 @@
 import { IndexName } from '@common/common'
 import { ShardFailure } from '@common/common/ShardFailure'
 import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndicesCloseResponse extends AcknowledgedResponseBase {
   indices: Dictionary<IndexName, CloseIndexResult>

@@ -20,7 +20,7 @@
 import { IndexName } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
 import { Alias } from '@indices/Alias'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexSettings } from './IndexSettings'
 
 export class IndexState {

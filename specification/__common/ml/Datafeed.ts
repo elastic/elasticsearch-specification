@@ -24,7 +24,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { DatafeedIndicesOptions } from '@ml/update_data_feed/DatafeedIndicesOptions'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ChunkingConfig } from './ChunkingConfig'
 
 export class Datafeed {

@@ -19,8 +19,8 @@
 
 import { double, integer } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AdjacencyMatrixAggregation } from './bucket/adjacency_matrix/AdjacencyMatrixAggregation'
 import { AutoDateHistogramAggregation } from './bucket/auto_date_histogram/AutoDateHistogramAggregation'
 import { ChildrenAggregation } from './bucket/children/ChildrenAggregation'

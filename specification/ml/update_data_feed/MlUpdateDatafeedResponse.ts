@@ -25,7 +25,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 import { ChunkingConfig } from '@common/ml/ChunkingConfig'
 import { DelayedDataCheckConfig } from '@common/ml/Datafeed'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
 export class MlUpdateDatafeedResponse extends ResponseBase {

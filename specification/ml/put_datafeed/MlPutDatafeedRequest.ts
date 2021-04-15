@@ -25,7 +25,7 @@ import { ScriptField } from '@common/common_options/scripting/ScriptField'
 import { Time } from '@common/common_options/time_unit/Time'
 import { ChunkingConfig } from '@common/ml/ChunkingConfig'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * @rest_spec_name ml.put_datafeed

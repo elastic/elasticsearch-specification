@@ -19,7 +19,7 @@
 
 import { Field } from '@common/common'
 import { FieldMapping } from '@common/mapping/meta_fields/FieldMapping'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class TypeFieldMappings {
   /** @prop_serializer ResolvableReadOnlyDictionaryFormatter`2 */

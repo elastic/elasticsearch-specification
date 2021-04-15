@@ -18,8 +18,8 @@
  */
 
 import { Field, Fields, Id, IndexName, Routing, Type } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class LikeDocument {
   /** @prop_serializer SourceFormatter`1 */

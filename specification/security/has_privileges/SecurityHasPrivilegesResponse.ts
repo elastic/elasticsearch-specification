@@ -19,7 +19,7 @@
 
 import { IndexName, Name } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityHasPrivilegesResponse extends ResponseBase {
   application: ApplicationsPrivileges

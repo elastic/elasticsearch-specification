@@ -18,7 +18,7 @@
  */
 
 import { Uuid } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { SnapshotIndexStats } from './SnapshotIndexStats'
 import { SnapshotShardsStats } from './SnapshotShardsStats'
 import { SnapshotStats } from './SnapshotStats'

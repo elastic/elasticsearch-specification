@@ -18,8 +18,8 @@
  */
 
 import { long, Routing, SequenceNumber } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class InlineGet<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>

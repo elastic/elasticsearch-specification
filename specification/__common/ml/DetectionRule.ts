@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { FilterRef } from './FilterRef'
 import { RuleAction } from './RuleAction'
 import { RuleCondition } from './RuleCondition'

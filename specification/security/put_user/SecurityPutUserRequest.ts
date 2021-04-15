@@ -20,8 +20,8 @@
 import { Name } from '@common/common'
 import { Refresh } from '@common/common/Refresh'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name security.put_user

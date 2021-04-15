@@ -20,7 +20,7 @@
 import { DateString, IndexName, long, VersionNumber } from '@common/common'
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
 import { Phases } from '@ilm/Phases'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterStateIndexLifecycle {
   policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>

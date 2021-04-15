@@ -20,7 +20,7 @@
 import { Name } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { NodeStatistics } from '@nodes/NodeStatistics'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityClearCachedPrivilegesResponse extends ResponseBase {
   _nodes: NodeStatistics

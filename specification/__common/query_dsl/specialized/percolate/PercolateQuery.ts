@@ -19,7 +19,7 @@
 
 import { Field, Id, IndexName, Routing, VersionNumber } from '@common/common'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class PercolateQuery extends QueryBase {
   /** @prop_serializer SourceFormatter`1 */

@@ -29,7 +29,7 @@ import {
 import { VersionType } from '@common/common/VersionType'
 import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Like } from './like/Like'
 
 export class MoreLikeThisQuery extends QueryBase {

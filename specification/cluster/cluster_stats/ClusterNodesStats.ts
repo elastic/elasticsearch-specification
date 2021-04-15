@@ -19,7 +19,7 @@
 
 import { integer } from '@common/common'
 import { PluginStats } from '@common/common_options/stats/PluginStats'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ClusterFileSystem } from './ClusterFileSystem'
 import { ClusterIngestStats } from './ClusterIngestStats'
 import { ClusterJvm } from './ClusterJvm'

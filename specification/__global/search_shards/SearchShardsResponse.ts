@@ -18,7 +18,7 @@
  */
 
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { SearchNode } from './SearchNode'
 import { SearchShard } from './SearchShard'
 

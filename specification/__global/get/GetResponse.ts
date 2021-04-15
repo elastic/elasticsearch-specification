@@ -26,8 +26,8 @@ import {
   VersionNumber
 } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class GetResponse<TDocument> extends ResponseBase {
   _index: IndexName

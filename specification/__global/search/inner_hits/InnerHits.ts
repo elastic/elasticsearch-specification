@@ -19,7 +19,7 @@
 
 import { Fields, integer, Name } from '@common/common'
 import { ScriptField } from '@common/common_options/scripting/ScriptField'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { FieldCollapse } from '../collapsing/FieldCollapse'
 import { Highlight } from '../highlighting/Highlight'
 import { Sort } from '../sort/Sort'

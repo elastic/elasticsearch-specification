@@ -16,10 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { CommonQueryParameters } from '__spec_utils/behaviors'
-
 // Every *Request will inherit the CommonQueryParameters behavior
 // as well, as every *Request interface extends RequestBase.
+
+import { CommonQueryParameters } from '@spec_utils/behaviors'
 
 export class RequestBase implements CommonQueryParameters {}

@@ -18,7 +18,7 @@
  */
 
 import { Id, IndexName } from '@common/common'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class SimulatePipelineDocument {
   _id?: Id

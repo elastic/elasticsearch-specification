@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// TODO remap this as a good bulk response item and an error response item
 
 import {
   ErrorCause,
@@ -26,10 +27,8 @@ import {
 } from '@common/common'
 import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
 import { InlineGet } from '@global/explain/InlineGet'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
-
-// TODO remap this as a good bulk response item and an error response item
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class BulkResponseItemBase {
   _id?: string | null

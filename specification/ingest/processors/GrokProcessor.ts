@@ -19,7 +19,7 @@
 
 import { Field } from '@common/common'
 import { ProcessorBase } from '@ingest/ProcessorBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class GrokProcessor extends ProcessorBase {
   field: Field

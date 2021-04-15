@@ -24,8 +24,8 @@ import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
 import { HitsMetadata } from '@global/search/hits/HitsMetadata'
 import { Profile } from '@global/search/profile/Profile'
 import { Suggest } from '@global/search/suggesters/Suggest'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class AsyncSearch<TDocument> {
   aggregations?: Dictionary<string, Aggregate>

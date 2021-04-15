@@ -18,7 +18,7 @@
  */
 
 import { long } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 
 export class MlInferenceUsage {

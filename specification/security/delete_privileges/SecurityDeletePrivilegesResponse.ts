@@ -18,7 +18,7 @@
  */
 
 import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityDeletePrivilegesResponse extends DictionaryResponseBase<
   string,

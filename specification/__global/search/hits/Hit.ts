@@ -27,8 +27,8 @@ import {
   VersionNumber
 } from '@common/common'
 import { Explanation } from '@global/explain/Explanation'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SortResults } from '../sort/Sort'
 import { InnerHitsResult } from './InnerHitsResult'
 import { NestedIdentity } from './NestedIdentity'

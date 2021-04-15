@@ -19,8 +19,8 @@
 
 import { Id } from '@common/common'
 import { ProcessorBase } from '@ingest/ProcessorBase'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ScriptProcessor extends ProcessorBase {
   id?: Id

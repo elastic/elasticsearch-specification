@@ -31,8 +31,8 @@ import { SizeField } from '@common/mapping/meta_fields/size/SizeField'
 import { SourceField } from '@common/mapping/meta_fields/source/SourceField'
 import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
 import { Property } from '@common/mapping/types/Property'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.put_mapping

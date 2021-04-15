@@ -20,7 +20,7 @@
 import { EpochMillis, IndexName, integer, Percentage } from '@common/common'
 import { Health } from '@common/common/Health'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexHealthStats } from './IndexHealthStats'
 
 export class ClusterHealthResponse extends ResponseBase {

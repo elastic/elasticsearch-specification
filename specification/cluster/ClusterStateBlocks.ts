@@ -31,8 +31,8 @@ import {
 import { Time } from '@common/common_options/time_unit/Time'
 import { Property } from '@common/mapping/types/Property'
 import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ClusterStateBlocks {
   indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>

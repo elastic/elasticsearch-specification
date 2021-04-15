@@ -18,6 +18,6 @@
  */
 
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { EmptyResponseBase } from '__spec_utils/behaviors'
+import { EmptyResponseBase } from '@spec_utils/behaviors'
 
 export class PingResponse extends ResponseBase implements EmptyResponseBase {}

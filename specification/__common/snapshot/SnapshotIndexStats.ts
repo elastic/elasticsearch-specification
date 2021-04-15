@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { SnapshotShardsStats } from './SnapshotShardsStats'
 import { SnapshotShardsStatus } from './SnapshotShardsStatus'
 import { SnapshotStats } from './SnapshotStats'

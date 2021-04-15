@@ -18,7 +18,7 @@
  */
 
 import { double, integer, long, VersionString } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Segment {
   attributes: Dictionary<string, string>

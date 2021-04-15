@@ -24,7 +24,7 @@ import { Script } from '@common/common_options/scripting/Script'
 import { Time } from '@common/common_options/time_unit/Time'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
-import { AdditionalProperties } from '__spec_utils/behaviors'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { MultiValueMode } from './decay/MultiValueMode'
 import { FieldValueFactorModifier } from './field_value/FieldValueFactorModifier'
 

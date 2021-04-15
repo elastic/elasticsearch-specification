@@ -18,8 +18,8 @@
  */
 
 import { integer, long } from '@common/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { JobStatistics } from '@xpack/usage/JobStatistics'
-import { Dictionary } from '__spec_utils/Dictionary'
 
 export class JobForecastStatistics {
   memory_bytes?: JobStatistics

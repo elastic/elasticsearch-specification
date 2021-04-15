@@ -19,7 +19,7 @@
 
 import { Field, Id, IndexName, long, Type, VersionNumber } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { TermVector } from './TermVector'
 
 export class TermVectorsResponse extends ResponseBase {

@@ -19,7 +19,7 @@
 
 import { PropertyName } from '@common/common'
 import { DynamicMapping } from '@common/mapping/DynamicMapping'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { CorePropertyBase } from '../../CoreProperty'
 import { Property } from '../../Property'
 

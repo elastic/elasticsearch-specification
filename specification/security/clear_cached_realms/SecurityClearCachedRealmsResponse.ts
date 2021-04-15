@@ -21,7 +21,7 @@ import { Name } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { SecurityNode } from '@common/security/SecurityNode'
 import { NodeStatistics } from '@nodes/NodeStatistics'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityClearCachedRealmsResponse extends ResponseBase {
   cluster_name: Name

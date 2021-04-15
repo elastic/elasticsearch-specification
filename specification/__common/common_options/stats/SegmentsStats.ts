@@ -19,7 +19,7 @@
 
 import { ByteSize, integer } from '@common/common'
 import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SegmentsStats {
   count: integer

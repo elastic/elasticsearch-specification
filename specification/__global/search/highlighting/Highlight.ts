@@ -19,7 +19,7 @@
 
 import { Field, integer } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { BoundaryScanner } from './BoundaryScanner'
 import { HighlighterEncoder } from './HighlighterEncoder'
 import { HighlighterFragmenter } from './HighlighterFragmenter'

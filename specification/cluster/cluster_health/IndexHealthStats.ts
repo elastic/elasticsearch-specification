@@ -19,7 +19,7 @@
 
 import { integer } from '@common/common'
 import { Health } from '@common/common/Health'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ShardHealthStats } from './ShardHealthStats'
 
 export class IndexHealthStats {

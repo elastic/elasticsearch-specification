@@ -25,7 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
 import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch

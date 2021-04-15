@@ -22,9 +22,9 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { ActionExecutionMode } from '@common/watcher/execution/ActionExecutionMode'
 import { SimulatedActions } from '@common/watcher/execution/SimulatedActions'
 import { ScheduleTriggerEvent } from '@common/watcher/schedule/ScheduleTriggerEvent'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Watch } from '@watcher/Watch'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name watcher.execute_watch

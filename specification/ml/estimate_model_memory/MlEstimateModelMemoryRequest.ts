@@ -20,7 +20,7 @@
 import { Field, long } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { AnalysisConfig } from '@common/ml/AnalysisConfig'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * @rest_spec_name ml.estimate_model_memory

@@ -19,8 +19,8 @@
 
 import { ErrorCause } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskExecutingNode } from '@task/list_tasks/TaskExecutingNode'
-import { Dictionary } from '__spec_utils/Dictionary'
 
 export class CancelTasksResponse extends ResponseBase {
   node_failures?: ErrorCause[]

@@ -19,7 +19,7 @@
 
 import { Field, Fields } from '@common/common'
 import { ProcessorBase } from '@ingest/ProcessorBase'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class CsvProcessor extends ProcessorBase {
   empty_value: UserDefinedValue

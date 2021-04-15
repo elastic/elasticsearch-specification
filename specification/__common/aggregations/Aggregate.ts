@@ -21,9 +21,9 @@ import { AggregateName, double, integer, LatLon, long } from '@common/common'
 import { DateMathTime } from '@common/common_options/date_math/DateMathTime'
 import { GeoCoordinate, GeoLocation } from '@common/query_dsl/geo/GeoLocation'
 import { HitsMetadata } from '@global/search/hits/HitsMetadata'
-import { AdditionalProperties } from '__spec_utils/behaviors'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor

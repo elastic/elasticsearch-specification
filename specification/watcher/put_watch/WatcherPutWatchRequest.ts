@@ -24,8 +24,8 @@ import { ConditionContainer } from '@common/watcher/conditions/ConditionContaine
 import { InputContainer } from '@common/watcher/input/InputContainer'
 import { TransformContainer } from '@common/watcher/transform/TransformContainer'
 import { TriggerContainer } from '@common/watcher/trigger/TriggerContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name watcher.put_watch

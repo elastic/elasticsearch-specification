@@ -18,8 +18,8 @@
  */
 
 import { Name, TaskId } from '@common/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@task/get_task/TaskInfo'
-import { Dictionary } from '__spec_utils/Dictionary'
 
 export class UpdateByQueryRethrottleNode {
   attributes: Dictionary<string, string>

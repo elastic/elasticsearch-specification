@@ -44,8 +44,8 @@ import { Rescore } from '@global/search/rescoring/Rescore'
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name async_search.submit

@@ -19,7 +19,7 @@
     "paths": {
       "@common/*": ["__common/*"],
       "@global/*": ["__global/*"],
-      "@spec-utils/*": ["__spec-utils/*"],
+      "@spec_utils/*": ["__spec_utils/*"],
       "@async_search/*": ["async_search/*"],
       "@autoscaling/*": ["autoscaling/*"],
       "@cat/*": ["cat/*"],

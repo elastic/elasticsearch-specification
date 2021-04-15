@@ -23,7 +23,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 import { IndexSettings } from '@common/index_settings/IndexSettings'
 import { TypeMapping } from '@common/mapping/TypeMapping'
 import { AliasDefinition } from '@indices/AliasDefinition'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * @rest_spec_name cluster.put_component_template

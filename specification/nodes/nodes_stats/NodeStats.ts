@@ -20,7 +20,7 @@
 import { long } from '@common/common'
 import { IndexStats } from '@indices/stats/IndexStats'
 import { NodeRole } from '@nodes/nodes_info/NodeRole'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
 import { BreakerStats } from './BreakerStats'
 import { FileSystemStats } from './FileSystemStats'

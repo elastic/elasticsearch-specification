@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { PhraseSuggestCollateQuery } from './PhraseSuggestCollateQuery'
 
 export class PhraseSuggestCollate {

@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name render_search_template

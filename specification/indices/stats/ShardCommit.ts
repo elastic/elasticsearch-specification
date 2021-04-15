@@ -18,7 +18,7 @@
  */
 
 import { Id, integer, long } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ShardCommit {
   generation: integer

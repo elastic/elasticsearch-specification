@@ -18,7 +18,7 @@
  */
 
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ArrayResponseBase } from '__spec_utils/behaviors'
+import { ArrayResponseBase } from '@spec_utils/behaviors'
 import { ClusterCertificateInformation } from './ClusterCertificateInformation'
 
 export class GetCertificatesResponse

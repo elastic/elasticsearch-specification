@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Aggregation } from '../Aggregation'
 import { AggregationContainer } from '../AggregationContainer'
 

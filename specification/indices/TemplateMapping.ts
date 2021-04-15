@@ -19,8 +19,8 @@
 
 import { IndexName, integer, VersionNumber } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
-import { Dictionary } from '__spec_utils/Dictionary'
-import { UserDefinedValue } from '__spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Alias } from './Alias'
 
 export class TemplateMapping {

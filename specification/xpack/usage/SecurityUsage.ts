@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AuditUsage } from './AuditUsage'
 import { IpFilterUsage } from './IpFilterUsage'
 import { RealmUsage } from './RealmUsage'

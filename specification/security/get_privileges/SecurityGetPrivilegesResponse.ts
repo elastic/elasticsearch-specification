@@ -19,7 +19,7 @@
 
 import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
 import { PrivilegesActions } from '@security/put_privileges/PrivilegesActions'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityGetPrivilegesResponse extends DictionaryResponseBase<
   string,

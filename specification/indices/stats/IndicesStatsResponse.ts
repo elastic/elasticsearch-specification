@@ -19,7 +19,7 @@
 
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndicesStats } from './IndicesStats'
 
 export class IndicesStatsResponse extends ResponseBase {

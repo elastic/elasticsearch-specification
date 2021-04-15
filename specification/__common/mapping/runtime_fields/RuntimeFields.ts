@@ -19,7 +19,7 @@
 
 import { Field } from '@common/common'
 import { Script } from '@common/common_options/scripting/Script'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor

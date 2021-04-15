@@ -30,7 +30,7 @@ import { AnalysisConfig } from '@common/ml/AnalysisConfig'
 import { AnalysisLimits } from '@common/ml/AnalysisLimits'
 import { DataDescription } from '@common/ml/DataDescription'
 import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 
 export class Job {

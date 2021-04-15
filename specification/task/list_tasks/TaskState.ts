@@ -18,7 +18,7 @@
  */
 
 import { long, TaskId } from '@common/common'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskStatus } from './TaskStatus'
 
 export class TaskState {

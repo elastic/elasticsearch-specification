@@ -21,7 +21,7 @@ import { Indices, long, Types } from '@common/common'
 import { SearchType } from '@common/common/SearchType'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
-import { Dictionary } from '__spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch_template

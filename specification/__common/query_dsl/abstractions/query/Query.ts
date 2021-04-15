@@ -18,7 +18,7 @@
  */
 
 import { float } from '@common/common'
-import { AdditionalProperties } from '__spec_utils/behaviors'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class QueryBase {
   boost?: float
