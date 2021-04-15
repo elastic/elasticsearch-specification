@@ -140,8 +140,6 @@ export class Property {
   identifier?: string
   /** An optional set of aliases for `name` */
   aliases?: string[]
-  /** If the enclosing class is a variants container, is this a property of the container and not a variant? */
-  container_property?: boolean
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -161,7 +159,6 @@ export abstract class BaseType {
   docUrl?: string
   deprecation?: Deprecation
   kind: string
-  /** Variant name for externally tagged variants */
   variantName?: string
 }
 
@@ -291,7 +288,7 @@ export class TypeAlias extends BaseType {
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
   generics?: ValueOf[]
-  /** Only applicable to `union_of` aliases: identify typed_key unions (external) and variant inventories (internal) */
+  /** Identify typed_key unions (external) and variant inventories (internal) */
   variants?: InternalTag | ExternalTag
 }
 

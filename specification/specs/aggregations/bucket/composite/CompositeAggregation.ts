@@ -17,15 +17,8 @@
  * under the License.
  */
 
-/**
- * A multi-bucket aggregation that creates composite buckets from different sources.
- *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-composite-aggregation.html
- */
 class CompositeAggregation extends BucketAggregationBase {
-  sources: Array<Dictionary<string, CompositeAggregationSource>>
+  after?: Dictionary<string, string | float | null>
   size?: integer
-  // FIXME: should 'null' be there? It can be returned if missing_bucket is true, but
-  // sending a request with 'null' causes an error
-  after?: Dictionary<string, string | number | null>
+  sources?: Array<Dictionary<string, CompositeAggregationSource>>
 }

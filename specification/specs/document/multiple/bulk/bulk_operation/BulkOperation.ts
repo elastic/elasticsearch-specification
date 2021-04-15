@@ -26,7 +26,6 @@ class BulkOperation {
   version_type: VersionType
 }
 
-/** @variants container */
 class BulkOperationContainer {
   index?: BulkIndexOperation
   create?: BulkCreateOperation

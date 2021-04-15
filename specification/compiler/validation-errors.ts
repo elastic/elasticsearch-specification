@@ -74,7 +74,7 @@ export class ValidationErrors {
       const endpointErrs = this.endpointErrors[name]
       if (endpointErrs != null) {
         for (const part of ['request', 'response']) {
-          logArray(endpointErrs[part], `${name} ${part}: `)
+          logArray(endpointErrs[part], `${name} ${part}`)
         }
       }
     }

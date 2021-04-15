@@ -47,8 +47,7 @@ export const knownBehaviors = [
   'ArrayResponseBase',
   'EmptyResponseBase',
   'CommonQueryParameters',
-  'CommonCatQueryParameters',
-  'TypedKeysContainer'
+  'CommonCatQueryParameters'
 ]
 
 /**
@@ -450,9 +449,14 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
     }
   }
 
-  function getName (type): string {
-    if (type.name?.name != null) return type.name.name
-    return type.name
+  function getName (type: TType): string {
+    if (typeof type.name === 'string') {
+      return type.name
+    } else if (typeof type.name.name === 'string') {
+      return type.name.name
+    } else {
+      return 'unknown'
+    }
   }
 }
 
@@ -536,7 +540,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default', 'variant']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -551,9 +555,6 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       property.identifier = value
     } else if (tag === 'doc_url') {
       property.docUrl = value
-    } else if (tag === 'variant') {
-      assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
-      property.container_property = true
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
       property.since = value

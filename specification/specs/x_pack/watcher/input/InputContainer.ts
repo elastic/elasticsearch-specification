@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @variants container
- */
 class InputContainer {
   chain?: ChainInput
   http?: HttpInput

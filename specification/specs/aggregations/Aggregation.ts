@@ -18,8 +18,6 @@
  */
 
 class Aggregation {
-  // Meta is a property of the container (one level higher in the JSON tree)
-  // meta?: Dictionary<string, UserDefinedValue>
-  // Name is in the container's enclosing structure (two levels higher in the JSON tree)
-  // name?: string
+  meta?: Dictionary<string, UserDefinedValue>
+  name?: string
 }

@@ -17,14 +17,6 @@
  * under the License.
  */
 
-/**
- * A multi-bucket aggregation similar to `date_histogram` except instead of providing an interval to use as the width
- * of each bucket, a target number of buckets is provided indicating the number of buckets needed and the interval of
- * the buckets is automatically chosen to best achieve that target. The number of buckets returned will always be less
- * than or equal to this target number.
- *
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-autodatehistogram-aggregation.html
- */
 class AutoDateHistogramAggregation extends BucketAggregationBase {
   buckets?: integer
   field?: Field

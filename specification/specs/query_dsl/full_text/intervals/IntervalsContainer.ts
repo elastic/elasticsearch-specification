@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @variants container
- */
 class IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf

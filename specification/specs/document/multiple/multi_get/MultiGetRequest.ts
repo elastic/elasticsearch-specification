@@ -46,6 +46,7 @@ interface MultiGetRequest extends RequestBase {
 }
 
 class MultiGetOperation {
+  can_be_flattened?: boolean
   _id: MultiGetId
   _index?: IndexName
   routing?: Routing

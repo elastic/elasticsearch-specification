@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @variants container
- */
 class ConditionContainer {
   always?: AlwaysCondition
   array_compare?: ArrayCompareCondition

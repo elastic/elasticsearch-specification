@@ -17,9 +17,6 @@
  * under the License.
  */
 
-/**
- * @variants container
- */
 class SuggestContainer {
   completion?: CompletionSuggester
   phrase?: PhraseSuggester

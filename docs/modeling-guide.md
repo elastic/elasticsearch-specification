@@ -274,43 +274,11 @@ For example:
 ```ts
 /** @variants container */
 class FooContainer {
-  bar?: BarDefinition
-  baz?: BazDefinition
-  faz?: FazDefinition
+  bar: BarDefinition
+  baz: BazDefinition
+  faz: FazDefinition
 }
 ```
-
-Some containers have properties associated to the container that are not part of the list of variants,
-for example `AggregationContainer` and its `aggs` and `meta` properties.
-
-An annotation allows distinguishing these properties from container variants:
-
-```ts
-/** @variant container_property */
-```
-
-For example:
-
-```
-/**
- * @variants container
- */
-class AggregationContainer {
-
-  // These two field are always available
-  /** @variant container_property */
-  aggs?: Dictionary<string, AggregationContainer>
-  /** @variant container_property */
-  meta?: Dictionary<string, UserDefinedValue>
-
-  // Regular container fields. Only one of them can exist at a time.
-  adjacency_matrix?: AdjacencyMatrixAggregation
-  auto_date_histogram?: AutoDateHistogramAggregation
-  avg?: AverageAggregation
-  ...
-
-```
-
 
 ### Additional information
 
