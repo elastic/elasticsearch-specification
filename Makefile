@@ -45,7 +45,10 @@ spec-compile:	## Compile the specification
 spec-imports-fix:	## Fix the TypeScript imports
 	@npm run imports:fix --prefix compiler -- --rebuild
 
-contrib-install:	## make sure NPM install runs so that the contrib targets tooling is available
+spec-dangling-types:	## Generate the dangling types rreport
+	@npm run imports:fix --prefix compiler -- --rebuild
+
+contrib-install:	## Install dependencies for contrib target
 	@npm install --prefix compiler
 
 contrib: | spec-generate license-check spec-format-fix 	## Pre contribution target

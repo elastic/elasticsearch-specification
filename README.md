@@ -35,9 +35,34 @@ $ npm install --prefix specification
 
 # generate the JSON representation
 $ npm run generate-schema --prefix specification
+# or via make
+$ make spec-generate
 
 # the generated output can be found in ./output/schema/schema.json
 $ cat output/schema/schema.json
+```
+
+## Make Targets
+
+```
+Usage:
+  make <target>
+  validation-all   Run Validation on all Endpoints
+  validation-all-fresh  Run Validation on all Endpoints with a fresh setup
+  validation-api   Validate Endpoint with param: api=<api-name>
+  validation-api-request  Validate request of Endpoint with param: api=<api-name>
+  validation-api-response  Validate response of Endpoint with param: api=<api-name>
+  license-check    Add the license headers to the files
+  license-add      Add the license headers to the files
+  spec-format-check  Check specification formatting rules
+  spec-format-fix  Format/fix the specification according to the formatting rules
+  spec-generate    Generate the output spec
+  spec-compile     Compile the specification
+  spec-imports-fix  Fix the TypeScript imports
+  spec-dangling-types  Generate the dangling types rreport
+  contrib-install  Install dependencies for contrib target
+  contrib          Pre contribution target
+  help             Display help
 ```
 
 ### Structure of the JSON representation
