@@ -682,7 +682,8 @@ export function getAllBehaviors (node: ClassDeclaration | InterfaceDeclaration):
 
   for (const extend of extended) {
     assert(extend, Node.isReferenceFindableNode(extend), 'Should be a reference node')
-    const declaration = extend.findReferences()[0].getDefinition().getDeclarationNode()
+    const declaration = extend.getType().getSymbol()?.getDeclarations()[0]
+    assert(extend, declaration != null, `Cannot find declaration for ${extend.getText()}`)
     if (Node.isClassDeclaration(declaration) || Node.isInterfaceDeclaration(declaration)) {
       if (declaration.getHeritageClauses().length > 0) {
         behaviors.push(...getAllBehaviors(declaration))
