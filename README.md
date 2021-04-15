@@ -1,11 +1,12 @@
 # elastic client generator
 
 This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification/specs`](./specification/specs).
-The [`specification`](specification) folder contains a TypeScript program that compiles the entire definition
+you can find them inside [`/specification`](./specification).
+The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
 in a JSON representation that can be used for generating language clients.
 
-This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](specification/src/metamodel.ts) that also explains the various properties and their values.
+This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/model/metamodel.ts)
+that also explains the various properties and their values.
 
 ## Prepare the environment
 
@@ -67,7 +68,8 @@ Usage:
 
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](./specification/src/metamodel.ts). Refer to them for the full details. It is an object with two top level keys:
+The JSON representation is [formally defined as TypeScript definitions](./compiler/model/metamodel.ts).
+Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
 {
@@ -199,7 +201,7 @@ The following command validates the index request and response api:
 ./run-validations.sh --api index --request --response
 ```
 
-Once you see the errors, you can fix the original definition in `/specification/specs`
+Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
 Finally open a pull request with your changes.
 
@@ -228,7 +230,7 @@ See [here](./docs/add-new-api.md).
 
 ### A definition is not correct, how do I fix it?
 
-All the definitons are inside `specifications/specs` folder, search the bad defintion and update it,
+All the definitons are inside `/specification` folder, search the bad defintion and update it,
 you can find above how to run the validation of the spec.
 
 ### An endpoint is missing, how do I add it?
@@ -237,7 +239,7 @@ See [here](./docs/add-new-api.md).
 
 ### An endpoint definition is not correct, how do I fix it?
 
-All the endpoint definitons are inside `specifications/specs/_json_spec` folder, which contains a series of
+All the endpoint definitons are inside `/specification/_json_spec` folder, which contains a series of
 JSON files taken directly from the Elasticsearch rest-api-spec.
 You should copy from there the updated endpoint defintion and change it here.
 
