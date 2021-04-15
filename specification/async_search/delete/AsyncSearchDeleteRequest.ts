@@ -26,9 +26,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface AsyncSearchDeleteRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  query_parameters?: {}
-  body?: {}
 }
