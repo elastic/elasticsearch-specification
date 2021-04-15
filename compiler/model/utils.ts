@@ -29,7 +29,8 @@ import {
   PropertyDeclaration,
   ExpressionWithTypeArguments,
   JSDoc,
-  Node
+  Node,
+  Project
 } from 'ts-morph'
 import semver from 'semver'
 import chalk from 'chalk'
@@ -840,5 +841,68 @@ export function assert (node: Node | Node[] | undefined, condition: boolean, mes
     if (file.length > 0) console.log('At:', file)
     if (code.length > 0) console.log(`\`\`\`\n${code.join('\n```\n')}\n\`\`\``)
     process.exit(1)
+  }
+}
+
+/**
+ * Verifies if every type is unique within a folder.
+ * It also verifies that every type defined inside `/__common` and its subfolders
+ * is unique specification wide.
+ * Eg: If both `/foo/bar.ts` and `/foo/baz.ts` are exporting a type names `Hello`
+ *     this function will throw an error.
+ *     If `/foo/bar.ts` and `/foo/nested/baz.ts` are exporting a type names `Hello`
+ *     no error will be thrown.
+ */
+export function verifyUniqueness (project: Project): void {
+  const types: Map<string, string[]> = new Map()
+  const common: string[] = []
+  for (const sourceFile of project.getSourceFiles()) {
+    const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
+    const isCommon = path.startsWith('__common')
+    const names = types.get(path) ?? []
+
+    for (const declaration of sourceFile.getClasses()) {
+      const name = declaration.getName()
+      assert(declaration, name != null, 'Anonymous classes cannot exists')
+      assert(declaration, !names.includes(name), `${name} is already defined`)
+      assert(declaration, !common.includes(name), `${name} is already defined inside`)
+      if (isCommon) {
+        common.push(name)
+      } else {
+        names.push(name)
+      }
+    }
+
+    for (const declaration of sourceFile.getInterfaces()) {
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      if (isCommon) {
+        common.push(declaration.getName())
+      } else {
+        names.push(declaration.getName())
+      }
+    }
+
+    for (const declaration of sourceFile.getEnums()) {
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      if (isCommon) {
+        common.push(declaration.getName())
+      } else {
+        names.push(declaration.getName())
+      }
+    }
+
+    for (const declaration of sourceFile.getTypeAliases()) {
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      if (isCommon) {
+        common.push(declaration.getName())
+      } else {
+        names.push(declaration.getName())
+      }
+    }
+
+    types.set(path, names)
   }
 }

@@ -50,7 +50,8 @@ import {
   modelType,
   modelTypeAlias,
   parseVariantNameTag,
-  parseVariantsTag
+  parseVariantsTag,
+  verifyUniqueness
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specification')
@@ -85,6 +86,8 @@ export function compileEndpoints (): Record<string, model.Endpoint> {
 
 export function compileSpecification (endpointMappings: Record<string, model.Endpoint>): model.Model {
   const project = new Project({ tsConfigFilePath })
+
+  verifyUniqueness(project)
 
   const model: model.Model = {
     types: new Array<model.TypeDefinition>(),
