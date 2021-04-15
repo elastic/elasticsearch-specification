@@ -10,7 +10,8 @@
     "format:fix": "prettier --config .prettierrc.json --write ../specification/",
     "imports:fix": "ts-node update-imports.ts",
     "generate-schema": "ts-node index.ts",
-    "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit"
+    "compile:specification": "tsc --project ../specification/tsconfig.json --noEmit",
+    "generate-dangling": "ts-node dangling-types-report.ts"
   },
   "author": "Elastic",
   "license": "Apache-2.0",

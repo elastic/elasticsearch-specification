@@ -40,7 +40,6 @@ import {
   hoistRequestAnnotations,
   hoistTypeAnnotations,
   isApi,
-  isDefinedButNeverUsed,
   isKnownBehavior,
   modelBehaviors,
   modelEnumDeclaration,
@@ -103,27 +102,15 @@ export function compileSpecification (endpointMappings: Record<string, model.End
   for (const sourceFile of project.getSourceFiles()) {
     for (const declaration of sourceFile.getClasses()) {
       if (customTypes.includes(declaration.getName() ?? '')) continue
-      if (isDefinedButNeverUsed(declaration)) {
-        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
-      }
       declarations.classes.push(declaration)
     }
     for (const declaration of sourceFile.getInterfaces()) {
-      if (isDefinedButNeverUsed(declaration)) {
-        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
-      }
       declarations.interfaces.push(declaration)
     }
     for (const declaration of sourceFile.getEnums()) {
-      if (isDefinedButNeverUsed(declaration)) {
-        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
-      }
       declarations.enums.push(declaration)
     }
     for (const declaration of sourceFile.getTypeAliases()) {
-      if (isDefinedButNeverUsed(declaration)) {
-        definedButNeverUsed.push(`${declaration.getName() ?? ''},${formatDanglingPath(declaration.getSourceFile().getFilePath())}`)
-      }
       declarations.typeAliases.push(declaration)
     }
   }
@@ -372,8 +359,4 @@ function visitRequestProperty (member: PropertyDeclaration | PropertySignature):
   }
 
   return { name, properties, valueOf }
-}
-
-function formatDanglingPath (path: string): string {
-  return path.replace(/.*[/\\]specification[/\\]?/, '')
 }
