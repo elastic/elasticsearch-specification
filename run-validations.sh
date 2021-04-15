@@ -4,8 +4,8 @@ set -euo pipefail
 npm install --prefix compiler
 npm install --prefix typescript-generator
 
-npm run compile:specification --prefix specification
-npm run generate-schema --prefix specification
+npm run compile:specification --prefix compiler
+npm run generate-schema --prefix compiler
 npm run start --prefix typescript-generator
 
 recorderFolder="../clients-flight-recorder"
