@@ -7056,6 +7056,14 @@ export interface IngestStats {
   time_in_millis: long
 }
 
+export interface InidicesUpgradeRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
 export interface InlineGet<TDocument = unknown> {
   fields?: Record<string, any>
   found: boolean
@@ -13612,18 +13620,6 @@ export interface UpdateTransformResponse extends ResponseBase {
   source: TransformSource
   sync: TransformSyncContainer
   version: VersionString
-}
-
-export interface UpgradeRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
-}
-
-export interface UpgradeResponse extends ResponseBase {
-  stub: integer
 }
 
 export interface UppercaseProcessor extends ProcessorBase {

@@ -5401,14 +5401,11 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.upgrade",
       "request": {
-        "name": "UpgradeRequest",
-        "namespace": "ingest"
+        "name": "InidicesUpgradeRequest",
+        "namespace": "indices.upgrade"
       },
       "requestBodyRequired": false,
-      "response": {
-        "name": "UpgradeResponse",
-        "namespace": "ingest"
-      },
+      "response": null,
       "since": "7.13.0",
       "stability": "stable",
       "urls": [
@@ -71198,6 +71195,66 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "__common"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "InidicesUpgradeRequest",
+        "namespace": "indices.upgrade"
+      },
+      "path": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "generics": [
         {
           "name": "TDocument",
@@ -130011,101 +130068,7 @@
           "name": "TPartialDocument",
           "namespace": "__global.update"
         }
-<<<<<<< HEAD
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "common_abstractions.request"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "UpgradeRequest",
-        "namespace": "ingest"
-      },
-      "path": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "UpgradeResponse",
-        "namespace": "ingest"
-      },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-=======
-      ],
->>>>>>> master
       "inherits": [
         {
           "type": {

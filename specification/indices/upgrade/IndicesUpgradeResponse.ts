@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from "@common/common";
-import { ResponseBase } from "@common/common_abstractions/response/ResponseBase";
+import { integer } from '@common/common'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 class IndicesUpgradeResponse extends ResponseBase {
   stub: integer
