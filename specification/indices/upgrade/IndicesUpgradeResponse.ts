@@ -17,23 +17,9 @@
  * under the License.
  */
 
-/**
- * @rest_spec_name indices.upgrade
- * @since 7.13.0
- * @stability stable
- */
-interface UpgradeRequest extends RequestBase {
-  path_parts?: {
-    stub_b: integer
-  }
-  query_parameters?: {
-    stub_a: integer
-  }
-  body?: {
-    stub_c: integer
-  }
-}
+import { integer } from "@common/common";
+import { ResponseBase } from "@common/common_abstractions/response/ResponseBase";
 
-class UpgradeResponse extends ResponseBase {
+class IndicesUpgradeResponse extends ResponseBase {
   stub: integer
 }
