@@ -5356,18 +5356,6 @@ export interface GeoIpProcessor extends ProcessorBase {
   target_field: Field
 }
 
-export interface GeoIpStatsRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
-}
-
-export interface GeoIpStatsResponse extends ResponseBase {
-  stub: integer
-}
-
 export interface GeoLineAggregate extends AggregateBase {
   type: string
   geometry: LineStringGeoShape
@@ -7058,6 +7046,18 @@ export interface Influence {
 export interface Ingest {
   timestamp: DateString
   pipeline?: string
+}
+
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IngestGeoIpStatsResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface IngestStats {
