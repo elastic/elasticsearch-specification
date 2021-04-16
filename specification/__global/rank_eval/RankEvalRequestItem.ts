@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, IndexName, integer } from "@common/common"
-import { QueryContainer } from "@common/query_dsl/abstractions/container/QueryContainer"
-import { Dictionary } from "@spec_utils/Dictionary"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
+import { Id, IndexName, integer } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RankEvalRequestItem {
   /** The search request’s ID, used to group result details later. */

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from "@common/common";
-import { ExpandWildcards } from "@common/common/ExpandWildcards";
-import { RequestBase } from "@common/common_abstractions/request/RequestBase";
+import { Indices } from '@common/common'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { RankEvalRequestItem } from './RankEvalRequestItem'
 import { RankEvalMetric } from './RankEvalMetric'
 
