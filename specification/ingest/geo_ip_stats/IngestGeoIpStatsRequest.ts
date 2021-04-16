@@ -25,7 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @since 7.13.0
  * @stability stable
  */
-interface IngestGeoIpStatsRequest extends RequestBase {
+export interface IngestGeoIpStatsRequest extends RequestBase {
   path_parts?: {
     stub_b: integer
   }
