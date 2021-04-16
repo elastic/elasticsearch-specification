@@ -17,12 +17,12 @@ jobs:
 
     - name: Install
       run: |
-        npm install --prefix specification
+        npm install --prefix compiler
         npm install --prefix typescript-generator
 
     - name: Lint specification
       run: |
-        npm run lint --prefix specification
+        npm run lint --prefix compiler
 
     - name: Lint typescript-generator
       run: |
