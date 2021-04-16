@@ -22,7 +22,7 @@ import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-class RankEvalResponse extends ResponseBase {
+export class RankEvalResponse extends ResponseBase {
   /** The overall evaluation quality calculated by the defined metric */
   metric_score: double
   /** The details section contains one entry for every query in the original requests section, keyed by the search request id */

@@ -28,7 +28,7 @@ import { RankEvalMetric } from './RankEvalMetric'
  * @since 6.2.0
  * @stability TODO
  */
-interface RankEvalRequest extends RequestBase {
+export interface RankEvalRequest extends RequestBase {
   path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported.
