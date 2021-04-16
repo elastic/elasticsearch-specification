@@ -9669,7 +9669,10 @@
         "namespace": "security.enable_user"
       },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
       "since": "0.0.0",
       "stability": "stable",
       "urls": [
@@ -108887,6 +108890,34 @@
             "type": {
               "name": "Refresh",
               "namespace": "__common.common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         }
