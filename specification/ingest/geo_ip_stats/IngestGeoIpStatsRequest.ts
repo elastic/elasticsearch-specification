@@ -19,7 +19,6 @@
 
 import { integer } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 /**
  * @rest_spec_name ingest.geo_ip_stats
@@ -36,8 +35,4 @@ interface GeoIpStatsRequest extends RequestBase {
   body?: {
     stub_c: integer
   }
-}
-
-class GeoIpStatsResponse extends ResponseBase {
-  stub: integer
 }
