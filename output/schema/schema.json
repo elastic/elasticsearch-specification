@@ -5543,12 +5543,12 @@
       "name": "ingest.geo_ip_stats",
       "request": {
         "name": "GeoIpStatsRequest",
-        "namespace": "__common.ingest"
+        "namespace": "ingest.geo_ip_stats"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "GeoIpStatsResponse",
-        "namespace": "__common.ingest"
+        "namespace": "ingest.geo_ip_stats"
       },
       "since": "7.13.0",
       "stability": "stable",
@@ -56006,7 +56006,7 @@
       "kind": "request",
       "name": {
         "name": "GeoIpStatsRequest",
-        "namespace": "__common.ingest"
+        "namespace": "ingest.geo_ip_stats"
       },
       "path": [
         {
@@ -56047,7 +56047,7 @@
       "kind": "interface",
       "name": {
         "name": "GeoIpStatsResponse",
-        "namespace": "__common.ingest"
+        "namespace": "ingest.geo_ip_stats"
       },
       "properties": [
         {
