@@ -20,6 +20,6 @@
 import { integer } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
-class IndicesUpgradeResponse extends ResponseBase {
+export class IndicesUpgradeResponse extends ResponseBase {
   stub: integer
 }
