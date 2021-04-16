@@ -4,7 +4,7 @@ This document contains all conventions to follow when implementing or updating a
 
 ## Code style
 
-Following you can find the rules enforced inside [`/specification/specs`](../specification/specs):
+Following you can find the rules enforced inside [`/specification`](../specification):
 
 ```json
 {
@@ -43,9 +43,9 @@ You can also group definitions if they are related and consumed by a single type
 
 To improved the developer experience, the specification make an extensive use
 of aliases and custom types, to describe what kind of value needs to be passed
-to an API. You can find some of this aliases in [`common.ts`](../specification/specs/common.ts),
-[`common/`](../specification/specs/common/), [`common_abstractions/`](../specification/specs/common_abstractions/),
-and [`common_options/`](../specification/specs/common_options/).
+to an API. You can find some of this aliases in [`common.ts`](../specification/__common/common.ts),
+[`common/`](../specification/__common/common/), [`common_abstractions/`](../specification/__common/common_abstractions/),
+and [`common_options/`](../specification/__common/common_options/).
 
 Where applicable, try to reuse those definitions, or if you see a pattern that
 has not been defined yet, feel free to add a new alias or abstraction.
@@ -57,10 +57,9 @@ represented in the specification.
 
 ## Where to store files
 
-The content of [`/specification/specs`](../specification/specs)
-tryied to mimic the Elasticsearch online documentation, so you can use it as inspiration.
-For example, the index document defintion can be found in
-[`/specification/specs/document/single/index`](../specification/specs/document/single/index).
+The content of [`/specification`](../specification) follows the rest-api-spec structure.
+Every folder represents the namespace, while every subfolder represente the API name.
+For top level APIs, you must use the `__global` namespace.
 
 ## Using unions
 
