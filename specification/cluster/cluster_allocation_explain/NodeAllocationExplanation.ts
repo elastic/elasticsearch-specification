@@ -19,7 +19,7 @@
 
 import { Id, integer, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@spec_utils/Networking'
+import { TransportAddress } from '@common/common/Networking'
 import { AllocationDecision } from './AllocationDecision'
 import { AllocationStore } from './AllocationStore'
 import { Decision } from './Decision'

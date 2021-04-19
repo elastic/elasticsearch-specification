@@ -19,7 +19,7 @@
 
 import { Id, integer, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@spec_utils/Networking'
+import { TransportAddress } from '@common/common/Networking'
 
 export class CurrentNode {
   id: Id

@@ -18,7 +18,7 @@
  */
 
 import { Id, IndexName, Name, Uuid, VersionString } from '@common/common'
-import { Host, Ip, TransportAddress } from '@spec_utils/Networking'
+import { Host, Ip, TransportAddress } from '@common/common/Networking'
 
 export class RecoveryOrigin {
   hostname?: string

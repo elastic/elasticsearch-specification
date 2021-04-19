@@ -20,7 +20,7 @@
 import { Id, Name } from '@common/common'
 import { NodeRoles } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@spec_utils/Networking'
+import { TransportAddress } from '@common/common/Networking'
 
 export class NodeAttributes {
   attributes: Dictionary<string, string>

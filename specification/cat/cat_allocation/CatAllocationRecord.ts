@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Percentage } from '@common/common'
-import { Host, Ip } from '@spec_utils/Networking'
+import { Host, Ip } from '@common/common/Networking'
 
 export class CatAllocationRecord {
   /**

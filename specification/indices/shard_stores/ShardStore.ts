@@ -19,7 +19,7 @@
 
 import { Id, Name, VersionNumber } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@spec_utils/Networking'
+import { TransportAddress } from '@common/common/Networking'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ShardStoreAllocation } from './ShardStoreAllocation'
 import { ShardStoreException } from './ShardStoreException'

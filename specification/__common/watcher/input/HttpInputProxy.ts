@@ -18,7 +18,7 @@
  */
 
 import { uint } from '@common/common'
-import { Host } from '@spec_utils/Networking'
+import { Host } from '@common/common/Networking'
 
 export class HttpInputProxy {
   host: Host
