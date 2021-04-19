@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { VersionNumber } from '@common/common'
+import { ProcessorContainer } from '@ingest/ProcessorContainer'
 
-export class DateProcessor extends ProcessorBase {
-  field: Field
-  formats: string[]
-  locale?: string
-  target_field?: Field
-  timezone?: string
+export class PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

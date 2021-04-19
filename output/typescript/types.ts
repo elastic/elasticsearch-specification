@@ -3922,8 +3922,8 @@ export interface DateProcessor extends ProcessorBase {
   field: Field
   formats: Array<string>
   locale?: string
-  target_field: Field
-  timezone: string
+  target_field?: Field
+  timezone?: string
 }
 
 export interface DateProperty extends DocValuesPropertyBase {
@@ -4927,13 +4927,13 @@ export interface FieldSort {
 }
 
 export interface FieldStat {
-  count: number
-  cardinality: number
+  count: integer
+  cardinality: integer
   top_hits: Array<TopHit>
-  mean_value?: number
-  median_value?: number
-  max_value?: number
-  min_value?: number
+  mean_value?: integer
+  median_value?: integer
+  max_value?: integer
+  min_value?: integer
   earliest?: string
   latest?: string
 }
@@ -5018,7 +5018,7 @@ export interface FiltersBucketItemKeys {
 export type FiltersBucketItem = FiltersBucketItemKeys |
     { [property: string]: Aggregate }
 
-export interface FindStructureRequest<TBody = unknown> {
+export interface FindStructureRequest<TJsonDocument = unknown> {
   charset?: string
   column_names?: string
   delimiter?: string
@@ -5026,28 +5026,29 @@ export interface FindStructureRequest<TBody = unknown> {
   format?: string
   grok_pattern?: string
   has_header_row?: boolean
+  line_merge_size_limit?: uint
   lines_to_sample?: uint
   quote?: string
   should_trim_fields?: boolean
   timeout?: Time
   timestamp_field?: Field
   timestamp_format?: string
-  body: TBody
+  body: Array<TJsonDocument>
 }
 
 export interface FindStructureResponse {
   charset: string
-  has_header_row: boolean
+  has_header_row?: boolean
   has_byte_order_marker: boolean
   format: string
   field_stats: Record<Field, FieldStat>
   sample_start: string
-  num_messages_analyzed: number
+  num_messages_analyzed: integer
   mappings: TypeMapping
-  quote: string
-  delimiter: string
+  quote?: string
+  delimiter?: string
   need_client_timezone: boolean
-  num_lines_analyzed: number
+  num_lines_analyzed: integer
   column_names?: Array<string>
   explanation?: Array<string>
   grok_pattern?: string
@@ -5055,8 +5056,9 @@ export interface FindStructureResponse {
   exclude_lines_pattern?: string
   java_timestamp_formats?: Array<string>
   joda_timestamp_formats?: Array<string>
-  timestamp_field?: string
+  timestamp_field?: Field
   should_trim_fields?: boolean
+  ingest_pipeline: PipelineConfig
 }
 
 export interface FingerprintTokenFilter extends TokenFilterBase {
@@ -9542,6 +9544,12 @@ export interface PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
+}
+
+export interface PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
 }
 
 export type PipelineName = string
