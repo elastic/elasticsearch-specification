@@ -11253,6 +11253,10 @@ export interface SecurityEnableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
+export interface SecurityEnableUserResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface SecurityFeatureToggle {
   enabled: boolean
 }
