@@ -96,6 +96,8 @@ export class MainError extends ErrorCause {
   headers?: Dictionary<string, string>
   root_cause: ErrorCause[]
 }
+
+// Numeric
 export type short = number
 export type byte = number
 export type integer = number
@@ -104,6 +106,7 @@ export type long = number
 export type ulong = number
 export type float = number
 export type double = number
+export type Percentage = string | float
 
 //strongly typed path parameters these are aliases so we can expose documentation
 //Some languages that support type alias or typed value types might want to keep these types
@@ -149,8 +152,6 @@ export type DataStreamName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 export type ByteSize = long | string
-
-export type Percentage = string | float
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
 export type IndexMetaData = Dictionary<string, UserDefinedValue>

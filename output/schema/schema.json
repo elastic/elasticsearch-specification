@@ -17741,6 +17741,94 @@
     {
       "kind": "interface",
       "name": {
+        "name": "BaseNode",
+        "namespace": "__spec_utils"
+      },
+      "properties": [
+        {
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Host",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "ip",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ip",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeRole",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "transport_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransportAddress",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BaseUrlConfig",
         "namespace": "xpack.usage"
       },
@@ -20341,8 +20429,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -20353,8 +20441,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -40954,8 +41042,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         },
@@ -40965,8 +41053,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -40997,8 +41085,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -46125,8 +46213,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -61588,6 +61676,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Host",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HotThreadInformation",
@@ -61818,8 +61920,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -61829,7 +61931,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -61903,8 +62005,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -61957,7 +62059,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -72616,6 +72718,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Ip",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -87975,8 +88091,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         },
@@ -87986,8 +88102,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -88008,8 +88124,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -88093,8 +88209,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -88312,8 +88428,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -88334,8 +88450,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -88356,8 +88472,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -88485,8 +88601,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -89646,8 +89762,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -89692,8 +89808,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Ip",
+                "namespace": "__common"
               }
             }
           }
@@ -89715,8 +89831,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -89816,8 +89932,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -99838,8 +99954,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -99849,8 +99965,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -99871,8 +99987,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -100449,80 +100565,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ReindexNode",
         "namespace": "__global.reindex_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -100541,17 +100597,6 @@
                 "name": "ReindexTask",
                 "namespace": "__global.reindex_rethrottle"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -101686,7 +101731,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Uri",
+              "name": "Host",
               "namespace": "__common"
             }
           }
@@ -106127,8 +106172,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -106138,8 +106183,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -115321,8 +115366,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -124041,80 +124086,20 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TaskExecutingNode",
         "namespace": "task.list_tasks"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -124133,17 +124118,6 @@
                 "name": "TaskState",
                 "namespace": "task.list_tasks"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -129254,6 +129228,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "TransportAddress",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TransportStats",
@@ -130817,91 +130805,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleNode",
         "namespace": "__global.update_by_query_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -131675,20 +131592,6 @@
         "namespace": "__common.analysis.token_filters"
       },
       "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Uri",
-        "namespace": "__common"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
     },
     {
       "kind": "type_alias",

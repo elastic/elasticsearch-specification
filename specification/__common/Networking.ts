@@ -17,20 +17,6 @@
  * under the License.
  */
 
-import { Id, Name, VersionNumber } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@common/Networking'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ShardStoreAllocation } from './ShardStoreAllocation'
-import { ShardStoreException } from './ShardStoreException'
-
-export class ShardStore {
-  allocation: ShardStoreAllocation
-  allocation_id: Id
-  attributes: Dictionary<string, UserDefinedValue>
-  id: Id
-  legacy_version: VersionNumber
-  name: Name
-  store_exception: ShardStoreException
-  transport_address: TransportAddress
-}
+export type Ip = string
+export type Host = string
+export type TransportAddress = string

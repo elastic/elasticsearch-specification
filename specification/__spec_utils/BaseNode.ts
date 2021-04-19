@@ -17,20 +17,16 @@
  * under the License.
  */
 
-import { Id, Name, VersionNumber } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@common/Networking'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ShardStoreAllocation } from './ShardStoreAllocation'
-import { ShardStoreException } from './ShardStoreException'
+import { Name } from '@common/common'
+import { NodeRole, NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from './Dictionary'
+import { Host, Ip, TransportAddress } from '../__common/Networking'
 
-export class ShardStore {
-  allocation: ShardStoreAllocation
-  allocation_id: Id
-  attributes: Dictionary<string, UserDefinedValue>
-  id: Id
-  legacy_version: VersionNumber
+export class BaseNode {
+  attributes: Dictionary<string, string>
+  host: Host
+  ip: Ip
   name: Name
-  store_exception: ShardStoreException
+  roles?: NodeRole[]
   transport_address: TransportAddress
 }
