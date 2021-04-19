@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Name } from "@common/common"
-import { NodeRole, NodeRoles } from "@nodes/nodes_info/NodeRole"
-import { Dictionary } from "./Dictionary"
-import { Host, Ip, TransportAddress } from "./Networking"
+import { Name } from '@common/common'
+import { NodeRole, NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from './Dictionary'
+import { Host, Ip, TransportAddress } from './Networking'
 
 export class BaseNode {
   attributes: Dictionary<string, string>

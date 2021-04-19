@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { Id, integer, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@spec_utils/Networking'
 import { AllocationDecision } from './AllocationDecision'
 import { AllocationStore } from './AllocationStore'
 import { Decision } from './Decision'

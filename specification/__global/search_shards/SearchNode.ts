@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from "@common/common"
-import { TransportAddress } from "@spec_utils/Networking"
+import { Name } from '@common/common'
+import { TransportAddress } from '@spec_utils/Networking'
 
 export class SearchNode {
   name: Name

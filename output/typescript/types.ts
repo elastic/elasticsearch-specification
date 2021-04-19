@@ -634,7 +634,7 @@ export interface BaseNode {
   host: Host
   ip: Ip
   name: Name
-  roles?: NodeRoles
+  roles?: Array<NodeRole>
   transport_address: TransportAddress
 }
 
@@ -6808,18 +6808,10 @@ export interface IndicesPutTemplateRequest extends RequestBase {
 export interface IndicesPutTemplateResponse extends AcknowledgedResponseBase {
 }
 
-<<<<<<< HEAD
-export type Ip = string
-
-export interface IpFilterUsage {
-  http: boolean
-  transport: boolean
-=======
 export interface IndicesRecoveryRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
   detailed?: boolean
->>>>>>> master
 }
 
 export interface IndicesRecoveryResponse extends DictionaryResponseBase<IndexName, RecoveryStatus> {
@@ -7220,6 +7212,8 @@ export interface InvalidRoleTemplate {
   template: string
   format?: RoleTemplateFormat
 }
+
+export type Ip = string
 
 export interface IpFilterUsage {
   http: boolean
@@ -7848,26 +7842,6 @@ export interface MlDeleteCalendarRequest extends RequestBase {
 export interface MlDeleteCalendarResponse extends AcknowledgedResponseBase {
 }
 
-<<<<<<< HEAD
-export interface NodeAllocationExplanation {
-  deciders: Array<AllocationDecision>
-  node_attributes: Record<string, string>
-  node_decision: Decision
-  node_id: Id
-  node_name: Name
-  store?: AllocationStore
-  transport_address: TransportAddress
-  weight_ranking: integer
-}
-
-export interface NodeAttributes {
-  attributes: Record<string, string>
-  ephemeral_id: Id
-  id?: Id
-  name: Name
-  transport_address: TransportAddress
-  roles?: NodeRoles
-=======
 export interface MlDeleteDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   force?: boolean
@@ -7875,7 +7849,6 @@ export interface MlDeleteDataFrameAnalyticsRequest extends RequestBase {
 }
 
 export interface MlDeleteDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
->>>>>>> master
 }
 
 export interface MlDeleteDatafeedRequest extends RequestBase {
@@ -7886,40 +7859,6 @@ export interface MlDeleteDatafeedRequest extends RequestBase {
 export interface MlDeleteDatafeedResponse extends AcknowledgedResponseBase {
 }
 
-<<<<<<< HEAD
-export type NodeId = string
-
-export type NodeIds = string
-
-export interface NodeInfo {
-  attributes: Record<string, string>
-  build_flavor: string
-  build_hash: string
-  build_type: string
-  host: Host
-  http: NodeInfoHttp
-  ip: Ip
-  jvm: NodeJvmInfo
-  name: Name
-  network: NodeInfoNetwork
-  os: NodeOperatingSystemInfo
-  plugins: Array<PluginStats>
-  process: NodeProcessInfo
-  roles: Array<NodeRole>
-  settings: Array<string>
-  thread_pool: Record<string, NodeThreadPoolInfo>
-  total_indexing_buffer: long
-  transport: NodeInfoTransport
-  transport_address: TransportAddress
-  version: VersionString
-}
-
-export interface NodeInfoHttp {
-  bound_address: Array<string>
-  max_content_length: string
-  max_content_length_in_bytes: long
-  publish_address: string
-=======
 export interface MlDeleteExpiredDataRequest extends RequestBase {
   name?: Name
   requests_per_second?: float
@@ -7928,7 +7867,6 @@ export interface MlDeleteExpiredDataRequest extends RequestBase {
     requests_per_second?: float
     timeout?: Time
   }
->>>>>>> master
 }
 
 export interface MlDeleteExpiredDataResponse extends ResponseBase {
@@ -7996,27 +7934,6 @@ export interface MlEstimateModelMemoryResponse extends ResponseBase {
   model_memory_estimate: string
 }
 
-<<<<<<< HEAD
-export interface NodeStats {
-  adaptive_selection: Record<string, AdaptiveSelectionStats>
-  breakers: Record<string, BreakerStats>
-  fs: FileSystemStats
-  host: Host
-  http: HttpStats
-  indices: IndexStats
-  ingest: NodeIngestStats
-  ip: Array<Ip>
-  jvm: NodeJvmStats
-  name: Name
-  os: OperatingSystemStats
-  process: ProcessStats
-  roles: Array<NodeRole>
-  script: ScriptStats
-  thread_pool: Record<string, ThreadCountStats>
-  timestamp: long
-  transport: TransportStats
-  transport_address: TransportAddress
-=======
 export interface MlFlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string
@@ -8026,7 +7943,6 @@ export interface MlFlushJobRequest extends RequestBase {
     end?: DateString
     start?: DateString
   }
->>>>>>> master
 }
 
 export interface MlFlushJobResponse extends ResponseBase {
@@ -9011,10 +8927,10 @@ export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
-  node_id: string
-  node_name: string
+  node_id: Id
+  node_name: Name
   store?: AllocationStore
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }
 
@@ -9023,7 +8939,7 @@ export interface NodeAttributes {
   ephemeral_id: Id
   id?: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
   roles?: NodeRoles
 }
 
@@ -9050,11 +8966,11 @@ export interface NodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
-  host: string
+  host: Host
   http: NodeInfoHttp
-  ip: string
+  ip: Ip
   jvm: NodeJvmInfo
-  name: string
+  name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: Array<PluginStats>
@@ -9064,7 +8980,7 @@ export interface NodeInfo {
   thread_pool: Record<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport
-  transport_address: string
+  transport_address: TransportAddress
   version: VersionString
 }
 
@@ -9200,13 +9116,13 @@ export interface NodeStats {
   adaptive_selection: Record<string, AdaptiveSelectionStats>
   breakers: Record<string, BreakerStats>
   fs: FileSystemStats
-  host: string
+  host: Host
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  ip: Array<string>
+  ip: Array<Ip>
   jvm: NodeJvmStats
-  name: string
+  name: Name
   os: OperatingSystemStats
   process: ProcessStats
   roles: Array<NodeRole>
@@ -9214,7 +9130,7 @@ export interface NodeStats {
   thread_pool: Record<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface NodeThreadPoolInfo {
@@ -10413,7 +10329,7 @@ export interface ReloadSecureSettingsResponse extends NodesResponseBase {
 
 export interface RemoteSource {
   connect_timeout: Time
-  host: Uri
+  host: Host
   password: string
   socket_timeout: Time
   username: string
@@ -10682,14 +10598,6 @@ export interface RollupJobTaskFailureReason {
   reason: string
 }
 
-<<<<<<< HEAD
-export interface RemoteSource {
-  connect_timeout: Time
-  host: Host
-  password: string
-  socket_timeout: Time
-  username: string
-=======
 export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
 
 export interface RollupRequest extends RequestBase {
@@ -10698,7 +10606,6 @@ export interface RollupRequest extends RequestBase {
   body: {
     stub: integer
   }
->>>>>>> master
 }
 
 export interface RollupResponse extends ResponseBase {
@@ -10968,8 +10875,8 @@ export interface SearchInputRequestDefinition {
 }
 
 export interface SearchNode {
-  name: string
-  transport_address: string
+  name: Name
+  transport_address: TransportAddress
 }
 
 export interface SearchProfile {
@@ -11393,14 +11300,8 @@ export interface SecurityGetRoleMappingRequest extends RequestBase {
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, XPackRoleMapping> {
 }
 
-<<<<<<< HEAD
-export interface SearchNode {
-  name: Name
-  transport_address: TransportAddress
-=======
 export interface SecurityGetRoleRequest extends RequestBase {
   name?: Name
->>>>>>> master
 }
 
 export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, XPackRole> {

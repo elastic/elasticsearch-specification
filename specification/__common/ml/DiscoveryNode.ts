@@ -19,6 +19,7 @@
 
 import { Id, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@spec_utils/Networking'
 
 export class DiscoveryNode {
   attributes: Dictionary<string, string>

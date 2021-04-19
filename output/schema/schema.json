@@ -14906,73 +14906,6 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
-        "name": "AnomalyDetectors",
-        "namespace": "x_pack.machine_learning.machine_learning_info"
-      },
-      "properties": [
-        {
-          "name": "categorization_analyzer",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CategorizationAnalyzer",
-              "namespace": "x_pack.machine_learning.machine_learning_info"
-            }
-          }
-        },
-        {
-          "name": "categorization_examples_limit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model_memory_limit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "model_snapshot_retention_days",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "daily_model_snapshot_retention_after_days",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-=======
->>>>>>> master
         "name": "AnomalyRecord",
         "namespace": "__common.ml"
       },
@@ -17785,7 +17718,7 @@
       "kind": "interface",
       "name": {
         "name": "BaseNode",
-        "namespace": "common"
+        "namespace": "__spec_utils"
       },
       "properties": [
         {
@@ -17816,7 +17749,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -17827,7 +17760,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -17838,7 +17771,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Name",
-              "namespace": "internal"
+              "namespace": "__common"
             }
           }
         },
@@ -17846,10 +17779,13 @@
           "name": "roles",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeRoles",
-              "namespace": "cluster.nodes_info"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeRole",
+                "namespace": "nodes.nodes_info"
+              }
             }
           }
         },
@@ -17860,7 +17796,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         }
@@ -19754,16 +19690,11 @@
       "properties": []
     },
     {
-      "description": "Whenever the byte size of data needs to be specified, e.g. when setting a buffer size parameter, the value must specify the unit, like 10kb for 10 kilobytes. Note that these units use powers of 1024, so 1kb means 1024 bytes.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units",
       "kind": "type_alias",
       "name": {
         "name": "ByteSize",
-<<<<<<< HEAD
-        "namespace": "common"
-=======
         "namespace": "__common"
->>>>>>> master
       },
       "type": {
         "items": [
@@ -20396,11 +20327,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -20416,11 +20343,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -20436,11 +20359,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -20456,11 +20375,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -20491,7 +20406,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -20503,7 +20418,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -24096,11 +24011,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -24324,11 +24235,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -24360,11 +24267,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -25487,11 +25390,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -25507,11 +25406,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -25529,11 +25424,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -27866,11 +27757,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-<<<<<<< HEAD
-              "namespace": "internal"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -27927,11 +27814,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeId",
-<<<<<<< HEAD
-              "namespace": "internal"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -28009,11 +27892,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -28029,11 +27908,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -28080,11 +27955,7 @@
             "kind": "instance_of",
             "type": {
               "name": "VersionString",
-<<<<<<< HEAD
-              "namespace": "internal"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -28133,11 +28004,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-<<<<<<< HEAD
-              "namespace": "internal"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -28150,11 +28017,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Bytes",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common.common"
->>>>>>> master
             }
           }
         }
@@ -30677,11 +30540,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -39115,483 +38974,6 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "name": "common_words",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "common_words_path",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ignore_case",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_mode",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "QueryBase",
-            "namespace": "query_dsl.abstractions.query"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CommonTermsQuery",
-        "namespace": "query_dsl.full_text.common_terms"
-      },
-      "properties": [
-        {
-          "name": "analyzer",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "cutoff_frequency",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "high_freq_operator",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Operator",
-              "namespace": "query_dsl"
-            }
-          }
-        },
-        {
-          "name": "low_freq_operator",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Operator",
-              "namespace": "query_dsl"
-            }
-          }
-        },
-        {
-          "name": "minimum_should_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MinimumShouldMatch",
-              "namespace": "common_options.minimum_should_match"
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CompactNodeInfo",
-        "namespace": "modules.snapshot_and_restore.repositories.verify_repository"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CompareCondition",
-        "namespace": "x_pack.watcher.condition"
-      },
-      "properties": [
-        {
-          "name": "comparison",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "path",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "DocValuesPropertyBase",
-            "namespace": "mapping.types"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CompletionProperty",
-        "namespace": "mapping.types.specialized.completion"
-      },
-      "properties": [
-        {
-          "name": "analyzer",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "contexts",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SuggestContext",
-                "namespace": "mapping.types.specialized.completion"
-              }
-            }
-          }
-        },
-        {
-          "name": "max_input_length",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "preserve_position_increments",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "preserve_separators",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "search_analyzer",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "completion"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CompletionStats",
-        "namespace": "common_options.stats"
-      },
-      "properties": [
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "search.suggesters"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CompletionSuggestOption",
-        "namespace": "search.suggesters"
-      },
-      "properties": [
-        {
-          "name": "collate_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "contexts",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Context",
-                  "namespace": "search.suggesters.context_suggester"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "search.suggesters"
-            }
-          }
-        },
-        {
-          "name": "text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "SuggesterBase",
-            "namespace": "search.suggesters"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CompletionSuggester",
-        "namespace": "search.suggesters.completion_suggester"
-      },
-      "properties": [
-        {
-=======
->>>>>>> master
           "name": "contexts",
           "required": false,
           "type": {
@@ -41637,7 +41019,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Id",
-              "namespace": "internal"
+              "namespace": "__common"
             }
           }
         },
@@ -41648,7 +41030,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Name",
-              "namespace": "internal"
+              "namespace": "__common"
             }
           }
         },
@@ -41680,7 +41062,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "common"
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -42316,11 +41698,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ByteSize",
-<<<<<<< HEAD
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -46811,8 +46189,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         }
@@ -47833,8 +47211,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -54393,13 +53771,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "Time",
               "namespace": "__common.common_options.time_unit"
->>>>>>> master
             }
           }
         },
@@ -56379,13 +55752,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "GeoValidationMethod",
               "namespace": "__common.query_dsl.geo"
->>>>>>> master
             }
           }
         }
@@ -62192,6 +61560,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Host",
+        "namespace": "__spec_utils"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HotThreadInformation",
@@ -62422,8 +61804,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -62433,7 +61815,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -62507,8 +61889,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -62561,7 +61943,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -67173,34 +66555,7 @@
               "namespace": "__common.common"
             }
           }
-<<<<<<< HEAD
-        }
-      ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Host",
-        "namespace": "common"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "HotThreadInformation",
-        "namespace": "cluster.nodes_hot_threads"
-      },
-      "properties": [
-=======
         },
->>>>>>> master
         {
           "name": "ignore_unavailable",
           "required": false,
@@ -67410,13 +66765,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "DataStreamName",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -67426,13 +66776,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "uint",
-              "namespace": "internal"
-=======
               "name": "IndicesGetDataStreamItemTimestampField",
               "namespace": "indices.get_data_stream"
->>>>>>> master
             }
           }
         },
@@ -67478,13 +66823,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "boolean",
               "namespace": "internal"
->>>>>>> master
             }
           }
         },
@@ -67536,13 +66876,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "uint",
-              "namespace": "internal"
-=======
               "name": "IndexName",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -70123,13 +69458,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "string",
               "namespace": "internal"
->>>>>>> master
             }
           }
         },
@@ -73189,7 +72519,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Ip",
-        "namespace": "common"
+        "namespace": "__spec_utils"
       },
       "type": {
         "kind": "instance_of",
@@ -75857,53 +75187,7 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
-<<<<<<< HEAD
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Limits",
-        "namespace": "x_pack.machine_learning.machine_learning_info"
-      },
-      "properties": [
-        {
-          "name": "max_model_memory_limit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "effective_max_model_memory_limit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "total_ml_memory",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -83186,7 +82470,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -83197,13 +82481,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Name",
-              "namespace": "internal"
-=======
               "name": "long",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -83224,8 +82503,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -83295,13 +82574,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "TransportAddress",
-              "namespace": "common"
-=======
               "name": "Id",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -83569,13 +82843,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "Ids",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -83598,13 +82867,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Ip",
-              "namespace": "common"
-=======
               "name": "boolean",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -83631,11 +82895,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Name",
-=======
               "name": "boolean",
->>>>>>> master
               "namespace": "internal"
             }
           }
@@ -83870,13 +83130,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "TransportAddress",
-              "namespace": "common"
-=======
               "name": "boolean",
               "namespace": "internal"
->>>>>>> master
             }
           }
         },
@@ -85366,13 +84621,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "integer",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -85424,8 +84674,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "Ip",
-                "namespace": "common"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
@@ -85447,13 +84697,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Name",
-              "namespace": "internal"
-=======
               "name": "StopWords",
               "namespace": "__common.analysis"
->>>>>>> master
             }
           }
         },
@@ -85571,16 +84816,8 @@
       "inherits": [
         {
           "type": {
-<<<<<<< HEAD
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
-            }
-=======
             "name": "AcknowledgedResponseBase",
             "namespace": "__common.common_abstractions.response"
->>>>>>> master
           }
         }
       ],
@@ -88550,8 +87787,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         },
@@ -88561,8 +87798,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -88583,8 +87820,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -88668,8 +87905,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -88887,8 +88124,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -88909,8 +88146,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -88931,8 +88168,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -89060,8 +88297,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -90221,8 +89458,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -90267,8 +89504,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Ip",
+                "namespace": "__spec_utils"
               }
             }
           }
@@ -90290,8 +89527,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -90391,8 +89628,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         }
@@ -91087,153 +90324,6 @@
         "name": "NodesUsageResponse",
         "namespace": "nodes.nodes_usage"
       },
-<<<<<<< HEAD
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "remote_cluster",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "follow_index_pattern",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexPattern",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "leader_index_patterns",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexPatterns",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_outstanding_read_requests",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "settings",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "name": "max_outstanding_write_requests",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "read_poll_timeout",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "max_read_request_operation_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_read_request_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ByteSize",
-                "namespace": "common"
-              }
-            }
-          },
-          {
-            "name": "max_retry_delay",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "max_write_buffer_count",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "max_write_buffer_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ByteSize",
-                "namespace": "common"
-              }
-=======
       "properties": [
         {
           "name": "cluster_name",
@@ -91243,7 +90333,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
->>>>>>> master
             }
           }
         },
@@ -91262,13 +90351,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-<<<<<<< HEAD
-                "name": "ByteSize",
-                "namespace": "common"
-=======
                 "name": "NodeUsageInformation",
                 "namespace": "nodes.nodes_usage"
->>>>>>> master
               }
             }
           }
@@ -94469,13 +93553,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "Script",
               "namespace": "__common.common_options.scripting"
->>>>>>> master
             }
           }
         }
@@ -97389,13 +96468,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "MoreLikeThisQuery",
               "namespace": "__common.query_dsl.specialized.more_like_this"
->>>>>>> master
             }
           }
         },
@@ -97405,13 +96479,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "MultiMatchQuery",
               "namespace": "__common.query_dsl.full_text.multi_match"
->>>>>>> master
             }
           }
         },
@@ -97421,13 +96490,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "NestedQuery",
               "namespace": "__common.query_dsl.joining.nested"
->>>>>>> master
             }
           }
         },
@@ -97437,13 +96501,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "ParentIdQuery",
               "namespace": "__common.query_dsl.joining.parent_id"
->>>>>>> master
             }
           }
         },
@@ -97453,13 +96512,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "PercolateQuery",
               "namespace": "__common.query_dsl.specialized.percolate"
->>>>>>> master
             }
           }
         },
@@ -97469,13 +96523,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "PinnedQuery",
               "namespace": "__common.query_dsl.specialized.pinned"
->>>>>>> master
             }
           }
         },
@@ -97797,13 +96846,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "QueryTemplate",
               "namespace": "__common.query_dsl.abstractions.container"
->>>>>>> master
             }
           }
         },
@@ -97848,13 +96892,8 @@
             ],
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "TransportAddress",
-              "namespace": "common"
-=======
               "name": "NamedQuery",
               "namespace": "__common.query_dsl.abstractions.query"
->>>>>>> master
             }
           }
         },
@@ -97930,13 +96969,8 @@
             ],
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Ip",
-              "namespace": "common"
-=======
               "name": "NamedQuery",
               "namespace": "__common.query_dsl.abstractions.query"
->>>>>>> master
             }
           }
         },
@@ -98581,14 +97615,6 @@
       ]
     },
     {
-      "inherits": [
-        {
-          "type": {
-            "name": "BaseNode",
-            "namespace": "common"
-          }
-        }
-      ],
       "kind": "interface",
       "name": {
         "name": "QueryUserPrivileges",
@@ -98596,10 +97622,6 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "name": "tasks",
-          "required": true,
-=======
           "name": "term",
           "required": true,
           "type": {
@@ -98706,7 +97728,6 @@
         {
           "name": "script",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -98738,13 +97759,10 @@
                 "namespace": "__common.aggregations"
               }
             }
-<<<<<<< HEAD
-=======
           ],
           "type": {
             "name": "AdditionalProperties",
             "namespace": "__spec_utils"
->>>>>>> master
           }
         }
       ],
@@ -99884,8 +98902,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -99895,8 +98913,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -99917,8 +98935,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -100132,13 +99150,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Host",
-              "namespace": "common"
-=======
               "name": "long",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -100500,80 +99513,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ReindexNode",
         "namespace": "__global.reindex_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -100592,17 +99545,6 @@
                 "name": "ReindexTask",
                 "namespace": "__global.reindex_rethrottle"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -101737,8 +100679,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Uri",
-              "namespace": "__common"
+              "name": "Host",
+              "namespace": "__spec_utils"
             }
           }
         },
@@ -101861,13 +100803,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "boolean",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -105258,7 +104195,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "string",
               "namespace": "internal"
             }
           }
@@ -105286,8 +104223,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransportAddress",
-              "namespace": "common"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -106183,8 +105120,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -106194,8 +105131,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         }
@@ -109980,13 +108917,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "Name",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -110814,16 +109746,11 @@
             "name": "grant_type",
             "required": true,
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "kind": "instance_of",
               "type": {
                 "name": "ApiKeyGrantType",
                 "namespace": "security.grant_api_key"
               }
->>>>>>> master
             }
           },
           {
@@ -110852,16 +109779,11 @@
             "name": "password",
             "required": false,
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
->>>>>>> master
             }
           }
         ]
@@ -110886,16 +109808,8 @@
       "inherits": [
         {
           "type": {
-<<<<<<< HEAD
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-=======
             "name": "ResponseBase",
             "namespace": "__common.common_abstractions.response"
->>>>>>> master
           }
         }
       ],
@@ -110944,13 +109858,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "EpochMillis",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -110981,10 +109890,6 @@
             "name": "cluster",
             "required": false,
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "kind": "array_of",
               "value": {
                 "kind": "instance_of",
@@ -111007,7 +109912,6 @@
                   "namespace": "security.has_privileges"
                 }
               }
->>>>>>> master
             }
           }
         ]
@@ -111033,13 +109937,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "Name",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -111076,12 +109975,6 @@
           "name": "cluster",
           "required": true,
           "type": {
-<<<<<<< HEAD
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "common"
-=======
             "key": {
               "kind": "instance_of",
               "type": {
@@ -111096,7 +109989,6 @@
                 "name": "boolean",
                 "namespace": "internal"
               }
->>>>>>> master
             }
           }
         },
@@ -111138,13 +110030,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "string",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -111186,16 +110073,11 @@
             "name": "name",
             "required": false,
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "kind": "instance_of",
               "type": {
                 "name": "Name",
                 "namespace": "__common"
               }
->>>>>>> master
             }
           },
           {
@@ -111213,16 +110095,11 @@
             "name": "realm_name",
             "required": false,
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
->>>>>>> master
             }
           },
           {
@@ -113931,13 +112808,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "TransportAddress",
-              "namespace": "common"
-=======
               "name": "long",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -115414,8 +114286,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__spec_utils"
             }
           }
         }
@@ -120884,24 +119756,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-=======
               "name": "SpanQuery",
               "namespace": "__common.query_dsl.span"
->>>>>>> master
             }
           }
         },
@@ -120911,13 +119767,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "SpanQuery",
               "namespace": "__common.query_dsl.span"
->>>>>>> master
             }
           }
         }
@@ -120944,13 +119795,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "ByteSize",
-              "namespace": "common"
-=======
               "name": "Field",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -122232,49 +121078,11 @@
           }
         }
       ],
-<<<<<<< HEAD
-      "name": {
-        "name": "TTestType",
-        "namespace": "aggregations.metric.t_test"
-      }
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "BaseNode",
-            "namespace": "common"
-          }
-        }
-      ],
-=======
->>>>>>> master
       "kind": "interface",
       "name": {
         "name": "StartTransformResponse",
         "namespace": "transform.start_transform"
       },
-<<<<<<< HEAD
-      "properties": [
-        {
-          "name": "tasks",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TaskId",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TaskState",
-                "namespace": "cluster.task_management.list_tasks"
-              }
-=======
       "properties": []
     },
     {
@@ -122315,7 +121123,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -124199,80 +123006,20 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TaskExecutingNode",
         "namespace": "task.list_tasks"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -124291,17 +123038,6 @@
                 "name": "TaskState",
                 "namespace": "task.list_tasks"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -127741,40 +126477,8 @@
               "name": "LetterTokenizer",
               "namespace": "__common.analysis.tokenizers"
             }
-<<<<<<< HEAD
-          }
-        }
-      ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "TransportAddress",
-        "namespace": "common"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransportStats",
-        "namespace": "cluster.nodes_stats"
-      },
-      "properties": [
-        {
-          "name": "rx_count",
-          "required": true,
-          "type": {
-=======
           },
           {
->>>>>>> master
             "kind": "instance_of",
             "type": {
               "name": "LowercaseTokenizer",
@@ -129444,6 +128148,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "TransportAddress",
+        "namespace": "__spec_utils"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TransportStats",
@@ -129530,14 +128248,6 @@
       ]
     },
     {
-      "inherits": [
-        {
-          "type": {
-            "name": "BaseNode",
-            "namespace": "common"
-          }
-        }
-      ],
       "kind": "interface",
       "name": {
         "name": "TriggerContainer",
@@ -129545,25 +128255,6 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "name": "tasks",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TaskId",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TaskInfo",
-                "namespace": "cluster.task_management.get_task"
-              }
-=======
           "name": "schedule",
           "required": true,
           "type": {
@@ -129633,7 +128324,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -131004,91 +129694,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleNode",
         "namespace": "__global.update_by_query_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -131348,54 +129967,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "TokenFilterBase",
-            "namespace": "analysis.token_filters"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "UppercaseTokenFilter",
-        "namespace": "analysis.token_filters"
-      },
-      "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "UrlConfig",
-        "namespace": "x_pack.info.x_pack_usage"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "BaseUrlConfig",
-              "namespace": "x_pack.info.x_pack_usage"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "KibanaUrlConfig",
-              "namespace": "x_pack.info.x_pack_usage"
-=======
               "name": "Type",
               "namespace": "__common"
->>>>>>> master
             }
           }
         }
@@ -131908,20 +130481,6 @@
         "namespace": "__common.analysis.token_filters"
       },
       "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Uri",
-        "namespace": "__common"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
     },
     {
       "kind": "type_alias",

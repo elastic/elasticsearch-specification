@@ -35,4 +35,5 @@ export enum Bytes {
  * Whenever the byte size of data needs to be specified, e.g. when setting a buffer size parameter, the value must specify the unit, like 10kb for 10 kilobytes. Note that these units use powers of 1024, so 1kb means 1024 bytes.
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
  */
-type ByteSize = long | string
+//type ByteSize = long | string
+// TODO -- move here
