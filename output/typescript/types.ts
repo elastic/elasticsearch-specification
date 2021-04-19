@@ -7050,6 +7050,18 @@ export interface Ingest {
   pipeline?: string
 }
 
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IngestGeoIpStatsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IngestStats {
   count: long
   current: long
@@ -8385,6 +8397,17 @@ export interface MlStartDatafeedRequest extends RequestBase {
 export interface MlStartDatafeedResponse extends ResponseBase {
   node: NodeIds
   started: boolean
+}
+
+export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  allow_no_match?: boolean
+  force?: boolean
+  timeout?: Time
+}
+
+export interface MlStopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
 }
 
 export interface MlStopDatafeedRequest extends RequestBase {
@@ -11259,6 +11282,10 @@ export interface SecurityDisableUserResponse extends ResponseBase {
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
+}
+
+export interface SecurityEnableUserResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface SecurityFeatureToggle {

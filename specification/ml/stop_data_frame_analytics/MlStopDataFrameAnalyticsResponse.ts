@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
-export class SecurityEnableUserResponse extends ResponseBase {
-  stub: integer
+export class MlStopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
 }
