@@ -10311,7 +10311,7 @@ export interface ReindexTask {
   start_time_in_millis: long
   status: ReindexStatus
   type: string
-  headers: Record<string, string>
+  headers: HttpHeaders
 }
 
 export type RelationName = string
@@ -10545,24 +10545,10 @@ export interface RollupFieldMetric {
   metrics: Array<RollupMetric>
 }
 
-<<<<<<< HEAD
-export interface ReindexTask {
-  action: string
-  cancellable: boolean
-  description: string
-  id: long
-  node: Name
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status: ReindexStatus
-  type: string
-  headers: HttpHeaders
-=======
 export interface RollupGroupings {
   date_histogram?: DateHistogramRollupGrouping
   histogram?: HistogramRollupGrouping
   terms?: TermsRollupGrouping
->>>>>>> master
 }
 
 export interface RollupIndexCapabilities {
