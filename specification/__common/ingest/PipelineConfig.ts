@@ -17,19 +17,11 @@
  * under the License.
  */
 
-import { HttpHeaders, long, TaskId } from '@common/common'
-import { TaskStatus } from './TaskStatus'
+import { VersionNumber } from '@common/common'
+import { ProcessorContainer } from '@ingest/ProcessorContainer'
 
-export class TaskState {
-  action: string
-  cancellable: boolean
+export class PipelineConfig {
   description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskStatus
-  type: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
 }

@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { Id, integer, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@common/Networking'
 
 export class CurrentNode {
-  id: string
-  name: string
+  id: Id
+  name: Name
   attributes: Dictionary<string, string>
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }

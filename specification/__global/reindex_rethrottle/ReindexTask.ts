@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { long, Name } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, long, Name } from '@common/common'
 import { ReindexStatus } from './ReindexStatus'
 
 export class ReindexTask {
@@ -31,5 +30,5 @@ export class ReindexTask {
   start_time_in_millis: long
   status: ReindexStatus
   type: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
 }

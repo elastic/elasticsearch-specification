@@ -192,14 +192,6 @@
         "Missing response"
       ]
     },
-    "ingest.geo_ip_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.evaluate_data_frame": {
       "request": [
         "Missing request"
@@ -304,14 +296,6 @@
         "Missing response"
       ]
     },
-    "ml.stop_data_frame_analytics": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.update_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -337,14 +321,6 @@
       ],
       "response": [
         "interface definition __global.msearch_template:MultiSearchTemplateResponse / Property 'responses' / array_of / instance_of - Non-leaf type cannot be used here: '__global.search:SearchResponse'"
-      ]
-    },
-    "rank_eval": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
       ]
     },
     "search": {

@@ -17,20 +17,34 @@
  * under the License.
  */
 
-import { Id, Name, VersionNumber } from '@common/common'
+import { Id, IndexName, integer } from '@common/common'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TransportAddress } from '@common/Networking'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ShardStoreAllocation } from './ShardStoreAllocation'
-import { ShardStoreException } from './ShardStoreException'
 
-export class ShardStore {
-  allocation: ShardStoreAllocation
-  allocation_id: Id
-  attributes: Dictionary<string, UserDefinedValue>
+export class RankEvalRequestItem {
+  /** The search request’s ID, used to group result details later. */
   id: Id
-  legacy_version: VersionNumber
-  name: Name
-  store_exception: ShardStoreException
-  transport_address: TransportAddress
+  /** The query being evaluated. */
+  request?: RankEvalQuery
+  /** List of document ratings */
+  ratings: DocumentRating[]
+  /** The search template Id */
+  template_id?: Id
+  /** The search template parameters. */
+  params?: Dictionary<string, UserDefinedValue>
+}
+
+export class RankEvalQuery {
+  query: QueryContainer
+  size?: integer
+}
+
+export class DocumentRating {
+  /** The document ID. */
+  _id: Id
+  /** The document’s index. For data streams, this should be the document’s backing index. */
+  _index: IndexName
+  /** The document’s relevance with regard to this search request. */
+  rating: integer
 }

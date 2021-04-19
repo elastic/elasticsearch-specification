@@ -17,7 +17,22 @@
  * under the License.
  */
 
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
+ */
 export class ModelPlotConfigEnabled {
-  enabled: boolean // default: false
-  terms?: string // removed in 7.5.0
+  /**
+   * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
+   */
+  enabled: boolean
+  /**
+   * @since 7.9.0
+   * @server_default true
+   */
+  annotations_enabled?: boolean
+  /**
+   * stability: experimental
+   * @since 7.9.0
+   */
+  terms?: string
 }

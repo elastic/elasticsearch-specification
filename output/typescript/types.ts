@@ -629,6 +629,15 @@ export interface AverageAggregation extends FormatMetricAggregationBase {
 export interface AverageBucketAggregation extends PipelineAggregationBase {
 }
 
+export interface BaseNode {
+  attributes: Record<string, string>
+  host: Host
+  ip: Ip
+  name: Name
+  roles?: Array<NodeRole>
+  transport_address: TransportAddress
+}
+
 export interface BaseUrlConfig {
   url_name: string
   url_value: string
@@ -929,9 +938,9 @@ export interface CatAllocationRecord {
   'disk.percent'?: Percentage
   dp?: Percentage
   diskPercent?: Percentage
-  host?: string
-  h?: string
-  ip?: string
+  host?: Host
+  h?: Host
+  ip?: Ip
   node?: string
   n?: string
 }
@@ -3152,13 +3161,38 @@ export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string
 }
 
 export interface ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction
+  cancel?: ClusterRerouteCommandCancelAction
+  move?: ClusterRerouteCommandMoveAction
+  allocate_replica?: ClusterRerouteCommandAllocateReplicaAction
+  allocate_stale_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
 }
 
-export interface ClusterRerouteCommandAction {
+export interface ClusterRerouteCommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
+  accept_data_loss: boolean
+}
+
+export interface ClusterRerouteCommandAllocateReplicaAction {
+  index: IndexName
+  shard: integer
+  node: string
+}
+
+export interface ClusterRerouteCommandCancelAction {
+  index: IndexName
+  shard: integer
+  node: string
+  allow_primary?: boolean
+}
+
+export interface ClusterRerouteCommandMoveAction {
+  index: IndexName
+  shard: integer
+  from_node: string
+  to_node: string
 }
 
 export interface ClusterRerouteDecision {
@@ -3295,7 +3329,7 @@ export interface ClusterStateIndexLifecyclePolicy {
 
 export interface ClusterStateIndexLifecycleSummary {
   policy: ClusterStateIndexLifecyclePolicy
-  headers: Record<string, string>
+  headers: HttpHeaders
   version: VersionNumber
   modified_date: long
   modified_date_string: DateString
@@ -3699,10 +3733,10 @@ export interface CumulativeSumAggregation extends PipelineAggregationBase {
 }
 
 export interface CurrentNode {
-  id: string
-  name: string
+  id: Id
+  name: Name
   attributes: Record<string, string>
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }
 
@@ -3922,8 +3956,8 @@ export interface DateProcessor extends ProcessorBase {
   field: Field
   formats: Array<string>
   locale?: string
-  target_field: Field
-  timezone: string
+  target_field?: Field
+  timezone?: string
 }
 
 export interface DateProperty extends DocValuesPropertyBase {
@@ -4214,7 +4248,7 @@ export interface DerivativeAggregation extends PipelineAggregationBase {
 }
 
 export interface DetectionRule {
-  actions: Array<RuleAction>
+  actions?: Array<RuleAction>
   conditions: Array<RuleCondition>
   scope?: Record<Field, FilterRef>
 }
@@ -4226,10 +4260,11 @@ export interface Detector {
   detector_index?: integer
   exclude_frequent?: ExcludeFrequent
   field_name?: Field
-  function: string
+  function?: string
   use_null?: boolean
   over_field_name?: Field
   partition_field_name?: Field
+  description?: string
 }
 
 export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
@@ -4261,7 +4296,7 @@ export interface DiscoveryNode {
   ephemeral_id: Id
   id: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface DiskUsage {
@@ -4331,6 +4366,12 @@ export interface DocumentExistsRequest extends RequestBase {
 }
 
 export type DocumentExistsResponse = boolean
+
+export interface DocumentRating {
+  _id: Id
+  _index: IndexName
+  rating: integer
+}
 
 export interface DocumentSimulation {
   _id: Id
@@ -4617,7 +4658,7 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
-  header?: Record<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -4727,7 +4768,7 @@ export interface ExistsQuery extends QueryBase {
   field?: Field
 }
 
-export type ExpandWildcardOptions = 'open' | 'closed' | 'hidden' | 'none' | 'all'
+export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'
 
 export type ExpandWildcards = ExpandWildcardOptions | Array<ExpandWildcardOptions> | string
 
@@ -4927,13 +4968,13 @@ export interface FieldSort {
 }
 
 export interface FieldStat {
-  count: number
-  cardinality: number
+  count: integer
+  cardinality: integer
   top_hits: Array<TopHit>
-  mean_value?: number
-  median_value?: number
-  max_value?: number
-  min_value?: number
+  mean_value?: integer
+  median_value?: integer
+  max_value?: integer
+  min_value?: integer
   earliest?: string
   latest?: string
 }
@@ -5018,7 +5059,7 @@ export interface FiltersBucketItemKeys {
 export type FiltersBucketItem = FiltersBucketItemKeys |
     { [property: string]: Aggregate }
 
-export interface FindStructureRequest<TBody = unknown> {
+export interface FindStructureRequest<TJsonDocument = unknown> {
   charset?: string
   column_names?: string
   delimiter?: string
@@ -5026,28 +5067,29 @@ export interface FindStructureRequest<TBody = unknown> {
   format?: string
   grok_pattern?: string
   has_header_row?: boolean
+  line_merge_size_limit?: uint
   lines_to_sample?: uint
   quote?: string
   should_trim_fields?: boolean
   timeout?: Time
   timestamp_field?: Field
   timestamp_format?: string
-  body: TBody
+  body: Array<TJsonDocument>
 }
 
 export interface FindStructureResponse {
   charset: string
-  has_header_row: boolean
+  has_header_row?: boolean
   has_byte_order_marker: boolean
   format: string
   field_stats: Record<Field, FieldStat>
   sample_start: string
-  num_messages_analyzed: number
+  num_messages_analyzed: integer
   mappings: TypeMapping
-  quote: string
-  delimiter: string
+  quote?: string
+  delimiter?: string
   need_client_timezone: boolean
-  num_lines_analyzed: number
+  num_lines_analyzed: integer
   column_names?: Array<string>
   explanation?: Array<string>
   grok_pattern?: string
@@ -5055,8 +5097,9 @@ export interface FindStructureResponse {
   exclude_lines_pattern?: string
   java_timestamp_formats?: Array<string>
   joda_timestamp_formats?: Array<string>
-  timestamp_field?: string
+  timestamp_field?: Field
   should_trim_fields?: boolean
+  ingest_pipeline: PipelineConfig
 }
 
 export interface FingerprintTokenFilter extends TokenFilterBase {
@@ -5980,6 +6023,8 @@ export interface Hop {
   vertices: Array<GraphVertexDefinition>
 }
 
+export type Host = string
+
 export interface HotThreadInformation {
   hosts: Array<string>
   node_id: string
@@ -5993,6 +6038,8 @@ export interface HourlySchedule {
 
 export interface HtmlStripCharFilter extends CharFilterBase {
 }
+
+export type HttpHeaders = Record<string, string | Array<string>>
 
 export interface HttpInput {
   extract: Array<string>
@@ -6012,8 +6059,8 @@ export interface HttpInputBasicAuthentication {
 export type HttpInputMethod = 'head' | 'get' | 'post' | 'put' | 'delete'
 
 export interface HttpInputProxy {
-  host: string
-  port: integer
+  host: Host
+  port: uint
 }
 
 export interface HttpInputRequestDefinition {
@@ -6021,11 +6068,11 @@ export interface HttpInputRequestDefinition {
   body?: string
   connection_timeout?: Time
   headers?: Record<string, string>
-  host?: string
+  host?: Host
   method?: HttpInputMethod
   params?: Record<string, string>
   path?: string
-  port?: integer
+  port?: uint
   proxy?: HttpInputProxy
   read_timeout?: Time
   scheme?: ConnectionScheme
@@ -6037,7 +6084,7 @@ export interface HttpInputRequestResult extends HttpInputRequestDefinition {
 
 export interface HttpInputResponseResult {
   body: string
-  headers: Record<string, Array<string>>
+  headers: HttpHeaders
   status: integer
 }
 
@@ -6300,7 +6347,7 @@ export interface IndicesAddBlockRequest extends RequestBase {
   index: IndexName
   block: IndicesBlockOptions
   allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcardOptions
+  expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
   master_timeout?: Time
   timeout?: Time
@@ -6411,7 +6458,7 @@ export interface IndicesCreateResponse extends AcknowledgedResponseBase {
 
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
   name?: IndexName
-  expand_wildcards?: ExpandWildcardOptions
+  expand_wildcards?: ExpandWildcards
   human?: boolean
 }
 
@@ -6590,7 +6637,7 @@ export interface IndicesGetDataStreamItemTimestampField {
 
 export interface IndicesGetDataStreamRequest extends RequestBase {
   name?: IndexName
-  expand_wildcards?: ExpandWildcardOptions
+  expand_wildcards?: ExpandWildcards
 }
 
 export interface IndicesGetDataStreamResponse extends ResponseBase {
@@ -7060,6 +7107,18 @@ export interface Ingest {
   pipeline?: string
 }
 
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IngestGeoIpStatsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IngestStats {
   count: long
   current: long
@@ -7213,6 +7272,8 @@ export interface InvalidRoleTemplate {
   template: string
   format?: RoleTemplateFormat
 }
+
+export type Ip = string
 
 export interface IpFilterUsage {
   http: boolean
@@ -8397,6 +8458,17 @@ export interface MlStartDatafeedResponse extends ResponseBase {
   started: boolean
 }
 
+export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  allow_no_match?: boolean
+  force?: boolean
+  timeout?: Time
+}
+
+export interface MlStopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
+}
+
 export interface MlStopDatafeedRequest extends RequestBase {
   datafeed_id: Ids
   allow_no_match?: boolean
@@ -8472,12 +8544,16 @@ export interface MlUpdateJobRequest extends RequestBase {
     analysis_limits?: AnalysisMemoryLimit
     background_persist_interval?: Time
     custom_settings?: Record<string, any>
+    categorization_filters?: Array<string>
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
+    daily_model_snapshot_retention_after_days?: long
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: Array<string>
+    detectors?: Array<Detector>
+    per_partition_categorization?: PerPartitionCategorization
   }
 }
 
@@ -8537,6 +8613,7 @@ export interface ModelPlotConfig {
 
 export interface ModelPlotConfigEnabled {
   enabled: boolean
+  annotations_enabled?: boolean
   terms?: string
 }
 
@@ -8926,10 +9003,10 @@ export interface NodeAllocationExplanation {
   deciders: Array<AllocationDecision>
   node_attributes: Record<string, string>
   node_decision: Decision
-  node_id: string
-  node_name: string
+  node_id: Id
+  node_name: Name
   store?: AllocationStore
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }
 
@@ -8938,7 +9015,7 @@ export interface NodeAttributes {
   ephemeral_id: Id
   id?: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
   roles?: NodeRoles
 }
 
@@ -8965,11 +9042,11 @@ export interface NodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
-  host: string
+  host: Host
   http: NodeInfoHttp
-  ip: string
+  ip: Ip
   jvm: NodeJvmInfo
-  name: string
+  name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: Array<PluginStats>
@@ -8979,7 +9056,7 @@ export interface NodeInfo {
   thread_pool: Record<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport
-  transport_address: string
+  transport_address: TransportAddress
   version: VersionString
 }
 
@@ -9115,13 +9192,13 @@ export interface NodeStats {
   adaptive_selection: Record<string, AdaptiveSelectionStats>
   breakers: Record<string, BreakerStats>
   fs: FileSystemStats
-  host: string
+  host: Host
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  ip: Array<string>
+  ip: Array<Ip>
   jvm: NodeJvmStats
-  name: string
+  name: Name
   os: OperatingSystemStats
   process: ProcessStats
   roles: Array<NodeRole>
@@ -9129,7 +9206,7 @@ export interface NodeStats {
   thread_pool: Record<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export interface NodeThreadPoolInfo {
@@ -9531,6 +9608,12 @@ export interface PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
+}
+
+export interface PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
 }
 
 export type PipelineName = string
@@ -10029,6 +10112,90 @@ export interface RangeQuery extends QueryBase {
 
 export type RangeRelation = 'within' | 'contains' | 'intersects'
 
+export interface RankEvalHit {
+  _id: Id
+  _index: IndexName
+  _type?: Type
+  _score: double
+}
+
+export interface RankEvalHitItem {
+  hit: RankEvalHit
+  rating?: double
+}
+
+export interface RankEvalMetric {
+  precision?: RankEvalMetricPrecision
+  recall?: RankEvalMetricRecall
+  mean_reciprocal_rank?: RankEvalMetricMeanReciprocalRank
+  dcg?: RankEvalMetricDiscountedCumulativeGain
+  expected_reciprocal_rank?: RankEvalMetricExpectedReciprocalRank
+}
+
+export interface RankEvalMetricBase {
+  k?: integer
+}
+
+export interface RankEvalMetricDetail {
+  metric_score: double
+  unrated_docs: Array<UnratedDocument>
+  hits: Array<RankEvalHitItem>
+  metric_details: Record<string, Record<string, any>>
+}
+
+export interface RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
+  normalize?: boolean
+}
+
+export interface RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
+  maximum_relevance: integer
+}
+
+export interface RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {
+}
+
+export interface RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
+  ignore_unlabeled?: boolean
+}
+
+export interface RankEvalMetricRatingTreshold extends RankEvalMetricBase {
+  relevant_rating_threshold?: integer
+}
+
+export interface RankEvalMetricRecall extends RankEvalMetricRatingTreshold {
+}
+
+export interface RankEvalQuery {
+  query: QueryContainer
+  size?: integer
+}
+
+export interface RankEvalRequest extends RequestBase {
+  index: Indices
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  search_type?: string
+  body: {
+    requests: Array<RankEvalRequestItem>
+    metric?: RankEvalMetric
+  }
+}
+
+export interface RankEvalRequestItem {
+  id: Id
+  request?: RankEvalQuery
+  ratings: Array<DocumentRating>
+  template_id?: Id
+  params?: Record<string, any>
+}
+
+export interface RankEvalResponse extends ResponseBase {
+  metric_score: double
+  details: Record<Id, RankEvalMetricDetail>
+  failures: Record<string, any>
+}
+
 export interface RankFeatureFunction {
 }
 
@@ -10125,10 +10292,10 @@ export interface RecoveryIndexStatus {
 
 export interface RecoveryOrigin {
   hostname?: string
-  host?: string
-  transport_address?: string
+  host?: Host
+  transport_address?: TransportAddress
   id?: Id
-  ip?: string
+  ip?: Ip
   name?: Name
   bootstrap_new_history_uuid?: boolean
   repository?: Name
@@ -10202,14 +10369,8 @@ export interface ReindexDestination {
   version_type?: VersionType
 }
 
-export interface ReindexNode {
-  attributes: Record<string, string>
-  host: string
-  ip: string
-  name: Name
-  roles: Array<string>
+export interface ReindexNode extends BaseNode {
   tasks: Record<TaskId, ReindexTask>
-  transport_address: string
 }
 
 export interface ReindexRequest extends RequestBase {
@@ -10296,7 +10457,7 @@ export interface ReindexTask {
   start_time_in_millis: long
   status: ReindexStatus
   type: string
-  headers: Record<string, string>
+  headers: HttpHeaders
 }
 
 export type RelationName = string
@@ -10334,7 +10495,7 @@ export interface ReloadSecureSettingsResponse extends NodesResponseBase {
 
 export interface RemoteSource {
   connect_timeout: Time
-  host: Uri
+  host: Host
   password: string
   socket_timeout: Time
   username: string
@@ -10880,8 +11041,8 @@ export interface SearchInputRequestDefinition {
 }
 
 export interface SearchNode {
-  name: string
-  transport_address: string
+  name: Name
+  transport_address: TransportAddress
 }
 
 export interface SearchProfile {
@@ -11263,6 +11424,10 @@ export interface SecurityDisableUserResponse extends ResponseBase {
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Name
   refresh?: Refresh
+}
+
+export interface SecurityEnableUserResponse extends ResponseBase {
+  stub: integer
 }
 
 export interface SecurityFeatureToggle {
@@ -11865,7 +12030,7 @@ export interface ShardStore {
   legacy_version: VersionNumber
   name: Name
   store_exception: ShardStoreException
-  transport_address: string
+  transport_address: TransportAddress
 }
 
 export type ShardStoreAllocation = 'primary' | 'replica' | 'unused'
@@ -12847,14 +13012,8 @@ export interface TTestAggregation extends Aggregation {
 
 export type TTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
-export interface TaskExecutingNode {
-  attributes: Record<string, string>
-  host: string
-  ip: string
-  name: string
-  roles: Array<string>
+export interface TaskExecutingNode extends BaseNode {
   tasks: Record<TaskId, TaskState>
-  transport_address: string
 }
 
 export type TaskId = string | integer
@@ -12864,7 +13023,7 @@ export interface TaskInfo {
   cancellable: boolean
   children?: Array<TaskInfo>
   description?: string
-  headers: Record<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   running_time_in_nanos: long
@@ -12883,7 +13042,7 @@ export interface TaskState {
   action: string
   cancellable: boolean
   description?: string
-  headers: Record<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   parent_task_id?: TaskId
@@ -13389,6 +13548,8 @@ export interface TranslogStats {
   uncommitted_size_in_bytes: long
 }
 
+export type TransportAddress = string
+
 export interface TransportStats {
   rx_count: long
   rx_size: string
@@ -13487,6 +13648,11 @@ export interface UniqueTokenFilter extends TokenFilterBase {
   only_on_same_position: boolean
 }
 
+export interface UnratedDocument {
+  _id: Id
+  _index: IndexName
+}
+
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
   type?: Types
@@ -13550,13 +13716,7 @@ export interface UpdateByQueryResponse extends ResponseBase {
   throttled_until_millis?: ulong
 }
 
-export interface UpdateByQueryRethrottleNode {
-  attributes: Record<string, string>
-  host: string
-  transport_address: string
-  ip: string
-  name: Name
-  roles: Array<string>
+export interface UpdateByQueryRethrottleNode extends BaseNode {
   tasks: Record<TaskId, TaskInfo>
 }
 
@@ -13634,8 +13794,6 @@ export interface UppercaseProcessor extends ProcessorBase {
 
 export interface UppercaseTokenFilter extends TokenFilterBase {
 }
-
-export type Uri = string
 
 export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
