@@ -12145,7 +12145,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LoggingAction",
-              "namespace": "x_pack.watcher.action"
+              "namespace": "__common.watcher.actions"
             }
           }
         }
@@ -12233,7 +12233,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Id",
-              "namespace": "internal"
+              "namespace": "__common"
             }
           }
         }
@@ -38621,7 +38621,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CompareContextPayloadCondition",
-              "namespace": "x_pack.watcher.condition"
+              "namespace": "__common.watcher.conditions"
             }
           }
         },
@@ -38632,7 +38632,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CompareContextPayloadCondition",
-              "namespace": "x_pack.watcher.condition"
+              "namespace": "__common.watcher.conditions"
             }
           }
         }
@@ -38642,7 +38642,7 @@
       "kind": "interface",
       "name": {
         "name": "CompareContextPayloadCondition",
-        "namespace": "x_pack.watcher.condition"
+        "namespace": "__common.watcher.conditions"
       },
       "properties": [
         {
@@ -61658,8 +61658,19 @@
       },
       "properties": [
         {
+          "name": "http",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpInput",
+              "namespace": "__common.watcher.input"
+            }
+          }
+        },
+        {
           "name": "extract",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -61673,7 +61684,7 @@
         },
         {
           "name": "request",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61684,7 +61695,7 @@
         },
         {
           "name": "response_content_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -61739,8 +61750,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         }
@@ -65939,48 +65950,11 @@
       "properties": []
     },
     {
-<<<<<<< HEAD
-      "kind": "interface",
-      "name": {
-        "name": "HttpInput",
-        "namespace": "x_pack.watcher.input"
-      },
-      "properties": [
-        {
-          "name": "http",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HttpInput",
-              "namespace": "x_pack.watcher.input"
-            }
-          }
-        },
-        {
-          "name": "extract",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "request",
-          "required": false,
-=======
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "inherits": [
         {
->>>>>>> master
           "type": {
             "name": "RequestBase",
             "namespace": "__common.common_abstractions.request"
@@ -65994,14 +65968,9 @@
       },
       "path": [
         {
-<<<<<<< HEAD
-          "name": "response_content_type",
-          "required": false,
-=======
           "description": "The comma separated names of the index templates",
           "name": "name",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67946,6 +67915,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "ignore_throttled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -69505,17 +69485,6 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "ignore_throttled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
@@ -70953,23 +70922,10 @@
           "name": "valid",
           "required": true,
           "type": {
-<<<<<<< HEAD
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
-=======
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
->>>>>>> master
             }
           }
         }
@@ -70992,8 +70948,6 @@
               "namespace": "__common"
             }
           }
-<<<<<<< HEAD
-=======
         },
         {
           "name": "primary_shard_count",
@@ -71027,13 +70981,10 @@
               "namespace": "__common"
             }
           }
->>>>>>> master
         }
       ]
     },
     {
-<<<<<<< HEAD
-=======
       "inherits": [
         {
           "type": {
@@ -71042,7 +70993,6 @@
           }
         }
       ],
->>>>>>> master
       "kind": "interface",
       "name": {
         "name": "InferenceAggregation",
@@ -71830,10 +71780,16 @@
           "name": "simple",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SimpleInput",
-              "namespace": "__common.watcher.input"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -71881,69 +71837,6 @@
           }
         }
       ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "ScheduleBase",
-            "namespace": "__common.watcher.schedule"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "Interval",
-        "namespace": "__common.watcher.schedule"
-      },
-      "properties": [
-        {
-          "name": "factor",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "unit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IntervalUnit",
-              "namespace": "__common.watcher.schedule"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "s"
-        },
-        {
-          "name": "m"
-        },
-        {
-          "name": "h"
-        },
-        {
-          "name": "d"
-        },
-        {
-          "name": "w"
-        }
-      ],
-      "name": {
-        "name": "IntervalUnit",
-        "namespace": "__common.watcher.schedule"
-      }
     },
     {
       "kind": "interface",
@@ -74811,87 +74704,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "tasks",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TaskInfo",
-                    "namespace": "cluster.task_management.get_task"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TaskInfo",
-                    "namespace": "cluster.task_management.get_task"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LoggingAction",
-        "namespace": "x_pack.watcher.action"
-      },
-      "properties": [
-        {
-          "name": "level",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LoggingActionResult",
-        "namespace": "x_pack.watcher.execution.logging"
-      },
-      "properties": [
-        {
-          "name": "logged_text",
-=======
           "name": "managed",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -75663,6 +75476,37 @@
               }
             ],
             "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LoggingAction",
+        "namespace": "__common.watcher.actions"
+      },
+      "properties": [
+        {
+          "name": "level",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "text",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -101771,27 +101615,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "monthly",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TimeOfMonth",
-                "namespace": "x_pack.watcher.schedule"
-              }
-=======
               "name": "long",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -102891,11 +102716,7 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "name": "extract",
-=======
           "name": "current_position",
->>>>>>> master
           "required": false,
           "type": {
             "key": {
@@ -102923,11 +102744,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "timeout",
-=======
           "name": "upgraded_doc_id",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -102942,33 +102759,8 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
-        "name": "SearchInputRequestBody",
-        "namespace": "x_pack.watcher.input"
-      },
-      "properties": [
-        {
-          "name": "query",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "query_dsl.abstractions.container"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchInputRequestDefinition",
-        "namespace": "x_pack.watcher.input"
-=======
         "name": "RollupJobTaskFailure",
         "namespace": "rollup.get_rollup_job"
->>>>>>> master
       },
       "properties": [
         {
@@ -102977,27 +102769,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
-              "name": "SearchInputRequestBody",
-              "namespace": "x_pack.watcher.input"
-            }
-          }
-        },
-        {
-          "name": "indices",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "internal"
-              }
-=======
               "name": "TaskId",
               "namespace": "__common"
->>>>>>> master
             }
           }
         },
@@ -103031,17 +102804,6 @@
             "type": {
               "name": "RollupJobTaskFailureReason",
               "namespace": "rollup.get_rollup_job"
-            }
-          }
-        },
-        {
-          "name": "rest_total_hits_as_int",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }
@@ -104128,8 +103890,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Interval",
-              "namespace": "__common.watcher.schedule"
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
             }
           }
         },
@@ -105274,7 +105036,7 @@
       "properties": [
         {
           "name": "extract",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -105299,12 +105061,32 @@
         },
         {
           "name": "timeout",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Time",
               "namespace": "__common.common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchInputRequestBody",
+        "namespace": "__common.watcher.input"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "__common.query_dsl.abstractions.container"
             }
           }
         }
@@ -105323,8 +105105,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SearchRequest",
-              "namespace": "__global.search"
+              "name": "SearchInputRequestBody",
+              "namespace": "__common.watcher.input"
             }
           }
         },
@@ -105372,6 +105154,17 @@
             "type": {
               "name": "SearchTemplateRequest",
               "namespace": "__global.search_template"
+            }
+          }
+        },
+        {
+          "name": "rest_total_hits_as_int",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -113877,70 +113670,6 @@
       ]
     },
     {
-<<<<<<< HEAD
-      "kind": "enum",
-      "members": [
-        {
-          "name": "NONE"
-        },
-        {
-          "name": "AND"
-        },
-        {
-          "name": "OR"
-        },
-        {
-          "name": "NOT"
-        },
-        {
-          "name": "PREFIX"
-        },
-        {
-          "name": "PHRASE"
-        },
-        {
-          "name": "PRECEDENCE"
-        },
-        {
-          "name": "ESCAPE"
-        },
-        {
-          "name": "WHITESPACE"
-        },
-        {
-          "name": "FUZZY"
-        },
-        {
-          "name": "NEAR"
-        },
-        {
-          "name": "SLOP"
-        },
-        {
-          "name": "ALL"
-        }
-      ],
-      "name": {
-        "name": "SimpleQueryStringFlags",
-        "namespace": "query_dsl.full_text.simple_query_string"
-      }
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "QueryBase",
-            "namespace": "query_dsl.abstractions.query"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "SimpleQueryStringQuery",
-        "namespace": "query_dsl.full_text.simple_query_string"
-      },
-      "properties": [
-=======
       "kind": "interface",
       "name": {
         "name": "ShardSegments",
@@ -113990,7 +113719,6 @@
             }
           }
         },
->>>>>>> master
         {
           "name": "fixed_bit_set_memory_in_bytes",
           "required": true,
@@ -115494,32 +115222,6 @@
             "type": {
               "name": "Fields",
               "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SimpleInput",
-        "namespace": "__common.watcher.input"
-      },
-      "properties": [
-        {
-          "name": "payload",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
             }
           }
         }
@@ -131851,7 +131553,7 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
-              "namespace": "internal"
+              "namespace": "__common"
             }
           }
         }

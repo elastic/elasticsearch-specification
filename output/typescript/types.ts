@@ -6019,7 +6019,7 @@ export interface HttpInputAuthentication {
 
 export interface HttpInputBasicAuthentication {
   password: string
-  username: string
+  username: Name
 }
 
 export type HttpInputMethod = 'head' | 'get' | 'post' | 'put' | 'delete'
@@ -6484,16 +6484,7 @@ export interface IndicesExistsAliasRequest extends RequestBase {
   local?: boolean
 }
 
-<<<<<<< HEAD
-export interface IndicesOptions {
-  allow_no_indices: boolean
-  expand_wildcards: ExpandWildcards
-  ignore_unavailable: boolean
-  ignore_throttled?: boolean
-}
-=======
 export type IndicesExistsAliasResponse = boolean
->>>>>>> master
 
 export interface IndicesExistsRequest extends RequestBase {
   index: Indices
@@ -6675,15 +6666,7 @@ export interface IndicesGetSettingsRequest extends RequestBase {
   master_timeout?: Time
 }
 
-<<<<<<< HEAD
-export interface InputContainer {
-  chain?: ChainInput
-  http?: HttpInput
-  search?: SearchInput
-  simple?: Record<string, any>
-=======
 export interface IndicesGetSettingsResponse extends DictionaryResponseBase<IndexName, IndexState> {
->>>>>>> master
 }
 
 export interface IndicesGetTemplateRequest extends RequestBase {
@@ -6697,13 +6680,6 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, TemplateMapping> {
 }
 
-<<<<<<< HEAD
-export interface IntervalsAllOf {
-  intervals?: Array<IntervalsContainer>
-  max_gaps?: integer
-  ordered?: boolean
-  filter?: IntervalsFilter
-=======
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
 }
@@ -6719,7 +6695,6 @@ export interface IndicesOpenRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
->>>>>>> master
 }
 
 export interface IndicesOpenResponse extends AcknowledgedResponseBase {
@@ -6730,6 +6705,7 @@ export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
   ignore_unavailable: boolean
+  ignore_throttled?: boolean
 }
 
 export interface IndicesPrivileges {
@@ -7147,7 +7123,7 @@ export interface InputContainer {
   chain?: ChainInput
   http?: HttpInput
   search?: SearchInput
-  simple?: SimpleInput
+  simple?: Record<string, any>
 }
 
 export type InputType = 'http' | 'search' | 'simple'
@@ -7155,13 +7131,6 @@ export type InputType = 'http' | 'search' | 'simple'
 export interface IntegerRangeProperty extends RangePropertyBase {
   type: 'integer_range'
 }
-
-export interface Interval extends ScheduleBase {
-  factor: long
-  unit: IntervalUnit
-}
-
-export type IntervalUnit = 's' | 'm' | 'h' | 'd' | 'w'
 
 export interface IntervalsAllOf {
   intervals?: Array<IntervalsContainer>
@@ -7175,15 +7144,6 @@ export interface IntervalsAnyOf {
   filter?: IntervalsFilter
 }
 
-<<<<<<< HEAD
-export interface LoggingAction {
-  level: string
-  text: string
-}
-
-export interface LoggingActionResult {
-  logged_text: string
-=======
 export interface IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf
@@ -7191,7 +7151,6 @@ export interface IntervalsContainer {
   match?: IntervalsMatch
   prefix?: IntervalsPrefix
   wildcard?: IntervalsWildcard
->>>>>>> master
 }
 
 export interface IntervalsFilter {
@@ -7594,6 +7553,11 @@ export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
   nodes?: Record<string, TaskExecutingNode>
   tasks?: Record<string, TaskInfo> | Array<TaskInfo>
+}
+
+export interface LoggingAction {
+  level: string
+  text: string
 }
 
 export interface LoggingActionResult {
@@ -10761,7 +10725,7 @@ export interface ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Interval
+  interval?: Time
   monthly?: Array<TimeOfMonth>
   weekly?: Array<TimeOfWeek>
   yearly?: Array<TimeOfYear>
@@ -10902,17 +10866,22 @@ export interface SearchAsYouTypeProperty extends CorePropertyBase {
 }
 
 export interface SearchInput {
-  extract: Array<string>
+  extract?: Array<string>
   request: SearchInputRequestDefinition
-  timeout: Time
+  timeout?: Time
+}
+
+export interface SearchInputRequestBody {
+  query: QueryContainer
 }
 
 export interface SearchInputRequestDefinition {
-  body?: SearchRequest
+  body?: SearchInputRequestBody
   indices?: Array<IndexName>
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
+  rest_total_hits_as_int?: boolean
 }
 
 export interface SearchNode {
@@ -11219,21 +11188,10 @@ export interface SecurityClearCachedRealmsRequest extends RequestBase {
   usernames?: Array<string>
 }
 
-<<<<<<< HEAD
-export interface ScheduleContainer {
-  cron?: CronExpression
-  daily?: DailySchedule
-  hourly?: HourlySchedule
-  interval?: Time
-  monthly?: Array<TimeOfMonth>
-  weekly?: Array<TimeOfWeek>
-  yearly?: Array<TimeOfYear>
-=======
 export interface SecurityClearCachedRealmsResponse extends ResponseBase {
   cluster_name: Name
   nodes: Record<string, SecurityNode>
   _nodes: NodeStatistics
->>>>>>> master
 }
 
 export interface SecurityClearCachedRolesRequest extends RequestBase {
@@ -11345,31 +11303,11 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
 export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, PrivilegesActions>> {
 }
 
-<<<<<<< HEAD
-export interface SearchInput {
-  extract?: Array<string>
-  request: SearchInputRequestDefinition
-  timeout?: Time
-}
-
-export interface SearchInputRequestBody {
-  query: QueryContainer
-}
-
-export interface SearchInputRequestDefinition {
-  body?: SearchInputRequestBody
-  indices?: Array<IndexName>
-  indices_options?: IndicesOptions
-  search_type?: SearchType
-  template?: SearchTemplateRequest
-  rest_total_hits_as_int?: boolean
-=======
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name: Name
 }
 
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, XPackRoleMapping> {
->>>>>>> master
 }
 
 export interface SecurityGetRoleRequest extends RequestBase {

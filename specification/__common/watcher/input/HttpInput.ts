@@ -17,19 +17,12 @@
  * under the License.
  */
 
-<<<<<<< HEAD:specification/specs/x_pack/watcher/input/HttpInput.ts
-class HttpInput {
-  http?: HttpInput
-  extract?: string[]
-  request?: HttpInputRequestDefinition
-  response_content_type?: ResponseContentType
-=======
 import { HttpInputRequestDefinition } from './HttpInputRequestDefinition'
 import { ResponseContentType } from './ResponseContentType'
 
 export class HttpInput {
-  extract: string[]
-  request: HttpInputRequestDefinition
-  response_content_type: ResponseContentType
->>>>>>> master:specification/__common/watcher/input/HttpInput.ts
+  http?: HttpInput
+  extract?: string[]
+  request?: HttpInputRequestDefinition
+  response_content_type?: ResponseContentType
 }
