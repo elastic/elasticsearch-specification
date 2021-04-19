@@ -356,30 +356,6 @@
         "interface definition security.invalidate_token:SecurityInvalidateTokenResponse / Property 'error_details' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
       ]
     },
-    "shutdown.delete_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "shutdown.get_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "tasks.cancel": {
       "request": [
         "CancelTasksRequest: missing json spec query parameter 'wait_for_completion'"
