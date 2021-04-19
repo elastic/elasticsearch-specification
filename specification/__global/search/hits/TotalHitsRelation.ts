@@ -17,12 +17,9 @@
  * under the License.
  */
 
-<<<<<<< HEAD:specification/specs/search/search/hits/TotalHitsRelation.ts
-enum TotalHitsRelation {
-  /** Accurate */
-=======
+
 export enum TotalHitsRelation {
->>>>>>> master:specification/__global/search/hits/TotalHitsRelation.ts
+  /** Accurate */
   eq = 0,
   /** Lower bound, including returned events or sequences */
   gte = 1

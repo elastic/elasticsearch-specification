@@ -17,17 +17,13 @@
  * under the License.
  */
 
-<<<<<<< HEAD:specification/specs/common/ExpandWildcards.ts
 /**
  * Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.
  */
-enum ExpandWildcardOptions {
+export enum ExpandWildcardOptions {
   /**
    * Match open, non-hidden indices. Also matches any non-hidden data stream.
    */
-=======
-export enum ExpandWildcardOptions {
->>>>>>> master:specification/__common/common/ExpandWildcards.ts
   open = 0,
   /**
    * Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.

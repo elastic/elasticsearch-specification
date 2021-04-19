@@ -17,14 +17,10 @@
  * under the License.
  */
 
-<<<<<<< HEAD:specification/specs/search/search/hits/TotalHits.ts
-class TotalHits {
-=======
 import { long } from '@common/common'
 import { TotalHitsRelation } from './TotalHitsRelation'
 
 export class TotalHits {
->>>>>>> master:specification/__global/search/hits/TotalHits.ts
   relation: TotalHitsRelation
   value: long
 }
