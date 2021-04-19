@@ -18,7 +18,7 @@
  */
 
 import { Name } from '@common/common'
-import { TransportAddress } from '@common/common/Networking'
+import { TransportAddress } from '@common/Networking'
 
 export class SearchNode {
   name: Name

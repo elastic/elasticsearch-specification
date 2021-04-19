@@ -17766,7 +17766,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -17777,7 +17777,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -17813,7 +17813,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         }
@@ -20423,7 +20423,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -20435,7 +20435,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -41079,7 +41079,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -46207,7 +46207,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         }
@@ -61580,7 +61580,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Host",
-        "namespace": "__spec_utils"
+        "namespace": "__common"
       },
       "type": {
         "kind": "instance_of",
@@ -61822,7 +61822,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -61907,7 +61907,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -72624,7 +72624,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Ip",
-        "namespace": "__spec_utils"
+        "namespace": "__common"
       },
       "type": {
         "kind": "instance_of",
@@ -88026,7 +88026,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -88111,7 +88111,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -88330,7 +88330,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -88352,7 +88352,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -88503,7 +88503,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -89664,7 +89664,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -89710,7 +89710,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Ip",
-                "namespace": "__spec_utils"
+                "namespace": "__common"
               }
             }
           }
@@ -89834,7 +89834,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         }
@@ -99108,7 +99108,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -99119,7 +99119,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -99141,7 +99141,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ip",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -100885,7 +100885,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Host",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         },
@@ -105337,7 +105337,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         }
@@ -114520,7 +114520,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransportAddress",
-              "namespace": "__spec_utils"
+              "namespace": "__common"
             }
           }
         }
@@ -128384,7 +128384,7 @@
       "kind": "type_alias",
       "name": {
         "name": "TransportAddress",
-        "namespace": "__spec_utils"
+        "namespace": "__common"
       },
       "type": {
         "kind": "instance_of",

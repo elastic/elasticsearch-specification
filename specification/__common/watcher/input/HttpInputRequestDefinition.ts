@@ -20,7 +20,7 @@
 import { integer, uint } from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Host } from '@common/common/Networking'
+import { Host } from '@common/Networking'
 import { ConnectionScheme } from './ConnectionScheme'
 import { HttpInputAuthentication } from './HttpInputAuthentication'
 import { HttpInputMethod } from './HttpInputMethod'

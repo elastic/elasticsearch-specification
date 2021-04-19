@@ -20,7 +20,7 @@
 import { Name } from '@common/common'
 import { NodeRole, NodeRoles } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from './Dictionary'
-import { Host, Ip, TransportAddress } from '../__common/common/Networking'
+import { Host, Ip, TransportAddress } from '../__common/Networking'
 
 export class BaseNode {
   attributes: Dictionary<string, string>

@@ -19,7 +19,7 @@
 
 import { Uri } from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
-import { Host } from '@common/common/Networking'
+import { Host } from '@common/Networking'
 
 export class RemoteSource {
   connect_timeout: Time
