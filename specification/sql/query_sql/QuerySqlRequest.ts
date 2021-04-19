@@ -19,6 +19,7 @@
 
 import { integer } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 /**
@@ -29,7 +30,7 @@ import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryCo
 export interface QuerySqlRequest extends RequestBase {
   query_parameters?: {
     /**
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/sql-rest-format.html#sql-rest-format
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html#sql-rest-format
      */
     format?: string
   }
@@ -43,7 +44,7 @@ export interface QuerySqlRequest extends RequestBase {
     fetch_size?: integer
     /**
      * Optional Elasticsearch query DSL for additional filtering.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/6.8/sql-rest-filtering.html
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-filtering.html
      * @server_default none
      */
     filter?: QueryContainer

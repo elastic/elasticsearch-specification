@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EqlHitsEvent } from './EqlHitsEvent'
 

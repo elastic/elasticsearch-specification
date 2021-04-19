@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 import { Field, Id, IndexName } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

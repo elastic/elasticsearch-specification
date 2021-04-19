@@ -29,7 +29,7 @@ import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryCo
  * @stability TODO
  */
 export interface EqlSearchRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
   query_parameters?: {
@@ -109,15 +109,10 @@ export interface EqlSearchRequest extends RequestBase {
     result_position?: EqlResultPosition
   }
 }
-
-<<<<<<< HEAD:specification/specs/x_pack/eql/search/EqlSearchRequest.ts
-class EqlSearchFieldFormatted {
+export class EqlSearchFieldFormatted {
   /**
    * Wildcard pattern. The request returns values for field names matching this pattern.
    */
-=======
-export class EqlSearchFieldFormatted {
->>>>>>> master:specification/eql/search/EqlSearchRequest.ts
   field: Field
   /**
    * Format in which the values are returned.
@@ -128,7 +123,7 @@ export class EqlSearchFieldFormatted {
 /**
  * Set of matching events or sequences to return.
  */
-enum EqlResultPosition {
+export enum EqlResultPosition {
   /**
    * Return the most recent matches, similar to the Unix tail command.
    */

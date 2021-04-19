@@ -2767,7 +2767,7 @@ export interface ClearScrollResponse extends ResponseBase {
 
 export interface ClearSqlCursorRequest extends RequestBase {
   body: {
-    cursor?: string
+    cursor: string
   }
 }
 

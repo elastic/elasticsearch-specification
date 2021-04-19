@@ -32535,7 +32535,7 @@
         "properties": [
           {
             "name": "cursor",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -48329,6 +48329,7 @@
       ],
       "query": [
         {
+          "description": "Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request.",
           "name": "keep_alive",
           "required": false,
           "type": {
@@ -48340,6 +48341,7 @@
           }
         },
         {
+          "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
           "name": "wait_for_completion_timeout",
           "required": false,
           "type": {
@@ -48432,6 +48434,7 @@
       },
       "properties": [
         {
+          "description": "Identifier for the search.",
           "name": "id",
           "required": true,
           "type": {
@@ -48443,6 +48446,7 @@
           }
         },
         {
+          "description": "If true, the search request is still executing. If false, the search is completed.",
           "name": "is_partial",
           "required": true,
           "type": {
@@ -48454,6 +48458,7 @@
           }
         },
         {
+          "description": "If true, the response does not contain complete search results. This could be because either the search is still running (is_running status is false), or because it is already completed (is_running status is true) and results are partial due to failures or timeouts.",
           "name": "is_running",
           "required": true,
           "type": {
@@ -48465,6 +48470,7 @@
           }
         },
         {
+          "description": "For a running search shows a timestamp when the eql search started, in milliseconds since the Unix epoch.",
           "name": "start_time_in_millis",
           "required": false,
           "type": {
@@ -48476,6 +48482,7 @@
           }
         },
         {
+          "description": "Shows a timestamp when the eql search will be expired, in milliseconds since the Unix epoch. When this time is reached, the search and its results are deleted, even if the search is still ongoing.",
           "name": "expiration_time_in_millis",
           "required": false,
           "type": {
@@ -48487,6 +48494,7 @@
           }
         },
         {
+          "description": "For a completed search shows the http status code of the completed search.",
           "name": "completion_status",
           "required": false,
           "type": {
@@ -48513,6 +48521,7 @@
       },
       "properties": [
         {
+          "description": "Metadata about the number of matching events or sequences.",
           "name": "total",
           "required": false,
           "type": {
@@ -48524,6 +48533,7 @@
           }
         },
         {
+          "description": "Contains events matching the query. Each object represents a matching event.",
           "name": "events",
           "required": false,
           "type": {
@@ -48547,6 +48557,8 @@
           }
         },
         {
+          "description": "Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
           "name": "sequences",
           "required": false,
           "type": {
@@ -48585,6 +48597,7 @@
       },
       "properties": [
         {
+          "description": "Name of the index containing the event.",
           "name": "_index",
           "required": true,
           "type": {
@@ -48596,6 +48609,7 @@
           }
         },
         {
+          "description": "Unique identifier for the event. This ID is only unique within the index.",
           "name": "_id",
           "required": true,
           "type": {
@@ -48607,6 +48621,7 @@
           }
         },
         {
+          "description": "Original JSON body passed for the event at index time.",
           "name": "_source",
           "required": true,
           "type": {
@@ -48653,6 +48668,7 @@
       },
       "properties": [
         {
+          "description": "Contains events matching the query. Each object represents a matching event.",
           "name": "events",
           "required": true,
           "type": {
@@ -48676,6 +48692,8 @@
           }
         },
         {
+          "description": "Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
           "name": "join_keys",
           "required": true,
           "type": {
@@ -48688,6 +48706,23 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Return the most recent matches, similar to the Unix tail command.",
+          "name": "tail"
+        },
+        {
+          "description": "Return the earliest matches, similar to the Unix head command.",
+          "name": "head"
+        }
+      ],
+      "name": {
+        "name": "EqlResultPosition",
+        "namespace": "eql.search"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "EqlSearchFieldFormatted",
@@ -48695,6 +48730,7 @@
       },
       "properties": [
         {
+          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
           "name": "field",
           "required": true,
           "type": {
@@ -48706,8 +48742,9 @@
           }
         },
         {
+          "description": "Format in which the values are returned.",
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48726,6 +48763,8 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "EQL query you wish to run.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html",
             "name": "query",
             "required": true,
             "type": {
@@ -48748,8 +48787,10 @@
             }
           },
           {
+            "description": "Field containing the event classification, such as process, file, or network.",
             "name": "event_category_field",
             "required": false,
+            "serverDefault": "event.category",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -48759,6 +48800,8 @@
             }
           },
           {
+            "description": "Field used to sort hits with the same timestamp in ascending order",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html#eql-search-specify-a-sort-tiebreaker",
             "name": "tiebreaker_field",
             "required": false,
             "type": {
@@ -48770,6 +48813,7 @@
             }
           },
           {
+            "description": "Field containing event timestamp. Default \"@timestamp\"",
             "name": "timestamp_field",
             "required": false,
             "type": {
@@ -48781,8 +48825,10 @@
             }
           },
           {
+            "description": "Maximum number of events to search at a time for sequence queries.",
             "name": "fetch_size",
             "required": false,
+            "serverDefault": "1000",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -48792,6 +48838,7 @@
             }
           },
           {
+            "description": "Query, written in Query DSL, used to filter the events on which the EQL query runs.",
             "name": "filter",
             "required": false,
             "type": {
@@ -48851,6 +48898,8 @@
             }
           },
           {
+            "description": "For basic queries, the maximum number of matching events to return. Defaults to 10",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax",
             "name": "size",
             "required": false,
             "type": {
@@ -48858,7 +48907,7 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "integer",
+                    "name": "uint",
                     "namespace": "__common"
                   }
                 },
@@ -48874,6 +48923,7 @@
             }
           },
           {
+            "description": "Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.",
             "name": "fields",
             "required": false,
             "type": {
@@ -48896,6 +48946,18 @@
                   }
                 ],
                 "kind": "union_of"
+              }
+            }
+          },
+          {
+            "name": "result_position",
+            "required": false,
+            "serverDefault": "tail",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EqlResultPosition",
+                "namespace": "eql.search"
               }
             }
           }
@@ -48932,6 +48994,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48943,6 +49006,7 @@
         {
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48952,8 +49016,10 @@
           }
         },
         {
+          "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48963,8 +49029,10 @@
           }
         },
         {
+          "description": "Period for which the search and its results are stored on the cluster.",
           "name": "keep_alive",
           "required": false,
+          "serverDefault": "5d",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48974,8 +49042,10 @@
           }
         },
         {
+          "description": "If true, the search and its results are stored on the cluster.",
           "name": "keep_on_completion",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48985,6 +49055,7 @@
           }
         },
         {
+          "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
           "name": "wait_for_completion_timeout",
           "required": false,
           "type": {
@@ -49029,6 +49100,7 @@
       "properties": []
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html#eql-search-api-response-body",
       "generics": [
         {
           "name": "TEvent",
@@ -49050,6 +49122,7 @@
       },
       "properties": [
         {
+          "description": " Identifier for the search.",
           "name": "id",
           "required": false,
           "type": {
@@ -49061,6 +49134,7 @@
           }
         },
         {
+          "description": "If true, the response does not contain complete search results.",
           "name": "is_partial",
           "required": false,
           "type": {
@@ -49072,6 +49146,7 @@
           }
         },
         {
+          "description": "If true, the search request is still executing.",
           "name": "is_running",
           "required": false,
           "type": {
@@ -49083,6 +49158,7 @@
           }
         },
         {
+          "description": "Milliseconds it took Elasticsearch to execute the request.",
           "name": "took",
           "required": false,
           "type": {
@@ -49094,6 +49170,7 @@
           }
         },
         {
+          "description": "If true, the request timed out before completion.",
           "name": "timed_out",
           "required": false,
           "type": {
@@ -49105,6 +49182,7 @@
           }
         },
         {
+          "description": "Contains matching events and sequences. Also contains related metadata.",
           "name": "hits",
           "required": true,
           "type": {
@@ -49355,12 +49433,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request.",
-          "name": "keep_alive",
-=======
           "name": "language",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49371,12 +49444,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
-          "name": "wait_for_completion_timeout",
-=======
           "name": "licensed_expired_feature",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49398,14 +49466,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Identifier for the search.",
-          "name": "id",
-          "required": true,
-=======
           "name": "max_buckets",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49415,14 +49477,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "If true, the search request is still executing. If false, the search is completed.",
-          "name": "is_partial",
-          "required": true,
-=======
           "name": "phase",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49432,14 +49488,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "If true, the response does not contain complete search results. This could be because either the search is still running (is_running status is false), or because it is already completed (is_running status is true) and results are partial due to failures or timeouts.",
-          "name": "is_running",
-          "required": true,
-=======
           "name": "property_name",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49449,12 +49499,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "For a running search shows a timestamp when the eql search started, in milliseconds since the Unix epoch.",
-          "name": "start_time_in_millis",
-=======
           "name": "processor_type",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49465,16 +49510,11 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Shows a timestamp when the eql search will be expired, in milliseconds since the Unix epoch. When this time is reached, the search and its results are deleted, even if the search is still ongoing.",
-          "name": "expiration_time_in_millis",
-=======
           "aliases": [
             "resource.id"
           ],
           "description": "resource id",
           "name": "resource_id",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49485,16 +49525,11 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "For a completed search shows the http status code of the completed search.",
-          "name": "completion_status",
-=======
           "aliases": [
             "resource.type"
           ],
           "description": "resource type",
           "name": "resource_type",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49505,12 +49540,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Metadata about the number of matching events or sequences.",
-          "name": "total",
-=======
           "name": "script",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -49521,12 +49551,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Contains events matching the query. Each object represents a matching event.",
-          "name": "events",
-=======
           "name": "script_stack",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "array_of",
@@ -49540,13 +49565,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
-          "name": "sequences",
-=======
           "name": "header",
->>>>>>> master
           "required": false,
           "type": {
             "key": {
@@ -49598,12 +49617,7 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": "Name of the index containing the event.",
-          "name": "_index",
-=======
           "name": "error",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -49614,12 +49628,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Unique identifier for the event. This ID is only unique within the index.",
-          "name": "_id",
-=======
           "name": "status",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -49658,10 +49667,6 @@
           "name": "all"
         },
         {
-<<<<<<< HEAD
-          "description": "Original JSON body passed for the event at index time.",
-          "name": "_source",
-=======
           "name": "none"
         },
         {
@@ -49697,7 +49702,6 @@
         {
           "description": "The name of the enrich policy",
           "name": "name",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -49738,12 +49742,7 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": "Contains events matching the query. Each object represents a matching event.",
-          "name": "events",
-=======
           "name": "status",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -49754,15 +49753,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
-          "name": "join_keys",
-          "required": true,
-=======
           "name": "task_id",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49774,23 +49766,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Return the most recent matches, similar to the Unix tail command.",
-          "name": "tail"
-        },
-        {
-          "description": "Return the earliest matches, similar to the Unix head command.",
-          "name": "head"
-        }
-      ],
-      "name": {
-        "name": "EqlResultPosition",
-        "namespace": "x_pack.eql.search"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "ExecuteEnrichPolicyStatus",
@@ -49798,26 +49773,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Format in which the values are returned.",
-          "name": "format",
-          "required": false,
-=======
           "name": "phase",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49836,15 +49793,8 @@
         "kind": "properties",
         "properties": [
           {
-<<<<<<< HEAD
-            "description": "EQL query you wish to run.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html",
-            "name": "query",
-            "required": true,
-=======
             "name": "context",
             "required": false,
->>>>>>> master
             "type": {
               "kind": "instance_of",
               "type": {
@@ -49865,186 +49815,13 @@
             }
           },
           {
-<<<<<<< HEAD
-            "description": "Field containing the event classification, such as process, file, or network.",
-            "name": "event_category_field",
-=======
             "name": "script",
->>>>>>> master
-            "required": false,
-            "serverDefault": "event.category",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-<<<<<<< HEAD
-                "name": "Field",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "Field used to sort hits with the same timestamp in ascending order",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql.html#eql-search-specify-a-sort-tiebreaker",
-            "name": "tiebreaker_field",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "Field containing event timestamp. Default \"@timestamp\"",
-            "name": "timestamp_field",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "Maximum number of events to search at a time for sequence queries.",
-            "name": "fetch_size",
-            "required": false,
-            "serverDefault": "1000",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "uint",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "Query, written in Query DSL, used to filter the events on which the EQL query runs.",
-            "name": "filter",
-            "required": false,
-            "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "QueryContainer",
-                    "namespace": "query_dsl.abstractions.container"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "QueryContainer",
-                      "namespace": "query_dsl.abstractions.container"
-                    }
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          },
-          {
-            "name": "keep_alive",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "keep_on_completion",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "wait_for_completion_timeout",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "description": "For basic queries, the maximum number of matching events to return. Defaults to 10",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax",
-            "name": "size",
-            "required": false,
-            "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "uint",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "float",
-                    "namespace": "internal"
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          },
-          {
-            "description": "Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.",
-            "name": "fields",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Field",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "EqlSearchFieldFormatted",
-                      "namespace": "x_pack.eql.search"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-=======
                 "name": "InlineScript",
                 "namespace": "__common.common_options.scripting"
->>>>>>> master
-              }
-            }
-          },
-          {
-            "name": "result_position",
-            "required": false,
-            "serverDefault": "tail",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "EqlResultPosition",
-                "namespace": "x_pack.eql.search"
               }
             }
           }
@@ -50073,67 +49850,8 @@
           "namespace": "__global.scripts_painless_execute"
         }
       ],
-<<<<<<< HEAD
-      "query": [
-        {
-          "name": "allow_no_indices",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "expand_wildcards",
-          "required": false,
-          "serverDefault": "open",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "common"
-            }
-          }
-        },
-        {
-          "description": "If true, missing or closed indices are not included in the response.",
-          "name": "ignore_unavailable",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Period for which the search and its results are stored on the cluster.",
-          "name": "keep_alive",
-          "required": false,
-          "serverDefault": "5d",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        },
-        {
-          "description": "If true, the search and its results are stored on the cluster.",
-          "name": "keep_on_completion",
-          "required": false,
-          "serverDefault": false,
-=======
       "inherits": [
         {
->>>>>>> master
           "type": {
             "name": "ResponseBase",
             "namespace": "__common.common_abstractions.response"
@@ -50147,14 +49865,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
-          "name": "wait_for_completion_timeout",
-          "required": false,
-=======
           "name": "result",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50202,15 +49914,10 @@
       "properties": []
     },
     {
-<<<<<<< HEAD
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html#eql-search-api-response-body",
-      "generics": [
-=======
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "inherits": [
->>>>>>> master
         {
           "type": {
             "name": "RequestBase",
@@ -50255,14 +49962,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": " Identifier for the search.",
-          "name": "id",
-          "required": false,
-=======
           "name": "snapshot_name",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50281,14 +49982,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
-          "description": "If true, the response does not contain complete search results.",
-          "name": "is_partial",
-          "required": false,
-=======
           "name": "name",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50298,14 +49993,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "If true, the search request is still executing.",
-          "name": "is_running",
-          "required": false,
-=======
           "name": "task",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50323,11 +50012,6 @@
           "name": "awaits_execution"
         },
         {
-<<<<<<< HEAD
-          "description": "Milliseconds it took Elasticsearch to execute the request.",
-          "name": "took",
-          "required": false,
-=======
           "name": "started"
         },
         {
@@ -50364,7 +50048,6 @@
         {
           "name": "actions",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
@@ -50377,14 +50060,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "If true, the request timed out before completion.",
-          "name": "timed_out",
-          "required": false,
-=======
           "name": "condition",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50394,12 +50071,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "Contains matching events and sequences. Also contains related metadata.",
-          "name": "hits",
-=======
           "name": "execution_duration",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -50736,18 +50408,23 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
           "name": "open"
         },
         {
+          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
           "name": "closed"
         },
         {
+          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
           "name": "hidden"
         },
         {
+          "description": "Wildcard expressions are not accepted.",
           "name": "none"
         },
         {
+          "description": "Match any data stream or index, including hidden ones.",
           "name": "all"
         }
       ],
@@ -51696,34 +51373,8 @@
       ]
     },
     {
-<<<<<<< HEAD
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
-          "name": "open"
-        },
-        {
-          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
-          "name": "closed"
-        },
-        {
-          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
-          "name": "hidden"
-        },
-        {
-          "description": "Wildcard expressions are not accepted.",
-          "name": "none"
-        },
-        {
-          "description": "Match any data stream or index, including hidden ones.",
-          "name": "all"
-        }
-      ],
-=======
       "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
       "kind": "type_alias",
->>>>>>> master
       "name": {
         "name": "Field",
         "namespace": "__common"
@@ -94984,10 +94635,6 @@
             }
           },
           {
-<<<<<<< HEAD
-            "description": "The maximum number of rows (or entries) to return in one response",
-            "name": "fetch_size",
-=======
             "name": "max_read_request_size",
             "required": false,
             "type": {
@@ -95011,9 +94658,7 @@
           },
           {
             "name": "max_write_buffer_count",
->>>>>>> master
             "required": false,
-            "serverDefault": "1000",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -95023,15 +94668,8 @@
             }
           },
           {
-<<<<<<< HEAD
-            "description": "Optional Elasticsearch query DSL for additional filtering.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/6.8/sql-rest-filtering.html",
-            "name": "filter",
-=======
             "name": "max_write_buffer_size",
->>>>>>> master
             "required": false,
-            "serverDefault": "none",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -95041,12 +94679,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "description": "SQL query to execute",
-            "name": "query",
-=======
             "name": "max_write_request_operation_count",
->>>>>>> master
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -95057,58 +94690,13 @@
             }
           },
           {
-<<<<<<< HEAD
-            "description": "The timeout before the request fails.",
-            "name": "request_timeout",
-            "required": false,
-            "serverDefault": "90s",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "description": "The timeout before a pagination request fails.",
-            "name": "page_timeout",
-            "required": false,
-            "serverDefault": "45s",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "description": "Time-zone in ISO 8601 used for executing the query on the server. More information available here.",
-            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
-            "name": "time_zone",
-=======
             "name": "max_write_request_size",
->>>>>>> master
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "ByteSize",
                 "namespace": "__common"
-              }
-            }
-          },
-          {
-            "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
-            "name": "field_multi_value_leniency",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
               }
             }
           }
@@ -95129,15 +94717,9 @@
       },
       "path": [
         {
-<<<<<<< HEAD
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/sql-rest-format.html#sql-rest-format",
-          "name": "format",
-          "required": false,
-=======
           "description": "The name of the auto follow pattern.",
           "name": "name",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -97505,8 +97087,10 @@
             }
           },
           {
+            "description": "The maximum number of rows (or entries) to return in one response",
             "name": "fetch_size",
             "required": false,
+            "serverDefault": "1000",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -97516,8 +97100,11 @@
             }
           },
           {
+            "description": "Optional Elasticsearch query DSL for additional filtering.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-filtering.html",
             "name": "filter",
             "required": false,
+            "serverDefault": "none",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -97527,6 +97114,7 @@
             }
           },
           {
+            "description": "SQL query to execute",
             "name": "query",
             "required": false,
             "type": {
@@ -97538,12 +97126,53 @@
             }
           },
           {
+            "description": "The timeout before the request fails.",
+            "name": "request_timeout",
+            "required": false,
+            "serverDefault": "90s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "__common.common_options.time_unit"
+              }
+            }
+          },
+          {
+            "description": "The timeout before a pagination request fails.",
+            "name": "page_timeout",
+            "required": false,
+            "serverDefault": "45s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "__common.common_options.time_unit"
+              }
+            }
+          },
+          {
+            "description": "Time-zone in ISO 8601 used for executing the query on the server. More information available here.",
+            "docUrl": "https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html",
             "name": "time_zone",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Throw an exception when encountering multiple values for a field (default) or be lenient and return the first value from the list (without any guarantees of what that will be - typically the first in natural ascending order).",
+            "name": "field_multi_value_leniency",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
                 "namespace": "internal"
               }
             }
@@ -97566,6 +97195,7 @@
       "path": [],
       "query": [
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html#sql-rest-format",
           "name": "format",
           "required": false,
           "type": {
@@ -125722,24 +125352,12 @@
       ]
     },
     {
-<<<<<<< HEAD
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Accurate",
-          "name": "eq"
-        },
-        {
-          "description": "Lower bound, including returned events or sequences",
-          "name": "gte"
-=======
       "inherits": [
         {
           "type": {
             "name": "CorePropertyBase",
             "namespace": "__common.mapping.types"
           }
->>>>>>> master
         }
       ],
       "kind": "interface",
@@ -126702,12 +126320,7 @@
             }
           },
           {
-<<<<<<< HEAD
-            "name": "query",
-            "required": true,
-=======
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "DelimitedPayloadTokenFilter",
               "namespace": "__common.analysis.token_filters.delimited_payload"
@@ -127735,9 +127348,11 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Accurate",
           "name": "eq"
         },
         {
+          "description": "Lower bound, including returned events or sequences",
           "name": "gte"
         }
       ],
@@ -128474,7 +128089,7 @@
           },
           {
             "name": "query",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {

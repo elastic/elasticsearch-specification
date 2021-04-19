@@ -17,7 +17,6 @@
  * under the License.
  */
 
-
 export enum TotalHitsRelation {
   /** Accurate */
   eq = 0,
