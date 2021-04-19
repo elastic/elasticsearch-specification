@@ -5018,7 +5018,7 @@ export interface FiltersBucketItemKeys {
 export type FiltersBucketItem = FiltersBucketItemKeys |
     { [property: string]: Aggregate }
 
-export interface FindStructureRequest<TBody = unknown> {
+export interface FindStructureRequest<TJsonDocument = unknown> {
   charset?: string
   column_names?: string
   delimiter?: string
@@ -5033,7 +5033,7 @@ export interface FindStructureRequest<TBody = unknown> {
   timeout?: Time
   timestamp_field?: Field
   timestamp_format?: string
-  body: TBody
+  body: Array<TJsonDocument>
 }
 
 export interface FindStructureResponse {

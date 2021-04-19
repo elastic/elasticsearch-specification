@@ -25,7 +25,7 @@ import { Time } from '@common/common_options/time_unit/Time'
  * @since 7.13.0
  * @stability TODO
  */
-export interface FindStructureRequest<TBody> {
+export interface FindStructureRequest<TJsonDocument> {
   query_parameters?: {
     /** The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set. */
     charset?: string
@@ -67,5 +67,5 @@ export interface FindStructureRequest<TBody> {
     /** The Java time format of the timestamp field in the text. */
     timestamp_format?: string
   }
-  body: TBody
+  body: Array<TJsonDocument>
 }

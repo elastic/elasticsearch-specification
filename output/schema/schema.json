@@ -52947,16 +52947,19 @@
       "body": {
         "kind": "value",
         "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "TBody",
-            "namespace": "text_structure.find_structure"
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TJsonDocument",
+              "namespace": "text_structure.find_structure"
+            }
           }
         }
       },
       "generics": [
         {
-          "name": "TBody",
+          "name": "TJsonDocument",
           "namespace": "text_structure.find_structure"
         }
       ],
