@@ -50,7 +50,6 @@ export type Timestamp = string
 export type TimeSpan = string
 export type EpochMillis = string | long
 
-@class_serializer('ErrorCauseFormatter')
 export class ErrorCause {
   type: string
   reason: string
