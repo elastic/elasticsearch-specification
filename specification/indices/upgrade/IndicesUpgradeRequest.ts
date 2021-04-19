@@ -25,7 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @since 7.13.0
  * @stability stable
  */
-export interface InidicesUpgradeRequest extends RequestBase {
+export interface IndicesUpgradeRequest extends RequestBase {
   path_parts?: {
     stub_b: integer
   }
