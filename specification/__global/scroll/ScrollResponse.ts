@@ -17,18 +17,6 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
 import { SearchResponse } from '@global/search/SearchResponse'
 
-export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
-  failed_shards?: Array<ScrollResponseFailedShard>
-}
-
-export class ScrollResponseFailedShard {
-  shard: integer
-  reason: ScrollResponseErrorReason
-}
-export class ScrollResponseErrorReason {
-  type: string
-  reason: string
-}
+export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {}

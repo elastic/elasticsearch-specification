@@ -106539,84 +106539,7 @@
         "name": "ScrollResponse",
         "namespace": "__global.scroll"
       },
-      "properties": [
-        {
-          "name": "failed_shards",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScrollResponseFailedShard",
-                "namespace": "__global.scroll"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseErrorReason",
-        "namespace": "__global.scroll"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseFailedShard",
-        "namespace": "__global.scroll"
-      },
-      "properties": [
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScrollResponseErrorReason",
-              "namespace": "__global.scroll"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": [
@@ -114002,18 +113925,18 @@
       "properties": [
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "__common"
             }
           }
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

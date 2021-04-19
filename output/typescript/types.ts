@@ -11021,17 +11021,6 @@ export interface ScrollRequest extends RequestBase {
 }
 
 export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
-  failed_shards?: Array<ScrollResponseFailedShard>
-}
-
-export interface ScrollResponseErrorReason {
-  type: string
-  reason: string
-}
-
-export interface ScrollResponseFailedShard {
-  shard: integer
-  reason: ScrollResponseErrorReason
 }
 
 export interface SearchAsYouTypeProperty extends CorePropertyBase {
@@ -11814,8 +11803,8 @@ export interface ShardDocs {
 }
 
 export interface ShardFailure {
-  index: string
-  node: string
+  index?: IndexName
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string
