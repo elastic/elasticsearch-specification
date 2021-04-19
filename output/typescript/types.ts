@@ -12091,6 +12091,36 @@ export interface ShingleTokenFilter extends TokenFilterBase {
   token_separator: string
 }
 
+export interface ShutdownDeleteNodeRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
+}
+
+export interface ShutdownDeleteNodeResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface ShutdownGetNodeRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
+}
+
+export interface ShutdownGetNodeResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface ShutdownPutNodeRequest extends RequestBase {
+  body: {
+    stub: string
+  }
+}
+
+export interface ShutdownPutNodeResponse extends ResponseBase {
+  stub: boolean
+}
+
 export interface SignificantTermsAggregate<TKey = unknown> extends MultiBucketAggregate<TKey> {
   bg_count: long
   doc_count: long

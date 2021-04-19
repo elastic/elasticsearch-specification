@@ -10234,9 +10234,16 @@
       "description": "Removes a node from the shutdown list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.delete_node",
-      "request": null,
+      "request": {
+        "name": "ShutdownDeleteNodeRequest",
+        "namespace": "shutdown.delete_node"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ShutdownDeleteNodeResponse",
+        "namespace": "shutdown.delete_node"
+      },
+      "since": "7.13.0",
       "stability": "experimental",
       "urls": [
         {
@@ -10258,9 +10265,16 @@
       "description": "Retrieve status of a node or nodes that are currently marked as shutting down",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.get_node",
-      "request": null,
+      "request": {
+        "name": "ShutdownGetNodeRequest",
+        "namespace": "shutdown.get_node"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "ShutdownGetNodeResponse",
+        "namespace": "shutdown.get_node"
+      },
+      "since": "7.13.0",
       "stability": "experimental",
       "urls": [
         {
@@ -10288,9 +10302,16 @@
       "description": "Adds a node to be shut down",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.put_node",
-      "request": null,
+      "request": {
+        "name": "ShutdownPutNodeRequest",
+        "namespace": "shutdown.put_node"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "ShutdownPutNodeResponse",
+        "namespace": "shutdown.put_node"
+      },
+      "since": "7.13.0",
       "stability": "experimental",
       "urls": [
         {
@@ -116321,6 +116342,198 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ShutdownDeleteNodeRequest",
+        "namespace": "shutdown.delete_node"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ShutdownDeleteNodeResponse",
+        "namespace": "shutdown.delete_node"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ShutdownGetNodeRequest",
+        "namespace": "shutdown.get_node"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ShutdownGetNodeResponse",
+        "namespace": "shutdown.get_node"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "ShutdownPutNodeRequest",
+        "namespace": "shutdown.put_node"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "ShutdownPutNodeResponse",
+        "namespace": "shutdown.put_node"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
