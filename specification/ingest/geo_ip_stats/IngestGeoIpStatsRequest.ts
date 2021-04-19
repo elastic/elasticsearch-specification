@@ -17,23 +17,22 @@
  * under the License.
  */
 
-/**
- * Type of index that wildcard expressions can match.
- */
-enum ExpandWildcardOptions {
-  /** Match any data stream or index, including hidden ones. */
-  all = 0,
-  /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
-  open = 1,
-  /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
-  closed = 2,
-  /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
-  hidden = 3,
-  /** Wildcard expressions are not accepted. */
-  none = 4
-}
+import { integer } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
-export type ExpandWildcards =
-  | ExpandWildcardOptions
-  | Array<ExpandWildcardOptions>
-  | string
+/**
+ * @rest_spec_name ingest.geo_ip_stats
+ * @since 7.13.0
+ * @stability stable
+ */
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  path_parts?: {
+    stub_b: integer
+  }
+  query_parameters?: {
+    stub_a: integer
+  }
+  body?: {
+    stub_c: integer
+  }
+}

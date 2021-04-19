@@ -18,13 +18,14 @@
  */
 
 import { Id, IndexName, Name, Uuid, VersionString } from '@common/common'
+import { Host, Ip, TransportAddress } from '@common/Networking'
 
 export class RecoveryOrigin {
   hostname?: string
-  host?: string
-  transport_address?: string
+  host?: Host
+  transport_address?: TransportAddress
   id?: Id
-  ip?: string
+  ip?: Ip
   name?: Name
   bootstrap_new_history_uuid?: boolean
   repository?: Name

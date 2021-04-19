@@ -17,21 +17,32 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { Id } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 
 /**
- * @rest_spec_name indices.get_data_stream
- * @since 7.9.0
+ * @rest_spec_name ml.stop_data_frame_analytics
+ * @since 7.3.0
  * @stability TODO
  */
-export interface IndicesGetDataStreamRequest extends RequestBase {
-  path_parts?: {
-    name?: IndexName
+export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
+  path_parts: {
+    /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    id: Id
   }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcards
+    /** @server_default true */
+    allow_no_match?: boolean
+    /**
+     * If true, the data frame analytics job is stopped forcefully.
+     * @server_default false
+     */
+    force?: boolean
+    /**
+     * Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.
+     * @server_default 20s
+     */
+    timeout?: Time
   }
-  body?: {}
 }

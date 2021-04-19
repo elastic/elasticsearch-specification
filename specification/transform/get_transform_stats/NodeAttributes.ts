@@ -20,12 +20,13 @@
 import { Id, Name } from '@common/common'
 import { NodeRoles } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@common/Networking'
 
 export class NodeAttributes {
   attributes: Dictionary<string, string>
   ephemeral_id: Id
   id?: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
   roles?: NodeRoles
 }

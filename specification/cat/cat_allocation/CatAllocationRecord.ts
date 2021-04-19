@@ -18,6 +18,7 @@
  */
 
 import { ByteSize, Percentage } from '@common/common'
+import { Host, Ip } from '@common/Networking'
 
 export class CatAllocationRecord {
   /**
@@ -54,11 +55,11 @@ export class CatAllocationRecord {
    * host of node
    * @aliases h
    */
-  host?: string
+  host?: Host
   /**
    * ip of node
    */
-  ip?: string
+  ip?: Ip
   /**
    * name of node
    * @aliases n

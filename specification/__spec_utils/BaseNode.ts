@@ -17,23 +17,16 @@
  * under the License.
  */
 
-/**
- * Type of index that wildcard expressions can match.
- */
-enum ExpandWildcardOptions {
-  /** Match any data stream or index, including hidden ones. */
-  all = 0,
-  /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
-  open = 1,
-  /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
-  closed = 2,
-  /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
-  hidden = 3,
-  /** Wildcard expressions are not accepted. */
-  none = 4
-}
+import { Name } from '@common/common'
+import { NodeRole, NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from './Dictionary'
+import { Host, Ip, TransportAddress } from '../__common/Networking'
 
-export type ExpandWildcards =
-  | ExpandWildcardOptions
-  | Array<ExpandWildcardOptions>
-  | string
+export class BaseNode {
+  attributes: Dictionary<string, string>
+  host: Host
+  ip: Ip
+  name: Name
+  roles?: NodeRole[]
+  transport_address: TransportAddress
+}
