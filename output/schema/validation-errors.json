@@ -192,23 +192,6 @@
         "Missing response"
       ]
     },
-    "indices.upgrade": {
-      "request": [
-        "InidicesUpgradeRequest: path parameter 'stub_b' does not exist in the json spec",
-        "InidicesUpgradeRequest: missing json spec path parameter 'index'",
-        "InidicesUpgradeRequest: query parameter 'stub_a' does not exist in the json spec",
-        "InidicesUpgradeRequest: missing json spec query parameter 'allow_no_indices'",
-        "InidicesUpgradeRequest: missing json spec query parameter 'expand_wildcards'",
-        "InidicesUpgradeRequest: missing json spec query parameter 'ignore_unavailable'",
-        "InidicesUpgradeRequest: missing json spec query parameter 'wait_for_completion'",
-        "InidicesUpgradeRequest: missing json spec query parameter 'only_ancient_segments'",
-        "Url path property 'index' is missing in request definition",
-        "Request path property 'stub_b' doesn't exist in endpoint URL templates"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ingest.geo_ip_stats": {
       "request": [
         "Missing request"
