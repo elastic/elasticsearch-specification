@@ -17,18 +17,34 @@
  * under the License.
  */
 
-import { Fields, Indices, integer } from '@common/common'
+import { Id, IndexName, integer } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '@common/SlicedScroll'
-import { Sort } from '@global/search/sort/Sort'
-import { RemoteSource } from './RemoteSource'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class ReindexSource {
-  index: Indices
-  query?: QueryContainer
-  remote?: RemoteSource
+export class RankEvalRequestItem {
+  /** The search request’s ID, used to group result details later. */
+  id: Id
+  /** The query being evaluated. */
+  request?: RankEvalQuery
+  /** List of document ratings */
+  ratings: DocumentRating[]
+  /** The search template Id */
+  template_id?: Id
+  /** The search template parameters. */
+  params?: Dictionary<string, UserDefinedValue>
+}
+
+export class RankEvalQuery {
+  query: QueryContainer
   size?: integer
-  slice?: SlicedScroll
-  sort?: Sort
-  _source?: Fields
+}
+
+export class DocumentRating {
+  /** The document ID. */
+  _id: Id
+  /** The document’s index. For data streams, this should be the document’s backing index. */
+  _index: IndexName
+  /** The document’s relevance with regard to this search request. */
+  rating: integer
 }

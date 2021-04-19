@@ -331,14 +331,6 @@
         "interface definition __global.msearch_template:MultiSearchTemplateResponse / Property 'responses' / array_of / instance_of - Non-leaf type cannot be used here: '__global.search:SearchResponse'"
       ]
     },
-    "rank_eval": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "search": {
       "request": [
         "SearchRequest: query parameter 'query_on_query_string' does not exist in the json spec",
