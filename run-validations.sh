@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-npm install --prefix specification
+npm install --prefix compiler
 npm install --prefix typescript-generator
 
-npm run compile:specs
-npm run compile:canonical-json
-npm run compile:ts-validation
+npm run compile:specification --prefix compiler
+npm run generate-schema --prefix compiler
+npm run start --prefix typescript-generator
 
 recorderFolder="../clients-flight-recorder"
 recorderScript="${recorderFolder}/run-validations.sh"
