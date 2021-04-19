@@ -100,14 +100,14 @@ export class MainError extends ErrorCause {
 //
 // Numeric Type Aliases
 //
-type short = number
-type byte = number
-type integer = number
-type uint = number
-type long = number
-type ulong = number
-type float = number
-type double = number
+export type short = number
+export type byte = number
+export type integer = number
+export type uint = number
+export type long = number
+export type ulong = number
+export type float = number
+export type double = number
 
 //strongly typed path parameters these are aliases so we can expose documentation
 //Some languages that support type alias or typed value types might want to keep these types
@@ -149,7 +149,7 @@ export type PipelineName = string
 export type NodeName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
-type DataStreamName = string
+export type DataStreamName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 export type ByteSize = long | string
@@ -204,7 +204,7 @@ export type SuggestionName = string
 export type SqlRow = UserDefinedValue[]
 
 // Container Type for HTTP Headers
-type HttpHeaders = Dictionary<string, string | string[]>
+export type HttpHeaders = Dictionary<string, string | string[]>
 
 /** A reference to a date field with formatting instructions on how to return the date */
 export class DateField {

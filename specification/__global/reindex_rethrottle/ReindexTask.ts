@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { long, Name } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, long, Name } from '@common/common'
 import { ReindexStatus } from './ReindexStatus'
 
 export class ReindexTask {

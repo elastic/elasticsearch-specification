@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, Id, long } from '@common/common'
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
 
 export class TaskInfo {

@@ -20,7 +20,7 @@
 import { IndexName, integer } from '@common/common'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
-class ClusterRerouteCommand {
+export class ClusterRerouteCommand {
   /**
    * Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.
    */
@@ -43,8 +43,11 @@ class ClusterRerouteCommand {
   allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
 }
 
-class ClusterRerouteCommandCancelAction {
-
+export class ClusterRerouteCommandCancelAction {
+  index: IndexName
+  shard: integer
+  node: string
+  allow_primary?: boolean
 }
 
 export class ClusterRerouteCommandAction {
@@ -55,7 +58,7 @@ export class ClusterRerouteCommandAction {
   allow_primary?: boolean
 }
 
-class ClusterRerouteCommandMoveAction {
+export class ClusterRerouteCommandMoveAction {
   index: IndexName
   shard: integer
   /** The node to move the shard from */
@@ -64,19 +67,19 @@ class ClusterRerouteCommandMoveAction {
   to_node: string
 }
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html */
-class ClusterRerouteCommandAllocateReplicaAction {
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html
+ */
+export class ClusterRerouteCommandAllocateReplicaAction {
   index: IndexName
   shard: integer
   node: string
 }
 
-class ClusterRerouteCommandAllocatePrimaryAction {
+export class ClusterRerouteCommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
-  /**
-   * If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.
-   */
+  /** If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true */
   accept_data_loss: boolean
 }
