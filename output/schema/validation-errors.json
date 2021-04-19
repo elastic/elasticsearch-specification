@@ -312,14 +312,6 @@
         "Missing response"
       ]
     },
-    "ml.stop_data_frame_analytics": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.update_data_frame_analytics": {
       "request": [
         "Missing request"
