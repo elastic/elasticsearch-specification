@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Id } from "@common/common";
-import { RequestBase } from "@common/common_abstractions/request/RequestBase";
-import { Time } from "@common/common_options/time_unit/Time";
+import { Id } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { Time } from '@common/common_options/time_unit/Time'
 
 /**
  * @rest_spec_name ml.stop_data_frame_analytics

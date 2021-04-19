@@ -7705,13 +7705,13 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
       "request": {
-        "name": "StopDataFrameAnalyticsRequest",
-        "namespace": "x_pack.machine_learning"
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
       },
       "requestBodyRequired": false,
       "response": {
-        "name": "StopDataFrameAnalyticsResponse",
-        "namespace": "x_pack.machine_learning"
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
       },
       "since": "7.3.0",
       "stability": "beta",
@@ -82686,6 +82686,106 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to stop",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, the data frame analytics job is stopped forcefully.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stopped",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -119265,139 +119365,12 @@
               "namespace": "internal"
             }
           }
-<<<<<<< HEAD
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": [
-        {
-          "type": {
-            "name": "RequestBase",
-            "namespace": "common_abstractions.request"
-          }
-        }
-      ],
-      "kind": "request",
-      "name": {
-        "name": "StopDataFrameAnalyticsRequest",
-        "namespace": "x_pack.machine_learning"
-      },
-      "path": [
-        {
-          "description": "The ID of the data frame analytics to stop",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "allow_no_match",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "If true, the data frame analytics job is stopped forcefully.",
-          "name": "force",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
-          "name": "timeout",
-          "required": false,
-          "serverDefault": "20s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "common_options.time_unit"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": [
-        {
-          "type": {
-            "name": "ResponseBase",
-            "namespace": "common_abstractions.response"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "StopDataFrameAnalyticsResponse",
-        "namespace": "x_pack.machine_learning"
-      },
-      "properties": [
-        {
-          "name": "stopped",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "force",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "timeout",
-            "required": false,
-=======
         },
         {
           "name": "realtime",
           "required": false,
           "type": {
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "boolean",
               "namespace": "internal"

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from "@common/common_abstractions/response/ResponseBase";
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class MlStopDataFrameAnalyticsResponse extends ResponseBase {
   stopped: boolean

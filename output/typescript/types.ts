@@ -8385,6 +8385,17 @@ export interface MlStartDatafeedResponse extends ResponseBase {
   started: boolean
 }
 
+export interface MlStopDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  allow_no_match?: boolean
+  force?: boolean
+  timeout?: Time
+}
+
+export interface MlStopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
+}
+
 export interface MlStopDatafeedRequest extends RequestBase {
   datafeed_id: Ids
   allow_no_match?: boolean
@@ -12645,25 +12656,7 @@ export interface StepKey {
   phase: string
 }
 
-<<<<<<< HEAD
-export interface StopDataFrameAnalyticsRequest extends RequestBase {
-  id: Id
-  allow_no_match?: boolean
-  force?: boolean
-  timeout?: Time
-}
-
-export interface StopDataFrameAnalyticsResponse extends ResponseBase {
-  stopped: boolean
-}
-
-export interface StopDatafeedRequest extends RequestBase {
-  datafeed_id: Ids
-  allow_no_match?: boolean
-  force?: boolean
-=======
 export interface StopIlmRequest extends RequestBase {
->>>>>>> master
   body?: {
     stub: boolean
   }
