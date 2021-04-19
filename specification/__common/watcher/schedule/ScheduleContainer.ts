@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Time } from '@common/common_options/time_unit/Time'
 import { CronExpression } from './CronExpression'
 import { DailySchedule } from './DailySchedule'
 import { HourlySchedule } from './HourlySchedule'
@@ -29,7 +30,7 @@ export class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Interval
+  interval?: Time
   monthly?: TimeOfMonth[]
   weekly?: TimeOfWeek[]
   yearly?: TimeOfYear[]

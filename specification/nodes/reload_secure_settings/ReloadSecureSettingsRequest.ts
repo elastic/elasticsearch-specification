@@ -18,6 +18,7 @@
  */
 
 import { NodeIds } from '@common/common'
+import { Password } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
 
@@ -34,6 +35,6 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
     timeout?: Time
   }
   body?: {
-    secure_settings_password?: string
+    secure_settings_password?: Password
   }
 }

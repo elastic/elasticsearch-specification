@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Password, Username } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -33,8 +34,8 @@ export interface SecurityGrantApiKeyRequest extends RequestBase {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
     access_token?: string
-    username?: Name
-    password?: string
+    username?: Username
+    password?: Password
   }
 }
 

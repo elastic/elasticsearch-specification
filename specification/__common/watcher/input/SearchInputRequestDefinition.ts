@@ -19,14 +19,19 @@
 
 import { IndexName } from '@common/common'
 import { SearchType } from '@common/common/SearchType'
-import { SearchRequest } from '@global/search/SearchRequest'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
 import { IndicesOptions } from './IndicesOptions'
 
 export class SearchInputRequestDefinition {
-  body?: SearchRequest
+  body?: SearchInputRequestBody
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
+  rest_total_hits_as_int?: boolean
+}
+
+export class SearchInputRequestBody {
+  query: QueryContainer
 }

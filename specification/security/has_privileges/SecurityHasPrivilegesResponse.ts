@@ -18,6 +18,7 @@
  */
 
 import { IndexName, Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -26,7 +27,7 @@ export class SecurityHasPrivilegesResponse extends ResponseBase {
   cluster: Dictionary<string, boolean>
   has_all_requested: boolean
   index: Dictionary<IndexName, Privileges>
-  username: string
+  username: Username
 }
 
 export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>

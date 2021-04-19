@@ -21,7 +21,8 @@ import { HttpInputRequestDefinition } from './HttpInputRequestDefinition'
 import { ResponseContentType } from './ResponseContentType'
 
 export class HttpInput {
-  extract: string[]
-  request: HttpInputRequestDefinition
-  response_content_type: ResponseContentType
+  http?: HttpInput
+  extract?: string[]
+  request?: HttpInputRequestDefinition
+  response_content_type?: ResponseContentType
 }

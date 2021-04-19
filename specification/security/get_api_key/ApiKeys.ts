@@ -18,6 +18,7 @@
  */
 
 import { Id, long, Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -28,6 +29,6 @@ export class ApiKeys {
   invalidated: boolean
   name: Name
   realm: string
-  username: Name
+  username: Username
   metadata?: Dictionary<string, UserDefinedValue> // version: 7.13
 }

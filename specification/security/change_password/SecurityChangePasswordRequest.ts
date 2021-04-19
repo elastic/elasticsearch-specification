@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Password, Username } from '@common/common/Credentials'
 import { Refresh } from '@common/common/Refresh'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
@@ -28,12 +29,12 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  */
 export interface SecurityChangePasswordRequest extends RequestBase {
   path_parts?: {
-    username?: Name
+    username?: Username
   }
   query_parameters?: {
     refresh?: Refresh
   }
   body?: {
-    password?: string
+    password?: Password
   }
 }

@@ -17,11 +17,5 @@
  * under the License.
  */
 
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-
-export class IndicesOptions {
-  allow_no_indices: boolean
-  expand_wildcards: ExpandWildcards
-  ignore_unavailable: boolean
-  ignore_throttled?: boolean
-}
+export type Username = string
+export type Password = string

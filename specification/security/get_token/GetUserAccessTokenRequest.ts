@@ -18,6 +18,7 @@
  */
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
+import { Password, Username } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { AccessTokenGrantType } from '@common/security/AccessTokenGrantType'
 
@@ -32,10 +33,10 @@ export interface SecurityGetTokenRequest extends RequestBase {
   body?: {
     grant_type?: AccessTokenGrantType
     scope?: string
-    password?: string
+    password?: Password
     kerberos_ticket?: string
     refresh_token?: string
-    username?: string
+    username?: Username
   }
 }
 

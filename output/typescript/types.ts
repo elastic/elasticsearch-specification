@@ -39,7 +39,8 @@ export interface Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index: ActionIndex
+  index?: ActionIndex
+  logging?: LoggingAction
 }
 
 export type ActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
@@ -48,6 +49,7 @@ export type ActionExecutionState = 'awaits_execution' | 'checking' | 'execution_
 
 export interface ActionIndex {
   index: IndexName
+  doc_id?: Id
 }
 
 export interface ActionStatus {
@@ -390,7 +392,7 @@ export interface ApiKeys {
   invalidated: boolean
   name: Name
   realm: string
-  username: Name
+  username: Username
   metadata?: Record<string, any>
 }
 
@@ -2675,7 +2677,7 @@ export interface CcrUsage extends XPackUsage {
 }
 
 export interface ChainInput {
-  inputs: Record<string, InputContainer>
+  inputs: Array<InputContainer>
 }
 
 export interface ChainTransform {
@@ -3479,9 +3481,19 @@ export interface CompactNodeInfo {
 }
 
 export interface CompareCondition {
-  comparison: string
-  path: string
-  value: any
+  comparison?: string
+  path?: string
+  value?: any
+  'ctx.payload.match'?: CompareContextPayloadCondition
+  'ctx.payload.value'?: CompareContextPayloadCondition
+}
+
+export interface CompareContextPayloadCondition {
+  eq?: any
+  lt?: any
+  gt?: any
+  lte?: any
+  gte?: any
 }
 
 export interface CompletionProperty extends DocValuesPropertyBase {
@@ -6045,9 +6057,10 @@ export interface HtmlStripCharFilter extends CharFilterBase {
 export type HttpHeaders = Record<string, string | Array<string>>
 
 export interface HttpInput {
-  extract: Array<string>
-  request: HttpInputRequestDefinition
-  response_content_type: ResponseContentType
+  http?: HttpInput
+  extract?: Array<string>
+  request?: HttpInputRequestDefinition
+  response_content_type?: ResponseContentType
 }
 
 export interface HttpInputAuthentication {
@@ -6055,8 +6068,8 @@ export interface HttpInputAuthentication {
 }
 
 export interface HttpInputBasicAuthentication {
-  password: string
-  username: string
+  password: Password
+  username: Username
 }
 
 export type HttpInputMethod = 'head' | 'get' | 'post' | 'put' | 'delete'
@@ -6742,6 +6755,7 @@ export interface IndicesOptions {
   allow_no_indices: boolean
   expand_wildcards: ExpandWildcards
   ignore_unavailable: boolean
+  ignore_throttled?: boolean
 }
 
 export interface IndicesPrivileges {
@@ -7171,7 +7185,7 @@ export interface InputContainer {
   chain?: ChainInput
   http?: HttpInput
   search?: SearchInput
-  simple?: SimpleInput
+  simple?: Record<string, any>
 }
 
 export type InputType = 'http' | 'search' | 'simple'
@@ -7179,13 +7193,6 @@ export type InputType = 'http' | 'search' | 'simple'
 export interface IntegerRangeProperty extends RangePropertyBase {
   type: 'integer_range'
 }
-
-export interface Interval extends ScheduleBase {
-  factor: long
-  unit: IntervalUnit
-}
-
-export type IntervalUnit = 's' | 'm' | 'h' | 'd' | 'w'
 
 export interface IntervalsAllOf {
   intervals?: Array<IntervalsContainer>
@@ -7610,6 +7617,11 @@ export interface ListTasksResponse extends ResponseBase {
   node_failures?: Array<ErrorCause>
   nodes?: Record<string, TaskExecutingNode>
   tasks?: Record<string, TaskInfo> | Array<TaskInfo>
+}
+
+export interface LoggingAction {
+  level: string
+  text: string
 }
 
 export interface LoggingActionResult {
@@ -9435,6 +9447,8 @@ export interface PartitionScore {
   record_score: double
 }
 
+export type Password = string
+
 export interface PathHierarchyTokenizer extends TokenizerBase {
   buffer_size: integer
   delimiter: string
@@ -10478,7 +10492,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
   body?: {
-    secure_settings_password?: string
+    secure_settings_password?: Password
   }
 }
 
@@ -10490,9 +10504,9 @@ export interface ReloadSecureSettingsResponse extends NodesResponseBase {
 export interface RemoteSource {
   connect_timeout: Time
   host: Host
-  password: string
+  username: Username
+  password: Password
   socket_timeout: Time
-  username: string
 }
 
 export interface RemoveDuplicatesTokenFilter extends TokenFilterBase {
@@ -10880,7 +10894,7 @@ export interface ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule
-  interval?: Interval
+  interval?: Time
   monthly?: Array<TimeOfMonth>
   weekly?: Array<TimeOfWeek>
   yearly?: Array<TimeOfYear>
@@ -11021,17 +11035,22 @@ export interface SearchAsYouTypeProperty extends CorePropertyBase {
 }
 
 export interface SearchInput {
-  extract: Array<string>
+  extract?: Array<string>
   request: SearchInputRequestDefinition
-  timeout: Time
+  timeout?: Time
+}
+
+export interface SearchInputRequestBody {
+  query: QueryContainer
 }
 
 export interface SearchInputRequestDefinition {
-  body?: SearchRequest
+  body?: SearchInputRequestBody
   indices?: Array<IndexName>
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequest
+  rest_total_hits_as_int?: boolean
 }
 
 export interface SearchNode {
@@ -11297,16 +11316,16 @@ export interface SecurityAuthenticateResponse extends ResponseBase {
   lookup_realm: RealmInfo
   metadata: Record<string, any>
   roles: Array<string>
-  username: Name
+  username: Username
   enabled: boolean
   authentication_type: string
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
-  username?: Name
+  username?: Username
   refresh?: Refresh
   body: {
-    password?: string
+    password?: Password
   }
 }
 
@@ -11398,7 +11417,7 @@ export interface SecurityDeleteRoleResponse extends ResponseBase {
 }
 
 export interface SecurityDeleteUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11407,7 +11426,7 @@ export interface SecurityDeleteUserResponse extends ResponseBase {
 }
 
 export interface SecurityDisableUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11416,7 +11435,7 @@ export interface SecurityDisableUserResponse extends ResponseBase {
 }
 
 export interface SecurityEnableUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11433,7 +11452,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   name?: Name
   owner?: boolean
   realm_name?: Name
-  username?: Name
+  username?: Username
 }
 
 export interface SecurityGetApiKeyResponse extends ResponseBase {
@@ -11475,10 +11494,10 @@ export interface SecurityGetTokenRequest extends RequestBase {
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string
-    password?: string
+    password?: Password
     kerberos_ticket?: string
     refresh_token?: string
-    username?: string
+    username?: Username
   }
 }
 
@@ -11505,7 +11524,7 @@ export interface SecurityGetUserPrivilegesResponse extends ResponseBase {
 }
 
 export interface SecurityGetUserRequest extends RequestBase {
-  username?: Names
+  username?: Array<Username>
 }
 
 export interface SecurityGetUserResponse extends DictionaryResponseBase<string, XPackUser> {
@@ -11516,8 +11535,8 @@ export interface SecurityGrantApiKeyRequest extends RequestBase {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
     access_token?: string
-    username?: Name
-    password?: string
+    username?: Username
+    password?: Password
   }
 }
 
@@ -11542,7 +11561,7 @@ export interface SecurityHasPrivilegesResponse extends ResponseBase {
   cluster: Record<string, boolean>
   has_all_requested: boolean
   index: Record<IndexName, Privileges>
-  username: string
+  username: Username
 }
 
 export interface SecurityInvalidateApiKeyRequest extends RequestBase {
@@ -11552,7 +11571,7 @@ export interface SecurityInvalidateApiKeyRequest extends RequestBase {
     name?: Name
     owner?: boolean
     realm_name?: string
-    username?: Name
+    username?: Username
   }
 }
 
@@ -11568,7 +11587,7 @@ export interface SecurityInvalidateTokenRequest extends RequestBase {
     token?: string
     refresh_token?: string
     realm_name?: Name
-    username?: Name
+    username?: Username
   }
 }
 
@@ -11627,14 +11646,14 @@ export interface SecurityPutRoleResponse extends ResponseBase {
 }
 
 export interface SecurityPutUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
   body: {
-    username?: Name
+    username?: Username
     email?: string | null
     full_name?: string | null
     metadata?: Record<string, any>
-    password?: string
+    password?: Password
     password_hash?: string
     roles?: Array<string>
     enabled?: boolean
@@ -12116,10 +12135,6 @@ export interface SignificantTextAggregation extends BucketAggregationBase {
   shard_size?: integer
   size?: integer
   source_fields?: Fields
-}
-
-export interface SimpleInput {
-  payload: Record<string, any>
 }
 
 export type SimpleQueryStringFlags = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
@@ -13825,6 +13840,8 @@ export interface UserRealm {
   type: string
 }
 
+export type Username = string
+
 export type Uuid = string
 
 export interface ValueAggregate extends AggregateBase {
@@ -13889,6 +13906,7 @@ export interface Watch {
   throttle_period?: string
   transform?: TransformContainer
   trigger: TriggerContainer
+  throttle_period_in_millis?: long
 }
 
 export interface WatchRecord {
@@ -14262,7 +14280,7 @@ export interface XPackUser {
   full_name?: Name
   metadata: Record<string, any>
   roles: Array<string>
-  username: Name
+  username: Username
   enabled: boolean
 }
 

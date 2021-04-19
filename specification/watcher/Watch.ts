@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
+import { IndexName, long } from '@common/common'
 import { Action } from '@common/watcher/actions/Action'
 import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
 import { InputContainer } from '@common/watcher/input/InputContainer'
@@ -36,4 +36,5 @@ export class Watch {
   throttle_period?: string
   transform?: TransformContainer
   trigger: TriggerContainer
+  throttle_period_in_millis?: long
 }

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { InputContainer } from './InputContainer'
 
 export class ChainInput {
-  inputs: Dictionary<string, InputContainer>
+  inputs: InputContainer[]
 }

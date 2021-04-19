@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { Refresh } from '@common/common/Refresh'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
@@ -27,8 +28,8 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface SecurityDeleteUserRequest extends RequestBase {
-  path_parts?: {
-    username: Name
+  path_parts: {
+    username: Username
   }
   query_parameters?: {
     refresh?: Refresh
