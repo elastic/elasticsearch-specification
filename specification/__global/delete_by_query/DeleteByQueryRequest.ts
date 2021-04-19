@@ -32,7 +32,7 @@ import { SearchType } from '@common/common/SearchType'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '@global/scroll/SlicedScroll'
+import { SlicedScroll } from '@common/SlicedScroll'
 
 /**
  * @rest_spec_name delete_by_query

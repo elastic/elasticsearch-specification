@@ -17,19 +17,22 @@
  * under the License.
  */
 
-import { HttpHeaders, long, TaskId } from '@common/common'
-import { TaskStatus } from './TaskStatus'
+import { integer } from '@common/common'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
-export class TaskState {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskStatus
-  type: string
+/**
+ * @rest_spec_name ingest.geo_ip_stats
+ * @since 7.13.0
+ * @stability stable
+ */
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  path_parts?: {
+    stub_b: integer
+  }
+  query_parameters?: {
+    stub_a: integer
+  }
+  body?: {
+    stub_c: integer
+  }
 }

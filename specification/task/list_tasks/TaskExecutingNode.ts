@@ -18,16 +18,10 @@
  */
 
 import { TaskId } from '@common/common'
+import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskState } from './TaskState'
 
-export class TaskExecutingNode {
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  attributes: Dictionary<string, string>
-  host: string
-  ip: string
-  name: string
-  roles: string[]
+export class TaskExecutingNode extends BaseNode {
   tasks: Dictionary<TaskId, TaskState>
-  transport_address: string
 }

@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer, uint } from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Host } from '@common/Networking'
 import { ConnectionScheme } from './ConnectionScheme'
 import { HttpInputAuthentication } from './HttpInputAuthentication'
 import { HttpInputMethod } from './HttpInputMethod'
@@ -30,11 +31,11 @@ export class HttpInputRequestDefinition {
   body?: string
   connection_timeout?: Time
   headers?: Dictionary<string, string>
-  host?: string
+  host?: Host
   method?: HttpInputMethod
   params?: Dictionary<string, string>
   path?: string
-  port?: integer
+  port?: uint
   proxy?: HttpInputProxy
   read_timeout?: Time
   scheme?: ConnectionScheme

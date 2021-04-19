@@ -17,19 +17,16 @@
  * under the License.
  */
 
-import { HttpHeaders, long, TaskId } from '@common/common'
-import { TaskStatus } from './TaskStatus'
+import { Name } from '@common/common'
+import { NodeRole, NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from './Dictionary'
+import { Host, Ip, TransportAddress } from '../__common/Networking'
 
-export class TaskState {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskStatus
-  type: string
+export class BaseNode {
+  attributes: Dictionary<string, string>
+  host: Host
+  ip: Ip
+  name: Name
+  roles?: NodeRole[]
+  transport_address: TransportAddress
 }

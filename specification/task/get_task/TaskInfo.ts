@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, Id, long } from '@common/common'
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
 
 export class TaskInfo {
@@ -26,7 +25,7 @@ export class TaskInfo {
   cancellable: boolean
   children?: TaskInfo[]
   description?: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   running_time_in_nanos: long

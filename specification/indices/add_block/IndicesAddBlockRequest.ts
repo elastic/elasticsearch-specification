@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@common/common'
-import { ExpandWildcardOptions } from '@common/common/ExpandWildcards'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
 
@@ -34,7 +34,7 @@ export interface IndicesAddBlockRequest extends RequestBase {
   }
   query_parameters?: {
     allow_no_indices?: boolean // default: true
-    expand_wildcards?: ExpandWildcardOptions // default: open
+    expand_wildcards?: ExpandWildcards // default: open
     ignore_unavailable?: boolean // default: false
     master_timeout?: Time // default: 30s
     timeout?: Time // default: 30s

@@ -19,7 +19,9 @@
 
 import { integer } from '@common/common'
 
-/*
+/**
+ * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
+ * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
  * https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
  * Only support 0 and -1 but we have no way to encode these as constants at the moment
  */
