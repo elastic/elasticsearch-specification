@@ -113,8 +113,9 @@ export interface AggregationBreakdown {
 }
 
 export interface AggregationContainer {
-  adjacency_matrix?: AdjacencyMatrixAggregation
   aggs?: Record<string, AggregationContainer>
+  meta?: Record<string, any>
+  adjacency_matrix?: AdjacencyMatrixAggregation
   aggregations?: Record<string, AggregationContainer>
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
@@ -151,7 +152,6 @@ export interface AggregationContainer {
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Record<string, any>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation
@@ -8673,7 +8673,6 @@ export interface MultiGetHit<TDocument = unknown> {
 export type MultiGetId = string | integer
 
 export interface MultiGetOperation {
-  can_be_flattened?: boolean
   _id: MultiGetId
   _index?: IndexName
   routing?: Routing
@@ -9900,10 +9899,6 @@ export interface QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: NamedQuery<IntervalsQuery | string>
-  is_conditionless?: boolean
-  is_strict?: boolean
-  is_verbatim?: boolean
-  is_writable?: boolean
   match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
   match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
@@ -12101,9 +12096,9 @@ export interface SlmUsage extends XPackUsage {
 }
 
 export interface SmoothingModelContainer {
-  laplace: LaplaceSmoothingModel
-  linear_interpolation: LinearInterpolationSmoothingModel
-  stupid_backoff: StupidBackoffSmoothingModel
+  laplace?: LaplaceSmoothingModel
+  linear_interpolation?: LinearInterpolationSmoothingModel
+  stupid_backoff?: StupidBackoffSmoothingModel
 }
 
 export interface SnapshotCloneRequest extends RequestBase {
@@ -13317,9 +13312,9 @@ export interface TransformCheckpointingInfo {
 }
 
 export interface TransformContainer {
-  chain: ChainTransform
-  script: ScriptTransform
-  search: SearchTransform
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
 }
 
 export interface TransformDestination {

@@ -22,6 +22,9 @@ import { HttpInput } from './HttpInput'
 import { SearchInput } from './SearchInput'
 import { SimpleInput } from './SimpleInput'
 
+/**
+ * @variants container
+ */
 export class InputContainer {
   chain?: ChainInput
   http?: HttpInput

@@ -31,5 +31,6 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "keywords": []
 }

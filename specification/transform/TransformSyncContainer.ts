@@ -19,6 +19,9 @@
 
 import { TransformTimeSync } from './TransformTimeSync'
 
+/**
+ * @variants container
+ */
 export class TransformSyncContainer {
   time: TransformTimeSync
 }

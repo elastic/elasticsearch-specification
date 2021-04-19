@@ -12856,17 +12856,7 @@
       },
       "properties": [
         {
-          "name": "adjacency_matrix",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AdjacencyMatrixAggregation",
-              "namespace": "__common.aggregations.bucket.adjacency_matrix"
-            }
-          }
-        },
-        {
+          "container_property": true,
           "name": "aggs",
           "required": false,
           "type": {
@@ -12884,6 +12874,35 @@
                 "name": "AggregationContainer",
                 "namespace": "__common.aggregations"
               }
+            }
+          }
+        },
+        {
+          "container_property": true,
+          "name": "meta",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "adjacency_matrix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AdjacencyMatrixAggregation",
+              "namespace": "__common.aggregations.bucket.adjacency_matrix"
             }
           }
         },
@@ -13294,23 +13313,6 @@
           }
         },
         {
-          "name": "meta",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
           "name": "min",
           "required": false,
           "type": {
@@ -13684,7 +13686,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -39527,7 +39532,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "enum",
@@ -71831,7 +71839,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "enum",
@@ -72102,7 +72113,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -85390,17 +85404,6 @@
       },
       "properties": [
         {
-          "name": "can_be_flattened",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "_id",
           "required": true,
           "type": {
@@ -94490,7 +94493,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -96431,50 +96437,6 @@
           }
         },
         {
-          "name": "is_conditionless",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_strict",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_verbatim",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "is_writable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "match",
           "required": false,
           "type": {
@@ -97197,7 +97159,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -104152,7 +104117,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -116459,7 +116427,7 @@
       "properties": [
         {
           "name": "laplace",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116470,7 +116438,7 @@
         },
         {
           "name": "linear_interpolation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116481,7 +116449,7 @@
         },
         {
           "name": "stupid_backoff",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116490,7 +116458,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "attachedBehaviors": [
@@ -122570,7 +122541,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -127704,7 +127678,7 @@
       "properties": [
         {
           "name": "chain",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127715,7 +127689,7 @@
         },
         {
           "name": "script",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127726,7 +127700,7 @@
         },
         {
           "name": "search",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127735,7 +127709,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -128192,7 +128169,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -128597,7 +128577,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -128617,7 +128600,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",

@@ -23,6 +23,9 @@ import { CompareCondition } from './CompareCondition'
 import { NeverCondition } from './NeverCondition'
 import { ScriptCondition } from './ScriptCondition'
 
+/**
+ * @variants container
+ */
 export class ConditionContainer {
   always?: AlwaysCondition
   array_compare?: ArrayCompareCondition
