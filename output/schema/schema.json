@@ -5400,9 +5400,16 @@
       "description": "DEPRECATED Upgrades to the current version of Lucene.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.upgrade",
-      "request": null,
+      "request": {
+        "name": "IndicesUpgradeRequest",
+        "namespace": "indices.upgrade"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IndicesUpgradeResponse",
+        "namespace": "indices.upgrade"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -71182,6 +71189,94 @@
         "namespace": "indices.update_aliases"
       },
       "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "__common"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IndicesUpgradeRequest",
+        "namespace": "indices.upgrade"
+      },
+      "path": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesUpgradeResponse",
+        "namespace": "indices.upgrade"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [

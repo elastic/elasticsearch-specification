@@ -7035,6 +7035,18 @@ export interface IndicesUpdateAliasBulkRequest extends RequestBase {
 export interface IndicesUpdateAliasBulkResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesUpgradeRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IndicesUpgradeResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IndicesValidateQueryRequest extends RequestBase {
   index?: Indices
   type?: Types
