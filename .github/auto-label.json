@@ -1,9 +1,9 @@
 {
   "rules": {
     "documentation": "*.md",
-    "specification": "/specification/specs",
+    "specification": "/specification",
     "generator:typescript": "/typescript-generator",
     "generator:java": "/java-generator",
-    "compiler": "/specification/compiler"
+    "compiler": "/compiler"
   }
 }

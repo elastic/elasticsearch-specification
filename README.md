@@ -1,11 +1,12 @@
 # elastic client generator
 
 This repository contains the Elasticsearch request/response definitions in TypeScript,
-you can find them inside [`/specification/specs`](./specification/specs).
-The [`specification`](specification) folder contains a TypeScript program that compiles the entire definition
+you can find them inside [`/specification`](./specification).
+The [`/compiler`](./compiler) folder contains a TypeScript program that compiles the entire definition
 in a JSON representation that can be used for generating language clients.
 
-This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](specification/src/metamodel.ts) that also explains the various properties and their values.
+This JSON representation is formally defined by [a set of TypeScript definitions (a meta-model)](./compiler/model/metamodel.ts)
+that also explains the various properties and their values.
 
 ## Prepare the environment
 
@@ -35,14 +36,40 @@ $ npm install --prefix specification
 
 # generate the JSON representation
 $ npm run generate-schema --prefix specification
+# or via make
+$ make spec-generate
 
 # the generated output can be found in ./output/schema/schema.json
 $ cat output/schema/schema.json
 ```
 
+## Make Targets
+
+```
+Usage:
+  make <target>
+  validation-all   Run Validation on all Endpoints
+  validation-all-fresh  Run Validation on all Endpoints with a fresh setup
+  validation-api   Validate Endpoint with param: api=<api-name>
+  validation-api-request  Validate request of Endpoint with param: api=<api-name>
+  validation-api-response  Validate response of Endpoint with param: api=<api-name>
+  license-check    Add the license headers to the files
+  license-add      Add the license headers to the files
+  spec-format-check  Check specification formatting rules
+  spec-format-fix  Format/fix the specification according to the formatting rules
+  spec-generate    Generate the output spec
+  spec-compile     Compile the specification
+  spec-imports-fix  Fix the TypeScript imports
+  spec-dangling-types  Generate the dangling types rreport
+  contrib-install  Install dependencies for contrib target
+  contrib          Pre contribution target
+  help             Display help
+```
+
 ### Structure of the JSON representation
 
-The JSON representation is [formally defined as TypeScript definitions](./specification/src/metamodel.ts). Refer to them for the full details. It is an object with two top level keys:
+The JSON representation is [formally defined as TypeScript definitions](./compiler/model/metamodel.ts).
+Refer to them for the full details. It is an object with two top level keys:
 
 ```jsonc
 {
@@ -174,7 +201,7 @@ The following command validates the index request and response api:
 ./run-validations.sh --api index --request --response
 ```
 
-Once you see the errors, you can fix the original definition in `/specification/specs`
+Once you see the errors, you can fix the original definition in `/specification`
 and then run the command again until the types validator does not trigger any new error.
 Finally open a pull request with your changes.
 
@@ -203,7 +230,7 @@ See [here](./docs/add-new-api.md).
 
 ### A definition is not correct, how do I fix it?
 
-All the definitons are inside `specifications/specs` folder, search the bad defintion and update it,
+All the definitons are inside `/specification` folder, search the bad defintion and update it,
 you can find above how to run the validation of the spec.
 
 ### An endpoint is missing, how do I add it?
@@ -212,7 +239,7 @@ See [here](./docs/add-new-api.md).
 
 ### An endpoint definition is not correct, how do I fix it?
 
-All the endpoint definitons are inside `specifications/specs/_json_spec` folder, which contains a series of
+All the endpoint definitons are inside `/specification/_json_spec` folder, which contains a series of
 JSON files taken directly from the Elasticsearch rest-api-spec.
 You should copy from there the updated endpoint defintion and change it here.
 

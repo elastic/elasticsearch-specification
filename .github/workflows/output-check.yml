@@ -17,13 +17,13 @@ jobs:
 
     - name: Install
       run: |
-        npm install --prefix specification
+        npm install --prefix compiler
         npm install --prefix typescript-generator
 
     - name: Generate output
       run: |
-        npm run compile:canonical-json
-        npm run compile:ts-validation
+        npm run generate-schema --prefix compiler
+        npm run start --prefix typescript-generator
 
     - name: Check freshness
       run: |
