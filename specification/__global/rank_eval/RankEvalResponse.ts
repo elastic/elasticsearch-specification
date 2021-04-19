@@ -30,7 +30,7 @@ export class RankEvalResponse extends ResponseBase {
   failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
 }
 
-class RankEvalMetricDetail {
+export class RankEvalMetricDetail {
   /** The metric_score in the details section shows the contribution of this query to the global quality metric score */
   metric_score: double
   /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
@@ -41,19 +41,19 @@ class RankEvalMetricDetail {
   metric_details: Dictionary<string, Dictionary<string, UserDefinedValue>>
 }
 
-class RankEvalHitItem {
+export class RankEvalHitItem {
   hit: RankEvalHit
   rating?: double
 }
 
-class RankEvalHit {
+export class RankEvalHit {
   _id: Id
   _index: IndexName
   _type?: Type
   _score: double
 }
 
-class UnratedDocument {
+export class UnratedDocument {
   _id: Id
   _index: IndexName
 }

@@ -35,12 +35,12 @@ export class RankEvalRequestItem {
   params?: Dictionary<string, UserDefinedValue>
 }
 
-class RankEvalQuery {
+export class RankEvalQuery {
   query: QueryContainer
   size?: integer
 }
 
-class DocumentRating {
+export class DocumentRating {
   /** The document ID. */
   _id: Id
   /** The document’s index. For data streams, this should be the document’s backing index. */

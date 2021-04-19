@@ -19,7 +19,7 @@
 
 import { integer } from '@common/common'
 
-class RankEvalMetricBase {
+export class RankEvalMetricBase {
   /**
    * Sets the maximum number of documents retrieved per query. This value will act in place of the usual size parameter in the query.
    * @server_default 10
@@ -27,7 +27,7 @@ class RankEvalMetricBase {
   k?: integer
 }
 
-class RankEvalMetricRatingTreshold extends RankEvalMetricBase {
+export class RankEvalMetricRatingTreshold extends RankEvalMetricBase {
   /**
    * Sets the rating threshold above which documents are considered to be "relevant".
    * @server_default 1
@@ -39,7 +39,7 @@ class RankEvalMetricRatingTreshold extends RankEvalMetricBase {
  * Precision at K (P@k)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-precision
  */
-class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
+export class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
   /**
    * Controls how unlabeled documents in the search results are counted. If set to true, unlabeled documents are ignored and neither count as relevant or irrelevant. Set to false (the default), they are treated as irrelevant.
    * @server_default false
@@ -51,19 +51,19 @@ class RankEvalMetricPrecision extends RankEvalMetricRatingTreshold {
  * Recall at K (R@k)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-recall
  */
-class RankEvalMetricRecall extends RankEvalMetricRatingTreshold {}
+export class RankEvalMetricRecall extends RankEvalMetricRatingTreshold {}
 
 /**
  * Mean Reciprocal Rank
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_mean_reciprocal_rank
  */
-class RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {}
+export class RankEvalMetricMeanReciprocalRank extends RankEvalMetricRatingTreshold {}
 
 /**
  * Discounted cumulative gain (DCG)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg
  */
-class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
+export class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
   /**
    * If set to true, this metric will calculate the Normalized DCG.
    * @server_default false
@@ -76,7 +76,7 @@ class RankEvalMetricDiscountedCumulativeGain extends RankEvalMetricBase {
  * Expected Reciprocal Rank (ERR)
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_expected_reciprocal_rank_err
  */
-class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
+export class RankEvalMetricExpectedReciprocalRank extends RankEvalMetricBase {
   /**
    * The highest relevance grade used in the user-supplied relevance judgments.
    */
