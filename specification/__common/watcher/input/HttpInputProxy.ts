@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { uint } from '@common/common'
+import { Host } from '@common/Networking'
 
 export class HttpInputProxy {
-  host: string
-  port: integer
+  host: Host
+  port: uint
 }

@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { Id, integer, Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@common/Networking'
 import { AllocationDecision } from './AllocationDecision'
 import { AllocationStore } from './AllocationStore'
 import { Decision } from './Decision'
@@ -27,9 +28,9 @@ export class NodeAllocationExplanation {
   deciders: AllocationDecision[]
   node_attributes: Dictionary<string, string>
   node_decision: Decision
-  node_id: string
-  node_name: string
+  node_id: Id
+  node_name: Name
   store?: AllocationStore
-  transport_address: string
+  transport_address: TransportAddress
   weight_ranking: integer
 }

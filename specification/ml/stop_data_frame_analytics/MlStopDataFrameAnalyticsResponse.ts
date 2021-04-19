@@ -17,19 +17,8 @@
  * under the License.
  */
 
-import { HttpHeaders, long, TaskId } from '@common/common'
-import { TaskStatus } from './TaskStatus'
+import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
-export class TaskState {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskStatus
-  type: string
+export class MlStopDataFrameAnalyticsResponse extends ResponseBase {
+  stopped: boolean
 }

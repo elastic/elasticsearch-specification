@@ -19,7 +19,7 @@
 
 import { Fields, Indices, integer } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '@global/scroll/SlicedScroll'
+import { SlicedScroll } from '@common/SlicedScroll'
 import { Sort } from '@global/search/sort/Sort'
 import { RemoteSource } from './RemoteSource'
 

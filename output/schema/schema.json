@@ -1756,7 +1756,7 @@
         "name": "ClusterHealthResponse",
         "namespace": "cluster.cluster_health"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -5541,9 +5541,16 @@
       "description": "Returns statistical information about geoip databases",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/geoip-stats-api.html",
       "name": "ingest.geo_ip_stats",
-      "request": null,
+      "request": {
+        "name": "IngestGeoIpStatsRequest",
+        "namespace": "ingest.geo_ip_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IngestGeoIpStatsResponse",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -7704,9 +7711,16 @@
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "since": "7.3.0",
       "stability": "beta",
       "urls": [
         {
@@ -7851,7 +7865,7 @@
         "name": "MlUpdateJobResponse",
         "namespace": "ml.update_job"
       },
-      "since": "5.4.0",
+      "since": "5.5.0",
       "stability": "stable",
       "urls": [
         {
@@ -8562,9 +8576,16 @@
       "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
-      "request": null,
+      "request": {
+        "name": "RankEvalRequest",
+        "namespace": "__global.rank_eval"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "RankEvalResponse",
+        "namespace": "__global.rank_eval"
+      },
+      "since": "6.2.0",
       "stability": "experimental",
       "urls": [
         {
@@ -9669,7 +9690,10 @@
         "namespace": "security.enable_user"
       },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
       "since": "0.0.0",
       "stability": "stable",
       "urls": [
@@ -14426,6 +14450,7 @@
       },
       "properties": [
         {
+          "description": "Limits can be applied for the resources required to hold the mathematical models in memory. These limits are approximate and can be set per job. They do not control the memory used by other processes, for example the Elasticsearch Java processes.",
           "name": "model_memory_limit",
           "required": true,
           "type": {
@@ -17739,6 +17764,94 @@
     {
       "kind": "interface",
       "name": {
+        "name": "BaseNode",
+        "namespace": "__spec_utils"
+      },
+      "properties": [
+        {
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Host",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "ip",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ip",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeRole",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "transport_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransportAddress",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BaseUrlConfig",
         "namespace": "xpack.usage"
       },
@@ -20339,8 +20452,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -20351,8 +20464,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -33726,8 +33839,10 @@
           }
         },
         {
+          "description": "Can be one of cluster, indices or shards. Controls the details level of the health information returned.",
           "name": "level",
           "required": false,
+          "serverDefault": "cluster",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33737,8 +33852,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33748,8 +33865,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33759,8 +33878,10 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33770,8 +33891,10 @@
           }
         },
         {
+          "description": "A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.",
           "name": "wait_for_active_shards",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33781,6 +33904,7 @@
           }
         },
         {
+          "description": "Can be one of immediate, urgent, high, normal, low, languid. Wait until all currently queued events with the given priority are processed.",
           "name": "wait_for_events",
           "required": false,
           "type": {
@@ -33792,6 +33916,7 @@
           }
         },
         {
+          "description": "The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.",
           "name": "wait_for_nodes",
           "required": false,
           "type": {
@@ -33803,8 +33928,10 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.",
           "name": "wait_for_no_initializing_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33814,8 +33941,10 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard relocations. Defaults to false, which means it will not wait for relocating shards.",
           "name": "wait_for_no_relocating_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33825,6 +33954,7 @@
           }
         },
         {
+          "description": "One of green, yellow or red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green > yellow > red. By default, will not wait for any status.",
           "name": "wait_for_status",
           "required": false,
           "type": {
@@ -33838,6 +33968,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body",
       "inherits": [
         {
           "type": {
@@ -33853,6 +33984,7 @@
       },
       "properties": [
         {
+          "description": "The number of active primary shards.",
           "name": "active_primary_shards",
           "required": true,
           "type": {
@@ -33864,6 +33996,7 @@
           }
         },
         {
+          "description": "The total number of active primary and replica shards.",
           "name": "active_shards",
           "required": true,
           "type": {
@@ -33875,6 +34008,7 @@
           }
         },
         {
+          "description": "The ratio of active shards in the cluster expressed as a percentage.",
           "name": "active_shards_percent_as_number",
           "required": true,
           "type": {
@@ -33886,6 +34020,7 @@
           }
         },
         {
+          "description": "The name of the cluster.",
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -33897,6 +34032,7 @@
           }
         },
         {
+          "description": "The number of shards whose allocation has been delayed by the timeout settings.",
           "name": "delayed_unassigned_shards",
           "required": true,
           "type": {
@@ -33929,6 +34065,7 @@
           }
         },
         {
+          "description": "The number of shards that are under initialization.",
           "name": "initializing_shards",
           "required": true,
           "type": {
@@ -33940,6 +34077,7 @@
           }
         },
         {
+          "description": "The number of nodes that are dedicated data nodes.",
           "name": "number_of_data_nodes",
           "required": true,
           "type": {
@@ -33962,6 +34100,7 @@
           }
         },
         {
+          "description": "The number of nodes within the cluster.",
           "name": "number_of_nodes",
           "required": true,
           "type": {
@@ -33973,6 +34112,7 @@
           }
         },
         {
+          "description": "The number of cluster-level changes that have not yet been executed.",
           "name": "number_of_pending_tasks",
           "required": true,
           "type": {
@@ -33984,6 +34124,7 @@
           }
         },
         {
+          "description": "The number of shards that are under relocation.",
           "name": "relocating_shards",
           "required": true,
           "type": {
@@ -34006,6 +34147,7 @@
           }
         },
         {
+          "description": "The time expressed in milliseconds since the earliest initiated task is waiting for being performed.",
           "name": "task_max_waiting_in_queue_millis",
           "required": true,
           "type": {
@@ -34017,6 +34159,7 @@
           }
         },
         {
+          "description": "If false the response returned within the period of time that is specified by the timeout parameter (30s by default)",
           "name": "timed_out",
           "required": true,
           "type": {
@@ -34028,6 +34171,7 @@
           }
         },
         {
+          "description": "The number of shards that are not allocated.",
           "name": "unassigned_shards",
           "required": true,
           "type": {
@@ -35912,6 +36056,7 @@
       "properties": []
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body",
       "kind": "interface",
       "name": {
         "name": "ClusterRerouteCommand",
@@ -35919,12 +36064,61 @@
       },
       "properties": [
         {
+          "description": "Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.",
           "name": "cancel",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAction",
+              "name": "ClusterRerouteCommandCancelAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Move a started shard from one node to another node. Accepts index and shard for index name and shard number, from_node for the node to move the shard from, and to_node for the node to move the shard to.",
+          "name": "move",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandMoveAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate an unassigned replica shard to a node. Accepts index and shard for index name and shard number, and node to allocate the shard to. Takes allocation deciders into account.",
+          "name": "allocate_replica",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocateReplicaAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate a primary shard to a node that holds a stale copy. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command may lead to data loss for the provided shard id. If a node which has the good copy of the data rejoins the cluster later on, that data will be deleted or overwritten with the data of the stale copy that was forcefully allocated with this command. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_stale_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate an empty primary shard to a node. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command leads to a complete loss of all data that was indexed into this shard, if it was previously started. If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_empty_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
               "namespace": "cluster.cluster_reroute"
             }
           }
@@ -35934,7 +36128,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandAction",
+        "name": "ClusterRerouteCommandAllocatePrimaryAction",
         "namespace": "cluster.cluster_reroute"
       },
       "properties": [
@@ -35962,6 +36156,169 @@
         },
         {
           "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true",
+          "name": "accept_data_loss",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html",
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandAllocateReplicaAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandCancelAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allow_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandMoveAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard from",
+          "name": "from_node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard to",
+          "name": "to_node",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -36143,6 +36500,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Defines the commands to perform.",
             "name": "commands",
             "required": false,
             "type": {
@@ -36174,8 +36532,10 @@
       "path": [],
       "query": [
         {
+          "description": "If true, then the request simulates the operation only and returns the resulting state.",
           "name": "dry_run",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36185,8 +36545,10 @@
           }
         },
         {
+          "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36196,8 +36558,10 @@
           }
         },
         {
+          "description": "Limits the information returned to the specified metrics.",
           "name": "metric",
           "required": false,
+          "serverDefault": "all",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36207,8 +36571,10 @@
           }
         },
         {
+          "description": "If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.",
           "name": "retry_failed",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36218,8 +36584,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36229,8 +36597,10 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37235,20 +37605,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -41011,8 +41371,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         },
@@ -41022,8 +41382,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -41054,8 +41414,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -41641,7 +42001,7 @@
       }
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
@@ -43169,7 +43529,7 @@
         },
         {
           "name": "target_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -43180,7 +43540,7 @@
         },
         {
           "name": "timezone",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -44014,7 +44374,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SlicedScroll",
-                "namespace": "__global.scroll"
+                "namespace": "__common"
               }
             }
           }
@@ -45734,7 +46094,7 @@
       "properties": [
         {
           "name": "actions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -45862,7 +46222,7 @@
         },
         {
           "name": "function",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45901,6 +46261,17 @@
             "type": {
               "name": "Field",
               "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -46182,8 +46553,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -46953,6 +47324,51 @@
         "namespace": "__global.exists"
       },
       "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DocumentRating",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The document ID.",
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The document’s index. For data streams, this should be the document’s backing index.",
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The document’s relevance with regard to this search request.",
+          "name": "rating",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -49571,20 +49987,10 @@
           "name": "header",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -50411,19 +50817,24 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Match any data stream or index, including hidden ones.",
+          "name": "all"
+        },
+        {
+          "description": "Match open, non-hidden indices. Also matches any non-hidden data stream.",
           "name": "open"
         },
         {
+          "description": "Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.",
           "name": "closed"
         },
         {
+          "description": "Match hidden data streams and hidden indices. Must be combined with open, closed, or both.",
           "name": "hidden"
         },
         {
+          "description": "Wildcard expressions are not accepted.",
           "name": "none"
-        },
-        {
-          "name": "all"
         }
       ],
       "name": {
@@ -52122,8 +52533,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -52133,8 +52544,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -52158,8 +52569,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -52169,8 +52580,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -52180,8 +52591,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -52191,8 +52602,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -53011,16 +53422,19 @@
       "body": {
         "kind": "value",
         "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "TBody",
-            "namespace": "text_structure.find_structure"
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TJsonDocument",
+              "namespace": "text_structure.find_structure"
+            }
           }
         }
       },
       "generics": [
         {
-          "name": "TBody",
+          "name": "TJsonDocument",
           "namespace": "text_structure.find_structure"
         }
       ],
@@ -53032,6 +53446,7 @@
       "path": [],
       "query": [
         {
+          "description": "The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set.",
           "name": "charset",
           "required": false,
           "type": {
@@ -53043,6 +53458,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named \"column1\", \"column2\", \"column3\", etc.",
           "name": "column_names",
           "required": false,
           "type": {
@@ -53054,6 +53470,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify the character used to delimit the values in each row. Only a single character is supported; the delimiter cannot have multiple characters. By default, the API considers the following possibilities: comma, tab, semi-colon, and pipe (|). In this default scenario, all rows must have the same number of fields for the delimited format to be detected. If you specify a delimiter, up to 10% of the rows can have a different number of columns than the first row.",
           "name": "delimiter",
           "required": false,
           "type": {
@@ -53065,8 +53482,10 @@
           }
         },
         {
+          "description": "If this parameter is set to true, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53076,6 +53495,7 @@
           }
         },
         {
+          "description": "The high level structure of the text. Valid values are ndjson, xml, delimited, and semi_structured_text. By default, the API chooses the format. In this default scenario, all rows must have the same number of fields for a delimited format to be detected. If the format is set to delimited and the delimiter is not set, however, the API tolerates up to 5% of rows that have a different number of columns than the first row.",
           "name": "format",
           "required": false,
           "type": {
@@ -53087,6 +53507,7 @@
           }
         },
         {
+          "description": "If you have set format to semi_structured_text, you can specify a Grok pattern that is used to extract fields from every message in the text. The name of the timestamp field in the Grok pattern must match what is specified in the timestamp_field parameter. If that parameter is not specified, the name of the timestamp field in the Grok pattern must match \"timestamp\". If grok_pattern is not specified, the structure finder creates a Grok pattern.",
           "name": "grok_pattern",
           "required": false,
           "type": {
@@ -53098,6 +53519,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can use this parameter to indicate whether the column names are in the first row of the text. If this parameter is not specified, the structure finder guesses based on the similarity of the first row of the text to other rows.",
           "name": "has_header_row",
           "required": false,
           "type": {
@@ -53109,8 +53531,10 @@
           }
         },
         {
-          "name": "lines_to_sample",
+          "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text. If you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
+          "name": "line_merge_size_limit",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53120,6 +53544,20 @@
           }
         },
         {
+          "description": "The number of lines to include in the structural analysis, starting from the beginning of the text. The minimum is 2; If the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.",
+          "name": "lines_to_sample",
+          "required": false,
+          "serverDefault": "1000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "If you have set format to delimited, you can specify the character used to quote the values in each row if they contain newlines or the delimiter character. Only a single character is supported. If this parameter is not specified, the default value is a double quote (\"). If your delimited text format does not use quoting, a workaround is to set this argument to a character that does not appear anywhere in the sample.",
           "name": "quote",
           "required": false,
           "type": {
@@ -53131,6 +53569,7 @@
           }
         },
         {
+          "description": "If you have set format to delimited, you can specify whether values between delimiters should have whitespace trimmed from them. If this parameter is not specified and the delimiter is pipe (|), the default value is true. Otherwise, the default value is false.",
           "name": "should_trim_fields",
           "required": false,
           "type": {
@@ -53142,8 +53581,10 @@
           }
         },
         {
+          "description": "Sets the maximum amount of time that the structure analysis make take. If the analysis is still running when the timeout expires then it will be aborted.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "25s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53164,6 +53605,7 @@
           }
         },
         {
+          "description": "The Java time format of the timestamp field in the text.",
           "name": "timestamp_format",
           "required": false,
           "type": {
@@ -53196,7 +53638,7 @@
         },
         {
           "name": "has_header_row",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53265,8 +53707,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -53283,7 +53725,7 @@
         },
         {
           "name": "quote",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53294,7 +53736,7 @@
         },
         {
           "name": "delimiter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53320,8 +53762,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "number",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         },
@@ -53420,8 +53862,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Field",
+              "namespace": "__common"
             }
           }
         },
@@ -53433,6 +53875,17 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ingest_pipeline",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineConfig",
+              "namespace": "__common.ingest"
             }
           }
         }
@@ -60209,12 +60662,15 @@
       "kind": "enum",
       "members": [
         {
+          "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
           "name": "yellow"
         },
         {
+          "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
           "name": "red"
         }
       ],
@@ -61553,6 +62009,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Host",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HotThreadInformation",
@@ -61649,6 +62119,45 @@
         "namespace": "__common.analysis.char_filters"
       },
       "properties": []
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "HttpHeaders",
+        "namespace": "__common"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -61794,8 +62303,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -61805,7 +62314,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -61879,8 +62388,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -61933,7 +62442,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "uint",
               "namespace": "__common"
             }
           }
@@ -62022,23 +62531,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -64216,7 +64712,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ExpandWildcardOptions",
+              "name": "ExpandWildcards",
               "namespace": "__common.common"
             }
           }
@@ -65291,7 +65787,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ExpandWildcardOptions",
+              "name": "ExpandWildcards",
               "namespace": "__common.common"
             }
           }
@@ -66942,7 +67438,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ExpandWildcardOptions",
+              "name": "ExpandWildcards",
               "namespace": "__common.common"
             }
           }
@@ -71227,6 +71723,94 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "__common"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IngestGeoIpStatsRequest",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "path": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IngestGeoIpStatsResponse",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IngestStats",
@@ -72458,6 +73042,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Ip",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -82756,6 +83354,106 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to stop",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, the data frame analytics job is stopped forcefully.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stopped",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -83449,6 +84147,8 @@
             }
           },
           {
+            "description": "Advanced configuration option. The time between each periodic persistence of the model. See Job resources.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
             "name": "background_persist_interval",
             "required": false,
             "type": {
@@ -83460,6 +84160,8 @@
             }
           },
           {
+            "description": "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.",
+            "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-configuring-url.html",
             "name": "custom_settings",
             "required": false,
             "type": {
@@ -83477,6 +84179,22 @@
             }
           },
           {
+            "name": "categorization_filters",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "description": "A description of the job. See Job resources.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
             "name": "description",
             "required": false,
             "type": {
@@ -83499,8 +84217,9 @@
             }
           },
           {
-            "name": "model_snapshot_retention_days",
+            "name": "daily_model_snapshot_retention_after_days",
             "required": false,
+            "serverDefault": "1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -83510,6 +84229,20 @@
             }
           },
           {
+            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job.",
+            "name": "model_snapshot_retention_days",
+            "required": false,
+            "serverDefault": "10",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "__common"
+              }
+            }
+          },
+          {
+            "description": "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen.",
             "name": "renormalization_window_days",
             "required": false,
             "type": {
@@ -83521,6 +84254,7 @@
             }
           },
           {
+            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
             "name": "results_retention_days",
             "required": false,
             "type": {
@@ -83532,6 +84266,7 @@
             }
           },
           {
+            "description": "A list of job groups. A job can belong to no groups or many.",
             "name": "groups",
             "required": false,
             "type": {
@@ -83542,6 +84277,33 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "description": "An array of detector update objects.",
+            "name": "detectors",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Detector",
+                  "namespace": "__common.ml"
+                }
+              }
+            }
+          },
+          {
+            "description": "Settings related to how categorization interacts with partition fields.",
+            "name": "per_partition_categorization",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PerPartitionCategorization",
+                "namespace": "__common.ml"
               }
             }
           }
@@ -83975,6 +84737,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
       "kind": "interface",
       "name": {
         "name": "ModelPlotConfigEnabled",
@@ -83982,6 +84745,7 @@
       },
       "properties": [
         {
+          "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
           "name": "enabled",
           "required": true,
           "type": {
@@ -83993,8 +84757,23 @@
           }
         },
         {
+          "name": "annotations_enabled",
+          "required": false,
+          "serverDefault": true,
+          "since": "7.9.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "stability: experimental",
           "name": "terms",
           "required": false,
+          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87748,8 +88527,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         },
@@ -87759,8 +88538,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -87781,8 +88560,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -87866,8 +88645,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -88085,8 +88864,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -88107,8 +88886,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -88129,8 +88908,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -88258,8 +89037,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -89419,8 +90198,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -89465,8 +90244,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Ip",
+                "namespace": "__common"
               }
             }
           }
@@ -89488,8 +90267,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -89589,8 +90368,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -91988,6 +92767,7 @@
       },
       "properties": [
         {
+          "description": "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails.",
           "name": "enabled",
           "required": false,
           "type": {
@@ -91999,6 +92779,7 @@
           }
         },
         {
+          "description": "This setting can be set to true only if per-partition categorization is enabled. If true, both categorization and subsequent anomaly detection stops for partitions where the categorization status changes to warn. This setting makes it viable to have a job where it is expected that categorization works well for some partitions but not others; you do not pay the cost of bad categorization forever in the partitions where it works badly.",
           "name": "stop_on_warn",
           "required": false,
           "type": {
@@ -93023,6 +93804,51 @@
             "type": {
               "name": "GapPolicy",
               "namespace": "__common.aggregations.pipeline"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineConfig",
+        "namespace": "__common.ingest"
+      },
+      "properties": [
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "processors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ProcessorContainer",
+                "namespace": "ingest"
+              }
             }
           }
         }
@@ -98050,6 +98876,709 @@
     {
       "kind": "interface",
       "name": {
+        "name": "RankEvalHit",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalHitItem",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "name": "hit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalHit",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "name": "rating",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetric",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricPrecision",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricRecall",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "name": "mean_reciprocal_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricMeanReciprocalRank",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "name": "dcg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricDiscountedCumulativeGain",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "name": "expected_reciprocal_rank",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalMetricExpectedReciprocalRank",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricBase",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Sets the maximum number of documents retrieved per query. This value will act in place of the usual size parameter in the query.",
+          "name": "k",
+          "required": false,
+          "serverDefault": "10",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricDetail",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The metric_score in the details section shows the contribution of this query to the global quality metric score",
+          "name": "metric_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
+          "name": "unrated_docs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UnratedDocument",
+                "namespace": "__global.rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The hits section shows a grouping of the search results with their supplied ratings",
+          "name": "hits",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalHitItem",
+                "namespace": "__global.rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The metric_details give additional information about the calculated quality metric (e.g. how many of the retrieved documents were relevant). The content varies for each metric but allows for better interpretation of the results",
+          "name": "metric_details",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Discounted cumulative gain (DCG)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_discounted_cumulative_gain_dcg",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricDiscountedCumulativeGain",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "If set to true, this metric will calculate the Normalized DCG.",
+          "docUrl": "https://en.wikipedia.org/wiki/Discounted_cumulative_gain#Normalized_DCG",
+          "name": "normalize",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Expected Reciprocal Rank (ERR)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_expected_reciprocal_rank_err",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricExpectedReciprocalRank",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The highest relevance grade used in the user-supplied relevance judgments.",
+          "name": "maximum_relevance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Mean Reciprocal Rank",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_mean_reciprocal_rank",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricMeanReciprocalRank",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": []
+    },
+    {
+      "description": "Precision at K (P@k)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-precision",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricPrecision",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Controls how unlabeled documents in the search results are counted. If set to true, unlabeled documents are ignored and neither count as relevant or irrelevant. Set to false (the default), they are treated as irrelevant.",
+          "name": "ignore_unlabeled",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricBase",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricRatingTreshold",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "Sets the rating threshold above which documents are considered to be \"relevant\".",
+          "name": "relevant_rating_threshold",
+          "required": false,
+          "serverDefault": "1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Recall at K (R@k)",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#k-recall",
+      "inherits": [
+        {
+          "type": {
+            "name": "RankEvalMetricRatingTreshold",
+            "namespace": "__global.rank_eval"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalMetricRecall",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalQuery",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "__common.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A set of typical search requests, together with their provided ratings",
+            "name": "requests",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RankEvalRequestItem",
+                  "namespace": "__global.rank_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "Definition of the evaluation metric to calculate",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_available_evaluation_metrics",
+            "name": "metric",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalMetric",
+                "namespace": "__global.rank_eval"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "RankEvalRequest",
+        "namespace": "__global.rank_eval"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "__common.common"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalRequestItem",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The search request’s ID, used to group result details later.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The query being evaluated.",
+          "name": "request",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankEvalQuery",
+              "namespace": "__global.rank_eval"
+            }
+          }
+        },
+        {
+          "description": "List of document ratings",
+          "name": "ratings",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentRating",
+                "namespace": "__global.rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "description": "The search template Id",
+          "name": "template_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The search template parameters.",
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalResponse",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The overall evaluation quality calculated by the defined metric",
+          "name": "metric_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The details section contains one entry for every query in the original requests section, keyed by the search request id",
+          "name": "details",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "__common"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RankEvalMetricDetail",
+                "namespace": "__global.rank_eval"
+              }
+            }
+          }
+        },
+        {
+          "name": "failures",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "RankFeatureFunction",
         "namespace": "__common.query_dsl.specialized.rank_feature"
       },
@@ -98877,8 +100406,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Host",
+              "namespace": "__common"
             }
           }
         },
@@ -98888,8 +100417,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         },
@@ -98910,8 +100439,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ip",
+              "namespace": "__common"
             }
           }
         },
@@ -99488,80 +101017,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "ReindexNode",
         "namespace": "__global.reindex_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -99580,17 +101049,6 @@
                 "name": "ReindexTask",
                 "namespace": "__global.reindex_rethrottle"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -100121,7 +101579,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SlicedScroll",
-              "namespace": "__global.scroll"
+              "namespace": "__common"
             }
           }
         },
@@ -100389,20 +101847,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         }
@@ -100725,8 +102173,19 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Uri",
+              "name": "Host",
               "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         },
@@ -100749,17 +102208,6 @@
             "type": {
               "name": "Time",
               "namespace": "__common.common_options.time_unit"
-            }
-          }
-        },
-        {
-          "name": "username",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Username",
-              "namespace": "__common.common"
             }
           }
         }
@@ -105197,8 +106645,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
@@ -105208,8 +106656,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -105576,7 +107024,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SlicedScroll",
-                "namespace": "__global.scroll"
+                "namespace": "__common"
               }
             }
           },
@@ -109009,6 +110457,34 @@
             "type": {
               "name": "Refresh",
               "namespace": "__common.common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         }
@@ -114366,8 +115842,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TransportAddress",
+              "namespace": "__common"
             }
           }
         }
@@ -116152,7 +117628,7 @@
       "kind": "interface",
       "name": {
         "name": "SlicedScroll",
-        "namespace": "__global.scroll"
+        "namespace": "__common"
       },
       "properties": [
         {
@@ -123060,80 +124536,20 @@
       }
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "TaskExecutingNode",
         "namespace": "task.list_tasks"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -123152,17 +124568,6 @@
                 "name": "TaskState",
                 "namespace": "task.list_tasks"
               }
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -123252,20 +124657,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -123423,20 +124818,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -125752,6 +127137,8 @@
       ]
     },
     {
+      "description": "Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.",
+      "docUrl": "https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nhttps://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nOnly support 0 and -1 but we have no way to encode these as constants at the moment",
       "kind": "type_alias",
       "name": {
         "name": "Time",
@@ -128273,6 +129660,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "TransportAddress",
+        "namespace": "__common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TransportStats",
@@ -129145,6 +130546,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "UnratedDocument",
+        "namespace": "__global.rank_eval"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -129191,7 +130623,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SlicedScroll",
-                "namespace": "__global.scroll"
+                "namespace": "__common"
               }
             }
           },
@@ -129805,91 +131237,20 @@
       ]
     },
     {
+      "inherits": [
+        {
+          "type": {
+            "name": "BaseNode",
+            "namespace": "__spec_utils"
+          }
+        }
+      ],
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleNode",
         "namespace": "__global.update_by_query_rethrottle"
       },
       "properties": [
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "host",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ip",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
         {
           "name": "tasks",
           "required": true,
@@ -130663,20 +132024,6 @@
         "namespace": "__common.analysis.token_filters"
       },
       "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Uri",
-        "namespace": "__common"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
     },
     {
       "kind": "type_alias",

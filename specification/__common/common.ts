@@ -87,7 +87,7 @@ export class ErrorCause {
   resource_type?: string
   script?: string
   script_stack?: string[]
-  header?: Dictionary<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -96,6 +96,10 @@ export class MainError extends ErrorCause {
   headers?: Dictionary<string, string>
   root_cause: ErrorCause[]
 }
+
+//
+// Numeric Type Aliases
+//
 export type short = number
 export type byte = number
 export type integer = number
@@ -104,6 +108,7 @@ export type long = number
 export type ulong = number
 export type float = number
 export type double = number
+export type Percentage = string | float
 
 //strongly typed path parameters these are aliases so we can expose documentation
 //Some languages that support type alias or typed value types might want to keep these types
@@ -144,13 +149,11 @@ export type PipelineName = string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
 export type NodeName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 export type DataStreamName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 export type ByteSize = long | string
-
-export type Percentage = string | float
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
 export type IndexMetaData = Dictionary<string, UserDefinedValue>
@@ -198,6 +201,9 @@ export type SuggestionName = string
  * QL Types
  */
 export type SqlRow = UserDefinedValue[]
+
+// Container Type for HTTP Headers
+export type HttpHeaders = Dictionary<string, string | string[]>
 
 /** A reference to a date field with formatting instructions on how to return the date */
 export class DateField {

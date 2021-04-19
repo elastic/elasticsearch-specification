@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Uri } from '@common/common'
 import { Password, Username } from '@common/common/Credentials'
 import { Time } from '@common/common_options/time_unit/Time'
+import { Host } from '@common/Networking'
 
 export class RemoteSource {
   connect_timeout: Time
-  host: Uri
+  host: Host
+  username: Username
   password: Password
   socket_timeout: Time
-  username: Username
 }
