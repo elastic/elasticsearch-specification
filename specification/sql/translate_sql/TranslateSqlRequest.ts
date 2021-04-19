@@ -31,7 +31,7 @@ export interface TranslateSqlRequest extends RequestBase {
   body?: {
     fetch_size?: integer
     filter?: QueryContainer
-    query?: string
+    query: string
     time_zone?: string
   }
 }

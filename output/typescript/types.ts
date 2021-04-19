@@ -2776,7 +2776,7 @@ export interface ClearScrollResponse extends ResponseBase {
 
 export interface ClearSqlCursorRequest extends RequestBase {
   body: {
-    cursor?: string
+    cursor: string
   }
 }
 
@@ -4584,9 +4584,11 @@ export interface EqlHitsSequence<TEvent = unknown> {
   join_keys: Array<any>
 }
 
+export type EqlResultPosition = 'tail' | 'head'
+
 export interface EqlSearchFieldFormatted {
   field: Field
-  format: string
+  format?: string
 }
 
 export interface EqlSearchRequest extends RequestBase {
@@ -4608,8 +4610,9 @@ export interface EqlSearchRequest extends RequestBase {
     keep_alive?: Time
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
-    size?: integer | float
+    size?: uint | float
     fields?: Array<Field | EqlSearchFieldFormatted>
+    result_position?: EqlResultPosition
   }
 }
 
@@ -10010,7 +10013,10 @@ export interface QuerySqlRequest extends RequestBase {
     fetch_size?: integer
     filter?: QueryContainer
     query?: string
+    request_timeout?: Time
+    page_timeout?: Time
     time_zone?: string
+    field_multi_value_leniency?: boolean
   }
 }
 
@@ -13514,7 +13520,7 @@ export interface TranslateSqlRequest extends RequestBase {
   body: {
     fetch_size?: integer
     filter?: QueryContainer
-    query?: string
+    query: string
     time_zone?: string
   }
 }

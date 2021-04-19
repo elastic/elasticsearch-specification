@@ -20,7 +20,7 @@
 /**
  * Type of index that wildcard expressions can match.
  */
-enum ExpandWildcardOptions {
+export enum ExpandWildcardOptions {
   /** Match any data stream or index, including hidden ones. */
   all = 0,
   /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
