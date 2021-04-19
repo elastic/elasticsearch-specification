@@ -7515,17 +7515,10 @@ export interface LineStringGeoShape {
   coordinates: Array<GeoCoordinate>
 }
 
-<<<<<<< HEAD
-export interface ModelPlotConfigEnabled {
-  enabled: boolean
-  annotations_enabled?: boolean
-  terms?: string
-=======
 export interface LinearInterpolationSmoothingModel {
   bigram_lambda: double
   trigram_lambda: double
   unigram_lambda: double
->>>>>>> master
 }
 
 export interface ListDanglingIndicesRequest extends RequestBase {
@@ -8468,12 +8461,16 @@ export interface MlUpdateJobRequest extends RequestBase {
     analysis_limits?: AnalysisMemoryLimit
     background_persist_interval?: Time
     custom_settings?: Record<string, any>
+    categorization_filters?: Array<string>
     description?: string
     model_plot_config?: ModelPlotConfigEnabled
+    daily_model_snapshot_retention_after_days?: long
     model_snapshot_retention_days?: long
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: Array<string>
+    detectors?: Array<Detector>
+    per_partition_categorization?: PerPartitionCategorization
   }
 }
 
@@ -8533,6 +8530,7 @@ export interface ModelPlotConfig {
 
 export interface ModelPlotConfigEnabled {
   enabled: boolean
+  annotations_enabled?: boolean
   terms?: string
 }
 
@@ -13565,118 +13563,6 @@ export interface UpdateByQueryRethrottleResponse extends ResponseBase {
   nodes: Record<string, UpdateByQueryRethrottleNode>
 }
 
-<<<<<<< HEAD
-export interface UpdateDatafeedRequest extends RequestBase {
-  datafeed_id: Id
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_throttled?: boolean
-  ignore_unavailable?: boolean
-  body: {
-    aggregations?: Record<string, AggregationContainer>
-    chunking_config?: ChunkingConfig
-    delayed_data_check_config?: DelayedDataCheckConfig
-    frequency?: Time
-    indexes?: Indices
-    indices?: Indices
-    indices_options?: DatafeedIndicesOptions
-    job_id?: Id
-    max_empty_searches?: integer
-    query?: QueryContainer
-    query_delay?: Time
-    script_fields?: Record<string, ScriptField>
-    scroll_size?: integer
-  }
-}
-
-export interface UpdateDatafeedResponse extends ResponseBase {
-  aggregations?: Record<string, AggregationContainer>
-  chunking_config?: ChunkingConfig
-  datafeed_id: Id
-  frequency?: Time
-  indices: Indices
-  job_id: string
-  max_empty_searches?: integer
-  query: QueryContainer
-  query_delay: Time
-  script_fields?: Record<string, ScriptField>
-  scroll_size: integer
-  indices_options: DatafeedIndicesOptions
-  delayed_data_check_config: DelayedDataCheckConfig
-}
-
-export interface UpdateFilterRequest extends RequestBase {
-  filter_id: Id
-  body: {
-    add_items?: Array<string>
-    description?: string
-    remove_items?: Array<string>
-  }
-}
-
-export interface UpdateFilterResponse extends ResponseBase {
-  description: string
-  filter_id: string
-  items: Array<string>
-}
-
-export interface UpdateIndexSettingsRequest extends RequestBase {
-  index?: Indices
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  flat_settings?: boolean
-  ignore_unavailable?: boolean
-  master_timeout?: Time
-  preserve_existing?: boolean
-  timeout?: Time
-  body: {
-    index?: Record<string, any>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
-}
-
-export interface UpdateIndexSettingsResponse extends AcknowledgedResponseBase {
-}
-
-export interface UpdateJobRequest extends RequestBase {
-  job_id: Id
-  body: {
-    allow_lazy_open?: boolean
-    analysis_limits?: AnalysisMemoryLimit
-    background_persist_interval?: Time
-    custom_settings?: Record<string, any>
-    categorization_filters?: Array<string>
-    description?: string
-    model_plot_config?: ModelPlotConfigEnabled
-    daily_model_snapshot_retention_after_days?: long
-    model_snapshot_retention_days?: long
-    renormalization_window_days?: long
-    results_retention_days?: long
-    groups?: Array<string>
-    detectors?: Array<Detector>
-    per_partition_categorization?: PerPartitionCategorization
-  }
-}
-
-export interface UpdateJobResponse extends ResponseBase {
-}
-
-export interface UpdateModelSnapshotRequest extends RequestBase {
-  job_id: Id
-  snapshot_id: Id
-  body: {
-    description?: string
-    retain?: boolean
-  }
-}
-
-export interface UpdateModelSnapshotResponse extends AcknowledgedResponseBase {
-  model: ModelSnapshot
-}
-
-=======
->>>>>>> master
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName

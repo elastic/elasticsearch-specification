@@ -14397,7 +14397,6 @@
       ]
     },
     {
-      "description": "Limits can be applied for the resources required to hold the mathematical models in memory. These limits are approximate and can be set per job. They do not control the memory used by other processes, for example the Elasticsearch Java processes.",
       "kind": "interface",
       "name": {
         "name": "AnalysisMemoryLimit",
@@ -14405,6 +14404,7 @@
       },
       "properties": [
         {
+          "description": "Limits can be applied for the resources required to hold the mathematical models in memory. These limits are approximate and can be set per job. They do not control the memory used by other processes, for example the Elasticsearch Java processes.",
           "name": "model_memory_limit",
           "required": true,
           "type": {
@@ -45654,7 +45654,7 @@
       "properties": [
         {
           "name": "actions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -45782,7 +45782,7 @@
         },
         {
           "name": "function",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -45821,6 +45821,17 @@
             "type": {
               "name": "Field",
               "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -46698,14 +46709,9 @@
       },
       "path": [
         {
-<<<<<<< HEAD
-          "name": "actions",
-          "required": false,
-=======
           "description": "The document ID",
           "name": "id",
           "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46807,11 +46813,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "function",
-=======
           "name": "source_includes",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -46851,17 +46853,6 @@
             "type": {
               "name": "VersionType",
               "namespace": "__common.common"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -78259,28 +78250,11 @@
             }
           }
         }
-<<<<<<< HEAD
-      ]
-    },
-    {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
-      "kind": "interface",
-      "name": {
-        "name": "ModelPlotConfigEnabled",
-        "namespace": "x_pack.machine_learning.job.config"
-      },
-      "properties": [
-        {
-          "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
-          "name": "enabled",
-          "required": true,
-=======
       ],
       "query": [
         {
           "name": "allow_no_forecasts",
           "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -78290,27 +78264,8 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "annotations_enabled",
-          "required": false,
-          "serverDefault": true,
-          "since": "7.9.0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "stability: experimental",
-          "name": "terms",
-=======
           "name": "timeout",
->>>>>>> master
           "required": false,
-          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83429,6 +83384,8 @@
             }
           },
           {
+            "description": "Advanced configuration option. The time between each periodic persistence of the model. See Job resources.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
             "name": "background_persist_interval",
             "required": false,
             "type": {
@@ -83440,6 +83397,8 @@
             }
           },
           {
+            "description": "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.",
+            "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-configuring-url.html",
             "name": "custom_settings",
             "required": false,
             "type": {
@@ -83457,6 +83416,22 @@
             }
           },
           {
+            "name": "categorization_filters",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "description": "A description of the job. See Job resources.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
             "name": "description",
             "required": false,
             "type": {
@@ -83479,8 +83454,9 @@
             }
           },
           {
-            "name": "model_snapshot_retention_days",
+            "name": "daily_model_snapshot_retention_after_days",
             "required": false,
+            "serverDefault": "1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -83490,6 +83466,20 @@
             }
           },
           {
+            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job.",
+            "name": "model_snapshot_retention_days",
+            "required": false,
+            "serverDefault": "10",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "__common"
+              }
+            }
+          },
+          {
+            "description": "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen.",
             "name": "renormalization_window_days",
             "required": false,
             "type": {
@@ -83501,6 +83491,7 @@
             }
           },
           {
+            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
             "name": "results_retention_days",
             "required": false,
             "type": {
@@ -83512,6 +83503,7 @@
             }
           },
           {
+            "description": "A list of job groups. A job can belong to no groups or many.",
             "name": "groups",
             "required": false,
             "type": {
@@ -83522,6 +83514,33 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "description": "An array of detector update objects.",
+            "name": "detectors",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Detector",
+                  "namespace": "__common.ml"
+                }
+              }
+            }
+          },
+          {
+            "description": "Settings related to how categorization interacts with partition fields.",
+            "name": "per_partition_categorization",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PerPartitionCategorization",
+                "namespace": "__common.ml"
               }
             }
           }
@@ -83955,6 +83974,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
       "kind": "interface",
       "name": {
         "name": "ModelPlotConfigEnabled",
@@ -83962,6 +83982,7 @@
       },
       "properties": [
         {
+          "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
           "name": "enabled",
           "required": true,
           "type": {
@@ -83973,8 +83994,23 @@
           }
         },
         {
+          "name": "annotations_enabled",
+          "required": false,
+          "serverDefault": true,
+          "since": "7.9.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "stability: experimental",
           "name": "terms",
           "required": false,
+          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87268,32 +87304,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "time_in_queue_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PerPartitionCategorization",
-        "namespace": "x_pack.machine_learning.job.config"
-      },
-      "properties": [
-        {
-          "description": "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails.",
-          "name": "enabled",
-=======
           "name": "_name",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -87304,12 +87315,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "description": "This setting can be set to true only if per-partition categorization is enabled. If true, both categorization and subsequent anomaly detection stops for partitions where the categorization status changes to warn. This setting makes it viable to have a job where it is expected that categorization works well for some partitions but not others; you do not pay the cost of bad categorization forever in the partitions where it works badly.",
-          "name": "stop_on_warn",
-=======
           "name": "ignore_unmapped",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -91984,6 +91990,7 @@
       },
       "properties": [
         {
+          "description": "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails.",
           "name": "enabled",
           "required": false,
           "type": {
@@ -91995,6 +92002,7 @@
           }
         },
         {
+          "description": "This setting can be set to true only if per-partition categorization is enabled. If true, both categorization and subsequent anomaly detection stops for partitions where the categorization status changes to warn. This setting makes it viable to have a job where it is expected that categorization works well for some partitions but not others; you do not pay the cost of bad categorization forever in the partitions where it works badly.",
           "name": "stop_on_warn",
           "required": false,
           "type": {
@@ -129317,137 +129325,11 @@
           "name": "from",
           "required": false,
           "type": {
-<<<<<<< HEAD
-            "name": "AcknowledgedResponseBase",
-            "namespace": "common_abstractions.response"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "UpdateIndexSettingsResponse",
-        "namespace": "indices.index_settings.update_index_settings"
-      },
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "allow_lazy_open",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "analysis_limits",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AnalysisMemoryLimit",
-                "namespace": "x_pack.machine_learning.job.config"
-              }
-            }
-          },
-          {
-            "description": "Advanced configuration option. The time between each periodic persistence of the model. See Job resources.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
-            "name": "background_persist_interval",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "common_options.time_unit"
-              }
-            }
-          },
-          {
-            "description": "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.",
-            "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-configuring-url.html",
-            "name": "custom_settings",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "name": "categorization_filters",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "description": "A description of the job. See Job resources.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "model_plot_config",
-            "required": false,
-=======
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "long",
               "namespace": "__common"
             }
-<<<<<<< HEAD
-          },
-          {
-            "name": "daily_model_snapshot_retention_after_days",
-            "required": false,
-            "serverDefault": "1",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job.",
-            "name": "model_snapshot_retention_days",
-            "required": false,
-            "serverDefault": "10",
-=======
           }
         },
         {
@@ -129455,18 +129337,10 @@
           "required": false,
           "type": {
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
-<<<<<<< HEAD
-          },
-          {
-            "description": "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen.",
-            "name": "renormalization_window_days",
-            "required": false,
-=======
           }
         },
         {
@@ -129474,18 +129348,10 @@
           "required": false,
           "type": {
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "boolean",
               "namespace": "internal"
             }
-<<<<<<< HEAD
-          },
-          {
-            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
-            "name": "results_retention_days",
-            "required": false,
-=======
           }
         },
         {
@@ -129493,18 +129359,10 @@
           "required": false,
           "type": {
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "string",
               "namespace": "internal"
             }
-<<<<<<< HEAD
-          },
-          {
-            "description": "A list of job groups. A job can belong to no groups or many.",
-            "name": "groups",
-            "required": false,
-=======
           }
         },
         {
@@ -129512,37 +129370,9 @@
           "required": false,
           "type": {
             "kind": "instance_of",
->>>>>>> master
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          },
-          {
-            "description": "An array of detector update objects.",
-            "name": "detectors",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Detector",
-                  "namespace": "x_pack.machine_learning.job.detectors"
-                }
-              }
-            }
-          },
-          {
-            "description": "Settings related to how categorization interacts with partition fields.",
-            "name": "per_partition_categorization",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PerPartitionCategorization",
-                "namespace": "x_pack.machine_learning.job.config"
-              }
             }
           }
         },
