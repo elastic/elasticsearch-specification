@@ -7048,6 +7048,18 @@ export interface Ingest {
   pipeline?: string
 }
 
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  stub_b: integer
+  stub_a: integer
+  body?: {
+    stub_c: integer
+  }
+}
+
+export interface IngestGeoIpStatsResponse extends ResponseBase {
+  stub: integer
+}
+
 export interface IngestStats {
   count: long
   current: long
