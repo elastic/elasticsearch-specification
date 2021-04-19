@@ -87,7 +87,7 @@ export class ErrorCause {
   resource_type?: string
   script?: string
   script_stack?: string[]
-  header?: Dictionary<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -97,7 +97,9 @@ export class MainError extends ErrorCause {
   root_cause: ErrorCause[]
 }
 
-// Numeric
+//
+// Numeric Type Aliases
+//
 export type short = number
 export type byte = number
 export type integer = number
@@ -147,7 +149,7 @@ export type PipelineName = string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */
 export type NodeName = string
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 export type DataStreamName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
@@ -199,6 +201,9 @@ export type SuggestionName = string
  * QL Types
  */
 export type SqlRow = UserDefinedValue[]
+
+// Container Type for HTTP Headers
+export type HttpHeaders = Dictionary<string, string | string[]>
 
 /** A reference to a date field with formatting instructions on how to return the date */
 export class DateField {

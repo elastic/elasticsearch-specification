@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, integer } from '@common/common'
 
 export class HttpInputResponseResult {
   body: string
-  headers: Dictionary<string, string[]>
+  headers: HttpHeaders
   status: integer
 }

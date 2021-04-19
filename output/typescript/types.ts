@@ -3161,13 +3161,38 @@ export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string
 }
 
 export interface ClusterRerouteCommand {
-  cancel: ClusterRerouteCommandAction
+  cancel?: ClusterRerouteCommandCancelAction
+  move?: ClusterRerouteCommandMoveAction
+  allocate_replica?: ClusterRerouteCommandAllocateReplicaAction
+  allocate_stale_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
 }
 
-export interface ClusterRerouteCommandAction {
+export interface ClusterRerouteCommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
+  accept_data_loss: boolean
+}
+
+export interface ClusterRerouteCommandAllocateReplicaAction {
+  index: IndexName
+  shard: integer
+  node: string
+}
+
+export interface ClusterRerouteCommandCancelAction {
+  index: IndexName
+  shard: integer
+  node: string
+  allow_primary?: boolean
+}
+
+export interface ClusterRerouteCommandMoveAction {
+  index: IndexName
+  shard: integer
+  from_node: string
+  to_node: string
 }
 
 export interface ClusterRerouteDecision {
@@ -3304,7 +3329,7 @@ export interface ClusterStateIndexLifecyclePolicy {
 
 export interface ClusterStateIndexLifecycleSummary {
   policy: ClusterStateIndexLifecyclePolicy
-  headers: Record<string, string>
+  headers: HttpHeaders
   version: VersionNumber
   modified_date: long
   modified_date_string: DateString
@@ -4633,7 +4658,7 @@ export interface ErrorCause {
   'resource.type'?: string
   script?: string
   script_stack?: Array<string>
-  header?: Record<string, string>
+  header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
 }
@@ -6014,6 +6039,8 @@ export interface HourlySchedule {
 export interface HtmlStripCharFilter extends CharFilterBase {
 }
 
+export type HttpHeaders = Record<string, string | Array<string>>
+
 export interface HttpInput {
   extract: Array<string>
   request: HttpInputRequestDefinition
@@ -6057,7 +6084,7 @@ export interface HttpInputRequestResult extends HttpInputRequestDefinition {
 
 export interface HttpInputResponseResult {
   body: string
-  headers: Record<string, Array<string>>
+  headers: HttpHeaders
   status: integer
 }
 
@@ -10418,7 +10445,7 @@ export interface ReindexTask {
   start_time_in_millis: long
   status: ReindexStatus
   type: string
-  headers: Record<string, string>
+  headers: HttpHeaders
 }
 
 export type RelationName = string
@@ -12984,7 +13011,7 @@ export interface TaskInfo {
   cancellable: boolean
   children?: Array<TaskInfo>
   description?: string
-  headers: Record<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   running_time_in_nanos: long
@@ -13003,7 +13030,7 @@ export interface TaskState {
   action: string
   cancellable: boolean
   description?: string
-  headers: Record<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   parent_task_id?: TaskId

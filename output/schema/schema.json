@@ -1756,7 +1756,7 @@
         "name": "ClusterHealthResponse",
         "namespace": "cluster.cluster_health"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -33824,8 +33824,10 @@
           }
         },
         {
+          "description": "Can be one of cluster, indices or shards. Controls the details level of the health information returned.",
           "name": "level",
           "required": false,
+          "serverDefault": "cluster",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33835,8 +33837,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33846,8 +33850,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33857,8 +33863,10 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33868,8 +33876,10 @@
           }
         },
         {
+          "description": "A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.",
           "name": "wait_for_active_shards",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33879,6 +33889,7 @@
           }
         },
         {
+          "description": "Can be one of immediate, urgent, high, normal, low, languid. Wait until all currently queued events with the given priority are processed.",
           "name": "wait_for_events",
           "required": false,
           "type": {
@@ -33890,6 +33901,7 @@
           }
         },
         {
+          "description": "The request waits until the specified number N of nodes is available. It also accepts >=N, <=N, >N and <N. Alternatively, it is possible to use ge(N), le(N), gt(N) and lt(N) notation.",
           "name": "wait_for_nodes",
           "required": false,
           "type": {
@@ -33901,8 +33913,10 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard initializations. Defaults to false, which means it will not wait for initializing shards.",
           "name": "wait_for_no_initializing_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33912,8 +33926,10 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to wait (until the timeout provided) for the cluster to have no shard relocations. Defaults to false, which means it will not wait for relocating shards.",
           "name": "wait_for_no_relocating_shards",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33923,6 +33939,7 @@
           }
         },
         {
+          "description": "One of green, yellow or red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green > yellow > red. By default, will not wait for any status.",
           "name": "wait_for_status",
           "required": false,
           "type": {
@@ -33936,6 +33953,7 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body",
       "inherits": [
         {
           "type": {
@@ -33951,6 +33969,7 @@
       },
       "properties": [
         {
+          "description": "The number of active primary shards.",
           "name": "active_primary_shards",
           "required": true,
           "type": {
@@ -33962,6 +33981,7 @@
           }
         },
         {
+          "description": "The total number of active primary and replica shards.",
           "name": "active_shards",
           "required": true,
           "type": {
@@ -33973,6 +33993,7 @@
           }
         },
         {
+          "description": "The ratio of active shards in the cluster expressed as a percentage.",
           "name": "active_shards_percent_as_number",
           "required": true,
           "type": {
@@ -33984,6 +34005,7 @@
           }
         },
         {
+          "description": "The name of the cluster.",
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -33995,6 +34017,7 @@
           }
         },
         {
+          "description": "The number of shards whose allocation has been delayed by the timeout settings.",
           "name": "delayed_unassigned_shards",
           "required": true,
           "type": {
@@ -34027,6 +34050,7 @@
           }
         },
         {
+          "description": "The number of shards that are under initialization.",
           "name": "initializing_shards",
           "required": true,
           "type": {
@@ -34038,6 +34062,7 @@
           }
         },
         {
+          "description": "The number of nodes that are dedicated data nodes.",
           "name": "number_of_data_nodes",
           "required": true,
           "type": {
@@ -34060,6 +34085,7 @@
           }
         },
         {
+          "description": "The number of nodes within the cluster.",
           "name": "number_of_nodes",
           "required": true,
           "type": {
@@ -34071,6 +34097,7 @@
           }
         },
         {
+          "description": "The number of cluster-level changes that have not yet been executed.",
           "name": "number_of_pending_tasks",
           "required": true,
           "type": {
@@ -34082,6 +34109,7 @@
           }
         },
         {
+          "description": "The number of shards that are under relocation.",
           "name": "relocating_shards",
           "required": true,
           "type": {
@@ -34104,6 +34132,7 @@
           }
         },
         {
+          "description": "The time expressed in milliseconds since the earliest initiated task is waiting for being performed.",
           "name": "task_max_waiting_in_queue_millis",
           "required": true,
           "type": {
@@ -34115,6 +34144,7 @@
           }
         },
         {
+          "description": "If false the response returned within the period of time that is specified by the timeout parameter (30s by default)",
           "name": "timed_out",
           "required": true,
           "type": {
@@ -34126,6 +34156,7 @@
           }
         },
         {
+          "description": "The number of shards that are not allocated.",
           "name": "unassigned_shards",
           "required": true,
           "type": {
@@ -36010,6 +36041,7 @@
       "properties": []
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body",
       "kind": "interface",
       "name": {
         "name": "ClusterRerouteCommand",
@@ -36017,12 +36049,61 @@
       },
       "properties": [
         {
+          "description": "Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.",
           "name": "cancel",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAction",
+              "name": "ClusterRerouteCommandCancelAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Move a started shard from one node to another node. Accepts index and shard for index name and shard number, from_node for the node to move the shard from, and to_node for the node to move the shard to.",
+          "name": "move",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandMoveAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate an unassigned replica shard to a node. Accepts index and shard for index name and shard number, and node to allocate the shard to. Takes allocation deciders into account.",
+          "name": "allocate_replica",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocateReplicaAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate a primary shard to a node that holds a stale copy. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command may lead to data loss for the provided shard id. If a node which has the good copy of the data rejoins the cluster later on, that data will be deleted or overwritten with the data of the stale copy that was forcefully allocated with this command. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_stale_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
+              "namespace": "cluster.cluster_reroute"
+            }
+          }
+        },
+        {
+          "description": "Allocate an empty primary shard to a node. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command leads to a complete loss of all data that was indexed into this shard, if it was previously started. If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.",
+          "name": "allocate_empty_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRerouteCommandAllocatePrimaryAction",
               "namespace": "cluster.cluster_reroute"
             }
           }
@@ -36032,7 +36113,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandAction",
+        "name": "ClusterRerouteCommandAllocatePrimaryAction",
         "namespace": "cluster.cluster_reroute"
       },
       "properties": [
@@ -36060,6 +36141,169 @@
         },
         {
           "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true",
+          "name": "accept_data_loss",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html",
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandAllocateReplicaAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandCancelAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "allow_primary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRerouteCommandMoveAction",
+        "namespace": "cluster.cluster_reroute"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard from",
+          "name": "from_node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The node to move the shard to",
+          "name": "to_node",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -36241,6 +36485,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Defines the commands to perform.",
             "name": "commands",
             "required": false,
             "type": {
@@ -36272,8 +36517,10 @@
       "path": [],
       "query": [
         {
+          "description": "If true, then the request simulates the operation only and returns the resulting state.",
           "name": "dry_run",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36283,8 +36530,10 @@
           }
         },
         {
+          "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36294,8 +36543,10 @@
           }
         },
         {
+          "description": "Limits the information returned to the specified metrics.",
           "name": "metric",
           "required": false,
+          "serverDefault": "all",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36305,8 +36556,10 @@
           }
         },
         {
+          "description": "If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.",
           "name": "retry_failed",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36316,8 +36569,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -36327,8 +36582,10 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -37333,20 +37590,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -41673,7 +41920,7 @@
       }
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.12/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
         "name": "DataStreamName",
@@ -49659,20 +49906,10 @@
           "name": "header",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -60344,12 +60581,15 @@
       "kind": "enum",
       "members": [
         {
+          "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
           "name": "yellow"
         },
         {
+          "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
           "name": "red"
         }
       ],
@@ -61800,6 +62040,45 @@
       "properties": []
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "HttpHeaders",
+        "namespace": "__common"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HttpInput",
@@ -62160,23 +62439,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -101490,20 +101756,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         }
@@ -124302,20 +124558,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -124473,20 +124719,10 @@
           "name": "headers",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "HttpHeaders",
+              "namespace": "__common"
             }
           }
         },
@@ -126802,6 +127038,8 @@
       ]
     },
     {
+      "description": "Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.",
+      "docUrl": "https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nhttps://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nOnly support 0 and -1 but we have no way to encode these as constants at the moment",
       "kind": "type_alias",
       "name": {
         "name": "Time",
