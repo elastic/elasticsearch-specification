@@ -18,8 +18,21 @@
  */
 
 import { integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
-export class SecurityEnableUserResponse extends ResponseBase {
-  stub: integer
+/**
+ * @rest_spec_name ingest.geo_ip_stats
+ * @since 7.13.0
+ * @stability stable
+ */
+export interface IngestGeoIpStatsRequest extends RequestBase {
+  path_parts?: {
+    stub_b: integer
+  }
+  query_parameters?: {
+    stub_a: integer
+  }
+  body?: {
+    stub_c: integer
+  }
 }

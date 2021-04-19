@@ -5541,9 +5541,16 @@
       "description": "Returns statistical information about geoip databases",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/geoip-stats-api.html",
       "name": "ingest.geo_ip_stats",
-      "request": null,
+      "request": {
+        "name": "IngestGeoIpStatsRequest",
+        "namespace": "ingest.geo_ip_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "IngestGeoIpStatsResponse",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "since": "7.13.0",
       "stability": "stable",
       "urls": [
         {
@@ -7704,9 +7711,16 @@
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "since": "7.3.0",
       "stability": "beta",
       "urls": [
         {
@@ -9669,7 +9683,10 @@
         "namespace": "security.enable_user"
       },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
       "since": "0.0.0",
       "stability": "stable",
       "urls": [
@@ -71226,6 +71243,94 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "__common"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "IngestGeoIpStatsRequest",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "path": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IngestGeoIpStatsResponse",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IngestStats",
@@ -82780,6 +82885,106 @@
         },
         {
           "name": "started",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsRequest",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to stop",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, the data frame analytics job is stopped forcefully.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlStopDataFrameAnalyticsResponse",
+        "namespace": "ml.stop_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stopped",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -108932,6 +109137,34 @@
             "type": {
               "name": "Refresh",
               "namespace": "__common.common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "SecurityEnableUserResponse",
+        "namespace": "security.enable_user"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         }
