@@ -1,16 +1,51 @@
 {
   "endpointErrors": {
+    "async_search.get": {
+      "request": [
+        "AsyncSearchGetRequest: path parameter 'typed_keys' does not exist in the json spec",
+        "AsyncSearchGetRequest: missing json spec query parameter 'wait_for_completion_timeout'",
+        "AsyncSearchGetRequest: missing json spec query parameter 'keep_alive'",
+        "AsyncSearchGetRequest: missing json spec query parameter 'typed_keys'",
+        "Request path property 'typed_keys' doesn't exist in endpoint URL templates"
+      ],
+      "response": [
+        "type_alias definition __common.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '__common.aggregations:MultiBucketAggregate'",
+        "type_alias definition __common.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '__common.aggregations:ValueAggregate'",
+        "type_alias definition __common.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '__common.aggregations:StatsAggregate'",
+        "interface definition __common:ErrorCause / Property 'caused_by' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
+        "interface definition __common:ErrorCause / Property 'root_cause' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
+        "interface definition __common.common:ShardFailure / Property 'reason' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+      ]
+    },
+    "bulk": {
+      "request": [
+        "BulkRequest: query parameter 'type_query_string' does not exist in the json spec",
+        "BulkRequest: missing json spec query parameter 'type'",
+        "BulkRequest: should have a body definition"
+      ],
+      "response": [
+        "interface definition __global.bulk:BulkResponseItemBase / Property 'error' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+      ]
+    },
     "cluster.get_component_template": {
       "request": [
         "ClusterGetComponentTemplateRequest: query parameter 'flat_settings' does not exist in the json spec"
       ],
       "response": [
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+      ]
+    },
+    "create": {
+      "request": [
+        "CreateRequest: should have a body definition"
+      ],
+      "response": [
+        "interface definition __common:WriteResponseBase / Property 'error' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
       ]
     },
     "data_frame_transform_deprecated.delete_transform": {
@@ -75,6 +110,22 @@
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "delete_by_query": {
+      "request": [
+        "DeleteByQueryRequest: query parameter 'query_on_query_string' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_enabled' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_excludes' does not exist in the json spec",
+        "DeleteByQueryRequest: query parameter 'source_includes' does not exist in the json spec",
+        "DeleteByQueryRequest: missing json spec query parameter 'max_docs'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source_excludes'",
+        "DeleteByQueryRequest: missing json spec query parameter '_source_includes'",
+        "DeleteByQueryRequest: should have a body definition"
+      ],
+      "response": [
+        "interface definition __common:MainError / Property 'root_cause' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
       ]
     },
     "features.reset_features": {
@@ -199,10 +250,10 @@
     },
     "ml.get_jobs": {
       "request": [
-        "GetJobsRequest: missing json spec query parameter 'allow_no_match'"
+        "MlGetJobsRequest: missing json spec query parameter 'allow_no_match'"
       ],
       "response": [
-        "type_alias definition x_pack.info.x_pack_usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'x_pack.info.x_pack_usage:BaseUrlConfig'"
+        "type_alias definition xpack.usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:BaseUrlConfig'"
       ]
     },
     "ml.get_trained_models": {
@@ -285,12 +336,56 @@
         "Missing response"
       ]
     },
+    "msearch_template": {
+      "request": [
+        "MultiSearchTemplateRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "MultiSearchTemplateRequest: missing json spec query parameter 'rest_total_hits_as_int'",
+        "MultiSearchTemplateRequest: should have a body definition",
+        "request definition __global.msearch_template:MultiSearchTemplateRequest / body / Property 'operations' / dictionary_of / instance_of - '__global.search_template:SearchTemplateRequest' is a request and must only be used in endpoints"
+      ],
+      "response": [
+        "interface definition __global.msearch_template:MultiSearchTemplateResponse / Property 'responses' / array_of / instance_of - Non-leaf type cannot be used here: '__global.search:SearchResponse'"
+      ]
+    },
     "rank_eval": {
       "request": [
         "Missing request"
       ],
       "response": [
         "Missing response"
+      ]
+    },
+    "search": {
+      "request": [
+        "SearchRequest: query parameter 'query_on_query_string' does not exist in the json spec",
+        "SearchRequest: query parameter 'sequence_number_primary_term' does not exist in the json spec",
+        "SearchRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
+        "SearchRequest: missing json spec query parameter 'explain'",
+        "SearchRequest: missing json spec query parameter '_source'",
+        "SearchRequest: missing json spec query parameter 'terminate_after'",
+        "SearchRequest: missing json spec query parameter 'timeout'",
+        "SearchRequest: missing json spec query parameter 'track_scores'",
+        "SearchRequest: missing json spec query parameter 'version'",
+        "SearchRequest: missing json spec query parameter 'min_compatible_shard_node'"
+      ],
+      "response": [
+        "Non-leaf type cannot be used here: '__global.search:SearchResponse'"
+      ]
+    },
+    "security.invalidate_api_key": {
+      "request": [
+        "SecurityInvalidateApiKeyRequest: should have a body definition"
+      ],
+      "response": [
+        "interface definition security.invalidate_api_key:SecurityInvalidateApiKeyResponse / Property 'error_details' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+      ]
+    },
+    "security.invalidate_token": {
+      "request": [
+        "SecurityInvalidateTokenRequest: should have a body definition"
+      ],
+      "response": [
+        "interface definition security.invalidate_token:SecurityInvalidateTokenResponse / Property 'error_details' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
       ]
     },
     "shutdown.delete_node": {
@@ -316,7 +411,25 @@
       "response": [
         "Missing response"
       ]
+    },
+    "tasks.cancel": {
+      "request": [
+        "CancelTasksRequest: missing json spec query parameter 'wait_for_completion'"
+      ],
+      "response": [
+        "interface definition task.cancel_tasks:CancelTasksResponse / Property 'node_failures' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+      ]
+    },
+    "watcher.stats": {
+      "request": [
+        "WatcherStatsRequest: missing json spec query parameter 'metric'"
+      ],
+      "response": [
+        "interface definition watcher.stats:WatcherNodeStats / Property 'queued_watches' / array_of / instance_of - Non-leaf type cannot be used here: 'watcher.stats:WatchRecordQueuedStats'"
+      ]
     }
   },
-  "generalErrors": []
+  "generalErrors": [
+    "No type definition for 'common_abstractions.response:ErrorResponse'"
+  ]
 }
