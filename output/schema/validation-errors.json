@@ -328,7 +328,6 @@
         "SearchRequest: query parameter 'query_on_query_string' does not exist in the json spec",
         "SearchRequest: query parameter 'sequence_number_primary_term' does not exist in the json spec",
         "SearchRequest: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "SearchRequest: missing json spec query parameter 'explain'",
         "SearchRequest: missing json spec query parameter '_source'",
         "SearchRequest: missing json spec query parameter 'terminate_after'",
         "SearchRequest: missing json spec query parameter 'timeout'",

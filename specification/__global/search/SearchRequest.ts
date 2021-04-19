@@ -69,6 +69,7 @@ export interface SearchRequest extends RequestBase {
     default_operator?: DefaultOperator
     df?: string
     docvalue_fields?: Fields
+    explain?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_throttled?: boolean
     ignore_unavailable?: boolean

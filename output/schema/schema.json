@@ -55899,6 +55899,28 @@
               "namespace": "__common.query_dsl.geo"
             }
           }
+        },
+        {
+          "name": "top_left",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LatLon",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "bottom_right",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LatLon",
+              "namespace": "__common"
+            }
+          }
         }
       ]
     },
@@ -107610,6 +107632,17 @@
             "type": {
               "name": "Fields",
               "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "explain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         },

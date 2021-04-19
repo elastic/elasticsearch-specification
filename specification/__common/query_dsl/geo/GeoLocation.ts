@@ -19,21 +19,24 @@
 
 import { double } from '@common/common'
 
+// TODO -- is duplicate with LatLon
 export class TwoDimensionalPoint {
   lat: double
   lon: double
 }
+
 export class ThreeDimensionalPoint {
   lat: double
   lon: double
   z?: double
 }
-/**
- * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
- */
-export type GeoCoordinate = string | double[] | ThreeDimensionalPoint
 
 /**
  * Represents a Latitude/Longitude as a 2 dimensional point
  */
 export type GeoLocation = string | double[] | TwoDimensionalPoint
+
+/**
+ * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
+ */
+export type GeoCoordinate = string | double[] | ThreeDimensionalPoint
