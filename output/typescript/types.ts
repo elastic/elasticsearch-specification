@@ -195,7 +195,7 @@ export interface AggregationProfile {
   description: string
   time_in_nanos: long
   type: string
-  debug: AggregationProfileDebug
+  debug?: AggregationProfileDebug
   children?: Array<AggregationProfileDebug>
 }
 
