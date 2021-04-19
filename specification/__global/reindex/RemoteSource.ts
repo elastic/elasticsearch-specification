@@ -18,12 +18,13 @@
  */
 
 import { Uri } from '@common/common'
+import { Password, Username } from '@common/common/Credentials'
 import { Time } from '@common/common_options/time_unit/Time'
 
 export class RemoteSource {
   connect_timeout: Time
   host: Uri
-  password: string
+  password: Password
   socket_timeout: Time
-  username: string
+  username: Username
 }

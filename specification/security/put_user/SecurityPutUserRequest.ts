@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Password, Username } from '@common/common/Credentials'
 import { Refresh } from '@common/common/Refresh'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -29,18 +30,18 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @stability TODO
  */
 export interface SecurityPutUserRequest extends RequestBase {
-  path_parts?: {
-    username: Name
+  path_parts: {
+    username: Username
   }
   query_parameters?: {
     refresh?: Refresh
   }
   body?: {
-    username?: Name
+    username?: Username
     email?: string | null
     full_name?: string | null
     metadata?: Dictionary<string, UserDefinedValue>
-    password?: string
+    password?: Password
     password_hash?: string
     roles?: string[]
     enabled?: boolean

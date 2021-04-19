@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
@@ -26,11 +27,10 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface SecurityInvalidateTokenRequest extends RequestBase {
-  query_parameters?: {}
   body?: {
     token?: string
     refresh_token?: string
     realm_name?: Name
-    username?: Name
+    username?: Username
   }
 }

@@ -15466,8 +15466,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         },
@@ -61739,8 +61739,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Password",
+              "namespace": "__common.common"
             }
           }
         },
@@ -61750,8 +61750,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -91641,6 +91641,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Password",
+        "namespace": "__common.common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -100578,8 +100592,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Password",
+                "namespace": "__common.common"
               }
             }
           }
@@ -100722,8 +100736,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Password",
+              "namespace": "__common.common"
             }
           }
         },
@@ -100744,8 +100758,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -107930,8 +107944,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         },
@@ -107972,8 +107986,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Password",
+                "namespace": "__common.common"
               }
             }
           }
@@ -108000,8 +108014,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -108834,8 +108848,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -108907,8 +108921,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -108980,8 +108994,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -109089,8 +109103,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -109453,8 +109467,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Password",
+                "namespace": "__common.common"
               }
             }
           },
@@ -109486,8 +109500,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Username",
+                "namespace": "__common.common"
               }
             }
           }
@@ -109745,10 +109759,13 @@
           "name": "username",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Names",
-              "namespace": "__common"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Username",
+                "namespace": "__common.common"
+              }
             }
           }
         }
@@ -109833,8 +109850,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Name",
-                "namespace": "__common"
+                "name": "Username",
+                "namespace": "__common.common"
               }
             }
           },
@@ -109844,8 +109861,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Password",
+                "namespace": "__common.common"
               }
             }
           }
@@ -110093,8 +110110,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -110171,8 +110188,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Name",
-                "namespace": "__common"
+                "name": "Username",
+                "namespace": "__common.common"
               }
             }
           }
@@ -110310,8 +110327,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Name",
-                "namespace": "__common"
+                "name": "Username",
+                "namespace": "__common.common"
               }
             }
           }
@@ -110869,8 +110886,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Name",
-                "namespace": "__common"
+                "name": "Username",
+                "namespace": "__common.common"
               }
             }
           },
@@ -110943,8 +110960,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Password",
+                "namespace": "__common.common"
               }
             }
           },
@@ -111007,8 +111024,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         }
@@ -130986,6 +131003,20 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "Username",
+        "namespace": "__common.common"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "Uuid",
         "namespace": "__common"
       },
@@ -134892,8 +134923,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
-              "namespace": "__common"
+              "name": "Username",
+              "namespace": "__common.common"
             }
           }
         },

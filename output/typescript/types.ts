@@ -392,7 +392,7 @@ export interface ApiKeys {
   invalidated: boolean
   name: Name
   realm: string
-  username: Name
+  username: Username
   metadata?: Record<string, any>
 }
 
@@ -6018,8 +6018,8 @@ export interface HttpInputAuthentication {
 }
 
 export interface HttpInputBasicAuthentication {
-  password: string
-  username: Name
+  password: Password
+  username: Username
 }
 
 export type HttpInputMethod = 'head' | 'get' | 'post' | 'put' | 'delete'
@@ -9367,6 +9367,8 @@ export interface PartitionScore {
   record_score: double
 }
 
+export type Password = string
+
 export interface PathHierarchyTokenizer extends TokenizerBase {
   buffer_size: integer
   delimiter: string
@@ -10323,7 +10325,7 @@ export interface ReloadSecureSettingsRequest extends RequestBase {
   node_id?: NodeIds
   timeout?: Time
   body?: {
-    secure_settings_password?: string
+    secure_settings_password?: Password
   }
 }
 
@@ -10335,9 +10337,9 @@ export interface ReloadSecureSettingsResponse extends NodesResponseBase {
 export interface RemoteSource {
   connect_timeout: Time
   host: Uri
-  password: string
+  password: Password
   socket_timeout: Time
-  username: string
+  username: Username
 }
 
 export interface RemoveDuplicatesTokenFilter extends TokenFilterBase {
@@ -11147,16 +11149,16 @@ export interface SecurityAuthenticateResponse extends ResponseBase {
   lookup_realm: RealmInfo
   metadata: Record<string, any>
   roles: Array<string>
-  username: Name
+  username: Username
   enabled: boolean
   authentication_type: string
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
-  username?: Name
+  username?: Username
   refresh?: Refresh
   body: {
-    password?: string
+    password?: Password
   }
 }
 
@@ -11248,7 +11250,7 @@ export interface SecurityDeleteRoleResponse extends ResponseBase {
 }
 
 export interface SecurityDeleteUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11257,7 +11259,7 @@ export interface SecurityDeleteUserResponse extends ResponseBase {
 }
 
 export interface SecurityDisableUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11266,7 +11268,7 @@ export interface SecurityDisableUserResponse extends ResponseBase {
 }
 
 export interface SecurityEnableUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
 }
 
@@ -11279,7 +11281,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
   name?: Name
   owner?: boolean
   realm_name?: Name
-  username?: Name
+  username?: Username
 }
 
 export interface SecurityGetApiKeyResponse extends ResponseBase {
@@ -11321,10 +11323,10 @@ export interface SecurityGetTokenRequest extends RequestBase {
   body: {
     grant_type?: AccessTokenGrantType
     scope?: string
-    password?: string
+    password?: Password
     kerberos_ticket?: string
     refresh_token?: string
-    username?: string
+    username?: Username
   }
 }
 
@@ -11351,7 +11353,7 @@ export interface SecurityGetUserPrivilegesResponse extends ResponseBase {
 }
 
 export interface SecurityGetUserRequest extends RequestBase {
-  username?: Names
+  username?: Array<Username>
 }
 
 export interface SecurityGetUserResponse extends DictionaryResponseBase<string, XPackUser> {
@@ -11362,8 +11364,8 @@ export interface SecurityGrantApiKeyRequest extends RequestBase {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
     access_token?: string
-    username?: Name
-    password?: string
+    username?: Username
+    password?: Password
   }
 }
 
@@ -11388,7 +11390,7 @@ export interface SecurityHasPrivilegesResponse extends ResponseBase {
   cluster: Record<string, boolean>
   has_all_requested: boolean
   index: Record<IndexName, Privileges>
-  username: string
+  username: Username
 }
 
 export interface SecurityInvalidateApiKeyRequest extends RequestBase {
@@ -11398,7 +11400,7 @@ export interface SecurityInvalidateApiKeyRequest extends RequestBase {
     name?: Name
     owner?: boolean
     realm_name?: string
-    username?: Name
+    username?: Username
   }
 }
 
@@ -11414,7 +11416,7 @@ export interface SecurityInvalidateTokenRequest extends RequestBase {
     token?: string
     refresh_token?: string
     realm_name?: Name
-    username?: Name
+    username?: Username
   }
 }
 
@@ -11473,14 +11475,14 @@ export interface SecurityPutRoleResponse extends ResponseBase {
 }
 
 export interface SecurityPutUserRequest extends RequestBase {
-  username: Name
+  username: Username
   refresh?: Refresh
   body: {
-    username?: Name
+    username?: Username
     email?: string | null
     full_name?: string | null
     metadata?: Record<string, any>
-    password?: string
+    password?: Password
     password_hash?: string
     roles?: Array<string>
     enabled?: boolean
@@ -13674,6 +13676,8 @@ export interface UserRealm {
   type: string
 }
 
+export type Username = string
+
 export type Uuid = string
 
 export interface ValueAggregate extends AggregateBase {
@@ -14112,7 +14116,7 @@ export interface XPackUser {
   full_name?: Name
   metadata: Record<string, any>
   roles: Array<string>
-  username: Name
+  username: Username
   enabled: boolean
 }
 
