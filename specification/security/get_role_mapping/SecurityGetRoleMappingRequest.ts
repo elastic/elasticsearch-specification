@@ -26,7 +26,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface SecurityGetRoleMappingRequest extends RequestBase {
-  path_parts: {
-    name: Name
+  path_parts?: {
+    name?: Name
   }
 }

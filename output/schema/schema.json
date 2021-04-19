@@ -111041,7 +111041,7 @@
         {
           "description": "A comma-separated list of role-mapping names",
           "name": "name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

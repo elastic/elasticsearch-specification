@@ -11489,7 +11489,7 @@ export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<st
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
-  name: Name
+  name?: Name
 }
 
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, XPackRoleMapping> {
