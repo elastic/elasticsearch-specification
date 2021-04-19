@@ -397,7 +397,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateProperties(typeDef.properties, openGenerics)
 
     if (typeDef.variants?.kind === 'container') {
-      const variants = typeDef.properties.filter(prop => !prop.container_property)
+      const variants = typeDef.properties.filter(prop => !(prop.container_property ?? false))
       if (variants.length === 1) {
         // Single-variant containers must have a required property
         if (!variants[0].required) {
@@ -481,7 +481,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
           }
         }
       }
-
     } else if (variants.kind === 'internal_tag') {
       const tagName = variants.tag
       const items = flattenUnionMembers(valueOf)
@@ -495,7 +494,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
           if (type == null) {
             modelError(`Type ${fqn(item.type)} not found`)
           } else if (type.kind === 'interface') {
-            const tagProperty = type.properties.find(prop => prop.name === tagName);
+            const tagProperty = type.properties.find(prop => prop.name === tagName)
             if (tagProperty == null) {
               modelError(`Type ${fqn(item.type)} should have a "${tagName}" variant tag property`)
             }
@@ -707,8 +706,8 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   function validateValueOfJsonEvents (valueOf: model.ValueOf): void {
     // TODO: disabled for now as it's too noisy until we have fully annotated variants
 
-    //const events = new Set<JsonEvent>()
-    //valueOfJsonEvents(events, valueOf)
+    // const events = new Set<JsonEvent>()
+    // valueOfJsonEvents(events, valueOf)
   }
 
   function validateEvent (events: Set<JsonEvent>, event: JsonEvent): void {
