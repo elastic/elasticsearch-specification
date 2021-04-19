@@ -26,9 +26,6 @@ export class ClusterStateIngest {
 
 export class ClusterStateIngestPipeline {
   id: Id
-<<<<<<< HEAD:specification/specs/cluster/ClusterStateIngest.ts
-  config: PipelineConfig
-=======
   config: ClusterStateIngestPipelineConfig
 }
 
@@ -36,5 +33,4 @@ export class ClusterStateIngestPipelineConfig {
   description?: string
   version?: VersionNumber
   processors: ProcessorContainer[]
->>>>>>> master:specification/cluster/ClusterStateIngest.ts
 }

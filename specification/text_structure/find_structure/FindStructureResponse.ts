@@ -17,58 +17,13 @@
  * under the License.
  */
 
-<<<<<<< HEAD:specification/text_structure/find_structure/FindStructureResponse.ts
-class FindStructureResponse {
-=======
-import { Field, long, uint } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Field, integer, long, uint } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { PipelineConfig } from '@common/ingest/PipelineConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-/**
- * @rest_spec_name text_structure.find_structure
- * @since 7.13.0
- * @stability TODO
- */
-export interface FindStructureRequest<TBody> {
-  query_parameters?: {
-    charset?: string
-    column_names?: string
-    delimiter?: string
-    explain?: boolean
-    format?: string
-    grok_pattern?: string
-    has_header_row?: boolean
-    lines_to_sample?: uint
-    quote?: string
-    should_trim_fields?: boolean
-    timeout?: Time
-    timestamp_field?: Field
-    timestamp_format?: string
-  }
-  body: TBody
-}
-
-export class FieldStat {
-  count: number
-  cardinality: number
-  top_hits: TopHit[]
-  mean_value?: number
-  median_value?: number
-  max_value?: number
-  min_value?: number
-  earliest?: string
-  latest?: string
-}
-
-export class TopHit {
-  count: long
-  value: UserDefinedValue
-}
-
 export class FindStructureResponse {
->>>>>>> master:specification/text_structure/find_structure/FindStructure.ts
   charset: string
   has_header_row?: boolean
   has_byte_order_marker: boolean
@@ -93,7 +48,7 @@ export class FindStructureResponse {
   ingest_pipeline: PipelineConfig
 }
 
-class FieldStat {
+export class FieldStat {
   count: integer
   cardinality: integer
   top_hits: TopHit[]
@@ -105,7 +60,7 @@ class FieldStat {
   latest?: string
 }
 
-class TopHit {
+export class TopHit {
   count: long
   value: UserDefinedValue
 }

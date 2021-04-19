@@ -3307,7 +3307,13 @@ export interface ClusterStateIngest {
 
 export interface ClusterStateIngestPipeline {
   id: Id
-  config: PipelineConfig
+  config: ClusterStateIngestPipelineConfig
+}
+
+export interface ClusterStateIngestPipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
 }
 
 export interface ClusterStateMetadata {
@@ -8482,21 +8488,8 @@ export interface MlUpdateModelSnapshotResponse extends AcknowledgedResponseBase 
   model: ModelSnapshot
 }
 
-<<<<<<< HEAD
-export interface PipelineConfig {
-  description?: string
-  version?: VersionNumber
-  processors: Array<ProcessorContainer>
-}
-
-export type PipelineName = string
-
-export interface PipelineProcessor extends ProcessorBase {
-  name: string
-=======
 export interface MlUsageCounter {
   count: long
->>>>>>> master
 }
 
 export interface MlValidateDetectorRequest extends RequestBase {
@@ -9528,6 +9521,12 @@ export interface PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
+}
+
+export interface PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: Array<ProcessorContainer>
 }
 
 export type PipelineName = string

@@ -17,7 +17,10 @@
  * under the License.
  */
 
-class PipelineConfig {
+import { VersionNumber } from "@common/common"
+import { ProcessorContainer } from "@ingest/ProcessorContainer"
+
+export class PipelineConfig {
   description?: string
   version?: VersionNumber
   processors: ProcessorContainer[]

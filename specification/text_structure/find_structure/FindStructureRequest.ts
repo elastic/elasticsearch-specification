@@ -17,12 +17,15 @@
  * under the License.
  */
 
+import { Field, uint } from "@common/common";
+import { Time } from "@common/common_options/time_unit/Time";
+
 /**
  * @rest_spec_name text_structure.find_structure
  * @since 7.13.0
  * @stability TODO
  */
-interface FindStructureRequest<TBody> {
+export interface FindStructureRequest<TBody> {
   query_parameters?: {
     /** The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set. */
     charset?: string
