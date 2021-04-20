@@ -2875,6 +2875,9 @@ export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResp
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
@@ -3151,6 +3154,9 @@ export interface ClusterRemoteInfo {
 }
 
 export interface ClusterRemoteInfoRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfo> {

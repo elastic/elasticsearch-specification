@@ -25,6 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface ClusterRemoteInfoRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {}
+  body?: {
+    stub: string
+  }
 }

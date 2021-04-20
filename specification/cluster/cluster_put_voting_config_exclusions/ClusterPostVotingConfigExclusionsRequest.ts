@@ -27,12 +27,12 @@ import { Time } from '@common/common_options/time_unit/Time'
  * @stability TODO
  */
 export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
-  path_parts?: {}
   query_parameters?: {
     node_names?: Names
     node_ids?: Ids
-    timeout?: Time // default: 30s
-    wait_for_removal?: boolean // default: true
+    /** @server_default 30s */
+    timeout?: Time
+    /** @server_default false */
+    wait_for_removal?: boolean
   }
-  body?: {}
 }

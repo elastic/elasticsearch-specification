@@ -34,5 +34,4 @@ export interface ClusterStatsRequest extends RequestBase {
     flat_settings?: boolean
     timeout?: Time // default: no timeout
   }
-  body?: {}
 }
