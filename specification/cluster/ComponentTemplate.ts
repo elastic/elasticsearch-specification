@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import {
-  IndexMetaData,
-  IndexName,
-  Name,
-  VersionNumber
-} from '@common/common'
+import { IndexMetaData, IndexName, Name, VersionNumber } from '@common/common'
 import { AliasDefinition } from '@indices/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TypeMapping } from '@common/mapping/TypeMapping'

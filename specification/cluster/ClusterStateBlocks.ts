@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import {
-  IndexAlias,
-  IndexName,
-  integer,
-  VersionNumber
-} from '@common/common'
+import { IndexAlias, IndexName, integer, VersionNumber } from '@common/common'
 import { IndexSettings } from '@common/index/IndexSettings'
 import { TypeMapping } from '@common/mapping/TypeMapping'
 import { Property } from '@common/mapping/types/Property'

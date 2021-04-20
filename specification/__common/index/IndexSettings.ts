@@ -17,7 +17,14 @@
  * under the License.
  */
 
-import { DateString, integer, Name, PipelineName, Uuid, VersionString } from '@common/common'
+import {
+  DateString,
+  integer,
+  Name,
+  PipelineName,
+  Uuid,
+  VersionString
+} from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
 import { IndexRouting } from './IndexRouting'
 
