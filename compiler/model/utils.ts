@@ -362,7 +362,10 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
   assert(declaration, type != null, 'Type alias without a referenced type')
-  const generics = declaration.getTypeParameters().map(node => modelType(node))
+  const generics = declaration.getTypeParameters().map(typeParameter => ({
+    name: modelGenerics(typeParameter),
+    namespace: getNameSpace(typeParameter)
+  }))
 
   const alias = modelType(type)
   const typeAlias: model.TypeAlias = {

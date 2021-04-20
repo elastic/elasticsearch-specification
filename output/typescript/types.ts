@@ -13002,7 +13002,7 @@ export interface SuggestFuzziness {
 
 export type SuggestMode = 'missing' | 'popular' | 'always'
 
-export type SuggestOption<TDocument> = CompletionSuggestOption<TDocument> | PhraseSuggestOption | TermSuggestOption
+export type SuggestOption<TDocument = unknown> = CompletionSuggestOption<TDocument> | PhraseSuggestOption | TermSuggestOption
 
 export type SuggestSort = 'score' | 'frequency'
 

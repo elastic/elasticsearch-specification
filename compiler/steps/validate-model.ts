@@ -435,14 +435,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    // FIXME: type_alias.generics should be of the same type as other type definitions
-    const openGenerics = new Set(typeDef.generics?.map(t => {
-      if (t.kind !== 'instance_of') {
-        throw new Error('Expecting instance_of for alias generic parameter')
-      } else {
-        return fqn(t.type)
-      }
-    }))
+    const openGenerics = new Set(typeDef.generics?.map(t => t.name))
 
     if (typeDef.variants != null) {
       if (typeDef.generics != null && typeDef.generics.length !== 0) {
