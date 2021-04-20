@@ -34,6 +34,5 @@ export class IndexingStats {
   index_time_in_millis: long
   index_total: long
   index_failed: long
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   types?: Dictionary<string, IndexingStats>
 }

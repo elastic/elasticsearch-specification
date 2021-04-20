@@ -114136,57 +114136,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ShardCompletion",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardDocs",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "deleted",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "ShardFailure",
         "namespace": "__common.common"
       },
@@ -114251,37 +114200,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ShardFielddata",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "evictions",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "memory_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "ShardFileSizeInfo",
         "namespace": "indices.stats"
       },
@@ -114299,134 +114217,6 @@
         },
         {
           "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardFlush",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "periodic",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardGet",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "exists_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "exists_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "missing_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "missing_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -114516,125 +114306,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ShardIndexing",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "delete_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "delete_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "delete_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index_failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "is_throttled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "noop_update_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "throttle_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "ShardLease",
         "namespace": "indices.stats"
       },
@@ -114680,125 +114351,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardMerges",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "current_docs",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "current_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_auto_throttle_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_docs",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_stopped_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_throttled_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
             }
           }
         }
@@ -115168,123 +114720,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ShardRefresh",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "listeners",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "external_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "external_total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardRequestCache",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "evictions",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "hit_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "memory_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "miss_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "ShardRetentionLeases",
         "namespace": "indices.stats"
       },
@@ -115404,158 +114839,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ShardSearch",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "fetch_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "fetch_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "fetch_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "open_contexts",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "query_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "query_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "query_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "scroll_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "scroll_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "scroll_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "suggest_current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "suggest_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "suggest_total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "ShardSegmentRouting",
         "namespace": "indices.segments"
       },
@@ -115590,168 +114873,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardSegments",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "doc_values_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "file_sizes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ShardFileSizeInfo",
-                "namespace": "indices.stats"
-              }
-            }
-          }
-        },
-        {
-          "name": "fixed_bit_set_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index_writer_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "max_unsafe_auto_id_timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "norms_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "points_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "stored_fields_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "terms_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "term_vectors_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "version_map_memory_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
             }
           }
         }
@@ -115890,8 +115011,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardCompletion",
-              "namespace": "indices.stats"
+              "name": "CompletionStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115901,8 +115022,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardDocs",
-              "namespace": "indices.stats"
+              "name": "DocStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115912,8 +115033,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardFielddata",
-              "namespace": "indices.stats"
+              "name": "FielddataStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115923,8 +115044,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardFlush",
-              "namespace": "indices.stats"
+              "name": "FlushStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115934,8 +115055,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardGet",
-              "namespace": "indices.stats"
+              "name": "GetStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115945,8 +115066,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardIndexing",
-              "namespace": "indices.stats"
+              "name": "IndexingStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115956,8 +115077,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardMerges",
-              "namespace": "indices.stats"
+              "name": "MergesStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -115989,8 +115110,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardStatsRecovery",
-              "namespace": "indices.stats"
+              "name": "RecoveryStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116000,8 +115121,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardRefresh",
-              "namespace": "indices.stats"
+              "name": "RefreshStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116011,8 +115132,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardRequestCache",
-              "namespace": "indices.stats"
+              "name": "RequestCacheStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116044,8 +115165,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardSearch",
-              "namespace": "indices.stats"
+              "name": "SearchStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116055,8 +115176,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardSegments",
-              "namespace": "indices.stats"
+              "name": "SegmentsStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116077,8 +115198,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardStatsStore",
-              "namespace": "indices.stats"
+              "name": "StoreStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116088,8 +115209,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardTransactionLog",
-              "namespace": "indices.stats"
+              "name": "TranslogStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
@@ -116099,81 +115220,19 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShardWarmer",
-              "namespace": "indices.stats"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardStatsRecovery",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "current_as_source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
+              "name": "WarmerStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         },
         {
-          "name": "current_as_target",
-          "required": true,
+          "name": "bulk",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "throttle_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardStatsStore",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "reserved_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
+              "name": "BulkStats",
+              "namespace": "__common.common_options.stats"
             }
           }
         }
@@ -116349,112 +115408,6 @@
                 "name": "ShardStore",
                 "namespace": "indices.shard_stores"
               }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardTransactionLog",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "earliest_last_modified_age",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "operations",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "uncommitted_operations",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "uncommitted_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ShardWarmer",
-        "namespace": "indices.stats"
-      },
-      "properties": [
-        {
-          "name": "current",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "__common"
             }
           }
         }
