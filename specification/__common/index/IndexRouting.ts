@@ -17,14 +17,43 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { Alias } from '@indices/Alias'
+import { Id } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexSettings } from './IndexSettings'
 
-export class IndexState {
-  aliases: Dictionary<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+export class IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
+}
+
+export class IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
+}
+
+export class IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+}
+
+export enum IndexRoutingAllocationOptions {
+  all = 0,
+  primaries = 1,
+  new_primaries = 2,
+  none = 3
+}
+
+export enum IndexRoutingRebalanceOptions {
+  all = 0,
+  primaries = 1,
+  replicas = 2,
+  none = 3
+}
+
+export class IndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export class IndexRoutingAllocationInitialRecovery {
+  _id?: Id
 }

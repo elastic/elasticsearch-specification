@@ -17,18 +17,11 @@
  * under the License.
  */
 
-import {
-  IndexAlias,
-  IndexMetaData,
-  IndexName,
-  Name,
-  VersionNumber
-} from '@common/common'
+import { IndexMetaData, IndexName, Name, VersionNumber } from '@common/common'
+import { AliasDefinition } from '@indices/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
-import {
-  ClusterStateBlockIndexMapping,
-  ClusterStateBlockIndexSetting
-} from './ClusterStateBlocks'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { IndexSettings } from '@common/index/IndexSettings'
 
 export class ComponentTemplate {
   name: Name
@@ -37,12 +30,14 @@ export class ComponentTemplate {
 
 export class ComponentTemplateNode {
   template: ComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: IndexMetaData
 }
 
 export class ComponentTemplateSummary {
   _meta?: IndexMetaData
   version?: VersionNumber
-  settings: Dictionary<IndexName, ClusterStateBlockIndexSetting>
-  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
-  aliases?: Array<IndexAlias>
+  settings: Dictionary<IndexName, IndexSettings>
+  mappings?: TypeMapping
+  aliases?: Dictionary<string, AliasDefinition>
 }

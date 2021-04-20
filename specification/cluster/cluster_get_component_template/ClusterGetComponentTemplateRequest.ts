@@ -31,9 +31,11 @@ export interface ClusterGetComponentTemplateRequest extends RequestBase {
     name?: Name
   }
   query_parameters?: {
-    flat_settings?: boolean // Default: false
-    local?: boolean // Default: false
-    master_timeout?: Time // Default: 30s
+    /** @server_default false */
+    flat_settings?: boolean
+    /** @server_default false */
+    local?: boolean
+    /** @server_default 30s */
+    master_timeout?: Time
   }
-  body?: {}
 }

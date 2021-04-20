@@ -2875,6 +2875,9 @@ export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResp
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
@@ -2943,12 +2946,6 @@ export interface ClusterHealthResponse extends ResponseBase {
   task_max_waiting_in_queue_millis: EpochMillis
   timed_out: boolean
   unassigned_shards: integer
-}
-
-export interface ClusterIndexTemplate {
-  aliases?: Record<string, AliasDefinition>
-  mappings?: TypeMapping
-  settings?: IndexSettings
 }
 
 export interface ClusterIndicesShardsIndexStats {
@@ -3119,7 +3116,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Time
   body: {
-    template: ClusterIndexTemplate
+    template: IndexState
     aliases?: Record<string, AliasDefinition>
     mappings?: TypeMapping
     settings?: IndexSettings
@@ -3157,6 +3154,9 @@ export interface ClusterRemoteInfo {
 }
 
 export interface ClusterRemoteInfoRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfo> {
@@ -3267,49 +3267,13 @@ export interface ClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string
-  settings?: Record<IndexName, ClusterStateBlockIndexSetting>
+  settings?: Record<IndexName, IndexSettings>
   in_sync_allocations?: Record<string, Array<string>>
   primary_terms?: Record<string, integer>
-  mappings?: Record<string, ClusterStateBlockIndexMapping>
+  mappings?: Record<string, TypeMapping>
   rollover_info?: Record<string, IndicesRolloverConditions>
   timestamp_range?: Record<string, any>
   system?: boolean
-}
-
-export interface ClusterStateBlockIndexMapping {
-  properties: Record<PropertyName, Property>
-}
-
-export interface ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting
-  refresh_interval?: Time
-  number_of_shards: integer | string
-  number_of_replicas: integer | string
-  verified_before_close?: boolean | string
-  hidden?: boolean | string
-  format?: integer | string
-  provided_name?: Name
-  auto_expand_replicas?: string
-  creation_date?: DateString
-  uuid?: Uuid
-  version?: ClusterStateBlockIndexSettingVersion
-  lifecycle?: ClusterStateBlockIndexSettingLifecycle
-}
-
-export interface ClusterStateBlockIndexSettingLifecycle {
-  name: Name
-}
-
-export interface ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation
-}
-
-export interface ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Record<string, string>
-}
-
-export interface ClusterStateBlockIndexSettingVersion {
-  created: VersionString
 }
 
 export interface ClusterStateBlocks {
@@ -3394,7 +3358,7 @@ export interface ClusterStateRequest extends RequestBase {
 }
 
 export interface ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+  cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: Array<string>
@@ -3539,14 +3503,16 @@ export interface ComponentTemplate {
 
 export interface ComponentTemplateNode {
   template: ComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: IndexMetaData
 }
 
 export interface ComponentTemplateSummary {
   _meta?: IndexMetaData
   version?: VersionNumber
-  settings: Record<IndexName, ClusterStateBlockIndexSetting>
-  mappings?: Record<string, ClusterStateBlockIndexMapping>
-  aliases?: Array<IndexAlias>
+  settings: Record<IndexName, IndexSettings>
+  mappings?: TypeMapping
+  aliases?: Record<string, AliasDefinition>
 }
 
 export interface CompositeAggregation extends BucketAggregationBase {
@@ -4679,7 +4645,7 @@ export interface ErrorCause {
 }
 
 export interface ErrorResponse {
-  error: MainError
+  error: MainError | string
   status: integer
 }
 
@@ -6186,8 +6152,8 @@ export interface IndexHealthStats {
   unassigned_shards: integer
 }
 
-export interface IndexMappings {
-  item: TypeMapping
+export interface IndexMappingRecord {
+  item?: TypeMapping
   mappings: TypeMapping
 }
 
@@ -6227,46 +6193,70 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
 export interface IndexResponse extends WriteResponseBase {
 }
 
+export interface IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
+}
+
+export interface IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
+}
+
+export interface IndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface IndexRoutingAllocationInitialRecovery {
+  _id?: Id
+}
+
+export type IndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+}
+
+export type IndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface IndexSegment {
   shards: Record<string, ShardsSegment | Array<ShardsSegment>>
 }
 
 export interface IndexSettingBlocks {
   read_only?: boolean
+  'index.blocks.read_only'?: boolean
   read_only_allow_delete?: boolean
+  'index.blocks.read_only_allow_delete'?: boolean
   read?: boolean
-  write?: boolean
+  'index.blocks.read'?: boolean
+  write?: boolean | string
+  'index.blocks.write'?: boolean | string
   metadata?: boolean
+  'index.blocks.metadata'?: boolean
 }
-
-export interface IndexSettingRouting {
-  'allocation.enable'?: IndexSettingRoutingAllocation
-  'rebalance.enable'?: IndexSettingRoutingRebalance
-}
-
-export type IndexSettingRoutingAllocation = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export type IndexSettingRoutingRebalance = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface IndexSettings {
-  number_of_shards?: integer
-  'index.number_of_shards'?: integer
-  number_of_replicas?: integer
-  'index.number_of_replicas'?: integer
+  number_of_shards?: integer | string
+  'index.number_of_shards'?: integer | string
+  number_of_replicas?: integer | string
+  'index.number_of_replicas'?: integer | string
   number_of_routing_shards?: integer
   'index.number_of_routing_shards'?: integer
   check_on_startup?: IndexCheckOnStartup
   'index.check_on_startup'?: IndexCheckOnStartup
   codec?: string
   'index.codec'?: string
-  routing_partition_size?: integer
-  'index.routing_partition_size'?: integer
+  routing_partition_size?: integer | string
+  'index.routing_partition_size'?: integer | string
   'soft_deletes.retention_lease.period'?: Time
   'index.soft_deletes.retention_lease.period'?: Time
   load_fixed_bitset_filters_eagerly?: boolean
   'index.load_fixed_bitset_filters_eagerly'?: boolean
-  hidden?: boolean
-  'index.hidden'?: boolean
+  hidden?: boolean | string
+  'index.hidden'?: boolean | string
   auto_expand_replicas?: string
   'index.auto_expand_replicas'?: string
   'search.idle.after'?: Time
@@ -6288,7 +6278,7 @@ export interface IndexSettings {
   max_shingle_diff?: integer
   'index.max_shingle_diff'?: integer
   blocks?: IndexSettingBlocks
-  'index.bocks'?: IndexSettingBlocks
+  'index.blocks'?: IndexSettingBlocks
   max_refresh_listeners?: integer
   'index.max_refresh_listeners'?: integer
   'analyze.max_token_count'?: integer
@@ -6299,20 +6289,60 @@ export interface IndexSettings {
   'index.max_terms_count'?: integer
   max_regex_length?: integer
   'index.max_regex_length'?: integer
-  routing?: IndexSettingRouting
-  'index.routing'?: IndexSettingRouting
+  routing?: IndexRouting
+  'index.routing'?: IndexRouting
   gc_deletes?: Time
   'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
   'index.default_pipeline'?: PipelineName
   final_pipeline?: PipelineName
   'index.final_pipeline'?: PipelineName
+  lifecycle?: IndexSettingsLifecycle
+  'index.lifecycle'?: IndexSettingsLifecycle
+  provided_name?: Name
+  'index.provided_name'?: Name
+  creation_date?: DateString
+  'index.creation_date'?: DateString
+  uuid?: Uuid
+  'index.uuid'?: Uuid
+  version?: IndexVersioning
+  'index.version'?: IndexVersioning
+  verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
+  format?: string | integer
+  'index.format'?: string | integer
+  max_slices_per_scroll?: integer
+  'index.max_slices_per_scroll'?: integer
+  'translog.durability'?: string
+  'index.translog.durability'?: string
+  'query_string.lenient'?: boolean | string
+  'index.query_string.lenient'?: boolean | string
+  priority?: integer
+  'index.priority'?: integer
+  top_metrics_max_size?: integer
+  analysis?: IndexSettingsAnalysis
+}
+
+export interface IndexSettingsAnalysis {
+  char_filter?: Record<string, CharFilter>
+}
+
+export interface IndexSettingsLifecycle {
+  name: Name
+}
+
+export interface IndexSettingsRequest extends IndexSettings {
+  settings?: IndexSettings
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export interface IndexStatePrefixedSettings {
+  index: IndexSettings
 }
 
 export interface IndexStats {
@@ -6332,6 +6362,10 @@ export interface IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+}
+
+export interface IndexVersioning {
+  created: VersionString
 }
 
 export interface IndexedScript extends ScriptBase {
@@ -6686,7 +6720,7 @@ export interface IndicesGetMappingRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappings> {
+export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappingRecord> {
 }
 
 export interface IndicesGetRequest extends RequestBase {
@@ -6831,11 +6865,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   preserve_existing?: boolean
   timeout?: Time
-  body: {
-    index?: Record<string, any>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
+  body: IndexSettingsRequest
 }
 
 export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {
@@ -12979,9 +13009,10 @@ export interface SuggestContainer {
 }
 
 export interface SuggestContext {
-  name: string
-  path: Field
+  name: Name
+  path?: Field
   type: string
+  precision?: integer
 }
 
 export interface SuggestContextQuery {

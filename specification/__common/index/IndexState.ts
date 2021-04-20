@@ -17,9 +17,18 @@
  * under the License.
  */
 
+import { IndexName } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Alias } from '@indices/Alias'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { IndexSettings } from './IndexSettings'
 
-export class IndexMappings {
-  item: TypeMapping
-  mappings: TypeMapping
+export class IndexState {
+  aliases?: Dictionary<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export class IndexStatePrefixedSettings {
+  index: IndexSettings
 }
