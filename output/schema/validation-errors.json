@@ -300,12 +300,6 @@
       ],
       "response": []
     },
-    "delete_by_query": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "enrich.put_policy": {
       "request": [
         "Endpoint has \"@stability: TODO"

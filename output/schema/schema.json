@@ -44435,19 +44435,8 @@
           }
         },
         {
-          "name": "source_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "_source",
-          "required": true,
+          "required": false,
           "type": {
             "items": [
               {
