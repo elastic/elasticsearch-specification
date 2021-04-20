@@ -290,7 +290,7 @@ export class TypeAlias extends BaseType {
   kind: 'type_alias'
   type: ValueOf
   /** generic parameters: either concrete types or open parameters from the enclosing type */
-  generics?: ValueOf[]
+  generics?: TypeName[]
   /** Only applicable to `union_of` aliases: identify typed_key unions (external) and variant inventories (internal) */
   variants?: InternalTag | ExternalTag
 }
