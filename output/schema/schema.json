@@ -124456,11 +124456,8 @@
     {
       "generics": [
         {
-          "kind": "instance_of",
-          "type": {
-            "name": "TDocument",
-            "namespace": "__global.search.suggesters"
-          }
+          "name": "TDocument",
+          "namespace": "__global.search.suggesters"
         }
       ],
       "kind": "type_alias",
