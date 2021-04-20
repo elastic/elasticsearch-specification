@@ -55,7 +55,6 @@ const namespaces = types.reduce((acc, val) => {
 
 const topLevel = [...new Set(Object.keys(namespaces).map(n => n.split('.').shift()))]
 const multiple = Object.keys(namespaces).filter(n => n.split('.').length > 1)
-
 let definitions = ''
 for (const ns of topLevel) {
   definitions += buildNamespaces(ns as string, ns as string)
@@ -70,7 +69,9 @@ writeFileSync(
 function buildNamespaces (namespace: string, current: string): string {
   const ns = multiple
     .filter(n => n.startsWith(namespace))
-    .filter(n => n.split('.').length === namespace.split('.').length + 1)
+    .map(n => n.split('.').slice(0, namespace.split('.').length + 1).join('.'))
+    .filter(n => n !== namespace)
+    .filter((n, i, arr) => arr.indexOf(n) === i)
 
   let code = `\nexport ${namespace.split('.').length === 1 ? 'declare ' : ''}namespace ${createName(current)} {\n`
   if (Array.isArray(namespaces[namespace]) && namespaces[namespace].length > 0) {
@@ -101,18 +102,21 @@ function buildType (type: M.TypeDefinition): string {
 
 // This function always returns a string, unless we are visitin
 // a literal_value, which can also be a number or boolean.
-function buildValue (type: M.ValueOf): string | number | boolean {
+function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number | boolean {
   switch (type.kind) {
     case 'instance_of':
-      return `${createName(type)}${buildGenerics(type.generics)}`
+      if (Array.isArray(openGenerics) && openGenerics.includes(type.type.name)) {
+        return type.type.name
+      }
+      return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
     case 'array_of':
-      return `${buildValue(type.value)}[]`
+      return `${buildValue(type.value, openGenerics)}[]`
     case 'union_of':
-      return type.items.map(buildValue).join(' | ')
+      return type.items.map(t => buildValue(t, openGenerics)).join(' | ')
     case 'dictionary_of':
-      return `Record<${buildValue(type.key)}, ${buildValue(type.value)}>`
+      return `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
     case 'named_value_of':
-      return `Record<string, ${buildValue(type.value)}>`
+      return `Record<string, ${buildValue(type.value, openGenerics)}>`
     case 'user_defined_value':
       return 'any'
     case 'literal_value':
@@ -120,7 +124,7 @@ function buildValue (type: M.ValueOf): string | number | boolean {
   }
 }
 
-function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, noDefault = false): string {
+function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGenerics?: string[], noDefault = false): string {
   if (!Array.isArray(types) || types.length === 0) return ''
   return `<${types.map(buildGeneric).join(', ')}>`
 
@@ -129,7 +133,10 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, noDefault
     if (isTypeName(type)) {
       return noDefault ? type.name : `${type.name} = unknown`
     } else {
-      return buildValue(type)
+      if (type.kind === 'instance_of' && Array.isArray(openGenerics) && openGenerics.includes(type.type.name)) {
+        return type.type.name
+      }
+      return buildValue(type, openGenerics)
     }
   }
 
@@ -138,7 +145,7 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, noDefault
   }
 }
 
-function buildInherits (type: M.Interface | M.Request): string {
+function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
   const inherits = (type.inherits || []).filter(type => !skipBehaviors.includes(type.type.name))
   const interfaces = (type.implements || []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors || []).filter(type => !skipBehaviors.includes(type.type.name))
@@ -147,7 +154,7 @@ function buildInherits (type: M.Interface | M.Request): string {
   return ` extends ${extendAll.map(buildInheritType).join(', ')}`
 
   function buildInheritType (type: M.Inherits): string {
-    return `${type.type.name}${buildGenerics(type.generics)}`
+    return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
   }
 }
 
@@ -156,12 +163,12 @@ function buildInterface (type: M.Interface): string {
     return buildBehaviorInterface(type)
   }
 
-  const openGenerics = []
-  let code = `export interface ${type.name.name}${buildGenerics(type.generics)}${buildInherits(type)} {\n`
+  const openGenerics = type.generics?.map(t => t.name) ?? []
+  let code = `export interface ${type.name.name}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.properties) {
-    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type)}\n`
+    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
   }
-  code += '}'
+  code += '}\n'
 
   return code
 
@@ -232,7 +239,7 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
     code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type)}\n`
   }
   code += '}\n'
-  code += `export type ${type.name.name}${buildGenerics(type.generics)} = ${type.name.name}Keys${buildGenerics(type.generics, true)} |\n`
+  code += `export type ${type.name.name}${buildGenerics(type.generics)} = ${type.name.name}Keys${buildGenerics(type.generics, [], true)} |\n`
   code += `    { ${buildIndexer(dictionaryOf)} }\n`
   return code
 
@@ -266,9 +273,10 @@ function lookupBehavior (type: M.Interface, name: string): M.Inherits | null {
 }
 
 function buildRequest (type: M.Request): string {
-  let code = `export interface ${type.name.name}${buildGenerics(type.generics)}${buildInherits(type)} {\n`
+  const openGenerics = type.generics?.map(t => t.name) ?? []
+  let code = `export interface ${type.name.name}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.path) {
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type)}\n`
+    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
 
   // It might happen that the same property is present in both
@@ -276,16 +284,16 @@ function buildRequest (type: M.Request): string {
   const pathPropertiesNames = type.path.map(property => property.name)
   for (const property of type.query) {
     if (pathPropertiesNames.includes(property.name)) continue
-    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type)}\n`
+    code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
   if (type.body && type.body.kind === 'properties') {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
-      code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type)}\n`
+      code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
     }
     code += '  }\n'
   } else if (type.body != null && type.body.kind === 'value') {
-    code += `  body${isBodyRequired() ? '' : '?'}: ${buildValue(type.body.value)}\n`
+    code += `  body${isBodyRequired() ? '' : '?'}: ${buildValue(type.body.value, openGenerics)}\n`
   }
   code += '}\n'
   return code
@@ -305,19 +313,18 @@ function buildEnum (type: M.Enum): string {
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {
-  return `export type ${type.name.name}${buildGenerics(type.generics)} = ${buildValue(type.type)}\n`
+  const openGenerics = type.generics?.map(t => t.name) ?? []
+  return `export type ${type.name.name}${buildGenerics(type.generics)} = ${buildValue(type.type, openGenerics)}\n`
 }
 
-function createName (type: M.TypeDefinition | M.InstanceOf | string) {
+function createName (type: M.TypeName | string) {
   if (typeof type === 'string') {
     const namespace = type.replace(/_([a-z])/g, k => k[1].toUpperCase())
     return `${namespace.split('.').map(TitleCase).join('.')}`
-  } else if (type.kind === 'instance_of') {
-    const namespace = type.type.namespace.replace(/_([a-z])/g, k => k[1].toUpperCase())
-    return `${namespace.split('.').map(TitleCase).join('.')}.${type.type.name}`
   } else {
-    const namespace = type.name.namespace.replace(/_([a-z])/g, k => k[1].toUpperCase())
-    return `${namespace.split('.').map(TitleCase).join('.')}.${type.name.name}`
+    if (type.namespace === 'internal') return type.name
+    const namespace = type.namespace.replace(/_([a-z])/g, k => k[1].toUpperCase())
+    return `${namespace.split('.').map(TitleCase).join('.')}.${type.name}`
   }
 
   function TitleCase (str: string): string {
