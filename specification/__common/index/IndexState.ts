@@ -24,7 +24,11 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexSettings } from './IndexSettings'
 
 export class IndexState {
-  aliases: Dictionary<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+  aliases?: Dictionary<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export class IndexStatePrefixedSettings {
+  index: IndexSettings
 }

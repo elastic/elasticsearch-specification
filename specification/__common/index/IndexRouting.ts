@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Id } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexRouting {
@@ -27,6 +28,7 @@ export class IndexRouting {
 export class IndexRoutingAllocation {
   enable?: IndexRoutingAllocationOptions
   include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
 }
 
 export class IndexRoutingRebalance {
@@ -48,5 +50,10 @@ export enum IndexRoutingRebalanceOptions {
 }
 
 export class IndexRoutingAllocationInclude {
-  _tier_preference: string
+  _tier_preference?: string
+  _id?: Id
+}
+
+export class IndexRoutingAllocationInitialRecovery {
+  _id?: Id
 }

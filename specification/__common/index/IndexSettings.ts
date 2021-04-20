@@ -57,10 +57,10 @@ export class IndexSettings {
    */
   codec?: string
   /**
+   * server_default 1
    * @aliases index.routing_partition_size
-   * @server_default 1
    */
-  routing_partition_size?: integer
+  routing_partition_size?: integer | string // TODO: should be int only
   /**
    * @aliases index.soft_deletes.retention_lease.period
    * @server_default 12h
@@ -177,12 +177,29 @@ export class IndexSettings {
    * @aliases index.lifecycle
    */
   lifecycle?: IndexSettingsLifecycle
-
+  /**
+   * @aliases index.provided_name
+   */
   provided_name?: Name
+  /**
+   * @aliases index.creation_date
+   */
   creation_date?: DateString
+  /**
+   * @aliases index.uuid
+   */
   uuid?: Uuid
+  /**
+   * @aliases index.version
+   */
   version?: IndexVersioning
+  /**
+   * @aliases index.verified_before_close
+   */
   verified_before_close?: boolean | string // TODO should be bool only
+  /**
+   * @aliases index.format
+   */
   format?: string | integer
 }
 
@@ -190,7 +207,7 @@ export class IndexSettingBlocks {
   read_only?: boolean
   read_only_allow_delete?: boolean
   read?: boolean
-  write?: boolean
+  write?: boolean | string // TODO: should be bool only
   metadata?: boolean
 }
 

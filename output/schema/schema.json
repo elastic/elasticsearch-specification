@@ -63411,6 +63411,17 @@
               "namespace": "__common.index"
             }
           }
+        },
+        {
+          "name": "initial_recovery",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationInitialRecovery",
+              "namespace": "__common.index"
+            }
+          }
         }
       ]
     },
@@ -63423,12 +63434,43 @@
       "properties": [
         {
           "name": "_tier_preference",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationInitialRecovery",
+        "namespace": "__common.index"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "__common"
             }
           }
         }
@@ -63585,11 +63627,23 @@
           "name": "write",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -63715,15 +63769,27 @@
           "aliases": [
             "index.routing_partition_size"
           ],
+          "description": "server_default 1",
           "name": "routing_partition_size",
           "required": false,
-          "serverDefault": "1",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "__common"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "__common"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -64095,6 +64161,9 @@
           }
         },
         {
+          "aliases": [
+            "index.provided_name"
+          ],
           "name": "provided_name",
           "required": false,
           "type": {
@@ -64106,6 +64175,9 @@
           }
         },
         {
+          "aliases": [
+            "index.creation_date"
+          ],
           "name": "creation_date",
           "required": false,
           "type": {
@@ -64117,6 +64189,9 @@
           }
         },
         {
+          "aliases": [
+            "index.uuid"
+          ],
           "name": "uuid",
           "required": false,
           "type": {
@@ -64128,6 +64203,9 @@
           }
         },
         {
+          "aliases": [
+            "index.version"
+          ],
           "name": "version",
           "required": false,
           "type": {
@@ -64139,6 +64217,9 @@
           }
         },
         {
+          "aliases": [
+            "index.verified_before_close"
+          ],
           "name": "verified_before_close",
           "required": false,
           "type": {
@@ -64162,6 +64243,9 @@
           }
         },
         {
+          "aliases": [
+            "index.format"
+          ],
           "name": "format",
           "required": false,
           "type": {
@@ -64215,7 +64299,7 @@
       "properties": [
         {
           "name": "aliases",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -64236,7 +64320,7 @@
         },
         {
           "name": "mappings",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -64247,6 +64331,38 @@
         },
         {
           "name": "settings",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexSettings",
+                  "namespace": "__common.index"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexStatePrefixedSettings",
+                  "namespace": "__common.index"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexStatePrefixedSettings",
+        "namespace": "__common.index"
+      },
+      "properties": [
+        {
+          "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",

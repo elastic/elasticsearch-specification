@@ -6201,10 +6201,16 @@ export interface IndexRouting {
 export interface IndexRoutingAllocation {
   enable?: IndexRoutingAllocationOptions
   include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
 }
 
 export interface IndexRoutingAllocationInclude {
-  _tier_preference: string
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface IndexRoutingAllocationInitialRecovery {
+  _id?: Id
 }
 
 export type IndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
@@ -6223,7 +6229,7 @@ export interface IndexSettingBlocks {
   read_only?: boolean
   read_only_allow_delete?: boolean
   read?: boolean
-  write?: boolean
+  write?: boolean | string
   metadata?: boolean
 }
 
@@ -6238,8 +6244,8 @@ export interface IndexSettings {
   'index.check_on_startup'?: IndexCheckOnStartup
   codec?: string
   'index.codec'?: string
-  routing_partition_size?: integer
-  'index.routing_partition_size'?: integer
+  routing_partition_size?: integer | string
+  'index.routing_partition_size'?: integer | string
   'soft_deletes.retention_lease.period'?: Time
   'index.soft_deletes.retention_lease.period'?: Time
   load_fixed_bitset_filters_eagerly?: boolean
@@ -6289,11 +6295,17 @@ export interface IndexSettings {
   lifecycle?: IndexSettingsLifecycle
   'index.lifecycle'?: IndexSettingsLifecycle
   provided_name?: Name
+  'index.provided_name'?: Name
   creation_date?: DateString
+  'index.creation_date'?: DateString
   uuid?: Uuid
+  'index.uuid'?: Uuid
   version?: IndexVersioning
+  'index.version'?: IndexVersioning
   verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
   format?: string | integer
+  'index.format'?: string | integer
 }
 
 export interface IndexSettingsLifecycle {
@@ -6301,9 +6313,13 @@ export interface IndexSettingsLifecycle {
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export interface IndexStatePrefixedSettings {
+  index: IndexSettings
 }
 
 export interface IndexStats {
