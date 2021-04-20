@@ -23,7 +23,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 /**
  * @rest_spec_name indices.upgrade
  * @since 7.13.0
- * @stability stable
+ * @stability TODO
  */
 export interface IndicesUpgradeRequest extends RequestBase {
   path_parts?: {

@@ -44,11 +44,11 @@ export interface BulkRequest<TSource> extends RequestBase {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    _source?: boolean
+    _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time
-    type_query_string?: string
+    type?: string
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }

@@ -55,8 +55,8 @@ export interface DeleteByQueryRequest extends RequestBase {
     from?: long
     ignore_unavailable?: boolean
     lenient?: boolean
+    max_docs?: long
     preference?: string
-    query_on_query_string?: string
     refresh?: boolean
     request_cache?: boolean
     requests_per_second?: long
@@ -69,9 +69,9 @@ export interface DeleteByQueryRequest extends RequestBase {
     size?: long
     slices?: long
     sort?: string[]
-    source_enabled?: boolean
-    source_excludes?: Fields
-    source_includes?: Fields
+    _source?: boolean | Fields
+    _source_excludes?: Fields
+    _source_includes?: Fields
     stats?: string[]
     terminate_after?: long
     timeout?: Time

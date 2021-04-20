@@ -40,7 +40,8 @@ const LOG = 'ALL' // default: ALL
 export default async function validateRestSpec (model: model.Model, jsonSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
     if (endpoint.request == null) continue
-    const requestDefinition = getProperties(getDefinition(endpoint.request.name))
+    const requestDefinition = getDefinition(endpoint.request.name)
+    const requestProperties = getProperties(requestDefinition)
     if (endpoint.request.name === LOG || LOG === 'ALL') {
       const spec = jsonSpec.get(endpoint.name)
       assert(spec, `Can't find the json spec for ${endpoint.name}`)
@@ -52,7 +53,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
           return Object.keys(path.parts)
         })
       ))
-      const pathProperties = requestDefinition.path.map(property => property.name)
+      const pathProperties = requestProperties.path.map(property => property.name)
       // are all the parameters in the request definition present in the json spec?
       for (const name of pathProperties) {
         if (!urlParts.includes(name)) {
@@ -69,7 +70,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
 
       if (spec.params != null) {
         const params = Object.keys(spec.params)
-        const queryProperties = requestDefinition.query.map(property => property.name)
+        const queryProperties = requestProperties.query.map(property => property.name)
         // are all the parameters in the request definition present in the json spec?
         for (const name of queryProperties) {
           if (!params.includes(name)) {
@@ -85,11 +86,11 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         }
       }
 
-      if (requestDefinition.body === Body.yesBody && spec.body == null) {
+      if (requestProperties.body === Body.yesBody && spec.body == null) {
         errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: should not have a body`)
       }
 
-      if (requestDefinition.body === Body.noBody && spec.body != null && spec.body.required === true) {
+      if (requestProperties.body === Body.noBody && spec.body != null && spec.body.required === true) {
         errors.addEndpointError(endpoint.name, 'request', `${endpoint.request.name}: should have a body definition`)
       }
     }
@@ -144,7 +145,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
           query.push(...properties.query)
         }
 
-        if (body !== properties.body) {
+        if (properties.body === Body.yesBody) {
           body = properties.body
         }
       }

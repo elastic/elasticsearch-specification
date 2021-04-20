@@ -56,7 +56,7 @@ export interface UpdateRequest<TDocument, TPartialDocument>
     source_enabled?: boolean
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
-    _source?: boolean | string | string[]
+    _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
   }

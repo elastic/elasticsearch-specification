@@ -50,7 +50,7 @@ export interface GetRequest extends RequestBase {
     stored_fields?: Fields
     version?: VersionNumber
     version_type?: VersionType
-    _source?: boolean | string | string[]
+    _source?: boolean | Fields
   }
   body?: {}
 }

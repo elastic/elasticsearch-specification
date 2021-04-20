@@ -43,7 +43,7 @@ export interface ExplainRequest extends RequestBase {
     preference?: string
     query_on_query_string?: string
     routing?: Routing
-    _source?: boolean | Fields | SourceFilter
+    _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields

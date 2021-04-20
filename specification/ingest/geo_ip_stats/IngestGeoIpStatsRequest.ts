@@ -23,7 +23,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 /**
  * @rest_spec_name ingest.geo_ip_stats
  * @since 7.13.0
- * @stability stable
+ * @stability TODO
  */
 export interface IngestGeoIpStatsRequest extends RequestBase {
   path_parts?: {
