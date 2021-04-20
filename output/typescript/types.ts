@@ -846,6 +846,18 @@ export interface BulkResponseItemContainer {
   delete?: BulkDeleteResponseItem
 }
 
+export interface BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
+}
+
 export interface BulkUpdateOperation extends BulkOperation {
 }
 
@@ -3509,6 +3521,7 @@ export interface CompletionProperty extends DocValuesPropertyBase {
 export interface CompletionStats {
   size_in_bytes: long
   size?: ByteSize
+  fields?: Record<Field, FieldSizeUsage>
 }
 
 export interface CompletionSuggestOption<TDocument = unknown> {
@@ -4960,6 +4973,11 @@ export interface FieldLookup {
 export interface FieldMapping {
 }
 
+export interface FieldMemoryUsage {
+  memory_size?: ByteSize
+  memory_size_in_bytes: long
+}
+
 export interface FieldNamesField {
   enabled: boolean
 }
@@ -4972,6 +4990,11 @@ export interface FieldSecurity {
 export interface FieldSecuritySettings {
   except: Array<string>
   grant: Array<string>
+}
+
+export interface FieldSizeUsage {
+  size?: ByteSize
+  size_in_bytes: long
 }
 
 export interface FieldSort {
@@ -5032,6 +5055,7 @@ export interface FielddataStats {
   evictions?: long
   memory_size?: ByteSize
   memory_size_in_bytes: long
+  fields?: Record<Field, FieldMemoryUsage>
 }
 
 export type Fields = Field | Array<Field>
@@ -6332,6 +6356,7 @@ export interface IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+  bulk?: BulkStats
 }
 
 export interface IndexedScript extends ScriptBase {

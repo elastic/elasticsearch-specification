@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { ByteSize, Field, long } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { ByteSize, long } from '@common/common'
 
-export class CompletionStats {
-  size_in_bytes: long
-  size?: ByteSize
-  fields?: Dictionary<Field, FieldSizeUsage>
-}
-
-export class FieldSizeUsage {
-  size?: ByteSize
-  size_in_bytes: long
+export class BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
 }

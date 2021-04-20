@@ -19738,6 +19738,114 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "BulkStats",
+        "namespace": "__common.common_options.stats"
+      },
+      "properties": [
+        {
+          "name": "total_operations",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "total_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "total_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "avg_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "avg_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "avg_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "avg_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": [
         {
           "type": {
@@ -39197,6 +39305,27 @@
               "namespace": "__common"
             }
           }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "__common"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldSizeUsage",
+                "namespace": "__common.common_options.stats"
+              }
+            }
+          }
         }
       ]
     },
@@ -52485,6 +52614,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FieldMemoryUsage",
+        "namespace": "__common.common_options.stats"
+      },
+      "properties": [
+        {
+          "name": "memory_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "memory_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldNamesField",
         "namespace": "__common.mapping.meta_fields.field_names"
       },
@@ -52565,6 +52725,37 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldSizeUsage",
+        "namespace": "__common.common_options.stats"
+      },
+      "properties": [
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "__common"
             }
           }
         }
@@ -53171,6 +53362,27 @@
             "type": {
               "name": "long",
               "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "__common"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldMemoryUsage",
+                "namespace": "__common.common_options.stats"
+              }
             }
           }
         }
@@ -64505,6 +64717,17 @@
             "kind": "instance_of",
             "type": {
               "name": "WarmerStats",
+              "namespace": "__common.common_options.stats"
+            }
+          }
+        },
+        {
+          "name": "bulk",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BulkStats",
               "namespace": "__common.common_options.stats"
             }
           }
