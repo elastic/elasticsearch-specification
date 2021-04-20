@@ -14,7 +14,8 @@
         "type_alias definition __common.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '__common.aggregations:StatsAggregate'",
         "interface definition __common:ErrorCause / Property 'caused_by' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
         "interface definition __common:ErrorCause / Property 'root_cause' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
-        "interface definition __common.common:ShardFailure / Property 'reason' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+        "interface definition __common.common:ShardFailure / Property 'reason' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
+        "type_alias definition __global.search.suggesters:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '__global.search.suggesters:TDocument'"
       ]
     },
     "bulk": {

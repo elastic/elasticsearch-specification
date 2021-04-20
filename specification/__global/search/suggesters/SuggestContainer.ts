@@ -21,6 +21,9 @@ import { CompletionSuggester } from './completion_suggester/CompletionSuggester'
 import { PhraseSuggester } from './phrase_suggester/PhraseSuggester'
 import { TermSuggester } from './term_suggester/TermSuggester'
 
+/**
+ * @variants container
+ */
 export class SuggestContainer {
   completion?: CompletionSuggester
   phrase?: PhraseSuggester
