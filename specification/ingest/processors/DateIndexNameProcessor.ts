@@ -23,7 +23,7 @@ import { DateRounding } from './DateRounding'
 
 export class DateIndexNameProcessor extends ProcessorBase {
   date_formats: string[]
-  date_rounding: DateRounding
+  date_rounding: string | DateRounding
   field: Field
   index_name_format: string
   index_name_prefix: string

@@ -33,6 +33,7 @@ export interface CancelTasksRequest extends RequestBase {
     actions?: string | string[]
     nodes?: string[]
     parent_task_id?: string
+    wait_for_completion?: boolean
   }
   body?: {}
 }

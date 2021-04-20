@@ -25,7 +25,7 @@
         "namespace": "async_search.delete"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -53,7 +53,7 @@
         "namespace": "async_search.get"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -81,7 +81,7 @@
         "namespace": "async_search.status"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -112,7 +112,7 @@
         "namespace": "async_search.submit"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -146,7 +146,7 @@
         "namespace": "autoscaling.policy_delete"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -174,7 +174,7 @@
         "namespace": "autoscaling.capacity_get"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -202,7 +202,7 @@
         "namespace": "autoscaling.policy_get"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -233,7 +233,7 @@
         "namespace": "autoscaling.policy_put"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -308,7 +308,7 @@
         "namespace": "cat.cat_aliases"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -343,7 +343,7 @@
         "namespace": "cat.cat_allocation"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -378,7 +378,7 @@
         "namespace": "cat.cat_count"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -413,7 +413,7 @@
         "namespace": "cat.cat_fielddata"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -448,7 +448,7 @@
         "namespace": "cat.cat_health"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -476,7 +476,7 @@
         "namespace": "cat.cat_help"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -505,7 +505,7 @@
         "namespace": "cat.cat_indices"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -540,7 +540,7 @@
         "namespace": "cat.cat_master"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -569,7 +569,7 @@
         "namespace": "cat.cat_data_frame_analytics"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -604,7 +604,7 @@
         "namespace": "cat.cat_datafeeds"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -639,7 +639,7 @@
         "namespace": "cat.cat_jobs"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -674,7 +674,7 @@
         "namespace": "cat.cat_trained_models"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -709,7 +709,7 @@
         "namespace": "cat.cat_node_attributes"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -738,7 +738,7 @@
         "namespace": "cat.cat_nodes"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -767,7 +767,7 @@
         "namespace": "cat.cat_pending_tasks"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -796,7 +796,7 @@
         "namespace": "cat.cat_plugins"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -825,7 +825,7 @@
         "namespace": "cat.cat_recovery"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -860,7 +860,7 @@
         "namespace": "cat.cat_repositories"
       },
       "since": "2.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -889,7 +889,7 @@
         "namespace": "cat.cat_segments"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -924,7 +924,7 @@
         "namespace": "cat.cat_shards"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -959,7 +959,7 @@
         "namespace": "cat.cat_snapshots"
       },
       "since": "2.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -994,7 +994,7 @@
         "namespace": "cat.cat_tasks"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1023,7 +1023,7 @@
         "namespace": "cat.cat_templates"
       },
       "since": "5.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1058,7 +1058,7 @@
         "namespace": "cat.cat_thread_pool"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1093,7 +1093,7 @@
         "namespace": "cat.cat_transforms"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1127,7 +1127,7 @@
         "namespace": "ccr.delete_auto_follow_pattern"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1158,7 +1158,7 @@
         "namespace": "ccr.create_follow_index"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1186,7 +1186,7 @@
         "namespace": "ccr.follow_info"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1214,7 +1214,7 @@
         "namespace": "ccr.follow_index_stats"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1245,7 +1245,7 @@
         "namespace": "ccr.forget_follower_index"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1273,7 +1273,7 @@
         "namespace": "ccr.get_auto_follow_pattern"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1307,7 +1307,7 @@
         "namespace": "ccr.pause_auto_follow_pattern"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1335,7 +1335,7 @@
         "namespace": "ccr.pause_follow_index"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1366,7 +1366,7 @@
         "namespace": "ccr.put_auto_follow_pattern"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1394,7 +1394,7 @@
         "namespace": "ccr.resume_auto_follow_pattern"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1425,7 +1425,7 @@
         "namespace": "ccr.resume_follow_index"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1453,7 +1453,7 @@
         "namespace": "ccr.stats"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1481,7 +1481,7 @@
         "namespace": "ccr.unfollow_index"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1513,7 +1513,7 @@
         "namespace": "__global.clear_scroll"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1551,7 +1551,7 @@
         "namespace": "__global.close_point_in_time"
       },
       "since": "7.10.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1582,7 +1582,7 @@
         "namespace": "cluster.cluster_allocation_explain"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1611,7 +1611,7 @@
         "namespace": "cluster.cluster_delete_component_template"
       },
       "since": "7.8.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1639,7 +1639,7 @@
         "namespace": "cluster.cluster_delete_voting_config_exclusions"
       },
       "since": "7.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1667,7 +1667,7 @@
         "namespace": "cluster.cluster_exists_component_template"
       },
       "since": "7.8.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1695,7 +1695,7 @@
         "namespace": "cluster.cluster_get_component_template"
       },
       "since": "7.8.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1729,7 +1729,7 @@
         "namespace": "cluster.cluster_get_settings"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1757,7 +1757,7 @@
         "namespace": "cluster.cluster_health"
       },
       "since": "1.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1791,7 +1791,7 @@
         "namespace": "cluster.cluster_pending_tasks"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1819,7 +1819,7 @@
         "namespace": "cluster.cluster_put_voting_config_exclusions"
       },
       "since": "7.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1850,7 +1850,7 @@
         "namespace": "cluster.cluster_put_component_template"
       },
       "since": "7.8.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1882,7 +1882,7 @@
         "namespace": "cluster.cluster_put_settings"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1910,7 +1910,7 @@
         "namespace": "cluster.cluster_remote_info"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1941,7 +1941,7 @@
         "namespace": "cluster.cluster_reroute"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -1969,7 +1969,7 @@
         "namespace": "cluster.cluster_state"
       },
       "since": "1.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2009,7 +2009,7 @@
         "namespace": "cluster.cluster_stats"
       },
       "since": "1.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2046,7 +2046,7 @@
         "namespace": "__global.count"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2136,7 +2136,7 @@
         "namespace": "dangling_indices.index_delete"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2164,7 +2164,7 @@
         "namespace": "dangling_indices.index_import"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2192,7 +2192,7 @@
         "namespace": "dangling_indices.indices_list"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2439,7 +2439,7 @@
         "namespace": "__global.delete"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2480,7 +2480,7 @@
         "namespace": "__global.delete_by_query"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2518,7 +2518,7 @@
         "namespace": "__global.delete_by_query_rethrottle"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2546,7 +2546,7 @@
         "namespace": "__global.delete_script"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2574,7 +2574,7 @@
         "namespace": "enrich.delete_policy"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2602,7 +2602,7 @@
         "namespace": "enrich.execute_policy"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2630,7 +2630,7 @@
         "namespace": "enrich.get_policy"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2667,7 +2667,7 @@
         "namespace": "enrich.put_policy"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2695,7 +2695,7 @@
         "namespace": "enrich.stats"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2723,7 +2723,7 @@
         "namespace": "eql.delete"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2751,7 +2751,7 @@
         "namespace": "eql.get"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2779,7 +2779,7 @@
         "namespace": "eql.get_status"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2810,7 +2810,7 @@
         "namespace": "eql.search"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2839,7 +2839,7 @@
         "namespace": "__global.exists"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2877,7 +2877,7 @@
         "namespace": "__global.exists_source"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2918,7 +2918,7 @@
         "namespace": "__global.explain"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -2958,7 +2958,7 @@
         "namespace": "features.get_features"
       },
       "since": "7.12.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3007,7 +3007,7 @@
         "namespace": "__global.field_caps"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3043,7 +3043,7 @@
         "namespace": "__global.get"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3081,7 +3081,7 @@
         "namespace": "__global.get_script"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3109,7 +3109,7 @@
         "namespace": "__global.get_script_context"
       },
       "since": "0.0.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3137,7 +3137,7 @@
         "namespace": "__global.get_script_languages"
       },
       "since": "0.0.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3165,7 +3165,7 @@
         "namespace": "__global.get_source"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3206,7 +3206,7 @@
         "namespace": "graph.explore"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3246,7 +3246,7 @@
         "namespace": "ilm.delete_lifecycle"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3274,7 +3274,7 @@
         "namespace": "ilm.explain_lifecycle"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3302,7 +3302,7 @@
         "namespace": "ilm.get_lifecycle"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3336,7 +3336,7 @@
         "namespace": "ilm.get_status"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3367,7 +3367,7 @@
         "namespace": "ilm.move_to_step"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3398,7 +3398,7 @@
         "namespace": "ilm.put_lifecycle"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3426,7 +3426,7 @@
         "namespace": "ilm.remove_policy"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3454,7 +3454,7 @@
         "namespace": "ilm.retry"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3482,7 +3482,7 @@
         "namespace": "ilm.start"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3510,7 +3510,7 @@
         "namespace": "ilm.stop"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3597,7 +3597,7 @@
         "namespace": "indices.add_block"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3628,7 +3628,7 @@
         "namespace": "indices.analyze"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3664,7 +3664,7 @@
         "namespace": "indices.clear_cache"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3701,7 +3701,7 @@
         "namespace": "indices.clone"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3730,7 +3730,7 @@
         "namespace": "indices.close"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3761,7 +3761,7 @@
         "namespace": "indices.create"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3789,7 +3789,7 @@
         "namespace": "indices.create_data_stream"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3817,7 +3817,7 @@
         "namespace": "indices.data_streams_stats"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3851,7 +3851,7 @@
         "namespace": "indices.delete"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3879,7 +3879,7 @@
         "namespace": "indices.delete_alias"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3913,7 +3913,7 @@
         "namespace": "indices.delete_data_stream"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3962,7 +3962,7 @@
         "namespace": "indices.delete_template"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -3990,7 +3990,7 @@
         "namespace": "indices.exists"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4018,7 +4018,7 @@
         "namespace": "indices.exists_alias"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4073,7 +4073,7 @@
         "namespace": "indices.exists_template"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4101,7 +4101,7 @@
         "namespace": "indices.exists_type"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4129,7 +4129,7 @@
         "namespace": "indices.flush"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4165,7 +4165,7 @@
         "namespace": "indices.flush_synced"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -4209,7 +4209,7 @@
         "namespace": "indices.forcemerge"
       },
       "since": "2.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4243,7 +4243,7 @@
         "namespace": "indices.freeze"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4271,7 +4271,7 @@
         "namespace": "indices.get"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4299,7 +4299,7 @@
         "namespace": "indices.get_alias"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4345,7 +4345,7 @@
         "namespace": "indices.get_data_stream"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4379,7 +4379,7 @@
         "namespace": "indices.get_field_mapping"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4460,7 +4460,7 @@
         "namespace": "indices.get_mapping"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4514,7 +4514,7 @@
         "namespace": "indices.get_settings"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4560,7 +4560,7 @@
         "namespace": "indices.get_template"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4629,7 +4629,7 @@
         "namespace": "indices.migrate_to_data_stream"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4657,7 +4657,7 @@
         "namespace": "indices.open"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4685,7 +4685,7 @@
         "namespace": "indices.promote_data_stream"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4716,7 +4716,7 @@
         "namespace": "indices.put_alias"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4780,7 +4780,7 @@
         "namespace": "indices.put_mapping"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4889,7 +4889,7 @@
         "namespace": "indices.put_settings"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4926,7 +4926,7 @@
         "namespace": "indices.put_template"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4955,7 +4955,7 @@
         "namespace": "indices.recovery"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4989,7 +4989,7 @@
         "namespace": "indices.refresh"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5025,7 +5025,7 @@
         "namespace": "indices.reload_search_analyzers"
       },
       "since": "7.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5054,7 +5054,7 @@
         "namespace": "indices.resolve_index"
       },
       "since": "7.9.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5085,7 +5085,7 @@
         "namespace": "indices.rollover"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5119,7 +5119,7 @@
         "namespace": "indices.segments"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5153,7 +5153,7 @@
         "namespace": "indices.shard_stores"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5190,7 +5190,7 @@
         "namespace": "indices.shrink"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5276,7 +5276,7 @@
         "namespace": "indices.split"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5305,7 +5305,7 @@
         "namespace": "indices.stats"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5351,7 +5351,7 @@
         "namespace": "indices.unfreeze"
       },
       "since": "6.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5382,7 +5382,7 @@
         "namespace": "indices.update_aliases"
       },
       "since": "1.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5410,7 +5410,7 @@
         "namespace": "indices.upgrade"
       },
       "since": "7.13.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -5455,7 +5455,7 @@
         "namespace": "indices.validate_query"
       },
       "since": "1.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5502,7 +5502,7 @@
         "namespace": "__global.info"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5530,7 +5530,7 @@
         "namespace": "ingest.delete_pipeline"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5558,7 +5558,7 @@
         "namespace": "ingest.geo_ip_stats"
       },
       "since": "7.13.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5620,7 +5620,7 @@
         "namespace": "ingest.processor"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5651,7 +5651,7 @@
         "namespace": "ingest.put_pipeline"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5682,7 +5682,7 @@
         "namespace": "ingest.simulate_pipeline"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5718,7 +5718,7 @@
         "namespace": "license.delete_license"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5746,7 +5746,7 @@
         "namespace": "license.get_license"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5774,7 +5774,7 @@
         "namespace": "license.get_basic_license_status"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5802,7 +5802,7 @@
         "namespace": "license.get_trial_license_status"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5833,7 +5833,7 @@
         "namespace": "license.post_license"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5862,7 +5862,7 @@
         "namespace": "license.start_basic_license"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5890,7 +5890,7 @@
         "namespace": "license.start_trial_license"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5918,7 +5918,7 @@
         "namespace": "logstash.pipeline_delete"
       },
       "since": "7.12.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5946,7 +5946,7 @@
         "namespace": "logstash.pipeline_get"
       },
       "since": "7.12.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -5977,7 +5977,7 @@
         "namespace": "logstash.pipeline_put"
       },
       "since": "7.12.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6055,7 +6055,7 @@
         "namespace": "migration.deprecation_info"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6092,7 +6092,7 @@
         "namespace": "ml.close_job"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6120,7 +6120,7 @@
         "namespace": "ml.delete_calendar"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6148,7 +6148,7 @@
         "namespace": "ml.delete_calendar_event"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6176,7 +6176,7 @@
         "namespace": "ml.delete_calendar_job"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6204,7 +6204,7 @@
         "namespace": "ml.delete_data_frame_analytics"
       },
       "since": "7.3.0",
-      "stability": "beta",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6232,7 +6232,7 @@
         "namespace": "ml.delete_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6260,7 +6260,7 @@
         "namespace": "ml.delete_expired_data"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6294,7 +6294,7 @@
         "namespace": "ml.delete_filter"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6322,7 +6322,7 @@
         "namespace": "ml.delete_forecast"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6356,7 +6356,7 @@
         "namespace": "ml.delete_job"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6384,7 +6384,7 @@
         "namespace": "ml.delete_model_snapshot"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6412,7 +6412,7 @@
         "namespace": "ml.delete_trained_model"
       },
       "since": "7.10.0",
-      "stability": "beta",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6443,7 +6443,7 @@
         "namespace": "ml.delete_trained_model_alias"
       },
       "since": "7.13.0",
-      "stability": "beta",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6474,7 +6474,7 @@
         "namespace": "ml.estimate_model_memory"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6589,7 +6589,7 @@
         "namespace": "ml.flush_job"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6617,7 +6617,7 @@
         "namespace": "ml.forecast_job"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6648,7 +6648,7 @@
         "namespace": "ml.get_buckets"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6684,7 +6684,7 @@
         "namespace": "ml.get_calendar_events"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6715,7 +6715,7 @@
         "namespace": "ml.get_calendars"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6754,7 +6754,7 @@
         "namespace": "ml.get_categories"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6844,7 +6844,7 @@
         "namespace": "ml.get_datafeed_stats"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6878,7 +6878,7 @@
         "namespace": "ml.get_datafeeds"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6912,7 +6912,7 @@
         "namespace": "ml.get_filters"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6949,7 +6949,7 @@
         "namespace": "ml.get_influencers"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6978,7 +6978,7 @@
         "namespace": "ml.get_job_stats"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7012,7 +7012,7 @@
         "namespace": "ml.get_jobs"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7049,7 +7049,7 @@
         "namespace": "ml.get_model_snapshots"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7088,7 +7088,7 @@
         "namespace": "ml.get_overall_buckets"
       },
       "since": "6.1.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7120,7 +7120,7 @@
         "namespace": "ml.get_anomaly_records"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7200,7 +7200,7 @@
       "requestBodyRequired": false,
       "response": null,
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7228,7 +7228,7 @@
         "namespace": "ml.open_job"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7259,7 +7259,7 @@
         "namespace": "ml.post_calendar_events"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7291,7 +7291,7 @@
         "namespace": "ml.post_job_data"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7351,7 +7351,7 @@
         "namespace": "ml.preview_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7390,7 +7390,7 @@
         "namespace": "ml.put_calendar"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7418,7 +7418,7 @@
         "namespace": "ml.put_calendar_job"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7473,7 +7473,7 @@
         "namespace": "ml.put_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7504,7 +7504,7 @@
         "namespace": "ml.put_filter"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7535,7 +7535,7 @@
         "namespace": "ml.put_job"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7614,7 +7614,7 @@
         "namespace": "ml.revert_model_snapshot"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7642,7 +7642,7 @@
         "namespace": "ml.set_upgrade_mode"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7697,7 +7697,7 @@
         "namespace": "ml.start_datafeed"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7728,7 +7728,7 @@
         "namespace": "ml.stop_data_frame_analytics"
       },
       "since": "7.3.0",
-      "stability": "beta",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7756,7 +7756,7 @@
         "namespace": "ml.stop_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7811,7 +7811,7 @@
         "namespace": "ml.update_data_feed"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7842,7 +7842,7 @@
         "namespace": "ml.update_filter"
       },
       "since": "6.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7873,7 +7873,7 @@
         "namespace": "ml.update_job"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7904,7 +7904,7 @@
         "namespace": "ml.update_model_snapshot"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7956,7 +7956,7 @@
         "namespace": "ml.validate_job"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7987,7 +7987,7 @@
         "namespace": "ml.validate_detector"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8018,7 +8018,7 @@
         "namespace": "monitoring.bulk"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8061,7 +8061,7 @@
         "namespace": "__global.msearch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8111,7 +8111,7 @@
         "namespace": "__global.msearch_template"
       },
       "since": "5.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8161,7 +8161,7 @@
         "namespace": "__global.mtermvectors"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8208,7 +8208,7 @@
         "namespace": "nodes.nodes_hot_threads"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8302,7 +8302,7 @@
         "namespace": "nodes.nodes_info"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8351,7 +8351,7 @@
         "namespace": "nodes.reload_secure_settings"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8385,7 +8385,7 @@
         "namespace": "nodes.nodes_stats"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8443,7 +8443,7 @@
         "namespace": "nodes.nodes_usage"
       },
       "since": "6.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8489,7 +8489,7 @@
         "namespace": "__global.open_point_in_time"
       },
       "since": "7.10.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8523,7 +8523,7 @@
         "namespace": "__global.ping"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8554,7 +8554,7 @@
         "namespace": "__global.put_script"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8593,7 +8593,7 @@
         "namespace": "__global.rank_eval"
       },
       "since": "6.2.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8632,7 +8632,7 @@
         "namespace": "__global.reindex"
       },
       "since": "2.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8660,7 +8660,7 @@
         "namespace": "__global.reindex_rethrottle"
       },
       "since": "2.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8691,7 +8691,7 @@
         "namespace": "__global.render_search_template"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8727,7 +8727,7 @@
         "namespace": "rollup.delete_rollup_job"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8755,7 +8755,7 @@
         "namespace": "rollup.get_rollup_job"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8789,7 +8789,7 @@
         "namespace": "rollup.get_rollup_capabilities"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8823,7 +8823,7 @@
         "namespace": "rollup.get_rollup_index_capabilities"
       },
       "since": "6.4.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8854,7 +8854,7 @@
         "namespace": "rollup.create_rollup_job"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8885,7 +8885,7 @@
         "namespace": "rollup.rollup"
       },
       "since": "7.13.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8916,7 +8916,7 @@
         "namespace": "rollup.rollup_search"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8956,7 +8956,7 @@
         "namespace": "rollup.start_rollup_job"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8984,7 +8984,7 @@
         "namespace": "rollup.stop_rollup_job"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9015,7 +9015,7 @@
         "namespace": "__global.scripts_painless_execute"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9047,7 +9047,7 @@
         "namespace": "__global.scroll"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9090,7 +9090,7 @@
         "namespace": "__global.search"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9137,7 +9137,7 @@
         "namespace": "__global.search_shards"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9176,7 +9176,7 @@
         "namespace": "__global.search_template"
       },
       "since": "2.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9223,7 +9223,7 @@
         "namespace": "searchable_snapshots.clear_cache"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9260,7 +9260,7 @@
         "namespace": "searchable_snapshots.mount"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9288,7 +9288,7 @@
         "namespace": "searchable_snapshots.repository_stats"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9316,7 +9316,7 @@
         "namespace": "searchable_snapshots.stats"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9350,7 +9350,7 @@
         "namespace": "security.authenticate"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9381,7 +9381,7 @@
         "namespace": "security.change_password"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9417,7 +9417,7 @@
         "namespace": "security.clear_api_key_cache"
       },
       "since": "7.10.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9445,7 +9445,7 @@
         "namespace": "security.clear_cached_privileges"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9473,7 +9473,7 @@
         "namespace": "security.clear_cached_realms"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9501,7 +9501,7 @@
         "namespace": "security.clear_cached_roles"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9532,7 +9532,7 @@
         "namespace": "security.create_api_key"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9561,7 +9561,7 @@
         "namespace": "security.delete_privileges"
       },
       "since": "6.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9589,7 +9589,7 @@
         "namespace": "security.delete_role"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9617,7 +9617,7 @@
         "namespace": "security.delete_role_mapping"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9645,7 +9645,7 @@
         "namespace": "security.delete_user"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9673,7 +9673,7 @@
         "namespace": "security.disable_user"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9702,7 +9702,7 @@
         "namespace": "security.enable_user"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9731,7 +9731,7 @@
         "namespace": "security.get_api_key"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9759,7 +9759,7 @@
         "namespace": "security.get_builtin_privileges"
       },
       "since": "7.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9787,7 +9787,7 @@
         "namespace": "security.get_privileges"
       },
       "since": "6.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9827,7 +9827,7 @@
         "namespace": "security.get_role"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9861,7 +9861,7 @@
         "namespace": "security.get_role_mapping"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9898,7 +9898,7 @@
         "namespace": "security.get_token"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9926,7 +9926,7 @@
         "namespace": "security.get_user"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9960,7 +9960,7 @@
         "namespace": "security.get_user_privileges"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9991,7 +9991,7 @@
         "namespace": "security.grant_api_key"
       },
       "since": "7.9.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10022,7 +10022,7 @@
         "namespace": "security.has_privileges"
       },
       "since": "6.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10061,7 +10061,7 @@
         "namespace": "security.invalidate_api_key"
       },
       "since": "6.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10092,7 +10092,7 @@
         "namespace": "security.invalidate_token"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10123,7 +10123,7 @@
         "namespace": "security.put_privileges"
       },
       "since": "6.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10155,7 +10155,7 @@
         "namespace": "security.put_role"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10187,7 +10187,7 @@
         "namespace": "security.put_role_mapping"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10219,7 +10219,7 @@
         "namespace": "security.put_user"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10251,7 +10251,7 @@
         "namespace": "shutdown.delete_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10282,7 +10282,7 @@
         "namespace": "shutdown.get_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10319,7 +10319,7 @@
         "namespace": "shutdown.put_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10347,7 +10347,7 @@
         "namespace": "slm.delete_lifecycle"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10375,7 +10375,7 @@
         "namespace": "slm.execute_lifecycle"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10403,7 +10403,7 @@
         "namespace": "slm.execute_retention"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10431,7 +10431,7 @@
         "namespace": "slm.get_lifecycle"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10465,7 +10465,7 @@
         "namespace": "slm.get_stats"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10493,7 +10493,7 @@
         "namespace": "slm.get_status"
       },
       "since": "7.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10524,7 +10524,7 @@
         "namespace": "slm.put_lifecycle"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10552,7 +10552,7 @@
         "namespace": "slm.start"
       },
       "since": "7.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10580,7 +10580,7 @@
         "namespace": "slm.stop"
       },
       "since": "7.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10608,7 +10608,7 @@
         "namespace": "snapshot.cleanup_repository"
       },
       "since": "7.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10639,7 +10639,7 @@
         "namespace": "snapshot.clone"
       },
       "since": "7.10.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10670,7 +10670,7 @@
         "namespace": "snapshot.create"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10702,7 +10702,7 @@
         "namespace": "snapshot.create_repository"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10731,7 +10731,7 @@
         "namespace": "snapshot.delete"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10759,7 +10759,7 @@
         "namespace": "snapshot.delete_repository"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10787,7 +10787,7 @@
         "namespace": "snapshot.get"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10815,7 +10815,7 @@
         "namespace": "snapshot.get_repository"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10852,7 +10852,7 @@
         "namespace": "snapshot.restore"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10880,7 +10880,7 @@
         "namespace": "snapshot.status"
       },
       "since": "7.8.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10920,7 +10920,7 @@
         "namespace": "snapshot.verify_repository"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10951,7 +10951,7 @@
         "namespace": "sql.clear_sql_cursor"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10982,7 +10982,7 @@
         "namespace": "sql.query_sql"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11014,7 +11014,7 @@
         "namespace": "sql.translate_sql"
       },
       "since": "6.3.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11043,7 +11043,7 @@
         "namespace": "ssl.get_certificates"
       },
       "since": "6.2.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11071,7 +11071,7 @@
         "namespace": "task.cancel_tasks"
       },
       "since": "2.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11105,7 +11105,7 @@
         "namespace": "task.get_task"
       },
       "since": "5.0.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11133,7 +11133,7 @@
         "namespace": "task.list_tasks"
       },
       "since": "2.3.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11164,7 +11164,7 @@
         "namespace": "__global.termvectors"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11225,7 +11225,7 @@
         "namespace": "text_structure.find_structure"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11253,7 +11253,7 @@
         "namespace": "transform.delete_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11281,7 +11281,7 @@
         "namespace": "transform.get_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11315,7 +11315,7 @@
         "namespace": "transform.get_transform_stats"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11346,7 +11346,7 @@
         "namespace": "transform.preview_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11377,7 +11377,7 @@
         "namespace": "transform.put_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11405,7 +11405,7 @@
         "namespace": "transform.start_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11433,7 +11433,7 @@
         "namespace": "transform.stop_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11464,7 +11464,7 @@
         "namespace": "transform.update_transform"
       },
       "since": "7.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11495,7 +11495,7 @@
         "namespace": "__global.update"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11536,7 +11536,7 @@
         "namespace": "__global.update_by_query"
       },
       "since": "2.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11574,7 +11574,7 @@
         "namespace": "__global.update_by_query_rethrottle"
       },
       "since": "6.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11602,7 +11602,7 @@
         "namespace": "watcher.ack_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11638,7 +11638,7 @@
         "namespace": "watcher.activate_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11667,7 +11667,7 @@
         "namespace": "watcher.deactivate_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11696,7 +11696,7 @@
         "namespace": "watcher.delete_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11727,7 +11727,7 @@
         "namespace": "watcher.execute_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11763,7 +11763,7 @@
         "namespace": "watcher.get_watch"
       },
       "since": "5.6.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11794,7 +11794,7 @@
         "namespace": "watcher.put_watch"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11826,7 +11826,7 @@
         "namespace": "watcher.query_watches"
       },
       "since": "7.11.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11855,7 +11855,7 @@
         "namespace": "watcher.start"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11883,7 +11883,7 @@
         "namespace": "watcher.stats"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11917,7 +11917,7 @@
         "namespace": "watcher.stop"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11945,7 +11945,7 @@
         "namespace": "xpack.info"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -11973,7 +11973,7 @@
         "namespace": "xpack.usage"
       },
       "since": "0.0.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -16206,44 +16206,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "keep_alive",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "__common.common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "typed_keys",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "wait_for_completion_timeout",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "__common.common_options.time_unit"
-              }
-            }
-          }
-        ]
-      },
       "inherits": [
         {
           "type": {
@@ -16269,6 +16231,19 @@
               "namespace": "__common"
             }
           }
+        }
+      ],
+      "query": [
+        {
+          "name": "keep_alive",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
+            }
+          }
         },
         {
           "name": "typed_keys",
@@ -16280,9 +16255,19 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "wait_for_completion_timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
+            }
+          }
         }
-      ],
-      "query": []
+      ]
     },
     {
       "generics": [
@@ -19377,11 +19362,23 @@
           "name": "_source",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "__common"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -19418,7 +19415,7 @@
           }
         },
         {
-          "name": "type_query_string",
+          "name": "type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -20098,6 +20095,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -42980,11 +42988,23 @@
           "name": "date_rounding",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateRounding",
-              "namespace": "ingest.processors"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DateRounding",
+                  "namespace": "ingest.processors"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -43587,24 +43607,31 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "Second",
           "name": "s"
         },
         {
+          "identifier": "Minute",
           "name": "m"
         },
         {
+          "identifier": "Hour",
           "name": "h"
         },
         {
+          "identifier": "Day",
           "name": "d"
         },
         {
+          "identifier": "Week",
           "name": "w"
         },
         {
+          "identifier": "Month",
           "name": "M"
         },
         {
+          "identifier": "Year",
           "name": "y"
         }
       ],
@@ -44251,18 +44278,18 @@
           }
         },
         {
-          "name": "preference",
+          "name": "max_docs",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "long",
+              "namespace": "__common"
             }
           }
         },
         {
-          "name": "query_on_query_string",
+          "name": "preference",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -44419,7 +44446,30 @@
           }
         },
         {
-          "name": "source_excludes",
+          "name": "_source",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "__common"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "_source_excludes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -44430,7 +44480,7 @@
           }
         },
         {
-          "name": "source_includes",
+          "name": "_source_includes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -51079,13 +51129,6 @@
                 "type": {
                   "name": "Fields",
                   "namespace": "__common"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SourceFilter",
-                  "namespace": "__global.search.source_filtering"
                 }
               }
             ],
@@ -57954,18 +57997,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
+                  "name": "Fields",
+                  "namespace": "__common"
                 }
               }
             ],
@@ -81380,6 +81413,18 @@
       ],
       "query": [
         {
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "allow_no_jobs",
           "required": false,
           "serverDefault": true,
@@ -86676,17 +86721,6 @@
           }
         },
         {
-          "name": "source_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "_source",
           "required": false,
           "type": {
@@ -87617,7 +87651,7 @@
           }
         },
         {
-          "name": "total_hits_as_integer",
+          "name": "rest_total_hits_as_int",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -107821,17 +107855,6 @@
           }
         },
         {
-          "name": "explain",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "expand_wildcards",
           "required": false,
           "type": {
@@ -107839,6 +107862,17 @@
             "type": {
               "name": "ExpandWildcards",
               "namespace": "__common.common"
+            }
+          }
+        },
+        {
+          "name": "explain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         },
@@ -107887,6 +107921,17 @@
           }
         },
         {
+          "name": "min_compatible_shard_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
           "name": "preference",
           "required": false,
           "type": {
@@ -107905,17 +107950,6 @@
             "type": {
               "name": "long",
               "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         },
@@ -107960,17 +107994,6 @@
             "type": {
               "name": "SearchType",
               "namespace": "__common.common"
-            }
-          }
-        },
-        {
-          "name": "sequence_number_primary_term",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         },
@@ -108044,13 +108067,24 @@
           }
         },
         {
-          "name": "total_hits_as_integer",
+          "name": "terminate_after",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "long",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "__common.common_options.time_unit"
             }
           }
         },
@@ -108078,6 +108112,17 @@
           }
         },
         {
+          "name": "track_scores",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "typed_keys",
           "required": false,
           "type": {
@@ -108097,6 +108142,40 @@
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "__common"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -132322,18 +132401,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
+                  "name": "Fields",
+                  "namespace": "__common"
                 }
               }
             ],
@@ -134303,6 +134372,27 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "_all"
+        },
+        {
+          "name": "queued_watches"
+        },
+        {
+          "name": "current_watches"
+        },
+        {
+          "name": "pending_watches"
+        }
+      ],
+      "name": {
+        "name": "WatcherMetric",
+        "namespace": "watcher.stats"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "WatcherNodeStats",
@@ -134815,11 +134905,26 @@
           "name": "metric",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metrics",
-              "namespace": "__common"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "WatcherMetric",
+                  "namespace": "watcher.stats"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "WatcherMetric",
+                    "namespace": "watcher.stats"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -134833,6 +134938,32 @@
               "name": "boolean",
               "namespace": "internal"
             }
+          }
+        },
+        {
+          "name": "metric",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "WatcherMetric",
+                  "namespace": "watcher.stats"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "WatcherMetric",
+                    "namespace": "watcher.stats"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]

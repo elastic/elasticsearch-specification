@@ -22,6 +22,13 @@ import { ValidationErrors } from '../validation-errors'
 import { JsonSpec } from '../model/json-spec'
 import assert from 'assert'
 
+// Superclasses (i.e. non-leaf types, who are inherited or implemented) that are ok to be used as field types because
+// they're used as definition reuse and not as polymorphic types.
+// See also validateIsLeafType() below.
+const allowedSuperclasses = new Set([
+  '__common:ErrorCause'
+])
+
 enum TypeDefKind {
   type,
   behavior
@@ -162,12 +169,18 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
-  validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
+  validateTypeRef({ namespace: '__common.common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
 
   // -----  Alright, let's go!
 
-  // Validate all endpoints
-  apiModel.endpoints.forEach(validateEndpoint)
+  function readyForValidation (ep: model.Endpoint): boolean {
+    return ep.stability !== model.Stability.TODO && ep.request != null && ep.response != null
+  }
+
+  // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
+  // data types is associated with these endpoints and their errors are not filtered out in the error report.
+  apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
+  apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
@@ -180,7 +193,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   const danglingTypesCount = initialTypeCount - apiModel.types.length
-  console.info(`Model validation: ${errorCount} errors. ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
+  console.info(`Model validation: ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
   if (errorCount > 0 && failHard) {
     throw new Error('Model is inconsistent. Check logs for details')
@@ -197,7 +210,12 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     setRootContext(endpoint.name, 'request')
 
     if (endpoint.request == null) {
-      modelError('Missing request')
+      if (endpoint.response == null) {
+        modelError('Missing request & response')
+        return
+      } else {
+        modelError('Missing request')
+      }
     } else {
       const reqType = getTypeDef(endpoint.request)
 
@@ -643,7 +661,9 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
           return
       }
 
-      modelError(`Non-leaf type cannot be used here: '${fqName}'`)
+      if (!allowedSuperclasses.has(fqName)) {
+        modelError(`Non-leaf type cannot be used here: '${fqName}'`)
+      }
     }
   }
 

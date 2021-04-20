@@ -49,21 +49,27 @@ export class ValidationErrors {
     this.generalErrors.push(message)
   }
 
-  /** Remove all endpoint records that have no associated errors */
-  cleanup (): void {
-    for (const [name, errors] of Object.entries(this.endpointErrors)) {
-      if (errors.request.length === 0 || errors.response.length === 0) {
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-        delete this.endpointErrors[name]
+  /** Replace multiple errors for endpoints in the "TODO" state by a single one, to avoid clogging up the report */
+  cleanup (todoEndpoints: string[]): void {
+    const names = new Set<string>(todoEndpoints)
+
+    for (const name of Object.keys(this.endpointErrors)) {
+      if (names.has(name)) {
+        this.endpointErrors[name] = {
+          request: ['Endpoint has "@stability: TODO'],
+          response: []
+        }
       }
     }
   }
 
   /** Output this error log to the console */
   log (): void {
+    let count = 0
     const logArray = function (errs: string[], prefix = ''): void {
       for (const err of errs) {
         console.error(`${prefix}${err}`)
+        count++
       }
     }
 
@@ -78,5 +84,7 @@ export class ValidationErrors {
         }
       }
     }
+
+    console.error(`${count} errors found.`)
   }
 }

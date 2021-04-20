@@ -17,24 +17,9 @@
  * under the License.
  */
 
-import { Ids } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-
-/**
- * @rest_spec_name ml.get_jobs
- * @since 5.5.0
- * @stability TODO
- */
-export interface MlGetJobsRequest extends RequestBase {
-  path_parts?: {
-    job_id?: Ids
-  }
-  query_parameters?: {
-    /** @server_default true */
-    allow_no_match?: boolean
-    /** @server_default true */
-    allow_no_jobs?: boolean
-    /** @server_default false */
-    exclude_generated?: boolean
-  }
+export enum WatcherMetric {
+  '_all'= 0,
+  'queued_watches' = 1,
+  'current_watches' = 2,
+  'pending_watches' = 3
 }

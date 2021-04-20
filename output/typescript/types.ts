@@ -470,12 +470,9 @@ export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends As
 
 export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
+  keep_alive?: Time
   typed_keys?: boolean
-  body?: {
-    keep_alive?: Time
-    typed_keys?: boolean
-    wait_for_completion_timeout?: Time
-  }
+  wait_for_completion_timeout?: Time
 }
 
 export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchDocumentResponseBase<TDocument> {
@@ -807,11 +804,10 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  _source?: boolean
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   timeout?: Time
-  type_query_string?: string
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
   body: Array<BulkOperationContainer | TSource>
@@ -883,6 +879,7 @@ export interface CancelTasksRequest extends RequestBase {
   actions?: string | Array<string>
   nodes?: Array<string>
   parent_task_id?: string
+  wait_for_completion?: boolean
 }
 
 export interface CancelTasksResponse extends ResponseBase {
@@ -3906,7 +3903,7 @@ export interface DateHistogramRollupGrouping {
 
 export interface DateIndexNameProcessor extends ProcessorBase {
   date_formats: Array<string>
-  date_rounding: DateRounding
+  date_rounding: string | DateRounding
   field: Field
   index_name_format: string
   index_name_prefix: string
@@ -4039,8 +4036,8 @@ export interface DeleteByQueryRequest extends RequestBase {
   from?: long
   ignore_unavailable?: boolean
   lenient?: boolean
+  max_docs?: long
   preference?: string
-  query_on_query_string?: string
   refresh?: boolean
   request_cache?: boolean
   requests_per_second?: long
@@ -4054,8 +4051,9 @@ export interface DeleteByQueryRequest extends RequestBase {
   slices?: long
   sort?: Array<string>
   source_enabled?: boolean
-  source_excludes?: Fields
-  source_includes?: Fields
+  _source: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
   stats?: Array<string>
   terminate_after?: long
   timeout?: Time
@@ -4787,7 +4785,7 @@ export interface ExplainRequest extends RequestBase {
   preference?: string
   query_on_query_string?: string
   routing?: Routing
-  _source?: boolean | Fields | SourceFilter
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
@@ -5571,7 +5569,7 @@ export interface GetRequest extends RequestBase {
   stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
-  _source?: boolean | string | Array<string>
+  _source?: boolean | Fields
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
@@ -8226,6 +8224,7 @@ export interface MlGetJobStatsResponse extends ResponseBase {
 
 export interface MlGetJobsRequest extends RequestBase {
   job_id?: Ids
+  allow_no_match?: boolean
   allow_no_jobs?: boolean
   exclude_generated?: boolean
 }
@@ -8801,7 +8800,6 @@ export interface MultiGetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  source_enabled?: boolean
   _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -8887,7 +8885,7 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {
     operations?: Record<string, SearchTemplateRequest>
@@ -11115,30 +11113,33 @@ export interface SearchRequest extends RequestBase {
   default_operator?: DefaultOperator
   df?: string
   docvalue_fields?: Fields
-  explain?: boolean
   expand_wildcards?: ExpandWildcards
+  explain?: boolean
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
+  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
-  query_on_query_string?: string
   request_cache?: boolean
   routing?: Routing
   scroll?: Time
   search_type?: SearchType
-  sequence_number_primary_term?: boolean
   stats?: Array<string>
   stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode
   suggest_size?: long
   suggest_text?: string
-  total_hits_as_integer?: boolean
+  terminate_after?: long
+  timeout?: Time
   track_total_hits?: boolean | integer
+  track_scores?: boolean
   typed_keys?: boolean
   rest_total_hits_as_int?: boolean
+  version?: boolean
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   seq_no_primary_term?: boolean
@@ -13823,7 +13824,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   source_enabled?: boolean
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
-  _source?: boolean | string | Array<string>
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   body: {
@@ -14059,6 +14060,8 @@ export interface WatcherExecuteWatchResponse extends ResponseBase {
   watch_record: WatchRecord
 }
 
+export type WatcherMetric = '_all' | 'queued_watches' | 'current_watches' | 'pending_watches'
+
 export interface WatcherNodeStats {
   current_watches?: Array<WatchRecordStats>
   execution_thread_pool: ExecutionThreadPool
@@ -14117,7 +14120,7 @@ export interface WatcherStartResponse extends AcknowledgedResponseBase {
 export type WatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
 export interface WatcherStatsRequest extends RequestBase {
-  metric?: Metrics
+  metric?: WatcherMetric | Array<WatcherMetric>
   emit_stacktraces?: boolean
 }
 

@@ -20,8 +20,8 @@
 import { writeFile } from 'fs/promises'
 import { join } from 'path'
 import stringify from 'safe-stable-stringify'
-import { Model } from './model/metamodel'
-import { compileSpecification, compileEndpoints } from './model/build-model'
+import { Model, Stability } from './model/metamodel'
+import { compileEndpoints, compileSpecification } from './model/build-model'
 import buildJsonSpec, { JsonSpec } from './model/json-spec'
 import { ValidationErrors } from './validation-errors'
 
@@ -64,7 +64,9 @@ export default class Compiler {
       'utf8'
     )
 
-    this.errors.cleanup()
+    this.errors.cleanup(
+      this.model.endpoints.filter(e => e.stability === Stability.TODO).map(e => e.name)
+    )
     this.errors.log()
 
     await writeFile(

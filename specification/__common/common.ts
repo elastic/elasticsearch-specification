@@ -158,7 +158,7 @@ export type ByteSize = long | string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
 export type IndexMetaData = Dictionary<string, UserDefinedValue>
 
-// Versionining Numbers & Strings
+// Versioning Numbers & Strings
 export type VersionNumber = long
 export type VersionNumbers = VersionNumber[]
 export type VersionString = string

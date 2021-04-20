@@ -29,12 +29,11 @@ import { Time } from '@common/common_options/time_unit/Time'
 export interface AsyncSearchGetRequest extends RequestBase {
   path_parts?: {
     id: Id
-    typed_keys?: boolean
   }
-  query_parameters?: {}
-  body?: {
+  query_parameters?: {
     keep_alive?: Time
     typed_keys?: boolean
     wait_for_completion_timeout?: Time
   }
+  body?: {}
 }
