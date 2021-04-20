@@ -25,8 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface ClearSqlCursorRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {
-    cursor?: string
+  body: {
+    cursor: string
   }
 }

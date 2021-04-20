@@ -22,13 +22,11 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name watcher.get_watch
- * @since 0.0.0
+ * @since 5.6.0
  * @stability TODO
  */
 export interface GetWatchRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Name
   }
-  query_parameters?: {}
-  body?: {}
 }

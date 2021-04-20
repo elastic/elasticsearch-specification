@@ -14,7 +14,8 @@
         "type_alias definition __common.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '__common.aggregations:StatsAggregate'",
         "interface definition __common:ErrorCause / Property 'caused_by' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
         "interface definition __common:ErrorCause / Property 'root_cause' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
-        "interface definition __common.common:ShardFailure / Property 'reason' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
+        "interface definition __common.common:ShardFailure / Property 'reason' / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'",
+        "type_alias definition __global.search.suggesters:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '__global.search.suggesters:TDocument'"
       ]
     },
     "bulk": {
@@ -192,22 +193,6 @@
         "Missing response"
       ]
     },
-    "indices.upgrade": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "ingest.geo_ip_stats": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.evaluate_data_frame": {
       "request": [
         "Missing request"
@@ -312,14 +297,6 @@
         "Missing response"
       ]
     },
-    "ml.stop_data_frame_analytics": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
     "ml.update_data_frame_analytics": {
       "request": [
         "Missing request"
@@ -345,14 +322,6 @@
       ],
       "response": [
         "interface definition __global.msearch_template:MultiSearchTemplateResponse / Property 'responses' / array_of / instance_of - Non-leaf type cannot be used here: '__global.search:SearchResponse'"
-      ]
-    },
-    "rank_eval": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
       ]
     },
     "search": {
@@ -386,30 +355,6 @@
       ],
       "response": [
         "interface definition security.invalidate_token:SecurityInvalidateTokenResponse / Property 'error_details' / array_of / instance_of - Non-leaf type cannot be used here: '__common:ErrorCause'"
-      ]
-    },
-    "shutdown.delete_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "shutdown.get_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
-      ]
-    },
-    "shutdown.put_node": {
-      "request": [
-        "Missing request"
-      ],
-      "response": [
-        "Missing response"
       ]
     },
     "tasks.cancel": {

@@ -17,14 +17,19 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ChainInput } from './ChainInput'
 import { HttpInput } from './HttpInput'
 import { SearchInput } from './SearchInput'
 import { SimpleInput } from './SimpleInput'
 
+/**
+ * @variants container
+ */
 export class InputContainer {
   chain?: ChainInput
   http?: HttpInput
   search?: SearchInput
-  simple?: SimpleInput
+  simple?: Dictionary<string, UserDefinedValue>
 }

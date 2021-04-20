@@ -17,12 +17,20 @@
  * under the License.
  */
 
+/**
+ * Type of index that wildcard expressions can match.
+ */
 export enum ExpandWildcardOptions {
-  open = 0,
-  closed = 1,
-  hidden = 2,
-  none = 3,
-  all = 4
+  /** Match any data stream or index, including hidden ones. */
+  all = 0,
+  /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
+  open = 1,
+  /** Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed. */
+  closed = 2,
+  /** Match hidden data streams and hidden indices. Must be combined with open, closed, or both. */
+  hidden = 3,
+  /** Wildcard expressions are not accepted. */
+  none = 4
 }
 
 export type ExpandWildcards =

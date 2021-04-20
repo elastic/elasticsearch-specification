@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { long, VersionString } from '@common/common'
+import { long, Name, VersionString } from '@common/common'
 import { PluginStats } from '@common/common_options/stats/PluginStats'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Host, Ip, TransportAddress } from '@common/Networking'
 import { NodeInfoHttp } from './NodeInfoHttp'
 import { NodeInfoNetwork } from './NodeInfoNetwork'
 import { NodeInfoTransport } from './NodeInfoTransport'
@@ -34,21 +35,20 @@ export class NodeInfo {
   build_flavor: string
   build_hash: string
   build_type: string
-  host: string
+  host: Host
   http: NodeInfoHttp
-  ip: string
+  ip: Ip
   jvm: NodeJvmInfo
-  name: string
+  name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: PluginStats[]
   process: NodeProcessInfo
   roles: NodeRole[]
   settings: string[]
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
   total_indexing_buffer: long
   transport: NodeInfoTransport
-  transport_address: string
+  transport_address: TransportAddress
   version: VersionString
 }

@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long, Name } from '@common/common'
 import { IndexStats } from '@indices/stats/IndexStats'
 import { NodeRole } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Host, Ip, TransportAddress } from '@common/Networking'
 import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
 import { BreakerStats } from './BreakerStats'
 import { FileSystemStats } from './FileSystemStats'
@@ -37,13 +38,13 @@ export class NodeStats {
   adaptive_selection: Dictionary<string, AdaptiveSelectionStats>
   breakers: Dictionary<string, BreakerStats>
   fs: FileSystemStats
-  host: string
+  host: Host
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  ip: string[]
+  ip: Ip[]
   jvm: NodeJvmStats
-  name: string
+  name: Name
   os: OperatingSystemStats
   process: ProcessStats
   roles: NodeRole[]
@@ -51,5 +52,5 @@ export class NodeStats {
   thread_pool: Dictionary<string, ThreadCountStats>
   timestamp: long
   transport: TransportStats
-  transport_address: string
+  transport_address: TransportAddress
 }

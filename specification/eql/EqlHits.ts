@@ -22,7 +22,17 @@ import { EqlHitsEvent } from './EqlHitsEvent'
 import { EqlHitsSequence } from './EqlHitsSequence'
 
 export class EqlHits<TEvent> {
+  /**
+   * Metadata about the number of matching events or sequences.
+   */
   total?: TotalHits
+  /**
+   * Contains events matching the query. Each object represents a matching event.
+   */
   events?: EqlHitsEvent<TEvent>[]
+  /**
+   * Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   */
   sequences?: EqlHitsSequence<TEvent>[]
 }

@@ -18,6 +18,7 @@
  */
 
 import { Names } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
@@ -27,6 +28,6 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  */
 export interface SecurityGetUserRequest extends RequestBase {
   path_parts?: {
-    username?: Names
+    username?: Username[]
   }
 }

@@ -24,7 +24,7 @@ import { RuleAction } from './RuleAction'
 import { RuleCondition } from './RuleCondition'
 
 export class DetectionRule {
-  actions: RuleAction[]
+  actions?: RuleAction[]
   conditions: RuleCondition[]
   scope?: Dictionary<Field, FilterRef>
 }

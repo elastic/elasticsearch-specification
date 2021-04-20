@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { DateString, IndexName, long, VersionNumber } from '@common/common'
+import {
+  DateString,
+  HttpHeaders,
+  IndexName,
+  long,
+  VersionNumber
+} from '@common/common'
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
 import { Phases } from '@ilm/Phases'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -29,7 +35,7 @@ export class ClusterStateIndexLifecycle {
 
 export class ClusterStateIndexLifecycleSummary {
   policy: ClusterStateIndexLifecyclePolicy
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   version: VersionNumber
   modified_date: long
   modified_date_string: DateString

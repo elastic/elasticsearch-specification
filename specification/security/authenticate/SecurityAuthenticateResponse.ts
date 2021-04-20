@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { RealmInfo } from '@common/security/RealmInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -30,7 +31,7 @@ export class SecurityAuthenticateResponse extends ResponseBase {
   lookup_realm: RealmInfo
   metadata: Dictionary<string, UserDefinedValue>
   roles: string[]
-  username: Name
+  username: Username
   enabled: boolean
   authentication_type: string
 }

@@ -29,14 +29,41 @@ import { ClusterRerouteCommand } from './ClusterRerouteCommand'
  */
 export interface ClusterRerouteRequest extends RequestBase {
   query_parameters?: {
-    dry_run?: boolean // default: false
-    explain?: boolean // default: false
-    metric?: Metrics // default: all
-    retry_failed?: boolean // default: false
-    master_timeout?: Time // default: 30s
-    timeout?: Time // default: 30s
+    /**
+     * If true, then the request simulates the operation only and returns the resulting state.
+     * @server_default false
+     */
+    dry_run?: boolean
+    /**
+     * If true, then the response contains an explanation of why the commands can or cannot be executed.
+     * @server_default false
+     */
+    explain?: boolean
+    /**
+     * Limits the information returned to the specified metrics.
+     * @server_default all
+     */
+    metric?: Metrics
+    /**
+     * If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.
+     * @server_default false
+     */
+    retry_failed?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Time
   }
   body: {
+    /**
+     * Defines the commands to perform.
+     */
     commands?: ClusterRerouteCommand[]
   }
 }

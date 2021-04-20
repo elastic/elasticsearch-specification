@@ -17,16 +17,11 @@
  * under the License.
  */
 
-import { Name, TaskId } from '@common/common'
+import { TaskId } from '@common/common'
+import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@task/get_task/TaskInfo'
 
-export class UpdateByQueryRethrottleNode {
-  attributes: Dictionary<string, string>
-  host: string
-  transport_address: string
-  ip: string
-  name: Name
-  roles: string[]
+export class UpdateByQueryRethrottleNode extends BaseNode {
   tasks: Dictionary<TaskId, TaskInfo>
 }

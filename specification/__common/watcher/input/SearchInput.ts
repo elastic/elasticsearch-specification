@@ -21,7 +21,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 import { SearchInputRequestDefinition } from './SearchInputRequestDefinition'
 
 export class SearchInput {
-  extract: string[]
+  extract?: string[]
   request: SearchInputRequestDefinition
-  timeout: Time
+  timeout?: Time
 }

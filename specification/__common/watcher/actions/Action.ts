@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EpochMillis, IndexName, integer } from '@common/common'
+import { EpochMillis, Id, IndexName, integer } from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
 import { ConditionContainer } from '../conditions/ConditionContainer'
 import { TransformContainer } from '../transform/TransformContainer'
@@ -32,9 +32,16 @@ export class Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index: ActionIndex
+  index?: ActionIndex
+  logging?: LoggingAction
 }
 
 export class ActionIndex {
   index: IndexName
+  doc_id?: Id
+}
+
+class LoggingAction {
+  level: string
+  text: string
 }

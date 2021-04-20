@@ -19,6 +19,7 @@
 
 import { Id, Name, VersionNumber } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TransportAddress } from '@common/Networking'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ShardStoreAllocation } from './ShardStoreAllocation'
 import { ShardStoreException } from './ShardStoreException'
@@ -31,5 +32,5 @@ export class ShardStore {
   legacy_version: VersionNumber
   name: Name
   store_exception: ShardStoreException
-  transport_address: string
+  transport_address: TransportAddress
 }

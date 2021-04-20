@@ -18,6 +18,7 @@
  */
 
 import { Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -26,6 +27,6 @@ export class XPackUser {
   full_name?: Name
   metadata: Dictionary<string, UserDefinedValue>
   roles: string[]
-  username: Name
+  username: Username
   enabled: boolean
 }

@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@common/common'
-import { ExpandWildcardOptions } from '@common/common/ExpandWildcards'
+import { ExpandWildcards } from '@common/common/ExpandWildcards'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
@@ -31,7 +31,7 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
     name?: IndexName
   }
   query_parameters?: {
-    expand_wildcards?: ExpandWildcardOptions
+    expand_wildcards?: ExpandWildcards
   }
   body?: {}
 }

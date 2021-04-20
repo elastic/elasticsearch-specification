@@ -20,6 +20,6 @@
 import { integer } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
-export class EnableUserResponse extends ResponseBase {
+export class SecurityEnableUserResponse extends ResponseBase {
   stub: integer
 }

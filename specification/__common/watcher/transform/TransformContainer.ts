@@ -21,8 +21,11 @@ import { ChainTransform } from './ChainTransform'
 import { ScriptTransform } from './ScriptTransform'
 import { SearchTransform } from './SearchTransform'
 
+/**
+ * @variants container
+ */
 export class TransformContainer {
-  chain: ChainTransform
-  script: ScriptTransform
-  search: SearchTransform
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
 }

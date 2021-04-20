@@ -18,6 +18,7 @@
  */
 
 import { Id, Name } from '@common/common'
+import { Username } from '@common/common/Credentials'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
@@ -33,6 +34,6 @@ export interface SecurityInvalidateApiKeyRequest extends RequestBase {
     name?: Name
     owner?: boolean
     realm_name?: string
-    username?: Name
+    username?: Username
   }
 }

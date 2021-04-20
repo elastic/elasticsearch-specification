@@ -18,6 +18,7 @@
  */
 
 import { Id, Name } from '@common/common'
+import { TransportAddress } from '@common/Networking'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class DiscoveryNode {
@@ -25,5 +26,5 @@ export class DiscoveryNode {
   ephemeral_id: Id
   id: Id
   name: Name
-  transport_address: string
+  transport_address: TransportAddress
 }

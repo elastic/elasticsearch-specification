@@ -17,7 +17,9 @@
  * under the License.
  */
 
+import { Password, Username } from '@common/common/Credentials'
+
 export class HttpInputBasicAuthentication {
-  password: string
-  username: string
+  password: Password
+  username: Username
 }

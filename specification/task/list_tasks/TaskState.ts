@@ -17,15 +17,14 @@
  * under the License.
  */
 
-import { long, TaskId } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, long, TaskId } from '@common/common'
 import { TaskStatus } from './TaskStatus'
 
 export class TaskState {
   action: string
   cancellable: boolean
   description?: string
-  headers: Dictionary<string, string>
+  headers: HttpHeaders
   id: long
   node: string
   parent_task_id?: TaskId
