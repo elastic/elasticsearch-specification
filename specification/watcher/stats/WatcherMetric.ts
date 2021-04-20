@@ -18,7 +18,7 @@
  */
 
 export enum WatcherMetric {
-  '_all'= 0,
+  '_all' = 0,
   'queued_watches' = 1,
   'current_watches' = 2,
   'pending_watches' = 3
