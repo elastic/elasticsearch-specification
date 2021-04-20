@@ -6317,6 +6317,8 @@ export interface IndexSettings {
   'index.translog.durability'?: string
   'query_string.lenient'?: boolean | string
   'index.query_string.lenient'?: boolean | string
+  priority?: integer
+  'index.priority'?: integer
   top_metrics_max_size?: integer
   analysis?: IndexSettingsAnalysis
 }

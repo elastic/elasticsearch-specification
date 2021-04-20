@@ -64358,6 +64358,20 @@
           }
         },
         {
+          "aliases": [
+            "index.priority"
+          ],
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
           "name": "top_metrics_max_size",
           "required": false,
           "type": {
