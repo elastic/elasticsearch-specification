@@ -63603,6 +63603,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "index.blocks.read_only"
+          ],
           "name": "read_only",
           "required": false,
           "type": {
@@ -63614,6 +63617,9 @@
           }
         },
         {
+          "aliases": [
+            "index.blocks.read_only_allow_delete"
+          ],
           "name": "read_only_allow_delete",
           "required": false,
           "type": {
@@ -63625,6 +63631,9 @@
           }
         },
         {
+          "aliases": [
+            "index.blocks.read"
+          ],
           "name": "read",
           "required": false,
           "type": {
@@ -63636,6 +63645,9 @@
           }
         },
         {
+          "aliases": [
+            "index.blocks.write"
+          ],
           "name": "write",
           "required": false,
           "type": {
@@ -63659,6 +63671,9 @@
           }
         },
         {
+          "aliases": [
+            "index.blocks.metadata"
+          ],
           "name": "metadata",
           "required": false,
           "type": {
@@ -64013,7 +64028,7 @@
         },
         {
           "aliases": [
-            "index.bocks"
+            "index.blocks"
           ],
           "name": "blocks",
           "required": false,
@@ -64279,6 +64294,112 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "aliases": [
+            "index.max_slices_per_scroll"
+          ],
+          "name": "max_slices_per_scroll",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.translog.durability"
+          ],
+          "name": "translog.durability",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.query_string.lenient"
+          ],
+          "name": "query_string.lenient",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "top_metrics_max_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingsAnalysis",
+              "namespace": "__common.index"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingsAnalysis",
+        "namespace": "__common.index"
+      },
+      "properties": [
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CharFilter",
+                "namespace": "__common.analysis.char_filters"
+              }
+            }
+          }
         }
       ]
     },
@@ -64297,6 +64418,34 @@
             "type": {
               "name": "Name",
               "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "IndexSettings",
+            "namespace": "__common.index"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingsRequest",
+        "namespace": "indices.put_settings"
+      },
+      "properties": [
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "__common.index"
             }
           }
         }
@@ -69272,48 +69421,14 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "index",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "name": "refresh_interval",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "__common.common_options.time_unit"
-              }
-            }
-          },
-          {
-            "name": "number_of_replicas",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "__common"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "IndexSettingsRequest",
+            "namespace": "indices.put_settings"
           }
-        ]
+        }
       },
       "inherits": [
         {

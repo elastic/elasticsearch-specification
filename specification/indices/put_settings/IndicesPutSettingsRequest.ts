@@ -21,6 +21,8 @@ import { Indices, integer } from '@common/common'
 import { ExpandWildcards } from '@common/common/ExpandWildcards'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
+import { IndexSettings } from '@common/index/IndexSettings'
+import { IndexState } from '@common/index/IndexState'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -43,9 +45,9 @@ export interface IndicesPutSettingsRequest extends RequestBase {
     preserve_existing?: boolean
     timeout?: Time
   }
-  body?: {
-    index?: Dictionary<string, UserDefinedValue>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
+  body: IndexSettingsRequest
+}
+
+export interface IndexSettingsRequest extends IndexSettings {
+  settings?: IndexSettings
 }

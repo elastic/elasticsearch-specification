@@ -6227,10 +6227,15 @@ export interface IndexSegment {
 
 export interface IndexSettingBlocks {
   read_only?: boolean
+  'index.blocks.read_only'?: boolean
   read_only_allow_delete?: boolean
+  'index.blocks.read_only_allow_delete'?: boolean
   read?: boolean
+  'index.blocks.read'?: boolean
   write?: boolean | string
+  'index.blocks.write'?: boolean | string
   metadata?: boolean
+  'index.blocks.metadata'?: boolean
 }
 
 export interface IndexSettings {
@@ -6273,7 +6278,7 @@ export interface IndexSettings {
   max_shingle_diff?: integer
   'index.max_shingle_diff'?: integer
   blocks?: IndexSettingBlocks
-  'index.bocks'?: IndexSettingBlocks
+  'index.blocks'?: IndexSettingBlocks
   max_refresh_listeners?: integer
   'index.max_refresh_listeners'?: integer
   'analyze.max_token_count'?: integer
@@ -6306,10 +6311,26 @@ export interface IndexSettings {
   'index.verified_before_close'?: boolean | string
   format?: string | integer
   'index.format'?: string | integer
+  max_slices_per_scroll?: integer
+  'index.max_slices_per_scroll'?: integer
+  'translog.durability'?: string
+  'index.translog.durability'?: string
+  'query_string.lenient'?: boolean | string
+  'index.query_string.lenient'?: boolean | string
+  top_metrics_max_size?: integer
+  analysis?: IndexSettingsAnalysis
+}
+
+export interface IndexSettingsAnalysis {
+  char_filter?: Record<string, CharFilter>
 }
 
 export interface IndexSettingsLifecycle {
   name: Name
+}
+
+export interface IndexSettingsRequest extends IndexSettings {
+  settings?: IndexSettings
 }
 
 export interface IndexState {
@@ -6842,11 +6863,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   preserve_existing?: boolean
   timeout?: Time
-  body: {
-    index?: Record<string, any>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
+  body: IndexSettingsRequest
 }
 
 export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {

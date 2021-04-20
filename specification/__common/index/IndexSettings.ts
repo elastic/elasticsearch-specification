@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { CharFilter } from '@common/analysis/char_filters/CharFilterBase'
 import {
   DateString,
   integer,
@@ -26,6 +27,7 @@ import {
   VersionString
 } from '@common/common'
 import { Time } from '@common/common_options/time_unit/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexRouting } from './IndexRouting'
 
 /**
@@ -127,7 +129,7 @@ export class IndexSettings {
    */
   max_shingle_diff?: integer
   /**
-   * @aliases index.bocks
+   * @aliases index.blocks
    */
   blocks?: IndexSettingBlocks
   /**
@@ -201,13 +203,38 @@ export class IndexSettings {
    * @aliases index.format
    */
   format?: string | integer
+  /**
+   * @aliases index.max_slices_per_scroll
+   */
+  max_slices_per_scroll?: integer
+  /**
+   * @aliases index.translog.durability
+   */
+  'translog.durability'?: string
+  /**
+   * @aliases index.query_string.lenient
+   */
+  'query_string.lenient'?: boolean | string // TODO: should be bool only
+  /**
+   * @aliases index.priority
+   */
+  priority?: integer
+
+  top_metrics_max_size?: integer
+
+  analysis?: IndexSettingsAnalysis
 }
 
 export class IndexSettingBlocks {
+  /** @aliases index.blocks.read_only */
   read_only?: boolean
+  /** @aliases index.blocks.read_only_allow_delete */
   read_only_allow_delete?: boolean
+  /** @aliases index.blocks.read */
   read?: boolean
+  /** @aliases index.blocks.write */
   write?: boolean | string // TODO: should be bool only
+  /** @aliases index.blocks.metadata */
   metadata?: boolean
 }
 
@@ -223,4 +250,8 @@ export class IndexVersioning {
 
 export class IndexSettingsLifecycle {
   name: Name
+}
+
+export class IndexSettingsAnalysis {
+  char_filter?: Dictionary<string, CharFilter>
 }
