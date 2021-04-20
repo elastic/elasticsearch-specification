@@ -108634,7 +108634,11 @@
             },
             "kind": "dictionary_of",
             "value": {
-              "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStoreIndex",
+                "namespace": "__global.search_shards"
+              }
             }
           }
         }
@@ -116332,6 +116336,40 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardStoreIndex",
+        "namespace": "__global.search_shards"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "__common"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "__common.query_dsl.abstractions.container"
             }
           }
         }

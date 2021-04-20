@@ -11207,7 +11207,7 @@ export interface SearchShardsRequest extends RequestBase {
 export interface SearchShardsResponse extends ResponseBase {
   nodes: Record<string, NodeAttributes>
   shards: Array<Array<NodeShard>>
-  indices: Record<IndexName, any>
+  indices: Record<IndexName, ShardStoreIndex>
 }
 
 export interface SearchStats {
@@ -12078,6 +12078,11 @@ export type ShardStoreAllocation = 'primary' | 'replica' | 'unused'
 export interface ShardStoreException {
   reason: string
   type: string
+}
+
+export interface ShardStoreIndex {
+  aliases?: Array<Name>
+  filter?: QueryContainer
 }
 
 export interface ShardStoreWrapper {
