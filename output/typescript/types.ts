@@ -4645,7 +4645,7 @@ export interface ErrorCause {
 }
 
 export interface ErrorResponse {
-  error: MainError
+  error: MainError | string
   status: integer
 }
 

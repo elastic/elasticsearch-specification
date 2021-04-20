@@ -49819,11 +49819,23 @@
           "name": "error",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MainError",
-              "namespace": "__common"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "MainError",
+                  "namespace": "__common"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
