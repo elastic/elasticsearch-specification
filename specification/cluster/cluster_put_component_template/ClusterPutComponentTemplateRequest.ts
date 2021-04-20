@@ -20,7 +20,8 @@
 import { IndexMetaData, Name, VersionNumber } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Time } from '@common/common_options/time_unit/Time'
-import { IndexSettings } from '@common/index_settings/IndexSettings'
+import { IndexSettings } from '@common/index/IndexSettings'
+import { IndexState } from '@common/index/IndexState'
 import { TypeMapping } from '@common/mapping/TypeMapping'
 import { AliasDefinition } from '@indices/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -35,21 +36,17 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
     name: Name
   }
   query_parameters?: {
-    create?: boolean // default: false
-    master_timeout?: Time // default: 30s
+    /** @server_default false */
+    create?: boolean
+    /** @server_default 30s */
+    master_timeout?: Time
   }
   body: {
-    template: ClusterIndexTemplate
+    template: IndexState
     aliases?: Dictionary<string, AliasDefinition>
     mappings?: TypeMapping
     settings?: IndexSettings
     version?: VersionNumber
     _meta?: IndexMetaData
   }
-}
-
-export class ClusterIndexTemplate {
-  aliases?: Dictionary<string, AliasDefinition>
-  mappings?: TypeMapping
-  settings?: IndexSettings
 }

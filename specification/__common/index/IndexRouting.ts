@@ -17,32 +17,36 @@
  * under the License.
  */
 
-import {
-  IndexMetaData,
-  IndexName,
-  Name,
-  VersionNumber
-} from '@common/common'
-import { AliasDefinition } from '@indices/AliasDefinition'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { IndexSettings } from '@common/index/IndexSettings'
+import { Dictionary } from "@spec_utils/Dictionary"
 
-export class ComponentTemplate {
-  name: Name
-  component_template: ComponentTemplateNode
+export class IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
 }
 
-export class ComponentTemplateNode {
-  template: ComponentTemplateSummary
-  version?: VersionNumber
-  _meta?: IndexMetaData
+export class IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include?: IndexRoutingAllocationInclude
 }
 
-export class ComponentTemplateSummary {
-  _meta?: IndexMetaData
-  version?: VersionNumber
-  settings: Dictionary<IndexName, IndexSettings>
-  mappings?: TypeMapping
-  aliases?: Dictionary<string, AliasDefinition>
+export class IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+}
+
+export enum IndexRoutingAllocationOptions {
+  all = 0,
+  primaries = 1,
+  new_primaries = 2,
+  none = 3
+}
+
+export enum IndexRoutingRebalanceOptions {
+  all = 0,
+  primaries = 1,
+  replicas = 2,
+  none = 3
+}
+
+export class IndexRoutingAllocationInclude {
+  _tier_preference: string
 }

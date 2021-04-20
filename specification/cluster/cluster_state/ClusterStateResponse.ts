@@ -24,13 +24,13 @@ import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
 } from '@cluster/ClusterStateSnapshots'
-import { EmptyObject, NodeName, Uuid, VersionNumber } from '@common/common'
+import { EmptyObject, Name, NodeName, Uuid, VersionNumber } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeAttributes } from '@transform/get_transform_stats/NodeAttributes'
 
 export class ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+  cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: string[]

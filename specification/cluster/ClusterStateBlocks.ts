@@ -18,17 +18,13 @@
  */
 
 import {
-  DateString,
   IndexAlias,
   IndexName,
   integer,
-  Name,
-  PropertyName,
-  Uuid,
-  VersionNumber,
-  VersionString
+  VersionNumber
 } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { IndexSettings } from '@common/index/IndexSettings'
+import { TypeMapping } from '@common/mapping/TypeMapping'
 import { Property } from '@common/mapping/types/Property'
 import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -49,47 +45,11 @@ export class ClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string // TODO: create export enum  of values
-  settings?: Dictionary<IndexName, ClusterStateBlockIndexSetting>
+  settings?: Dictionary<IndexName, IndexSettings>
   in_sync_allocations?: Dictionary<string, string[]>
   primary_terms?: Dictionary<string, integer>
-  mappings?: Dictionary<string, ClusterStateBlockIndexMapping>
+  mappings?: Dictionary<string, TypeMapping>
   rollover_info?: Dictionary<string, IndicesRolloverConditions> // TODO: not sure if this is correect
   timestamp_range?: Dictionary<string, UserDefinedValue>
   system?: boolean
-}
-
-export class ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting
-  refresh_interval?: Time
-  number_of_shards: integer | string // TODO: not sure this correct
-  number_of_replicas: integer | string // TODO: not sure this correct
-  verified_before_close?: boolean | string // TODO: check if it should be only bool
-  hidden?: boolean | string // TODO: check if it should be only bool
-  format?: integer | string // TODO: check if it should be only integer
-  provided_name?: Name
-  auto_expand_replicas?: string
-  creation_date?: DateString
-  uuid?: Uuid
-  version?: ClusterStateBlockIndexSettingVersion
-  lifecycle?: ClusterStateBlockIndexSettingLifecycle
-}
-
-export class ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation
-}
-
-export class ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Dictionary<string, string>
-}
-
-export class ClusterStateBlockIndexSettingVersion {
-  created: VersionString
-}
-
-export class ClusterStateBlockIndexMapping {
-  properties: Dictionary<PropertyName, Property>
-}
-
-export class ClusterStateBlockIndexSettingLifecycle {
-  name: Name
 }

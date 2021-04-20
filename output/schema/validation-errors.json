@@ -37,7 +37,8 @@
         "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CCW'",
         "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'LEFT'",
         "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'"
+        "enum definition __common.mapping.types.geo.geo_shape:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition __common.mapping.dynamic_template:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '__common.mapping.types:PropertyBase'"
       ]
     },
     "create": {
