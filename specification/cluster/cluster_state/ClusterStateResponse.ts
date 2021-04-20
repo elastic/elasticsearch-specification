@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ClusterStateBlocks } from '@cluster/ClusterStateBlocks'
+import { ClusterStateBlockIndex } from '@cluster/ClusterStateBlocksIndex'
 import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
 import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
 import {
@@ -26,6 +26,7 @@ import {
 } from '@cluster/ClusterStateSnapshots'
 import {
   EmptyObject,
+  IndexName,
   Name,
   NodeName,
   Uuid,
@@ -49,4 +50,8 @@ export class ClusterStateResponse extends ResponseBase {
   routing_nodes?: ClusterStateRoutingNodes
   snapshots?: ClusterStateSnapshots
   snapshot_deletions?: ClusterStateDeletedSnapshots
+}
+
+export class ClusterStateBlocks {
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
 }

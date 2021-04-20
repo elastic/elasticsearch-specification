@@ -37112,7 +37112,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlocks",
-        "namespace": "cluster"
+        "namespace": "cluster.cluster_state"
       },
       "properties": [
         {
@@ -37880,7 +37880,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterStateBlocks",
-              "namespace": "cluster"
+              "namespace": "cluster.cluster_state"
             }
           }
         },

@@ -28,7 +28,7 @@ import {
 } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ClusterStateBlockIndex } from './ClusterStateBlocks'
+import { ClusterStateBlockIndex } from './ClusterStateBlocksIndex'
 import { ClusterStateIndexLifecycle } from './ClusterStateIndexLifecycle'
 import { ClusterStateIngest } from './ClusterStateIngest'
 
