@@ -21,5 +21,6 @@ import { long } from '@common/common'
 
 export class ShardStatsStore {
   reserved_in_bytes: long
+  total_data_set_size_in_bytes?: long
   size_in_bytes: long
 }
