@@ -74,14 +74,17 @@ function buildNamespaces (namespace: string, current: string): string {
     .filter((n, i, arr) => arr.indexOf(n) === i)
 
   let code = `\nexport ${namespace.split('.').length === 1 ? 'declare ' : ''}namespace ${createName(current)} {\n`
+
   if (Array.isArray(namespaces[namespace]) && namespaces[namespace].length > 0) {
     code += namespaces[namespace].join('\n')
   }
+
   if (ns.length > 0) {
     for (const n of ns) {
       code += buildNamespaces(n, n.split('.').pop() as string)
     }
   }
+
   code += '\n}\n'
 
   return code
@@ -235,21 +238,23 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
     return property.required ? '' : '?'
   }
 
+  const openGenerics = type.generics?.map(t => t.name) ?? []
   for (const property of type.properties) {
-    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type)}\n`
+    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
   }
   code += '}\n'
-  code += `export type ${type.name.name}${buildGenerics(type.generics)} = ${type.name.name}Keys${buildGenerics(type.generics, [], true)} |\n`
-  code += `    { ${buildIndexer(dictionaryOf)} }\n`
+  code += `export type ${type.name.name}${buildGenerics(type.generics, openGenerics)} = ${type.name.name}Keys${buildGenerics(type.generics, openGenerics, true)} |\n`
+  code += `    { ${buildIndexer(dictionaryOf, openGenerics)} }\n`
   return code
 
-  function buildIndexer (type: M.Inherits): string {
+  function buildIndexer (type: M.Inherits, openGenerics: string[]): string {
     if (!Array.isArray(type.generics)) return ''
-    return `[property: ${type.generics.map(buildGeneric).join(']: ')}`
+    assert(type.generics.length === 2)
+    return `[property: string]: ${buildGeneric(type.generics[1])}`
 
     // generics can either be a value/instance_of or a named generics
     function buildGeneric (type: M.ValueOf): string | number | boolean {
-      const t = typeof type === 'string' ? type : buildValue(type)
+      const t = typeof type === 'string' ? type : buildValue(type, openGenerics)
       // indexers do not allow type aliases so here we translate known
       // type aliases back to string
       return t === 'AggregateName' ? 'string' : t
