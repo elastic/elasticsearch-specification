@@ -6152,8 +6152,8 @@ export interface IndexHealthStats {
   unassigned_shards: integer
 }
 
-export interface IndexMappings {
-  item: TypeMapping
+export interface IndexMappingRecord {
+  item?: TypeMapping
   mappings: TypeMapping
 }
 
@@ -6697,7 +6697,7 @@ export interface IndicesGetMappingRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappings> {
+export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappingRecord> {
 }
 
 export interface IndicesGetRequest extends RequestBase {
@@ -12995,9 +12995,10 @@ export interface SuggestContainer {
 }
 
 export interface SuggestContext {
-  name: string
-  path: Field
+  name: Name
+  path?: Field
   type: string
+  precision?: integer
 }
 
 export interface SuggestContextQuery {

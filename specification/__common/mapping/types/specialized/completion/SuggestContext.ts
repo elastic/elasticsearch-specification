@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
+import { Field, integer, Name } from '@common/common'
 
 export class SuggestContext {
-  name: string
-  path: Field
+  name: Name
+  path?: Field
   type: string
+  precision?: integer
 }

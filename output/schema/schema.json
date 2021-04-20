@@ -63001,13 +63001,13 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IndexMappings",
-        "namespace": "indices"
+        "name": "IndexMappingRecord",
+        "namespace": "indices.get_mapping"
       },
       "properties": [
         {
           "name": "item",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67952,8 +67952,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "IndexMappings",
-                "namespace": "indices"
+                "name": "IndexMappingRecord",
+                "namespace": "indices.get_mapping"
               }
             }
           ],
@@ -124362,14 +124362,14 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "__common"
             }
           }
         },
         {
           "name": "path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124386,6 +124386,17 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
             }
           }
         }
