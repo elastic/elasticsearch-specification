@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { LatLon } from '@common/common'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoValidationMethod } from '../GeoValidationMethod'
 import { BoundingBox } from './BoundingBox'
@@ -26,4 +27,6 @@ export class GeoBoundingBoxQuery extends QueryBase {
   bounding_box?: BoundingBox
   type?: GeoExecution
   validation_method?: GeoValidationMethod
+  top_left?: LatLon
+  bottom_right?: LatLon
 }
