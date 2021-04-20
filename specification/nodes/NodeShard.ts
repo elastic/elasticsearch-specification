@@ -17,13 +17,18 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { UnassignedInformation } from "@cluster/cluster_allocation_explain/UnassignedInformation"
+import { Id, IndexName, integer, NodeName } from "@common/common"
+import { ShardRoutingState } from "@indices/stats/ShardRoutingState"
+import { Dictionary } from "@spec_utils/Dictionary"
 
-export class SearchShard {
-  index: string
-  node: string
+export class NodeShard {
+  state: ShardRoutingState
   primary: boolean
-  relocating_node: string
+  node?: NodeName
   shard: integer
-  state: string
+  index: IndexName
+  allocation_id?: Dictionary<string, string>
+  recovery_source?: Dictionary<string, Id>
+  unassigned_info?: UnassignedInformation
 }

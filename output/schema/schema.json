@@ -36764,7 +36764,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeAttributes",
-                "namespace": "transform.get_transform_stats"
+                "namespace": "nodes"
               }
             }
           }
@@ -37963,7 +37963,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeAttributes",
-                "namespace": "transform.get_transform_stats"
+                "namespace": "nodes"
               }
             }
           }
@@ -38039,8 +38039,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterStateRoutingNodesShard",
-                "namespace": "cluster"
+                "name": "NodeShard",
+                "namespace": "nodes"
               }
             }
           }
@@ -38062,127 +38062,10 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ClusterStateRoutingNodesShard",
-                  "namespace": "cluster"
+                  "name": "NodeShard",
+                  "namespace": "nodes"
                 }
               }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterStateRoutingNodesShard",
-        "namespace": "cluster"
-      },
-      "properties": [
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardRoutingState",
-              "namespace": "indices.stats"
-            }
-          }
-        },
-        {
-          "name": "primary",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeName",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "allocation_id",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "recovery_source",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "unassigned_info",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UnassignedInformation",
-              "namespace": "cluster.cluster_allocation_explain"
             }
           }
         }
@@ -89041,7 +88924,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeAttributes",
-        "namespace": "transform.get_transform_stats"
+        "namespace": "nodes"
       },
       "properties": [
         {
@@ -90534,6 +90417,123 @@
           }
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeShard",
+        "namespace": "nodes"
+      },
+      "properties": [
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardRoutingState",
+              "namespace": "indices.stats"
+            }
+          }
+        },
+        {
+          "name": "primary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "__common"
+            }
+          }
+        },
+        {
+          "name": "allocation_id",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "recovery_source",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "__common"
+              }
+            }
+          }
+        },
+        {
+          "name": "unassigned_info",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnassignedInformation",
+              "namespace": "cluster.cluster_allocation_explain"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -107107,37 +107107,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SearchNode",
-        "namespace": "__global.search_shards"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "__common"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "SearchProfile",
         "namespace": "__global.search.profile"
       },
@@ -108500,81 +108469,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "SearchShard",
-        "namespace": "__global.search_shards"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "primary",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "relocating_node",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "__common"
-            }
-          }
-        },
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -108704,8 +108598,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SearchNode",
-                "namespace": "__global.search_shards"
+                "name": "NodeAttributes",
+                "namespace": "nodes"
               }
             }
           }
@@ -108720,10 +108614,27 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SearchShard",
-                  "namespace": "__global.search_shards"
+                  "name": "NodeShard",
+                  "namespace": "nodes"
                 }
               }
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "__common"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -130040,7 +129951,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeAttributes",
-              "namespace": "transform.get_transform_stats"
+              "namespace": "nodes"
             }
           }
         },
