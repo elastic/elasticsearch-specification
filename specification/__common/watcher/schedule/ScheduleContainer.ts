@@ -26,6 +26,9 @@ import { TimeOfMonth } from './TimeOfMonth'
 import { TimeOfWeek } from './TimeOfWeek'
 import { TimeOfYear } from './TimeOfYear'
 
+/**
+ * @variants container
+ */
 export class ScheduleContainer {
   cron?: CronExpression
   daily?: DailySchedule

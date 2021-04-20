@@ -52,6 +52,9 @@ import { TrimProcessor } from './processors/TrimProcessor'
 import { UppercaseProcessor } from './processors/UppercaseProcessor'
 import { UrlDecodeProcessor } from './processors/UrlDecodeProcessor'
 
+/**
+ * @variants container
+ */
 export class ProcessorContainer {
   attachment?: AttachmentProcessor
   append?: AppendProcessor

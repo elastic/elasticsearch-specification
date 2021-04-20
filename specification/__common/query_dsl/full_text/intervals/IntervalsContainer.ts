@@ -24,6 +24,9 @@ import { IntervalsMatch } from './IntervalsMatch'
 import { IntervalsPrefix } from './IntervalsPrefix'
 import { IntervalsWildcard } from './IntervalsWildcard'
 
+/**
+ * @variants container
+ */
 export class IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf

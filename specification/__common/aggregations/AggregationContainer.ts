@@ -90,9 +90,16 @@ import { SerialDifferencingAggregation } from './pipeline/serial_differencing/Se
 import { StatsBucketAggregation } from './pipeline/stats_bucket/StatsBucketAggregation'
 import { SumBucketAggregation } from './pipeline/sum_bucket/SumBucketAggregation'
 
+/**
+ * @variants container
+ */
 export class AggregationContainer {
-  adjacency_matrix?: AdjacencyMatrixAggregation
+  /** @variant container_property */
   aggs?: Dictionary<string, AggregationContainer>
+  /** @variant container_property */
+  meta?: Dictionary<string, UserDefinedValue>
+
+  adjacency_matrix?: AdjacencyMatrixAggregation
   aggregations?: Dictionary<string, AggregationContainer>
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
@@ -129,7 +136,6 @@ export class AggregationContainer {
   max?: MaxAggregation
   max_bucket?: MaxBucketAggregation
   median_absolute_deviation?: MedianAbsoluteDeviationAggregation
-  meta?: Dictionary<string, UserDefinedValue>
   min?: MinAggregation
   min_bucket?: MinBucketAggregation
   missing?: MissingAggregation

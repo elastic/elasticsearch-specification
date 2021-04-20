@@ -74,6 +74,9 @@ import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
 
+/**
+ * @variants container
+ */
 export class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
@@ -96,10 +99,6 @@ export class QueryContainer {
   has_parent?: HasParentQuery
   ids?: IdsQuery
   intervals?: NamedQuery<IntervalsQuery | string>
-  is_conditionless?: boolean
-  is_strict?: boolean
-  is_verbatim?: boolean
-  is_writable?: boolean
   match?: NamedQuery<MatchQuery | string | float | boolean>
   match_all?: MatchAllQuery
   match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>

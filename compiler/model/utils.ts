@@ -453,10 +453,8 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   function getName (type: TType): string {
     if (typeof type.name === 'string') {
       return type.name
-    } else if (typeof type.name.name === 'string') {
-      return type.name.name
     } else {
-      return 'unknown'
+      return type.name.name
     }
   }
 }
@@ -541,7 +539,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default', 'variant']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -574,6 +572,9 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         default:
           property.serverDefault = value
       }
+    } else if (tag === 'variant') {
+      assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
+      property.container_property = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }
