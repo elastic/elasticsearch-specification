@@ -362,7 +362,10 @@ export function modelEnumDeclaration (declaration: EnumDeclaration): model.Enum 
 export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAlias {
   const type = declaration.getTypeNode()
   assert(declaration, type != null, 'Type alias without a referenced type')
-  const generics = declaration.getTypeParameters().map(node => modelType(node))
+  const generics = declaration.getTypeParameters().map(typeParameter => ({
+    name: modelGenerics(typeParameter),
+    namespace: getNameSpace(typeParameter)
+  }))
 
   const alias = modelType(type)
   const typeAlias: model.TypeAlias = {
@@ -453,10 +456,8 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
   function getName (type: TType): string {
     if (typeof type.name === 'string') {
       return type.name
-    } else if (typeof type.name.name === 'string') {
-      return type.name.name
     } else {
-      return 'unknown'
+      return type.name.name
     }
   }
 }
@@ -491,9 +492,7 @@ export function hoistRequestAnnotations (
       }
       endpoint.visibility = model.Visibility[value]
     } else if (tag === 'stability') {
-      // still need to follow up on this in a new PR
-      if (value === 'TODO') return
-      if (endpoint.stability !== null && endpoint.stability !== undefined) {
+      if (value !== 'TODO' && endpoint.stability !== null && endpoint.stability !== undefined) {
         assert(jsDocs, endpoint.stability === value,
           `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
       }
@@ -541,7 +540,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default', 'variant']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -574,6 +573,9 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         default:
           property.serverDefault = value
       }
+    } else if (tag === 'variant') {
+      assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
+      property.container_property = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }

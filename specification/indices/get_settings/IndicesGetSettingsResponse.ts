@@ -19,7 +19,7 @@
 
 import { IndexName } from '@common/common'
 import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
-import { IndexState } from '@common/index_settings/IndexState'
+import { IndexState } from '@common/index/IndexState'
 
 export class IndicesGetSettingsResponse extends DictionaryResponseBase<
   IndexName,

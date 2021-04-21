@@ -17,20 +17,27 @@
  * under the License.
  */
 
-import { ClusterStateBlocks } from '@cluster/ClusterStateBlocks'
+import { ClusterStateBlockIndex } from '@cluster/ClusterStateBlocksIndex'
 import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
 import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
 import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
 } from '@cluster/ClusterStateSnapshots'
-import { EmptyObject, NodeName, Uuid, VersionNumber } from '@common/common'
+import {
+  EmptyObject,
+  IndexName,
+  Name,
+  NodeName,
+  Uuid,
+  VersionNumber
+} from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeAttributes } from '@transform/get_transform_stats/NodeAttributes'
+import { NodeAttributes } from '@nodes/NodeAttributes'
 
 export class ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+  cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: string[]
@@ -43,4 +50,8 @@ export class ClusterStateResponse extends ResponseBase {
   routing_nodes?: ClusterStateRoutingNodes
   snapshots?: ClusterStateSnapshots
   snapshot_deletions?: ClusterStateDeletedSnapshots
+}
+
+export class ClusterStateBlocks {
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
 }

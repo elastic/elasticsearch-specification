@@ -17,20 +17,18 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { IndexName } from '@common/common'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Alias } from '@indices/Alias'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { IndexSettings } from './IndexSettings'
 
-export class ShardSearch {
-  fetch_current: long
-  fetch_time_in_millis: long
-  fetch_total: long
-  open_contexts: long
-  query_current: long
-  query_time_in_millis: long
-  query_total: long
-  scroll_current: long
-  scroll_time_in_millis: long
-  scroll_total: long
-  suggest_current: long
-  suggest_time_in_millis: long
-  suggest_total: long
+export class IndexState {
+  aliases?: Dictionary<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export class IndexStatePrefixedSettings {
+  index: IndexSettings
 }

@@ -19,9 +19,14 @@
 
 import { IndexName } from '@common/common'
 import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
-import { IndexMappings } from '@indices/IndexMappings'
+import { TypeMapping } from '@common/mapping/TypeMapping'
 
 export class IndicesGetMappingResponse extends DictionaryResponseBase<
   IndexName,
-  IndexMappings
+  IndexMappingRecord
 > {}
+
+export class IndexMappingRecord {
+  item?: TypeMapping
+  mappings: TypeMapping
+}

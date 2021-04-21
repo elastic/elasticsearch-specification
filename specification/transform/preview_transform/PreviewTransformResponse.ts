@@ -18,10 +18,9 @@
  */
 
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { IndexState } from '@common/index_settings/IndexState'
+import { IndexState } from '@common/index/IndexState'
 
 export class PreviewTransformResponse<TTransform> extends ResponseBase {
   generated_dest_index: IndexState
-  /** @prop_serializer SourceFormatter`1 */
   preview: TTransform[]
 }

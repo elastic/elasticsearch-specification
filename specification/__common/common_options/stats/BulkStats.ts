@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { ByteSize, long } from '@common/common'
 
-export class SearchShard {
-  index: string
-  node: string
-  primary: boolean
-  relocating_node: string
-  shard: integer
-  state: string
+export class BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
 }

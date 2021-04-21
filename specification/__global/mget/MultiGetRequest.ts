@@ -45,7 +45,6 @@ export interface MultiGetRequest extends RequestBase {
     realtime?: boolean // default: true
     refresh?: boolean // default: false
     routing?: Routing
-    source_enabled?: boolean
     _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
@@ -58,7 +57,6 @@ export interface MultiGetRequest extends RequestBase {
 }
 
 export class MultiGetOperation {
-  can_be_flattened?: boolean
   _id: MultiGetId
   _index?: IndexName
   routing?: Routing

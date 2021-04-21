@@ -38,5 +38,4 @@ export interface SearchShardsRequest extends RequestBase {
     preference?: string
     routing?: Routing
   }
-  body?: {}
 }

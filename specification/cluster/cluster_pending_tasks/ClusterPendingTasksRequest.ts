@@ -28,6 +28,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 export interface ClusterPendingTasksRequest extends RequestBase {
   query_parameters?: {
     local?: boolean
+    /** @server_default 30s */
     master_timeout?: Time
   }
   body?: {}

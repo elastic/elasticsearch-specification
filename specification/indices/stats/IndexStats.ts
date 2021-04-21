@@ -33,6 +33,7 @@ import { SegmentsStats } from '@common/common_options/stats/SegmentsStats'
 import { StoreStats } from '@common/common_options/stats/StoreStats'
 import { TranslogStats } from '@common/common_options/stats/TranslogStats'
 import { WarmerStats } from '@common/common_options/stats/WarmerStats'
+import { BulkStats } from '@common/common_options/stats/BulkStats'
 
 export class IndexStats {
   completion?: CompletionStats
@@ -51,4 +52,5 @@ export class IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+  bulk?: BulkStats
 }

@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { long } from '@common/common'
-
-export class ShardStatsRecovery {
-  current_as_source: long
-  current_as_target: long
-  throttle_time_in_millis: long
+export enum WatcherMetric {
+  '_all' = 0,
+  'queued_watches' = 1,
+  'current_watches' = 2,
+  'pending_watches' = 3
 }

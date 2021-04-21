@@ -20,6 +20,6 @@
 import { integer, MainError } from '@common/common'
 
 export class ErrorResponse {
-  error: MainError
+  error: MainError | string
   status: integer
 }

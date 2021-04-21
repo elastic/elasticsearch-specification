@@ -28,7 +28,8 @@ import {
   integer,
   long,
   Routing,
-  Types
+  Types,
+  VersionString
 } from '@common/common'
 import { DefaultOperator } from '@common/common/DefaultOperator'
 import { ExpandWildcards } from '@common/common/ExpandWildcards'
@@ -70,28 +71,32 @@ export interface SearchRequest extends RequestBase {
     df?: string
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
+    explain?: boolean
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
+    min_compatible_shard_node?: VersionString
     preference?: string
     pre_filter_shard_size?: long
-    query_on_query_string?: string
     request_cache?: boolean
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
-    sequence_number_primary_term?: boolean
     stats?: string[]
     stored_fields?: Fields
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
     suggest_text?: string
-    total_hits_as_integer?: boolean
+    terminate_after?: long
+    timeout?: Time
     track_total_hits?: boolean | integer
+    track_scores?: boolean
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
+    version?: boolean
+    _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
     seq_no_primary_term?: boolean

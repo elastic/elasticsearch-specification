@@ -17,23 +17,10 @@
  * under the License.
  */
 
-import { IndexName, integer, NodeName } from '@common/common'
-import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
+import { NodeShard } from '@nodes/NodeShard'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UnassignedInformation } from './cluster_allocation_explain/UnassignedInformation'
 
 export class ClusterStateRoutingNodes {
-  unassigned: ClusterStateRoutingNodesShard[]
-  nodes: Dictionary<string, ClusterStateRoutingNodesShard[]>
-}
-
-export class ClusterStateRoutingNodesShard {
-  state: ShardRoutingState
-  primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Dictionary<string, string>
-  recovery_source?: Dictionary<string, string>
-  unassigned_info?: UnassignedInformation
+  unassigned: NodeShard[]
+  nodes: Dictionary<string, NodeShard[]>
 }

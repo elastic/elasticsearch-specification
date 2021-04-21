@@ -20,10 +20,27 @@
 import * as model from '../model/metamodel'
 import { ValidationErrors } from '../validation-errors'
 import { JsonSpec } from '../model/json-spec'
+import assert from 'assert'
+
+// Superclasses (i.e. non-leaf types, who are inherited or implemented) that are ok to be used as field types because
+// they're used as definition reuse and not as polymorphic types.
+// See also validateIsLeafType() below.
+const allowedSuperclasses = new Set([
+  '__common:ErrorCause'
+])
 
 enum TypeDefKind {
   type,
   behavior
+}
+
+enum JsonEvent {
+  string = 'string',
+  number = 'number',
+  boolean = 'boolean',
+  null = 'null',
+  object = 'object',
+  array = 'array'
 }
 
 /**
@@ -152,12 +169,18 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
-  validateTypeRef({ namespace: 'common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
+  validateTypeRef({ namespace: '__common.common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
 
   // -----  Alright, let's go!
 
-  // Validate all endpoints
-  apiModel.endpoints.forEach(validateEndpoint)
+  function readyForValidation (ep: model.Endpoint): boolean {
+    return ep.stability !== model.Stability.TODO && ep.request != null && ep.response != null
+  }
+
+  // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
+  // data types is associated with these endpoints and their errors are not filtered out in the error report.
+  apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
+  apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
   // Removes types that we've not seen
   apiModel.types = apiModel.types.filter(type => typesSeen.has(fqn(type.name)))
@@ -170,7 +193,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   const danglingTypesCount = initialTypeCount - apiModel.types.length
-  console.info(`Model validation: ${errorCount} errors. ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
+  console.info(`Model validation: ${typesSeen.size} types visited, ${danglingTypesCount} dangling types.`)
 
   if (errorCount > 0 && failHard) {
     throw new Error('Model is inconsistent. Check logs for details')
@@ -187,7 +210,12 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     setRootContext(endpoint.name, 'request')
 
     if (endpoint.request == null) {
-      modelError('Missing request')
+      if (endpoint.response == null) {
+        modelError('Missing request & response')
+        return
+      } else {
+        modelError('Missing request')
+      }
     } else {
       const reqType = getTypeDef(endpoint.request)
 
@@ -385,6 +413,23 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
     validateProperties(typeDef.properties, openGenerics)
+
+    if (typeDef.variants?.kind === 'container') {
+      const variants = typeDef.properties.filter(prop => !(prop.container_property ?? false))
+      if (variants.length === 1) {
+        // Single-variant containers must have a required property
+        if (!variants[0].required) {
+          modelError(`Property ${variants[0].name} is a single-variant and must be required`)
+        }
+      } else {
+        // Multiple variants must all be optional
+        for (const v of variants) {
+          if (v.required) {
+            modelError(`Variant ${variants[0].name} must be optional`)
+          }
+        }
+      }
+    }
   }
 
   function validateEnum (typeDef: model.Enum): void {
@@ -408,16 +453,68 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   function validateTypeAlias (typeDef: model.TypeAlias): void {
-    // FIXME: type_alias.generics should be of the same type as other type definitions
-    const openGenerics = new Set(typeDef.generics?.map(t => {
-      if (t.kind !== 'instance_of') {
-        throw new Error('Expecting instance_of for alias generic parameter')
-      } else {
-        return fqn(t.type)
-      }
-    }))
+    const openGenerics = new Set(typeDef.generics?.map(t => t.name))
 
-    validateValueOf(typeDef.type, openGenerics)
+    if (typeDef.variants != null) {
+      if (typeDef.generics != null && typeDef.generics.length !== 0) {
+        modelError('A tagged union should not have generic parameters')
+      }
+
+      if (typeDef.type.kind !== 'union_of') {
+        modelError('The "variants" tag only applies to unions')
+      } else {
+        validateTaggedUnion(typeDef.type, typeDef.variants)
+      }
+    } else {
+      validateValueOf(typeDef.type, openGenerics)
+    }
+  }
+
+  function validateTaggedUnion (valueOf: model.UnionOf, variants: model.InternalTag | model.ExternalTag): void {
+    if (variants.kind === 'external_tag') {
+      // All items must have a 'variant' attribute
+      const items = flattenUnionMembers(valueOf)
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of externally tagged unions must be types with a "variant_tag" annotation')
+        } else {
+          validateTypeRef(item.type, undefined, new Set<string>())
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else {
+            if (type.variantName == null) {
+              modelError(`Type ${fqn(item.type)} is part of a tagged union and should have a "@variant name"`)
+            } else {
+              // Check uniqueness
+            }
+          }
+        }
+      }
+    } else if (variants.kind === 'internal_tag') {
+      const tagName = variants.tag
+      const items = flattenUnionMembers(valueOf)
+
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          modelError('Items of internally tagged unions must be type references')
+        } else {
+          validateTypeRef(item.type, undefined, new Set<string>())
+          const type = getTypeDef(item.type)
+          if (type == null) {
+            modelError(`Type ${fqn(item.type)} not found`)
+          } else if (type.kind === 'interface') {
+            const tagProperty = type.properties.find(prop => prop.name === tagName)
+            if (tagProperty == null) {
+              modelError(`Type ${fqn(item.type)} should have a "${tagName}" variant tag property`)
+            }
+          }
+        }
+      }
+
+      validateValueOf(valueOf, new Set())
+    }
   }
 
   // -----------------------------------------------------------------------------------------------
@@ -527,6 +624,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
       context.push(`Property '${prop.name}'`)
       validateValueOf(prop.type, openGenerics)
+      validateValueOfJsonEvents(prop.type)
       context.pop()
     }
   }
@@ -563,7 +661,9 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
           return
       }
 
-      modelError(`Non-leaf type cannot be used here: '${fqName}'`)
+      if (!allowedSuperclasses.has(fqName)) {
+        modelError(`Non-leaf type cannot be used here: '${fqName}'`)
+      }
     }
   }
 
@@ -609,6 +709,157 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         // @ts-expect-error
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         throw new Error(`Unknown kind: ${valueOf.kind}`)
+    }
+    context.pop()
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // JSON events validation
+
+  function validateValueOfJsonEvents (valueOf: model.ValueOf): void {
+    // TODO: disabled for now as it's too noisy until we have fully annotated variants
+
+    // const events = new Set<JsonEvent>()
+    // valueOfJsonEvents(events, valueOf)
+  }
+
+  function validateEvent (events: Set<JsonEvent>, event: JsonEvent): void {
+    if (events.has(event)) {
+      modelError('Ambiguous JSON type: ' + event)
+    }
+    events.add(event)
+  }
+
+  function typeDefJsonEvents (events: Set<JsonEvent>, typeDef: model.TypeDefinition): void {
+    if (typeDef.name.namespace === 'internal') {
+      switch (typeDef.name.name) {
+        case 'string':
+          validateEvent(events, JsonEvent.string)
+          return
+
+        case 'boolean':
+          validateEvent(events, JsonEvent.boolean)
+          return
+
+        case 'number':
+          validateEvent(events, JsonEvent.number)
+          return
+
+        case 'object':
+          validateEvent(events, JsonEvent.object)
+          return
+
+        case 'null':
+          validateEvent(events, JsonEvent.null)
+          return
+
+        case 'Array':
+          validateEvent(events, JsonEvent.array)
+          return
+      }
+    }
+
+    switch (typeDef.kind) {
+      case 'request':
+      case 'interface':
+        validateEvent(events, JsonEvent.object)
+        break
+
+      case 'enum':
+        validateEvent(events, JsonEvent.string)
+        break
+
+      case 'type_alias':
+        if (typeDef.variants == null) {
+          valueOfJsonEvents(events, typeDef.type)
+        } else {
+          // tagged union: the discriminant tells us what to look for, check each member in isolation
+          assert(typeDef.type.kind === 'union_of', 'Variants are only allowed on union_of type aliases')
+          for (const item of flattenUnionMembers(typeDef.type)) {
+            validateValueOfJsonEvents(item)
+          }
+
+          // Internally tagged variants will be objects, so check that we can read them
+          if (typeDef.variants.kind === 'internal_tag') {
+            // variant items will be objects
+            validateEvent(events, JsonEvent.object)
+          }
+        }
+        break
+    }
+  }
+
+  /** Build the flattened item list of potentially nested unions (this is used for large unions) */
+  function flattenUnionMembers (union: model.UnionOf): model.ValueOf[] {
+    const allItems = new Array<model.ValueOf>()
+
+    function collectItems (items: model.ValueOf[]): void {
+      for (const item of items) {
+        if (item.kind !== 'instance_of') {
+          validateValueOf(item, new Set<string>())
+          allItems.push(item)
+        } else {
+          const itemType = getTypeDef(item.type)
+          if (itemType?.kind === 'type_alias' && itemType.type.kind === 'union_of') {
+            // Mark it as seen
+            typesSeen.add(fqn(item.type))
+            // Recurse in nested union
+            collectItems(itemType.type.items)
+          } else {
+            validateValueOf(item, new Set<string>())
+            allItems.push(item)
+          }
+        }
+      }
+    }
+
+    collectItems(union.items)
+    return allItems
+  }
+
+  function typeRefJsonEvents (events: Set<JsonEvent>, name: model.TypeName): void {
+    const type = getTypeDef(name)
+    if (type != null) {
+      typeDefJsonEvents(events, type)
+    }
+  }
+
+  function valueOfJsonEvents (events: Set<JsonEvent>, valueOf: model.ValueOf): void {
+    context.push(valueOf.kind)
+    switch (valueOf.kind) {
+      case 'instance_of':
+        typeRefJsonEvents(events, valueOf.type)
+        break
+
+      case 'user_defined_value':
+        validateEvent(events, JsonEvent.object) // but can be anything
+        break
+
+      case 'array_of':
+        validateEvent(events, JsonEvent.array)
+        validateValueOfJsonEvents(valueOf.value)
+        break
+
+      case 'dictionary_of':
+        validateEvent(events, JsonEvent.object)
+        context.push('key')
+        validateValueOfJsonEvents(valueOf.key)
+        context.pop()
+        context.push('value')
+        validateValueOfJsonEvents(valueOf.value)
+        context.pop()
+        break
+
+      case 'named_value_of':
+        validateEvent(events, JsonEvent.object)
+        validateValueOfJsonEvents(valueOf.value)
+        break
+
+      case 'union_of':
+        for (const item of valueOf.items) {
+          valueOfJsonEvents(events, item)
+        }
+        break
     }
     context.pop()
   }

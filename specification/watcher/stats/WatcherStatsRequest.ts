@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Metrics } from '@common/common'
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { WatcherMetric } from './WatcherMetric'
 
 /**
  * @rest_spec_name watcher.stats
@@ -27,10 +27,11 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  */
 export interface WatcherStatsRequest extends RequestBase {
   path_parts?: {
-    metric?: Metrics
+    metric?: WatcherMetric | WatcherMetric[]
   }
   query_parameters?: {
     emit_stacktraces?: boolean
+    metric?: WatcherMetric | WatcherMetric[]
   }
   body?: {}
 }

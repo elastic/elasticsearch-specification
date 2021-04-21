@@ -17,37 +17,29 @@
  * under the License.
  */
 
-import { Indices, integer } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { IndexAlias, IndexName, integer, VersionNumber } from '@common/common'
 import { IndexSettings } from '@common/index/IndexSettings'
-import { IndexState } from '@common/index/IndexState'
+import { TypeMapping } from '@common/mapping/TypeMapping'
+import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-/**
- * @rest_spec_name indices.put_settings
- * @since 0.0.0
- *
- * @stability TODO
- */
-export interface IndicesPutSettingsRequest extends RequestBase {
-  path_parts?: {
-    index?: Indices
-  }
-  query_parameters?: {
-    allow_no_indices?: boolean
-    expand_wildcards?: ExpandWildcards
-    flat_settings?: boolean
-    ignore_unavailable?: boolean
-    master_timeout?: Time
-    preserve_existing?: boolean
-    timeout?: Time
-  }
-  body: IndexSettingsRequest
-}
-
-export interface IndexSettingsRequest extends IndexSettings {
-  settings?: IndexSettings
+export class ClusterStateBlockIndex {
+  description?: string
+  retryable?: boolean
+  levels?: string[]
+  aliases?: Array<IndexAlias>
+  aliases_version?: VersionNumber
+  version?: VersionNumber
+  mapping_version?: VersionNumber
+  settings_version?: VersionNumber
+  routing_num_shards?: VersionNumber
+  state?: string // TODO: create export enum  of values
+  settings?: Dictionary<IndexName, IndexSettings>
+  in_sync_allocations?: Dictionary<string, string[]>
+  primary_terms?: Dictionary<string, integer>
+  mappings?: Dictionary<string, TypeMapping>
+  rollover_info?: Dictionary<string, IndicesRolloverConditions> // TODO: not sure if this is correect
+  timestamp_range?: Dictionary<string, UserDefinedValue>
+  system?: boolean
 }

@@ -18,11 +18,18 @@
  */
 
 export enum DateRounding {
+  /** @identifier Second */
   s = 0,
+  /** @identifier Minute */
   m = 1,
+  /** @identifier Hour */
   h = 2,
+  /** @identifier Day */
   d = 3,
+  /** @identifier Week */
   w = 4,
+  /** @identifier Month */
   M = 5,
+  /** @identifier Year */
   y = 6
 }

@@ -17,22 +17,43 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { Id } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ShardFileSizeInfo } from './ShardFileSizeInfo'
 
-export class ShardSegments {
-  count: long
-  doc_values_memory_in_bytes: long
-  file_sizes: Dictionary<string, ShardFileSizeInfo>
-  fixed_bit_set_memory_in_bytes: long
-  index_writer_memory_in_bytes: long
-  max_unsafe_auto_id_timestamp: long
-  memory_in_bytes: long
-  norms_memory_in_bytes: long
-  points_memory_in_bytes: long
-  stored_fields_memory_in_bytes: long
-  terms_memory_in_bytes: long
-  term_vectors_memory_in_bytes: long
-  version_map_memory_in_bytes: long
+export class IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
+}
+
+export class IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
+}
+
+export class IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+}
+
+export enum IndexRoutingAllocationOptions {
+  all = 0,
+  primaries = 1,
+  new_primaries = 2,
+  none = 3
+}
+
+export enum IndexRoutingRebalanceOptions {
+  all = 0,
+  primaries = 1,
+  replicas = 2,
+  none = 3
+}
+
+export class IndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export class IndexRoutingAllocationInitialRecovery {
+  _id?: Id
 }

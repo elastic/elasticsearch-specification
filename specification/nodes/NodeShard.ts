@@ -17,9 +17,18 @@
  * under the License.
  */
 
-import { TypeMapping } from '@common/mapping/TypeMapping'
+import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
+import { Id, IndexName, integer, NodeName } from '@common/common'
+import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
+import { Dictionary } from '@spec_utils/Dictionary'
 
-export class IndexMappings {
-  item: TypeMapping
-  mappings: TypeMapping
+export class NodeShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Dictionary<string, string>
+  recovery_source?: Dictionary<string, Id>
+  unassigned_info?: UnassignedInformation
 }

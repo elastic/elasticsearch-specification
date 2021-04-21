@@ -19,6 +19,9 @@
 
 import { ScheduleTriggerEvent } from '../schedule/ScheduleTriggerEvent'
 
+/**
+ * @variants container
+ */
 export class TriggerEventContainer {
   schedule: ScheduleTriggerEvent
 }
