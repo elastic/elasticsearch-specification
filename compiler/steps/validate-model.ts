@@ -169,7 +169,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
-  validateTypeRef({ namespace: '__common.common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
+  validateTypeRef({ namespace: '__common', name: 'ErrorResponse' }, undefined, new Set())
 
   // -----  Alright, let's go!
 
