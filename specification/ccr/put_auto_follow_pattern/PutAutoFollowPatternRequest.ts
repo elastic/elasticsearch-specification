@@ -17,17 +17,12 @@
  * under the License.
  */
 
-import {
-  ByteSize,
-  IndexPattern,
-  IndexPatterns,
-  integer,
-  Name
-} from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { ByteSize, IndexPattern, IndexPatterns, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name ccr.put_auto_follow_pattern

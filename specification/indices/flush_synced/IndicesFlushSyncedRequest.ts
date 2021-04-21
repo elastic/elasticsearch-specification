@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Indices } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name indices.flush_synced

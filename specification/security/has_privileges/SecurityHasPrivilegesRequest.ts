@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 import { ApplicationPrivilegesCheck } from './ApplicationPrivilegesCheck'
 import { IndexPrivilegesCheck } from './IndexPrivilegesCheck'
 

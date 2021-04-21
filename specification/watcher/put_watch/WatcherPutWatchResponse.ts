@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, long, SequenceNumber, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { Id, SequenceNumber, VersionNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class WatcherPutWatchResponse extends ResponseBase {
   created: boolean

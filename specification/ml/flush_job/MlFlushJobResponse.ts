@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 export class MlFlushJobResponse extends ResponseBase {
   flushed: boolean

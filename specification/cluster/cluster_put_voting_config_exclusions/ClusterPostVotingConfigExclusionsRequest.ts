@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Ids, Names } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { Ids, Names } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.post_voting_config_exclusions

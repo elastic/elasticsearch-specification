@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { double, Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
+import { double } from '@_types/Numeric'
 import { ShapeType } from './ShapeType'
 
 export class CircleProcessor extends ProcessorBase {

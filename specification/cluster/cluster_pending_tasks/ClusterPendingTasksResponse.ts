@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
 import { PendingTask } from './PendingTask'
 
 export class ClusterPendingTasksResponse extends ResponseBase {

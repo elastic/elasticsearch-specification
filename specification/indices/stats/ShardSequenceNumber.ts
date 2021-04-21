@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { long, SequenceNumber } from '@common/common'
+import { SequenceNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class ShardSequenceNumber {
   global_checkpoint: long

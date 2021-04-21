@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { ByteSize, integer } from '@common/common'
+import { ByteSize } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { CategorizationAnalyzer } from './CategorizationAnalyzer'
 
 export class AnomalyDetectors {

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskId } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { TaskId } from '@_types/common'
 import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
 
 export class ExecuteEnrichPolicyResponse extends ResponseBase {

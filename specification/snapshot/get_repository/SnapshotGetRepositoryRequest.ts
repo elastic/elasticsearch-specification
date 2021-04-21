@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Names } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { Names } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.get_repository

@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { Field, integer } from '@common/common'
-import { GeoShapeRelation } from '@common/common_options/geo/GeoShapeRelation'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
+import { GeoShapeRelation } from '@_types/Geo'
+import { integer } from '@_types/Numeric'
 
 export class EnrichProcessor extends ProcessorBase {
   field: Field

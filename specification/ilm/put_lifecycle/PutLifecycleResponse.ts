@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class PutLifecycleResponse extends AcknowledgedResponseBase {}

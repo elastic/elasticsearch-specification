@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, IndexName, Name, Uuid, VersionString } from '@common/common'
-import { Host, Ip, TransportAddress } from '@common/Networking'
+import { Id, IndexName, Name, Uuid, VersionString } from '@_types/common'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
 
 export class RecoveryOrigin {
   hostname?: string

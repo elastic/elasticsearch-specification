@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Field, long } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class AttachmentProcessor extends ProcessorBase {
   field: Field

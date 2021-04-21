@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { SnapshotInfo } from '@common/snapshot/SnapshotInfo'
+import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
+import { ResponseBase } from '@_types/Base'
 
 export class SnapshotCreateResponse extends ResponseBase {
   accepted?: boolean

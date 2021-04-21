@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { Password, Username } from '@common/common/Credentials'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Name, Password, Username } from '@_types/common'
+import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name security.grant_api_key

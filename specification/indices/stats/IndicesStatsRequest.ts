@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { Fields, Indices, Metrics, Types } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { Level } from '@common/common/Level'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import {
+  ExpandWildcards,
+  Fields,
+  Indices,
+  Level,
+  Metrics,
+  Types
+} from '@_types/common'
 
 /**
  * @rest_spec_name indices.stats

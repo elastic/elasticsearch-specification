@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
 export class DateHistogramRollupGrouping {
   delay?: Time

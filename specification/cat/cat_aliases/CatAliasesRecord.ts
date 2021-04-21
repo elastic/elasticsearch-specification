@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
+import { IndexName } from '@_types/common'
 
 export class CatAliasesRecord {
   /**

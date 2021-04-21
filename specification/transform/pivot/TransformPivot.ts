@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { integer } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { integer } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { SingleGroupSource } from './SingleGroupSource'
 
 export class TransformPivot {

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
-import { ModelSnapshot } from '@common/ml/ModelSnapshot'
+import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class MlUpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model: ModelSnapshot

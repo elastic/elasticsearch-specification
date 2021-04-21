@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DateString } from '@common/common'
-import { TriggerEventContainer } from '@common/watcher/trigger/TriggerEventContainer'
+import { TriggerEventContainer } from '@watcher/_types/Trigger'
+import { DateString } from '@_types/Time'
 
 export class TriggerEventResult {
   manual: TriggerEventContainer

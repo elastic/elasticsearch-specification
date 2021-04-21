@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { Health } from '@common/common/Health'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Health } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { ShardHealthStats } from './ShardHealthStats'
 
 export class IndexHealthStats {

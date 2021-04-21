@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name, NodeId, Type, VersionString } from '@common/common'
+import { Name, NodeId, Type, VersionString } from '@_types/common'
 
 export class CatPluginsRecord {
   /**

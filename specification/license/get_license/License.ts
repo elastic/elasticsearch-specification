@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { EpochMillis, long } from '@common/common'
+import { long } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 import { LicenseType } from './LicenseType'
 
 export class License {

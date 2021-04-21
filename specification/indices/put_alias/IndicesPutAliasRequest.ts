@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Indices, Name, Routing } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { RequestBase } from '@_types/Base'
+import { Indices, Name, Routing } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_alias
