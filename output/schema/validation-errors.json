@@ -961,5 +961,7 @@
       "response": []
     }
   },
-  "generalErrors": []
+  "generalErrors": [
+    "No type definition for '__common.common_abstractions.response:ErrorResponse'"
+  ]
 }
