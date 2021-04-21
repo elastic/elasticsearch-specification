@@ -256,12 +256,12 @@
       "name": "bulk",
       "request": {
         "name": "BulkRequest",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "BulkResponse",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -1505,12 +1505,12 @@
       "name": "clear_scroll",
       "request": {
         "name": "ClearScrollRequest",
-        "namespace": "__global.clear_scroll"
+        "namespace": "_global.clear_scroll"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ClearScrollResponse",
-        "namespace": "__global.clear_scroll"
+        "namespace": "_global.clear_scroll"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1543,12 +1543,12 @@
       "name": "close_point_in_time",
       "request": {
         "name": "ClosePointInTimeRequest",
-        "namespace": "__global.close_point_in_time"
+        "namespace": "_global.close_point_in_time"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ClosePointInTimeResponse",
-        "namespace": "__global.close_point_in_time"
+        "namespace": "_global.close_point_in_time"
       },
       "since": "7.10.0",
       "stability": "TODO",
@@ -2038,12 +2038,12 @@
       "name": "count",
       "request": {
         "name": "CountRequest",
-        "namespace": "__global.count"
+        "namespace": "_global.count"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "CountResponse",
-        "namespace": "__global.count"
+        "namespace": "_global.count"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -2088,12 +2088,12 @@
       "name": "create",
       "request": {
         "name": "CreateRequest",
-        "namespace": "__global.create"
+        "namespace": "_global.create"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "CreateResponse",
-        "namespace": "__global.create"
+        "namespace": "_global.create"
       },
       "since": "5.0.0",
       "stability": "stable",
@@ -2431,12 +2431,12 @@
       "name": "delete",
       "request": {
         "name": "DeleteRequest",
-        "namespace": "__global.delete"
+        "namespace": "_global.delete"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "DeleteResponse",
-        "namespace": "__global.delete"
+        "namespace": "_global.delete"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -2472,12 +2472,12 @@
       "name": "delete_by_query",
       "request": {
         "name": "DeleteByQueryRequest",
-        "namespace": "__global.delete_by_query"
+        "namespace": "_global.delete_by_query"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "DeleteByQueryResponse",
-        "namespace": "__global.delete_by_query"
+        "namespace": "_global.delete_by_query"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -2510,12 +2510,12 @@
       "name": "delete_by_query_rethrottle",
       "request": {
         "name": "DeleteByQueryRethrottleRequest",
-        "namespace": "__global.delete_by_query_rethrottle"
+        "namespace": "_global.delete_by_query_rethrottle"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "DeleteByQueryRethrottleResponse",
-        "namespace": "__global.delete_by_query_rethrottle"
+        "namespace": "_global.delete_by_query_rethrottle"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -2538,12 +2538,12 @@
       "name": "delete_script",
       "request": {
         "name": "DeleteScriptRequest",
-        "namespace": "__global.delete_script"
+        "namespace": "_global.delete_script"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "DeleteScriptResponse",
-        "namespace": "__global.delete_script"
+        "namespace": "_global.delete_script"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -2831,12 +2831,12 @@
       "name": "exists",
       "request": {
         "name": "DocumentExistsRequest",
-        "namespace": "__global.exists"
+        "namespace": "_global.exists"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "DocumentExistsResponse",
-        "namespace": "__global.exists"
+        "namespace": "_global.exists"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -2869,12 +2869,12 @@
       "name": "exists_source",
       "request": {
         "name": "SourceExistsRequest",
-        "namespace": "__global.exists_source"
+        "namespace": "_global.exists_source"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "SourceExistsResponse",
-        "namespace": "__global.exists_source"
+        "namespace": "_global.exists_source"
       },
       "since": "5.4.0",
       "stability": "TODO",
@@ -2910,12 +2910,12 @@
       "name": "explain",
       "request": {
         "name": "ExplainRequest",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ExplainResponse",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -2999,12 +2999,12 @@
       "name": "field_caps",
       "request": {
         "name": "FieldCapabilitiesRequest",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "FieldCapabilitiesResponse",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "since": "5.4.0",
       "stability": "TODO",
@@ -3035,12 +3035,12 @@
       "name": "get",
       "request": {
         "name": "GetRequest",
-        "namespace": "__global.get"
+        "namespace": "_global.get"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "GetResponse",
-        "namespace": "__global.get"
+        "namespace": "_global.get"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -3073,12 +3073,12 @@
       "name": "get_script",
       "request": {
         "name": "GetScriptRequest",
-        "namespace": "__global.get_script"
+        "namespace": "_global.get_script"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "GetScriptResponse",
-        "namespace": "__global.get_script"
+        "namespace": "_global.get_script"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -3101,12 +3101,12 @@
       "name": "get_script_context",
       "request": {
         "name": "GetScriptContextRequest",
-        "namespace": "__global.get_script_context"
+        "namespace": "_global.get_script_context"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "GetScriptContextResponse",
-        "namespace": "__global.get_script_context"
+        "namespace": "_global.get_script_context"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -3129,12 +3129,12 @@
       "name": "get_script_languages",
       "request": {
         "name": "GetScriptLanguagesRequest",
-        "namespace": "__global.get_script_languages"
+        "namespace": "_global.get_script_languages"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "GetScriptLanguagesResponse",
-        "namespace": "__global.get_script_languages"
+        "namespace": "_global.get_script_languages"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -3157,12 +3157,12 @@
       "name": "get_source",
       "request": {
         "name": "SourceRequest",
-        "namespace": "__global.get_source"
+        "namespace": "_global.get_source"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "SourceResponse",
-        "namespace": "__global.get_source"
+        "namespace": "_global.get_source"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -3533,12 +3533,12 @@
       "name": "index",
       "request": {
         "name": "IndexRequest",
-        "namespace": "__global.index"
+        "namespace": "_global.index"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "IndexResponse",
-        "namespace": "__global.index"
+        "namespace": "_global.index"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -5494,12 +5494,12 @@
       "name": "info",
       "request": {
         "name": "RootNodeInfoRequest",
-        "namespace": "__global.info"
+        "namespace": "_global.info"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "RootNodeInfoResponse",
-        "namespace": "__global.info"
+        "namespace": "_global.info"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -6000,12 +6000,12 @@
       "name": "mget",
       "request": {
         "name": "MultiGetRequest",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "MultiGetResponse",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -8056,12 +8056,12 @@
       "name": "msearch",
       "request": {
         "name": "MultiSearchRequest",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "MultiSearchResponse",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8106,12 +8106,12 @@
       "name": "msearch_template",
       "request": {
         "name": "MultiSearchTemplateRequest",
-        "namespace": "__global.msearch_template"
+        "namespace": "_global.msearch_template"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "MultiSearchTemplateResponse",
-        "namespace": "__global.msearch_template"
+        "namespace": "_global.msearch_template"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -8156,12 +8156,12 @@
       "name": "mtermvectors",
       "request": {
         "name": "MultiTermVectorsRequest",
-        "namespace": "__global.mtermvectors"
+        "namespace": "_global.mtermvectors"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "MultiTermVectorsResponse",
-        "namespace": "__global.mtermvectors"
+        "namespace": "_global.mtermvectors"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8484,12 +8484,12 @@
       "name": "open_point_in_time",
       "request": {
         "name": "OpenPointInTimeRequest",
-        "namespace": "__global.open_point_in_time"
+        "namespace": "_global.open_point_in_time"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "OpenPointInTimeResponse",
-        "namespace": "__global.open_point_in_time"
+        "namespace": "_global.open_point_in_time"
       },
       "since": "7.10.0",
       "stability": "TODO",
@@ -8518,12 +8518,12 @@
       "name": "ping",
       "request": {
         "name": "PingRequest",
-        "namespace": "__global.ping"
+        "namespace": "_global.ping"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "PingResponse",
-        "namespace": "__global.ping"
+        "namespace": "_global.ping"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8549,12 +8549,12 @@
       "name": "put_script",
       "request": {
         "name": "PutScriptRequest",
-        "namespace": "__global.put_script"
+        "namespace": "_global.put_script"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "PutScriptResponse",
-        "namespace": "__global.put_script"
+        "namespace": "_global.put_script"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8588,12 +8588,12 @@
       "name": "rank_eval",
       "request": {
         "name": "RankEvalRequest",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "RankEvalResponse",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "since": "6.2.0",
       "stability": "TODO",
@@ -8627,12 +8627,12 @@
       "name": "reindex",
       "request": {
         "name": "ReindexRequest",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "ReindexResponse",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "since": "2.3.0",
       "stability": "TODO",
@@ -8655,12 +8655,12 @@
       "name": "reindex_rethrottle",
       "request": {
         "name": "ReindexRethrottleRequest",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ReindexRethrottleResponse",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "since": "2.4.0",
       "stability": "TODO",
@@ -8686,12 +8686,12 @@
       "name": "render_search_template",
       "request": {
         "name": "RenderSearchTemplateRequest",
-        "namespace": "__global.render_search_template"
+        "namespace": "_global.render_search_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "RenderSearchTemplateResponse",
-        "namespace": "__global.render_search_template"
+        "namespace": "_global.render_search_template"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -9010,12 +9010,12 @@
       "name": "scripts_painless_execute",
       "request": {
         "name": "ExecutePainlessScriptRequest",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ExecutePainlessScriptResponse",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9042,12 +9042,12 @@
       "name": "scroll",
       "request": {
         "name": "ScrollRequest",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "ScrollResponse",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -9085,12 +9085,12 @@
       "name": "search",
       "request": {
         "name": "SearchRequest",
-        "namespace": "__global.search"
+        "namespace": "_global.search"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "SearchResponse",
-        "namespace": "__global.search"
+        "namespace": "_global.search"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -9132,12 +9132,12 @@
       "name": "search_shards",
       "request": {
         "name": "SearchShardsRequest",
-        "namespace": "__global.search_shards"
+        "namespace": "_global.search_shards"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "SearchShardsResponse",
-        "namespace": "__global.search_shards"
+        "namespace": "_global.search_shards"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -9171,12 +9171,12 @@
       "name": "search_template",
       "request": {
         "name": "SearchTemplateRequest",
-        "namespace": "__global.search_template"
+        "namespace": "_global.search_template"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "SearchTemplateResponse",
-        "namespace": "__global.search_template"
+        "namespace": "_global.search_template"
       },
       "since": "2.0.0",
       "stability": "TODO",
@@ -11159,12 +11159,12 @@
       "name": "termvectors",
       "request": {
         "name": "TermVectorsRequest",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "TermVectorsResponse",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -11490,12 +11490,12 @@
       "name": "update",
       "request": {
         "name": "UpdateRequest",
-        "namespace": "__global.update"
+        "namespace": "_global.update"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "UpdateResponse",
-        "namespace": "__global.update"
+        "namespace": "_global.update"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -11531,12 +11531,12 @@
       "name": "update_by_query",
       "request": {
         "name": "UpdateByQueryRequest",
-        "namespace": "__global.update_by_query"
+        "namespace": "_global.update_by_query"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "UpdateByQueryResponse",
-        "namespace": "__global.update_by_query"
+        "namespace": "_global.update_by_query"
       },
       "since": "2.4.0",
       "stability": "TODO",
@@ -11569,12 +11569,12 @@
       "name": "update_by_query_rethrottle",
       "request": {
         "name": "UpdateByQueryRethrottleRequest",
-        "namespace": "__global.update_by_query_rethrottle"
+        "namespace": "_global.update_by_query_rethrottle"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "UpdateByQueryRethrottleResponse",
-        "namespace": "__global.update_by_query_rethrottle"
+        "namespace": "_global.update_by_query_rethrottle"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -12771,7 +12771,7 @@
       "kind": "interface",
       "name": {
         "name": "AggregationBreakdown",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -13755,7 +13755,7 @@
       "kind": "interface",
       "name": {
         "name": "AggregationProfile",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -13765,7 +13765,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AggregationBreakdown",
-              "namespace": "__global.search.profile"
+              "namespace": "_global.search.profile"
             }
           }
         },
@@ -13809,7 +13809,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AggregationProfileDebug",
-              "namespace": "__global.search.profile"
+              "namespace": "_global.search.profile"
             }
           }
         },
@@ -13822,7 +13822,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "AggregationProfileDebug",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -13833,7 +13833,7 @@
       "kind": "interface",
       "name": {
         "name": "AggregationProfileDebug",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": []
     },
@@ -16039,7 +16039,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HitsMetadata",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -16072,7 +16072,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Profile",
-              "namespace": "__global.search.profile"
+              "namespace": "_global.search.profile"
             }
           }
         },
@@ -16136,7 +16136,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Suggest",
-                  "namespace": "__global.search.suggesters"
+                  "namespace": "_global.search.suggesters"
                 }
               }
             }
@@ -16607,7 +16607,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "FieldCollapse",
-                "namespace": "__global.search.collapsing"
+                "namespace": "_global.search.collapsing"
               }
             }
           },
@@ -16684,7 +16684,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Highlight",
-                "namespace": "__global.search.highlighting"
+                "namespace": "_global.search.highlighting"
               }
             }
           },
@@ -16829,7 +16829,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "PointInTimeReference",
-                "namespace": "__global.search.point_in_time"
+                "namespace": "_global.search.point_in_time"
               }
             }
           },
@@ -16875,7 +16875,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Rescore",
-                  "namespace": "__global.search.rescoring"
+                  "namespace": "_global.search.rescoring"
                 }
               }
             }
@@ -16962,7 +16962,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "__global.search.sort"
+                "namespace": "_global.search.sort"
               }
             }
           },
@@ -16982,7 +16982,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "SourceFilter",
-                    "namespace": "__global.search.source_filtering"
+                    "namespace": "_global.search.source_filtering"
                   }
                 }
               ],
@@ -17030,7 +17030,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SuggestContainer",
-                  "namespace": "__global.search.suggesters"
+                  "namespace": "_global.search.suggesters"
                 }
               }
             }
@@ -17850,7 +17850,7 @@
       "kind": "interface",
       "name": {
         "name": "BaseNode",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": [
         {
@@ -18256,7 +18256,7 @@
       ],
       "name": {
         "name": "BoundaryScanner",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -18927,7 +18927,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -18946,14 +18946,14 @@
         {
           "type": {
             "name": "BulkOperation",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkCreateOperation",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -18962,14 +18962,14 @@
         {
           "type": {
             "name": "BulkResponseItemBase",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkCreateResponseItem",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -18978,14 +18978,14 @@
         {
           "type": {
             "name": "BulkOperation",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkDeleteOperation",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -18994,14 +18994,14 @@
         {
           "type": {
             "name": "BulkResponseItemBase",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkDeleteResponseItem",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -19074,14 +19074,14 @@
         {
           "type": {
             "name": "BulkOperation",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkIndexOperation",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -19090,14 +19090,14 @@
         {
           "type": {
             "name": "BulkResponseItemBase",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkIndexResponseItem",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -19193,7 +19193,7 @@
       "kind": "interface",
       "name": {
         "name": "BulkOperation",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": [
         {
@@ -19268,7 +19268,7 @@
       "kind": "interface",
       "name": {
         "name": "BulkOperationContainer",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": [
         {
@@ -19278,7 +19278,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkIndexOperation",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19289,7 +19289,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkCreateOperation",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19300,7 +19300,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkUpdateOperation",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19311,7 +19311,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkDeleteOperation",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         }
@@ -19331,14 +19331,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "BulkOperationContainer",
-                  "namespace": "__global.bulk"
+                  "namespace": "_global.bulk"
                 }
               },
               {
                 "kind": "instance_of",
                 "type": {
                   "name": "TSource",
-                  "namespace": "__global.bulk"
+                  "namespace": "_global.bulk"
                 }
               }
             ],
@@ -19349,7 +19349,7 @@
       "generics": [
         {
           "name": "TSource",
-          "namespace": "__global.bulk"
+          "namespace": "_global.bulk"
         }
       ],
       "inherits": [
@@ -19363,7 +19363,7 @@
       "kind": "request",
       "name": {
         "name": "BulkRequest",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "path": [
         {
@@ -19528,7 +19528,7 @@
       "kind": "interface",
       "name": {
         "name": "BulkResponse",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": [
         {
@@ -19551,7 +19551,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "BulkResponseItemContainer",
-                "namespace": "__global.bulk"
+                "namespace": "_global.bulk"
               }
             }
           }
@@ -19584,7 +19584,7 @@
       "kind": "interface",
       "name": {
         "name": "BulkResponseItemBase",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": [
         {
@@ -19742,7 +19742,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InlineGet",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         }
@@ -19752,7 +19752,7 @@
       "kind": "interface",
       "name": {
         "name": "BulkResponseItemContainer",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": [
         {
@@ -19762,7 +19762,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkIndexResponseItem",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19773,7 +19773,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkCreateResponseItem",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19784,7 +19784,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkUpdateResponseItem",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         },
@@ -19795,7 +19795,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkDeleteResponseItem",
-              "namespace": "__global.bulk"
+              "namespace": "_global.bulk"
             }
           }
         }
@@ -19914,14 +19914,14 @@
         {
           "type": {
             "name": "BulkOperation",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkUpdateOperation",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -19930,14 +19930,14 @@
         {
           "type": {
             "name": "BulkResponseItemBase",
-            "namespace": "__global.bulk"
+            "namespace": "_global.bulk"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "BulkUpdateResponseItem",
-        "namespace": "__global.bulk"
+        "namespace": "_global.bulk"
       },
       "properties": []
     },
@@ -27940,7 +27940,7 @@
         {
           "type": {
             "name": "CommonCatQueryParameters",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -27976,7 +27976,7 @@
           ],
           "type": {
             "name": "ArrayResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -32836,7 +32836,7 @@
       "kind": "request",
       "name": {
         "name": "ClearScrollRequest",
-        "namespace": "__global.clear_scroll"
+        "namespace": "_global.clear_scroll"
       },
       "path": [
         {
@@ -32866,7 +32866,7 @@
       "kind": "interface",
       "name": {
         "name": "ClearScrollResponse",
-        "namespace": "__global.clear_scroll"
+        "namespace": "_global.clear_scroll"
       },
       "properties": []
     },
@@ -33006,7 +33006,7 @@
       "kind": "request",
       "name": {
         "name": "ClosePointInTimeRequest",
-        "namespace": "__global.close_point_in_time"
+        "namespace": "_global.close_point_in_time"
       },
       "path": [],
       "query": []
@@ -33023,7 +33023,7 @@
       "kind": "interface",
       "name": {
         "name": "ClosePointInTimeResponse",
-        "namespace": "__global.close_point_in_time"
+        "namespace": "_global.close_point_in_time"
       },
       "properties": [
         {
@@ -38483,7 +38483,7 @@
       "kind": "interface",
       "name": {
         "name": "Collector",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -38528,7 +38528,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Collector",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -38956,13 +38956,13 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.search.suggesters"
+          "namespace": "_global.search.suggesters"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "CompletionSuggestOption",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -38994,7 +38994,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Context",
-                  "namespace": "__global.search.suggesters.context_suggester"
+                  "namespace": "_global.search.suggesters.context_suggester"
                 }
               }
             }
@@ -39079,7 +39079,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.search.suggesters"
+              "namespace": "_global.search.suggesters"
             }
           }
         },
@@ -39101,14 +39101,14 @@
         {
           "type": {
             "name": "SuggesterBase",
-            "namespace": "__global.search.suggesters"
+            "namespace": "_global.search.suggesters"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "CompletionSuggester",
-        "namespace": "__global.search.suggesters.completion_suggester"
+        "namespace": "_global.search.suggesters.completion_suggester"
       },
       "properties": [
         {
@@ -39155,7 +39155,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "SuggestContextQuery",
-                      "namespace": "__global.search.suggesters.context_suggester"
+                      "namespace": "_global.search.suggesters.context_suggester"
                     }
                   }
                 }
@@ -39171,7 +39171,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SuggestFuzziness",
-              "namespace": "__global.search.suggesters.completion_suggester"
+              "namespace": "_global.search.suggesters.completion_suggester"
             }
           }
         },
@@ -39536,7 +39536,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -39954,7 +39954,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Context",
-        "namespace": "__global.search.suggesters.context_suggester"
+        "namespace": "_global.search.suggesters.context_suggester"
       },
       "type": {
         "items": [
@@ -40259,7 +40259,7 @@
       "kind": "request",
       "name": {
         "name": "CountRequest",
-        "namespace": "__global.count"
+        "namespace": "_global.count"
       },
       "path": [
         {
@@ -40467,7 +40467,7 @@
       "kind": "interface",
       "name": {
         "name": "CountResponse",
-        "namespace": "__global.count"
+        "namespace": "_global.count"
       },
       "properties": [
         {
@@ -40736,14 +40736,14 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "__global.create"
+            "namespace": "_global.create"
           }
         }
       },
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.create"
+          "namespace": "_global.create"
         }
       ],
       "inherits": [
@@ -40757,7 +40757,7 @@
       "kind": "request",
       "name": {
         "name": "CreateRequest",
-        "namespace": "__global.create"
+        "namespace": "_global.create"
       },
       "path": [
         {
@@ -40889,7 +40889,7 @@
       "kind": "interface",
       "name": {
         "name": "CreateResponse",
-        "namespace": "__global.create"
+        "namespace": "_global.create"
       },
       "properties": []
     },
@@ -42616,7 +42616,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -42957,7 +42957,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -44268,7 +44268,7 @@
       "kind": "request",
       "name": {
         "name": "DeleteByQueryRequest",
-        "namespace": "__global.delete_by_query"
+        "namespace": "_global.delete_by_query"
       },
       "path": [
         {
@@ -44692,7 +44692,7 @@
       "kind": "interface",
       "name": {
         "name": "DeleteByQueryResponse",
-        "namespace": "__global.delete_by_query"
+        "namespace": "_global.delete_by_query"
       },
       "properties": [
         {
@@ -44869,7 +44869,7 @@
       "kind": "request",
       "name": {
         "name": "DeleteByQueryRethrottleRequest",
-        "namespace": "__global.delete_by_query_rethrottle"
+        "namespace": "_global.delete_by_query_rethrottle"
       },
       "path": [
         {
@@ -44911,7 +44911,7 @@
       "kind": "interface",
       "name": {
         "name": "DeleteByQueryRethrottleResponse",
-        "namespace": "__global.delete_by_query_rethrottle"
+        "namespace": "_global.delete_by_query_rethrottle"
       },
       "properties": []
     },
@@ -45235,7 +45235,7 @@
       "kind": "request",
       "name": {
         "name": "DeleteRequest",
-        "namespace": "__global.delete"
+        "namespace": "_global.delete"
       },
       "path": [
         {
@@ -45378,7 +45378,7 @@
       "kind": "interface",
       "name": {
         "name": "DeleteResponse",
-        "namespace": "__global.delete"
+        "namespace": "_global.delete"
       },
       "properties": []
     },
@@ -45461,7 +45461,7 @@
       "kind": "request",
       "name": {
         "name": "DeleteScriptRequest",
-        "namespace": "__global.delete_script"
+        "namespace": "_global.delete_script"
       },
       "path": [
         {
@@ -45514,7 +45514,7 @@
       "kind": "interface",
       "name": {
         "name": "DeleteScriptResponse",
-        "namespace": "__global.delete_script"
+        "namespace": "_global.delete_script"
       },
       "properties": []
     },
@@ -46196,7 +46196,7 @@
       "kind": "interface",
       "name": {
         "name": "DirectGenerator",
-        "namespace": "__global.search.suggesters.phrase_suggester"
+        "namespace": "_global.search.suggesters.phrase_suggester"
       },
       "properties": [
         {
@@ -46826,7 +46826,7 @@
       "kind": "interface",
       "name": {
         "name": "DocValueField",
-        "namespace": "__global.search.source_filtering"
+        "namespace": "_global.search.source_filtering"
       },
       "properties": [
         {
@@ -47034,7 +47034,7 @@
       "kind": "request",
       "name": {
         "name": "DocumentExistsRequest",
-        "namespace": "__global.exists"
+        "namespace": "_global.exists"
       },
       "path": [
         {
@@ -47195,7 +47195,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -47210,7 +47210,7 @@
       "kind": "interface",
       "name": {
         "name": "DocumentExistsResponse",
-        "namespace": "__global.exists"
+        "namespace": "_global.exists"
       },
       "properties": []
     },
@@ -47218,7 +47218,7 @@
       "kind": "interface",
       "name": {
         "name": "DocumentRating",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -48914,7 +48914,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TotalHits",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -49979,7 +49979,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PainlessExecutionPosition",
-              "namespace": "__global.scripts_painless_execute"
+              "namespace": "_global.scripts_painless_execute"
             }
           }
         }
@@ -50198,7 +50198,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "PainlessContextSetup",
-                "namespace": "__global.scripts_painless_execute"
+                "namespace": "_global.scripts_painless_execute"
               }
             }
           },
@@ -50226,7 +50226,7 @@
       "kind": "request",
       "name": {
         "name": "ExecutePainlessScriptRequest",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "path": [],
       "query": []
@@ -50235,7 +50235,7 @@
       "generics": [
         {
           "name": "TResult",
-          "namespace": "__global.scripts_painless_execute"
+          "namespace": "_global.scripts_painless_execute"
         }
       ],
       "inherits": [
@@ -50249,7 +50249,7 @@
       "kind": "interface",
       "name": {
         "name": "ExecutePainlessScriptResponse",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "properties": [
         {
@@ -50259,7 +50259,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TResult",
-              "namespace": "__global.scripts_painless_execute"
+              "namespace": "_global.scripts_painless_execute"
             }
           }
         }
@@ -51102,7 +51102,7 @@
       "kind": "request",
       "name": {
         "name": "ExplainRequest",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "path": [
         {
@@ -51304,7 +51304,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.explain"
+          "namespace": "_global.explain"
         }
       ],
       "inherits": [
@@ -51318,7 +51318,7 @@
       "kind": "interface",
       "name": {
         "name": "ExplainResponse",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "properties": [
         {
@@ -51372,7 +51372,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ExplanationDetail",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         },
@@ -51385,14 +51385,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "__global.explain"
+                  "namespace": "_global.explain"
                 }
               }
             ],
             "kind": "instance_of",
             "type": {
               "name": "InlineGet",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         }
@@ -51402,7 +51402,7 @@
       "kind": "interface",
       "name": {
         "name": "Explanation",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "properties": [
         {
@@ -51425,7 +51425,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ExplanationDetail",
-                "namespace": "__global.explain"
+                "namespace": "_global.explain"
               }
             }
           }
@@ -51447,7 +51447,7 @@
       "kind": "interface",
       "name": {
         "name": "ExplanationDetail",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "properties": [
         {
@@ -51470,7 +51470,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ExplanationDetail",
-                "namespace": "__global.explain"
+                "namespace": "_global.explain"
               }
             }
           }
@@ -51808,7 +51808,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilities",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -51907,7 +51907,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesBodyIndexFilter",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -51917,7 +51917,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldCapabilitiesBodyIndexFilterRange",
-              "namespace": "__global.field_caps"
+              "namespace": "_global.field_caps"
             }
           }
         },
@@ -51939,7 +51939,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldCapabilitiesBodyIndexFilterTerm",
-              "namespace": "__global.field_caps"
+              "namespace": "_global.field_caps"
             }
           }
         }
@@ -51949,7 +51949,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesBodyIndexFilterRange",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -51959,7 +51959,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldCapabilitiesBodyIndexFilterRangeTimestamp",
-              "namespace": "__global.field_caps"
+              "namespace": "_global.field_caps"
             }
           }
         }
@@ -51969,7 +51969,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesBodyIndexFilterRangeTimestamp",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -52022,7 +52022,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesBodyIndexFilterTerm",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -52032,7 +52032,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldCapabilitiesBodyIndexFilterTermVersionControl",
-              "namespace": "__global.field_caps"
+              "namespace": "_global.field_caps"
             }
           }
         }
@@ -52042,7 +52042,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesBodyIndexFilterTermVersionControl",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -52072,7 +52072,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "FieldCapabilitiesBodyIndexFilter",
-                "namespace": "__global.field_caps"
+                "namespace": "_global.field_caps"
               }
             }
           }
@@ -52089,7 +52089,7 @@
       "kind": "request",
       "name": {
         "name": "FieldCapabilitiesRequest",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "path": [
         {
@@ -52175,7 +52175,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCapabilitiesResponse",
-        "namespace": "__global.field_caps"
+        "namespace": "_global.field_caps"
       },
       "properties": [
         {
@@ -52214,7 +52214,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "FieldCapabilities",
-                  "namespace": "__global.field_caps"
+                  "namespace": "_global.field_caps"
                 }
               }
             }
@@ -52226,7 +52226,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldCollapse",
-        "namespace": "__global.search.collapsing"
+        "namespace": "_global.search.collapsing"
       },
       "properties": [
         {
@@ -52249,7 +52249,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "InnerHits",
-                  "namespace": "__global.search.inner_hits"
+                  "namespace": "_global.search.inner_hits"
                 }
               },
               {
@@ -52258,7 +52258,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "InnerHits",
-                    "namespace": "__global.search.inner_hits"
+                    "namespace": "_global.search.inner_hits"
                   }
                 }
               }
@@ -52494,7 +52494,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldSort",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -52515,7 +52515,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortMode",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -52526,7 +52526,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NestedSortValue",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -52537,7 +52537,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -52669,7 +52669,7 @@
       "kind": "interface",
       "name": {
         "name": "FieldStatistics",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -53450,7 +53450,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -56115,7 +56115,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -56321,14 +56321,14 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "GeoDistanceSort",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -56338,7 +56338,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortMode",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -56360,7 +56360,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -56676,7 +56676,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -57564,7 +57564,7 @@
           ],
           "type": {
             "name": "ArrayResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -58033,7 +58033,7 @@
       "kind": "request",
       "name": {
         "name": "GetRequest",
-        "namespace": "__global.get"
+        "namespace": "_global.get"
       },
       "path": [
         {
@@ -58213,7 +58213,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.get"
+          "namespace": "_global.get"
         }
       ],
       "inherits": [
@@ -58227,7 +58227,7 @@
       "kind": "interface",
       "name": {
         "name": "GetResponse",
-        "namespace": "__global.get"
+        "namespace": "_global.get"
       },
       "properties": [
         {
@@ -58320,7 +58320,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.get"
+              "namespace": "_global.get"
             }
           }
         },
@@ -58573,7 +58573,7 @@
       "kind": "request",
       "name": {
         "name": "GetScriptContextRequest",
-        "namespace": "__global.get_script_context"
+        "namespace": "_global.get_script_context"
       },
       "path": [
         {
@@ -58614,7 +58614,7 @@
       "kind": "interface",
       "name": {
         "name": "GetScriptContextResponse",
-        "namespace": "__global.get_script_context"
+        "namespace": "_global.get_script_context"
       },
       "properties": [
         {
@@ -58661,7 +58661,7 @@
       "kind": "request",
       "name": {
         "name": "GetScriptLanguagesRequest",
-        "namespace": "__global.get_script_languages"
+        "namespace": "_global.get_script_languages"
       },
       "path": [
         {
@@ -58702,7 +58702,7 @@
       "kind": "interface",
       "name": {
         "name": "GetScriptLanguagesResponse",
-        "namespace": "__global.get_script_languages"
+        "namespace": "_global.get_script_languages"
       },
       "properties": [
         {
@@ -58733,7 +58733,7 @@
       "kind": "request",
       "name": {
         "name": "GetScriptRequest",
-        "namespace": "__global.get_script"
+        "namespace": "_global.get_script"
       },
       "path": [
         {
@@ -58775,7 +58775,7 @@
       "kind": "interface",
       "name": {
         "name": "GetScriptResponse",
-        "namespace": "__global.get_script"
+        "namespace": "_global.get_script"
       },
       "properties": [
         {
@@ -60510,7 +60510,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InnerHits",
-              "namespace": "__global.search.inner_hits"
+              "namespace": "_global.search.inner_hits"
             }
           }
         },
@@ -60604,7 +60604,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InnerHits",
-              "namespace": "__global.search.inner_hits"
+              "namespace": "_global.search.inner_hits"
             }
           }
         },
@@ -60750,7 +60750,7 @@
       "kind": "interface",
       "name": {
         "name": "Highlight",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       },
       "properties": [
         {
@@ -60769,7 +60769,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "HighlightField",
-                "namespace": "__global.search.highlighting"
+                "namespace": "_global.search.highlighting"
               }
             }
           }
@@ -60781,7 +60781,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterType",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -60814,7 +60814,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BoundaryScanner",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -60836,7 +60836,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterEncoder",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -60847,7 +60847,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterFragmenter",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -60913,7 +60913,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterOrder",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -60963,7 +60963,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterTagsSchema",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -61007,7 +61007,7 @@
       "kind": "interface",
       "name": {
         "name": "HighlightField",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       },
       "properties": [
         {
@@ -61039,7 +61039,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BoundaryScanner",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -61083,7 +61083,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterFragmenter",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -61171,7 +61171,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterOrder",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -61232,7 +61232,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HighlighterTagsSchema",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -61245,7 +61245,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "HighlighterType",
-                  "namespace": "__global.search.highlighting"
+                  "namespace": "_global.search.highlighting"
                 }
               },
               {
@@ -61273,7 +61273,7 @@
       ],
       "name": {
         "name": "HighlighterEncoder",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -61288,7 +61288,7 @@
       ],
       "name": {
         "name": "HighlighterFragmenter",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -61300,7 +61300,7 @@
       ],
       "name": {
         "name": "HighlighterOrder",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -61312,7 +61312,7 @@
       ],
       "name": {
         "name": "HighlighterTagsSchema",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -61330,7 +61330,7 @@
       ],
       "name": {
         "name": "HighlighterType",
-        "namespace": "__global.search.highlighting"
+        "namespace": "_global.search.highlighting"
       }
     },
     {
@@ -61492,7 +61492,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -61503,7 +61503,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -61580,13 +61580,13 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.search.hits"
+          "namespace": "_global.search.hits"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "Hit",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -61640,7 +61640,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Explanation",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         },
@@ -61701,7 +61701,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "InnerHitsResult",
-                "namespace": "__global.search.hits"
+                "namespace": "_global.search.hits"
               }
             }
           }
@@ -61727,7 +61727,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NestedIdentity",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -61785,7 +61785,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -61829,7 +61829,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortResults",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -61839,13 +61839,13 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "__global.search.hits"
+          "namespace": "_global.search.hits"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "HitsMetadata",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -61857,7 +61857,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TotalHits",
-                  "namespace": "__global.search.hits"
+                  "namespace": "_global.search.hits"
                 }
               },
               {
@@ -61882,14 +61882,14 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "T",
-                    "namespace": "__global.search.hits"
+                    "namespace": "_global.search.hits"
                   }
                 }
               ],
               "kind": "instance_of",
               "type": {
                 "name": "Hit",
-                "namespace": "__global.search.hits"
+                "namespace": "_global.search.hits"
               }
             }
           }
@@ -63428,14 +63428,14 @@
           "kind": "instance_of",
           "type": {
             "name": "TDocument",
-            "namespace": "__global.index"
+            "namespace": "_global.index"
           }
         }
       },
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.index"
+          "namespace": "_global.index"
         }
       ],
       "inherits": [
@@ -63449,7 +63449,7 @@
       "kind": "request",
       "name": {
         "name": "IndexRequest",
-        "namespace": "__global.index"
+        "namespace": "_global.index"
       },
       "path": [
         {
@@ -63625,7 +63625,7 @@
       "kind": "interface",
       "name": {
         "name": "IndexResponse",
-        "namespace": "__global.index"
+        "namespace": "_global.index"
       },
       "properties": []
     },
@@ -66932,7 +66932,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -67059,7 +67059,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -67153,7 +67153,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -67270,7 +67270,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -72568,13 +72568,13 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.explain"
+          "namespace": "_global.explain"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "InlineGet",
-        "namespace": "__global.explain"
+        "namespace": "_global.explain"
       },
       "properties": [
         {
@@ -72645,7 +72645,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         }
@@ -72734,7 +72734,7 @@
       "kind": "interface",
       "name": {
         "name": "InnerHits",
-        "namespace": "__global.search.inner_hits"
+        "namespace": "_global.search.inner_hits"
       },
       "properties": [
         {
@@ -72777,7 +72777,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldCollapse",
-              "namespace": "__global.search.collapsing"
+              "namespace": "_global.search.collapsing"
             }
           }
         },
@@ -72810,7 +72810,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Highlight",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -72875,7 +72875,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -72895,7 +72895,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SourceFilter",
-                  "namespace": "__global.search.source_filtering"
+                  "namespace": "_global.search.source_filtering"
                 }
               }
             ],
@@ -72919,7 +72919,7 @@
       "kind": "interface",
       "name": {
         "name": "InnerHitsMetadata",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -72931,7 +72931,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TotalHits",
-                  "namespace": "__global.search.hits"
+                  "namespace": "_global.search.hits"
                 }
               },
               {
@@ -72969,7 +72969,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Hit",
-                "namespace": "__global.search.hits"
+                "namespace": "_global.search.hits"
               }
             }
           }
@@ -72991,7 +72991,7 @@
       "kind": "interface",
       "name": {
         "name": "InnerHitsResult",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -73001,7 +73001,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InnerHitsMetadata",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         }
@@ -73947,7 +73947,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -75070,7 +75070,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -75420,7 +75420,7 @@
       "kind": "interface",
       "name": {
         "name": "LaplaceSmoothingModel",
-        "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+        "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
       },
       "properties": [
         {
@@ -76483,7 +76483,7 @@
       "kind": "interface",
       "name": {
         "name": "LinearInterpolationSmoothingModel",
-        "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+        "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
       },
       "properties": [
         {
@@ -86635,13 +86635,13 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.mget"
+          "namespace": "_global.mget"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "MultiGetHit",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "properties": [
         {
@@ -86745,7 +86745,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.mget"
+              "namespace": "_global.mget"
             }
           }
         },
@@ -86777,7 +86777,7 @@
       "kind": "type_alias",
       "name": {
         "name": "MultiGetId",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "type": {
         "items": [
@@ -86803,7 +86803,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiGetOperation",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "properties": [
         {
@@ -86813,7 +86813,7 @@
             "kind": "instance_of",
             "type": {
               "name": "MultiGetId",
-              "namespace": "__global.mget"
+              "namespace": "_global.mget"
             }
           }
         },
@@ -86862,7 +86862,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SourceFilter",
-                  "namespace": "__global.search.source_filtering"
+                  "namespace": "_global.search.source_filtering"
                 }
               }
             ],
@@ -86931,7 +86931,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiGetOperation",
-                  "namespace": "__global.mget"
+                  "namespace": "_global.mget"
                 }
               }
             }
@@ -86945,7 +86945,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiGetId",
-                  "namespace": "__global.mget"
+                  "namespace": "_global.mget"
                 }
               }
             }
@@ -86963,7 +86963,7 @@
       "kind": "request",
       "name": {
         "name": "MultiGetRequest",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "path": [
         {
@@ -87098,7 +87098,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.mget"
+          "namespace": "_global.mget"
         }
       ],
       "inherits": [
@@ -87112,7 +87112,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiGetResponse",
-        "namespace": "__global.mget"
+        "namespace": "_global.mget"
       },
       "properties": [
         {
@@ -87126,14 +87126,14 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "TDocument",
-                    "namespace": "__global.mget"
+                    "namespace": "_global.mget"
                   }
                 }
               ],
               "kind": "instance_of",
               "type": {
                 "name": "MultiGetHit",
-                "namespace": "__global.mget"
+                "namespace": "_global.mget"
               }
             }
           }
@@ -87359,7 +87359,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiSearchBody",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "properties": [
         {
@@ -87444,7 +87444,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PointInTimeReference",
-              "namespace": "__global.search.point_in_time"
+              "namespace": "_global.search.point_in_time"
             }
           }
         },
@@ -87480,7 +87480,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SuggestContainer",
-                  "namespace": "__global.search.suggesters"
+                  "namespace": "_global.search.suggesters"
                 }
               },
               {
@@ -87496,7 +87496,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "SuggestContainer",
-                    "namespace": "__global.search.suggesters"
+                    "namespace": "_global.search.suggesters"
                   }
                 }
               }
@@ -87510,7 +87510,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiSearchHeader",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "properties": [
         {
@@ -87617,14 +87617,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiSearchHeader",
-                  "namespace": "__global.msearch"
+                  "namespace": "_global.msearch"
                 }
               },
               {
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiSearchBody",
-                  "namespace": "__global.msearch"
+                  "namespace": "_global.msearch"
                 }
               }
             ],
@@ -87643,7 +87643,7 @@
       "kind": "request",
       "name": {
         "name": "MultiSearchRequest",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "path": [
         {
@@ -87755,7 +87755,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.msearch"
+          "namespace": "_global.msearch"
         }
       ],
       "inherits": [
@@ -87769,7 +87769,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiSearchResponse",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "properties": [
         {
@@ -87796,14 +87796,14 @@
                       "kind": "instance_of",
                       "type": {
                         "name": "TDocument",
-                        "namespace": "__global.msearch"
+                        "namespace": "_global.msearch"
                       }
                     }
                   ],
                   "kind": "instance_of",
                   "type": {
                     "name": "MultiSearchResult",
-                    "namespace": "__global.msearch"
+                    "namespace": "_global.msearch"
                   }
                 },
                 {
@@ -87824,7 +87824,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.msearch"
+          "namespace": "_global.msearch"
         }
       ],
       "inherits": [
@@ -87834,20 +87834,20 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "__global.msearch"
+                "namespace": "_global.msearch"
               }
             }
           ],
           "type": {
             "name": "SearchResponse",
-            "namespace": "__global.search"
+            "namespace": "_global.search"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "MultiSearchResult",
-        "namespace": "__global.msearch"
+        "namespace": "_global.msearch"
       },
       "properties": [
         {
@@ -87886,7 +87886,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SearchTemplateRequest",
-                  "namespace": "__global.search_template"
+                  "namespace": "_global.search_template"
                 }
               }
             }
@@ -87904,7 +87904,7 @@
       "kind": "request",
       "name": {
         "name": "MultiSearchTemplateRequest",
-        "namespace": "__global.msearch_template"
+        "namespace": "_global.msearch_template"
       },
       "path": [
         {
@@ -88002,7 +88002,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiSearchTemplateResponse",
-        "namespace": "__global.msearch_template"
+        "namespace": "_global.msearch_template"
       },
       "properties": [
         {
@@ -88019,7 +88019,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SearchResponse",
-                "namespace": "__global.search"
+                "namespace": "_global.search"
               }
             }
           }
@@ -88075,7 +88075,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiTermVectorOperation",
-        "namespace": "__global.mtermvectors"
+        "namespace": "_global.mtermvectors"
       },
       "properties": [
         {
@@ -88118,7 +88118,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TermVectorFilter",
-              "namespace": "__global.termvectors"
+              "namespace": "_global.termvectors"
             }
           }
         },
@@ -88239,7 +88239,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "MultiTermVectorOperation",
-                  "namespace": "__global.mtermvectors"
+                  "namespace": "_global.mtermvectors"
                 }
               }
             }
@@ -88271,7 +88271,7 @@
       "kind": "request",
       "name": {
         "name": "MultiTermVectorsRequest",
-        "namespace": "__global.mtermvectors"
+        "namespace": "_global.mtermvectors"
       },
       "path": [
         {
@@ -88435,7 +88435,7 @@
       "kind": "interface",
       "name": {
         "name": "MultiTermVectorsResponse",
-        "namespace": "__global.mtermvectors"
+        "namespace": "_global.mtermvectors"
       },
       "properties": [
         {
@@ -88447,7 +88447,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TermVectorsResult",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -88824,7 +88824,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -88999,7 +88999,7 @@
       "kind": "interface",
       "name": {
         "name": "NestedIdentity",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -89031,7 +89031,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NestedIdentity",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         }
@@ -89172,7 +89172,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InnerHits",
-              "namespace": "__global.search.inner_hits"
+              "namespace": "_global.search.inner_hits"
             }
           }
         },
@@ -89239,7 +89239,7 @@
       "kind": "interface",
       "name": {
         "name": "NestedSortValue",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -92382,7 +92382,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -92546,7 +92546,7 @@
       "kind": "request",
       "name": {
         "name": "OpenPointInTimeRequest",
-        "namespace": "__global.open_point_in_time"
+        "namespace": "_global.open_point_in_time"
       },
       "path": [
         {
@@ -92588,7 +92588,7 @@
       "kind": "interface",
       "name": {
         "name": "OpenPointInTimeResponse",
-        "namespace": "__global.open_point_in_time"
+        "namespace": "_global.open_point_in_time"
       },
       "properties": [
         {
@@ -93134,7 +93134,7 @@
       "kind": "interface",
       "name": {
         "name": "PainlessContextSetup",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "properties": [
         {
@@ -93173,7 +93173,7 @@
       "kind": "interface",
       "name": {
         "name": "PainlessExecutionPosition",
-        "namespace": "__global.scripts_painless_execute"
+        "namespace": "_global.scripts_painless_execute"
       },
       "properties": [
         {
@@ -94219,7 +94219,7 @@
       "kind": "interface",
       "name": {
         "name": "PhraseSuggestCollate",
-        "namespace": "__global.search.suggesters.phrase_suggester"
+        "namespace": "_global.search.suggesters.phrase_suggester"
       },
       "properties": [
         {
@@ -94257,7 +94257,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PhraseSuggestCollateQuery",
-              "namespace": "__global.search.suggesters.phrase_suggester"
+              "namespace": "_global.search.suggesters.phrase_suggester"
             }
           }
         }
@@ -94267,7 +94267,7 @@
       "kind": "interface",
       "name": {
         "name": "PhraseSuggestCollateQuery",
-        "namespace": "__global.search.suggesters.phrase_suggester"
+        "namespace": "_global.search.suggesters.phrase_suggester"
       },
       "properties": [
         {
@@ -94298,7 +94298,7 @@
       "kind": "interface",
       "name": {
         "name": "PhraseSuggestHighlight",
-        "namespace": "__global.search.suggesters.phrase_suggester"
+        "namespace": "_global.search.suggesters.phrase_suggester"
       },
       "properties": [
         {
@@ -94329,7 +94329,7 @@
       "kind": "interface",
       "name": {
         "name": "PhraseSuggestOption",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -94372,14 +94372,14 @@
         {
           "type": {
             "name": "SuggesterBase",
-            "namespace": "__global.search.suggesters"
+            "namespace": "_global.search.suggesters"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "PhraseSuggester",
-        "namespace": "__global.search.suggesters.phrase_suggester"
+        "namespace": "_global.search.suggesters.phrase_suggester"
       },
       "properties": [
         {
@@ -94389,7 +94389,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PhraseSuggestCollate",
-              "namespace": "__global.search.suggesters.phrase_suggester"
+              "namespace": "_global.search.suggesters.phrase_suggester"
             }
           }
         },
@@ -94413,7 +94413,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "DirectGenerator",
-                "namespace": "__global.search.suggesters.phrase_suggester"
+                "namespace": "_global.search.suggesters.phrase_suggester"
               }
             }
           }
@@ -94447,7 +94447,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PhraseSuggestHighlight",
-              "namespace": "__global.search.suggesters.phrase_suggester"
+              "namespace": "_global.search.suggesters.phrase_suggester"
             }
           }
         },
@@ -94502,7 +94502,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SmoothingModelContainer",
-              "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+              "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
             }
           }
         },
@@ -94545,7 +94545,7 @@
       "kind": "request",
       "name": {
         "name": "PingRequest",
-        "namespace": "__global.ping"
+        "namespace": "_global.ping"
       },
       "path": [],
       "query": []
@@ -94558,7 +94558,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -94573,7 +94573,7 @@
       "kind": "interface",
       "name": {
         "name": "PingResponse",
-        "namespace": "__global.ping"
+        "namespace": "_global.ping"
       },
       "properties": []
     },
@@ -95023,7 +95023,7 @@
       "kind": "interface",
       "name": {
         "name": "PointInTimeReference",
-        "namespace": "__global.search.point_in_time"
+        "namespace": "_global.search.point_in_time"
       },
       "properties": [
         {
@@ -96058,7 +96058,7 @@
       "kind": "interface",
       "name": {
         "name": "Profile",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -96070,7 +96070,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ShardProfile",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -96976,7 +96976,7 @@
       "kind": "request",
       "name": {
         "name": "PutScriptRequest",
-        "namespace": "__global.put_script"
+        "namespace": "_global.put_script"
       },
       "path": [
         {
@@ -97041,7 +97041,7 @@
       "kind": "interface",
       "name": {
         "name": "PutScriptResponse",
-        "namespace": "__global.put_script"
+        "namespace": "_global.put_script"
       },
       "properties": []
     },
@@ -97336,7 +97336,7 @@
       "kind": "interface",
       "name": {
         "name": "QueryBreakdown",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -98724,7 +98724,7 @@
       "kind": "interface",
       "name": {
         "name": "QueryProfile",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -98734,7 +98734,7 @@
             "kind": "instance_of",
             "type": {
               "name": "QueryBreakdown",
-              "namespace": "__global.search.profile"
+              "namespace": "_global.search.profile"
             }
           }
         },
@@ -98780,7 +98780,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "QueryProfile",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -99507,7 +99507,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -99821,7 +99821,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalHit",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -99874,7 +99874,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalHitItem",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -99884,7 +99884,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalHit",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -99905,7 +99905,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalMetric",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -99915,7 +99915,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalMetricPrecision",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -99926,7 +99926,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalMetricRecall",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -99937,7 +99937,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalMetricMeanReciprocalRank",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -99948,7 +99948,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalMetricDiscountedCumulativeGain",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -99959,7 +99959,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalMetricExpectedReciprocalRank",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         }
@@ -99969,7 +99969,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricBase",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -99991,7 +99991,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricDetail",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100016,7 +100016,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "UnratedDocument",
-                "namespace": "__global.rank_eval"
+                "namespace": "_global.rank_eval"
               }
             }
           }
@@ -100031,7 +100031,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "RankEvalHitItem",
-                "namespace": "__global.rank_eval"
+                "namespace": "_global.rank_eval"
               }
             }
           }
@@ -100073,14 +100073,14 @@
         {
           "type": {
             "name": "RankEvalMetricBase",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricDiscountedCumulativeGain",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100106,14 +100106,14 @@
         {
           "type": {
             "name": "RankEvalMetricBase",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricExpectedReciprocalRank",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100137,14 +100137,14 @@
         {
           "type": {
             "name": "RankEvalMetricRatingTreshold",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricMeanReciprocalRank",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": []
     },
@@ -100155,14 +100155,14 @@
         {
           "type": {
             "name": "RankEvalMetricRatingTreshold",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricPrecision",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100185,14 +100185,14 @@
         {
           "type": {
             "name": "RankEvalMetricBase",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricRatingTreshold",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100217,14 +100217,14 @@
         {
           "type": {
             "name": "RankEvalMetricRatingTreshold",
-            "namespace": "__global.rank_eval"
+            "namespace": "_global.rank_eval"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "RankEvalMetricRecall",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": []
     },
@@ -100232,7 +100232,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalQuery",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100276,7 +100276,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "RankEvalRequestItem",
-                  "namespace": "__global.rank_eval"
+                  "namespace": "_global.rank_eval"
                 }
               }
             }
@@ -100290,7 +100290,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "RankEvalMetric",
-                "namespace": "__global.rank_eval"
+                "namespace": "_global.rank_eval"
               }
             }
           }
@@ -100307,7 +100307,7 @@
       "kind": "request",
       "name": {
         "name": "RankEvalRequest",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "path": [
         {
@@ -100378,7 +100378,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalRequestItem",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100401,7 +100401,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RankEvalQuery",
-              "namespace": "__global.rank_eval"
+              "namespace": "_global.rank_eval"
             }
           }
         },
@@ -100415,7 +100415,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "DocumentRating",
-                "namespace": "__global.rank_eval"
+                "namespace": "_global.rank_eval"
               }
             }
           }
@@ -100464,7 +100464,7 @@
       "kind": "interface",
       "name": {
         "name": "RankEvalResponse",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -100496,7 +100496,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "RankEvalMetricDetail",
-                "namespace": "__global.rank_eval"
+                "namespace": "_global.rank_eval"
               }
             }
           }
@@ -100772,7 +100772,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -101900,7 +101900,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexDestination",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "properties": [
         {
@@ -101943,7 +101943,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ReindexRouting",
-              "namespace": "__global.reindex"
+              "namespace": "_global.reindex"
             }
           }
         },
@@ -101965,14 +101965,14 @@
         {
           "type": {
             "name": "BaseNode",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "ReindexNode",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "properties": [
         {
@@ -101991,7 +101991,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ReindexTask",
-                "namespace": "__global.reindex_rethrottle"
+                "namespace": "_global.reindex_rethrottle"
               }
             }
           }
@@ -102023,7 +102023,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ReindexDestination",
-                "namespace": "__global.reindex"
+                "namespace": "_global.reindex"
               }
             }
           },
@@ -102067,7 +102067,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ReindexSource",
-                "namespace": "__global.reindex"
+                "namespace": "_global.reindex"
               }
             }
           }
@@ -102084,7 +102084,7 @@
       "kind": "request",
       "name": {
         "name": "ReindexRequest",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "path": [],
       "query": [
@@ -102190,7 +102190,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexResponse",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "properties": [
         {
@@ -102389,7 +102389,7 @@
       "kind": "request",
       "name": {
         "name": "ReindexRethrottleRequest",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "path": [
         {
@@ -102431,7 +102431,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexRethrottleResponse",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "properties": [
         {
@@ -102450,7 +102450,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ReindexNode",
-                "namespace": "__global.reindex_rethrottle"
+                "namespace": "_global.reindex_rethrottle"
               }
             }
           }
@@ -102461,7 +102461,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexRouting",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "properties": []
     },
@@ -102469,7 +102469,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexSource",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "properties": [
         {
@@ -102501,7 +102501,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RemoteSource",
-              "namespace": "__global.reindex"
+              "namespace": "_global.reindex"
             }
           }
         },
@@ -102534,7 +102534,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -102555,7 +102555,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexStatus",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "properties": [
         {
@@ -102685,7 +102685,7 @@
       "kind": "interface",
       "name": {
         "name": "ReindexTask",
-        "namespace": "__global.reindex_rethrottle"
+        "namespace": "_global.reindex_rethrottle"
       },
       "properties": [
         {
@@ -102772,7 +102772,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ReindexStatus",
-              "namespace": "__global.reindex_rethrottle"
+              "namespace": "_global.reindex_rethrottle"
             }
           }
         },
@@ -103097,7 +103097,7 @@
       "kind": "interface",
       "name": {
         "name": "RemoteSource",
-        "namespace": "__global.reindex"
+        "namespace": "_global.reindex"
       },
       "properties": [
         {
@@ -103396,7 +103396,7 @@
       "kind": "request",
       "name": {
         "name": "RenderSearchTemplateRequest",
-        "namespace": "__global.render_search_template"
+        "namespace": "_global.render_search_template"
       },
       "path": [],
       "query": []
@@ -103413,7 +103413,7 @@
       "kind": "interface",
       "name": {
         "name": "RenderSearchTemplateResponse",
-        "namespace": "__global.render_search_template"
+        "namespace": "_global.render_search_template"
       },
       "properties": [
         {
@@ -103443,7 +103443,7 @@
         {
           "type": {
             "name": "CommonQueryParameters",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -103522,7 +103522,7 @@
       "kind": "interface",
       "name": {
         "name": "Rescore",
-        "namespace": "__global.search.rescoring"
+        "namespace": "_global.search.rescoring"
       },
       "properties": [
         {
@@ -103532,7 +103532,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RescoreQuery",
-              "namespace": "__global.search.rescoring"
+              "namespace": "_global.search.rescoring"
             }
           }
         },
@@ -103553,7 +103553,7 @@
       "kind": "interface",
       "name": {
         "name": "RescoreQuery",
-        "namespace": "__global.search.rescoring"
+        "namespace": "_global.search.rescoring"
       },
       "properties": [
         {
@@ -103597,7 +103597,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ScoreMode",
-              "namespace": "__global.search.rescoring"
+              "namespace": "_global.search.rescoring"
             }
           }
         }
@@ -105511,7 +105511,7 @@
       "kind": "request",
       "name": {
         "name": "RootNodeInfoRequest",
-        "namespace": "__global.info"
+        "namespace": "_global.info"
       },
       "path": [],
       "query": []
@@ -105528,7 +105528,7 @@
       "kind": "interface",
       "name": {
         "name": "RootNodeInfoResponse",
-        "namespace": "__global.info"
+        "namespace": "_global.info"
       },
       "properties": [
         {
@@ -106519,14 +106519,14 @@
       ],
       "name": {
         "name": "ScoreMode",
-        "namespace": "__global.search.rescoring"
+        "namespace": "_global.search.rescoring"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "ScoreSort",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -106536,7 +106536,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortMode",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -106547,7 +106547,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -106857,7 +106857,7 @@
       "kind": "interface",
       "name": {
         "name": "ScriptSort",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -106867,7 +106867,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -107152,7 +107152,7 @@
       "kind": "request",
       "name": {
         "name": "ScrollRequest",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "path": [
         {
@@ -107219,7 +107219,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.scroll"
+          "namespace": "_global.scroll"
         }
       ],
       "inherits": [
@@ -107229,20 +107229,20 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "__global.scroll"
+                "namespace": "_global.scroll"
               }
             }
           ],
           "type": {
             "name": "SearchResponse",
-            "namespace": "__global.search"
+            "namespace": "_global.search"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "ScrollResponse",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "properties": [
         {
@@ -107254,7 +107254,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ScrollResponseFailedShard",
-                "namespace": "__global.scroll"
+                "namespace": "_global.scroll"
               }
             }
           }
@@ -107265,7 +107265,7 @@
       "kind": "interface",
       "name": {
         "name": "ScrollResponseErrorReason",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "properties": [
         {
@@ -107296,7 +107296,7 @@
       "kind": "interface",
       "name": {
         "name": "ScrollResponseFailedShard",
-        "namespace": "__global.scroll"
+        "namespace": "_global.scroll"
       },
       "properties": [
         {
@@ -107317,7 +107317,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ScrollResponseErrorReason",
-              "namespace": "__global.scroll"
+              "namespace": "_global.scroll"
             }
           }
         }
@@ -107562,7 +107562,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SearchTemplateRequest",
-              "namespace": "__global.search_template"
+              "namespace": "_global.search_template"
             }
           }
         },
@@ -107583,7 +107583,7 @@
       "kind": "interface",
       "name": {
         "name": "SearchProfile",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -107595,7 +107595,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Collector",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -107609,7 +107609,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "QueryProfile",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -107683,7 +107683,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "FieldCollapse",
-                "namespace": "__global.search.collapsing"
+                "namespace": "_global.search.collapsing"
               }
             }
           },
@@ -107716,7 +107716,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Highlight",
-                "namespace": "__global.search.highlighting"
+                "namespace": "_global.search.highlighting"
               }
             }
           },
@@ -107776,7 +107776,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "DocValueField",
-                    "namespace": "__global.search.source_filtering"
+                    "namespace": "_global.search.source_filtering"
                   }
                 },
                 {
@@ -107794,7 +107794,7 @@
                         "kind": "instance_of",
                         "type": {
                           "name": "DocValueField",
-                          "namespace": "__global.search.source_filtering"
+                          "namespace": "_global.search.source_filtering"
                         }
                       }
                     ],
@@ -107858,7 +107858,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "Rescore",
-                    "namespace": "__global.search.rescoring"
+                    "namespace": "_global.search.rescoring"
                   }
                 },
                 {
@@ -107867,7 +107867,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "Rescore",
-                      "namespace": "__global.search.rescoring"
+                      "namespace": "_global.search.rescoring"
                     }
                   }
                 }
@@ -107951,7 +107951,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Sort",
-                "namespace": "__global.search.sort"
+                "namespace": "_global.search.sort"
               }
             }
           },
@@ -107978,7 +107978,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "SourceFilter",
-                    "namespace": "__global.search.source_filtering"
+                    "namespace": "_global.search.source_filtering"
                   }
                 }
               ],
@@ -108020,7 +108020,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "SuggestContainer",
-                    "namespace": "__global.search.suggesters"
+                    "namespace": "_global.search.suggesters"
                   }
                 },
                 {
@@ -108036,7 +108036,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "SuggestContainer",
-                      "namespace": "__global.search.suggesters"
+                      "namespace": "_global.search.suggesters"
                     }
                   }
                 }
@@ -108117,7 +108117,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "PointInTimeReference",
-                "namespace": "__global.search.point_in_time"
+                "namespace": "_global.search.point_in_time"
               }
             }
           },
@@ -108159,7 +108159,7 @@
       "kind": "request",
       "name": {
         "name": "SearchRequest",
-        "namespace": "__global.search"
+        "namespace": "_global.search"
       },
       "path": [
         {
@@ -108709,7 +108709,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.search"
+          "namespace": "_global.search"
         }
       ],
       "inherits": [
@@ -108723,7 +108723,7 @@
       "kind": "interface",
       "name": {
         "name": "SearchResponse",
-        "namespace": "__global.search"
+        "namespace": "_global.search"
       },
       "properties": [
         {
@@ -108768,14 +108768,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "__global.search"
+                  "namespace": "_global.search"
                 }
               }
             ],
             "kind": "instance_of",
             "type": {
               "name": "HitsMetadata",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -108820,7 +108820,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "__global.search"
+                "namespace": "_global.search"
               }
             }
           }
@@ -108871,7 +108871,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Profile",
-              "namespace": "__global.search.profile"
+              "namespace": "_global.search.profile"
             }
           }
         },
@@ -108917,14 +108917,14 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "TDocument",
-                      "namespace": "__global.search"
+                      "namespace": "_global.search"
                     }
                   }
                 ],
                 "kind": "instance_of",
                 "type": {
                   "name": "Suggest",
-                  "namespace": "__global.search.suggesters"
+                  "namespace": "_global.search.suggesters"
                 }
               }
             }
@@ -108958,7 +108958,7 @@
       "kind": "request",
       "name": {
         "name": "SearchShardsRequest",
-        "namespace": "__global.search_shards"
+        "namespace": "_global.search_shards"
       },
       "path": [
         {
@@ -109055,7 +109055,7 @@
       "kind": "interface",
       "name": {
         "name": "SearchShardsResponse",
-        "namespace": "__global.search_shards"
+        "namespace": "_global.search_shards"
       },
       "properties": [
         {
@@ -109112,7 +109112,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ShardStoreIndex",
-                "namespace": "__global.search_shards"
+                "namespace": "_global.search_shards"
               }
             }
           }
@@ -109351,7 +109351,7 @@
       "kind": "request",
       "name": {
         "name": "SearchTemplateRequest",
-        "namespace": "__global.search_template"
+        "namespace": "_global.search_template"
       },
       "path": [
         {
@@ -109539,7 +109539,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.search_template"
+          "namespace": "_global.search_template"
         }
       ],
       "inherits": [
@@ -109553,7 +109553,7 @@
       "kind": "interface",
       "name": {
         "name": "SearchTemplateResponse",
-        "namespace": "__global.search_template"
+        "namespace": "_global.search_template"
       },
       "properties": [
         {
@@ -109598,14 +109598,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "__global.search_template"
+                  "namespace": "_global.search_template"
                 }
               }
             ],
             "kind": "instance_of",
             "type": {
               "name": "HitsMetadata",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         }
@@ -114887,7 +114887,7 @@
       "kind": "interface",
       "name": {
         "name": "ShardProfile",
-        "namespace": "__global.search.profile"
+        "namespace": "_global.search.profile"
       },
       "properties": [
         {
@@ -114899,7 +114899,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "AggregationProfile",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -114924,7 +114924,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SearchProfile",
-                "namespace": "__global.search.profile"
+                "namespace": "_global.search.profile"
               }
             }
           }
@@ -115879,7 +115879,7 @@
       "kind": "interface",
       "name": {
         "name": "ShardStoreIndex",
-        "namespace": "__global.search_shards"
+        "namespace": "_global.search_shards"
       },
       "properties": [
         {
@@ -116577,7 +116577,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -117250,7 +117250,7 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -117806,7 +117806,7 @@
       "kind": "interface",
       "name": {
         "name": "SmoothingModelContainer",
-        "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+        "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
       },
       "properties": [
         {
@@ -117816,7 +117816,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LaplaceSmoothingModel",
-              "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+              "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
             }
           }
         },
@@ -117827,7 +117827,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LinearInterpolationSmoothingModel",
-              "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+              "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
             }
           }
         },
@@ -117838,7 +117838,7 @@
             "kind": "instance_of",
             "type": {
               "name": "StupidBackoffSmoothingModel",
-              "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+              "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
             }
           }
         }
@@ -120581,7 +120581,7 @@
       "kind": "type_alias",
       "name": {
         "name": "Sort",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "type": {
         "items": [
@@ -120589,7 +120589,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortCombinations",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           },
           {
@@ -120598,7 +120598,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortCombinations",
-                "namespace": "__global.search.sort"
+                "namespace": "_global.search.sort"
               }
             }
           }
@@ -120610,7 +120610,7 @@
       "kind": "type_alias",
       "name": {
         "name": "SortCombinations",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "type": {
         "items": [
@@ -120625,14 +120625,14 @@
             "kind": "instance_of",
             "type": {
               "name": "SortContainer",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           },
           {
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         ],
@@ -120659,14 +120659,14 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "FieldSort",
-                    "namespace": "__global.search.sort"
+                    "namespace": "_global.search.sort"
                   }
                 },
                 {
                   "kind": "instance_of",
                   "type": {
                     "name": "SortOrder",
-                    "namespace": "__global.search.sort"
+                    "namespace": "_global.search.sort"
                   }
                 }
               ],
@@ -120675,14 +120675,14 @@
           ],
           "type": {
             "name": "AdditionalProperties",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "SortContainer",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "properties": [
         {
@@ -120692,7 +120692,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ScoreSort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -120703,7 +120703,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ScoreSort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -120714,7 +120714,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoDistanceSort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -120725,7 +120725,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ScriptSort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -120752,7 +120752,7 @@
       ],
       "name": {
         "name": "SortMode",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       }
     },
     {
@@ -120771,7 +120771,7 @@
       ],
       "name": {
         "name": "SortOrder",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       }
     },
     {
@@ -120807,7 +120807,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -120828,7 +120828,7 @@
       "kind": "type_alias",
       "name": {
         "name": "SortResults",
-        "namespace": "__global.search.sort"
+        "namespace": "_global.search.sort"
       },
       "type": {
         "kind": "array_of",
@@ -120882,7 +120882,7 @@
       "kind": "request",
       "name": {
         "name": "SourceExistsRequest",
-        "namespace": "__global.exists_source"
+        "namespace": "_global.exists_source"
       },
       "path": [
         {
@@ -121032,7 +121032,7 @@
         {
           "type": {
             "name": "EmptyResponseBase",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -121047,7 +121047,7 @@
       "kind": "interface",
       "name": {
         "name": "SourceExistsResponse",
-        "namespace": "__global.exists_source"
+        "namespace": "_global.exists_source"
       },
       "properties": []
     },
@@ -121125,7 +121125,7 @@
       "kind": "interface",
       "name": {
         "name": "SourceFilter",
-        "namespace": "__global.search.source_filtering"
+        "namespace": "_global.search.source_filtering"
       },
       "properties": [
         {
@@ -121189,7 +121189,7 @@
       "kind": "request",
       "name": {
         "name": "SourceRequest",
-        "namespace": "__global.get_source"
+        "namespace": "_global.get_source"
       },
       "path": [
         {
@@ -121335,7 +121335,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.get_source"
+          "namespace": "_global.get_source"
         }
       ],
       "inherits": [
@@ -121349,7 +121349,7 @@
       "kind": "interface",
       "name": {
         "name": "SourceResponse",
-        "namespace": "__global.get_source"
+        "namespace": "_global.get_source"
       },
       "properties": [
         {
@@ -121359,7 +121359,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TDocument",
-              "namespace": "__global.get_source"
+              "namespace": "_global.get_source"
             }
           }
         }
@@ -123602,7 +123602,7 @@
       ],
       "name": {
         "name": "StringDistance",
-        "namespace": "__global.search.suggesters.term_suggester"
+        "namespace": "_global.search.suggesters.term_suggester"
       }
     },
     {
@@ -123765,7 +123765,7 @@
       "kind": "interface",
       "name": {
         "name": "StupidBackoffSmoothingModel",
-        "namespace": "__global.search.suggesters.phrase_suggester.smoothing_model"
+        "namespace": "_global.search.suggesters.phrase_suggester.smoothing_model"
       },
       "properties": [
         {
@@ -123785,13 +123785,13 @@
       "generics": [
         {
           "name": "T",
-          "namespace": "__global.search.suggesters"
+          "namespace": "_global.search.suggesters"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "Suggest",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -123827,14 +123827,14 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "T",
-                    "namespace": "__global.search.suggesters"
+                    "namespace": "_global.search.suggesters"
                   }
                 }
               ],
               "kind": "instance_of",
               "type": {
                 "name": "SuggestOption",
-                "namespace": "__global.search.suggesters"
+                "namespace": "_global.search.suggesters"
               }
             }
           }
@@ -123856,7 +123856,7 @@
       "kind": "interface",
       "name": {
         "name": "SuggestContainer",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -123866,7 +123866,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CompletionSuggester",
-              "namespace": "__global.search.suggesters.completion_suggester"
+              "namespace": "_global.search.suggesters.completion_suggester"
             }
           }
         },
@@ -123877,7 +123877,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PhraseSuggester",
-              "namespace": "__global.search.suggesters.phrase_suggester"
+              "namespace": "_global.search.suggesters.phrase_suggester"
             }
           }
         },
@@ -123910,7 +123910,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TermSuggester",
-              "namespace": "__global.search.suggesters.term_suggester"
+              "namespace": "_global.search.suggesters.term_suggester"
             }
           }
         },
@@ -123987,7 +123987,7 @@
       "kind": "interface",
       "name": {
         "name": "SuggestContextQuery",
-        "namespace": "__global.search.suggesters.context_suggester"
+        "namespace": "_global.search.suggesters.context_suggester"
       },
       "properties": [
         {
@@ -124008,7 +124008,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Context",
-              "namespace": "__global.search.suggesters.context_suggester"
+              "namespace": "_global.search.suggesters.context_suggester"
             }
           }
         },
@@ -124081,7 +124081,7 @@
       "kind": "interface",
       "name": {
         "name": "SuggestFuzziness",
-        "namespace": "__global.search.suggesters.completion_suggester"
+        "namespace": "_global.search.suggesters.completion_suggester"
       },
       "properties": [
         {
@@ -124163,13 +124163,13 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.search.suggesters"
+          "namespace": "_global.search.suggesters"
         }
       ],
       "kind": "type_alias",
       "name": {
         "name": "SuggestOption",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "type": {
         "items": [
@@ -124179,28 +124179,28 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "__global.search.suggesters"
+                  "namespace": "_global.search.suggesters"
                 }
               }
             ],
             "kind": "instance_of",
             "type": {
               "name": "CompletionSuggestOption",
-              "namespace": "__global.search.suggesters"
+              "namespace": "_global.search.suggesters"
             }
           },
           {
             "kind": "instance_of",
             "type": {
               "name": "PhraseSuggestOption",
-              "namespace": "__global.search.suggesters"
+              "namespace": "_global.search.suggesters"
             }
           },
           {
             "kind": "instance_of",
             "type": {
               "name": "TermSuggestOption",
-              "namespace": "__global.search.suggesters"
+              "namespace": "_global.search.suggesters"
             }
           }
         ],
@@ -124219,14 +124219,14 @@
       ],
       "name": {
         "name": "SuggestSort",
-        "namespace": "__global.search.suggesters.term_suggester"
+        "namespace": "_global.search.suggesters.term_suggester"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "SuggesterBase",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -124651,7 +124651,7 @@
         {
           "type": {
             "name": "BaseNode",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
@@ -125359,7 +125359,7 @@
       "kind": "interface",
       "name": {
         "name": "TermSuggestOption",
-        "namespace": "__global.search.suggesters"
+        "namespace": "_global.search.suggesters"
       },
       "properties": [
         {
@@ -125402,14 +125402,14 @@
         {
           "type": {
             "name": "SuggesterBase",
-            "namespace": "__global.search.suggesters"
+            "namespace": "_global.search.suggesters"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "TermSuggester",
-        "namespace": "__global.search.suggesters.term_suggester"
+        "namespace": "_global.search.suggesters.term_suggester"
       },
       "properties": [
         {
@@ -125507,7 +125507,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SuggestSort",
-              "namespace": "__global.search.suggesters.term_suggester"
+              "namespace": "_global.search.suggesters.term_suggester"
             }
           }
         },
@@ -125518,7 +125518,7 @@
             "kind": "instance_of",
             "type": {
               "name": "StringDistance",
-              "namespace": "__global.search.suggesters.term_suggester"
+              "namespace": "_global.search.suggesters.term_suggester"
             }
           }
         },
@@ -125570,7 +125570,7 @@
       "kind": "interface",
       "name": {
         "name": "TermVector",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -125580,7 +125580,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldStatistics",
-              "namespace": "__global.termvectors"
+              "namespace": "_global.termvectors"
             }
           }
         },
@@ -125600,7 +125600,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TermVectorTerm",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -125611,7 +125611,7 @@
       "kind": "interface",
       "name": {
         "name": "TermVectorFilter",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -125724,7 +125724,7 @@
       "kind": "interface",
       "name": {
         "name": "TermVectorTerm",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -125769,7 +125769,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Token",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -125801,7 +125801,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           },
@@ -125812,7 +125812,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TermVectorFilter",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           },
@@ -125842,7 +125842,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.termvectors"
+          "namespace": "_global.termvectors"
         }
       ],
       "inherits": [
@@ -125856,7 +125856,7 @@
       "kind": "request",
       "name": {
         "name": "TermVectorsRequest",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "path": [
         {
@@ -126032,7 +126032,7 @@
       "kind": "interface",
       "name": {
         "name": "TermVectorsResponse",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -126084,7 +126084,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TermVector",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -126128,7 +126128,7 @@
       "kind": "interface",
       "name": {
         "name": "TermVectorsResult",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -126180,7 +126180,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TermVector",
-                "namespace": "__global.termvectors"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -126519,7 +126519,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortOrder",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           },
           {
@@ -126535,7 +126535,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "SortOrder",
-                "namespace": "__global.search.sort"
+                "namespace": "_global.search.sort"
               }
             }
           },
@@ -126554,7 +126554,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SortOrder",
-                  "namespace": "__global.search.sort"
+                  "namespace": "_global.search.sort"
                 }
               }
             }
@@ -127566,7 +127566,7 @@
       "kind": "interface",
       "name": {
         "name": "Token",
-        "namespace": "__global.termvectors"
+        "namespace": "_global.termvectors"
       },
       "properties": [
         {
@@ -128322,7 +128322,7 @@
             "kind": "instance_of",
             "type": {
               "name": "HitsMetadata",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         }
@@ -128383,7 +128383,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Highlight",
-              "namespace": "__global.search.highlighting"
+              "namespace": "_global.search.highlighting"
             }
           }
         },
@@ -128426,7 +128426,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         },
@@ -128446,7 +128446,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SourceFilter",
-                  "namespace": "__global.search.source_filtering"
+                  "namespace": "_global.search.source_filtering"
                 }
               },
               {
@@ -128678,7 +128678,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -128783,7 +128783,7 @@
       "kind": "interface",
       "name": {
         "name": "TotalHits",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       },
       "properties": [
         {
@@ -128793,7 +128793,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TotalHitsRelation",
-              "namespace": "__global.search.hits"
+              "namespace": "_global.search.hits"
             }
           }
         },
@@ -128824,7 +128824,7 @@
       ],
       "name": {
         "name": "TotalHitsRelation",
-        "namespace": "__global.search.hits"
+        "namespace": "_global.search.hits"
       }
     },
     {
@@ -129648,7 +129648,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "SourceFilter",
-                  "namespace": "__global.search.source_filtering"
+                  "namespace": "_global.search.source_filtering"
                 }
               }
             ],
@@ -129686,7 +129686,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Sort",
-              "namespace": "__global.search.sort"
+              "namespace": "_global.search.sort"
             }
           }
         }
@@ -130674,7 +130674,7 @@
       "kind": "interface",
       "name": {
         "name": "UnratedDocument",
-        "namespace": "__global.rank_eval"
+        "namespace": "_global.rank_eval"
       },
       "properties": [
         {
@@ -130776,7 +130776,7 @@
       "kind": "request",
       "name": {
         "name": "UpdateByQueryRequest",
-        "namespace": "__global.update_by_query"
+        "namespace": "_global.update_by_query"
       },
       "path": [
         {
@@ -131199,7 +131199,7 @@
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryResponse",
-        "namespace": "__global.update_by_query"
+        "namespace": "_global.update_by_query"
       },
       "properties": [
         {
@@ -131366,14 +131366,14 @@
         {
           "type": {
             "name": "BaseNode",
-            "namespace": "__spec_utils"
+            "namespace": "_spec_utils"
           }
         }
       ],
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleNode",
-        "namespace": "__global.update_by_query_rethrottle"
+        "namespace": "_global.update_by_query_rethrottle"
       },
       "properties": [
         {
@@ -131414,7 +131414,7 @@
       "kind": "request",
       "name": {
         "name": "UpdateByQueryRethrottleRequest",
-        "namespace": "__global.update_by_query_rethrottle"
+        "namespace": "_global.update_by_query_rethrottle"
       },
       "path": [
         {
@@ -131456,7 +131456,7 @@
       "kind": "interface",
       "name": {
         "name": "UpdateByQueryRethrottleResponse",
-        "namespace": "__global.update_by_query_rethrottle"
+        "namespace": "_global.update_by_query_rethrottle"
       },
       "properties": [
         {
@@ -131475,7 +131475,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "UpdateByQueryRethrottleNode",
-                "namespace": "__global.update_by_query_rethrottle"
+                "namespace": "_global.update_by_query_rethrottle"
               }
             }
           }
@@ -131507,7 +131507,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TPartialDocument",
-                "namespace": "__global.update"
+                "namespace": "_global.update"
               }
             }
           },
@@ -131560,7 +131560,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "SourceFilter",
-                    "namespace": "__global.search.source_filtering"
+                    "namespace": "_global.search.source_filtering"
                   }
                 }
               ],
@@ -131574,7 +131574,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TDocument",
-                "namespace": "__global.update"
+                "namespace": "_global.update"
               }
             }
           }
@@ -131583,11 +131583,11 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.update"
+          "namespace": "_global.update"
         },
         {
           "name": "TPartialDocument",
-          "namespace": "__global.update"
+          "namespace": "_global.update"
         }
       ],
       "inherits": [
@@ -131601,7 +131601,7 @@
       "kind": "request",
       "name": {
         "name": "UpdateRequest",
-        "namespace": "__global.update"
+        "namespace": "_global.update"
       },
       "path": [
         {
@@ -131803,7 +131803,7 @@
       "generics": [
         {
           "name": "TDocument",
-          "namespace": "__global.update"
+          "namespace": "_global.update"
         }
       ],
       "inherits": [
@@ -131817,7 +131817,7 @@
       "kind": "interface",
       "name": {
         "name": "UpdateResponse",
-        "namespace": "__global.update"
+        "namespace": "_global.update"
       },
       "properties": [
         {
@@ -131829,14 +131829,14 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TDocument",
-                  "namespace": "__global.update"
+                  "namespace": "_global.update"
                 }
               }
             ],
             "kind": "instance_of",
             "type": {
               "name": "InlineGet",
-              "namespace": "__global.explain"
+              "namespace": "_global.explain"
             }
           }
         }
@@ -136569,7 +136569,7 @@
       "kind": "interface",
       "name": {
         "name": "CommonCatQueryParameters",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": [
         {
@@ -136659,13 +136659,13 @@
       "generics": [
         {
           "name": "TRecord",
-          "namespace": "__spec_utils"
+          "namespace": "_spec_utils"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "ArrayResponseBase",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": []
     },
@@ -136674,17 +136674,17 @@
       "generics": [
         {
           "name": "TKey",
-          "namespace": "__spec_utils"
+          "namespace": "_spec_utils"
         },
         {
           "name": "TValue",
-          "namespace": "__spec_utils"
+          "namespace": "_spec_utils"
         }
       ],
       "kind": "interface",
       "name": {
         "name": "AdditionalProperties",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": []
     },
@@ -136693,7 +136693,7 @@
       "kind": "interface",
       "name": {
         "name": "EmptyResponseBase",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": []
     },
@@ -136702,7 +136702,7 @@
       "kind": "interface",
       "name": {
         "name": "CommonQueryParameters",
-        "namespace": "__spec_utils"
+        "namespace": "_spec_utils"
       },
       "properties": [
         {
