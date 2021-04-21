@@ -24,7 +24,6 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @since 6.3.0
  * @stability TODO
  */
-export interface MachineLearningInfoRequest extends RequestBase {
+export interface MlInfoRequest extends RequestBase {
   query_parameters?: {}
-  body?: {}
 }
