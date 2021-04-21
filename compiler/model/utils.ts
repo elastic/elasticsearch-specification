@@ -848,7 +848,7 @@ export function assert (node: Node | Node[] | undefined, condition: boolean, mes
 
 /**
  * Verifies if every type is unique within a folder.
- * It also verifies that every type defined inside `/__common` and its subfolders
+ * It also verifies that every type defined inside `/_types` and its subfolders
  * is unique specification wide.
  * Eg: If both `/foo/bar.ts` and `/foo/baz.ts` are exporting a type names `Hello`
  *     this function will throw an error.
@@ -860,7 +860,7 @@ export function verifyUniqueness (project: Project): void {
   const common: string[] = []
   for (const sourceFile of project.getSourceFiles()) {
     const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
-    const isCommon = path.startsWith('__common')
+    const isCommon = path.startsWith('_types')
     const names = types.get(path) ?? []
 
     for (const declaration of sourceFile.getClasses()) {
