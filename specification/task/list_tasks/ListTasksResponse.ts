@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ErrorCause } from '@common/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@task/get_task/TaskInfo'
+import { ResponseBase } from '@_types/Base'
+import { ErrorCause } from '@_types/Errors'
 import { TaskExecutingNode } from './TaskExecutingNode'
 
 export class ListTasksResponse extends ResponseBase {

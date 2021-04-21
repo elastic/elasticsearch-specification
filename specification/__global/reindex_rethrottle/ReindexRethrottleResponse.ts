@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
 import { ReindexNode } from './ReindexNode'
 
 export class ReindexRethrottleResponse extends ResponseBase {

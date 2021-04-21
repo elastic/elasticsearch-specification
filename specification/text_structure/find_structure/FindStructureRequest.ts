@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { uint } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { Field } from '@_types/common'
+import { uint } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name text_structure.find_structure

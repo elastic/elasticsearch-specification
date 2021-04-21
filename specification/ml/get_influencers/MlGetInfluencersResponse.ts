@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { BucketInfluencer } from '@ml/BucketInfluencer'
+import { BucketInfluencer } from '@ml/_types/BucketInfluencer'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetInfluencersResponse extends ResponseBase {
   count: long

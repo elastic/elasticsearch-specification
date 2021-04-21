@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Routing, SequenceNumber } from '@common/common'
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Routing, SequenceNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class InlineGet<TDocument> {
   fields?: Dictionary<string, UserDefinedValue>

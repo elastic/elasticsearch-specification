@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { NamedPolicyMetadata } from '@enrich/NamedPolicyMetadata'
+import { NamedPolicyMetadata } from '@enrich/_types/NamedPolicyMetadata'
+import { ResponseBase } from '@_types/Base'
 
 export class GetEnrichPolicyResponse extends ResponseBase {
   policies: NamedPolicyMetadata[]

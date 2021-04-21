@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name, Refresh } from '@common/common'
-import { TransientMetadata } from '@security/XPackRole'
+import { TransientMetadata } from '@security/_types/XPackRole'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Name, Refresh } from '@_types/common'
 import { ApplicationPrivileges } from './ApplicationPrivileges'
 import { IndicesPrivileges } from './IndicesPrivileges'
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 export class FollowConfig {
   max_outstanding_read_requests: integer

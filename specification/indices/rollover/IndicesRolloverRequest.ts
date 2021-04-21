@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { IndexAlias, IndexName, WaitForActiveShards } from '@common/common'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { Time } from '@common/Time'
-import { Alias } from '@indices/Alias'
+import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Time } from '@_types/Time'
 import { IndicesRolloverConditions } from './IndicesRolloverConditions'
 
 /**

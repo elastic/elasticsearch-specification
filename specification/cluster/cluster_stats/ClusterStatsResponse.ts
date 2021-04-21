@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ClusterStatus } from '@cluster/ClusterStatus'
-import { Name, Uuid } from '@common/common'
-import { long } from '@common/Numeric'
-import { NodesResponseBase } from '@nodes/NodesResponseBase'
-import { NodeStatistics } from '@nodes/NodeStatistics'
+import { ClusterStatus } from '@cluster/_types/ClusterStatus'
+import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
+import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { Name, Uuid } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { ClusterIndicesStats } from './ClusterIndicesStats'
 import { ClusterNodesStats } from './ClusterNodesStats'
 

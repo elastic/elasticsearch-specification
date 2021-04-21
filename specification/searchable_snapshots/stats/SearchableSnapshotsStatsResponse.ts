@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { integer } from '@common/Numeric'
+import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 export class SearchableSnapshotsStatsResponse extends ResponseBase {
   stub: integer

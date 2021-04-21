@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id, IndexName } from '@common/common'
-import { long } from '@common/Numeric'
 import { RollupFieldMetric } from '@rollup/rollup_configuration/RollupFieldMetric'
 import { RollupGroupings } from '@rollup/rollup_configuration/RollupGroupings'
+import { RequestBase } from '@_types/Base'
+import { Id, IndexName } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name rollup.put_job

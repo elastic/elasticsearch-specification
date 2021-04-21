@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Time } from '@common/Time'
 import { TransformPivot } from '@transform/pivot/TransformPivot'
-import { TransformDestination } from '@transform/TransformDestination'
-import { TransformSource } from '@transform/TransformSource'
-import { TransformSyncContainer } from '@transform/TransformSyncContainer'
+import { TransformDestination } from '@transform/_types/TransformDestination'
+import { TransformSource } from '@transform/_types/TransformSource'
+import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
+import { RequestBase } from '@_types/Base'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name transform.preview_transform

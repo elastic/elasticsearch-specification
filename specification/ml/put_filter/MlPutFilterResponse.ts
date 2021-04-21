@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Id } from '@common/common'
+import { ResponseBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 export class MlPutFilterResponse extends ResponseBase {
   description: string

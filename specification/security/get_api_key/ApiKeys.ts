@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Id, Name, Username } from '@common/common'
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, Name, Username } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class ApiKeys {
   creation: long

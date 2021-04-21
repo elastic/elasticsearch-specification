@@ -17,24 +17,14 @@
  * under the License.
  */
 
-import { ClusterStateBlockIndex } from '@cluster/ClusterStateBlocksIndex'
-import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
-import {
-  ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots
-} from '@cluster/ClusterStateSnapshots'
-import { ResponseBase } from '@common/Base'
-import {
-  EmptyObject,
-  IndexName,
-  Name,
-  NodeName,
-  Uuid,
-  VersionNumber
-} from '@common/common'
-import { NodeAttributes } from '@nodes/NodeAttributes'
+import { ClusterStateBlockIndex } from '@cluster/_types/ClusterStateBlocksIndex'
+import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
+import { ClusterStateDeletedSnapshots, ClusterStateSnapshots } from '@cluster/_types/ClusterStateSnapshots'
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { EmptyObject, IndexName, Name, NodeName, Uuid, VersionNumber } from '@_types/common'
 
 export class ClusterStateResponse extends ResponseBase {
   cluster_name: Name

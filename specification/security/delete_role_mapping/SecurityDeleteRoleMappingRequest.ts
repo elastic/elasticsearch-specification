@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name, Refresh } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Name, Refresh } from '@_types/common'
 
 /**
  * @rest_spec_name security.delete_role_mapping

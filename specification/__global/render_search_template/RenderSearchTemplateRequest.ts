@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name render_search_template

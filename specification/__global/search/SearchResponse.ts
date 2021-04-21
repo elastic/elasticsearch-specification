@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Aggregate } from '@common/aggregations/Aggregate'
-import { ResponseBase } from '@common/Base'
-import { AggregateName, Id, ScrollId, SuggestionName } from '@common/common'
-import { double, long } from '@common/Numeric'
-import { ClusterStatistics, ShardStatistics } from '@common/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Aggregate } from '@_types/aggregations/Aggregate'
+import { ResponseBase } from '@_types/Base'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
+import { double, long } from '@_types/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 import { HitsMetadata } from './hits/HitsMetadata'
 import { Profile } from './profile/Profile'
 import { Suggest } from './suggesters/Suggest'

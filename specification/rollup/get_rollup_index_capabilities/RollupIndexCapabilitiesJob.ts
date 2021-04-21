@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field, Id, IndexName } from '@common/common'
-import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Field, Id, IndexName } from '@_types/common'
+import { Time } from '@_types/Time'
 
 export class RollupIndexCapabilitiesJob {
   fields: Dictionary<Field, RollupIndexCapabilitiesJobField[]>

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Id } from '@common/common'
-import { integer } from '@common/Numeric'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name cat.transforms

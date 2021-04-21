@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { LicenseStatus } from '@license/get_license/LicenseStatus'
+import { ResponseBase } from '@_types/Base'
 import { LicenseAcknowledgement } from './LicenseAcknowledgement'
 
 export class PostLicenseResponse extends ResponseBase {

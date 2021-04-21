@@ -17,21 +17,12 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  Fields,
-  Id,
-  IndexName,
-  Refresh,
-  Routing,
-  SequenceNumber,
-  Type,
-  WaitForActiveShards
-} from '@common/common'
-import { long } from '@common/Numeric'
-import { Script } from '@common/Scripting'
-import { Time } from '@common/Time'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { RequestBase } from '@_types/Base'
+import { Fields, Id, IndexName, Refresh, Routing, SequenceNumber, Type, WaitForActiveShards } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name update

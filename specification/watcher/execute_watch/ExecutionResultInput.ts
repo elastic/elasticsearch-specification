@@ -19,8 +19,8 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Status } from '@watcher/Action'
-import { InputType } from '@watcher/Input'
+import { Status } from '@watcher/_types/Action'
+import { InputType } from '@watcher/_types/Input'
 
 export class ExecutionResultInput {
   payload: Dictionary<string, UserDefinedValue>

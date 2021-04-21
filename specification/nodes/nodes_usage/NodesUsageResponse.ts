@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/NodesResponseBase'
+import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeUsageInformation } from './NodeUsageInformation'
 

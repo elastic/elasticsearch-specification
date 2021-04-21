@@ -17,19 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import {
-  Id,
-  IndexName,
-  Routing,
-  SequenceNumber,
-  Type,
-  VersionNumber
-} from '@common/common'
-import { MainError } from '@common/Errors'
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ResponseBase } from '@_types/Base'
+import { Id, IndexName, Routing, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import { MainError } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 
 export class MultiGetResponse<TDocument> extends ResponseBase {
   docs: MultiGetHit<TDocument>[]

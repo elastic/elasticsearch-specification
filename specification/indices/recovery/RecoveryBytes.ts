@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ByteSize } from '@common/common'
-import { Percentage } from '@common/Numeric'
+import { ByteSize } from '@_types/common'
+import { Percentage } from '@_types/Numeric'
 
 export class RecoveryBytes {
   percent: Percentage

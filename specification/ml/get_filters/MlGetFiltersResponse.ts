@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 import { Filter } from './Filter'
 
 export class MlGetFiltersResponse extends ResponseBase {

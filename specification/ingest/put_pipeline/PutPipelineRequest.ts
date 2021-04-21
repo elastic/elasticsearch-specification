@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id, VersionNumber } from '@common/common'
-import { Time } from '@common/Time'
-import { ProcessorContainer } from '@ingest/ProcessorContainer'
+import { ProcessorContainer } from '@ingest/_types/ProcessorContainer'
+import { RequestBase } from '@_types/Base'
+import { Id, VersionNumber } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ingest.put_pipeline

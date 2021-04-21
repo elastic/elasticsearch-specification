@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { long } from '@_types/Numeric'
 import { JobStatistics } from './JobStatistics'
 
 export class ForecastStatistics {

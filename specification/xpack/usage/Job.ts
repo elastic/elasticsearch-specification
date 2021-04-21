@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { EmptyObject, Id, IndexName, VersionString } from '@common/common'
-import { integer, long } from '@common/Numeric'
-import { Time } from '@common/Time'
-import { AnalysisConfig } from '@ml/AnalysisConfig'
-import { AnalysisLimits } from '@ml/AnalysisLimits'
-import { DataDescription } from '@ml/DataDescription'
-import { ModelPlotConfig } from '@ml/ModelPlotConfig'
+import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
+import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
+import { DataDescription } from '@ml/_types/DataDescription'
+import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { EmptyObject, Id, IndexName, VersionString } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 import { JobStatistics } from './JobStatistics'
 
 export class Job {

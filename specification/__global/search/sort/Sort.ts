@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { Missing } from '@common/aggregations/AggregationContainer'
-import { Field } from '@common/common'
-import { DistanceUnit, GeoDistanceType } from '@common/Geo'
-import { FieldType } from '@common/mapping/types/FieldType'
-import { double, long } from '@common/Numeric'
-import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
-import { Script } from '@common/Scripting'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Missing } from '@_types/aggregations/AggregationContainer'
+import { Field } from '@_types/common'
+import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
+import { FieldType } from '@_types/mapping/types/FieldType'
+import { double, long } from '@_types/Numeric'
+import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { Script } from '@_types/Scripting'
 import { NestedSortValue } from './NestedSort'
 import { SortMode } from './SortMode'
 import { SortOrder } from './SortOrder'

@@ -17,14 +17,8 @@
  * under the License.
  */
 
-import {
-  Id,
-  IndexName,
-  Routing,
-  VersionNumber,
-  VersionType
-} from '@common/common'
-import { integer } from '@common/Numeric'
+import { Id, IndexName, Routing, VersionNumber, VersionType } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class BulkOperation {
   _id: Id

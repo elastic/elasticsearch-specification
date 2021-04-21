@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/Numeric'
+import { double } from '@_types/Numeric'
 
 export class ClusterShardMetrics {
   avg: double

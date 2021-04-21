@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Field, Fields } from '@common/common'
-import { long } from '@common/Numeric'
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { Field, Fields } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class TranslateSqlResponse extends ResponseBase {
   size: long

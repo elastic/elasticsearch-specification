@@ -17,16 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  DefaultOperator,
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type
-} from '@common/common'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { RequestBase } from '@_types/Base'
+import { DefaultOperator, Fields, Id, IndexName, Routing, Type } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name explain

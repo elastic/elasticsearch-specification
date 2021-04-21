@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Ids } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name ml.get_datafeed_stats

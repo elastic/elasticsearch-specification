@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Health } from '@common/common'
-import { integer } from '@common/Numeric'
+import { Health } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class ShardHealthStats {
   active_shards: integer

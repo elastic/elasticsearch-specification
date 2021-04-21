@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName, Routing, Type } from '@common/common'
-import { double, long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName, Routing, Type } from '@_types/common'
+import { double, long } from '@_types/Numeric'
 import { Context } from './context_suggester/Context'
 
 /*

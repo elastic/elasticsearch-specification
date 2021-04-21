@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
 import { SearchResponse } from '@global/search/SearchResponse'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MultiSearchTemplateResponse extends ResponseBase {
   responses: SearchResponse<UserDefinedValue>[]

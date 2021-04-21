@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { ShardStatistics } from '@common/Stats'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
+import { ShardStatistics } from '@_types/Stats'
 
 export class CountResponse extends ResponseBase {
   count: long

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { TaskId } from '@common/common'
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TaskId } from '@_types/common'
 import { TaskState } from './TaskState'
 
 export class TaskExecutingNode extends BaseNode {

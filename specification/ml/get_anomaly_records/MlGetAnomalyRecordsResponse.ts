@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { AnomalyRecord } from '@ml/AnomalyRecord'
+import { AnomalyRecord } from '@ml/_types/AnomalyRecord'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetAnomalyRecordsResponse extends ResponseBase {
   count: long

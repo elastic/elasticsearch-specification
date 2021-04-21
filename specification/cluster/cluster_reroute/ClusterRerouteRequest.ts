@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Metrics } from '@common/common'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Metrics } from '@_types/common'
+import { Time } from '@_types/Time'
 import { ClusterRerouteCommand } from './ClusterRerouteCommand'
 
 /**

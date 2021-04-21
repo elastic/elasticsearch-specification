@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { double } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScoreMode } from './ScoreMode'
 
 export class RescoreQuery {

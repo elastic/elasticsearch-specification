@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Id } from '@common/common'
-import { integer } from '@common/Numeric'
-import { EpochMillis } from '@common/Time'
+import { ResponseBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
 export class EqlGetStatusResponse extends ResponseBase {
   /**

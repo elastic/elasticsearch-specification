@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { ActivationStatus } from '@watcher/activate_watch/ActivationStatus'
+import { ResponseBase } from '@_types/Base'
 
 export class DeactivateWatchResponse extends ResponseBase {
   status: ActivationStatus

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { Token } from './Token'
 
 export class TermVectorTerm {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
+import { Id } from '@_types/common'
 
 export class Calendar {
   calendar_id: Id

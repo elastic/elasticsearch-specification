@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/Base'
-import { Id } from '@common/common'
+import { AcknowledgedResponseBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 export class MlForecastJobResponse extends AcknowledgedResponseBase {
   forecast_id: Id

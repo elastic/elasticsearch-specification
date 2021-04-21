@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Id, IndexName, Type } from '@common/common'
-import { double } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ResponseBase } from '@_types/Base'
+import { Id, IndexName, Type } from '@_types/common'
+import { double } from '@_types/Numeric'
 
 export class RankEvalResponse extends ResponseBase {
   /** The overall evaluation quality calculated by the defined metric */

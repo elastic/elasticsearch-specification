@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, VersionString } from '@common/common'
+import { Id, VersionString } from '@_types/common'
 
 export class CatTransformsRecord {
   /**

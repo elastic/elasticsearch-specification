@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 import { RollupJobInformation } from './RollupJobInformation'
 
 export class GetRollupJobResponse extends ResponseBase {

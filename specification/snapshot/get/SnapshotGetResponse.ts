@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Name } from '@common/common'
-import { ErrorCause } from '@common/Errors'
-import { SnapshotInfo } from '@snapshot/SnapshotInfo'
+import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
+import { ResponseBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 
 export class SnapshotGetResponse extends ResponseBase {
   responses?: SnapshotResponseItem[]

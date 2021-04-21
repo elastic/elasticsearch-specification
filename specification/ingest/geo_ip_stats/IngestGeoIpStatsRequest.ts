@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { integer } from '@common/Numeric'
+import { RequestBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ingest.geo_ip_stats

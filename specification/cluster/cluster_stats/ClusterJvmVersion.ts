@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { VersionString } from '@common/common'
-import { integer } from '@common/Numeric'
+import { VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class ClusterJvmVersion {
   bundled_jdk: boolean

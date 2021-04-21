@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, Fields, Indices } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name indices.clear_cache

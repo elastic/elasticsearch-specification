@@ -17,28 +17,16 @@
  * under the License.
  */
 
-import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { RequestBase } from '@common/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Field,
-  Fields,
-  IndexName,
-  Indices,
-  Routing,
-  SearchType,
-  SuggestMode,
-  Types,
-  VersionString
-} from '@common/common'
-import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
-import { double, integer, long } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { ScriptField } from '@common/Scripting'
-import { SlicedScroll } from '@common/SlicedScroll'
-import { DateField, Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { RequestBase } from '@_types/Base'
+import { DefaultOperator, ExpandWildcards, Field, Fields, IndexName, Indices, Routing, SearchType, SuggestMode, Types, VersionString } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { double, integer, long } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@_types/Scripting'
+import { SlicedScroll } from '@_types/SlicedScroll'
+import { DateField, Time } from '@_types/Time'
 import { FieldCollapse } from './collapsing/FieldCollapse'
 import { Highlight } from './highlighting/Highlight'
 import { PointInTimeReference } from './point_in_time/PointInTimeReference'

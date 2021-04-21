@@ -17,14 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  Metrics,
-  VersionNumber
-} from '@common/common'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices, Metrics, VersionNumber } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.state

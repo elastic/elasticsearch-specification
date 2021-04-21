@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Indices } from '@common/common'
+import { ResponseBase } from '@_types/Base'
+import { Indices } from '@_types/common'
 
 export class SecurityGetBuiltinPrivilegesResponse extends ResponseBase {
   cluster: string[]

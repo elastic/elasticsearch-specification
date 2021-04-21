@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name ml.delete_filter

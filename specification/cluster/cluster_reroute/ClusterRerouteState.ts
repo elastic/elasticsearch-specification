@@ -17,15 +17,12 @@
  * under the License.
  */
 
-import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
-import {
-  ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots
-} from '@cluster/ClusterStateSnapshots'
-import { EmptyObject, NodeName, Uuid, VersionNumber } from '@common/common'
-import { NodeAttributes } from '@nodes/NodeAttributes'
+import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
+import { ClusterStateDeletedSnapshots, ClusterStateSnapshots } from '@cluster/_types/ClusterStateSnapshots'
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { EmptyObject, NodeName, Uuid, VersionNumber } from '@_types/common'
 
 export class ClusterRerouteState {
   cluster_uuid: Uuid

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Conflicts, WaitForActiveShards } from '@common/common'
-import { long } from '@common/Numeric'
-import { Script } from '@common/Scripting'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Conflicts, WaitForActiveShards } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { Time } from '@_types/Time'
 import { ReindexDestination } from './ReindexDestination'
 import { ReindexSource } from './ReindexSource'
 

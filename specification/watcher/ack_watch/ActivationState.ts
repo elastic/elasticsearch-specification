@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Timestamp } from '@common/Time'
+import { Timestamp } from '@_types/Time'
 
 export class ActivationState {
   active: boolean

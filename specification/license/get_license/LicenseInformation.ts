@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Uuid } from '@common/common'
-import { integer, long } from '@common/Numeric'
-import { DateString, EpochMillis } from '@common/Time'
+import { Uuid } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { DateString, EpochMillis } from '@_types/Time'
 import { LicenseStatus } from './LicenseStatus'
 import { LicenseType } from './LicenseType'
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name, Names } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Name, Names } from '@_types/common'
 
 /**
  * @rest_spec_name watcher.ack_watch

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { NodeStatistics } from '@nodes/NodeStatistics'
-import { SecurityNode } from '@security/SecurityNode'
+import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { SecurityNode } from '@security/_types/SecurityNode'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
 
 export class SecurityClearCachedRolesResponse extends ResponseBase {
   cluster_name: string

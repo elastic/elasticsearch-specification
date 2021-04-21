@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float, long } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { float, long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 import { TaskRetries } from './TaskRetries'
 
 export class TaskStatus {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EpochMillis, Time } from '@common/Time'
+import { EpochMillis, Time } from '@_types/Time'
 
 export class RecoveryVerifyIndex {
   check_index_time?: Time

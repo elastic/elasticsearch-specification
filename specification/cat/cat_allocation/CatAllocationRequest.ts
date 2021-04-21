@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Bytes, NodeIds } from '@common/common'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, NodeIds } from '@_types/common'
 
 /**
  * @rest_spec_name cat.allocation

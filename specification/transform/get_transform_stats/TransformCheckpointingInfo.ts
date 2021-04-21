@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@common/Numeric'
-import { DateString } from '@common/Time'
+import { long } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
 import { TransformCheckpointStats } from './TransformCheckpointStats'
 
 export class TransformCheckpointingInfo {

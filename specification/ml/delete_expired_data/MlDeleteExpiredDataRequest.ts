@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name } from '@common/common'
-import { float } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { float } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.delete_expired_data

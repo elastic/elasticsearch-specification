@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, long } from '@common/Numeric'
+import { float, long } from '@_types/Numeric'
 
 export class BreakerStats {
   estimated_size: string

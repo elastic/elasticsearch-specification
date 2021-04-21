@@ -17,16 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber,
-  VersionType
-} from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Fields, Id, IndexName, Routing, Type, VersionNumber, VersionType } from '@_types/common'
 
 /**
  * @rest_spec_name exists_source

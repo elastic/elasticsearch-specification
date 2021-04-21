@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name } from '@common/common'
-import { long } from '@common/Numeric'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name transform.get_transform_stats

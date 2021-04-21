@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { HttpHeaders, TaskId } from '@common/common'
-import { long } from '@common/Numeric'
+import { HttpHeaders, TaskId } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { TaskStatus } from './TaskStatus'
 
 export class TaskState {

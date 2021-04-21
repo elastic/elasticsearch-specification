@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
+import { integer } from '@_types/Numeric'
 
 export class NodeInfoOSCPU {
   cache_size: string

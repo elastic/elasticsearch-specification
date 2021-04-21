@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { TaskId } from '@common/common'
-import { BulkIndexByScrollFailure } from '@common/Errors'
-import { float, long, ulong } from '@common/Numeric'
-import { Retries } from '@common/Retries'
+import { ResponseBase } from '@_types/Base'
+import { TaskId } from '@_types/common'
+import { BulkIndexByScrollFailure } from '@_types/Errors'
+import { float, long, ulong } from '@_types/Numeric'
+import { Retries } from '@_types/Retries'
 
 export class UpdateByQueryResponse extends ResponseBase {
   batches?: long

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/Base'
+import { AcknowledgedResponseBase } from '@_types/Base'
 import { ClusterRerouteExplanation } from './ClusterRerouteExplanation'
 import { ClusterRerouteState } from './ClusterRerouteState'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ElasticsearchVersionInfo, ResponseBase } from '@common/Base'
+import { ElasticsearchVersionInfo, ResponseBase } from '@_types/Base'
 
 export class RootNodeInfoResponse extends ResponseBase {
   cluster_name: string

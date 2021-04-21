@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { TaskId } from '@common/common'
-import { BulkIndexByScrollFailure } from '@common/Errors'
-import { integer, long } from '@common/Numeric'
-import { Retries } from '@common/Retries'
-import { EpochMillis, Time } from '@common/Time'
+import { ResponseBase } from '@_types/Base'
+import { TaskId } from '@_types/common'
+import { BulkIndexByScrollFailure } from '@_types/Errors'
+import { integer, long } from '@_types/Numeric'
+import { Retries } from '@_types/Retries'
+import { EpochMillis, Time } from '@_types/Time'
 
 export class ReindexResponse extends ResponseBase {
   batches?: long

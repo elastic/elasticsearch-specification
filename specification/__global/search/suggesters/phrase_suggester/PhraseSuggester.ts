@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { SuggesterBase } from '../Suggester'
 import { DirectGenerator } from './DirectGenerator'
 import { PhraseSuggestCollate } from './PhraseSuggestCollate'

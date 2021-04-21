@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 import { MinimalLicenseInformation } from './MinimalLicenseInformation'
 import { XPackBuildInformation } from './XPackBuildInformation'
 import { XPackFeatures } from './XPackFeatures'

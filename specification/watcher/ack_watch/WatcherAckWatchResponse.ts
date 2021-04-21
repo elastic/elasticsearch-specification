@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 import { WatchStatus } from './WatchStatus'
 
 export class WatcherAckWatchResponse extends ResponseBase {

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { Host, Ip, TransportAddress } from '@common/Networking'
 import { NodeRole } from '@nodes/nodes_info/NodeRole'
+import { Name } from '@_types/common'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { Dictionary } from './Dictionary'
 
 export class BaseNode {

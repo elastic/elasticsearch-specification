@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/Base'
+import { DictionaryResponseBase } from '@_types/Base'
 import { LifecyclePolicy } from './LifecyclePolicy'
 
 export class GetLifecycleResponse extends DictionaryResponseBase<

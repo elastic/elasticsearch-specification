@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ErrorCause } from '@common/Errors'
-import { integer } from '@common/Numeric'
+import { ResponseBase } from '@_types/Base'
+import { ErrorCause } from '@_types/Errors'
+import { integer } from '@_types/Numeric'
 
 export class SecurityInvalidateApiKeyResponse extends ResponseBase {
   error_count: integer

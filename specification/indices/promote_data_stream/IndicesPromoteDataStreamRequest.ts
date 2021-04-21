@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { IndexName } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.promote_data_stream

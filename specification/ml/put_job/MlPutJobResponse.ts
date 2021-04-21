@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Id } from '@common/common'
-import { long } from '@common/Numeric'
-import { DateString, Time } from '@common/Time'
-import { AnalysisConfig } from '@ml/AnalysisConfig'
-import { AnalysisLimits } from '@ml/AnalysisLimits'
-import { DataDescription } from '@ml/DataDescription'
-import { ModelPlotConfig } from '@ml/ModelPlotConfig'
+import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
+import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
+import { DataDescription } from '@ml/_types/DataDescription'
+import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
+import { ResponseBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { DateString, Time } from '@_types/Time'
 
 export class MlPutJobResponse extends ResponseBase {
   allow_lazy_open: boolean

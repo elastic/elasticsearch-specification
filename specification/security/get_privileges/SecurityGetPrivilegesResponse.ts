@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/Base'
 import { PrivilegesActions } from '@security/put_privileges/PrivilegesActions'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { DictionaryResponseBase } from '@_types/Base'
 
 export class SecurityGetPrivilegesResponse extends DictionaryResponseBase<
   string,

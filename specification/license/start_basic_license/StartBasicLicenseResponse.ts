@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class StartBasicLicenseResponse extends AcknowledgedResponseBase {
   acknowledge: Dictionary<string, string | string[]>

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, Indices } from '@common/common'
-import { IndexSettings } from '@common/index/IndexSettings'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
+import { IndexSettings } from '@_types/index/IndexSettings'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_settings

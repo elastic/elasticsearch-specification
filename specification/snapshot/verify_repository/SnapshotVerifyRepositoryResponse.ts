@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Name } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 export class SnapshotVerifyRepositoryResponse extends ResponseBase {
   nodes: Dictionary<string, CompactNodeInfo>

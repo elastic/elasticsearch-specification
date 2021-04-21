@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { DatafeedStats } from '@ml/DatafeedStats'
+import { DatafeedStats } from '@ml/_types/DatafeedStats'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetDatafeedStatsResponse extends ResponseBase {
   count: long

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { ModelSnapshot } from '@ml/ModelSnapshot'
+import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetModelSnapshotsResponse extends ResponseBase {
   count: long

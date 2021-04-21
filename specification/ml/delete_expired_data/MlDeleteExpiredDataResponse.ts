@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 
 export class MlDeleteExpiredDataResponse extends ResponseBase {
   deleted: boolean

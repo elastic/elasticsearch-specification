@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { WriteResponseBase } from '@common/Base'
+import { WriteResponseBase } from '@_types/Base'
 
 export class DeleteResponse extends WriteResponseBase {}

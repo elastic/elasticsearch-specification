@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { integer } from '@_types/Numeric'
 import { DatafeedCount } from './DatafeedCount'
 import { Job } from './Job'
 import { MlDataFrameAnalyticsJobsUsage } from './MlDataFrameAnalyticsJobsUsage'

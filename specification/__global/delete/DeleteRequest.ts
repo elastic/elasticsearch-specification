@@ -17,20 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  Id,
-  IndexName,
-  Refresh,
-  Routing,
-  SequenceNumber,
-  Type,
-  VersionNumber,
-  VersionType,
-  WaitForActiveShards
-} from '@common/common'
-import { long } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Id, IndexName, Refresh, Routing, SequenceNumber, Type, VersionNumber, VersionType, WaitForActiveShards } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name delete

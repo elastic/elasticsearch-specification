@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Bytes, Id } from '@common/common'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, Id } from '@_types/common'
 
 /**
  * @rest_spec_name cat.ml_data_frame_analytics

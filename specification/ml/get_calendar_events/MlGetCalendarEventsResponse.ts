@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { integer } from '@common/Numeric'
 import { ScheduledEvent } from '@ml/post_calendar_events/ScheduledEvent'
+import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 export class MlGetCalendarEventsResponse extends ResponseBase {
   count: integer

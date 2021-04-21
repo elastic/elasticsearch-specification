@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Status } from '@watcher/Action'
-import { ConditionType } from '@watcher/Conditions'
+import { Status } from '@watcher/_types/Action'
+import { ConditionType } from '@watcher/_types/Conditions'
 
 export class ExecutionResultCondition {
   met: boolean

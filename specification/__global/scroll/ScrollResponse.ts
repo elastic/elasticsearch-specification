@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
 import { SearchResponse } from '@global/search/SearchResponse'
+import { integer } from '@_types/Numeric'
 
 export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {
   failed_shards?: Array<ScrollResponseFailedShard>

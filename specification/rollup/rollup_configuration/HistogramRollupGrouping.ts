@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Fields } from '@common/common'
-import { long } from '@common/Numeric'
+import { Fields } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class HistogramRollupGrouping {
   fields: Fields

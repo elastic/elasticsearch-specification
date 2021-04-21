@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, IndexName } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.data_streams_stats

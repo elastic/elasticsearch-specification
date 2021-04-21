@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { integer } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Field } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class NestedSortValue {
   filter: QueryContainer

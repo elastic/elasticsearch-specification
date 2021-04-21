@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { IndexMetaData, Name, VersionNumber } from '@common/common'
-import { IndexSettings } from '@common/index/IndexSettings'
-import { IndexState } from '@common/index/IndexState'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { Time } from '@common/Time'
-import { AliasDefinition } from '@indices/AliasDefinition'
+import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { RequestBase } from '@_types/Base'
+import { IndexMetaData, Name, VersionNumber } from '@_types/common'
+import { IndexSettings } from '@_types/index/IndexSettings'
+import { IndexState } from '@_types/index/IndexState'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.put_component_template

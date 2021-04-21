@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@common/Numeric'
+import { float } from '@_types/Numeric'
 
 export class ExplanationDetail {
   description: string

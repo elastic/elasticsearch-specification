@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ShardStatistics } from '@common/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { ShardStatistics } from '@_types/Stats'
 import { IndicesStats } from './IndicesStats'
 
 export class IndicesStatsResponse extends ResponseBase {

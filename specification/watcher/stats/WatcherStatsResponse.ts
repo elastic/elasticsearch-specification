@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { NodeStatistics } from '@nodes/NodeStatistics'
+import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { ResponseBase } from '@_types/Base'
 import { WatcherNodeStats } from './WatcherNodeStats'
 
 export class WatcherStatsResponse extends ResponseBase {

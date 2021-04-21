@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ByteSize } from '@common/common'
-import { long } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { ByteSize } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 export class IndicesRolloverConditions {
   max_age?: Time

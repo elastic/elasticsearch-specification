@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
 import { License } from '@license/get_license/License'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name license.post

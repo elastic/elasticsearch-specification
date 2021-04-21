@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ByteSize, Name } from '@common/common'
-import { integer } from '@common/Numeric'
-import { ShardStatistics } from '@common/Stats'
+import { ResponseBase } from '@_types/Base'
+import { ByteSize, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { ShardStatistics } from '@_types/Stats'
 
 export class IndicesDataStreamsStatsResponse extends ResponseBase {
   _shards: ShardStatistics

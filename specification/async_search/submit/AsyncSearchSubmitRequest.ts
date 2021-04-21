@@ -17,23 +17,6 @@
  * under the License.
  */
 
-import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { RequestBase } from '@common/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Field,
-  Fields,
-  IndexName,
-  Indices,
-  Routing,
-  SearchType,
-  SuggestMode
-} from '@common/common'
-import { double, integer, long } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { ScriptField } from '@common/Scripting'
-import { DateField, Time } from '@common/Time'
 import { FieldCollapse } from '@global/search/collapsing/FieldCollapse'
 import { Highlight } from '@global/search/highlighting/Highlight'
 import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
@@ -43,6 +26,13 @@ import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { RequestBase } from '@_types/Base'
+import { DefaultOperator, ExpandWildcards, Field, Fields, IndexName, Indices, Routing, SearchType, SuggestMode } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@_types/Scripting'
+import { DateField, Time } from '@_types/Time'
 
 /**
  * @rest_spec_name async_search.submit

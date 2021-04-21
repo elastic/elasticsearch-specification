@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/Base'
-import { IndexName } from '@common/common'
+import { AcknowledgedResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 export class IndicesCreateResponse extends AcknowledgedResponseBase {
   index: IndexName

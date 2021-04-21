@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Name } from '@common/common'
-import { NodeStatistics } from '@nodes/NodeStatistics'
+import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 export class SecurityClearApiKeyCacheResponse extends ResponseBase {
   _nodes: NodeStatistics

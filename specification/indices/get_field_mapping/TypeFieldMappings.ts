@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { FieldMapping } from '@common/mapping/meta_fields/FieldMapping'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Field } from '@_types/common'
+import { FieldMapping } from '@_types/mapping/meta_fields/FieldMapping'
 
 export class TypeFieldMappings {
   /** @prop_serializer ResolvableReadOnlyDictionaryFormatter`2 */

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { IndexName, Name, VersionNumber } from '@common/common'
-import { integer } from '@common/Numeric'
-import { EpochMillis, Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName, Name, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { EpochMillis, Time } from '@_types/Time'
 
 export class LifecycleExplain {
   action: Name

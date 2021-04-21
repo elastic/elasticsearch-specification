@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { Transform } from '@watcher/Transform'
+import { Transform } from '@watcher/_types/Transform'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class GetTransformResponse extends ResponseBase {
   count: long

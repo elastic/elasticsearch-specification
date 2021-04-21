@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { EmptyResponseBase } from '@spec_utils/behaviors'
+import { ResponseBase } from '@_types/Base'
 
 export class PingResponse extends ResponseBase implements EmptyResponseBase {}

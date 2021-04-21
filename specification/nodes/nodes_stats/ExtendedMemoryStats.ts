@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
+import { integer } from '@_types/Numeric'
 import { MemoryStats } from './MemoryStats'
 
 export class ExtendedMemoryStats extends MemoryStats {

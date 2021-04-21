@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Field, Id } from '@common/common'
-import { double, integer } from '@common/Numeric'
-import { DateString, Timestamp } from '@common/Time'
-import { Page } from '@ml/Page'
+import { Page } from '@ml/_types/Page'
+import { RequestBase } from '@_types/Base'
+import { Field, Id } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { DateString, Timestamp } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.get_buckets

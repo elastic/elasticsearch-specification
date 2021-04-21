@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, Id, Indices } from '@common/common'
-import { integer } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { ScriptField } from '@common/Scripting'
-import { Time } from '@common/Time'
-import { ChunkingConfig } from '@ml/ChunkingConfig'
-import { DelayedDataCheckConfig } from '@ml/Datafeed'
+import { ChunkingConfig } from '@ml/_types/ChunkingConfig'
+import { DelayedDataCheckConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Id, Indices } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@_types/Scripting'
+import { Time } from '@_types/Time'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
 /**

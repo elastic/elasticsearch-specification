@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 
 export class MlEstimateModelMemoryResponse extends ResponseBase {
   model_memory_estimate: string

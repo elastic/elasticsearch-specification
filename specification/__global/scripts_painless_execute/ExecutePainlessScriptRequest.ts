@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { InlineScript } from '@common/Scripting'
+import { RequestBase } from '@_types/Base'
+import { InlineScript } from '@_types/Scripting'
 import { PainlessContextSetup } from './PainlessContextSetup'
 
 /**

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
+import { ResponseBase } from '@_types/Base'
 
 export class GetSnapshotLifecycleManagementStatusResponse extends ResponseBase {
   operation_mode: LifecycleOperationMode

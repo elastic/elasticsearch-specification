@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 import { FollowerInfo } from './FollowerInfo'
 
 export class FollowInfoResponse extends ResponseBase {

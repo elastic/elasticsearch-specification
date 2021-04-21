@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EpochMillis, Time } from '@common/Time'
+import { EpochMillis, Time } from '@_types/Time'
 import { RecoveryBytes } from './RecoveryBytes'
 import { RecoveryFiles } from './RecoveryFiles'
 

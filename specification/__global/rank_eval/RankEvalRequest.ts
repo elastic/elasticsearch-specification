@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, Indices } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
 import { RankEvalMetric } from './RankEvalMetric'
 import { RankEvalRequestItem } from './RankEvalRequestItem'
 

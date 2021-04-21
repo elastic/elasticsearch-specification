@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/Base'
-import { IndexName } from '@common/common'
-import { TypeMapping } from '@common/mapping/TypeMapping'
+import { DictionaryResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class IndicesGetMappingResponse extends DictionaryResponseBase<
   IndexName,

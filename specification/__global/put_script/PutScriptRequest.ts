@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id, Name } from '@common/common'
-import { StoredScript } from '@common/Scripting'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Id, Name } from '@_types/common'
+import { StoredScript } from '@_types/Scripting'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name put_script

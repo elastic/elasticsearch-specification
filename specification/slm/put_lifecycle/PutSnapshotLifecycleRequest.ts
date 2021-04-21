@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name } from '@common/common'
-import { SnapshotLifecycleConfig } from '@slm/SnapshotLifecycleConfig'
-import { SnapshotRetentionConfiguration } from '@slm/SnapshotRetentionConfiguration'
-import { CronExpression } from '@watcher/Schedule'
+import { SnapshotLifecycleConfig } from '@slm/_types/SnapshotLifecycleConfig'
+import { SnapshotRetentionConfiguration } from '@slm/_types/SnapshotRetentionConfiguration'
+import { CronExpression } from '@watcher/_types/Schedule'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name slm.put_lifecycle

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/Numeric'
+import { double } from '@_types/Numeric'
 
 export class LinearInterpolationSmoothingModel {
   bigram_lambda: double

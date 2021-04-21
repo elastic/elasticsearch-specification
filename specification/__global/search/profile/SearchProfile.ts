@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/Numeric'
+import { long } from '@_types/Numeric'
 import { Collector } from './Collector'
 import { QueryProfile } from './QueryProfile'
 

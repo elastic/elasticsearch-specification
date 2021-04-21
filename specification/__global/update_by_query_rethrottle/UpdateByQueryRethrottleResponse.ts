@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
 import { UpdateByQueryRethrottleNode } from './UpdateByQueryRethrottleNode'
 
 export class UpdateByQueryRethrottleResponse extends ResponseBase {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, long } from '@common/Numeric'
+import { integer, long } from '@_types/Numeric'
 
 export class TransportStats {
   rx_count: long

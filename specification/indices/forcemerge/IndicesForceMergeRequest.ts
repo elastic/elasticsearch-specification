@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, Indices } from '@common/common'
-import { long } from '@common/Numeric'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name indices.forcemerge

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Indices, Name } from '@common/common'
-import { ShardStatistics } from '@common/Stats'
+import { ResponseBase } from '@_types/Base'
+import { Indices, Name } from '@_types/common'
+import { ShardStatistics } from '@_types/Stats'
 
 export class SearchableSnapshotsMountResponse extends ResponseBase {
   snapshot: SearchableSnapshotsMountSnapshot

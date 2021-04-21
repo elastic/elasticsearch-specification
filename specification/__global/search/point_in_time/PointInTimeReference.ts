@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
-import { Time } from '@common/Time'
+import { Id } from '@_types/common'
+import { Time } from '@_types/Time'
 
 export class PointInTimeReference {
   id: Id

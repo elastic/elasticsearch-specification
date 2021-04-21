@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Indices } from '@common/common'
+import { Indices } from '@_types/common'
 
 export class ApiKeyPrivileges {
   names: Indices

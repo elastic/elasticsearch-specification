@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name, VersionString } from '@common/common'
-import { integer, long } from '@common/Numeric'
+import { Name, VersionString } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import { NodeInfoJvmMemory } from './NodeInfoJvmMemory'
 
 export class NodeJvmInfo {

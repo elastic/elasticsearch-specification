@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/Numeric'
+import { integer } from '@_types/Numeric'
 import { SnapshotLifecycleStats } from './SnapshotLifecycleStats'
 import { XPackUsage } from './XPackUsage'
 

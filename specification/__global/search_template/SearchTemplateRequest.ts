@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  Routing,
-  SearchType,
-  Types
-} from '@common/common'
-import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices, Routing, SearchType, Types } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name search_template

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { long } from '@common/Numeric'
-import { ResultBucket } from '@ml/ResultBucket'
+import { ResultBucket } from '@ml/_types/ResultBucket'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetBucketsResponse extends ResponseBase {
   buckets: ResultBucket[]

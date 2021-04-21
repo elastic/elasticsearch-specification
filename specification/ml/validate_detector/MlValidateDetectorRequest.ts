@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Detector } from '@ml/Detector'
+import { Detector } from '@ml/_types/Detector'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name ml.validate_detector

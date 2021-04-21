@@ -17,17 +17,12 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
-import {
-  ActionType,
-  LoggingActionResult,
-  Status,
-  WebhookActionResult
-} from '@watcher/Action'
-import { EmailActionResult } from '@watcher/EmailAction'
-import { IndexActionResult } from '@watcher/IndexAction'
-import { PagerDutyActionResult } from '@watcher/PagerDutyAction'
-import { SlackActionResult } from '@watcher/SlackAction'
+import { ActionType, LoggingActionResult, Status, WebhookActionResult } from '@watcher/_types/Action'
+import { EmailActionResult } from '@watcher/_types/EmailAction'
+import { IndexActionResult } from '@watcher/_types/IndexAction'
+import { PagerDutyActionResult } from '@watcher/_types/PagerDutyAction'
+import { SlackActionResult } from '@watcher/_types/SlackAction'
+import { Id } from '@_types/common'
 
 export class ExecutionResultAction {
   email?: EmailActionResult

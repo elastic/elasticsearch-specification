@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@common/Time'
+import { DateString, EpochMillis } from '@_types/Time'
 
 export class CatHealthRecord {
   /**

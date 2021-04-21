@@ -17,16 +17,9 @@
  * under the License.
  */
 
-import { Name, VersionString } from '@common/common'
-import { integer, long } from '@common/Numeric'
-import {
-  CompletionStats,
-  DocStats,
-  FielddataStats,
-  QueryCacheStats,
-  SegmentsStats,
-  StoreStats
-} from '@common/Stats'
+import { Name, VersionString } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { CompletionStats, DocStats, FielddataStats, QueryCacheStats, SegmentsStats, StoreStats } from '@_types/Stats'
 import { ClusterIndicesShardsStats } from './ClusterIndicesShardsStats'
 
 export class ClusterIndicesStats {

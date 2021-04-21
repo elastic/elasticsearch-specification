@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ExpandWildcards } from '@common/common'
+import { ExpandWildcards } from '@_types/common'
 
 export class DatafeedIndicesOptions {
   allow_no_indices?: boolean

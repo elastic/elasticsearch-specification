@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { HttpHeaders, Name } from '@common/common'
-import { long } from '@common/Numeric'
+import { HttpHeaders, Name } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { ReindexStatus } from './ReindexStatus'
 
 export class ReindexTask {

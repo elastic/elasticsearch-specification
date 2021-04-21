@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 import { HotThreadInformation } from './HotThreadInformation'
 
 export class NodesHotThreadsResponse extends ResponseBase {

@@ -17,17 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import {
-  Fields,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber,
-  VersionType
-} from '@common/common'
-import { integer } from '@common/Numeric'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { RequestBase } from '@_types/Base'
+import { Fields, IndexName, Routing, Type, VersionNumber, VersionType } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name mget

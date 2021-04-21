@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field, Id, IndexName, VersionNumber } from '@common/common'
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Field, Id, IndexName, VersionNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { TermVector } from './TermVector'
 
 export class TermVectorsResult {

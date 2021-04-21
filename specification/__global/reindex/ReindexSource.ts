@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Fields, Indices } from '@common/common'
-import { integer } from '@common/Numeric'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '@common/SlicedScroll'
 import { Sort } from '@global/search/sort/Sort'
+import { Fields, Indices } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { SlicedScroll } from '@_types/SlicedScroll'
 import { RemoteSource } from './RemoteSource'
 
 export class ReindexSource {

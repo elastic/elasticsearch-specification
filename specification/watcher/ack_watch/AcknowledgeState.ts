@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '@common/Time'
+import { DateString } from '@_types/Time'
 import { AcknowledgementState } from './AcknowledgementState'
 
 export class AcknowledgeState {

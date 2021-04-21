@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { ExpandWildcards, IndexName } from '@common/common'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, IndexName } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.unfreeze

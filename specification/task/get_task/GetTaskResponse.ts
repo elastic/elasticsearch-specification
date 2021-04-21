@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ErrorCause } from '@common/Errors'
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
+import { ResponseBase } from '@_types/Base'
+import { ErrorCause } from '@_types/Errors'
 import { TaskInfo } from './TaskInfo'
 
 export class GetTaskResponse extends ResponseBase {

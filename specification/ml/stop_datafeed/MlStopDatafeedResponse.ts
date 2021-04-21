@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
+import { ResponseBase } from '@_types/Base'
 
 export class MlStopDatafeedResponse extends ResponseBase {
   stopped: boolean

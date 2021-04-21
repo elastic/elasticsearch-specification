@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import {
-  Id,
-  IndexName,
-  SequenceNumber,
-  Type,
-  VersionNumber
-} from '@common/common'
-import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ResponseBase } from '@_types/Base'
+import { Id, IndexName, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 export class GetResponse<TDocument> extends ResponseBase {
   _index: IndexName

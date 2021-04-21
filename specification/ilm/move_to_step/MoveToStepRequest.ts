@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { IndexName } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 import { StepKey } from './StepKey'
 
 /**

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { integer } from '@common/Numeric'
+import { Field } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class SampleDiversity {
   field: Field

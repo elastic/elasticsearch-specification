@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Indices, Routing, Types } from '@common/common'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Indices, Routing, Types } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Time } from '@_types/Time'
 import { GraphExploreControls } from './GraphExploreControls'
 import { GraphVertexDefinition } from './GraphVertexDefinition'
 import { Hop } from './Hop'

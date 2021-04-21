@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Health, IndexName } from '@common/common'
-import { integer, Percentage } from '@common/Numeric'
-import { EpochMillis } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { Health, IndexName } from '@_types/common'
+import { integer, Percentage } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 import { IndexHealthStats } from './IndexHealthStats'
 
 /**

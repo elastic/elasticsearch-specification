@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/Numeric'
+import { double } from '@_types/Numeric'
 import { ClusterIndicesShardsIndexStats } from './ClusterIndicesShardsIndexStats'
 
 export class ClusterIndicesShardsStats {

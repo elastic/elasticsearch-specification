@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Password, Refresh, Username } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Password, Refresh, Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.change_password

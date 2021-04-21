@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/Base'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class WatcherStartResponse extends AcknowledgedResponseBase {}

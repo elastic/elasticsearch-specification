@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/Base'
-import { integer, long } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { DictionaryResponseBase } from '@_types/Base'
+import { integer, long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
   string,

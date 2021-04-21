@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id } from '@common/common'
-import { double, integer } from '@common/Numeric'
-import { DateString, Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { DateString, Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.get_overall_buckets

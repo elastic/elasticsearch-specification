@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { ShardFailure } from '@common/Errors'
-import { long } from '@common/Numeric'
+import { ResponseBase } from '@_types/Base'
+import { ShardFailure } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 import { GraphConnection } from './GraphConnection'
 import { GraphVertex } from './GraphVertex'
 

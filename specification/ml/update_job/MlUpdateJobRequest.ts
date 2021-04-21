@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Id } from '@common/common'
-import { long } from '@common/Numeric'
-import { Time } from '@common/Time'
-import { PerPartitionCategorization } from '@ml/AnalysisConfig'
-import { AnalysisMemoryLimit } from '@ml/AnalysisMemoryLimit'
-import { Detector } from '@ml/Detector'
-import { ModelPlotConfigEnabled } from '@ml/ModelPlotConfigEnabled'
+import { PerPartitionCategorization } from '@ml/_types/AnalysisConfig'
+import { AnalysisMemoryLimit } from '@ml/_types/AnalysisMemoryLimit'
+import { Detector } from '@ml/_types/Detector'
+import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlotConfigEnabled'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.update_job

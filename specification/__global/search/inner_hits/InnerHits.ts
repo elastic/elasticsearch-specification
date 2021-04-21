@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Fields, Name } from '@common/common'
-import { integer } from '@common/Numeric'
-import { ScriptField } from '@common/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Fields, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from '../collapsing/FieldCollapse'
 import { Highlight } from '../highlighting/Highlight'
 import { Sort } from '../sort/Sort'

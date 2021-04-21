@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { Name } from '@common/common'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.delete_auto_follow_pattern

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/Base'
-import { Id, IndexName, Type } from '@common/common'
+import { ResponseBase } from '@_types/Base'
+import { Id, IndexName, Type } from '@_types/common'
 import { ExplanationDetail } from './ExplanationDetail'
 import { InlineGet } from './InlineGet'
 

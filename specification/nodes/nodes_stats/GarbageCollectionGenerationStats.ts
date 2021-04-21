@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/Numeric'
+import { long } from '@_types/Numeric'
 
 export class GarbageCollectionGenerationStats {
   collection_count: long

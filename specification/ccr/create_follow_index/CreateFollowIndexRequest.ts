@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/Base'
-import { IndexName, WaitForActiveShards } from '@common/common'
-import { long } from '@common/Numeric'
-import { Time } from '@common/Time'
+import { RequestBase } from '@_types/Base'
+import { IndexName, WaitForActiveShards } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ccr.follow
