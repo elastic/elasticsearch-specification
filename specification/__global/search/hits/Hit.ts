@@ -20,7 +20,13 @@
 import { Explanation } from '@global/explain/Explanation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { SortResults } from '../sort/Sort'
 import { InnerHitsResult } from './InnerHitsResult'

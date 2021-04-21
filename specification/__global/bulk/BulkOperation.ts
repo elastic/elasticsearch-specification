@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { Id, IndexName, Routing, VersionNumber, VersionType } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class BulkOperation {

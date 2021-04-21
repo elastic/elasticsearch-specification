@@ -20,7 +20,19 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { DefaultOperator, ExpandWildcards, Field, Fields, IndexName, Indices, Routing, SearchType, SuggestMode, Types, VersionString } from '@_types/common'
+import {
+  DefaultOperator,
+  ExpandWildcards,
+  Field,
+  Fields,
+  IndexName,
+  Indices,
+  Routing,
+  SearchType,
+  SuggestMode,
+  Types,
+  VersionString
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'

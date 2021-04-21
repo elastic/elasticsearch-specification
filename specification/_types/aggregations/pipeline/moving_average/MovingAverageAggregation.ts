@@ -19,7 +19,10 @@
 
 import { integer } from '@_types/Numeric'
 import { PipelineAggregationBase } from '../PipelineAggregationBase'
-import { MovingAverageModel, MovingAverageSettings } from './models/MovingAverageModel'
+import {
+  MovingAverageModel,
+  MovingAverageSettings
+} from './models/MovingAverageModel'
 
 export class MovingAverageAggregation extends PipelineAggregationBase {
   minimize?: boolean

@@ -19,7 +19,16 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { Field, Fields, Id, IndexName, Routing, Type, VersionNumber, VersionType } from '@_types/common'
+import {
+  Field,
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { TermVectorFilter } from './TermVectorFilter'
 
 /**

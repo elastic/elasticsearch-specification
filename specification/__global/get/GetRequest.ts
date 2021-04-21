@@ -18,7 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Id, IndexName, Routing, Type, VersionNumber, VersionType } from '@_types/common'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 
 /**
  * @rest_spec_name get
