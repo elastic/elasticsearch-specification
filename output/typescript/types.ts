@@ -850,6 +850,18 @@ export interface BulkResponseItemContainer {
   delete?: BulkDeleteResponseItem
 }
 
+export interface BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
+}
+
 export interface BulkUpdateOperation extends BulkOperation {
 }
 
@@ -3467,6 +3479,7 @@ export interface CompletionProperty extends DocValuesPropertyBase {
 export interface CompletionStats {
   size_in_bytes: long
   size?: ByteSize
+  fields?: Record<Field, FieldSizeUsage>
 }
 
 export interface CompletionSuggestOption<TDocument = unknown> {
@@ -4929,6 +4942,11 @@ export interface FieldLookup {
 export interface FieldMapping {
 }
 
+export interface FieldMemoryUsage {
+  memory_size?: ByteSize
+  memory_size_in_bytes: long
+}
+
 export interface FieldNamesField {
   enabled: boolean
 }
@@ -4941,6 +4959,11 @@ export interface FieldSecurity {
 export interface FieldSecuritySettings {
   except: Array<string>
   grant: Array<string>
+}
+
+export interface FieldSizeUsage {
+  size?: ByteSize
+  size_in_bytes: long
 }
 
 export interface FieldSort {
@@ -5001,6 +5024,7 @@ export interface FielddataStats {
   evictions?: long
   memory_size?: ByteSize
   memory_size_in_bytes: long
+  fields?: Record<Field, FieldMemoryUsage>
 }
 
 export type Fields = Field | Array<Field>
@@ -6367,6 +6391,7 @@ export interface IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+  bulk?: BulkStats
 }
 
 export interface IndexVersioning {
@@ -11854,15 +11879,6 @@ export interface ShardCommit {
   user_data: Record<string, string>
 }
 
-export interface ShardCompletion {
-  size_in_bytes: long
-}
-
-export interface ShardDocs {
-  count: long
-  deleted: long
-}
-
 export interface ShardFailure {
   index: string
   node: string
@@ -11871,30 +11887,9 @@ export interface ShardFailure {
   status?: string
 }
 
-export interface ShardFielddata {
-  evictions: long
-  memory_size_in_bytes: long
-}
-
 export interface ShardFileSizeInfo {
   description: string
   size_in_bytes: long
-}
-
-export interface ShardFlush {
-  total: long
-  periodic: long
-  total_time_in_millis: long
-}
-
-export interface ShardGet {
-  current: long
-  exists_time_in_millis: long
-  exists_total: long
-  missing_time_in_millis: long
-  missing_total: long
-  time_in_millis: long
-  total: long
 }
 
 export interface ShardHealthStats {
@@ -11906,37 +11901,11 @@ export interface ShardHealthStats {
   unassigned_shards: integer
 }
 
-export interface ShardIndexing {
-  delete_current: long
-  delete_time_in_millis: long
-  delete_total: long
-  index_current: long
-  index_failed: long
-  index_time_in_millis: long
-  index_total: long
-  is_throttled: boolean
-  noop_update_total: long
-  throttle_time_in_millis: long
-}
-
 export interface ShardLease {
   id: Id
   retaining_seq_no: SequenceNumber
   timestamp: long
   source: string
-}
-
-export interface ShardMerges {
-  current: long
-  current_docs: long
-  current_size_in_bytes: long
-  total: long
-  total_auto_throttle_in_bytes: long
-  total_docs: long
-  total_size_in_bytes: long
-  total_stopped_time_in_millis: long
-  total_throttled_time_in_millis: long
-  total_time_in_millis: long
 }
 
 export interface ShardPath {
@@ -11980,21 +11949,6 @@ export interface ShardRecovery {
   verify_index: RecoveryVerifyIndex
 }
 
-export interface ShardRefresh {
-  listeners: long
-  total: long
-  total_time_in_millis: long
-  external_total: long
-  external_total_time_in_millis: long
-}
-
-export interface ShardRequestCache {
-  evictions: long
-  hit_count: long
-  memory_size_in_bytes: long
-  miss_count: long
-}
-
 export interface ShardRetentionLeases {
   primary_term: long
   version: VersionNumber
@@ -12010,42 +11964,10 @@ export interface ShardRouting {
 
 export type ShardRoutingState = 'UNASSIGNED' | 'INITIALIZING' | 'STARTED' | 'RELOCATING'
 
-export interface ShardSearch {
-  fetch_current: long
-  fetch_time_in_millis: long
-  fetch_total: long
-  open_contexts: long
-  query_current: long
-  query_time_in_millis: long
-  query_total: long
-  scroll_current: long
-  scroll_time_in_millis: long
-  scroll_total: long
-  suggest_current: long
-  suggest_time_in_millis: long
-  suggest_total: long
-}
-
 export interface ShardSegmentRouting {
   node: string
   primary: boolean
   state: string
-}
-
-export interface ShardSegments {
-  count: long
-  doc_values_memory_in_bytes: long
-  file_sizes: Record<string, ShardFileSizeInfo>
-  fixed_bit_set_memory_in_bytes: long
-  index_writer_memory_in_bytes: long
-  max_unsafe_auto_id_timestamp: long
-  memory_in_bytes: long
-  norms_memory_in_bytes: long
-  points_memory_in_bytes: long
-  stored_fields_memory_in_bytes: long
-  terms_memory_in_bytes: long
-  term_vectors_memory_in_bytes: long
-  version_map_memory_in_bytes: long
 }
 
 export interface ShardSequenceNumber {
@@ -12064,37 +11986,27 @@ export interface ShardStatistics {
 
 export interface ShardStats {
   commit: ShardCommit
-  completion: ShardCompletion
-  docs: ShardDocs
-  fielddata: ShardFielddata
-  flush: ShardFlush
-  get: ShardGet
-  indexing: ShardIndexing
-  merges: ShardMerges
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
   shard_path: ShardPath
   query_cache: ShardQueryCache
-  recovery: ShardStatsRecovery
-  refresh: ShardRefresh
-  request_cache: ShardRequestCache
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
   retention_leases: ShardRetentionLeases
   routing: ShardRouting
-  search: ShardSearch
-  segments: ShardSegments
+  search: SearchStats
+  segments: SegmentsStats
   seq_no: ShardSequenceNumber
-  store: ShardStatsStore
-  translog: ShardTransactionLog
-  warmer: ShardWarmer
-}
-
-export interface ShardStatsRecovery {
-  current_as_source: long
-  current_as_target: long
-  throttle_time_in_millis: long
-}
-
-export interface ShardStatsStore {
-  reserved_in_bytes: long
-  size_in_bytes: long
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
+  bulk?: BulkStats
 }
 
 export interface ShardStore {
@@ -12122,20 +12034,6 @@ export interface ShardStoreIndex {
 
 export interface ShardStoreWrapper {
   stores: Array<ShardStore>
-}
-
-export interface ShardTransactionLog {
-  earliest_last_modified_age: long
-  operations: long
-  size_in_bytes: long
-  uncommitted_operations: long
-  uncommitted_size_in_bytes: long
-}
-
-export interface ShardWarmer {
-  current: long
-  total: long
-  total_time_in_millis: long
 }
 
 export interface ShardsOperationResponseBase extends ResponseBase {

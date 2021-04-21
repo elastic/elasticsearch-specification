@@ -17,10 +17,16 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { ByteSize, long } from '@common/common'
 
-export class ShardStatsRecovery {
-  current_as_source: long
-  current_as_target: long
-  throttle_time_in_millis: long
+export class BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
 }

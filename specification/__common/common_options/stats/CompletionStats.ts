@@ -17,9 +17,16 @@
  * under the License.
  */
 
-import { ByteSize, long } from '@common/common'
+import { ByteSize, Field, long } from '@common/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class CompletionStats {
   size_in_bytes: long
   size?: ByteSize
+  fields?: Dictionary<Field, FieldSizeUsage>
+}
+
+export class FieldSizeUsage {
+  size?: ByteSize
+  size_in_bytes: long
 }

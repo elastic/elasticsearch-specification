@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { ByteSize, long } from '@common/common'
+import { ByteSize, Field, long } from '@common/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class FielddataStats {
   evictions?: long
+  memory_size?: ByteSize
+  memory_size_in_bytes: long
+  fields?: Dictionary<Field, FieldMemoryUsage>
+}
+
+export class FieldMemoryUsage {
   memory_size?: ByteSize
   memory_size_in_bytes: long
 }
