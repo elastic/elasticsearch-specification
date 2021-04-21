@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import { Id } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Pipeline } from '@ingest/Pipeline'
 import { SimulatePipelineDocument } from './SimulatePipelineDocument'
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { integer } from '@common/Numeric'
 
 /**
  * @rest_spec_name rollup.rollup

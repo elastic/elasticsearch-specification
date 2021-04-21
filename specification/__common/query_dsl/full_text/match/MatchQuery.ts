@@ -18,13 +18,11 @@
  */
 
 import {
-  double,
-  float,
   Fuzziness,
-  integer,
+  MinimumShouldMatch,
   MultiTermQueryRewrite
 } from '@common/common'
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { double, float, integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { Operator } from '@common/query_dsl/Operator'
 import { ZeroTermsQuery } from '../multi_match/ZeroTermsQuery'

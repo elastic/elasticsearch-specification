@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { ScoreMode } from './ScoreMode'
 

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer, Name } from '@common/common'
+import { Field, Name } from '@common/common'
+import { integer } from '@common/Numeric'
 
 export class SuggestContext {
   name: Name

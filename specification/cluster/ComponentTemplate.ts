@@ -18,10 +18,10 @@
  */
 
 import { IndexMetaData, IndexName, Name, VersionNumber } from '@common/common'
+import { IndexSettings } from '@common/index/IndexSettings'
+import { TypeMapping } from '@common/mapping/TypeMapping'
 import { AliasDefinition } from '@indices/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { IndexSettings } from '@common/index/IndexSettings'
 
 export class ComponentTemplate {
   name: Name

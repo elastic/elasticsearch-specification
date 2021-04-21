@@ -18,9 +18,9 @@
  */
 
 import { Aggregate } from '@common/aggregations/Aggregate'
-import { double, Id, long, SuggestionName } from '@common/common'
-import { ClusterStatistics } from '@common/common_options/hit/ClusterStatistics'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { Id, SuggestionName } from '@common/common'
+import { double, long } from '@common/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@common/Stats'
 import { HitsMetadata } from '@global/search/hits/HitsMetadata'
 import { Profile } from '@global/search/profile/Profile'
 import { Suggest } from '@global/search/suggesters/Suggest'

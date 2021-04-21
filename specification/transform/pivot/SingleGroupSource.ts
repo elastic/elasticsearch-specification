@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
+import { Script } from '@common/Scripting'
 
 export class SingleGroupSource {
   field: Field

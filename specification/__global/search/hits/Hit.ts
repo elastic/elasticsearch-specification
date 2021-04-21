@@ -18,14 +18,13 @@
  */
 
 import {
-  double,
   Id,
   IndexName,
-  long,
   SequenceNumber,
   Type,
   VersionNumber
 } from '@common/common'
+import { double, long } from '@common/Numeric'
 import { Explanation } from '@global/explain/Explanation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

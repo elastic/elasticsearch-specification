@@ -17,9 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
-import { OpType } from '@common/common/OpType'
-import { VersionType } from '@common/common/VersionType'
+import { IndexName, OpType, VersionType } from '@common/common'
 import { ReindexRouting } from './ReindexRouting'
 
 export class ReindexDestination {

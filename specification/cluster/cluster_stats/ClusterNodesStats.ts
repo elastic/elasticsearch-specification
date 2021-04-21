@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { PluginStats } from '@common/common_options/stats/PluginStats'
+import { integer } from '@common/Numeric'
+import { PluginStats } from '@common/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ClusterFileSystem } from './ClusterFileSystem'
 import { ClusterIngestStats } from './ClusterIngestStats'

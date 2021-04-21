@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { QueryUsage } from './QueryUsage'
 import { XPackUsage } from './XPackUsage'

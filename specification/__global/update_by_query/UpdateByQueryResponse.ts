@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { BulkIndexByScrollFailure } from '@common/BulkIndexByScrollFailure'
-import { float, long, TaskId, ulong } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { TaskId } from '@common/common'
+import { BulkIndexByScrollFailure } from '@common/Errors'
+import { float, long, ulong } from '@common/Numeric'
 import { Retries } from '@common/Retries'
 
 export class UpdateByQueryResponse extends ResponseBase {

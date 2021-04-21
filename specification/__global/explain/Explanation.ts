@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@common/common'
+import { float } from '@common/Numeric'
 import { ExplanationDetail } from './ExplanationDetail'
 
 export class Explanation {

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { EmptyObject, Fields, Indices, integer } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { EmptyObject, ExpandWildcards, Fields, Indices } from '@common/common'
+import { integer } from '@common/Numeric'
 
 /**
  * @rest_spec_name field_caps

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
+import { double, integer } from '@common/Numeric'
 
 export class FielddataFrequencyFilter {
   max: double

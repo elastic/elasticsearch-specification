@@ -17,7 +17,9 @@
  * under the License.
  */
 
-import { Field, GeoHashPrecision, integer } from '@common/common'
+import { Field } from '@common/common'
+import { GeoHashPrecision } from '@common/Geo'
+import { integer } from '@common/Numeric'
 import { BoundingBox } from '@common/query_dsl/geo/bounding_box/BoundingBox'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 

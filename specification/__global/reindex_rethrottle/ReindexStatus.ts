@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, long } from '@common/common'
+import { float, long } from '@common/Numeric'
 import { Retries } from '@common/Retries'
 
 export class ReindexStatus {

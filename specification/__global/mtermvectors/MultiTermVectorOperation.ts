@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { Fields, Id, IndexName, Routing, VersionNumber } from '@common/common'
-import { VersionType } from '@common/common/VersionType'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@common/common'
 import { TermVectorFilter } from '@global/termvectors/TermVectorFilter'
 
 export class MultiTermVectorOperation {

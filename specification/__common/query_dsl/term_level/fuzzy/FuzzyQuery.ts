@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Fuzziness, integer, MultiTermQueryRewrite } from '@common/common'
+import { Fuzziness, MultiTermQueryRewrite } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

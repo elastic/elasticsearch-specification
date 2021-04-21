@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { WriteResponseBase } from '@common/WriteResponseBase'
+import { WriteResponseBase } from '@common/Base'
 
 export class IndexResponse extends WriteResponseBase {}

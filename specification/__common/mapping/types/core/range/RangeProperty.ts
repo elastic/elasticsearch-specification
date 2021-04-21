@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@common/Numeric'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 import { DateRangeProperty } from './date_range/DateRangeProperty'
 import { DoubleRangeProperty } from './double_range/DoubleRangeProperty'

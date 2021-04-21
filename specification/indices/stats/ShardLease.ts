@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Id, long, SequenceNumber } from '@common/common'
+import { Id, SequenceNumber } from '@common/common'
+import { long } from '@common/Numeric'
 
 export class ShardLease {
   id: Id

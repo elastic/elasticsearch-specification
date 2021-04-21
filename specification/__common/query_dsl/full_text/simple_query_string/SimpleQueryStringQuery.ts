@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Fields, integer } from '@common/common'
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { Fields, MinimumShouldMatch } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { Operator } from '@common/query_dsl/Operator'
 import { SimpleQueryStringFlags } from './SimpleQueryStringFlags'

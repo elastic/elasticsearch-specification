@@ -18,11 +18,10 @@
  */
 
 import { Field } from '@common/common'
-import { DateMath } from '@common/common_options/date_math/DateMath'
-import { Distance } from '@common/common_options/geo/Distance'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Distance } from '@common/Geo'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoCoordinate } from '@common/query_dsl/geo/GeoLocation'
+import { DateMath, Time } from '@common/Time'
 
 export class DistanceFeatureQuery extends QueryBase {
   origin?: Array<number> | GeoCoordinate | DateMath

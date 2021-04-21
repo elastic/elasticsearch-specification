@@ -17,13 +17,9 @@
  * under the License.
  */
 
-import {
-  DateString,
-  HttpHeaders,
-  IndexName,
-  long,
-  VersionNumber
-} from '@common/common'
+import { HttpHeaders, IndexName, VersionNumber } from '@common/common'
+import { long } from '@common/Numeric'
+import { DateString } from '@common/Time'
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
 import { Phases } from '@ilm/Phases'
 import { Dictionary } from '@spec_utils/Dictionary'

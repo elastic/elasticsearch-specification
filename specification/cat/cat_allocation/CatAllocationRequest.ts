@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { NodeIds } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
+import { Bytes, NodeIds } from '@common/common'
 
 /**
  * @rest_spec_name cat.allocation

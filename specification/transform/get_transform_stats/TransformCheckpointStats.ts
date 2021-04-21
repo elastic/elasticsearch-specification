@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, long } from '@common/common'
+import { long } from '@common/Numeric'
+import { DateString, EpochMillis } from '@common/Time'
 import { TransformProgress } from './TransformProgress'
 
 export class TransformCheckpointStats {

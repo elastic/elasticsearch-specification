@@ -17,15 +17,10 @@
  * under the License.
  */
 
-import {
-  ByteSize,
-  EpochMillis,
-  ErrorCause,
-  integer,
-  long,
-  SequenceNumber,
-  VersionNumber
-} from '@common/common'
+import { ByteSize, SequenceNumber, VersionNumber } from '@common/common'
+import { ErrorCause } from '@common/Errors'
+import { integer, long } from '@common/Numeric'
+import { EpochMillis } from '@common/Time'
 import { FollowIndexReadException } from './FollowIndexReadException'
 
 export class FollowIndexShardStats {

@@ -17,13 +17,12 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import { Id } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { ActionExecutionMode } from '@common/watcher/execution/ActionExecutionMode'
-import { SimulatedActions } from '@common/watcher/execution/SimulatedActions'
-import { ScheduleTriggerEvent } from '@common/watcher/schedule/ScheduleTriggerEvent'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ActionExecutionMode, SimulatedActions } from '@watcher/Action'
+import { ScheduleTriggerEvent } from '@watcher/Schedule'
 import { Watch } from '@watcher/Watch'
 
 /**

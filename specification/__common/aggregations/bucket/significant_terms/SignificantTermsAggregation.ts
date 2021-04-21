@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer, long } from '@common/common'
+import { Field } from '@common/common'
+import { integer, long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { TermsAggregationExecutionHint } from '../terms/TermsAggregationExecutionHint'

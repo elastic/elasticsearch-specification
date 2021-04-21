@@ -18,10 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Indices } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { Health } from '@common/common/Health'
+import { Bytes, ExpandWildcards, Health, Indices } from '@common/common'
 
 /**
  * @rest_spec_name cat.indices

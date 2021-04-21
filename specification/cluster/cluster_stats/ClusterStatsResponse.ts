@@ -18,7 +18,8 @@
  */
 
 import { ClusterStatus } from '@cluster/ClusterStatus'
-import { long, Name, Uuid } from '@common/common'
+import { Name, Uuid } from '@common/common'
+import { long } from '@common/Numeric'
 import { NodesResponseBase } from '@nodes/NodesResponseBase'
 import { NodeStatistics } from '@nodes/NodeStatistics'
 import { ClusterIndicesStats } from './ClusterIndicesStats'

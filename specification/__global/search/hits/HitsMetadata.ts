@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '@common/common'
+import { double, long } from '@common/Numeric'
 import { Hit } from './Hit'
 import { TotalHits } from './TotalHits'
 

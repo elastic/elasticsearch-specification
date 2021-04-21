@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, VersionNumber } from '@common/common'
+import { VersionNumber } from '@common/common'
+import { DateString } from '@common/Time'
 import { Policy } from '@ilm/Policy'
 
 export class LifecyclePolicy {

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
+import { Id } from '@common/common'
+import { long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 

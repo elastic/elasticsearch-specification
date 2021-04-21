@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LatLon } from '@common/common'
+import { LatLon } from '@common/Geo'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoValidationMethod } from '../GeoValidationMethod'
 import { BoundingBox } from './BoundingBox'

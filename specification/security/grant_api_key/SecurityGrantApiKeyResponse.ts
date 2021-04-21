@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { EpochMillis, Id, Name } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id, Name } from '@common/common'
+import { EpochMillis } from '@common/Time'
 
 export class SecurityGrantApiKeyResponse extends ResponseBase {
   api_key: string

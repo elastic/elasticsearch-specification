@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Fields, integer } from '@common/common'
-import { ScriptField } from '@common/common_options/scripting/ScriptField'
+import { Fields } from '@common/common'
+import { integer } from '@common/Numeric'
+import { ScriptField } from '@common/Scripting'
 import { Highlight } from '@global/search/highlighting/Highlight'
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'

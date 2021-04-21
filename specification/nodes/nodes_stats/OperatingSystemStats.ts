@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 import { CPUStats } from './CPUStats'
 import { ExtendedMemoryStats } from './ExtendedMemoryStats'
 import { MemoryStats } from './MemoryStats'

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { SearchResponse } from '@global/search/SearchResponse'
 
 export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {

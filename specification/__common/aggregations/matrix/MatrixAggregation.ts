@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { double, Field, Fields } from '@common/common'
+import { Field, Fields } from '@common/common'
+import { double } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Aggregation } from '../Aggregation'
 

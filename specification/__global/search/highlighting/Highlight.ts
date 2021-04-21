@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer } from '@common/common'
+import { Field } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { BoundaryScanner } from './BoundaryScanner'

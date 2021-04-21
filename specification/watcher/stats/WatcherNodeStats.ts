@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
+import { Id } from '@common/common'
+import { long } from '@common/Numeric'
 import { ExecutionThreadPool } from './ExecutionThreadPool'
 import { WatcherState } from './WatcherState'
 import { WatchRecordQueuedStats } from './WatchRecordQueuedStats'

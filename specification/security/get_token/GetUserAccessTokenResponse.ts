@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { long, Name } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { XPackUser } from '@common/security/XPackUser'
+import { ResponseBase } from '@common/Base'
+import { Name } from '@common/common'
+import { long } from '@common/Numeric'
+import { XPackUser } from '@security/XPackUser'
 
 export class SecurityGetTokenResponse extends ResponseBase {
   access_token: string

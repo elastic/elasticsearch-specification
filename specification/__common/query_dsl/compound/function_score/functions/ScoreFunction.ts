@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { double, Field, long } from '@common/common'
-import { DateMath } from '@common/common_options/date_math/DateMath'
-import { Distance } from '@common/common_options/geo/Distance'
-import { Script } from '@common/common_options/scripting/Script'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Field } from '@common/common'
+import { Distance } from '@common/Geo'
+import { double, long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { Script } from '@common/Scripting'
+import { DateMath, Time } from '@common/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { MultiValueMode } from './decay/MultiValueMode'
 import { FieldValueFactorModifier } from './field_value/FieldValueFactorModifier'

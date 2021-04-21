@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { EpochMillis, Id } from '@common/common'
+import { Id } from '@common/common'
+import { EpochMillis } from '@common/Time'
 
 export class ScheduledEvent {
   calendar_id: Id

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@common/Numeric'
 
 // TODO -- is duplicate with LatLon
 export class TwoDimensionalPoint {

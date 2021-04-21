@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, IndexName, VersionNumber } from '@common/common'
+import { IndexName, VersionNumber } from '@common/common'
+import { DateString } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ActionStatus } from './ActionStatus'
 import { ActivationState } from './ActivationState'

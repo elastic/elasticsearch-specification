@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CronExpression } from '@common/watcher/schedule/CronExpression'
+import { CronExpression } from '@watcher/Schedule'
 import { SnapshotLifecycleConfig } from './SnapshotLifecycleConfig'
 import { SnapshotRetentionConfiguration } from './SnapshotRetentionConfiguration'
 

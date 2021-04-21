@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@common/Numeric'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class BoxplotAggregation extends MetricAggregationBase {

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { integer, Uuid } from '@common/common'
+import { Uuid } from '@common/common'
+import { integer } from '@common/Numeric'
 
 export class SnapshotRepository {
   type: string

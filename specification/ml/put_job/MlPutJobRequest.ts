@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { AnalysisConfig } from '@common/ml/AnalysisConfig'
-import { AnalysisLimits } from '@common/ml/AnalysisLimits'
-import { DataDescription } from '@common/ml/DataDescription'
-import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
+import { RequestBase } from '@common/Base'
+import { Id, IndexName } from '@common/common'
+import { long } from '@common/Numeric'
+import { AnalysisConfig } from '@ml/AnalysisConfig'
+import { AnalysisLimits } from '@ml/AnalysisLimits'
+import { DataDescription } from '@ml/DataDescription'
+import { ModelPlotConfig } from '@ml/ModelPlotConfig'
 
 /**
  * @rest_spec_name ml.put_job

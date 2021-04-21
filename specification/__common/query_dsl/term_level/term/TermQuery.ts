@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@common/common'
+import { float } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 
 export class TermQuery extends QueryBase {

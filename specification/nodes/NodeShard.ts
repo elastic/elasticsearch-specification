@@ -18,7 +18,8 @@
  */
 
 import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
-import { Id, IndexName, integer, NodeName } from '@common/common'
+import { Id, IndexName, NodeName } from '@common/common'
+import { integer } from '@common/Numeric'
 import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
 import { Dictionary } from '@spec_utils/Dictionary'
 

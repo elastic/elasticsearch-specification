@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
-import { Distance } from '@common/common_options/geo/Distance'
+import { Distance } from '@common/Geo'
+import { double, integer } from '@common/Numeric'
 import { Context } from './Context'
 
 export class SuggestContextQuery {

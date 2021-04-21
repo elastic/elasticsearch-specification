@@ -18,12 +18,18 @@
  */
 
 import { Field } from '@common/common'
-import { AggregationRange } from '@common/common_options/range/AggregationRange'
-import { Script } from '@common/common_options/scripting/Script'
+import { double } from '@common/Numeric'
+import { Script } from '@common/Scripting'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class RangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: AggregationRange[]
   script?: Script
+}
+
+export class AggregationRange {
+  from?: double | string
+  key?: string
+  to?: double | string
 }

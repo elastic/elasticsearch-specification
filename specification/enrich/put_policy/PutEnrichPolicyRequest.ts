@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import { Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { EnrichPolicy } from '@enrich/EnrichPolicy'
 
 /**

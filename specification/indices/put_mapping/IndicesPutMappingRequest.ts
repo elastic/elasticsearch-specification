@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { Indices, PropertyName, Type } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import { ExpandWildcards, Indices, PropertyName, Type } from '@common/common'
 import { DynamicMapping } from '@common/mapping/DynamicMapping'
 import { DynamicTemplate } from '@common/mapping/dynamic_template/DynamicTemplate'
 import { AllField } from '@common/mapping/meta_fields/all/AllField'
@@ -31,6 +29,7 @@ import { SizeField } from '@common/mapping/meta_fields/size/SizeField'
 import { SourceField } from '@common/mapping/meta_fields/source/SourceField'
 import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
 import { Property } from '@common/mapping/types/Property'
+import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
+import { DictionaryResponseBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { PutPrivilegesStatus } from './PutPrivilegesStatus'
 

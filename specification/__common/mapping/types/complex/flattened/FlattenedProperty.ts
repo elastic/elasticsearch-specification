@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
+import { double, integer } from '@common/Numeric'
 import { IndexOptions } from '../../core/text/IndexOptions'
 import { PropertyBase } from '../../Property'
 

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GeoShapeRelation } from '@common/common_options/geo/GeoShapeRelation'
+import { GeoShapeRelation } from '@common/Geo'
 import { FieldLookup } from '@common/query_dsl/abstractions/field_lookup/FieldLookup'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoShape } from './GeoShape'

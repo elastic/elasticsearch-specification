@@ -19,8 +19,8 @@
 
 import { Aggregation } from '@common/aggregations/Aggregation'
 import { Field } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Script } from '@common/Scripting'
 
 export class TTestAggregation extends Aggregation {
   a?: TestPopulation

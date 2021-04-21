@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id } from '@common/common'
+import { integer } from '@common/Numeric'
 import { EqlHits } from './EqlHits'
 
 /**

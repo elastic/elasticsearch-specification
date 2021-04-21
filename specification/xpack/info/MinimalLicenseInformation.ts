@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EpochMillis } from '@common/common'
+import { EpochMillis } from '@common/Time'
 import { LicenseStatus } from '@license/get_license/LicenseStatus'
 import { LicenseType } from '@license/get_license/LicenseType'
 

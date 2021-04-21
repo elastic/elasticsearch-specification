@@ -17,12 +17,12 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import { IndexMetaData, Name, VersionNumber } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
 import { IndexSettings } from '@common/index/IndexSettings'
 import { IndexState } from '@common/index/IndexState'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { Time } from '@common/Time'
 import { AliasDefinition } from '@indices/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
 

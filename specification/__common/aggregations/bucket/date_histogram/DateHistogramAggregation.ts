@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DateString, Field, integer, long } from '@common/common'
-import { DateMath } from '@common/common_options/date_math/DateMath'
-import { Script } from '@common/common_options/scripting/Script'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Field } from '@common/common'
+import { integer, long } from '@common/Numeric'
+import { Script } from '@common/Scripting'
+import { DateMath, DateString, Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { BucketAggregationBase } from '../BucketAggregationBase'

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, integer } from '@common/common'
+import { integer } from '@common/Numeric'
+import { DateString } from '@common/Time'
 import { UnassignedInformationReason } from './UnassignedInformationReason'
 
 export class UnassignedInformation {

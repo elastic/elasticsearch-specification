@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, Id } from '@common/common'
+import { Id } from '@common/common'
+import { DateString } from '@common/Time'
 import { ExecutionPhase } from './ExecutionPhase'
 import { WatchRecordQueuedStats } from './WatchRecordQueuedStats'
 

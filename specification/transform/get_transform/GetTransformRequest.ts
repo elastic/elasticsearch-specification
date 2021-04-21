@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { integer, Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Name } from '@common/common'
+import { integer } from '@common/Numeric'
 
 /**
  * @rest_spec_name transform.get_transform

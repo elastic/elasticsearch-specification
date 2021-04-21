@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, integer, SequenceNumber, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id, SequenceNumber, VersionNumber } from '@common/common'
+import { integer } from '@common/Numeric'
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
 import { Watch } from '@watcher/Watch'
 

@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, double, integer } from '@common/common'
+import { double, integer } from '@common/Numeric'
+import { DateString } from '@common/Time'
 import { NumericFielddata } from '@indices/NumericFielddata'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 

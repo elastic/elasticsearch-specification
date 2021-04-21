@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 
 export class PointInTimeReference {
   id: Id

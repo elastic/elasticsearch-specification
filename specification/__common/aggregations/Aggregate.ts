@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { AggregateName, double, integer, LatLon, long } from '@common/common'
-import { DateMathTime } from '@common/common_options/date_math/DateMathTime'
+import { AggregateName } from '@common/common'
+import { LatLon } from '@common/Geo'
+import { double, integer, long } from '@common/Numeric'
 import { GeoCoordinate, GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { DateMathTime } from '@common/Time'
 import { HitsMetadata } from '@global/search/hits/HitsMetadata'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'

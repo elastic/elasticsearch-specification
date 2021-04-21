@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices, long, Types } from '@common/common'
-import { SearchType } from '@common/common/SearchType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Indices, SearchType, Types } from '@common/common'
+import { long } from '@common/Numeric'
 import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
 import { Dictionary } from '@spec_utils/Dictionary'
 

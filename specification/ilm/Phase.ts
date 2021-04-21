@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { LifecycleAction } from './LifecycleAction'
 

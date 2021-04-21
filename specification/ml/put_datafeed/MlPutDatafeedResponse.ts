@@ -18,12 +18,13 @@
  */
 
 import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { Id, Indices, integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ScriptField } from '@common/common_options/scripting/ScriptField'
-import { Time } from '@common/common_options/time_unit/Time'
-import { ChunkingConfig } from '@common/ml/ChunkingConfig'
+import { ResponseBase } from '@common/Base'
+import { Id, Indices } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@common/Scripting'
+import { Time } from '@common/Time'
+import { ChunkingConfig } from '@ml/ChunkingConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class MlPutDatafeedResponse extends ResponseBase {

@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { DateString, Field, integer } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
+import { Field } from '@common/common'
+import { integer } from '@common/Numeric'
+import { Script } from '@common/Scripting'
+import { DateString } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { BucketAggregationBase } from '../BucketAggregationBase'

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 
 export class GetTrialLicenseStatusResponse extends ResponseBase {
   eligible_to_start_trial: boolean

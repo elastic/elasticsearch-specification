@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { XPackUsage } from './XPackUsage'
 
 export class FlattenedUsage extends XPackUsage {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 import { ApiKeys } from './ApiKeys'
 
 export class SecurityGetApiKeyResponse extends ResponseBase {

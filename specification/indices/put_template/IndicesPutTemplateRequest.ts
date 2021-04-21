@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { IndexName, integer, Name, VersionNumber } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import { IndexName, Name, VersionNumber } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { integer } from '@common/Numeric'
+import { Time } from '@common/Time'
 import { Alias } from '@indices/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

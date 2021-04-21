@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { DateString, Id, long, VersionString } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { ResponseBase } from '@common/Base'
+import { Id, VersionString } from '@common/common'
+import { long } from '@common/Numeric'
+import { DateString, Time } from '@common/Time'
 import { TransformPivot } from '@transform/pivot/TransformPivot'
 import { TransformDestination } from '@transform/TransformDestination'
 import { TransformSource } from '@transform/TransformSource'

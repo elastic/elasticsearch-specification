@@ -17,19 +17,13 @@
  * under the License.
  */
 
-import {
-  EmptyObject,
-  Id,
-  IndexName,
-  integer,
-  long,
-  VersionString
-} from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
-import { AnalysisConfig } from '@common/ml/AnalysisConfig'
-import { AnalysisLimits } from '@common/ml/AnalysisLimits'
-import { DataDescription } from '@common/ml/DataDescription'
-import { ModelPlotConfig } from '@common/ml/ModelPlotConfig'
+import { EmptyObject, Id, IndexName, VersionString } from '@common/common'
+import { integer, long } from '@common/Numeric'
+import { Time } from '@common/Time'
+import { AnalysisConfig } from '@ml/AnalysisConfig'
+import { AnalysisLimits } from '@ml/AnalysisLimits'
+import { DataDescription } from '@ml/DataDescription'
+import { ModelPlotConfig } from '@ml/ModelPlotConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 

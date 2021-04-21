@@ -18,7 +18,7 @@
  */
 
 import { ByteSize, Id, NodeId } from '@common/common'
-import { JobState } from '@common/ml/JobState'
+import { JobState } from '@ml/JobState'
 import { ModelCategorizationStatus } from './ModelCategorizationStatus'
 import { ModelMemoryStatus } from './ModelMemoryStatus'
 

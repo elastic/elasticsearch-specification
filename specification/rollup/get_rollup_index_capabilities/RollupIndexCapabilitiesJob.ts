@@ -18,7 +18,7 @@
  */
 
 import { Field, Id, IndexName } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class RollupIndexCapabilitiesJob {

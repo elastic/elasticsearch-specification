@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import { TaskId } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name tasks.cancel

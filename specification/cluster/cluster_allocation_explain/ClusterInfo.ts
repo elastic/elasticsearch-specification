@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '@common/common'
+import { double, long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterInfo {

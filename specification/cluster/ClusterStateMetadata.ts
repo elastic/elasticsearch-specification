@@ -17,15 +17,9 @@
  * under the License.
  */
 
-import {
-  DateString,
-  Id,
-  IndexName,
-  integer,
-  long,
-  Name,
-  Uuid
-} from '@common/common'
+import { Id, IndexName, Name, Uuid } from '@common/common'
+import { integer, long } from '@common/Numeric'
+import { DateString } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ClusterStateBlockIndex } from './ClusterStateBlocksIndex'

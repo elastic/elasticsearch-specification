@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '@common/common'
+import { double, long } from '@common/Numeric'
 
 export class GraphConnection {
   doc_count: long

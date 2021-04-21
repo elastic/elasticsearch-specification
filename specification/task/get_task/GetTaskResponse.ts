@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ErrorCause } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { ErrorCause } from '@common/Errors'
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
 import { TaskInfo } from './TaskInfo'
 

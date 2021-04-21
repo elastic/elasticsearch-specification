@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, integer } from '@common/common'
+import { float, integer } from '@common/Numeric'
 
 export enum MovingAverageModel {
   linear,

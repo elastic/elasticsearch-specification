@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { DictionaryResponseBase } from '@common/Base'
 import { Id } from '@common/common'
-import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
 import { SnapshotLifecyclePolicyMetadata } from '@slm/SnapshotLifecyclePolicyMetadata'
 
 export class GetSnapshotLifecycleResponse extends DictionaryResponseBase<

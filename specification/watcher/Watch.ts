@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { IndexName, long } from '@common/common'
-import { Action } from '@common/watcher/actions/Action'
-import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
-import { InputContainer } from '@common/watcher/input/InputContainer'
-import { TransformContainer } from '@common/watcher/transform/TransformContainer'
-import { TriggerContainer } from '@common/watcher/trigger/TriggerContainer'
+import { IndexName } from '@common/common'
+import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { WatchStatus } from './ack_watch/WatchStatus'
+import { Action } from './Action'
+import { ConditionContainer } from './Conditions'
+import { InputContainer } from './Input'
+import { TransformContainer } from './Transform'
+import { TriggerContainer } from './Trigger'
 
 export class Watch {
   actions: Dictionary<IndexName, Action>

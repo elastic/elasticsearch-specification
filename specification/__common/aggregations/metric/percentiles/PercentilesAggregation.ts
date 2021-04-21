@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
+import { double, integer } from '@common/Numeric'
 import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class PercentilesAggregation extends FormatMetricAggregationBase {

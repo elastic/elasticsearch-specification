@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 
 export class JvmClassesStats {
   current_loaded_count: long

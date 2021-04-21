@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Indices } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
+import { Bytes, Indices } from '@common/common'
 
 /**
  * @rest_spec_name cat.segments

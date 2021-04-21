@@ -18,9 +18,9 @@
  */
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
-import { Password, Username } from '@common/common/Credentials'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { AccessTokenGrantType } from '@common/security/AccessTokenGrantType'
+import { RequestBase } from '@common/Base'
+import { Password, Username } from '@common/common'
+import { AccessTokenGrantType } from '@security/AccessTokenGrantType'
 
 /**
  * @rest_spec_name security.get_token

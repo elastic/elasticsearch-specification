@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Password, Username } from '@common/common/Credentials'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Password, Username } from '@common/common'
 import { Host } from '@common/Networking'
+import { Time } from '@common/Time'
 
 export class RemoteSource {
   connect_timeout: Time

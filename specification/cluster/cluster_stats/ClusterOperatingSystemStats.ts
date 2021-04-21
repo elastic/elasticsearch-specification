@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { ClusterOperatingSystemPrettyName } from '@nodes/nodes_info/ClusterOperatingSystemPrettyName'
 import { ClusterOperatingSystemArchitecture } from './ClusterOperatingSystemArchitecture'
 import { ClusterOperatingSystemName } from './ClusterOperatingSystemName'

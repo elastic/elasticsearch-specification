@@ -18,8 +18,8 @@
  */
 
 import { Field } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { Script } from '@common/Scripting'
 
 export class TermsSetQuery extends QueryBase {
   minimum_should_match_field?: Field

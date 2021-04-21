@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 import { LicenseStatus } from '@license/get_license/LicenseStatus'
 import { LicenseAcknowledgement } from './LicenseAcknowledgement'
 

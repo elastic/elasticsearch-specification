@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { EpochMillis, integer } from '@common/common'
+import { integer } from '@common/Numeric'
+import { EpochMillis } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

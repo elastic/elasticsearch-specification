@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { Field, Indices } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { FieldCapabilities } from './FieldCapabilities'
 

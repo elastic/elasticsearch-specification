@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Fields } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
+import { Bytes, Fields } from '@common/common'
 
 /**
  * @rest_spec_name cat.fielddata

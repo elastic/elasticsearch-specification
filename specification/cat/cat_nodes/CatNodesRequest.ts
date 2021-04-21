@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Bytes } from '@common/common/Bytes'
+import { Bytes } from '@common/common'
 
 /**
  * @rest_spec_name cat.nodes

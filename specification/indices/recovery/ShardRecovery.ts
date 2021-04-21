@@ -17,7 +17,9 @@
  * under the License.
  */
 
-import { DateString, EpochMillis, long, Type } from '@common/common'
+import { Type } from '@common/common'
+import { long } from '@common/Numeric'
+import { DateString, EpochMillis } from '@common/Time'
 import { RecoveryIndexStatus } from './RecoveryIndexStatus'
 import { RecoveryOrigin } from './RecoveryOrigin'
 import { RecoveryStartStatus } from './RecoveryStartStatus'

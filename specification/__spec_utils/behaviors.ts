@@ -24,7 +24,7 @@
  */
 
 import { Names } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties

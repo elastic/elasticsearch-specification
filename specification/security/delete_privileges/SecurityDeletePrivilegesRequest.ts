@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { Refresh } from '@common/common/Refresh'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Name, Refresh } from '@common/common'
 
 /**
  * @rest_spec_name security.delete_privileges

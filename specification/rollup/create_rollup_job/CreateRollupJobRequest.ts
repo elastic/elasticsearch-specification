@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, IndexName, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Id, IndexName } from '@common/common'
+import { long } from '@common/Numeric'
 import { RollupFieldMetric } from '@rollup/rollup_configuration/RollupFieldMetric'
 import { RollupGroupings } from '@rollup/rollup_configuration/RollupGroupings'
 

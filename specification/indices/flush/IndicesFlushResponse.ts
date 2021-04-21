@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ShardsOperationResponseBase } from '@common/common_abstractions/response/ShardsOperationResponseBase'
+import { ShardsOperationResponseBase } from '@common/Base'
 
 export class IndicesFlushResponse extends ShardsOperationResponseBase {}

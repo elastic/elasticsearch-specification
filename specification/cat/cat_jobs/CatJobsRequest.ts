@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Id } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
+import { Bytes, Id } from '@common/common'
 
 /**
  * @rest_spec_name cat.ml_jobs

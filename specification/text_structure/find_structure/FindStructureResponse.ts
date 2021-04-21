@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { Field, integer, long, uint } from '@common/common'
+import { Field } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
-import { PipelineConfig } from '@common/ingest/PipelineConfig'
+import { integer, long } from '@common/Numeric'
+import { PipelineConfig } from '@ingest/PipelineConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

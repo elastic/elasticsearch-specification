@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { integer, RelationName } from '@common/common'
+import { RelationName } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { InnerHits } from '@global/search/inner_hits/InnerHits'

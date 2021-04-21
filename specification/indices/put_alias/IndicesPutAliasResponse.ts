@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 
 export class IndicesPutAliasResponse extends ResponseBase {}

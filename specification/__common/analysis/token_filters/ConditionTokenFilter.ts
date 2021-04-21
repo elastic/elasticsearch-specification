@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Script } from '@common/common_options/scripting/Script'
+import { Script } from '@common/Scripting'
 import { TokenFilterBase } from './TokenFilterBase'
 
 export class ConditionTokenFilter extends TokenFilterBase {

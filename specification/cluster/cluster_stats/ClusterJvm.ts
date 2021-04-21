@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 import { ClusterJvmMemory } from './ClusterJvmMemory'
 import { ClusterJvmVersion } from './ClusterJvmVersion'
 

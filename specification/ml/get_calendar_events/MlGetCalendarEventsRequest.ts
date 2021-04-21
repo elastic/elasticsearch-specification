@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { DateString, Id, integer } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Id } from '@common/common'
+import { integer } from '@common/Numeric'
+import { DateString } from '@common/Time'
 
 /**
  * @rest_spec_name ml.get_calendar_events

@@ -17,22 +17,22 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
+  Conflicts,
+  DefaultOperator,
+  ExpandWildcards,
   Fields,
   Indices,
-  long,
   Routing,
+  SearchType,
   Types,
   WaitForActiveShards
 } from '@common/common'
-import { Conflicts } from '@common/common/Conflicts'
-import { DefaultOperator } from '@common/common/DefaultOperator'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { SearchType } from '@common/common/SearchType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { SlicedScroll } from '@common/SlicedScroll'
+import { Time } from '@common/Time'
 
 /**
  * @rest_spec_name delete_by_query

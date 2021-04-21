@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { AcknowledgedResponseBase } from '@common/Base'
 import { IndexName } from '@common/common'
-import { ShardFailure } from '@common/common/ShardFailure'
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
+import { ShardFailure } from '@common/Errors'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndicesCloseResponse extends AcknowledgedResponseBase {

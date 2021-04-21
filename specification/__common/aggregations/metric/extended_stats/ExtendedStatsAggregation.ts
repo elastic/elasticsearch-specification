@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@common/Numeric'
 import { FormatMetricAggregationBase } from '../MetricAggregation'
 
 export class ExtendedStatsAggregation extends FormatMetricAggregationBase {

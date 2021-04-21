@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 import { EmptyResponseBase } from '@spec_utils/behaviors'
 
 export class IndicesExistsTypeResponse

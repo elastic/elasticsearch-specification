@@ -18,12 +18,12 @@
  */
 
 import { Missing } from '@common/aggregations/AggregationContainer'
-import { double, Field, long } from '@common/common'
-import { DistanceUnit } from '@common/common_options/geo/DistanceUnit'
-import { GeoDistanceType } from '@common/common_options/geo/GeoDistanceType'
-import { Script } from '@common/common_options/scripting/Script'
+import { Field } from '@common/common'
+import { DistanceUnit, GeoDistanceType } from '@common/Geo'
 import { FieldType } from '@common/mapping/types/FieldType'
+import { double, long } from '@common/Numeric'
 import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
+import { Script } from '@common/Scripting'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { NestedSortValue } from './NestedSort'
 import { SortMode } from './SortMode'

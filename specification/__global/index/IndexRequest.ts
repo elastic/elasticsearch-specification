@@ -17,21 +17,21 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
   Id,
   IndexName,
-  long,
+  OpType,
+  Refresh,
   Routing,
   SequenceNumber,
   Type,
   VersionNumber,
+  VersionType,
   WaitForActiveShards
 } from '@common/common'
-import { OpType } from '@common/common/OpType'
-import { Refresh } from '@common/common/Refresh'
-import { VersionType } from '@common/common/VersionType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { long } from '@common/Numeric'
+import { Time } from '@common/Time'
 
 /**
  * @rest_spec_name index

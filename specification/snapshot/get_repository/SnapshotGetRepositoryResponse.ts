@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
+import { DictionaryResponseBase } from '@common/Base'
 import { SnapshotRepository } from '@snapshot/SnapshotRepository'
 
 export class SnapshotGetRepositoryResponse extends DictionaryResponseBase<

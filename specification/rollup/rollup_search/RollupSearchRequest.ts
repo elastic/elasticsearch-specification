@@ -18,8 +18,9 @@
  */
 
 import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { Indices, integer, Type } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Indices, Type } from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 

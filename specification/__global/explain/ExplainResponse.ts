@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { Id, IndexName, Type } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { ExplanationDetail } from './ExplanationDetail'
 import { InlineGet } from './InlineGet'
 

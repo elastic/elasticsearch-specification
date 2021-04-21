@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { long } from '@common/Numeric'
 
 export class CleanupRepositoryResponse extends ResponseBase {
   results: CleanupRepositoryResults

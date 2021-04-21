@@ -18,15 +18,9 @@
  */
 
 import { CharFilter } from '@common/analysis/char_filters/CharFilterBase'
-import {
-  DateString,
-  integer,
-  Name,
-  PipelineName,
-  Uuid,
-  VersionString
-} from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Name, PipelineName, Uuid, VersionString } from '@common/common'
+import { integer } from '@common/Numeric'
+import { DateString, Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexRouting } from './IndexRouting'
 

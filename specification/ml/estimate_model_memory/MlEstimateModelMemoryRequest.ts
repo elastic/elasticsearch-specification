@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { Field, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { AnalysisConfig } from '@common/ml/AnalysisConfig'
+import { RequestBase } from '@common/Base'
+import { Field } from '@common/common'
+import { long } from '@common/Numeric'
+import { AnalysisConfig } from '@ml/AnalysisConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
+import { double, integer } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

@@ -18,7 +18,7 @@
  */
 
 import { TokenFilterBase } from '@common/analysis/token_filters/TokenFilterBase'
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { PhoneticEncoder } from './PhoneticEncoder'
 import { PhoneticLanguage } from './PhoneticLanguage'
 import { PhoneticNameType } from './PhoneticNameType'

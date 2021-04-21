@@ -17,13 +17,9 @@
  * under the License.
  */
 
-import {
-  DateString,
-  EpochMillis,
-  Id,
-  long,
-  VersionNumber
-} from '@common/common'
+import { Id, VersionNumber } from '@common/common'
+import { long } from '@common/Numeric'
+import { DateString, EpochMillis } from '@common/Time'
 import { SnapshotLifecycleStats } from '@xpack/usage/SnapshotLifecycleStats'
 import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
 import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'

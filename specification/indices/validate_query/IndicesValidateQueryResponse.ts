@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { IndexName } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { ShardStatistics } from '@common/Stats'
 
 export class IndicesValidateQueryResponse extends ResponseBase {
   explanations?: IndicesValidationExplanation[]

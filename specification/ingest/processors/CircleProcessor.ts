@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { double, Field } from '@common/common'
+import { Field } from '@common/common'
+import { double } from '@common/Numeric'
 import { ProcessorBase } from '@ingest/ProcessorBase'
 import { ShapeType } from './ShapeType'
 

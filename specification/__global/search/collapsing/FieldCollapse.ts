@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer } from '@common/common'
+import { Field } from '@common/common'
+import { integer } from '@common/Numeric'
 import { InnerHits } from '../inner_hits/InnerHits'
 
 export class FieldCollapse {

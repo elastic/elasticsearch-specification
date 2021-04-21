@@ -18,10 +18,9 @@
  */
 
 import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { Indices, integer, long, Types } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { SearchType } from '@common/common/SearchType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { ExpandWildcards, Indices, SearchType, Types } from '@common/common'
+import { integer, long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
 import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'

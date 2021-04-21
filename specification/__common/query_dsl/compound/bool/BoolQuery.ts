@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { MinimumShouldMatch } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 

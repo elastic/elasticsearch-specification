@@ -17,10 +17,13 @@
  * under the License.
  */
 
-import { Indices, Types } from '@common/common'
-import { DefaultOperator } from '@common/common/DefaultOperator'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import {
+  DefaultOperator,
+  ExpandWildcards,
+  Indices,
+  Types
+} from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 /**

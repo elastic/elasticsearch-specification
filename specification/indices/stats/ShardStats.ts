@@ -17,22 +17,24 @@
  * under the License.
  */
 
-import { BulkStats } from '@common/common_options/stats/BulkStats'
-import { CompletionStats } from '@common/common_options/stats/CompletionStats'
-import { DocStats } from '@common/common_options/stats/DocStats'
-import { FielddataStats } from '@common/common_options/stats/FielddataStats'
-import { FlushStats } from '@common/common_options/stats/FlushStats'
-import { GetStats } from '@common/common_options/stats/GetStats'
-import { IndexingStats } from '@common/common_options/stats/IndexingStats'
-import { MergesStats } from '@common/common_options/stats/MergesStats'
-import { RecoveryStats } from '@common/common_options/stats/RecoveryStats'
-import { RefreshStats } from '@common/common_options/stats/RefreshStats'
-import { RequestCacheStats } from '@common/common_options/stats/RequestCacheStats'
-import { SearchStats } from '@common/common_options/stats/SearchStats'
-import { SegmentsStats } from '@common/common_options/stats/SegmentsStats'
-import { StoreStats } from '@common/common_options/stats/StoreStats'
-import { TranslogStats } from '@common/common_options/stats/TranslogStats'
-import { WarmerStats } from '@common/common_options/stats/WarmerStats'
+import {
+  BulkStats,
+  CompletionStats,
+  DocStats,
+  FielddataStats,
+  FlushStats,
+  GetStats,
+  IndexingStats,
+  MergesStats,
+  RecoveryStats,
+  RefreshStats,
+  RequestCacheStats,
+  SearchStats,
+  SegmentsStats,
+  StoreStats,
+  TranslogStats,
+  WarmerStats
+} from '@common/Stats'
 import { ShardCommit } from './ShardCommit'
 import { ShardPath } from './ShardPath'
 import { ShardQueryCache } from './ShardQueryCache'

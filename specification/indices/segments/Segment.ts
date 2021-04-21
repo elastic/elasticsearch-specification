@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { double, integer, long, VersionString } from '@common/common'
+import { VersionString } from '@common/common'
+import { double, integer, long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Segment {

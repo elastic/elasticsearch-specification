@@ -18,7 +18,7 @@
  */
 
 import { TokenizerBase } from '@common/analysis/tokenizers/TokenizerBase'
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { KuromojiTokenizationMode } from './KuromojiTokenizationMode'
 
 export class KuromojiTokenizer extends TokenizerBase {

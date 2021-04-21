@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { PutRoleMappingStatus } from '@common/security/PutRoleMappingStatus'
+import { ResponseBase } from '@common/Base'
+import { PutRoleMappingStatus } from '@security/PutRoleMappingStatus'
 
 export class SecurityPutRoleMappingResponse extends ResponseBase {
   created?: boolean

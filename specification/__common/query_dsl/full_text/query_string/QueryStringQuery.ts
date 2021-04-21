@@ -18,14 +18,13 @@
  */
 
 import {
-  double,
   Field,
   Fields,
   Fuzziness,
-  integer,
+  MinimumShouldMatch,
   MultiTermQueryRewrite
 } from '@common/common'
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { double, integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { Operator } from '@common/query_dsl/Operator'
 import { TextQueryType } from '../multi_match/TextQueryType'

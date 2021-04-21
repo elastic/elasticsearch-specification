@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Names } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { ExpandWildcards, Names } from '@common/common'
 
 /**
  * @rest_spec_name cat.aliases

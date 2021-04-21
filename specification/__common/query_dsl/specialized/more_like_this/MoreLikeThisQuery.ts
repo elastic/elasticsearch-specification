@@ -19,15 +19,14 @@
 
 import { StopWords } from '@common/analysis/StopWords'
 import {
-  double,
   Field,
   Fields,
-  integer,
+  MinimumShouldMatch,
   Routing,
-  VersionNumber
+  VersionNumber,
+  VersionType
 } from '@common/common'
-import { VersionType } from '@common/common/VersionType'
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import { double, integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Like } from './like/Like'

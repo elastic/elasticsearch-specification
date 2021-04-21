@@ -17,17 +17,17 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import {
   Id,
   IndexName,
-  long,
-  MainError,
   Routing,
   SequenceNumber,
   Type,
   VersionNumber
 } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { MainError } from '@common/Errors'
+import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

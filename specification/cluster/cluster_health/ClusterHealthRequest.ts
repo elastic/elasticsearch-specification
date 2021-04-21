@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import { Indices, WaitForActiveShards } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { Level } from '@common/common/Level'
-import { WaitForEvents } from '@common/common/WaitForEvents'
-import { WaitForStatus } from '@common/common/WaitForStatus'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import {
+  ExpandWildcards,
+  Indices,
+  Level,
+  WaitForActiveShards,
+  WaitForEvents,
+  WaitForStatus
+} from '@common/common'
+import { Time } from '@common/Time'
 
 /**
  * @rest_spec_name cluster.health

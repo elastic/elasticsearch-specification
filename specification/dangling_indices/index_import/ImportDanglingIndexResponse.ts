@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { integer } from '@common/Numeric'
 
 export class ImportDanglingIndexResponse extends ResponseBase {
   stub: integer

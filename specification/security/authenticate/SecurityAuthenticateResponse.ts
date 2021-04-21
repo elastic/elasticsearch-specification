@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { Username } from '@common/common/Credentials'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { RealmInfo } from '@common/security/RealmInfo'
+import { ResponseBase } from '@common/Base'
+import { Name, Username } from '@common/common'
+import { RealmInfo } from '@security/RealmInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

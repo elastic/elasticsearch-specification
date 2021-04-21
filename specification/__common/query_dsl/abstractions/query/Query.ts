@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@common/common'
+import { float } from '@common/Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class QueryBase {

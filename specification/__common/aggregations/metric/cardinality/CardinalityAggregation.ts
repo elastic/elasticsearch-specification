@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class CardinalityAggregation extends MetricAggregationBase {

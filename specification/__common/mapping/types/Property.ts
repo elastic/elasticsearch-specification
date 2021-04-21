@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { integer, PropertyName } from '@common/common'
+import { PropertyName } from '@common/common'
+import { integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DynamicMapping } from '../DynamicMapping'

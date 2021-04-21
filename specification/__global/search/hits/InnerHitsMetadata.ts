@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '@common/common'
+import { double, long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Hit } from './Hit'

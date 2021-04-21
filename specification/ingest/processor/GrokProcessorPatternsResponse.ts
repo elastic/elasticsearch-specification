@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class GrokProcessorPatternsResponse extends ResponseBase {

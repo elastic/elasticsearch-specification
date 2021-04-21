@@ -18,8 +18,9 @@
  */
 
 import { Missing } from '@common/aggregations/AggregationContainer'
-import { Field, integer } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
+import { Field } from '@common/common'
+import { integer } from '@common/Numeric'
+import { Script } from '@common/Scripting'
 import { SortOrder } from '@global/search/sort/SortOrder'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { BucketAggregationBase } from '../BucketAggregationBase'

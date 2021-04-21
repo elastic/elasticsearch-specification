@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double, integer } from '@common/common'
 import { TermVectorOption } from '@common/mapping/TermVectorOption'
+import { double, integer } from '@common/Numeric'
 import { FielddataFrequencyFilter } from '@indices/FielddataFrequencyFilter'
 import { CorePropertyBase } from '../../CoreProperty'
 import { IndexOptions } from './IndexOptions'

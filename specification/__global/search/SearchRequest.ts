@@ -18,29 +18,26 @@
  */
 
 import { AggregationContainer } from '@common/aggregations/AggregationContainer'
+import { RequestBase } from '@common/Base'
 import {
-  DateField,
-  double,
+  DefaultOperator,
+  ExpandWildcards,
   Field,
   Fields,
   IndexName,
   Indices,
-  integer,
-  long,
   Routing,
+  SearchType,
+  SuggestMode,
   Types,
   VersionString
 } from '@common/common'
-import { DefaultOperator } from '@common/common/DefaultOperator'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { SearchType } from '@common/common/SearchType'
-import { SuggestMode } from '@common/common/SuggestMode'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { ScriptField } from '@common/common_options/scripting/ScriptField'
-import { Time } from '@common/common_options/time_unit/Time'
 import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
+import { double, integer, long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@common/Scripting'
 import { SlicedScroll } from '@common/SlicedScroll'
+import { DateField, Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { FieldCollapse } from './collapsing/FieldCollapse'
 import { Highlight } from './highlighting/Highlight'

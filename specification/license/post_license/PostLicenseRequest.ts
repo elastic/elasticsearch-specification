@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
 import { License } from '@license/get_license/License'
 
 /**

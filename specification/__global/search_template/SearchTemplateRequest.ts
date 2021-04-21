@@ -17,11 +17,15 @@
  * under the License.
  */
 
-import { Indices, Routing, Types } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { SearchType } from '@common/common/SearchType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import {
+  ExpandWildcards,
+  Indices,
+  Routing,
+  SearchType,
+  Types
+} from '@common/common'
+import { Time } from '@common/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

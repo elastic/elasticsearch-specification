@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { DateString, Id } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@common/Base'
+import { Id } from '@common/common'
+import { DateString } from '@common/Time'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**

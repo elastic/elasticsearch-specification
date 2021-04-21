@@ -18,8 +18,8 @@
  */
 
 import { AsyncSearchResponseBase } from '@async_search/AsyncSearchResponseBase'
-import { integer } from '@common/common'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { integer } from '@common/Numeric'
+import { ShardStatistics } from '@common/Stats'
 
 export class AsyncSearchStatusResponse<
   TDocument

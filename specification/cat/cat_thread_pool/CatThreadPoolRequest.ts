@@ -18,8 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Names } from '@common/common'
-import { Size } from '@common/common/Size'
+import { Names, Size } from '@common/common'
 
 /**
  * @rest_spec_name cat.thread_pool

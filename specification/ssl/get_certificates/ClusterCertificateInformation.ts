@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '@common/common'
+import { DateString } from '@common/Time'
 
 export class ClusterCertificateInformation {
   alias?: string

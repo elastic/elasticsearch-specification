@@ -17,16 +17,16 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import {
   DataStreamName,
   Field,
   IndexMetaData,
   IndexName,
-  integer,
   Name,
   Uuid
 } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { integer } from '@common/Numeric'
 import { DataStreamHealthStatus } from '@indices/DataStreamStatus'
 
 export class IndicesGetDataStreamResponse extends ResponseBase {

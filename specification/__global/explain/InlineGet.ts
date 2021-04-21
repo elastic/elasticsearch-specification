@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { long, Routing, SequenceNumber } from '@common/common'
+import { Routing, SequenceNumber } from '@common/common'
+import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

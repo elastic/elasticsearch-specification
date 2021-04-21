@@ -18,7 +18,8 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { Id, integer } from '@common/common'
+import { Id } from '@common/common'
+import { integer } from '@common/Numeric'
 
 /**
  * @rest_spec_name cat.transforms

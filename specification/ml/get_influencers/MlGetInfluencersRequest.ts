@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { DateString, double, Field, Id } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Page } from '@common/ml/Page'
+import { RequestBase } from '@common/Base'
+import { Field, Id } from '@common/common'
+import { double } from '@common/Numeric'
+import { DateString } from '@common/Time'
+import { Page } from '@ml/Page'
 
 /**
  * @rest_spec_name ml.get_influencers

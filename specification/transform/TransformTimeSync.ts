@@ -18,7 +18,7 @@
  */
 
 import { Field } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 
 export class TransformTimeSync {
   delay: Time

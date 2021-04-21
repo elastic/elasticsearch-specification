@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { float, long } from '@common/common'
-import { DateMath } from '@common/common_options/date_math/DateMath'
+import { float, long } from '@common/Numeric'
+import { DateMath } from '@common/Time'
 
 export class DateRangeExpression {
   from?: DateMath | float

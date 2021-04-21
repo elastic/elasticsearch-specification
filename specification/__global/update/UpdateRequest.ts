@@ -17,20 +17,20 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
   Fields,
   Id,
   IndexName,
-  long,
+  Refresh,
   Routing,
   SequenceNumber,
   Type,
   WaitForActiveShards
 } from '@common/common'
-import { Refresh } from '@common/common/Refresh'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Script } from '@common/common_options/scripting/Script'
-import { Time } from '@common/common_options/time_unit/Time'
+import { long } from '@common/Numeric'
+import { Script } from '@common/Scripting'
+import { Time } from '@common/Time'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 
 /**

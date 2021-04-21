@@ -20,8 +20,8 @@
 import { CharFilter } from '@common/analysis/char_filters/CharFilterBase'
 import { Tokenizer } from '@common/analysis/tokenizers/TokenizerBase'
 import { TokenFilter } from '@common/analysis/token_filters/TokenFilterBase'
+import { RequestBase } from '@common/Base'
 import { Field, IndexName } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
  * @rest_spec_name indices.analyze

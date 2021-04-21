@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Field, float, IndexName, integer, uint } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import { ExpandWildcards, Field, IndexName } from '@common/common'
+import { float, uint } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { Time } from '@common/Time'
 
 /**
  * @rest_spec_name eql.search

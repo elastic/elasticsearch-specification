@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { EpochMillis, Id } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id } from '@common/common'
+import { EpochMillis } from '@common/Time'
 import { AsyncSearch } from './AsyncSearch'
 
 export class AsyncSearchResponseBase extends ResponseBase {

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer, long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { integer, long } from '@common/Numeric'
 import { AllocationDecision } from './AllocationDecision'
 import { ClusterInfo } from './ClusterInfo'
 import { CurrentNode } from './CurrentNode'

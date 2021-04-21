@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { Id } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { WatchRecord } from './WatchRecord'
 
 export class WatcherExecuteWatchResponse extends ResponseBase {

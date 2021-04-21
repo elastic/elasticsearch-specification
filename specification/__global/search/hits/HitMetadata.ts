@@ -20,11 +20,11 @@
 import {
   Id,
   IndexName,
-  long,
   SequenceNumber,
   Type,
   VersionNumber
 } from '@common/common'
+import { long } from '@common/Numeric'
 
 export class HitMetadata<TDocument> {
   _id: Id

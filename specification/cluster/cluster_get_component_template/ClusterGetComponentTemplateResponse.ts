@@ -18,7 +18,7 @@
  */
 
 import { ComponentTemplate } from '@cluster/ComponentTemplate'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
 
 export class ClusterGetComponentTemplateResponse extends ResponseBase {
   component_templates: ComponentTemplate[]

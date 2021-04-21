@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Script } from '@common/common_options/scripting/Script'
+import { Script } from '@common/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { MetricAggregationBase } from '../MetricAggregation'

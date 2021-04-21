@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { Name } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { NodeStatistics } from '@nodes/NodeStatistics'
 import { Dictionary } from '@spec_utils/Dictionary'
 

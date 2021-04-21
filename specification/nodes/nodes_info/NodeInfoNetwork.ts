@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { NodeInfoNetworkInterface } from './NodeInfoNetworkInterface'
 
 export class NodeInfoNetwork {

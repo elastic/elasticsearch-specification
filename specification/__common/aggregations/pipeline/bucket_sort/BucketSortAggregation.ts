@@ -18,7 +18,7 @@
  */
 
 import { Aggregation } from '@common/aggregations/Aggregation'
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { Sort } from '@global/search/sort/Sort'
 import { GapPolicy } from '../GapPolicy'
 

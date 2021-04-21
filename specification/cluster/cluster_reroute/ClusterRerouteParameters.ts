@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { IndexName, integer, NodeName } from '@common/common'
+import { IndexName, NodeName } from '@common/common'
+import { integer } from '@common/Numeric'
 
 export class ClusterRerouteParameters {
   allow_primary: boolean

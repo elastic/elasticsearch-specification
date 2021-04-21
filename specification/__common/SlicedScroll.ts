@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer } from '@common/common'
+import { Field } from './common'
+import { integer } from './Numeric'
 
 export class SlicedScroll {
   field?: Field

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Status } from '@common/watcher/execution/Status'
-import { InputType } from '@common/watcher/input/InputType'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Status } from '@watcher/Action'
+import { InputType } from '@watcher/Input'
 
 export class ExecutionResultInput {
   payload: Dictionary<string, UserDefinedValue>

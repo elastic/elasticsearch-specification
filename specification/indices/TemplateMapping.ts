@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { IndexName, integer, VersionNumber } from '@common/common'
+import { IndexName, VersionNumber } from '@common/common'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Alias } from './Alias'

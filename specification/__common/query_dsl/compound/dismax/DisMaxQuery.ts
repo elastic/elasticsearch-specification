@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, float } from '@common/common'
+import { double, float } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 

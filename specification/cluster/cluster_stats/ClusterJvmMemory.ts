@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 
 export class ClusterJvmMemory {
   heap_max_in_bytes: long

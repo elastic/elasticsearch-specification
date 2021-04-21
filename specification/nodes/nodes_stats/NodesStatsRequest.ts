@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Fields, Metrics, NodeIds } from '@common/common'
-import { Level } from '@common/common/Level'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@common/Base'
+import { Fields, Level, Metrics, NodeIds } from '@common/common'
+import { Time } from '@common/Time'
 
 /**
  * @rest_spec_name nodes.stats

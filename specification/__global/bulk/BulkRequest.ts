@@ -17,16 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
   Fields,
   IndexName,
+  Refresh,
   Routing,
   Type,
   WaitForActiveShards
 } from '@common/common'
-import { Refresh } from '@common/common/Refresh'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { Time } from '@common/Time'
 import { BulkOperationContainer } from './BulkOperation'
 
 /**

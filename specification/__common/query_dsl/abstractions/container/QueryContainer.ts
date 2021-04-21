@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, long } from '@common/common'
+import { float, long } from '@common/Numeric'
 import { BoolQuery } from '@common/query_dsl/compound/bool/BoolQuery'
 import { BoostingQuery } from '@common/query_dsl/compound/boosting/BoostingQuery'
 import { ConstantScoreQuery } from '@common/query_dsl/compound/constant_score/ConstantScoreQuery'

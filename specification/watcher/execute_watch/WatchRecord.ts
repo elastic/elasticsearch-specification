@@ -18,10 +18,10 @@
  */
 
 import { Id } from '@common/common'
-import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
-import { InputContainer } from '@common/watcher/input/InputContainer'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ConditionContainer } from '@watcher/Conditions'
+import { InputContainer } from '@watcher/Input'
 import { ActionExecutionState } from './ActionExecutionState'
 import { ExecutionResult } from './ExecutionResult'
 import { TriggerEventResult } from './TriggerEventResult'

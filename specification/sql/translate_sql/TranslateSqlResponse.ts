@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Field, Fields, long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Field, Fields } from '@common/common'
+import { long } from '@common/Numeric'
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'

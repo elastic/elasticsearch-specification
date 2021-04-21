@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
   Field,
   Fields,
@@ -24,10 +25,9 @@ import {
   IndexName,
   Routing,
   Type,
-  VersionNumber
+  VersionNumber,
+  VersionType
 } from '@common/common'
-import { VersionType } from '@common/common/VersionType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TermVectorFilter } from './TermVectorFilter'
 

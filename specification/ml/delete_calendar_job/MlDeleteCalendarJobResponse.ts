@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { Id, Ids } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class MlDeleteCalendarJobResponse extends ResponseBase {
   calendar_id: Id

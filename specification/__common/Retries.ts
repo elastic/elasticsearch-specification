@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from './common'
+import { long } from './Numeric'
 
 export class Retries {
   bulk: long

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field, float, integer } from '@common/common'
-import { SuggestMode } from '@common/common/SuggestMode'
+import { Field, SuggestMode } from '@common/common'
+import { float, integer } from '@common/Numeric'
 
 export class DirectGenerator {
   field: Field

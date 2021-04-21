@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Detector } from '@common/ml/Detector'
+import { RequestBase } from '@common/Base'
+import { Detector } from '@ml/Detector'
 
 /**
  * @rest_spec_name ml.validate_detector

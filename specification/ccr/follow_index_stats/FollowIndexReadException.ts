@@ -17,7 +17,9 @@
  * under the License.
  */
 
-import { ErrorCause, integer, SequenceNumber } from '@common/common'
+import { SequenceNumber } from '@common/common'
+import { ErrorCause } from '@common/Errors'
+import { integer } from '@common/Numeric'
 
 export class FollowIndexReadException {
   exception: ErrorCause

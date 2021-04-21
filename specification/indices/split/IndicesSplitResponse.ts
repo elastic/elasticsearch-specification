@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { AcknowledgedResponseBase } from '@common/Base'
 import { IndexName } from '@common/common'
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
 
 export class IndicesSplitResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean

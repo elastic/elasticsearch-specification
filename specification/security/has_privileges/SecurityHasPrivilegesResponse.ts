@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { IndexName, Name } from '@common/common'
-import { Username } from '@common/common/Credentials'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { IndexName, Name, Username } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityHasPrivilegesResponse extends ResponseBase {

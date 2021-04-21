@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Script } from '@common/common_options/scripting/Script'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
+import { Script } from '@common/Scripting'
 
 export class ScriptQuery extends QueryBase {
   script?: Script

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float, integer } from '@common/common'
+import { float, integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { CompositeAggregationSource } from './CompositeAggregationSource'

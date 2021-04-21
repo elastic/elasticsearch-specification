@@ -19,7 +19,7 @@
 
 import { Indices } from '@common/common'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { FieldSecurity } from '@common/security/FieldSecurity'
+import { FieldSecurity } from '@security/FieldSecurity'
 
 export class IndicesPrivileges {
   field_security?: FieldSecurity

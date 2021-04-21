@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 import { GeoLocation } from '@common/query_dsl/geo/GeoLocation'
 import { MetricAggregationBase } from '../MetricAggregation'
 

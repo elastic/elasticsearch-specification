@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { DictionaryResponseBase } from '@common/Base'
 import { IndexName } from '@common/common'
-import { DictionaryResponseBase } from '@common/common_abstractions/response/DictionaryResponseBase'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { ShardStatistics } from '@common/Stats'
 
 export class IndicesFlushSyncedResponse extends DictionaryResponseBase<
   IndexName,

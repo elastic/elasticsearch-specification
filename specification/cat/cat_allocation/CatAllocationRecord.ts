@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { ByteSize, Percentage } from '@common/common'
+import { ByteSize } from '@common/common'
 import { Host, Ip } from '@common/Networking'
+import { Percentage } from '@common/Numeric'
 
 export class CatAllocationRecord {
   /**

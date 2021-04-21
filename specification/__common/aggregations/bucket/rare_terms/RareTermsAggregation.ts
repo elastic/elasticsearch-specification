@@ -18,7 +18,8 @@
  */
 
 import { Missing } from '@common/aggregations/AggregationContainer'
-import { double, Field, long } from '@common/common'
+import { Field } from '@common/common'
+import { double, long } from '@common/Numeric'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { TermsInclude } from '../terms/TermsInclude'
 

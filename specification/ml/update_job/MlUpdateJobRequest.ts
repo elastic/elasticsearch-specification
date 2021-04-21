@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { PerPartitionCategorization } from '@common/ml/AnalysisConfig'
-import { AnalysisMemoryLimit } from '@common/ml/AnalysisMemoryLimit'
-import { Detector } from '@common/ml/Detector'
-import { ModelPlotConfigEnabled } from '@common/ml/ModelPlotConfigEnabled'
+import { RequestBase } from '@common/Base'
+import { Id } from '@common/common'
+import { long } from '@common/Numeric'
+import { Time } from '@common/Time'
+import { PerPartitionCategorization } from '@ml/AnalysisConfig'
+import { AnalysisMemoryLimit } from '@ml/AnalysisMemoryLimit'
+import { Detector } from '@ml/Detector'
+import { ModelPlotConfigEnabled } from '@ml/ModelPlotConfigEnabled'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

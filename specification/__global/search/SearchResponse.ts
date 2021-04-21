@@ -18,17 +18,10 @@
  */
 
 import { Aggregate } from '@common/aggregations/Aggregate'
-import {
-  AggregateName,
-  double,
-  Id,
-  long,
-  ScrollId,
-  SuggestionName
-} from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ClusterStatistics } from '@common/common_options/hit/ClusterStatistics'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { ResponseBase } from '@common/Base'
+import { AggregateName, Id, ScrollId, SuggestionName } from '@common/common'
+import { double, long } from '@common/Numeric'
+import { ClusterStatistics, ShardStatistics } from '@common/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { HitsMetadata } from './hits/HitsMetadata'

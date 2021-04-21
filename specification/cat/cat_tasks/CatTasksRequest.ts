@@ -18,7 +18,7 @@
  */
 
 import { CatRequestBase } from '@cat/CatBase'
-import { long } from '@common/common'
+import { long } from '@common/Numeric'
 
 /**
  * @rest_spec_name cat.tasks

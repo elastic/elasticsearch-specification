@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ResponseBase } from '@common/Base'
 import { NodeIds } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 
 export class MlStartDatafeedResponse extends ResponseBase {
   node: NodeIds

@@ -17,8 +17,12 @@
  * under the License.
  */
 
-import { Fuzziness, integer, MultiTermQueryRewrite } from '@common/common'
-import { MinimumShouldMatch } from '@common/common_options/minimum_should_match/MinimumShouldMatch'
+import {
+  Fuzziness,
+  MinimumShouldMatch,
+  MultiTermQueryRewrite
+} from '@common/common'
+import { integer } from '@common/Numeric'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { Operator } from '@common/query_dsl/Operator'
 

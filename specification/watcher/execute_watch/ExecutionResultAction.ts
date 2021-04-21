@@ -18,14 +18,16 @@
  */
 
 import { Id } from '@common/common'
-import { ActionType } from '@common/watcher/actions/ActionType'
-import { EmailActionResult } from '@common/watcher/execution/email/EmailActionResult'
-import { IndexActionResult } from '@common/watcher/execution/index/IndexActionResult'
-import { LoggingActionResult } from '@common/watcher/execution/logging/LoggingActionResult'
-import { PagerDutyActionResult } from '@common/watcher/execution/pager_duty/PagerDutyActionResult'
-import { SlackActionResult } from '@common/watcher/execution/slack/SlackActionResult'
-import { Status } from '@common/watcher/execution/Status'
-import { WebhookActionResult } from '@common/watcher/execution/webhook/WebhookActionResult'
+import {
+  ActionType,
+  LoggingActionResult,
+  Status,
+  WebhookActionResult
+} from '@watcher/Action'
+import { EmailActionResult } from '@watcher/EmailAction'
+import { IndexActionResult } from '@watcher/IndexAction'
+import { PagerDutyActionResult } from '@watcher/PagerDutyAction'
+import { SlackActionResult } from '@watcher/SlackAction'
 
 export class ExecutionResultAction {
   email?: EmailActionResult

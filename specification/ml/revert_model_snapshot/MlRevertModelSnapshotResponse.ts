@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ModelSnapshot } from '@common/ml/ModelSnapshot'
+import { ResponseBase } from '@common/Base'
+import { ModelSnapshot } from '@ml/ModelSnapshot'
 
 export class MlRevertModelSnapshotResponse extends ResponseBase {
   model: ModelSnapshot

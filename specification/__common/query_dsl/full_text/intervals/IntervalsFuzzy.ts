@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, Fuzziness, integer } from '@common/common'
+import { Field, Fuzziness } from '@common/common'
+import { integer } from '@common/Numeric'
 
 export class IntervalsFuzzy {
   analyzer?: string

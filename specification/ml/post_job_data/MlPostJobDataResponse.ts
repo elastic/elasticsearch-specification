@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Id, integer, long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id } from '@common/common'
+import { integer, long } from '@common/Numeric'
 
 export class MlPostJobDataResponse extends ResponseBase {
   bucket_count: long

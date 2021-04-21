@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { ResponseBase } from '@common/Base'
+import { ShardStatistics } from '@common/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexSegment } from './IndexSegment'
 

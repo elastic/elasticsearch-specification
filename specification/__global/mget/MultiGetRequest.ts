@@ -17,16 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@common/Base'
 import {
   Fields,
   IndexName,
-  integer,
   Routing,
   Type,
-  VersionNumber
+  VersionNumber,
+  VersionType
 } from '@common/common'
-import { VersionType } from '@common/common/VersionType'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { integer } from '@common/Numeric'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 
 /**

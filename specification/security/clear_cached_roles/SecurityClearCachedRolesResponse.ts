@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { SecurityNode } from '@common/security/SecurityNode'
+import { ResponseBase } from '@common/Base'
 import { NodeStatistics } from '@nodes/NodeStatistics'
+import { SecurityNode } from '@security/SecurityNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class SecurityClearCachedRolesResponse extends ResponseBase {

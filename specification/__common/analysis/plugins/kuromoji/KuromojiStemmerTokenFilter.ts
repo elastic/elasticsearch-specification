@@ -18,7 +18,7 @@
  */
 
 import { TokenFilterBase } from '@common/analysis/token_filters/TokenFilterBase'
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 
 export class KuromojiStemmerTokenFilter extends TokenFilterBase {
   /** @prop_serializer NullableStringIntFormatter */

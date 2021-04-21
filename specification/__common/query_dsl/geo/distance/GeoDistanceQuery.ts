@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Distance } from '@common/common_options/geo/Distance'
-import { GeoDistanceType } from '@common/common_options/geo/GeoDistanceType'
+import { Distance, GeoDistanceType } from '@common/Geo'
 import { QueryBase } from '@common/query_dsl/abstractions/query/Query'
 import { GeoLocation } from '../GeoLocation'
 import { GeoValidationMethod } from '../GeoValidationMethod'

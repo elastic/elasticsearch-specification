@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { IndexAlias, IndexName, integer, VersionNumber } from '@common/common'
+import { IndexAlias, IndexName, VersionNumber } from '@common/common'
 import { IndexSettings } from '@common/index/IndexSettings'
 import { TypeMapping } from '@common/mapping/TypeMapping'
+import { integer } from '@common/Numeric'
 import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Indices } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { RankEvalRequestItem } from './RankEvalRequestItem'
+import { RequestBase } from '@common/Base'
+import { ExpandWildcards, Indices } from '@common/common'
 import { RankEvalMetric } from './RankEvalMetric'
+import { RankEvalRequestItem } from './RankEvalRequestItem'
 
 /**
  * @rest_spec_name rank_eval

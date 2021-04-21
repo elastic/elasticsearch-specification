@@ -24,6 +24,7 @@ import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
 } from '@cluster/ClusterStateSnapshots'
+import { ResponseBase } from '@common/Base'
 import {
   EmptyObject,
   IndexName,
@@ -32,9 +33,8 @@ import {
   Uuid,
   VersionNumber
 } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeAttributes } from '@nodes/NodeAttributes'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterStateResponse extends ResponseBase {
   cluster_name: Name

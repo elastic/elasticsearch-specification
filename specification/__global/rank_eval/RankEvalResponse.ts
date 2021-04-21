@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { double, Id, IndexName, Type } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Id, IndexName, Type } from '@common/common'
+import { double } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 

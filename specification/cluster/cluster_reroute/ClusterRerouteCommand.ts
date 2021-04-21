@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { IndexName, integer } from '@common/common'
+import { IndexName } from '@common/common'
+import { integer } from '@common/Numeric'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
 export class ClusterRerouteCommand {

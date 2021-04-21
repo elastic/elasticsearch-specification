@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { Field, Id, IndexName, long, Type, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { Field, Id, IndexName, Type, VersionNumber } from '@common/common'
+import { long } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TermVector } from './TermVector'
 

@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { EpochMillis, long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@common/Base'
+import { long } from '@common/Numeric'
+import { EpochMillis } from '@common/Time'
 
 export class GetSnapshotLifecycleStatsResponse extends ResponseBase {
   retention_deletion_time: string

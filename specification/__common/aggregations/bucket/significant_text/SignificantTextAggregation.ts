@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, Fields, integer, long } from '@common/common'
+import { Field, Fields } from '@common/common'
+import { integer, long } from '@common/Numeric'
 import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { ChiSquareHeuristic } from '../significant_terms/heuristics/ChiSquareHeuristic'

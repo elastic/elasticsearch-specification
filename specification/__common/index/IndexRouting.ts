@@ -18,7 +18,6 @@
  */
 
 import { Id } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexRouting {
   allocation?: IndexRoutingAllocation

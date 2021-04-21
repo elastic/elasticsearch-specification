@@ -18,7 +18,7 @@
  */
 
 import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { integer } from '@common/common'
+import { integer } from '@common/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { SingleGroupSource } from './SingleGroupSource'
 
