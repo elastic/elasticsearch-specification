@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { uint } from '@common/common'
+import { uint } from '@_types/Numeric'
 
 export class EqlFeaturesUsage {
   join: uint

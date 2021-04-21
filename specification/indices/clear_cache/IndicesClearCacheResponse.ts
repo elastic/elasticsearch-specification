@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ShardsOperationResponseBase } from '@common/common_abstractions/response/ShardsOperationResponseBase'
+import { ShardsOperationResponseBase } from '@_types/Base'
 
 export class IndicesClearCacheResponse extends ShardsOperationResponseBase {}

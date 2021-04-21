@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { ByteSize, integer, long, ulong } from '@common/common'
+import { ByteSize } from '@_types/common'
+import { integer, long, ulong } from '@_types/Numeric'
 
 export class SecurityRolesUsage {
   native: SecurityRolesNativeUsage

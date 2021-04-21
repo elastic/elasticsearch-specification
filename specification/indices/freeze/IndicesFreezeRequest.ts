@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { IndexName, WaitForActiveShards } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, IndexName, WaitForActiveShards } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.freeze

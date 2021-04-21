@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
 import {
   SnapshotRepository,
   SnapshotRepositorySettings
-} from '@snapshot/SnapshotRepository'
+} from '@snapshot/_types/SnapshotRepository'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name snapshot.create_repository

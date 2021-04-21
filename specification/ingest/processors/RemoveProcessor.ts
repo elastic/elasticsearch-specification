@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Fields } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Fields } from '@_types/common'
 
 export class RemoveProcessor extends ProcessorBase {
   field: Fields

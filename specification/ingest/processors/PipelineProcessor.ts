@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
 
 export class PipelineProcessor extends ProcessorBase {
   name: string

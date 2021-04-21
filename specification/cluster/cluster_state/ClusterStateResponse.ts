@@ -17,20 +17,27 @@
  * under the License.
  */
 
-import { ClusterStateBlocks } from '@cluster/ClusterStateBlocks'
-import { ClusterStateMetadata } from '@cluster/ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '@cluster/ClusterStateRoutingNodes'
+import { ClusterStateBlockIndex } from '@cluster/_types/ClusterStateBlocksIndex'
+import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
 import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
-} from '@cluster/ClusterStateSnapshots'
-import { EmptyObject, NodeName, Uuid, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeAttributes } from '@transform/get_transform_stats/NodeAttributes'
+} from '@cluster/_types/ClusterStateSnapshots'
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
+import { ResponseBase } from '@_types/Base'
+import {
+  EmptyObject,
+  IndexName,
+  Name,
+  NodeName,
+  Uuid,
+  VersionNumber
+} from '@_types/common'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+  cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: string[]
@@ -43,4 +50,8 @@ export class ClusterStateResponse extends ResponseBase {
   routing_nodes?: ClusterStateRoutingNodes
   snapshots?: ClusterStateSnapshots
   snapshot_deletions?: ClusterStateDeletedSnapshots
+}
+
+export class ClusterStateBlocks {
+  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
 }

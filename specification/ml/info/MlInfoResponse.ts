@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
 import { Defaults } from './Defaults'
 import { Limits } from './Limits'
 import { NativeCode } from './NativeCode'
 
-export class MlMachineLearningInfoResponse extends ResponseBase {
+export class MlInfoResponse extends ResponseBase {
   defaults: Defaults
   limits: Limits
   upgrade_mode: boolean

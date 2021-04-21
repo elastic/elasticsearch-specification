@@ -17,10 +17,14 @@
  * under the License.
  */
 
-import { Indices, Metrics, VersionNumber } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import {
+  ExpandWildcards,
+  Indices,
+  Metrics,
+  VersionNumber
+} from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.state
@@ -33,14 +37,18 @@ export interface ClusterStateRequest extends RequestBase {
     index?: Indices
   }
   query_parameters?: {
-    allow_no_indices?: boolean // default true
+    /** @server_default true */
+    allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
-    flat_settings?: boolean // default false
-    ignore_unavailable?: boolean // default false
-    local?: boolean // default false
-    master_timeout?: Time // default 30s
+    /** @server_default false */
+    flat_settings?: boolean
+    /** @server_default false */
+    ignore_unavailable?: boolean
+    /** @server_default false */
+    local?: boolean
+    /** @server_default 30s */
+    master_timeout?: Time
     wait_for_metadata_version?: VersionNumber
     wait_for_timeout?: Time
   }
-  body?: {}
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { Id, VersionNumber } from '@_types/common'
 
 export class DeleteWatchResponse extends ResponseBase {
   found: boolean

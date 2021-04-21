@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { EpochMillis, long, Percentage } from '@common/common'
+import { long, Percentage } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
 export class RecoveryTranslogStatus {
   percent: Percentage

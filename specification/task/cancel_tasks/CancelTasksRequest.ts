@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { TaskId } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { TaskId } from '@_types/common'
 
 /**
  * @rest_spec_name tasks.cancel
@@ -33,6 +33,7 @@ export interface CancelTasksRequest extends RequestBase {
     actions?: string | string[]
     nodes?: string[]
     parent_task_id?: string
+    wait_for_completion?: boolean
   }
   body?: {}
 }

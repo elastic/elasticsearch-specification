@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name searchable_snapshots.repository_stats

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Ids } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name ml.get_jobs
@@ -30,6 +30,8 @@ export interface MlGetJobsRequest extends RequestBase {
     job_id?: Ids
   }
   query_parameters?: {
+    /** @server_default true */
+    allow_no_match?: boolean
     /** @server_default true */
     allow_no_jobs?: boolean
     /** @server_default false */

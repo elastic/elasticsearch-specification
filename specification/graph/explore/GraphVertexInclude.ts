@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double } from '@common/common'
+import { double } from '@_types/Numeric'
 
 export class GraphVertexInclude {
   boost: double

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
+import { integer } from '@_types/Numeric'
 
 export class TaskRetries {
   bulk: integer

@@ -17,12 +17,10 @@
  * under the License.
  */
 
-import { Indices, integer } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
+import { IndexSettings } from '@_types/index/IndexSettings'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_settings
@@ -43,9 +41,9 @@ export interface IndicesPutSettingsRequest extends RequestBase {
     preserve_existing?: boolean
     timeout?: Time
   }
-  body?: {
-    index?: Dictionary<string, UserDefinedValue>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
+  body: IndexSettingsRequest
+}
+
+export interface IndexSettingsRequest extends IndexSettings {
+  settings?: IndexSettings
 }

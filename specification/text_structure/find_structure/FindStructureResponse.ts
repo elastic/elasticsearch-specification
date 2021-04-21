@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { Field, integer, long, uint } from '@common/common'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { PipelineConfig } from '@common/ingest/PipelineConfig'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { PipelineConfig } from '@ingest/_types/PipelineConfig'
+import { Field } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { integer, long } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class FindStructureResponse {
   charset: string

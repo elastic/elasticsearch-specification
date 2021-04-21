@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
-import { ShardFailure } from '@common/common/ShardFailure'
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { AcknowledgedResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { ShardFailure } from '@_types/Errors'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class IndicesCloseResponse extends AcknowledgedResponseBase {
   indices: Dictionary<IndexName, CloseIndexResult>

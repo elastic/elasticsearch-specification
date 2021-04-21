@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SqlRow } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { SqlRow } from '@_types/common'
 import { SqlColumn } from './SqlColumn'
 
 export class QuerySqlResponse extends ResponseBase {

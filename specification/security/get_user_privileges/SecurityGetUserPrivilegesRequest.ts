@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name security.get_user_privileges

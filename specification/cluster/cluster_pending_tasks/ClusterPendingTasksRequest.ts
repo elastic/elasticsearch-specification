@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.pending_tasks
@@ -28,6 +28,7 @@ import { Time } from '@common/common_options/time_unit/Time'
 export interface ClusterPendingTasksRequest extends RequestBase {
   query_parameters?: {
     local?: boolean
+    /** @server_default 30s */
     master_timeout?: Time
   }
   body?: {}

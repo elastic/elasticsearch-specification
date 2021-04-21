@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { ResponseBase } from '@_types/Base'
+import { ShardStatistics } from '@_types/Stats'
 import { ReloadDetails } from './ReloadDetails'
 
 export class ReloadSearchAnalyzersResponse extends ResponseBase {

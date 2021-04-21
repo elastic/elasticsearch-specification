@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name cluster.remote_info
@@ -25,6 +25,7 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface ClusterRemoteInfoRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {}
+  body?: {
+    stub: string
+  }
 }

@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { IndexState } from '@common/index_settings/IndexState'
+import { ResponseBase } from '@_types/Base'
+import { IndexState } from '@_types/index/IndexState'
 
 export class PreviewTransformResponse<TTransform> extends ResponseBase {
   generated_dest_index: IndexState
-  /** @prop_serializer SourceFormatter`1 */
   preview: TTransform[]
 }

@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Id, integer, SequenceNumber, VersionNumber } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
-import { Watch } from '@watcher/Watch'
+import { Watch } from '@watcher/_types/Watch'
+import { ResponseBase } from '@_types/Base'
+import { Id, SequenceNumber, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 export class GetWatchResponse extends ResponseBase {
   found: boolean

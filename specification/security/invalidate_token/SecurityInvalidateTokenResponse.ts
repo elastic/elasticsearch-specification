@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { ErrorCause, long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'
 
 export class SecurityInvalidateTokenResponse extends ResponseBase {
   error_count: long

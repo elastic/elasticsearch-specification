@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 import { SampleDiversity } from './SampleDiversity'
 
 export class GraphExploreControls {

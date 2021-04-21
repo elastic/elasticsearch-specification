@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
 
 export class LowercaseProcessor extends ProcessorBase {
   field: Field

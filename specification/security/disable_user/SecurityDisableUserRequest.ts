@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Username } from '@common/common/Credentials'
-import { Refresh } from '@common/common/Refresh'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Refresh, Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.disable_user

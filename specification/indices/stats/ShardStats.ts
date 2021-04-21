@@ -17,48 +17,52 @@
  * under the License.
  */
 
+import {
+  BulkStats,
+  CompletionStats,
+  DocStats,
+  FielddataStats,
+  FlushStats,
+  GetStats,
+  IndexingStats,
+  MergesStats,
+  RecoveryStats,
+  RefreshStats,
+  RequestCacheStats,
+  SearchStats,
+  SegmentsStats,
+  StoreStats,
+  TranslogStats,
+  WarmerStats
+} from '@_types/Stats'
 import { ShardCommit } from './ShardCommit'
-import { ShardCompletion } from './ShardCompletion'
-import { ShardDocs } from './ShardDocs'
-import { ShardFielddata } from './ShardFielddata'
-import { ShardFlush } from './ShardFlush'
-import { ShardGet } from './ShardGet'
-import { ShardIndexing } from './ShardIndexing'
-import { ShardMerges } from './ShardMerges'
 import { ShardPath } from './ShardPath'
 import { ShardQueryCache } from './ShardQueryCache'
-import { ShardRefresh } from './ShardRefresh'
-import { ShardRequestCache } from './ShardRequestCache'
 import { ShardRetentionLeases } from './ShardRetentionLeases'
 import { ShardRouting } from './ShardRouting'
-import { ShardSearch } from './ShardSearch'
-import { ShardSegments } from './ShardSegments'
 import { ShardSequenceNumber } from './ShardSequenceNumber'
-import { ShardStatsRecovery } from './ShardStatsRecovery'
-import { ShardStatsStore } from './ShardStatsStore'
-import { ShardTransactionLog } from './ShardTransactionLog'
-import { ShardWarmer } from './ShardWarmer'
 
 export class ShardStats {
   commit: ShardCommit
-  completion: ShardCompletion
-  docs: ShardDocs
-  fielddata: ShardFielddata
-  flush: ShardFlush
-  get: ShardGet
-  indexing: ShardIndexing
-  merges: ShardMerges
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
   shard_path: ShardPath
   query_cache: ShardQueryCache
-  recovery: ShardStatsRecovery
-  refresh: ShardRefresh
-  request_cache: ShardRequestCache
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
   retention_leases: ShardRetentionLeases
   routing: ShardRouting
-  search: ShardSearch
-  segments: ShardSegments
+  search: SearchStats
+  segments: SegmentsStats
   seq_no: ShardSequenceNumber
-  store: ShardStatsStore
-  translog: ShardTransactionLog
-  warmer: ShardWarmer
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
+  bulk?: BulkStats
 }

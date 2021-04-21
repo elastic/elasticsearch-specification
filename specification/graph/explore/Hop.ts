@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { GraphVertexDefinition } from './GraphVertexDefinition'
 
 export class Hop {

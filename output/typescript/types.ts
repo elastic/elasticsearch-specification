@@ -195,7 +195,7 @@ export interface AggregationProfile {
   description: string
   time_in_nanos: long
   type: string
-  debug: AggregationProfileDebug
+  debug?: AggregationProfileDebug
   children?: Array<AggregationProfileDebug>
 }
 
@@ -335,6 +335,14 @@ export interface AnomalyCause {
   typical: Array<double>
 }
 
+export interface AnomalyDetectors {
+  categorization_analyzer: CategorizationAnalyzer
+  categorization_examples_limit: integer
+  model_memory_limit: ByteSize
+  model_snapshot_retention_days: integer
+  daily_model_snapshot_retention_after_days: integer
+}
+
 export interface AnomalyRecord {
   actual?: Array<double>
   bucket_span: Time
@@ -470,12 +478,9 @@ export interface AsyncSearchDocumentResponseBase<TDocument = unknown> extends As
 
 export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
+  keep_alive?: Time
   typed_keys?: boolean
-  body?: {
-    keep_alive?: Time
-    typed_keys?: boolean
-    wait_for_completion_timeout?: Time
-  }
+  wait_for_completion_timeout?: Time
 }
 
 export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchDocumentResponseBase<TDocument> {
@@ -807,11 +812,10 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  _source?: boolean
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   timeout?: Time
-  type_query_string?: string
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
   body: Array<BulkOperationContainer | TSource>
@@ -844,6 +848,18 @@ export interface BulkResponseItemContainer {
   create?: BulkCreateResponseItem
   update?: BulkUpdateResponseItem
   delete?: BulkDeleteResponseItem
+}
+
+export interface BulkStats {
+  total_operations: long
+  total_time?: string
+  total_time_in_millis: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  avg_time?: string
+  avg_time_in_millis: long
+  avg_size?: ByteSize
+  avg_size_in_bytes: long
 }
 
 export interface BulkUpdateOperation extends BulkOperation {
@@ -883,6 +899,7 @@ export interface CancelTasksRequest extends RequestBase {
   actions?: string | Array<string>
   nodes?: Array<string>
   parent_task_id?: string
+  wait_for_completion?: boolean
 }
 
 export interface CancelTasksResponse extends ResponseBase {
@@ -2875,6 +2892,9 @@ export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResp
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterDeleteVotingConfigExclusionsResponse extends ResponseBase {
@@ -2943,12 +2963,6 @@ export interface ClusterHealthResponse extends ResponseBase {
   task_max_waiting_in_queue_millis: EpochMillis
   timed_out: boolean
   unassigned_shards: integer
-}
-
-export interface ClusterIndexTemplate {
-  aliases?: Record<string, AliasDefinition>
-  mappings?: TypeMapping
-  settings?: IndexSettings
 }
 
 export interface ClusterIndicesShardsIndexStats {
@@ -3119,7 +3133,7 @@ export interface ClusterPutComponentTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Time
   body: {
-    template: ClusterIndexTemplate
+    template: IndexState
     aliases?: Record<string, AliasDefinition>
     mappings?: TypeMapping
     settings?: IndexSettings
@@ -3157,6 +3171,9 @@ export interface ClusterRemoteInfo {
 }
 
 export interface ClusterRemoteInfoRequest extends RequestBase {
+  body?: {
+    stub: string
+  }
 }
 
 export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfo> {
@@ -3267,49 +3284,13 @@ export interface ClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string
-  settings?: Record<IndexName, ClusterStateBlockIndexSetting>
+  settings?: Record<IndexName, IndexSettings>
   in_sync_allocations?: Record<string, Array<string>>
   primary_terms?: Record<string, integer>
-  mappings?: Record<string, ClusterStateBlockIndexMapping>
+  mappings?: Record<string, TypeMapping>
   rollover_info?: Record<string, IndicesRolloverConditions>
   timestamp_range?: Record<string, any>
   system?: boolean
-}
-
-export interface ClusterStateBlockIndexMapping {
-  properties: Record<PropertyName, Property>
-}
-
-export interface ClusterStateBlockIndexSetting {
-  routing?: ClusterStateBlockIndexSettingRouting
-  refresh_interval?: Time
-  number_of_shards: integer | string
-  number_of_replicas: integer | string
-  verified_before_close?: boolean | string
-  hidden?: boolean | string
-  format?: integer | string
-  provided_name?: Name
-  auto_expand_replicas?: string
-  creation_date?: DateString
-  uuid?: Uuid
-  version?: ClusterStateBlockIndexSettingVersion
-  lifecycle?: ClusterStateBlockIndexSettingLifecycle
-}
-
-export interface ClusterStateBlockIndexSettingLifecycle {
-  name: Name
-}
-
-export interface ClusterStateBlockIndexSettingRouting {
-  allocation: ClusterStateBlockIndexSettingRoutingAllocation
-}
-
-export interface ClusterStateBlockIndexSettingRoutingAllocation {
-  include: Record<string, string>
-}
-
-export interface ClusterStateBlockIndexSettingVersion {
-  created: VersionString
 }
 
 export interface ClusterStateBlocks {
@@ -3394,7 +3375,7 @@ export interface ClusterStateRequest extends RequestBase {
 }
 
 export interface ClusterStateResponse extends ResponseBase {
-  cluster_name: string
+  cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: Array<string>
@@ -3410,19 +3391,8 @@ export interface ClusterStateResponse extends ResponseBase {
 }
 
 export interface ClusterStateRoutingNodes {
-  unassigned: Array<ClusterStateRoutingNodesShard>
-  nodes: Record<string, Array<ClusterStateRoutingNodesShard>>
-}
-
-export interface ClusterStateRoutingNodesShard {
-  state: ShardRoutingState
-  primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Record<string, string>
-  recovery_source?: Record<string, string>
-  unassigned_info?: UnassignedInformation
+  unassigned: Array<NodeShard>
+  nodes: Record<string, Array<NodeShard>>
 }
 
 export interface ClusterStateSnapshots {
@@ -3509,6 +3479,7 @@ export interface CompletionProperty extends DocValuesPropertyBase {
 export interface CompletionStats {
   size_in_bytes: long
   size?: ByteSize
+  fields?: Record<Field, FieldSizeUsage>
 }
 
 export interface CompletionSuggestOption<TDocument = unknown> {
@@ -3539,14 +3510,16 @@ export interface ComponentTemplate {
 
 export interface ComponentTemplateNode {
   template: ComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: IndexMetaData
 }
 
 export interface ComponentTemplateSummary {
   _meta?: IndexMetaData
   version?: VersionNumber
-  settings: Record<IndexName, ClusterStateBlockIndexSetting>
-  mappings?: Record<string, ClusterStateBlockIndexMapping>
-  aliases?: Array<IndexAlias>
+  settings: Record<IndexName, IndexSettings>
+  mappings?: TypeMapping
+  aliases?: Record<string, AliasDefinition>
 }
 
 export interface CompositeAggregation extends BucketAggregationBase {
@@ -3895,6 +3868,10 @@ export interface DatafeedTimingStats {
   total_search_time_ms: double
 }
 
+export interface Datafeeds {
+  scroll_size: integer
+}
+
 export interface DateDecayFunctionKeys extends DecayFunctionBase {
 }
 export type DateDecayFunction = DateDecayFunctionKeys |
@@ -3940,7 +3917,7 @@ export interface DateHistogramRollupGrouping {
 
 export interface DateIndexNameProcessor extends ProcessorBase {
   date_formats: Array<string>
-  date_rounding: DateRounding
+  date_rounding: string | DateRounding
   field: Field
   index_name_format: string
   index_name_prefix: string
@@ -4036,6 +4013,11 @@ export type Decision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_
 
 export type DefaultOperator = 'AND' | 'OR'
 
+export interface Defaults {
+  anomaly_detectors: AnomalyDetectors
+  datafeeds: Datafeeds
+}
+
 export interface DelayedDataCheckConfig {
   check_window?: Time
   enabled: boolean
@@ -4073,8 +4055,8 @@ export interface DeleteByQueryRequest extends RequestBase {
   from?: long
   ignore_unavailable?: boolean
   lenient?: boolean
+  max_docs?: long
   preference?: string
-  query_on_query_string?: string
   refresh?: boolean
   request_cache?: boolean
   requests_per_second?: long
@@ -4087,9 +4069,9 @@ export interface DeleteByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: Array<string>
-  source_enabled?: boolean
-  source_excludes?: Fields
-  source_includes?: Fields
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
   stats?: Array<string>
   terminate_after?: long
   timeout?: Time
@@ -4679,7 +4661,7 @@ export interface ErrorCause {
 }
 
 export interface ErrorResponse {
-  error: MainError
+  error: MainError | string
   status: integer
 }
 
@@ -4821,7 +4803,7 @@ export interface ExplainRequest extends RequestBase {
   preference?: string
   query_on_query_string?: string
   routing?: Routing
-  _source?: boolean | Fields | SourceFilter
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
@@ -4960,6 +4942,11 @@ export interface FieldLookup {
 export interface FieldMapping {
 }
 
+export interface FieldMemoryUsage {
+  memory_size?: ByteSize
+  memory_size_in_bytes: long
+}
+
 export interface FieldNamesField {
   enabled: boolean
 }
@@ -4972,6 +4959,11 @@ export interface FieldSecurity {
 export interface FieldSecuritySettings {
   except: Array<string>
   grant: Array<string>
+}
+
+export interface FieldSizeUsage {
+  size?: ByteSize
+  size_in_bytes: long
 }
 
 export interface FieldSort {
@@ -5032,6 +5024,7 @@ export interface FielddataStats {
   evictions?: long
   memory_size?: ByteSize
   memory_size_in_bytes: long
+  fields?: Record<Field, FieldMemoryUsage>
 }
 
 export type Fields = Field | Array<Field>
@@ -5335,6 +5328,8 @@ export interface GeoBoundingBoxQuery extends QueryBase {
   bounding_box?: BoundingBox
   type?: GeoExecution
   validation_method?: GeoValidationMethod
+  top_left?: LatLon
+  bottom_right?: LatLon
 }
 
 export interface GeoBounds {
@@ -5603,7 +5598,7 @@ export interface GetRequest extends RequestBase {
   stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
-  _source?: boolean | string | Array<string>
+  _source?: boolean | Fields
 }
 
 export interface GetResponse<TDocument = unknown> extends ResponseBase {
@@ -6186,8 +6181,8 @@ export interface IndexHealthStats {
   unassigned_shards: integer
 }
 
-export interface IndexMappings {
-  item: TypeMapping
+export interface IndexMappingRecord {
+  item?: TypeMapping
   mappings: TypeMapping
 }
 
@@ -6227,46 +6222,70 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
 export interface IndexResponse extends WriteResponseBase {
 }
 
+export interface IndexRouting {
+  allocation?: IndexRoutingAllocation
+  rebalance?: IndexRoutingRebalance
+}
+
+export interface IndexRoutingAllocation {
+  enable?: IndexRoutingAllocationOptions
+  include?: IndexRoutingAllocationInclude
+  initial_recovery?: IndexRoutingAllocationInitialRecovery
+}
+
+export interface IndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface IndexRoutingAllocationInitialRecovery {
+  _id?: Id
+}
+
+export type IndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface IndexRoutingRebalance {
+  enable: IndexRoutingRebalanceOptions
+}
+
+export type IndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface IndexSegment {
   shards: Record<string, ShardsSegment | Array<ShardsSegment>>
 }
 
 export interface IndexSettingBlocks {
   read_only?: boolean
+  'index.blocks.read_only'?: boolean
   read_only_allow_delete?: boolean
+  'index.blocks.read_only_allow_delete'?: boolean
   read?: boolean
-  write?: boolean
+  'index.blocks.read'?: boolean
+  write?: boolean | string
+  'index.blocks.write'?: boolean | string
   metadata?: boolean
+  'index.blocks.metadata'?: boolean
 }
-
-export interface IndexSettingRouting {
-  'allocation.enable'?: IndexSettingRoutingAllocation
-  'rebalance.enable'?: IndexSettingRoutingRebalance
-}
-
-export type IndexSettingRoutingAllocation = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export type IndexSettingRoutingRebalance = 'all' | 'primaries' | 'replicas' | 'none'
 
 export interface IndexSettings {
-  number_of_shards?: integer
-  'index.number_of_shards'?: integer
-  number_of_replicas?: integer
-  'index.number_of_replicas'?: integer
+  number_of_shards?: integer | string
+  'index.number_of_shards'?: integer | string
+  number_of_replicas?: integer | string
+  'index.number_of_replicas'?: integer | string
   number_of_routing_shards?: integer
   'index.number_of_routing_shards'?: integer
   check_on_startup?: IndexCheckOnStartup
   'index.check_on_startup'?: IndexCheckOnStartup
   codec?: string
   'index.codec'?: string
-  routing_partition_size?: integer
-  'index.routing_partition_size'?: integer
+  routing_partition_size?: integer | string
+  'index.routing_partition_size'?: integer | string
   'soft_deletes.retention_lease.period'?: Time
   'index.soft_deletes.retention_lease.period'?: Time
   load_fixed_bitset_filters_eagerly?: boolean
   'index.load_fixed_bitset_filters_eagerly'?: boolean
-  hidden?: boolean
-  'index.hidden'?: boolean
+  hidden?: boolean | string
+  'index.hidden'?: boolean | string
   auto_expand_replicas?: string
   'index.auto_expand_replicas'?: string
   'search.idle.after'?: Time
@@ -6288,7 +6307,7 @@ export interface IndexSettings {
   max_shingle_diff?: integer
   'index.max_shingle_diff'?: integer
   blocks?: IndexSettingBlocks
-  'index.bocks'?: IndexSettingBlocks
+  'index.blocks'?: IndexSettingBlocks
   max_refresh_listeners?: integer
   'index.max_refresh_listeners'?: integer
   'analyze.max_token_count'?: integer
@@ -6299,20 +6318,60 @@ export interface IndexSettings {
   'index.max_terms_count'?: integer
   max_regex_length?: integer
   'index.max_regex_length'?: integer
-  routing?: IndexSettingRouting
-  'index.routing'?: IndexSettingRouting
+  routing?: IndexRouting
+  'index.routing'?: IndexRouting
   gc_deletes?: Time
   'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
   'index.default_pipeline'?: PipelineName
   final_pipeline?: PipelineName
   'index.final_pipeline'?: PipelineName
+  lifecycle?: IndexSettingsLifecycle
+  'index.lifecycle'?: IndexSettingsLifecycle
+  provided_name?: Name
+  'index.provided_name'?: Name
+  creation_date?: DateString
+  'index.creation_date'?: DateString
+  uuid?: Uuid
+  'index.uuid'?: Uuid
+  version?: IndexVersioning
+  'index.version'?: IndexVersioning
+  verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
+  format?: string | integer
+  'index.format'?: string | integer
+  max_slices_per_scroll?: integer
+  'index.max_slices_per_scroll'?: integer
+  'translog.durability'?: string
+  'index.translog.durability'?: string
+  'query_string.lenient'?: boolean | string
+  'index.query_string.lenient'?: boolean | string
+  priority?: integer
+  'index.priority'?: integer
+  top_metrics_max_size?: integer
+  analysis?: IndexSettingsAnalysis
+}
+
+export interface IndexSettingsAnalysis {
+  char_filter?: Record<string, CharFilter>
+}
+
+export interface IndexSettingsLifecycle {
+  name: Name
+}
+
+export interface IndexSettingsRequest extends IndexSettings {
+  settings?: IndexSettings
 }
 
 export interface IndexState {
-  aliases: Record<IndexName, Alias>
-  mappings: TypeMapping
-  settings: IndexSettings
+  aliases?: Record<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export interface IndexStatePrefixedSettings {
+  index: IndexSettings
 }
 
 export interface IndexStats {
@@ -6332,6 +6391,11 @@ export interface IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+  bulk?: BulkStats
+}
+
+export interface IndexVersioning {
+  created: VersionString
 }
 
 export interface IndexedScript extends ScriptBase {
@@ -6686,7 +6750,7 @@ export interface IndicesGetMappingRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappings> {
+export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndexMappingRecord> {
 }
 
 export interface IndicesGetRequest extends RequestBase {
@@ -6831,11 +6895,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   preserve_existing?: boolean
   timeout?: Time
-  body: {
-    index?: Record<string, any>
-    refresh_interval?: Time
-    number_of_replicas?: integer
-  }
+  body: IndexSettingsRequest
 }
 
 export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {
@@ -7593,6 +7653,12 @@ export interface LimitTokenCountTokenFilter extends TokenFilterBase {
   max_token_count: integer
 }
 
+export interface Limits {
+  max_model_memory_limit?: ByteSize
+  effective_max_model_memory_limit: ByteSize
+  total_ml_memory: ByteSize
+}
+
 export interface LineStringGeoShape {
   coordinates: Array<GeoCoordinate>
 }
@@ -7691,9 +7757,6 @@ export interface LowercaseTokenFilter extends TokenFilterBase {
 }
 
 export interface LowercaseTokenizer extends TokenizerBase {
-}
-
-export interface MachineLearningInfoRequest extends RequestBase {
 }
 
 export interface MachineLearningUsage extends XPackUsage {
@@ -8194,6 +8257,7 @@ export interface MlGetJobStatsResponse extends ResponseBase {
 
 export interface MlGetJobsRequest extends RequestBase {
   job_id?: Ids
+  allow_no_match?: boolean
   allow_no_jobs?: boolean
   exclude_generated?: boolean
 }
@@ -8269,6 +8333,16 @@ export interface MlInferenceTrainedModelsUsage {
 export interface MlInferenceUsage {
   ingest_processors: Record<string, MlInferenceIngestProcessorUsage>
   trained_models: MlInferenceTrainedModelsUsage
+}
+
+export interface MlInfoRequest extends RequestBase {
+}
+
+export interface MlInfoResponse extends ResponseBase {
+  defaults: Defaults
+  limits: Limits
+  upgrade_mode: boolean
+  native_code: NativeCode
 }
 
 export interface MlJobForecasts {
@@ -8769,7 +8843,6 @@ export interface MultiGetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  source_enabled?: boolean
   _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -8855,7 +8928,7 @@ export interface MultiSearchTemplateRequest extends RequestBase {
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body: {
     operations?: Record<string, SearchTemplateRequest>
@@ -8969,6 +9042,11 @@ export type NamedQuery<TQuery = unknown> = NamedQueryKeys<TQuery> |
     { [property: string]: TQuery }
 
 export type Names = string | Array<string>
+
+export interface NativeCode {
+  build_hash: string
+  version: VersionString
+}
 
 export interface NativeCodeInformation {
   build_hash: string
@@ -9194,6 +9272,17 @@ export interface NodeReloadExceptionCausedBy {
 export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
 
 export type NodeRoles = Array<NodeRole>
+
+export interface NodeShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Record<string, string>
+  recovery_source?: Record<string, Id>
+  unassigned_info?: UnassignedInformation
+}
 
 export interface NodeStatistics {
   failed: integer
@@ -11060,11 +11149,6 @@ export interface SearchInputRequestDefinition {
   rest_total_hits_as_int?: boolean
 }
 
-export interface SearchNode {
-  name: Name
-  transport_address: TransportAddress
-}
-
 export interface SearchProfile {
   collector: Array<Collector>
   query: Array<QueryProfile>
@@ -11084,28 +11168,32 @@ export interface SearchRequest extends RequestBase {
   df?: string
   docvalue_fields?: Fields
   expand_wildcards?: ExpandWildcards
+  explain?: boolean
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   lenient?: boolean
   max_concurrent_shard_requests?: long
+  min_compatible_shard_node?: VersionString
   preference?: string
   pre_filter_shard_size?: long
-  query_on_query_string?: string
   request_cache?: boolean
   routing?: Routing
   scroll?: Time
   search_type?: SearchType
-  sequence_number_primary_term?: boolean
   stats?: Array<string>
   stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode
   suggest_size?: long
   suggest_text?: string
-  total_hits_as_integer?: boolean
+  terminate_after?: long
+  timeout?: Time
   track_total_hits?: boolean | integer
+  track_scores?: boolean
   typed_keys?: boolean
   rest_total_hits_as_int?: boolean
+  version?: boolean
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   seq_no_primary_term?: boolean
@@ -11166,15 +11254,6 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   terminated_early?: boolean
 }
 
-export interface SearchShard {
-  index: string
-  node: string
-  primary: boolean
-  relocating_node: string
-  shard: integer
-  state: string
-}
-
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -11186,8 +11265,9 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse extends ResponseBase {
-  nodes: Record<string, SearchNode>
-  shards: Array<Array<SearchShard>>
+  nodes: Record<string, NodeAttributes>
+  shards: Array<Array<NodeShard>>
+  indices: Record<IndexName, ShardStoreIndex>
 }
 
 export interface SearchStats {
@@ -11799,15 +11879,6 @@ export interface ShardCommit {
   user_data: Record<string, string>
 }
 
-export interface ShardCompletion {
-  size_in_bytes: long
-}
-
-export interface ShardDocs {
-  count: long
-  deleted: long
-}
-
 export interface ShardFailure {
   index: string
   node: string
@@ -11816,30 +11887,9 @@ export interface ShardFailure {
   status?: string
 }
 
-export interface ShardFielddata {
-  evictions: long
-  memory_size_in_bytes: long
-}
-
 export interface ShardFileSizeInfo {
   description: string
   size_in_bytes: long
-}
-
-export interface ShardFlush {
-  total: long
-  periodic: long
-  total_time_in_millis: long
-}
-
-export interface ShardGet {
-  current: long
-  exists_time_in_millis: long
-  exists_total: long
-  missing_time_in_millis: long
-  missing_total: long
-  time_in_millis: long
-  total: long
 }
 
 export interface ShardHealthStats {
@@ -11851,37 +11901,11 @@ export interface ShardHealthStats {
   unassigned_shards: integer
 }
 
-export interface ShardIndexing {
-  delete_current: long
-  delete_time_in_millis: long
-  delete_total: long
-  index_current: long
-  index_failed: long
-  index_time_in_millis: long
-  index_total: long
-  is_throttled: boolean
-  noop_update_total: long
-  throttle_time_in_millis: long
-}
-
 export interface ShardLease {
   id: Id
   retaining_seq_no: SequenceNumber
   timestamp: long
   source: string
-}
-
-export interface ShardMerges {
-  current: long
-  current_docs: long
-  current_size_in_bytes: long
-  total: long
-  total_auto_throttle_in_bytes: long
-  total_docs: long
-  total_size_in_bytes: long
-  total_stopped_time_in_millis: long
-  total_throttled_time_in_millis: long
-  total_time_in_millis: long
 }
 
 export interface ShardPath {
@@ -11925,21 +11949,6 @@ export interface ShardRecovery {
   verify_index: RecoveryVerifyIndex
 }
 
-export interface ShardRefresh {
-  listeners: long
-  total: long
-  total_time_in_millis: long
-  external_total: long
-  external_total_time_in_millis: long
-}
-
-export interface ShardRequestCache {
-  evictions: long
-  hit_count: long
-  memory_size_in_bytes: long
-  miss_count: long
-}
-
 export interface ShardRetentionLeases {
   primary_term: long
   version: VersionNumber
@@ -11955,42 +11964,10 @@ export interface ShardRouting {
 
 export type ShardRoutingState = 'UNASSIGNED' | 'INITIALIZING' | 'STARTED' | 'RELOCATING'
 
-export interface ShardSearch {
-  fetch_current: long
-  fetch_time_in_millis: long
-  fetch_total: long
-  open_contexts: long
-  query_current: long
-  query_time_in_millis: long
-  query_total: long
-  scroll_current: long
-  scroll_time_in_millis: long
-  scroll_total: long
-  suggest_current: long
-  suggest_time_in_millis: long
-  suggest_total: long
-}
-
 export interface ShardSegmentRouting {
   node: string
   primary: boolean
   state: string
-}
-
-export interface ShardSegments {
-  count: long
-  doc_values_memory_in_bytes: long
-  file_sizes: Record<string, ShardFileSizeInfo>
-  fixed_bit_set_memory_in_bytes: long
-  index_writer_memory_in_bytes: long
-  max_unsafe_auto_id_timestamp: long
-  memory_in_bytes: long
-  norms_memory_in_bytes: long
-  points_memory_in_bytes: long
-  stored_fields_memory_in_bytes: long
-  terms_memory_in_bytes: long
-  term_vectors_memory_in_bytes: long
-  version_map_memory_in_bytes: long
 }
 
 export interface ShardSequenceNumber {
@@ -12009,37 +11986,27 @@ export interface ShardStatistics {
 
 export interface ShardStats {
   commit: ShardCommit
-  completion: ShardCompletion
-  docs: ShardDocs
-  fielddata: ShardFielddata
-  flush: ShardFlush
-  get: ShardGet
-  indexing: ShardIndexing
-  merges: ShardMerges
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
   shard_path: ShardPath
   query_cache: ShardQueryCache
-  recovery: ShardStatsRecovery
-  refresh: ShardRefresh
-  request_cache: ShardRequestCache
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
   retention_leases: ShardRetentionLeases
   routing: ShardRouting
-  search: ShardSearch
-  segments: ShardSegments
+  search: SearchStats
+  segments: SegmentsStats
   seq_no: ShardSequenceNumber
-  store: ShardStatsStore
-  translog: ShardTransactionLog
-  warmer: ShardWarmer
-}
-
-export interface ShardStatsRecovery {
-  current_as_source: long
-  current_as_target: long
-  throttle_time_in_millis: long
-}
-
-export interface ShardStatsStore {
-  reserved_in_bytes: long
-  size_in_bytes: long
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
+  bulk?: BulkStats
 }
 
 export interface ShardStore {
@@ -12060,22 +12027,13 @@ export interface ShardStoreException {
   type: string
 }
 
+export interface ShardStoreIndex {
+  aliases?: Array<Name>
+  filter?: QueryContainer
+}
+
 export interface ShardStoreWrapper {
   stores: Array<ShardStore>
-}
-
-export interface ShardTransactionLog {
-  earliest_last_modified_age: long
-  operations: long
-  size_in_bytes: long
-  uncommitted_operations: long
-  uncommitted_size_in_bytes: long
-}
-
-export interface ShardWarmer {
-  current: long
-  total: long
-  total_time_in_millis: long
 }
 
 export interface ShardsOperationResponseBase extends ResponseBase {
@@ -12979,9 +12937,10 @@ export interface SuggestContainer {
 }
 
 export interface SuggestContext {
-  name: string
-  path: Field
+  name: Name
+  path?: Field
   type: string
+  precision?: integer
 }
 
 export interface SuggestContextQuery {
@@ -13789,7 +13748,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   source_enabled?: boolean
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
-  _source?: boolean | string | Array<string>
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   body: {
@@ -14025,6 +13984,8 @@ export interface WatcherExecuteWatchResponse extends ResponseBase {
   watch_record: WatchRecord
 }
 
+export type WatcherMetric = '_all' | 'queued_watches' | 'current_watches' | 'pending_watches'
+
 export interface WatcherNodeStats {
   current_watches?: Array<WatchRecordStats>
   execution_thread_pool: ExecutionThreadPool
@@ -14083,7 +14044,7 @@ export interface WatcherStartResponse extends AcknowledgedResponseBase {
 export type WatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
 export interface WatcherStatsRequest extends RequestBase {
-  metric?: Metrics
+  metric?: WatcherMetric | Array<WatcherMetric>
   emit_stacktraces?: boolean
 }
 

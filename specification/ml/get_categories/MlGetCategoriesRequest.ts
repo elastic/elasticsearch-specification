@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CategoryId, Id } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Page } from '@common/ml/Page'
+import { Page } from '@ml/_types/Page'
+import { RequestBase } from '@_types/Base'
+import { CategoryId, Id } from '@_types/common'
 
 /**
  * @rest_spec_name ml.get_categories

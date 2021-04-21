@@ -17,14 +17,13 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name ml.info
  * @since 6.3.0
  * @stability TODO
  */
-export interface MachineLearningInfoRequest extends RequestBase {
+export interface MlInfoRequest extends RequestBase {
   query_parameters?: {}
-  body?: {}
 }

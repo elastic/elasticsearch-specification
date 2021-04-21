@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { RequestBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name sql.query

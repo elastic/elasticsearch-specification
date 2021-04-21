@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, IndexName, NodeId, VersionString } from '@common/common'
+import { ByteSize, IndexName, NodeId, VersionString } from '@_types/common'
 
 export class CatSegmentsRecord {
   /**

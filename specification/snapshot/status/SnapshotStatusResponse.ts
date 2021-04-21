@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { SnapshotStatus } from '@common/snapshot/SnapshotStatus'
+import { SnapshotStatus } from '@snapshot/_types/SnapshotStatus'
+import { ResponseBase } from '@_types/Base'
 
 export class SnapshotStatusResponse extends ResponseBase {
   snapshots: SnapshotStatus[]

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
 
 /**
  * @rest_spec_name cluster.delete_voting_config_exclusions
@@ -25,4 +25,8 @@ import { RequestBase } from '@common/common_abstractions/request/RequestBase'
  * @stability TODO
  */
 export interface ClusterDeleteVotingConfigExclusionsRequest
-  extends RequestBase {}
+  extends RequestBase {
+  body?: {
+    stub: string
+  }
+}

@@ -17,22 +17,21 @@
  * under the License.
  */
 
-import { Indices, PropertyName, Type } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { DynamicMapping } from '@common/mapping/DynamicMapping'
-import { DynamicTemplate } from '@common/mapping/dynamic_template/DynamicTemplate'
-import { AllField } from '@common/mapping/meta_fields/all/AllField'
-import { FieldNamesField } from '@common/mapping/meta_fields/field_names/FieldNamesField'
-import { IndexField } from '@common/mapping/meta_fields/index/IndexField'
-import { RoutingField } from '@common/mapping/meta_fields/routing/RoutingField'
-import { SizeField } from '@common/mapping/meta_fields/size/SizeField'
-import { SourceField } from '@common/mapping/meta_fields/source/SourceField'
-import { RuntimeFields } from '@common/mapping/runtime_fields/RuntimeFields'
-import { Property } from '@common/mapping/types/Property'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices, PropertyName, Type } from '@_types/common'
+import { DynamicMapping } from '@_types/mapping/DynamicMapping'
+import { DynamicTemplate } from '@_types/mapping/dynamic_template/DynamicTemplate'
+import { AllField } from '@_types/mapping/meta_fields/all/AllField'
+import { FieldNamesField } from '@_types/mapping/meta_fields/field_names/FieldNamesField'
+import { IndexField } from '@_types/mapping/meta_fields/index/IndexField'
+import { RoutingField } from '@_types/mapping/meta_fields/routing/RoutingField'
+import { SizeField } from '@_types/mapping/meta_fields/size/SizeField'
+import { SourceField } from '@_types/mapping/meta_fields/source/SourceField'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { Property } from '@_types/mapping/types/Property'
+import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.put_mapping

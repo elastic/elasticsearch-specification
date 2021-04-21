@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
 import { DateRounding } from './DateRounding'
 
 export class DateIndexNameProcessor extends ProcessorBase {
   date_formats: string[]
-  date_rounding: DateRounding
+  date_rounding: string | DateRounding
   field: Field
   index_name_format: string
   index_name_prefix: string

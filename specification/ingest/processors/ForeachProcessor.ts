@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
-import { ProcessorContainer } from '@ingest/ProcessorContainer'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { ProcessorContainer } from '@ingest/_types/ProcessorContainer'
+import { Field } from '@_types/common'
 
 export class ForeachProcessor extends ProcessorBase {
   field: Field

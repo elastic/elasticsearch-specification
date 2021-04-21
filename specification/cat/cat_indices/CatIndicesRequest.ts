@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Indices } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { Health } from '@common/common/Health'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, ExpandWildcards, Health, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name cat.indices

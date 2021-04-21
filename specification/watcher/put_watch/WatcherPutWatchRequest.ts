@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { Id, long, VersionNumber } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Action } from '@common/watcher/actions/Action'
-import { ConditionContainer } from '@common/watcher/conditions/ConditionContainer'
-import { InputContainer } from '@common/watcher/input/InputContainer'
-import { TransformContainer } from '@common/watcher/transform/TransformContainer'
-import { TriggerContainer } from '@common/watcher/trigger/TriggerContainer'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Action } from '@watcher/_types/Action'
+import { ConditionContainer } from '@watcher/_types/Conditions'
+import { InputContainer } from '@watcher/_types/Input'
+import { TransformContainer } from '@watcher/_types/Transform'
+import { TriggerContainer } from '@watcher/_types/Trigger'
+import { RequestBase } from '@_types/Base'
+import { Id, VersionNumber } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name watcher.put_watch

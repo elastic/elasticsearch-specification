@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { ResponseBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 export class MlPutCalendarJobResponse extends ResponseBase {
   calendar_id: Id

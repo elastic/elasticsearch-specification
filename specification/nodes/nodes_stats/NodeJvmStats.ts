@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { long } from '@common/common'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { long } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { GarbageCollectionStats } from './GarbageCollectionStats'
 import { JvmClassesStats } from './JvmClassesStats'
 import { MemoryStats } from './MemoryStats'

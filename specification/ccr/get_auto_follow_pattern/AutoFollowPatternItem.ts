@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
+import { Name } from '@_types/common'
 import { AutoFollowPattern } from './AutoFollowPattern'
 
 export class AutoFollowPatternItem {

@@ -17,22 +17,25 @@
  * under the License.
  */
 
-import { CompletionStats } from '@common/common_options/stats/CompletionStats'
-import { DocStats } from '@common/common_options/stats/DocStats'
-import { FielddataStats } from '@common/common_options/stats/FielddataStats'
-import { FlushStats } from '@common/common_options/stats/FlushStats'
-import { GetStats } from '@common/common_options/stats/GetStats'
-import { IndexingStats } from '@common/common_options/stats/IndexingStats'
-import { MergesStats } from '@common/common_options/stats/MergesStats'
-import { QueryCacheStats } from '@common/common_options/stats/QueryCacheStats'
-import { RecoveryStats } from '@common/common_options/stats/RecoveryStats'
-import { RefreshStats } from '@common/common_options/stats/RefreshStats'
-import { RequestCacheStats } from '@common/common_options/stats/RequestCacheStats'
-import { SearchStats } from '@common/common_options/stats/SearchStats'
-import { SegmentsStats } from '@common/common_options/stats/SegmentsStats'
-import { StoreStats } from '@common/common_options/stats/StoreStats'
-import { TranslogStats } from '@common/common_options/stats/TranslogStats'
-import { WarmerStats } from '@common/common_options/stats/WarmerStats'
+import {
+  BulkStats,
+  CompletionStats,
+  DocStats,
+  FielddataStats,
+  FlushStats,
+  GetStats,
+  IndexingStats,
+  MergesStats,
+  QueryCacheStats,
+  RecoveryStats,
+  RefreshStats,
+  RequestCacheStats,
+  SearchStats,
+  SegmentsStats,
+  StoreStats,
+  TranslogStats,
+  WarmerStats
+} from '@_types/Stats'
 
 export class IndexStats {
   completion?: CompletionStats
@@ -51,4 +54,5 @@ export class IndexStats {
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
+  bulk?: BulkStats
 }

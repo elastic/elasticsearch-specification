@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Id, Name } from '@_types/common'
 
 /**
  * @rest_spec_name ilm.get_lifecycle
