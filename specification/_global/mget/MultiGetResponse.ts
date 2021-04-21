@@ -18,7 +18,14 @@
  */
 
 import { ResponseBase } from '@_types/Base'
-import { Id, IndexName, Routing, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { MainError } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 import { Dictionary } from '_spec_utils/Dictionary'

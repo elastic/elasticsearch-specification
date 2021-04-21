@@ -18,7 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, IndexName, Routing, Type, VersionNumber, VersionType } from '@_types/common'
+import {
+  Fields,
+  IndexName,
+  Routing,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { SourceFilter } from '_global/search/source_filtering/SourceFilter'
 

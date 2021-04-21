@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { ExpandWildcards, IndexName, Password, SearchType, Username } from '@_types/common'
+import {
+  ExpandWildcards,
+  IndexName,
+  Password,
+  SearchType,
+  Username
+} from '@_types/common'
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'

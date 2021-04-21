@@ -19,7 +19,17 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { DefaultOperator, ExpandWildcards, Field, Fields, IndexName, Indices, Routing, SearchType, SuggestMode } from '@_types/common'
+import {
+  DefaultOperator,
+  ExpandWildcards,
+  Field,
+  Fields,
+  IndexName,
+  Indices,
+  Routing,
+  SearchType,
+  SuggestMode
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScriptField } from '@_types/Scripting'

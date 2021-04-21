@@ -20,10 +20,20 @@
 import { ClusterStateBlockIndex } from '@cluster/_types/ClusterStateBlocksIndex'
 import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
 import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
-import { ClusterStateDeletedSnapshots, ClusterStateSnapshots } from '@cluster/_types/ClusterStateSnapshots'
+import {
+  ClusterStateDeletedSnapshots,
+  ClusterStateSnapshots
+} from '@cluster/_types/ClusterStateSnapshots'
 import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { ResponseBase } from '@_types/Base'
-import { EmptyObject, IndexName, Name, NodeName, Uuid, VersionNumber } from '@_types/common'
+import {
+  EmptyObject,
+  IndexName,
+  Name,
+  NodeName,
+  Uuid,
+  VersionNumber
+} from '@_types/common'
 import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterStateResponse extends ResponseBase {

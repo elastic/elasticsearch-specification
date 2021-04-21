@@ -17,7 +17,25 @@
  * under the License.
  */
 
-import { BulkStats, CompletionStats, DocStats, FielddataStats, FlushStats, GetStats, IndexingStats, MergesStats, QueryCacheStats, RecoveryStats, RefreshStats, RequestCacheStats, SearchStats, SegmentsStats, StoreStats, TranslogStats, WarmerStats } from '@_types/Stats'
+import {
+  BulkStats,
+  CompletionStats,
+  DocStats,
+  FielddataStats,
+  FlushStats,
+  GetStats,
+  IndexingStats,
+  MergesStats,
+  QueryCacheStats,
+  RecoveryStats,
+  RefreshStats,
+  RequestCacheStats,
+  SearchStats,
+  SegmentsStats,
+  StoreStats,
+  TranslogStats,
+  WarmerStats
+} from '@_types/Stats'
 
 export class IndexStats {
   completion?: CompletionStats

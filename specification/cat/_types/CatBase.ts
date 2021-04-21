@@ -23,7 +23,10 @@
 // as well, as CatRequestBase extends RequestBase.
 
 import { RequestBase, ResponseBase } from '@_types/Base'
-import { ArrayResponseBase, CommonCatQueryParameters } from '_spec_utils/behaviors'
+import {
+  ArrayResponseBase,
+  CommonCatQueryParameters
+} from '_spec_utils/behaviors'
 
 export class CatRequestBase
   extends RequestBase

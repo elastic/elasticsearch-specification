@@ -18,7 +18,14 @@
  */
 
 import { StopWords } from '@_types/analysis/StopWords'
-import { Field, Fields, MinimumShouldMatch, Routing, VersionNumber, VersionType } from '@_types/common'
+import {
+  Field,
+  Fields,
+  MinimumShouldMatch,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
 import { Dictionary } from '_spec_utils/Dictionary'

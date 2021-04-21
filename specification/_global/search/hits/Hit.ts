@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { Id, IndexName, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { Explanation } from '_global/explain/Explanation'
 import { Dictionary } from '_spec_utils/Dictionary'
