@@ -11015,7 +11015,7 @@ export interface ScrollRequest extends RequestBase {
   total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
-    scroll_id?: ScrollId
+    scroll_id: ScrollId
     rest_total_hits_as_int?: boolean
   }
 }

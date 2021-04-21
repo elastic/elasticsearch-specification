@@ -28,17 +28,38 @@ import { Time } from '@common/common_options/time_unit/Time'
  */
 export interface ScrollRequest extends RequestBase {
   path_parts?: {
+    /** Deprecated with 7.0.0 */
     scroll_id?: Id
   }
   query_parameters?: {
+    /**
+     * Period to retain the search context for scrolling.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @server_default 1d
+     */
     scroll?: Time
+    /** Deprecated with 7.0.0 */
     scroll_id?: ScrollId
+    /**
+     * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
     total_hits_as_integer?: boolean
   }
-  body?: {
+  body: {
+    /**
+     * Period to retain the search context for scrolling.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+     * @server_default 1d
+     */
     scroll?: Time
-    scroll_id?: ScrollId
+    /** Scroll ID of the search. */
+    scroll_id: ScrollId
+    /**
+     * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
   }
 }

@@ -106402,8 +106402,11 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Period to retain the search context for scrolling.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results",
             "name": "scroll",
             "required": false,
+            "serverDefault": "1d",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -106413,8 +106416,9 @@
             }
           },
           {
+            "description": "Scroll ID of the search.",
             "name": "scroll_id",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -106424,8 +106428,10 @@
             }
           },
           {
+            "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
             "name": "rest_total_hits_as_int",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -106465,8 +106471,11 @@
       ],
       "query": [
         {
+          "description": "Period to retain the search context for scrolling.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results",
           "name": "scroll",
           "required": false,
+          "serverDefault": "1d",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106476,6 +106485,7 @@
           }
         },
         {
+          "description": "Deprecated with 7.0.0",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -106487,8 +106497,10 @@
           }
         },
         {
+          "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
           "name": "rest_total_hits_as_int",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
