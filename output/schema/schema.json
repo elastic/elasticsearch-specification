@@ -6495,10 +6495,17 @@
       "description": "Evaluates the data frame analytics for an annotated index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
-      "request": null,
+      "request": {
+        "name": "MlEvaluateDataFrameRequest",
+        "namespace": "ml.evaluate_data_frame"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlEvaluateDataFrameResponse",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6519,10 +6526,17 @@
       "description": "Explains a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html",
       "name": "ml.explain_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlExplainDataFrameAnalyticsRequest",
+        "namespace": "ml.explain_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlExplainDataFrameAnalyticsResponse",
+        "namespace": "ml.explain_data_frame_analytics"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6780,10 +6794,17 @@
       "description": "Retrieves configuration information for data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlGetDataFrameAnalyticsRequest",
+        "namespace": "ml.get_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlGetDataFrameAnalyticsResponse",
+        "namespace": "ml.get_data_frame_analytics"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6807,10 +6828,17 @@
       "description": "Retrieves usage information for data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics-stats.html",
       "name": "ml.get_data_frame_analytics_stats",
-      "request": null,
+      "request": {
+        "name": "MlGetDataFrameAnalyticsStatsRequest",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlGetDataFrameAnalyticsStatsResponse",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7139,10 +7167,17 @@
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
-      "request": null,
+      "request": {
+        "name": "MlGetTrainedModelRequest",
+        "namespace": "ml.get_trained_models"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlGetTrainedModelResponse",
+        "namespace": "ml.get_trained_models"
+      },
+      "since": "7.10.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7166,10 +7201,17 @@
       "description": "Retrieves usage information for trained inference models.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
-      "request": null,
+      "request": {
+        "name": "MlGetTrainedModelStatsRequest",
+        "namespace": "ml.get_trained_models_stats"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlGetTrainedModelStatsResponse",
+        "namespace": "ml.get_trained_models_stats"
+      },
+      "since": "7.10.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7315,10 +7357,17 @@
       "description": "Previews that will be analyzed given a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlPreviewDataFrameAnalyticsRequest",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlPreviewDataFrameAnalyticsResponse",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "since": "7.13.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7442,10 +7491,17 @@
       "description": "Instantiates a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
       "name": "ml.put_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlPutDataFrameAnalyticsRequest",
+        "namespace": "ml.put_data_frame_analytics"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlPutDataFrameAnalyticsResponse",
+        "namespace": "ml.put_data_frame_analytics"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7559,10 +7615,17 @@
       "description": "Creates an inference trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
-      "request": null,
+      "request": {
+        "name": "MlPutTrainedModelRequest",
+        "namespace": "ml.put_trained_model"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlPutTrainedModelResponse",
+        "namespace": "ml.put_trained_model"
+      },
+      "since": "7.10.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -7583,10 +7646,17 @@
       "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
-      "request": null,
+      "request": {
+        "name": "MlPutTrainedModelAliasRequest",
+        "namespace": "ml.put_trained_model_alias"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlPutTrainedModelAliasResponse",
+        "namespace": "ml.put_trained_model_alias"
+      },
+      "since": "7.10.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -80027,6 +80097,182 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlEvaluateDataFrameRequest",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlEvaluateDataFrameResponse",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlExplainDataFrameAnalyticsRequest",
+        "namespace": "ml.explain_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlExplainDataFrameAnalyticsResponse",
+        "namespace": "ml.explain_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
             "name": "advance_time",
             "required": false,
             "type": {
@@ -81092,6 +81338,182 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlGetDataFrameAnalyticsRequest",
+        "namespace": "ml.get_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlGetDataFrameAnalyticsResponse",
+        "namespace": "ml.get_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlGetDataFrameAnalyticsStatsRequest",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlGetDataFrameAnalyticsStatsResponse",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -82032,6 +82454,182 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlGetTrainedModelRequest",
+        "namespace": "ml.get_trained_models"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlGetTrainedModelResponse",
+        "namespace": "ml.get_trained_models"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlGetTrainedModelStatsRequest",
+        "namespace": "ml.get_trained_models_stats"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlGetTrainedModelStatsResponse",
+        "namespace": "ml.get_trained_models_stats"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MlInferenceIngestProcessorCountUsage",
@@ -82813,6 +83411,94 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlPreviewDataFrameAnalyticsRequest",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlPreviewDataFrameAnalyticsResponse",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": [
         {
           "type": {
@@ -83074,6 +83760,94 @@
                 "name": "Id",
                 "namespace": "__common"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlPutDataFrameAnalyticsRequest",
+        "namespace": "ml.put_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlPutDataFrameAnalyticsResponse",
+        "namespace": "ml.put_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -83883,6 +84657,182 @@
             "type": {
               "name": "long",
               "namespace": "__common"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlPutTrainedModelAliasRequest",
+        "namespace": "ml.put_trained_model_alias"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlPutTrainedModelAliasResponse",
+        "namespace": "ml.put_trained_model_alias"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": [
+        {
+          "type": {
+            "name": "RequestBase",
+            "namespace": "__common.common_abstractions.request"
+          }
+        }
+      ],
+      "kind": "request",
+      "name": {
+        "name": "MlPutTrainedModelRequest",
+        "namespace": "ml.put_trained_model"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": [
+        {
+          "type": {
+            "name": "ResponseBase",
+            "namespace": "__common.common_abstractions.response"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "MlPutTrainedModelResponse",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }

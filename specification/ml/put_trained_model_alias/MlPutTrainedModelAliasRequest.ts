@@ -20,7 +20,7 @@
 import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 
 /**
- * @rest_spec_name ml.put_trained_models_alias
+ * @rest_spec_name ml.put_trained_model_alias
  * @since 7.10.0
  * @stability TODO
  */
