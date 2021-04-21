@@ -80113,7 +80113,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -80154,7 +80154,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -80201,7 +80201,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -80242,7 +80242,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -81358,7 +81358,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -81399,7 +81399,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -81446,7 +81446,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -81487,7 +81487,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -82477,7 +82477,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -82518,7 +82518,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -82565,7 +82565,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -82606,7 +82606,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -83431,7 +83431,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -83472,7 +83472,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -83789,7 +83789,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -83830,7 +83830,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -84686,7 +84686,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -84727,7 +84727,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
@@ -84774,7 +84774,7 @@
         {
           "type": {
             "name": "RequestBase",
-            "namespace": "__common.common_abstractions.request"
+            "namespace": "_types"
           }
         }
       ],
@@ -84815,7 +84815,7 @@
         {
           "type": {
             "name": "ResponseBase",
-            "namespace": "__common.common_abstractions.response"
+            "namespace": "_types"
           }
         }
       ],
