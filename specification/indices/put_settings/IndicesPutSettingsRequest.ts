@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { Indices, integer } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { IndexSettings } from '@common/index/IndexSettings'
-import { IndexState } from '@common/index/IndexState'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, Indices } from '@_types/common'
+import { IndexSettings } from '@_types/index/IndexSettings'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.put_settings

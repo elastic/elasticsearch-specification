@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { DateString, integer } from '@common/common'
+import { integer } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
 import { ExecutionResultAction } from './ExecutionResultAction'
 import { ExecutionResultCondition } from './ExecutionResultCondition'
 import { ExecutionResultInput } from './ExecutionResultInput'

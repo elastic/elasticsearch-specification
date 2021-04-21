@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@common/common_abstractions/response/AcknowledgedResponseBase'
 import { LicenseType } from '@license/get_license/LicenseType'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class StartTrialLicenseResponse extends AcknowledgedResponseBase {
   error_message?: string

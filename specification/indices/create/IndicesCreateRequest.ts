@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { IndexName, WaitForActiveShards } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { TypeMapping } from '@common/mapping/TypeMapping'
-import { Alias } from '@indices/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Alias } from '@indices/_types/Alias'
+import { RequestBase } from '@_types/Base'
+import { IndexName, WaitForActiveShards } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.create

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Names } from '@common/common'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { ExpandWildcards, Names } from '@_types/common'
 
 /**
  * @rest_spec_name cat.aliases

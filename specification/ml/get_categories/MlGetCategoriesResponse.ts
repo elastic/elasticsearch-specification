@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { long } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { CategoryDefinition } from '@common/ml/CategoryDefinition'
+import { CategoryDefinition } from '@ml/_types/CategoryDefinition'
+import { ResponseBase } from '@_types/Base'
+import { long } from '@_types/Numeric'
 
 export class MlGetCategoriesResponse extends ResponseBase {
   categories: CategoryDefinition[]

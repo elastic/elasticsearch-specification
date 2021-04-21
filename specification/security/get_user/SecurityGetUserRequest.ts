@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Names } from '@common/common'
-import { Username } from '@common/common/Credentials'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_user

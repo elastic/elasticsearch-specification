@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { Script } from '@common/common_options/scripting/Script'
+import { Field } from '@_types/common'
+import { Script } from '@_types/Scripting'
 
 export class SingleGroupSource {
   field: Field

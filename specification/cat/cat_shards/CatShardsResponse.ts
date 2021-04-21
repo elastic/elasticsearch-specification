@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CatResponseBase } from '@cat/CatBase'
+import { CatResponseBase } from '@cat/_types/CatBase'
 import { CatShardsRecord } from './CatShardsRecord'
 
 export class CatShardsResponse extends CatResponseBase<CatShardsRecord> {}

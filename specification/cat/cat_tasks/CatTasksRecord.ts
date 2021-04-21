@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, NodeId, Type, VersionString } from '@common/common'
+import { Id, NodeId, Type, VersionString } from '@_types/common'
 
 export class CatTasksRecord {
   /**

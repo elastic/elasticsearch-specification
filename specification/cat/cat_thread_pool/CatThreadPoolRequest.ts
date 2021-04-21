@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Names } from '@common/common'
-import { Size } from '@common/common/Size'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Names, Size } from '@_types/common'
 
 /**
  * @rest_spec_name cat.thread_pool

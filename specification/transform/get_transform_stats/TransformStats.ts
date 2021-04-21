@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
-import { NodeAttributes } from '../../nodes/NodeAttributes'
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
+import { Id } from '@_types/common'
 import { TransformCheckpointingInfo } from './TransformCheckpointingInfo'
 import { TransformIndexerStats } from './TransformIndexerStats'
 

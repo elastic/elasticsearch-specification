@@ -17,7 +17,7 @@
     "typeRoots": ["./**/*.ts"],
     "baseUrl": "./",
     "paths": {
-      "@common/*": ["__common/*"],
+      "@_types/*": ["_types/*"],
       "@global/*": ["__global/*"],
       "@spec_utils/*": ["__spec_utils/*"],
       "@async_search/*": ["async_search/*"],

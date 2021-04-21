@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { IndexName, long, WaitForActiveShards } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { IndexName, WaitForActiveShards } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ccr.follow

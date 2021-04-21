@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { IndexName } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { IndicesShardStores } from './IndicesShardStores'
 
 export class IndicesShardStoresResponse extends ResponseBase {

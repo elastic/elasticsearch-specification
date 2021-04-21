@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, integer, long } from '@common/common'
+import { Field } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import { GraphVertexInclude } from './GraphVertexInclude'
 
 export class GraphVertexDefinition {

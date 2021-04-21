@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DateString } from '@common/common'
+import { DateString } from '@_types/Time'
 
 export class XPackBuildInformation {
   date: DateString

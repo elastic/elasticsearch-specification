@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
+import { Field } from '@_types/common'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class SetProcessor extends ProcessorBase {
   field: Field

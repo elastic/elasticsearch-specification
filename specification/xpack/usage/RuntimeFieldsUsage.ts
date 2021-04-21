@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Field, long } from '@common/common'
+import { Field } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { XPackUsage } from './XPackUsage'
 
 export class RuntimeFieldsUsage extends XPackUsage {

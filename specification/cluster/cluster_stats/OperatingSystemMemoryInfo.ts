@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, long } from '@common/common'
+import { integer, long } from '@_types/Numeric'
 
 export class OperatingSystemMemoryInfo {
   free_in_bytes: long

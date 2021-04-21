@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { NodeIds } from '@common/common'
-import { Password } from '@common/common/Credentials'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { NodeIds, Password } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.reload_secure_settings

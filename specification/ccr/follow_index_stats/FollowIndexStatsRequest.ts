@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Indices } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Indices } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.follow_stats

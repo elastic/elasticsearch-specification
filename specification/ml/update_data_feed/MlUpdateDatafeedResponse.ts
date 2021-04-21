@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { AggregationContainer } from '@common/aggregations/AggregationContainer'
-import { Id, Indices, integer } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ScriptField } from '@common/common_options/scripting/ScriptField'
-import { Time } from '@common/common_options/time_unit/Time'
-import { ChunkingConfig } from '@common/ml/ChunkingConfig'
-import { DelayedDataCheckConfig } from '@common/ml/Datafeed'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { ChunkingConfig } from '@ml/_types/ChunkingConfig'
+import { DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { ResponseBase } from '@_types/Base'
+import { Id, Indices } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { ScriptField } from '@_types/Scripting'
+import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
 export class MlUpdateDatafeedResponse extends ResponseBase {
