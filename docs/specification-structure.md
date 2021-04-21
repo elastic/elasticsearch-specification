@@ -36,10 +36,10 @@ called either `Request` or `Response`.
 ### APIs without a namespace
 
 There are some APIs without namespace, `search` or `index` for example.
-Those APIs should be placed inside the `__global` folder.
-For example: [`/specification/__global/search`](../specification/__global/search).
+Those APIs should be placed inside the `_global` folder.
+For example: [`/specification/_global/search`](../specification/_global/search).
 
 ### Specification helpers
 
 The specification has a set of custom types used to define complex structures
-or behaviors. Those types must be placed in [`/specification/__spec_utils`](../specification/__spec_utils).
+or behaviors. Those types must be placed in [`/specification/_spec_utils`](../specification/_spec_utils).
