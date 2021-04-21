@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@common/common'
-import { NodeAttributes } from './NodeAttributes'
+import { NodeAttributes } from '../../nodes/NodeAttributes'
 import { TransformCheckpointingInfo } from './TransformCheckpointingInfo'
 import { TransformIndexerStats } from './TransformIndexerStats'
 

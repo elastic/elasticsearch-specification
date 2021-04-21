@@ -17,12 +17,20 @@
  * under the License.
  */
 
+import { IndexName, Name } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
+import { NodeShard } from '@nodes/NodeShard'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { SearchNode } from './SearchNode'
-import { SearchShard } from './SearchShard'
+import { NodeAttributes } from '@nodes/NodeAttributes'
+import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
 
 export class SearchShardsResponse extends ResponseBase {
-  nodes: Dictionary<string, SearchNode>
-  shards: SearchShard[][]
+  nodes: Dictionary<string, NodeAttributes>
+  shards: NodeShard[][]
+  indices: Dictionary<IndexName, ShardStoreIndex>
+}
+
+export class ShardStoreIndex {
+  aliases?: Name[]
+  filter?: QueryContainer
 }

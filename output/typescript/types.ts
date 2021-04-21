@@ -3371,19 +3371,8 @@ export interface ClusterStateResponse extends ResponseBase {
 }
 
 export interface ClusterStateRoutingNodes {
-  unassigned: Array<ClusterStateRoutingNodesShard>
-  nodes: Record<string, Array<ClusterStateRoutingNodesShard>>
-}
-
-export interface ClusterStateRoutingNodesShard {
-  state: ShardRoutingState
-  primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Record<string, string>
-  recovery_source?: Record<string, string>
-  unassigned_info?: UnassignedInformation
+  unassigned: Array<NodeShard>
+  nodes: Record<string, Array<NodeShard>>
 }
 
 export interface ClusterStateSnapshots {
@@ -9224,6 +9213,17 @@ export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_
 
 export type NodeRoles = Array<NodeRole>
 
+export interface NodeShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Record<string, string>
+  recovery_source?: Record<string, Id>
+  unassigned_info?: UnassignedInformation
+}
+
 export interface NodeStatistics {
   failed: integer
   failures?: Array<ErrorCause>
@@ -11089,11 +11089,6 @@ export interface SearchInputRequestDefinition {
   rest_total_hits_as_int?: boolean
 }
 
-export interface SearchNode {
-  name: Name
-  transport_address: TransportAddress
-}
-
 export interface SearchProfile {
   collector: Array<Collector>
   query: Array<QueryProfile>
@@ -11199,15 +11194,6 @@ export interface SearchResponse<TDocument = unknown> extends ResponseBase {
   terminated_early?: boolean
 }
 
-export interface SearchShard {
-  index: string
-  node: string
-  primary: boolean
-  relocating_node: string
-  shard: integer
-  state: string
-}
-
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -11219,8 +11205,9 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse extends ResponseBase {
-  nodes: Record<string, SearchNode>
-  shards: Array<Array<SearchShard>>
+  nodes: Record<string, NodeAttributes>
+  shards: Array<Array<NodeShard>>
+  indices: Record<IndexName, ShardStoreIndex>
 }
 
 export interface SearchStats {
@@ -12091,6 +12078,11 @@ export type ShardStoreAllocation = 'primary' | 'replica' | 'unused'
 export interface ShardStoreException {
   reason: string
   type: string
+}
+
+export interface ShardStoreIndex {
+  aliases?: Array<Name>
+  filter?: QueryContainer
 }
 
 export interface ShardStoreWrapper {

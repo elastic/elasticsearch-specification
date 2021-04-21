@@ -34,7 +34,7 @@ import {
 } from '@common/common'
 import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeAttributes } from '@transform/get_transform_stats/NodeAttributes'
+import { NodeAttributes } from '@nodes/NodeAttributes'
 
 export class ClusterStateResponse extends ResponseBase {
   cluster_name: Name
