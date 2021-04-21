@@ -26,7 +26,7 @@ import assert from 'assert'
 // they're used as definition reuse and not as polymorphic types.
 // See also validateIsLeafType() below.
 const allowedSuperclasses = new Set([
-  '__common:ErrorCause'
+  '_types:ErrorCause'
 ])
 
 enum TypeDefKind {
