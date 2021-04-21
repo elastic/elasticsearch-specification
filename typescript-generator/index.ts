@@ -53,12 +53,27 @@ const namespaces = types.reduce((acc, val) => {
   return acc
 }, {})
 
-const topLevel = [...new Set(Object.keys(namespaces).map(n => n.split('.').shift()))]
-const multiple = Object.keys(namespaces).filter(n => n.split('.').length > 1)
-let definitions = ''
-for (const ns of topLevel) {
-  definitions += buildNamespaces(ns as string, ns as string)
+const topLevel = [...new Set(Object.keys(namespaces).map(n => n.split('.').shift()))].filter(n => n !== '_global')
+
+for (const ns of Object.keys(namespaces)) {
+  if (ns.startsWith('_global')) {
+    const namespace = ns.split('.').slice(0, 2).join('.')
+    if (!topLevel.includes(namespace)) {
+      topLevel.push(namespace)
+    }
+  }
 }
+
+const multiple = Object.keys(namespaces).filter(n => n.split('.').length > 1)
+let definitions = 'declare namespace T {\n'
+for (const ns of topLevel) {
+  if (ns?.startsWith('_global')) {
+    definitions += buildNamespaces(ns as string, (ns as string).slice(8))
+  } else {
+    definitions += buildNamespaces(ns as string, ns as string)
+  }
+}
+definitions += '}\n\nexport default T'
 
 writeFileSync(
   join(__dirname, '..', 'output', 'typescript', 'types.ts'),
@@ -73,7 +88,7 @@ function buildNamespaces (namespace: string, current: string): string {
     .filter(n => n !== namespace)
     .filter((n, i, arr) => arr.indexOf(n) === i)
 
-  let code = `\nexport ${namespace.split('.').length === 1 ? 'declare ' : ''}namespace ${createName(current)} {\n`
+  let code = `\nexport namespace ${createName(current)} {\n`
 
   if (Array.isArray(namespaces[namespace]) && namespaces[namespace].length > 0) {
     code += namespaces[namespace].join('\n')
@@ -328,8 +343,15 @@ function createName (type: M.TypeName | string) {
     return `${namespace.split('.').map(TitleCase).join('.')}`
   } else {
     if (type.namespace === 'internal') return type.name
-    const namespace = type.namespace.replace(/_([a-z])/g, k => k[1].toUpperCase())
-    return `${namespace.split('.').map(TitleCase).join('.')}.${type.name}`
+    const namespace = stripGlobal(type.namespace).replace(/_([a-z])/g, k => k[1].toUpperCase())
+    return `T.${namespace.split('.').map(TitleCase).join('.')}.${type.name}`
+  }
+
+  function stripGlobal (namespace: string): string {
+    if (namespace.startsWith('_global')) {
+      return namespace.slice(8)
+    }
+    return namespace
   }
 
   function TitleCase (str: string): string {
