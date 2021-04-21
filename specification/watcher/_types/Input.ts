@@ -17,20 +17,14 @@
  * under the License.
  */
 
-import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import {
-  ExpandWildcards,
-  IndexName,
-  Password,
-  SearchType,
-  Username
-} from '@_types/common'
+import { ExpandWildcards, IndexName, Password, SearchType, Username } from '@_types/common'
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { Time } from '@_types/Time'
+import { SearchTemplateRequest } from '_global/search_template/SearchTemplateRequest'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class ChainInput {
   inputs: InputContainer[]

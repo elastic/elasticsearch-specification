@@ -1,3 +1,6 @@
+import { Field } from './common'
+import { integer, long } from './Numeric'
+
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
  * license agreements. See the NOTICE file distributed with
@@ -16,10 +19,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { Field } from './common'
-import { integer, long } from './Numeric'
-
 export type DateString = string
 export type Timestamp = string
 export type TimeSpan = string

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { double } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { Aggregation } from '../Aggregation'
 
 export class MatrixAggregation extends Aggregation {

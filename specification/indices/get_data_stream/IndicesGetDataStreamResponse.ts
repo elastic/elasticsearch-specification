@@ -19,14 +19,7 @@
 
 import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
 import { ResponseBase } from '@_types/Base'
-import {
-  DataStreamName,
-  Field,
-  IndexMetaData,
-  IndexName,
-  Name,
-  Uuid
-} from '@_types/common'
+import { DataStreamName, Field, IndexMetaData, IndexName, Name, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class IndicesGetDataStreamResponse extends ResponseBase {

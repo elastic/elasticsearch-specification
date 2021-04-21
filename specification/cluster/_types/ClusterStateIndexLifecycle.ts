@@ -19,10 +19,10 @@
 
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
 import { Phases } from '@ilm/_types/Phases'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterStateIndexLifecycle {
   policies: Dictionary<IndexName, ClusterStateIndexLifecycleSummary>

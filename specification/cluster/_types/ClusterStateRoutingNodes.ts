@@ -18,7 +18,7 @@
  */
 
 import { NodeShard } from '@nodes/_types/NodeShard'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterStateRoutingNodes {
   unassigned: NodeShard[]

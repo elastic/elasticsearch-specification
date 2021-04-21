@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { NodeInfoHttp } from './NodeInfoHttp'
 import { NodeInfoNetwork } from './NodeInfoNetwork'
 import { NodeInfoTransport } from './NodeInfoTransport'

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Action } from '@watcher/_types/Action'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
@@ -27,6 +25,8 @@ import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
 import { Id, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name watcher.put_watch

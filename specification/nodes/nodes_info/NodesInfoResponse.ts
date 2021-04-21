@@ -18,7 +18,7 @@
  */
 
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { NodeInfo } from './NodeInfo'
 
 export class NodesInfoResponse extends NodesResponseBase {

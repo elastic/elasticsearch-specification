@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/inner_hits/InnerHits'
 import { RelationName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
+import { InnerHits } from '_global/search/inner_hits/InnerHits'
 import { ChildScoreMode } from './ChildScoreMode'
 
 export class HasChildQuery extends QueryBase {

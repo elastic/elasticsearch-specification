@@ -18,8 +18,8 @@
  */
 
 import { ProcessorBase } from '@ingest/_types/ProcessorBase'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class CsvProcessor extends ProcessorBase {
   empty_value: UserDefinedValue

@@ -18,9 +18,9 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class IndicesGetAliasResponse extends DictionaryResponseBase<
   IndexName,

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { EmptyResponseBase } from '@spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
+import { EmptyResponseBase } from '_spec_utils/behaviors'
 
 export class IndicesExistsAliasResponse
   extends ResponseBase

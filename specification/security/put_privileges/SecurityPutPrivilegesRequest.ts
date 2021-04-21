@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { PrivilegesActions } from './PrivilegesActions'
 
 /**

@@ -18,13 +18,13 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { IndexMetaData, Name, VersionNumber } from '@_types/common'
 import { IndexSettings } from '@_types/index/IndexSettings'
 import { IndexState } from '@_types/index/IndexState'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 /**
  * @rest_spec_name cluster.put_component_template

@@ -18,7 +18,6 @@
  */
 
 import { ChunkingConfig } from '@ml/_types/ChunkingConfig'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ResponseBase } from '@_types/Base'
 import { Id, Indices } from '@_types/common'
@@ -26,6 +25,7 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScriptField } from '@_types/Scripting'
 import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class MlPutDatafeedResponse extends ResponseBase {
   aggregations: Dictionary<string, AggregationContainer>

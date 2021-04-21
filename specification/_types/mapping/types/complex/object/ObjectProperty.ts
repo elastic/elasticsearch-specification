@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { PropertyName } from '@_types/common'
 import { DynamicMapping } from '@_types/mapping/DynamicMapping'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { CorePropertyBase } from '../../CoreProperty'
 import { Property } from '../../Property'
 

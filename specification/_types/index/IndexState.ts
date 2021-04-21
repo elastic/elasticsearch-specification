@@ -18,9 +18,9 @@
  */
 
 import { Alias } from '@indices/_types/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { IndexSettings } from './IndexSettings'
 
 export class IndexState {

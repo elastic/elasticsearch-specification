@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Highlight } from '@global/search/highlighting/Highlight'
-import { Sort } from '@global/search/sort/Sort'
-import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { ScriptField } from '@_types/Scripting'
+import { Highlight } from '_global/search/highlighting/Highlight'
+import { Sort } from '_global/search/sort/Sort'
+import { SourceFilter } from '_global/search/source_filtering/SourceFilter'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class TopHitsAggregation extends MetricAggregationBase {

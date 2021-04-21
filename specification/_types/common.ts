@@ -1,3 +1,7 @@
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
+import { integer, long } from './Numeric'
+
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
  * license agreements. See the NOTICE file distributed with
@@ -16,11 +20,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { integer, long } from './Numeric'
-
 export type Uri = string
 
 //strongly typed path parameters these are aliases so we can expose documentation

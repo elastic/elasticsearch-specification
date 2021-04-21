@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskExecutingNode } from '@task/list_tasks/TaskExecutingNode'
 import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class CancelTasksResponse extends ResponseBase {
   node_failures?: ErrorCause[]

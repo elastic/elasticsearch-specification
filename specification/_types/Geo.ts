@@ -1,3 +1,5 @@
+import { double } from './Numeric'
+
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor
  * license agreements. See the NOTICE file distributed with
@@ -16,9 +18,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { double } from './Numeric'
-
 export type Distance = string
 
 export class DistanceParsed {

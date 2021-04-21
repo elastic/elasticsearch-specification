@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, PropertyName, Type } from '@_types/common'
 import { DynamicMapping } from '@_types/mapping/DynamicMapping'
@@ -32,6 +30,8 @@ import { SourceField } from '@_types/mapping/meta_fields/source/SourceField'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { Property } from '@_types/mapping/types/Property'
 import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.put_mapping

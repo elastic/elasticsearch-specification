@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, DateString, Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { ExtendedBounds } from '../histogram/ExtendedBounds'
 import { HistogramOrder } from '../histogram/HistogramOrder'

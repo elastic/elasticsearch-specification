@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/sort/Sort'
 import { Aggregation } from '@_types/aggregations/Aggregation'
 import { integer } from '@_types/Numeric'
+import { Sort } from '_global/search/sort/Sort'
 import { GapPolicy } from '../GapPolicy'
 
 export class BucketSortAggregation extends Aggregation {

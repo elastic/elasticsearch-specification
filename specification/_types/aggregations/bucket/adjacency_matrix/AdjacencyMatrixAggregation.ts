@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {

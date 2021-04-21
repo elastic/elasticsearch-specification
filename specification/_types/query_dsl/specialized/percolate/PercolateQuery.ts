@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Id, IndexName, Routing, VersionNumber } from '@_types/common'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class PercolateQuery extends QueryBase {
   /** @prop_serializer SourceFormatter`1 */

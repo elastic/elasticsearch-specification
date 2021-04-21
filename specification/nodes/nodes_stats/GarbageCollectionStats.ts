@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { GarbageCollectionGenerationStats } from './GarbageCollectionGenerationStats'
 
 export class GarbageCollectionStats {

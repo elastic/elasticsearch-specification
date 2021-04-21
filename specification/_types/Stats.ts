@@ -18,7 +18,7 @@
  */
 
 import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary } from '_spec_utils/Dictionary'
 import { ByteSize, Field, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { integer, long, uint } from './Numeric'

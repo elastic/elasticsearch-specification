@@ -18,10 +18,10 @@
  */
 
 import { RealmInfo } from '@security/_types/RealmInfo'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 import { Name, Username } from '@_types/common'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class SecurityAuthenticateResponse extends ResponseBase {
   authentication_realm: RealmInfo

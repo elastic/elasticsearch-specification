@@ -17,15 +17,15 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/hits/HitsMetadata'
-import { AdditionalProperties } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregateName } from '@_types/common'
 import { LatLon } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { GeoCoordinate, GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
 import { DateMathTime } from '@_types/Time'
+import { HitsMetadata } from '_global/search/hits/HitsMetadata'
+import { AdditionalProperties } from '_spec_utils/behaviors'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor

@@ -18,11 +18,11 @@
  */
 
 import { Alias } from '@indices/_types/Alias'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { IndexName, WaitForActiveShards } from '@_types/common'
 import { Time } from '@_types/Time'
+import { Dictionary } from '_spec_utils/Dictionary'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name indices.shrink

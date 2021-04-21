@@ -19,9 +19,9 @@
 
 import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
 import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, IndexName, NodeName } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '_spec_utils/Dictionary'
 
 export class NodeShard {
   state: ShardRoutingState

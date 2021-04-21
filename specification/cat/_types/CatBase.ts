@@ -22,11 +22,8 @@
 // Cat*Request APIs will inherit the CommonQueryParameters behavior
 // as well, as CatRequestBase extends RequestBase.
 
-import {
-  ArrayResponseBase,
-  CommonCatQueryParameters
-} from '@spec_utils/behaviors'
 import { RequestBase, ResponseBase } from '@_types/Base'
+import { ArrayResponseBase, CommonCatQueryParameters } from '_spec_utils/behaviors'
 
 export class CatRequestBase
   extends RequestBase
