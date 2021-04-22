@@ -7152,7 +7152,33 @@ export interface MlEstimateModelMemoryMlEstimateModelMemoryResponse extends Resp
   model_memory_estimate: string
 }
 
+<<<<<<< HEAD
 export interface MlFlushJobMlFlushJobRequest extends RequestBase {
+=======
+export interface MlEvaluateDataFrameRequest extends RequestBase {
+  stub: string
+  body: {
+    stub?: string
+  }
+}
+
+export interface MlEvaluateDataFrameResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlExplainDataFrameAnalyticsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlFlushJobRequest extends RequestBase {
+>>>>>>> master
   job_id: Id
   skip_time?: string
   body?: {
@@ -7275,7 +7301,33 @@ export interface MlGetCategoriesMlGetCategoriesResponse extends ResponseBase {
   count: long
 }
 
+<<<<<<< HEAD
 export interface MlGetDatafeedStatsMlGetDatafeedStatsRequest extends RequestBase {
+=======
+export interface MlGetDataFrameAnalyticsRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlGetDataFrameAnalyticsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlGetDataFrameAnalyticsStatsRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlGetDatafeedStatsRequest extends RequestBase {
+>>>>>>> master
   datafeed_id?: Ids
   allow_no_datafeeds?: boolean
 }
@@ -7382,7 +7434,33 @@ export interface MlGetOverallBucketsMlGetOverallBucketsResponse extends Response
   overall_buckets: MlOverallBucket[]
 }
 
+<<<<<<< HEAD
 export interface XpackUsageMlInferenceIngestProcessorCountUsage {
+=======
+export interface MlGetTrainedModelRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlGetTrainedModelResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlGetTrainedModelStatsRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlGetTrainedModelStatsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlInferenceIngestProcessorCountUsage {
+>>>>>>> master
   max: long
   sum: long
   min: long
@@ -7479,7 +7557,22 @@ export interface MlPostJobDataMlPostJobDataResponse extends ResponseBase {
   sparse_bucket_count: long
 }
 
+<<<<<<< HEAD
 export interface MlPreviewDatafeedMlPreviewDatafeedRequest extends RequestBase {
+=======
+export interface MlPreviewDataFrameAnalyticsRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlPreviewDataFrameAnalyticsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlPreviewDatafeedRequest extends RequestBase {
+>>>>>>> master
   datafeed_id: Id
 }
 
@@ -7511,7 +7604,22 @@ export interface MlPutCalendarMlPutCalendarResponse extends ResponseBase {
   job_ids: Id[]
 }
 
+<<<<<<< HEAD
 export interface MlPutDatafeedMlPutDatafeedRequest extends RequestBase {
+=======
+export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
+  stub: string
+  body: {
+    stub?: string
+  }
+}
+
+export interface MlPutDataFrameAnalyticsResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlPutDatafeedRequest extends RequestBase {
+>>>>>>> master
   datafeed_id: Id
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -7592,7 +7700,33 @@ export interface MlPutJobMlPutJobResponse extends ResponseBase {
   results_retention_days: long
 }
 
+<<<<<<< HEAD
 export interface MlRevertModelSnapshotMlRevertModelSnapshotRequest extends RequestBase {
+=======
+export interface MlPutTrainedModelAliasRequest extends RequestBase {
+  stub: string
+  body?: {
+    stub?: string
+  }
+}
+
+export interface MlPutTrainedModelAliasResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlPutTrainedModelRequest extends RequestBase {
+  stub: string
+  body: {
+    stub?: string
+  }
+}
+
+export interface MlPutTrainedModelResponse extends ResponseBase {
+  stub: boolean
+}
+
+export interface MlRevertModelSnapshotRequest extends RequestBase {
+>>>>>>> master
   job_id: Id
   snapshot_id: Id
   body?: {
