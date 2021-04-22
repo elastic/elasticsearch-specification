@@ -10167,13 +10167,13 @@ export interface QueryCacheStats {
 export interface QueryDslAbstractionsContainerQueryContainer {
   bool?: QueryDslCompoundBoolBoolQuery
   boosting?: QueryDslCompoundBoostingBoostingQuery
-  common?: Record<string, QueryDslFullTextCommonTermsCommonTermsQuery | string>
+  common?: Record<Field, QueryDslFullTextCommonTermsCommonTermsQuery | string>
   constant_score?: QueryDslCompoundConstantScoreConstantScoreQuery
   dis_max?: QueryDslCompoundDismaxDisMaxQuery
-  distance_feature?: Record<string, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
+  distance_feature?: Record<Field, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
   exists?: QueryDslTermLevelExistsExistsQuery
   function_score?: QueryDslCompoundFunctionScoreFunctionScoreQuery
-  fuzzy?: Record<string, QueryDslTermLevelFuzzyFuzzyQuery | string>
+  fuzzy?: Record<Field, QueryDslTermLevelFuzzyFuzzyQuery | string>
   geo_bounding_box?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoBoundingBoxGeoBoundingBoxQuery | string>
   geo_distance?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoDistanceGeoDistanceQuery | string>
   geo_polygon?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoPolygonGeoPolygonQuery | string>

@@ -49,7 +49,7 @@ export class TypeName {
 /**
  * Type of a value. Used both for property types and nested type definitions.
  */
-export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | NamedValueOf | UserDefinedValue | LiteralValue
+export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | UserDefinedValue | LiteralValue
 
 /**
  * A single value
@@ -78,21 +78,16 @@ export class UnionOf {
 }
 
 /**
- * A dictionary (or map)
+ * A dictionary (or map).  The key is a string or a number (or a union thereof), possibly through an alias.
+ *
+ * If `singleKey` is true, then this dictionary can only have a single key. This is a common pattern in ES APIs,
+ * used to associate a value to a field name or some other identifier.
  */
 export class DictionaryOf {
   kind: 'dictionary_of'
   key: ValueOf
   value: ValueOf
-}
-
-/**
- * A named value. This is a common pattern in ES APIs that deserves its own representation. It's often used to
- * associate some value to a field name, e.g. the "sort" field in search.
- */
-export class NamedValueOf {
-  kind: 'named_value_of'
-  value: ValueOf
+  singleKey: boolean
 }
 
 /**
