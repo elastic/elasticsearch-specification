@@ -766,8 +766,8 @@ export interface BulkBulkDeleteResponseItem extends BulkBulkResponseItemBase {
 
 export interface BulkIndexByScrollFailure {
   cause: MainError
-  id: string
-  index: string
+  id: Id
+  index: IndexName
   status: integer
   type: string
 }
@@ -11212,23 +11212,12 @@ export interface ScrollScrollRequest extends RequestBase {
   total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
-    scroll_id?: ScrollId
+    scroll_id: ScrollId
     rest_total_hits_as_int?: boolean
   }
 }
 
 export interface ScrollScrollResponse<TDocument = unknown> extends SearchSearchResponse<TDocument> {
-  failed_shards?: ScrollScrollResponseFailedShard[]
-}
-
-export interface ScrollScrollResponseErrorReason {
-  type: string
-  reason: string
-}
-
-export interface ScrollScrollResponseFailedShard {
-  shard: integer
-  reason: ScrollScrollResponseErrorReason
 }
 
 export interface MappingTypesCoreSearchAsYouTypeSearchAsYouTypeProperty extends MappingTypesCorePropertyBase {
@@ -11993,7 +11982,7 @@ export interface IndicesStatsShardCommit {
 }
 
 export interface ShardFailure {
-  index: string
+  index: IndexName
   node: string
   reason: ErrorCause
   shard: integer

@@ -19099,8 +19099,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },
@@ -19110,8 +19110,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         },
@@ -108174,8 +108174,11 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Period to retain the search context for scrolling.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results",
             "name": "scroll",
             "required": false,
+            "serverDefault": "1d",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -108185,8 +108188,9 @@
             }
           },
           {
+            "description": "Scroll ID of the search.",
             "name": "scroll_id",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -108196,8 +108200,10 @@
             }
           },
           {
+            "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
             "name": "rest_total_hits_as_int",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -108237,8 +108243,11 @@
       ],
       "query": [
         {
+          "description": "Period to retain the search context for scrolling.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results",
           "name": "scroll",
           "required": false,
+          "serverDefault": "1d",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108248,6 +108257,7 @@
           }
         },
         {
+          "description": "Deprecated with 7.0.0",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -108259,8 +108269,10 @@
           }
         },
         {
+          "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
           "name": "rest_total_hits_as_int",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108311,84 +108323,7 @@
         "name": "ScrollResponse",
         "namespace": "_global.scroll"
       },
-      "properties": [
-        {
-          "name": "failed_shards",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScrollResponseFailedShard",
-                "namespace": "_global.scroll"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseErrorReason",
-        "namespace": "_global.scroll"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseFailedShard",
-        "namespace": "_global.scroll"
-      },
-      "properties": [
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScrollResponseErrorReason",
-              "namespace": "_global.scroll"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": [
@@ -115698,8 +115633,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         },
