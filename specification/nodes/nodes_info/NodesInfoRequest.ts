@@ -23,7 +23,7 @@ import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name nodes.info
- * @since 0.0.0
+ * @since 1.3.0
  * @stability TODO
  */
 export interface NodesInfoRequest extends RequestBase {
