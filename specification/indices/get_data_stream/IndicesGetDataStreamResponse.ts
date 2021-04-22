@@ -40,6 +40,8 @@ export class IndicesGetDataStreamItem {
   generation: integer
   template: Name
   hidden: boolean
+  /** @since 7.10.0 */
+  system?: boolean
   status: DataStreamHealthStatus
   ilm_policy?: Name
   _meta?: IndexMetaData

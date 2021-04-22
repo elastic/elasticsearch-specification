@@ -32,5 +32,4 @@ export interface IndicesGetDataStreamRequest extends RequestBase {
   query_parameters?: {
     expand_wildcards?: ExpandWildcards
   }
-  body?: {}
 }

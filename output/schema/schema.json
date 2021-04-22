@@ -68118,6 +68118,18 @@
           }
         },
         {
+          "name": "system",
+          "required": false,
+          "since": "7.10.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "status",
           "required": true,
           "type": {
