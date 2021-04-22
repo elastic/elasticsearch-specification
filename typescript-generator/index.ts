@@ -125,7 +125,7 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
 }
 
 function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
-  const inherits = (type.inherits ?? []).filter(type => !skipBehaviors.includes(type.type.name))
+  const inherits = (type.inherits != null ? [type.inherits] : []).filter(type => !skipBehaviors.includes(type.type.name))
   const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const extendAll = inherits.concat(interfaces).concat(behaviors)
@@ -185,7 +185,7 @@ function buildBehaviorInterface (type: M.Interface): string {
       let generic = behavior.generics?.[0]
       assert(generic?.kind === 'instance_of')
       if (generic.type.name === 'TCatRecord') {
-        const g = type.inherits?.[0].generics?.[0]
+        const g = type.inherits?.generics?.[0]
         assert(g?.kind === 'instance_of')
         generic = g
       }
@@ -250,7 +250,7 @@ function lookupBehavior (type: M.Interface, name: string): M.Inherits | null {
     if (behavior != null) return behavior
   }
   if (type.inherits == null) return null
-  const parentType = model.types.find(t => t.name.name === type.inherits?.[0].type.name)
+  const parentType = model.types.find(t => t.name.name === type.inherits?.type.name)
   if (parentType == null) return null
   if (parentType.kind === 'interface') {
     return lookupBehavior(parentType, name)
