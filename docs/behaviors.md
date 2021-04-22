@@ -64,3 +64,14 @@ Since these can break the request structure these are listed explicitly as a beh
 ```ts
 class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}
 ```
+
+## GenericResponseBody
+
+Some APIs does not return a structured body, but a generic value instead.
+For examplke the `get_source` API return the source document.
+
+```ts
+class SourceResponse<TDocument>
+  extends ResponseBase
+  implements GenericResponseBody<TDocument> {}
+```
