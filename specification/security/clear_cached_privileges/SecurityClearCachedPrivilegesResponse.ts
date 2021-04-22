@@ -18,9 +18,9 @@
  */
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class SecurityClearCachedPrivilegesResponse extends ResponseBase {
   _nodes: NodeStatistics

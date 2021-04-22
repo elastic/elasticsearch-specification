@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, Name, Uuid } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { ClusterStateBlockIndex } from './ClusterStateBlocksIndex'
 import { ClusterStateIndexLifecycle } from './ClusterStateIndexLifecycle'
 import { ClusterStateIngest } from './ClusterStateIngest'

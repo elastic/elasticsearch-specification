@@ -17,14 +17,14 @@
  * under the License.
  */
 
+import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
+import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { PointInTimeReference } from '_global/search/point_in_time/PointInTimeReference'
-import { SuggestContainer } from '_global/search/suggesters/SuggestContainer'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch

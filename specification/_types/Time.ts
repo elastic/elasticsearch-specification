@@ -20,14 +20,6 @@
 import { Field } from './common'
 import { integer, long } from './Numeric'
 
-export type DateString = string
-export type Timestamp = string
-export type TimeSpan = string
-export type EpochMillis = string | long
-export type DateMath = string
-export type DateMathExpression = string
-export type DateMathTime = string
-
 export class DateMathTimeParsed {
   factor: integer
   interval: DateMathTimeUnit
@@ -39,6 +31,14 @@ export class DateField {
   format?: string
   include_unmapped?: boolean
 }
+
+export type DateString = string
+export type Timestamp = string
+export type TimeSpan = string
+export type EpochMillis = string | long
+export type DateMath = string
+export type DateMathExpression = string
+export type DateMathTime = string
 
 export enum DateMathOperation {
   '+' = 0,

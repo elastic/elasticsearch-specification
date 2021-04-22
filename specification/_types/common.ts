@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer, long } from './Numeric'
+
+export class UrlParameter {}
 
 export type Uri = string
 
@@ -263,8 +265,6 @@ export enum ThreadType {
   wait = 1,
   block = 2
 }
-
-export class UrlParameter {}
 
 // TODO: @see WaitForActiveShards & https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
 export enum WaitForActiveShardOptions {

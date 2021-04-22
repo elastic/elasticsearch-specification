@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -38,7 +39,6 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { DateField, Time } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { FieldCollapse } from './collapsing/FieldCollapse'
 import { Highlight } from './highlighting/Highlight'
 import { PointInTimeReference } from './point_in_time/PointInTimeReference'

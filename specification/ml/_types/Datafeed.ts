@@ -18,6 +18,7 @@
  */
 
 import { DatafeedIndicesOptions } from '@ml/update_data_feed/DatafeedIndicesOptions'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
@@ -25,7 +26,6 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScriptField } from '@_types/Scripting'
 import { Time, Timestamp } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { ChunkingConfig } from './ChunkingConfig'
 
 export class Datafeed {

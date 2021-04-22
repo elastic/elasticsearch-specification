@@ -18,10 +18,10 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexMetaData, IndexName, Name, VersionNumber } from '@_types/common'
 import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ComponentTemplate {
   name: Name

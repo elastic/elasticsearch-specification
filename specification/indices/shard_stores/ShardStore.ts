@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, Name, VersionNumber } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { ShardStoreAllocation } from './ShardStoreAllocation'
 import { ShardStoreException } from './ShardStoreException'
 

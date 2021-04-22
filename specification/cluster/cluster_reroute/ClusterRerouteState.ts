@@ -24,8 +24,8 @@ import {
   ClusterStateSnapshots
 } from '@cluster/_types/ClusterStateSnapshots'
 import { NodeAttributes } from '@nodes/_types/NodeAttributes'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { EmptyObject, NodeName, Uuid, VersionNumber } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterRerouteState {
   cluster_uuid: Uuid

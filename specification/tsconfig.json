@@ -18,8 +18,8 @@
     "baseUrl": "./",
     "paths": {
       "@_types/*": ["_types/*"],
-      "@global/*": ["__global/*"],
-      "@spec_utils/*": ["__spec_utils/*"],
+      "@global/*": ["_global/*"],
+      "@spec_utils/*": ["_spec_utils/*"],
       "@async_search/*": ["async_search/*"],
       "@autoscaling/*": ["autoscaling/*"],
       "@cat/*": ["cat/*"],

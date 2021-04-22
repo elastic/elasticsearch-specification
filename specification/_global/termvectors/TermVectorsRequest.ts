@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   Field,
@@ -28,7 +29,6 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { TermVectorFilter } from './TermVectorFilter'
 
 /**

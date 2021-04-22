@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { HitsMetadata } from '@global/search/hits/HitsMetadata'
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
-import { HitsMetadata } from '_global/search/hits/HitsMetadata'
 
 export class SearchTemplateResponse<TDocument> extends ResponseBase {
   _shards: ShardStatistics

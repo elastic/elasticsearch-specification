@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ShardCommit {
   generation: integer

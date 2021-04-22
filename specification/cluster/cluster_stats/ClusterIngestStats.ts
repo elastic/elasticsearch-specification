@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { integer } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { ClusterProcessorStats } from './ClusterProcessorStats'
 
 export class ClusterIngestStats {

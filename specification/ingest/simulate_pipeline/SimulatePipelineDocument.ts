@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from '@_types/common'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class SimulatePipelineDocument {
   _id?: Id
