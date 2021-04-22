@@ -6701,6 +6701,7 @@ export interface IndicesGetDataStreamItem {
   generation: integer
   template: Name
   hidden: boolean
+  system?: boolean
   status: DataStreamHealthStatus
   ilm_policy?: Name
   _meta?: IndexMetaData
