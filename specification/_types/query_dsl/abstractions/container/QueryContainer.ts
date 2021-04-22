@@ -73,7 +73,7 @@ import { TypeQuery } from '@_types/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@_types/query_dsl/term_level/wildcard/WildcardQuery'
 import { NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
-import {Field} from "@_types/common";
+import { Field } from '@_types/common'
 
 /**
  * @variants container
