@@ -53,6 +53,7 @@ let definitions = `/*
  * specific language governing permissions and limitations
  * under the License.
  */
+
 `
 
 for (const type of model.types) {
