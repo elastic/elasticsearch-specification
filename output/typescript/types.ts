@@ -11821,9 +11821,7 @@ export interface GetSourceSourceRequest extends RequestBase {
   version_type?: VersionType
 }
 
-export interface GetSourceSourceResponse<TDocument = unknown> extends ResponseBase {
-  body: TDocument
-}
+export type GetSourceSourceResponse<TDocument = unknown> = TDocument
 
 export interface QueryDslSpanContainingSpanContainingQuery extends QueryDslAbstractionsQueryQueryBase {
   big?: QueryDslSpanSpanQuery
@@ -13506,5 +13504,8 @@ export interface SpecUtilsCommonQueryParameters {
   human?: boolean
   pretty?: boolean
   source_query_string?: string
+}
+
+export interface SpecUtilsGenericResponseBody<T = unknown> {
 }
 

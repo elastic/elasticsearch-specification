@@ -122282,6 +122282,26 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "GenericResponseBody"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.get_source"
+              }
+            }
+          ],
+          "type": {
+            "name": "GenericResponseBody",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
       "generics": [
         {
           "name": "TDocument",
@@ -122301,19 +122321,7 @@
         "name": "SourceResponse",
         "namespace": "_global.get_source"
       },
-      "properties": [
-        {
-          "name": "body",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.get_source"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": [
@@ -137726,6 +137734,21 @@
           }
         }
       ]
+    },
+    {
+      "description": "Some APIs does not return a structured body, but a generic value instead.\nFor examplke the `get_source` API return the source document.",
+      "generics": [
+        {
+          "name": "T",
+          "namespace": "_spec_utils"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "GenericResponseBody",
+        "namespace": "_spec_utils"
+      },
+      "properties": []
     }
   ]
 }
