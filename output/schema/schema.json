@@ -122238,20 +122238,8 @@
       ],
       "inherits": [
         {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "user_defined_value"
-            }
-          ],
           "type": {
-            "name": "DictionaryResponseBase",
+            "name": "ResponseBase",
             "namespace": "_types"
           }
         }

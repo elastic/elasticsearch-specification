@@ -11809,12 +11809,7 @@ export interface SearchSourceFilteringSourceFilter {
 export interface GetSourceSourceRequest extends GetGetRequest {
 }
 
-<<<<<<< HEAD
 export type GetSourceSourceResponse<TDocument = unknown> = TDocument
-=======
-export interface GetSourceSourceResponse<TDocument = unknown> extends DictionaryResponseBase<Field, any> {
-}
->>>>>>> master
 
 export interface QueryDslSpanContainingSpanContainingQuery extends QueryDslAbstractionsQueryQueryBase {
   big?: QueryDslSpanSpanQuery
