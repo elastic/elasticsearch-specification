@@ -17,11 +17,12 @@
  * under the License.
  */
 
-'use strict'
+import assert from 'assert'
+import { writeFileSync, readFileSync } from 'fs'
+import { join } from 'path'
+import * as M from '../compiler/model/metamodel'
 
-const { writeFileSync } = require('fs')
-const { join } = require('path')
-const { endpoints, types } = require('../output/schema/schema.json')
+const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', 'schema', 'schema.json'), 'utf8'))
 
 const clientDefinitions = `/*
  * Licensed to Elasticsearch B.V. under one or more contributor
@@ -47,12 +48,17 @@ const clientDefinitions = `/*
 import {
   ClientOptions,
   ConnectionPool,
+  BaseConnectionPool,
+  CloudConnectionPool,
+  Connection,
   Serializer,
   Transport,
   errors,
   RequestEvent,
   ResurrectEvent,
-  ApiError
+  ApiError,
+  NodeOptions,
+  events
 } from '../index'
 import Helpers from '../lib/Helpers'
 import {
@@ -86,14 +92,15 @@ declare type extendsCallback = (options: ClientExtendsCallbackOptions) => any;
 // /Extend API
 
 declare type callbackFn<TResponse, TContext> = (err: ApiError, result: ApiResponse<TResponse, TContext>) => void;
-interface NewClientTypes {
+declare class Client {
+  constructor(opts: ClientOptions)
   connectionPool: ConnectionPool
   transport: Transport
   serializer: Serializer
   extend(method: string, fn: extendsCallback): void
   extend(method: string, opts: { force: boolean }, fn: extendsCallback): void;
   helpers: Helpers
-  child(opts?: ClientOptions): NewClientTypes
+  child(opts?: ClientOptions): Client
   close(callback: Function): void;
   close(): Promise<void>;
   emit(event: string | symbol, ...args: any[]): boolean;
@@ -190,56 +197,76 @@ interface KibanaClient {
   off(event: string | symbol, listener: (...args: any[]) => void): this;
 `
 
-function createClientTypes (kibana = false) {
+function createClientTypes (kibana = false): void {
   let definitions = kibana ? kibanaDefinitions : clientDefinitions
-  const namespaces = []
+  const namespaces: string[] = []
 
-  for (let i = 0; i < endpoints.length; i++) {
-    const endpoint = endpoints[i]
+  for (let i = 0; i < model.endpoints.length; i++) {
+    const endpoint = model.endpoints[i]
     if (isNested(endpoint.name)) {
       if (namespaces.includes(getNamespace(endpoint))) {
         definitions += `    ${generateDefinition(endpoint)}\n`
       } else {
         namespaces.push(getNamespace(endpoint))
-        if (endpoints[i - 1] && namespaces.includes(getNamespace(endpoints[i - 1]))) {
+        if (model.endpoints[i - 1] != null && namespaces.includes(getNamespace(model.endpoints[i - 1]))) {
           definitions += '  }\n'
         }
         definitions += `  ${camelify(getNamespace(endpoint))}: {\n`
         definitions += `    ${generateDefinition(endpoint)}\n`
       }
     } else {
-      if (endpoints[i - 1] && namespaces.includes(getNamespace(endpoints[i - 1]))) {
+      if (model.endpoints[i - 1] != null && namespaces.includes(getNamespace(model.endpoints[i - 1]))) {
         definitions += '  }\n'
       }
       definitions += `  ${generateDefinition(endpoint)}\n`
     }
   }
 
-  if (isNested(endpoints[endpoints.length - 1].name)) {
+  if (isNested(model.endpoints[model.endpoints.length - 1].name)) {
     definitions += '  }\n'
   }
 
   if (kibana) {
     definitions += '}\n\nexport { KibanaClient }\n'
   } else {
-    definitions += '}\n\nexport { NewClientTypes }\n'
+    definitions += `}
+
+export * as estypes from './types'
+export {
+  Client,
+  Transport,
+  ConnectionPool,
+  BaseConnectionPool,
+  CloudConnectionPool,
+  Connection,
+  Serializer,
+  events,
+  errors,
+  ApiError,
+  ApiResponse,
+  RequestEvent,
+  ResurrectEvent,
+  ClientOptions,
+  NodeOptions,
+  ClientExtendsCallbackOptions
+}`
   }
 
   writeFileSync(
-    join(__dirname, 'client.ts'),
+    join(__dirname, 'output.d.ts'),
     definitions,
     'utf8'
   )
 
-  function generateDefinition (endpoint) {
+  function generateDefinition (endpoint: M.Endpoint): string {
     const name = isNested(endpoint.name)
       ? endpoint.name.split('.')[1]
       : endpoint.name
 
-    const requestType = endpoint.request != null ? getType(endpoint.request.name) : null
-    const responseType = endpoint.response != null ? getType(endpoint.response.name) : null
+    const requestType = endpoint.request != null ? getType(endpoint.request) : null
+    const responseType = endpoint.response != null ? getType(endpoint.response) : null
 
-    if (!requestType || !responseType) {
+    if (requestType == null || responseType == null) {
       let definition = `${camelify(name)}<TContext = unknown>(params?: TODO, options?: TransportRequestOptions): TransportRequestPromise<ApiResponse<TODO, TContext>>`
       if (kibana) {
         return definition
@@ -256,7 +283,7 @@ function createClientTypes (kibana = false) {
     let requestGenerics = ''
 
     if (Array.isArray(requestType.generics)) {
-      requestDefinition = `T.${requestType.name.name}<${requestType.generics.map(unwrapGeneric).join(', ')}>`
+      requestDefinition = `T.${createName(requestType.name)}<${requestType.generics.map(unwrapGeneric).join(', ')}>`
       requestGenerics = requestType.generics
         .map(unwrapGeneric)
         .map(unknownify)
@@ -264,14 +291,14 @@ function createClientTypes (kibana = false) {
     } else if (requestType === null) {
       requestDefinition = 'TODO'
     } else {
-      requestDefinition = `T.${requestType.name.name}`
+      requestDefinition = `T.${createName(requestType.name)}`
     }
 
     let responseDefinition = ''
     let responseGenerics = ''
 
     if (Array.isArray(responseType.generics)) {
-      responseDefinition = `T.${responseType.name.name}<${responseType.generics.map(unwrapGeneric).map(avoidCollisions).join(', ')}>`
+      responseDefinition = `T.${createName(responseType.name)}<${responseType.generics.map(unwrapGeneric).map(avoidCollisions).join(', ')}>`
       responseGenerics = responseType.generics
         .map(unwrapGeneric)
         .map(avoidCollisions)
@@ -280,7 +307,7 @@ function createClientTypes (kibana = false) {
     } else if (responseType === null) {
       responseDefinition = 'TODO'
     } else {
-      responseDefinition = `T.${responseType.name.name}`
+      responseDefinition = `T.${createName(responseType.name)}`
     }
 
     let definition = `${camelify(name)}<${responseGenerics}${requestGenerics}TContext = unknown>(params${isParamsRequired() ? '' : '?'}: ${requestDefinition}, options?: TransportRequestOptions): TransportRequestPromise<ApiResponse<${responseDefinition}, TContext>>`
@@ -296,17 +323,19 @@ function createClientTypes (kibana = false) {
 
     return definition
 
-    function indent () {
+    function indent (): string {
       return isNested(endpoint.name) ? '    ' : '  '
     }
 
-    function isParamsRequired () {
+    function isParamsRequired (): boolean {
+      if (requestType == null) return false
+      assert(requestType.kind === 'request')
       return Array.isArray(requestType.generics) ||
              hasRequiredProps(requestType.path) ||
              hasRequiredProps(requestType.query) ||
              hasRequiredProps(requestType.body)
 
-      function hasRequiredProps (props) {
+      function hasRequiredProps (props?: M.Property[] | M.ValueBody | M.PropertiesBody): boolean {
         if (!Array.isArray(props)) return false
         for (const prop of props) {
           if (prop.required) return true
@@ -315,7 +344,7 @@ function createClientTypes (kibana = false) {
       }
     }
 
-    function avoidCollisions (generic) {
+    function avoidCollisions (generic: string): string {
       if (requestType === null || !Array.isArray(requestType.generics)) {
         return generic
       } else if (requestType.generics.map(unwrapGeneric).includes(generic)) {
@@ -325,48 +354,71 @@ function createClientTypes (kibana = false) {
       }
     }
 
-    function unknownify (generic) {
+    function unknownify (generic: string): string {
       return `${generic} = unknown`
     }
 
-    function unwrapGeneric (generic) {
+    function unwrapGeneric (generic: M.TypeName | string): string {
       if (typeof generic === 'string') return generic
       return generic.name
     }
   }
 
-  function getType (name) {
-    for (const type of types) {
-      if (type.name.name === name) {
+  function getType (name: M.TypeName): M.Interface | M.Request | null {
+    for (const type of model.types) {
+      if (type.name.name === name.name && type.name.namespace === name.namespace) {
         if (type.kind === 'request' && type.path.some(p => p.name.startsWith('stub'))) {
           return null
         }
         if (type.kind === 'interface' && type.properties.some(p => p.name.startsWith('stub'))) {
           return null
         }
+        assert(type.kind !== 'enum')
+        assert(type.kind !== 'type_alias')
         return type
       }
     }
     return null
   }
 
-  function getNamespace (endpoint) {
+  function getNamespace (endpoint: M.Endpoint): string {
     return isNested(endpoint.name)
       ? endpoint.name.split('.')[0]
       : endpoint.name
   }
 
-  function isNested (name) {
+  function isNested (name: string): boolean {
     return name.split('.').length > 1
   }
 
-  function camelify (name) {
+  function camelify (name: string): string {
     return name.replace(/_([a-z])/g, k => k[1].toUpperCase())
+  }
+
+  function createName (type: M.TypeName): string {
+    if (type.namespace === 'internal') return type.name
+    const namespace = strip(type.namespace).replace(/_([a-z])/g, k => k[1].toUpperCase())
+    return `${namespace.split('.').map(TitleCase).join('')}${type.name}`
+
+    function strip (namespace: string): string {
+      if (namespace.startsWith('_global')) {
+        return namespace.slice(8)
+      }
+      if (namespace.includes('_types')) {
+        return namespace.split('.').filter(n => n !== '_types').join('.')
+      }
+      return namespace
+    }
+
+    function TitleCase (str: string): string {
+      if (str.length === 0) return ''
+      return str[0].toUpperCase() + str.slice(1)
+    }
   }
 }
 
 if (require.main === module) {
-  createClientTypes(!!process.env.KIBANA)
+  createClientTypes(Boolean(process.env.KIBANA))
 }
 
-module.exports = createClientTypes
+export default createClientTypes
