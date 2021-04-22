@@ -48,7 +48,8 @@ export const knownBehaviors = [
   'ArrayResponseBase',
   'EmptyResponseBase',
   'CommonQueryParameters',
-  'CommonCatQueryParameters'
+  'CommonCatQueryParameters',
+  'GenericResponseBody'
 ]
 
 /**

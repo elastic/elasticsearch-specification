@@ -32,7 +32,8 @@ const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', '
 const skipBehaviors = [
   'ArrayResponseBase',
   'EmptyResponseBase',
-  'AdditionalProperties'
+  'AdditionalProperties',
+  'GenericResponseBody'
 ]
 
 let definitions = `/*
@@ -172,6 +173,13 @@ function buildBehaviorInterface (type: M.Interface): string {
   if (Array.isArray(type.attachedBehaviors)) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
       return serializeAdditionalPropertiesType(type)
+    }
+
+    if (type.attachedBehaviors.includes('GenericResponseBody')) {
+      const generics = type.generics
+      assert(generics)
+      const name = generics[0].name
+      return `export type ${createName(type.name)}${buildGenerics(generics)} = ${name}\n`
     }
 
     if (type.attachedBehaviors.includes('ArrayResponseBase')) {
