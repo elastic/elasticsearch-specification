@@ -2827,6 +2827,7 @@ export interface ClusterClusterAllocationExplainClusterAllocationExplainRequest 
   include_disk_info?: boolean
   include_yes_decisions?: boolean
   body?: {
+    current_node?: string
     index?: IndexName
     primary?: boolean
     shard?: integer
@@ -2849,7 +2850,7 @@ export interface ClusterClusterAllocationExplainClusterAllocationExplainResponse
   configured_delay_in_millis?: long
   current_node?: ClusterClusterAllocationExplainCurrentNode
   current_state: string
-  index: string
+  index: IndexName
   move_explanation?: string
   node_allocation_decisions?: ClusterClusterAllocationExplainNodeAllocationExplanation[]
   primary: boolean
@@ -2995,6 +2996,7 @@ export interface ClusterClusterStatsClusterIndicesStats {
 export interface ClusterClusterAllocationExplainClusterInfo {
   nodes: Record<string, ClusterClusterAllocationExplainNodeDiskUsage>
   shard_sizes: Record<string, long>
+  shard_data_set_sizes?: Record<string, string>
   shard_paths: Record<string, string>
   reserved_sizes: ClusterClusterAllocationExplainReservedSize[]
 }
@@ -9230,7 +9232,7 @@ export interface NodesNodesStatsNodeBufferPool {
 }
 
 export interface ClusterClusterAllocationExplainNodeDiskUsage {
-  node_name: string
+  node_name: Name
   least_available: ClusterClusterAllocationExplainDiskUsage
   most_available: ClusterClusterAllocationExplainDiskUsage
 }
@@ -10774,7 +10776,7 @@ export interface SearchRescoringRescoreQuery {
 }
 
 export interface ClusterClusterAllocationExplainReservedSize {
-  node_id: string
+  node_id: Id
   path: string
   total: long
   shards: string[]
