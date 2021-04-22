@@ -18,7 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, VersionString } from '@_types/common'
+import { ByteSize, Name, VersionString } from '@_types/common'
+import { IndexRouting } from '@_types/index/IndexRouting'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
@@ -34,22 +35,49 @@ import { NodeThreadPoolInfo } from './NodeThreadPoolInfo'
 export class NodeInfo {
   attributes: Dictionary<string, string>
   build_flavor: string
+  /** Short hash of the last git commit in this release. */
   build_hash: string
   build_type: string
+  /** The node’s host name. */
   host: Host
   http: NodeInfoHttp
+  /** The node’s IP address. */
   ip: Ip
   jvm: NodeJvmInfo
+  /** The node's name */
   name: Name
   network: NodeInfoNetwork
   os: NodeOperatingSystemInfo
   plugins: PluginStats[]
   process: NodeProcessInfo
   roles: NodeRole[]
-  settings: string[]
+  settings: NodeInfoSettings
   thread_pool: Dictionary<string, NodeThreadPoolInfo>
+  /**
+   * Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html
+   */
   total_indexing_buffer: long
+  /** Same as total_indexing_buffer, but expressed in bytes. */
+  total_indexing_buffer_in_bytes?: ByteSize
   transport: NodeInfoTransport
+  /** Host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
+  /** Elasticsearch version running on this node. */
   version: VersionString
+}
+
+export class NodeInfoSettings {
+  cluster: NodeInfoSettingsCluster
+}
+
+export class NodeInfoSettingsCluster {
+  name: Name
+  routing: IndexRouting
+  election: NodeInfoSettingsClusterElection
+  initial_master_nodes: string
+}
+
+export class NodeInfoSettingsClusterElection {
+  strategy: Name
 }

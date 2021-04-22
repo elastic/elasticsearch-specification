@@ -63869,6 +63869,49 @@
               "namespace": "_types.index"
             }
           }
+        },
+        {
+          "name": "disk",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationDisk",
+              "namespace": "_types.index"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationDisk",
+        "namespace": "_types.index"
+      },
+      "properties": [
+        {
+          "name": "threshold_enabled",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
         }
       ]
     },
@@ -90716,6 +90759,7 @@
           }
         },
         {
+          "description": "Short hash of the last git commit in this release.",
           "name": "build_hash",
           "required": true,
           "type": {
@@ -90738,6 +90782,7 @@
           }
         },
         {
+          "description": "The node’s host name.",
           "name": "host",
           "required": true,
           "type": {
@@ -90760,6 +90805,7 @@
           }
         },
         {
+          "description": "The node’s IP address.",
           "name": "ip",
           "required": true,
           "type": {
@@ -90782,6 +90828,7 @@
           }
         },
         {
+          "description": "The node's name",
           "name": "name",
           "required": true,
           "type": {
@@ -90857,13 +90904,10 @@
           "name": "settings",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettings",
+              "namespace": "nodes.nodes_info"
             }
           }
         },
@@ -90889,12 +90933,26 @@
           }
         },
         {
+          "description": "Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html",
           "name": "total_indexing_buffer",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Same as total_indexing_buffer, but expressed in bytes.",
+          "name": "total_indexing_buffer_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
@@ -90911,6 +90969,7 @@
           }
         },
         {
+          "description": "Host and port where transport HTTP connections are accepted.",
           "name": "transport_address",
           "required": true,
           "type": {
@@ -90922,6 +90981,7 @@
           }
         },
         {
+          "description": "Elasticsearch version running on this node.",
           "name": "version",
           "required": true,
           "type": {
@@ -90957,12 +91017,12 @@
         },
         {
           "name": "max_content_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -90999,12 +91059,12 @@
       "properties": [
         {
           "name": "direct_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -91021,12 +91081,12 @@
         },
         {
           "name": "heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -91043,12 +91103,12 @@
         },
         {
           "name": "heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -91065,12 +91125,12 @@
         },
         {
           "name": "non_heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -91087,12 +91147,12 @@
         },
         {
           "name": "non_heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -91313,6 +91373,99 @@
     {
       "kind": "interface",
       "name": {
+        "name": "NodeInfoSettings",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsCluster",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsCluster",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRouting",
+              "namespace": "_types.index"
+            }
+          }
+        },
+        {
+          "name": "election",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsClusterElection",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "initial_master_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsClusterElection",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "strategy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeInfoTransport",
         "namespace": "nodes.nodes_info"
       },
@@ -91339,6 +91492,27 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "profiles",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -91496,6 +91670,65 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_compressed_ordinary_object_pointers",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "input_arguments",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
         }
       ]
     },
@@ -91629,6 +91862,7 @@
       },
       "properties": [
         {
+          "description": "Name of the JVM architecture (ex: amd64, x86)",
           "name": "arch",
           "required": true,
           "type": {
@@ -91640,6 +91874,7 @@
           }
         },
         {
+          "description": "Number of processors available to the Java virtual machine",
           "name": "available_processors",
           "required": true,
           "type": {
@@ -91651,35 +91886,26 @@
           }
         },
         {
-          "name": "cpu",
-          "required": true,
+          "description": "The number of processors actually used to calculate thread pool size. This number can be set with the node.processors setting of a node and defaults to the number of processors reported by the OS.",
+          "name": "allocated_processors",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "NodeInfoOSCPU",
-              "namespace": "nodes.nodes_info"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "mem",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeInfoMemory",
-              "namespace": "nodes.nodes_info"
-            }
-          }
-        },
-        {
+          "description": "Name of the operating system (ex: Linux, Windows, Mac OS X)",
           "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -91695,6 +91921,7 @@
           }
         },
         {
+          "description": "Refresh interval for the OS statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -91706,8 +91933,31 @@
           }
         },
         {
-          "name": "swap",
+          "description": "Version of the operating system",
+          "name": "version",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "cpu",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoOSCPU",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "mem",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91717,13 +91967,13 @@
           }
         },
         {
-          "name": "version",
-          "required": true,
+          "name": "swap",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "VersionString",
-              "namespace": "_types"
+              "name": "NodeInfoMemory",
+              "namespace": "nodes.nodes_info"
             }
           }
         }
@@ -91779,6 +92029,7 @@
       },
       "properties": [
         {
+          "description": "Process identifier (PID)",
           "name": "id",
           "required": true,
           "type": {
@@ -91790,6 +92041,7 @@
           }
         },
         {
+          "description": "Indicates if the process address space has been successfully locked in memory",
           "name": "mlockall",
           "required": true,
           "type": {
@@ -91801,6 +92053,7 @@
           }
         },
         {
+          "description": "Refresh interval for the process statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -92383,7 +92636,7 @@
       "properties": [
         {
           "name": "core",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92394,7 +92647,7 @@
         },
         {
           "name": "keep_alive",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92405,7 +92658,7 @@
         },
         {
           "name": "max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92427,7 +92680,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92694,8 +92947,10 @@
       ],
       "query": [
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92705,8 +92960,23 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92738,8 +93008,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },

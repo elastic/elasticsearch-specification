@@ -28,6 +28,7 @@ export class IndexRoutingAllocation {
   enable?: IndexRoutingAllocationOptions
   include?: IndexRoutingAllocationInclude
   initial_recovery?: IndexRoutingAllocationInitialRecovery
+  disk?: IndexRoutingAllocationDisk
 }
 
 export class IndexRoutingRebalance {
@@ -55,4 +56,8 @@ export class IndexRoutingAllocationInclude {
 
 export class IndexRoutingAllocationInitialRecovery {
   _id?: Id
+}
+
+export class IndexRoutingAllocationDisk {
+  threshold_enabled: boolean | string
 }

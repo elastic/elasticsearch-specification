@@ -6233,6 +6233,11 @@ export interface IndexIndexRoutingAllocation {
   enable?: IndexIndexRoutingAllocationOptions
   include?: IndexIndexRoutingAllocationInclude
   initial_recovery?: IndexIndexRoutingAllocationInitialRecovery
+  disk?: IndexIndexRoutingAllocationDisk
+}
+
+export interface IndexIndexRoutingAllocationDisk {
+  threshold_enabled: boolean | string
 }
 
 export interface IndexIndexRoutingAllocationInclude {
@@ -9257,9 +9262,10 @@ export interface NodesNodesInfoNodeInfo {
   plugins: PluginStats[]
   process: NodesNodesInfoNodeProcessInfo
   roles: NodesNodesInfoNodeRole[]
-  settings: string[]
+  settings: NodesNodesInfoNodeInfoSettings
   thread_pool: Record<string, NodesNodesInfoNodeThreadPoolInfo>
   total_indexing_buffer: long
+  total_indexing_buffer_in_bytes?: ByteSize
   transport: NodesNodesInfoNodeInfoTransport
   transport_address: TransportAddress
   version: VersionString
@@ -9267,21 +9273,21 @@ export interface NodesNodesInfoNodeInfo {
 
 export interface NodesNodesInfoNodeInfoHttp {
   bound_address: string[]
-  max_content_length: string
+  max_content_length?: ByteSize
   max_content_length_in_bytes: long
   publish_address: string
 }
 
 export interface NodesNodesInfoNodeInfoJvmMemory {
-  direct_max: string
+  direct_max?: ByteSize
   direct_max_in_bytes: long
-  heap_init: string
+  heap_init?: ByteSize
   heap_init_in_bytes: long
-  heap_max: string
+  heap_max?: ByteSize
   heap_max_in_bytes: long
-  non_heap_init: string
+  non_heap_init?: ByteSize
   non_heap_init_in_bytes: long
-  non_heap_max: string
+  non_heap_max?: ByteSize
   non_heap_max_in_bytes: long
 }
 
@@ -9312,9 +9318,25 @@ export interface NodesNodesInfoNodeInfoOSCPU {
   vendor: string
 }
 
+export interface NodesNodesInfoNodeInfoSettings {
+  cluster: NodesNodesInfoNodeInfoSettingsCluster
+}
+
+export interface NodesNodesInfoNodeInfoSettingsCluster {
+  name: Name
+  routing: IndexIndexRouting
+  election: NodesNodesInfoNodeInfoSettingsClusterElection
+  initial_master_nodes: string
+}
+
+export interface NodesNodesInfoNodeInfoSettingsClusterElection {
+  strategy: Name
+}
+
 export interface NodesNodesInfoNodeInfoTransport {
   bound_address: string[]
   publish_address: string
+  profiles: Record<string, string>
 }
 
 export interface NodesNodesStatsStatisticsNodeIngestStats {
@@ -9332,6 +9354,10 @@ export interface NodesNodesInfoNodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
+  bundled_jdk: boolean
+  using_bundled_jdk: boolean
+  using_compressed_ordinary_object_pointers?: boolean | string
+  input_arguments: string[]
 }
 
 export interface NodesNodesStatsNodeJvmStats {
@@ -9350,13 +9376,14 @@ export type NodeName = string
 export interface NodesNodesInfoNodeOperatingSystemInfo {
   arch: string
   available_processors: integer
-  cpu: NodesNodesInfoNodeInfoOSCPU
-  mem: NodesNodesInfoNodeInfoMemory
-  name: string
+  allocated_processors?: integer
+  name: Name
   pretty_name: Name
   refresh_interval_in_millis: integer
-  swap: NodesNodesInfoNodeInfoMemory
   version: VersionString
+  cpu?: NodesNodesInfoNodeInfoOSCPU
+  mem?: NodesNodesInfoNodeInfoMemory
+  swap?: NodesNodesInfoNodeInfoMemory
 }
 
 export interface ClusterClusterStatsNodePackagingType {
@@ -9426,11 +9453,11 @@ export interface NodesNodesStatsNodeStats {
 }
 
 export interface NodesNodesInfoNodeThreadPoolInfo {
-  core: integer
-  keep_alive: string
-  max: integer
+  core?: integer
+  keep_alive?: string
+  max?: integer
   queue_size: integer
-  size: integer
+  size?: integer
   type: string
 }
 
@@ -9459,11 +9486,12 @@ export interface NodesNodesInfoNodesInfoRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
   flat_settings?: boolean
+  master_timeout?: Time
   timeout?: Time
 }
 
 export interface NodesNodesInfoNodesInfoResponse extends NodesNodesResponseBase {
-  cluster_name: string
+  cluster_name: Name
   nodes: Record<string, NodesNodesInfoNodeInfo>
 }
 

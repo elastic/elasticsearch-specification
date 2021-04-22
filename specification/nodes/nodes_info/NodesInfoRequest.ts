@@ -28,12 +28,26 @@ import { Time } from '@_types/Time'
  */
 export interface NodesInfoRequest extends RequestBase {
   path_parts?: {
+    /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
+    /** Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest. */
     metric?: Metrics
   }
   query_parameters?: {
+    /**
+     * If true, returns settings in flat format.
+     * @server_default false
+     */
     flat_settings?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Time
   }
-  body?: {}
 }

@@ -17,7 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '_spec_utils/Dictionary'
+
 export class NodeInfoTransport {
   bound_address: string[]
   publish_address: string
+  profiles: Dictionary<string, string>
 }
