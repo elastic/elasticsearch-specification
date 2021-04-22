@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { InlineGet } from '@global/explain/InlineGet'
 import { WriteResponseBase } from '@_types/Base'
-import { InlineGet } from '_global/explain/InlineGet'
 
 export class UpdateResponse<TDocument> extends WriteResponseBase {
   get?: InlineGet<TDocument>

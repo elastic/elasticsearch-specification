@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
+import { DictionaryResponseBase } from '@_types/Base'
+import { Field } from '@_types/common'
+import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
-export class SourceResponse<TDocument> extends ResponseBase {
-  body: TDocument
-}
+// TODO: this is weird as we likely require a special behaviour
+// the generic is not respected
+// --> export class SourceResponse<TDocument> implements GenericBodyResponse<TDocument> {}
+export class SourceResponse<TDocument> extends DictionaryResponseBase<
+  Field,
+  UserDefinedValue
+> {}

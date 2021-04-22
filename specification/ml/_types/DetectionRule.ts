@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { FilterRef } from './FilterRef'
 import { RuleAction } from './RuleAction'
 import { RuleCondition } from './RuleCondition'

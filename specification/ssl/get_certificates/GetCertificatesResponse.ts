@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { ArrayResponseBase } from '@spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
-import { ArrayResponseBase } from '_spec_utils/behaviors'
 import { ClusterCertificateInformation } from './ClusterCertificateInformation'
 
 export class GetCertificatesResponse

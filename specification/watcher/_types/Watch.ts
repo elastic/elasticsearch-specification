@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
 import { IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { Action } from './Action'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'

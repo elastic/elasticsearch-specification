@@ -17,12 +17,12 @@
  * under the License.
  */
 
+import { SortOrder } from '@global/search/sort/SortOrder'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
-import { SortOrder } from '_global/search/sort/SortOrder'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { TermsAggregationCollectMode } from './TermsAggregationCollectMode'
 import { TermsAggregationExecutionHint } from './TermsAggregationExecutionHint'

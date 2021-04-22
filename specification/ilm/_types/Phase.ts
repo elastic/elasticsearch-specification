@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Time } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { LifecycleAction } from './LifecycleAction'
 
 export class Phase {

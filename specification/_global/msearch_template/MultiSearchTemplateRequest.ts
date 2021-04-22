@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Indices, SearchType, Types } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { SearchTemplateRequest } from '_global/search_template/SearchTemplateRequest'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 /**
  * @rest_spec_name msearch_template

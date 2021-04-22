@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Fuzziness, MultiTermQueryRewrite } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class FuzzyQuery extends QueryBase {
   max_expansions?: integer

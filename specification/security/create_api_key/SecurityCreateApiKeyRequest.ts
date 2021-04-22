@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Name, Refresh } from '@_types/common'
 import { Time } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { ApiKeyRole } from './ApiKeyRole'
 
 /**

@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { AdjacencyMatrixAggregation } from './bucket/adjacency_matrix/AdjacencyMatrixAggregation'
 import { AutoDateHistogramAggregation } from './bucket/auto_date_histogram/AutoDateHistogramAggregation'
 import { ChildrenAggregation } from './bucket/children/ChildrenAggregation'

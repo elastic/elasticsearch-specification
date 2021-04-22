@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EqlHitsEvent } from './EqlHitsEvent'
 
 export class EqlHitsSequence<TEvent> {

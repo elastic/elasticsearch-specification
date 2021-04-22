@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { SearchResponse } from '@global/search/SearchResponse'
 import { ErrorResponse, ResponseBase } from '@_types/Base'
 import { integer, long } from '@_types/Numeric'
-import { SearchResponse } from '_global/search/SearchResponse'
 
 export class MultiSearchResponse<TDocument> extends ResponseBase {
   took: long

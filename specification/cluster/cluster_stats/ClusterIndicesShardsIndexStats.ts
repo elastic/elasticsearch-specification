@@ -20,7 +20,10 @@
 import { ClusterShardMetrics } from './ClusterShardMetrics'
 
 export class ClusterIndicesShardsIndexStats {
+  /** Contains statistics about the number of primary shards assigned to selected nodes. */
   primaries: ClusterShardMetrics
+  /** Contains statistics about the number of replication shards assigned to selected nodes. */
   replication: ClusterShardMetrics
+  /** Contains statistics about the number of shards assigned to selected nodes. */
   shards: ClusterShardMetrics
 }

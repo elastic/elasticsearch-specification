@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class FieldCapabilities {
   aggregatable: boolean

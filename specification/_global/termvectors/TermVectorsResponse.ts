@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { Field, Id, IndexName, Type, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { TermVector } from './TermVector'
 
 export class TermVectorsResponse extends ResponseBase {
