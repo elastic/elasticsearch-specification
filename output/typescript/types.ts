@@ -5610,7 +5610,7 @@ export interface GetResponse<TDocument = unknown> extends ResponseBase {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type: Type
+  _type?: Type
   _version?: VersionNumber
 }
 
@@ -12624,8 +12624,7 @@ export interface SourceFilter {
 export interface SourceRequest extends GetRequest {
 }
 
-export interface SourceResponse<TDocument = unknown> extends ResponseBase {
-  body: TDocument
+export interface SourceResponse<TDocument = unknown> extends DictionaryResponseBase<Field, any> {
 }
 
 export interface SpanContainingQuery extends QueryBase {

@@ -58115,6 +58115,7 @@
         },
         {
           "description": "Target the specified primary shard.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing",
           "name": "routing",
           "required": false,
           "type": {
@@ -58337,8 +58338,9 @@
           }
         },
         {
+          "description": "deprecated since 7.0.0",
           "name": "_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121215,8 +121217,20 @@
       ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "_types"
           }
         }
@@ -121226,19 +121240,7 @@
         "name": "SourceResponse",
         "namespace": "_global.get_source"
       },
-      "properties": [
-        {
-          "name": "body",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.get_source"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": [
