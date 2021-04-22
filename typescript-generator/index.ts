@@ -146,6 +146,11 @@ function buildInterface (type: M.Interface): string {
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.properties) {
     code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
+    if (Array.isArray(property.aliases)) {
+      for (const alias of property.aliases) {
+        code += `  ${cleanPropertyName(alias)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
+      }
+    }
   }
   code += '}\n'
 
