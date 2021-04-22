@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Fields, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { ScriptField } from '@_types/Scripting'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { FieldCollapse } from '../collapsing/FieldCollapse'
 import { Highlight } from '../highlighting/Highlight'
 import { Sort } from '../sort/Sort'

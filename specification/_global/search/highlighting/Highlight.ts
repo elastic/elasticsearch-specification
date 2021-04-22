@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { BoundaryScanner } from './BoundaryScanner'
 import { HighlighterEncoder } from './HighlighterEncoder'
 import { HighlighterFragmenter } from './HighlighterFragmenter'

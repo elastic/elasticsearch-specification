@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { TermVectorFilter } from '@global/termvectors/TermVectorFilter'
 import {
   Fields,
   Id,
@@ -25,7 +26,6 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { TermVectorFilter } from '_global/termvectors/TermVectorFilter'
 
 export class MultiTermVectorOperation {
   doc: any

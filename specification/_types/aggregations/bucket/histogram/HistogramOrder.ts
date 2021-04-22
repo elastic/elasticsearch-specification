@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '_global/search/sort/SortOrder'
+import { SortOrder } from '@global/search/sort/SortOrder'
 
 export class HistogramOrder {
   _count?: SortOrder

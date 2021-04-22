@@ -19,8 +19,8 @@
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { SecurityNode } from '@security/_types/SecurityNode'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class SecurityClearCachedRolesResponse extends ResponseBase {
   cluster_name: string

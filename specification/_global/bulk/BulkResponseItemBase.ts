@@ -18,13 +18,13 @@
  */
 // TODO remap this as a good bulk response item and an error response item
 
+import { InlineGet } from '@global/explain/InlineGet'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SequenceNumber, VersionNumber } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
-import { InlineGet } from '_global/explain/InlineGet'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class BulkResponseItemBase {
   _id?: string | null

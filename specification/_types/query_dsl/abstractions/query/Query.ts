@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { float } from '@_types/Numeric'
-import { AdditionalProperties } from '_spec_utils/behaviors'
 
 export class QueryBase {
   boost?: float

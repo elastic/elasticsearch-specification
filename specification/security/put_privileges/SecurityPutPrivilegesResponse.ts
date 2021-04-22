@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { PutPrivilegesStatus } from './PutPrivilegesStatus'
 
 export class SecurityPutPrivilegesResponse extends DictionaryResponseBase<

@@ -18,8 +18,8 @@
  */
 
 import { PrivilegesActions } from '@security/put_privileges/PrivilegesActions'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class SecurityGetPrivilegesResponse extends DictionaryResponseBase<
   string,

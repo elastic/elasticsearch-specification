@@ -19,8 +19,8 @@
 
 import { NodeStats } from '@nodes/nodes_stats/NodeStats'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { NodeReloadException } from './NodeReloadException'
 
 export class ReloadSecureSettingsResponse extends NodesResponseBase {

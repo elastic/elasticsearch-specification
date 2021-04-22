@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -31,7 +32,6 @@ import {
 import { long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Time } from '@_types/Time'
-import { SourceFilter } from '_global/search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name update

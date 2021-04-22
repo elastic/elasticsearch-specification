@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class IndicesRolloverResponse extends AcknowledgedResponseBase {
   conditions: Dictionary<string, boolean>

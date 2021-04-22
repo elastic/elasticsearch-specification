@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { DeprecationInfo } from './DeprecationInfo'
 
 export class DeprecationInfoResponse extends ResponseBase {

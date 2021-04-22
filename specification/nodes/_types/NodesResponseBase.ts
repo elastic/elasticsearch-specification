@@ -21,5 +21,9 @@ import { ResponseBase } from '@_types/Base'
 import { NodeStatistics } from './NodeStatistics'
 
 export class NodesResponseBase extends ResponseBase {
+  /**
+   * Contains statistics about the number of nodes selected by the request’s node filters.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
+   */
   _nodes: NodeStatistics
 }

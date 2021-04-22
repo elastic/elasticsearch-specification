@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 import {
   Id,
@@ -26,8 +28,6 @@ import {
   VersionNumber
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class GetResponse<TDocument> extends ResponseBase {
   _index: IndexName
@@ -38,6 +38,7 @@ export class GetResponse<TDocument> extends ResponseBase {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type: Type
+  /** deprecated since 7.0.0 */
+  _type?: Type
   _version?: VersionNumber
 }

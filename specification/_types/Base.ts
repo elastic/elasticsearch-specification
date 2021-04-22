@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CommonQueryParameters } from '_spec_utils/behaviors'
+import { CommonQueryParameters } from '@spec_utils/behaviors'
 import {
   Id,
   IndexName,
