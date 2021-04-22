@@ -17,6 +17,8 @@
  * under the License.
  */
 
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 import assert from 'assert'
 import { writeFileSync, readFileSync } from 'fs'
 import { join } from 'path'
@@ -33,77 +35,35 @@ const skipBehaviors = [
   'AdditionalProperties'
 ]
 
-const types: Array<{ type: M.TypeName, def: string }> = []
+let definitions = `/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+`
+
 for (const type of model.types) {
-  types.push({
-    type: type.name,
-    def: buildType(type)
-  })
+  definitions += buildType(type) + '\n'
 }
-
-types.sort((a, b) => {
-  if (a.type.namespace > b.type.namespace) return 1
-  if (a.type.namespace < b.type.namespace) return -1
-  return 0
-})
-
-const namespaces = types.reduce((acc, val) => {
-  acc[val.type.namespace] = acc[val.type.namespace] ?? []
-  acc[val.type.namespace].push(val.def)
-  return acc
-}, {})
-
-const topLevel = [...new Set(Object.keys(namespaces).map(n => n.split('.').shift()))].filter(n => n !== '_global')
-
-for (const ns of Object.keys(namespaces)) {
-  if (ns.startsWith('_global')) {
-    const namespace = ns.split('.').slice(0, 2).join('.')
-    if (!topLevel.includes(namespace)) {
-      topLevel.push(namespace)
-    }
-  }
-}
-
-const multiple = Object.keys(namespaces).filter(n => n.split('.').length > 1)
-let definitions = 'declare namespace T {\n'
-for (const ns of topLevel) {
-  if (ns?.startsWith('_global')) {
-    definitions += buildNamespaces(ns as string, (ns as string).slice(8))
-  } else {
-    definitions += buildNamespaces(ns as string, ns as string)
-  }
-}
-definitions += '}\n\nexport default T'
 
 writeFileSync(
   join(__dirname, '..', 'output', 'typescript', 'types.ts'),
   definitions,
   'utf8'
 )
-
-function buildNamespaces (namespace: string, current: string): string {
-  const ns = multiple
-    .filter(n => n.startsWith(namespace))
-    .map(n => n.split('.').slice(0, namespace.split('.').length + 1).join('.'))
-    .filter(n => n !== namespace)
-    .filter((n, i, arr) => arr.indexOf(n) === i)
-
-  let code = `\nexport namespace ${createName(current)} {\n`
-
-  if (Array.isArray(namespaces[namespace]) && namespaces[namespace].length > 0) {
-    code += namespaces[namespace].join('\n')
-  }
-
-  if (ns.length > 0) {
-    for (const n of ns) {
-      code += buildNamespaces(n, n.split('.').pop() as string)
-    }
-  }
-
-  code += '\n}\n'
-
-  return code
-}
 
 function buildType (type: M.TypeDefinition): string {
   switch (type.kind) {
@@ -147,7 +107,7 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
   return `<${types.map(buildGeneric).join(', ')}>`
 
   // generics can either be a value/instance_of or a named generics
-  function buildGeneric (type: M.ValueOf | M.TypeName) {
+  function buildGeneric (type: M.ValueOf | M.TypeName): string | number | boolean {
     if (isTypeName(type)) {
       return noDefault ? type.name : `${type.name} = unknown`
     } else {
@@ -164,9 +124,9 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
 }
 
 function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
-  const inherits = (type.inherits || []).filter(type => !skipBehaviors.includes(type.type.name))
-  const interfaces = (type.implements || []).filter(type => !skipBehaviors.includes(type.type.name))
-  const behaviors = (type.behaviors || []).filter(type => !skipBehaviors.includes(type.type.name))
+  const inherits = (type.inherits ?? []).filter(type => !skipBehaviors.includes(type.type.name))
+  const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
+  const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const extendAll = inherits.concat(interfaces).concat(behaviors)
   if (extendAll.length === 0) return ''
   return ` extends ${extendAll.map(buildInheritType).join(', ')}`
@@ -182,7 +142,7 @@ function buildInterface (type: M.Interface): string {
   }
 
   const openGenerics = type.generics?.map(t => t.name) ?? []
-  let code = `export interface ${type.name.name}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
+  let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.properties) {
     code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
   }
@@ -226,11 +186,11 @@ function buildBehaviorInterface (type: M.Interface): string {
       // In the input spec the Cat* responses are represented as an object
       // that contains a `records` key, which is an array of the inherited generic.
       // What ES actually sends back, is an array of the inherited generic.
-      return `export type ${type.name.name} = ${generic.type.name}[]\n`
+      return `export type ${createName(type.name)} = ${createName(generic.type)}[]\n`
     }
 
     if (type.attachedBehaviors.includes('EmptyResponseBase')) {
-      return `export type ${type.name.name} = boolean\n`
+      return `export type ${createName(type.name)} = boolean\n`
     }
   }
 
@@ -246,8 +206,8 @@ function buildBehaviorInterface (type: M.Interface): string {
 
 function serializeAdditionalPropertiesType (type: M.Interface): string {
   const dictionaryOf = lookupBehavior(type, 'AdditionalProperties')
-  if (!dictionaryOf) throw new Error(`Unknown implements ${type.name.name}`)
-  let code = `export interface ${type.name.name}Keys${buildGenerics(type.generics)}${buildInherits(type)} {\n`
+  if (dictionaryOf == null) throw new Error(`Unknown implements ${type.name.name}`)
+  let code = `export interface ${createName(type.name)}Keys${buildGenerics(type.generics)}${buildInherits(type)} {\n`
 
   function required (property: M.Property): string {
     return property.required ? '' : '?'
@@ -258,7 +218,7 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
     code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
   }
   code += '}\n'
-  code += `export type ${type.name.name}${buildGenerics(type.generics, openGenerics)} = ${type.name.name}Keys${buildGenerics(type.generics, openGenerics, true)} |\n`
+  code += `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = ${createName(type.name)}Keys${buildGenerics(type.generics, openGenerics, true)} |\n`
   code += `    { ${buildIndexer(dictionaryOf, openGenerics)} }\n`
   return code
 
@@ -278,14 +238,14 @@ function serializeAdditionalPropertiesType (type: M.Interface): string {
 }
 
 function lookupBehavior (type: M.Interface, name: string): M.Inherits | null {
-  if (!type.attachedBehaviors?.includes(name)) return null
+  if (!type.attachedBehaviors?.includes(name)) return null // eslint-disable-line
   if (Array.isArray(type.behaviors)) {
     const behavior = type.behaviors.find(i => i.type.name === name)
-    if (behavior) return behavior
+    if (behavior != null) return behavior
   }
-  if (!type.inherits) return null
+  if (type.inherits == null) return null
   const parentType = model.types.find(t => t.name.name === type.inherits?.[0].type.name)
-  if (!parentType) return null
+  if (parentType == null) return null
   if (parentType.kind === 'interface') {
     return lookupBehavior(parentType, name)
   }
@@ -294,7 +254,7 @@ function lookupBehavior (type: M.Interface, name: string): M.Inherits | null {
 
 function buildRequest (type: M.Request): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
-  let code = `export interface ${type.name.name}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
+  let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
   for (const property of type.path) {
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
@@ -306,7 +266,7 @@ function buildRequest (type: M.Request): string {
     if (pathPropertiesNames.includes(property.name)) continue
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
-  if (type.body && type.body.kind === 'properties') {
+  if ((type.body != null) && type.body.kind === 'properties') {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
@@ -320,7 +280,7 @@ function buildRequest (type: M.Request): string {
 
   function isBodyRequired (): boolean {
     for (const endpoint of model.endpoints) {
-      if (endpoint.request && endpoint.request.name === type.name.name) {
+      if ((endpoint.request != null) && endpoint.request.name === type.name.name) {
         return endpoint.requestBodyRequired
       }
     }
@@ -329,38 +289,37 @@ function buildRequest (type: M.Request): string {
 }
 
 function buildEnum (type: M.Enum): string {
-  return `export type ${type.name.name} = ${type.members.map(m => `'${m.name}'`).join(' | ')}\n`
+  return `export type ${createName(type.name)} = ${type.members.map(m => `'${m.name}'`).join(' | ')}\n`
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
-  return `export type ${type.name.name}${buildGenerics(type.generics)} = ${buildValue(type.type, openGenerics)}\n`
+  return `export type ${createName(type.name)}${buildGenerics(type.generics)} = ${buildValue(type.type, openGenerics)}\n`
 }
 
-function createName (type: M.TypeName | string) {
-  if (typeof type === 'string') {
-    const namespace = type.replace(/_([a-z])/g, k => k[1].toUpperCase())
-    return `${namespace.split('.').map(TitleCase).join('.')}`
-  } else {
-    if (type.namespace === 'internal') return type.name
-    const namespace = stripGlobal(type.namespace).replace(/_([a-z])/g, k => k[1].toUpperCase())
-    return `T.${namespace.split('.').map(TitleCase).join('.')}.${type.name}`
-  }
+function createName (type: M.TypeName): string {
+  if (type.namespace === 'internal') return type.name
+  const namespace = strip(type.namespace).replace(/_([a-z])/g, k => k[1].toUpperCase())
+  return `${namespace.split('.').map(TitleCase).join('')}${type.name}`
 
-  function stripGlobal (namespace: string): string {
+  function strip (namespace: string): string {
     if (namespace.startsWith('_global')) {
       return namespace.slice(8)
+    }
+    if (namespace.includes('_types')) {
+      return namespace.split('.').filter(n => n !== '_types').join('.')
     }
     return namespace
   }
 
   function TitleCase (str: string): string {
+    if (str.length === 0) return ''
     return str[0].toUpperCase() + str.slice(1)
   }
 }
 
 function cleanPropertyName (name: string): string {
-  return name.includes('.') || name.includes('-') || name.match(/^(\d|\W)/)
+  return name.includes('.') || name.includes('-') || (name.match(/^(\d|\W)/) != null)
     ? `'${name}'`
     : name
 }

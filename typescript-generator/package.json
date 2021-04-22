@@ -6,8 +6,10 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node index.ts && npm run is-valid-output",
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "client": "ts-node client.ts",
+    "kibana": "KIBANA=true ts-node client.ts",
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
     "is-valid-output": "tsc --noEmit",
     "test": "npm run lint"
   },
@@ -18,8 +20,8 @@
   "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
-    "standard": "^16.0.3",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "ts-standard": "^10.0.0"
   },
   "dependencies": {
     "typescript": "^4.1.5"
