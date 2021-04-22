@@ -105,7 +105,6 @@ function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number 
 
 function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGenerics?: string[], noDefault = false): string {
   if (!Array.isArray(types) || types.length === 0) return ''
-  // @ts-ignore
   return `<${types.map(buildGeneric).join(', ')}>`
 
   // generics can either be a value/instance_of or a named generics
