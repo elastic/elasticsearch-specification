@@ -34,7 +34,7 @@ import {
  * @stability TODO
  */
 export interface GetRequest extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
     type?: Type
@@ -52,5 +52,4 @@ export interface GetRequest extends RequestBase {
     version_type?: VersionType
     _source?: boolean | Fields
   }
-  body?: {}
 }

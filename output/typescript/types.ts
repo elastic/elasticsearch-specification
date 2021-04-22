@@ -12621,19 +12621,7 @@ export interface SourceFilter {
   include?: Fields
 }
 
-export interface SourceRequest extends RequestBase {
-  id: Id
-  index: IndexName
-  type?: Type
-  preference?: string
-  realtime?: boolean
-  refresh?: boolean
-  routing?: Routing
-  source_enabled?: boolean
-  _source_excludes?: Fields
-  _source_includes?: Fields
-  version?: VersionNumber
-  version_type?: VersionType
+export interface SourceRequest extends GetRequest {
 }
 
 export interface SourceResponse<TDocument = unknown> extends ResponseBase {
