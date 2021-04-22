@@ -2186,7 +2186,7 @@ export interface ClusterClusterStatsClusterNodesStats {
   packaging_types: ClusterClusterStatsNodePackagingType[]
   plugins: PluginStats[]
   process: ClusterClusterStatsClusterProcess
-  versions: string[]
+  versions: VersionString[]
 }
 
 export interface ClusterClusterStatsClusterOperatingSystemArchitecture {
@@ -2539,7 +2539,6 @@ export interface ClusterClusterStatsClusterStatsRequest extends RequestBase {
 }
 
 export interface ClusterClusterStatsClusterStatsResponse extends NodesNodesResponseBase {
-  _nodes: NodesNodeStatistics
   cluster_name: Name
   cluster_uuid: Uuid
   indices: ClusterClusterStatsClusterIndicesStats
@@ -4128,6 +4127,7 @@ export interface ClusterClusterStatsFieldTypesStats {
   name: Name
   count: integer
   index_count: integer
+  script_count?: integer
 }
 
 export type QueryDslCompoundFunctionScoreFunctionsFieldValueFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
@@ -8475,10 +8475,10 @@ export interface NodesNodeShard {
 }
 
 export interface NodesNodeStatistics {
-  failed: integer
   failures?: ErrorCause[]
-  successful: integer
   total: integer
+  successful: integer
+  failed: integer
 }
 
 export interface NodesNodesStatsNodeStats {
