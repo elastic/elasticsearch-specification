@@ -33081,6 +33081,19 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.",
+            "name": "current_node",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Specifies the name of the index that you would like an explanation for.",
             "name": "index",
             "required": false,
             "type": {
@@ -33092,6 +33105,7 @@
             }
           },
           {
+            "description": "If true, returns explanation for the primary shard for the given shard ID.",
             "name": "primary",
             "required": false,
             "type": {
@@ -33103,6 +33117,7 @@
             }
           },
           {
+            "description": "Specifies the ID of the shard that you would like an explanation for.",
             "name": "shard",
             "required": false,
             "type": {
@@ -33131,8 +33146,10 @@
       "path": [],
       "query": [
         {
+          "description": "If true, returns information about disk usage and shard sizes.",
           "name": "include_disk_info",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33142,8 +33159,10 @@
           }
         },
         {
+          "description": "If true, returns YES decisions in explanation.",
           "name": "include_yes_decisions",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33346,8 +33365,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         },
@@ -34694,6 +34713,27 @@
               "type": {
                 "name": "long",
                 "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "shard_data_set_sizes",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
@@ -89557,8 +89597,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -103616,8 +103656,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },

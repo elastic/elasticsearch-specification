@@ -18,6 +18,7 @@
  */
 
 import { ResponseBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { AllocationDecision } from './AllocationDecision'
 import { ClusterInfo } from './ClusterInfo'
@@ -42,7 +43,7 @@ export class ClusterAllocationExplainResponse extends ResponseBase {
   configured_delay_in_millis?: long
   current_node?: CurrentNode
   current_state: string
-  index: string
+  index: IndexName
   move_explanation?: string
   node_allocation_decisions?: NodeAllocationExplanation[]
   primary: boolean
