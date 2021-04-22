@@ -19099,8 +19099,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },
@@ -19110,8 +19110,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         },
@@ -108271,88 +108271,7 @@
         "name": "ScrollResponse",
         "namespace": "_global.scroll"
       },
-<<<<<<< HEAD
       "properties": []
-=======
-      "properties": [
-        {
-          "name": "failed_shards",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScrollResponseFailedShard",
-                "namespace": "_global.scroll"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseErrorReason",
-        "namespace": "_global.scroll"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScrollResponseFailedShard",
-        "namespace": "_global.scroll"
-      },
-      "properties": [
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScrollResponseErrorReason",
-              "namespace": "_global.scroll"
-            }
-          }
-        }
-      ]
->>>>>>> master
     },
     {
       "inherits": [
@@ -115658,18 +115577,18 @@
       "properties": [
         {
           "name": "index",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-              "namespace": "__common"
+              "namespace": "_types"
             }
           }
         },
         {
           "name": "node",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
