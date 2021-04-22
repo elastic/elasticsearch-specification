@@ -17,6 +17,15 @@
  * under the License.
  */
 
+import { FieldCollapse } from '@global/search/collapsing/FieldCollapse'
+import { Highlight } from '@global/search/highlighting/Highlight'
+import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
+import { Rescore } from '@global/search/rescoring/Rescore'
+import { Sort } from '@global/search/sort/Sort'
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -34,15 +43,6 @@ import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScriptField } from '@_types/Scripting'
 import { DateField, Time } from '@_types/Time'
-import { FieldCollapse } from '_global/search/collapsing/FieldCollapse'
-import { Highlight } from '_global/search/highlighting/Highlight'
-import { PointInTimeReference } from '_global/search/point_in_time/PointInTimeReference'
-import { Rescore } from '_global/search/rescoring/Rescore'
-import { Sort } from '_global/search/sort/Sort'
-import { SourceFilter } from '_global/search/source_filtering/SourceFilter'
-import { SuggestContainer } from '_global/search/suggesters/SuggestContainer'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 /**
  * @rest_spec_name async_search.submit

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -27,7 +28,6 @@ import {
   VersionType
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { SourceFilter } from '_global/search/source_filtering/SourceFilter'
 
 /**
  * @rest_spec_name mget

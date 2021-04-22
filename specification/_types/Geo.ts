@@ -19,12 +19,12 @@
 
 import { double } from './Numeric'
 
-export type Distance = string
-
 export class DistanceParsed {
   precision: double
   unit: DistanceUnit
 }
+
+export type Distance = string
 
 export enum DistanceUnit {
   in = 0,

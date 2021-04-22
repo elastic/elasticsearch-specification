@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { integer } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { ClusterFileSystem } from './ClusterFileSystem'
 import { ClusterIngestStats } from './ClusterIngestStats'
 import { ClusterJvm } from './ClusterJvm'

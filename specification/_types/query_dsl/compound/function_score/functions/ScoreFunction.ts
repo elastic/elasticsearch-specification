@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import { Distance } from '@_types/Geo'
 import { double, long } from '@_types/Numeric'
@@ -24,7 +25,6 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
 import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
 import { Script } from '@_types/Scripting'
 import { DateMath, Time } from '@_types/Time'
-import { AdditionalProperties } from '_spec_utils/behaviors'
 import { MultiValueMode } from './decay/MultiValueMode'
 import { FieldValueFactorModifier } from './field_value/FieldValueFactorModifier'
 

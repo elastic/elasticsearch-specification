@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { float, long } from '@_types/Numeric'
 import { BoolQuery } from '@_types/query_dsl/compound/bool/BoolQuery'
 import { BoostingQuery } from '@_types/query_dsl/compound/boosting/BoostingQuery'
@@ -70,7 +71,6 @@ import { TermsQuery } from '@_types/query_dsl/term_level/terms/TermsQuery'
 import { TermsSetQuery } from '@_types/query_dsl/term_level/terms_set/TermsSetQuery'
 import { TypeQuery } from '@_types/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@_types/query_dsl/term_level/wildcard/WildcardQuery'
-import { SingleKeyDictionary } from '_spec_utils/Dictionary'
 import { NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
 

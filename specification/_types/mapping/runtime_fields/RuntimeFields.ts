@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
 import { Script } from '@_types/Scripting'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 /*
  * Licensed to Elasticsearch B.V. under one or more contributor

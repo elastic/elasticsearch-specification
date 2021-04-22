@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { IndexName, Name, Username } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class SecurityHasPrivilegesResponse extends ResponseBase {
   application: ApplicationsPrivileges

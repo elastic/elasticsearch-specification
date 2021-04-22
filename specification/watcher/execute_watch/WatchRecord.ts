@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
 import { Id } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { ActionExecutionState } from './ActionExecutionState'
 import { ExecutionResult } from './ExecutionResult'
 import { TriggerEventResult } from './TriggerEventResult'

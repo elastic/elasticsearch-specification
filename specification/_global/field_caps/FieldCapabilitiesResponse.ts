@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { Field, Indices } from '@_types/common'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { FieldCapabilities } from './FieldCapabilities'
 
 export class FieldCapabilitiesResponse extends ResponseBase {

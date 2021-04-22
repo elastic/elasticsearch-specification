@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 import {
   Id,
@@ -28,8 +30,6 @@ import {
 } from '@_types/common'
 import { MainError } from '@_types/Errors'
 import { long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 
 export class MultiGetResponse<TDocument> extends ResponseBase {
   docs: MultiGetHit<TDocument>[]

@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Explanation } from '@global/explain/Explanation'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
@@ -25,9 +28,6 @@ import {
   VersionNumber
 } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { Explanation } from '_global/explain/Explanation'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
 import { SortResults } from '../sort/Sort'
 import { InnerHitsResult } from './InnerHitsResult'
 import { NestedIdentity } from './NestedIdentity'

@@ -21,10 +21,10 @@ import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
 import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
 import { DataDescription } from '@ml/_types/DataDescription'
 import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { EmptyObject, Id, IndexName, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { JobStatistics } from './JobStatistics'
 
 export class Job {

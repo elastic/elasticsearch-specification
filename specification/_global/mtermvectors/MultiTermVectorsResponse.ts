@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { TermVectorsResult } from '@global/termvectors/TermVectorsResult'
 import { ResponseBase } from '@_types/Base'
-import { TermVectorsResult } from '_global/termvectors/TermVectorsResult'
 
 export class MultiTermVectorsResponse extends ResponseBase {
   docs: TermVectorsResult[]

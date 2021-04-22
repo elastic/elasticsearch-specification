@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '_spec_utils/Dictionary'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ShardsSegment } from './ShardsSegment'
 
 export class IndexSegment {

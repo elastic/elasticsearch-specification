@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
 import { AllocationDecision } from './AllocationDecision'
 import { AllocationStore } from './AllocationStore'
 import { Decision } from './Decision'

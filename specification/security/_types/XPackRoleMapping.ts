@@ -18,8 +18,8 @@
  */
 
 import { RoleMappingRuleBase } from '@security/put_role_mapping/SecurityPutRoleMappingRequest'
-import { Dictionary } from '_spec_utils/Dictionary'
-import { UserDefinedValue } from '_spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class XPackRoleMapping {
   enabled: boolean

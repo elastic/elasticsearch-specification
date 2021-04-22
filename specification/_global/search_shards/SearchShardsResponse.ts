@@ -19,10 +19,10 @@
 
 import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { NodeShard } from '@nodes/_types/NodeShard'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { IndexName, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class SearchShardsResponse extends ResponseBase {
   nodes: Dictionary<string, NodeAttributes>
