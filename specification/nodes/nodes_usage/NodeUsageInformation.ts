@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { EpochMillis, integer } from '@common/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { integer } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
 export class NodeUsageInformation {
   rest_actions: Dictionary<string, integer>

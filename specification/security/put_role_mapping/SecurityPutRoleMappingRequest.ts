@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { Refresh } from '@common/common/Refresh'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Name, Refresh } from '@_types/common'
 
 /**
  * @rest_spec_name security.put_role_mapping

@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { DateString, EpochMillis } from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
+import { DateString, EpochMillis, Time } from '@_types/Time'
 
 export class CatSnapshotsRecord {
   /**

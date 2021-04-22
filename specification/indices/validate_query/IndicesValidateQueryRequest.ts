@@ -17,11 +17,14 @@
  * under the License.
  */
 
-import { Indices, Types } from '@common/common'
-import { DefaultOperator } from '@common/common/DefaultOperator'
-import { ExpandWildcards } from '@common/common/ExpandWildcards'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { QueryContainer } from '@common/query_dsl/abstractions/container/QueryContainer'
+import { RequestBase } from '@_types/Base'
+import {
+  DefaultOperator,
+  ExpandWildcards,
+  Indices,
+  Types
+} from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name indices.validate_query

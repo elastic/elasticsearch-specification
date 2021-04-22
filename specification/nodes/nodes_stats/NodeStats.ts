@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { long, Name } from '@common/common'
 import { IndexStats } from '@indices/stats/IndexStats'
 import { NodeRole } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Host, Ip, TransportAddress } from '@common/Networking'
+import { Name } from '@_types/common'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
+import { long } from '@_types/Numeric'
 import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
 import { BreakerStats } from './BreakerStats'
 import { FileSystemStats } from './FileSystemStats'

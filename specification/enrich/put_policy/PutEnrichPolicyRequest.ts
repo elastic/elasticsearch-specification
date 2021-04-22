@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { EnrichPolicy } from '@enrich/EnrichPolicy'
+import { EnrichPolicy } from '@enrich/_types/EnrichPolicy'
+import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name enrich.put_policy

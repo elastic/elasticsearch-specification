@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/CatBase'
-import { Indices } from '@common/common'
-import { Bytes } from '@common/common/Bytes'
+import { CatRequestBase } from '@cat/_types/CatBase'
+import { Bytes, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name cat.segments

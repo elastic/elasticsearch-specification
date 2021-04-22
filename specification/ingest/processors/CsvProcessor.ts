@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field, Fields } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, Fields } from '@_types/common'
 
 export class CsvProcessor extends ProcessorBase {
   empty_value: UserDefinedValue

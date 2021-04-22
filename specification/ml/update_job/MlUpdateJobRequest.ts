@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { Id, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
-import { PerPartitionCategorization } from '@common/ml/AnalysisConfig'
-import { AnalysisMemoryLimit } from '@common/ml/AnalysisMemoryLimit'
-import { Detector } from '@common/ml/Detector'
-import { ModelPlotConfigEnabled } from '@common/ml/ModelPlotConfigEnabled'
+import { PerPartitionCategorization } from '@ml/_types/AnalysisConfig'
+import { AnalysisMemoryLimit } from '@ml/_types/AnalysisMemoryLimit'
+import { Detector } from '@ml/_types/Detector'
+import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlotConfigEnabled'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.update_job

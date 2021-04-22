@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { DateString, Id, long, VersionString } from '@common/common'
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { Time } from '@common/common_options/time_unit/Time'
 import { TransformPivot } from '@transform/pivot/TransformPivot'
-import { TransformDestination } from '@transform/TransformDestination'
-import { TransformSource } from '@transform/TransformSource'
-import { TransformSyncContainer } from '@transform/TransformSyncContainer'
+import { TransformDestination } from '@transform/_types/TransformDestination'
+import { TransformSource } from '@transform/_types/TransformSource'
+import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
+import { ResponseBase } from '@_types/Base'
+import { Id, VersionString } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { DateString, Time } from '@_types/Time'
 
 export class UpdateTransformResponse extends ResponseBase {
   create_time: long

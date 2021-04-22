@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ByteSize, Id, NodeId } from '@common/common'
-import { JobState } from '@common/ml/JobState'
+import { JobState } from '@ml/_types/JobState'
+import { ByteSize, Id, NodeId } from '@_types/common'
 import { ModelCategorizationStatus } from './ModelCategorizationStatus'
 import { ModelMemoryStatus } from './ModelMemoryStatus'
 

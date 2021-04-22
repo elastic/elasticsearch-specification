@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { EmptyObject, long } from '@common/common'
+import { EmptyObject } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { JobStatistics } from './JobStatistics'
 
 export class MlDataFrameAnalyticsJobsUsage {

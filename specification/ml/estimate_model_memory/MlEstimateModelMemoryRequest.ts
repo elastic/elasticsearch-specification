@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { Field, long } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { AnalysisConfig } from '@common/ml/AnalysisConfig'
+import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { RequestBase } from '@_types/Base'
+import { Field } from '@_types/common'
+import { long } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.estimate_model_memory

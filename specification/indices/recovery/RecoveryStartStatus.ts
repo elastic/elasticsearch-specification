@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@common/common'
+import { long } from '@_types/Numeric'
 
 export class RecoveryStartStatus {
   check_index_time: long

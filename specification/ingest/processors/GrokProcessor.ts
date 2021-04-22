@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from '@common/common'
-import { ProcessorBase } from '@ingest/ProcessorBase'
+import { ProcessorBase } from '@ingest/_types/ProcessorBase'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Field } from '@_types/common'
 
 export class GrokProcessor extends ProcessorBase {
   field: Field

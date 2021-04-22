@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name, VersionString } from '@common/common'
+import { Name, VersionString } from '@_types/common'
 
 export class CatTemplatesRecord {
   /**

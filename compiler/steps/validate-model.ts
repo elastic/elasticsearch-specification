@@ -26,7 +26,7 @@ import assert from 'assert'
 // they're used as definition reuse and not as polymorphic types.
 // See also validateIsLeafType() below.
 const allowedSuperclasses = new Set([
-  '__common:ErrorCause'
+  '_types:ErrorCause'
 ])
 
 enum TypeDefKind {
@@ -169,7 +169,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   // ErrorResponse is not referenced anywhere, but any API could return it if an error happens.
-  validateTypeRef({ namespace: '__common.common_abstractions.response', name: 'ErrorResponse' }, undefined, new Set())
+  validateTypeRef({ namespace: '_types', name: 'ErrorResponse' }, undefined, new Set())
 
   // -----  Alright, let's go!
 

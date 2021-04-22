@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Ids } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name ml.get_jobs

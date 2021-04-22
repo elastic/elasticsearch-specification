@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { IndexName, integer } from '@common/common'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
+import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name cluster.allocation_explain

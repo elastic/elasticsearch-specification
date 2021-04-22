@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AsyncSearchResponseBase } from '@async_search/AsyncSearchResponseBase'
-import { integer } from '@common/common'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
+import { AsyncSearchResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
+import { integer } from '@_types/Numeric'
+import { ShardStatistics } from '@_types/Stats'
 
 export class AsyncSearchStatusResponse<
   TDocument

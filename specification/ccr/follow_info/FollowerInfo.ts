@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, Name } from '@common/common'
+import { IndexName, Name } from '@_types/common'
 import { FollowConfig } from './FollowConfig'
 import { FollowerIndexStatus } from './FollowerIndexStatus'
 

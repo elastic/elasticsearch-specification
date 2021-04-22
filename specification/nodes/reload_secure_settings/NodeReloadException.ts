@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Name } from '@common/common'
+import { Name } from '@_types/common'
 
 export class NodeReloadException {
   name: Name

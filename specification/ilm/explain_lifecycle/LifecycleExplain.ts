@@ -17,16 +17,11 @@
  * under the License.
  */
 
-import {
-  EpochMillis,
-  IndexName,
-  integer,
-  Name,
-  VersionNumber
-} from '@common/common'
-import { Time } from '@common/common_options/time_unit/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName, Name, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { EpochMillis, Time } from '@_types/Time'
 
 export class LifecycleExplain {
   action: Name

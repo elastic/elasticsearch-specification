@@ -21,6 +21,6 @@
   "compileOnSave": true,
   "buildOnSave": true,
   "include": [
-    "../output/typescript"
+    "."
   ]
 }

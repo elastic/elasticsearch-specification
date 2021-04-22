@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { float } from '@common/common'
+import { float } from '@_types/Numeric'
 
 export class LoadAverageStats {
   '15m': float

@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Id } from '@common/common'
-import { GroupBy } from '@common/common/GroupBy'
-import { RequestBase } from '@common/common_abstractions/request/RequestBase'
-import { Time } from '@common/common_options/time_unit/Time'
+import { RequestBase } from '@_types/Base'
+import { GroupBy, Id } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name tasks.list

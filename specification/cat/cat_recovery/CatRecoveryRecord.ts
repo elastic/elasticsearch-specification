@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { IndexName, Percentage, Type } from '@common/common'
+import { IndexName, Type } from '@_types/common'
+import { Percentage } from '@_types/Numeric'
 
 export class CatRecoveryRecord {
   /**

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@common/common_abstractions/response/ResponseBase'
-import { ShardStatistics } from '@common/common_options/hit/ShardStatistics'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ResponseBase } from '@_types/Base'
+import { ShardStatistics } from '@_types/Stats'
 import { IndexSegment } from './IndexSegment'
 
 export class IndicesSegmentsResponse extends ResponseBase {

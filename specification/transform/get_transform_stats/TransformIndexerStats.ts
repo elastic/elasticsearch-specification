@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { double, long } from '@common/common'
+import { double, long } from '@_types/Numeric'
 
 export class TransformIndexerStats {
   documents_indexed: long

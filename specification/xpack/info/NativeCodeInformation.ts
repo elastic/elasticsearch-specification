@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { VersionString } from '@common/common'
+import { VersionString } from '@_types/common'
 
 export class NativeCodeInformation {
   build_hash: string
