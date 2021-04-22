@@ -2186,7 +2186,7 @@ export interface ClusterClusterStatsClusterNodesStats {
   packaging_types: ClusterClusterStatsNodePackagingType[]
   plugins: PluginStats[]
   process: ClusterClusterStatsClusterProcess
-  versions: string[]
+  versions: VersionString[]
 }
 
 export interface ClusterClusterStatsClusterOperatingSystemArchitecture {
@@ -2539,7 +2539,6 @@ export interface ClusterClusterStatsClusterStatsRequest extends RequestBase {
 }
 
 export interface ClusterClusterStatsClusterStatsResponse extends NodesNodesResponseBase {
-  _nodes: NodesNodeStatistics
   cluster_name: Name
   cluster_uuid: Uuid
   indices: ClusterClusterStatsClusterIndicesStats
@@ -4128,6 +4127,7 @@ export interface ClusterClusterStatsFieldTypesStats {
   name: Name
   count: integer
   index_count: integer
+  script_count?: integer
 }
 
 export type QueryDslCompoundFunctionScoreFunctionsFieldValueFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
@@ -4735,7 +4735,7 @@ export interface GetGetResponse<TDocument = unknown> extends ResponseBase {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type: Type
+  _type?: Type
   _version?: VersionNumber
 }
 
@@ -8475,10 +8475,10 @@ export interface NodesNodeShard {
 }
 
 export interface NodesNodeStatistics {
-  failed: integer
   failures?: ErrorCause[]
-  successful: integer
   total: integer
+  successful: integer
+  failed: integer
 }
 
 export interface NodesNodesStatsNodeStats {
@@ -11806,22 +11806,15 @@ export interface SearchSourceFilteringSourceFilter {
   include?: Fields
 }
 
-export interface GetSourceSourceRequest extends RequestBase {
-  id: Id
-  index: IndexName
-  type?: Type
-  preference?: string
-  realtime?: boolean
-  refresh?: boolean
-  routing?: Routing
-  source_enabled?: boolean
-  _source_excludes?: Fields
-  _source_includes?: Fields
-  version?: VersionNumber
-  version_type?: VersionType
+export interface GetSourceSourceRequest extends GetGetRequest {
 }
 
+<<<<<<< HEAD
 export type GetSourceSourceResponse<TDocument = unknown> = TDocument
+=======
+export interface GetSourceSourceResponse<TDocument = unknown> extends DictionaryResponseBase<Field, any> {
+}
+>>>>>>> master
 
 export interface QueryDslSpanContainingSpanContainingQuery extends QueryDslAbstractionsQueryQueryBase {
   big?: QueryDslSpanSpanQuery

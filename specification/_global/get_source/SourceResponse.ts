@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GenericResponseBody } from '@spec_utils/behaviors'
+import { GenericResponseBody } from '_spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
 
 export class SourceResponse<TDocument>

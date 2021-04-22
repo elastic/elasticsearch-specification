@@ -17,38 +17,11 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import {
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber,
-  VersionType
-} from '@_types/common'
+import { GetRequest } from '_global/get/GetRequest'
 
 /**
  * @rest_spec_name get_source
  * @since 0.0.0
  * @stability TODO
  */
-export interface SourceRequest extends RequestBase {
-  path_parts?: {
-    id: Id
-    index: IndexName
-    type?: Type
-  }
-  query_parameters?: {
-    preference?: string
-    realtime?: boolean
-    refresh?: boolean
-    routing?: Routing
-    source_enabled?: boolean
-    _source_excludes?: Fields
-    _source_includes?: Fields
-    version?: VersionNumber
-    version_type?: VersionType
-  }
-  body?: {}
-}
+export interface SourceRequest extends GetRequest {}

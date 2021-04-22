@@ -34499,6 +34499,7 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about the number of primary shards assigned to selected nodes.",
           "name": "primaries",
           "required": true,
           "type": {
@@ -34510,6 +34511,7 @@
           }
         },
         {
+          "description": "Contains statistics about the number of replication shards assigned to selected nodes.",
           "name": "replication",
           "required": true,
           "type": {
@@ -34521,6 +34523,7 @@
           }
         },
         {
+          "description": "Contains statistics about the number of shards assigned to selected nodes.",
           "name": "shards",
           "required": true,
           "type": {
@@ -34534,6 +34537,7 @@
       ]
     },
     {
+      "description": "Contains statistics about shards assigned to selected nodes.",
       "kind": "interface",
       "name": {
         "name": "ClusterIndicesShardsStats",
@@ -34541,6 +34545,7 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about shards assigned to selected nodes.",
           "name": "index",
           "required": false,
           "type": {
@@ -34552,6 +34557,7 @@
           }
         },
         {
+          "description": "Number of primary shards assigned to selected nodes.",
           "name": "primaries",
           "required": false,
           "type": {
@@ -34563,6 +34569,7 @@
           }
         },
         {
+          "description": "Ratio of replica shards to primary shards across all selected nodes.",
           "name": "replication",
           "required": false,
           "type": {
@@ -34574,6 +34581,7 @@
           }
         },
         {
+          "description": "Total number of shards assigned to selected nodes.",
           "name": "total",
           "required": false,
           "type": {
@@ -34594,6 +34602,7 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about memory used for completion in selected nodes.",
           "name": "completion",
           "required": true,
           "type": {
@@ -34605,6 +34614,7 @@
           }
         },
         {
+          "description": "Total number of indices with shards assigned to selected nodes.",
           "name": "count",
           "required": true,
           "type": {
@@ -34616,6 +34626,7 @@
           }
         },
         {
+          "description": "Contains counts for documents in selected nodes.",
           "name": "docs",
           "required": true,
           "type": {
@@ -34627,6 +34638,8 @@
           }
         },
         {
+          "description": "Contains statistics about the field data cache of selected nodes.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-fielddata.html",
           "name": "fielddata",
           "required": true,
           "type": {
@@ -34638,6 +34651,7 @@
           }
         },
         {
+          "description": "Contains statistics about the query cache of selected nodes.",
           "name": "query_cache",
           "required": true,
           "type": {
@@ -34649,6 +34663,7 @@
           }
         },
         {
+          "description": "Contains statistics about segments in selected nodes.",
           "name": "segments",
           "required": true,
           "type": {
@@ -34660,6 +34675,7 @@
           }
         },
         {
+          "description": "Contains statistics about indices with shards assigned to selected nodes.",
           "name": "shards",
           "required": true,
           "type": {
@@ -34671,6 +34687,7 @@
           }
         },
         {
+          "description": "Contains statistics about the size of shards assigned to selected nodes.",
           "name": "store",
           "required": true,
           "type": {
@@ -34682,6 +34699,8 @@
           }
         },
         {
+          "description": "Contains statistics about field mappings in selected nodes.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html",
           "name": "mappings",
           "required": true,
           "type": {
@@ -34693,6 +34712,8 @@
           }
         },
         {
+          "description": "Contains statistics about analyzers and analyzer components used in selected nodes.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html",
           "name": "analysis",
           "required": true,
           "type": {
@@ -35241,6 +35262,7 @@
       },
       "properties": [
         {
+          "description": "Contains counts for nodes selected by the request’s node filters.",
           "name": "count",
           "required": true,
           "type": {
@@ -35252,6 +35274,8 @@
           }
         },
         {
+          "description": "Contains statistics about the discovery types used by selected nodes.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html",
           "name": "discovery_types",
           "required": true,
           "type": {
@@ -35273,6 +35297,7 @@
           }
         },
         {
+          "description": "Contains statistics about file stores by selected nodes.",
           "name": "fs",
           "required": true,
           "type": {
@@ -35295,6 +35320,7 @@
           }
         },
         {
+          "description": "Contains statistics about the Java Virtual Machines (JVMs) used by selected nodes.",
           "name": "jvm",
           "required": true,
           "type": {
@@ -35306,6 +35332,7 @@
           }
         },
         {
+          "description": "Contains statistics about the transport and HTTP networks used by selected nodes.",
           "name": "network_types",
           "required": true,
           "type": {
@@ -35317,6 +35344,7 @@
           }
         },
         {
+          "description": "Contains statistics about the operating systems used by selected nodes.",
           "name": "os",
           "required": true,
           "type": {
@@ -35328,6 +35356,7 @@
           }
         },
         {
+          "description": "Contains statistics about Elasticsearch distributions installed on selected nodes.",
           "name": "packaging_types",
           "required": true,
           "type": {
@@ -35342,6 +35371,7 @@
           }
         },
         {
+          "description": "Contains statistics about installed plugins and modules by selected nodes.",
           "name": "plugins",
           "required": true,
           "type": {
@@ -35356,6 +35386,7 @@
           }
         },
         {
+          "description": "Contains statistics about processes used by selected nodes.",
           "name": "process",
           "required": true,
           "type": {
@@ -35367,6 +35398,7 @@
           }
         },
         {
+          "description": "Array of Elasticsearch versions used on selected nodes.",
           "name": "versions",
           "required": true,
           "type": {
@@ -35374,8 +35406,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "VersionString",
+                "namespace": "_types"
               }
             }
           }
@@ -38425,6 +38457,7 @@
           }
         },
         {
+          "description": "Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s _nodes.failed property. Defaults to no timeout.",
           "name": "timeout",
           "required": false,
           "type": {
@@ -38453,17 +38486,8 @@
       },
       "properties": [
         {
-          "name": "_nodes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeStatistics",
-              "namespace": "nodes._types"
-            }
-          }
-        },
-        {
+          "description": "Name of the cluster, based on the Cluster name setting setting.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name",
           "name": "cluster_name",
           "required": true,
           "type": {
@@ -38475,6 +38499,7 @@
           }
         },
         {
+          "description": "Unique identifier for the cluster.",
           "name": "cluster_uuid",
           "required": true,
           "type": {
@@ -38486,6 +38511,7 @@
           }
         },
         {
+          "description": "Contains statistics about indices with shards assigned to selected nodes.",
           "name": "indices",
           "required": true,
           "type": {
@@ -38497,6 +38523,8 @@
           }
         },
         {
+          "description": "Contains statistics about nodes selected by the request’s node filters.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes",
           "name": "nodes",
           "required": true,
           "type": {
@@ -38508,6 +38536,7 @@
           }
         },
         {
+          "description": "Health status of the cluster, based on the state of its primary and replica shards.",
           "name": "status",
           "required": true,
           "type": {
@@ -38519,6 +38548,8 @@
           }
         },
         {
+          "description": "Unix timestamp, in milliseconds, of the last time the cluster statistics were refreshed.",
+          "docUrl": "https://en.wikipedia.org/wiki/Unix_time",
           "name": "timestamp",
           "required": true,
           "type": {
@@ -38535,12 +38566,15 @@
       "kind": "enum",
       "members": [
         {
+          "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired.",
           "name": "yellow"
         },
         {
+          "description": "One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.",
           "name": "red"
         }
       ],
@@ -52979,6 +53013,18 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "script_count",
+          "required": false,
+          "since": "7.13.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -58145,6 +58191,7 @@
       ],
       "query": [
         {
+          "description": "Specifies the node or shard the operation should be performed on. Random by default.",
           "name": "preference",
           "required": false,
           "type": {
@@ -58156,8 +58203,11 @@
           }
         },
         {
+          "description": " Boolean) If true, the request is real-time as opposed to near-real-time.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime",
           "name": "realtime",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58167,8 +58217,10 @@
           }
         },
         {
+          "description": " If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
           "name": "refresh",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58178,6 +58230,8 @@
           }
         },
         {
+          "description": "Target the specified primary shard.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing",
           "name": "routing",
           "required": false,
           "type": {
@@ -58200,6 +58254,7 @@
           }
         },
         {
+          "description": "A comma-separated list of source fields to exclude in the response.",
           "name": "_source_excludes",
           "required": false,
           "type": {
@@ -58211,6 +58266,7 @@
           }
         },
         {
+          "description": "A comma-separated list of source fields to include in the response.",
           "name": "_source_includes",
           "required": false,
           "type": {
@@ -58233,6 +58289,7 @@
           }
         },
         {
+          "description": "Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.",
           "name": "version",
           "required": false,
           "type": {
@@ -58244,6 +58301,7 @@
           }
         },
         {
+          "description": "Specific version type: internal, external, external_gte.",
           "name": "version_type",
           "required": false,
           "type": {
@@ -58255,6 +58313,7 @@
           }
         },
         {
+          "description": "True or false to return the _source field or not, or a list of fields to return.",
           "name": "_source",
           "required": false,
           "type": {
@@ -58395,8 +58454,9 @@
           }
         },
         {
+          "description": "deprecated since 7.0.0",
           "name": "_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91968,17 +92028,6 @@
       },
       "properties": [
         {
-          "name": "failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "name": "failures",
           "required": false,
           "type": {
@@ -91993,6 +92042,19 @@
           }
         },
         {
+          "description": "Total number of nodes selected by the request.",
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Number of nodes that responded successfully to the request.",
           "name": "successful",
           "required": true,
           "type": {
@@ -92004,7 +92066,8 @@
           }
         },
         {
-          "name": "total",
+          "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
+          "name": "failed",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -92667,6 +92730,8 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about the number of nodes selected by the request’s node filters.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes",
           "name": "_nodes",
           "required": true,
           "type": {
@@ -122131,8 +122196,8 @@
       "inherits": [
         {
           "type": {
-            "name": "RequestBase",
-            "namespace": "_types"
+            "name": "GetRequest",
+            "namespace": "_global.get"
           }
         }
       ],
@@ -122141,145 +122206,8 @@
         "name": "SourceRequest",
         "namespace": "_global.get_source"
       },
-      "path": [
-        {
-          "description": "The document ID",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The name of the index",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document; deprecated and optional starting with 7.0",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "realtime",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "refresh",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "source_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_source_excludes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_source_includes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "attachedBehaviors": [
@@ -122310,8 +122238,20 @@
       ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "_types"
           }
         }
