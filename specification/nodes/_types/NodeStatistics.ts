@@ -21,8 +21,11 @@ import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 
 export class NodeStatistics {
-  failed: integer
   failures?: ErrorCause[]
-  successful: integer
+  /** Total number of nodes selected by the request. */
   total: integer
+  /** Number of nodes that responded successfully to the request. */
+  successful: integer
+  /** Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response. */
+  failed: integer
 }

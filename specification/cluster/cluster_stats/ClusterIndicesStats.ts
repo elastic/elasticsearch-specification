@@ -30,15 +30,34 @@ import {
 import { ClusterIndicesShardsStats } from './ClusterIndicesShardsStats'
 
 export class ClusterIndicesStats {
+  /** Contains statistics about memory used for completion in selected nodes. */
   completion: CompletionStats
+  /** Total number of indices with shards assigned to selected nodes. */
   count: long
+  /** Contains counts for documents in selected nodes. */
   docs: DocStats
+  /**
+   * Contains statistics about the field data cache of selected nodes.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-fielddata.html
+   */
   fielddata: FielddataStats
+  /** Contains statistics about the query cache of selected nodes. */
   query_cache: QueryCacheStats
+  /** Contains statistics about segments in selected nodes. */
   segments: SegmentsStats
+  /** Contains statistics about indices with shards assigned to selected nodes. */
   shards: ClusterIndicesShardsStats
+  /** Contains statistics about the size of shards assigned to selected nodes. */
   store: StoreStats
+  /**
+   * Contains statistics about field mappings in selected nodes.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html
+   */
   mappings: FieldTypesMappings
+  /**
+   * Contains statistics about analyzers and analyzer components used in selected nodes.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/analyzer-anatomy.html
+   */
   analysis: CharFilterTypes
   versions?: IndicesVersionsStats[]
 }
@@ -52,6 +71,8 @@ export class FieldTypesStats {
   name: Name
   count: integer
   index_count: integer
+  /** @since 7.13.0 */
+  script_count?: integer
 }
 
 export class RuntimeFieldTypesStats {

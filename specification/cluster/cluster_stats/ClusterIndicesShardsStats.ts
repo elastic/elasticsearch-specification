@@ -20,9 +20,16 @@
 import { double } from '@_types/Numeric'
 import { ClusterIndicesShardsIndexStats } from './ClusterIndicesShardsIndexStats'
 
+/**
+ * Contains statistics about shards assigned to selected nodes.
+ */
 export class ClusterIndicesShardsStats {
+  /** Contains statistics about shards assigned to selected nodes. */
   index?: ClusterIndicesShardsIndexStats
+  /** Number of primary shards assigned to selected nodes. */
   primaries?: double
+  /** Ratio of replica shards to primary shards across all selected nodes. */
   replication?: double
+  /** Total number of shards assigned to selected nodes. */
   total?: double
 }
