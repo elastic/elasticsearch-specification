@@ -17,18 +17,20 @@
  * under the License.
  */
 
+import { Id, Name } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterInfo {
   nodes: Dictionary<string, NodeDiskUsage>
   shard_sizes: Dictionary<string, long>
+  shard_data_set_sizes?: Dictionary<string, string>
   shard_paths: Dictionary<string, string>
   reserved_sizes: ReservedSize[]
 }
 
 export class NodeDiskUsage {
-  node_name: string
+  node_name: Name
   least_available: DiskUsage
   most_available: DiskUsage
 }
@@ -43,7 +45,7 @@ export class DiskUsage {
 }
 
 export class ReservedSize {
-  node_id: string
+  node_id: Id
   path: string
   total: long
   shards: string[]

@@ -28,12 +28,33 @@ import { integer } from '@_types/Numeric'
  */
 export interface ClusterAllocationExplainRequest extends RequestBase {
   query_parameters?: {
+    /**
+     * If true, returns information about disk usage and shard sizes.
+     * @server_default false
+     */
     include_disk_info?: boolean
+    /**
+     * If true, returns YES decisions in explanation.
+     * @server_default false
+     */
     include_yes_decisions?: boolean
   }
   body?: {
+    /**
+     * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
+     */
+    current_node?: string
+    /**
+     * Specifies the name of the index that you would like an explanation for.
+     */
     index?: IndexName
+    /**
+     * If true, returns explanation for the primary shard for the given shard ID.
+     */
     primary?: boolean
+    /**
+     * Specifies the ID of the shard that you would like an explanation for.
+     */
     shard?: integer
   }
 }
