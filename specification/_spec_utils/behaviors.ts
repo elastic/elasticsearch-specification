@@ -81,3 +81,10 @@ export interface CommonCatQueryParameters {
   s?: string[]
   v?: boolean
 }
+
+/**
+ * Some APIs does not return a structured body, but a generic value instead.
+ * For examplke the `get_source` API return the source document.
+ * @behavior Defines a trait that the response body is the given generic.
+ */
+export interface GenericResponseBody<T> {}

@@ -17,8 +17,9 @@
  * under the License.
  */
 
+import { GenericResponseBody } from '@spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
 
-export class SourceResponse<TDocument> extends ResponseBase {
-  body: TDocument
-}
+export class SourceResponse<TDocument>
+  extends ResponseBase
+  implements GenericResponseBody<TDocument> {}
