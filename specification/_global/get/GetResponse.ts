@@ -38,6 +38,7 @@ export class GetResponse<TDocument> extends ResponseBase {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type: Type
+  /** deprecated since 7.0.0 */
+  _type?: Type
   _version?: VersionNumber
 }

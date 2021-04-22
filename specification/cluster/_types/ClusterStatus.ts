@@ -18,10 +18,13 @@
  */
 
 /**
- * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html
  */
 export enum ClusterStatus {
+  /** All shards are assigned. */
   green = 0,
+  /** All primary shards are assigned, but one or more replica shards are unassigned. If a node in the cluster fails, some data could be unavailable until that node is repaired. */
   yellow = 1,
+  /** One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned. */
   red = 2
 }

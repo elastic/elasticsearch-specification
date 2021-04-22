@@ -28,10 +28,12 @@ import { Time } from '@_types/Time'
  */
 export interface ClusterStatsRequest extends RequestBase {
   path_parts?: {
+    /** Comma-separated list of node filters used to limit returned information. Defaults to all nodes in the cluster. */
     node_id?: NodeIds
   }
   query_parameters?: {
     flat_settings?: boolean
-    timeout?: Time // default: no timeout
+    /** Period to wait for each node to respond. If a node does not respond before its timeout expires, the response does not include its stats. However, timed out nodes are included in the response’s _nodes.failed property. Defaults to no timeout. */
+    timeout?: Time
   }
 }
