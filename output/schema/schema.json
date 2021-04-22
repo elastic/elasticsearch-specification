@@ -58191,6 +58191,7 @@
       ],
       "query": [
         {
+          "description": "Specifies the node or shard the operation should be performed on. Random by default.",
           "name": "preference",
           "required": false,
           "type": {
@@ -58202,8 +58203,11 @@
           }
         },
         {
+          "description": " Boolean) If true, the request is real-time as opposed to near-real-time.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime",
           "name": "realtime",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58213,8 +58217,10 @@
           }
         },
         {
+          "description": " If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
           "name": "refresh",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -58224,6 +58230,8 @@
           }
         },
         {
+          "description": "Target the specified primary shard.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing",
           "name": "routing",
           "required": false,
           "type": {
@@ -58246,6 +58254,7 @@
           }
         },
         {
+          "description": "A comma-separated list of source fields to exclude in the response.",
           "name": "_source_excludes",
           "required": false,
           "type": {
@@ -58257,6 +58266,7 @@
           }
         },
         {
+          "description": "A comma-separated list of source fields to include in the response.",
           "name": "_source_includes",
           "required": false,
           "type": {
@@ -58279,6 +58289,7 @@
           }
         },
         {
+          "description": "Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.",
           "name": "version",
           "required": false,
           "type": {
@@ -58290,6 +58301,7 @@
           }
         },
         {
+          "description": "Specific version type: internal, external, external_gte.",
           "name": "version_type",
           "required": false,
           "type": {
@@ -58301,6 +58313,7 @@
           }
         },
         {
+          "description": "True or false to return the _source field or not, or a list of fields to return.",
           "name": "_source",
           "required": false,
           "type": {
@@ -58441,8 +58454,9 @@
           }
         },
         {
+          "description": "deprecated since 7.0.0",
           "name": "_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -122182,8 +122196,8 @@
       "inherits": [
         {
           "type": {
-            "name": "RequestBase",
-            "namespace": "_types"
+            "name": "GetRequest",
+            "namespace": "_global.get"
           }
         }
       ],
@@ -122192,145 +122206,8 @@
         "name": "SourceRequest",
         "namespace": "_global.get_source"
       },
-      "path": [
-        {
-          "description": "The document ID",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The name of the index",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document; deprecated and optional starting with 7.0",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "realtime",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "refresh",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "source_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_source_excludes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_source_includes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "generics": [
@@ -122341,8 +122218,20 @@
       ],
       "inherits": [
         {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
           "type": {
-            "name": "ResponseBase",
+            "name": "DictionaryResponseBase",
             "namespace": "_types"
           }
         }
@@ -122352,19 +122241,7 @@
         "name": "SourceResponse",
         "namespace": "_global.get_source"
       },
-      "properties": [
-        {
-          "name": "body",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.get_source"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": [

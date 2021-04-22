@@ -4735,7 +4735,7 @@ export interface GetGetResponse<TDocument = unknown> extends ResponseBase {
   _routing?: string
   _seq_no?: SequenceNumber
   _source?: TDocument
-  _type: Type
+  _type?: Type
   _version?: VersionNumber
 }
 
@@ -11806,23 +11806,10 @@ export interface SearchSourceFilteringSourceFilter {
   include?: Fields
 }
 
-export interface GetSourceSourceRequest extends RequestBase {
-  id: Id
-  index: IndexName
-  type?: Type
-  preference?: string
-  realtime?: boolean
-  refresh?: boolean
-  routing?: Routing
-  source_enabled?: boolean
-  _source_excludes?: Fields
-  _source_includes?: Fields
-  version?: VersionNumber
-  version_type?: VersionType
+export interface GetSourceSourceRequest extends GetGetRequest {
 }
 
-export interface GetSourceSourceResponse<TDocument = unknown> extends ResponseBase {
-  body: TDocument
+export interface GetSourceSourceResponse<TDocument = unknown> extends DictionaryResponseBase<Field, any> {
 }
 
 export interface QueryDslSpanContainingSpanContainingQuery extends QueryDslAbstractionsQueryQueryBase {
