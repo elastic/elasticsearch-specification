@@ -111579,13 +111579,26 @@
       "path": [],
       "query": [
         {
-          "name": "stub",
-          "required": true,
+          "description": "The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications.",
+          "name": "application",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application.",
+          "name": "priviledge",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
