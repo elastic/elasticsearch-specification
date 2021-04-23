@@ -109308,22 +109308,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109337,12 +109321,13 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "description": "A comma-separated list of index names",
+          "name": "index",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "Indices",
               "namespace": "_types"
             }
           }
@@ -109350,13 +109335,57 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "expand_wildcards",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ExpandWildcards",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pretty",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "human",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
