@@ -9481,8 +9481,10 @@ export interface NodesNodesStatsNodesStatsRequest extends RequestBase {
   groups?: boolean
   include_segment_file_sizes?: boolean
   level?: Level
+  master_timeout?: Time
   timeout?: Time
   types?: string[]
+  include_unloaded_segments?: boolean
 }
 
 export interface NodesNodesStatsNodesStatsResponse extends NodesNodesResponseBase {

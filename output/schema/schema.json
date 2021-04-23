@@ -91682,6 +91682,7 @@
       ],
       "query": [
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.",
           "name": "completion_fields",
           "required": false,
           "type": {
@@ -91693,6 +91694,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata statistics.",
           "name": "fielddata_fields",
           "required": false,
           "type": {
@@ -91704,6 +91706,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.",
           "name": "fields",
           "required": false,
           "type": {
@@ -91715,6 +91718,7 @@
           }
         },
         {
+          "description": "Comma-separated list of search groups to include in the search statistics.",
           "name": "groups",
           "required": false,
           "type": {
@@ -91726,8 +91730,10 @@
           }
         },
         {
+          "description": "If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).",
           "name": "include_segment_file_sizes",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91737,6 +91743,7 @@
           }
         },
         {
+          "description": "Indicates whether statistics are aggregated at the cluster, index, or shard level.",
           "name": "level",
           "required": false,
           "type": {
@@ -91748,8 +91755,10 @@
           }
         },
         {
-          "name": "timeout",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91759,6 +91768,20 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of document types for the indexing index metric.",
           "name": "types",
           "required": false,
           "type": {
@@ -91769,6 +91792,17 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "include_unloaded_segments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
