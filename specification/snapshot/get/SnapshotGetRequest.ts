@@ -35,6 +35,7 @@ export interface SnapshotGetRequest extends RequestBase {
     ignore_unavailable?: boolean
     master_timeout?: Time
     verbose?: boolean
+    /** @since 7.13.0 */
     index_details?: boolean
     human?: boolean
   }

@@ -119568,6 +119568,7 @@
         {
           "name": "index_details",
           "required": false,
+          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
