@@ -11712,7 +11712,7 @@ export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesResponse exte
 }
 
 export interface SecurityGetUserSecurityGetUserRequest extends RequestBase {
-  username?: Username[]
+  username?: Username | Username[]
 }
 
 export interface SecurityGetUserSecurityGetUserResponse extends DictionaryResponseBase<string, SecurityXPackUser> {
