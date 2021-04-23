@@ -880,12 +880,13 @@ export interface IngestProcessorsBytesProcessor extends IngestProcessorBase {
 
 export interface NodesNodesStatsCPUStats {
   percent: integer
-  sys: string
-  sys_in_millis: long
-  total: string
-  total_in_millis: long
-  user: string
-  user_in_millis: long
+  sys?: string
+  sys_in_millis?: long
+  total?: string
+  total_in_millis?: long
+  user?: string
+  user_in_millis?: long
+  load_average?: Record<string, double>
 }
 
 export interface MlGetCalendarsCalendar {
@@ -4843,6 +4844,9 @@ export interface AggregationsBucketHistogramExtendedBounds<T = unknown> {
 export interface NodesNodesStatsExtendedMemoryStats extends NodesNodesStatsMemoryStats {
   free_percent: integer
   used_percent: integer
+  total_in_bytes: integer
+  free_in_bytes: integer
+  used_in_bytes: integer
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -7868,12 +7872,15 @@ export interface AggregationsMetricMedianAbsoluteDeviationMedianAbsoluteDeviatio
 }
 
 export interface NodesNodesStatsMemoryStats {
-  resident: string
-  resident_in_bytes: long
-  share: string
-  share_in_bytes: long
-  total_virtual: string
-  total_virtual_in_bytes: long
+  resident?: string
+  resident_in_bytes?: long
+  share?: string
+  share_in_bytes?: long
+  total_virtual?: string
+  total_virtual_in_bytes?: long
+  total_in_bytes: long
+  free_in_bytes: long
+  used_in_bytes: long
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
@@ -9412,7 +9419,7 @@ export interface NodesNodesStatsNodeStats {
   http: NodesNodesStatsHttpStats
   indices: IndicesStatsIndexStats
   ingest: NodesNodesStatsStatisticsNodeIngestStats
-  ip: Ip[]
+  ip: Ip | Ip[]
   jvm: NodesNodesStatsNodeJvmStats
   name: Name
   os: NodesNodesStatsOperatingSystemStats
@@ -9423,6 +9430,7 @@ export interface NodesNodesStatsNodeStats {
   timestamp: long
   transport: NodesNodesStatsTransportStats
   transport_address: TransportAddress
+  attributes: Record<Field, string>
 }
 
 export interface NodesNodesInfoNodeThreadPoolInfo {
@@ -9488,7 +9496,7 @@ export interface NodesNodesStatsNodesStatsRequest extends RequestBase {
 }
 
 export interface NodesNodesStatsNodesStatsResponse extends NodesNodesResponseBase {
-  cluster_name: string
+  cluster_name: Name
   nodes: Record<string, NodesNodesStatsNodeStats>
 }
 
