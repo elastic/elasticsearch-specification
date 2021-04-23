@@ -11649,7 +11649,6 @@ export interface SecurityGetApiKeySecurityGetApiKeyResponse extends ResponseBase
 }
 
 export interface SecurityGetBuiltinPrivilegesSecurityGetBuiltinPrivilegesRequest extends RequestBase {
-  stub: boolean
 }
 
 export interface SecurityGetBuiltinPrivilegesSecurityGetBuiltinPrivilegesResponse extends ResponseBase {

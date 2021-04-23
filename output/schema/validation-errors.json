@@ -840,12 +840,6 @@
       ],
       "response": []
     },
-    "security.get_builtin_privileges": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "security.get_user": {
       "request": [
         "Endpoint has \"@stability: TODO"

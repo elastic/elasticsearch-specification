@@ -112555,19 +112555,7 @@
         "namespace": "security.get_builtin_privileges"
       },
       "path": [],
-      "query": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "inherits": [
