@@ -240,11 +240,37 @@ export function modelType (node: Node): model.ValueOf {
 
         default: {
           const generics = node.getTypeArguments().map(node => modelType(node))
+          const identifier = node.getTypeName()
+          assert(node, Node.isIdentifier(identifier), 'Not an identifier')
+
+          const declaration = identifier.getDefinitions()[0].getDeclarationNode()
+          // We are looking at a generic parameter
+          if (declaration == null) {
+            const type: model.InstanceOf = {
+              kind: 'instance_of',
+              ...(generics.length > 0 && { generics }),
+              type: {
+                name,
+                namespace: getNameSpace(node)
+              }
+            }
+            return type
+          }
+
+          assert(
+            node,
+            Node.isClassDeclaration(declaration) ||
+            Node.isInterfaceDeclaration(declaration) ||
+            Node.isEnumDeclaration(declaration) ||
+            Node.isTypeAliasDeclaration(declaration) ||
+            Node.isTypeParameterDeclaration(declaration),
+            'It should be a class, interface, enum, type alias, or type parameter declaration'
+          )
           const type: model.InstanceOf = {
             kind: 'instance_of',
             ...(generics.length > 0 && { generics }),
             type: {
-              name,
+              name: declaration.getName() as string,
               namespace: getNameSpace(node)
             }
           }
