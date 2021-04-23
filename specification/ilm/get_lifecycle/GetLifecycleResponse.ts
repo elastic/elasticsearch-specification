@@ -20,7 +20,4 @@
 import { DictionaryResponseBase } from '@_types/Base'
 import { LifecyclePolicy } from './LifecyclePolicy'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  LifecyclePolicy
-> {}
+export class Response extends DictionaryResponseBase<string, LifecyclePolicy> {}

@@ -20,7 +20,4 @@
 import { XPackRole } from '@security/_types/XPackRole'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  XPackRole
-> {}
+export class Response extends DictionaryResponseBase<string, XPackRole> {}
