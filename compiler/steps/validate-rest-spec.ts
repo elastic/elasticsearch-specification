@@ -40,7 +40,7 @@ const LOG = 'ALL' // default: ALL
 export default async function validateRestSpec (model: model.Model, jsonSpec: Map<string, JsonSpec>, errors: ValidationErrors): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
     if (endpoint.request == null) continue
-    const requestDefinition = getDefinition(endpoint.request.name)
+    const requestDefinition = getDefinition(endpoint.request)
     const requestProperties = getProperties(requestDefinition)
     if (endpoint.request.name === LOG || LOG === 'ALL') {
       const spec = jsonSpec.get(endpoint.name)
@@ -98,10 +98,10 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
 
   return model
 
-  function getDefinition (name: string): model.Request | model.Interface {
+  function getDefinition (name: model.TypeName): model.Request | model.Interface {
     for (const type of model.types) {
       if (type.kind === 'request' || type.kind === 'interface') {
-        if (type.name.name === name) {
+        if (type.name.name === name.name && type.name.namespace === name.namespace) {
           return type
         }
       }
@@ -134,7 +134,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
     }
 
     if (Array.isArray(definition.inherits)) {
-      const inherits = definition.inherits.map(inherit => getDefinition(inherit.type.name))
+      const inherits = definition.inherits.map(inherit => getDefinition(inherit.type))
       for (const inherit of inherits) {
         const properties = getProperties(inherit)
         if (properties.path.length > 0) {
