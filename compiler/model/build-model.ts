@@ -234,7 +234,9 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     for (const inherit of declaration.getHeritageClauses()) {
-      type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+      const extended = modelInherits(inherit)
+      assert(inherit, extended.length <= 1, '??? TypeScript only allows to extend a single class')
+      type.inherits = extended[0]
     }
 
     for (const typeParameter of declaration.getTypeParameters()) {
@@ -298,7 +300,9 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     for (const inherit of declaration.getHeritageClauses()) {
       if (inherit.getToken() === ts.SyntaxKind.ExtendsKeyword) {
-        type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+        const extended = modelInherits(inherit)
+        assert(inherit, extended.length <= 1, '??? TypeScript only allows to extend a single class')
+        type.inherits = extended[0]
       }
     }
 

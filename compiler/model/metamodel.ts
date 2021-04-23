@@ -198,7 +198,7 @@ export class Interface extends BaseType {
    * this fully qualified type name to be used when this open generic parameter is used in property's type.
    */
   generics?: TypeName[]
-  inherits?: Inherits[]
+  inherits?: Inherits
   implements?: Inherits[]
 
   /**
@@ -223,7 +223,7 @@ export class Request extends BaseType {
   // Note: does not extend Interface as properties are split across path, query and body
   kind: 'request'
   generics?: TypeName[]
-  inherits?: Inherits[]
+  inherits?: Inherits
   implements?: Inherits[]
   /** URL path properties */
   path: Property[]
