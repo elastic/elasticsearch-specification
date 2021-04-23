@@ -106,7 +106,7 @@ export default async function validateRestSpec (model: model.Model, jsonSpec: Ma
         }
       }
     }
-    throw new Error(`Can't find the request definiton for ${name}`)
+    throw new Error(`Can't find the request definiton for ${name.namespace}.${name.name}`)
   }
 
   // recursively gets the properties from the current and inherited classes
