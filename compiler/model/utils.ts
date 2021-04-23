@@ -268,22 +268,20 @@ export function isApi (declaration: InterfaceDeclaration): boolean {
 }
 
 /**
- * Given a HeritageClause node returns an Inherits structure.
- * A class could extend from multiple classes, which are
- * defined inside the node typeArguments.
+ * Given the extended class or interface definition and the HeritageClause node
+ * returns an Inherits structure.
  */
-export function modelInherits (node: HeritageClause): model.Inherits[] {
-  return node.getTypeNodes().map(node => {
-    assert(node, Node.isExpressionWithTypeArguments(node), 'The node should be a expression with type arguments')
-    const generics = node.getTypeArguments().map(node => modelType(node))
-    return {
-      type: {
-        name: node.getExpression().getText(),
-        namespace: getNameSpace(node)
-      },
-      ...(generics.length > 0 && { generics })
-    }
-  })
+export function modelInherits (node: InterfaceDeclaration | ClassDeclaration, inherit: HeritageClause): model.Inherits {
+  const generics = inherit.getTypeNodes()
+    .flatMap(node => node.getTypeArguments())
+    .map(node => modelType(node))
+  return {
+    type: {
+      name: node.getName() as string,
+      namespace: getNameSpace(node)
+    },
+    ...(generics.length > 0 && { generics })
+  }
 }
 
 /**

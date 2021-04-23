@@ -234,9 +234,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     for (const inherit of declaration.getHeritageClauses()) {
-      const extended = modelInherits(inherit)
-      assert(inherit, extended.length <= 1, '??? TypeScript only allows to extend a single class')
-      type.inherits = extended[0]
+      const extended = inherit.getTypeNodes()
+        .map(t => t.getExpression())
+        .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
+      assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
+      type.inherits = modelInherits(extended, inherit)
     }
 
     for (const typeParameter of declaration.getTypeParameters()) {
@@ -300,9 +302,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     for (const inherit of declaration.getHeritageClauses()) {
       if (inherit.getToken() === ts.SyntaxKind.ExtendsKeyword) {
-        const extended = modelInherits(inherit)
-        assert(inherit, extended.length <= 1, '??? TypeScript only allows to extend a single class')
-        type.inherits = extended[0]
+        const extended = inherit.getTypeNodes()
+          .map(t => t.getExpression())
+          .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
+        assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
+        type.inherits = modelInherits(extended, inherit)
       }
     }
 
