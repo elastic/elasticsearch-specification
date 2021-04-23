@@ -12435,11 +12435,20 @@ export interface SnapshotGetSnapshotGetRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   verbose?: boolean
+  index_details?: boolean
+  human?: boolean
 }
 
 export interface SnapshotGetSnapshotGetResponse extends ResponseBase {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+}
+
+export interface SnapshotSnapshotIndexDetails {
+  shard_count: integer
+  size?: ByteSize
+  size_in_bytes: long
+  max_segments_per_shard: long
 }
 
 export interface SnapshotSnapshotIndexStats {
@@ -12450,17 +12459,19 @@ export interface SnapshotSnapshotIndexStats {
 
 export interface SnapshotSnapshotInfo {
   data_streams: string[]
+  duration?: Time
   duration_in_millis?: EpochMillis
-  end_time?: DateString
+  end_time?: Time
   end_time_in_millis?: EpochMillis
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
+  index_details?: Record<IndexName, SnapshotSnapshotIndexDetails>
   metadata?: Record<string, any>
   reason?: string
-  snapshot: string
+  snapshot: Name
   shards?: ShardStatistics
-  start_time?: DateString
+  start_time?: Time
   start_time_in_millis?: EpochMillis
   state?: string
   uuid: Uuid

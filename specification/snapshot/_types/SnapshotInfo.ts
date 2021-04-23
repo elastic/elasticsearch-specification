@@ -19,25 +19,35 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { IndexName, Uuid, VersionNumber, VersionString } from '@_types/common'
+import {
+  IndexName,
+  Name,
+  Uuid,
+  VersionNumber,
+  VersionString
+} from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
-import { DateString, EpochMillis } from '@_types/Time'
+import { EpochMillis, Time } from '@_types/Time'
+import { SnapshotIndexDetails } from './SnapshotIndexDetails'
 import { SnapshotInfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
   data_streams: Array<string>
+  duration?: Time
   duration_in_millis?: EpochMillis
-  end_time?: DateString
+  end_time?: Time
   end_time_in_millis?: EpochMillis
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
+  /** @since 7.13.0 */
+  index_details?: Dictionary<IndexName, SnapshotIndexDetails>
   metadata?: Dictionary<string, UserDefinedValue>
   reason?: string
-  snapshot: string
+  snapshot: Name
   shards?: ShardStatistics
-  start_time?: DateString
+  start_time?: Time
   start_time_in_millis?: EpochMillis
   state?: string
   uuid: Uuid
