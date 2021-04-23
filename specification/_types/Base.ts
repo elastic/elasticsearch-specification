@@ -18,6 +18,7 @@
  */
 
 import { CommonQueryParameters } from '@spec_utils/behaviors'
+import { EmptyResponseBase } from '_spec_utils/behaviors'
 import {
   Id,
   IndexName,
@@ -58,6 +59,13 @@ export class AcknowledgedResponseBase extends ResponseBase {
 export class DictionaryResponseBase<TKey, TValue> extends ResponseBase {}
 
 export class DynamicResponseBase extends ResponseBase {}
+
+/**
+ * Empty Response body, with the result defined by the HTTP status code
+ */
+export class HttpStatusCodeResponseBase
+  extends ResponseBase
+  implements EmptyResponseBase {}
 
 export class ElasticsearchVersionInfo {
   build_date: DateString

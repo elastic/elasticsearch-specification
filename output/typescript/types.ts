@@ -6106,6 +6106,9 @@ export interface NodesNodesStatsHttpStats {
   total_opened: long
 }
 
+export interface HttpStatusCodeResponseBase extends ResponseBase {
+}
+
 export interface AnalysisTokenFiltersHunspellTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
   dedup: boolean
   dictionary: string
@@ -11619,18 +11622,14 @@ export interface SecurityDisableUserSecurityDisableUserRequest extends RequestBa
   refresh?: Refresh
 }
 
-export interface SecurityDisableUserSecurityDisableUserResponse extends ResponseBase {
-  stub: integer
-}
+export type SecurityDisableUserSecurityDisableUserResponse = boolean
 
 export interface SecurityEnableUserSecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export interface SecurityEnableUserSecurityEnableUserResponse extends ResponseBase {
-  stub: integer
-}
+export type SecurityEnableUserSecurityEnableUserResponse = boolean
 
 export interface XpackUsageSecurityFeatureToggle {
   enabled: boolean

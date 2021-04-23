@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { HttpStatusCodeResponseBase } from '@_types/Base'
 
-export class SecurityDisableUserResponse extends ResponseBase {
-  stub: integer
-}
+export class SecurityDisableUserResponse extends HttpStatusCodeResponseBase {}

@@ -62190,6 +62190,32 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
+      "behaviors": [
+        {
+          "type": {
+            "name": "EmptyResponseBase",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "description": "Empty Response body, with the result defined by the HTTP status code",
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HttpStatusCodeResponseBase",
+        "namespace": "_types"
+      },
+      "properties": []
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -94399,17 +94425,9 @@
       "attachedBehaviors": [
         "EmptyResponseBase"
       ],
-      "behaviors": [
-        {
-          "type": {
-            "name": "EmptyResponseBase",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
       "inherits": {
         "type": {
-          "name": "ResponseBase",
+          "name": "HttpStatusCodeResponseBase",
           "namespace": "_types"
         }
       },
@@ -110899,9 +110917,12 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": {
         "type": {
-          "name": "ResponseBase",
+          "name": "HttpStatusCodeResponseBase",
           "namespace": "_types"
         }
       },
@@ -110910,19 +110931,7 @@
         "name": "SecurityDisableUserResponse",
         "namespace": "security.disable_user"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -110968,9 +110977,12 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "EmptyResponseBase"
+      ],
       "inherits": {
         "type": {
-          "name": "ResponseBase",
+          "name": "HttpStatusCodeResponseBase",
           "namespace": "_types"
         }
       },
@@ -110979,19 +110991,7 @@
         "name": "SecurityEnableUserResponse",
         "namespace": "security.enable_user"
       },
-      "properties": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "interface",

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { EmptyResponseBase } from '@spec_utils/behaviors'
-import { ResponseBase } from '@_types/Base'
+import { HttpStatusCodeResponseBase } from '@_types/Base'
 
-export class PingResponse extends ResponseBase implements EmptyResponseBase {}
+export class PingResponse extends HttpStatusCodeResponseBase {}
