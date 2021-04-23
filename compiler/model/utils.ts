@@ -213,17 +213,20 @@ export function modelType (node: Node): model.ValueOf {
           const type: model.DictionaryOf = {
             kind: 'dictionary_of',
             key,
-            value
+            value,
+            singleKey: false
           }
           return type
         }
 
         case 'SingleKeyDictionary': {
-          assert(node, node.getTypeArguments().length === 1, 'A SingleKeyDictionary must have one argument')
-          const [value] = node.getTypeArguments().map(node => modelType(node))
-          const type: model.NamedValueOf = {
-            kind: 'named_value_of',
-            value
+          assert(node, node.getTypeArguments().length === 2, 'A SingleKeyDictionary must have two arguments')
+          const [key, value] = node.getTypeArguments().map(node => modelType(node))
+          const type: model.DictionaryOf = {
+            kind: 'dictionary_of',
+            key,
+            value,
+            singleKey: true
           }
           return type
         }

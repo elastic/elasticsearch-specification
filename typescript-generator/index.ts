@@ -94,8 +94,6 @@ function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number 
       return type.items.map(t => buildValue(t, openGenerics)).join(' | ')
     case 'dictionary_of':
       return `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
-    case 'named_value_of':
-      return `Record<string, ${buildValue(type.value, openGenerics)}>`
     case 'user_defined_value':
       return 'any'
     case 'literal_value':

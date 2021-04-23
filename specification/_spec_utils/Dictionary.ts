@@ -19,4 +19,4 @@
 
 export class Dictionary<TKey, TValue> {}
 
-export class SingleKeyDictionary<TValue> {}
+export class SingleKeyDictionary<TKey, TValue> {}
