@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common';
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_user_privileges
