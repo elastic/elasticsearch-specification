@@ -177,13 +177,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   // Request definitions needs to be handled
   // differently from normal classes
   if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
-    // It's not guaranteed that every *Request definition
-    // has an associated *Response definition as well.
-    const response = allClasses
-      .map(d => d.getName())
-      .find(n => n === `${name.slice(0, -7)}Response`) !== undefined
-      ? { name: `${name.slice(0, -7)}Response`, namespace: getNameSpace(declaration) }
-      : null
+    const response: model.TypeName = {
+      name: 'Response',
+      namespace: getNameSpace(declaration)
+    }
 
     const type: model.Request = {
       kind: 'request',
