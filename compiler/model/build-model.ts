@@ -146,8 +146,14 @@ export function compileSpecification (endpointMappings: Record<string, model.End
 
   // Sort the types in alphabetical order
   model.types.sort((a, b) => {
-    if (a.name.name > b.name.name) return 1
-    if (a.name.name < b.name.name) return -1
+    if (a.name.namespace === b.name.namespace) {
+      if (a.name.name > b.name.name) return 1
+      if (a.name.name < b.name.name) return -1
+      return 0
+    }
+
+    if (a.name.namespace > b.name.namespace) return 1
+    if (a.name.namespace < b.name.namespace) return -1
     return 0
   })
 
