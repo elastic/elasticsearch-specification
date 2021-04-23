@@ -11701,7 +11701,8 @@ export interface SecurityGetTokenSecurityGetTokenResponse extends ResponseBase {
 }
 
 export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesRequest extends RequestBase {
-  stub: boolean
+  application?: Name
+  priviledge?: Name
 }
 
 export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesResponse extends ResponseBase {

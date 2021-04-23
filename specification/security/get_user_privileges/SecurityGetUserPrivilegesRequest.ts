@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common';
 
 /**
  * @rest_spec_name security.get_user_privileges
@@ -26,7 +27,9 @@ import { RequestBase } from '@_types/Base'
  */
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
   query_parameters?: {
-    stub: boolean
+    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
+    application?: Name
+    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
+    priviledge?: Name
   }
-  body?: {}
 }
