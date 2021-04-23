@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.3.0
  * @stability TODO
  */
-export interface MlEvaluateDataFrameRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     stub: string
   }

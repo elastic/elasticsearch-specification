@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class CountResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   _shards: ShardStatistics
 }

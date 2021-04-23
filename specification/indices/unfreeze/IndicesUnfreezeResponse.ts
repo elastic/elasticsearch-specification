@@ -19,6 +19,6 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class IndicesUnfreezeResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }

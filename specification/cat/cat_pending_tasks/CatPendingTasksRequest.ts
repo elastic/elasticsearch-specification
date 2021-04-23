@@ -24,7 +24,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatPendingTasksRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   query_parameters?: {}
   body?: {}
 }

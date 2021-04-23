@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 6.2.0
  * @stability TODO
  */
-export interface MlPutCalendarJobRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     calendar_id: Id
     job_id: Id

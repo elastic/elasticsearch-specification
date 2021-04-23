@@ -20,7 +20,7 @@
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class GetPipelineResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   Pipeline
 > {}

@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class MlStopDatafeedResponse extends ResponseBase {
+export class Response extends ResponseBase {
   stopped: boolean
 }

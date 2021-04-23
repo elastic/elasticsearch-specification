@@ -19,7 +19,7 @@
 
 import { ElasticsearchVersionInfo, ResponseBase } from '@_types/Base'
 
-export class RootNodeInfoResponse extends ResponseBase {
+export class Response extends ResponseBase {
   cluster_name: string
   cluster_uuid: string
   name: string

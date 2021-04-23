@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.7.0
  * @stability TODO
  */
-export interface CatTransformsRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     transform_id?: Id
   }

@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class SearchTemplateResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   _shards: ShardStatistics
   timed_out: boolean
   took: integer

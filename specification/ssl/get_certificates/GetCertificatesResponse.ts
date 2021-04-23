@@ -21,6 +21,5 @@ import { ArrayResponseBase } from '@spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
 import { ClusterCertificateInformation } from './ClusterCertificateInformation'
 
-export class GetCertificatesResponse
-  extends ResponseBase
+export class Response   extends ResponseBase
   implements ArrayResponseBase<ClusterCertificateInformation> {}

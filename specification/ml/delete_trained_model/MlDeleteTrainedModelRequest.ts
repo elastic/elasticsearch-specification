@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 7.10.0
  * @stability TODO
  */
-export interface MlDeleteTrainedModelRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     model_id: Id
   }

@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 
-export class MlPutJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   allow_lazy_open: boolean
   analysis_config: AnalysisConfig
   analysis_limits: AnalysisLimits

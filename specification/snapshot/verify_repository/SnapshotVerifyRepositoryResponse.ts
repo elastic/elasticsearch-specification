@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
-export class SnapshotVerifyRepositoryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   nodes: Dictionary<string, CompactNodeInfo>
 }
 

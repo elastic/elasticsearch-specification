@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
-export class SecurityGetBuiltinPrivilegesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   cluster: string[]
   index: Indices
 }

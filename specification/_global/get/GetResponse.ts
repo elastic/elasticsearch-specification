@@ -29,7 +29,7 @@ import {
 } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class GetResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   _index: IndexName
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean

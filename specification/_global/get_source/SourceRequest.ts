@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { GetRequest } from '_global/get/GetRequest'
+import { Request as GetRequest } from '_global/get/GetRequest'
 
 /**
  * @rest_spec_name get_source
  * @since 0.0.0
  * @stability TODO
  */
-export interface SourceRequest extends GetRequest {}
+export interface Request extends GetRequest {}

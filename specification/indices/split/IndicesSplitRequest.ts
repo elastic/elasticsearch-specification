@@ -29,7 +29,7 @@ import { Time } from '@_types/Time'
  * @since 6.1.0
  * @stability TODO
  */
-export interface IndicesSplitRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index: IndexName
     target: IndexName

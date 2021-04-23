@@ -22,7 +22,7 @@ import { Defaults } from './Defaults'
 import { Limits } from './Limits'
 import { NativeCode } from './NativeCode'
 
-export class MlInfoResponse extends ResponseBase {
+export class Response extends ResponseBase {
   defaults: Defaults
   limits: Limits
   upgrade_mode: boolean

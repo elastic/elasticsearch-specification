@@ -32,7 +32,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
  *
  * @stability TODO
  */
-export interface MultiSearchRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
     type?: Types

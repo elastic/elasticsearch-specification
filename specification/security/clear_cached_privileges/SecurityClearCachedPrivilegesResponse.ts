@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
-export class SecurityClearCachedPrivilegesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   _nodes: NodeStatistics
   cluster_name: Name
   nodes: Dictionary<string, ClearCachedPrivilegeNode>

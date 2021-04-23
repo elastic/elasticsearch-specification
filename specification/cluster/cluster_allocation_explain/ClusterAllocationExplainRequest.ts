@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 5.0.0
  * @stability TODO
  */
-export interface ClusterAllocationExplainRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     /**
      * If true, returns information about disk usage and shard sizes.

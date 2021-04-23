@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 7.7.0
  * @stability TODO
  */
-export interface AsyncSearchDeleteRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     id: Id
   }

@@ -21,7 +21,7 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
-export class IndicesFlushSyncedResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   IndexName,
   ShardStatistics
 > {

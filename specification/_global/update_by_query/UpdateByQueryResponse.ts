@@ -23,7 +23,7 @@ import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, long, ulong } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 
-export class UpdateByQueryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   batches?: long
   failures?: BulkIndexByScrollFailure[]
   noops?: long

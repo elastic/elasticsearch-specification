@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 6.4.0
  * @stability TODO
  */
-export interface MlUpdateFilterRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     filter_id: Id
   }

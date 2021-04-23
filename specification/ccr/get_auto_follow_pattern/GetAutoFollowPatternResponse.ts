@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { AutoFollowPatternItem } from './AutoFollowPatternItem'
 
-export class GetAutoFollowPatternResponse extends ResponseBase {
+export class Response extends ResponseBase {
   patterns: AutoFollowPatternItem[]
 }

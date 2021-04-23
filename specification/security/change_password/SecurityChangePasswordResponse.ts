@@ -19,4 +19,4 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class SecurityChangePasswordResponse extends ResponseBase {}
+export class Response extends ResponseBase {}

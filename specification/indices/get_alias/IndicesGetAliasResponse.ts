@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
-export class IndicesGetAliasResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   IndexName,
   IndexAliases
 > {}

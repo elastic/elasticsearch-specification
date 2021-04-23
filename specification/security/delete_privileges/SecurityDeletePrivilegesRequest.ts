@@ -25,7 +25,7 @@ import { Name, Refresh } from '@_types/common'
  * @since 6.4.0
  * @stability TODO
  */
-export interface SecurityDeletePrivilegesRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     application: Name
     name: Name

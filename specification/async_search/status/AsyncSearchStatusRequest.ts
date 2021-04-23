@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 7.11.0
  * @stability TODO
  */
-export interface AsyncSearchStatusRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id: Id
   }

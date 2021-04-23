@@ -27,7 +27,7 @@ import { Password, Username } from '@_types/common'
  * @since 5.5.0
  * @stability TODO
  */
-export interface SecurityGetTokenRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   // body: AccessTokenGrantTypePassword | AccessTokenGrantTypeClientCredentials | AccessTokenGrantTypeKerberos | AccessTokenGrantTypeRefresh
   body?: {

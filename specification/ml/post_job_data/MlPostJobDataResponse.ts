@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
-export class MlPostJobDataResponse extends ResponseBase {
+export class Response extends ResponseBase {
   bucket_count: long
   earliest_record_timestamp: integer
   empty_bucket_count: long

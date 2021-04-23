@@ -21,7 +21,7 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { IndexState } from '@_types/index/IndexState'
 
-export class IndicesGetSettingsResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   IndexName,
   IndexState
 > {}

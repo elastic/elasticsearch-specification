@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
-export class SecurityInvalidateTokenResponse extends ResponseBase {
+export class Response extends ResponseBase {
   error_count: long
   error_details?: ErrorCause[]
   invalidated_tokens: long

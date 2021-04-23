@@ -26,6 +26,6 @@ import { RequestBase } from '@_types/Base'
  *
  * @stability TODO
  */
-export interface MlValidateDetectorRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: Detector
 }

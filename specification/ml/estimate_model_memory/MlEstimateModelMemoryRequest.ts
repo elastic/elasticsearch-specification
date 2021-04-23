@@ -28,7 +28,7 @@ import { long } from '@_types/Numeric'
  * @since 7.7.0
  * @stability TODO
  */
-export interface MlEstimateModelMemoryRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     analysis_config?: AnalysisConfig
     max_bucket_cardinality?: Dictionary<Field, long>

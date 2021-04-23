@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { SearchResponse } from '@global/search/SearchResponse'
+import { Response as SearchResponse } from '@global/search/SearchResponse'
 import { ErrorResponse, ResponseBase } from '@_types/Base'
 import { integer, long } from '@_types/Numeric'
 
-export class MultiSearchResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   took: long
   responses: Array<MultiSearchResult<TDocument> | ErrorResponse>
 }

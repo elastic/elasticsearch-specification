@@ -26,7 +26,7 @@ import { long } from '@_types/Numeric'
  * @since 2.4.0
  * @stability TODO
  */
-export interface ReindexRethrottleRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     task_id: Id
   }

@@ -21,7 +21,7 @@ import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeInfo } from './NodeInfo'
 
-export class NodesInfoResponse extends NodesResponseBase {
+export class Response extends NodesResponseBase {
   cluster_name: string
   /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
   nodes: Dictionary<string, NodeInfo>

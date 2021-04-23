@@ -24,7 +24,7 @@ import { integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import { EpochMillis, Time } from '@_types/Time'
 
-export class ReindexResponse extends ResponseBase {
+export class Response extends ResponseBase {
   batches?: long
   created?: long
   deleted?: long

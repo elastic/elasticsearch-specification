@@ -20,6 +20,6 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 
-export class GrokProcessorPatternsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   patterns: Dictionary<string, string>
 }

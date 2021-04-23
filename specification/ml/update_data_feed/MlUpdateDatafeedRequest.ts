@@ -34,7 +34,7 @@ import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
  * @since 5.5.0
  * @stability TODO
  */
-export interface MlUpdateDatafeedRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     datafeed_id: Id
   }

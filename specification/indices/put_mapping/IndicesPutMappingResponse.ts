@@ -19,4 +19,4 @@
 
 import { IndicesResponseBase } from '@_types/Base'
 
-export class IndicesPutMappingResponse extends IndicesResponseBase {}
+export class Response extends IndicesResponseBase {}

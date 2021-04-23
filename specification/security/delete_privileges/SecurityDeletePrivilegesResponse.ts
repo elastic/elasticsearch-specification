@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class SecurityDeletePrivilegesResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   Dictionary<string, FoundUserPrivilege>
 > {}

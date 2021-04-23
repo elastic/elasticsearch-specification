@@ -21,6 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 
-export class RenderSearchTemplateResponse extends ResponseBase {
+export class Response extends ResponseBase {
   template_output: Dictionary<string, UserDefinedValue>
 }

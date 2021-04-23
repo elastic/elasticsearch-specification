@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface XPackUsageRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     master_timeout?: Time
   }

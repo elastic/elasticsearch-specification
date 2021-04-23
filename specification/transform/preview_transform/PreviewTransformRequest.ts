@@ -29,7 +29,7 @@ import { Time } from '@_types/Time'
  * @since 7.5.0
  * @stability TODO
  */
-export interface PreviewTransformRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     description?: string

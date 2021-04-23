@@ -21,7 +21,7 @@ import { SnapshotLifecyclePolicyMetadata } from '@slm/_types/SnapshotLifecyclePo
 import { DictionaryResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class GetSnapshotLifecycleResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   Id,
   SnapshotLifecyclePolicyMetadata
 > {}

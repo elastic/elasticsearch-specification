@@ -36,7 +36,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  *
  */
-export interface CreateRequest<TDocument> extends RequestBase {
+export interface Request<TDocument> extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

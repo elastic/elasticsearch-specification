@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class PutLifecycleResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

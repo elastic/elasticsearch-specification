@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface ScrollRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /** Deprecated with 7.0.0 */
     scroll_id?: Id

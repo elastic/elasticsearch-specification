@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { ListTasksResponse } from '@task/list_tasks/ListTasksResponse'
+import { Response as ListTasksResponse } from '@task/list_tasks/ListTasksResponse'
 
-export class DeleteByQueryRethrottleResponse extends ListTasksResponse {}
+export class Response extends ListTasksResponse {}

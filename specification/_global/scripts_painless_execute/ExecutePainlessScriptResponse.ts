@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class ExecutePainlessScriptResponse<TResult> extends ResponseBase {
+export class Response<TResult> extends ResponseBase {
   result: TResult
 }
 

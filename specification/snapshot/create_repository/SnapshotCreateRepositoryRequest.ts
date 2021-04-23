@@ -31,7 +31,7 @@ import { Time } from '@_types/Time'
  *
  * @stability TODO
  */
-export interface SnapshotCreateRepositoryRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     repository: Name
   }

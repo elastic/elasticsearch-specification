@@ -21,7 +21,7 @@ import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeUsageInformation } from './NodeUsageInformation'
 
-export class NodesUsageResponse extends NodesResponseBase {
+export class Response extends NodesResponseBase {
   cluster_name: string
   nodes: Dictionary<string, NodeUsageInformation>
 }

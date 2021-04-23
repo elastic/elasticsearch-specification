@@ -20,6 +20,6 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class MlForecastJobResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   forecast_id: Id
 }

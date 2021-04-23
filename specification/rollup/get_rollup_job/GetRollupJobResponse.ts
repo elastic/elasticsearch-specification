@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { RollupJobInformation } from './RollupJobInformation'
 
-export class GetRollupJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   jobs: RollupJobInformation[]
 }

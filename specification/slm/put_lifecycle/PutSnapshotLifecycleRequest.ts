@@ -28,7 +28,7 @@ import { Name } from '@_types/common'
  * @since 7.4.0
  * @stability TODO
  */
-export interface PutSnapshotLifecycleRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     policy_id: Name
   }

@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 6.5.0
  * @stability TODO
  */
-export interface ReloadSecureSettingsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     node_id?: NodeIds
   }

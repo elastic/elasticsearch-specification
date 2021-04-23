@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ScheduledEvent } from './ScheduledEvent'
 
-export class MlPostCalendarEventsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   events: ScheduledEvent[]
 }

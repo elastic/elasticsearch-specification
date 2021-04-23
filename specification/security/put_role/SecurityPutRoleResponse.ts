@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { PutRoleStatus } from './PutRoleStatus'
 
-export class SecurityPutRoleResponse extends ResponseBase {
+export class Response extends ResponseBase {
   role: PutRoleStatus
 }

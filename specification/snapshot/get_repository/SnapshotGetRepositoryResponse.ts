@@ -20,7 +20,7 @@
 import { SnapshotRepository } from '@snapshot/_types/SnapshotRepository'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class SnapshotGetRepositoryResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   SnapshotRepository
 > {}

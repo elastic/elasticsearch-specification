@@ -23,7 +23,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class GetWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   found: boolean
   _id: Id
   status?: WatchStatus

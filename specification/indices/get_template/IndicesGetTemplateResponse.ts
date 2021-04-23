@@ -20,7 +20,7 @@
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class IndicesGetTemplateResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   TemplateMapping
 > {}

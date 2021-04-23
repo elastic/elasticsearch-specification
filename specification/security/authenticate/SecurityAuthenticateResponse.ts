@@ -23,7 +23,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 import { Name, Username } from '@_types/common'
 
-export class SecurityAuthenticateResponse extends ResponseBase {
+export class Response extends ResponseBase {
   authentication_realm: RealmInfo
   email?: string
   full_name?: Name

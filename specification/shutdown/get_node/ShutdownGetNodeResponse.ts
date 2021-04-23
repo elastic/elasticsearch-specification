@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class ShutdownGetNodeResponse extends ResponseBase {
+export class Response extends ResponseBase {
   stub: boolean
 }

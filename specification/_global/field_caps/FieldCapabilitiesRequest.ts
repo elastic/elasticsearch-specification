@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 5.4.0
  * @stability TODO
  */
-export interface FieldCapabilitiesRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
   }

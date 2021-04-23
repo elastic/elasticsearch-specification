@@ -23,7 +23,7 @@ import { long } from '@_types/Numeric'
 import { GraphConnection } from './GraphConnection'
 import { GraphVertex } from './GraphVertex'
 
-export class GraphExploreResponse extends ResponseBase {
+export class Response extends ResponseBase {
   connections: GraphConnection[]
   failures: ShardFailure[]
   timed_out: boolean

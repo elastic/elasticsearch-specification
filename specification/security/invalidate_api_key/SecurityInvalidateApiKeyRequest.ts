@@ -25,7 +25,7 @@ import { Id, Name, Username } from '@_types/common'
  * @since 6.7.0
  * @stability TODO
  */
-export interface SecurityInvalidateApiKeyRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     id?: Id

@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 7.10.0
  * @stability TODO
  */
-export interface OpenPointInTimeRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index: Indices
   }

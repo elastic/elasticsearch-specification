@@ -20,7 +20,7 @@
 import { PutRoleMappingStatus } from '@security/_types/PutRoleMappingStatus'
 import { ResponseBase } from '@_types/Base'
 
-export class SecurityPutRoleMappingResponse extends ResponseBase {
+export class Response extends ResponseBase {
   created?: boolean
   role_mapping: PutRoleMappingStatus
 }

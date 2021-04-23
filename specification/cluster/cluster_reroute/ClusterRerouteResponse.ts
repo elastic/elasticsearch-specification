@@ -21,7 +21,7 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { ClusterRerouteExplanation } from './ClusterRerouteExplanation'
 import { ClusterRerouteState } from './ClusterRerouteState'
 
-export class ClusterRerouteResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   explanations?: ClusterRerouteExplanation[]
   state: ClusterRerouteState
 }

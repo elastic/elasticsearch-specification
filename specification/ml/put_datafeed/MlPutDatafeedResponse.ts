@@ -27,7 +27,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
 import { ScriptField } from '@_types/Scripting'
 import { Time } from '@_types/Time'
 
-export class MlPutDatafeedResponse extends ResponseBase {
+export class Response extends ResponseBase {
   aggregations: Dictionary<string, AggregationContainer>
   chunking_config: ChunkingConfig
   datafeed_id: Id

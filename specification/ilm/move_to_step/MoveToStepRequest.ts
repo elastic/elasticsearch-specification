@@ -26,7 +26,7 @@ import { StepKey } from './StepKey'
  * @since 6.6.0
  * @stability TODO
  */
-export interface MoveToStepRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index: IndexName
   }

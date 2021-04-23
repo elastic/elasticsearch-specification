@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { Calendar } from './Calendar'
 
-export class MlGetCalendarsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   calendars: Calendar[]
   count: long
 }

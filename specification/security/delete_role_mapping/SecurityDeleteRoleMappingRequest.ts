@@ -25,7 +25,7 @@ import { Name, Refresh } from '@_types/common'
  * @since 5.5.0
  * @stability TODO
  */
-export interface SecurityDeleteRoleMappingRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     name: Name
   }

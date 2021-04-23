@@ -21,7 +21,7 @@ import { Job } from '@xpack/usage/Job'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class MlGetJobsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   jobs: Job[]
 }

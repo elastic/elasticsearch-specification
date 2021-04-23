@@ -49,7 +49,7 @@ import { DateField, Time } from '@_types/Time'
  * @since 7.7.0
  * @stability TODO
  */
-export interface AsyncSearchSubmitRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
   }

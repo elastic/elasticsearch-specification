@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { CcrAutoFollowStats } from './CcrAutoFollowStats'
 import { CcrFollowStats } from './CcrFollowStats'
 
-export class CcrStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   auto_follow_stats: CcrAutoFollowStats
   follow_stats: CcrFollowStats
 }

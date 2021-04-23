@@ -32,7 +32,7 @@ import {
  * @since 0.0.0
  * @stability TODO
  */
-export interface IndicesStatsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     metric?: Metrics
     index?: Indices

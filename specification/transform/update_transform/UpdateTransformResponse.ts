@@ -26,7 +26,7 @@ import { Id, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 
-export class UpdateTransformResponse extends ResponseBase {
+export class Response extends ResponseBase {
   create_time: long
   create_time_date_time: DateString
   description: string

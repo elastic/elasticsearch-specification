@@ -28,7 +28,7 @@ import { Time } from '@_types/Time'
  * @since 7.9.0
  * @stability TODO
  */
-export interface SecurityGrantApiKeyRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
