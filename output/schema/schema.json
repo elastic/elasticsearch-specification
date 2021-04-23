@@ -119564,6 +119564,29 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "index_details",
+          "required": false,
+          "since": "7.13.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "human",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -119607,6 +119630,59 @@
                 "name": "SnapshotInfo",
                 "namespace": "snapshot._types"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotIndexDetails",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "shard_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_segments_per_shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -119686,6 +119762,17 @@
           }
         },
         {
+          "name": "duration",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "duration_in_millis",
           "required": false,
           "type": {
@@ -119702,7 +119789,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Time",
               "namespace": "_types"
             }
           }
@@ -119758,6 +119845,28 @@
           }
         },
         {
+          "name": "index_details",
+          "required": false,
+          "since": "7.13.0",
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SnapshotIndexDetails",
+                "namespace": "snapshot._types"
+              }
+            }
+          }
+        },
+        {
           "name": "metadata",
           "required": false,
           "type": {
@@ -119791,8 +119900,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -119813,7 +119922,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Time",
               "namespace": "_types"
             }
           }

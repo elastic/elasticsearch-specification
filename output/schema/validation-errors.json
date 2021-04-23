@@ -888,6 +888,12 @@
       ],
       "response": []
     },
+    "snapshot.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "snapshot.restore": {
       "request": [
         "Endpoint has \"@stability: TODO"

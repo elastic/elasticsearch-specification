@@ -17,26 +17,12 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name, Names } from '@_types/common'
-import { Time } from '@_types/Time'
+import { ByteSize } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
-/**
- * @rest_spec_name snapshot.get
- * @since 0.0.0
- * @stability TODO
- */
-export interface SnapshotGetRequest extends RequestBase {
-  path_parts: {
-    repository: Name
-    snapshot: Names
-  }
-  query_parameters?: {
-    ignore_unavailable?: boolean
-    master_timeout?: Time
-    verbose?: boolean
-    /** @since 7.13.0 */
-    index_details?: boolean
-    human?: boolean
-  }
+export class SnapshotIndexDetails {
+  shard_count: integer
+  size?: ByteSize
+  size_in_bytes: long
+  max_segments_per_shard: long
 }
