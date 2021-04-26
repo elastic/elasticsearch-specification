@@ -17,18 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { IndexName, Name, VersionNumber } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { integer } from '@_types/Numeric'
-import { Alias } from './Alias'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class TemplateMapping {
-  aliases: Dictionary<IndexName, Alias>
-  index_patterns: Name[]
-  mappings: TypeMapping
-  order: integer
-  settings: Dictionary<string, UserDefinedValue>
-  version?: VersionNumber
-}
+// TODO must be changed to HttpStatusCodeResponse once
+// https://github.com/elastic/elastic-client-generator/pull/373 is merged.
+export class IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {}

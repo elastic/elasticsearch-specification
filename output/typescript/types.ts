@@ -7025,6 +7025,19 @@ export interface IndicesShrinkIndicesShrinkResponse extends AcknowledgedResponse
   index: IndexName
 }
 
+export interface IndicesSimulateIndexTemplateIndicesSimulateIndexTemplateRequest extends RequestBase {
+  name?: Name
+  body?: {
+    index_patterns?: IndexName[]
+    composed_of?: Name[]
+    overlapping?: IndicesSimulateIndexTemplateOverlappingIndexTemplate[]
+    template?: IndicesTemplateMapping
+  }
+}
+
+export interface IndicesSimulateIndexTemplateIndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesSplitIndicesSplitRequest extends RequestBase {
   index: IndexName
   target: IndexName
@@ -9591,6 +9604,11 @@ export interface MlOverallBucket {
 export interface MlOverallBucketJobInfo {
   job_id: Id
   max_anomaly_score: double
+}
+
+export interface IndicesSimulateIndexTemplateOverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }
 
 export interface MlPage {
@@ -13179,7 +13197,7 @@ export interface TaskListTasksTaskStatus {
 
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
-  index_patterns: string[]
+  index_patterns: Name[]
   mappings: MappingTypeMapping
   order: integer
   settings: Record<string, any>

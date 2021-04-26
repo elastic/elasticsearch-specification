@@ -17,18 +17,30 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { IndexName, Name, VersionNumber } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { integer } from '@_types/Numeric'
-import { Alias } from './Alias'
+import { TemplateMapping } from '@indices/_types/TemplateMapping'
+import { RequestBase } from '@_types/Base'
+import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 
-export class TemplateMapping {
-  aliases: Dictionary<IndexName, Alias>
-  index_patterns: Name[]
-  mappings: TypeMapping
-  order: integer
-  settings: Dictionary<string, UserDefinedValue>
-  version?: VersionNumber
+/**
+ * @rest_spec_name indices.simulate_index_template
+ * @since 7.9.0
+ * @stability TODO
+ */
+export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
+  path_parts?: {
+    /** Index or template name to simulate */
+    name?: Name
+  }
+  body?: {
+    index_patterns?: IndexName[]
+    composed_of?: Name[]
+    /** Any overlapping templates that would have matched, but have lower priority */
+    overlapping?: OverlappingIndexTemplate[]
+    template?: TemplateMapping
+  }
+}
+
+export class OverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }
