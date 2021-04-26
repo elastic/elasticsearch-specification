@@ -17,14 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { integer } from '@_types/Numeric'
-import { TransformPivotGroupByContainer } from './TransformPivotGroupByContainer'
+import { DateHistogramAggregation } from '@_types/aggregations/bucket/date_histogram/DateHistogramAggregation'
+import { GeoTileGridAggregation } from '@_types/aggregations/bucket/geo_tile_grid/GeoTileGridAggregation'
+import { HistogramAggregation } from '@_types/aggregations/bucket/histogram/HistogramAggregation'
+import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggregation'
 
-export class TransformPivot {
-  /** @aliases aggs */
-  aggregations?: Dictionary<string, AggregationContainer>
-  group_by: Dictionary<string, TransformPivotGroupByContainer>
-  max_page_search_size?: integer
+/**
+ * @variants container
+ */
+export class TransformPivotGroupByContainer {
+  date_histogram?: DateHistogramAggregation
+  geotile_grid?: GeoTileGridAggregation
+  histogram?: HistogramAggregation
+  terms?: TermsAggregation
 }

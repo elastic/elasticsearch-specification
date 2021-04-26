@@ -21,7 +21,7 @@ import { IndexName } from '@_types/common'
 
 export class TransformDestination {
   /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */
-  index: IndexName
+  index?: IndexName
   /**
    * The unique identifier for an ingest pipeline.
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html

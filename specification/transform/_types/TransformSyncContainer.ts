@@ -28,10 +28,9 @@ export class TransformSyncContainer {
   time: TransformTimeSync
 }
 
-
 export class TransformTimeSync {
   /** The time delay between the current time and the latest input data time. */
-  delay: Time
+  delay?: Time
   /** The date field that is used to identify new documents in the source. */
   field: Field
 }

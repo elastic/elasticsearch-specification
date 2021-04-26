@@ -36,5 +36,5 @@ export class TransformSettings {
    * Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.
    * @server_default 500
    */
-   max_page_search_size?: integer
+  max_page_search_size?: integer
 }

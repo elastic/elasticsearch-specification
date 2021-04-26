@@ -18,16 +18,10 @@
  */
 
 import { PutTransformRequest } from '@transform/put_transform/PutTransformRequest'
-import { TransformDestination } from '@transform/_types/TransformDestination'
-import { TransformSource } from '@transform/_types/TransformSource'
-import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name transform.update_transform
- * @since 7.5.0
+ * @since 7.2.0
  * @stability TODO
  */
 export interface UpdateTransformRequest extends PutTransformRequest {}

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Field } from "@_types/common"
-import { Time } from "@_types/Time"
-
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @variants container

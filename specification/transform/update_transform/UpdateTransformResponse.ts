@@ -24,17 +24,19 @@ import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer
 import { ResponseBase } from '@_types/Base'
 import { Id, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
+import { TransformSettings } from '@transform/_types/TransformSettings'
 
 export class UpdateTransformResponse extends ResponseBase {
   create_time: long
-  create_time_date_time: DateString
+  //  create_time_date_time?: DateString
   description: string
   dest: TransformDestination
   frequency: Time
   id: Id
   pivot: TransformPivot
+  settings: TransformSettings
   source: TransformSource
-  sync: TransformSyncContainer
+  sync?: TransformSyncContainer
   version: VersionString
 }
