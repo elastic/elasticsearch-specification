@@ -9057,8 +9057,8 @@ export interface MsearchTemplateMultiSearchTemplateRequest extends RequestBase {
   body: MsearchTemplateMultiSearchTemplateItem[]
 }
 
-export interface MsearchTemplateMultiSearchTemplateResponse extends ResponseBase {
-  responses: SearchSearchResponse<any>[]
+export interface MsearchTemplateMultiSearchTemplateResponse<TDocument = unknown> extends ResponseBase {
+  responses: SearchSearchResponse<TDocument>[]
   took: long
 }
 

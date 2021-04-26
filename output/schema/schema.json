@@ -88011,6 +88011,12 @@
       ]
     },
     {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch_template"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -88031,7 +88037,11 @@
             "value": {
               "generics": [
                 {
-                  "kind": "user_defined_value"
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "_global.msearch_template"
+                  }
                 }
               ],
               "kind": "instance_of",
