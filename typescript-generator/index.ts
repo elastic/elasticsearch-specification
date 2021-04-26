@@ -89,7 +89,9 @@ function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number 
       }
       return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
     case 'array_of':
-      return `${buildValue(type.value, openGenerics)}[]`
+      return type.value.kind === 'union_of'
+        ? `(${buildValue(type.value, openGenerics)})[]`
+        : `${buildValue(type.value, openGenerics)}[]`
     case 'union_of':
       return type.items.map(t => buildValue(t, openGenerics)).join(' | ')
     case 'dictionary_of':

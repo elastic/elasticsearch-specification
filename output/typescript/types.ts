@@ -562,7 +562,7 @@ export interface AsyncSearchSubmitAsyncSearchSubmitRequest extends RequestBase {
     typed_keys?: boolean
     version?: boolean
     wait_for_completion_timeout?: Time
-    fields?: Field | DateField[]
+    fields?: (Field | DateField)[]
   }
 }
 
@@ -818,7 +818,7 @@ export interface BulkBulkRequest<TSource = unknown> extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
-  body: BulkBulkOperationContainer | TSource[]
+  body: (BulkBulkOperationContainer | TSource)[]
 }
 
 export interface BulkBulkResponse extends ResponseBase {
@@ -2652,9 +2652,9 @@ export interface CatCatTransformsCatTransformsRequest extends CatCatRequestBase 
 export type CatCatTransformsCatTransformsResponse = CatCatTransformsCatTransformsRecord[]
 
 export interface MlInfoCategorizationAnalyzer {
-  filter?: string | AnalysisTokenFiltersTokenFilter[]
+  filter?: (string | AnalysisTokenFiltersTokenFilter)[]
   tokenizer?: string | AnalysisTokenizersTokenizer
-  char_filter?: string | AnalysisCharFiltersCharFilter[]
+  char_filter?: (string | AnalysisCharFiltersCharFilter)[]
 }
 
 export interface MlCategoryDefinition {
@@ -4606,7 +4606,7 @@ export interface EqlSearchEqlSearchRequest extends RequestBase {
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
     size?: uint | float
-    fields?: Field | EqlSearchEqlSearchFieldFormatted[]
+    fields?: (Field | EqlSearchEqlSearchFieldFormatted)[]
     result_position?: EqlSearchEqlResultPosition
   }
 }
@@ -6445,10 +6445,10 @@ export interface IndicesAnalyzeIndicesAnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: string[]
-    char_filter?: string | AnalysisCharFiltersCharFilter[]
+    char_filter?: (string | AnalysisCharFiltersCharFilter)[]
     explain?: boolean
     field?: Field
-    filter?: string | AnalysisTokenFiltersTokenFilter[]
+    filter?: (string | AnalysisTokenFiltersTokenFilter)[]
     normalizer?: string
     text?: IndicesAnalyzeTextToAnalyze
     tokenizer?: string | AnalysisTokenizersTokenizer
@@ -9023,12 +9023,12 @@ export interface MsearchMultiSearchRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body: MsearchMultiSearchHeader | MsearchMultiSearchBody[]
+  body: (MsearchMultiSearchHeader | MsearchMultiSearchBody)[]
 }
 
 export interface MsearchMultiSearchResponse<TDocument = unknown> extends ResponseBase {
   took: long
-  responses: MsearchMultiSearchResult<TDocument> | ErrorResponse[]
+  responses: (MsearchMultiSearchResult<TDocument> | ErrorResponse)[]
 }
 
 export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchSearchResponse<TDocument> {
@@ -11312,19 +11312,19 @@ export interface SearchSearchRequest extends RequestBase {
     highlight?: SearchHighlightingHighlight
     track_total_hits?: boolean | integer
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: SearchSourceFilteringDocValueField | Field | SearchSourceFilteringDocValueField[]
+    docvalue_fields?: SearchSourceFilteringDocValueField | (Field | SearchSourceFilteringDocValueField)[]
     min_score?: double
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     profile?: boolean
     query?: QueryDslAbstractionsContainerQueryContainer
     rescore?: SearchRescoringRescore | SearchRescoringRescore[]
     script_fields?: Record<string, ScriptField>
-    search_after?: integer | string[]
+    search_after?: (integer | string)[]
     size?: integer
     slice?: SlicedScroll
     sort?: SearchSortSort
     _source?: boolean | Fields | SearchSourceFilteringSourceFilter
-    fields?: Field | DateField[]
+    fields?: (Field | DateField)[]
     suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
     terminate_after?: long
     timeout?: string
@@ -12700,7 +12700,7 @@ export interface IngestProcessorsSortProcessor extends IngestProcessorBase {
   target_field: Field
 }
 
-export type SearchSortSortResults = long | double | string | null[]
+export type SearchSortSortResults = (long | double | string | null)[]
 
 export interface ExistsSourceSourceExistsRequest extends RequestBase {
   id: Id
@@ -13503,7 +13503,7 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
 }
 
 export interface AggregationsTopMetrics {
-  sort: long | double | string[]
+  sort: (long | double | string)[]
   metrics: Record<string, long | double | string>
 }
 
