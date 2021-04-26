@@ -11462,11 +11462,12 @@ export interface WatcherSearchTransform {
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
 export interface SearchableSnapshotsClearCacheSearchableSnapshotsClearCacheRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  index?: Indices
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_unavailable?: boolean
+  pretty?: boolean
+  human?: boolean
 }
 
 export interface SearchableSnapshotsClearCacheSearchableSnapshotsClearCacheResponse extends ResponseBase {
