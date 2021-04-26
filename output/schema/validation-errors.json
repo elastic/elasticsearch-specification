@@ -900,6 +900,18 @@
       ],
       "response": []
     },
+    "transform.put_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.update_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "update": {
       "request": [
         "Endpoint has \"@stability: TODO"

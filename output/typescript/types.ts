@@ -10148,7 +10148,7 @@ export interface TransformPutTransformPutTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
   body: {
-    dest: TransformTransformDestination
+    dest?: TransformTransformDestination
     description?: string
     frequency?: Time
     pivot?: TransformTransformPivot
@@ -13926,16 +13926,7 @@ export interface UpdateUpdateResponse<TDocument = unknown> extends WriteResponse
   get?: ExplainInlineGet<TDocument>
 }
 
-export interface TransformUpdateTransformUpdateTransformRequest extends RequestBase {
-  transform_id: Name
-  defer_validation?: boolean
-  body: {
-    description?: string
-    dest?: TransformTransformDestination
-    frequency?: Time
-    source?: TransformTransformSource
-    sync?: TransformTransformSyncContainer
-  }
+export interface TransformUpdateTransformUpdateTransformRequest extends TransformPutTransformPutTransformRequest {
 }
 
 export interface TransformUpdateTransformUpdateTransformResponse extends ResponseBase {

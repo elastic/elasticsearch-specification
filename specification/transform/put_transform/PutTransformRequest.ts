@@ -44,7 +44,7 @@ export interface PutTransformRequest extends RequestBase {
   }
   body?: {
     /** The destination for the transform. */
-    dest: TransformDestination
+    dest?: TransformDestination
     /** Free text description of the transform. */
     description?: string
     /**

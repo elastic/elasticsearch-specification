@@ -97333,7 +97333,7 @@
           {
             "description": "The destination for the transform.",
             "name": "dest",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -131751,70 +131751,10 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "frequency",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSource",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "sync",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSyncContainer",
-                "namespace": "transform._types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
+          "name": "PutTransformRequest",
+          "namespace": "transform.put_transform"
         }
       },
       "kind": "request",
@@ -131822,33 +131762,8 @@
         "name": "UpdateTransformRequest",
         "namespace": "transform.update_transform"
       },
-      "path": [
-        {
-          "description": "The id of the transform.",
-          "name": "transform_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "defer_validation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": {
