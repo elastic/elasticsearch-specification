@@ -241,7 +241,9 @@ export enum RefreshOptions {
 }
 
 export enum SearchType {
+  /** Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate. */
   query_then_fetch = 0,
+  /** Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate. */
   dfs_query_then_fetch = 1
 }
 

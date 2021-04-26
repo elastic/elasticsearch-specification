@@ -9016,7 +9016,11 @@ export interface MsearchMultiSearchHeader {
 export interface MsearchMultiSearchRequest extends RequestBase {
   index?: Indices
   type?: Types
+  allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
   max_concurrent_searches?: long
   max_concurrent_shard_requests?: long
   pre_filter_shard_size?: long
@@ -9035,6 +9039,13 @@ export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchSea
   status: integer
 }
 
+export interface MsearchTemplateMultiSearchTemplateItem {
+  id?: Id
+  index?: Indices
+  params?: Record<string, any>
+  source?: string
+}
+
 export interface MsearchTemplateMultiSearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
@@ -9043,9 +9054,7 @@ export interface MsearchTemplateMultiSearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body: {
-    operations?: Record<string, SearchTemplateSearchTemplateRequest>
-  }
+  body: MsearchTemplateMultiSearchTemplateItem[]
 }
 
 export interface MsearchTemplateMultiSearchTemplateResponse extends ResponseBase {
@@ -11406,7 +11415,7 @@ export interface SearchTemplateSearchTemplateRequest extends RequestBase {
   total_hits_as_integer?: boolean
   typed_keys?: boolean
   body: {
-    id?: string
+    id?: Id
     params?: Record<string, any>
     source?: string
   }
