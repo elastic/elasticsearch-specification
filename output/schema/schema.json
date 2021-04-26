@@ -20094,7 +20094,7 @@
         },
         {
           "name": "sys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20105,7 +20105,7 @@
         },
         {
           "name": "sys_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20116,7 +20116,7 @@
         },
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20127,7 +20127,7 @@
         },
         {
           "name": "total_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20138,7 +20138,7 @@
         },
         {
           "name": "user",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -20149,12 +20149,34 @@
         },
         {
           "name": "user_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_average",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -51289,6 +51311,39 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "total_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "free_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "used_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -64366,6 +64421,7 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about completions across all shards assigned to the node.",
           "name": "completion",
           "required": false,
           "type": {
@@ -64377,6 +64433,7 @@
           }
         },
         {
+          "description": "Contains statistics about documents across all primary shards assigned to the node.",
           "name": "docs",
           "required": false,
           "type": {
@@ -64388,6 +64445,7 @@
           }
         },
         {
+          "description": "Contains statistics about the field data cache across all shards assigned to the node.",
           "name": "fielddata",
           "required": false,
           "type": {
@@ -64399,6 +64457,7 @@
           }
         },
         {
+          "description": "Contains statistics about flush operations for the node.",
           "name": "flush",
           "required": false,
           "type": {
@@ -64410,6 +64469,7 @@
           }
         },
         {
+          "description": "Contains statistics about get operations for the node.",
           "name": "get",
           "required": false,
           "type": {
@@ -64421,6 +64481,7 @@
           }
         },
         {
+          "description": "Contains statistics about indexing operations for the node.",
           "name": "indexing",
           "required": false,
           "type": {
@@ -64432,6 +64493,7 @@
           }
         },
         {
+          "description": "Contains statistics about merge operations for the node.",
           "name": "merges",
           "required": false,
           "type": {
@@ -64443,6 +64505,7 @@
           }
         },
         {
+          "description": "Contains statistics about the query cache across all shards assigned to the node.",
           "name": "query_cache",
           "required": false,
           "type": {
@@ -64454,6 +64517,7 @@
           }
         },
         {
+          "description": "Contains statistics about recovery operations for the node.",
           "name": "recovery",
           "required": false,
           "type": {
@@ -64465,6 +64529,7 @@
           }
         },
         {
+          "description": "Contains statistics about refresh operations for the node.",
           "name": "refresh",
           "required": false,
           "type": {
@@ -64476,6 +64541,7 @@
           }
         },
         {
+          "description": "Contains statistics about the request cache across all shards assigned to the node.",
           "name": "request_cache",
           "required": false,
           "type": {
@@ -64487,6 +64553,7 @@
           }
         },
         {
+          "description": "Contains statistics about search operations for the node.",
           "name": "search",
           "required": false,
           "type": {
@@ -64498,6 +64565,7 @@
           }
         },
         {
+          "description": "Contains statistics about segments across all shards assigned to the node.",
           "name": "segments",
           "required": false,
           "type": {
@@ -64509,6 +64577,7 @@
           }
         },
         {
+          "description": "Contains statistics about the size of shards assigned to the node.",
           "name": "store",
           "required": false,
           "type": {
@@ -64520,6 +64589,7 @@
           }
         },
         {
+          "description": "Contains statistics about transaction log operations for the node.",
           "name": "translog",
           "required": false,
           "type": {
@@ -64531,6 +64601,7 @@
           }
         },
         {
+          "description": "Contains statistics about index warming operations for the node.",
           "name": "warmer",
           "required": false,
           "type": {
@@ -77679,7 +77750,7 @@
       "properties": [
         {
           "name": "resident",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77690,7 +77761,7 @@
         },
         {
           "name": "resident_in_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77701,7 +77772,7 @@
         },
         {
           "name": "share",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77712,7 +77783,7 @@
         },
         {
           "name": "share_in_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77723,7 +77794,7 @@
         },
         {
           "name": "total_virtual",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77734,6 +77805,39 @@
         },
         {
           "name": "total_virtual_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "free_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "used_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -91239,14 +91343,26 @@
           "name": "ip",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Ip",
-                "namespace": "_types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Ip",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Ip",
+                    "namespace": "_types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -91370,6 +91486,28 @@
             "type": {
               "name": "TransportAddress",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -91845,6 +91983,7 @@
       ],
       "query": [
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.",
           "name": "completion_fields",
           "required": false,
           "type": {
@@ -91856,6 +91995,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata statistics.",
           "name": "fielddata_fields",
           "required": false,
           "type": {
@@ -91867,6 +92007,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.",
           "name": "fields",
           "required": false,
           "type": {
@@ -91878,6 +92019,7 @@
           }
         },
         {
+          "description": "Comma-separated list of search groups to include in the search statistics.",
           "name": "groups",
           "required": false,
           "type": {
@@ -91889,8 +92031,10 @@
           }
         },
         {
+          "description": "If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).",
           "name": "include_segment_file_sizes",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91900,6 +92044,7 @@
           }
         },
         {
+          "description": "Indicates whether statistics are aggregated at the cluster, index, or shard level.",
           "name": "level",
           "required": false,
           "type": {
@@ -91911,8 +92056,10 @@
           }
         },
         {
-          "name": "timeout",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91922,6 +92069,20 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of document types for the indexing index metric.",
           "name": "types",
           "required": false,
           "type": {
@@ -91932,6 +92093,17 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "include_unloaded_segments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -91956,8 +92128,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
