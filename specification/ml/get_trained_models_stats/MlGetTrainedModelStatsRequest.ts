@@ -18,6 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common';
+import { integer } from '@_types/Numeric';
 
 /**
  * @rest_spec_name ml.get_trained_models_stats
@@ -25,13 +27,27 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface MlGetTrainedModelStatsRequest extends RequestBase {
-  path_parts: {
-    stub: string
+  path_parts?: {
+    /** The unique identifier of the trained model. */
+    model_id?: Id
   }
   query_parameters?: {
-    stub?: string
-  }
-  body?: {
-    stub?: string
+    /**
+     * Specifies what to do when the request:
+     * - Contains wildcard expressions and there are no models that match.
+     * - Contains the _all string or no identifiers and there are no matches.
+     * - Contains wildcard expressions and there are only partial matches.
+     */
+    allow_no_match?: boolean
+    /**
+     * Skips the specified number of models.
+     * @server_default false
+     */
+    from?: integer
+    /**
+     * Specifies the maximum number of models to obtain.
+     * @server_default 100
+     */
+    size?: integer
   }
 }

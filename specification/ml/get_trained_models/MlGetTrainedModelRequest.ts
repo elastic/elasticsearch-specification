@@ -18,6 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common';
+import { integer } from '@_types/Numeric';
 
 /**
  * @rest_spec_name ml.get_trained_models
@@ -25,13 +27,45 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface MlGetTrainedModelRequest extends RequestBase {
-  path_parts: {
-    stub: string
+  path_parts?: {
+    /** The unique identifier of the trained model. */
+    model_id?: Id
   }
   query_parameters?: {
-    stub?: string
-  }
-  body?: {
-    stub?: string
+    /**
+     * Specifies what to do when the request:
+     * - Contains wildcard expressions and there are no models that match.
+     * - Contains the _all string or no identifiers and there are no matches.
+     * - Contains wildcard expressions and there are only partial matches.
+     */
+    allow_no_match?: boolean
+    /**
+     * Specifies whether the included model definition should be returned as a JSON map (true) or in a custom compressed format (false).
+     * @server_default true
+     */
+    decompress_definition?: boolean
+    /**
+     * Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.
+     * @server_default false
+     */
+     exclude_generated?: boolean
+    /**
+     * Skips the specified number of models.
+     * @server_default false
+     */
+    from?: integer
+    /**
+     * A comma delimited string of optional fields to include in the response body.
+     */
+    include?: string
+    /**
+     * Specifies the maximum number of models to obtain.
+     * @server_default 100
+     */
+    size?: integer
+    /**
+     * A comma delimited string of tags. A trained model can have many tags, or none. When supplied, only trained models that contain all the supplied tags are returned.
+     */
+    tags?: string
   }
 }

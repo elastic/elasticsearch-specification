@@ -660,12 +660,6 @@
       ],
       "response": []
     },
-    "ml.get_trained_models_stats": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.open_job": {
       "request": [
         "Endpoint has \"@stability: TODO"

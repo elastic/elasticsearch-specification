@@ -8377,10 +8377,14 @@ export interface MlGetOverallBucketsMlGetOverallBucketsResponse extends Response
 }
 
 export interface MlGetTrainedModelsMlGetTrainedModelRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  model_id?: Id
+  allow_no_match?: boolean
+  decompress_definition?: boolean
+  exclude_generated?: boolean
+  from?: integer
+  include?: string
+  size?: integer
+  tags?: string
 }
 
 export interface MlGetTrainedModelsMlGetTrainedModelResponse extends ResponseBase {
@@ -8388,10 +8392,10 @@ export interface MlGetTrainedModelsMlGetTrainedModelResponse extends ResponseBas
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  model_id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsResponse extends ResponseBase {
