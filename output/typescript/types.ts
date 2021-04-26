@@ -6570,6 +6570,13 @@ export interface IndicesDeleteDataStreamIndicesDeleteDataStreamRequest extends R
 export interface IndicesDeleteDataStreamIndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesDeleteIndexTemplateIndicesDeleteIndexTemplateRequest extends RequestBase {
+  name: Name
+}
+
+export interface IndicesDeleteIndexTemplateIndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesDeleteIndicesDeleteRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean

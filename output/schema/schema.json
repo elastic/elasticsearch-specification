@@ -3931,10 +3931,17 @@
       "description": "Deletes an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.delete_index_template",
-      "request": null,
+      "request": {
+        "name": "IndicesDeleteIndexTemplateRequest",
+        "namespace": "indices.delete_index_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "IndicesDeleteIndexTemplateResponse",
+        "namespace": "indices.delete_index_template"
+      },
+      "since": "7.8.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -66156,6 +66163,51 @@
       "name": {
         "name": "IndicesDeleteDataStreamResponse",
         "namespace": "indices.delete_data_stream"
+      },
+      "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "IndicesDeleteIndexTemplateRequest",
+        "namespace": "indices.delete_index_template"
+      },
+      "path": [
+        {
+          "description": "The name of the template",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IndicesDeleteIndexTemplateResponse",
+        "namespace": "indices.delete_index_template"
       },
       "properties": []
     },
