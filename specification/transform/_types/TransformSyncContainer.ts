@@ -17,11 +17,21 @@
  * under the License.
  */
 
-import { TransformTimeSync } from './TransformTimeSync'
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @variants container
  */
 export class TransformSyncContainer {
+  /** Specifies that the transform uses a time field to synchronize the source and destination indices. */
   time: TransformTimeSync
+}
+
+
+export class TransformTimeSync {
+  /** The time delay between the current time and the latest input data time. */
+  delay: Time
+  /** The date field that is used to identify new documents in the source. */
+  field: Field
 }

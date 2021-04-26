@@ -9944,7 +9944,7 @@ export interface TransformPreviewTransformPreviewTransformRequest extends Reques
     description?: string
     dest?: TransformTransformDestination
     frequency?: Time
-    pivot?: TransformPivotTransformPivot
+    pivot?: TransformTransformPivot
     source?: TransformTransformSource
     sync?: TransformTransformSyncContainer
   }
@@ -10145,15 +10145,18 @@ export interface SlmPutLifecyclePutSnapshotLifecycleResponse extends Acknowledge
 }
 
 export interface TransformPutTransformPutTransformRequest extends RequestBase {
-  transform_id: Name
+  transform_id: Id
   defer_validation?: boolean
   body: {
+    dest: TransformTransformDestination
     description?: string
-    dest?: TransformTransformDestination
     frequency?: Time
-    pivot?: TransformPivotTransformPivot
+    pivot?: TransformTransformPivot
     source?: TransformTransformSource
+    settings?: TransformTransformSettings
     sync?: TransformTransformSyncContainer
+    retention_policy?: TransformTransformRetentionPolicyContainer
+    latest?: TransformTransformLatest
   }
 }
 
@@ -12319,7 +12322,7 @@ export interface AggregationsSingleBucketAggregateKeys extends AggregationsAggre
 export type AggregationsSingleBucketAggregate = AggregationsSingleBucketAggregateKeys |
     { [property: string]: AggregationsAggregate }
 
-export interface TransformPivotSingleGroupSource {
+export interface TransformSingleGroupSource {
   field: Field
   script: Script
 }
@@ -13622,9 +13625,14 @@ export interface TransformGetTransformStatsTransformIndexerStats {
   trigger_count: long
 }
 
-export interface TransformPivotTransformPivot {
+export interface TransformTransformLatest {
+  sort: Field
+  unique_key: Field[]
+}
+
+export interface TransformTransformPivot {
   aggregations: Record<string, AggregationsAggregationContainer>
-  group_by: Record<string, TransformPivotSingleGroupSource>
+  group_by: Record<string, TransformSingleGroupSource>
   max_page_search_size?: integer
 }
 
@@ -13636,9 +13644,25 @@ export interface TransformGetTransformStatsTransformProgress {
   total_docs: long
 }
 
+export interface TransformTransformRetentionPolicy {
+  field: Field
+  max_age: Time
+}
+
+export interface TransformTransformRetentionPolicyContainer {
+  time: TransformTransformRetentionPolicy
+}
+
+export interface TransformTransformSettings {
+  dates_as_epoch_millis?: boolean
+  docs_per_second?: float
+  max_page_search_size?: integer
+}
+
 export interface TransformTransformSource {
   index: Indices
-  query: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslAbstractionsContainerQueryContainer
+  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface TransformGetTransformStatsTransformStats {
@@ -13921,7 +13945,7 @@ export interface TransformUpdateTransformUpdateTransformResponse extends Respons
   dest: TransformTransformDestination
   frequency: Time
   id: Id
-  pivot: TransformPivotTransformPivot
+  pivot: TransformTransformPivot
   source: TransformTransformSource
   sync: TransformTransformSyncContainer
   version: VersionString

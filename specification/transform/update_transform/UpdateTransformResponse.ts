@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TransformPivot } from '@transform/pivot/TransformPivot'
+import { TransformPivot } from '@transform/_types/TransformPivot'
 import { TransformDestination } from '@transform/_types/TransformDestination'
 import { TransformSource } from '@transform/_types/TransformSource'
 import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
