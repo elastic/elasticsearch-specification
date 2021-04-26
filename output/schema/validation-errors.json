@@ -834,12 +834,6 @@
       ],
       "response": []
     },
-    "security.authenticate": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "security.get_user": {
       "request": [
         "Endpoint has \"@stability: TODO"

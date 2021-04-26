@@ -11529,9 +11529,6 @@ export interface XpackUsageSearchableSnapshotsUsage extends XpackUsageXPackUsage
 }
 
 export interface SecurityAuthenticateSecurityAuthenticateRequest extends RequestBase {
-  body?: {
-    stub: integer
-  }
 }
 
 export interface SecurityAuthenticateSecurityAuthenticateResponse extends ResponseBase {
@@ -11544,6 +11541,11 @@ export interface SecurityAuthenticateSecurityAuthenticateResponse extends Respon
   username: Username
   enabled: boolean
   authentication_type: string
+  token?: SecurityAuthenticateSecurityAuthenticateToken
+}
+
+export interface SecurityAuthenticateSecurityAuthenticateToken {
+  name: Name
 }
 
 export interface SecurityChangePasswordSecurityChangePasswordRequest extends RequestBase {
