@@ -25,4 +25,4 @@ import { RequestBase } from '@_types/Base'
  * @since 5.5.0
  * @stability TODO
  */
-export interface SecurityAuthenticateRequest extends RequestBase{}
+export interface SecurityAuthenticateRequest extends RequestBase {}
