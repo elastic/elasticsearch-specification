@@ -18,7 +18,12 @@
  */
 
 import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
 export class MlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
-  stub: boolean
+  data_frame_analytics: DataFrameAnalyticsStatsItem[]
+}
+
+export class DataFrameAnalyticsStatsItem {
+ stub: integer
 }

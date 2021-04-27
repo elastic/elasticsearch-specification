@@ -8562,10 +8562,11 @@ export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsResponse extends 
 }
 
 export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
+  verbose?: boolean
 }
 
 export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
