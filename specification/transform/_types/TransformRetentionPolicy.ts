@@ -17,19 +17,20 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
- * @rest_spec_name security.get_user_privileges
- * @since 6.5.0
- * @stability TODO
+ * @variants container
  */
-export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
-  }
+export class TransformRetentionPolicyContainer {
+  /** Specifies that the transform uses a time field to set the retention policy. */
+  time: TransformRetentionPolicy
+}
+
+export class TransformRetentionPolicy {
+  /** The date field that is used to calculate the age of the document. */
+  field: Field
+  /** Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index. */
+  max_age: Time
 }

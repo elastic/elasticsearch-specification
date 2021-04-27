@@ -18,10 +18,20 @@
  */
 
 import { Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class TransformSource {
-  /** @prop_serializer IndicesFormatter */
+  /**The source indices for the transform. */
   index: Indices
-  query: QueryContainer
+  /**
+   * A query clause that retrieves a subset of data from the source index.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+   */
+  query?: QueryContainer
+  /**
+   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
+   * @since 7.12.0
+   */
+  runtime_mappings?: RuntimeFields
 }

@@ -213,17 +213,20 @@ export function modelType (node: Node): model.ValueOf {
           const type: model.DictionaryOf = {
             kind: 'dictionary_of',
             key,
-            value
+            value,
+            singleKey: false
           }
           return type
         }
 
         case 'SingleKeyDictionary': {
-          assert(node, node.getTypeArguments().length === 1, 'A SingleKeyDictionary must have one argument')
-          const [value] = node.getTypeArguments().map(node => modelType(node))
-          const type: model.NamedValueOf = {
-            kind: 'named_value_of',
-            value
+          assert(node, node.getTypeArguments().length === 2, 'A SingleKeyDictionary must have two arguments')
+          const [key, value] = node.getTypeArguments().map(node => modelType(node))
+          const type: model.DictionaryOf = {
+            kind: 'dictionary_of',
+            key,
+            value,
+            singleKey: true
           }
           return type
         }
@@ -237,11 +240,37 @@ export function modelType (node: Node): model.ValueOf {
 
         default: {
           const generics = node.getTypeArguments().map(node => modelType(node))
+          const identifier = node.getTypeName()
+          assert(node, Node.isIdentifier(identifier), 'Not an identifier')
+
+          const declaration = identifier.getDefinitions()[0].getDeclarationNode()
+          // We are looking at a generic parameter
+          if (declaration == null) {
+            const type: model.InstanceOf = {
+              kind: 'instance_of',
+              ...(generics.length > 0 && { generics }),
+              type: {
+                name,
+                namespace: getNameSpace(node)
+              }
+            }
+            return type
+          }
+
+          assert(
+            node,
+            Node.isClassDeclaration(declaration) ||
+            Node.isInterfaceDeclaration(declaration) ||
+            Node.isEnumDeclaration(declaration) ||
+            Node.isTypeAliasDeclaration(declaration) ||
+            Node.isTypeParameterDeclaration(declaration),
+            'It should be a class, interface, enum, type alias, or type parameter declaration'
+          )
           const type: model.InstanceOf = {
             kind: 'instance_of',
             ...(generics.length > 0 && { generics }),
             type: {
-              name,
+              name: declaration.getName() as string,
               namespace: getNameSpace(node)
             }
           }
@@ -265,22 +294,20 @@ export function isApi (declaration: InterfaceDeclaration): boolean {
 }
 
 /**
- * Given a HeritageClause node returns an Inherits structure.
- * A class could extend from multiple classes, which are
- * defined inside the node typeArguments.
+ * Given the extended class or interface definition and the HeritageClause node
+ * returns an Inherits structure.
  */
-export function modelInherits (node: HeritageClause): model.Inherits[] {
-  return node.getTypeNodes().map(node => {
-    assert(node, Node.isExpressionWithTypeArguments(node), 'The node should be a expression with type arguments')
-    const generics = node.getTypeArguments().map(node => modelType(node))
-    return {
-      type: {
-        name: node.getExpression().getText(),
-        namespace: getNameSpace(node)
-      },
-      ...(generics.length > 0 && { generics })
-    }
-  })
+export function modelInherits (node: InterfaceDeclaration | ClassDeclaration, inherit: HeritageClause): model.Inherits {
+  const generics = inherit.getTypeNodes()
+    .flatMap(node => node.getTypeArguments())
+    .map(node => modelType(node))
+  return {
+    type: {
+      name: node.getName() as string,
+      namespace: getNameSpace(node)
+    },
+    ...(generics.length > 0 && { generics })
+  }
 }
 
 /**

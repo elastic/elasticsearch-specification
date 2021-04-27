@@ -24,9 +24,4 @@ import { RequestBase } from '@_types/Base'
  * @since 7.3.0
  * @stability TODO
  */
-export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-    stub: boolean
-  }
-  body?: {}
-}
+export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {}

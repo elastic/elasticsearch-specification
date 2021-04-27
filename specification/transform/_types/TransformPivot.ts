@@ -20,10 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { integer } from '@_types/Numeric'
-import { SingleGroupSource } from './SingleGroupSource'
+import { TransformPivotGroupByContainer } from './TransformPivotGroupByContainer'
 
 export class TransformPivot {
-  aggregations: Dictionary<string, AggregationContainer>
-  group_by: Dictionary<string, SingleGroupSource>
+  /** @aliases aggs */
+  aggregations?: Dictionary<string, AggregationContainer>
+  group_by: Dictionary<string, TransformPivotGroupByContainer>
   max_page_search_size?: integer
 }

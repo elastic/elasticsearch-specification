@@ -1,11 +1,5 @@
 {
   "endpointErrors": {
-    "async_search.get": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "async_search.submit": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -416,7 +410,7 @@
     },
     "indices.delete_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -470,7 +464,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -660,12 +654,6 @@
       ],
       "response": []
     },
-    "ml.get_trained_models_stats": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.open_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -737,6 +725,22 @@
         "Endpoint has \"@stability: TODO"
       ],
       "response": []
+    },
+    "msearch": {
+      "request": [
+        "MultiSearchRequest: query parameter 'allow_no_indices' does not exist in the json spec",
+        "MultiSearchRequest: query parameter 'expand_wildcards' does not exist in the json spec",
+        "MultiSearchRequest: query parameter 'ignore_throttled' does not exist in the json spec",
+        "MultiSearchRequest: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'AND'",
+        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'OR'"
+      ],
+      "response": [
+        "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",
+        "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ValueAggregate'",
+        "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
+        "type_alias definition _global.search.suggesters:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search.suggesters:TDocument'"
+      ]
     },
     "msearch_template": {
       "request": [
@@ -840,18 +844,6 @@
       ],
       "response": []
     },
-    "security.authenticate": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "security.get_builtin_privileges": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "security.get_user": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -894,6 +886,12 @@
       ],
       "response": []
     },
+    "snapshot.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "snapshot.restore": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -901,6 +899,24 @@
       "response": []
     },
     "tasks.list": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.preview_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.put_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.update_transform": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

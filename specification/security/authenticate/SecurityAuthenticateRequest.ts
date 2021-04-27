@@ -18,16 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
 
 /**
+ * Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.
  * @rest_spec_name security.authenticate
- * @since 0.0.0
+ * @since 5.5.0
  * @stability TODO
  */
-export interface SecurityAuthenticateRequest extends RequestBase {
-  query_parameters?: {}
-  body?: {
-    stub: integer
-  }
-}
+export interface SecurityAuthenticateRequest extends RequestBase {}

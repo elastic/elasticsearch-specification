@@ -524,18 +524,11 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return new Set((typeDef.generics ?? []).map(name => fqn(name)))
   }
 
-  function validateInherits (parents: (model.Inherits[] | undefined), openGenerics: Set<string>): void {
-    if (parents == null || parents.length === 0) return
+  function validateInherits (parent: (model.Inherits | undefined), openGenerics: Set<string>): void {
+    if (parent == null) return
 
     context.push('Inherits')
-    // FIXME: remove this check once metamodel only allows 1 inherit
-    if (parents.length > 1) {
-      modelError('Multiple inheritance is not allowed')
-    }
-
-    for (const parent of parents) {
-      validateTypeRef(parent.type, parent.generics, openGenerics)
-    }
+    validateTypeRef(parent.type, parent.generics, openGenerics)
     context.pop()
   }
 
@@ -693,10 +686,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         validateValueOf(valueOf.value, openGenerics)
         break
 
-      case 'named_value_of':
-        validateValueOf(valueOf.value, openGenerics)
-        break
-
       case 'user_defined_value':
         // Nothing to validate
         break
@@ -848,11 +837,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         context.push('value')
         validateValueOfJsonEvents(valueOf.value)
         context.pop()
-        break
-
-      case 'named_value_of':
-        validateEvent(events, JsonEvent.object)
-        validateValueOfJsonEvents(valueOf.value)
         break
 
       case 'union_of':

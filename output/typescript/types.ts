@@ -562,7 +562,7 @@ export interface AsyncSearchSubmitAsyncSearchSubmitRequest extends RequestBase {
     typed_keys?: boolean
     version?: boolean
     wait_for_completion_timeout?: Time
-    fields?: Field | DateField[]
+    fields?: (Field | DateField)[]
   }
 }
 
@@ -818,7 +818,7 @@ export interface BulkBulkRequest<TSource = unknown> extends RequestBase {
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   require_alias?: boolean
-  body: BulkBulkOperationContainer | TSource[]
+  body: (BulkBulkOperationContainer | TSource)[]
 }
 
 export interface BulkBulkResponse extends ResponseBase {
@@ -880,12 +880,13 @@ export interface IngestProcessorsBytesProcessor extends IngestProcessorBase {
 
 export interface NodesNodesStatsCPUStats {
   percent: integer
-  sys: string
-  sys_in_millis: long
-  total: string
-  total_in_millis: long
-  user: string
-  user_in_millis: long
+  sys?: string
+  sys_in_millis?: long
+  total?: string
+  total_in_millis?: long
+  user?: string
+  user_in_millis?: long
+  load_average?: Record<string, double>
 }
 
 export interface MlGetCalendarsCalendar {
@@ -2652,9 +2653,9 @@ export interface CatCatTransformsCatTransformsRequest extends CatCatRequestBase 
 export type CatCatTransformsCatTransformsResponse = CatCatTransformsCatTransformsRecord[]
 
 export interface MlInfoCategorizationAnalyzer {
-  filter?: string | AnalysisTokenFiltersTokenFilter[]
+  filter?: (string | AnalysisTokenFiltersTokenFilter)[]
   tokenizer?: string | AnalysisTokenizersTokenizer
-  char_filter?: string | AnalysisCharFiltersCharFilter[]
+  char_filter?: (string | AnalysisCharFiltersCharFilter)[]
 }
 
 export interface MlCategoryDefinition {
@@ -2758,6 +2759,8 @@ export interface AggregationsPipelineInferenceBucketClassificationInferenceOptio
   num_top_classes?: integer
   num_top_feature_importance_values?: integer
   prediction_field_type?: string
+  results_field?: string
+  top_classes_results_field?: string
 }
 
 export interface SnapshotCleanupRepositoryCleanupRepositoryRequest extends RequestBase {
@@ -4606,7 +4609,7 @@ export interface EqlSearchEqlSearchRequest extends RequestBase {
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
     size?: uint | float
-    fields?: Field | EqlSearchEqlSearchFieldFormatted[]
+    fields?: (Field | EqlSearchEqlSearchFieldFormatted)[]
     result_position?: EqlSearchEqlResultPosition
   }
 }
@@ -4843,6 +4846,9 @@ export interface AggregationsBucketHistogramExtendedBounds<T = unknown> {
 export interface NodesNodesStatsExtendedMemoryStats extends NodesNodesStatsMemoryStats {
   free_percent: integer
   used_percent: integer
+  total_in_bytes: integer
+  free_in_bytes: integer
+  used_in_bytes: integer
 }
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
@@ -5483,6 +5489,7 @@ export interface AggregationsBucketGeoTileGridGeoTileGridAggregation extends Agg
   precision?: GeoTilePrecision
   shard_size?: integer
   size?: integer
+  bounds?: AggregationsGeoBounds
 }
 
 export type GeoTilePrecision = number
@@ -6113,6 +6120,14 @@ export interface AnalysisTokenFiltersHunspellTokenFilter extends AnalysisTokenFi
   longest_only: boolean
 }
 
+export interface MlHyperparameter {
+  absolute_importance?: double
+  name: Name
+  relative_importance?: double
+  supplied: boolean
+  value: double
+}
+
 export interface AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter extends AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase {
 }
 
@@ -6450,10 +6465,10 @@ export interface IndicesAnalyzeIndicesAnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: string[]
-    char_filter?: string | AnalysisCharFiltersCharFilter[]
+    char_filter?: (string | AnalysisCharFiltersCharFilter)[]
     explain?: boolean
     field?: Field
-    filter?: string | AnalysisTokenFiltersTokenFilter[]
+    filter?: (string | AnalysisTokenFiltersTokenFilter)[]
     normalizer?: string
     text?: IndicesAnalyzeTextToAnalyze
     tokenizer?: string | AnalysisTokenizersTokenizer
@@ -6573,6 +6588,13 @@ export interface IndicesDeleteDataStreamIndicesDeleteDataStreamRequest extends R
 }
 
 export interface IndicesDeleteDataStreamIndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
+}
+
+export interface IndicesDeleteIndexTemplateIndicesDeleteIndexTemplateRequest extends RequestBase {
+  name: Name
+}
+
+export interface IndicesDeleteIndexTemplateIndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesDeleteIndicesDeleteRequest extends RequestBase {
@@ -7028,6 +7050,19 @@ export interface IndicesShrinkIndicesShrinkRequest extends RequestBase {
 export interface IndicesShrinkIndicesShrinkResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
   index: IndexName
+}
+
+export interface IndicesSimulateIndexTemplateIndicesSimulateIndexTemplateRequest extends RequestBase {
+  name?: Name
+  body?: {
+    index_patterns?: IndexName[]
+    composed_of?: Name[]
+    overlapping?: IndicesSimulateIndexTemplateOverlappingIndexTemplate[]
+    template?: IndicesTemplateMapping
+  }
+}
+
+export interface IndicesSimulateIndexTemplateIndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesSplitIndicesSplitRequest extends RequestBase {
@@ -7873,12 +7908,15 @@ export interface AggregationsMetricMedianAbsoluteDeviationMedianAbsoluteDeviatio
 }
 
 export interface NodesNodesStatsMemoryStats {
-  resident: string
-  resident_in_bytes: long
-  share: string
-  share_in_bytes: long
-  total_virtual: string
-  total_virtual_in_bytes: long
+  resident?: string
+  resident_in_bytes?: long
+  share?: string
+  share_in_bytes?: long
+  total_virtual?: string
+  total_virtual_in_bytes?: long
+  total_in_bytes: long
+  free_in_bytes: long
+  used_in_bytes: long
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
@@ -8355,25 +8393,31 @@ export interface MlGetOverallBucketsMlGetOverallBucketsResponse extends Response
 }
 
 export interface MlGetTrainedModelsMlGetTrainedModelRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  model_id?: Id
+  allow_no_match?: boolean
+  decompress_definition?: boolean
+  exclude_generated?: boolean
+  from?: integer
+  include?: string
+  size?: integer
+  tags?: string
 }
 
 export interface MlGetTrainedModelsMlGetTrainedModelResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  trained_model_configs: MlTrainedModelConfig[]
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  model_id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  trained_model_stats: MlTrainedModelStats[]
 }
 
 export interface XpackUsageMlInferenceIngestProcessorCountUsage {
@@ -8499,7 +8543,7 @@ export interface MlPutCalendarJobMlPutCalendarJobRequest extends RequestBase {
 
 export interface MlPutCalendarJobMlPutCalendarJobResponse extends ResponseBase {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Id[]
 }
 
@@ -9021,23 +9065,34 @@ export interface MsearchMultiSearchHeader {
 export interface MsearchMultiSearchRequest extends RequestBase {
   index?: Indices
   type?: Types
+  allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
   max_concurrent_searches?: long
   max_concurrent_shard_requests?: long
   pre_filter_shard_size?: long
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body: MsearchMultiSearchHeader | MsearchMultiSearchBody[]
+  body: (MsearchMultiSearchHeader | MsearchMultiSearchBody)[]
 }
 
 export interface MsearchMultiSearchResponse<TDocument = unknown> extends ResponseBase {
   took: long
-  responses: MsearchMultiSearchResult<TDocument> | ErrorResponse[]
+  responses: (MsearchMultiSearchResult<TDocument> | ErrorResponse)[]
 }
 
 export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchSearchResponse<TDocument> {
   status: integer
+}
+
+export interface MsearchTemplateMultiSearchTemplateItem {
+  id?: Id
+  index?: Indices
+  params?: Record<string, any>
+  source?: string
 }
 
 export interface MsearchTemplateMultiSearchTemplateRequest extends RequestBase {
@@ -9048,13 +9103,11 @@ export interface MsearchTemplateMultiSearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body: {
-    operations?: Record<string, SearchTemplateSearchTemplateRequest>
-  }
+  body: MsearchTemplateMultiSearchTemplateItem[]
 }
 
-export interface MsearchTemplateMultiSearchTemplateResponse extends ResponseBase {
-  responses: SearchSearchResponse<any>[]
+export interface MsearchTemplateMultiSearchTemplateResponse<TDocument = unknown> extends ResponseBase {
+  responses: SearchSearchResponse<TDocument>[]
   took: long
 }
 
@@ -9439,7 +9492,7 @@ export interface NodesNodesStatsNodeStats {
   http: NodesNodesStatsHttpStats
   indices: IndicesStatsIndexStats
   ingest: NodesNodesStatsStatisticsNodeIngestStats
-  ip: Ip[]
+  ip: Ip | Ip[]
   jvm: NodesNodesStatsNodeJvmStats
   name: Name
   os: NodesNodesStatsOperatingSystemStats
@@ -9450,6 +9503,7 @@ export interface NodesNodesStatsNodeStats {
   timestamp: long
   transport: NodesNodesStatsTransportStats
   transport_address: TransportAddress
+  attributes: Record<Field, string>
 }
 
 export interface NodesNodesInfoNodeThreadPoolInfo {
@@ -9509,12 +9563,14 @@ export interface NodesNodesStatsNodesStatsRequest extends RequestBase {
   groups?: boolean
   include_segment_file_sizes?: boolean
   level?: Level
+  master_timeout?: Time
   timeout?: Time
   types?: string[]
+  include_unloaded_segments?: boolean
 }
 
 export interface NodesNodesStatsNodesStatsResponse extends NodesNodesResponseBase {
-  cluster_name: string
+  cluster_name: Name
   nodes: Record<string, NodesNodesStatsNodeStats>
 }
 
@@ -9619,6 +9675,11 @@ export interface MlOverallBucket {
 export interface MlOverallBucketJobInfo {
   job_id: Id
   max_anomaly_score: double
+}
+
+export interface IndicesSimulateIndexTemplateOverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }
 
 export interface MlPage {
@@ -9934,12 +9995,15 @@ export interface QueryDslTermLevelPrefixPrefixQuery extends QueryDslAbstractions
 
 export interface TransformPreviewTransformPreviewTransformRequest extends RequestBase {
   body: {
-    description?: string
     dest?: TransformTransformDestination
+    description?: string
     frequency?: Time
-    pivot?: TransformPivotTransformPivot
+    pivot?: TransformTransformPivot
     source?: TransformTransformSource
+    settings?: TransformTransformSettings
     sync?: TransformTransformSyncContainer
+    retention_policy?: TransformTransformRetentionPolicyContainer
+    latest?: TransformTransformLatest
   }
 }
 
@@ -10137,17 +10201,9 @@ export interface SlmPutLifecyclePutSnapshotLifecycleRequest extends RequestBase 
 export interface SlmPutLifecyclePutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface TransformPutTransformPutTransformRequest extends RequestBase {
-  transform_id: Name
+export interface TransformPutTransformPutTransformRequest extends TransformPreviewTransformPreviewTransformRequest {
+  transform_id: Id
   defer_validation?: boolean
-  body: {
-    description?: string
-    dest?: TransformTransformDestination
-    frequency?: Time
-    pivot?: TransformPivotTransformPivot
-    source?: TransformTransformSource
-    sync?: TransformTransformSyncContainer
-  }
 }
 
 export interface TransformPutTransformPutTransformResponse extends AcknowledgedResponseBase {
@@ -10195,13 +10251,13 @@ export interface QueryCacheStats {
 export interface QueryDslAbstractionsContainerQueryContainer {
   bool?: QueryDslCompoundBoolBoolQuery
   boosting?: QueryDslCompoundBoostingBoostingQuery
-  common?: Record<string, QueryDslFullTextCommonTermsCommonTermsQuery | string>
+  common?: Record<Field, QueryDslFullTextCommonTermsCommonTermsQuery | string>
   constant_score?: QueryDslCompoundConstantScoreConstantScoreQuery
   dis_max?: QueryDslCompoundDismaxDisMaxQuery
-  distance_feature?: Record<string, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
+  distance_feature?: Record<Field, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
   exists?: QueryDslTermLevelExistsExistsQuery
   function_score?: QueryDslCompoundFunctionScoreFunctionScoreQuery
-  fuzzy?: Record<string, QueryDslTermLevelFuzzyFuzzyQuery | string>
+  fuzzy?: Record<Field, QueryDslTermLevelFuzzyFuzzyQuery | string>
   geo_bounding_box?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoBoundingBoxGeoBoundingBoxQuery | string>
   geo_distance?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoDistanceGeoDistanceQuery | string>
   geo_polygon?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoPolygonGeoPolygonQuery | string>
@@ -11340,19 +11396,19 @@ export interface SearchSearchRequest extends RequestBase {
     highlight?: SearchHighlightingHighlight
     track_total_hits?: boolean | integer
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: SearchSourceFilteringDocValueField | Field | SearchSourceFilteringDocValueField[]
+    docvalue_fields?: SearchSourceFilteringDocValueField | (Field | SearchSourceFilteringDocValueField)[]
     min_score?: double
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     profile?: boolean
     query?: QueryDslAbstractionsContainerQueryContainer
     rescore?: SearchRescoringRescore | SearchRescoringRescore[]
     script_fields?: Record<string, ScriptField>
-    search_after?: integer | string[]
+    search_after?: (integer | string)[]
     size?: integer
     slice?: SlicedScroll
     sort?: SearchSortSort
     _source?: boolean | Fields | SearchSourceFilteringSourceFilter
-    fields?: Field | DateField[]
+    fields?: (Field | DateField)[]
     suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
     terminate_after?: long
     timeout?: string
@@ -11434,7 +11490,7 @@ export interface SearchTemplateSearchTemplateRequest extends RequestBase {
   total_hits_as_integer?: boolean
   typed_keys?: boolean
   body: {
-    id?: string
+    id?: Id
     params?: Record<string, any>
     source?: string
   }
@@ -11455,11 +11511,12 @@ export interface WatcherSearchTransform {
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
 
 export interface SearchableSnapshotsClearCacheSearchableSnapshotsClearCacheRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  index?: Indices
+  expand_wildcards?: ExpandWildcards
+  allow_no_indices?: boolean
+  ignore_unavailable?: boolean
+  pretty?: boolean
+  human?: boolean
 }
 
 export interface SearchableSnapshotsClearCacheSearchableSnapshotsClearCacheResponse extends ResponseBase {
@@ -11521,9 +11578,6 @@ export interface XpackUsageSearchableSnapshotsUsage extends XpackUsageXPackUsage
 }
 
 export interface SecurityAuthenticateSecurityAuthenticateRequest extends RequestBase {
-  body?: {
-    stub: integer
-  }
 }
 
 export interface SecurityAuthenticateSecurityAuthenticateResponse extends ResponseBase {
@@ -11536,6 +11590,11 @@ export interface SecurityAuthenticateSecurityAuthenticateResponse extends Respon
   username: Username
   enabled: boolean
   authentication_type: string
+  token?: SecurityAuthenticateSecurityAuthenticateToken
+}
+
+export interface SecurityAuthenticateSecurityAuthenticateToken {
+  name: Name
 }
 
 export interface SecurityChangePasswordSecurityChangePasswordRequest extends RequestBase {
@@ -11677,7 +11736,6 @@ export interface SecurityGetApiKeySecurityGetApiKeyResponse extends ResponseBase
 }
 
 export interface SecurityGetBuiltinPrivilegesSecurityGetBuiltinPrivilegesRequest extends RequestBase {
-  stub: boolean
 }
 
 export interface SecurityGetBuiltinPrivilegesSecurityGetBuiltinPrivilegesResponse extends ResponseBase {
@@ -11729,7 +11787,8 @@ export interface SecurityGetTokenSecurityGetTokenResponse extends ResponseBase {
 }
 
 export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesRequest extends RequestBase {
-  stub: boolean
+  application?: Name
+  priviledge?: Name
 }
 
 export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesResponse extends ResponseBase {
@@ -11741,7 +11800,7 @@ export interface SecurityGetUserPrivilegesSecurityGetUserPrivilegesResponse exte
 }
 
 export interface SecurityGetUserSecurityGetUserRequest extends RequestBase {
-  username?: Username[]
+  username?: Username | Username[]
 }
 
 export interface SecurityGetUserSecurityGetUserResponse extends DictionaryResponseBase<string, SecurityXPackUser> {
@@ -12311,11 +12370,6 @@ export interface AggregationsSingleBucketAggregateKeys extends AggregationsAggre
 export type AggregationsSingleBucketAggregate = AggregationsSingleBucketAggregateKeys |
     { [property: string]: AggregationsAggregate }
 
-export interface TransformPivotSingleGroupSource {
-  field: Field
-  script: Script
-}
-
 export type Size = 'Raw' | 'k' | 'm' | 'g' | 't' | 'p'
 
 export interface MappingMetaFieldsSizeSizeField {
@@ -12463,11 +12517,20 @@ export interface SnapshotGetSnapshotGetRequest extends RequestBase {
   ignore_unavailable?: boolean
   master_timeout?: Time
   verbose?: boolean
+  index_details?: boolean
+  human?: boolean
 }
 
 export interface SnapshotGetSnapshotGetResponse extends ResponseBase {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+}
+
+export interface SnapshotSnapshotIndexDetails {
+  shard_count: integer
+  size?: ByteSize
+  size_in_bytes: long
+  max_segments_per_shard: long
 }
 
 export interface SnapshotSnapshotIndexStats {
@@ -12478,17 +12541,19 @@ export interface SnapshotSnapshotIndexStats {
 
 export interface SnapshotSnapshotInfo {
   data_streams: string[]
+  duration?: Time
   duration_in_millis?: EpochMillis
-  end_time?: DateString
+  end_time?: Time
   end_time_in_millis?: EpochMillis
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
+  index_details?: Record<IndexName, SnapshotSnapshotIndexDetails>
   metadata?: Record<string, any>
   reason?: string
-  snapshot: string
+  snapshot: Name
   shards?: ShardStatistics
-  start_time?: DateString
+  start_time?: Time
   start_time_in_millis?: EpochMillis
   state?: string
   uuid: Uuid
@@ -12717,7 +12782,7 @@ export interface IngestProcessorsSortProcessor extends IngestProcessorBase {
   target_field: Field
 }
 
-export type SearchSortSortResults = long | double | string | null[]
+export type SearchSortSortResults = (long | double | string | null)[]
 
 export interface ExistsSourceSourceExistsRequest extends RequestBase {
   id: Id
@@ -13196,7 +13261,7 @@ export interface TaskListTasksTaskStatus {
 
 export interface IndicesTemplateMapping {
   aliases: Record<IndexName, IndicesAlias>
-  index_patterns: string[]
+  index_patterns: Name[]
   mappings: MappingTypeMapping
   order: integer
   settings: Record<string, any>
@@ -13520,7 +13585,7 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
 }
 
 export interface AggregationsTopMetrics {
-  sort: long | double | string[]
+  sort: (long | double | string)[]
   metrics: Record<string, long | double | string>
 }
 
@@ -13538,6 +13603,23 @@ export interface AggregationsMetricTopMetricsTopMetricsValue {
   field: Field
 }
 
+export interface MlTotalFeatureImportance {
+  feature_name: Name
+  importance: MlTotalFeatureImportanceStatistics[]
+  classes: MlTotalFeatureImportanceClass[]
+}
+
+export interface MlTotalFeatureImportanceClass {
+  class_name: Name
+  importance: MlTotalFeatureImportanceStatistics[]
+}
+
+export interface MlTotalFeatureImportanceStatistics {
+  mean_magnitude: double
+  max: integer
+  min: integer
+}
+
 export interface NodesNodesStatsTotalFileSystemStats {
   available: string
   available_in_bytes: long
@@ -13553,6 +13635,49 @@ export interface SearchHitsTotalHits {
 }
 
 export type SearchHitsTotalHitsRelation = 'eq' | 'gte'
+
+export interface MlTrainedModelConfig {
+  model_id: Id
+  tags: string[]
+  version?: VersionString
+  compressed_definition?: string
+  created_by?: string
+  create_time?: Time
+  default_field_map?: Record<string, string>
+  description: string
+  estimated_heap_memory_usage_bytes?: integer
+  estimated_operations?: integer
+  inference_config: AggregationsPipelineInferenceBucketInferenceConfigContainer
+  input: MlTrainedModelConfigInput
+  license_level?: string
+  metadata?: MlTrainedModelConfigMetadata
+}
+
+export interface MlTrainedModelConfigInput {
+  field_names: Field[]
+}
+
+export interface MlTrainedModelConfigMetadata {
+  model_aliases?: string[]
+  feature_importance_baseline?: Record<string, string>
+  hyperparameters?: MlHyperparameter[]
+  total_feature_importance?: MlTotalFeatureImportance[]
+}
+
+export interface MlTrainedModelInferenceStats {
+  failure_count: long
+  inference_count: long
+  cache_miss_count: long
+  missing_all_fields_count: long
+  timestamp: Time
+}
+
+export interface MlTrainedModelStats {
+  model_id: Id
+  pipeline_count: integer
+  inference_stats?: MlTrainedModelInferenceStats
+  ingest?: Record<string, any>
+}
 
 export interface WatcherTransform {
 }
@@ -13581,7 +13706,7 @@ export interface WatcherTransformContainer {
 }
 
 export interface TransformTransformDestination {
-  index: IndexName
+  index?: IndexName
   pipeline?: string
 }
 
@@ -13603,10 +13728,23 @@ export interface TransformGetTransformStatsTransformIndexerStats {
   trigger_count: long
 }
 
-export interface TransformPivotTransformPivot {
-  aggregations: Record<string, AggregationsAggregationContainer>
-  group_by: Record<string, TransformPivotSingleGroupSource>
+export interface TransformTransformLatest {
+  sort: Field
+  unique_key: Field[]
+}
+
+export interface TransformTransformPivot {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  group_by: Record<string, TransformTransformPivotGroupByContainer>
   max_page_search_size?: integer
+}
+
+export interface TransformTransformPivotGroupByContainer {
+  date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
+  geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
+  histogram?: AggregationsBucketHistogramHistogramAggregation
+  terms?: AggregationsBucketTermsTermsAggregation
 }
 
 export interface TransformGetTransformStatsTransformProgress {
@@ -13617,9 +13755,25 @@ export interface TransformGetTransformStatsTransformProgress {
   total_docs: long
 }
 
+export interface TransformTransformRetentionPolicy {
+  field: Field
+  max_age: Time
+}
+
+export interface TransformTransformRetentionPolicyContainer {
+  time: TransformTransformRetentionPolicy
+}
+
+export interface TransformTransformSettings {
+  dates_as_epoch_millis?: boolean
+  docs_per_second?: float
+  max_page_search_size?: integer
+}
+
 export interface TransformTransformSource {
   index: Indices
-  query: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslAbstractionsContainerQueryContainer
+  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface TransformGetTransformStatsTransformStats {
@@ -13636,7 +13790,7 @@ export interface TransformTransformSyncContainer {
 }
 
 export interface TransformTransformTimeSync {
-  delay: Time
+  delay?: Time
   field: Field
 }
 
@@ -13883,28 +14037,19 @@ export interface UpdateUpdateResponse<TDocument = unknown> extends WriteResponse
   get?: ExplainInlineGet<TDocument>
 }
 
-export interface TransformUpdateTransformUpdateTransformRequest extends RequestBase {
-  transform_id: Name
-  defer_validation?: boolean
-  body: {
-    description?: string
-    dest?: TransformTransformDestination
-    frequency?: Time
-    source?: TransformTransformSource
-    sync?: TransformTransformSyncContainer
-  }
+export interface TransformUpdateTransformUpdateTransformRequest extends TransformPutTransformPutTransformRequest {
 }
 
 export interface TransformUpdateTransformUpdateTransformResponse extends ResponseBase {
   create_time: long
-  create_time_date_time: DateString
   description: string
   dest: TransformTransformDestination
   frequency: Time
   id: Id
-  pivot: TransformPivotTransformPivot
+  pivot: TransformTransformPivot
+  settings: TransformTransformSettings
   source: TransformTransformSource
-  sync: TransformTransformSyncContainer
+  sync?: TransformTransformSyncContainer
   version: VersionString
 }
 

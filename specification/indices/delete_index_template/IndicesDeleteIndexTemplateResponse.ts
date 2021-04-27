@@ -17,19 +17,6 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-/**
- * @rest_spec_name security.get_user_privileges
- * @since 6.5.0
- * @stability TODO
- */
-export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
-  }
-}
+export class IndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {}

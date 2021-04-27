@@ -17,30 +17,11 @@
  * under the License.
  */
 
-import { TransformDestination } from '@transform/_types/TransformDestination'
-import { TransformSource } from '@transform/_types/TransformSource'
-import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { PutTransformRequest } from '@transform/put_transform/PutTransformRequest'
 
 /**
  * @rest_spec_name transform.update_transform
- * @since 7.5.0
+ * @since 7.2.0
  * @stability TODO
  */
-export interface UpdateTransformRequest extends RequestBase {
-  path_parts?: {
-    transform_id: Name
-  }
-  query_parameters?: {
-    defer_validation?: boolean
-  }
-  body?: {
-    description?: string
-    dest?: TransformDestination
-    frequency?: Time
-    source?: TransformSource
-    sync?: TransformSyncContainer
-  }
-}
+export interface UpdateTransformRequest extends PutTransformRequest {}

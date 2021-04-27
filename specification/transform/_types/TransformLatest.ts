@@ -17,19 +17,14 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Field, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { float, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-/**
- * @rest_spec_name security.get_user_privileges
- * @since 6.5.0
- * @stability TODO
- */
-export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
-  }
+export class TransformLatest {
+  /** Specifies the date field that is used to identify the latest documents. */
+  sort: Field
+  /** Specifies an array of one or more fields that are used to group the data. */
+  unique_key: Field[]
 }

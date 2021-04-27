@@ -17,19 +17,30 @@
  * under the License.
  */
 
+import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 
 /**
- * @rest_spec_name security.get_user_privileges
- * @since 6.5.0
+ * @rest_spec_name indices.simulate_index_template
+ * @since 7.9.0
  * @stability TODO
  */
-export interface SecurityGetUserPrivilegesRequest extends RequestBase {
-  query_parameters?: {
-    /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
-    application?: Name
-    /** The name of the privilege. If you do not specify this parameter, the API returns information about all privileges for the requested application. */
-    priviledge?: Name
+export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
+  path_parts?: {
+    /** Index or template name to simulate */
+    name?: Name
   }
+  body?: {
+    index_patterns?: IndexName[]
+    composed_of?: Name[]
+    /** Any overlapping templates that would have matched, but have lower priority */
+    overlapping?: OverlappingIndexTemplate[]
+    template?: TemplateMapping
+  }
+}
+
+export class OverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }

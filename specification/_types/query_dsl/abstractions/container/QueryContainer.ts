@@ -73,6 +73,7 @@ import { TypeQuery } from '@_types/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@_types/query_dsl/term_level/wildcard/WildcardQuery'
 import { NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
+import { Field } from '@_types/common'
 
 /**
  * @variants container
@@ -80,17 +81,17 @@ import { QueryTemplate } from './QueryTemplate'
 export class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
-  common?: SingleKeyDictionary<CommonTermsQuery | string>
+  common?: SingleKeyDictionary<Field, CommonTermsQuery | string>
   constant_score?: ConstantScoreQuery
   dis_max?: DisMaxQuery
   // TODO?: can be both { __field__ ?: { options } } and { field?: "" ...options }
   // very lenient parser on the server, never documented as such but used in yamltests as such
   distance_feature?:
-    | SingleKeyDictionary<DistanceFeatureQuery | string>
+    | SingleKeyDictionary<Field, DistanceFeatureQuery | string>
     | DistanceFeatureQuery
   exists?: ExistsQuery
   function_score?: FunctionScoreQuery
-  fuzzy?: SingleKeyDictionary<FuzzyQuery | string>
+  fuzzy?: SingleKeyDictionary<Field, FuzzyQuery | string>
   geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
   geo_distance?: NamedQuery<GeoDistanceQuery | string>
   geo_polygon?: NamedQuery<GeoPolygonQuery | string>

@@ -234,7 +234,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     for (const inherit of declaration.getHeritageClauses()) {
-      type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+      const extended = inherit.getTypeNodes()
+        .map(t => t.getExpression())
+        .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
+      assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
+      type.inherits = modelInherits(extended, inherit)
     }
 
     for (const typeParameter of declaration.getTypeParameters()) {
@@ -298,7 +302,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
     for (const inherit of declaration.getHeritageClauses()) {
       if (inherit.getToken() === ts.SyntaxKind.ExtendsKeyword) {
-        type.inherits = (type.inherits ?? []).concat(modelInherits(inherit))
+        const extended = inherit.getTypeNodes()
+          .map(t => t.getExpression())
+          .map(t => t.getType().getSymbol()?.getDeclarations()[0])[0]
+        assert(inherit, Node.isClassDeclaration(extended) || Node.isInterfaceDeclaration(extended), 'Should extend from a class or interface')
+        type.inherits = modelInherits(extended, inherit)
       }
     }
 

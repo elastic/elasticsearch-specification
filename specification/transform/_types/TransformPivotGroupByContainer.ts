@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
-import { Time } from '@_types/Time'
+import { DateHistogramAggregation } from '@_types/aggregations/bucket/date_histogram/DateHistogramAggregation'
+import { GeoTileGridAggregation } from '@_types/aggregations/bucket/geo_tile_grid/GeoTileGridAggregation'
+import { HistogramAggregation } from '@_types/aggregations/bucket/histogram/HistogramAggregation'
+import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggregation'
 
-export class TransformTimeSync {
-  delay: Time
-  field: Field
+/**
+ * @variants container
+ */
+export class TransformPivotGroupByContainer {
+  date_histogram?: DateHistogramAggregation
+  geotile_grid?: GeoTileGridAggregation
+  histogram?: HistogramAggregation
+  terms?: TermsAggregation
 }
