@@ -39835,6 +39835,162 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixItem",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "actual_class",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "actual_class_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "predicted_classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixPrediction",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "other_predicted_class_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixPrediction",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "predicted_class",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixTreshold",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "true_positive"
+          ],
+          "description": "True Positive",
+          "name": "tp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "false_positive"
+          ],
+          "description": "False Positive",
+          "name": "fp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "true_negative"
+          ],
+          "description": "True Negative",
+          "name": "tn",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "false_negative"
+          ],
+          "description": "False Negative",
+          "name": "fn",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -41526,6 +41682,952 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationSummaryAucRoc",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "accuracy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryAccuracy",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "multiclass_confusion_matrix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryMulticlassConfusionMatrix",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryPrecision",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryRecall",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryAccuracy",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "overall_accuracy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryMulticlassConfusionMatrix",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "confusion_matrix",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixItem",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "other_actual_class_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryPrecision",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "avg_precision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryRecall",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "avg_recall",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationValue",
+          "namespace": "ml.evaluate_data_frame"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClass",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassification",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field can be boolean or integer. If the data type is integer, the value has to be either 0 (false) or 1 (true).",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field in the index which contains the predicted value, in other words the results of the classification analysis.",
+          "name": "predicted_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field of the index which is an array of documents of the form { \"class_name\": XXX, \"class_probability\": YYY }. This field must be defined as nested in the mappings.",
+          "name": "top_classes_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassificationMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationMetrics",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassificationMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Accuracy of predictions (per-class and overall).",
+          "name": "accuracy",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Multiclass confusion matrix.",
+          "name": "multiclass_confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassificationMetricsAucRoc",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Name of the only class that is treated as positive during AUC ROC calculation. Other classes are treated as negative (\"one-vs-all\" strategy). All the evaluated documents must have class_name in the list of their top classes.",
+          "name": "class_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether or not the curve should be returned in addition to the score. Default value is false.",
+          "name": "include_curve",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationContainer",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Classification evaluation evaluates the results of a classification analysis which outputs a prediction that identifies to which of the classes each document belongs.",
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassification",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Outlier detection evaluates the results of an outlier detection analysis which outputs the probability that each document is an outlier.",
+          "name": "outlier_detection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationOutlierDetection",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Regression evaluation evaluates the results of a regression analysis which outputs a prediction of values.",
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegression",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve. It is calculated for a specific class (provided as \"class_name\") treated as positive.",
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassificationMetricsAucRoc",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Precision of predictions (per-class and average).",
+          "name": "precision",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Recall of predictions (per-class and average).",
+          "name": "recall",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationOutlierDetection",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field can be boolean or integer. If the data type is integer, the value has to be either 0 (false) or 1 (true).",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field of the index that defines the probability of whether the item belongs to the class in question or not. It’s the field that contains the results of the analysis.",
+          "name": "predicted_probability_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationOutlierDetectionMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationMetrics",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationOutlierDetectionMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Accuracy of predictions (per-class and overall).",
+          "name": "confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegression",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field must be numerical.",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field in the index that contains the predicted value, in other words the results of the regression analysis.",
+          "name": "predicted_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation. For more information on mse, msle, and huber, consult the Jupyter notebook on regression loss functions.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Average squared difference between the predicted values and the actual (ground truth) value. For more information, read this wiki article.",
+          "docUrl": "https://en.wikipedia.org/wiki/Mean_squared_error",
+          "name": "mse",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Average squared difference between the logarithm of the predicted values and the logarithm of the actual (ground truth) value.",
+          "name": "msle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetricsMsle",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Pseudo Huber loss function.",
+          "docUrl": "https://en.wikipedia.org/wiki/Huber_loss#Pseudo-Huber_loss_function",
+          "name": "huber",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetricsHuber",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Proportion of the variance in the dependent variable that is predictable from the independent variables.",
+          "docUrl": "https://en.wikipedia.org/wiki/Coefficient_of_determination",
+          "name": "r_squared",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetricsHuber",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Approximates 1/2 (prediction - actual)2 for values much less than delta and approximates a straight line with slope delta for values much larger than delta. Defaults to 1. Delta needs to be greater than 0.",
+          "name": "delta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetricsMsle",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Defines the transition point at which you switch from minimizing quadratic error to minimizing quadratic log error. Defaults to 1.",
+          "name": "offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationValue",
+          "namespace": "ml.evaluate_data_frame"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationSummaryAucRoc",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "curve",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationSummaryAucRocCurveItem",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationSummaryAucRocCurveItem",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "tpr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fpr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "threshold",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationValue",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameOutlierDetectionSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationSummaryAucRoc",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixTreshold",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameRegressionSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "huber",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "mse",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "msle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "r_squared",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
             }
           }
         }
@@ -79634,13 +80736,40 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "description": "Defines the type of evaluation you want to perform.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources",
+            "name": "evaluation",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationContainer",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Defines the index in which the evaluation will be performed.",
+            "name": "index",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "A query clause that retrieves a subset of data from the source index.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
+            "name": "query",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl.abstractions.container"
               }
             }
           }
@@ -79657,32 +80786,8 @@
         "name": "MlEvaluateDataFrameRequest",
         "namespace": "ml.evaluate_data_frame"
       },
-      "path": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": {
@@ -79698,17 +80803,42 @@
       },
       "properties": [
         {
-          "name": "stub",
-          "required": true,
+          "name": "classification",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "DataFrameClassificationSummary",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "outlier_detection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameOutlierDetectionSummary",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameRegressionSummary",
+              "namespace": "ml.evaluate_data_frame"
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "attachedBehaviors": [

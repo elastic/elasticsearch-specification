@@ -3577,6 +3577,29 @@ export type WatcherConditionType = 'always' | 'never' | 'script' | 'compare' | '
 
 export type Conflicts = 'abort' | 'proceed'
 
+export interface MlEvaluateDataFrameConfusionMatrixItem {
+  actual_class: Name
+  actual_class_doc_count: integer
+  predicted_classes: MlEvaluateDataFrameConfusionMatrixPrediction[]
+  other_predicted_class_doc_count: integer
+}
+
+export interface MlEvaluateDataFrameConfusionMatrixPrediction {
+  predicted_class: Name
+  count: integer
+}
+
+export interface MlEvaluateDataFrameConfusionMatrixTreshold {
+  tp: integer
+  true_positive: integer
+  fp: integer
+  false_positive: integer
+  tn: integer
+  true_negative: integer
+  fn: integer
+  false_negative: integer
+}
+
 export type WatcherConnectionScheme = 'http' | 'https'
 
 export interface MappingTypesSpecializedConstantKeywordConstantKeywordProperty extends MappingTypesPropertyBase {
@@ -3765,6 +3788,126 @@ export interface MlDataDescription {
   time_field: Field
   time_format?: string
   field_delimiter?: string
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummary {
+  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
+  accuracy?: MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy
+  multiclass_confusion_matrix?: MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix
+  precision?: MlEvaluateDataFrameDataFrameClassificationSummaryPrecision
+  recall?: MlEvaluateDataFrameDataFrameClassificationSummaryRecall
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  overall_accuracy: double
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix {
+  confusion_matrix: MlEvaluateDataFrameConfusionMatrixItem[]
+  other_actual_class_count: integer
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryPrecision {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  avg_precision: double
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryRecall {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  avg_recall: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationClass extends MlEvaluateDataFrameDataFrameEvaluationValue {
+  class_name: Name
+}
+
+export interface MlDataFrameEvaluationClassification {
+  actual_field: Field
+  predicted_field?: Field
+  top_classes_field?: Field
+  metrics?: MlDataFrameEvaluationClassificationMetrics
+}
+
+export interface MlDataFrameEvaluationClassificationMetrics extends MlDataFrameEvaluationMetrics {
+  accuracy?: Record<string, any>
+  multiclass_confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationClassificationMetricsAucRoc {
+  class_name?: Name
+  include_curve?: boolean
+}
+
+export interface MlDataFrameEvaluationContainer {
+  classification?: MlDataFrameEvaluationClassification
+  outlier_detection?: MlDataFrameEvaluationOutlierDetection
+  regression?: MlDataFrameEvaluationRegression
+}
+
+export interface MlDataFrameEvaluationMetrics {
+  auc_roc?: MlDataFrameEvaluationClassificationMetricsAucRoc
+  precision?: Record<string, any>
+  recall?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationOutlierDetection {
+  actual_field: Field
+  predicted_probability_field: Field
+  metrics?: MlDataFrameEvaluationOutlierDetectionMetrics
+}
+
+export interface MlDataFrameEvaluationOutlierDetectionMetrics extends MlDataFrameEvaluationMetrics {
+  confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationRegression {
+  actual_field: Field
+  predicted_field: Field
+  metrics?: MlDataFrameEvaluationRegressionMetrics
+}
+
+export interface MlDataFrameEvaluationRegressionMetrics {
+  mse?: Record<string, any>
+  msle?: MlDataFrameEvaluationRegressionMetricsMsle
+  huber?: MlDataFrameEvaluationRegressionMetricsHuber
+  r_squared?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationRegressionMetricsHuber {
+  delta?: double
+}
+
+export interface MlDataFrameEvaluationRegressionMetricsMsle {
+  offset?: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc extends MlEvaluateDataFrameDataFrameEvaluationValue {
+  curve?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem[]
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem {
+  tpr: double
+  fpr: double
+  threshold: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationValue {
+  value: double
+}
+
+export interface MlEvaluateDataFrameDataFrameOutlierDetectionSummary {
+  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
+  precision?: Record<string, double>
+  recall?: Record<string, double>
+  confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixTreshold>
+}
+
+export interface MlEvaluateDataFrameDataFrameRegressionSummary {
+  huber?: MlEvaluateDataFrameDataFrameEvaluationValue
+  mse?: MlEvaluateDataFrameDataFrameEvaluationValue
+  msle?: MlEvaluateDataFrameDataFrameEvaluationValue
+  r_squared?: MlEvaluateDataFrameDataFrameEvaluationValue
 }
 
 export interface NodesNodesStatsDataPathStats {
@@ -8114,14 +8257,17 @@ export interface MlEstimateModelMemoryMlEstimateModelMemoryResponse extends Resp
 }
 
 export interface MlEvaluateDataFrameMlEvaluateDataFrameRequest extends RequestBase {
-  stub: string
   body: {
-    stub?: string
+    evaluation: MlDataFrameEvaluationContainer
+    index: IndexName
+    query?: QueryDslAbstractionsContainerQueryContainer
   }
 }
 
 export interface MlEvaluateDataFrameMlEvaluateDataFrameResponse extends ResponseBase {
-  stub: boolean
+  classification?: MlEvaluateDataFrameDataFrameClassificationSummary
+  outlier_detection?: MlEvaluateDataFrameDataFrameOutlierDetectionSummary
+  regression?: MlEvaluateDataFrameDataFrameRegressionSummary
 }
 
 export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsRequest extends RequestBase {
