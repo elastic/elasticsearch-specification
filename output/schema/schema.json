@@ -3932,12 +3932,12 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.delete_index_template",
       "request": {
-        "name": "IndicesDeleteIndexTemplateRequest",
+        "name": "Request",
         "namespace": "indices.delete_index_template"
       },
       "requestBodyRequired": false,
       "response": {
-        "name": "IndicesDeleteIndexTemplateResponse",
+        "name": "Response",
         "namespace": "indices.delete_index_template"
       },
       "since": "7.8.0",
@@ -5220,12 +5220,12 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.simulate_index_template",
       "request": {
-        "name": "IndicesSimulateIndexTemplateRequest",
+        "name": "Request",
         "namespace": "indices.simulate_index_template"
       },
       "requestBodyRequired": false,
       "response": {
-        "name": "IndicesSimulateIndexTemplateResponse",
+        "name": "Response",
         "namespace": "indices.simulate_index_template"
       },
       "since": "7.9.0",
@@ -17134,6 +17134,7 @@
       ]
     },
     {
+      "description": "Contains parameters used to limit or change the subsequent search body request.",
       "kind": "interface",
       "name": {
         "name": "MultiSearchHeader",
@@ -17313,6 +17314,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of data streams, indices, and index aliases to search.",
           "name": "index",
           "required": false,
           "type": {
@@ -17337,7 +17339,8 @@
       ],
       "query": [
         {
-          "name": "ccs_minimize_roundtrips",
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -17348,6 +17351,59 @@
           }
         },
         {
+          "description": "If true, network roundtrips between the coordinating node and remote clusters are minimized for cross-cluster search requests.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays",
+          "name": "ccs_minimize_roundtrips",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.",
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
+          "name": "ignore_throttled",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of concurrent searches the multi search API can execute.",
           "name": "max_concurrent_searches",
           "required": false,
           "type": {
@@ -17359,8 +17415,10 @@
           }
         },
         {
+          "description": "Maximum number of concurrent shard requests that each sub-search request executes per node.",
           "name": "max_concurrent_shard_requests",
           "required": false,
+          "serverDefault": "5",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17370,6 +17428,7 @@
           }
         },
         {
+          "description": "Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.",
           "name": "pre_filter_shard_size",
           "required": false,
           "type": {
@@ -17381,6 +17440,7 @@
           }
         },
         {
+          "description": "Indicates whether global term and document frequencies should be used when scoring returned documents.",
           "name": "search_type",
           "required": false,
           "type": {
@@ -17392,8 +17452,10 @@
           }
         },
         {
+          "description": "If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.",
           "name": "rest_total_hits_as_int",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17403,6 +17465,7 @@
           }
         },
         {
+          "description": "Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.",
           "name": "typed_keys",
           "required": false,
           "type": {
@@ -17483,35 +17546,81 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "MultiSearchTemplateItem",
+        "namespace": "_global.msearch_template"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "operations",
-            "required": false,
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Request",
-                  "namespace": "_global.search_template"
-                }
-              }
+              "name": "MultiSearchTemplateItem",
+              "namespace": "_global.msearch_template"
             }
           }
-        ]
+        }
       },
       "inherits": {
         "type": {
@@ -17607,6 +17716,12 @@
       ]
     },
     {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch_template"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -17627,7 +17742,11 @@
             "value": {
               "generics": [
                 {
-                  "kind": "user_defined_value"
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "_global.msearch_template"
+                  }
                 }
               ],
               "kind": "instance_of",
@@ -21097,11 +21216,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "max_concurrent_shard_requests",
-=======
-          "name": "sys",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21112,11 +21227,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "min_compatible_shard_node",
-=======
-          "name": "sys_in_millis",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21127,11 +21238,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "preference",
-=======
-          "name": "total",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21142,11 +21249,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "pre_filter_shard_size",
-=======
-          "name": "total_in_millis",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21157,11 +21260,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "request_cache",
-=======
-          "name": "user",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21172,11 +21271,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "routing",
-=======
-          "name": "user_in_millis",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -21186,40 +21281,6 @@
             }
           }
         },
-<<<<<<< HEAD
-=======
-        {
-          "name": "load_average",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Calendar",
-        "namespace": "ml.get_calendars"
-      },
-      "properties": [
->>>>>>> master
         {
           "name": "scroll",
           "required": false,
@@ -26239,8 +26300,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Id",
+                "namespace": "_types"
               }
             }
           },
@@ -32009,9 +32070,11 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.",
           "name": "query_then_fetch"
         },
         {
+          "description": "Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.",
           "name": "dfs_query_then_fetch"
         }
       ],
@@ -33185,14 +33248,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "_id",
           "required": true,
-=======
-          "description": "Specifies the number of top class predictions to return. Defaults to 0.",
-          "name": "num_top_classes",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33202,15 +33259,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "_index",
           "required": true,
-=======
-          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
-          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
-          "name": "num_top_feature_importance_values",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33220,14 +33270,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "_primary_term",
           "required": true,
-=======
-          "description": "Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false.",
-          "name": "prediction_field_type",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -33236,51 +33280,6 @@
             }
           }
         },
-<<<<<<< HEAD
-=======
-        {
-          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
-          "name": "results_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specifies the field to which the top classes are written. Defaults to top_classes.",
-          "name": "top_classes_results_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "CleanupRepositoryRequest",
-        "namespace": "snapshot.cleanup_repository"
-      },
-      "path": [
->>>>>>> master
         {
           "name": "result",
           "required": true,
@@ -37834,6 +37833,17 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "bounds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoBounds",
+              "namespace": "_types.aggregations"
+            }
+          }
         }
       ]
     },
@@ -41151,6 +41161,7 @@
       },
       "properties": [
         {
+          "description": "Specifies the number of top class predictions to return. Defaults to 0.",
           "name": "num_top_classes",
           "required": false,
           "type": {
@@ -41162,6 +41173,8 @@
           }
         },
         {
+          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
           "name": "num_top_feature_importance_values",
           "required": false,
           "type": {
@@ -41173,7 +41186,32 @@
           }
         },
         {
+          "description": "Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false.",
           "name": "prediction_field_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
+          "name": "results_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies the field to which the top classes are written. Defaults to top_classes.",
+          "name": "top_classes_results_field",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -41230,6 +41268,7 @@
       },
       "properties": [
         {
+          "description": "Regression configuration for inference.",
           "name": "regression",
           "required": false,
           "type": {
@@ -41241,6 +41280,7 @@
           }
         },
         {
+          "description": "Classification configuration for inference.",
           "name": "classification",
           "required": false,
           "type": {
@@ -41261,6 +41301,7 @@
       },
       "properties": [
         {
+          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
           "name": "results_field",
           "required": true,
           "type": {
@@ -41272,6 +41313,8 @@
           }
         },
         {
+          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
           "name": "num_top_feature_importance_values",
           "required": false,
           "type": {
@@ -52443,39 +52486,6 @@
               "namespace": "_types.query_dsl.full_text.intervals"
             }
           }
-        },
-        {
-          "name": "total_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "free_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "used_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "variants": {
@@ -57446,17 +57456,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "bounds",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoBounds",
-              "namespace": "_types.aggregations"
-            }
-          }
         }
       ]
     },
@@ -62268,125 +62267,12 @@
               "namespace": "internal"
             }
           }
-<<<<<<< HEAD
         },
         {
           "description": "time spend in shard bulk",
           "name": "pri.bulk.total_time",
           "required": false,
           "type": {
-=======
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Hyperparameter",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
-          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/dfa-regression.html#dfa-regression-lossfunction",
-          "name": "absolute_importance",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Name of the hyperparameter.",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A number between 0 and 1 showing the proportion of influence on the variation of the loss function among all tuned hyperparameters. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
-          "name": "relative_importance",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Indicates if the hyperparameter is specified by the user (true) or optimized (false).",
-          "name": "supplied",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "The value of the hyperparameter, either optimized or specified by the user.",
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "CompoundWordTokenFilterBase",
-          "namespace": "_types.analysis.token_filters.compound_word"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "HyphenationDecompounderTokenFilter",
-        "namespace": "_types.analysis.token_filters.compound_word"
-      },
-      "properties": []
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Id",
-        "namespace": "_types"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "Ids",
-        "namespace": "_types"
-      },
-      "type": {
-        "items": [
-          {
->>>>>>> master
             "kind": "instance_of",
             "type": {
               "name": "string",
@@ -64105,17 +63991,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "du",
             "diskUsed"
           ],
           "description": "used disk space",
           "name": "disk.used",
-=======
-          "description": "Contains statistics about completions across all shards assigned to the node.",
-          "name": "completion",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64126,7 +64007,6 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "d",
             "da",
@@ -64135,10 +64015,6 @@
           ],
           "description": "available disk space",
           "name": "disk.avail",
-=======
-          "description": "Contains statistics about documents across all primary shards assigned to the node.",
-          "name": "docs",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64149,17 +64025,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "dup",
             "diskUsedPercent"
           ],
           "description": "used disk space percentage",
           "name": "disk.used_percent",
-=======
-          "description": "Contains statistics about the field data cache across all shards assigned to the node.",
-          "name": "fielddata",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64170,17 +64041,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "hc",
             "heapCurrent"
           ],
           "description": "used heap",
           "name": "heap.current",
-=======
-          "description": "Contains statistics about flush operations for the node.",
-          "name": "flush",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64191,17 +64057,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "hp",
             "heapPercent"
           ],
           "description": "used heap ratio",
           "name": "heap.percent",
-=======
-          "description": "Contains statistics about get operations for the node.",
-          "name": "get",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64212,17 +64073,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "hm",
             "heapMax"
           ],
           "description": "max configured heap",
           "name": "heap.max",
-=======
-          "description": "Contains statistics about indexing operations for the node.",
-          "name": "indexing",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64233,17 +64089,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "rc",
             "ramCurrent"
           ],
           "description": "used machine memory",
           "name": "ram.current",
-=======
-          "description": "Contains statistics about merge operations for the node.",
-          "name": "merges",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64254,17 +64105,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "rp",
             "ramPercent"
           ],
           "description": "used machine memory ratio",
           "name": "ram.percent",
-=======
-          "description": "Contains statistics about the query cache across all shards assigned to the node.",
-          "name": "query_cache",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64275,17 +64121,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "rn",
             "ramMax"
           ],
           "description": "total machine memory",
           "name": "ram.max",
-=======
-          "description": "Contains statistics about recovery operations for the node.",
-          "name": "recovery",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64296,17 +64137,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "fdc",
             "fileDescriptorCurrent"
           ],
           "description": "used file descriptors",
           "name": "file_desc.current",
-=======
-          "description": "Contains statistics about refresh operations for the node.",
-          "name": "refresh",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64317,17 +64153,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "fdp",
             "fileDescriptorPercent"
           ],
           "description": "used file descriptor ratio",
           "name": "file_desc.percent",
-=======
-          "description": "Contains statistics about the request cache across all shards assigned to the node.",
-          "name": "request_cache",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64338,17 +64169,12 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "fdm",
             "fileDescriptorMax"
           ],
           "description": "max file descriptors",
           "name": "file_desc.max",
-=======
-          "description": "Contains statistics about search operations for the node.",
-          "name": "search",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64359,13 +64185,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "description": "recent cpu usage",
           "name": "cpu",
-=======
-          "description": "Contains statistics about segments across all shards assigned to the node.",
-          "name": "segments",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64376,13 +64197,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "description": "1m load avg",
           "name": "load_1m",
-=======
-          "description": "Contains statistics about the size of shards assigned to the node.",
-          "name": "store",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64393,13 +64209,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "description": "5m load avg",
           "name": "load_5m",
-=======
-          "description": "Contains statistics about transaction log operations for the node.",
-          "name": "translog",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -64410,16 +64221,11 @@
           }
         },
         {
-<<<<<<< HEAD
           "aliases": [
             "l"
           ],
           "description": "15m load avg",
           "name": "load_15m",
-=======
-          "description": "Contains statistics about index warming operations for the node.",
-          "name": "warmer",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -65863,58 +65669,8 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "CatRecoveryRecord",
         "namespace": "cat.cat_recovery"
-=======
-        "name": "IndicesDeleteIndexTemplateRequest",
-        "namespace": "indices.delete_index_template"
-      },
-      "path": [
-        {
-          "description": "The name of the template",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndicesDeleteIndexTemplateResponse",
-        "namespace": "indices.delete_index_template"
-      },
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "IndicesDeleteRequest",
-        "namespace": "indices.delete"
->>>>>>> master
       },
       "properties": [
         {
@@ -70418,158 +70174,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-<<<<<<< HEAD
-=======
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "index_patterns",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              }
-            }
-          },
-          {
-            "name": "composed_of",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Name",
-                  "namespace": "_types"
-                }
-              }
-            }
-          },
-          {
-            "description": "Any overlapping templates that would have matched, but have lower priority",
-            "name": "overlapping",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "OverlappingIndexTemplate",
-                  "namespace": "indices.simulate_index_template"
-                }
-              }
-            }
-          },
-          {
-            "name": "template",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TemplateMapping",
-                "namespace": "indices._types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "IndicesSimulateIndexTemplateRequest",
-        "namespace": "indices.simulate_index_template"
-      },
-      "path": [
-        {
-          "description": "The name of the index (it must be a concrete index name)",
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndicesSimulateIndexTemplateResponse",
-        "namespace": "indices.simulate_index_template"
-      },
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "aliases",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Alias",
-                  "namespace": "indices._types"
-                }
-              }
-            }
-          },
-          {
-            "name": "settings",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        ]
-      },
->>>>>>> master
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71577,26 +71181,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "patterns",
           "required": true,
-=======
-          "description": "Regression configuration for inference.",
-          "name": "regression",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RegressionInferenceOptions",
-              "namespace": "_types.aggregations.pipeline.inference_bucket"
-            }
-          }
-        },
-        {
-          "description": "Classification configuration for inference.",
-          "name": "classification",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
@@ -77595,13 +77181,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "available_in_bytes",
           "required": true,
-=======
-          "name": "resident",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77611,13 +77192,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "free_in_bytes",
           "required": true,
-=======
-          "name": "resident_in_bytes",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77627,13 +77203,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "total_in_bytes",
           "required": true,
-=======
-          "name": "share",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77652,14 +77223,9 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "description": "Contains statistics about the number of primary shards assigned to selected nodes.",
           "name": "primaries",
           "required": true,
-=======
-          "name": "share_in_bytes",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77669,14 +77235,9 @@
           }
         },
         {
-<<<<<<< HEAD
           "description": "Contains statistics about the number of replication shards assigned to selected nodes.",
           "name": "replication",
           "required": true,
-=======
-          "name": "total_virtual",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77686,45 +77247,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "description": "Contains statistics about the number of shards assigned to selected nodes.",
           "name": "shards",
-=======
-          "name": "total_virtual_in_bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "free_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "used_in_bytes",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -80168,183 +79692,31 @@
       ]
     },
     {
-<<<<<<< HEAD
       "kind": "interface",
-=======
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
->>>>>>> master
       "name": {
         "name": "ExecutingPolicy",
         "namespace": "enrich.stats"
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "name",
           "required": true,
-=======
-          "description": "The ID of the trained models to fetch",
-          "name": "model_id",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
-<<<<<<< HEAD
         },
         {
           "name": "task",
-=======
-        }
-      ],
-      "query": [
-        {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
-          "name": "allow_no_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specifies whether the included model definition should be returned as a JSON map (true) or in a custom compressed format (false).",
-          "name": "decompress_definition",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.",
-          "name": "exclude_generated",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Skips the specified number of models.",
-          "name": "from",
-          "required": false,
-          "serverDefault": "false",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma delimited string of optional fields to include in the response body.",
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specifies the maximum number of models to obtain.",
-          "name": "size",
-          "required": false,
-          "serverDefault": "100",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma delimited string of tags. A trained model can have many tags, or none. When supplied, only trained models that contain all the supplied tags are returned.",
-          "name": "tags",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "description": "Response codes\n400 - If include_model_definition is true, this code indicates that more than one models match the ID pattern.\n404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html#ml-get-trained-models-results",
-      "inherits": {
-        "type": {
-          "name": "ResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "MlGetTrainedModelResponse",
-        "namespace": "ml.get_trained_models"
-      },
-      "properties": [
-        {
-          "name": "count",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
               "name": "TaskInfo",
               "namespace": "task.get_task"
-=======
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "An array of trained model resources, which are sorted by the model_id value in ascending order.",
-          "name": "trained_model_configs",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TrainedModelConfig",
-                "namespace": "ml._types"
-              }
->>>>>>> master
             }
           }
         }
@@ -80365,68 +79737,10 @@
         "name": "Request",
         "namespace": "enrich.stats"
       },
-<<<<<<< HEAD
       "path": [],
       "query": []
-=======
-      "path": [
-        {
-          "description": "The ID of the trained models stats to fetch",
-          "name": "model_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
-          "name": "allow_no_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Skips the specified number of models.",
-          "name": "from",
-          "required": false,
-          "serverDefault": "false",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the maximum number of models to obtain.",
-          "name": "size",
-          "required": false,
-          "serverDefault": "100",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
->>>>>>> master
     },
     {
-      "description": "404 (Missing resources) If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -80435,49 +79749,8 @@
       },
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "Response",
         "namespace": "enrich.stats"
-=======
-        "name": "MlGetTrainedModelStatsResponse",
-        "namespace": "ml.get_trained_models_stats"
-      },
-      "properties": [
-        {
-          "description": "The total number of trained model statistics that matched the requested ID patterns. Could be higher than the number of items in the trained_model_stats array as the size of the array is restricted by the supplied size parameter.",
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "An array of trained model statistics, which are sorted by the model_id value in ascending order.",
-          "name": "trained_model_stats",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TrainedModelStats",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MlInferenceIngestProcessorCountUsage",
-        "namespace": "xpack.usage"
->>>>>>> master
       },
       "properties": [
         {
@@ -81658,13 +80931,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "field",
           "required": true,
-=======
-          "name": "description",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83561,8 +82829,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           }
@@ -85572,6 +84840,50 @@
       "kind": "request",
       "name": {
         "name": "Request",
+        "namespace": "indices.delete_index_template"
+      },
+      "path": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.delete_index_template"
+      },
+      "properties": []
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
         "namespace": "indices.delete_template"
       },
       "path": [
@@ -87485,55 +86797,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "local",
-=======
-          "name": "suggest",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContainer",
-                  "namespace": "_global.search.suggesters"
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SuggestContainer",
-                    "namespace": "_global.search.suggesters"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
-      "description": "Contains parameters used to limit or change the subsequent search body request.",
-      "kind": "interface",
-      "name": {
-        "name": "MultiSearchHeader",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "allow_no_indices",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -87765,10 +87029,6 @@
       ],
       "query": [
         {
-<<<<<<< HEAD
-          "name": "allow_no_indices",
-=======
-          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
           "name": "allow_no_indices",
           "required": false,
           "type": {
@@ -87780,22 +87040,6 @@
           }
         },
         {
-          "description": "If true, network roundtrips between the coordinating node and remote clusters are minimized for cross-cluster search requests.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays",
-          "name": "ccs_minimize_roundtrips",
->>>>>>> master
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.",
           "name": "expand_wildcards",
           "required": false,
           "type": {
@@ -87807,23 +87051,8 @@
           }
         },
         {
-          "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
-          "name": "ignore_throttled",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
-          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87833,45 +87062,7 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "expand_wildcards",
-=======
-          "description": "Maximum number of concurrent searches the multi search API can execute.",
-          "name": "max_concurrent_searches",
->>>>>>> master
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-<<<<<<< HEAD
-          "name": "ignore_unavailable",
-=======
-          "description": "Maximum number of concurrent shard requests that each sub-search request executes per node.",
-          "name": "max_concurrent_shard_requests",
->>>>>>> master
-          "required": false,
-          "serverDefault": "5",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-<<<<<<< HEAD
           "name": "master_timeout",
-=======
-          "description": "Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.",
-          "name": "pre_filter_shard_size",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -87882,12 +87073,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "timeout",
-=======
-          "description": "Indicates whether global term and document frequencies should be used when scoring returned documents.",
-          "name": "search_type",
->>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -87898,14 +87084,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "wait_for_active_shards",
-=======
-          "description": "If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.",
-          "name": "rest_total_hits_as_int",
->>>>>>> master
           "required": false,
-          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -87930,14 +87110,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "shards_acknowledged",
           "required": true,
-=======
-          "description": "Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.",
-          "name": "typed_keys",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -88129,7 +87303,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -88142,73 +87315,12 @@
         "namespace": "indices.put_alias"
       },
       "properties": []
-=======
-      "kind": "interface",
-      "name": {
-        "name": "MultiSearchTemplateItem",
-        "namespace": "_global.msearch_template"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
->>>>>>> master
     },
     {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-<<<<<<< HEAD
         "kind": "properties",
         "properties": [
           {
@@ -88389,16 +87501,6 @@
                   "namespace": "_types.mapping.types"
                 }
               }
-=======
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MultiSearchTemplateItem",
-              "namespace": "_global.msearch_template"
->>>>>>> master
             }
           },
           {
@@ -88445,7 +87547,7 @@
               }
             }
           }
-        }
+        ]
       },
       "inherits": {
         "type": {
@@ -88563,12 +87665,6 @@
       ]
     },
     {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "_global.msearch_template"
-        }
-      ],
       "inherits": {
         "type": {
           "name": "IndicesResponseBase",
@@ -88580,46 +87676,7 @@
         "name": "Response",
         "namespace": "indices.put_mapping"
       },
-<<<<<<< HEAD
       "properties": []
-=======
-      "properties": [
-        {
-          "name": "responses",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TDocument",
-                    "namespace": "_global.msearch_template"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "SearchResponse",
-                "namespace": "_global.search"
-              }
-            }
-          }
-        },
-        {
-          "name": "took",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
->>>>>>> master
     },
     {
       "inherits": {
@@ -91567,6 +90624,144 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "OverlappingIndexTemplate",
+        "namespace": "indices.simulate_index_template"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_patterns",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index_patterns",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "name": "composed_of",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Name",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "description": "Any overlapping templates that would have matched, but have lower priority",
+            "name": "overlapping",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "OverlappingIndexTemplate",
+                  "namespace": "indices.simulate_index_template"
+                }
+              }
+            }
+          },
+          {
+            "name": "template",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TemplateMapping",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.simulate_index_template"
+      },
+      "path": [
+        {
+          "description": "Index or template name to simulate",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.simulate_index_template"
+      },
+      "properties": []
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -91731,6 +90926,7 @@
       },
       "properties": [
         {
+          "description": "Contains statistics about completions across all shards assigned to the node.",
           "name": "completion",
           "required": false,
           "type": {
@@ -91742,6 +90938,7 @@
           }
         },
         {
+          "description": "Contains statistics about documents across all primary shards assigned to the node.",
           "name": "docs",
           "required": false,
           "type": {
@@ -91753,6 +90950,7 @@
           }
         },
         {
+          "description": "Contains statistics about the field data cache across all shards assigned to the node.",
           "name": "fielddata",
           "required": false,
           "type": {
@@ -91764,6 +90962,7 @@
           }
         },
         {
+          "description": "Contains statistics about flush operations for the node.",
           "name": "flush",
           "required": false,
           "type": {
@@ -91775,6 +90974,7 @@
           }
         },
         {
+          "description": "Contains statistics about get operations for the node.",
           "name": "get",
           "required": false,
           "type": {
@@ -91786,6 +90986,7 @@
           }
         },
         {
+          "description": "Contains statistics about indexing operations for the node.",
           "name": "indexing",
           "required": false,
           "type": {
@@ -91797,6 +90998,7 @@
           }
         },
         {
+          "description": "Contains statistics about merge operations for the node.",
           "name": "merges",
           "required": false,
           "type": {
@@ -91808,6 +91010,7 @@
           }
         },
         {
+          "description": "Contains statistics about the query cache across all shards assigned to the node.",
           "name": "query_cache",
           "required": false,
           "type": {
@@ -91819,6 +91022,7 @@
           }
         },
         {
+          "description": "Contains statistics about recovery operations for the node.",
           "name": "recovery",
           "required": false,
           "type": {
@@ -91830,6 +91034,7 @@
           }
         },
         {
+          "description": "Contains statistics about refresh operations for the node.",
           "name": "refresh",
           "required": false,
           "type": {
@@ -91841,6 +91046,7 @@
           }
         },
         {
+          "description": "Contains statistics about the request cache across all shards assigned to the node.",
           "name": "request_cache",
           "required": false,
           "type": {
@@ -91852,6 +91058,7 @@
           }
         },
         {
+          "description": "Contains statistics about search operations for the node.",
           "name": "search",
           "required": false,
           "type": {
@@ -91863,6 +91070,7 @@
           }
         },
         {
+          "description": "Contains statistics about segments across all shards assigned to the node.",
           "name": "segments",
           "required": false,
           "type": {
@@ -91874,6 +91082,7 @@
           }
         },
         {
+          "description": "Contains statistics about the size of shards assigned to the node.",
           "name": "store",
           "required": false,
           "type": {
@@ -91885,6 +91094,7 @@
           }
         },
         {
+          "description": "Contains statistics about transaction log operations for the node.",
           "name": "translog",
           "required": false,
           "type": {
@@ -91896,6 +91106,7 @@
           }
         },
         {
+          "description": "Contains statistics about index warming operations for the node.",
           "name": "warmer",
           "required": false,
           "type": {
@@ -92170,7 +91381,6 @@
           "name": "indices",
           "required": false,
           "type": {
-<<<<<<< HEAD
             "key": {
               "kind": "instance_of",
               "type": {
@@ -92185,28 +91395,8 @@
               "type": {
                 "name": "IndicesStats",
                 "namespace": "indices.stats"
-=======
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Ip",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Ip",
-                    "namespace": "_types"
-                  }
-                }
->>>>>>> master
               }
-            ],
-            "kind": "union_of"
+            }
           }
         },
         {
@@ -92323,28 +91513,6 @@
             "type": {
               "name": "long",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
             }
           }
         }
@@ -92733,14 +91901,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "fielddata",
           "required": true,
-=======
-          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.",
-          "name": "completion_fields",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92750,14 +91912,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "flush",
           "required": true,
-=======
-          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata statistics.",
-          "name": "fielddata_fields",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92767,14 +91923,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "get",
           "required": true,
-=======
-          "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.",
-          "name": "fields",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92784,14 +91934,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "indexing",
           "required": true,
-=======
-          "description": "Comma-separated list of search groups to include in the search statistics.",
-          "name": "groups",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92801,15 +91945,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "merges",
           "required": true,
-=======
-          "description": "If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).",
-          "name": "include_segment_file_sizes",
-          "required": false,
-          "serverDefault": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92819,14 +91956,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "shard_path",
           "required": true,
-=======
-          "description": "Indicates whether statistics are aggregated at the cluster, index, or shard level.",
-          "name": "level",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92836,28 +91967,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "query_cache",
           "required": true,
-=======
-          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-          "name": "master_timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-          "name": "timeout",
-          "required": false,
-          "serverDefault": "30s",
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -92867,128 +91978,28 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "recovery",
-=======
-          "description": "A comma-separated list of document types for the indexing index metric.",
-          "name": "types",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "include_unloaded_segments",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "NodesResponseBase",
-          "namespace": "nodes._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "NodesStatsResponse",
-        "namespace": "nodes.nodes_stats"
-      },
-      "properties": [
-        {
-          "name": "cluster_name",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
               "name": "RecoveryStats",
-=======
-              "name": "Name",
->>>>>>> master
               "namespace": "_types"
             }
           }
         },
         {
-<<<<<<< HEAD
           "name": "refresh",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "RefreshStats",
-=======
-          "name": "nodes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStats",
-                "namespace": "nodes.nodes_stats"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "NodesUsageRequest",
-        "namespace": "nodes.nodes_usage"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
-          "name": "node_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeIds",
->>>>>>> master
               "namespace": "_types"
             }
           }
         },
         {
-<<<<<<< HEAD
           "name": "request_cache",
           "required": true,
           "type": {
@@ -93010,47 +92021,6 @@
             }
           }
         },
-=======
-          "description": "Limit the information returned to the specified metrics",
-          "name": "metric",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metrics",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "NodesResponseBase",
-          "namespace": "nodes._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "NodesUsageResponse",
-        "namespace": "nodes.nodes_usage"
-      },
-      "properties": [
->>>>>>> master
         {
           "name": "routing",
           "required": true,
@@ -93808,47 +92778,8 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "PipelineConfig",
         "namespace": "ingest._types"
-=======
-        "name": "OverlappingIndexTemplate",
-        "namespace": "indices.simulate_index_template"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index_patterns",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Page",
-        "namespace": "ml._types"
->>>>>>> master
       },
       "properties": [
         {
@@ -96381,83 +95312,16 @@
               "namespace": "internal"
             }
           }
-<<<<<<< HEAD
         },
         {
           "name": "separator",
           "required": true,
           "type": {
             "kind": "instance_of",
-=======
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "The destination for the transform.",
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "description": "Free text description of the transform.",
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
-            "name": "frequency",
-            "required": false,
-            "serverDefault": "1m",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data.",
-            "name": "pivot",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformPivot",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "description": "The source of the data for the transform.",
-            "name": "source",
-            "required": false,
->>>>>>> master
             "type": {
               "name": "string",
               "namespace": "internal"
             }
-<<<<<<< HEAD
           }
         },
         {
@@ -96465,52 +95329,9 @@
           "required": false,
           "type": {
             "kind": "instance_of",
-=======
-          },
-          {
-            "description": "Defines optional transform settings.",
-            "name": "settings",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSettings",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "description": " Defines the properties transforms require to run continuously.",
-            "name": "sync",
-            "required": false,
->>>>>>> master
             "type": {
               "name": "Field",
               "namespace": "_types"
-            }
-          },
-          {
-            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
-            "name": "retention_policy",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformRetentionPolicyContainer",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "description": " The latest method transforms the data by finding the latest document for each unique key.",
-            "name": "latest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformLatest",
-                "namespace": "transform._types"
-              }
             }
           }
         }
@@ -98425,7 +97246,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-<<<<<<< HEAD
       "body": {
         "kind": "properties",
         "properties": [
@@ -98442,12 +97262,10 @@
           }
         ]
       },
-=======
->>>>>>> master
       "inherits": {
         "type": {
-          "name": "PreviewTransformRequest",
-          "namespace": "transform.preview_transform"
+          "name": "RequestBase",
+          "namespace": "_types"
         }
       },
       "kind": "request",
@@ -98462,27 +97280,16 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
               "name": "string",
               "namespace": "internal"
-=======
-              "name": "Id",
-              "namespace": "_types"
->>>>>>> master
             }
           }
         }
       ],
       "query": [
         {
-<<<<<<< HEAD
           "name": "stub_b",
           "required": true,
-=======
-          "description": "When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created.",
-          "name": "defer_validation",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100584,6 +99391,76 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Hyperparameter",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/dfa-regression.html#dfa-regression-lossfunction",
+          "name": "absolute_importance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Name of the hyperparameter.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A number between 0 and 1 showing the proportion of influence on the variation of the loss function among all tuned hyperparameters. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
+          "name": "relative_importance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Indicates if the hyperparameter is specified by the user (true) or optimized (false).",
+          "name": "supplied",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The value of the hyperparameter, either optimized or specified by the user.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Influence",
         "namespace": "ml._types"
       },
@@ -101854,6 +100731,563 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "TotalFeatureImportance",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The feature for which this importance was calculated.",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
+          "name": "importance",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceStatistics",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "If the trained model is a classification model, feature importance statistics are gathered per target class value.",
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceClass",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TotalFeatureImportanceClass",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The target class value. Could be a string, boolean, or number.",
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
+          "name": "importance",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceStatistics",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TotalFeatureImportanceStatistics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The average magnitude of this feature across all the training data. This value is the average of the absolute values of the importance for this feature.",
+          "name": "mean_magnitude",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum importance value across all the training data for this feature.",
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The minimum importance value across all the training data for this feature.",
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Idetifier for the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma delimited string of tags. A trained model can have many tags, or none.",
+          "name": "tags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The Elasticsearch version number in which the trained model was created.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "compressed_definition",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Information on the creator of the trained model.",
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The time when the trained model was created.",
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Any field map described in the inference configuration takes precedence.",
+          "name": "default_field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The free-text description of the trained model.",
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The estimated heap usage in bytes to keep the trained model in memory.",
+          "name": "estimated_heap_memory_usage_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The estimated number of operations to use the trained model.",
+          "name": "estimated_operations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
+          "name": "inference_config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigContainer",
+              "namespace": "_types.aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
+          "description": "The input field names for the model definition.",
+          "name": "input",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelConfigInput",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The license level of the trained model.",
+          "name": "license_level",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelConfigMetadata",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfigInput",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "An array of input field names for the model.",
+          "name": "field_names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfigMetadata",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "model_aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "An object that contains the baseline for feature importance values. For regression analysis, it is a single value. For classification analysis, there is a value for each class.",
+          "name": "feature_importance_baseline",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "List of the available hyperparameters optimized during the fine_parameter_tuning phase as well as specified by the user.",
+          "name": "hyperparameters",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Hyperparameter",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "An array of the total feature importance for each feature used from the training data set. This array of objects is returned if data frame analytics trained the model and the request includes total_feature_importance in the include request parameter.",
+          "name": "total_feature_importance",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportance",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelInferenceStats",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The number of failures when using the model for inference.",
+          "name": "failure_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The total number of times the model has been called for inference. This is across all inference contexts, including all pipelines.",
+          "name": "inference_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#general-ml-settings",
+          "name": "cache_miss_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of inference calls where all the training features for the model were missing.",
+          "name": "missing_all_fields_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the statistics were last updated.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelStats",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of ingest pipelines that currently refer to the model.",
+          "name": "pipeline_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of inference stats fields.",
+          "name": "inference_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelInferenceStats",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html",
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -102571,12 +102005,7 @@
       },
       "path": [
         {
-<<<<<<< HEAD
           "name": "job_id",
-=======
-          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
-          "name": "results_field",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -102587,15 +102016,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "snapshot_id",
           "required": true,
-=======
-          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
-          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
-          "name": "num_top_feature_importance_values",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105188,22 +104610,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -105217,8 +104623,74 @@
       },
       "path": [
         {
-          "name": "stub",
-          "required": true,
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies whether the included model definition should be returned as a JSON map (true) or in a custom compressed format (false).",
+          "name": "decompress_definition",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.",
+          "name": "exclude_generated",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of models.",
+          "name": "from",
+          "required": false,
+          "serverDefault": "false",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma delimited string of optional fields to include in the response body.",
+          "name": "include",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105226,11 +104698,23 @@
               "namespace": "internal"
             }
           }
-        }
-      ],
-      "query": [
+        },
         {
-          "name": "stub",
+          "description": "Specifies the maximum number of models to obtain.",
+          "name": "size",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma delimited string of tags. A trained model can have many tags, or none. When supplied, only trained models that contain all the supplied tags are returned.",
+          "name": "tags",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -105243,6 +104727,8 @@
       ]
     },
     {
+      "description": "Response codes\n400 - If include_model_definition is true, this code indicates that more than one models match the ID pattern.\n404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html#ml-get-trained-models-results",
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -105256,13 +104742,28 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "count",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An array of trained model resources, which are sorted by the model_id value in ascending order.",
+          "name": "trained_model_configs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelConfig",
+                "namespace": "ml._types"
+              }
             }
           }
         }
@@ -105272,22 +104773,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -105301,32 +104786,61 @@
       },
       "path": [
         {
-          "name": "stub",
-          "required": true,
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
       ],
       "query": [
         {
-          "name": "stub",
+          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "name": "allow_no_match",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of models.",
+          "name": "from",
+          "required": false,
+          "serverDefault": "false",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of models to obtain.",
+          "name": "size",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }
       ]
     },
     {
+      "description": "404 (Missing resources) If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -105340,13 +104854,29 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "The total number of trained model statistics that matched the requested ID patterns. Could be higher than the number of items in the trained_model_stats array as the size of the array is restricted by the supplied size parameter.",
+          "name": "count",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An array of trained model statistics, which are sorted by the model_id value in ascending order.",
+          "name": "trained_model_stats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelStats",
+                "namespace": "ml._types"
+              }
             }
           }
         }
@@ -106426,6 +105956,7 @@
       },
       "path": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -106437,6 +105968,7 @@
           }
         },
         {
+          "description": "An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -106476,7 +106008,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110368,7 +109900,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "kind": "interface",
       "name": {
         "name": "NodeInfoTransport",
@@ -110381,47 +109912,6 @@
           "type": {
             "kind": "array_of",
             "value": {
-=======
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "id",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "params",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
->>>>>>> master
               "kind": "instance_of",
               "type": {
                 "name": "string",
@@ -110711,7 +110201,6 @@
       "kind": "enum",
       "members": [
         {
-<<<<<<< HEAD
           "name": "master"
         },
         {
@@ -110752,14 +110241,6 @@
         },
         {
           "name": "coordinating_only"
-=======
-          "description": "Documents are scored using local term and document frequencies for the shard. This is usually faster but less accurate.",
-          "name": "query_then_fetch"
-        },
-        {
-          "description": "Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate.",
-          "name": "dfs_query_then_fetch"
->>>>>>> master
         }
       ],
       "name": {
@@ -110768,26 +110249,12 @@
       }
     },
     {
-<<<<<<< HEAD
       "description": "* @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles",
       "kind": "type_alias",
-=======
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
->>>>>>> master
       "name": {
         "name": "NodeRoles",
         "namespace": "nodes.nodes_info"
       },
-<<<<<<< HEAD
       "type": {
         "kind": "array_of",
         "value": {
@@ -110795,76 +110262,6 @@
           "type": {
             "name": "NodeRole",
             "namespace": "nodes.nodes_info"
-=======
-      "path": [
-        {
-          "description": "A comma-separated list of index names",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
->>>>>>> master
-          }
-        },
-        {
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pretty",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "human",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
           }
         }
       }
@@ -111143,33 +110540,6 @@
       ]
     },
     {
-<<<<<<< HEAD
-=======
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "SecurityAuthenticateRequest",
-        "namespace": "security.authenticate"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ResponseBase",
-          "namespace": "_types"
-        }
-      },
->>>>>>> master
       "kind": "interface",
       "name": {
         "name": "BreakerStats",
@@ -111241,38 +110611,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "token",
-          "required": false,
-          "since": "7.14.0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityAuthenticateToken",
-              "namespace": "security.authenticate"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SecurityAuthenticateToken",
-        "namespace": "security.authenticate"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
         }
       ]
     },
@@ -111296,7 +110634,7 @@
         },
         {
           "name": "sys",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111307,7 +110645,7 @@
         },
         {
           "name": "sys_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111318,7 +110656,7 @@
         },
         {
           "name": "total",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111329,7 +110667,7 @@
         },
         {
           "name": "total_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111340,7 +110678,7 @@
         },
         {
           "name": "user",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111351,12 +110689,34 @@
         },
         {
           "name": "user_in_millis",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_average",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -111581,6 +110941,39 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "total_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "free_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "used_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -111784,7 +111177,7 @@
       "properties": [
         {
           "name": "resident",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111795,7 +111188,7 @@
         },
         {
           "name": "resident_in_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111806,7 +111199,7 @@
         },
         {
           "name": "share",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111817,7 +111210,7 @@
         },
         {
           "name": "share_in_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111828,7 +111221,7 @@
         },
         {
           "name": "total_virtual",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111839,6 +111232,39 @@
         },
         {
           "name": "total_virtual_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "free_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "used_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -112132,14 +111558,26 @@
           "name": "ip",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Ip",
-                "namespace": "_types"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Ip",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Ip",
+                    "namespace": "_types"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -112263,6 +111701,28 @@
             "type": {
               "name": "TransportAddress",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -112391,6 +111851,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of node IDs or names used to limit returned information.",
           "name": "node_id",
           "required": false,
           "type": {
@@ -112413,6 +111874,7 @@
           }
         },
         {
+          "description": "Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.",
           "name": "index_metric",
           "required": false,
           "type": {
@@ -112426,6 +111888,7 @@
       ],
       "query": [
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics.",
           "name": "completion_fields",
           "required": false,
           "type": {
@@ -112437,6 +111900,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in fielddata statistics.",
           "name": "fielddata_fields",
           "required": false,
           "type": {
@@ -112448,6 +111912,7 @@
           }
         },
         {
+          "description": "Comma-separated list or wildcard expressions of fields to include in the statistics.",
           "name": "fields",
           "required": false,
           "type": {
@@ -112459,6 +111924,7 @@
           }
         },
         {
+          "description": "Comma-separated list of search groups to include in the search statistics.",
           "name": "groups",
           "required": false,
           "type": {
@@ -112470,8 +111936,10 @@
           }
         },
         {
+          "description": "If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).",
           "name": "include_segment_file_sizes",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112481,6 +111949,7 @@
           }
         },
         {
+          "description": "Indicates whether statistics are aggregated at the cluster, index, or shard level.",
           "name": "level",
           "required": false,
           "type": {
@@ -112492,8 +111961,10 @@
           }
         },
         {
-          "name": "timeout",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112503,6 +111974,20 @@
           }
         },
         {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of document types for the indexing index metric.",
           "name": "types",
           "required": false,
           "type": {
@@ -112513,6 +111998,17 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        },
+        {
+          "name": "include_unloaded_segments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -112537,8 +112033,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -114982,22 +114478,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115011,12 +114491,12 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "name": "index",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "Indices",
               "namespace": "_types"
             }
           }
@@ -115024,13 +114504,57 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "expand_wildcards",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "ExpandWildcards",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pretty",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "human",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -116016,22 +115540,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116165,6 +115673,38 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "token",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityAuthenticateToken",
+              "namespace": "security.authenticate"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SecurityAuthenticateToken",
+        "namespace": "security.authenticate"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
@@ -117756,7 +117296,6 @@
       "query": []
     },
     {
-<<<<<<< HEAD
       "inherits": {
         "generics": [
           {
@@ -117780,29 +117319,6 @@
         }
       },
       "kind": "interface",
-=======
-      "kind": "enum",
-      "members": [
-        {
-          "name": "Raw"
-        },
-        {
-          "name": "k"
-        },
-        {
-          "name": "m"
-        },
-        {
-          "name": "g"
-        },
-        {
-          "name": "t"
-        },
-        {
-          "name": "p"
-        }
-      ],
->>>>>>> master
       "name": {
         "name": "Response",
         "namespace": "security.get_role"
@@ -125742,7 +125258,6 @@
           "name": "sample_start",
           "required": true,
           "type": {
-<<<<<<< HEAD
             "kind": "instance_of",
             "type": {
               "name": "string",
@@ -125758,15 +125273,6 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
-=======
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Name",
-                "namespace": "_types"
-              }
->>>>>>> master
             }
           }
         },
@@ -125984,8 +125490,9 @@
       },
       "properties": [
         {
+          "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform.",
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125995,6 +125502,8 @@
           }
         },
         {
+          "description": "The unique identifier for an ingest pipeline.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html",
           "name": "pipeline",
           "required": false,
           "type": {
@@ -126010,11 +125519,276 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TransformLatest",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "Specifies the date field that is used to identify the latest documents.",
+          "name": "sort",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies an array of one or more fields that are used to group the data.",
+          "name": "unique_key",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformPivot",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "aggs"
+          ],
+          "name": "aggregations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "group_by",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformPivotGroupByContainer",
+                "namespace": "transform._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "max_page_search_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformPivotGroupByContainer",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "name": "date_histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramAggregation",
+              "namespace": "_types.aggregations.bucket.date_histogram"
+            }
+          }
+        },
+        {
+          "name": "geotile_grid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTileGridAggregation",
+              "namespace": "_types.aggregations.bucket.geo_tile_grid"
+            }
+          }
+        },
+        {
+          "name": "histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramAggregation",
+              "namespace": "_types.aggregations.bucket.histogram"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsAggregation",
+              "namespace": "_types.aggregations.bucket.terms"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformRetentionPolicy",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "The date field that is used to calculate the age of the document.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index.",
+          "name": "max_age",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformRetentionPolicyContainer",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "Specifies that the transform uses a time field to set the retention policy.",
+          "name": "time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransformRetentionPolicy",
+              "namespace": "transform._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "description": "The source of the data for the transform.",
+      "kind": "interface",
+      "name": {
+        "name": "TransformSettings",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "Defines if dates in the ouput should be written as ISO formatted string (default) or as millis since epoch. epoch_millis has been the default for transforms created before version 7.11. For compatible output set this to true.",
+          "name": "dates_as_epoch_millis",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a wait time between search requests. The default value is null, which disables throttling.",
+          "name": "docs_per_second",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.",
+          "name": "max_page_search_size",
+          "required": false,
+          "serverDefault": "500",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TransformSource",
         "namespace": "transform._types"
       },
       "properties": [
         {
+          "description": "The source indices for the transform.",
           "name": "index",
           "required": true,
           "type": {
@@ -126026,13 +125800,28 @@
           }
         },
         {
+          "description": "A query clause that retrieves a subset of data from the source index.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
           "name": "query",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "QueryContainer",
               "namespace": "_types.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.",
+          "name": "runtime_mappings",
+          "required": false,
+          "since": "7.12.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping.runtime_fields"
             }
           }
         }
@@ -126046,6 +125835,7 @@
       },
       "properties": [
         {
+          "description": "Specifies that the transform uses a time field to synchronize the source and destination indices.",
           "name": "time",
           "required": true,
           "type": {
@@ -126069,8 +125859,9 @@
       },
       "properties": [
         {
+          "description": "The time delay between the current time and the latest input data time.",
           "name": "delay",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126080,6 +125871,7 @@
           }
         },
         {
+          "description": "The date field that is used to identify new documents in the source.",
           "name": "field",
           "required": true,
           "type": {
@@ -126820,101 +126612,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "SingleGroupSource",
-        "namespace": "transform.pivot"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformPivot",
-        "namespace": "transform.pivot"
-      },
-      "properties": [
-        {
-          "name": "aggregations",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "group_by",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SingleGroupSource",
-                "namespace": "transform.pivot"
-              }
-            }
-          }
-        },
-        {
-          "name": "max_page_search_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -126922,17 +126619,7 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
+            "description": "The destination for the transform.",
             "name": "dest",
             "required": false,
             "type": {
@@ -126944,8 +126631,22 @@
             }
           },
           {
+            "description": "Free text description of the transform.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
             "name": "frequency",
             "required": false,
+            "serverDefault": "1m",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -126955,17 +126656,19 @@
             }
           },
           {
+            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data.",
             "name": "pivot",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "TransformPivot",
-                "namespace": "transform.pivot"
+                "namespace": "transform._types"
               }
             }
           },
           {
+            "description": "The source of the data for the transform.",
             "name": "source",
             "required": false,
             "type": {
@@ -126977,12 +126680,49 @@
             }
           },
           {
+            "description": "Defines optional transform settings.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformSettings",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": " Defines the properties transforms require to run continuously.",
             "name": "sync",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "TransformSyncContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
+            "name": "retention_policy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformRetentionPolicyContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": " The latest method transforms the data by finding the latest document for each unique key.",
+            "name": "latest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformLatest",
                 "namespace": "transform._types"
               }
             }
@@ -127053,81 +126793,10 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "frequency",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "pivot",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformPivot",
-                "namespace": "transform.pivot"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSource",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "sync",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSyncContainer",
-                "namespace": "transform._types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
+          "name": "Request",
+          "namespace": "transform.preview_transform"
         }
       },
       "kind": "request",
@@ -127137,12 +126806,13 @@
       },
       "path": [
         {
+          "description": "Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
           "name": "transform_id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -127150,6 +126820,7 @@
       ],
       "query": [
         {
+          "description": "When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created.",
           "name": "defer_validation",
           "required": false,
           "type": {
@@ -127336,70 +127007,10 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "frequency",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSource",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "sync",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSyncContainer",
-                "namespace": "transform._types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
+          "name": "Request",
+          "namespace": "transform.put_transform"
         }
       },
       "kind": "request",
@@ -127407,32 +127018,8 @@
         "name": "Request",
         "namespace": "transform.update_transform"
       },
-      "path": [
-        {
-          "name": "transform_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "defer_validation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": {
@@ -127454,17 +127041,6 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "create_time_date_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
               "namespace": "_types"
             }
           }
@@ -127520,7 +127096,18 @@
             "kind": "instance_of",
             "type": {
               "name": "TransformPivot",
-              "namespace": "transform.pivot"
+              "namespace": "transform._types"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransformSettings",
+              "namespace": "transform._types"
             }
           }
         },
@@ -127537,7 +127124,7 @@
         },
         {
           "name": "sync",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128829,145 +128416,8 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "IndexActionResultIndexResponse",
         "namespace": "watcher._types"
-=======
-        "name": "TotalFeatureImportance",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "The feature for which this importance was calculated.",
-          "name": "feature_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
-          "name": "importance",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TotalFeatureImportanceStatistics",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "If the trained model is a classification model, feature importance statistics are gathered per target class value.",
-          "name": "classes",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TotalFeatureImportanceClass",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TotalFeatureImportanceClass",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "The target class value. Could be a string, boolean, or number.",
-          "name": "class_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
-          "name": "importance",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TotalFeatureImportanceStatistics",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TotalFeatureImportanceStatistics",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "The average magnitude of this feature across all the training data. This value is the average of the absolute values of the importance for this feature.",
-          "name": "mean_magnitude",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The maximum importance value across all the training data for this feature.",
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The minimum importance value across all the training data for this feature.",
-          "name": "min",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TotalFileSystemStats",
-        "namespace": "nodes.nodes_stats"
->>>>>>> master
       },
       "properties": [
         {
@@ -129094,436 +128544,7 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "InputContainer",
-=======
-        "name": "TrainedModelConfig",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "Idetifier for the trained model.",
-          "name": "model_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma delimited string of tags. A trained model can have many tags, or none.",
-          "name": "tags",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "The Elasticsearch version number in which the trained model was created.",
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "compressed_definition",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Information on the creator of the trained model.",
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "The time when the trained model was created.",
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Any field map described in the inference configuration takes precedence.",
-          "name": "default_field_map",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "The free-text description of the trained model.",
-          "name": "description",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "The estimated heap usage in bytes to keep the trained model in memory.",
-          "name": "estimated_heap_memory_usage_bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The estimated number of operations to use the trained model.",
-          "name": "estimated_operations",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
-          "name": "inference_config",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceConfigContainer",
-              "namespace": "_types.aggregations.pipeline.inference_bucket"
-            }
-          }
-        },
-        {
-          "description": "The input field names for the model definition.",
-          "name": "input",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelConfigInput",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "description": "The license level of the trained model.",
-          "name": "license_level",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects.",
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelConfigMetadata",
-              "namespace": "ml._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelConfigInput",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "An array of input field names for the model.",
-          "name": "field_names",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelConfigMetadata",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "model_aliases",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "An object that contains the baseline for feature importance values. For regression analysis, it is a single value. For classification analysis, there is a value for each class.",
-          "name": "feature_importance_baseline",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "List of the available hyperparameters optimized during the fine_parameter_tuning phase as well as specified by the user.",
-          "name": "hyperparameters",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Hyperparameter",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "An array of the total feature importance for each feature used from the training data set. This array of objects is returned if data frame analytics trained the model and the request includes total_feature_importance in the include request parameter.",
-          "name": "total_feature_importance",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TotalFeatureImportance",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelInferenceStats",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "The number of failures when using the model for inference.",
-          "name": "failure_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The total number of times the model has been called for inference. This is across all inference contexts, including all pipelines.",
-          "name": "inference_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#general-ml-settings",
-          "name": "cache_miss_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The number of inference calls where all the training features for the model were missing.",
-          "name": "missing_all_fields_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The time when the statistics were last updated.",
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelStats",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "The unique identifier of the trained model.",
-          "name": "model_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The number of ingest pipelines that currently refer to the model.",
-          "name": "pipeline_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A collection of inference stats fields.",
-          "name": "inference_stats",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelInferenceStats",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "description": "A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html",
-          "name": "ingest",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Transform",
->>>>>>> master
         "namespace": "watcher._types"
       },
       "properties": [
@@ -129786,14 +128807,8 @@
       },
       "properties": [
         {
-<<<<<<< HEAD
           "name": "href",
           "required": true,
-=======
-          "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform.",
-          "name": "index",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -129803,15 +128818,8 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "src",
           "required": true,
-=======
-          "description": "The unique identifier for an ingest pipeline.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html",
-          "name": "pipeline",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -130108,7 +129116,6 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "ScheduleTriggerEvent",
         "namespace": "watcher._types"
       },
@@ -130116,54 +129123,6 @@
         {
           "name": "scheduled_time",
           "required": true,
-=======
-        "name": "TransformLatest",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "Specifies the date field that is used to identify the latest documents.",
-          "name": "sort",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies an array of one or more fields that are used to group the data.",
-          "name": "unique_key",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformPivot",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "aliases": [
-            "aggs"
-          ],
-          "name": "aggregations",
-          "required": false,
->>>>>>> master
           "type": {
             "items": [
               {
@@ -130241,15 +129200,7 @@
             "kind": "dictionary_of",
             "singleKey": false,
             "value": {
-<<<<<<< HEAD
               "kind": "user_defined_value"
-=======
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformPivotGroupByContainer",
-                "namespace": "transform._types"
-              }
->>>>>>> master
             }
           }
         },
@@ -130269,69 +129220,8 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "ScriptTransform",
         "namespace": "watcher._types"
-=======
-        "name": "TransformPivotGroupByContainer",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "name": "date_histogram",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateHistogramAggregation",
-              "namespace": "_types.aggregations.bucket.date_histogram"
-            }
-          }
-        },
-        {
-          "name": "geotile_grid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoTileGridAggregation",
-              "namespace": "_types.aggregations.bucket.geo_tile_grid"
-            }
-          }
-        },
-        {
-          "name": "histogram",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HistogramAggregation",
-              "namespace": "_types.aggregations.bucket.histogram"
-            }
-          }
-        },
-        {
-          "name": "terms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TermsAggregation",
-              "namespace": "_types.aggregations.bucket.terms"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformProgress",
-        "namespace": "transform.get_transform_stats"
->>>>>>> master
       },
       "properties": [
         {
@@ -130413,158 +129303,18 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "SearchInputRequestBody",
         "namespace": "watcher._types"
       },
       "properties": [
         {
-=======
-        "name": "TransformRetentionPolicy",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "The date field that is used to calculate the age of the document.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index.",
-          "name": "max_age",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformRetentionPolicyContainer",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "Specifies that the transform uses a time field to set the retention policy.",
-          "name": "time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformRetentionPolicy",
-              "namespace": "transform._types"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "description": "The source of the data for the transform.",
-      "kind": "interface",
-      "name": {
-        "name": "TransformSettings",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "Defines if dates in the ouput should be written as ISO formatted string (default) or as millis since epoch. epoch_millis has been the default for transforms created before version 7.11. For compatible output set this to true.",
-          "name": "dates_as_epoch_millis",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a wait time between search requests. The default value is null, which disables throttling.",
-          "name": "docs_per_second",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.",
-          "name": "max_page_search_size",
-          "required": false,
-          "serverDefault": "500",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformSource",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "The source indices for the transform.",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A query clause that retrieves a subset of data from the source index.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
->>>>>>> master
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "QueryContainer",
               "namespace": "_types.query_dsl.abstractions.container"
-            }
-          }
-        },
-        {
-          "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.",
-          "name": "runtime_mappings",
-          "required": false,
-          "since": "7.12.0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RuntimeFields",
-              "namespace": "_types.mapping.runtime_fields"
             }
           }
         }
@@ -130651,7 +129401,6 @@
     {
       "kind": "interface",
       "name": {
-<<<<<<< HEAD
         "name": "SearchTransform",
         "namespace": "watcher._types"
       },
@@ -130659,40 +129408,6 @@
         {
           "name": "request",
           "required": true,
-=======
-        "name": "TransformSyncContainer",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "Specifies that the transform uses a time field to synchronize the source and destination indices.",
-          "name": "time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformTimeSync",
-              "namespace": "transform._types"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformTimeSync",
-        "namespace": "transform._types"
-      },
-      "properties": [
-        {
-          "description": "The time delay between the current time and the latest input data time.",
-          "name": "delay",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -130702,12 +129417,7 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "timeout",
-=======
-          "description": "The date field that is used to identify new documents in the source.",
-          "name": "field",
->>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -132942,7 +131652,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-<<<<<<< HEAD
       "body": {
         "kind": "properties",
         "properties": [
@@ -133043,12 +131752,10 @@
           }
         ]
       },
-=======
->>>>>>> master
       "inherits": {
         "type": {
-          "name": "PutTransformRequest",
-          "namespace": "transform.put_transform"
+          "name": "RequestBase",
+          "namespace": "_types"
         }
       },
       "kind": "request",
@@ -133056,7 +131763,6 @@
         "name": "Request",
         "namespace": "watcher.put_watch"
       },
-<<<<<<< HEAD
       "path": [
         {
           "name": "id",
@@ -133082,24 +131788,6 @@
             }
           }
         },
-=======
-      "path": [],
-      "query": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "UpdateTransformResponse",
-        "namespace": "transform.update_transform"
-      },
-      "properties": [
->>>>>>> master
         {
           "name": "if_primary_term",
           "required": false,
@@ -133112,7 +131800,6 @@
           }
         },
         {
-<<<<<<< HEAD
           "name": "if_sequence_number",
           "required": false,
           "type": {
@@ -133126,10 +131813,6 @@
         {
           "name": "version",
           "required": false,
-=======
-          "name": "description",
-          "required": true,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133192,24 +131875,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-<<<<<<< HEAD
               "name": "SequenceNumber",
               "namespace": "_types"
-=======
-              "name": "TransformPivot",
-              "namespace": "transform._types"
-            }
-          }
-        },
-        {
-          "name": "settings",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformSettings",
-              "namespace": "transform._types"
->>>>>>> master
             }
           }
         },
@@ -133259,13 +131926,8 @@
       },
       "path": [
         {
-<<<<<<< HEAD
           "name": "stub_a",
           "required": true,
-=======
-          "name": "sync",
-          "required": false,
->>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
