@@ -3904,8 +3904,18 @@ export interface MlDataFrameAnalyticsSource {
   runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
-export interface MlDataFrameAnalyticsSummary {
-  stub: string
+export interface MlGetDataFrameAnalyticsDataFrameAnalyticsSummary {
+  id: Id
+  source: MlDataFrameAnalyticsSource
+  dest: MlDataFrameAnalyticsDestination
+  analysis: MlDataFrameAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
 }
 
 export interface MlEvaluateDataFrameDataFrameClassificationSummary {
@@ -8539,7 +8549,8 @@ export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsRequest extends R
 }
 
 export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsResponse extends ResponseBase {
-  data_frame_analytics: MlDataFrameAnalyticsSummary[]
+  count: integer
+  data_frame_analytics: MlGetDataFrameAnalyticsDataFrameAnalyticsSummary[]
 }
 
 export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsRequest extends RequestBase {

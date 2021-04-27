@@ -194,7 +194,3 @@ export class DataFrameAnalysisFeatureProcessorTargetMeanEncoding {
   /** The field value to target mean transition map. */
   target_map: Dictionary<string, UserDefinedValue>
 }
-
-export class DataFrameAnalyticsSummary {
-  stub: string
-}

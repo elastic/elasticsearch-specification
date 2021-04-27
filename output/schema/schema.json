@@ -42698,17 +42698,127 @@
       "kind": "interface",
       "name": {
         "name": "DataFrameAnalyticsSummary",
-        "namespace": "ml._types"
+        "namespace": "ml.get_data_frame_analytics"
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "id",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "dest",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsDestination",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_num_threads",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "allow_lazy_start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
             }
           }
         }
@@ -83182,6 +83292,17 @@
       },
       "properties": [
         {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "An array of data frame analytics job resources, which are sorted by the id value in ascending order.",
           "name": "data_frame_analytics",
           "required": true,
@@ -83191,7 +83312,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "DataFrameAnalyticsSummary",
-                "namespace": "ml._types"
+                "namespace": "ml.get_data_frame_analytics"
               }
             }
           }
