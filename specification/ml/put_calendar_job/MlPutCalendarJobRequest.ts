@@ -27,7 +27,9 @@ import { Id } from '@_types/common'
  */
 export interface MlPutCalendarJobRequest extends RequestBase {
   path_parts: {
+    /** A string that uniquely identifies a calendar. */
     calendar_id: Id
+    /** An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups. */
     job_id: Id
   }
 }

@@ -8522,7 +8522,7 @@ export interface MlPutCalendarJobMlPutCalendarJobRequest extends RequestBase {
 
 export interface MlPutCalendarJobMlPutCalendarJobResponse extends ResponseBase {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Id[]
 }
 
