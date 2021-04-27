@@ -2172,8 +2172,8 @@ export type SequenceNumber = integer
 export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 
 export interface ShardFailure {
-  index: IndexName
-  node: string
+  index?: IndexName
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string
