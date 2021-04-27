@@ -58,6 +58,7 @@ export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
     /**
      * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.
      * @server_default false
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
      */
     allow_lazy_start?: boolean
   }

@@ -9015,9 +9015,12 @@ export interface MlStopDatafeedMlStopDatafeedResponse extends ResponseBase {
 }
 
 export interface MlUpdateDataFrameAnalyticsMlUpdateDataFrameAnalyticsRequest extends RequestBase {
-  stub: string
+  id: Id
   body: {
-    stub?: string
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    allow_lazy_start?: boolean
   }
 }
 

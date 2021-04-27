@@ -18,7 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common';
+import { ByteSize, Id } from '@_types/common';
+import { integer } from '@_types/Numeric';
 
 /**
  * @rest_spec_name ml.update_data_frame_analytics
@@ -31,12 +32,6 @@ export interface MlUpdateDataFrameAnalyticsRequest extends RequestBase {
     id: Id
   }
   body?: {
-    /** The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified. */
-    source?: DataFrameAnalyticsSource
-    /** The destination configuration, consisting of index and optionally results_field (ml by default). */
-    dest: DataFrameAnalyticsDestination
-    /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
-    analysis: DataFrameAnalysisContainer
     /** A description of the job. */
     description?: string
     /**
@@ -46,11 +41,10 @@ export interface MlUpdateDataFrameAnalyticsRequest extends RequestBase {
     model_memory_limit?: ByteSize
     /** The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself. */
     max_num_threads?: integer
-    /** Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis. */
-    analyzed_fields?: DataFrameAnalysisAnalyzedFields
     /**
      * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.
      * @server_default false
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
      */
     allow_lazy_start?: boolean
   }
