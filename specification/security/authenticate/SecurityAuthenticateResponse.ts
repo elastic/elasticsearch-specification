@@ -33,4 +33,10 @@ export class SecurityAuthenticateResponse extends ResponseBase {
   username: Username
   enabled: boolean
   authentication_type: string
+  /** @since 7.14.0 */
+  token?: SecurityAuthenticateToken
+}
+
+export class SecurityAuthenticateToken {
+  name: Name
 }

@@ -9436,7 +9436,7 @@
         "name": "SecurityAuthenticateResponse",
         "namespace": "security.authenticate"
       },
-      "since": "0.0.0",
+      "since": "5.5.0",
       "stability": "TODO",
       "urls": [
         {
@@ -110314,22 +110314,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110463,6 +110447,38 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "token",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityAuthenticateToken",
+              "namespace": "security.authenticate"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SecurityAuthenticateToken",
+        "namespace": "security.authenticate"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
