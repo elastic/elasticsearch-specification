@@ -9306,22 +9306,45 @@ export interface NodesNodesInfoNodeInfo {
   build_hash: string
   build_type: string
   host: Host
-  http: NodesNodesInfoNodeInfoHttp
+  http?: NodesNodesInfoNodeInfoHttp
   ip: Ip
-  jvm: NodesNodesInfoNodeJvmInfo
+  jvm?: NodesNodesInfoNodeJvmInfo
   name: Name
-  network: NodesNodesInfoNodeInfoNetwork
-  os: NodesNodesInfoNodeOperatingSystemInfo
-  plugins: PluginStats[]
-  process: NodesNodesInfoNodeProcessInfo
+  network?: NodesNodesInfoNodeInfoNetwork
+  os?: NodesNodesInfoNodeOperatingSystemInfo
+  plugins?: PluginStats[]
+  process?: NodesNodesInfoNodeProcessInfo
   roles: NodesNodesInfoNodeRole[]
-  settings: NodesNodesInfoNodeInfoSettings
-  thread_pool: Record<string, NodesNodesInfoNodeThreadPoolInfo>
-  total_indexing_buffer: long
+  settings?: NodesNodesInfoNodeInfoSettings
+  thread_pool?: Record<string, NodesNodesInfoNodeThreadPoolInfo>
+  total_indexing_buffer?: long
   total_indexing_buffer_in_bytes?: ByteSize
-  transport: NodesNodesInfoNodeInfoTransport
+  transport?: NodesNodesInfoNodeInfoTransport
   transport_address: TransportAddress
   version: VersionString
+  modules?: PluginStats[]
+  ingest?: NodesNodesInfoNodeInfoIngest
+  aggregations?: Record<string, NodesNodesInfoNodeInfoAggregation>
+}
+
+export interface NodesNodesInfoNodeInfoAction {
+  destructive_requires_name: string
+}
+
+export interface NodesNodesInfoNodeInfoAggregation {
+  types: string[]
+}
+
+export interface NodesNodesInfoNodeInfoBootstrap {
+  memory_lock: string
+}
+
+export interface NodesNodesInfoNodeInfoClient {
+  type: string
+}
+
+export interface NodesNodesInfoNodeInfoDiscover {
+  seed_hosts: string
 }
 
 export interface NodesNodesInfoNodeInfoHttp {
@@ -9329,6 +9352,14 @@ export interface NodesNodesInfoNodeInfoHttp {
   max_content_length?: ByteSize
   max_content_length_in_bytes: long
   publish_address: string
+}
+
+export interface NodesNodesInfoNodeInfoIngest {
+  processors: NodesNodesInfoNodeInfoIngestProcessor[]
+}
+
+export interface NodesNodesInfoNodeInfoIngestProcessor {
+  type: string
 }
 
 export interface NodesNodesInfoNodeInfoJvmMemory {
@@ -9371,25 +9402,146 @@ export interface NodesNodesInfoNodeInfoOSCPU {
   vendor: string
 }
 
+export interface NodesNodesInfoNodeInfoPath {
+  logs: string
+  home: string
+  repo: string[]
+  data?: string[]
+}
+
+export interface NodesNodesInfoNodeInfoRepositories {
+  url: NodesNodesInfoNodeInfoRepositoriesUrl
+}
+
+export interface NodesNodesInfoNodeInfoRepositoriesUrl {
+  allowed_urls: string
+}
+
+export interface NodesNodesInfoNodeInfoScript {
+  allowed_types: string
+  disable_max_compilations_rate: string
+}
+
+export interface NodesNodesInfoNodeInfoSearch {
+  remote: NodesNodesInfoNodeInfoSearchRemote
+}
+
+export interface NodesNodesInfoNodeInfoSearchRemote {
+  connect: string
+}
+
 export interface NodesNodesInfoNodeInfoSettings {
   cluster: NodesNodesInfoNodeInfoSettingsCluster
+  node: NodesNodesInfoNodeInfoSettingsNode
+  path: NodesNodesInfoNodeInfoPath
+  repositories?: NodesNodesInfoNodeInfoRepositories
+  discovery?: NodesNodesInfoNodeInfoDiscover
+  action?: NodesNodesInfoNodeInfoAction
+  client: NodesNodesInfoNodeInfoClient
+  http: NodesNodesInfoNodeInfoSettingsHttp
+  bootstrap?: NodesNodesInfoNodeInfoBootstrap
+  transport: NodesNodesInfoNodeInfoSettingsTransport
+  network?: NodesNodesInfoNodeInfoSettingsNetwork
+  xpack?: NodesNodesInfoNodeInfoXpack
+  script?: NodesNodesInfoNodeInfoScript
+  search?: NodesNodesInfoNodeInfoSearch
 }
 
 export interface NodesNodesInfoNodeInfoSettingsCluster {
   name: Name
-  routing: IndexIndexRouting
+  routing?: IndexIndexRouting
   election: NodesNodesInfoNodeInfoSettingsClusterElection
-  initial_master_nodes: string
+  initial_master_nodes?: string
 }
 
 export interface NodesNodesInfoNodeInfoSettingsClusterElection {
   strategy: Name
 }
 
+export interface NodesNodesInfoNodeInfoSettingsHttp {
+  type: string | NodesNodesInfoNodeInfoSettingsHttpType
+  'type.default'?: string
+  compression?: boolean | string
+  port?: integer | string
+}
+
+export interface NodesNodesInfoNodeInfoSettingsHttpType {
+  default: string
+}
+
+export interface NodesNodesInfoNodeInfoSettingsNetwork {
+  host: Host
+}
+
+export interface NodesNodesInfoNodeInfoSettingsNode {
+  name: Name
+  attr: Record<string, any>
+  max_local_storage_nodes?: string
+}
+
+export interface NodesNodesInfoNodeInfoSettingsTransport {
+  type: string | NodesNodesInfoNodeInfoSettingsTransportType
+  'type.default'?: string
+  features?: NodesNodesInfoNodeInfoSettingsTransportFeatures
+}
+
+export interface NodesNodesInfoNodeInfoSettingsTransportFeatures {
+  'x-pack': string
+}
+
+export interface NodesNodesInfoNodeInfoSettingsTransportType {
+  default: string
+}
+
 export interface NodesNodesInfoNodeInfoTransport {
   bound_address: string[]
   publish_address: string
   profiles: Record<string, string>
+}
+
+export interface NodesNodesInfoNodeInfoXpack {
+  license?: NodesNodesInfoNodeInfoXpackLicense
+  security: NodesNodesInfoNodeInfoXpackSecurity
+  notification?: Record<string, any>
+}
+
+export interface NodesNodesInfoNodeInfoXpackLicense {
+  self_generated: NodesNodesInfoNodeInfoXpackLicenseType
+}
+
+export interface NodesNodesInfoNodeInfoXpackLicenseType {
+  type: string
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecurity {
+  http: NodesNodesInfoNodeInfoXpackSecuritySsl
+  enabled: string
+  transport: NodesNodesInfoNodeInfoXpackSecuritySsl
+  authc?: NodesNodesInfoNodeInfoXpackSecurityAuthc
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecurityAuthc {
+  realms: NodesNodesInfoNodeInfoXpackSecurityAuthcRealms
+  token: NodesNodesInfoNodeInfoXpackSecurityAuthcToken
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecurityAuthcRealms {
+  file?: Record<string, NodesNodesInfoNodeInfoXpackSecurityAuthcRealmsStatus>
+  native?: Record<string, NodesNodesInfoNodeInfoXpackSecurityAuthcRealmsStatus>
+  pki?: Record<string, NodesNodesInfoNodeInfoXpackSecurityAuthcRealmsStatus>
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecurityAuthcRealmsStatus {
+  enabled?: string
+  order: string
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecurityAuthcToken {
+  enabled: string
+}
+
+export interface NodesNodesInfoNodeInfoXpackSecuritySsl {
+  ssl: Record<string, string>
 }
 
 export interface NodesNodesStatsStatisticsNodeIngestStats {
@@ -9944,7 +10096,7 @@ export interface PluginStats {
   extended_plugins: string[]
   has_native_controller: boolean
   java_version: VersionString
-  name: string
+  name: Name
   version: VersionString
   licensed: boolean
   type: string
