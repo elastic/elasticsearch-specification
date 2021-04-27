@@ -11432,7 +11432,7 @@
         "name": "PreviewTransformResponse",
         "namespace": "transform.preview_transform"
       },
-      "since": "7.5.0",
+      "since": "7.2.0",
       "stability": "TODO",
       "urls": [
         {
@@ -11463,7 +11463,7 @@
         "name": "PutTransformResponse",
         "namespace": "transform.put_transform"
       },
-      "since": "7.5.0",
+      "since": "7.2.0",
       "stability": "TODO",
       "urls": [
         {
@@ -11550,7 +11550,7 @@
         "name": "UpdateTransformResponse",
         "namespace": "transform.update_transform"
       },
-      "since": "7.5.0",
+      "since": "7.2.0",
       "stability": "TODO",
       "urls": [
         {
@@ -56921,6 +56921,17 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "bounds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoBounds",
+              "namespace": "_types.aggregations"
+            }
+          }
         }
       ]
     },
@@ -95654,17 +95665,7 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
+            "description": "The destination for the transform.",
             "name": "dest",
             "required": false,
             "type": {
@@ -95676,8 +95677,22 @@
             }
           },
           {
+            "description": "Free text description of the transform.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
             "name": "frequency",
             "required": false,
+            "serverDefault": "1m",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -95687,17 +95702,19 @@
             }
           },
           {
+            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data.",
             "name": "pivot",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "TransformPivot",
-                "namespace": "transform.pivot"
+                "namespace": "transform._types"
               }
             }
           },
           {
+            "description": "The source of the data for the transform.",
             "name": "source",
             "required": false,
             "type": {
@@ -95709,12 +95726,49 @@
             }
           },
           {
+            "description": "Defines optional transform settings.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformSettings",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": " Defines the properties transforms require to run continuously.",
             "name": "sync",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "TransformSyncContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
+            "name": "retention_policy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformRetentionPolicyContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": " The latest method transforms the data by finding the latest document for each unique key.",
+            "name": "latest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformLatest",
                 "namespace": "transform._types"
               }
             }
@@ -97445,81 +97499,10 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "frequency",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "pivot",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformPivot",
-                "namespace": "transform.pivot"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSource",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "sync",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSyncContainer",
-                "namespace": "transform._types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
+          "name": "PreviewTransformRequest",
+          "namespace": "transform.preview_transform"
         }
       },
       "kind": "request",
@@ -97535,7 +97518,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -97543,6 +97526,7 @@
       ],
       "query": [
         {
+          "description": "When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created.",
           "name": "defer_validation",
           "required": false,
           "type": {
@@ -117309,37 +117293,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "SingleGroupSource",
-        "namespace": "transform.pivot"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Script",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -128869,8 +128822,9 @@
       },
       "properties": [
         {
+          "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform.",
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128880,6 +128834,8 @@
           }
         },
         {
+          "description": "The unique identifier for an ingest pipeline.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html",
           "name": "pipeline",
           "required": false,
           "type": {
@@ -129069,13 +129025,52 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformPivot",
-        "namespace": "transform.pivot"
+        "name": "TransformLatest",
+        "namespace": "transform._types"
       },
       "properties": [
         {
-          "name": "aggregations",
+          "description": "Specifies the date field that is used to identify the latest documents.",
+          "name": "sort",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies an array of one or more fields that are used to group the data.",
+          "name": "unique_key",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformPivot",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "aggs"
+          ],
+          "name": "aggregations",
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -129111,8 +129106,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SingleGroupSource",
-                "namespace": "transform.pivot"
+                "name": "TransformPivotGroupByContainer",
+                "namespace": "transform._types"
               }
             }
           }
@@ -129129,6 +129124,62 @@
           }
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformPivotGroupByContainer",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "name": "date_histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramAggregation",
+              "namespace": "_types.aggregations.bucket.date_histogram"
+            }
+          }
+        },
+        {
+          "name": "geotile_grid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTileGridAggregation",
+              "namespace": "_types.aggregations.bucket.geo_tile_grid"
+            }
+          }
+        },
+        {
+          "name": "histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramAggregation",
+              "namespace": "_types.aggregations.bucket.histogram"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsAggregation",
+              "namespace": "_types.aggregations.bucket.terms"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -129197,11 +129248,117 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TransformRetentionPolicy",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "The date field that is used to calculate the age of the document.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index.",
+          "name": "max_age",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformRetentionPolicyContainer",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "Specifies that the transform uses a time field to set the retention policy.",
+          "name": "time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransformRetentionPolicy",
+              "namespace": "transform._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "description": "The source of the data for the transform.",
+      "kind": "interface",
+      "name": {
+        "name": "TransformSettings",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "Defines if dates in the ouput should be written as ISO formatted string (default) or as millis since epoch. epoch_millis has been the default for transforms created before version 7.11. For compatible output set this to true.",
+          "name": "dates_as_epoch_millis",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies a limit on the number of input documents per second. This setting throttles the transform by adding a wait time between search requests. The default value is null, which disables throttling.",
+          "name": "docs_per_second",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.",
+          "name": "max_page_search_size",
+          "required": false,
+          "serverDefault": "500",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TransformSource",
         "namespace": "transform._types"
       },
       "properties": [
         {
+          "description": "The source indices for the transform.",
           "name": "index",
           "required": true,
           "type": {
@@ -129213,13 +129370,28 @@
           }
         },
         {
+          "description": "A query clause that retrieves a subset of data from the source index.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
           "name": "query",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "QueryContainer",
               "namespace": "_types.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.",
+          "name": "runtime_mappings",
+          "required": false,
+          "since": "7.12.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping.runtime_fields"
             }
           }
         }
@@ -129308,6 +129480,7 @@
       },
       "properties": [
         {
+          "description": "Specifies that the transform uses a time field to synchronize the source and destination indices.",
           "name": "time",
           "required": true,
           "type": {
@@ -129331,8 +129504,9 @@
       },
       "properties": [
         {
+          "description": "The time delay between the current time and the latest input data time.",
           "name": "delay",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -129342,6 +129516,7 @@
           }
         },
         {
+          "description": "The date field that is used to identify new documents in the source.",
           "name": "field",
           "required": true,
           "type": {
@@ -131664,70 +131839,10 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "dest",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformDestination",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "frequency",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "source",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSource",
-                "namespace": "transform._types"
-              }
-            }
-          },
-          {
-            "name": "sync",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformSyncContainer",
-                "namespace": "transform._types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
+          "name": "PutTransformRequest",
+          "namespace": "transform.put_transform"
         }
       },
       "kind": "request",
@@ -131735,33 +131850,8 @@
         "name": "UpdateTransformRequest",
         "namespace": "transform.update_transform"
       },
-      "path": [
-        {
-          "description": "The id of the transform.",
-          "name": "transform_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "defer_validation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": {
@@ -131783,17 +131873,6 @@
             "kind": "instance_of",
             "type": {
               "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "create_time_date_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
               "namespace": "_types"
             }
           }
@@ -131849,7 +131928,18 @@
             "kind": "instance_of",
             "type": {
               "name": "TransformPivot",
-              "namespace": "transform.pivot"
+              "namespace": "transform._types"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransformSettings",
+              "namespace": "transform._types"
             }
           }
         },
@@ -131866,7 +131956,7 @@
         },
         {
           "name": "sync",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

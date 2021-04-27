@@ -17,21 +17,14 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
+import { Field, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class TransformSource {
-  /**The source indices for the transform. */
-  index: Indices
-  /**
-   * A query clause that retrieves a subset of data from the source index.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-   */
-  query?: QueryContainer
-  /**
-   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
-   * @since 7.12.0
-   */
-  runtime_mappings?: RuntimeFields
+export class TransformLatest {
+  /** Specifies the date field that is used to identify the latest documents. */
+  sort: Field
+  /** Specifies an array of one or more fields that are used to group the data. */
+  unique_key: Field[]
 }

@@ -17,21 +17,20 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
-export class TransformSource {
-  /**The source indices for the transform. */
-  index: Indices
-  /**
-   * A query clause that retrieves a subset of data from the source index.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-   */
-  query?: QueryContainer
-  /**
-   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
-   * @since 7.12.0
-   */
-  runtime_mappings?: RuntimeFields
+/**
+ * @variants container
+ */
+export class TransformRetentionPolicyContainer {
+  /** Specifies that the transform uses a time field to set the retention policy. */
+  time: TransformRetentionPolicy
+}
+
+export class TransformRetentionPolicy {
+  /** The date field that is used to calculate the age of the document. */
+  field: Field
+  /** Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index. */
+  max_age: Time
 }

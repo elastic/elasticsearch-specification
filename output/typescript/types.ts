@@ -5487,6 +5487,7 @@ export interface AggregationsBucketGeoTileGridGeoTileGridAggregation extends Agg
   precision?: GeoTilePrecision
   shard_size?: integer
   size?: integer
+  bounds?: AggregationsGeoBounds
 }
 
 export type GeoTilePrecision = number
@@ -9950,12 +9951,15 @@ export interface QueryDslTermLevelPrefixPrefixQuery extends QueryDslAbstractions
 
 export interface TransformPreviewTransformPreviewTransformRequest extends RequestBase {
   body: {
-    description?: string
     dest?: TransformTransformDestination
+    description?: string
     frequency?: Time
-    pivot?: TransformPivotTransformPivot
+    pivot?: TransformTransformPivot
     source?: TransformTransformSource
+    settings?: TransformTransformSettings
     sync?: TransformTransformSyncContainer
+    retention_policy?: TransformTransformRetentionPolicyContainer
+    latest?: TransformTransformLatest
   }
 }
 
@@ -10153,17 +10157,9 @@ export interface SlmPutLifecyclePutSnapshotLifecycleRequest extends RequestBase 
 export interface SlmPutLifecyclePutSnapshotLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface TransformPutTransformPutTransformRequest extends RequestBase {
-  transform_id: Name
+export interface TransformPutTransformPutTransformRequest extends TransformPreviewTransformPreviewTransformRequest {
+  transform_id: Id
   defer_validation?: boolean
-  body: {
-    description?: string
-    dest?: TransformTransformDestination
-    frequency?: Time
-    pivot?: TransformPivotTransformPivot
-    source?: TransformTransformSource
-    sync?: TransformTransformSyncContainer
-  }
 }
 
 export interface TransformPutTransformPutTransformResponse extends AcknowledgedResponseBase {
@@ -12328,11 +12324,6 @@ export interface AggregationsSingleBucketAggregateKeys extends AggregationsAggre
 export type AggregationsSingleBucketAggregate = AggregationsSingleBucketAggregateKeys |
     { [property: string]: AggregationsAggregate }
 
-export interface TransformPivotSingleGroupSource {
-  field: Field
-  script: Script
-}
-
 export type Size = 'Raw' | 'k' | 'm' | 'g' | 't' | 'p'
 
 export interface MappingMetaFieldsSizeSizeField {
@@ -13609,7 +13600,7 @@ export interface WatcherTransformContainer {
 }
 
 export interface TransformTransformDestination {
-  index: IndexName
+  index?: IndexName
   pipeline?: string
 }
 
@@ -13631,10 +13622,23 @@ export interface TransformGetTransformStatsTransformIndexerStats {
   trigger_count: long
 }
 
-export interface TransformPivotTransformPivot {
-  aggregations: Record<string, AggregationsAggregationContainer>
-  group_by: Record<string, TransformPivotSingleGroupSource>
+export interface TransformTransformLatest {
+  sort: Field
+  unique_key: Field[]
+}
+
+export interface TransformTransformPivot {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  group_by: Record<string, TransformTransformPivotGroupByContainer>
   max_page_search_size?: integer
+}
+
+export interface TransformTransformPivotGroupByContainer {
+  date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
+  geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
+  histogram?: AggregationsBucketHistogramHistogramAggregation
+  terms?: AggregationsBucketTermsTermsAggregation
 }
 
 export interface TransformGetTransformStatsTransformProgress {
@@ -13645,9 +13649,25 @@ export interface TransformGetTransformStatsTransformProgress {
   total_docs: long
 }
 
+export interface TransformTransformRetentionPolicy {
+  field: Field
+  max_age: Time
+}
+
+export interface TransformTransformRetentionPolicyContainer {
+  time: TransformTransformRetentionPolicy
+}
+
+export interface TransformTransformSettings {
+  dates_as_epoch_millis?: boolean
+  docs_per_second?: float
+  max_page_search_size?: integer
+}
+
 export interface TransformTransformSource {
   index: Indices
-  query: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslAbstractionsContainerQueryContainer
+  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface TransformGetTransformStatsTransformStats {
@@ -13664,7 +13684,7 @@ export interface TransformTransformSyncContainer {
 }
 
 export interface TransformTransformTimeSync {
-  delay: Time
+  delay?: Time
   field: Field
 }
 
@@ -13911,28 +13931,19 @@ export interface UpdateUpdateResponse<TDocument = unknown> extends WriteResponse
   get?: ExplainInlineGet<TDocument>
 }
 
-export interface TransformUpdateTransformUpdateTransformRequest extends RequestBase {
-  transform_id: Name
-  defer_validation?: boolean
-  body: {
-    description?: string
-    dest?: TransformTransformDestination
-    frequency?: Time
-    source?: TransformTransformSource
-    sync?: TransformTransformSyncContainer
-  }
+export interface TransformUpdateTransformUpdateTransformRequest extends TransformPutTransformPutTransformRequest {
 }
 
 export interface TransformUpdateTransformUpdateTransformResponse extends ResponseBase {
   create_time: long
-  create_time_date_time: DateString
   description: string
   dest: TransformTransformDestination
   frequency: Time
   id: Id
-  pivot: TransformPivotTransformPivot
+  pivot: TransformTransformPivot
+  settings: TransformTransformSettings
   source: TransformTransformSource
-  sync: TransformTransformSyncContainer
+  sync?: TransformTransformSyncContainer
   version: VersionString
 }
 

@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { GeoBounds } from '@_types/aggregations/Aggregate'
 import { Field } from '@_types/common'
 import { GeoTilePrecision } from '@_types/Geo'
 import { integer } from '@_types/Numeric'
@@ -27,4 +28,5 @@ export class GeoTileGridAggregation extends BucketAggregationBase {
   precision?: GeoTilePrecision
   shard_size?: integer
   size?: integer
+  bounds?: GeoBounds
 }
