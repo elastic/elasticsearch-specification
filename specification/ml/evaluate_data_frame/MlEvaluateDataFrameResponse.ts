@@ -23,7 +23,7 @@ import { Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 
 /** @variants container */
-export class MlEvaluateDataFrameResponse extends ResponseBase {
+export class Response extends ResponseBase {
   classification?: DataFrameClassificationSummary
   outlier_detection?: DataFrameOutlierDetectionSummary
   regression?: DataFrameRegressionSummary

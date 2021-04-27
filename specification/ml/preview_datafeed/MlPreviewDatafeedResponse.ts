@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class MlPreviewDatafeedResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   data: TDocument[]
 }

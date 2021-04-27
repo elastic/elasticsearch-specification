@@ -25,7 +25,7 @@ import { Password, Refresh, Username } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface SecurityChangePasswordRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     username?: Username
   }

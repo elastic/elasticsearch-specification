@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class MlDeleteJobResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

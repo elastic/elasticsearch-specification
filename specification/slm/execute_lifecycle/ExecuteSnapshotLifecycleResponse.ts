@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class ExecuteSnapshotLifecycleResponse extends ResponseBase {
+export class Response extends ResponseBase {
   snapshot_name: string
 }

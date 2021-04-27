@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 7.5.0
  * @stability TODO
  */
-export interface StopTransformRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     transform_id: Name
   }

@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class StartRollupJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   started: boolean
 }

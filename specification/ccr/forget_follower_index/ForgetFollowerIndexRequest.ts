@@ -25,7 +25,7 @@ import { IndexName } from '@_types/common'
  * @since 6.7.0
  * @stability TODO
  */
-export interface ForgetFollowerIndexRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index: IndexName
   }

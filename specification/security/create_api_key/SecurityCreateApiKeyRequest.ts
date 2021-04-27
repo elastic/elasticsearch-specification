@@ -28,7 +28,7 @@ import { ApiKeyRole } from './ApiKeyRole'
  * @since 6.7.0
  * @stability TODO
  */
-export interface SecurityCreateApiKeyRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }

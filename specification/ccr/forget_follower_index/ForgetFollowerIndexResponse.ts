@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 
-export class ForgetFollowerIndexResponse extends ResponseBase {
+export class Response extends ResponseBase {
   _shards: ShardStatistics
 }

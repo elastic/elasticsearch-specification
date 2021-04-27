@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { Field, Indices } from '@_types/common'
 import { FieldCapabilities } from './FieldCapabilities'
 
-export class FieldCapabilitiesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   indices: Indices
   fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>
 }

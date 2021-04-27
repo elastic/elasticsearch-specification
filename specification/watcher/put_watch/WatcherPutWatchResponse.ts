@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class WatcherPutWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   created: boolean
   _id: Id
   _primary_term: long

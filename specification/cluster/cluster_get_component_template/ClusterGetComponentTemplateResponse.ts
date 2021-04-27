@@ -20,6 +20,6 @@
 import { ComponentTemplate } from '@cluster/_types/ComponentTemplate'
 import { ResponseBase } from '@_types/Base'
 
-export class ClusterGetComponentTemplateResponse extends ResponseBase {
+export class Response extends ResponseBase {
   component_templates: ComponentTemplate[]
 }

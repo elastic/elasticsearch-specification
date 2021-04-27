@@ -31,7 +31,7 @@ import {
 import { MainError } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
-export class MultiGetResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   docs: MultiGetHit<TDocument>[]
 }
 

@@ -25,7 +25,7 @@ import { ExpandWildcards, Names } from '@_types/common'
  * @since 7.9.0
  * @stability TODO
  */
-export interface ResolveIndexRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     name: Names
   }

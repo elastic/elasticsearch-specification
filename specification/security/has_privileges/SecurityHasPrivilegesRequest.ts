@@ -27,7 +27,7 @@ import { IndexPrivilegesCheck } from './IndexPrivilegesCheck'
  * @since 6.4.0
  * @stability TODO
  */
-export interface SecurityHasPrivilegesRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     user?: Name
   }

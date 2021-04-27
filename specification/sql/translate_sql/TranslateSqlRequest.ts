@@ -26,7 +26,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
  * @since 6.3.0
  * @stability TODO
  */
-export interface TranslateSqlRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     fetch_size?: integer

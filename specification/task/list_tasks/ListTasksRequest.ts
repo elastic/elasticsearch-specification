@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 2.3.0
  * @stability TODO
  */
-export interface ListTasksRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     actions?: string | string[]
     detailed?: boolean

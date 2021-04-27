@@ -36,7 +36,7 @@ import { TermVectorFilter } from './TermVectorFilter'
  * @since 0.0.0
  * @stability TODO
  */
-export interface TermVectorsRequest<TDocument> extends RequestBase {
+export interface Request<TDocument> extends RequestBase {
   path_parts?: {
     index: IndexName
     id?: Id

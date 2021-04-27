@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class SecurityCreateApiKeyResponse extends ResponseBase {
+export class Response extends ResponseBase {
   api_key: string
   expiration?: long
   id: Id

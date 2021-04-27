@@ -25,7 +25,7 @@ import { DataFrameState } from '@ml/_types/DataFrameState'
 import { DateString } from '@_types/Time'
 import { DataFrameAnalysisClassification } from '@ml/_types/DataFrameAnalytics'
 
-export class MlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: integer
   /** An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order. */
   data_frame_analytics: DataFrameAnalyticsStatsItem[]

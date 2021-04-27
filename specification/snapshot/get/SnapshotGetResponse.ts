@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
-export class SnapshotGetResponse extends ResponseBase {
+export class Response extends ResponseBase {
   responses?: SnapshotResponseItem[]
   snapshots?: SnapshotInfo[]
 }

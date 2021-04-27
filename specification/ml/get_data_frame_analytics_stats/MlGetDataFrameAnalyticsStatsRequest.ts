@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.3.0
  * @stability TODO
  */
-export interface MlGetDataFrameAnalyticsStatsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /** Identifier for the data frame analytics job. If you do not specify this option, the API returns information for the first hundred data frame analytics jobs. */
     id?: Id

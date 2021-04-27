@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class ResumeFollowIndexResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

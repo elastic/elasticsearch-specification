@@ -27,7 +27,7 @@ import { ResponseBase } from '@_types/Base'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
-export class MlPutDataFrameAnalyticsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   id: Id
   create_time: long
   version: VersionString

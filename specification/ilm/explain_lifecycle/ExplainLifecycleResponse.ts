@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { LifecycleExplain } from './LifecycleExplain'
 
-export class ExplainLifecycleResponse extends ResponseBase {
+export class Response extends ResponseBase {
   indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
 }
 

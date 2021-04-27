@@ -22,7 +22,7 @@ import { Id, IndexName, Type } from '@_types/common'
 import { ExplanationDetail } from './ExplanationDetail'
 import { InlineGet } from './InlineGet'
 
-export class ExplainResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   _index: IndexName
   _type?: Type
   _id: Id

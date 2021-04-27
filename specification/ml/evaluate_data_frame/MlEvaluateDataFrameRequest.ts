@@ -27,7 +27,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
  * @since 7.3.0
  * @stability TODO
  */
-export interface MlEvaluateDataFrameRequest extends RequestBase {
+export interface Request extends RequestBase {
   body: {
     /**
      * Defines the type of evaluation you want to perform.

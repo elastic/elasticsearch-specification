@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.10.0
  * @stability TODO
  */
-export interface MlGetTrainedModelRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /** The unique identifier of the trained model. */
     model_id?: Id

@@ -37,7 +37,7 @@ import { VectorUsage } from './VectorUsage'
 import { WatcherUsage } from './WatcherUsage'
 import { XPackUsage } from './XPackUsage'
 
-export class XPackUsageResponse extends ResponseBase {
+export class Response extends ResponseBase {
   aggregate_metric: XPackUsage
   analytics: AnalyticsUsage
   watcher: WatcherUsage

@@ -35,7 +35,7 @@ import { integer } from '@_types/Numeric'
  * @stability stable
  *
  */
-export interface MultiGetRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: IndexName
     type?: Type

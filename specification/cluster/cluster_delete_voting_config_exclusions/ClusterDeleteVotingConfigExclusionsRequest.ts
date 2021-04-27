@@ -24,8 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.0.0
  * @stability TODO
  */
-export interface ClusterDeleteVotingConfigExclusionsRequest
-  extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     stub: string
   }

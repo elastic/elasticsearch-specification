@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class SecurityDeleteRoleMappingResponse extends ResponseBase {
+export class Response extends ResponseBase {
   found: boolean
 }

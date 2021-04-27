@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
+import { Request as SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {

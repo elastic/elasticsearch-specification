@@ -19,6 +19,6 @@
 
 import { AsyncSearchDocumentResponseBase } from '@async_search/_types/AsyncSearchResponseBase'
 
-export class AsyncSearchSubmitResponse<
+export class Response<
   TDocument
 > extends AsyncSearchDocumentResponseBase<TDocument> {}

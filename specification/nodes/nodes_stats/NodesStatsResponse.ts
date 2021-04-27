@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 import { NodeStats } from './NodeStats'
 
-export class NodesStatsResponse extends NodesResponseBase {
+export class Response extends NodesResponseBase {
   cluster_name: Name
   nodes: Dictionary<string, NodeStats>
 }

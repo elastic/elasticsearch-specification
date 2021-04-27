@@ -25,7 +25,7 @@ import { long } from '@_types/Numeric'
  * @since 5.0.0
  * @stability TODO
  */
-export interface CatTasksRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   query_parameters?: {
     actions?: string[]
     detailed?: boolean

@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 6.2.0
  * @stability TODO
  */
-export interface GetCertificatesRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

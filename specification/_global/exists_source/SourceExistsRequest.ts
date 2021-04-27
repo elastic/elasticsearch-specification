@@ -33,7 +33,7 @@ import {
  * @since 5.4.0
  * @stability TODO
  */
-export interface SourceExistsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

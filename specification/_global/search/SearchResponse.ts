@@ -28,7 +28,7 @@ import { HitsMetadata } from './hits/HitsMetadata'
 import { Profile } from './profile/Profile'
 import { Suggest } from './suggesters/Suggest'
 
-export class SearchResponse<TDocument> extends ResponseBase {
+export class Response<TDocument> extends ResponseBase {
   took: long
   timed_out: boolean
   _shards: ShardStatistics

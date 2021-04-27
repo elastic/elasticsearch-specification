@@ -36,7 +36,7 @@ import {
   VersionNumber
 } from '@_types/common'
 
-export class ClusterStateResponse extends ResponseBase {
+export class Response extends ResponseBase {
   cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string

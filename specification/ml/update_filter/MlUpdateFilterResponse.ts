@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class MlUpdateFilterResponse extends ResponseBase {
+export class Response extends ResponseBase {
   description: string
   filter_id: Id
   items: string[]

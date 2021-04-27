@@ -32,7 +32,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.3.0
  * @stability TODO
  */
-export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     id: Id

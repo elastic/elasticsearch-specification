@@ -25,7 +25,7 @@ import { TaskId } from '@_types/common'
  * @since 2.3.0
  * @stability TODO
  */
-export interface CancelTasksRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     task_id?: TaskId
   }

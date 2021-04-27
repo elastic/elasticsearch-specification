@@ -25,7 +25,7 @@ import { Bytes, ExpandWildcards, Health, Indices } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatIndicesRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     index?: Indices
   }

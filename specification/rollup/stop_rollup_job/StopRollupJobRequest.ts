@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 6.3.0
  * @stability TODO
  */
-export interface StopRollupJobRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id: Id
   }

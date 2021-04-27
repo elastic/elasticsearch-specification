@@ -20,6 +20,6 @@
 import { TermVectorsResult } from '@global/termvectors/TermVectorsResult'
 import { ResponseBase } from '@_types/Base'
 
-export class MultiTermVectorsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   docs: TermVectorsResult[]
 }

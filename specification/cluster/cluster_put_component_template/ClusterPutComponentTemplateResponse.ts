@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class ClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

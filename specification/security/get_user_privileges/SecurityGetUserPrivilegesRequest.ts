@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @since 6.5.0
  * @stability TODO
  */
-export interface SecurityGetUserPrivilegesRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     /** The name of the application. Application privileges are always associated with exactly one application. If you do not specify this parameter, the API returns information about all privileges for all applications. */
     application?: Name

@@ -25,7 +25,7 @@ import { Bytes, NodeIds } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatAllocationRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     node_id?: NodeIds
   }

@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class RollupResponse extends ResponseBase {
+export class Response extends ResponseBase {
   stub: integer
 }

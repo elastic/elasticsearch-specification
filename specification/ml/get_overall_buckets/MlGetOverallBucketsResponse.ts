@@ -21,7 +21,7 @@ import { OverallBucket } from '@ml/_types/OverallBucket'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class MlGetOverallBucketsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   overall_buckets: OverallBucket[]
 }

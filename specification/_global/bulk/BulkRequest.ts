@@ -35,7 +35,7 @@ import { BulkOperationContainer } from './BulkOperation'
  * @stability stable
  *
  */
-export interface BulkRequest<TSource> extends RequestBase {
+export interface Request<TSource> extends RequestBase {
   path_parts?: {
     index?: IndexName
     type?: Type

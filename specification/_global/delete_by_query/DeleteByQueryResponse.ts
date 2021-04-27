@@ -23,7 +23,7 @@ import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 
-export class DeleteByQueryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   batches?: long
   deleted?: long
   failures?: BulkIndexByScrollFailure[]

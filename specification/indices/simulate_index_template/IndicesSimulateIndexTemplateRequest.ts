@@ -26,7 +26,7 @@ import { IndexName, Name, WaitForActiveShards } from '@_types/common'
  * @since 7.9.0
  * @stability TODO
  */
-export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /** Index or template name to simulate */
     name?: Name

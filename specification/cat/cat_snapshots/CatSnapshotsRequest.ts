@@ -25,7 +25,7 @@ import { Names } from '@_types/common'
  * @since 2.1.0
  * @stability TODO
  */
-export interface CatSnapshotsRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     repository?: Names
   }

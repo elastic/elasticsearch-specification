@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { TransformStats } from './TransformStats'
 
-export class GetTransformStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   transforms: TransformStats[]
 }

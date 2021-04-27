@@ -20,6 +20,6 @@
 import { InlineGet } from '@global/explain/InlineGet'
 import { WriteResponseBase } from '@_types/Base'
 
-export class UpdateResponse<TDocument> extends WriteResponseBase {
+export class Response<TDocument> extends WriteResponseBase {
   get?: InlineGet<TDocument>
 }

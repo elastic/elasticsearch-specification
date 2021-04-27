@@ -26,7 +26,7 @@ import { RequestBase } from '@_types/Base'
  * @since 0.0.0
  * @stability TODO
  */
-export interface RenderSearchTemplateRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     file?: string

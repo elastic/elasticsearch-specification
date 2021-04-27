@@ -23,7 +23,7 @@ import {
 } from '@ml/_types/DataFrameAnalytics'
 import { ResponseBase } from '@_types/Base'
 
-export class MlExplainDataFrameAnalyticsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   /** An array of objects that explain selection for each field, sorted by the field names. */
   field_selection: DataFrameAnalyticsFieldSelection[]
   /** An array of objects that explain selection for each field, sorted by the field names. */

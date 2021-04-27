@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 7.7.0
  * @stability TODO
  */
-export interface CatDatafeedsRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     datafeed_id?: Id
   }

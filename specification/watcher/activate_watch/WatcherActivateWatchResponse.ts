@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ActivationStatus } from './ActivationStatus'
 
-export class WatcherActivateWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   status: ActivationStatus
 }

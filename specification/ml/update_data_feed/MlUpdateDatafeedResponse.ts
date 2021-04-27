@@ -29,7 +29,7 @@ import { ScriptField } from '@_types/Scripting'
 import { Time } from '@_types/Time'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
-export class MlUpdateDatafeedResponse extends ResponseBase {
+export class Response extends ResponseBase {
   aggregations?: Dictionary<string, AggregationContainer>
   chunking_config?: ChunkingConfig
   datafeed_id: Id

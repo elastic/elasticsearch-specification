@@ -31,7 +31,7 @@ import { Time } from '@_types/Time'
  * @since 1.3.0
  * @stability TODO
  */
-export interface ClusterStateRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     metric?: Metrics
     index?: Indices

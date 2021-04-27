@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class SecurityGetTokenResponse extends ResponseBase {
+export class Response extends ResponseBase {
   access_token: string
   expires_in: long
   scope?: string

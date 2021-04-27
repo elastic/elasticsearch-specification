@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class IndicesRolloverResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   conditions: Dictionary<string, boolean>
   dry_run: boolean
   new_index: string

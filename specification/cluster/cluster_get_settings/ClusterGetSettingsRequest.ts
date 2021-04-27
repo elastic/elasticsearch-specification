@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface ClusterGetSettingsRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     flat_settings?: boolean
     include_defaults?: boolean

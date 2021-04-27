@@ -24,7 +24,7 @@ import { ResponseBase } from '@_types/Base'
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class TranslateSqlResponse extends ResponseBase {
+export class Response extends ResponseBase {
   size: long
   _source: boolean | Fields | SourceFilter
   fields: Array<Dictionary<Field, string>>

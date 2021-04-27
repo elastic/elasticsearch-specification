@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 0.0.0
  * @stability TODO
  */
-export interface GetLicenseRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     accept_enterprise?: boolean
     local?: boolean

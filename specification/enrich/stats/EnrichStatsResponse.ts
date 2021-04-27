@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { CoordinatorStats } from './CoordinatorStats'
 import { ExecutingPolicy } from './ExecutingPolicy'
 
-export class EnrichStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   coordinator_stats: CoordinatorStats[]
   executing_policies: ExecutingPolicy[]
 }

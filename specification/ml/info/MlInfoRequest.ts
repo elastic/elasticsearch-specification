@@ -24,6 +24,6 @@ import { RequestBase } from '@_types/Base'
  * @since 6.3.0
  * @stability TODO
  */
-export interface MlInfoRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
 }

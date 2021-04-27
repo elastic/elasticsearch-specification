@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { FollowIndexStats } from './FollowIndexStats'
 
-export class FollowIndexStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   indices: FollowIndexStats[]
 }

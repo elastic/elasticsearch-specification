@@ -25,7 +25,7 @@ import { Id } from '@_types/common'
  * @since 6.3.0
  * @stability TODO
  */
-export interface GetRollupCapabilitiesRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id?: Id
   }

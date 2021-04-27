@@ -25,7 +25,7 @@ import { Bytes, Fields } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatFielddataRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     fields?: Fields
   }

@@ -21,7 +21,7 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
-export class IndicesGetMappingResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   IndexName,
   IndexMappingRecord
 > {}

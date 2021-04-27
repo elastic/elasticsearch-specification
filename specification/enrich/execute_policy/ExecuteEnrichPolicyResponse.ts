@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { TaskId } from '@_types/common'
 import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
 
-export class ExecuteEnrichPolicyResponse extends ResponseBase {
+export class Response extends ResponseBase {
   status: ExecuteEnrichPolicyStatus
   task_id?: TaskId
 }

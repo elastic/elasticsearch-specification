@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 
-export class ClusterGetSettingsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   persistent: Dictionary<string, UserDefinedValue>
   transient: Dictionary<string, UserDefinedValue>
   defaults?: Dictionary<string, UserDefinedValue>

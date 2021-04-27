@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class OpenPointInTimeResponse extends ResponseBase {
+export class Response extends ResponseBase {
   id: Id
 }

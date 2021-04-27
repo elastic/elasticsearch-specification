@@ -33,7 +33,7 @@ import { long } from '@_types/Numeric'
  * @since 0.0.0
  * @stability TODO
  */
-export interface WatcherPutWatchRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id: Id
   }

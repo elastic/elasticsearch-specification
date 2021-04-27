@@ -32,7 +32,7 @@ import { Time } from '@_types/Time'
  * @since 7.2.0
  * @stability TODO
  */
-export interface PreviewTransformRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     /** The destination for the transform. */
     dest?: TransformDestination

@@ -25,7 +25,7 @@ import { Names, Size } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatThreadPoolRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     thread_pool_patterns?: Names
   }

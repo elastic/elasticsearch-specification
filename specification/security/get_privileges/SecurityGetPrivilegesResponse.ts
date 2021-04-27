@@ -21,7 +21,7 @@ import { PrivilegesActions } from '@security/put_privileges/PrivilegesActions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class SecurityGetPrivilegesResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   Dictionary<string, PrivilegesActions>
 > {}

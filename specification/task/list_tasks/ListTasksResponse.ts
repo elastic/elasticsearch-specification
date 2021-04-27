@@ -23,7 +23,7 @@ import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { TaskExecutingNode } from './TaskExecutingNode'
 
-export class ListTasksResponse extends ResponseBase {
+export class Response extends ResponseBase {
   node_failures?: ErrorCause[]
   nodes?: Dictionary<string, TaskExecutingNode>
   tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>

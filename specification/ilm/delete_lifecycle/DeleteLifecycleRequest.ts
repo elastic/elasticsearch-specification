@@ -25,7 +25,7 @@ import { Id, Name } from '@_types/common'
  * @since 6.6.0
  * @stability TODO
  */
-export interface DeleteLifecycleRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     policy?: Name
     policy_id: Id

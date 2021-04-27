@@ -23,7 +23,7 @@ import { Field, Id, IndexName, Type, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { TermVector } from './TermVector'
 
-export class TermVectorsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   found: boolean
   _id: Id
   _index: IndexName

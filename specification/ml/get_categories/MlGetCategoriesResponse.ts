@@ -21,7 +21,7 @@ import { CategoryDefinition } from '@ml/_types/CategoryDefinition'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class MlGetCategoriesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   categories: CategoryDefinition[]
   count: long
 }

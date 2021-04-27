@@ -19,7 +19,7 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class RemovePolicyResponse extends ResponseBase {
+export class Response extends ResponseBase {
   failed_indexes: string[]
   has_failures: boolean
 }

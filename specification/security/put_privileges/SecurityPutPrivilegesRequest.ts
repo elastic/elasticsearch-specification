@@ -28,7 +28,7 @@ import { PrivilegesActions } from './PrivilegesActions'
  *
  * @stability TODO
  */
-export interface SecurityPutPrivilegesRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }
