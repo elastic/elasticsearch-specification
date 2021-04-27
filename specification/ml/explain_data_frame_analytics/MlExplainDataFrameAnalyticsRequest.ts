@@ -29,7 +29,7 @@ import { Id } from '@_types/common'
 export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
   path_parts?: {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
-    id: Id
+    id?: Id
   }
   body?: {
     source?: DataFrameAnalyticsSource

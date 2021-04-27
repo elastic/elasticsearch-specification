@@ -17,10 +17,17 @@
  * under the License.
  */
 
-import { ByteSize, Field, IndexName } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { ByteSize, Field, IndexName, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { double, integer, Percentage } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class DataFrameAnalyticsSource {
-  index: IndexName
+  index: Indices
+  query?: QueryContainer
+  _source?: DataFrameAnalysisAnalyzedFields
+  runtime_mappings?: RuntimeFields
 }
 
 export class DataFrameAnalyticsFieldSelection {
@@ -43,4 +50,65 @@ export class DataFrameAnalyticsMemoryEstimation {
   expected_memory_with_disk: ByteSize
   /** Estimated memory usage under the assumption that the whole data frame analytics should happen in memory (i.e. without overflowing to disk). */
   expected_memory_without_disk: ByteSize
+}
+
+export class DataFrameAnalyticsDestination {
+  index: IndexName
+  results_field: Field
+}
+
+/** @variants container */
+export class DataFrameAnalysisContainer {
+  outlier_detection?: DataFrameAnalysisOutlierDetection
+  regression?: DataFrameAnalysisRegression
+  classification?: DataFrameAnalysisClassification
+}
+
+export class DataFrameAnalysisOutlierDetection {
+  n_neighbors?: integer
+  method?: string
+  feature_influence_threshold?: double
+  compute_feature_influence: boolean
+  outlier_fraction: double
+  standardization_enabled: boolean
+}
+
+export class DataFrameAnalysis {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  max_trees?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+  downsample_factor?: double
+  max_optimization_rounds_per_hyperparameter?: integer
+}
+
+export class DataFrameAnalysisRegression extends DataFrameAnalysis {
+  dependent_variable: string
+  prediction_field_name: Field
+  training_percent: Percentage
+  randomize_seed: double
+  loss_function: string
+  loss_function_parameter?: double
+  early_stopping_enabled: boolean
+  feature_processors?: UserDefinedValue[]
+}
+
+export class DataFrameAnalysisClassification extends DataFrameAnalysis {
+  dependent_variable: string
+  class_assignment_objective: string
+  prediction_field_name: Field
+  training_percent: Percentage
+  randomize_seed: double
+  num_top_classes: integer
+  early_stopping_enabled: boolean
+}
+
+export class DataFrameAnalysisAnalyzedFields {
+  includes: string[]
+  excludes: string[]
 }

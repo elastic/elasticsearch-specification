@@ -3786,6 +3786,66 @@ export interface MlDataDescription {
   field_delimiter?: string
 }
 
+export interface MlDataFrameAnalysis {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  max_trees?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+  downsample_factor?: double
+  max_optimization_rounds_per_hyperparameter?: integer
+}
+
+export interface MlDataFrameAnalysisAnalyzedFields {
+  includes: string[]
+  excludes: string[]
+}
+
+export interface MlDataFrameAnalysisClassification extends MlDataFrameAnalysis {
+  dependent_variable: string
+  class_assignment_objective: string
+  prediction_field_name: Field
+  training_percent: Percentage
+  randomize_seed: double
+  num_top_classes: integer
+  early_stopping_enabled: boolean
+}
+
+export interface MlDataFrameAnalysisContainer {
+  outlier_detection?: MlDataFrameAnalysisOutlierDetection
+  regression?: MlDataFrameAnalysisRegression
+  classification?: MlDataFrameAnalysisClassification
+}
+
+export interface MlDataFrameAnalysisOutlierDetection {
+  n_neighbors?: integer
+  method?: string
+  feature_influence_threshold?: double
+  compute_feature_influence: boolean
+  outlier_fraction: double
+  standardization_enabled: boolean
+}
+
+export interface MlDataFrameAnalysisRegression extends MlDataFrameAnalysis {
+  dependent_variable: string
+  prediction_field_name: Field
+  training_percent: Percentage
+  randomize_seed: double
+  loss_function: string
+  loss_function_parameter?: double
+  early_stopping_enabled: boolean
+  feature_processors?: any[]
+}
+
+export interface MlDataFrameAnalyticsDestination {
+  index: IndexName
+  results_field: Field
+}
+
 export interface MlDataFrameAnalyticsFieldSelection {
   is_included: boolean
   is_required: boolean
@@ -3801,7 +3861,10 @@ export interface MlDataFrameAnalyticsMemoryEstimation {
 }
 
 export interface MlDataFrameAnalyticsSource {
-  index: IndexName
+  index: Indices
+  query?: QueryDslAbstractionsContainerQueryContainer
+  _source?: MlDataFrameAnalysisAnalyzedFields
+  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface MlEvaluateDataFrameDataFrameClassificationSummary {
@@ -8285,7 +8348,7 @@ export interface MlEvaluateDataFrameMlEvaluateDataFrameResponse extends Response
 }
 
 export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsRequest extends RequestBase {
-  id: Id
+  id?: Id
   body?: {
     source?: MlDataFrameAnalyticsSource
   }
@@ -8724,7 +8787,17 @@ export interface MlPutDataFrameAnalyticsMlPutDataFrameAnalyticsRequest extends R
 }
 
 export interface MlPutDataFrameAnalyticsMlPutDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  id: Id
+  create_time: long
+  version: VersionString
+  source: MlDataFrameAnalyticsSource
+  description?: string
+  dest: MlDataFrameAnalyticsDestination
+  model_memory_limit: ByteSize
+  allow_lazy_start: boolean
+  max_num_threads: integer
+  analysis: MlDataFrameAnalysisContainer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
 }
 
 export interface MlPutDatafeedMlPutDatafeedRequest extends RequestBase {
