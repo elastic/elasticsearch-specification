@@ -540,12 +540,6 @@
       ],
       "response": []
     },
-    "ml.explain_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.find_file_structure": {
       "request": [
         "Missing request & response"

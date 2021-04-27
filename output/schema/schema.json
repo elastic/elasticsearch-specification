@@ -39929,10 +39929,8 @@
       },
       "properties": [
         {
-          "aliases": [
-            "true_positive"
-          ],
           "description": "True Positive",
+          "identifier": "true_positive",
           "name": "tp",
           "required": true,
           "type": {
@@ -39944,10 +39942,8 @@
           }
         },
         {
-          "aliases": [
-            "false_positive"
-          ],
           "description": "False Positive",
+          "identifier": "false_positive",
           "name": "fp",
           "required": true,
           "type": {
@@ -39959,10 +39955,8 @@
           }
         },
         {
-          "aliases": [
-            "true_negative"
-          ],
           "description": "True Negative",
+          "identifier": "true_negative",
           "name": "tn",
           "required": true,
           "type": {
@@ -39974,10 +39968,8 @@
           }
         },
         {
-          "aliases": [
-            "false_negative"
-          ],
           "description": "False Negative",
+          "identifier": "false_negative",
           "name": "fn",
           "required": true,
           "type": {
@@ -41682,6 +41674,143 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsFieldSelection",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Whether the field is selected to be included in the analysis.",
+          "name": "is_included",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Whether the field is required.",
+          "name": "is_required",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The feature type of this field for the analysis. May be categorical or numerical.",
+          "name": "feature_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The mapping types of the field.",
+          "name": "mapping_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The field name.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The reason a field is not selected to be included in the analysis.",
+          "name": "reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsMemoryEstimation",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Estimated memory usage under the assumption that overflowing to disk is allowed during data frame analytics. expected_memory_with_disk is usually smaller than expected_memory_without_disk as using disk allows to limit the main memory needed to perform data frame analytics.",
+          "name": "expected_memory_with_disk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Estimated memory usage under the assumption that the whole data frame analytics should happen in memory (i.e. without overflowing to disk).",
+          "name": "expected_memory_without_disk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsSource",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         }
@@ -80848,13 +80977,13 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "source",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "DataFrameAnalyticsSource",
+                "namespace": "ml._types"
               }
             }
           }
@@ -80873,30 +81002,19 @@
       },
       "path": [
         {
-          "name": "stub",
+          "description": "The ID of the data frame analytics to explain",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "inherits": {
@@ -80912,13 +81030,29 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "An array of objects that explain selection for each field, sorted by the field names.",
+          "name": "field_selection",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsFieldSelection",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "An array of objects that explain selection for each field, sorted by the field names.",
+          "name": "memory_estimation",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "DataFrameAnalyticsMemoryEstimation",
+              "namespace": "ml._types"
             }
           }
         }

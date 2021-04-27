@@ -17,7 +17,9 @@
  * under the License.
  */
 
+import { DataFrameAnalyticsSource } from '@ml/_types/DataFrameAnalytics'
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name ml.explain_data_frame_analytics
@@ -25,13 +27,11 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
-  path_parts: {
-    stub: string
-  }
-  query_parameters?: {
-    stub?: string
+  path_parts?: {
+    /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    id: Id
   }
   body?: {
-    stub?: string
+    source?: DataFrameAnalyticsSource
   }
 }

@@ -104,22 +104,22 @@ export class ConfusionMatrixPrediction {
 export class ConfusionMatrixTreshold {
   /**
    * True Positive
-   * @aliases true_positive
+   * @identifier true_positive
    */
   tp: integer
   /**
    * False Positive
-   * @aliases false_positive
+   * @identifier false_positive
    */
   fp: integer
   /**
    * True Negative
-   * @aliases true_negative
+   * @identifier true_negative
    */
   tn: integer
   /**
    * False Negative
-   * @aliases false_negative
+   * @identifier false_negative
    */
   fn: integer
 }

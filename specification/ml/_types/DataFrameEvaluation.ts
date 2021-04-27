@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary';
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue';
-import { Field, Name } from '@_types/common';
-import { double } from '@_types/Numeric';
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, Name } from '@_types/common'
+import { double } from '@_types/Numeric'
 
 /** @variants container */
 export class DataFrameEvaluationContainer {
@@ -62,13 +62,13 @@ export class DataFrameEvaluationRegression {
 }
 
 export class DataFrameEvaluationMetrics {
-    /** The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve. It is calculated for a specific class (provided as "class_name") treated as positive. */
-    auc_roc?: DataFrameEvaluationClassificationMetricsAucRoc
-    /** Precision of predictions (per-class and average). */
-    precision?: Dictionary<string, UserDefinedValue>
-    /** Recall of predictions (per-class and average). */
-    recall?: Dictionary<string, UserDefinedValue>
-  }
+  /** The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve. It is calculated for a specific class (provided as "class_name") treated as positive. */
+  auc_roc?: DataFrameEvaluationClassificationMetricsAucRoc
+  /** Precision of predictions (per-class and average). */
+  precision?: Dictionary<string, UserDefinedValue>
+  /** Recall of predictions (per-class and average). */
+  recall?: Dictionary<string, UserDefinedValue>
+}
 
 export class DataFrameEvaluationClassificationMetrics extends DataFrameEvaluationMetrics {
   /** Accuracy of predictions (per-class and overall). */
@@ -90,23 +90,23 @@ export class DataFrameEvaluationClassificationMetricsAucRoc {
 }
 
 export class DataFrameEvaluationRegressionMetrics {
-    /**
-     * Average squared difference between the predicted values and the actual (ground truth) value. For more information, read this wiki article.
-     * @doc_url https://en.wikipedia.org/wiki/Mean_squared_error
-     */
-    mse?: Dictionary<string, UserDefinedValue>
-    /** Average squared difference between the logarithm of the predicted values and the logarithm of the actual (ground truth) value. */
-    msle?: DataFrameEvaluationRegressionMetricsMsle
-    /**
-     * Pseudo Huber loss function.
-     * @doc_url https://en.wikipedia.org/wiki/Huber_loss#Pseudo-Huber_loss_function
-     */
-    huber?: DataFrameEvaluationRegressionMetricsHuber
-    /**
-     * Proportion of the variance in the dependent variable that is predictable from the independent variables.
-     * @doc_url https://en.wikipedia.org/wiki/Coefficient_of_determination
-     */
-    r_squared?: Dictionary<string, UserDefinedValue>
+  /**
+   * Average squared difference between the predicted values and the actual (ground truth) value. For more information, read this wiki article.
+   * @doc_url https://en.wikipedia.org/wiki/Mean_squared_error
+   */
+  mse?: Dictionary<string, UserDefinedValue>
+  /** Average squared difference between the logarithm of the predicted values and the logarithm of the actual (ground truth) value. */
+  msle?: DataFrameEvaluationRegressionMetricsMsle
+  /**
+   * Pseudo Huber loss function.
+   * @doc_url https://en.wikipedia.org/wiki/Huber_loss#Pseudo-Huber_loss_function
+   */
+  huber?: DataFrameEvaluationRegressionMetricsHuber
+  /**
+   * Proportion of the variance in the dependent variable that is predictable from the independent variables.
+   * @doc_url https://en.wikipedia.org/wiki/Coefficient_of_determination
+   */
+  r_squared?: Dictionary<string, UserDefinedValue>
 }
 
 export class DataFrameEvaluationRegressionMetricsMsle {

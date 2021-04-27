@@ -3591,13 +3591,9 @@ export interface MlEvaluateDataFrameConfusionMatrixPrediction {
 
 export interface MlEvaluateDataFrameConfusionMatrixTreshold {
   tp: integer
-  true_positive: integer
   fp: integer
-  false_positive: integer
   tn: integer
-  true_negative: integer
   fn: integer
-  false_negative: integer
 }
 
 export type WatcherConnectionScheme = 'http' | 'https'
@@ -3788,6 +3784,24 @@ export interface MlDataDescription {
   time_field: Field
   time_format?: string
   field_delimiter?: string
+}
+
+export interface MlDataFrameAnalyticsFieldSelection {
+  is_included: boolean
+  is_required: boolean
+  feature_type?: string
+  mapping_types: string[]
+  name: Field
+  reason?: string
+}
+
+export interface MlDataFrameAnalyticsMemoryEstimation {
+  expected_memory_with_disk: ByteSize
+  expected_memory_without_disk: ByteSize
+}
+
+export interface MlDataFrameAnalyticsSource {
+  index: IndexName
 }
 
 export interface MlEvaluateDataFrameDataFrameClassificationSummary {
@@ -8271,14 +8285,15 @@ export interface MlEvaluateDataFrameMlEvaluateDataFrameResponse extends Response
 }
 
 export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsRequest extends RequestBase {
-  stub: string
+  id: Id
   body?: {
-    stub?: string
+    source?: MlDataFrameAnalyticsSource
   }
 }
 
 export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  field_selection: MlDataFrameAnalyticsFieldSelection[]
+  memory_estimation: MlDataFrameAnalyticsMemoryEstimation
 }
 
 export interface MlFlushJobMlFlushJobRequest extends RequestBase {
