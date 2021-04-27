@@ -17,12 +17,8 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
-import { NodeStats } from './NodeStats'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats>
-}
+// TODO must be changed to HttpStatusCodeResponse once
+// https://github.com/elastic/elastic-client-generator/pull/373 is merged.
+export class IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {}

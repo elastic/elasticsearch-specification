@@ -17,32 +17,21 @@
  * under the License.
  */
 
-import { TransformPivot } from '@transform/pivot/TransformPivot'
-import { TransformDestination } from '@transform/_types/TransformDestination'
-import { TransformSource } from '@transform/_types/TransformSource'
-import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Id } from '@_types/common'
+import { PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
 
 /**
  * @rest_spec_name transform.put_transform
- * @since 7.5.0
+ * @since 7.2.0
  * @stability TODO
  */
-export interface Request extends RequestBase {
-  path_parts?: {
-    transform_id: Name
+export interface Request extends PreviewTransformRequest {
+  path_parts: {
+    /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    transform_id: Id
   }
   query_parameters?: {
+    /** When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created. */
     defer_validation?: boolean
-  }
-  body?: {
-    description?: string
-    dest?: TransformDestination
-    frequency?: Time
-    pivot?: TransformPivot
-    source?: TransformSource
-    sync?: TransformSyncContainer
   }
 }

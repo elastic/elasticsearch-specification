@@ -22,6 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
+  Id,
   Indices,
   Routing,
   SearchType,
@@ -67,7 +68,7 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   body?: {
-    id?: string
+    id?: Id
     params?: Dictionary<string, UserDefinedValue>
     source?: string
   }

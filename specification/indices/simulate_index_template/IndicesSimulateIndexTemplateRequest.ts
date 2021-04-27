@@ -17,12 +17,30 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
-import { NodeStats } from './NodeStats'
+import { TemplateMapping } from '@indices/_types/TemplateMapping'
+import { RequestBase } from '@_types/Base'
+import { IndexName, Name, WaitForActiveShards } from '@_types/common'
 
-export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats>
+/**
+ * @rest_spec_name indices.simulate_index_template
+ * @since 7.9.0
+ * @stability TODO
+ */
+export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
+  path_parts?: {
+    /** Index or template name to simulate */
+    name?: Name
+  }
+  body?: {
+    index_patterns?: IndexName[]
+    composed_of?: Name[]
+    /** Any overlapping templates that would have matched, but have lower priority */
+    overlapping?: OverlappingIndexTemplate[]
+    template?: TemplateMapping
+  }
+}
+
+export class OverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }

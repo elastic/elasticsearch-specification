@@ -27,17 +27,34 @@ export class InferenceAggregation extends PipelineAggregationBase {
 }
 
 export class InferenceConfigContainer {
+  /** Regression configuration for inference. */
   regression?: RegressionInferenceOptions
+  /** Classification configuration for inference. */
   classification?: ClassificationInferenceOptions
 }
 
 export class RegressionInferenceOptions {
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
   results_field: Field
+  /**
+   * Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html
+   */
   num_top_feature_importance_values?: integer
 }
 
 export class ClassificationInferenceOptions {
+  /** Specifies the number of top class predictions to return. Defaults to 0. */
   num_top_classes?: integer
+  /**
+   * Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html
+   */
   num_top_feature_importance_values?: integer
+  /** Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false. */
   prediction_field_type?: string
+  /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
+  results_field?: string
+  /** Specifies the field to which the top classes are written. Defaults to top_classes. */
+  top_classes_results_field?: string
 }

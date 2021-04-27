@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { ExpandWildcards, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name searchable_snapshots.clear_cache
@@ -27,12 +27,13 @@ import { integer } from '@_types/Numeric'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    stub_a: integer
+    index?: Indices
   }
   query_parameters?: {
-    stub_b: integer
-  }
-  body?: {
-    stub_c: integer
+    expand_wildcards?: ExpandWildcards
+    allow_no_indices?: boolean
+    ignore_unavailable?: boolean
+    pretty?: boolean
+    human?: boolean
   }
 }

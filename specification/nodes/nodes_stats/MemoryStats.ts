@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 
 export class MemoryStats {
-  resident: string
-  resident_in_bytes: long
-  share: string
-  share_in_bytes: long
-  total_virtual: string
-  total_virtual_in_bytes: long
+  resident?: string
+  resident_in_bytes?: long
+  share?: string
+  share_in_bytes?: long
+  total_virtual?: string
+  total_virtual_in_bytes?: long
+  total_in_bytes: long
+  free_in_bytes: long
+  used_in_bytes: long
 }

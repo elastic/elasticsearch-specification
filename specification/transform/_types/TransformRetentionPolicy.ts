@@ -17,12 +17,20 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
-import { NodeStats } from './NodeStats'
+import { Field } from '@_types/common'
+import { Time } from '@_types/Time'
 
-export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats>
+/**
+ * @variants container
+ */
+export class TransformRetentionPolicyContainer {
+  /** Specifies that the transform uses a time field to set the retention policy. */
+  time: TransformRetentionPolicy
+}
+
+export class TransformRetentionPolicy {
+  /** The date field that is used to calculate the age of the document. */
+  field: Field
+  /** Specifies the maximum age of a document in the destination index. Documents that are older than the configured value are removed from the destination index. */
+  max_age: Time
 }

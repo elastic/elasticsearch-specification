@@ -22,6 +22,6 @@ import { Id } from '@_types/common'
 
 export class Response extends ResponseBase {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Id[]
 }

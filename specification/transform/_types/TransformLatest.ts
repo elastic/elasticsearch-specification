@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
-import { NodeStats } from './NodeStats'
+import { Field, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { float, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats>
+export class TransformLatest {
+  /** Specifies the date field that is used to identify the latest documents. */
+  sort: Field
+  /** Specifies an array of one or more fields that are used to group the data. */
+  unique_key: Field[]
 }

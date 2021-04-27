@@ -19,8 +19,9 @@
 
 import { Request as SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Indices, SearchType, Types } from '@_types/common'
+import { Id, Indices, SearchType, Types } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
@@ -41,7 +42,12 @@ export interface Request extends RequestBase {
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
-  body?: {
-    operations?: Dictionary<string, SearchTemplateRequest>
-  }
+  body: Array<MultiSearchTemplateItem>
+}
+
+export class MultiSearchTemplateItem {
+  id?: Id
+  index?: Indices
+  params?: Dictionary<string, UserDefinedValue>
+  source?: string
 }

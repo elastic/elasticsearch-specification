@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  responses: SearchResponse<UserDefinedValue>[]
+export class Response<TDocument> extends ResponseBase {
+  responses: SearchResponse<TDocument>[]
   took: long
 }

@@ -20,7 +20,7 @@
 import { IndexStats } from '@indices/stats/IndexStats'
 import { NodeRole } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
+import { Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { long } from '@_types/Numeric'
 import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
@@ -43,7 +43,7 @@ export class NodeStats {
   http: HttpStats
   indices: IndexStats
   ingest: NodeIngestStats
-  ip: Ip[]
+  ip: Ip | Ip[]
   jvm: NodeJvmStats
   name: Name
   os: OperatingSystemStats
@@ -54,4 +54,5 @@ export class NodeStats {
   timestamp: long
   transport: TransportStats
   transport_address: TransportAddress
+  attributes: Dictionary<Field, string>
 }

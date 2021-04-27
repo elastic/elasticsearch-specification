@@ -23,4 +23,7 @@ import { MemoryStats } from './MemoryStats'
 export class ExtendedMemoryStats extends MemoryStats {
   free_percent: integer
   used_percent: integer
+  total_in_bytes: integer
+  free_in_bytes: integer
+  used_in_bytes: integer
 }

@@ -17,12 +17,16 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { NodeStats } from './NodeStats'
 
-export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats>
+/**
+ * @rest_spec_name indices.delete_index_template
+ * @since 7.8.0
+ * @stability TODO
+ */
+export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
+  path_parts: {
+    name: Name
+  }
 }
