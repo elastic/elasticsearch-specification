@@ -17,7 +17,12 @@
  * under the License.
  */
 
-import { DataFrameAnalysisContainer, DataFrameAnalyticsDestination, DataFrameAnalyticsSource, DataFrameAnalysisAnalyzedFields } from '@ml/_types/DataFrameAnalytics'
+import {
+  DataFrameAnalysisContainer,
+  DataFrameAnalyticsDestination,
+  DataFrameAnalyticsSource,
+  DataFrameAnalysisAnalyzedFields
+} from '@ml/_types/DataFrameAnalytics'
 import { ResponseBase } from '@_types/Base'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -28,17 +33,16 @@ export class MlGetDataFrameAnalyticsResponse extends ResponseBase {
   data_frame_analytics: DataFrameAnalyticsSummary[]
 }
 
-
 export class DataFrameAnalyticsSummary {
   id: Id
   source: DataFrameAnalyticsSource
-    dest: DataFrameAnalyticsDestination
-    analysis: DataFrameAnalysisContainer
-    description?: string
-    model_memory_limit?: ByteSize
-    max_num_threads?: integer
-    analyzed_fields?: DataFrameAnalysisAnalyzedFields
-    allow_lazy_start?: boolean
-    create_time?: long
-    version?: VersionString
+  dest: DataFrameAnalyticsDestination
+  analysis: DataFrameAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: DataFrameAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
 }

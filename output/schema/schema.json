@@ -43720,6 +43720,70 @@
     {
       "kind": "interface",
       "name": {
+        "name": "DataFramePreviewConfig",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_num_threads",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "DataFrameRegressionSummary",
         "namespace": "ml.evaluate_data_frame"
       },
@@ -85361,13 +85425,15 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "description": "A data frame analytics config as described in Create data frame analytics jobs. Note that id and dest don’t need to be provided in the context of this API.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
+            "name": "config",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "DataFramePreviewConfig",
+                "namespace": "ml.preview_data_frame_analytics"
               }
             }
           }
@@ -85386,30 +85452,19 @@
       },
       "path": [
         {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub",
+          "description": "The ID of the data frame analytics to preview",
+          "name": "id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
-      ]
+      ],
+      "query": []
     },
     {
       "inherits": {
@@ -85425,13 +85480,28 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "An array of objects that contain feature name and value pairs. The features have been processed and indicate what will be sent to the model for training.",
+          "name": "feature_values",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Field",
+                  "namespace": "_types"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
             }
           }
         }

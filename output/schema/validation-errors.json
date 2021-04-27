@@ -648,12 +648,6 @@
       ],
       "response": []
     },
-    "ml.preview_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"

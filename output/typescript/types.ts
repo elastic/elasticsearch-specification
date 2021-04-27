@@ -4031,6 +4031,14 @@ export interface MlEvaluateDataFrameDataFrameOutlierDetectionSummary {
   confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixTreshold>
 }
 
+export interface MlPreviewDataFrameAnalyticsDataFramePreviewConfig {
+  source: MlDataFrameAnalyticsSource
+  analysis: MlDataFrameAnalysisContainer
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+}
+
 export interface MlEvaluateDataFrameDataFrameRegressionSummary {
   huber?: MlEvaluateDataFrameDataFrameEvaluationValue
   mse?: MlEvaluateDataFrameDataFrameEvaluationValue
@@ -8797,14 +8805,14 @@ export interface MlPostJobDataMlPostJobDataResponse extends ResponseBase {
 }
 
 export interface MlPreviewDataFrameAnalyticsMlPreviewDataFrameAnalyticsRequest extends RequestBase {
-  stub: string
+  id?: Id
   body?: {
-    stub?: string
+    config?: MlPreviewDataFrameAnalyticsDataFramePreviewConfig
   }
 }
 
 export interface MlPreviewDataFrameAnalyticsMlPreviewDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  feature_values: Record<Field, string>[]
 }
 
 export interface MlPreviewDatafeedMlPreviewDatafeedRequest extends RequestBase {
