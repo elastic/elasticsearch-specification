@@ -440,7 +440,7 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
