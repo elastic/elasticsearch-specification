@@ -7864,10 +7864,17 @@
       "description": "Updates certain properties of a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "MlUpdateDataFrameAnalyticsRequest",
+        "namespace": "ml.update_data_frame_analytics"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "MlUpdateDataFrameAnalyticsResponse",
+        "namespace": "ml.update_data_frame_analytics"
+      },
+      "since": "7.3.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -42664,10 +42671,168 @@
       },
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "NGramTokenFilter",
         "namespace": "_types.analysis.token_filters"
       },
       "properties": [
+=======
+        "name": "Conflicts",
+        "namespace": "_types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixItem",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "actual_class",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "actual_class_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "predicted_classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixPrediction",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "other_predicted_class_doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixPrediction",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "predicted_class",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ConfusionMatrixTreshold",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "description": "True Positive",
+          "identifier": "true_positive",
+          "name": "tp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "False Positive",
+          "identifier": "false_positive",
+          "name": "fp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "True Negative",
+          "identifier": "true_negative",
+          "name": "tn",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "False Negative",
+          "identifier": "false_negative",
+          "name": "fn",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+>>>>>>> master
         {
           "name": "max_gram",
           "required": true,
@@ -44511,12 +44676,21 @@
       },
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "StandardTokenizer",
         "namespace": "_types.analysis.tokenizers"
       },
       "properties": [
         {
           "name": "max_token_length",
+=======
+        "name": "DataFrameAnalysis",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "dependent_variable",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -44525,6 +44699,7 @@
               "namespace": "_types"
             }
           }
+<<<<<<< HEAD
         }
       ]
     },
@@ -44611,6 +44786,28 @@
             "type": {
               "name": "WhitespaceTokenizer",
               "namespace": "_types.analysis.tokenizers"
+=======
+        },
+        {
+          "name": "prediction_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "alpha",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+>>>>>>> master
             }
           }
         ],
@@ -44625,6 +44822,7 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "type",
           "required": true,
           "type": {
@@ -44632,16 +44830,33 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "version",
+=======
+          "name": "lambda",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+              "name": "double",
+              "namespace": "_types"
+>>>>>>> master
+            }
+          }
+        },
+        {
+<<<<<<< HEAD
+          "name": "version",
+=======
+          "name": "gamma",
+>>>>>>> master
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+<<<<<<< HEAD
               "name": "VersionString",
+=======
+              "name": "double",
+>>>>>>> master
               "namespace": "_types"
             }
           }
@@ -44662,12 +44877,21 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "max_token_length",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+=======
+          "name": "eta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+>>>>>>> master
               "namespace": "_types"
             }
           }
@@ -44688,12 +44912,21 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "max_token_length",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+=======
+          "name": "eta_growth_rate_per_tree",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+>>>>>>> master
               "namespace": "_types"
             }
           }
@@ -44714,19 +44947,32 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "custom_token_chars",
           "required": true,
+=======
+          "name": "feature_bag_fraction",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "double",
+              "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "max_gram",
           "required": true,
+=======
+          "aliases": [
+            "maximum_number_trees"
+          ],
+          "name": "max_trees",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -44736,17 +44982,38 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "min_gram",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
+=======
+          "name": "soft_tree_depth_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "_types"
             }
           }
         },
         {
+          "name": "soft_tree_depth_tolerance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+>>>>>>> master
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+<<<<<<< HEAD
           "name": "token_chars",
           "required": true,
           "type": {
@@ -44757,6 +45024,15 @@
                 "name": "TokenChar",
                 "namespace": "_types.analysis.tokenizers.n_gram"
               }
+=======
+          "name": "downsample_factor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+>>>>>>> master
             }
           }
         }
@@ -44776,17 +45052,23 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "custom_token_chars",
           "required": true,
+=======
+          "name": "max_optimization_rounds_per_hyperparameter",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "max_gram",
           "required": true,
           "type": {
@@ -44794,12 +45076,26 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+=======
+          "name": "early_stopping_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "min_gram",
           "required": true,
+=======
+          "name": "num_top_feature_importance_values",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -44809,13 +45105,19 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "token_chars",
           "required": true,
+=======
+          "name": "feature_processors",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
+<<<<<<< HEAD
                 "name": "TokenChar",
                 "namespace": "_types.analysis.tokenizers.n_gram"
               }
@@ -44878,29 +45180,54 @@
       "properties": [
         {
           "name": "allocation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocation",
-              "namespace": "_types.index"
+=======
+                "name": "DataFrameAnalysisFeatureProcessor",
+                "namespace": "ml._types"
+              }
             }
           }
         },
         {
-          "name": "rebalance",
+          "name": "randomize_seed",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
+              "name": "IndexRoutingAllocation",
+              "namespace": "_types.index"
+=======
+              "name": "double",
+              "namespace": "_types"
+>>>>>>> master
+            }
+          }
+        },
+        {
+<<<<<<< HEAD
+          "name": "rebalance",
+=======
+          "name": "training_percent",
+>>>>>>> master
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+<<<<<<< HEAD
               "name": "IndexRoutingRebalance",
               "namespace": "_types.index"
+=======
+              "name": "Percentage",
+              "namespace": "_types"
+>>>>>>> master
             }
           }
         }
       ]
     },
     {
+<<<<<<< HEAD
       "kind": "interface",
       "name": {
         "name": "IndexRoutingAllocation",
@@ -44915,10 +45242,45 @@
             "type": {
               "name": "IndexRoutingAllocationOptions",
               "namespace": "_types.index"
+=======
+      "kind": "type_alias",
+      "name": {
+        "name": "DataFrameAnalysisAnalyzedFields",
+        "namespace": "ml._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFieldsIncludeExclude",
+              "namespace": "ml._types"
+>>>>>>> master
             }
           }
-        },
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisAnalyzedFieldsIncludeExclude",
+        "namespace": "ml._types"
+      },
+      "properties": [
         {
+<<<<<<< HEAD
           "name": "include",
           "required": false,
           "type": {
@@ -44926,10 +45288,24 @@
             "type": {
               "name": "IndexRoutingAllocationInclude",
               "namespace": "_types.index"
+=======
+          "description": "An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically.",
+          "name": "includes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "initial_recovery",
           "required": false,
           "type": {
@@ -44937,12 +45313,26 @@
             "type": {
               "name": "IndexRoutingAllocationInitialRecovery",
               "namespace": "_types.index"
+=======
+          "description": "An array of strings that defines the fields that will be included in the analysis.",
+          "name": "excludes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+>>>>>>> master
             }
           }
         }
       ]
     },
     {
+<<<<<<< HEAD
       "kind": "interface",
       "name": {
         "name": "IndexRoutingAllocationInclude",
@@ -44951,6 +45341,22 @@
       "properties": [
         {
           "name": "_tier_preference",
+=======
+      "inherits": {
+        "type": {
+          "name": "DataFrameAnalysis",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisClassification",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "class_assignment_objective",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -44961,12 +45367,20 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "_id",
+=======
+          "name": "num_top_classes",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Id",
+=======
+              "name": "integer",
+>>>>>>> master
               "namespace": "_types"
             }
           }
@@ -44976,18 +45390,34 @@
     {
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "IndexRoutingAllocationInitialRecovery",
         "namespace": "_types.index"
       },
       "properties": [
         {
           "name": "_id",
+=======
+        "name": "DataFrameAnalysisContainer",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The configuration information necessary to perform outlier detection",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html",
+          "name": "outlier_detection",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Id",
               "namespace": "_types"
+=======
+              "name": "DataFrameAnalysisOutlierDetection",
+              "namespace": "ml._types"
+>>>>>>> master
             }
           }
         }
@@ -44997,6 +45427,7 @@
       "kind": "enum",
       "members": [
         {
+<<<<<<< HEAD
           "name": "all"
         },
         {
@@ -45029,6 +45460,78 @@
             "type": {
               "name": "IndexRoutingRebalanceOptions",
               "namespace": "_types.index"
+=======
+          "description": "The configuration information necessary to perform regression.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html",
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisRegression",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The configuration information necessary to perform classification.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html",
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisClassification",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisFeatureProcessor",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The configuration information necessary to perform frequency encoding.",
+          "name": "frequency_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisFeatureProcessorFrequencyEncoding",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The configuration information necessary to perform multi encoding. It allows multiple processors to be changed together. This way the output of a processor can then be passed to another as an input.",
+          "name": "multi_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisFeatureProcessorMultiEncoding",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The configuration information necessary to perform n-gram encoding. Features created by this encoder have the following name format: <feature_prefix>.<ngram><string position>. For example, if the feature_prefix is f, the feature name for the second unigram in a string is f.11.",
+          "name": "n_gram_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisFeatureProcessorNGramEncoding",
+              "namespace": "ml._types"
+>>>>>>> master
             }
           }
         }
@@ -45038,6 +45541,7 @@
       "kind": "enum",
       "members": [
         {
+<<<<<<< HEAD
           "name": "all"
         },
         {
@@ -45048,6 +45552,88 @@
         },
         {
           "name": "none"
+=======
+          "description": "The configuration information necessary to perform one hot encoding.",
+          "name": "one_hot_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisFeatureProcessorOneHotEncoding",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The configuration information necessary to perform target mean encoding.",
+          "name": "target_mean_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisFeatureProcessorTargetMeanEncoding",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisFeatureProcessorFrequencyEncoding",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The resulting feature name.",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The resulting frequency map for the field value. If the field value is missing from the frequency_map, the resulting value is 0.",
+          "name": "frequency_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+>>>>>>> master
         }
       ],
       "name": {
@@ -45058,6 +45644,7 @@
     {
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "IndexSettingBlocks",
         "namespace": "_types.index"
       },
@@ -45069,10 +45656,2556 @@
           "name": "read_only",
           "required": false,
           "type": {
+=======
+        "name": "DataFrameAnalysisFeatureProcessorMultiEncoding",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The ordered array of custom processors to execute. Must be more than 1.",
+          "name": "processors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisFeatureProcessorNGramEncoding",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The feature name prefix. Defaults to ngram_<start>_<length>.",
+          "name": "feature_prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The name of the text field to encode.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the length of the n-gram substring. Defaults to 50. Must be greater than 0.",
+          "name": "length",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies which n-grams to gather. It’s an array of integer values where the minimum value is 1, and a maximum value is 5.",
+          "name": "n_grams",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Specifies the zero-indexed start of the n-gram substring. Negative values are allowed for encoding n-grams of string suffixes. Defaults to 0.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisFeatureProcessorOneHotEncoding",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the field to encode.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The one hot map mapping the field value with the column name.",
+          "name": "hot_map",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisFeatureProcessorTargetMeanEncoding",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The default value if field value is not found in the target_map.",
+          "name": "default_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The resulting feature name.",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name of the field to encode.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field value to target mean transition map.",
+          "name": "target_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisOutlierDetection",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "n_neighbors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "method",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_influence_threshold",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "compute_feature_influence",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "outlier_fraction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "standardization_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameAnalysis",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalysisRegression",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "loss_function",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "loss_function_parameter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsDestination",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Defines the destination index to store the results of the data frame analytics job.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines the name of the field in which to store the results of the analysis. Defaults to ml.",
+          "name": "results_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsFieldSelection",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Whether the field is selected to be included in the analysis.",
+          "name": "is_included",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Whether the field is required.",
+          "name": "is_required",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The feature type of this field for the analysis. May be categorical or numerical.",
+          "name": "feature_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The mapping types of the field.",
+          "name": "mapping_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The field name.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The reason a field is not selected to be included in the analysis.",
+          "name": "reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsMemoryEstimation",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Estimated memory usage under the assumption that overflowing to disk is allowed during data frame analytics. expected_memory_with_disk is usually smaller than expected_memory_without_disk as using disk allows to limit the main memory needed to perform data frame analytics.",
+          "name": "expected_memory_with_disk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Estimated memory usage under the assumption that the whole data frame analytics should happen in memory (i.e. without overflowing to disk).",
+          "name": "expected_memory_without_disk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsSource",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default, this property has the following value: {\"match_all\": {}}.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "description": "Specify includes and/or excludes patterns to select which fields will be present in the destination. Fields that are excluded cannot be included in the analysis.",
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "runtime_mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping.runtime_fields"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsContainer",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "An object containing information about the classification analysis job.",
+          "name": "classification_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsHyperparameters",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "An object containing information about the outlier detection job.",
+          "name": "outlier_detection_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsOutlierDetection",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "An object containing information about the regression analysis.",
+          "name": "regression_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsHyperparameters",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsDataCounts",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "The number of documents that are skipped during the analysis because they contained values that are not supported by the analysis. For example, outlier detection does not support missing fields so it skips documents with missing fields. Likewise, all types of analysis skip documents that contain arrays with more than one element.",
+          "name": "skipped_docs_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of documents that are not used for training the model and can be used for testing.",
+          "name": "test_docs_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of documents that are used for training the model.",
+          "name": "training_docs_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsHyperparameters",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "name": "hyperparameters",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Hyperparameters",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "The number of iterations on the analysis.",
+          "name": "iteration",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timing_stats",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimingStats",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "name": "validation_loss",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ValidationLoss",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsItem",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "An object containing information about the analysis job.",
+          "name": "analysis_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsContainer",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "For running jobs only, contains messages relating to the selection of a node to run the job.",
+          "name": "assignment_explanation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "An object that provides counts for the quantity of documents skipped, used in training, or available for testing.",
+          "name": "data_counts",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsDataCounts",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the data frame analytics job.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An object describing memory usage of the analytics. It is present only after the job is started and memory usage is reported.",
+          "name": "memory_usage",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsStatsMemoryUsage",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "description": "Contains properties for the node that runs the job. This information is available only for running jobs.",
+          "name": "node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeAttributes",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "description": "The progress report of the data frame analytics job by phase.",
+          "name": "progress",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsStatsProgress",
+                "namespace": "ml.get_data_frame_analytics_stats"
+              }
+            }
+          }
+        },
+        {
+          "description": "The status of the data frame analytics job, which can be one of the following values: failed, started, starting, stopping, stopped.",
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameState",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsMemoryUsage",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "This value is present when the status is hard_limit and it is a new estimate of how much memory the job needs.",
+          "name": "memory_reestimate_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of bytes used at the highest peak of memory usage.",
+          "name": "peak_usage_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The memory usage status.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The timestamp when memory usage was calculated.",
+          "name": "timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsOutlierDetection",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "name": "parameters",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OutlierDetectionParameters",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timing_stats",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimingStats",
+              "namespace": "ml.get_data_frame_analytics_stats"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsStatsProgress",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "Defines the phase of the data frame analytics job.",
+          "name": "phase",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The progress that the data frame analytics job has made expressed in percentage.",
+          "name": "progress_percent",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsSummary",
+        "namespace": "ml.get_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "dest",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsDestination",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_num_threads",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "allow_lazy_start",
+          "required": false,
+          "type": {
+>>>>>>> master
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+<<<<<<< HEAD
+=======
+            }
+          }
+        },
+        {
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationSummaryAucRoc",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "accuracy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryAccuracy",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "multiclass_confusion_matrix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryMulticlassConfusionMatrix",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryPrecision",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummaryRecall",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryAccuracy",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "overall_accuracy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryMulticlassConfusionMatrix",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "confusion_matrix",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixItem",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "other_actual_class_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryPrecision",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "avg_precision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameClassificationSummaryRecall",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationClass",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        },
+        {
+          "name": "avg_recall",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationValue",
+          "namespace": "ml.evaluate_data_frame"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClass",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassification",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field can be boolean or integer. If the data type is integer, the value has to be either 0 (false) or 1 (true).",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field in the index which contains the predicted value, in other words the results of the classification analysis.",
+          "name": "predicted_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field of the index which is an array of documents of the form { \"class_name\": XXX, \"class_probability\": YYY }. This field must be defined as nested in the mappings.",
+          "name": "top_classes_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassificationMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationMetrics",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassificationMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Accuracy of predictions (per-class and overall).",
+          "name": "accuracy",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Multiclass confusion matrix.",
+          "name": "multiclass_confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationClassificationMetricsAucRoc",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Name of the only class that is treated as positive during AUC ROC calculation. Other classes are treated as negative (\"one-vs-all\" strategy). All the evaluated documents must have class_name in the list of their top classes.",
+          "name": "class_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether or not the curve should be returned in addition to the score. Default value is false.",
+          "name": "include_curve",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationContainer",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Classification evaluation evaluates the results of a classification analysis which outputs a prediction that identifies to which of the classes each document belongs.",
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassification",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Outlier detection evaluates the results of an outlier detection analysis which outputs the probability that each document is an outlier.",
+          "name": "outlier_detection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationOutlierDetection",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Regression evaluation evaluates the results of a regression analysis which outputs a prediction of values.",
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegression",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The AUC ROC (area under the curve of the receiver operating characteristic) score and optionally the curve. It is calculated for a specific class (provided as \"class_name\") treated as positive.",
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationClassificationMetricsAucRoc",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Precision of predictions (per-class and average).",
+          "name": "precision",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Recall of predictions (per-class and average).",
+          "name": "recall",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationOutlierDetection",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field can be boolean or integer. If the data type is integer, the value has to be either 0 (false) or 1 (true).",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field of the index that defines the probability of whether the item belongs to the class in question or not. It’s the field that contains the results of the analysis.",
+          "name": "predicted_probability_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationOutlierDetectionMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationMetrics",
+          "namespace": "ml._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationOutlierDetectionMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Accuracy of predictions (per-class and overall).",
+          "name": "confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegression",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The field of the index which contains the ground truth. The data type of this field must be numerical.",
+          "name": "actual_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field in the index that contains the predicted value, in other words the results of the regression analysis.",
+          "name": "predicted_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the metrics that are used for the evaluation. For more information on mse, msle, and huber, consult the Jupyter notebook on regression loss functions.",
+          "name": "metrics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetrics",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetrics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Average squared difference between the predicted values and the actual (ground truth) value. For more information, read this wiki article.",
+          "docUrl": "https://en.wikipedia.org/wiki/Mean_squared_error",
+          "name": "mse",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "Average squared difference between the logarithm of the predicted values and the logarithm of the actual (ground truth) value.",
+          "name": "msle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetricsMsle",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Pseudo Huber loss function.",
+          "docUrl": "https://en.wikipedia.org/wiki/Huber_loss#Pseudo-Huber_loss_function",
+          "name": "huber",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationRegressionMetricsHuber",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "Proportion of the variance in the dependent variable that is predictable from the independent variables.",
+          "docUrl": "https://en.wikipedia.org/wiki/Coefficient_of_determination",
+          "name": "r_squared",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetricsHuber",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Approximates 1/2 (prediction - actual)2 for values much less than delta and approximates a straight line with slope delta for values much larger than delta. Defaults to 1. Delta needs to be greater than 0.",
+          "name": "delta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationRegressionMetricsMsle",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Defines the transition point at which you switch from minimizing quadratic error to minimizing quadratic log error. Defaults to 1.",
+          "name": "offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "DataFrameEvaluationValue",
+          "namespace": "ml.evaluate_data_frame"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationSummaryAucRoc",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "curve",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationSummaryAucRocCurveItem",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationSummaryAucRocCurveItem",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "tpr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fpr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "threshold",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameEvaluationValue",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameOutlierDetectionSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "auc_roc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationSummaryAucRoc",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "recall",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "confusion_matrix",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ConfusionMatrixTreshold",
+                "namespace": "ml.evaluate_data_frame"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFramePreviewConfig",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_num_threads",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameRegressionSummary",
+        "namespace": "ml.evaluate_data_frame"
+      },
+      "properties": [
+        {
+          "name": "huber",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "mse",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "msle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "r_squared",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameEvaluationValue",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "started"
+        },
+        {
+          "name": "stopped"
+        },
+        {
+          "name": "starting"
+        },
+        {
+          "name": "stopping"
+        },
+        {
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "DataFrameState",
+        "namespace": "ml._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataPathStats",
+        "namespace": "nodes.nodes_stats"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "available_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "disk_queue",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "disk_reads",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "disk_read_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "disk_read_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "disk_writes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "disk_write_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "disk_write_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "free",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "free_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "mount",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "All shards are assigned.",
+          "name": "GREEN"
+        },
+        {
+          "description": "All shards are assigned.",
+          "name": "green"
+        },
+        {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
+          "name": "YELLOW"
+        },
+        {
+          "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
+          "name": "yellow"
+        },
+        {
+          "description": "One or more primary shards are unassigned, so some data is unavailable.",
+          "name": "RED"
+        },
+        {
+          "description": "One or more primary shards are unassigned, so some data is unavailable.",
+          "name": "red"
+        }
+      ],
+      "name": {
+        "name": "DataStreamHealthStatus",
+        "namespace": "indices._types"
+      }
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
+      "kind": "type_alias",
+      "name": {
+        "name": "DataStreamName",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataStreamsStatsItem",
+        "namespace": "indices.data_streams_stats"
+      },
+      "properties": [
+        {
+          "name": "backing_indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "data_stream",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "store_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "store_size_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "maximum_timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "XPackUsage",
+          "namespace": "xpack.usage"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataStreamsUsage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "data_streams",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indices_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataTierPhaseCountUsage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "node_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_shard_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "primary_shard_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_size_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "primary_size_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "primary_shard_size_avg_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "primary_shard_size_median_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "primary_shard_size_mad_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "XPackUsage",
+          "namespace": "xpack.usage"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DataTiersUsage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "data_warm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataTierPhaseCountUsage",
+              "namespace": "xpack.usage"
+>>>>>>> master
             }
           }
         },
@@ -65622,10 +68755,176 @@
       ]
     },
     {
+<<<<<<< HEAD
       "attachedBehaviors": [
         "CommonCatQueryParameters",
         "CommonQueryParameters"
       ],
+=======
+      "kind": "interface",
+      "name": {
+        "name": "Hyperparameters",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "name": "alpha",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "lambda",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "gamma",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "eta",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "eta_growth_rate_per_tree",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "feature_bag_fraction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "downsample_factor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_attempts_to_add_tree",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_optimization_rounds_per_hyperparameter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_trees",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "num_folds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "num_splits_per_feature",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "soft_tree_depth_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "soft_tree_depth_tolerance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+>>>>>>> master
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -80089,6 +83388,52 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+<<<<<<< HEAD
+=======
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Defines the type of evaluation you want to perform.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources",
+            "name": "evaluation",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameEvaluationContainer",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Defines the index in which the evaluation will be performed.",
+            "name": "index",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "A query clause that retrieves a subset of data from the source index.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl.abstractions.container"
+              }
+            }
+          }
+        ]
+      },
+>>>>>>> master
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80100,6 +83445,7 @@
         "name": "Request",
         "namespace": "eql.delete"
       },
+<<<<<<< HEAD
       "path": [
         {
           "description": "Identifier for the search to delete.",
@@ -80114,6 +83460,9 @@
           }
         }
       ],
+=======
+      "path": [],
+>>>>>>> master
       "query": []
     },
     {
@@ -80128,12 +83477,160 @@
         "name": "Response",
         "namespace": "eql.delete"
       },
+<<<<<<< HEAD
       "properties": []
+=======
+      "properties": [
+        {
+          "name": "classification",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameClassificationSummary",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "outlier_detection",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameOutlierDetectionSummary",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        },
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameRegressionSummary",
+              "namespace": "ml.evaluate_data_frame"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+>>>>>>> master
     },
     {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+<<<<<<< HEAD
+=======
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified.",
+            "name": "source",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsSource",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "The destination configuration, consisting of index and optionally results_field (ml by default).",
+            "name": "dest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsDestination",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression.",
+            "name": "analysis",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalysisContainer",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "A description of the job.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html",
+            "name": "model_memory_limit",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ByteSize",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "name": "max_num_threads",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis.",
+            "name": "analyzed_fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalysisAnalyzedFields",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
+            "name": "allow_lazy_start",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+>>>>>>> master
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80147,6 +83644,7 @@
       },
       "path": [
         {
+<<<<<<< HEAD
           "description": "Identifier for the search.",
           "name": "id",
           "required": true,
@@ -80163,10 +83661,15 @@
         {
           "description": "Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request.",
           "name": "keep_alive",
+=======
+          "description": "The ID of the data frame analytics to explain",
+          "name": "id",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Time",
               "namespace": "_types"
             }
@@ -80181,6 +83684,53 @@
             "type": {
               "name": "Time",
               "namespace": "_types"
+=======
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MlExplainDataFrameAnalyticsResponse",
+        "namespace": "ml.explain_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "description": "An array of objects that explain selection for each field, sorted by the field names.",
+          "name": "field_selection",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsFieldSelection",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "An array of objects that explain selection for each field, sorted by the field names.",
+          "name": "memory_estimation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsMemoryEstimation",
+              "namespace": "ml._types"
+>>>>>>> master
             }
           }
         }
@@ -81300,6 +84850,7 @@
               "namespace": "_types"
             }
           }
+<<<<<<< HEAD
         },
         {
           "name": "vertices",
@@ -81314,6 +84865,19 @@
               }
             }
           }
+=======
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+>>>>>>> master
         }
       ]
     },
@@ -81325,17 +84889,28 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "field",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Field",
+=======
+          "description": "The ID of the data frame analytics to fetch",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+>>>>>>> master
               "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "max_docs_per_value",
           "required": true,
           "type": {
@@ -81343,6 +84918,55 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+=======
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of data frame analytics jobs.",
+          "name": "from",
+          "required": false,
+          "serverDefault": "0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of data frame analytics jobs to obtain.",
+          "name": "size",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.",
+          "name": "exclude_generated",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+>>>>>>> master
             }
           }
         }
@@ -81364,7 +84988,11 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "actions",
+=======
+          "name": "count",
+>>>>>>> master
           "required": true,
           "type": {
             "items": [
@@ -81406,14 +85034,35 @@
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Time",
               "namespace": "_types"
+=======
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An array of data frame analytics job resources, which are sorted by the id value in ascending order.",
+          "name": "data_frame_analytics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsSummary",
+                "namespace": "ml.get_data_frame_analytics"
+              }
+>>>>>>> master
             }
           }
         }
       ]
     },
     {
+<<<<<<< HEAD
       "kind": "interface",
       "name": {
         "name": "Phases",
@@ -81433,27 +85082,63 @@
         },
         {
           "name": "delete",
+=======
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "MlGetDataFrameAnalyticsStatsRequest",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics stats to fetch",
+          "name": "id",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Phase",
               "namespace": "ilm._types"
+=======
+              "name": "Id",
+              "namespace": "_types"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "hot",
+=======
+          "name": "allow_no_match",
+>>>>>>> master
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Phase",
               "namespace": "ilm._types"
+=======
+              "name": "boolean",
+              "namespace": "internal"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "warm",
           "required": false,
           "type": {
@@ -81461,6 +85146,43 @@
             "type": {
               "name": "Phase",
               "namespace": "ilm._types"
+=======
+          "description": "Skips the specified number of data frame analytics jobs.",
+          "name": "from",
+          "required": false,
+          "serverDefault": "0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of data frame analytics jobs to obtain.",
+          "name": "size",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines whether the stats response should be verbose.",
+          "name": "verbose",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+>>>>>>> master
             }
           }
         }
@@ -81474,17 +85196,27 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "phases",
+=======
+          "name": "count",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Phases",
               "namespace": "ilm._types"
+=======
+              "name": "integer",
+              "namespace": "_types"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "name",
           "required": false,
           "type": {
@@ -81492,6 +85224,19 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+=======
+          "description": "An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order.",
+          "name": "data_frame_analytics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsStatsItem",
+                "namespace": "ml.get_data_frame_analytics_stats"
+              }
+>>>>>>> master
             }
           }
         }
@@ -83197,6 +86942,7 @@
               "namespace": "_types"
             }
           }
+<<<<<<< HEAD
         },
         {
           "name": "token",
@@ -83212,15 +86958,59 @@
         {
           "name": "type",
           "required": true,
+=======
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A data frame analytics config as described in Create data frame analytics jobs. Note that id and dest don’t need to be provided in the context of this API.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
+            "name": "config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFramePreviewConfig",
+                "namespace": "ml.preview_data_frame_analytics"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "MlPreviewDataFrameAnalyticsRequest",
+        "namespace": "ml.preview_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to preview",
+          "name": "id",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
-      ]
+      ],
+      "query": []
     },
     {
       "kind": "interface",
@@ -83230,6 +87020,7 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "name",
           "required": true,
           "type": {
@@ -83237,6 +87028,30 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+=======
+          "description": "An array of objects that contain feature name and value pairs. The features have been processed and indicate what will be sent to the model for training.",
+          "name": "feature_values",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Field",
+                  "namespace": "_types"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+>>>>>>> master
             }
           }
         },
@@ -83293,12 +87108,129 @@
     {
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "ExplainAnalyzeToken",
         "namespace": "indices.analyze"
       },
       "properties": [
         {
           "name": "bytes",
+=======
+        "name": "MlPutCalendarJobResponse",
+        "namespace": "ml.put_calendar_job"
+      },
+      "properties": [
+        {
+          "name": "calendar_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "job_ids",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "MlPutCalendarRequest",
+        "namespace": "ml.put_calendar"
+      },
+      "path": [
+        {
+          "description": "The ID of the calendar to create",
+          "name": "calendar_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MlPutCalendarResponse",
+        "namespace": "ml.put_calendar"
+      },
+      "properties": [
+        {
+          "name": "calendar_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "description",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -83309,6 +87241,199 @@
           }
         },
         {
+          "name": "job_ids",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified.",
+            "name": "source",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsSource",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "The destination configuration, consisting of index and optionally results_field (ml by default).",
+            "name": "dest",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalyticsDestination",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression.",
+            "name": "analysis",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalysisContainer",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "A description of the job.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html",
+            "name": "model_memory_limit",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ByteSize",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "name": "max_num_threads",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis.",
+            "name": "analyzed_fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataFrameAnalysisAnalyzedFields",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
+            "name": "allow_lazy_start",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "MlPutDataFrameAnalyticsRequest",
+        "namespace": "ml.put_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to create",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MlPutDataFrameAnalyticsResponse",
+        "namespace": "ml.put_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "name": "id",
+>>>>>>> master
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+<<<<<<< HEAD
+              "name": "string",
+              "namespace": "internal"
+=======
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+>>>>>>> master
+            }
+          }
+        },
+        {
+<<<<<<< HEAD
           "name": "end_offset",
           "required": true,
           "type": {
@@ -83327,23 +87452,46 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "position",
+=======
+          "name": "version",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "VersionString",
               "namespace": "_types"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
+          "name": "position",
+=======
+          "name": "source",
+>>>>>>> master
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+<<<<<<< HEAD
+              "name": "long",
+              "namespace": "_types"
+=======
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+>>>>>>> master
+            }
+          }
+        },
+        {
+<<<<<<< HEAD
           "name": "positionLength",
           "required": true,
+=======
+          "name": "description",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83353,46 +87501,99 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "start_offset",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
+=======
+          "name": "dest",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsDestination",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+>>>>>>> master
               "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "termFrequency",
+=======
+          "name": "allow_lazy_start",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "long",
               "namespace": "_types"
+=======
+              "name": "boolean",
+              "namespace": "internal"
+>>>>>>> master
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "token",
+=======
+          "name": "max_num_threads",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "type",
+=======
+          "name": "analysis",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "string",
               "namespace": "internal"
+=======
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
+>>>>>>> master
             }
           }
         }
@@ -84709,6 +88910,35 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+<<<<<<< HEAD
+=======
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "force",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "timeout",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -84717,16 +88947,164 @@
       },
       "kind": "request",
       "name": {
+        "name": "MlStopDatafeedRequest",
+        "namespace": "ml.stop_datafeed"
+      },
+      "path": [
+        {
+          "description": "The ID of the datafeed to stop",
+          "name": "datafeed_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ids",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "force",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MlStopDatafeedResponse",
+        "namespace": "ml.stop_datafeed"
+      },
+      "properties": [
+        {
+          "name": "stopped",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A description of the job.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html",
+            "name": "model_memory_limit",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ByteSize",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "name": "max_num_threads",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
+            "name": "allow_lazy_start",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+>>>>>>> master
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+<<<<<<< HEAD
         "name": "Request",
         "namespace": "indices.delete_alias"
       },
       "path": [
         {
           "name": "index",
+=======
+        "name": "MlUpdateDataFrameAnalyticsRequest",
+        "namespace": "ml.update_data_frame_analytics"
+      },
+      "path": [
+        {
+          "description": "The ID of the data frame analytics to update",
+          "name": "id",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Indices",
               "namespace": "_types"
             }
@@ -84739,29 +89117,93 @@
             "kind": "instance_of",
             "type": {
               "name": "Names",
+=======
+              "name": "Id",
+>>>>>>> master
               "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MlUpdateDataFrameAnalyticsResponse",
+        "namespace": "ml.update_data_frame_analytics"
+      },
+      "properties": [
         {
+<<<<<<< HEAD
           "name": "master_timeout",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Time",
+=======
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+>>>>>>> master
               "namespace": "_types"
             }
           }
         },
         {
+<<<<<<< HEAD
           "name": "timeout",
+=======
+          "name": "create_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsSource",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+>>>>>>> master
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
+<<<<<<< HEAD
               "name": "Time",
               "namespace": "_types"
             }
@@ -84801,12 +89243,76 @@
       "path": [
         {
           "name": "name",
+=======
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "dest",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsDestination",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_memory_limit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "allow_lazy_start",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "DataStreamName",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_num_threads",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisContainer",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analyzed_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalysisAnalyzedFields",
+              "namespace": "ml._types"
             }
           }
         }
@@ -89649,7 +94155,12 @@
       },
       "properties": [
         {
+<<<<<<< HEAD
           "name": "conditions",
+=======
+          "description": "Lists node attributes.",
+          "name": "attributes",
+>>>>>>> master
           "required": true,
           "type": {
             "key": {
@@ -89671,7 +94182,12 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "dry_run",
+=======
+          "description": "The ephemeral ID of the node.",
+          "name": "ephemeral_id",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -89682,8 +94198,14 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "new_index",
           "required": true,
+=======
+          "description": "The unique identifier of the node.",
+          "name": "id",
+          "required": false,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -89693,7 +94215,12 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "old_index",
+=======
+          "description": "The unique identifier of the node.",
+          "name": "name",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -89704,7 +94231,12 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "rolled_over",
+=======
+          "description": "The host and port where transport HTTP connections are accepted.",
+          "name": "transport_address",
+>>>>>>> master
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -92950,8 +97482,104 @@
           }
         },
         {
+<<<<<<< HEAD
           "name": "dot_expander",
           "required": false,
+=======
+          "name": "OR"
+        }
+      ],
+      "name": {
+        "name": "Operator",
+        "namespace": "_types.query_dsl"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OutlierDetectionParameters",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "name": "compute_feature_influence",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_influence_threshold",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "method",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "n_neighbors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "outlier_fraction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "standardization_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OverallBucket",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "bucket_span",
+          "required": true,
+>>>>>>> master
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127568,8 +132196,46 @@
     {
       "kind": "interface",
       "name": {
+<<<<<<< HEAD
         "name": "ConditionContainer",
         "namespace": "watcher._types"
+=======
+        "name": "TimingStats",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "Runtime of the analysis in milliseconds.",
+          "name": "elapsed_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Runtime of the latest iteration of the analysis in milliseconds.",
+          "name": "iteration_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Token",
+        "namespace": "_global.termvectors"
+>>>>>>> master
       },
       "properties": [
         {
@@ -132451,6 +137117,7 @@
       }
     },
     {
+<<<<<<< HEAD
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -132470,6 +137137,44 @@
           }
         ]
       },
+=======
+      "kind": "interface",
+      "name": {
+        "name": "ValidationLoss",
+        "namespace": "ml.get_data_frame_analytics_stats"
+      },
+      "properties": [
+        {
+          "description": "Validation loss values for every added decision tree during the forest growing procedure.",
+          "name": "fold_values",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The type of the loss metric. For example, binomial_logistic.",
+          "name": "loss_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+>>>>>>> master
       "inherits": {
         "type": {
           "name": "RequestBase",

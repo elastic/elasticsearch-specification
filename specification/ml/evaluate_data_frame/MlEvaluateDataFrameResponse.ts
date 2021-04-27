@@ -17,8 +17,109 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
+import { Name } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
 
+/** @variants container */
 export class Response extends ResponseBase {
-  stub: boolean
+  classification?: DataFrameClassificationSummary
+  outlier_detection?: DataFrameOutlierDetectionSummary
+  regression?: DataFrameRegressionSummary
+}
+
+export class DataFrameOutlierDetectionSummary {
+  auc_roc?: DataFrameEvaluationSummaryAucRoc
+  precision?: Dictionary<string, double>
+  recall?: Dictionary<string, double>
+  confusion_matrix?: Dictionary<string, ConfusionMatrixTreshold>
+}
+
+export class DataFrameClassificationSummary {
+  auc_roc?: DataFrameEvaluationSummaryAucRoc
+  accuracy?: DataFrameClassificationSummaryAccuracy
+  multiclass_confusion_matrix?: DataFrameClassificationSummaryMulticlassConfusionMatrix
+  precision?: DataFrameClassificationSummaryPrecision
+  recall?: DataFrameClassificationSummaryRecall
+}
+
+export class DataFrameRegressionSummary {
+  huber?: DataFrameEvaluationValue
+  mse?: DataFrameEvaluationValue
+  msle?: DataFrameEvaluationValue
+  r_squared?: DataFrameEvaluationValue
+}
+
+export class DataFrameEvaluationValue {
+  value: double
+}
+
+export class DataFrameEvaluationSummaryAucRoc extends DataFrameEvaluationValue {
+  curve?: DataFrameEvaluationSummaryAucRocCurveItem[]
+}
+
+export class DataFrameEvaluationSummaryAucRocCurveItem {
+  tpr: double
+  fpr: double
+  threshold: double
+}
+
+export class DataFrameClassificationSummaryPrecision {
+  classes: DataFrameEvaluationClass[]
+  avg_precision: double
+}
+
+export class DataFrameClassificationSummaryRecall {
+  classes: DataFrameEvaluationClass[]
+  avg_recall: double
+}
+
+export class DataFrameClassificationSummaryAccuracy {
+  classes: DataFrameEvaluationClass[]
+  overall_accuracy: double
+}
+
+export class DataFrameEvaluationClass extends DataFrameEvaluationValue {
+  class_name: Name
+}
+
+export class DataFrameClassificationSummaryMulticlassConfusionMatrix {
+  confusion_matrix: ConfusionMatrixItem[]
+  other_actual_class_count: integer
+}
+
+export class ConfusionMatrixItem {
+  actual_class: Name
+  actual_class_doc_count: integer
+  predicted_classes: ConfusionMatrixPrediction[]
+  other_predicted_class_doc_count: integer
+}
+
+export class ConfusionMatrixPrediction {
+  predicted_class: Name
+  count: integer
+}
+
+export class ConfusionMatrixTreshold {
+  /**
+   * True Positive
+   * @identifier true_positive
+   */
+  tp: integer
+  /**
+   * False Positive
+   * @identifier false_positive
+   */
+  fp: integer
+  /**
+   * True Negative
+   * @identifier true_negative
+   */
+  tn: integer
+  /**
+   * False Negative
+   * @identifier false_negative
+   */
+  fn: integer
 }

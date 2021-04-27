@@ -17,26 +17,10 @@
  * under the License.
  */
 
-import {
-  DataFrameAnalysisAnalyzedFields,
-  DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
-import { ResponseBase } from '@_types/Base'
-import { ByteSize, Id, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-
-export class Response extends ResponseBase {
-  id: Id
-  create_time: long
-  version: VersionString
-  source: DataFrameAnalyticsSource
-  description?: string
-  dest: DataFrameAnalyticsDestination
-  model_memory_limit: ByteSize
-  allow_lazy_start: boolean
-  max_num_threads: integer
-  analysis: DataFrameAnalysisContainer
-  analyzed_fields?: DataFrameAnalysisAnalyzedFields
+export enum DataFrameState {
+  started = 0,
+  stopped = 1,
+  starting = 2,
+  stopping = 3,
+  failed = 4
 }

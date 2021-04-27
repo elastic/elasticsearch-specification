@@ -2243,7 +2243,30 @@ export type TransportAddress = string
 
 export type Type = string
 
+<<<<<<< HEAD
 export type Types = Type | Type[]
+=======
+export interface MlEvaluateDataFrameConfusionMatrixItem {
+  actual_class: Name
+  actual_class_doc_count: integer
+  predicted_classes: MlEvaluateDataFrameConfusionMatrixPrediction[]
+  other_predicted_class_doc_count: integer
+}
+
+export interface MlEvaluateDataFrameConfusionMatrixPrediction {
+  predicted_class: Name
+  count: integer
+}
+
+export interface MlEvaluateDataFrameConfusionMatrixTreshold {
+  tp: integer
+  fp: integer
+  tn: integer
+  fn: integer
+}
+
+export type WatcherConnectionScheme = 'http' | 'https'
+>>>>>>> master
 
 export type Username = string
 
@@ -2455,7 +2478,337 @@ export interface AggregationsGeoCentroidAggregate extends AggregationsAggregateB
   location: QueryDslGeoGeoLocation
 }
 
+<<<<<<< HEAD
 export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase {
+=======
+export interface MlDataFrameAnalysis {
+  dependent_variable: string
+  prediction_field_name?: Field
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  max_trees?: integer
+  maximum_number_trees?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+  downsample_factor?: double
+  max_optimization_rounds_per_hyperparameter?: integer
+  early_stopping_enabled?: boolean
+  num_top_feature_importance_values?: integer
+  feature_processors?: MlDataFrameAnalysisFeatureProcessor[]
+  randomize_seed?: double
+  training_percent?: Percentage
+}
+
+export type MlDataFrameAnalysisAnalyzedFields = string[] | MlDataFrameAnalysisAnalyzedFieldsIncludeExclude
+
+export interface MlDataFrameAnalysisAnalyzedFieldsIncludeExclude {
+  includes: string[]
+  excludes: string[]
+}
+
+export interface MlDataFrameAnalysisClassification extends MlDataFrameAnalysis {
+  class_assignment_objective?: string
+  num_top_classes?: integer
+}
+
+export interface MlDataFrameAnalysisContainer {
+  outlier_detection?: MlDataFrameAnalysisOutlierDetection
+  regression?: MlDataFrameAnalysisRegression
+  classification?: MlDataFrameAnalysisClassification
+}
+
+export interface MlDataFrameAnalysisFeatureProcessor {
+  frequency_encoding?: MlDataFrameAnalysisFeatureProcessorFrequencyEncoding
+  multi_encoding?: MlDataFrameAnalysisFeatureProcessorMultiEncoding
+  n_gram_encoding?: MlDataFrameAnalysisFeatureProcessorNGramEncoding
+  one_hot_encoding?: MlDataFrameAnalysisFeatureProcessorOneHotEncoding
+  target_mean_encoding?: MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorFrequencyEncoding {
+  feature_name: Name
+  field: Field
+  frequency_map: Record<string, double>
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorMultiEncoding {
+  processors: integer[]
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorNGramEncoding {
+  feature_prefix?: string
+  field: Field
+  length?: integer
+  n_grams: integer[]
+  start?: integer
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorOneHotEncoding {
+  field: Field
+  hot_map: string
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding {
+  default_value: integer
+  feature_name: Name
+  field: Field
+  target_map: Record<string, any>
+}
+
+export interface MlDataFrameAnalysisOutlierDetection {
+  n_neighbors?: integer
+  method?: string
+  feature_influence_threshold?: double
+  compute_feature_influence?: boolean
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
+
+export interface MlDataFrameAnalysisRegression extends MlDataFrameAnalysis {
+  loss_function?: string
+  loss_function_parameter?: double
+}
+
+export interface MlDataFrameAnalyticsDestination {
+  index: IndexName
+  results_field?: Field
+}
+
+export interface MlDataFrameAnalyticsFieldSelection {
+  is_included: boolean
+  is_required: boolean
+  feature_type?: string
+  mapping_types: string[]
+  name: Field
+  reason?: string
+}
+
+export interface MlDataFrameAnalyticsMemoryEstimation {
+  expected_memory_with_disk: ByteSize
+  expected_memory_without_disk: ByteSize
+}
+
+export interface MlDataFrameAnalyticsSource {
+  index: Indices
+  query?: QueryDslAbstractionsContainerQueryContainer
+  _source?: MlDataFrameAnalysisAnalyzedFields
+  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer {
+  classification_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
+  outlier_detection_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection
+  regression_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts {
+  skipped_docs_count: integer
+  test_docs_count: integer
+  training_docs_count: integer
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters {
+  hyperparameters: MlGetDataFrameAnalyticsStatsHyperparameters
+  iteration: integer
+  timestamp: DateString
+  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
+  validation_loss: MlGetDataFrameAnalyticsStatsValidationLoss
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem {
+  analysis_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer
+  assignment_explanation?: string
+  data_counts: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts
+  id: Id
+  memory_usage: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage
+  node?: NodesNodeAttributes
+  progress: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress[]
+  state: MlDataFrameState
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage {
+  memory_reestimate_bytes?: long
+  peak_usage_bytes: long
+  status: string
+  timestamp?: DateString
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection {
+  parameters: MlGetDataFrameAnalyticsStatsOutlierDetectionParameters
+  timestamp: DateString
+  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress {
+  phase: string
+  progress_percent: integer
+}
+
+export interface MlGetDataFrameAnalyticsDataFrameAnalyticsSummary {
+  id: Id
+  source: MlDataFrameAnalyticsSource
+  dest: MlDataFrameAnalyticsDestination
+  analysis: MlDataFrameAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummary {
+  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
+  accuracy?: MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy
+  multiclass_confusion_matrix?: MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix
+  precision?: MlEvaluateDataFrameDataFrameClassificationSummaryPrecision
+  recall?: MlEvaluateDataFrameDataFrameClassificationSummaryRecall
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  overall_accuracy: double
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix {
+  confusion_matrix: MlEvaluateDataFrameConfusionMatrixItem[]
+  other_actual_class_count: integer
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryPrecision {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  avg_precision: double
+}
+
+export interface MlEvaluateDataFrameDataFrameClassificationSummaryRecall {
+  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+  avg_recall: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationClass extends MlEvaluateDataFrameDataFrameEvaluationValue {
+  class_name: Name
+}
+
+export interface MlDataFrameEvaluationClassification {
+  actual_field: Field
+  predicted_field?: Field
+  top_classes_field?: Field
+  metrics?: MlDataFrameEvaluationClassificationMetrics
+}
+
+export interface MlDataFrameEvaluationClassificationMetrics extends MlDataFrameEvaluationMetrics {
+  accuracy?: Record<string, any>
+  multiclass_confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationClassificationMetricsAucRoc {
+  class_name?: Name
+  include_curve?: boolean
+}
+
+export interface MlDataFrameEvaluationContainer {
+  classification?: MlDataFrameEvaluationClassification
+  outlier_detection?: MlDataFrameEvaluationOutlierDetection
+  regression?: MlDataFrameEvaluationRegression
+}
+
+export interface MlDataFrameEvaluationMetrics {
+  auc_roc?: MlDataFrameEvaluationClassificationMetricsAucRoc
+  precision?: Record<string, any>
+  recall?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationOutlierDetection {
+  actual_field: Field
+  predicted_probability_field: Field
+  metrics?: MlDataFrameEvaluationOutlierDetectionMetrics
+}
+
+export interface MlDataFrameEvaluationOutlierDetectionMetrics extends MlDataFrameEvaluationMetrics {
+  confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationRegression {
+  actual_field: Field
+  predicted_field: Field
+  metrics?: MlDataFrameEvaluationRegressionMetrics
+}
+
+export interface MlDataFrameEvaluationRegressionMetrics {
+  mse?: Record<string, any>
+  msle?: MlDataFrameEvaluationRegressionMetricsMsle
+  huber?: MlDataFrameEvaluationRegressionMetricsHuber
+  r_squared?: Record<string, any>
+}
+
+export interface MlDataFrameEvaluationRegressionMetricsHuber {
+  delta?: double
+}
+
+export interface MlDataFrameEvaluationRegressionMetricsMsle {
+  offset?: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc extends MlEvaluateDataFrameDataFrameEvaluationValue {
+  curve?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem[]
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem {
+  tpr: double
+  fpr: double
+  threshold: double
+}
+
+export interface MlEvaluateDataFrameDataFrameEvaluationValue {
+  value: double
+}
+
+export interface MlEvaluateDataFrameDataFrameOutlierDetectionSummary {
+  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
+  precision?: Record<string, double>
+  recall?: Record<string, double>
+  confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixTreshold>
+}
+
+export interface MlPreviewDataFrameAnalyticsDataFramePreviewConfig {
+  source: MlDataFrameAnalyticsSource
+  analysis: MlDataFrameAnalysisContainer
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+}
+
+export interface MlEvaluateDataFrameDataFrameRegressionSummary {
+  huber?: MlEvaluateDataFrameDataFrameEvaluationValue
+  mse?: MlEvaluateDataFrameDataFrameEvaluationValue
+  msle?: MlEvaluateDataFrameDataFrameEvaluationValue
+  r_squared?: MlEvaluateDataFrameDataFrameEvaluationValue
+}
+
+export type MlDataFrameState = 'started' | 'stopped' | 'starting' | 'stopping' | 'failed'
+
+export interface NodesNodesStatsDataPathStats {
+  available: string
+  available_in_bytes: long
+  disk_queue: string
+  disk_reads: long
+  disk_read_size: string
+  disk_read_size_in_bytes: long
+  disk_writes: long
+  disk_write_size: string
+  disk_write_size_in_bytes: long
+  free: string
+  free_in_bytes: long
+  mount: string
+  path: string
+  total: string
+  total_in_bytes: long
+>>>>>>> master
   type: string
   geometry: AggregationsLineStringGeoShape
   properties: AggregationsGeoLineProperties
@@ -4638,6 +4991,7 @@ export interface QueryDslSpecializedDistanceFeatureDistanceFeatureQuery extends 
   field?: Field
 }
 
+<<<<<<< HEAD
 export interface QueryDslSpecializedMoreLikeThisMoreLikeThisQuery extends QueryDslAbstractionsQueryQueryBase {
   analyzer?: string
   boost_terms?: double
@@ -4657,6 +5011,34 @@ export interface QueryDslSpecializedMoreLikeThisMoreLikeThisQuery extends QueryD
   unlike?: QueryDslSpecializedMoreLikeThisLikeLike | QueryDslSpecializedMoreLikeThisLikeLike[]
   version?: VersionNumber
   version_type?: VersionType
+=======
+export interface MlHyperparameter {
+  absolute_importance?: double
+  name: Name
+  relative_importance?: double
+  supplied: boolean
+  value: double
+}
+
+export interface MlGetDataFrameAnalyticsStatsHyperparameters {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  downsample_factor?: double
+  max_attempts_to_add_tree?: integer
+  max_optimization_rounds_per_hyperparameter?: integer
+  max_trees?: integer
+  num_folds?: integer
+  num_splits_per_feature?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+}
+
+export interface AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter extends AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase {
+>>>>>>> master
 }
 
 export type QueryDslSpecializedMoreLikeThisLikeLike = string | QueryDslSpecializedMoreLikeThisLikeLikeDocument
@@ -7586,6 +7968,7 @@ export interface ClusterClusterStatsClusterNodeCount {
   transform: integer
 }
 
+<<<<<<< HEAD
 export interface ClusterClusterStatsClusterNodesStats {
   count: ClusterClusterStatsClusterNodeCount
   discovery_types: Record<string, integer>
@@ -7617,6 +8000,39 @@ export interface ClusterClusterStatsClusterOperatingSystemStats {
   names: ClusterClusterStatsClusterOperatingSystemName[]
   pretty_names: NodesNodesInfoClusterOperatingSystemPrettyName[]
   architectures?: ClusterClusterStatsClusterOperatingSystemArchitecture[]
+=======
+export interface MlEvaluateDataFrameMlEvaluateDataFrameRequest extends RequestBase {
+  body: {
+    evaluation: MlDataFrameEvaluationContainer
+    index: IndexName
+    query?: QueryDslAbstractionsContainerQueryContainer
+  }
+}
+
+export interface MlEvaluateDataFrameMlEvaluateDataFrameResponse extends ResponseBase {
+  classification?: MlEvaluateDataFrameDataFrameClassificationSummary
+  outlier_detection?: MlEvaluateDataFrameDataFrameOutlierDetectionSummary
+  regression?: MlEvaluateDataFrameDataFrameRegressionSummary
+}
+
+export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsRequest extends RequestBase {
+  id?: Id
+  body?: {
+    source?: MlDataFrameAnalyticsSource
+    dest?: MlDataFrameAnalyticsDestination
+    analysis: MlDataFrameAnalysisContainer
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    allow_lazy_start?: boolean
+  }
+}
+
+export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsResponse extends ResponseBase {
+  field_selection: MlDataFrameAnalyticsFieldSelection[]
+  memory_estimation: MlDataFrameAnalyticsMemoryEstimation
+>>>>>>> master
 }
 
 export interface ClusterClusterStatsClusterProcess {
@@ -7724,6 +8140,7 @@ export interface DanglingIndicesIndexDeleteResponse extends ResponseBase {
   stub: integer
 }
 
+<<<<<<< HEAD
 export interface DanglingIndicesIndexImportRequest extends RequestBase {
   stub_a: string
   stub_b: string
@@ -7746,6 +8163,32 @@ export interface DanglingIndicesIndicesListRequest extends RequestBase {
 
 export interface DanglingIndicesIndicesListResponse extends ResponseBase {
   stub: integer
+=======
+export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsRequest extends RequestBase {
+  id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
+  exclude_generated?: boolean
+}
+
+export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsResponse extends ResponseBase {
+  count: integer
+  data_frame_analytics: MlGetDataFrameAnalyticsDataFrameAnalyticsSummary[]
+}
+
+export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsRequest extends RequestBase {
+  id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
+  verbose?: boolean
+}
+
+export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
+  count: integer
+  data_frame_analytics: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem[]
+>>>>>>> master
 }
 
 export interface EnrichEnrichPolicy {
@@ -7948,6 +8391,7 @@ export interface GraphExploreGraphExploreControls {
   use_significance: boolean
 }
 
+<<<<<<< HEAD
 export interface GraphExploreGraphVertex {
   depth: long
   field: string
@@ -7962,6 +8406,17 @@ export interface GraphExploreGraphVertexDefinition {
   min_doc_count?: long
   shard_min_doc_count?: long
   size?: integer
+=======
+export interface MlPreviewDataFrameAnalyticsMlPreviewDataFrameAnalyticsRequest extends RequestBase {
+  id?: Id
+  body?: {
+    config?: MlPreviewDataFrameAnalyticsDataFramePreviewConfig
+  }
+}
+
+export interface MlPreviewDataFrameAnalyticsMlPreviewDataFrameAnalyticsResponse extends ResponseBase {
+  feature_values: Record<Field, string>[]
+>>>>>>> master
 }
 
 export interface GraphExploreGraphVertexInclude {
@@ -8004,6 +8459,7 @@ export interface GraphExploreSampleDiversity {
 export interface IlmLifecycleAction {
 }
 
+<<<<<<< HEAD
 export interface IlmPhase {
   actions: Record<string, IlmLifecycleAction> | string[]
   min_age?: Time
@@ -8014,6 +8470,34 @@ export interface IlmPhases {
   delete?: IlmPhase
   hot?: IlmPhase
   warm?: IlmPhase
+=======
+export interface MlPutDataFrameAnalyticsMlPutDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  body: {
+    source?: MlDataFrameAnalyticsSource
+    dest: MlDataFrameAnalyticsDestination
+    analysis: MlDataFrameAnalysisContainer
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    allow_lazy_start?: boolean
+  }
+}
+
+export interface MlPutDataFrameAnalyticsMlPutDataFrameAnalyticsResponse extends ResponseBase {
+  id: Id
+  create_time: long
+  version: VersionString
+  source: MlDataFrameAnalyticsSource
+  description?: string
+  dest: MlDataFrameAnalyticsDestination
+  model_memory_limit: ByteSize
+  allow_lazy_start: boolean
+  max_num_threads: integer
+  analysis: MlDataFrameAnalysisContainer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+>>>>>>> master
 }
 
 export interface IlmPolicy {
@@ -8124,8 +8608,56 @@ export interface IlmPutLifecycleRequest extends RequestBase {
 export interface IlmPutLifecycleResponse extends AcknowledgedResponseBase {
 }
 
+<<<<<<< HEAD
 export interface IlmRemovePolicyRequest extends RequestBase {
   index: IndexName
+=======
+export interface MlUpdateDataFrameAnalyticsMlUpdateDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  body: {
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    allow_lazy_start?: boolean
+  }
+}
+
+export interface MlUpdateDataFrameAnalyticsMlUpdateDataFrameAnalyticsResponse extends ResponseBase {
+  id: Id
+  create_time: long
+  version: VersionString
+  source: MlDataFrameAnalyticsSource
+  description?: string
+  dest: MlDataFrameAnalyticsDestination
+  model_memory_limit: ByteSize
+  allow_lazy_start: boolean
+  max_num_threads: integer
+  analysis: MlDataFrameAnalysisContainer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+}
+
+export interface MlUpdateDataFeedMlUpdateDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  body: {
+    aggregations?: Record<string, AggregationsAggregationContainer>
+    chunking_config?: MlChunkingConfig
+    delayed_data_check_config?: MlDelayedDataCheckConfig
+    frequency?: Time
+    indexes?: Indices
+    indices?: Indices
+    indices_options?: MlUpdateDataFeedDatafeedIndicesOptions
+    job_id?: Id
+    max_empty_searches?: integer
+    query?: QueryDslAbstractionsContainerQueryContainer
+    query_delay?: Time
+    script_fields?: Record<string, ScriptField>
+    scroll_size?: integer
+  }
+>>>>>>> master
 }
 
 export interface IlmRemovePolicyResponse extends ResponseBase {
@@ -8857,7 +9389,26 @@ export interface IndicesRecoveryRequest extends RequestBase {
   detailed?: boolean
 }
 
+<<<<<<< HEAD
 export interface IndicesRecoveryResponse extends DictionaryResponseBase<IndexName, IndicesRecoveryRecoveryStatus> {
+=======
+export interface MlGetDataFrameAnalyticsStatsOutlierDetectionParameters {
+  compute_feature_influence?: boolean
+  feature_influence_threshold?: double
+  method?: string
+  n_neighbors?: integer
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
+
+export interface MlOverallBucket {
+  bucket_span: long
+  is_interim: boolean
+  jobs: MlOverallBucketJobInfo[]
+  overall_score: double
+  result_type: string
+  timestamp: DateString
+>>>>>>> master
 }
 
 export interface IndicesRecoveryShardRecovery {
@@ -13008,6 +13559,7 @@ export interface TaskGetTaskResponse extends ResponseBase {
   error?: ErrorCause
 }
 
+<<<<<<< HEAD
 export interface TaskGetTaskTaskInfo {
   action: string
   cancellable: boolean
@@ -13021,6 +13573,18 @@ export interface TaskGetTaskTaskInfo {
   status?: TaskListTasksTaskStatus
   type: string
   parent_task_id?: Id
+=======
+export interface MlGetDataFrameAnalyticsStatsTimingStats {
+  elapsed_time: integer
+  iteration_time?: integer
+}
+
+export interface TermvectorsToken {
+  end_offset?: integer
+  payload?: string
+  position: integer
+  start_offset?: integer
+>>>>>>> master
 }
 
 export interface TaskListTasksRequest extends RequestBase {
@@ -13627,9 +14191,20 @@ export interface WatcherSearchInputRequestDefinition {
   rest_total_hits_as_int?: boolean
 }
 
+<<<<<<< HEAD
 export interface WatcherSearchTransform {
   request: WatcherSearchInputRequestDefinition
   timeout: Time
+=======
+export interface MlGetDataFrameAnalyticsStatsValidationLoss {
+  fold_values: string[]
+  loss_type: string
+}
+
+export interface AggregationsValueAggregate extends AggregationsAggregateBase {
+  value: double
+  value_as_string?: string
+>>>>>>> master
 }
 
 export interface WatcherSimulatedActions {

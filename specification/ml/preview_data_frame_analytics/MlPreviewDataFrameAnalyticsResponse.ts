@@ -17,8 +17,12 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ResponseBase } from '@_types/Base'
+import { Field } from '@_types/common'
 
 export class Response extends ResponseBase {
-  stub: boolean
+  /** An array of objects that contain feature name and value pairs. The features have been processed and indicate what will be sent to the model for training. */
+  feature_values: Dictionary<Field, string>[]
 }

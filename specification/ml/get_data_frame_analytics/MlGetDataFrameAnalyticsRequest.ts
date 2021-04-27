@@ -18,6 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.get_data_frame_analytics
@@ -25,13 +27,29 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts: {
-    stub: string
+  path_parts?: {
+    /** Identifier for the data frame analytics job. If you do not specify this option, the API returns information for the first hundred data frame analytics jobs. */
+    id?: Id
   }
   query_parameters?: {
-    stub?: string
-  }
-  body?: {
-    stub?: string
+    /**
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * Skips the specified number of data frame analytics jobs.
+     * @server_default 0
+     */
+    from?: integer
+    /**
+     * Specifies the maximum number of data frame analytics jobs to obtain.
+     * @server_default 100
+     */
+    size?: integer
+    /**
+     * Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.
+     * @server_default false
+     */
+    exclude_generated?: boolean
   }
 }
