@@ -17,8 +17,18 @@
  * under the License.
  */
 
+import { TrainedModelConfig } from '@ml/_types/TrainedModel'
 import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
+/**
+ * Response codes
+ * 400 - If include_model_definition is true, this code indicates that more than one models match the ID pattern.
+ * 404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html#ml-get-trained-models-results
+ */
 export class MlGetTrainedModelResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  /** An array of trained model resources, which are sorted by the model_id value in ascending order. */
+  trained_model_configs: TrainedModelConfig[]
 }
