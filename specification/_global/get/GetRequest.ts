@@ -33,7 +33,7 @@ import {
  * @since 0.0.0
  * @stability TODO
  */
-export interface GetRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     /** Unique identifier of the document. */
     id: Id

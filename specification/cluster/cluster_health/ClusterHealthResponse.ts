@@ -27,7 +27,7 @@ import { IndexHealthStats } from './IndexHealthStats'
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
  */
-export class ClusterHealthResponse extends ResponseBase {
+export class Response extends ResponseBase {
   /** The number of active primary shards. */
   active_primary_shards: integer
   /** The total number of active primary and replica shards. */

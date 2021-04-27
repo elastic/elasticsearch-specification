@@ -30,7 +30,7 @@ import { Id } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface WatcherExecuteWatchRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id?: Id
   }

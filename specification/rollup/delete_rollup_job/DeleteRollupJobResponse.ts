@@ -20,6 +20,6 @@
 import { RollupJobTaskFailure } from '@rollup/get_rollup_job/RollupJobTaskFailure'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class DeleteRollupJobResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   task_failures?: RollupJobTaskFailure[]
 }

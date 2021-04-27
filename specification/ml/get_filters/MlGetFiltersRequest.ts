@@ -26,7 +26,7 @@ import { integer } from '@_types/Numeric'
  * @since 5.5.0
  * @stability TODO
  */
-export interface MlGetFiltersRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     filter_id?: Id
   }

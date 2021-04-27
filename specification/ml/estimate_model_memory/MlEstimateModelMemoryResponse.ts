@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class MlEstimateModelMemoryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   model_memory_estimate: string
 }

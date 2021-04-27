@@ -25,7 +25,7 @@ import { long } from '@_types/Numeric'
 import { ClusterIndicesStats } from './ClusterIndicesStats'
 import { ClusterNodesStats } from './ClusterNodesStats'
 
-export class ClusterStatsResponse extends NodesResponseBase {
+export class Response extends NodesResponseBase {
   /**
    * Name of the cluster, based on the Cluster name setting setting.
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html#cluster-name

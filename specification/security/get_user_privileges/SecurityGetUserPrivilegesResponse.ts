@@ -22,7 +22,7 @@ import { ApplicationResourcePrivileges } from './ApplicationResourcePrivileges'
 import { GlobalPrivileges } from './GlobalPrivileges'
 import { UserIndicesPrivileges } from './UserIndicesPrivileges'
 
-export class SecurityGetUserPrivilegesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   applications: ApplicationResourcePrivileges[]
   cluster: string[]
   global: GlobalPrivileges[]

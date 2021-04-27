@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
  * @since 1.3.0
  * @stability TODO
  */
-export interface IndicesUpdateAliasBulkRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     master_timeout?: Time
     timeout?: Time

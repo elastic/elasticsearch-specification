@@ -24,7 +24,7 @@ import { Field } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer, long } from '@_types/Numeric'
 
-export class FindStructureResponse {
+export class Response {
   charset: string
   has_header_row?: boolean
   has_byte_order_marker: boolean

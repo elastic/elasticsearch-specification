@@ -25,7 +25,7 @@ import { Name, Username } from '@_types/common'
  * @since 5.5.0
  * @stability TODO
  */
-export interface SecurityInvalidateTokenRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     token?: string
     refresh_token?: string

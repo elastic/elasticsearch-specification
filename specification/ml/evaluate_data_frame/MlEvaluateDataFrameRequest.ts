@@ -17,21 +17,31 @@
  * under the License.
  */
 
+import { DataFrameEvaluationContainer } from '@ml/_types/DataFrameEvaluation'
 import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 /**
  * @rest_spec_name ml.evaluate_data_frame
  * @since 7.3.0
  * @stability TODO
  */
-export interface MlEvaluateDataFrameRequest extends RequestBase {
-  path_parts: {
-    stub: string
-  }
-  query_parameters?: {
-    stub?: string
-  }
-  body?: {
-    stub?: string
+export interface Request extends RequestBase {
+  body: {
+    /**
+     * Defines the type of evaluation you want to perform.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html#ml-evaluate-dfanalytics-resources
+     */
+    evaluation: DataFrameEvaluationContainer
+    /**
+     * Defines the index in which the evaluation will be performed.
+     */
+    index: IndexName
+    /**
+     * A query clause that retrieves a subset of data from the source index.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+     */
+    query?: QueryContainer
   }
 }

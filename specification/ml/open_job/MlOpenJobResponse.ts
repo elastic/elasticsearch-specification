@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class MlOpenJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   opened: boolean
 }

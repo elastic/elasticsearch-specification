@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @since 6.3.0
  * @stability TODO
  */
-export interface QuerySqlRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     /**
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html#sql-rest-format

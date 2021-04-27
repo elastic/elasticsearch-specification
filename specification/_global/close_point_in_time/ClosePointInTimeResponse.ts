@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class ClosePointInTimeResponse extends ResponseBase {
+export class Response extends ResponseBase {
   succeeded: boolean
   num_freed: integer
 }

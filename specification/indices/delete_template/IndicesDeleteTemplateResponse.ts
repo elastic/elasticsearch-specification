@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class IndicesDeleteTemplateResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

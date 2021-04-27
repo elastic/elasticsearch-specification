@@ -25,7 +25,7 @@ import { integer } from '@_types/Numeric'
  * @since 0.0.0
  * @stability TODO
  */
-export interface WatcherStopRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     stub: integer

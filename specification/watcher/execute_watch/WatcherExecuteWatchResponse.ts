@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { WatchRecord } from './WatchRecord'
 
-export class WatcherExecuteWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   _id: Id
   watch_record: WatchRecord
 }

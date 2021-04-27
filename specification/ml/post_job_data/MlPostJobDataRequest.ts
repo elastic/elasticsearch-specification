@@ -28,7 +28,7 @@ import { DateString } from '@_types/Time'
  *
  * @stability TODO
  */
-export interface MlPostJobDataRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }

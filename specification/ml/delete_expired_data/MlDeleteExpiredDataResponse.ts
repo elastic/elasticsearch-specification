@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class MlDeleteExpiredDataResponse extends ResponseBase {
+export class Response extends ResponseBase {
   deleted: boolean
 }

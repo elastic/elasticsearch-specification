@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class CleanupRepositoryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   results: CleanupRepositoryResults
 }
 

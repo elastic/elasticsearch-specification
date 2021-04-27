@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 6.1.0
  * @stability TODO
  */
-export interface StartTrialLicenseRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     acknowledge?: boolean
     type_query_string?: string

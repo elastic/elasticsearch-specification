@@ -38,8 +38,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface UpdateRequest<TDocument, TPartialDocument>
-  extends RequestBase {
+export interface Request<TDocument, TPartialDocument> extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName

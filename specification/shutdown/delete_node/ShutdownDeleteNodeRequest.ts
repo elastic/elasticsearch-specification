@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.13.0
  * @stability TODO
  */
-export interface ShutdownDeleteNodeRequest extends RequestBase {
+export interface Request extends RequestBase {
   body: {
     stub: string
   }

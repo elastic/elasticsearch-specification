@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @since 5.2.0
  * @stability TODO
  */
-export interface CatTemplatesRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     name?: Name
   }

@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 
-export class EqlGetStatusResponse extends ResponseBase {
+export class Response extends ResponseBase {
   /**
    * Identifier for the search.
    */

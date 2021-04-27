@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { PutTransformRequest } from '@transform/put_transform/PutTransformRequest'
+import { Request as PutTransformRequest } from '@transform/put_transform/PutTransformRequest'
 
 /**
  * @rest_spec_name transform.update_transform
  * @since 7.2.0
  * @stability TODO
  */
-export interface UpdateTransformRequest extends PutTransformRequest {}
+export interface Request extends PutTransformRequest {}

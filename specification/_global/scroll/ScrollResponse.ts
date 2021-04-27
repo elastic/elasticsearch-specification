@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SearchResponse } from '@global/search/SearchResponse'
+import { Response as SearchResponse } from '@global/search/SearchResponse'
 import { integer } from '@_types/Numeric'
 
-export class ScrollResponse<TDocument> extends SearchResponse<TDocument> {}
+export class Response<TDocument> extends SearchResponse<TDocument> {}

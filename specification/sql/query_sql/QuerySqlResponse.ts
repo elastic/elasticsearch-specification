@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { SqlRow } from '@_types/common'
 import { SqlColumn } from './SqlColumn'
 
-export class QuerySqlResponse extends ResponseBase {
+export class Response extends ResponseBase {
   columns?: SqlColumn[]
   cursor?: string
   rows: SqlRow[]

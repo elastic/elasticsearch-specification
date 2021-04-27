@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
  * @since 6.7.0
  * @stability TODO
  */
-export interface MlSetUpgradeModeRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     enabled?: boolean
     timeout?: Time

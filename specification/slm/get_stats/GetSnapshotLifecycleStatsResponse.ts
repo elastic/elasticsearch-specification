@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 
-export class GetSnapshotLifecycleStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   retention_deletion_time: string
   retention_deletion_time_millis: EpochMillis
   retention_failed: long

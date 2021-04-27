@@ -22,7 +22,7 @@ import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 import { IndicesStats } from './IndicesStats'
 
-export class IndicesStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   indices?: Dictionary<string, IndicesStats>
   _shards: ShardStatistics
   _all: IndicesStats

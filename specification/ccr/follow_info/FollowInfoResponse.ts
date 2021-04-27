@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { FollowerInfo } from './FollowerInfo'
 
-export class FollowInfoResponse extends ResponseBase {
+export class Response extends ResponseBase {
   follower_indices: FollowerInfo[]
 }

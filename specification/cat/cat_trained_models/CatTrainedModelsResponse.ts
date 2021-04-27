@@ -20,4 +20,4 @@
 import { CatResponseBase } from '@cat/_types/CatBase'
 import { CatTrainedModelsRecord } from './CatTrainedModelsRecord'
 
-export class CatTrainedModelsResponse extends CatResponseBase<CatTrainedModelsRecord> {}
+export class Response extends CatResponseBase<CatTrainedModelsRecord> {}

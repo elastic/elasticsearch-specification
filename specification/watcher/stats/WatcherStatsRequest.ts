@@ -25,7 +25,7 @@ import { WatcherMetric } from './WatcherMetric'
  * @since 5.5.0
  * @stability TODO
  */
-export interface WatcherStatsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     metric?: WatcherMetric | WatcherMetric[]
   }

@@ -27,7 +27,7 @@ import { ClusterRerouteCommand } from './ClusterRerouteCommand'
  * @since 5.0.0
  * @stability TODO
  */
-export interface ClusterRerouteRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     /**
      * If true, then the request simulates the operation only and returns the resulting state.

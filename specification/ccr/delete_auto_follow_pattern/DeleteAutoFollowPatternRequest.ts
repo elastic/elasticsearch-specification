@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @since 6.5.0
  * @stability TODO
  */
-export interface DeleteAutoFollowPatternRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     name: Name
   }

@@ -21,7 +21,7 @@ import { BucketInfluencer } from '@ml/_types/BucketInfluencer'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class MlGetInfluencersResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   influencers: BucketInfluencer[]
 }

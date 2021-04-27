@@ -22,7 +22,7 @@ import { ByteSize, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class IndicesDataStreamsStatsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   _shards: ShardStatistics
   backing_indices: integer
   data_stream_count: integer

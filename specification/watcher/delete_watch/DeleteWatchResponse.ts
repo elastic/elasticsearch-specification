@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { Id, VersionNumber } from '@_types/common'
 
-export class DeleteWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   found: boolean
   _id: Id
   _version: VersionNumber

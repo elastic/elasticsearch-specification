@@ -28,7 +28,7 @@ import { Time } from '@_types/Time'
  *
  * @stability TODO
  */
-export interface IndicesPutSettingsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
   }
@@ -41,9 +41,9 @@ export interface IndicesPutSettingsRequest extends RequestBase {
     preserve_existing?: boolean
     timeout?: Time
   }
-  body: IndexSettingsRequest
+  body: IndexSettingsBody
 }
 
-export interface IndexSettingsRequest extends IndexSettings {
+export class IndexSettingsBody extends IndexSettings {
   settings?: IndexSettings
 }

@@ -18,14 +18,14 @@
  */
 
 import { Id } from '@_types/common'
-import { PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
+import { Request as PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
 
 /**
  * @rest_spec_name transform.put_transform
  * @since 7.2.0
  * @stability TODO
  */
-export interface PutTransformRequest extends PreviewTransformRequest {
+export interface Request extends PreviewTransformRequest {
   path_parts: {
     /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     transform_id: Id

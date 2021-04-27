@@ -27,7 +27,7 @@ import { Decision } from './Decision'
 import { NodeAllocationExplanation } from './NodeAllocationExplanation'
 import { UnassignedInformation } from './UnassignedInformation'
 
-export class ClusterAllocationExplainResponse extends ResponseBase {
+export class Response extends ResponseBase {
   allocate_explanation?: string
   allocation_delay?: string
   allocation_delay_in_millis?: long

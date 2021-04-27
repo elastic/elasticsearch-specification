@@ -19,4 +19,4 @@
 
 import { ShardsOperationResponseBase } from '@_types/Base'
 
-export class IndicesClearCacheResponse extends ShardsOperationResponseBase {}
+export class Response extends ShardsOperationResponseBase {}

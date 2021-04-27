@@ -26,7 +26,7 @@ import { PainlessContextSetup } from './PainlessContextSetup'
  * @since 6.3.0
  * @stability TODO
  */
-export interface ExecutePainlessScriptRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     context?: string

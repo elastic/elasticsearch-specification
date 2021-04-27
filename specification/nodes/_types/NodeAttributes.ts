@@ -23,10 +23,15 @@ import { Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 
 export class NodeAttributes {
+  /** Lists node attributes. */
   attributes: Dictionary<string, string>
+  /** The ephemeral ID of the node. */
   ephemeral_id: Id
+  /** The unique identifier of the node. */
   id?: Id
+  /** The unique identifier of the node. */
   name: Name
+  /** The host and port where transport HTTP connections are accepted. */
   transport_address: TransportAddress
   roles?: NodeRoles
 }

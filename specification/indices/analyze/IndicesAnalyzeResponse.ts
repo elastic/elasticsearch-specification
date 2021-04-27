@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { AnalyzeDetail } from './AnalyzeDetail'
 import { AnalyzeToken } from './AnalyzeToken'
 
-export class IndicesAnalyzeResponse extends ResponseBase {
+export class Response extends ResponseBase {
   detail?: AnalyzeDetail
   tokens?: AnalyzeToken[]
 }

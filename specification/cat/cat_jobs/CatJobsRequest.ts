@@ -25,7 +25,7 @@ import { Bytes, Id } from '@_types/common'
  * @since 7.7.0
  * @stability TODO
  */
-export interface CatJobsRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     job_id?: Id
   }

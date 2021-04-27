@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 6.6.0
  * @stability TODO
  */
-export interface StartIlmRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {
     stub: boolean

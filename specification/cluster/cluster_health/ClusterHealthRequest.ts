@@ -33,7 +33,7 @@ import { Time } from '@_types/Time'
  * @since 1.3.0
  * @stability TODO
  */
-export interface ClusterHealthRequest extends RequestBase {
+export interface Request extends RequestBase {
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-path-params */
   path_parts?: {
     /**

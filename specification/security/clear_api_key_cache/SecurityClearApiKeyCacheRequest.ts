@@ -25,7 +25,7 @@ import { Ids } from '@_types/common'
  * @since 7.10.0
  * @stability TODO
  */
-export interface SecurityClearApiKeyCacheRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     ids?: Ids
   }

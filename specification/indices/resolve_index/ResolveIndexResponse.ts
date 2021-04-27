@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { DataStreamName, Field, Indices, Name } from '@_types/common'
 
-export class ResolveIndexResponse extends ResponseBase {
+export class Response extends ResponseBase {
   indices: ResolveIndexItem[]
   aliases: ResolveIndexAliasItem[]
   data_streams: ResolveIndexDataStreamsItem[]

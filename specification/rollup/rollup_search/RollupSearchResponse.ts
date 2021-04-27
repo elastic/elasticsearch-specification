@@ -19,4 +19,4 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class RollupSearchResponse<TDocument> extends ResponseBase {}
+export class Response<TDocument> extends ResponseBase {}

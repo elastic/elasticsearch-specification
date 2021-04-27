@@ -21,7 +21,7 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { RecoveryStatus } from './RecoveryStatus'
 
-export class IndicesRecoveryResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   IndexName,
   RecoveryStatus
 > {}

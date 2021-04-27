@@ -25,7 +25,7 @@ import { Bytes } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatNodesRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   query_parameters?: {
     bytes?: Bytes
     full_id?: boolean | string

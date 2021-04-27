@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 7.0.0
  * @stability TODO
  */
-export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     node_names?: Names
     node_ids?: Ids

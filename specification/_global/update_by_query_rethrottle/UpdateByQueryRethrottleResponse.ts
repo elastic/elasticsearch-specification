@@ -21,6 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { UpdateByQueryRethrottleNode } from './UpdateByQueryRethrottleNode'
 
-export class UpdateByQueryRethrottleResponse extends ResponseBase {
+export class Response extends ResponseBase {
   nodes: Dictionary<string, UpdateByQueryRethrottleNode>
 }

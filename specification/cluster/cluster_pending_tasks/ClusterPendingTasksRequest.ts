@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface ClusterPendingTasksRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     local?: boolean
     /** @server_default 30s */

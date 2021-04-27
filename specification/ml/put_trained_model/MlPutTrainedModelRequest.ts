@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.10.0
  * @stability TODO
  */
-export interface MlPutTrainedModelRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     stub: string
   }

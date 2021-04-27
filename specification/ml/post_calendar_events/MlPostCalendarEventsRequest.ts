@@ -26,7 +26,7 @@ import { ScheduledEvent } from './ScheduledEvent'
  * @since 6.2.0
  * @stability TODO
  */
-export interface MlPostCalendarEventsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     calendar_id: Id
   }

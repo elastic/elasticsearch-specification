@@ -29,7 +29,7 @@ import {
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class IndicesGetDataStreamResponse extends ResponseBase {
+export class Response extends ResponseBase {
   data_streams: IndicesGetDataStreamItem[]
 }
 

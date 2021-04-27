@@ -25,7 +25,7 @@ import { IndexName } from '@_types/common'
  * @since 7.9.0
  * @stability TODO
  */
-export interface IndicesMigrateToDataStreamRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     name: IndexName
   }

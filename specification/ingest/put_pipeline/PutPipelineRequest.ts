@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @since 5.0.0
  * @stability TODO
  */
-export interface PutPipelineRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     id: Id
   }

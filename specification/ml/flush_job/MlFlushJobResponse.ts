@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class MlFlushJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   flushed: boolean
   last_finalized_bucket_end?: integer
 }

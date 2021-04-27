@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
 
-export class MlStartDatafeedResponse extends ResponseBase {
+export class Response extends ResponseBase {
   node: NodeIds
   started: boolean
 }

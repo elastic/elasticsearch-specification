@@ -21,7 +21,7 @@ import { Transform } from '@watcher/_types/Transform'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class GetTransformResponse extends ResponseBase {
+export class Response extends ResponseBase {
   count: long
   transforms: Transform[]
 }

@@ -19,4 +19,4 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class ClearScrollResponse extends ResponseBase {}
+export class Response extends ResponseBase {}

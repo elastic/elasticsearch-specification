@@ -19,4 +19,4 @@
 
 import { EqlSearchResponseBase } from '@eql/_types/EqlSearchResponseBase'
 
-export class EqlSearchResponse<TEvent> extends EqlSearchResponseBase<TEvent> {}
+export class Response<TEvent> extends EqlSearchResponseBase<TEvent> {}

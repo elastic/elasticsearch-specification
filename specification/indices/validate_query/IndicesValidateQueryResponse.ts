@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
-export class IndicesValidateQueryResponse extends ResponseBase {
+export class Response extends ResponseBase {
   explanations?: IndicesValidationExplanation[]
   _shards?: ShardStatistics
   valid: boolean

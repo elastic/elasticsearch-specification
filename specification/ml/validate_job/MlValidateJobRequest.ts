@@ -30,7 +30,7 @@ import { long } from '@_types/Numeric'
  * @since 6.3.0
  * @stability TODO
  */
-export interface MlValidateJobRequest extends RequestBase {
+export interface Request extends RequestBase {
   body?: {
     job_id?: Id
     analysis_config?: AnalysisConfig

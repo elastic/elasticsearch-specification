@@ -25,7 +25,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.13.0
  * @stability TODO
  */
-export interface IngestGeoIpStatsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     stub_b: integer
   }

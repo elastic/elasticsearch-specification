@@ -30,7 +30,7 @@ import { ReindexSource } from './ReindexSource'
  * @since 2.3.0
  * @stability TODO
  */
-export interface ReindexRequest extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {
     refresh?: boolean
     requests_per_second?: long

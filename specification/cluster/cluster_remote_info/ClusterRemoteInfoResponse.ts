@@ -21,7 +21,7 @@ import { DictionaryResponseBase } from '@_types/Base'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
-export class ClusterRemoteInfoResponse extends DictionaryResponseBase<
+export class Response extends DictionaryResponseBase<
   string,
   ClusterRemoteInfo
 > {}

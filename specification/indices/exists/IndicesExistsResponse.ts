@@ -20,6 +20,4 @@
 import { EmptyResponseBase } from '@spec_utils/behaviors'
 import { ResponseBase } from '@_types/Base'
 
-export class IndicesExistsResponse
-  extends ResponseBase
-  implements EmptyResponseBase {}
+export class Response extends ResponseBase implements EmptyResponseBase {}

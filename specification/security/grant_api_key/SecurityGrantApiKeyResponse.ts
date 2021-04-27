@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
-export class SecurityGrantApiKeyResponse extends ResponseBase {
+export class Response extends ResponseBase {
   api_key: string
   id: Id
   name: Name

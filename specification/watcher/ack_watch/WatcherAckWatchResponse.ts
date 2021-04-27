@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { WatchStatus } from './WatchStatus'
 
-export class WatcherAckWatchResponse extends ResponseBase {
+export class Response extends ResponseBase {
   status: WatchStatus
 }

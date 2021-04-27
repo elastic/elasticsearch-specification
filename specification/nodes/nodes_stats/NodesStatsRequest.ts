@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface NodesStatsRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds

@@ -19,4 +19,4 @@
 
 import { IndicesResponseBase } from '@_types/Base'
 
-export class IndicesDeleteResponse extends IndicesResponseBase {}
+export class Response extends IndicesResponseBase {}

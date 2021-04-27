@@ -21,7 +21,7 @@ import { LicenseStatus } from '@license/get_license/LicenseStatus'
 import { ResponseBase } from '@_types/Base'
 import { LicenseAcknowledgement } from './LicenseAcknowledgement'
 
-export class PostLicenseResponse extends ResponseBase {
+export class Response extends ResponseBase {
   acknowledge?: LicenseAcknowledgement
   acknowledged: boolean
   license_status: LicenseStatus

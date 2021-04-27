@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 6.3.0
  * @stability TODO
  */
-export interface ClearSqlCursorRequest extends RequestBase {
+export interface Request extends RequestBase {
   body: {
     cursor: string
   }

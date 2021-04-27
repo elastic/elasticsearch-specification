@@ -20,7 +20,7 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 
-export class IndicesAddBlockResponse extends AcknowledgedResponseBase {
+export class Response extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
   indices: IndicesBlockStatus[]
 }

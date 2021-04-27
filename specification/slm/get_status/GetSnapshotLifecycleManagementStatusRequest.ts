@@ -24,8 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.6.0
  * @stability TODO
  */
-export interface GetSnapshotLifecycleManagementStatusRequest
-  extends RequestBase {
+export interface Request extends RequestBase {
   query_parameters?: {}
   body?: {}
 }

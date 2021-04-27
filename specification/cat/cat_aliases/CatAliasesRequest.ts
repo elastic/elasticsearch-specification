@@ -25,7 +25,7 @@ import { ExpandWildcards, Names } from '@_types/common'
  * @since 0.0.0
  * @stability TODO
  */
-export interface CatAliasesRequest extends CatRequestBase {
+export interface Request extends CatRequestBase {
   path_parts?: {
     name?: Names
   }

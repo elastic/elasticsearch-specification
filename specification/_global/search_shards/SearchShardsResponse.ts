@@ -24,7 +24,7 @@ import { ResponseBase } from '@_types/Base'
 import { IndexName, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class SearchShardsResponse extends ResponseBase {
+export class Response extends ResponseBase {
   nodes: Dictionary<string, NodeAttributes>
   shards: NodeShard[][]
   indices: Dictionary<IndexName, ShardStoreIndex>

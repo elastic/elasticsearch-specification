@@ -25,7 +25,7 @@ import { DataStreamName } from '@_types/common'
  * @since 7.9.0
  * @stability TODO
  */
-export interface IndicesCreateDataStreamRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     name: DataStreamName
   }

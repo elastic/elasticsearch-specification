@@ -31,7 +31,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryCo
  * @since 1.3.0
  * @stability stable
  */
-export interface MultiSearchRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     /**
      * Comma-separated list of data streams, indices, and index aliases to search.

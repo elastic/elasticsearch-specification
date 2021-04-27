@@ -19,4 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class DeleteScriptResponse extends AcknowledgedResponseBase {}
+export class Response extends AcknowledgedResponseBase {}

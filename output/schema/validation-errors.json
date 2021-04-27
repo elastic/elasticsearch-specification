@@ -540,12 +540,6 @@
       ],
       "response": []
     },
-    "ml.explain_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.find_file_structure": {
       "request": [
         "Missing request & response"
@@ -583,18 +577,6 @@
       "response": []
     },
     "ml.get_categories": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.get_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.get_data_frame_analytics_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -660,18 +642,6 @@
       ],
       "response": []
     },
-    "ml.preview_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.put_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -708,12 +678,6 @@
       ],
       "response": []
     },
-    "ml.update_data_frame_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.upgrade_job_snapshot": {
       "request": [
         "Missing request & response"
@@ -728,10 +692,10 @@
     },
     "msearch": {
       "request": [
-        "MultiSearchRequest: query parameter 'allow_no_indices' does not exist in the json spec",
-        "MultiSearchRequest: query parameter 'expand_wildcards' does not exist in the json spec",
-        "MultiSearchRequest: query parameter 'ignore_throttled' does not exist in the json spec",
-        "MultiSearchRequest: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
+        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
+        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
         "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'AND'",
         "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'OR'"
       ],

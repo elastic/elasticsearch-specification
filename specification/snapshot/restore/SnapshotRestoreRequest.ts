@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndicesPutSettingsRequest } from '@indices/put_settings/IndicesPutSettingsRequest'
+import { Request as IndicesPutSettingsRequest } from '@indices/put_settings/IndicesPutSettingsRequest'
 import { RequestBase } from '@_types/Base'
 import { Indices, Name } from '@_types/common'
 import { Time } from '@_types/Time'
@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @since 0.0.0
  * @stability TODO
  */
-export interface SnapshotRestoreRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     repository: Name
     snapshot: Name

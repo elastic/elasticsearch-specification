@@ -20,7 +20,7 @@
 import { ResponseBase } from '@_types/Base'
 import { Id, Ids } from '@_types/common'
 
-export class MlDeleteCalendarJobResponse extends ResponseBase {
+export class Response extends ResponseBase {
   calendar_id: Id
   description?: string
   job_ids: Ids

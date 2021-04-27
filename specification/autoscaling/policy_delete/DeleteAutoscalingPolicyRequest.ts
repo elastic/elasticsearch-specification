@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @since 7.11.0
  * @stability TODO
  */
-export interface DeleteAutoscalingPolicyRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     stub_a: string
   }

@@ -21,7 +21,7 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { BulkResponseItemContainer } from './BulkResponseItemBase'
 
-export class BulkResponse extends ResponseBase {
+export class Response extends ResponseBase {
   errors: boolean
   items: BulkResponseItemContainer[]
   took: long

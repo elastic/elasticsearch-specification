@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
+import { Request as SearchTemplateRequest } from '@global/search_template/SearchTemplateRequest'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
@@ -30,7 +30,7 @@ import { long } from '@_types/Numeric'
  *
  * @stability TODO
  */
-export interface MultiSearchTemplateRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
     type?: Types

@@ -22,7 +22,7 @@ import { SecurityNode } from '@security/_types/SecurityNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 
-export class SecurityClearCachedRolesResponse extends ResponseBase {
+export class Response extends ResponseBase {
   cluster_name: string
   nodes: Dictionary<string, SecurityNode>
   _nodes: NodeStatistics
