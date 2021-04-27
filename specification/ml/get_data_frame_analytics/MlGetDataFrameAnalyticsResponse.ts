@@ -17,8 +17,32 @@
  * under the License.
  */
 
+import {
+  DataFrameAnalysisContainer,
+  DataFrameAnalyticsDestination,
+  DataFrameAnalyticsSource,
+  DataFrameAnalysisAnalyzedFields
+} from '@ml/_types/DataFrameAnalytics'
 import { ResponseBase } from '@_types/Base'
+import { ByteSize, Id, VersionString } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
 export class MlGetDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
+  data_frame_analytics: DataFrameAnalyticsSummary[]
+}
+
+export class DataFrameAnalyticsSummary {
+  id: Id
+  source: DataFrameAnalyticsSource
+  dest: DataFrameAnalyticsDestination
+  analysis: DataFrameAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: DataFrameAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
 }

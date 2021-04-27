@@ -17,15 +17,10 @@
  * under the License.
  */
 
-import {
-  DataFrameAnalyticsFieldSelection,
-  DataFrameAnalyticsMemoryEstimation
-} from '@ml/_types/DataFrameAnalytics'
-import { ResponseBase } from '@_types/Base'
-
-export class MlExplainDataFrameAnalyticsResponse extends ResponseBase {
-  /** An array of objects that explain selection for each field, sorted by the field names. */
-  field_selection: DataFrameAnalyticsFieldSelection[]
-  /** An array of objects that explain selection for each field, sorted by the field names. */
-  memory_estimation: DataFrameAnalyticsMemoryEstimation
+export enum DataFrameState {
+  started = 0,
+  stopped = 1,
+  starting = 2,
+  stopping = 3,
+  failed = 4
 }

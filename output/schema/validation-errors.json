@@ -540,12 +540,6 @@
       ],
       "response": []
     },
-    "ml.explain_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.find_file_structure": {
       "request": [
         "Missing request & response"
@@ -583,18 +577,6 @@
       "response": []
     },
     "ml.get_categories": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.get_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.get_data_frame_analytics_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -660,18 +642,6 @@
       ],
       "response": []
     },
-    "ml.preview_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.put_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -705,12 +675,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.update_data_frame_analytics": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

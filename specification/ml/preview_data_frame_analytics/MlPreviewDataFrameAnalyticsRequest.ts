@@ -17,7 +17,15 @@
  * under the License.
  */
 
+import {
+  DataFrameAnalysisAnalyzedFields,
+  DataFrameAnalysisContainer,
+  DataFrameAnalyticsDestination,
+  DataFrameAnalyticsSource
+} from '@ml/_types/DataFrameAnalytics'
 import { RequestBase } from '@_types/Base'
+import { ByteSize, Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.preview_data_frame_analytics
@@ -25,13 +33,23 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface MlPreviewDataFrameAnalyticsRequest extends RequestBase {
-  path_parts: {
-    stub: string
-  }
-  query_parameters?: {
-    stub?: string
+  path_parts?: {
+    /** Identifier for the data frame analytics job. */
+    id?: Id
   }
   body?: {
-    stub?: string
+    /**
+     * A data frame analytics config as described in Create data frame analytics jobs. Note that id and dest don’t need to be provided in the context of this API.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html
+     */
+    config?: DataFramePreviewConfig
   }
+}
+
+export class DataFramePreviewConfig {
+  source: DataFrameAnalyticsSource
+  analysis: DataFrameAnalysisContainer
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: DataFrameAnalysisAnalyzedFields
 }
