@@ -8395,7 +8395,7 @@
         "name": "Response",
         "namespace": "nodes.nodes_info"
       },
-      "since": "0.0.0",
+      "since": "1.3.0",
       "stability": "TODO",
       "urls": [
         {
@@ -31288,8 +31288,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -44945,6 +44945,49 @@
               "name": "IndexRoutingAllocationInitialRecovery",
               "namespace": "_types.index"
             }
+          }
+        },
+        {
+          "name": "disk",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationDisk",
+              "namespace": "_types.index"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationDisk",
+        "namespace": "_types.index"
+      },
+      "properties": [
+        {
+          "name": "threshold_enabled",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -112958,6 +113001,7 @@
           }
         },
         {
+          "description": "Short hash of the last git commit in this release.",
           "name": "build_hash",
           "required": true,
           "type": {
@@ -112980,6 +113024,7 @@
           }
         },
         {
+          "description": "The node’s host name.",
           "name": "host",
           "required": true,
           "type": {
@@ -112992,7 +113037,7 @@
         },
         {
           "name": "http",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113002,6 +113047,7 @@
           }
         },
         {
+          "description": "The node’s IP address.",
           "name": "ip",
           "required": true,
           "type": {
@@ -113014,7 +113060,7 @@
         },
         {
           "name": "jvm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113024,6 +113070,7 @@
           }
         },
         {
+          "description": "The node's name",
           "name": "name",
           "required": true,
           "type": {
@@ -113036,7 +113083,7 @@
         },
         {
           "name": "network",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113047,7 +113094,7 @@
         },
         {
           "name": "os",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113058,7 +113105,7 @@
         },
         {
           "name": "plugins",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -113072,7 +113119,7 @@
         },
         {
           "name": "process",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113097,21 +113144,18 @@
         },
         {
           "name": "settings",
-          "required": true,
+          "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettings",
+              "namespace": "nodes.nodes_info"
             }
           }
         },
         {
           "name": "thread_pool",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -113132,8 +113176,10 @@
           }
         },
         {
+          "description": "Total heap allowed to be used to hold recently indexed documents before they must be written to disk. This size is a shared pool across all shards on this node, and is controlled by Indexing Buffer settings.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indexing-buffer.html",
           "name": "total_indexing_buffer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113143,8 +113189,20 @@
           }
         },
         {
+          "description": "Same as total_indexing_buffer, but expressed in bytes.",
+          "name": "total_indexing_buffer_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "transport",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113154,6 +113212,7 @@
           }
         },
         {
+          "description": "Host and port where transport HTTP connections are accepted.",
           "name": "transport_address",
           "required": true,
           "type": {
@@ -113165,6 +113224,7 @@
           }
         },
         {
+          "description": "Elasticsearch version running on this node.",
           "name": "version",
           "required": true,
           "type": {
@@ -113172,6 +113232,156 @@
             "type": {
               "name": "VersionString",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "modules",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PluginStats",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngest",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "aggregations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeInfoAggregation",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoAction",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "destructive_requires_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoAggregation",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoBootstrap",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "memory_lock",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoClient",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoDiscover",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "seed_hosts",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -113200,12 +113410,12 @@
         },
         {
           "name": "max_content_length",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113236,18 +113446,61 @@
     {
       "kind": "interface",
       "name": {
-        "name": "NodeInfoJvmMemory",
+        "name": "NodeInfoIngest",
         "namespace": "nodes.nodes_info"
       },
       "properties": [
         {
-          "name": "direct_max",
+          "name": "processors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeInfoIngestProcessor",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoIngestProcessor",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "type",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoJvmMemory",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "direct_max",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113264,12 +113517,12 @@
         },
         {
           "name": "heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113286,12 +113539,12 @@
         },
         {
           "name": "heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113308,12 +113561,12 @@
         },
         {
           "name": "non_heap_init",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113330,12 +113583,12 @@
         },
         {
           "name": "non_heap_max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ByteSize",
+              "namespace": "_types"
             }
           }
         },
@@ -113556,6 +113809,684 @@
     {
       "kind": "interface",
       "name": {
+        "name": "NodeInfoPath",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "logs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "home",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "repo",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "data",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoRepositories",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "url",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoRepositoriesUrl",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoRepositoriesUrl",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "allowed_urls",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoScript",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "allowed_types",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "disable_max_compilations_rate",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSearch",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "remote",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSearchRemote",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSearchRemote",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "connect",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettings",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsCluster",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsNode",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoPath",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "repositories",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoRepositories",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "discovery",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoDiscover",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "action",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoAction",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "client",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoClient",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "http",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsHttp",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "bootstrap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoBootstrap",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "transport",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsTransport",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "network",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsNetwork",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "xpack",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpack",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoScript",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "search",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSearch",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsCluster",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRouting",
+              "namespace": "_types.index"
+            }
+          }
+        },
+        {
+          "name": "election",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsClusterElection",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "initial_master_nodes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsClusterElection",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "strategy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsHttp",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeInfoSettingsHttpType",
+                  "namespace": "nodes.nodes_info"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "type.default",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "compression",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "port",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsHttpType",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "default",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsNetwork",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Host",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsNode",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "attr",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "max_local_storage_nodes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsTransport",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeInfoSettingsTransportType",
+                  "namespace": "nodes.nodes_info"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "type.default",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "features",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsTransportFeatures",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsTransportFeatures",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "x-pack",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsTransportType",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "default",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeInfoTransport",
         "namespace": "nodes.nodes_info"
       },
@@ -113582,6 +114513,358 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "profiles",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpack",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "license",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackLicense",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "security",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecurity",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "notification",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackLicense",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "self_generated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackLicenseType",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackLicenseType",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecurity",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "http",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecuritySsl",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "transport",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecuritySsl",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "authc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecurityAuthc",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecurityAuthc",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "realms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecurityAuthcRealms",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "token",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoXpackSecurityAuthcToken",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecurityAuthcRealms",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "file",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "native",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        },
+        {
+          "name": "pki",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
+                "namespace": "nodes.nodes_info"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecurityAuthcToken",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoXpackSecuritySsl",
+        "namespace": "nodes.nodes_info"
+      },
+      "properties": [
+        {
+          "name": "ssl",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -113698,6 +114981,65 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_bundled_jdk",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "using_compressed_ordinary_object_pointers",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "input_arguments",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
         }
       ]
     },
@@ -113709,6 +115051,7 @@
       },
       "properties": [
         {
+          "description": "Name of the JVM architecture (ex: amd64, x86)",
           "name": "arch",
           "required": true,
           "type": {
@@ -113720,6 +115063,7 @@
           }
         },
         {
+          "description": "Number of processors available to the Java virtual machine",
           "name": "available_processors",
           "required": true,
           "type": {
@@ -113731,35 +115075,26 @@
           }
         },
         {
-          "name": "cpu",
-          "required": true,
+          "description": "The number of processors actually used to calculate thread pool size. This number can be set with the node.processors setting of a node and defaults to the number of processors reported by the OS.",
+          "name": "allocated_processors",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "NodeInfoOSCPU",
-              "namespace": "nodes.nodes_info"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "mem",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeInfoMemory",
-              "namespace": "nodes.nodes_info"
-            }
-          }
-        },
-        {
+          "description": "Name of the operating system (ex: Linux, Windows, Mac OS X)",
           "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -113775,6 +115110,7 @@
           }
         },
         {
+          "description": "Refresh interval for the OS statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -113786,8 +115122,31 @@
           }
         },
         {
-          "name": "swap",
+          "description": "Version of the operating system",
+          "name": "version",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "cpu",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoOSCPU",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        },
+        {
+          "name": "mem",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113797,13 +115156,13 @@
           }
         },
         {
-          "name": "version",
-          "required": true,
+          "name": "swap",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "VersionString",
-              "namespace": "_types"
+              "name": "NodeInfoMemory",
+              "namespace": "nodes.nodes_info"
             }
           }
         }
@@ -113817,6 +115176,7 @@
       },
       "properties": [
         {
+          "description": "Process identifier (PID)",
           "name": "id",
           "required": true,
           "type": {
@@ -113828,6 +115188,7 @@
           }
         },
         {
+          "description": "Indicates if the process address space has been successfully locked in memory",
           "name": "mlockall",
           "required": true,
           "type": {
@@ -113839,6 +115200,7 @@
           }
         },
         {
+          "description": "Refresh interval for the process statistics",
           "name": "refresh_interval_in_millis",
           "required": true,
           "type": {
@@ -113929,7 +115291,7 @@
       "properties": [
         {
           "name": "core",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113940,7 +115302,7 @@
         },
         {
           "name": "keep_alive",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113951,7 +115313,7 @@
         },
         {
           "name": "max",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113973,7 +115335,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114012,6 +115374,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of node IDs or names used to limit returned information.",
           "name": "node_id",
           "required": false,
           "type": {
@@ -114023,6 +115386,7 @@
           }
         },
         {
+          "description": "Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest.",
           "name": "metric",
           "required": false,
           "type": {
@@ -114036,8 +115400,10 @@
       ],
       "query": [
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114047,8 +115413,23 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114078,8 +115459,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },

@@ -31,4 +31,8 @@ export class NodeJvmInfo {
   vm_name: Name
   vm_vendor: string
   vm_version: VersionString
+  bundled_jdk: boolean
+  using_bundled_jdk: boolean
+  using_compressed_ordinary_object_pointers?: boolean | string
+  input_arguments: string[]
 }
