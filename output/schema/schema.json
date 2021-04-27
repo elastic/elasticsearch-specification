@@ -32531,6 +32531,7 @@
       },
       "properties": [
         {
+          "description": "Specifies the number of top class predictions to return. Defaults to 0.",
           "name": "num_top_classes",
           "required": false,
           "type": {
@@ -32542,6 +32543,8 @@
           }
         },
         {
+          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
           "name": "num_top_feature_importance_values",
           "required": false,
           "type": {
@@ -32553,7 +32556,32 @@
           }
         },
         {
+          "description": "Specifies the type of the predicted field to write. Acceptable values are: string, number, boolean. When boolean is provided 1.0 is transformed to true and 0.0 to false.",
           "name": "prediction_field_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
+          "name": "results_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies the field to which the top classes are written. Defaults to top_classes.",
+          "name": "top_classes_results_field",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -62318,6 +62346,76 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "Hyperparameter",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "A positive number showing how much the parameter influences the variation of the loss function. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/dfa-regression.html#dfa-regression-lossfunction",
+          "name": "absolute_importance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Name of the hyperparameter.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A number between 0 and 1 showing the proportion of influence on the variation of the loss function among all tuned hyperparameters. For hyperparameters with values that are not specified by the user but tuned during hyperparameter optimization.",
+          "name": "relative_importance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Indicates if the hyperparameter is specified by the user (true) or optimized (false).",
+          "name": "supplied",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The value of the hyperparameter, either optimized or specified by the user.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "CompoundWordTokenFilterBase",
@@ -71826,6 +71924,7 @@
       },
       "properties": [
         {
+          "description": "Regression configuration for inference.",
           "name": "regression",
           "required": false,
           "type": {
@@ -71837,6 +71936,7 @@
           }
         },
         {
+          "description": "Classification configuration for inference.",
           "name": "classification",
           "required": false,
           "type": {
@@ -81924,6 +82024,8 @@
       ]
     },
     {
+      "description": "Response codes\n400 - If include_model_definition is true, this code indicates that more than one models match the ID pattern.\n404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html#ml-get-trained-models-results",
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -81937,13 +82039,28 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "name": "count",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An array of trained model resources, which are sorted by the model_id value in ascending order.",
+          "name": "trained_model_configs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelConfig",
+                "namespace": "ml._types"
+              }
             }
           }
         }
@@ -82020,6 +82137,7 @@
       ]
     },
     {
+      "description": "404 (Missing resources) If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.",
       "inherits": {
         "type": {
           "name": "ResponseBase",
@@ -82033,13 +82151,29 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "The total number of trained model statistics that matched the requested ID patterns. Could be higher than the number of items in the trained_model_stats array as the size of the array is restricted by the supplied size parameter.",
+          "name": "count",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "An array of trained model statistics, which are sorted by the model_id value in ascending order.",
+          "name": "trained_model_stats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelStats",
+                "namespace": "ml._types"
+              }
             }
           }
         }
@@ -102097,6 +102231,7 @@
       },
       "properties": [
         {
+          "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
           "name": "results_field",
           "required": true,
           "type": {
@@ -102108,6 +102243,8 @@
           }
         },
         {
+          "description": "Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.",
+          "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html",
           "name": "num_top_feature_importance_values",
           "required": false,
           "type": {
@@ -128503,6 +128640,138 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TotalFeatureImportance",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The feature for which this importance was calculated.",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
+          "name": "importance",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceStatistics",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "If the trained model is a classification model, feature importance statistics are gathered per target class value.",
+          "name": "classes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceClass",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TotalFeatureImportanceClass",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The target class value. Could be a string, boolean, or number.",
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of feature importance statistics related to the training data set for this particular feature.",
+          "name": "importance",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportanceStatistics",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TotalFeatureImportanceStatistics",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The average magnitude of this feature across all the training data. This value is the average of the absolute values of the importance for this feature.",
+          "name": "mean_magnitude",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum importance value across all the training data for this feature.",
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The minimum importance value across all the training data for this feature.",
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TotalFileSystemStats",
         "namespace": "nodes.nodes_stats"
       },
@@ -128622,6 +128891,431 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search.hits"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "Idetifier for the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma delimited string of tags. A trained model can have many tags, or none.",
+          "name": "tags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The Elasticsearch version number in which the trained model was created.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "compressed_definition",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Information on the creator of the trained model.",
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The time when the trained model was created.",
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Any field map described in the inference configuration takes precedence.",
+          "name": "default_field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The free-text description of the trained model.",
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The estimated heap usage in bytes to keep the trained model in memory.",
+          "name": "estimated_heap_memory_usage_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The estimated number of operations to use the trained model.",
+          "name": "estimated_operations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
+          "name": "inference_config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigContainer",
+              "namespace": "_types.aggregations.pipeline.inference_bucket"
+            }
+          }
+        },
+        {
+          "description": "The input field names for the model definition.",
+          "name": "input",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelConfigInput",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "The license level of the trained model.",
+          "name": "license_level",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "An object containing metadata about the trained model. For example, models created by data frame analytics contain analysis_config and input objects.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelConfigMetadata",
+              "namespace": "ml._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfigInput",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "An array of input field names for the model.",
+          "name": "field_names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelConfigMetadata",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "model_aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "An object that contains the baseline for feature importance values. For regression analysis, it is a single value. For classification analysis, there is a value for each class.",
+          "name": "feature_importance_baseline",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "List of the available hyperparameters optimized during the fine_parameter_tuning phase as well as specified by the user.",
+          "name": "hyperparameters",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Hyperparameter",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "An array of the total feature importance for each feature used from the training data set. This array of objects is returned if data frame analytics trained the model and the request includes total_feature_importance in the include request parameter.",
+          "name": "total_feature_importance",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TotalFeatureImportance",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelInferenceStats",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The number of failures when using the model for inference.",
+          "name": "failure_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The total number of times the model has been called for inference. This is across all inference contexts, including all pipelines.",
+          "name": "inference_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of times the model was loaded for inference and was not retrieved from the cache. If this number is close to the inference_count, then the cache is not being appropriately used. This can be solved by increasing the cache size or its time-to-live (TTL). See General machine learning settings for the appropriate settings.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#general-ml-settings",
+          "name": "cache_miss_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of inference calls where all the training features for the model were missing.",
+          "name": "missing_all_fields_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the statistics were last updated.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelStats",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of ingest pipelines that currently refer to the model.",
+          "name": "pipeline_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A collection of inference stats fields.",
+          "name": "inference_stats",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelInferenceStats",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "A collection of ingest stats for the model across all nodes. The values are summations of the individual node statistics. The format matches the ingest section in Nodes stats.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-stats.html",
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

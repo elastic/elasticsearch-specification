@@ -2759,6 +2759,8 @@ export interface AggregationsPipelineInferenceBucketClassificationInferenceOptio
   num_top_classes?: integer
   num_top_feature_importance_values?: integer
   prediction_field_type?: string
+  results_field?: string
+  top_classes_results_field?: string
 }
 
 export interface SnapshotCleanupRepositoryCleanupRepositoryRequest extends RequestBase {
@@ -6117,6 +6119,14 @@ export interface AnalysisTokenFiltersHunspellTokenFilter extends AnalysisTokenFi
   longest_only: boolean
 }
 
+export interface MlHyperparameter {
+  absolute_importance?: double
+  name: Name
+  relative_importance?: double
+  supplied: boolean
+  value: double
+}
+
 export interface AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter extends AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase {
 }
 
@@ -8388,7 +8398,8 @@ export interface MlGetTrainedModelsMlGetTrainedModelRequest extends RequestBase 
 }
 
 export interface MlGetTrainedModelsMlGetTrainedModelResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  trained_model_configs: MlTrainedModelConfig[]
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsRequest extends RequestBase {
@@ -8399,7 +8410,8 @@ export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsRequest extends Re
 }
 
 export interface MlGetTrainedModelsStatsMlGetTrainedModelStatsResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  trained_model_stats: MlTrainedModelStats[]
 }
 
 export interface XpackUsageMlInferenceIngestProcessorCountUsage {
@@ -13561,6 +13573,23 @@ export interface AggregationsMetricTopMetricsTopMetricsValue {
   field: Field
 }
 
+export interface MlTotalFeatureImportance {
+  feature_name: Name
+  importance: MlTotalFeatureImportanceStatistics[]
+  classes: MlTotalFeatureImportanceClass[]
+}
+
+export interface MlTotalFeatureImportanceClass {
+  class_name: Name
+  importance: MlTotalFeatureImportanceStatistics[]
+}
+
+export interface MlTotalFeatureImportanceStatistics {
+  mean_magnitude: double
+  max: integer
+  min: integer
+}
+
 export interface NodesNodesStatsTotalFileSystemStats {
   available: string
   available_in_bytes: long
@@ -13576,6 +13605,49 @@ export interface SearchHitsTotalHits {
 }
 
 export type SearchHitsTotalHitsRelation = 'eq' | 'gte'
+
+export interface MlTrainedModelConfig {
+  model_id: Id
+  tags: string[]
+  version?: VersionString
+  compressed_definition?: string
+  created_by?: string
+  create_time?: Time
+  default_field_map?: Record<string, string>
+  description: string
+  estimated_heap_memory_usage_bytes?: integer
+  estimated_operations?: integer
+  inference_config: AggregationsPipelineInferenceBucketInferenceConfigContainer
+  input: MlTrainedModelConfigInput
+  license_level?: string
+  metadata?: MlTrainedModelConfigMetadata
+}
+
+export interface MlTrainedModelConfigInput {
+  field_names: Field[]
+}
+
+export interface MlTrainedModelConfigMetadata {
+  model_aliases?: string[]
+  feature_importance_baseline?: Record<string, string>
+  hyperparameters?: MlHyperparameter[]
+  total_feature_importance?: MlTotalFeatureImportance[]
+}
+
+export interface MlTrainedModelInferenceStats {
+  failure_count: long
+  inference_count: long
+  cache_miss_count: long
+  missing_all_fields_count: long
+  timestamp: Time
+}
+
+export interface MlTrainedModelStats {
+  model_id: Id
+  pipeline_count: integer
+  inference_stats?: MlTrainedModelInferenceStats
+  ingest?: Record<string, any>
+}
 
 export interface WatcherTransform {
 }

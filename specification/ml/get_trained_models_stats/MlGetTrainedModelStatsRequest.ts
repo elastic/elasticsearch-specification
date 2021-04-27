@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common';
-import { integer } from '@_types/Numeric';
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.get_trained_models_stats

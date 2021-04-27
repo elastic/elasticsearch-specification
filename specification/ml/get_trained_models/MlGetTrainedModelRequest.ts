@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common';
-import { integer } from '@_types/Numeric';
+import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.get_trained_models
@@ -48,7 +48,7 @@ export interface MlGetTrainedModelRequest extends RequestBase {
      * Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.
      * @server_default false
      */
-     exclude_generated?: boolean
+    exclude_generated?: boolean
     /**
      * Skips the specified number of models.
      * @server_default false
