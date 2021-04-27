@@ -89,35 +89,26 @@ export class NodeInfoSettings {
 }
 
 export class NodeInfoSettingsCluster {
-  // @aliases cluster.name */
   name: Name
   routing?: IndexRouting
   election: NodeInfoSettingsClusterElection
-  // @aliases cluster.initial_master_nodes */
   initial_master_nodes?: string
 }
 
 export class NodeInfoSettingsClusterElection {
-  // @aliases cluster.election.strategy */
   strategy: Name
 }
 
 export class NodeInfoSettingsNode {
-  // @aliases node.name */
   name: Name
   attr: Dictionary<string, UserDefinedValue>
-  // @aliases node.max_local_storage_nodes */
   max_local_storage_nodes?: string
 }
 
 export class NodeInfoPath {
-  // @aliases path.logs */
   logs: string
-  // @aliases path.home */
   home: string
-  // @aliases path.repo */
   repo: string[]
-  // @aliases path.data */
   data?: string[]
 }
 
@@ -126,67 +117,51 @@ export class NodeInfoRepositories {
 }
 
 export class NodeInfoRepositoriesUrl {
-  // @aliases repositories.url.allowed_urls */
   allowed_urls: string
 }
 
 export class NodeInfoDiscover {
-  // @aliases discover.seed_hosts */
   seed_hosts: string
 }
 
 export class NodeInfoAction {
-  // @aliases action.destructive_requires_name */
   destructive_requires_name: string
 }
 
 export class NodeInfoClient {
-  // @aliases client.type */
   type: string
 }
 
 export class NodeInfoSettingsHttp {
-  // @aliases http.type */
   type: string | NodeInfoSettingsHttpType
-  // @aliases http.type.default */
   'type.default'?: string // TODO this clashes with NodeInfoSettingsHttpType
-  // @aliases http.compression */
   compression?: boolean | string
-  // @aliases http.port */
   port?: integer | string
 }
 
 export class NodeInfoSettingsHttpType {
-  // @aliases transport.type.default */
   default: string
 }
 
 export class NodeInfoBootstrap {
-  // @aliases bootstrap.memory_lock */
   memory_lock: string
 }
 
 export class NodeInfoSettingsTransport {
-  // @aliases transport.type */
   type: string | NodeInfoSettingsTransportType
-  // @aliases transport.type.default */
   'type.default'?: string // TODO this clashes with NodeInfoSettingsTransportType
-  // @aliases transport.features */
   features?: NodeInfoSettingsTransportFeatures
 }
 
 export class NodeInfoSettingsTransportType {
-  // @aliases transport.type.default */
   default: string
 }
 
 export class NodeInfoSettingsTransportFeatures {
-  // @aliases transport.features.x-pack */
   'x-pack': string
 }
 
 export class NodeInfoSettingsNetwork {
-  // @aliases network.host */
   host: Host
 }
 
