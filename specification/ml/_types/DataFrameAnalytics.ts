@@ -17,15 +17,22 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ByteSize, Field, IndexName, Indices } from '@_types/common'
+import { ByteSize, Field, IndexName, Indices, Name } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { double, integer, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class DataFrameAnalyticsSource {
+  /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. */
   index: Indices
+  /**
+   * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default, this property has the following value: {"match_all": {}}.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
+   */
   query?: QueryContainer
+  /** Specify includes and/or excludes patterns to select which fields will be present in the destination. Fields that are excluded cannot be included in the analysis. */
   _source?: DataFrameAnalysisAnalyzedFields
   runtime_mappings?: RuntimeFields
 }
@@ -53,14 +60,28 @@ export class DataFrameAnalyticsMemoryEstimation {
 }
 
 export class DataFrameAnalyticsDestination {
+  /** Defines the destination index to store the results of the data frame analytics job. */
   index: IndexName
-  results_field: Field
+  /** Defines the name of the field in which to store the results of the analysis. Defaults to ml. */
+  results_field?: Field
 }
 
 /** @variants container */
 export class DataFrameAnalysisContainer {
+  /**
+   * The configuration information necessary to perform outlier detection
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   */
   outlier_detection?: DataFrameAnalysisOutlierDetection
+  /**
+   * The configuration information necessary to perform regression.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html
+   */
   regression?: DataFrameAnalysisRegression
+  /**
+   * The configuration information necessary to perform classification.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   */
   classification?: DataFrameAnalysisClassification
 }
 
@@ -68,47 +89,106 @@ export class DataFrameAnalysisOutlierDetection {
   n_neighbors?: integer
   method?: string
   feature_influence_threshold?: double
-  compute_feature_influence: boolean
-  outlier_fraction: double
-  standardization_enabled: boolean
+  compute_feature_influence?: boolean
+  outlier_fraction?: double
+  standardization_enabled?: boolean
 }
 
 export class DataFrameAnalysis {
+  dependent_variable: string
+  prediction_field_name?: Field
   alpha?: double
   lambda?: double
   gamma?: double
   eta?: double
   eta_growth_rate_per_tree?: double
   feature_bag_fraction?: double
+  /** @aliases maximum_number_trees */
   max_trees?: integer
   soft_tree_depth_limit?: integer
   soft_tree_depth_tolerance?: double
   downsample_factor?: double
   max_optimization_rounds_per_hyperparameter?: integer
+  early_stopping_enabled?: boolean
+  num_top_feature_importance_values?: integer
+  feature_processors?: DataFrameAnalysisFeatureProcessor[]
+  randomize_seed?: double
+  training_percent?: Percentage
 }
 
 export class DataFrameAnalysisRegression extends DataFrameAnalysis {
-  dependent_variable: string
-  prediction_field_name: Field
-  training_percent: Percentage
-  randomize_seed: double
-  loss_function: string
+  loss_function?: string
   loss_function_parameter?: double
-  early_stopping_enabled: boolean
-  feature_processors?: UserDefinedValue[]
 }
 
 export class DataFrameAnalysisClassification extends DataFrameAnalysis {
-  dependent_variable: string
-  class_assignment_objective: string
-  prediction_field_name: Field
-  training_percent: Percentage
-  randomize_seed: double
-  num_top_classes: integer
-  early_stopping_enabled: boolean
+  class_assignment_objective?: string
+  num_top_classes?: integer
 }
 
-export class DataFrameAnalysisAnalyzedFields {
+export type DataFrameAnalysisAnalyzedFields = string[] | DataFrameAnalysisAnalyzedFieldsIncludeExclude
+export class DataFrameAnalysisAnalyzedFieldsIncludeExclude {
+  /** An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically. */
   includes: string[]
+  /** An array of strings that defines the fields that will be included in the analysis. */
   excludes: string[]
+}
+
+/** @variants container */
+export class DataFrameAnalysisFeatureProcessor {
+  /** The configuration information necessary to perform frequency encoding. */
+  frequency_encoding?: DataFrameAnalysisFeatureProcessorFrequencyEncoding
+  /** The configuration information necessary to perform multi encoding. It allows multiple processors to be changed together. This way the output of a processor can then be passed to another as an input. */
+  multi_encoding?: DataFrameAnalysisFeatureProcessorMultiEncoding
+  /** The configuration information necessary to perform n-gram encoding. Features created by this encoder have the following name format: <feature_prefix>.<ngram><string position>. For example, if the feature_prefix is f, the feature name for the second unigram in a string is f.11. */
+  n_gram_encoding?: DataFrameAnalysisFeatureProcessorNGramEncoding
+  /** The configuration information necessary to perform one hot encoding. */
+  one_hot_encoding?: DataFrameAnalysisFeatureProcessorOneHotEncoding
+  /** The configuration information necessary to perform target mean encoding. */
+  target_mean_encoding?: DataFrameAnalysisFeatureProcessorTargetMeanEncoding
+}
+
+export class DataFrameAnalysisFeatureProcessorFrequencyEncoding {
+  /** The resulting feature name. */
+  feature_name: Name
+  /**  */
+  field: Field
+  /** The resulting frequency map for the field value. If the field value is missing from the frequency_map, the resulting value is 0. */
+  frequency_map: Dictionary<string, double>
+}
+
+export class DataFrameAnalysisFeatureProcessorMultiEncoding {
+  /** The ordered array of custom processors to execute. Must be more than 1. */
+  processors: integer[]
+}
+
+export class DataFrameAnalysisFeatureProcessorNGramEncoding {
+  /** The feature name prefix. Defaults to ngram_<start>_<length>. */
+  feature_prefix?: string
+  /** The name of the text field to encode. */
+  field: Field
+  /** Specifies the length of the n-gram substring. Defaults to 50. Must be greater than 0. */
+  length?: integer
+  /** Specifies which n-grams to gather. It’s an array of integer values where the minimum value is 1, and a maximum value is 5. */
+  n_grams: integer[]
+  /** Specifies the zero-indexed start of the n-gram substring. Negative values are allowed for encoding n-grams of string suffixes. Defaults to 0. */
+  start?: integer
+}
+
+export class DataFrameAnalysisFeatureProcessorOneHotEncoding {
+  /** The name of the field to encode. */
+  field: Field
+  /** The one hot map mapping the field value with the column name. */
+  hot_map: string
+}
+
+export class DataFrameAnalysisFeatureProcessorTargetMeanEncoding {
+  /** The default value if field value is not found in the target_map. */
+  default_value: integer
+  /** The resulting feature name. */
+  feature_name: Name
+  /** The name of the field to encode. */
+  field: Field
+  /** The field value to target mean transition map. */
+  target_map: Dictionary<string, UserDefinedValue>
 }

@@ -3787,6 +3787,8 @@ export interface MlDataDescription {
 }
 
 export interface MlDataFrameAnalysis {
+  dependent_variable: string
+  prediction_field_name?: Field
   alpha?: double
   lambda?: double
   gamma?: double
@@ -3794,25 +3796,28 @@ export interface MlDataFrameAnalysis {
   eta_growth_rate_per_tree?: double
   feature_bag_fraction?: double
   max_trees?: integer
+  maximum_number_trees?: integer
   soft_tree_depth_limit?: integer
   soft_tree_depth_tolerance?: double
   downsample_factor?: double
   max_optimization_rounds_per_hyperparameter?: integer
+  early_stopping_enabled?: boolean
+  num_top_feature_importance_values?: integer
+  feature_processors?: MlDataFrameAnalysisFeatureProcessor[]
+  randomize_seed?: double
+  training_percent?: Percentage
 }
 
-export interface MlDataFrameAnalysisAnalyzedFields {
+export type MlDataFrameAnalysisAnalyzedFields = string[] | MlDataFrameAnalysisAnalyzedFieldsIncludeExclude
+
+export interface MlDataFrameAnalysisAnalyzedFieldsIncludeExclude {
   includes: string[]
   excludes: string[]
 }
 
 export interface MlDataFrameAnalysisClassification extends MlDataFrameAnalysis {
-  dependent_variable: string
-  class_assignment_objective: string
-  prediction_field_name: Field
-  training_percent: Percentage
-  randomize_seed: double
-  num_top_classes: integer
-  early_stopping_enabled: boolean
+  class_assignment_objective?: string
+  num_top_classes?: integer
 }
 
 export interface MlDataFrameAnalysisContainer {
@@ -3821,29 +3826,61 @@ export interface MlDataFrameAnalysisContainer {
   classification?: MlDataFrameAnalysisClassification
 }
 
+export interface MlDataFrameAnalysisFeatureProcessor {
+  frequency_encoding?: MlDataFrameAnalysisFeatureProcessorFrequencyEncoding
+  multi_encoding?: MlDataFrameAnalysisFeatureProcessorMultiEncoding
+  n_gram_encoding?: MlDataFrameAnalysisFeatureProcessorNGramEncoding
+  one_hot_encoding?: MlDataFrameAnalysisFeatureProcessorOneHotEncoding
+  target_mean_encoding?: MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorFrequencyEncoding {
+  feature_name: Name
+  field: Field
+  frequency_map: Record<string, double>
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorMultiEncoding {
+  processors: integer[]
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorNGramEncoding {
+  feature_prefix?: string
+  field: Field
+  length?: integer
+  n_grams: integer[]
+  start?: integer
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorOneHotEncoding {
+  field: Field
+  hot_map: string
+}
+
+export interface MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding {
+  default_value: integer
+  feature_name: Name
+  field: Field
+  target_map: Record<string, any>
+}
+
 export interface MlDataFrameAnalysisOutlierDetection {
   n_neighbors?: integer
   method?: string
   feature_influence_threshold?: double
-  compute_feature_influence: boolean
-  outlier_fraction: double
-  standardization_enabled: boolean
+  compute_feature_influence?: boolean
+  outlier_fraction?: double
+  standardization_enabled?: boolean
 }
 
 export interface MlDataFrameAnalysisRegression extends MlDataFrameAnalysis {
-  dependent_variable: string
-  prediction_field_name: Field
-  training_percent: Percentage
-  randomize_seed: double
-  loss_function: string
+  loss_function?: string
   loss_function_parameter?: double
-  early_stopping_enabled: boolean
-  feature_processors?: any[]
 }
 
 export interface MlDataFrameAnalyticsDestination {
   index: IndexName
-  results_field: Field
+  results_field?: Field
 }
 
 export interface MlDataFrameAnalyticsFieldSelection {
@@ -8351,6 +8388,13 @@ export interface MlExplainDataFrameAnalyticsMlExplainDataFrameAnalyticsRequest e
   id?: Id
   body?: {
     source?: MlDataFrameAnalyticsSource
+    dest?: MlDataFrameAnalyticsDestination
+    analysis: MlDataFrameAnalysisContainer
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    allow_lazy_start?: boolean
   }
 }
 
@@ -8780,9 +8824,16 @@ export interface MlPutCalendarMlPutCalendarResponse extends ResponseBase {
 }
 
 export interface MlPutDataFrameAnalyticsMlPutDataFrameAnalyticsRequest extends RequestBase {
-  stub: string
+  id: Id
   body: {
-    stub?: string
+    source?: MlDataFrameAnalyticsSource
+    dest: MlDataFrameAnalyticsDestination
+    analysis: MlDataFrameAnalysisContainer
+    description?: string
+    model_memory_limit?: ByteSize
+    max_num_threads?: integer
+    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    allow_lazy_start?: boolean
   }
 }
 
