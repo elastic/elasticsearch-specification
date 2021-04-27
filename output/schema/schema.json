@@ -49996,6 +49996,18 @@
           }
         },
         {
+          "name": "combined_fields",
+          "required": false,
+          "since": "7.13.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CombinedFieldsQuery",
+              "namespace": "_types.query_dsl.abstractions.query"
+            }
+          }
+        },
+        {
           "name": "constant_score",
           "required": false,
           "type": {
@@ -51108,6 +51120,51 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CombinedFieldsQuery",
+        "namespace": "_types.query_dsl.abstractions.query"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "operator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }

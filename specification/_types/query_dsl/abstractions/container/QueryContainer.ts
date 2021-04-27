@@ -71,7 +71,7 @@ import { TermsQuery } from '@_types/query_dsl/term_level/terms/TermsQuery'
 import { TermsSetQuery } from '@_types/query_dsl/term_level/terms_set/TermsSetQuery'
 import { TypeQuery } from '@_types/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@_types/query_dsl/term_level/wildcard/WildcardQuery'
-import { NamedQuery } from '../query/Query'
+import { CombinedFieldsQuery, NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
 import { Field } from '@_types/common'
 
@@ -82,6 +82,8 @@ export class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
   common?: SingleKeyDictionary<Field, CommonTermsQuery | string>
+  /** @since 7.13.0 */
+  combined_fields?: CombinedFieldsQuery
   constant_score?: ConstantScoreQuery
   dis_max?: DisMaxQuery
   // TODO?: can be both { __field__ ?: { options } } and { field?: "" ...options }

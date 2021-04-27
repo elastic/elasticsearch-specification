@@ -4103,6 +4103,7 @@ export interface QueryDslAbstractionsContainerQueryContainer {
   bool?: QueryDslCompoundBoolBoolQuery
   boosting?: QueryDslCompoundBoostingBoostingQuery
   common?: Record<Field, QueryDslFullTextCommonTermsCommonTermsQuery | string>
+  combined_fields?: QueryDslAbstractionsQueryCombinedFieldsQuery
   constant_score?: QueryDslCompoundConstantScoreConstantScoreQuery
   dis_max?: QueryDslCompoundDismaxDisMaxQuery
   distance_feature?: Record<Field, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
@@ -4164,6 +4165,12 @@ export interface QueryDslAbstractionsFieldLookupFieldLookup {
   index?: IndexName
   path?: Field
   routing?: Routing
+}
+
+export interface QueryDslAbstractionsQueryCombinedFieldsQuery {
+  query: string
+  fields: Field[]
+  operator?: string
 }
 
 export interface QueryDslAbstractionsQueryNamedQueryKeys<TQuery = unknown> {
