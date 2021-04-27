@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@_types/common'
-import { PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
+import { Request as PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
 
 /**
  * @rest_spec_name transform.put_transform
