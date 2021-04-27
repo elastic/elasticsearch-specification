@@ -126,7 +126,9 @@ export class DataFrameAnalysisClassification extends DataFrameAnalysis {
   num_top_classes?: integer
 }
 
-export type DataFrameAnalysisAnalyzedFields = string[] | DataFrameAnalysisAnalyzedFieldsIncludeExclude
+export type DataFrameAnalysisAnalyzedFields =
+  | string[]
+  | DataFrameAnalysisAnalyzedFieldsIncludeExclude
 export class DataFrameAnalysisAnalyzedFieldsIncludeExclude {
   /** An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically. */
   includes: string[]
