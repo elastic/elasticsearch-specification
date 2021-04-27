@@ -19,6 +19,4 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-// TODO must be changed to HttpStatusCodeResponse once
-// https://github.com/elastic/elastic-client-generator/pull/373 is merged.
 export class Response extends AcknowledgedResponseBase {}
