@@ -8963,6 +8963,27 @@ export interface MlStopDatafeedMlStopDatafeedResponse extends ResponseBase {
   stopped: boolean
 }
 
+export interface MlUpdateDataFrameAnalyticsMlUpdateDataFrameAnalyticsRequest extends RequestBase {
+  stub: string
+  body: {
+    stub?: string
+  }
+}
+
+export interface MlUpdateDataFrameAnalyticsMlUpdateDataFrameAnalyticsResponse extends ResponseBase {
+  id: Id
+  create_time: long
+  version: VersionString
+  source: MlDataFrameAnalyticsSource
+  description?: string
+  dest: MlDataFrameAnalyticsDestination
+  model_memory_limit: ByteSize
+  allow_lazy_start: boolean
+  max_num_threads: integer
+  analysis: MlDataFrameAnalysisContainer
+  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+}
+
 export interface MlUpdateDataFeedMlUpdateDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_indices?: boolean

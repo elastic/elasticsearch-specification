@@ -704,7 +704,7 @@
     },
     "ml.update_data_frame_analytics": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
