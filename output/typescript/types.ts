@@ -3904,6 +3904,55 @@ export interface MlDataFrameAnalyticsSource {
   runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer {
+  classification_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
+  outlier_detection_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection
+  regression_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts {
+  skipped_docs_count: integer
+  test_docs_count: integer
+  training_docs_count: integer
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters {
+  hyperparameters: MlGetDataFrameAnalyticsStatsHyperparameters
+  iteration: integer
+  timestamp: DateString
+  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
+  validation_loss: MlGetDataFrameAnalyticsStatsValidationLoss
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem {
+  analysis_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer
+  assignment_explanation?: string
+  data_counts: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts
+  id: Id
+  memory_usage: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage
+  node?: NodesNodeAttributes
+  progress: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress[]
+  state: MlDataFrameState
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage {
+  memory_reestimate_bytes?: long
+  peak_usage_bytes: long
+  status: string
+  timestamp?: DateString
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection {
+  parameters: MlGetDataFrameAnalyticsStatsOutlierDetectionParameters
+  timestamp: DateString
+  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
+}
+
+export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress {
+  phase: string
+  progress_percent: integer
+}
+
 export interface MlGetDataFrameAnalyticsDataFrameAnalyticsSummary {
   id: Id
   source: MlDataFrameAnalyticsSource
@@ -4045,6 +4094,8 @@ export interface MlEvaluateDataFrameDataFrameRegressionSummary {
   msle?: MlEvaluateDataFrameDataFrameEvaluationValue
   r_squared?: MlEvaluateDataFrameDataFrameEvaluationValue
 }
+
+export type MlDataFrameState = 'started' | 'stopped' | 'starting' | 'stopping' | 'failed'
 
 export interface NodesNodesStatsDataPathStats {
   available: string
@@ -6407,6 +6458,23 @@ export interface MlHyperparameter {
   value: double
 }
 
+export interface MlGetDataFrameAnalyticsStatsHyperparameters {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  downsample_factor?: double
+  max_attempts_to_add_tree?: integer
+  max_optimization_rounds_per_hyperparameter?: integer
+  max_trees?: integer
+  num_folds?: integer
+  num_splits_per_feature?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+}
+
 export interface AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter extends AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase {
 }
 
@@ -8570,7 +8638,8 @@ export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsRequest
 }
 
 export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsResponse extends ResponseBase {
-  stub: boolean
+  count: integer
+  data_frame_analytics: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem[]
 }
 
 export interface MlGetDatafeedStatsMlGetDatafeedStatsRequest extends RequestBase {
@@ -9968,6 +10037,15 @@ export interface NodesNodesStatsOperatingSystemStats {
 }
 
 export type QueryDslOperator = 'and' | 'or' | 'AND' | 'OR'
+
+export interface MlGetDataFrameAnalyticsStatsOutlierDetectionParameters {
+  compute_feature_influence?: boolean
+  feature_influence_threshold?: double
+  method?: string
+  n_neighbors?: integer
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
 
 export interface MlOverallBucket {
   bucket_span: long
@@ -13818,6 +13896,11 @@ export interface MlTimingStats {
   minimum_bucket_processing_time_ms?: double
 }
 
+export interface MlGetDataFrameAnalyticsStatsTimingStats {
+  elapsed_time: integer
+  iteration_time?: integer
+}
+
 export interface TermvectorsToken {
   end_offset?: integer
   payload?: string
@@ -14407,6 +14490,11 @@ export interface SecurityGetTokenUserRealm {
 export type Username = string
 
 export type Uuid = string
+
+export interface MlGetDataFrameAnalyticsStatsValidationLoss {
+  fold_values: string[]
+  loss_type: string
+}
 
 export interface AggregationsValueAggregate extends AggregationsAggregateBase {
   value: double
