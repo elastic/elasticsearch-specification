@@ -3904,6 +3904,10 @@ export interface MlDataFrameAnalyticsSource {
   runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
+export interface MlDataFrameAnalyticsSummary {
+  stub: string
+}
+
 export interface MlEvaluateDataFrameDataFrameClassificationSummary {
   auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
   accuracy?: MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy
@@ -8527,14 +8531,15 @@ export interface MlGetCategoriesMlGetCategoriesResponse extends ResponseBase {
 }
 
 export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  id?: Id
+  allow_no_match?: boolean
+  from?: integer
+  size?: integer
+  exclude_generated?: boolean
 }
 
 export interface MlGetDataFrameAnalyticsMlGetDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  data_frame_analytics: MlDataFrameAnalyticsSummary[]
 }
 
 export interface MlGetDataFrameAnalyticsStatsMlGetDataFrameAnalyticsStatsRequest extends RequestBase {

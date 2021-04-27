@@ -582,12 +582,6 @@
       ],
       "response": []
     },
-    "ml.get_data_frame_analytics": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.get_data_frame_analytics_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"

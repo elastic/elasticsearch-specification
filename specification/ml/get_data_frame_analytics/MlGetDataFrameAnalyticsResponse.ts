@@ -17,8 +17,10 @@
  * under the License.
  */
 
+import { DataFrameAnalyticsSummary } from '@ml/_types/DataFrameAnalytics'
 import { ResponseBase } from '@_types/Base'
 
 export class MlGetDataFrameAnalyticsResponse extends ResponseBase {
-  stub: boolean
+  /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
+  data_frame_analytics: DataFrameAnalyticsSummary[]
 }
