@@ -25,7 +25,7 @@ import { Name } from '@_types/common'
  * @since 7.8.0
  * @stability TODO
  */
-export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
+export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
