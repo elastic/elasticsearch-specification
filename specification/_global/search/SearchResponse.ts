@@ -28,21 +28,23 @@ import { HitsMetadata } from './hits/HitsMetadata'
 import { Profile } from './profile/Profile'
 import { Suggest } from './suggesters/Suggest'
 
-export class Response<TDocument> extends ResponseBase {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: HitsMetadata<TDocument>
-
-  aggregations?: Dictionary<AggregateName, Aggregate>
-  _clusters?: ClusterStatistics
-  documents?: TDocument[]
-  fields?: Dictionary<string, UserDefinedValue>
-  max_score?: double
-  num_reduce_phases?: long
-  profile?: Profile
-  pit_id?: Id
-  _scroll_id?: ScrollId
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-  terminated_early?: boolean
+export class Response<TDocument> {
+  body: {
+    took: long
+    timed_out: boolean
+    _shards: ShardStatistics
+    hits: HitsMetadata<TDocument>
+  
+    aggregations?: Dictionary<AggregateName, Aggregate>
+    _clusters?: ClusterStatistics
+    documents?: TDocument[]
+    fields?: Dictionary<string, UserDefinedValue>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: Id
+    _scroll_id?: ScrollId
+    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+    terminated_early?: boolean
+  }
 }

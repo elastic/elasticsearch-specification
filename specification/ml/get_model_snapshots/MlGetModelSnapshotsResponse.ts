@@ -21,7 +21,6 @@ import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
 import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: long
-  model_snapshots: ModelSnapshot[]
+export class Response {
+  body: { count: long; model_snapshots: ModelSnapshot[] }
 }

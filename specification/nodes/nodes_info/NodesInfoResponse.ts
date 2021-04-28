@@ -22,7 +22,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeInfo } from './NodeInfo'
 
 export class Response extends NodesResponseBase {
-  cluster_name: string
-  /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
-  nodes: Dictionary<string, NodeInfo>
+  body: {
+    cluster_name: string
+    /** @prop_serializer VerbatimInterfaceReadOnlyDictionaryKeysFormatter`2 */
+    nodes: Dictionary<string, NodeInfo>
+  }
 }

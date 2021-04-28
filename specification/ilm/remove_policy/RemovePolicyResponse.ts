@@ -19,7 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  failed_indexes: string[]
-  has_failures: boolean
+export class Response {
+  body: { failed_indexes: string[]; has_failures: boolean }
 }

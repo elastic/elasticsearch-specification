@@ -27,8 +27,10 @@ import { integer } from '@_types/Numeric'
  * 404 (Missing resources) - If allow_no_match is false, this code indicates that there are no resources that match the request or only partial matches for the request.
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html#ml-get-trained-models-results
  */
-export class Response extends ResponseBase {
-  count: integer
-  /** An array of trained model resources, which are sorted by the model_id value in ascending order. */
-  trained_model_configs: TrainedModelConfig[]
+export class Response {
+  body: {
+    count: integer
+    /** An array of trained model resources, which are sorted by the model_id value in ascending order. */
+    trained_model_configs: TrainedModelConfig[]
+  }
 }

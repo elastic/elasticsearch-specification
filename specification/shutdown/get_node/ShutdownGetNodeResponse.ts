@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  stub: boolean
+export class Response {
+  body: { stub: boolean }
 }

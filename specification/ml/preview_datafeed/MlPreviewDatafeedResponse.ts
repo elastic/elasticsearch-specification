@@ -19,6 +19,8 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response<TDocument> extends ResponseBase {
-  data: TDocument[]
+export class Response<TDocument> {
+  body: {
+    data: TDocument[]
+  }
 }

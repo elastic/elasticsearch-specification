@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 import { AsyncSearch } from './AsyncSearch'
 
-export class AsyncSearchResponseBase extends ResponseBase {
+export class AsyncSearchResponseBase {
   id?: Id
   is_partial: boolean
   is_running: boolean

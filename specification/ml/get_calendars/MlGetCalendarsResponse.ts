@@ -21,7 +21,6 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { Calendar } from './Calendar'
 
-export class Response extends ResponseBase {
-  calendars: Calendar[]
-  count: long
+export class Response {
+  body: { calendars: Calendar[]; count: long }
 }

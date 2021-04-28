@@ -22,9 +22,11 @@ import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response<TDocument> extends ResponseBase {
-  _shards: ShardStatistics
-  timed_out: boolean
-  took: integer
-  hits: HitsMetadata<TDocument>
+export class Response<TDocument> {
+  body: {
+    _shards: ShardStatistics
+    timed_out: boolean
+    took: integer
+    hits: HitsMetadata<TDocument>
+  }
 }

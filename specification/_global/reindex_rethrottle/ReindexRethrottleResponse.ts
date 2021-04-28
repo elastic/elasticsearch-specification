@@ -21,6 +21,6 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { ResponseBase } from '@_types/Base'
 import { ReindexNode } from './ReindexNode'
 
-export class Response extends ResponseBase {
-  nodes: Dictionary<string, ReindexNode>
+export class Response {
+  body: { nodes: Dictionary<string, ReindexNode> }
 }

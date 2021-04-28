@@ -21,9 +21,6 @@ import { ResponseBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  api_key: string
-  expiration?: long
-  id: Id
-  name: Name
+export class Response {
+  body: { api_key: string; expiration?: long; id: Id; name: Name }
 }

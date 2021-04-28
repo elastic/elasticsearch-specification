@@ -20,8 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class Response extends ResponseBase {
-  calendar_id: Id
-  description?: string
-  job_ids: Id[]
+export class Response {
+  body: { calendar_id: Id; description?: string; job_ids: Id[] }
 }

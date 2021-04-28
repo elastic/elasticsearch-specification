@@ -20,6 +20,6 @@
 import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  operation_mode: LifecycleOperationMode
+export class Response {
+  body: { operation_mode: LifecycleOperationMode }
 }

@@ -34,11 +34,7 @@ import { DateString } from './Time'
 
 export class RequestBase implements CommonQueryParameters {}
 
-export class ResponseBase {
-  // Do not add properties to this base class.
-}
-
-export class WriteResponseBase extends ResponseBase {
+export class WriteResponseBase {
   _id: Id
   _index: IndexName
   _primary_term: long
@@ -51,13 +47,13 @@ export class WriteResponseBase extends ResponseBase {
   error?: ErrorCause
 }
 
-export class AcknowledgedResponseBase extends ResponseBase {
+export class AcknowledgedResponseBase {
   acknowledged: boolean
 }
 
-export class DictionaryResponseBase<TKey, TValue> extends ResponseBase {}
+export class DictionaryResponseBase<TKey, TValue> {}
 
-export class DynamicResponseBase extends ResponseBase {}
+export class DynamicResponseBase {}
 
 export class ElasticsearchVersionInfo {
   build_date: DateString
@@ -80,7 +76,7 @@ export class IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
 
-export class ShardsOperationResponseBase extends ResponseBase {
+export class ShardsOperationResponseBase {
   _shards: ShardStatistics
 }
 

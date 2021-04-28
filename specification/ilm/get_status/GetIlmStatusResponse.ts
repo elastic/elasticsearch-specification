@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { LifecycleOperationMode } from './LifecycleOperationMode'
 
-export class Response extends ResponseBase {
-  operation_mode: LifecycleOperationMode
+export class Response {
+  body: { operation_mode: LifecycleOperationMode }
 }

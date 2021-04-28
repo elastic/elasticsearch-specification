@@ -22,10 +22,12 @@ import { ApplicationResourcePrivileges } from './ApplicationResourcePrivileges'
 import { GlobalPrivileges } from './GlobalPrivileges'
 import { UserIndicesPrivileges } from './UserIndicesPrivileges'
 
-export class Response extends ResponseBase {
-  applications: ApplicationResourcePrivileges[]
-  cluster: string[]
-  global: GlobalPrivileges[]
-  indices: UserIndicesPrivileges[]
-  run_as: string[]
+export class Response {
+  body: {
+    applications: ApplicationResourcePrivileges[]
+    cluster: string[]
+    global: GlobalPrivileges[]
+    indices: UserIndicesPrivileges[]
+    run_as: string[]
+  }
 }

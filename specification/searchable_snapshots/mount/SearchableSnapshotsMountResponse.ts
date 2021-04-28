@@ -21,8 +21,8 @@ import { ResponseBase } from '@_types/Base'
 import { Indices, Name } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response extends ResponseBase {
-  snapshot: SearchableSnapshotsMountSnapshot
+export class Response {
+  body: { snapshot: SearchableSnapshotsMountSnapshot }
 }
 
 export class SearchableSnapshotsMountSnapshot {

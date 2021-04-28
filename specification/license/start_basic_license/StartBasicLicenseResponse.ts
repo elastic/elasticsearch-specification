@@ -21,7 +21,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  acknowledge: Dictionary<string, string | string[]>
-  basic_was_started: boolean
-  error_message: string
+  body: {
+    acknowledge: Dictionary<string, string | string[]>
+    basic_was_started: boolean
+    error_message: string
+  }
 }

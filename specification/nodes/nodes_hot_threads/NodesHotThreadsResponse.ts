@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { HotThreadInformation } from './HotThreadInformation'
 
-export class Response extends ResponseBase {
-  hot_threads: HotThreadInformation[]
+export class Response {
+  body: { hot_threads: HotThreadInformation[] }
 }

@@ -21,7 +21,6 @@ import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 import { ReloadDetails } from './ReloadDetails'
 
-export class Response extends ResponseBase {
-  reload_details: ReloadDetails[]
-  _shards: ShardStatistics
+export class Response {
+  body: { reload_details: ReloadDetails[]; _shards: ShardStatistics }
 }

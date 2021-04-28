@@ -36,20 +36,22 @@ import {
   VersionNumber
 } from '@_types/common'
 
-export class Response extends ResponseBase {
-  cluster_name: Name
-  cluster_uuid: Uuid
-  master_node?: string
-  state?: string[]
-  state_uuid?: Uuid
-  version?: VersionNumber
-  blocks?: ClusterStateBlocks
-  metadata?: ClusterStateMetadata
-  nodes?: Dictionary<NodeName, NodeAttributes>
-  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
-  routing_nodes?: ClusterStateRoutingNodes
-  snapshots?: ClusterStateSnapshots
-  snapshot_deletions?: ClusterStateDeletedSnapshots
+export class Response {
+  body: {
+    cluster_name: Name
+    cluster_uuid: Uuid
+    master_node?: string
+    state?: string[]
+    state_uuid?: Uuid
+    version?: VersionNumber
+    blocks?: ClusterStateBlocks
+    metadata?: ClusterStateMetadata
+    nodes?: Dictionary<NodeName, NodeAttributes>
+    routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+    routing_nodes?: ClusterStateRoutingNodes
+    snapshots?: ClusterStateSnapshots
+    snapshot_deletions?: ClusterStateDeletedSnapshots
+  }
 }
 
 export class ClusterStateBlocks {

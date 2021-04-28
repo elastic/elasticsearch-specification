@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { LicenseInformation } from './LicenseInformation'
 
-export class Response extends ResponseBase {
-  license: LicenseInformation
+export class Response {
+  body: { license: LicenseInformation }
 }

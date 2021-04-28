@@ -27,16 +27,18 @@ import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 import { TransformSettings } from '@transform/_types/TransformSettings'
 
-export class Response extends ResponseBase {
-  create_time: long
-  //  create_time_date_time?: DateString
-  description: string
-  dest: TransformDestination
-  frequency: Time
-  id: Id
-  pivot: TransformPivot
-  settings: TransformSettings
-  source: TransformSource
-  sync?: TransformSyncContainer
-  version: VersionString
+export class Response {
+  body: {
+    create_time: long
+    //  create_time_date_time?: DateString
+    description: string
+    dest: TransformDestination
+    frequency: Time
+    id: Id
+    pivot: TransformPivot
+    settings: TransformSettings
+    source: TransformSource
+    sync?: TransformSyncContainer
+    version: VersionString
+  }
 }

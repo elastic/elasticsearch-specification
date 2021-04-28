@@ -29,18 +29,20 @@ import { ScriptField } from '@_types/Scripting'
 import { Time } from '@_types/Time'
 import { DatafeedIndicesOptions } from './DatafeedIndicesOptions'
 
-export class Response extends ResponseBase {
-  aggregations?: Dictionary<string, AggregationContainer>
-  chunking_config?: ChunkingConfig
-  datafeed_id: Id
-  frequency?: Time
-  indices: Indices
-  job_id: Id
-  max_empty_searches?: integer
-  query: QueryContainer
-  query_delay: Time
-  script_fields?: Dictionary<string, ScriptField>
-  scroll_size: integer
-  indices_options: DatafeedIndicesOptions
-  delayed_data_check_config: DelayedDataCheckConfig
+export class Response {
+  body: {
+    aggregations?: Dictionary<string, AggregationContainer>
+    chunking_config?: ChunkingConfig
+    datafeed_id: Id
+    frequency?: Time
+    indices: Indices
+    job_id: Id
+    max_empty_searches?: integer
+    query: QueryContainer
+    query_delay: Time
+    script_fields?: Dictionary<string, ScriptField>
+    scroll_size: integer
+    indices_options: DatafeedIndicesOptions
+    delayed_data_check_config: DelayedDataCheckConfig
+  }
 }

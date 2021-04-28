@@ -37,32 +37,34 @@ import { VectorUsage } from './VectorUsage'
 import { WatcherUsage } from './WatcherUsage'
 import { XPackUsage } from './XPackUsage'
 
-export class Response extends ResponseBase {
-  aggregate_metric: XPackUsage
-  analytics: AnalyticsUsage
-  watcher: WatcherUsage
-  ccr: CcrUsage
-  data_frame?: XPackUsage
-  data_science?: XPackUsage
-  data_streams?: DataStreamsUsage
-  data_tiers: DataTiersUsage
-  enrich?: XPackUsage
-  eql: EqlUsage
-  flattened?: FlattenedUsage
-  frozen_indices: FrozenIndicesUsage
-  graph: XPackUsage
-  ilm: IlmUsage
-  logstash: XPackUsage
-  ml: MachineLearningUsage
-  monitoring: MonitoringUsage
-  rollup: XPackUsage
-  runtime_fields?: RuntimeFieldsUsage
-  spatial: XPackUsage
-  searchable_snapshots: SearchableSnapshotsUsage
-  security: SecurityUsage
-  slm: SlmUsage
-  sql: SqlUsage
-  transform: XPackUsage
-  vectors: VectorUsage
-  voting_only: XPackUsage
+export class Response {
+  body: {
+    aggregate_metric: XPackUsage
+    analytics: AnalyticsUsage
+    watcher: WatcherUsage
+    ccr: CcrUsage
+    data_frame?: XPackUsage
+    data_science?: XPackUsage
+    data_streams?: DataStreamsUsage
+    data_tiers: DataTiersUsage
+    enrich?: XPackUsage
+    eql: EqlUsage
+    flattened?: FlattenedUsage
+    frozen_indices: FrozenIndicesUsage
+    graph: XPackUsage
+    ilm: IlmUsage
+    logstash: XPackUsage
+    ml: MachineLearningUsage
+    monitoring: MonitoringUsage
+    rollup: XPackUsage
+    runtime_fields?: RuntimeFieldsUsage
+    spatial: XPackUsage
+    searchable_snapshots: SearchableSnapshotsUsage
+    security: SecurityUsage
+    slm: SlmUsage
+    sql: SqlUsage
+    transform: XPackUsage
+    vectors: VectorUsage
+    voting_only: XPackUsage
+  }
 }

@@ -22,7 +22,6 @@ import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 import { IndexSegment } from './IndexSegment'
 
-export class Response extends ResponseBase {
-  indices: Dictionary<string, IndexSegment>
-  _shards: ShardStatistics
+export class Response {
+  body: { indices: Dictionary<string, IndexSegment>; _shards: ShardStatistics }
 }

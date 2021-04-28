@@ -26,20 +26,22 @@ import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 
-export class Response extends ResponseBase {
-  allow_lazy_open: boolean
-  analysis_config: AnalysisConfig
-  analysis_limits: AnalysisLimits
-  background_persist_interval: Time
-  create_time: DateString
-  data_description: DataDescription
-  description: string
-  job_id: Id
-  job_type: string
-  model_plot: ModelPlotConfig
-  model_snapshot_id: string
-  model_snapshot_retention_days: long
-  renormalization_window_days: long
-  results_index_name: string
-  results_retention_days: long
+export class Response {
+  body: {
+    allow_lazy_open: boolean
+    analysis_config: AnalysisConfig
+    analysis_limits: AnalysisLimits
+    background_persist_interval: Time
+    create_time: DateString
+    data_description: DataDescription
+    description: string
+    job_id: Id
+    job_type: string
+    model_plot: ModelPlotConfig
+    model_snapshot_id: string
+    model_snapshot_retention_days: long
+    renormalization_window_days: long
+    results_index_name: string
+    results_retention_days: long
+  }
 }

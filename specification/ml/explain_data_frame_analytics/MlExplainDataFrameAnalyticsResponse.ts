@@ -23,9 +23,11 @@ import {
 } from '@ml/_types/DataFrameAnalytics'
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  /** An array of objects that explain selection for each field, sorted by the field names. */
-  field_selection: DataFrameAnalyticsFieldSelection[]
-  /** An array of objects that explain selection for each field, sorted by the field names. */
-  memory_estimation: DataFrameAnalyticsMemoryEstimation
+export class Response {
+  body: {
+    /** An array of objects that explain selection for each field, sorted by the field names. */
+    field_selection: DataFrameAnalyticsFieldSelection[]
+    /** An array of objects that explain selection for each field, sorted by the field names. */
+    memory_estimation: DataFrameAnalyticsMemoryEstimation
+  }
 }

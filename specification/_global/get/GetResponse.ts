@@ -29,16 +29,18 @@ import {
 } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class Response<TDocument> extends ResponseBase {
-  _index: IndexName
-  fields?: Dictionary<string, UserDefinedValue>
-  found: boolean
-  _id: Id
-  _primary_term?: long
-  _routing?: string
-  _seq_no?: SequenceNumber
-  _source?: TDocument
-  /** deprecated since 7.0.0 */
-  _type?: Type
-  _version?: VersionNumber
+export class Response<TDocument> {
+  body: {
+    _index: IndexName
+    fields?: Dictionary<string, UserDefinedValue>
+    found: boolean
+    _id: Id
+    _primary_term?: long
+    _routing?: string
+    _seq_no?: SequenceNumber
+    _source?: TDocument
+    /** deprecated since 7.0.0 */
+    _type?: Type
+    _version?: VersionNumber
+  }
 }

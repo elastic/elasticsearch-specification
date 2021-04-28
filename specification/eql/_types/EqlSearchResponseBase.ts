@@ -25,7 +25,7 @@ import { EqlHits } from './EqlHits'
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-search-api.html#eql-search-api-response-body
  */
-export class EqlSearchResponseBase<TEvent> extends ResponseBase {
+export class EqlSearchResponseBase<TEvent> {
   /**
    *  Identifier for the search.
    */

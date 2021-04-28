@@ -22,6 +22,6 @@ import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { IndicesShardStores } from './IndicesShardStores'
 
-export class Response extends ResponseBase {
-  indices: Dictionary<IndexName, IndicesShardStores>
+export class Response {
+  body: { indices: Dictionary<IndexName, IndicesShardStores> }
 }

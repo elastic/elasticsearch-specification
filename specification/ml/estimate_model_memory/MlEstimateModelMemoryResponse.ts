@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  model_memory_estimate: string
+export class Response {
+  body: { model_memory_estimate: string }
 }

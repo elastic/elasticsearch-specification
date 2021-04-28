@@ -24,6 +24,8 @@ import { Name } from '@_types/common'
 import { NodeReloadException } from './NodeReloadException'
 
 export class Response extends NodesResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, NodeStats | NodeReloadException>
+  body: {
+    cluster_name: Name
+    nodes: Dictionary<string, NodeStats | NodeReloadException>
+  }
 }

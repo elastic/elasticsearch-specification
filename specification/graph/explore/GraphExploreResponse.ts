@@ -23,10 +23,12 @@ import { long } from '@_types/Numeric'
 import { GraphConnection } from './GraphConnection'
 import { GraphVertex } from './GraphVertex'
 
-export class Response extends ResponseBase {
-  connections: GraphConnection[]
-  failures: ShardFailure[]
-  timed_out: boolean
-  took: long
-  vertices: GraphVertex[]
+export class Response {
+  body: {
+    connections: GraphConnection[]
+    failures: ShardFailure[]
+    timed_out: boolean
+    took: long
+    vertices: GraphVertex[]
+  }
 }

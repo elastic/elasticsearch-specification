@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ApiKeys } from './ApiKeys'
 
-export class Response extends ResponseBase {
-  api_keys: ApiKeys[]
+export class Response {
+  body: { api_keys: ApiKeys[] }
 }

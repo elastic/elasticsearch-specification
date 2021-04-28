@@ -19,8 +19,10 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  follow_index_created: boolean
-  follow_index_shards_acked: boolean
-  index_following_started: boolean
+export class Response {
+  body: {
+    follow_index_created: boolean
+    follow_index_shards_acked: boolean
+    index_following_started: boolean
+  }
 }

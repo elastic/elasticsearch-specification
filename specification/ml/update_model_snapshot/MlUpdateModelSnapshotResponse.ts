@@ -21,5 +21,7 @@ import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  model: ModelSnapshot
+  body: {
+    model: ModelSnapshot
+  }
 }

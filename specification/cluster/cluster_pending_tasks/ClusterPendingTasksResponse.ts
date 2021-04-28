@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { PendingTask } from './PendingTask'
 
-export class Response extends ResponseBase {
-  tasks: PendingTask[]
+export class Response {
+  body: { tasks: PendingTask[] }
 }

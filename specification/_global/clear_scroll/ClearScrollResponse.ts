@@ -18,5 +18,11 @@
  */
 
 import { ResponseBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {}
+export class Response {
+  body: {
+    succeeded: boolean
+    num_freed: integer
+  }
+}

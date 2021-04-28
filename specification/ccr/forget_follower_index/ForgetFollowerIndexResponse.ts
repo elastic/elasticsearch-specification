@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response extends ResponseBase {
-  _shards: ShardStatistics
+export class Response {
+  body: { _shards: ShardStatistics }
 }

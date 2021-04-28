@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
-
-export class Response {
-  body: { created: boolean }
-}
+/**
+ * The absence of any type. This is commonly used in APIs that returns an empty body.
+ */
+ export type Void = void

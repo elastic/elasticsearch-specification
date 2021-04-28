@@ -20,7 +20,6 @@
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  accepted?: boolean
-  snapshot?: SnapshotInfo
+export class Response {
+  body: { accepted?: boolean; snapshot?: SnapshotInfo }
 }

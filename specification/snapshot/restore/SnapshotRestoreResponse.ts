@@ -21,8 +21,8 @@ import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response extends ResponseBase {
-  snapshot: SnapshotRestore
+export class Response {
+  body: { snapshot: SnapshotRestore }
 }
 
 export class SnapshotRestore {

@@ -22,11 +22,13 @@ import { Id, IndexName, Type } from '@_types/common'
 import { ExplanationDetail } from './ExplanationDetail'
 import { InlineGet } from './InlineGet'
 
-export class Response<TDocument> extends ResponseBase {
-  _index: IndexName
-  _type?: Type
-  _id: Id
-  matched: boolean
-  explanation?: ExplanationDetail
-  get?: InlineGet<TDocument>
+export class Response<TDocument> {
+  body: {
+    _index: IndexName
+    _type?: Type
+    _id: Id
+    matched: boolean
+    explanation?: ExplanationDetail
+    get?: InlineGet<TDocument>
+  }
 }

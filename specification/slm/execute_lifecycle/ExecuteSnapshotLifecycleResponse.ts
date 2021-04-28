@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  snapshot_name: string
+export class Response {
+  body: { snapshot_name: string }
 }

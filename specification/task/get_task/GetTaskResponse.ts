@@ -22,9 +22,11 @@ import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { TaskInfo } from './TaskInfo'
 
-export class Response extends ResponseBase {
-  completed: boolean
-  task: TaskInfo
-  response?: TaskStatus
-  error?: ErrorCause
+export class Response {
+  body: {
+    completed: boolean
+    task: TaskInfo
+    response?: TaskStatus
+    error?: ErrorCause
+  }
 }

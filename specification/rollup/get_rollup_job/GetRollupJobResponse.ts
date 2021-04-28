@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { RollupJobInformation } from './RollupJobInformation'
 
-export class Response extends ResponseBase {
-  jobs: RollupJobInformation[]
+export class Response {
+  body: { jobs: RollupJobInformation[] }
 }

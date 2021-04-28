@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  eligible_to_start_trial: boolean
+export class Response {
+  body: { eligible_to_start_trial: boolean }
 }

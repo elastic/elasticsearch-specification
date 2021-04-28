@@ -20,7 +20,9 @@
 import { ResponseBase } from '@_types/Base'
 import { IndexState } from '@_types/index/IndexState'
 
-export class Response<TTransform> extends ResponseBase {
-  generated_dest_index: IndexState
-  preview: TTransform[]
+export class Response<TTransform> {
+  body: {
+    generated_dest_index: IndexState
+    preview: TTransform[]
+  }
 }

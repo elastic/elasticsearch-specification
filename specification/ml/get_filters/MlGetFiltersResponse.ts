@@ -21,7 +21,6 @@ import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { Filter } from './Filter'
 
-export class Response extends ResponseBase {
-  count: long
-  filters: Filter[]
+export class Response {
+  body: { count: long; filters: Filter[] }
 }

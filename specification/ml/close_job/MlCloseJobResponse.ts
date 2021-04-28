@@ -19,6 +19,6 @@
 
 import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  closed: boolean
+export class Response {
+  body: { closed: boolean }
 }

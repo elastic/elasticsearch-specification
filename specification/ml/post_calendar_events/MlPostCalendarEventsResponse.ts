@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { ScheduledEvent } from './ScheduledEvent'
 
-export class Response extends ResponseBase {
-  events: ScheduledEvent[]
+export class Response {
+  body: { events: ScheduledEvent[] }
 }

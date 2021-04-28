@@ -20,6 +20,6 @@
 import { ResponseBase } from '@_types/Base'
 import { PipelineSimulation } from './PipelineSimulation'
 
-export class Response extends ResponseBase {
-  docs: PipelineSimulation[]
+export class Response {
+  body: { docs: PipelineSimulation[] }
 }

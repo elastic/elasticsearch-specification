@@ -20,8 +20,10 @@
 import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class Response<TResult> extends ResponseBase {
-  result: TResult
+export class Response<TResult> {
+  body: {
+    result: TResult
+  }
 }
 
 /**
