@@ -1290,7 +1290,7 @@ export type SearchSortGeoDistanceSort = SearchSortGeoDistanceSortKeys |
     { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
 
 export interface SearchSortNestedSortValue {
-  filter: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslAbstractionsContainerQueryContainer
   max_children?: integer
   path: Field
 }
