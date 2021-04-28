@@ -39,7 +39,6 @@ import {
   getNameSpace,
   hoistRequestAnnotations,
   hoistTypeAnnotations,
-  isApi,
   isKnownBehavior,
   modelBehaviors,
   modelEnumDeclaration,
@@ -197,7 +196,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         namespace: getNameSpace(declaration)
       }
 
-      hoistRequestAnnotations(type as model.Request, declaration.getJsDocs(), mappings, response)
+      hoistRequestAnnotations(type, declaration.getJsDocs(), mappings, response)
 
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`

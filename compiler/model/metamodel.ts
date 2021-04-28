@@ -119,7 +119,7 @@ export class LiteralValue {
 /**
  * The absence of any type. This is commonly used in APIs that returns an empty body.
  */
- export class VoidValue {
+export class VoidValue {
   kind: 'void_value'
 }
 
@@ -250,7 +250,7 @@ export class Request extends BaseType {
 /**
  * A response type
  */
- export class Response extends BaseType {
+export class Response extends BaseType {
   kind: 'response'
   generics?: TypeName[]
   inherits?: Inherits
