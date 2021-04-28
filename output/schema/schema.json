@@ -87024,12 +87024,11 @@
           "namespace": "_types"
         }
       },
-      "kind": "interface",
+      "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "indices.put_index_template"
-      },
-      "properties": []
+      }
     },
     {
       "attachedBehaviors": [
@@ -114903,23 +114902,10 @@
             "name": "cluster_name",
             "required": true,
             "type": {
-<<<<<<< HEAD
-=======
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "nodes",
-          "required": true,
-          "type": {
-            "key": {
->>>>>>> master
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           },

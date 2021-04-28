@@ -8675,8 +8675,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
   }
 }
 
-export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBase {
-}
+export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBase {}
 
 export interface IndicesPutMappingRequest extends RequestBase {
   index?: Indices
