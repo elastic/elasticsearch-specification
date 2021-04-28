@@ -95,7 +95,7 @@ export class QueryContainer {
   function_score?: FunctionScoreQuery
   fuzzy?: SingleKeyDictionary<Field, FuzzyQuery | string>
   geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
-  geo_distance?: NamedQuery<GeoDistanceQuery | string>
+  geo_distance?: GeoDistanceQuery
   geo_polygon?: NamedQuery<GeoPolygonQuery | string>
   geo_shape?: NamedQuery<GeoShapeQuery | string>
   has_child?: HasChildQuery
