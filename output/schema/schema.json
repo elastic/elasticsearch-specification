@@ -32415,7 +32415,7 @@
       "properties": [
         {
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32426,7 +32426,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
