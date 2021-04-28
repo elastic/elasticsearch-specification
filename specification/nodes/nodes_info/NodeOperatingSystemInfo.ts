@@ -23,13 +23,20 @@ import { NodeInfoMemory } from './NodeInfoMemory'
 import { NodeInfoOSCPU } from './NodeInfoOSCPU'
 
 export class NodeOperatingSystemInfo {
+  /** Name of the JVM architecture (ex: amd64, x86) */
   arch: string
+  /** Number of processors available to the Java virtual machine */
   available_processors: integer
-  cpu: NodeInfoOSCPU
-  mem: NodeInfoMemory
-  name: string
+  /** The number of processors actually used to calculate thread pool size. This number can be set with the node.processors setting of a node and defaults to the number of processors reported by the OS. */
+  allocated_processors?: integer
+  /** Name of the operating system (ex: Linux, Windows, Mac OS X) */
+  name: Name
   pretty_name: Name
+  /** Refresh interval for the OS statistics */
   refresh_interval_in_millis: integer
-  swap: NodeInfoMemory
+  /** Version of the operating system */
   version: VersionString
+  cpu?: NodeInfoOSCPU
+  mem?: NodeInfoMemory
+  swap?: NodeInfoMemory
 }

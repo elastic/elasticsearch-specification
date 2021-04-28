@@ -440,7 +440,7 @@
     },
     "indices.put_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -719,6 +719,12 @@
       "response": []
     },
     "nodes.hot_threads": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "nodes.info": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

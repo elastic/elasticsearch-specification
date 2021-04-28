@@ -70,8 +70,8 @@ export class MainError extends ErrorCause {
 }
 
 export class ShardFailure {
-  index: IndexName
-  node: string
+  index?: IndexName
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string

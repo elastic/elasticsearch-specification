@@ -19,7 +19,7 @@
 
 import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, Field, VersionString } from './common'
+import { ByteSize, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { integer, long, uint } from './Numeric'
 
@@ -140,7 +140,7 @@ export class PluginStats {
   extended_plugins: string[]
   has_native_controller: boolean
   java_version: VersionString
-  name: string
+  name: Name
   version: VersionString
   licensed: boolean
   type: string

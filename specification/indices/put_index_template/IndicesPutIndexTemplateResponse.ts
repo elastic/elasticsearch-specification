@@ -17,22 +17,6 @@
  * under the License.
  */
 
-import { Name, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { NodeInfoJvmMemory } from './NodeInfoJvmMemory'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class NodeJvmInfo {
-  gc_collectors: string[]
-  mem: NodeInfoJvmMemory
-  memory_pools: string[]
-  pid: integer
-  start_time_in_millis: long
-  version: VersionString
-  vm_name: Name
-  vm_vendor: string
-  vm_version: VersionString
-  bundled_jdk: boolean
-  using_bundled_jdk: boolean
-  using_compressed_ordinary_object_pointers?: boolean | string
-  input_arguments: string[]
-}
+export class Response extends AcknowledgedResponseBase {}
