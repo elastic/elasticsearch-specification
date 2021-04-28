@@ -84,62 +84,76 @@ endpoint of Elasticsearch and the respective type mapping. For example:
 
 ```jsonc
 {
-  "types": [{
-    "kind": "request",
-    "name": {
-      "namespace": "document.single.index",
-      "name": "IndexRequest"
-    },
-    "description": "The document",
-    "annotations": {
-      "type_stability": "stable"
+  "types": [    {
+    "attachedBehaviors": [
+      "CommonQueryParameters"
+    ],
+    "body": {
+      "kind": "value",
+      "value": {
+        "kind": "instance_of",
+        "type": {
+          "name": "TDocument",
+          "namespace": "_global.index"
+        }
+      }
     },
     "generics": [
-      "TDocument"
-    ],
-    "inherits": [
       {
-        "type": {
-          "namespace": "common_abstractions.request",
-          "name": "RequestBase"
-        }
+        "name": "TDocument",
+        "namespace": "_global.index"
       }
     ],
-    "path": [...],
-    "query": [...],
-    "body": {...}
-  }, {
-    "kind": "interface",
-    "name": {
-      "namespace": "document.single.index",
-      "name": "IndexResponse"
+    "inherits": {
+      "type": {
+        "name": "RequestBase",
+        "namespace": "_types"
+      }
     },
-    "inherits": [
-      {
-        "type": {
-          "namespace": "document.single",
-          "name": "WriteResponseBase"
-        }
+    "kind": "request",
+    "name": {
+      "name": "Request",
+      "namespace": "_global.index"
+    },
+    "path": [...],
+    "query": [...]
+  }, {
+    "inherits": {
+      "type": {
+        "name": "WriteResponseBase",
+        "namespace": "_types"
       }
-    ],
-    "properties": []
+    },
+    "kind": "response",
+    "name": {
+      "name": "Response",
+      "namespace": "_global.index"
+    }
   }],
   "endpoints": [{
-    "name": "index",
-    "description": "Creates or updates a document in an index.",
-    "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
-    "stability": "stable",
-    "request": {
-      "namespace": "document.single.index",
-      "name": "IndexRequest"
-    },
-    "requestBodyRequired": true,
-    "response": {
-      "namespace": "document.single.index",
-      "name": "IndexResponse"
-    },
-    "urls": [...]
-  }]
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Creates or updates a document in an index.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html",
+      "name": "index",
+      "request": {
+        "name": "Request",
+        "namespace": "_global.index"
+      },
+      "requestBodyRequired": true,
+      "response": {
+        "name": "Response",
+        "namespace": "_global.index"
+      },
+      "since": "0.0.0",
+      "stability": "stable",
+      "urls": [...],
+      "visibility": "public"
+    }]
 }
 ```
 

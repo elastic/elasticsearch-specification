@@ -162,6 +162,16 @@ The example shown above is the correct way to solve this cases, but to make it
 easy to use in every language you need to add a *variant* definition as well.
 You can find how it works in the next section.
 
+### Void value
+
+The absence of any type. This is commonly used in APIs that returns an empty body.
+
+```ts
+class Response {
+  body: Void
+}
+```
+
 ### Variants
 
 Variants is a special syntax that can be used by language generators to understand

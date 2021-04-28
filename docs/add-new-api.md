@@ -29,12 +29,12 @@ The filename should be the same of the type definition you are writing, for exam
 
 ```ts
 // IndexRequest.ts
-interface IndexRequest {}
+interface Request {}
 ```
 
 ```ts
 // IndexResponse.ts
-class IndexResponse {}
+class Response {}
 ```
 
 Try to use less files as possible, for example there is no need to create a custom file for an enum,
@@ -43,6 +43,7 @@ you can define it in the same file where it's used, unless is a commonly used ty
 ### Add the endpoint request definition
 
 Request definitions are slighly different from other definitions.
+It is required that the request definition is named `Request`.
 A request definition is an interface and should contains three top level keys:
 
 - `path_parts`: the path parameters (eg: `indices`, `id`...)
@@ -63,7 +64,7 @@ Following you can find a template valid for any request definition.
  * @since 1.2.3
  * @stability TODO
  */
-interface EndpointRequest extends RequestBase {
+interface Request extends RequestBase {
   path_parts?: {
 
   };
@@ -83,7 +84,7 @@ In some cases, the request could take one or more generics, in such case the def
  * @since 1.2.3
  * @stability TODO
  */
-interface EndpointRequest<Generic> extends RequestBase {
+interface Request<Generic> extends RequestBase {
   path_parts?: {
 
   };
@@ -102,14 +103,15 @@ There are cases where the generic might be the entire body, see [`IndexRequest`]
 
 Responses definitions should always be defined **after** a request definition,
 otherwise the compiler will not pick them up. It is required that the response
-definition has the same name as the request definition aside from the `Response` suffix.
+definition is named `Response`.
 
-For example the response definition for `ClusterHealthRequest` will be named `ClusterHealthResponse`.
 Following you can find a template valid for any response definition.
 
 ```ts
-class EndpointResponse extends ResponseBase {
+class Response {
+  body: {
 
+  }
 }
 ```
 
@@ -118,8 +120,10 @@ response definition represents the body of a succesful response.
 
 In some cases, the response could take one or more generics, in such case the definition will be:
 ```ts
-class EndpointResponse<Generic> extends ResponseBase {
+class Response<Generic> {
+  body: {
 
+  }
 }
 ```
 And the generic will be used somewhere inside the definition.
