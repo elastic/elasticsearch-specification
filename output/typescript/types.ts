@@ -4111,7 +4111,7 @@ export interface QueryDslAbstractionsContainerQueryContainer {
   function_score?: QueryDslCompoundFunctionScoreFunctionScoreQuery
   fuzzy?: Record<Field, QueryDslTermLevelFuzzyFuzzyQuery | string>
   geo_bounding_box?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoBoundingBoxGeoBoundingBoxQuery | string>
-  geo_distance?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoDistanceGeoDistanceQuery | string>
+  geo_distance?: QueryDslGeoDistanceGeoDistanceQuery
   geo_polygon?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoPolygonGeoPolygonQuery | string>
   geo_shape?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoShapeGeoShapeQuery | string>
   has_child?: QueryDslJoiningHasChildHasChildQuery
@@ -4516,12 +4516,13 @@ export interface QueryDslGeoBoundingBoxGeoBoundingBoxQuery extends QueryDslAbstr
 
 export type QueryDslGeoBoundingBoxGeoExecution = 'memory' | 'indexed'
 
-export interface QueryDslGeoDistanceGeoDistanceQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslGeoDistanceGeoDistanceQueryKeys extends QueryDslAbstractionsQueryQueryBase {
   distance?: Distance
   distance_type?: GeoDistanceType
-  location?: QueryDslGeoGeoLocation
   validation_method?: QueryDslGeoGeoValidationMethod
 }
+export type QueryDslGeoDistanceGeoDistanceQuery = QueryDslGeoDistanceGeoDistanceQueryKeys |
+    { [property: string]: QueryDslGeoGeoLocation }
 
 export interface QueryDslGeoPolygonGeoPolygonQuery extends QueryDslAbstractionsQueryQueryBase {
   points?: QueryDslGeoGeoLocation[]
