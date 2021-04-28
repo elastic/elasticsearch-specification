@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 export class Response {

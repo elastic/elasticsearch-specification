@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { IndexName, Name, Username } from '@_types/common'
 
 export class Response {

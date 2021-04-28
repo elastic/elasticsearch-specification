@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { AnalyticsUsage } from './AnalyticsUsage'
 import { CcrUsage } from './CcrUsage'
 import { DataStreamsUsage } from './DataStreamsUsage'

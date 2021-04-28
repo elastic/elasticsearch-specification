@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { Id, IndexName, Type } from '@_types/common'
 import { double } from '@_types/Numeric'
 

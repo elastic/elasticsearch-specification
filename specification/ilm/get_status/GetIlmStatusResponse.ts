@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { LifecycleOperationMode } from './LifecycleOperationMode'
 
 export class Response {

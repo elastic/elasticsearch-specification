@@ -18,7 +18,6 @@
  */
 
 import { SnapshotStatus } from '@snapshot/_types/SnapshotStatus'
-import { ResponseBase } from '@_types/Base'
 
 export class Response {
   body: { snapshots: SnapshotStatus[] }

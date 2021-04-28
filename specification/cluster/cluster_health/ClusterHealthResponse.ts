@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Health, IndexName } from '@_types/common'
 import { integer, Percentage } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'

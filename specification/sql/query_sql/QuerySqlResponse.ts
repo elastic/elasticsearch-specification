@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { SqlRow } from '@_types/common'
 import { SqlColumn } from './SqlColumn'
 

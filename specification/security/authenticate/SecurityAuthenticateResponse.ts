@@ -20,7 +20,6 @@
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { Name, Username } from '@_types/common'
 
 export class Response {

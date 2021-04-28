@@ -18,7 +18,6 @@
  */
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
-import { ResponseBase } from '@_types/Base'
 import { WatcherNodeStats } from './WatcherNodeStats'
 
 export class Response {

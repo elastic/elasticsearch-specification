@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@task/get_task/TaskInfo'
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { TaskExecutingNode } from './TaskExecutingNode'
 

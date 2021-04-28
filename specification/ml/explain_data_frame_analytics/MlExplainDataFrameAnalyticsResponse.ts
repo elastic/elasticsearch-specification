@@ -21,7 +21,6 @@ import {
   DataFrameAnalyticsFieldSelection,
   DataFrameAnalyticsMemoryEstimation
 } from '@ml/_types/DataFrameAnalytics'
-import { ResponseBase } from '@_types/Base'
 
 export class Response {
   body: {

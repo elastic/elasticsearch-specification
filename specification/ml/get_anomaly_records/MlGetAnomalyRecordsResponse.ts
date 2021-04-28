@@ -18,7 +18,6 @@
  */
 
 import { AnomalyRecord } from '@ml/_types/AnomalyRecord'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response {

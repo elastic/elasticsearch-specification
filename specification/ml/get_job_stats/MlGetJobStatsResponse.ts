@@ -18,7 +18,6 @@
  */
 
 import { JobStats } from '@ml/_types/JobStats'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response {

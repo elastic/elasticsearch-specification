@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ElasticsearchVersionInfo, ResponseBase } from '@_types/Base'
+import { ElasticsearchVersionInfo } from '@_types/Base'
 
 export class Response {
   body: {

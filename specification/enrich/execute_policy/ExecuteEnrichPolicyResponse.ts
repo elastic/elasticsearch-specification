@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { TaskId } from '@_types/common'
 import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
 

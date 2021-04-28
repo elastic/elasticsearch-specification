@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { CoordinatorStats } from './CoordinatorStats'
 import { ExecutingPolicy } from './ExecutingPolicy'
 

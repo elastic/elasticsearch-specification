@@ -18,7 +18,6 @@
  */
 
 import { TrainedModelStats } from '@ml/_types/TrainedModel'
-import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
 /**

@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 

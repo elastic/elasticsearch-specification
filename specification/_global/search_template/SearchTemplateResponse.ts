@@ -18,7 +18,6 @@
  */
 
 import { HitsMetadata } from '@global/search/hits/HitsMetadata'
-import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 

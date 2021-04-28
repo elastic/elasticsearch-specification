@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { DataStreamName, Field, Indices, Name } from '@_types/common'
 
 export class Response {

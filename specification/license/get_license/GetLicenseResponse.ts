@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { LicenseInformation } from './LicenseInformation'
 
 export class Response {

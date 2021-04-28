@@ -18,8 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { Field } from '@_types/common'
 
 export class Response {

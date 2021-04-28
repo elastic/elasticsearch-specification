@@ -19,7 +19,6 @@
 
 import { ClusterStatus } from '@cluster/_types/ClusterStatus'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
-import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { ClusterIndicesStats } from './ClusterIndicesStats'
@@ -33,26 +32,26 @@ export class Response extends NodesResponseBase {
      */
     cluster_name: Name
     /**
-      * Unique identifier for the cluster.
-      */
+     * Unique identifier for the cluster.
+     */
     cluster_uuid: Uuid
     /**
-      * Contains statistics about indices with shards assigned to selected nodes.
-      */
+     * Contains statistics about indices with shards assigned to selected nodes.
+     */
     indices: ClusterIndicesStats
     /**
-      * Contains statistics about nodes selected by the request’s node filters.
-      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
-      */
+     * Contains statistics about nodes selected by the request’s node filters.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
+     */
     nodes: ClusterNodesStats
     /**
-      * Health status of the cluster, based on the state of its primary and replica shards.
-      */
+     * Health status of the cluster, based on the state of its primary and replica shards.
+     */
     status: ClusterStatus
     /**
-      * Unix timestamp, in milliseconds, of the last time the cluster statistics were refreshed.
-      * @doc_url https://en.wikipedia.org/wiki/Unix_time
-      */
+     * Unix timestamp, in milliseconds, of the last time the cluster statistics were refreshed.
+     * @doc_url https://en.wikipedia.org/wiki/Unix_time
+     */
     timestamp: long
   }
 }

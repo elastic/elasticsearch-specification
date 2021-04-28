@@ -20,7 +20,6 @@
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { SecurityNode } from '@security/_types/SecurityNode'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 
 export class Response {
   body: {

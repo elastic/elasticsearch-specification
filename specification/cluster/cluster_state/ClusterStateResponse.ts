@@ -26,7 +26,6 @@ import {
 } from '@cluster/_types/ClusterStateSnapshots'
 import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import {
   EmptyObject,
   IndexName,

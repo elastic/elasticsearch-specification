@@ -20,4 +20,4 @@
 /**
  * The absence of any type. This is commonly used in APIs that returns an empty body.
  */
- export type Void = void
+export type Void = void

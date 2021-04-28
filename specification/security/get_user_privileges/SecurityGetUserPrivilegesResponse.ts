@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ApplicationResourcePrivileges } from './ApplicationResourcePrivileges'
 import { GlobalPrivileges } from './GlobalPrivileges'
 import { UserIndicesPrivileges } from './UserIndicesPrivileges'

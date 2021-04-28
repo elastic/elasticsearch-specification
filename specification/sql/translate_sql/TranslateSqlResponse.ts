@@ -20,7 +20,6 @@
 import { Sort } from '@global/search/sort/Sort'
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
 

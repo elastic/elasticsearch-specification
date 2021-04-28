@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 

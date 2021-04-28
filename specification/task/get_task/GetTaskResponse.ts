@@ -18,7 +18,6 @@
  */
 
 import { TaskStatus } from '@task/list_tasks/TaskStatus'
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { TaskInfo } from './TaskInfo'
 

@@ -20,7 +20,6 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { ResponseBase } from '@_types/Base'
 import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
@@ -34,7 +33,7 @@ export class Response<TDocument> {
     timed_out: boolean
     _shards: ShardStatistics
     hits: HitsMetadata<TDocument>
-  
+
     aggregations?: Dictionary<AggregateName, Aggregate>
     _clusters?: ClusterStatistics
     documents?: TDocument[]

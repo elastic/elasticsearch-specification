@@ -37,22 +37,6 @@ import { Time } from '@_types/Time'
 export interface AdditionalProperties<TKey, TValue> {}
 
 /**
- * A response formatted as an array of records.
- * Some languages can't represent this easily and need to wrap the
- * array inside an object.
- * @behavior Defines a trait that the response should be an array of records typed to TRecord
- */
-export interface ArrayResponseBase<TRecord> {}
-
-/**
- * HEAD APIs can have a different behavior based on the language,
- * the response body is always empty to it's up to language generators
- * to define how those should be represented.
- * @behavior Defines a trait that the response is empty
- */
-export interface EmptyResponseBase {}
-
-/**
  * Implements a set of common query parameters all API's support.
  * Since these can break the request structure these are listed explicitly as a behavior.
  * Its up to individual clients to define support although `error_trace` and `pretty` are

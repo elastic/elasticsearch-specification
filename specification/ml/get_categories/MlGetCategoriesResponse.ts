@@ -18,7 +18,6 @@
  */
 
 import { CategoryDefinition } from '@ml/_types/CategoryDefinition'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response {

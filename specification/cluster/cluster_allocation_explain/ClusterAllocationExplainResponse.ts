@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { AllocationDecision } from './AllocationDecision'

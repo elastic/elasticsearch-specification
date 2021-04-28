@@ -18,7 +18,6 @@
  */
 
 import { LicenseStatus } from '@license/get_license/LicenseStatus'
-import { ResponseBase } from '@_types/Base'
 import { LicenseAcknowledgement } from './LicenseAcknowledgement'
 
 export class Response {

@@ -18,7 +18,6 @@
  */
 
 import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
-import { ResponseBase } from '@_types/Base'
 
 export class Response {
   body: { model: ModelSnapshot }

@@ -18,7 +18,6 @@
  */
 
 import { Job } from '@xpack/usage/Job'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response {

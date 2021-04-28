@@ -18,7 +18,6 @@
  */
 
 import { ComponentTemplate } from '@cluster/_types/ComponentTemplate'
-import { ResponseBase } from '@_types/Base'
 
 export class Response {
   body: { component_templates: ComponentTemplate[] }

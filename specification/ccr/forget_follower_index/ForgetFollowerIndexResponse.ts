@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {

@@ -18,7 +18,6 @@
  */
 
 import { XPackUser } from '@security/_types/XPackUser'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 

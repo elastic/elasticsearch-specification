@@ -18,7 +18,6 @@
  */
 
 import { Datafeed } from '@ml/_types/Datafeed'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response {

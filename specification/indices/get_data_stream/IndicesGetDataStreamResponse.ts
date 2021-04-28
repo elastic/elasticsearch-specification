@@ -18,7 +18,6 @@
  */
 
 import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
-import { ResponseBase } from '@_types/Base'
 import {
   DataStreamName,
   Field,

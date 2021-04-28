@@ -18,12 +18,11 @@
  */
 
 import {
+  DataFrameAnalysisAnalyzedFields,
   DataFrameAnalysisContainer,
   DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource,
-  DataFrameAnalysisAnalyzedFields
+  DataFrameAnalyticsSource
 } from '@ml/_types/DataFrameAnalytics'
-import { ResponseBase } from '@_types/Base'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 

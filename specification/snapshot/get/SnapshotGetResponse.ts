@@ -18,7 +18,6 @@
  */
 
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 

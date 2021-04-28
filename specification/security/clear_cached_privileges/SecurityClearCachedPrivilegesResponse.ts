@@ -19,7 +19,6 @@
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
 export class Response {
