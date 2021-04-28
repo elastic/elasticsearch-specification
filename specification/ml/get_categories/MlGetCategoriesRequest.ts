@@ -20,6 +20,7 @@
 import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { CategoryId, Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.get_categories
@@ -28,8 +29,16 @@ import { CategoryId, Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** Identifier for the anomaly detection job. */
     job_id: Id
+    /** Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition. */
     category_id?: CategoryId
+  }
+  query_parameters?: {
+    from?: integer
+    size?: integer
+    /** Only return categories for the specified partition. */
+    partition_field_value?: string
   }
   body?: {
     page?: Page

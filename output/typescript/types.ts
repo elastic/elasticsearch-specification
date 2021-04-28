@@ -9975,12 +9975,20 @@ export interface MlBucketInfluencer {
 }
 
 export interface MlCategoryDefinition {
-  category_id: long
+  category_id: ulong
   examples: string[]
+  grok_pattern?: string
   job_id: Id
-  max_matching_length: long
+  max_matching_length: ulong
+  partition_field_name?: string
+  partition_field_value?: string
   regex: string
   terms: string
+  num_matches?: long
+  preferred_to_categories?: Id[]
+  p?: string
+  result_type: string
+  mlcategory: string
 }
 
 export interface MlChunkingConfig {
@@ -10852,6 +10860,9 @@ export interface MlGetCalendarsResponse extends ResponseBase {
 export interface MlGetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
+  from?: integer
+  size?: integer
+  partition_field_value?: string
   body?: {
     page?: MlPage
   }

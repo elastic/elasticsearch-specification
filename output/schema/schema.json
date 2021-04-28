@@ -98527,17 +98527,19 @@
       },
       "properties": [
         {
+          "description": "A unique identifier for the category. category_id is unique at the job level, even when per-partition categorization is enabled.",
           "name": "category_id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ulong",
               "namespace": "_types"
             }
           }
         },
         {
+          "description": "A list of examples of actual values that matched the category.",
           "name": "examples",
           "required": true,
           "type": {
@@ -98552,6 +98554,19 @@
           }
         },
         {
+          "description": "[experimental] A Grok pattern that could be used in Logstash or an ingest pipeline to extract fields from messages that match the category. This field is experimental and may be changed or removed in a future release. The Grok patterns that are found are not optimal, but are often a good starting point for manual tweaking.",
+          "name": "grok_pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -98563,17 +98578,43 @@
           }
         },
         {
+          "description": "The maximum length of the fields that matched the category. The value is increased by 10% to enable matching for similar fields that have not been analyzed.",
           "name": "max_matching_length",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ulong",
               "namespace": "_types"
             }
           }
         },
         {
+          "description": "If per-partition categorization is enabled, this property identifies the field used to segment the categorization. It is not present when per-partition categorization is disabled.",
+          "name": "partition_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If per-partition categorization is enabled, this property identifies the value of the partition_field_name for the category. It is not present when per-partition categorization is disabled.",
+          "name": "partition_field_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A regular expression that is used to search for values that match the category.",
           "name": "regex",
           "required": true,
           "type": {
@@ -98585,7 +98626,68 @@
           }
         },
         {
+          "description": "A space separated list of the common tokens that are matched in values of the category.",
           "name": "terms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The number of messages that have been matched by this category. This is only guaranteed to have the latest accurate count after a job _flush or _close",
+          "name": "num_matches",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of category_id entries that this current category encompasses. Any new message that is processed by the categorizer will match against this category and not any of the categories in this list. This is only guaranteed to have the latest accurate list of categories after a job _flush or _close",
+          "name": "preferred_to_categories",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "p",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "result_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "mlcategory",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -105942,6 +106044,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -105953,6 +106056,7 @@
           }
         },
         {
+          "description": "Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition.",
           "name": "category_id",
           "required": false,
           "type": {
@@ -105964,7 +106068,42 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Only return categories for the specified partition.",
+          "name": "partition_field_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
