@@ -22,10 +22,10 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class NestedSortValue {
-  filter: QueryContainer
+  filter?: QueryContainer
   max_children?: integer
   path: Field
-  //nested: NestedSortValue
+  // nested: NestedSortValue
 }
 
 // export type NestedSort = Dictionary<Field, NestedSortKey>
