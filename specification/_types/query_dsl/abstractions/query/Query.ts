@@ -18,6 +18,7 @@
  */
 
 import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Field } from '@_types/common'
 import { float } from '@_types/Numeric'
 
 export class QueryBase {
@@ -37,4 +38,10 @@ export class NamedQuery<TQuery>
   boost?: float
   _name?: string
   ignore_unmapped?: boolean
+}
+
+export class CombinedFieldsQuery {
+  query: string
+  fields: Field[]
+  operator?: string
 }

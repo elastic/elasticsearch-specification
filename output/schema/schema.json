@@ -24181,7 +24181,7 @@
       "properties": [
         {
           "name": "filter",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50046,6 +50046,18 @@
           }
         },
         {
+          "name": "combined_fields",
+          "required": false,
+          "since": "7.13.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CombinedFieldsQuery",
+              "namespace": "_types.query_dsl.abstractions.query"
+            }
+          }
+        },
+        {
           "name": "constant_score",
           "required": false,
           "type": {
@@ -50205,31 +50217,10 @@
           "name": "geo_distance",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "GeoDistanceQuery",
-                      "namespace": "_types.query_dsl.geo.distance"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl.abstractions.query"
+              "name": "GeoDistanceQuery",
+              "namespace": "_types.query_dsl.geo.distance"
             }
           }
         },
@@ -51158,6 +51149,51 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CombinedFieldsQuery",
+        "namespace": "_types.query_dsl.abstractions.query"
+      },
+      "properties": [
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "operator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -54437,6 +54473,33 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoLocation",
+                "namespace": "_types.query_dsl.geo"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -54468,17 +54531,6 @@
             "type": {
               "name": "GeoDistanceType",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "location",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types.query_dsl.geo"
             }
           }
         },
