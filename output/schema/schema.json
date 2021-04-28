@@ -4752,10 +4752,17 @@
       "description": "Creates or updates an index template.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.put_index_template",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.put_index_template"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.put_index_template"
+      },
+      "since": "7.9.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -87363,6 +87370,189 @@
       "name": {
         "name": "Response",
         "namespace": "indices.put_alias"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexTemplateMapping",
+        "namespace": "indices.put_index_template"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Alias",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "_types.index"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "index_patterns",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Indices",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "composed_of",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Name",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "name": "template",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexTemplateMapping",
+                "namespace": "indices.put_index_template"
+              }
+            }
+          },
+          {
+            "name": "data_stream",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EmptyObject",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VersionNumber",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexMetaData",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.put_index_template"
+      },
+      "path": [
+        {
+          "description": "Index or template name",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.put_index_template"
       },
       "properties": []
     },

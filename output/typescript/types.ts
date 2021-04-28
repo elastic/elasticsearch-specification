@@ -8710,6 +8710,28 @@ export interface IndicesPutAliasRequest extends RequestBase {
 export interface IndicesPutAliasResponse extends ResponseBase {
 }
 
+export interface IndicesPutIndexTemplateIndexTemplateMapping {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndexIndexSettings
+}
+
+export interface IndicesPutIndexTemplateRequest extends RequestBase {
+  name: Name
+  body?: {
+    index_patterns?: Indices
+    composed_of?: Name[]
+    template?: IndicesPutIndexTemplateIndexTemplateMapping
+    data_stream?: EmptyObject
+    priority?: integer
+    version?: VersionNumber
+    _meta?: IndexMetaData
+  }
+}
+
+export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBase {
+}
+
 export interface IndicesPutMappingRequest extends RequestBase {
   index?: Indices
   type?: Type
