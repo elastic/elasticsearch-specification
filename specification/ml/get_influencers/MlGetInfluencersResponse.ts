@@ -23,5 +23,6 @@ import { long } from '@_types/Numeric'
 
 export class Response extends ResponseBase {
   count: long
+  /** Array of influencer objects */
   influencers: BucketInfluencer[]
 }

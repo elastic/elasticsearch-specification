@@ -582,12 +582,6 @@
       ],
       "response": []
     },
-    "ml.get_influencers": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.get_job_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"

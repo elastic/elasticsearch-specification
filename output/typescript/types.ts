@@ -9963,15 +9963,16 @@ export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
   bucket_span: long
-  influencer_field_name: string
-  influencer_field_value: string
   influencer_score: double
+  influencer_field_name: Field
+  influencer_field_value: string
   initial_influencer_score: double
   is_interim: boolean
   job_id: Id
   probability: double
   result_type: string
-  timestamp: DateString
+  timestamp: Time
+  foo?: string
 }
 
 export interface MlCategoryDefinition {
@@ -11038,14 +11039,16 @@ export interface MlGetFiltersResponse extends ResponseBase {
 
 export interface MlGetInfluencersRequest extends RequestBase {
   job_id: Id
+  desc?: boolean
+  end?: DateString
+  exclude_interim?: boolean
+  influencer_score?: double
+  from?: integer
+  size?: integer
+  sort?: Field
+  start?: DateString
   body?: {
-    descending?: boolean
-    end?: DateString
-    exclude_interim?: boolean
-    influencer_score?: double
     page?: MlPage
-    sort?: Field
-    start?: DateString
   }
 }
 

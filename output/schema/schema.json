@@ -98408,6 +98408,7 @@
       },
       "properties": [
         {
+          "description": "The length of the bucket in seconds. This value matches the bucket_span that is specified in the job.",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -98419,28 +98420,7 @@
           }
         },
         {
-          "name": "influencer_field_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "influencer_field_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated across detectors. Unlike initial_influencer_score, this value will be updated by a re-normalization process as new data is analyzed.",
           "name": "influencer_score",
           "required": true,
           "type": {
@@ -98452,6 +98432,31 @@
           }
         },
         {
+          "description": "The field name of the influencer.",
+          "name": "influencer_field_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The entity that influenced, contributed to, or was to blame for the anomaly.",
+          "name": "influencer_field_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer aggregated across detectors. This is the initial value that was calculated at the time the bucket was processed.",
           "name": "initial_influencer_score",
           "required": true,
           "type": {
@@ -98463,6 +98468,7 @@
           }
         },
         {
+          "description": "If true, this is an interim result. In other words, the results are calculated based on partial input data.",
           "name": "is_interim",
           "required": true,
           "type": {
@@ -98474,6 +98480,7 @@
           }
         },
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -98485,6 +98492,7 @@
           }
         },
         {
+          "description": "The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high precision of over 300 decimal places, so the influencer_score is provided as a human-readable and friendly interpretation of this.",
           "name": "probability",
           "required": true,
           "type": {
@@ -98496,6 +98504,7 @@
           }
         },
         {
+          "description": "Internal. This value is always set to influencer.",
           "name": "result_type",
           "required": true,
           "type": {
@@ -98507,13 +98516,25 @@
           }
         },
         {
+          "description": "The start time of the bucket for which these results were calculated.",
           "name": "timestamp",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Time",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "foo",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -107549,50 +107570,6 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "descending",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "exclude_interim",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "influencer_score",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "name": "page",
             "required": false,
             "type": {
@@ -107600,28 +107577,6 @@
               "type": {
                 "name": "Page",
                 "namespace": "ml._types"
-              }
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
               }
             }
           }
@@ -107640,6 +107595,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -107651,7 +107607,105 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "If true, the results are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with timestamps earlier than this time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the output excludes interim results. By default, interim results are included.",
+          "name": "exclude_interim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with anomaly scores greater than or equal to this value.",
+          "name": "influencer_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of influencers.",
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of influencers to obtain.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the sort field for the requested influencers. By default, the influencers are sorted by the influencer_score value.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with timestamps after this time.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -107678,6 +107732,7 @@
           }
         },
         {
+          "description": "Array of influencer objects",
           "name": "influencers",
           "required": true,
           "type": {
