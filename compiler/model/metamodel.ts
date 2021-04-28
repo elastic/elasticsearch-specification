@@ -49,7 +49,7 @@ export class TypeName {
 /**
  * Type of a value. Used both for property types and nested type definitions.
  */
-export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | UserDefinedValue | LiteralValue
+export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | UserDefinedValue | LiteralValue | VoidValue
 
 /**
  * A single value
@@ -117,6 +117,13 @@ export class LiteralValue {
 }
 
 /**
+ * The absence of any type. This is commonly used in APIs that returns an empty body.
+ */
+ export class VoidValue {
+  kind: 'void_value'
+}
+
+/**
  * An interface or request interface property.
  */
 export class Property {
@@ -142,7 +149,7 @@ export class Property {
 // ------------------------------------------------------------------------------------------------
 // Type definitions
 
-export type TypeDefinition = Interface | Request | Enum | TypeAlias
+export type TypeDefinition = Interface | Request | Response | Enum | TypeAlias
 
 // ------------------------------------------------------------------------------------------------
 
@@ -235,6 +242,19 @@ export class Request extends BaseType {
    * Body type. In most cases this is just a list of properties, except for a few specific cases like bulk requests
    * (an array of bulk operations) or create requests (a user provided document type).
    */
+  body?: ValueBody | PropertiesBody
+  behaviors?: Inherits[]
+  attachedBehaviors?: string[]
+}
+
+/**
+ * A response type
+ */
+ export class Response extends BaseType {
+  kind: 'response'
+  generics?: TypeName[]
+  inherits?: Inherits
+  implements?: Inherits[]
   body?: ValueBody | PropertiesBody
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
