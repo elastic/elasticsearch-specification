@@ -10378,8 +10378,8 @@ export interface MlOverallBucketJobInfo {
 }
 
 export interface MlPage {
-  from: integer
-  size: integer
+  from?: integer
+  size?: integer
 }
 
 export interface MlPartitionScore {
@@ -10831,12 +10831,14 @@ export interface MlGetCalendarEventsResponse extends ResponseBase {
 
 export interface MlGetCalendarsCalendar {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Id[]
 }
 
 export interface MlGetCalendarsRequest extends RequestBase {
   calendar_id?: Id
+  from?: integer
+  size?: integer
   body?: {
     page?: MlPage
   }

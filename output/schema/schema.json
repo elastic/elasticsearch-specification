@@ -102068,7 +102068,7 @@
       "properties": [
         {
           "name": "from",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102079,7 +102079,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105758,6 +105758,7 @@
       },
       "properties": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -105770,7 +105771,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105780,6 +105781,7 @@
           }
         },
         {
+          "description": "An array of anomaly detection job identifiers.",
           "name": "job_ids",
           "required": true,
           "type": {
@@ -105828,6 +105830,7 @@
       },
       "path": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": false,
           "type": {
@@ -105839,7 +105842,32 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Skips the specified number of calendars.",
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of calendars to obtain.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {

@@ -20,6 +20,6 @@
 import { integer } from '@_types/Numeric'
 
 export class Page {
-  from: integer
-  size: integer
+  from?: integer
+  size?: integer
 }

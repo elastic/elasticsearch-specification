@@ -570,12 +570,6 @@
       ],
       "response": []
     },
-    "ml.get_calendars": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.get_categories": {
       "request": [
         "Endpoint has \"@stability: TODO"
