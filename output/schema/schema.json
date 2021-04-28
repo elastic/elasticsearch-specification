@@ -93380,25 +93380,139 @@
       "properties": []
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
+      "kind": "interface",
+      "name": {
+        "name": "GeoIpDownloadStatistics",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "properties": [
+        {
+          "description": "Total number of successful database downloads.",
+          "name": "successful_downloads",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
             "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total number of failed database downloads.",
+          "name": "failed_downloads",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total milliseconds spent downloading databases.",
+          "name": "total_download_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Current number of databases available for use.",
+          "name": "database_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total number of database updates skipped.",
+          "name": "skipped_updates",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GeoIpNodeDatabaseName",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "properties": [
+        {
+          "description": "Name of the database.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Downloaded databases for the node. The field key is the node ID.",
+      "kind": "interface",
+      "name": {
+        "name": "GeoIpNodeDatabases",
+        "namespace": "ingest.geo_ip_stats"
+      },
+      "properties": [
+        {
+          "description": "Downloaded databases for the node.",
+          "name": "databases",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
-                "namespace": "_types"
+                "name": "GeoIpNodeDatabaseName",
+                "namespace": "ingest.geo_ip_stats"
               }
             }
           }
-        ]
-      },
+        },
+        {
+          "description": "Downloaded database files, including related license files. Elasticsearch stores these files in the node’s temporary directory: $ES_TMPDIR/geoip-databases/<node_id>.",
+          "name": "files_in_temp",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93410,32 +93524,8 @@
         "name": "Request",
         "namespace": "ingest.geo_ip_stats"
       },
-      "path": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "inherits": {
@@ -93451,13 +93541,37 @@
       },
       "properties": [
         {
-          "name": "stub",
+          "description": "Download statistics for all GeoIP2 databases.",
+          "name": "stats",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "GeoIpDownloadStatistics",
+              "namespace": "ingest.geo_ip_stats"
+            }
+          }
+        },
+        {
+          "description": "Downloaded GeoIP2 databases for each node.",
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoIpNodeDatabases",
+                "namespace": "ingest.geo_ip_stats"
+              }
             }
           }
         }

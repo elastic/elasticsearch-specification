@@ -492,12 +492,6 @@
       ],
       "response": []
     },
-    "ingest.geo_ip_stats": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "license.post_start_trial": {
       "request": [
         "Endpoint has \"@stability: TODO"
