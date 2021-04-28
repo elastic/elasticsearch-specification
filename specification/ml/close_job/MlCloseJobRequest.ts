@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { EmptyObject, Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -32,9 +32,10 @@ export interface Request extends RequestBase {
   }
   query_parameters?: {
     allow_no_jobs?: boolean
+    /** Use to close a failed job, or to forcefully close a job which has not responded to its initial close request. */
     force?: boolean
     /** @server_default 30s */
-    timeout?: Time // default: 30s
+    timeout?: Time
   }
-  body?: {}
+  body?: EmptyObject
 }

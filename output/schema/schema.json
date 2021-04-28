@@ -103053,6 +103053,16 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "EmptyObject",
+            "namespace": "_types"
+          }
+        }
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -103090,6 +103100,7 @@
           }
         },
         {
+          "description": "Use to close a failed job, or to forcefully close a job which has not responded to its initial close request.",
           "name": "force",
           "required": false,
           "type": {
