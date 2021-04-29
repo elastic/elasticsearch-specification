@@ -7917,6 +7917,18 @@ export interface FeaturesGetFeaturesResponse {
   stub: integer
 }
 
+export interface FeaturesResetFeaturesRequest extends RequestBase {
+  stub_a: string
+  stub_b: string
+  body?: {
+    stub_c: string
+  }
+}
+
+export interface FeaturesResetFeaturesResponse {
+  stub: integer
+}
+
 export interface GraphExploreGraphConnection {
   doc_count: long
   source: long

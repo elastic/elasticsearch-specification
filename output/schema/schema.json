@@ -2976,10 +2976,17 @@
       "description": "Resets the internal state of features, usually by deleting system indices",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "features.reset_features",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "features.reset_features"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
+      "response": {
+        "name": "Response",
+        "namespace": "features.reset_features"
+      },
+      "since": "7.12.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -80475,6 +80482,87 @@
       "name": {
         "name": "Response",
         "namespace": "features.get_features"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub_c",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "features.reset_features"
+      },
+      "path": [
+        {
+          "name": "stub_a",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "stub_b",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "features.reset_features"
       }
     },
     {
