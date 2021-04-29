@@ -451,16 +451,17 @@ export interface GetScriptContextResponse {
   stub: integer
 }
 
+export interface GetScriptLanguagesLanguageContext {
+  contexts: string[]
+  language: Name
+}
+
 export interface GetScriptLanguagesRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
 }
 
 export interface GetScriptLanguagesResponse {
-  stub: integer
+  language_contexts: GetScriptLanguagesLanguageContext[]
+  types_allowed: string[]
 }
 
 export interface GetSourceRequest extends GetRequest {

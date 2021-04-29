@@ -16029,25 +16029,43 @@
       }
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
+      "kind": "interface",
+      "name": {
+        "name": "LanguageContext",
+        "namespace": "_global.get_script_languages"
+      },
+      "properties": [
+        {
+          "name": "contexts",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
-        ]
-      },
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16059,45 +16077,38 @@
         "name": "Request",
         "namespace": "_global.get_script_languages"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "language_contexts",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "LanguageContext",
+                  "namespace": "_global.get_script_languages"
+                }
+              }
+            }
+          },
+          {
+            "name": "types_allowed",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           }
