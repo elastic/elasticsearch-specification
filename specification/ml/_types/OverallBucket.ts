@@ -17,15 +17,25 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
-import { OverallBucketJobInfo } from './OverallBucketJobInfo'
+import { Time } from '@_types/Time'
 
 export class OverallBucket {
+  /** The length of the bucket in seconds. Matches the job with the longest bucket_span value. */
   bucket_span: long
+  /** If true, this is an interim result. In other words, the results are calculated based on partial input data. */
   is_interim: boolean
+  /** An array of objects that contain the max_anomaly_score per job_id. */
   jobs: OverallBucketJobInfo[]
+  /** The top_n average of the maximum bucket anomaly_score per job. */
   overall_score: double
+  /** Internal. This is always set to overall_bucket. */
   result_type: string
-  timestamp: DateString
+  /** The start time of the bucket for which these results were calculated. */
+  timestamp: Time
+}
+export class OverallBucketJobInfo {
+  job_id: Id
+  max_anomaly_score: double
 }

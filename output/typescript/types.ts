@@ -10333,7 +10333,7 @@ export interface MlOverallBucket {
   jobs: MlOverallBucketJobInfo[]
   overall_score: double
   result_type: string
-  timestamp: DateString
+  timestamp: Time
 }
 
 export interface MlOverallBucketJobInfo {
@@ -11046,14 +11046,14 @@ export interface MlGetModelSnapshotsResponse {
 
 export interface MlGetOverallBucketsRequest extends RequestBase {
   job_id: Id
+  bucket_span?: Time
+  overall_score?: double | string
+  top_n?: integer
+  end?: Time
+  start?: Time
+  exclude_interim?: boolean
   body?: {
     allow_no_jobs?: boolean
-    bucket_span?: Time
-    end?: DateString
-    exclude_interim?: boolean
-    overall_score?: double
-    start?: DateString
-    top_n?: integer
   }
 }
 
