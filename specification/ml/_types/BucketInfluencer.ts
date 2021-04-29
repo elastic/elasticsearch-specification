@@ -19,7 +19,7 @@
 
 import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 export class BucketInfluencer {
   /** The length of the bucket in seconds. This value matches the bucket_span that is specified in the job. */
