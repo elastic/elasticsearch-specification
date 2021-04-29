@@ -17,16 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { double, integer, long } from '@_types/Numeric'
-
-export class CPUStats {
-  percent: integer
-  sys?: string
-  sys_in_millis?: long
-  total?: string
-  total_in_millis?: long
-  user?: string
-  user_in_millis?: long
-  load_average?: Dictionary<string, double>
-}
+/**
+ * The absence of any type. This is commonly used in APIs that returns an empty body.
+ */
+export type Void = void

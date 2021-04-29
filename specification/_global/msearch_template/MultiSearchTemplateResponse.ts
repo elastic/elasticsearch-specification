@@ -18,11 +18,11 @@
  */
 
 import { Response as SearchResponse } from '@global/search/SearchResponse'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response<TDocument> extends ResponseBase {
-  responses: SearchResponse<TDocument>[]
-  took: long
+export class Response<TDocument> {
+  body: {
+    responses: SearchResponse<TDocument>[]
+    took: long
+  }
 }

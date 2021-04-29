@@ -19,13 +19,14 @@
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
-export class Response extends ResponseBase {
-  _nodes: NodeStatistics
-  cluster_name: Name
-  nodes: Dictionary<string, ClearCachedPrivilegeNode>
+export class Response {
+  body: {
+    _nodes: NodeStatistics
+    cluster_name: Name
+    nodes: Dictionary<string, ClearCachedPrivilegeNode>
+  }
 }
 
 export class ClearCachedPrivilegeNode {

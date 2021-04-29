@@ -17,18 +17,18 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
-import { Id } from '@_types/common'
-import { NodeAttributes } from '@nodes/_types/NodeAttributes'
-import { double, integer, long } from '@_types/Numeric'
 import { DataFrameState } from '@ml/_types/DataFrameState'
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
+import { Id } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-import { DataFrameAnalysisClassification } from '@ml/_types/DataFrameAnalytics'
 
-export class Response extends ResponseBase {
-  count: integer
-  /** An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order. */
-  data_frame_analytics: DataFrameAnalyticsStatsItem[]
+export class Response {
+  body: {
+    count: integer
+    /** An array of objects that contain usage information for data frame analytics jobs, which are sorted by the id value in ascending order. */
+    data_frame_analytics: DataFrameAnalyticsStatsItem[]
+  }
 }
 
 export class DataFrameAnalyticsStatsItem {

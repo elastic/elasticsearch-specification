@@ -347,6 +347,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         validateRequest(typeDef)
         break
 
+      case 'response':
+        validateResponse(typeDef)
+        break
+
       case 'interface':
         validateInterface(typeDef)
         break
@@ -387,6 +391,35 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.push('query')
     validateProperties(typeDef.query, openGenerics)
     context.pop()
+
+    if (typeDef.body != null) {
+      context.push('body')
+      switch (typeDef.body.kind) {
+        case 'properties':
+          validateProperties(typeDef.body.properties, openGenerics)
+          break
+        case 'value':
+          validateValueOf(typeDef.body.value, openGenerics)
+          break
+        default:
+          // @ts-expect-error
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+      }
+      context.pop()
+    }
+  }
+
+  function validateResponse (typeDef: model.Response): void {
+    const openGenerics = openGenericSet(typeDef)
+
+    validateInherits(typeDef.inherits, openGenerics)
+    validateImplements(typeDef.implements, openGenerics)
+    validateBehaviors(typeDef, openGenerics)
+
+    // Note: we validate identifier/name uniqueness independently in the path, query and body as there are some
+    // valid overlaps, with some parameters that can also be represented as body properties.
+    // Client generators will have to take care of this.
 
     if (typeDef.body != null) {
       context.push('body')
@@ -520,7 +553,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // -----------------------------------------------------------------------------------------------
   // Constituents of type definitions
 
-  function openGenericSet (typeDef: model.Request | model.Interface): Set<string> {
+  function openGenericSet (typeDef: model.Request | model.Response | model.Interface): Set<string> {
     return new Set((typeDef.generics ?? []).map(name => fqn(name)))
   }
 
@@ -542,7 +575,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
-  function validateBehaviors (typeDef: model.Request | model.Interface, openGenerics: Set<string>): void {
+  function validateBehaviors (typeDef: model.Request | model.Response | model.Interface, openGenerics: Set<string>): void {
     if (typeDef.behaviors != null && typeDef.behaviors.length > 0) {
       context.push('Behaviors')
       for (const parent of typeDef.behaviors) {
@@ -568,7 +601,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   }
 
   /** Recursively looks up a behavior in a type definition or its ancestors */
-  function behaviorExists (type: (model.Request | model.Interface), behavior: model.TypeName): boolean {
+  function behaviorExists (type: (model.Request | model.Response | model.Interface), behavior: model.TypeName): boolean {
     // Does the type have this behavior?
     for (const b of (type.behaviors ?? [])) {
       if (sameTypeName(b.type, behavior)) {
@@ -691,6 +724,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         break
 
       case 'literal_value':
+        // Nothing to validate
+        break
+
+      case 'void_value':
         // Nothing to validate
         break
 

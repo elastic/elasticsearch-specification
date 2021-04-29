@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { TaskId } from '@_types/common'
 import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
 
-export class Response extends ResponseBase {
-  status: ExecuteEnrichPolicyStatus
-  task_id?: TaskId
+export class Response {
+  body: { status: ExecuteEnrichPolicyStatus; task_id?: TaskId }
 }

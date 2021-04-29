@@ -20,7 +20,6 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { ResponseBase } from '@_types/Base'
 import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
@@ -28,21 +27,23 @@ import { HitsMetadata } from './hits/HitsMetadata'
 import { Profile } from './profile/Profile'
 import { Suggest } from './suggesters/Suggest'
 
-export class Response<TDocument> extends ResponseBase {
-  took: long
-  timed_out: boolean
-  _shards: ShardStatistics
-  hits: HitsMetadata<TDocument>
+export class Response<TDocument> {
+  body: {
+    took: long
+    timed_out: boolean
+    _shards: ShardStatistics
+    hits: HitsMetadata<TDocument>
 
-  aggregations?: Dictionary<AggregateName, Aggregate>
-  _clusters?: ClusterStatistics
-  documents?: TDocument[]
-  fields?: Dictionary<string, UserDefinedValue>
-  max_score?: double
-  num_reduce_phases?: long
-  profile?: Profile
-  pit_id?: Id
-  _scroll_id?: ScrollId
-  suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
-  terminated_early?: boolean
+    aggregations?: Dictionary<AggregateName, Aggregate>
+    _clusters?: ClusterStatistics
+    documents?: TDocument[]
+    fields?: Dictionary<string, UserDefinedValue>
+    max_score?: double
+    num_reduce_phases?: long
+    profile?: Profile
+    pit_id?: Id
+    _scroll_id?: ScrollId
+    suggest?: Dictionary<SuggestionName, Suggest<TDocument>[]>
+    terminated_early?: boolean
+  }
 }

@@ -364,17 +364,20 @@ export {
     }
   }
 
-  function getType (name: M.TypeName): M.Interface | M.Request | null {
+  function getType (name: M.TypeName): M.Request | M.Response | null {
     for (const type of model.types) {
       if (type.name.name === name.name && type.name.namespace === name.namespace) {
         if (type.kind === 'request' && type.path.some(p => p.name.startsWith('stub'))) {
           return null
         }
-        if (type.kind === 'interface' && type.properties.some(p => p.name.startsWith('stub'))) {
+        if (type.kind === 'response' && type.body != null &&
+            type.body.kind === 'properties' &&
+            type.body.properties.some(p => p.name.startsWith('stub'))) {
           return null
         }
         assert(type.kind !== 'enum')
         assert(type.kind !== 'type_alias')
+        assert(type.kind !== 'interface')
         return type
       }
     }

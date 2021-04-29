@@ -18,12 +18,13 @@
  */
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
-import { ResponseBase } from '@_types/Base'
 import { WatcherNodeStats } from './WatcherNodeStats'
 
-export class Response extends ResponseBase {
-  cluster_name: string
-  manually_stopped: boolean
-  stats: WatcherNodeStats[]
-  _nodes: NodeStatistics
+export class Response {
+  body: {
+    cluster_name: string
+    manually_stopped: boolean
+    stats: WatcherNodeStats[]
+    _nodes: NodeStatistics
+  }
 }

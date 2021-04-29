@@ -19,12 +19,13 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@task/get_task/TaskInfo'
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { TaskExecutingNode } from './TaskExecutingNode'
 
-export class Response extends ResponseBase {
-  node_failures?: ErrorCause[]
-  nodes?: Dictionary<string, TaskExecutingNode>
-  tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>
+export class Response {
+  body: {
+    node_failures?: ErrorCause[]
+    nodes?: Dictionary<string, TaskExecutingNode>
+    tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>
+  }
 }

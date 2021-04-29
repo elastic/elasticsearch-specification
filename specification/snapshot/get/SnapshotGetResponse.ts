@@ -18,13 +18,11 @@
  */
 
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
-export class Response extends ResponseBase {
-  responses?: SnapshotResponseItem[]
-  snapshots?: SnapshotInfo[]
+export class Response {
+  body: { responses?: SnapshotResponseItem[]; snapshots?: SnapshotInfo[] }
 }
 
 export class SnapshotResponseItem {

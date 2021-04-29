@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { ElasticsearchVersionInfo, ResponseBase } from '@_types/Base'
+import { ElasticsearchVersionInfo } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  cluster_name: string
-  cluster_uuid: string
-  name: string
-  tagline: string
-  version: ElasticsearchVersionInfo
+export class Response {
+  body: {
+    cluster_name: string
+    cluster_uuid: string
+    name: string
+    tagline: string
+    version: ElasticsearchVersionInfo
+  }
 }

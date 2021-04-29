@@ -18,15 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { IndexName, Name, Username } from '@_types/common'
 
-export class Response extends ResponseBase {
-  application: ApplicationsPrivileges
-  cluster: Dictionary<string, boolean>
-  has_all_requested: boolean
-  index: Dictionary<IndexName, Privileges>
-  username: Username
+export class Response {
+  body: {
+    application: ApplicationsPrivileges
+    cluster: Dictionary<string, boolean>
+    has_all_requested: boolean
+    index: Dictionary<IndexName, Privileges>
+    username: Username
+  }
 }
 
 export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>

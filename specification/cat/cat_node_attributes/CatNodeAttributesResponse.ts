@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { CatResponseBase } from '@cat/_types/CatBase'
 import { CatNodeAttributesRecord } from './CatNodeAttributesRecord'
 
-export class Response extends CatResponseBase<CatNodeAttributesRecord> {}
+export class Response {
+  body: Array<CatNodeAttributesRecord>
+}

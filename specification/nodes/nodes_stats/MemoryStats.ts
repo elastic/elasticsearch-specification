@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { integer, long } from '@_types/Numeric'
+import { long } from '@_types/Numeric'
 
 export class MemoryStats {
   resident?: string

@@ -18,15 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 
 /** @variants container */
-export class Response extends ResponseBase {
-  classification?: DataFrameClassificationSummary
-  outlier_detection?: DataFrameOutlierDetectionSummary
-  regression?: DataFrameRegressionSummary
+export class Response {
+  body: {
+    classification?: DataFrameClassificationSummary
+    outlier_detection?: DataFrameOutlierDetectionSummary
+    regression?: DataFrameRegressionSummary
+  }
 }
 
 export class DataFrameOutlierDetectionSummary {

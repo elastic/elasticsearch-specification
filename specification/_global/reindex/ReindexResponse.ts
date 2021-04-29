@@ -17,28 +17,29 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import { EpochMillis, Time } from '@_types/Time'
 
-export class Response extends ResponseBase {
-  batches?: long
-  created?: long
-  deleted?: long
-  failures?: BulkIndexByScrollFailure[]
-  noops?: long
-  retries?: Retries
-  requests_per_second?: long
-  slice_id?: integer
-  task?: TaskId
-  throttled_millis?: EpochMillis
-  throttled_until_millis?: EpochMillis
-  timed_out?: boolean
-  took?: Time
-  total?: long
-  updated?: long
-  version_conflicts?: long
+export class Response {
+  body: {
+    batches?: long
+    created?: long
+    deleted?: long
+    failures?: BulkIndexByScrollFailure[]
+    noops?: long
+    retries?: Retries
+    requests_per_second?: long
+    slice_id?: integer
+    task?: TaskId
+    throttled_millis?: EpochMillis
+    throttled_until_millis?: EpochMillis
+    timed_out?: boolean
+    took?: Time
+    total?: long
+    updated?: long
+    version_conflicts?: long
+  }
 }

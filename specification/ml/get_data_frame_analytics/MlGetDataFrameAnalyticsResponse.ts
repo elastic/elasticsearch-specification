@@ -18,19 +18,20 @@
  */
 
 import {
+  DataFrameAnalysisAnalyzedFields,
   DataFrameAnalysisContainer,
   DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource,
-  DataFrameAnalysisAnalyzedFields
+  DataFrameAnalyticsSource
 } from '@ml/_types/DataFrameAnalytics'
-import { ResponseBase } from '@_types/Base'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: integer
-  /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
-  data_frame_analytics: DataFrameAnalyticsSummary[]
+export class Response {
+  body: {
+    count: integer
+    /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
+    data_frame_analytics: DataFrameAnalyticsSummary[]
+  }
 }
 
 export class DataFrameAnalyticsSummary {

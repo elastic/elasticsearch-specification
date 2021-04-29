@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Defaults } from './Defaults'
 import { Limits } from './Limits'
 import { NativeCode } from './NativeCode'
 
-export class Response extends ResponseBase {
-  defaults: Defaults
-  limits: Limits
-  upgrade_mode: boolean
-  native_code: NativeCode
+export class Response {
+  body: {
+    defaults: Defaults
+    limits: Limits
+    upgrade_mode: boolean
+    native_code: NativeCode
+  }
 }

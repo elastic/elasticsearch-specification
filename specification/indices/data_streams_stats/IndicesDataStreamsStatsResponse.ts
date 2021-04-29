@@ -17,18 +17,19 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ByteSize, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response extends ResponseBase {
-  _shards: ShardStatistics
-  backing_indices: integer
-  data_stream_count: integer
-  total_store_sizes?: ByteSize
-  total_store_size_bytes: integer
-  data_streams: DataStreamsStatsItem[]
+export class Response {
+  body: {
+    _shards: ShardStatistics
+    backing_indices: integer
+    data_stream_count: integer
+    total_store_sizes?: ByteSize
+    total_store_size_bytes: integer
+    data_streams: DataStreamsStatsItem[]
+  }
 }
 
 export class DataStreamsStatsItem {

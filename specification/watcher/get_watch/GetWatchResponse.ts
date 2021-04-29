@@ -19,16 +19,17 @@
 
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
 import { Watch } from '@watcher/_types/Watch'
-import { ResponseBase } from '@_types/Base'
 import { Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  found: boolean
-  _id: Id
-  status?: WatchStatus
-  watch?: Watch
-  _primary_term?: integer
-  _seq_no?: SequenceNumber
-  _version?: VersionNumber
+export class Response {
+  body: {
+    found: boolean
+    _id: Id
+    status?: WatchStatus
+    watch?: Watch
+    _primary_term?: integer
+    _seq_no?: SequenceNumber
+    _version?: VersionNumber
+  }
 }

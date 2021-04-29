@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { CoordinatorStats } from './CoordinatorStats'
 import { ExecutingPolicy } from './ExecutingPolicy'
 
-export class Response extends ResponseBase {
-  coordinator_stats: CoordinatorStats[]
-  executing_policies: ExecutingPolicy[]
+export class Response {
+  body: {
+    coordinator_stats: CoordinatorStats[]
+    executing_policies: ExecutingPolicy[]
+  }
 }

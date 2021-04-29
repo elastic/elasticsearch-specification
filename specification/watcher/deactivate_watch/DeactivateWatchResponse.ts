@@ -18,8 +18,7 @@
  */
 
 import { ActivationStatus } from '@watcher/activate_watch/ActivationStatus'
-import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  status: ActivationStatus
+export class Response {
+  body: { status: ActivationStatus }
 }

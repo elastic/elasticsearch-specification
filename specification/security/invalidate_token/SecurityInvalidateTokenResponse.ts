@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  error_count: long
-  error_details?: ErrorCause[]
-  invalidated_tokens: long
-  previously_invalidated_tokens: long
+export class Response {
+  body: {
+    error_count: long
+    error_details?: ErrorCause[]
+    invalidated_tokens: long
+    previously_invalidated_tokens: long
+  }
 }

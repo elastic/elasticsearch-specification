@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  flushed: boolean
-  last_finalized_bucket_end?: integer
+export class Response {
+  body: { flushed: boolean; last_finalized_bucket_end?: integer }
 }

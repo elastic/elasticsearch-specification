@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class Response extends ResponseBase {
-  count: long
-  _shards: ShardStatistics
+export class Response {
+  body: { count: long; _shards: ShardStatistics }
 }

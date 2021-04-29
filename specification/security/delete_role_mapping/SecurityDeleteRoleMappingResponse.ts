@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
-
-export class Response extends ResponseBase {
-  found: boolean
+export class Response {
+  body: { found: boolean }
 }

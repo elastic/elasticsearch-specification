@@ -18,10 +18,8 @@
  */
 
 import { ScheduledEvent } from '@ml/post_calendar_events/ScheduledEvent'
-import { ResponseBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: integer
-  events: ScheduledEvent[]
+export class Response {
+  body: { count: integer; events: ScheduledEvent[] }
 }

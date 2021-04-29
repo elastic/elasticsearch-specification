@@ -18,33 +18,6 @@ We therefore document the requirement to behave like a dictionary for unknown pr
 class IpRangeBucket implements AdditionalProperties<AggregateName, Aggregate> {}
 ```
 
-## ArrayResponseBase
-
-A response formatted as an array of records.
-Some languages can't represent this easily and need to wrap the
-array inside an object.
-
-```ts
-class CatResponseBase 
- implements ArrayResponseBase<CatAliasesRecord> {}
-class CatAliasesResponse
-  extends CatResponseBase {}
-```
-
-Hint this also showcases that behaviors can be inherited
-
-## EmptyResponseBase
-
-HEAD APIs can have a different behavior based on the language,
-the response body is always empty to it's up to language generators
-to define how those should be represented.
-
-```ts
-class DocumentExistsResponse
-  extends ResponseBase
-  implements EmptyResponseBase {}
-```
-
 ## CommonQueryParameters
 
 Implements a set of common query parameters all API's support.
