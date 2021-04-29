@@ -9343,16 +9343,29 @@ export interface IngestDeletePipelineRequest extends RequestBase {
 
 export interface IngestDeletePipelineResponse extends AcknowledgedResponseBase {}
 
+export interface IngestGeoIpStatsGeoIpDownloadStatistics {
+  successful_downloads: integer
+  failed_downloads: integer
+  total_download_time: integer
+  database_count: integer
+  skipped_updates: integer
+}
+
+export interface IngestGeoIpStatsGeoIpNodeDatabaseName {
+  name: Name
+}
+
+export interface IngestGeoIpStatsGeoIpNodeDatabases {
+  databases: IngestGeoIpStatsGeoIpNodeDatabaseName[]
+  files_in_temp: string[]
+}
+
 export interface IngestGeoIpStatsRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
 }
 
 export interface IngestGeoIpStatsResponse {
-  stub: integer
+  stats: IngestGeoIpStatsGeoIpDownloadStatistics
+  nodes: Record<Id, IngestGeoIpStatsGeoIpNodeDatabases>
 }
 
 export interface IngestGetPipelineRequest extends RequestBase {

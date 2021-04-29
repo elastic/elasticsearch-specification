@@ -25,14 +25,4 @@ import { integer } from '@_types/Numeric'
  * @since 7.13.0
  * @stability TODO
  */
-export interface Request extends RequestBase {
-  path_parts?: {
-    stub_b: integer
-  }
-  query_parameters?: {
-    stub_a: integer
-  }
-  body?: {
-    stub_c: integer
-  }
-}
+export interface Request extends RequestBase {}
