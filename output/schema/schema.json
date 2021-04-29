@@ -121700,22 +121700,6 @@
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "kind": "response",
       "name": {
         "name": "Response",
@@ -121765,22 +121749,6 @@
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "kind": "response",
       "name": {
         "name": "Response",

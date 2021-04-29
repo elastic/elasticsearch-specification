@@ -20,5 +20,5 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: { stub: integer }
+  body: {}
 }
