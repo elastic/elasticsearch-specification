@@ -101555,8 +101555,9 @@
       },
       "properties": [
         {
+          "description": "An optional description of the job.",
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101566,6 +101567,7 @@
           }
         },
         {
+          "description": "A numerical character string that uniquely identifies the job that the snapshot was created for.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -101577,8 +101579,9 @@
           }
         },
         {
+          "description": "The timestamp of the latest processed record.",
           "name": "latest_record_time_stamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101588,8 +101591,9 @@
           }
         },
         {
+          "description": "The timestamp of the latest bucket result.",
           "name": "latest_result_time_stamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101599,8 +101603,21 @@
           }
         },
         {
-          "name": "model_size_stats",
+          "description": "The minimum version required to be able to restore the model snapshot.",
+          "name": "min_version",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Summary information describing the model.",
+          "name": "model_size_stats",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101610,6 +101627,7 @@
           }
         },
         {
+          "description": " If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false.",
           "name": "retain",
           "required": true,
           "type": {
@@ -101621,6 +101639,7 @@
           }
         },
         {
+          "description": "For internal use only.",
           "name": "snapshot_doc_count",
           "required": true,
           "type": {
@@ -101632,6 +101651,7 @@
           }
         },
         {
+          "description": "A numerical character string that uniquely identifies the model snapshot.",
           "name": "snapshot_id",
           "required": true,
           "type": {
@@ -101643,23 +101663,13 @@
           }
         },
         {
+          "description": "The creation timestamp for the snapshot.",
           "name": "timestamp",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min_version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
               "namespace": "_types"
             }
           }
@@ -107468,13 +107478,13 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "desc",
+            "name": "start",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "boolean",
-                "namespace": "internal"
+                "name": "Time",
+                "namespace": "_types"
               }
             }
           },
@@ -107484,40 +107494,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "page",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Page",
-                "namespace": "ml._types"
-              }
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
+                "name": "Time",
                 "namespace": "_types"
               }
             }
@@ -107537,6 +107514,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -107548,6 +107526,7 @@
           }
         },
         {
+          "description": "A numerical character string that uniquely identifies the model snapshot.",
           "name": "snapshot_id",
           "required": false,
           "type": {
@@ -107559,7 +107538,80 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "If true, the results are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns snapshots with timestamps earlier than this time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of snapshots.",
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of snapshots to obtain.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the sort field for the requested snapshots. By default, the snapshots are sorted by their timestamp.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns snapshots with timestamps after this time.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

@@ -23,14 +23,24 @@ import { Time } from '@_types/Time'
 import { ModelSizeStats } from './ModelSizeStats'
 
 export class ModelSnapshot {
-  description: string
+  /** An optional description of the job. */
+  description?: string
+  /** A numerical character string that uniquely identifies the job that the snapshot was created for. */
   job_id: Id
-  latest_record_time_stamp: Time
-  latest_result_time_stamp: Time
-  model_size_stats: ModelSizeStats
-  retain: boolean
-  snapshot_doc_count: long
-  snapshot_id: Id
-  timestamp: Time
+  /** The timestamp of the latest processed record. */
+  latest_record_time_stamp?: Time
+  /** The timestamp of the latest bucket result. */
+  latest_result_time_stamp?: Time
+  /** The minimum version required to be able to restore the model snapshot. */
   min_version: VersionString
+  /** Summary information describing the model. */
+  model_size_stats?: ModelSizeStats
+  /**  If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false. */
+  retain: boolean
+  /** For internal use only. */
+  snapshot_doc_count: long
+  /** A numerical character string that uniquely identifies the model snapshot. */
+  snapshot_id: Id
+  /** The creation timestamp for the snapshot. */
+  timestamp: Time
 }
