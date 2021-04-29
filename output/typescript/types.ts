@@ -8578,6 +8578,42 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Record<Field, MappingMetaFieldsFieldMapping>
 }
 
+export interface IndicesGetIndexTemplateIndexTemplate {
+  index_patterns: Name[]
+  composed_of: Name[]
+  template: IndicesGetIndexTemplateIndexTemplateSummary
+  version?: VersionNumber
+  priority?: long
+  _meta?: IndexMetaData
+  allow_auto_create?: boolean
+  data_stream?: Record<string, any>
+}
+
+export interface IndicesGetIndexTemplateIndexTemplateItem {
+  name: Name
+  index_template: IndicesGetIndexTemplateIndexTemplate
+}
+
+export interface IndicesGetIndexTemplateIndexTemplateSummary {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: Record<string, any>
+}
+
+export interface IndicesGetIndexTemplateRequest extends RequestBase {
+  name?: Name
+  local?: boolean
+  body?: {
+    flat_settings?: boolean
+    include_type_name?: boolean
+    master_timeout?: Time
+  }
+}
+
+export interface IndicesGetIndexTemplateResponse {
+  index_templates: IndicesGetIndexTemplateIndexTemplateItem[]
+}
+
 export interface IndicesGetMappingIndexMappingRecord {
   item?: MappingTypeMapping
   mappings: MappingTypeMapping
