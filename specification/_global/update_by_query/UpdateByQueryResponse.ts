@@ -17,25 +17,26 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, long, ulong } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 
-export class Response extends ResponseBase {
-  batches?: long
-  failures?: BulkIndexByScrollFailure[]
-  noops?: long
-  deleted?: long
-  requests_per_second?: float
-  retries?: Retries
-  task?: TaskId
-  timed_out?: boolean
-  took?: long
-  total?: long
-  updated?: long
-  version_conflicts?: long
-  throttled_millis?: ulong
-  throttled_until_millis?: ulong
+export class Response {
+  body: {
+    batches?: long
+    failures?: BulkIndexByScrollFailure[]
+    noops?: long
+    deleted?: long
+    requests_per_second?: float
+    retries?: Retries
+    task?: TaskId
+    timed_out?: boolean
+    took?: long
+    total?: long
+    updated?: long
+    version_conflicts?: long
+    throttled_millis?: ulong
+    throttled_until_millis?: ulong
+  }
 }

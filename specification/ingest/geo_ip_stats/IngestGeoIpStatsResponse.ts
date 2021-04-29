@@ -18,15 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  /** Download statistics for all GeoIP2 databases. */
-  stats: GeoIpDownloadStatistics
-  /** Downloaded GeoIP2 databases for each node. */
-  nodes: Dictionary<Id, GeoIpNodeDatabases>
+export class Response {
+  body: {
+    /** Download statistics for all GeoIP2 databases. */
+    stats: GeoIpDownloadStatistics
+    /** Downloaded GeoIP2 databases for each node. */
+    nodes: Dictionary<Id, GeoIpNodeDatabases>
+  }
 }
 
 export class GeoIpDownloadStatistics {

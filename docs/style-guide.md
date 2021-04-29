@@ -43,9 +43,7 @@ You can also group definitions if they are related and consumed by a single type
 
 To improved the developer experience, the specification make an extensive use
 of aliases and custom types, to describe what kind of value needs to be passed
-to an API. You can find some of this aliases in [`common.ts`](../specification/__common/common.ts),
-[`common/`](../specification/__common/common/), [`common_abstractions/`](../specification/__common/common_abstractions/),
-and [`common_options/`](../specification/__common/common_options/).
+to an API. You can find some of this aliases in the top level [`_types`](../specification/_types) folder.
 
 Where applicable, try to reuse those definitions, or if you see a pattern that
 has not been defined yet, feel free to add a new alias or abstraction.
@@ -59,7 +57,7 @@ represented in the specification.
 
 The content of [`/specification`](../specification) follows the rest-api-spec structure.
 Every folder represents the namespace, while every subfolder represente the API name.
-For top level APIs, you must use the `__global` namespace.
+For top level APIs, you must use the `_global` namespace.
 
 ## Using unions
 

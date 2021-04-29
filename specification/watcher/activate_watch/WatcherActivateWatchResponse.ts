@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ActivationStatus } from './ActivationStatus'
 
-export class Response extends ResponseBase {
-  status: ActivationStatus
+export class Response {
+  body: { status: ActivationStatus }
 }

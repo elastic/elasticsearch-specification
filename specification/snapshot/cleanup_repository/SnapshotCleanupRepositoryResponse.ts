@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  results: CleanupRepositoryResults
+export class Response {
+  body: { results: CleanupRepositoryResults }
 }
 
 export class CleanupRepositoryResults {

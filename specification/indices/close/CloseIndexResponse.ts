@@ -17,14 +17,16 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { ShardFailure } from '@_types/Errors'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class Response extends AcknowledgedResponseBase {
-  indices: Dictionary<IndexName, CloseIndexResult>
-  shards_acknowledged: boolean
+  body: {
+    indices: Dictionary<IndexName, CloseIndexResult>
+    shards_acknowledged: boolean
+  }
 }
 
 export class CloseIndexResult {

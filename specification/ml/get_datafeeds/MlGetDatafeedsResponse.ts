@@ -18,10 +18,8 @@
  */
 
 import { Datafeed } from '@ml/_types/Datafeed'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: long
-  datafeeds: Datafeed[]
+export class Response {
+  body: { count: long; datafeeds: Datafeed[] }
 }

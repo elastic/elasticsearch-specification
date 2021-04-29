@@ -18,10 +18,8 @@
  */
 
 import { Job } from '@xpack/usage/Job'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: long
-  jobs: Job[]
+export class Response {
+  body: { count: long; jobs: Job[] }
 }

@@ -22,6 +22,8 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeUsageInformation } from './NodeUsageInformation'
 
 export class Response extends NodesResponseBase {
-  cluster_name: string
-  nodes: Dictionary<string, NodeUsageInformation>
+  body: {
+    cluster_name: string
+    nodes: Dictionary<string, NodeUsageInformation>
+  }
 }

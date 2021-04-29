@@ -19,16 +19,17 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { Id, IndexName, Type } from '@_types/common'
 import { double } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  /** The overall evaluation quality calculated by the defined metric */
-  metric_score: double
-  /** The details section contains one entry for every query in the original requests section, keyed by the search request id */
-  details: Dictionary<Id, RankEvalMetricDetail>
-  failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
+export class Response {
+  body: {
+    /** The overall evaluation quality calculated by the defined metric */
+    metric_score: double
+    /** The details section contains one entry for every query in the original requests section, keyed by the search request id */
+    details: Dictionary<Id, RankEvalMetricDetail>
+    failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
+  }
 }
 
 export class RankEvalMetricDetail {

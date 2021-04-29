@@ -18,10 +18,8 @@
  */
 
 import { JobStats } from '@ml/_types/JobStats'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  count: long
-  jobs: JobStats[]
+export class Response {
+  body: { count: long; jobs: JobStats[] }
 }

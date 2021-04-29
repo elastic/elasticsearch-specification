@@ -45,8 +45,6 @@ import { dirname } from 'path'
  */
 export const knownBehaviors = [
   'AdditionalProperties',
-  'ArrayResponseBase',
-  'EmptyResponseBase',
   'CommonQueryParameters',
   'CommonCatQueryParameters'
 ]
@@ -106,6 +104,17 @@ export function modelType (node: Node): model.ValueOf {
         kind: 'instance_of',
         type: {
           name: 'null',
+          namespace: 'internal'
+        }
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.VoidKeyword: {
+      const type: model.InstanceOf = {
+        kind: 'instance_of',
+        type: {
+          name: 'void',
           namespace: 'internal'
         }
       }
@@ -234,6 +243,13 @@ export function modelType (node: Node): model.ValueOf {
         case 'UserDefinedValue': {
           const type: model.UserDefinedValue = {
             kind: 'user_defined_value'
+          }
+          return type
+        }
+
+        case 'Void': {
+          const type: model.VoidValue = {
+            kind: 'void_value'
           }
           return type
         }

@@ -18,17 +18,18 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Field, Id, IndexName, Type, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { TermVector } from './TermVector'
 
-export class Response extends ResponseBase {
-  found: boolean
-  _id: Id
-  _index: IndexName
-  term_vectors?: Dictionary<Field, TermVector>
-  took: long
-  _type?: Type
-  _version: VersionNumber
+export class Response {
+  body: {
+    found: boolean
+    _id: Id
+    _index: IndexName
+    term_vectors?: Dictionary<Field, TermVector>
+    took: long
+    _type?: Type
+    _version: VersionNumber
+  }
 }

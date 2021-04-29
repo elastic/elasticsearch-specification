@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { NodeIds } from '@_types/common'
 
-export class Response extends ResponseBase {
-  node: NodeIds
-  started: boolean
+export class Response {
+  body: { node: NodeIds; started: boolean }
 }

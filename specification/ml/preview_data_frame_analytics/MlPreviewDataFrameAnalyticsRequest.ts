@@ -20,7 +20,6 @@
 import {
   DataFrameAnalysisAnalyzedFields,
   DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
   DataFrameAnalyticsSource
 } from '@ml/_types/DataFrameAnalytics'
 import { RequestBase } from '@_types/Base'

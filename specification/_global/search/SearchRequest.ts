@@ -110,7 +110,6 @@ export interface Request extends RequestBase {
     from?: integer
     highlight?: Highlight
     track_total_hits?: boolean | integer
-    /** @prop_serializer IndicesBoostFormatter */
     indices_boost?: Array<Dictionary<IndexName, double>>
     docvalue_fields?: DocValueField | Array<Field | DocValueField>
     min_score?: double

@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { FollowerInfo } from './FollowerInfo'
 
-export class Response extends ResponseBase {
-  follower_indices: FollowerInfo[]
+export class Response {
+  body: { follower_indices: FollowerInfo[] }
 }

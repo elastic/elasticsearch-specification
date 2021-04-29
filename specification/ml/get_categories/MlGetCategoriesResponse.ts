@@ -18,10 +18,8 @@
  */
 
 import { CategoryDefinition } from '@ml/_types/CategoryDefinition'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  categories: CategoryDefinition[]
-  count: long
+export class Response {
+  body: { categories: CategoryDefinition[]; count: long }
 }

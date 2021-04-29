@@ -17,14 +17,16 @@
  * under the License.
  */
 
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Distance, GeoDistanceType } from '@_types/Geo'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
 import { GeoLocation } from '../GeoLocation'
 import { GeoValidationMethod } from '../GeoValidationMethod'
 
-export class GeoDistanceQuery extends QueryBase {
+export class GeoDistanceQuery
+  extends QueryBase
+  implements AdditionalProperties<string, GeoLocation> {
   distance?: Distance
   distance_type?: GeoDistanceType
-  location?: GeoLocation
   validation_method?: GeoValidationMethod
 }

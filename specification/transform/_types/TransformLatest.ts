@@ -17,10 +17,7 @@
  * under the License.
  */
 
-import { Field, Indices } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
-import { float, integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Field } from '@_types/common'
 
 export class TransformLatest {
   /** Specifies the date field that is used to identify the latest documents. */

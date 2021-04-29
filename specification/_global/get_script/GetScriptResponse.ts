@@ -17,12 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { StoredScript } from '@_types/Scripting'
 
-export class Response extends ResponseBase {
-  _id: Id
-  found: boolean
-  script?: StoredScript
+export class Response {
+  body: { _id: Id; found: boolean; script?: StoredScript }
 }

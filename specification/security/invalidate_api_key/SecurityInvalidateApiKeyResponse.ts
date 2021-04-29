@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  error_count: integer
-  error_details?: ErrorCause[]
-  invalidated_api_keys: string[]
-  previously_invalidated_api_keys: string[]
+export class Response {
+  body: {
+    error_count: integer
+    error_details?: ErrorCause[]
+    invalidated_api_keys: string[]
+    previously_invalidated_api_keys: string[]
+  }
 }

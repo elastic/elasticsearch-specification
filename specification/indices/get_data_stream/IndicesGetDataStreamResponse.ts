@@ -18,7 +18,6 @@
  */
 
 import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
-import { ResponseBase } from '@_types/Base'
 import {
   DataStreamName,
   Field,
@@ -29,8 +28,8 @@ import {
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  data_streams: IndicesGetDataStreamItem[]
+export class Response {
+  body: { data_streams: IndicesGetDataStreamItem[] }
 }
 
 export class IndicesGetDataStreamItem {

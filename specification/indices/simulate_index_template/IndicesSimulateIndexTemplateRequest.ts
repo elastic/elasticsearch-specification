@@ -19,7 +19,7 @@
 
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name, WaitForActiveShards } from '@_types/common'
+import { IndexName, Name } from '@_types/common'
 
 /**
  * @rest_spec_name indices.simulate_index_template

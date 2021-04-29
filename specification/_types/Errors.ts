@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { PainlessExecutionPosition } from '_global/scripts_painless_execute/ExecutePainlessScriptResponse'
-import { Dictionary } from '_spec_utils/Dictionary'
+import { PainlessExecutionPosition } from '@global/scripts_painless_execute/ExecutePainlessScriptResponse'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Id, Ids, IndexName, Uuid } from './common'
 import { integer, long } from './Numeric'
 
@@ -70,8 +70,8 @@ export class MainError extends ErrorCause {
 }
 
 export class ShardFailure {
-  index: IndexName
-  node: string
+  index?: IndexName
+  node?: string
   reason: ErrorCause
   shard: integer
   status?: string

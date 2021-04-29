@@ -20,14 +20,15 @@
 import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { NodeShard } from '@nodes/_types/NodeShard'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { IndexName, Name } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class Response extends ResponseBase {
-  nodes: Dictionary<string, NodeAttributes>
-  shards: NodeShard[][]
-  indices: Dictionary<IndexName, ShardStoreIndex>
+export class Response {
+  body: {
+    nodes: Dictionary<string, NodeAttributes>
+    shards: NodeShard[][]
+    indices: Dictionary<IndexName, ShardStoreIndex>
+  }
 }
 
 export class ShardStoreIndex {

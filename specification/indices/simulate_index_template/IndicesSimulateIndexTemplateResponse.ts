@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// TODO must be changed to HttpStatusCodeResponse once
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-// TODO must be changed to HttpStatusCodeResponse once
 // https://github.com/elastic/elastic-client-generator/pull/373 is merged.
 export class Response extends AcknowledgedResponseBase {}
