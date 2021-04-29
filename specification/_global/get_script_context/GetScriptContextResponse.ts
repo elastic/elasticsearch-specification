@@ -17,8 +17,26 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { Name } from '@_types/common'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    contexts: ScriptContext[]
+  }
+}
+
+export class ScriptContext {
+  methods: ScriptContextMethod[]
+  name: Name
+}
+
+export class ScriptContextMethod {
+  name: Name
+  return_type: string
+  params: ScriptContextMethodParam[]
+}
+
+export class ScriptContextMethodParam {
+  name: Name
+  type: string
 }

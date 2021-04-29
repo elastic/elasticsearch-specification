@@ -22,9 +22,9 @@ import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
-    language_contexts: LanguageContext[],
+    language_contexts: LanguageContext[]
     types_allowed: string[]
-   }
+  }
 }
 
 export class LanguageContext {
