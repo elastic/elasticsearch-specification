@@ -184,7 +184,7 @@ function buildBehaviorInterface (type: M.Interface): string {
 
   switch (type.name.name) {
     case 'DictionaryResponseBase':
-      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+      return `export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
   [key: string]: TValue
 }\n`
     default:

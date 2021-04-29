@@ -612,12 +612,6 @@
       ],
       "response": []
     },
-    "ml.get_model_snapshots": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.get_overall_buckets": {
       "request": [
         "Endpoint has \"@stability: TODO"

@@ -20,7 +20,8 @@
 import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
-import { DateString } from '@_types/Time'
+import { integer } from '@_types/Numeric'
+import { DateString, Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.get_model_snapshots
@@ -29,15 +30,27 @@ import { DateString } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** Identifier for the anomaly detection job. */
     job_id: Id
+    /** A numerical character string that uniquely identifies the model snapshot. */
     snapshot_id?: Id
   }
-  query_parameters?: {}
-  body?: {
+  query_parameters?: {
+    /** If true, the results are sorted in descending order. */
     desc?: boolean
-    end?: DateString
-    page?: Page
+    /** Returns snapshots with timestamps earlier than this time. */
+    end?: Time
+    /** Skips the specified number of snapshots. */
+    from?: integer
+    /** Specifies the maximum number of snapshots to obtain. */
+    size?: integer
+    /** Specifies the sort field for the requested snapshots. By default, the snapshots are sorted by their timestamp. */
     sort?: Field
-    start?: DateString
+    /** Returns snapshots with timestamps after this time. */
+    start?: Time
+  }
+  body?: {
+    start?: Time
+    end?: Time
   }
 }

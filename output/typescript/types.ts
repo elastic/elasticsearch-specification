@@ -1798,7 +1798,7 @@ export type DateString = string
 
 export type DefaultOperator = 'AND' | 'OR'
 
-export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> extends ResponseBase {
+export interface DictionaryResponseBase<TKey = unknown, TValue = unknown> {
   [key: string]: TValue
 }
 
@@ -10293,16 +10293,16 @@ export interface MlModelSizeStats {
 }
 
 export interface MlModelSnapshot {
-  description: string
+  description?: string
   job_id: Id
-  latest_record_time_stamp: Time
-  latest_result_time_stamp: Time
-  model_size_stats: MlModelSizeStats
+  latest_record_time_stamp?: Time
+  latest_result_time_stamp?: Time
+  min_version: VersionString
+  model_size_stats?: MlModelSizeStats
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id
   timestamp: Time
-  min_version: VersionString
 }
 
 export interface MlOverallBucket {
@@ -10998,12 +10998,15 @@ export interface MlGetJobsResponse {
 export interface MlGetModelSnapshotsRequest extends RequestBase {
   job_id: Id
   snapshot_id?: Id
+  desc?: boolean
+  end?: Time
+  from?: integer
+  size?: integer
+  sort?: Field
+  start?: Time
   body?: {
-    desc?: boolean
-    end?: DateString
-    page?: MlPage
-    sort?: Field
-    start?: DateString
+    start?: Time
+    end?: Time
   }
 }
 
