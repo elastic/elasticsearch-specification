@@ -12713,18 +12713,14 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDisableUserResponse {
-  stub: integer
-}
+export interface SecurityDisableUserResponse {}
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export interface SecurityEnableUserResponse {
-  stub: integer
-}
+export interface SecurityEnableUserResponse {}
 
 export interface SecurityGetApiKeyApiKeys {
   creation: long
