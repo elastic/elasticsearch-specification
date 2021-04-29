@@ -98001,6 +98001,7 @@
       },
       "properties": [
         {
+          "description": "The length of the bucket in seconds. This value matches the bucket_span that is specified in the job.",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -98012,28 +98013,7 @@
           }
         },
         {
-          "name": "influencer_field_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "influencer_field_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated across detectors. Unlike initial_influencer_score, this value will be updated by a re-normalization process as new data is analyzed.",
           "name": "influencer_score",
           "required": true,
           "type": {
@@ -98045,6 +98025,31 @@
           }
         },
         {
+          "description": "The field name of the influencer.",
+          "name": "influencer_field_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The entity that influenced, contributed to, or was to blame for the anomaly.",
+          "name": "influencer_field_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer aggregated across detectors. This is the initial value that was calculated at the time the bucket was processed.",
           "name": "initial_influencer_score",
           "required": true,
           "type": {
@@ -98056,6 +98061,7 @@
           }
         },
         {
+          "description": "If true, this is an interim result. In other words, the results are calculated based on partial input data.",
           "name": "is_interim",
           "required": true,
           "type": {
@@ -98067,6 +98073,7 @@
           }
         },
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -98078,6 +98085,7 @@
           }
         },
         {
+          "description": "The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high precision of over 300 decimal places, so the influencer_score is provided as a human-readable and friendly interpretation of this.",
           "name": "probability",
           "required": true,
           "type": {
@@ -98085,6 +98093,199 @@
             "type": {
               "name": "double",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Internal. This value is always set to influencer.",
+          "name": "result_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The start time of the bucket for which these results were calculated.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "foo",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CategoryDefinition",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "A unique identifier for the category. category_id is unique at the job level, even when per-partition categorization is enabled.",
+          "name": "category_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of examples of actual values that matched the category.",
+          "name": "examples",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "[experimental] A Grok pattern that could be used in Logstash or an ingest pipeline to extract fields from messages that match the category. This field is experimental and may be changed or removed in a future release. The Grok patterns that are found are not optimal, but are often a good starting point for manual tweaking.",
+          "name": "grok_pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Identifier for the anomaly detection job.",
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum length of the fields that matched the category. The value is increased by 10% to enable matching for similar fields that have not been analyzed.",
+          "name": "max_matching_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If per-partition categorization is enabled, this property identifies the field used to segment the categorization. It is not present when per-partition categorization is disabled.",
+          "name": "partition_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If per-partition categorization is enabled, this property identifies the value of the partition_field_name for the category. It is not present when per-partition categorization is disabled.",
+          "name": "partition_field_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A regular expression that is used to search for values that match the category.",
+          "name": "regex",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A space separated list of the common tokens that are matched in values of the category.",
+          "name": "terms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The number of messages that have been matched by this category. This is only guaranteed to have the latest accurate count after a job _flush or _close",
+          "name": "num_matches",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of category_id entries that this current category encompasses. Any new message that is processed by the categorizer will match against this category and not any of the categories in this list. This is only guaranteed to have the latest accurate list of categories after a job _flush or _close",
+          "name": "preferred_to_categories",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "p",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -98100,85 +98301,7 @@
           }
         },
         {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CategoryDefinition",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "category_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "examples",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_matching_length",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "regex",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "terms",
+          "name": "mlcategory",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -101661,7 +101784,7 @@
       "properties": [
         {
           "name": "from",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101672,7 +101795,7 @@
         },
         {
           "name": "size",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105311,6 +105434,7 @@
       },
       "properties": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -105323,7 +105447,7 @@
         },
         {
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105333,6 +105457,7 @@
           }
         },
         {
+          "description": "An array of anomaly detection job identifiers.",
           "name": "job_ids",
           "required": true,
           "type": {
@@ -105381,6 +105506,7 @@
       },
       "path": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": false,
           "type": {
@@ -105392,7 +105518,32 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Skips the specified number of calendars.",
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of calendars to obtain.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -105464,6 +105615,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -105475,6 +105627,7 @@
           }
         },
         {
+          "description": "Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition.",
           "name": "category_id",
           "required": false,
           "type": {
@@ -105486,7 +105639,42 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Only return categories for the specified partition.",
+          "name": "partition_field_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -106914,50 +107102,6 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "descending",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "exclude_interim",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "influencer_score",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "name": "page",
             "required": false,
             "type": {
@@ -106965,28 +107109,6 @@
               "type": {
                 "name": "Page",
                 "namespace": "ml._types"
-              }
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
               }
             }
           }
@@ -107005,6 +107127,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -107016,7 +107139,105 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "If true, the results are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with timestamps earlier than this time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the output excludes interim results. By default, interim results are included.",
+          "name": "exclude_interim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with anomaly scores greater than or equal to this value.",
+          "name": "influencer_score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Skips the specified number of influencers.",
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the maximum number of influencers to obtain.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the sort field for the requested influencers. By default, the influencers are sorted by the influencer_score value.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns influencers with timestamps after this time.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -107034,6 +107255,7 @@
             }
           },
           {
+            "description": "Array of influencer objects",
             "name": "influencers",
             "required": true,
             "type": {

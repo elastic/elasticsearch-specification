@@ -20,7 +20,9 @@
 import { Id } from '@_types/common'
 
 export class Calendar {
+  /** A string that uniquely identifies a calendar. */
   calendar_id: Id
-  description: string
+  description?: string
+  /** An array of anomaly detection job identifiers.  */
   job_ids: Id[]
 }

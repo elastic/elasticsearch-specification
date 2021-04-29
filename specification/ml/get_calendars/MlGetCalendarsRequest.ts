@@ -20,6 +20,7 @@
 import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name ml.get_calendars
@@ -28,9 +29,15 @@ import { Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
+    /** A string that uniquely identifies a calendar. */
     calendar_id?: Id
   }
-  query_parameters?: {}
+  query_parameters?: {
+    /** Skips the specified number of calendars. */
+    from?: integer
+    /** Specifies the maximum number of calendars to obtain. */
+    size?: integer
+  }
   body?: {
     page?: Page
   }

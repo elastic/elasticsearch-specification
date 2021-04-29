@@ -21,5 +21,9 @@ import { BucketInfluencer } from '@ml/_types/BucketInfluencer'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: long; influencers: BucketInfluencer[] }
+  body: {
+    count: long
+    /** Array of influencer objects */
+    influencers: BucketInfluencer[]
+  }
 }

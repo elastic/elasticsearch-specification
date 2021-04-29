@@ -9918,24 +9918,33 @@ export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
   bucket_span: long
-  influencer_field_name: string
-  influencer_field_value: string
   influencer_score: double
+  influencer_field_name: Field
+  influencer_field_value: string
   initial_influencer_score: double
   is_interim: boolean
   job_id: Id
   probability: double
   result_type: string
-  timestamp: DateString
+  timestamp: Time
+  foo?: string
 }
 
 export interface MlCategoryDefinition {
-  category_id: long
+  category_id: ulong
   examples: string[]
+  grok_pattern?: string
   job_id: Id
-  max_matching_length: long
+  max_matching_length: ulong
+  partition_field_name?: string
+  partition_field_value?: string
   regex: string
   terms: string
+  num_matches?: long
+  preferred_to_categories?: Id[]
+  p?: string
+  result_type: string
+  mlcategory: string
 }
 
 export interface MlChunkingConfig {
@@ -10333,8 +10342,8 @@ export interface MlOverallBucketJobInfo {
 }
 
 export interface MlPage {
-  from: integer
-  size: integer
+  from?: integer
+  size?: integer
 }
 
 export interface MlPartitionScore {
@@ -10776,12 +10785,14 @@ export interface MlGetCalendarEventsResponse {
 
 export interface MlGetCalendarsCalendar {
   calendar_id: Id
-  description: string
+  description?: string
   job_ids: Id[]
 }
 
 export interface MlGetCalendarsRequest extends RequestBase {
   calendar_id?: Id
+  from?: integer
+  size?: integer
   body?: {
     page?: MlPage
   }
@@ -10795,6 +10806,9 @@ export interface MlGetCalendarsResponse {
 export interface MlGetCategoriesRequest extends RequestBase {
   job_id: Id
   category_id?: CategoryId
+  from?: integer
+  size?: integer
+  partition_field_value?: string
   body?: {
     page?: MlPage
   }
@@ -10970,14 +10984,16 @@ export interface MlGetFiltersResponse {
 
 export interface MlGetInfluencersRequest extends RequestBase {
   job_id: Id
+  desc?: boolean
+  end?: DateString
+  exclude_interim?: boolean
+  influencer_score?: double
+  from?: integer
+  size?: integer
+  sort?: Field
+  start?: DateString
   body?: {
-    descending?: boolean
-    end?: DateString
-    exclude_interim?: boolean
-    influencer_score?: double
     page?: MlPage
-    sort?: Field
-    start?: DateString
   }
 }
 

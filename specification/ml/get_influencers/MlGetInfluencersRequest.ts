@@ -20,7 +20,7 @@
 import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
-import { double } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 
 /**
@@ -30,16 +30,31 @@ import { DateString } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** Identifier for the anomaly detection job. */
     job_id: Id
   }
-  query_parameters?: {}
-  body?: {
-    descending?: boolean
+  query_parameters?: {
+    /**
+     * If true, the results are sorted in descending order.
+     * @server_default false
+     */
+    desc?: boolean
+    /** Returns influencers with timestamps earlier than this time. */
     end?: DateString
+    /** If true, the output excludes interim results. By default, interim results are included. */
     exclude_interim?: boolean
+    /** Returns influencers with anomaly scores greater than or equal to this value. */
     influencer_score?: double
-    page?: Page
+    /** Skips the specified number of influencers. */
+    from?: integer
+    /** Specifies the maximum number of influencers to obtain. */
+    size?: integer
+    /** Specifies the sort field for the requested influencers. By default, the influencers are sorted by the influencer_score value. */
     sort?: Field
+    /** Returns influencers with timestamps after this time. */
     start?: DateString
+  }
+  body?: {
+    page?: Page
   }
 }
