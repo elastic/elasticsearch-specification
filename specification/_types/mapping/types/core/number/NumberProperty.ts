@@ -30,5 +30,5 @@ export class NumberProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: double
   scaling_factor?: double
-  type: NumberType
+  type?: NumberType
 }

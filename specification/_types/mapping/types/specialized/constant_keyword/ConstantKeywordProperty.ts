@@ -22,5 +22,5 @@ import { PropertyBase } from '../../Property'
 
 export class ConstantKeywordProperty extends PropertyBase {
   value?: UserDefinedValue
-  type: 'constant_keyword'
+  type?: 'constant_keyword'
 }

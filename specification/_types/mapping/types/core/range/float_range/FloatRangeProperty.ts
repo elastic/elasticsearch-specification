@@ -20,5 +20,5 @@
 import { RangePropertyBase } from '../RangeProperty'
 
 export class FloatRangeProperty extends RangePropertyBase {
-  type: 'float_range'
+  type?: 'float_range'
 }

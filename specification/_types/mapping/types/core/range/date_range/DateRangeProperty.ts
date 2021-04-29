@@ -21,5 +21,5 @@ import { RangePropertyBase } from '../RangeProperty'
 
 export class DateRangeProperty extends RangePropertyBase {
   format?: string
-  type: 'date_range'
+  type?: 'date_range'
 }

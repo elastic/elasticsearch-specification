@@ -31,5 +31,5 @@ export class FlattenedProperty extends PropertyBase {
   null_value?: string
   similarity?: string
   split_queries_on_whitespace?: boolean
-  type: 'flattened'
+  type?: 'flattened'
 }

@@ -31,5 +31,5 @@ export class SearchAsYouTypeProperty extends CorePropertyBase {
   search_analyzer?: string
   search_quote_analyzer?: string
   term_vector?: TermVectorOption
-  type: 'search_as_you_type'
+  type?: 'search_as_you_type'
 }

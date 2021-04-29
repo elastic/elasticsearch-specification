@@ -3660,8 +3660,8 @@ export interface IndexIndexSettings {
   'index.translog.durability'?: string
   'query_string.lenient'?: boolean | string
   'index.query_string.lenient'?: boolean | string
-  priority?: integer
-  'index.priority'?: integer
+  priority?: integer | string
+  'index.priority'?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndexIndexSettingsAnalysis
 }
@@ -3809,7 +3809,7 @@ export interface MappingTypesComplexFlattenedFlattenedProperty extends MappingTy
   null_value?: string
   similarity?: string
   split_queries_on_whitespace?: boolean
-  type: 'flattened'
+  type?: 'flattened'
 }
 
 export interface MappingTypesComplexNestedNestedProperty extends MappingTypesCorePropertyBase {
@@ -3818,18 +3818,18 @@ export interface MappingTypesComplexNestedNestedProperty extends MappingTypesCor
   properties?: Record<PropertyName, MappingTypesProperty>
   include_in_parent?: boolean
   include_in_root?: boolean
-  type: 'nested'
+  type?: 'nested'
 }
 
 export interface MappingTypesComplexObjectObjectProperty extends MappingTypesCorePropertyBase {
   dynamic?: boolean | MappingDynamicMapping
   enabled?: boolean
   properties?: Record<PropertyName, MappingTypesProperty>
-  type: 'object'
+  type?: 'object'
 }
 
 export interface MappingTypesCoreBinaryBinaryProperty extends MappingTypesDocValuesPropertyBase {
-  type: 'binary'
+  type?: 'binary'
 }
 
 export interface MappingTypesCoreBooleanBooleanProperty extends MappingTypesDocValuesPropertyBase {
@@ -3837,7 +3837,7 @@ export interface MappingTypesCoreBooleanBooleanProperty extends MappingTypesDocV
   fielddata?: IndicesNumericFielddata
   index?: boolean
   null_value?: boolean
-  type: 'boolean'
+  type?: 'boolean'
 }
 
 export interface MappingTypesCoreDateDateProperty extends MappingTypesDocValuesPropertyBase {
@@ -3848,7 +3848,7 @@ export interface MappingTypesCoreDateDateProperty extends MappingTypesDocValuesP
   index?: boolean
   null_value?: DateString
   precision_step?: integer
-  type: 'date'
+  type?: 'date'
 }
 
 export interface MappingTypesCoreDateNanosDateNanosProperty extends MappingTypesDocValuesPropertyBase {
@@ -3858,12 +3858,12 @@ export interface MappingTypesCoreDateNanosDateNanosProperty extends MappingTypes
   index?: boolean
   null_value?: DateString
   precision_step?: integer
-  type: 'date_nanos'
+  type?: 'date_nanos'
 }
 
 export interface MappingTypesCoreJoinJoinProperty extends MappingTypesPropertyBase {
   relations?: Record<RelationName, RelationName | RelationName[]>
-  type: 'join'
+  type?: 'join'
 }
 
 export interface MappingTypesCoreKeywordKeywordProperty extends MappingTypesDocValuesPropertyBase {
@@ -3875,7 +3875,7 @@ export interface MappingTypesCoreKeywordKeywordProperty extends MappingTypesDocV
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
-  type: 'keyword'
+  type?: 'keyword'
 }
 
 export interface MappingTypesCoreNumberNumberProperty extends MappingTypesDocValuesPropertyBase {
@@ -3886,13 +3886,13 @@ export interface MappingTypesCoreNumberNumberProperty extends MappingTypesDocVal
   index?: boolean
   null_value?: double
   scaling_factor?: double
-  type: MappingTypesCoreNumberNumberType
+  type?: MappingTypesCoreNumberNumberType
 }
 
 export type MappingTypesCoreNumberNumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte' | 'unsigned_long'
 
 export interface MappingTypesCorePercolatorPercolatorProperty extends MappingTypesPropertyBase {
-  type: 'percolator'
+  type?: 'percolator'
 }
 
 export type MappingTypesCoreRangeRangeProperty = MappingTypesCoreRangeLongRangeLongRangeProperty | MappingTypesCoreRangeIpRangeIpRangeProperty | MappingTypesCoreRangeIntegerRangeIntegerRangeProperty | MappingTypesCoreRangeFloatRangeFloatRangeProperty | MappingTypesCoreRangeDoubleRangeDoubleRangeProperty | MappingTypesCoreRangeDateRangeDateRangeProperty
@@ -3905,36 +3905,36 @@ export interface MappingTypesCoreRangeRangePropertyBase extends MappingTypesDocV
 
 export interface MappingTypesCoreRangeDateRangeDateRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
   format?: string
-  type: 'date_range'
+  type?: 'date_range'
 }
 
 export interface MappingTypesCoreRangeDoubleRangeDoubleRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
-  type: 'double_range'
+  type?: 'double_range'
 }
 
 export interface MappingTypesCoreRangeFloatRangeFloatRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
-  type: 'float_range'
+  type?: 'float_range'
 }
 
 export interface MappingTypesCoreRangeIntegerRangeIntegerRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
-  type: 'integer_range'
+  type?: 'integer_range'
 }
 
 export interface MappingTypesCoreRangeIpRangeIpRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
-  type: 'ip_range'
+  type?: 'ip_range'
 }
 
 export interface MappingTypesCoreRangeLongRangeLongRangeProperty extends MappingTypesCoreRangeRangePropertyBase {
-  type: 'long_range'
+  type?: 'long_range'
 }
 
 export interface MappingTypesCoreRankFeatureRankFeatureProperty extends MappingTypesPropertyBase {
   positive_score_impact?: boolean
-  type: 'rank_feature'
+  type?: 'rank_feature'
 }
 
 export interface MappingTypesCoreRankFeaturesRankFeaturesProperty extends MappingTypesPropertyBase {
-  type: 'rank_features'
+  type?: 'rank_features'
 }
 
 export interface MappingTypesCoreSearchAsYouTypeSearchAsYouTypeProperty extends MappingTypesCorePropertyBase {
@@ -3946,7 +3946,7 @@ export interface MappingTypesCoreSearchAsYouTypeSearchAsYouTypeProperty extends 
   search_analyzer?: string
   search_quote_analyzer?: string
   term_vector?: MappingTermVectorOption
-  type: 'search_as_you_type'
+  type?: 'search_as_you_type'
 }
 
 export type MappingTypesCoreTextIndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
@@ -3971,22 +3971,22 @@ export interface MappingTypesCoreTextTextProperty extends MappingTypesCoreProper
   search_analyzer?: string
   search_quote_analyzer?: string
   term_vector?: MappingTermVectorOption
-  type: 'text'
+  type?: 'text'
 }
 
 export interface MappingTypesCoreVersionVersionProperty extends MappingTypesDocValuesPropertyBase {
-  type: 'version'
+  type?: 'version'
 }
 
 export interface MappingTypesCoreWildcardWildcardProperty extends MappingTypesDocValuesPropertyBase {
-  type: 'wildcard'
+  type?: 'wildcard'
 }
 
 export interface MappingTypesGeoGeoPointGeoPointProperty extends MappingTypesDocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: QueryDslGeoGeoLocation
-  type: 'geo_point'
+  type?: 'geo_point'
 }
 
 export type MappingTypesGeoGeoShapeGeoOrientation = 'right' | 'RIGHT' | 'counterclockwise' | 'COUNTERCLOCKWISE' | 'ccw' | 'CCW' | 'left' | 'LEFT' | 'clockwise' | 'CLOCKWISE' | 'cw' | 'CW'
@@ -3997,7 +3997,7 @@ export interface MappingTypesGeoGeoShapeGeoShapeProperty extends MappingTypesDoc
   ignore_z_value?: boolean
   orientation?: MappingTypesGeoGeoShapeGeoOrientation
   strategy?: MappingTypesGeoGeoShapeGeoStrategy
-  type: 'geo_shape'
+  type?: 'geo_shape'
 }
 
 export type MappingTypesGeoGeoShapeGeoStrategy = 'recursive' | 'term'
@@ -4006,7 +4006,7 @@ export interface MappingTypesGeoPointPointProperty extends MappingTypesDocValues
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: string
-  type: 'point'
+  type?: 'point'
 }
 
 export interface MappingTypesSpecializedCompletionCompletionProperty extends MappingTypesDocValuesPropertyBase {
@@ -4016,7 +4016,7 @@ export interface MappingTypesSpecializedCompletionCompletionProperty extends Map
   preserve_position_increments?: boolean
   preserve_separators?: boolean
   search_analyzer?: string
-  type: 'completion'
+  type?: 'completion'
 }
 
 export interface MappingTypesSpecializedCompletionSuggestContext {
@@ -4028,12 +4028,12 @@ export interface MappingTypesSpecializedCompletionSuggestContext {
 
 export interface MappingTypesSpecializedConstantKeywordConstantKeywordProperty extends MappingTypesPropertyBase {
   value?: any
-  type: 'constant_keyword'
+  type?: 'constant_keyword'
 }
 
 export interface MappingTypesSpecializedFieldAliasFieldAliasProperty extends MappingTypesPropertyBase {
   path?: Field
-  type: 'alias'
+  type?: 'alias'
 }
 
 export interface MappingTypesSpecializedGenericGenericProperty extends MappingTypesDocValuesPropertyBase {
@@ -4048,23 +4048,23 @@ export interface MappingTypesSpecializedGenericGenericProperty extends MappingTy
   position_increment_gap: integer
   search_analyzer: string
   term_vector: MappingTermVectorOption
-  type: string
+  type?: string
 }
 
 export interface MappingTypesSpecializedHistogramHistogramProperty extends MappingTypesPropertyBase {
   ignore_malformed?: boolean
-  type: 'histogram'
+  type?: 'histogram'
 }
 
 export interface MappingTypesSpecializedIpIpProperty extends MappingTypesDocValuesPropertyBase {
   boost?: double
   index?: boolean
   null_value?: string
-  type: 'ip'
+  type?: 'ip'
 }
 
 export interface MappingTypesSpecializedMurmur3HashMurmur3HashProperty extends MappingTypesDocValuesPropertyBase {
-  type: 'murmur3'
+  type?: 'murmur3'
 }
 
 export type MappingTypesSpecializedShapeShapeOrientation = 'right' | 'counterclockwise' | 'ccw' | 'left' | 'clockwise' | 'cw'
@@ -4074,7 +4074,7 @@ export interface MappingTypesSpecializedShapeShapeProperty extends MappingTypesD
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   orientation?: MappingTypesSpecializedShapeShapeOrientation
-  type: 'shape'
+  type?: 'shape'
 }
 
 export interface MappingTypesSpecializedTokenCountTokenCountProperty extends MappingTypesDocValuesPropertyBase {
@@ -4083,7 +4083,7 @@ export interface MappingTypesSpecializedTokenCountTokenCountProperty extends Map
   index?: boolean
   null_value?: double
   enable_position_increments?: boolean
-  type: 'token_count'
+  type?: 'token_count'
 }
 
 export interface QueryDslMatchAllQuery extends QueryDslAbstractionsQueryQueryBase {

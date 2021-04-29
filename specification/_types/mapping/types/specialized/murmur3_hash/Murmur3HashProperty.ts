@@ -20,5 +20,5 @@
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class Murmur3HashProperty extends DocValuesPropertyBase {
-  type: 'murmur3'
+  type?: 'murmur3'
 }

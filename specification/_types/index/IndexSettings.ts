@@ -212,7 +212,7 @@ export class IndexSettings {
   /**
    * @aliases index.priority
    */
-  priority?: integer
+  priority?: integer | string
 
   top_metrics_max_size?: integer
 

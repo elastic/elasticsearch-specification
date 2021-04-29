@@ -45731,11 +45731,23 @@
           "name": "priority",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -47394,7 +47406,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "flattened"
@@ -47495,7 +47507,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "nested"
@@ -47574,7 +47586,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "object"
@@ -47597,7 +47609,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "binary"
@@ -47664,7 +47676,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "boolean"
@@ -47764,7 +47776,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "date"
@@ -47853,7 +47865,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "date_nanos"
@@ -47913,7 +47925,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "join"
@@ -48024,7 +48036,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "keyword"
@@ -48124,7 +48136,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -48186,7 +48198,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "percolator"
@@ -48322,7 +48334,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "date_range"
@@ -48345,7 +48357,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "double_range"
@@ -48368,7 +48380,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "float_range"
@@ -48391,7 +48403,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "integer_range"
@@ -48414,7 +48426,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "ip_range"
@@ -48437,7 +48449,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "long_range"
@@ -48471,7 +48483,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "rank_feature"
@@ -48494,7 +48506,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "rank_features"
@@ -48605,7 +48617,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "search_as_you_type"
@@ -48834,7 +48846,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "text"
@@ -48857,7 +48869,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "version"
@@ -48880,7 +48892,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "wildcard"
@@ -48936,7 +48948,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "geo_point"
@@ -49059,7 +49071,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "geo_shape"
@@ -49130,7 +49142,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "point"
@@ -49222,7 +49234,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "completion"
@@ -49305,7 +49317,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "constant_keyword"
@@ -49339,7 +49351,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "alias"
@@ -49483,7 +49495,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49520,7 +49532,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "histogram"
@@ -49576,7 +49588,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "ip"
@@ -49599,7 +49611,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "murmur3"
@@ -49693,7 +49705,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "shape"
@@ -49771,7 +49783,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "token_count"
@@ -85429,6 +85441,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported.",
           "name": "index",
           "required": true,
           "type": {
@@ -85444,6 +85457,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85453,8 +85467,10 @@
           }
         },
         {
+          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.",
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85464,8 +85480,10 @@
           }
         },
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85475,8 +85493,10 @@
           }
         },
         {
+          "description": "If false, requests that target a missing index return an error.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85486,8 +85506,10 @@
           }
         },
         {
+          "description": "If true, return all default settings in the response.",
           "name": "include_defaults",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85497,8 +85519,10 @@
           }
         },
         {
+          "description": "If true, a mapping type is expected in the body of mappings.",
           "name": "include_type_name",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85508,8 +85532,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85519,8 +85545,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {

@@ -28,5 +28,5 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: DateString
   precision_step?: integer
-  type: 'date_nanos'
+  type?: 'date_nanos'
 }

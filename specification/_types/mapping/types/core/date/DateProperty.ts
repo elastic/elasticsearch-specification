@@ -30,5 +30,5 @@ export class DateProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: DateString
   precision_step?: integer
-  type: 'date'
+  type?: 'date'
 }
