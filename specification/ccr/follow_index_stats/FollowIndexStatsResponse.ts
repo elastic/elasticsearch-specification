@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { FollowIndexStats } from './FollowIndexStats'
 
-export class Response extends ResponseBase {
-  indices: FollowIndexStats[]
+export class Response {
+  body: { indices: FollowIndexStats[] }
 }

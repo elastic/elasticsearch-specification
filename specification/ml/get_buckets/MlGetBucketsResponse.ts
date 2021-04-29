@@ -18,10 +18,8 @@
  */
 
 import { ResultBucket } from '@ml/_types/ResultBucket'
-import { ResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  buckets: ResultBucket[]
-  count: long
+export class Response {
+  body: { buckets: ResultBucket[]; count: long }
 }

@@ -19,7 +19,6 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import {
   Id,
   IndexName,
@@ -31,8 +30,10 @@ import {
 import { MainError } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
-export class Response<TDocument> extends ResponseBase {
-  docs: MultiGetHit<TDocument>[]
+export class Response<TDocument> {
+  body: {
+    docs: MultiGetHit<TDocument>[]
+  }
 }
 
 export class MultiGetHit<TDocument> {

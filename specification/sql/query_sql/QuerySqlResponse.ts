@@ -17,12 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { SqlRow } from '@_types/common'
 import { SqlColumn } from './SqlColumn'
 
-export class Response extends ResponseBase {
-  columns?: SqlColumn[]
-  cursor?: string
-  rows: SqlRow[]
+export class Response {
+  body: { columns?: SqlColumn[]; cursor?: string; rows: SqlRow[] }
 }

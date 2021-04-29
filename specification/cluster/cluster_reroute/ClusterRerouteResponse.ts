@@ -22,6 +22,8 @@ import { ClusterRerouteExplanation } from './ClusterRerouteExplanation'
 import { ClusterRerouteState } from './ClusterRerouteState'
 
 export class Response extends AcknowledgedResponseBase {
-  explanations?: ClusterRerouteExplanation[]
-  state: ClusterRerouteState
+  body: {
+    explanations?: ClusterRerouteExplanation[]
+    state: ClusterRerouteState
+  }
 }

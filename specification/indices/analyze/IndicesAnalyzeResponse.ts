@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { AnalyzeDetail } from './AnalyzeDetail'
 import { AnalyzeToken } from './AnalyzeToken'
 
-export class Response extends ResponseBase {
-  detail?: AnalyzeDetail
-  tokens?: AnalyzeToken[]
+export class Response {
+  body: { detail?: AnalyzeDetail; tokens?: AnalyzeToken[] }
 }

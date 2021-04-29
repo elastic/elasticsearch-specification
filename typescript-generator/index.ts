@@ -30,8 +30,6 @@ const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', '
 // behaviors because we ue them for sharing common query parameters
 // among most requests.
 const skipBehaviors = [
-  'ArrayResponseBase',
-  'EmptyResponseBase',
   'AdditionalProperties'
 ]
 
@@ -72,6 +70,8 @@ function buildType (type: M.TypeDefinition): string {
       return buildInterface(type)
     case 'request':
       return buildRequest(type)
+    case 'response':
+      return buildResponse(type)
     case 'enum':
       return buildEnum(type)
     case 'type_alias':
@@ -100,6 +100,8 @@ function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number 
       return 'any'
     case 'literal_value':
       return typeof type.value === 'string' ? `'${type.value}'` : type.value
+    case 'void_value':
+      return 'boolean'
   }
 }
 
@@ -124,7 +126,7 @@ function buildGenerics (types: M.ValueOf[] | M.TypeName[] | undefined, openGener
   }
 }
 
-function buildInherits (type: M.Interface | M.Request, openGenerics?: string[]): string {
+function buildInherits (type: M.Interface | M.Request | M.Response, openGenerics?: string[]): string {
   const inherits = (type.inherits != null ? [type.inherits] : []).filter(type => !skipBehaviors.includes(type.type.name))
   const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
@@ -177,26 +179,6 @@ function buildBehaviorInterface (type: M.Interface): string {
   if (Array.isArray(type.attachedBehaviors)) {
     if (type.attachedBehaviors.includes('AdditionalProperties')) {
       return serializeAdditionalPropertiesType(type)
-    }
-
-    if (type.attachedBehaviors.includes('ArrayResponseBase')) {
-      const behavior = lookupBehavior(type, 'ArrayResponseBase')
-      assert(behavior)
-      let generic = behavior.generics?.[0]
-      assert(generic?.kind === 'instance_of')
-      if (generic.type.name === 'TCatRecord') {
-        const g = type.inherits?.generics?.[0]
-        assert(g?.kind === 'instance_of')
-        generic = g
-      }
-      // In the input spec the Cat* responses are represented as an object
-      // that contains a `records` key, which is an array of the inherited generic.
-      // What ES actually sends back, is an array of the inherited generic.
-      return `export type ${createName(type.name)} = ${createName(generic.type)}[]\n`
-    }
-
-    if (type.attachedBehaviors.includes('EmptyResponseBase')) {
-      return `export type ${createName(type.name)} = boolean\n`
     }
   }
 
@@ -291,6 +273,23 @@ function buildRequest (type: M.Request): string {
       }
     }
     return false
+  }
+}
+
+function buildResponse (type: M.Response): string {
+  const openGenerics = type.generics?.map(t => t.name) ?? []
+
+  if (type.body == null) {
+    return `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {}\n`
+  } else if (type.body.kind === 'properties') {
+    let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
+    for (const property of type.body.properties) {
+      code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+    }
+    code += '}\n'
+    return code
+  } else {
+    return `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = ${buildValue(type.body.value, openGenerics)}\n`
   }
 }
 

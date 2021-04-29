@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { CcrAutoFollowStats } from './CcrAutoFollowStats'
 import { CcrFollowStats } from './CcrFollowStats'
 
-export class Response extends ResponseBase {
-  auto_follow_stats: CcrAutoFollowStats
-  follow_stats: CcrFollowStats
+export class Response {
+  body: { auto_follow_stats: CcrAutoFollowStats; follow_stats: CcrFollowStats }
 }

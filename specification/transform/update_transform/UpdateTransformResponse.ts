@@ -17,26 +17,27 @@
  * under the License.
  */
 
-import { TransformPivot } from '@transform/_types/TransformPivot'
 import { TransformDestination } from '@transform/_types/TransformDestination'
+import { TransformPivot } from '@transform/_types/TransformPivot'
+import { TransformSettings } from '@transform/_types/TransformSettings'
 import { TransformSource } from '@transform/_types/TransformSource'
 import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
-import { ResponseBase } from '@_types/Base'
 import { Id, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { TransformSettings } from '@transform/_types/TransformSettings'
 
-export class Response extends ResponseBase {
-  create_time: long
-  //  create_time_date_time?: DateString
-  description: string
-  dest: TransformDestination
-  frequency: Time
-  id: Id
-  pivot: TransformPivot
-  settings: TransformSettings
-  source: TransformSource
-  sync?: TransformSyncContainer
-  version: VersionString
+export class Response {
+  body: {
+    create_time: long
+    //  create_time_date_time?: DateString
+    description: string
+    dest: TransformDestination
+    frequency: Time
+    id: Id
+    pivot: TransformPivot
+    settings: TransformSettings
+    source: TransformSource
+    sync?: TransformSyncContainer
+    version: VersionString
+  }
 }

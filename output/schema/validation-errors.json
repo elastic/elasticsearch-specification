@@ -862,12 +862,6 @@
       ],
       "response": []
     },
-    "tasks.list": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "transform.preview_transform": {
       "request": [
         "Endpoint has \"@stability: TODO"

@@ -17,10 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Indices } from '@_types/common'
 
-export class Response extends ResponseBase {
-  cluster: string[]
-  index: Indices
+export class Response {
+  body: { cluster: string[]; index: Indices }
 }

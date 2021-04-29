@@ -21,5 +21,7 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 export class Response extends AcknowledgedResponseBase {
-  forecast_id: Id
+  body: {
+    forecast_id: Id
+  }
 }

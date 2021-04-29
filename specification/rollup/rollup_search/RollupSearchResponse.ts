@@ -17,6 +17,4 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
-
-export class Response<TDocument> extends ResponseBase {}
+export class Response<TDocument> {}

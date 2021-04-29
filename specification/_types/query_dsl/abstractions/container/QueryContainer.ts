@@ -18,6 +18,7 @@
  */
 
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Field } from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import { BoolQuery } from '@_types/query_dsl/compound/bool/BoolQuery'
 import { BoostingQuery } from '@_types/query_dsl/compound/boosting/BoostingQuery'
@@ -73,7 +74,6 @@ import { TypeQuery } from '@_types/query_dsl/term_level/type/TypeQuery'
 import { WildcardQuery } from '@_types/query_dsl/term_level/wildcard/WildcardQuery'
 import { CombinedFieldsQuery, NamedQuery } from '../query/Query'
 import { QueryTemplate } from './QueryTemplate'
-import { Field } from '@_types/common'
 
 /**
  * @variants container

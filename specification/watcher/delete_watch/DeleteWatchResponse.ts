@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Id, VersionNumber } from '@_types/common'
 
-export class Response extends ResponseBase {
-  found: boolean
-  _id: Id
-  _version: VersionNumber
+export class Response {
+  body: { found: boolean; _id: Id; _version: VersionNumber }
 }

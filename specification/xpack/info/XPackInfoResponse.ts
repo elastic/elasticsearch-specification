@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { MinimalLicenseInformation } from './MinimalLicenseInformation'
 import { XPackBuildInformation } from './XPackBuildInformation'
 import { XPackFeatures } from './XPackFeatures'
 
-export class Response extends ResponseBase {
-  build: XPackBuildInformation
-  features: XPackFeatures
-  license: MinimalLicenseInformation
-  tagline: string
+export class Response {
+  body: {
+    build: XPackBuildInformation
+    features: XPackFeatures
+    license: MinimalLicenseInformation
+    tagline: string
+  }
 }

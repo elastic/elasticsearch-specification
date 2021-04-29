@@ -18,8 +18,7 @@
  */
 
 import { NamedPolicyMetadata } from '@enrich/_types/NamedPolicyMetadata'
-import { ResponseBase } from '@_types/Base'
 
-export class Response extends ResponseBase {
-  policies: NamedPolicyMetadata[]
+export class Response {
+  body: { policies: NamedPolicyMetadata[] }
 }

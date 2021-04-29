@@ -18,12 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { DeprecationInfo } from './DeprecationInfo'
 
-export class Response extends ResponseBase {
-  cluster_settings: DeprecationInfo[]
-  index_settings: Dictionary<string, DeprecationInfo[]>
-  node_settings: DeprecationInfo[]
-  ml_settings: DeprecationInfo[]
+export class Response {
+  body: {
+    cluster_settings: DeprecationInfo[]
+    index_settings: Dictionary<string, DeprecationInfo[]>
+    node_settings: DeprecationInfo[]
+    ml_settings: DeprecationInfo[]
+  }
 }

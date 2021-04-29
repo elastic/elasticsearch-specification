@@ -17,13 +17,9 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
-export class Response extends ResponseBase {
-  api_key: string
-  id: Id
-  name: Name
-  expiration?: EpochMillis
+export class Response {
+  body: { api_key: string; id: Id; name: Name; expiration?: EpochMillis }
 }

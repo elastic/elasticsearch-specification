@@ -16,9 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
-import { Id } from '@_types/common'
 import { Request as PreviewTransformRequest } from '@transform/preview_transform/PreviewTransformRequest'
+import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name transform.put_transform

@@ -18,18 +18,19 @@
  */
 
 import { XPackUser } from '@security/_types/XPackUser'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { long } from '@_types/Numeric'
 
-export class Response extends ResponseBase {
-  access_token: string
-  expires_in: long
-  scope?: string
-  type: string
-  refresh_token: string
-  kerberos_authentication_response_token?: string
-  authentication: AuthenticatedUser
+export class Response {
+  body: {
+    access_token: string
+    expires_in: long
+    scope?: string
+    type: string
+    refresh_token: string
+    kerberos_authentication_response_token?: string
+    authentication: AuthenticatedUser
+  }
 }
 
 export class UserRealm {

@@ -21,5 +21,7 @@ import { RollupJobTaskFailure } from '@rollup/get_rollup_job/RollupJobTaskFailur
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
-  task_failures?: RollupJobTaskFailure[]
+  body: {
+    task_failures?: RollupJobTaskFailure[]
+  }
 }

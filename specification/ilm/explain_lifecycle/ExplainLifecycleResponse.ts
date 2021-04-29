@@ -18,12 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
 import { LifecycleExplain } from './LifecycleExplain'
 
-export class Response extends ResponseBase {
-  indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
+export class Response {
+  body: {
+    indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
+  }
 }
 
 export class LifecycleExplainProject {

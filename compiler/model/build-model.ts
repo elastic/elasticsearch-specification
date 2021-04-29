@@ -39,7 +39,6 @@ import {
   getNameSpace,
   hoistRequestAnnotations,
   hoistTypeAnnotations,
-  isApi,
   isKnownBehavior,
   modelBehaviors,
   modelEnumDeclaration,
@@ -160,11 +159,11 @@ export function compileSpecification (endpointMappings: Record<string, model.End
   return model
 }
 
-function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[]): model.Request | model.Interface {
+function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | InterfaceDeclaration, mappings: Record<string, model.Endpoint>, allClasses: ClassDeclaration[]): model.Request | model.Response | model.Interface {
   const name = declaration.getName()
   assert(declaration, name != null, 'Anonymous definitions should not exists')
 
-  if (name.endsWith('Request')) {
+  if (name === 'Request') {
     assert(
       declaration,
       Node.isInterfaceDeclaration(declaration),
@@ -172,7 +171,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     )
   }
 
-  if (name.endsWith('Response')) {
+  if (name === 'Response') {
     assert(
       declaration,
       Node.isClassDeclaration(declaration),
@@ -180,41 +179,70 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     )
   }
 
-  // Request definitions needs to be handled
+  // Request and Response definitions needs to be handled
   // differently from normal classes
-  if (Node.isInterfaceDeclaration(declaration) && isApi(declaration)) {
-    const response: model.TypeName = {
-      name: 'Response',
-      namespace: getNameSpace(declaration)
-    }
+  if (name === 'Request' || name === 'Response') {
+    let type: model.Request | model.Response
+    if (name === 'Request') {
+      type = {
+        kind: 'request',
+        name: { name, namespace: getNameSpace(declaration) },
+        path: new Array<model.Property>(),
+        query: new Array<model.Property>()
+      }
 
-    const type: model.Request = {
-      kind: 'request',
-      name: { name, namespace: getNameSpace(declaration) },
-      path: new Array<model.Property>(),
-      query: new Array<model.Property>()
-    }
+      const response: model.TypeName = {
+        name: 'Response',
+        namespace: getNameSpace(declaration)
+      }
 
-    hoistRequestAnnotations(type, declaration.getJsDocs(), mappings, response)
+      hoistRequestAnnotations(type, declaration.getJsDocs(), mappings, response)
 
-    for (const member of declaration.getMembers()) {
-      // we are visiting `path_parts, `query_parameters` or `body`
-      assert(
-        member,
-        Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
-        'Class and interfaces can only have property declarations or signatures'
-      )
-      const property = visitRequestProperty(member)
-      if (property.name === 'path_parts') {
-        type.path = property.properties
-      } else if (property.name === 'query_parameters') {
-        type.query = property.properties
-      } else {
-        // the body can either by a value (eg Array<string> or an object with properties)
-        if (property.valueOf != null) {
-          type.body = { kind: 'value', value: property.valueOf }
-        } else if (property.properties.length > 0) {
-          type.body = { kind: 'properties', properties: property.properties }
+      for (const member of declaration.getMembers()) {
+        // we are visiting `path_parts, `query_parameters` or `body`
+        assert(
+          member,
+          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
+          'Class and interfaces can only have property declarations or signatures'
+        )
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'path_parts') {
+          type.path = property.properties
+        } else if (property.name === 'query_parameters') {
+          type.query = property.properties
+        } else {
+          // the body can either by a value (eg Array<string> or an object with properties)
+          if (property.valueOf != null) {
+            type.body = { kind: 'value', value: property.valueOf }
+          } else if (property.properties.length > 0) {
+            type.body = { kind: 'properties', properties: property.properties }
+          }
+        }
+      }
+    } else {
+      type = {
+        kind: 'response',
+        name: { name, namespace: getNameSpace(declaration) },
+        body: undefined
+      }
+
+      for (const member of declaration.getMembers()) {
+        // we are visiting `path_parts, `query_parameters` or `body`
+        assert(
+          member,
+          Node.isPropertyDeclaration(member) || Node.isPropertySignature(member),
+          'Class and interfaces can only have property declarations or signatures'
+        )
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'body') {
+          // the body can either by a value (eg Array<string> or an object with properties)
+          if (property.valueOf != null) {
+            type.body = { kind: 'value', value: property.valueOf }
+          } else if (property.properties.length > 0) {
+            type.body = { kind: 'properties', properties: property.properties }
+          }
+        } else {
+          assert(member, false, 'Response.body is the only Response property supported')
         }
       }
     }
@@ -340,7 +368,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
  * differently as are described as nested objects, and the body could have two
  * different types, `model.Property[]` (a normal object) or `model.ValueOf` (eg: an array or generic)
  */
-function visitRequestProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
+function visitRequestOrResponseProperty (member: PropertyDeclaration | PropertySignature): { name: string, properties: model.Property[], valueOf: model.ValueOf | null } {
   const properties: model.Property[] = []
   let valueOf: model.ValueOf | null = null
 

@@ -19,10 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskExecutingNode } from '@task/list_tasks/TaskExecutingNode'
-import { ResponseBase } from '@_types/Base'
 import { ErrorCause } from '@_types/Errors'
 
-export class Response extends ResponseBase {
-  node_failures?: ErrorCause[]
-  nodes: Dictionary<string, TaskExecutingNode>
+export class Response {
+  body: {
+    node_failures?: ErrorCause[]
+    nodes: Dictionary<string, TaskExecutingNode>
+  }
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Id, Name } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { Dictionary } from '_spec_utils/Dictionary'
 
 export class ClusterInfo {
   nodes: Dictionary<string, NodeDiskUsage>

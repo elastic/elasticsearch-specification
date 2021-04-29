@@ -25,5 +25,7 @@ export class Response extends DictionaryResponseBase<
   IndexName,
   ShardStatistics
 > {
-  _shards: ShardStatistics
+  body: {
+    _shards: ShardStatistics
+  }
 }

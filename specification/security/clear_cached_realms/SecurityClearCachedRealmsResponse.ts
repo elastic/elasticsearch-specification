@@ -20,11 +20,12 @@
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
 import { SecurityNode } from '@security/_types/SecurityNode'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ResponseBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
-export class Response extends ResponseBase {
-  cluster_name: Name
-  nodes: Dictionary<string, SecurityNode>
-  _nodes: NodeStatistics
+export class Response {
+  body: {
+    cluster_name: Name
+    nodes: Dictionary<string, SecurityNode>
+    _nodes: NodeStatistics
+  }
 }

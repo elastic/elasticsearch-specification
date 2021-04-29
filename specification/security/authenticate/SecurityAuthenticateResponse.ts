@@ -20,21 +20,22 @@
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ResponseBase } from '@_types/Base'
 import { Name, Username } from '@_types/common'
 
-export class Response extends ResponseBase {
-  authentication_realm: RealmInfo
-  email?: string
-  full_name?: Name
-  lookup_realm: RealmInfo
-  metadata: Dictionary<string, UserDefinedValue>
-  roles: string[]
-  username: Username
-  enabled: boolean
-  authentication_type: string
-  /** @since 7.14.0 */
-  token?: SecurityAuthenticateToken
+export class Response {
+  body: {
+    authentication_realm: RealmInfo
+    email?: string
+    full_name?: Name
+    lookup_realm: RealmInfo
+    metadata: Dictionary<string, UserDefinedValue>
+    roles: string[]
+    username: Username
+    enabled: boolean
+    authentication_type: string
+    /** @since 7.14.0 */
+    token?: SecurityAuthenticateToken
+  }
 }
 
 export class SecurityAuthenticateToken {
