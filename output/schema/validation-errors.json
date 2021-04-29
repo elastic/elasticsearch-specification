@@ -332,7 +332,7 @@
     },
     "features.reset_features": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
