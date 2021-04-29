@@ -342,18 +342,6 @@
       ],
       "response": []
     },
-    "get_script_context": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "get_script_languages": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "get_source": {
       "request": [
         "Endpoint has \"@stability: TODO"

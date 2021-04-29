@@ -18,21 +18,10 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name get_script_context
  * @since 0.0.0
  * @stability TODO
  */
-export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: integer
-  }
-  query_parameters?: {
-    stub_b: integer
-  }
-  body?: {
-    stub_c: integer
-  }
-}
+export interface Request extends RequestBase {}

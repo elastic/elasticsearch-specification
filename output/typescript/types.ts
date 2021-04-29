@@ -440,27 +440,39 @@ export interface GetScriptResponse {
 }
 
 export interface GetScriptContextRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
 }
 
 export interface GetScriptContextResponse {
-  stub: integer
+  contexts: GetScriptContextScriptContext[]
+}
+
+export interface GetScriptContextScriptContext {
+  methods: GetScriptContextScriptContextMethod[]
+  name: Name
+}
+
+export interface GetScriptContextScriptContextMethod {
+  name: Name
+  return_type: string
+  params: GetScriptContextScriptContextMethodParam[]
+}
+
+export interface GetScriptContextScriptContextMethodParam {
+  name: Name
+  type: string
+}
+
+export interface GetScriptLanguagesLanguageContext {
+  contexts: string[]
+  language: Name
 }
 
 export interface GetScriptLanguagesRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
 }
 
 export interface GetScriptLanguagesResponse {
-  stub: integer
+  language_contexts: GetScriptLanguagesLanguageContext[]
+  types_allowed: string[]
 }
 
 export interface GetSourceRequest extends GetRequest {
