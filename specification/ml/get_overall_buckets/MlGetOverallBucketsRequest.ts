@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
      * The number of top anomaly detection job bucket scores to be used in the overall_score calculation.
      * @server_default 1
      */
-     top_n?: integer
+    top_n?: integer
     /** Returns overall buckets with timestamps earlier than this time. */
     end?: Time
     /** Returns overall buckets with timestamps after this time. */
