@@ -612,12 +612,6 @@
       ],
       "response": []
     },
-    "ml.start_data_frame_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.start_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -627,12 +621,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.upgrade_job_snapshot": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

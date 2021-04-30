@@ -11487,6 +11487,15 @@ export interface MlSetUpgradeModeRequest extends RequestBase {
 
 export interface MlSetUpgradeModeResponse extends AcknowledgedResponseBase {}
 
+export interface MlStartDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  timeout?: Time
+}
+
+export interface MlStartDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
+  node: string
+}
+
 export interface MlStartDatafeedRequest extends RequestBase {
   datafeed_id: Id
   start?: Time
@@ -11647,6 +11656,18 @@ export interface MlUpdateModelSnapshotRequest extends RequestBase {
 
 export interface MlUpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model: MlModelSnapshot
+}
+
+export interface MlUpgradeJobSnapshotRequest extends RequestBase {
+  job_id: Id
+  snapshot_id: Id
+  wait_for_completion?: boolean
+  timeout?: Time
+}
+
+export interface MlUpgradeJobSnapshotResponse {
+  node: string
+  completed: boolean
 }
 
 export interface MlValidateDetectorRequest extends RequestBase {
