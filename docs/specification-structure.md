@@ -24,6 +24,9 @@ Types defined inside the top level `_types` folder should be globally
 unique specification-wide, while types defined inside namespaces in `*/_types`
 should be globally unique within the namespace where they are defined.
 
+Unless you are defining a request or response type, a type name cannot
+end with `Request` or `Response`.
+
 ### Request and Response definitions
 
 Request and Reponse definitions should be placed by structly following
