@@ -174,7 +174,7 @@ export enum DefaultOperator {
   OR = 1
 }
 
-export class ElasticsearchResponse {}
+export class ElasticsearchResponseBase {}
 
 export class ElasticsearchUrlFormatter {}
 

@@ -604,7 +604,7 @@ export interface MsearchRequest extends RequestBase {
 
 export interface MsearchResponse<TDocument = unknown> {
   took: long
-  responses: (MsearchMultiSearchResult<TDocument> | ErrorResponse)[]
+  responses: (MsearchMultiSearchResult<TDocument> | ErrorResponseBase)[]
 }
 
 export interface MsearchTemplateMultiSearchTemplateItem {
@@ -1873,7 +1873,7 @@ export interface ErrorCause {
   position?: ScriptsPainlessExecutePainlessExecutionPosition
 }
 
-export interface ErrorResponse {
+export interface ErrorResponseBase {
   error: MainError | string
   status: integer
 }
@@ -10334,8 +10334,19 @@ export interface MlJobStats {
   node?: MlDiscoveryNode
   open_time?: DateString
   state: MlJobState
-  timing_stats: MlTimingStats
+  timing_stats: MlJobTimingStats
   deleting?: boolean
+}
+
+export interface MlJobTimingStats {
+  average_bucket_processing_time_ms?: double
+  bucket_count: long
+  exponential_average_bucket_processing_time_ms?: double
+  exponential_average_bucket_processing_time_per_hour_ms: double
+  job_id: Id
+  total_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }
 
 export type MlMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
@@ -10444,17 +10455,6 @@ export interface MlRuleCondition {
 }
 
 export type MlRuleFilterType = 'include' | 'exclude'
-
-export interface MlTimingStats {
-  average_bucket_processing_time_ms?: double
-  bucket_count: long
-  exponential_average_bucket_processing_time_ms?: double
-  exponential_average_bucket_processing_time_per_hour_ms: double
-  job_id: Id
-  total_bucket_processing_time_ms: double
-  maximum_bucket_processing_time_ms?: double
-  minimum_bucket_processing_time_ms?: double
-}
 
 export interface MlTotalFeatureImportance {
   feature_name: Name
@@ -14119,16 +14119,7 @@ export interface WatcherHttpInputResponseResult {
 }
 
 export interface WatcherIndexActionResult {
-  response: WatcherIndexActionResultIndexResponse
-}
-
-export interface WatcherIndexActionResultIndexResponse {
-  created: boolean
-  id: Id
-  index: IndexName
-  result: Result
-  version: VersionNumber
-  type?: Type
+  response: WatcherResponseIndexActionResult
 }
 
 export interface WatcherIndicesOptions {
@@ -14196,6 +14187,15 @@ export type WatcherPagerDutyEventType = 'trigger' | 'resolve' | 'acknowledge'
 export type WatcherQuantifier = 'some' | 'all'
 
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
+
+export interface WatcherResponseIndexActionResult {
+  created: boolean
+  id: Id
+  index: IndexName
+  result: Result
+  version: VersionNumber
+  type?: Type
+}
 
 export interface WatcherScheduleBase {
 }

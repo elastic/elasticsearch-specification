@@ -26,10 +26,10 @@ export class ActionIndex {
 }
 
 export class IndexActionResult {
-  response: IndexActionResultIndexResponse
+  response: ResponseIndexActionResult
 }
 
-export class IndexActionResultIndexResponse {
+export class ResponseIndexActionResult {
   created: boolean
   id: Id
   index: IndexName

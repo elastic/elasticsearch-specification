@@ -36,7 +36,7 @@ import semver from 'semver'
 import chalk from 'chalk'
 import * as model from './metamodel'
 import { EOL } from 'os'
-import { dirname } from 'path'
+import { dirname, sep } from 'path'
 
 /**
  * Behaviors that the compiler recognized
@@ -901,51 +901,130 @@ export function assert (node: Node | Node[] | undefined, condition: boolean, mes
 export function verifyUniqueness (project: Project): void {
   const types: Map<string, string[]> = new Map()
   const common: string[] = []
+
+  // get global `_types`
   for (const sourceFile of project.getSourceFiles()) {
     const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
-    const isCommon = path.startsWith('_types')
-    const names = types.get(path) ?? []
+    if (!path.startsWith('_types')) continue
 
     for (const declaration of sourceFile.getClasses()) {
       const name = declaration.getName()
       assert(declaration, name != null, 'Anonymous classes cannot exists')
-      assert(declaration, !names.includes(name), `${name} is already defined`)
-      assert(declaration, !common.includes(name), `${name} is already defined inside`)
-      if (isCommon) {
-        common.push(name)
-      } else {
-        names.push(name)
-      }
+      assert(declaration, !name.endsWith('Request') && !name.endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(name), `${name} is already defined in the global types`)
+      common.push(name)
     }
 
     for (const declaration of sourceFile.getInterfaces()) {
-      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      if (isCommon) {
-        common.push(declaration.getName())
-      } else {
-        names.push(declaration.getName())
-      }
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      common.push(declaration.getName())
     }
 
     for (const declaration of sourceFile.getEnums()) {
-      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      if (isCommon) {
-        common.push(declaration.getName())
-      } else {
-        names.push(declaration.getName())
-      }
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      common.push(declaration.getName())
     }
 
     for (const declaration of sourceFile.getTypeAliases()) {
-      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined`)
-      if (isCommon) {
-        common.push(declaration.getName())
-      } else {
-        names.push(declaration.getName())
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      common.push(declaration.getName())
+    }
+  }
+
+  // nested `_types`
+  for (const sourceFile of project.getSourceFiles()) {
+    const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
+    if (path.startsWith('_types')) continue
+    if (!path.includes('_types')) continue
+
+    const namespace = path.startsWith('_global') ? `_global${sep}${path.split(sep)[1]}` : path.split(sep)[0]
+    const names = types.get(namespace) ?? []
+
+    for (const declaration of sourceFile.getClasses()) {
+      const name = declaration.getName()
+      assert(declaration, name != null, 'Anonymous classes cannot exists')
+      assert(declaration, !name.endsWith('Request') && !name.endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(name), `${name} is already defined in ${namespace} is already defined in the global types`)
+      assert(declaration, !names.includes(name), `${name} is already defined in ${namespace} local types`)
+      names.push(name)
+    }
+
+    for (const declaration of sourceFile.getInterfaces()) {
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
+    }
+
+    for (const declaration of sourceFile.getEnums()) {
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
+    }
+
+    for (const declaration of sourceFile.getTypeAliases()) {
+      assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
+    }
+
+    types.set(namespace, names)
+  }
+
+  // every other namespaced type
+  for (const sourceFile of project.getSourceFiles()) {
+    const path = dirname(sourceFile.getFilePath().replace(/.*[/\\]specification[/\\]?/, ''))
+    if (path.includes('_types')) continue
+
+    const namespace = path.startsWith('_global') ? `_global${sep}${path.split(sep)[1]}` : path.split(sep)[0]
+    const names = types.get(path) ?? []
+    const localTypes = types.get(namespace) ?? []
+
+    for (const declaration of sourceFile.getClasses()) {
+      const name = declaration.getName()
+      assert(declaration, name != null, 'Anonymous classes cannot exists')
+      if (name !== 'Request' && name !== 'Response') {
+        assert(declaration, !name.endsWith('Request') && !name.endsWith('Response'), 'A type cannot end with "Request" or "Response"')
       }
+      assert(declaration, !names.includes(name), `${name} is already defined`)
+      assert(declaration, !common.includes(name), `${name} is already defined in the global types`)
+      assert(declaration, !localTypes.includes(name), `${name} is already defined in ${namespace} local types`)
+      names.push(name)
+    }
+
+    for (const declaration of sourceFile.getInterfaces()) {
+      if (declaration.getName() !== 'Request' && declaration.getName() !== 'Response') {
+        assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      }
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !localTypes.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
+    }
+
+    for (const declaration of sourceFile.getEnums()) {
+      if (declaration.getName() !== 'Request' && declaration.getName() !== 'Response') {
+        assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      }
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !localTypes.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
+    }
+
+    for (const declaration of sourceFile.getTypeAliases()) {
+      if (declaration.getName() !== 'Request' && declaration.getName() !== 'Response') {
+        assert(declaration, !declaration.getName().endsWith('Request') && !declaration.getName().endsWith('Response'), 'A type cannot end with "Request" or "Response"')
+      }
+      assert(declaration, !names.includes(declaration.getName()), `${declaration.getName()} is already defined`)
+      assert(declaration, !common.includes(declaration.getName()), `${declaration.getName()} is already defined in the global types`)
+      assert(declaration, !localTypes.includes(declaration.getName()), `${declaration.getName()} is already defined in ${namespace} local types`)
+      names.push(declaration.getName())
     }
 
     types.set(path, names)

@@ -17,13 +17,14 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
+import { double, long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { DataCounts } from './DataCounts'
 import { DiscoveryNode } from './DiscoveryNode'
 import { JobForecastStatistics } from './JobForecastStatistics'
 import { JobState } from './JobState'
 import { ModelSizeStats } from './ModelSizeStats'
-import { TimingStats } from './TimingStats'
 
 export class JobStats {
   assignment_explanation?: string
@@ -34,6 +35,17 @@ export class JobStats {
   node?: DiscoveryNode
   open_time?: DateString
   state: JobState
-  timing_stats: TimingStats
+  timing_stats: JobTimingStats
   deleting?: boolean
+}
+
+export class JobTimingStats {
+  average_bucket_processing_time_ms?: double
+  bucket_count: long
+  exponential_average_bucket_processing_time_ms?: double
+  exponential_average_bucket_processing_time_per_hour_ms: double
+  job_id: Id
+  total_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
 }
