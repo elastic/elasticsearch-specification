@@ -17577,7 +17577,7 @@
                   {
                     "kind": "instance_of",
                     "type": {
-                      "name": "ErrorResponse",
+                      "name": "ErrorResponseBase",
                       "namespace": "_types"
                     }
                   }
@@ -29629,7 +29629,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ErrorResponse",
+        "name": "ErrorResponseBase",
         "namespace": "_types"
       },
       "properties": [
@@ -101683,7 +101683,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TimingStats",
+              "name": "JobTimingStats",
               "namespace": "ml._types"
             }
           }
@@ -101696,6 +101696,103 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "JobTimingStats",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "average_bucket_processing_time_ms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bucket_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "exponential_average_bucket_processing_time_ms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "exponential_average_bucket_processing_time_per_hour_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_bucket_processing_time_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "maximum_bucket_processing_time_ms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "minimum_bucket_processing_time_ms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
             }
           }
         }
@@ -102628,103 +102725,6 @@
         "name": "RuleFilterType",
         "namespace": "ml._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TimingStats",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "average_bucket_processing_time_ms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "bucket_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "exponential_average_bucket_processing_time_ms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "exponential_average_bucket_processing_time_per_hour_ms",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_bucket_processing_time_ms",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "maximum_bucket_processing_time_ms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "minimum_bucket_processing_time_ms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -133584,83 +133584,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexActionResultIndexResponse",
+              "name": "ResponseIndexActionResult",
               "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexActionResultIndexResponse",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "result",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Result",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
             }
           }
         }
@@ -134184,6 +134109,81 @@
         "name": "ResponseContentType",
         "namespace": "watcher._types"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ResponseIndexActionResult",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "result",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Result",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
