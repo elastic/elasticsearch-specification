@@ -21,6 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   IndexName,
+  Metadata,
   Name,
   Uuid,
   VersionNumber,
@@ -43,7 +44,7 @@ export class SnapshotInfo {
   indices: IndexName[]
   /** @since 7.13.0 */
   index_details?: Dictionary<IndexName, SnapshotIndexDetails>
-  metadata?: Dictionary<string, UserDefinedValue>
+  metadata?: Metadata
   reason?: string
   snapshot: Name
   shards?: ShardStatistics

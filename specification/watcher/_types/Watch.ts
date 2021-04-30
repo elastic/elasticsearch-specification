@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
-import { IndexName } from '@_types/common'
+import { IndexName, Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Action } from './Action'
 import { ConditionContainer } from './Conditions'
@@ -32,7 +32,7 @@ export class Watch {
   actions: Dictionary<IndexName, Action>
   condition: ConditionContainer
   input: InputContainer
-  metadata?: Dictionary<string, UserDefinedValue>
+  metadata?: Metadata
   status?: WatchStatus
   throttle_period?: string
   transform?: TransformContainer

@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
-import { Id } from '@_types/common'
+import { Id, Metadata } from '@_types/common'
 import { ActionExecutionState } from './ActionExecutionState'
 import { ExecutionResult } from './ExecutionResult'
 import { TriggerEventResult } from './TriggerEventResult'
@@ -30,7 +30,7 @@ export class WatchRecord {
   condition: ConditionContainer
   input: InputContainer
   messages: string[]
-  metadata: Dictionary<string, UserDefinedValue>
+  metadata: Metadata
   node: string
   result: ExecutionResult
   state: ActionExecutionState

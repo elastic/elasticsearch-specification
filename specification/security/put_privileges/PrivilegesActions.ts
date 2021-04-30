@@ -19,10 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata, Name } from '@_types/common'
 
 export class PrivilegesActions {
   actions: string[]
   application?: string
-  name?: string
-  metadata?: Dictionary<string, UserDefinedValue>
+  name?: Name
+  metadata?: Metadata
 }

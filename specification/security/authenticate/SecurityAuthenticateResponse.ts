@@ -20,7 +20,7 @@
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name, Username } from '@_types/common'
+import { Metadata, Name, Username } from '@_types/common'
 
 export class Response {
   body: {
@@ -28,7 +28,7 @@ export class Response {
     email?: string
     full_name?: Name
     lookup_realm: RealmInfo
-    metadata: Dictionary<string, UserDefinedValue>
+    metadata: Metadata
     roles: string[]
     username: Username
     enabled: boolean

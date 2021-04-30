@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { PropertyName } from '@_types/common'
+import { Metadata, PropertyName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DynamicMapping } from '../DynamicMapping'
 import { FlattenedProperty } from './complex/flattened/FlattenedProperty'
@@ -33,7 +33,7 @@ import { FieldAliasProperty } from './specialized/field_alias/FieldAliasProperty
 import { HistogramProperty } from './specialized/histogram/HistogramProperty'
 
 export class PropertyBase {
-  local_metadata?: Dictionary<string, UserDefinedValue>
+  local_metadata?: Metadata
   meta?: Dictionary<string, string>
   name?: PropertyName
   properties?: Dictionary<PropertyName, Property>

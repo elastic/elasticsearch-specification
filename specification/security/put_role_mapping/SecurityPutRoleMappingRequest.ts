@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Name, Refresh } from '@_types/common'
+import { Metadata, Name, Refresh } from '@_types/common'
 
 /**
  * @rest_spec_name security.put_role_mapping
@@ -36,7 +36,7 @@ export interface Request extends RequestBase {
   }
   body?: {
     enabled?: boolean
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     roles?: string[]
     rules?: RoleMappingRuleBase
     run_as?: string[]

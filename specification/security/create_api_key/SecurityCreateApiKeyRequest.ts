@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { Name, Refresh } from '@_types/common'
+import { Metadata, Name, Refresh } from '@_types/common'
 import { Time } from '@_types/Time'
 import { ApiKeyRole } from './ApiKeyRole'
 
@@ -33,8 +33,19 @@ export interface Request extends RequestBase {
     refresh?: Refresh
   }
   body?: {
+    /** Expiration time for the API key. By default, API keys never expire. */
     expiration?: Time
+    /** Specifies the name for this API key. */
     name?: Name
+    /**
+     *  An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html
+     */
     role_descriptors?: Dictionary<string, ApiKeyRole>
+    /**
+     * Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with _ are reserved for system usage.
+     * @since 7.13.0
+     */
+    metadata?: Metadata
   }
 }

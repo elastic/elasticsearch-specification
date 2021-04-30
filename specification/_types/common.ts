@@ -70,8 +70,9 @@ export type DataStreamName = string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 export type ByteSize = long | string
 
+export type Metadata = Dictionary<string, UserDefinedValue>
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
-export type IndexMetaData = Dictionary<string, UserDefinedValue>
+export type IndexMetaData = Metadata
 
 // Versioning Numbers & Strings
 export type VersionNumber = long

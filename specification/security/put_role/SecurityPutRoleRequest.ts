@@ -21,7 +21,7 @@ import { TransientMetadata } from '@security/_types/XPackRole'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Name, Refresh } from '@_types/common'
+import { Metadata, Name, Refresh } from '@_types/common'
 import { ApplicationPrivileges } from './ApplicationPrivileges'
 import { IndicesPrivileges } from './IndicesPrivileges'
 
@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
     cluster?: string[]
     global?: Dictionary<string, UserDefinedValue>
     indices?: IndicesPrivileges[]
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     run_as?: string[]
     transient_metadata?: TransientMetadata
   }
