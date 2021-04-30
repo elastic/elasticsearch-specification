@@ -109030,8 +109030,9 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A list of one of more scheduled events. The event’s start and end times may be specified as integer milliseconds since the epoch or as a string in ISO 8601 format.",
             "name": "events",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "array_of",
               "value": {
@@ -109058,8 +109059,9 @@
       },
       "path": [
         {
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109106,7 +109108,7 @@
       "properties": [
         {
           "name": "calendar_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109116,6 +109118,18 @@
           }
         },
         {
+          "name": "event_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A description of the scheduled event.",
           "name": "description",
           "required": true,
           "type": {
@@ -109127,6 +109141,7 @@
           }
         },
         {
+          "description": "The timestamp for the end of the scheduled event in milliseconds since the epoch or ISO 8601 format.",
           "name": "end_time",
           "required": true,
           "type": {
@@ -109138,17 +109153,7 @@
           }
         },
         {
-          "name": "event_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
+          "description": "The timestamp for the beginning of the scheduled event in milliseconds since the epoch or ISO 8601 format.",
           "name": "start_time",
           "required": true,
           "type": {

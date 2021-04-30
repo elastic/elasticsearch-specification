@@ -11209,9 +11209,9 @@ export interface MlOpenJobResponse {
 }
 
 export interface MlPostCalendarEventsRequest extends RequestBase {
-  calendar_id: Id
+  calendar_id?: Id
   body?: {
-    events?: MlPostCalendarEventsScheduledEvent[]
+    events: MlPostCalendarEventsScheduledEvent[]
   }
 }
 
@@ -11220,10 +11220,10 @@ export interface MlPostCalendarEventsResponse {
 }
 
 export interface MlPostCalendarEventsScheduledEvent {
-  calendar_id: Id
+  calendar_id?: Id
+  event_id?: Id
   description: string
   end_time: EpochMillis
-  event_id: Id
   start_time: EpochMillis
 }
 

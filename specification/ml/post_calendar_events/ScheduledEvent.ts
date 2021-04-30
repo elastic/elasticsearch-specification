@@ -21,9 +21,12 @@ import { Id } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
 export class ScheduledEvent {
-  calendar_id: Id
+  calendar_id?: Id
+  event_id?: Id
+  /** A description of the scheduled event. */
   description: string
+  /** The timestamp for the end of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
   end_time: EpochMillis
-  event_id: Id
+  /** The timestamp for the beginning of the scheduled event in milliseconds since the epoch or ISO 8601 format. */
   start_time: EpochMillis
 }

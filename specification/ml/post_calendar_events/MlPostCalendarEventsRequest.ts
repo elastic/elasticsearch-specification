@@ -28,9 +28,11 @@ import { ScheduledEvent } from './ScheduledEvent'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    calendar_id: Id
+    /** A string that uniquely identifies a calendar. */
+    calendar_id?: Id
   }
-  body?: {
-    events?: ScheduledEvent[]
+  body: {
+    /** A list of one of more scheduled events. The event’s start and end times may be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
+    events: ScheduledEvent[]
   }
 }
