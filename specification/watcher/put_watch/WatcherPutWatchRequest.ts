@@ -25,7 +25,7 @@ import { InputContainer } from '@watcher/_types/Input'
 import { TransformContainer } from '@watcher/_types/Transform'
 import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
-import { Id, VersionNumber } from '@_types/common'
+import { Id, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
     actions?: Dictionary<string, Action>
     condition?: ConditionContainer
     input?: InputContainer
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     throttle_period?: string
     transform?: TransformContainer
     trigger?: TriggerContainer

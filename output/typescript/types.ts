@@ -1947,7 +1947,7 @@ export type Ids = Id | Id[]
 
 export type IndexAlias = string
 
-export type IndexMetaData = Record<string, any>
+export type IndexMetaData = Metadata
 
 export type IndexName = string
 
@@ -2018,6 +2018,8 @@ export interface MergesStats {
   total_time?: string
   total_time_in_millis: long
 }
+
+export type Metadata = Record<string, any>
 
 export type Metrics = string | string[]
 
@@ -3802,7 +3804,7 @@ export type MappingTypesFieldType = 'none' | 'geo_point' | 'geo_shape' | 'ip' | 
 export type MappingTypesProperty = MappingTypesComplexFlattenedFlattenedProperty | MappingTypesCoreJoinJoinProperty | MappingTypesCorePercolatorPercolatorProperty | MappingTypesCoreRankFeatureRankFeatureProperty | MappingTypesCoreRankFeaturesRankFeaturesProperty | MappingTypesSpecializedConstantKeywordConstantKeywordProperty | MappingTypesSpecializedFieldAliasFieldAliasProperty | MappingTypesSpecializedHistogramHistogramProperty | MappingTypesCoreProperty
 
 export interface MappingTypesPropertyBase {
-  local_metadata?: Record<string, any>
+  local_metadata?: Metadata
   meta?: Record<string, string>
   name?: PropertyName
   properties?: Record<PropertyName, MappingTypesProperty>
@@ -12594,7 +12596,7 @@ export interface SecurityTransientMetadata {
 export interface SecurityXPackRole {
   cluster: string[]
   indices: SecurityPutRoleIndicesPrivileges[]
-  metadata: Record<string, any>
+  metadata: Metadata
   run_as: string[]
   transient_metadata: SecurityTransientMetadata
   applications: SecurityPutRoleApplicationPrivileges[]
@@ -12603,7 +12605,7 @@ export interface SecurityXPackRole {
 
 export interface SecurityXPackRoleMapping {
   enabled: boolean
-  metadata: Record<string, any>
+  metadata: Metadata
   roles: string[]
   rules: SecurityPutRoleMappingRoleMappingRuleBase
 }
@@ -12611,7 +12613,7 @@ export interface SecurityXPackRoleMapping {
 export interface SecurityXPackUser {
   email?: string
   full_name?: Name
-  metadata: Record<string, any>
+  metadata: Metadata
   roles: string[]
   username: Username
   enabled: boolean
@@ -12625,7 +12627,7 @@ export interface SecurityAuthenticateResponse {
   email?: string
   full_name?: Name
   lookup_realm: SecurityRealmInfo
-  metadata: Record<string, any>
+  metadata: Metadata
   roles: string[]
   username: Username
   enabled: boolean
@@ -12719,6 +12721,7 @@ export interface SecurityCreateApiKeyRequest extends RequestBase {
     expiration?: Time
     name?: Name
     role_descriptors?: Record<string, SecurityCreateApiKeyApiKeyRole>
+    metadata?: Metadata
   }
 }
 
@@ -12790,7 +12793,7 @@ export interface SecurityGetApiKeyApiKeys {
   name: Name
   realm: string
   username: Username
-  metadata?: Record<string, any>
+  metadata?: Metadata
 }
 
 export interface SecurityGetApiKeyRequest extends RequestBase {
@@ -13024,8 +13027,8 @@ export interface SecurityInvalidateTokenResponse {
 export interface SecurityPutPrivilegesPrivilegesActions {
   actions: string[]
   application?: string
-  name?: string
-  metadata?: Record<string, any>
+  name?: Name
+  metadata?: Metadata
 }
 
 export interface SecurityPutPrivilegesPutPrivilegesStatus {
@@ -13065,7 +13068,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
     cluster?: string[]
     global?: Record<string, any>
     indices?: SecurityPutRoleIndicesPrivileges[]
-    metadata?: Record<string, any>
+    metadata?: Metadata
     run_as?: string[]
     transient_metadata?: SecurityTransientMetadata
   }
@@ -13080,7 +13083,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     enabled?: boolean
-    metadata?: Record<string, any>
+    metadata?: Metadata
     roles?: string[]
     rules?: SecurityPutRoleMappingRoleMappingRuleBase
     run_as?: string[]
@@ -13102,7 +13105,7 @@ export interface SecurityPutUserRequest extends RequestBase {
     username?: Username
     email?: string | null
     full_name?: string | null
-    metadata?: Record<string, any>
+    metadata?: Metadata
     password?: Password
     password_hash?: string
     roles?: string[]
@@ -13288,7 +13291,7 @@ export interface SnapshotSnapshotInfo {
   include_global_state?: boolean
   indices: IndexName[]
   index_details?: Record<IndexName, SnapshotSnapshotIndexDetails>
-  metadata?: Record<string, any>
+  metadata?: Metadata
   reason?: string
   snapshot: Name
   shards?: ShardStatistics
@@ -13412,7 +13415,7 @@ export interface SnapshotCreateRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_global_state?: boolean
     indices?: Indices
-    metadata?: Record<string, any>
+    metadata?: Metadata
     partial?: boolean
   }
 }
@@ -14340,7 +14343,7 @@ export interface WatcherWatch {
   actions: Record<IndexName, WatcherAction>
   condition: WatcherConditionContainer
   input: WatcherInputContainer
-  metadata?: Record<string, any>
+  metadata?: Metadata
   status?: WatcherAckWatchWatchStatus
   throttle_period?: string
   transform?: WatcherTransformContainer
@@ -14496,7 +14499,7 @@ export interface WatcherExecuteWatchWatchRecord {
   condition: WatcherConditionContainer
   input: WatcherInputContainer
   messages: string[]
-  metadata: Record<string, any>
+  metadata: Metadata
   node: string
   result: WatcherExecuteWatchExecutionResult
   state: WatcherExecuteWatchActionExecutionState
@@ -14529,7 +14532,7 @@ export interface WatcherPutWatchRequest extends RequestBase {
     actions?: Record<string, WatcherAction>
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
-    metadata?: Record<string, any>
+    metadata?: Metadata
     throttle_period?: string
     transform?: WatcherTransformContainer
     trigger?: WatcherTriggerContainer

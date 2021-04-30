@@ -21,11 +21,12 @@ import { ApplicationPrivileges } from '@security/put_role/ApplicationPrivileges'
 import { IndicesPrivileges } from '@security/put_role/IndicesPrivileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
 
 export class XPackRole {
   cluster: string[]
   indices: IndicesPrivileges[]
-  metadata: Dictionary<string, UserDefinedValue>
+  metadata: Metadata
   run_as: string[]
   transient_metadata: TransientMetadata
   applications: ApplicationPrivileges[]

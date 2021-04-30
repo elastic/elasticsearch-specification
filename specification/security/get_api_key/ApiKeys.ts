@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, Name, Username } from '@_types/common'
+import { Id, Metadata, Name, Username } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class ApiKeys {
@@ -30,5 +30,6 @@ export class ApiKeys {
   name: Name
   realm: string
   username: Username
-  metadata?: Dictionary<string, UserDefinedValue> // version: 7.13
+  /** @since 7.13.0 */
+  metadata?: Metadata
 }

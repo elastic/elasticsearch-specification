@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Password, Refresh, Username } from '@_types/common'
+import { Metadata, Password, Refresh, Username } from '@_types/common'
 
 /**
  * @rest_spec_name security.put_user
@@ -38,7 +38,7 @@ export interface Request extends RequestBase {
     username?: Username
     email?: string | null
     full_name?: string | null
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     password?: Password
     password_hash?: string
     roles?: string[]

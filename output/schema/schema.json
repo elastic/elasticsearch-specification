@@ -30324,17 +30324,10 @@
         "namespace": "_types"
       },
       "type": {
-        "key": {
-          "kind": "instance_of",
-          "type": {
-            "name": "string",
-            "namespace": "internal"
-          }
-        },
-        "kind": "dictionary_of",
-        "singleKey": false,
-        "value": {
-          "kind": "user_defined_value"
+        "kind": "instance_of",
+        "type": {
+          "name": "Metadata",
+          "namespace": "_types"
         }
       }
     },
@@ -30962,6 +30955,27 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Metadata",
+        "namespace": "_types"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": false,
+        "value": {
+          "kind": "user_defined_value"
+        }
+      }
     },
     {
       "kind": "type_alias",
@@ -47251,17 +47265,10 @@
           "name": "local_metadata",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -120724,17 +120731,10 @@
           "name": "metadata",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -120815,17 +120815,10 @@
           "name": "metadata",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -120889,17 +120882,10 @@
           "name": "metadata",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -121011,17 +120997,10 @@
             "name": "metadata",
             "required": true,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },
@@ -121717,6 +121696,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Expiration time for the API key. By default, API keys never expire.",
             "name": "expiration",
             "required": false,
             "type": {
@@ -121728,6 +121708,7 @@
             }
           },
           {
+            "description": "Specifies the name for this API key.",
             "name": "name",
             "required": false,
             "type": {
@@ -121739,6 +121720,8 @@
             }
           },
           {
+            "description": " An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html",
             "name": "role_descriptors",
             "required": false,
             "type": {
@@ -121757,6 +121740,19 @@
                   "name": "ApiKeyRole",
                   "namespace": "security.create_api_key"
                 }
+              }
+            }
+          },
+          {
+            "description": "Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with _ are reserved for system usage.",
+            "name": "metadata",
+            "required": false,
+            "since": "7.13.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           }
@@ -122337,18 +122333,12 @@
         {
           "name": "metadata",
           "required": false,
+          "since": "7.13.0",
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         }
@@ -124313,8 +124303,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -124322,17 +124312,10 @@
           "name": "metadata",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         }
@@ -124678,17 +124661,10 @@
             "name": "metadata",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },
@@ -124802,17 +124778,10 @@
             "name": "metadata",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },
@@ -125005,17 +124974,10 @@
             "name": "metadata",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },
@@ -126454,17 +126416,10 @@
           "name": "metadata",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -127458,17 +127413,10 @@
             "name": "metadata",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },
@@ -135375,17 +135323,10 @@
           "name": "metadata",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -136631,17 +136572,10 @@
           "name": "metadata",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         },
@@ -136887,17 +136821,10 @@
             "name": "metadata",
             "required": false,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           },

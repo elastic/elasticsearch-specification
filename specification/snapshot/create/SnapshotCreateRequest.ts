@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Indices, Name } from '@_types/common'
+import { Indices, Metadata, Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -40,9 +40,8 @@ export interface Request extends RequestBase {
   body?: {
     ignore_unavailable?: boolean
     include_global_state?: boolean
-    /** @prop_serializer IndicesMultiSyntaxFormatter */
     indices?: Indices
-    metadata?: Dictionary<string, UserDefinedValue>
+    metadata?: Metadata
     partial?: boolean
   }
 }

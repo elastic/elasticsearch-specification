@@ -19,12 +19,12 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Name, Username } from '@_types/common'
+import { Metadata, Name, Username } from '@_types/common'
 
 export class XPackUser {
   email?: string
   full_name?: Name
-  metadata: Dictionary<string, UserDefinedValue>
+  metadata: Metadata
   roles: string[]
   username: Username
   enabled: boolean
