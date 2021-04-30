@@ -21,8 +21,8 @@ import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
 import {
   DataStreamName,
   Field,
-  IndexMetaData,
   IndexName,
+  Metadata,
   Name,
   Uuid
 } from '@_types/common'
@@ -43,7 +43,8 @@ export class IndicesGetDataStreamItem {
   system?: boolean
   status: DataStreamHealthStatus
   ilm_policy?: Name
-  _meta?: IndexMetaData
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
 }
 
 export class IndicesGetDataStreamItemTimestampField {

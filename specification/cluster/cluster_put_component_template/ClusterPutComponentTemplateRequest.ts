@@ -20,7 +20,7 @@
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { IndexMetaData, Name, VersionNumber } from '@_types/common'
+import { Metadata, Name, VersionNumber } from '@_types/common'
 import { IndexSettings } from '@_types/index/IndexSettings'
 import { IndexState } from '@_types/index/IndexState'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
@@ -47,6 +47,7 @@ export interface Request extends RequestBase {
     mappings?: TypeMapping
     settings?: IndexSettings
     version?: VersionNumber
-    _meta?: IndexMetaData
+    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+    _meta?: Metadata
   }
 }

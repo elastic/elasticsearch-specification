@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexMetaData, PropertyName } from '@_types/common'
+import { Metadata, PropertyName } from '@_types/common'
 import { DynamicMapping } from './DynamicMapping'
 import { DynamicTemplate } from './dynamic_template/DynamicTemplate'
 import { AllField } from './meta_fields/all/AllField'
@@ -40,7 +40,8 @@ export class TypeMapping {
     | Dictionary<string, DynamicTemplate>[]
   _field_names?: FieldNamesField
   index_field?: IndexField
-  _meta?: IndexMetaData
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
   numeric_detection?: boolean
   properties?: Dictionary<PropertyName, Property>
   _routing?: RoutingField

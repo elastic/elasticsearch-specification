@@ -17,13 +17,7 @@
  * under the License.
  */
 
-import {
-  IndexMetaData,
-  IndexName,
-  Indices,
-  Name,
-  VersionNumber
-} from '@_types/common'
+import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -48,7 +42,8 @@ export class IndexTemplate {
   template: IndexTemplateSummary
   version?: VersionNumber
   priority?: long
-  _meta?: IndexMetaData
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
   allow_auto_create?: boolean
   data_stream?: Dictionary<string, UserDefinedValue>
 }
