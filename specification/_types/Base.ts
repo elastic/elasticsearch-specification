@@ -67,7 +67,7 @@ export class ElasticsearchVersionInfo {
   number: string
 }
 
-export class ErrorResponse {
+export class ErrorResponseBase {
   error: MainError | string
   status: integer
 }

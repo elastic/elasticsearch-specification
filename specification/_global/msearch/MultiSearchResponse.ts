@@ -18,13 +18,13 @@
  */
 
 import { Response as SearchResponse } from '@global/search/SearchResponse'
-import { ErrorResponse } from '@_types/Base'
+import { ErrorResponseBase } from '@_types/Base'
 import { integer, long } from '@_types/Numeric'
 
 export class Response<TDocument> {
   body: {
     took: long
-    responses: Array<MultiSearchResult<TDocument> | ErrorResponse>
+    responses: Array<MultiSearchResult<TDocument> | ErrorResponseBase>
   }
 }
 
