@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import { IndexMetaData, Metadata, Name, Refresh } from '@_types/common'
+import { Metadata, Name, Refresh } from '@_types/common'
 import { Time } from '@_types/Time'
 import { ApiKeyRole } from './ApiKeyRole'
 
