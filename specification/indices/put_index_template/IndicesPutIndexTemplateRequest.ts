@@ -22,9 +22,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   EmptyObject,
-  IndexMetaData,
   IndexName,
   Indices,
+  Metadata,
   Name,
   VersionNumber
 } from '@_types/common'
@@ -49,7 +49,8 @@ export interface Request extends RequestBase {
     data_stream?: EmptyObject
     priority?: integer
     version?: VersionNumber
-    _meta?: IndexMetaData
+    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+    _meta?: Metadata
   }
 }
 

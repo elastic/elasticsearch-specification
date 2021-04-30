@@ -71,8 +71,6 @@ export type DataStreamName = string
 export type ByteSize = long | string
 
 export type Metadata = Dictionary<string, UserDefinedValue>
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
-export type IndexMetaData = Metadata
 
 // Versioning Numbers & Strings
 export type VersionNumber = long

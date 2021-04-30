@@ -1947,8 +1947,6 @@ export type Ids = Id | Id[]
 
 export type IndexAlias = string
 
-export type IndexMetaData = Metadata
-
 export type IndexName = string
 
 export type IndexPattern = string
@@ -3714,7 +3712,7 @@ export interface MappingTypeMapping {
   dynamic_templates?: Record<string, MappingDynamicTemplateDynamicTemplate> | Record<string, MappingDynamicTemplateDynamicTemplate>[]
   _field_names?: MappingMetaFieldsFieldNamesFieldNamesField
   index_field?: MappingMetaFieldsIndexIndexField
-  _meta?: IndexMetaData
+  _meta?: Metadata
   numeric_detection?: boolean
   properties?: Record<PropertyName, MappingTypesProperty>
   _routing?: MappingMetaFieldsRoutingRoutingField
@@ -7043,11 +7041,11 @@ export interface ClusterComponentTemplate {
 export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
   version?: VersionNumber
-  _meta?: IndexMetaData
+  _meta?: Metadata
 }
 
 export interface ClusterComponentTemplateSummary {
-  _meta?: IndexMetaData
+  _meta?: Metadata
   version?: VersionNumber
   settings: Record<IndexName, IndexIndexSettings>
   mappings?: MappingTypeMapping
@@ -7324,7 +7322,7 @@ export interface ClusterClusterPutComponentTemplateRequest extends RequestBase {
     mappings?: MappingTypeMapping
     settings?: IndexIndexSettings
     version?: VersionNumber
-    _meta?: IndexMetaData
+    _meta?: Metadata
   }
 }
 
@@ -8565,7 +8563,7 @@ export interface IndicesGetDataStreamIndicesGetDataStreamItem {
   system?: boolean
   status: IndicesDataStreamHealthStatus
   ilm_policy?: Name
-  _meta?: IndexMetaData
+  _meta?: Metadata
 }
 
 export interface IndicesGetDataStreamIndicesGetDataStreamItemIndex {
@@ -8610,7 +8608,7 @@ export interface IndicesGetIndexTemplateIndexTemplate {
   template: IndicesGetIndexTemplateIndexTemplateSummary
   version?: VersionNumber
   priority?: long
-  _meta?: IndexMetaData
+  _meta?: Metadata
   allow_auto_create?: boolean
   data_stream?: Record<string, any>
 }
@@ -8741,7 +8739,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     data_stream?: EmptyObject
     priority?: integer
     version?: VersionNumber
-    _meta?: IndexMetaData
+    _meta?: Metadata
   }
 }
 

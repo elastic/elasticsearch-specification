@@ -30317,21 +30317,6 @@
       }
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
-      "kind": "type_alias",
-      "name": {
-        "name": "IndexMetaData",
-        "namespace": "_types"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "Metadata",
-          "namespace": "_types"
-        }
-      }
-    },
-    {
       "kind": "type_alias",
       "name": {
         "name": "IndexName",
@@ -46215,12 +46200,13 @@
           }
         },
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
           "name": "_meta",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexMetaData",
+              "name": "Metadata",
               "namespace": "_types"
             }
           }
@@ -72697,12 +72683,13 @@
           }
         },
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
           "name": "_meta",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexMetaData",
+              "name": "Metadata",
               "namespace": "_types"
             }
           }
@@ -72717,12 +72704,13 @@
       },
       "properties": [
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
           "name": "_meta",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexMetaData",
+              "name": "Metadata",
               "namespace": "_types"
             }
           }
@@ -75273,12 +75261,13 @@
             }
           },
           {
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
             "name": "_meta",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "IndexMetaData",
+                "name": "Metadata",
                 "namespace": "_types"
               }
             }
@@ -86003,12 +85992,13 @@
           }
         },
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
           "name": "_meta",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexMetaData",
+              "name": "Metadata",
               "namespace": "_types"
             }
           }
@@ -86382,12 +86372,13 @@
           }
         },
         {
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
           "name": "_meta",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexMetaData",
+              "name": "Metadata",
               "namespace": "_types"
             }
           }
@@ -87532,12 +87523,13 @@
             }
           },
           {
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
             "name": "_meta",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "IndexMetaData",
+                "name": "Metadata",
                 "namespace": "_types"
               }
             }

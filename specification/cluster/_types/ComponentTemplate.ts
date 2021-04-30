@@ -19,7 +19,7 @@
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexMetaData, IndexName, Name, VersionNumber } from '@_types/common'
+import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
@@ -31,11 +31,13 @@ export class ComponentTemplate {
 export class ComponentTemplateNode {
   template: ComponentTemplateSummary
   version?: VersionNumber
-  _meta?: IndexMetaData
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
 }
 
 export class ComponentTemplateSummary {
-  _meta?: IndexMetaData
+  /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+  _meta?: Metadata
   version?: VersionNumber
   settings: Dictionary<IndexName, IndexSettings>
   mappings?: TypeMapping
