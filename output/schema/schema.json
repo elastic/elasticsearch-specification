@@ -99735,6 +99735,17 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "custom",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },

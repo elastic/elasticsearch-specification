@@ -10110,6 +10110,7 @@ export interface MlDataFrameAnalysisFeatureProcessorNGramEncoding {
   length?: integer
   n_grams: integer[]
   start?: integer
+  custom?: boolean
 }
 
 export interface MlDataFrameAnalysisFeatureProcessorOneHotEncoding {
