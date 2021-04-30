@@ -7690,7 +7690,7 @@
         "name": "Response",
         "namespace": "ml.put_trained_model_alias"
       },
-      "since": "7.10.0",
+      "since": "7.13.0",
       "stability": "TODO",
       "urls": [
         {
@@ -110972,22 +110972,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111001,7 +110985,8 @@
       },
       "path": [
         {
-          "name": "stub",
+          "description": "The alias to create or update. This value cannot end in numbers.",
+          "name": "model_alias",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -111010,16 +110995,30 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "description": "The identifier for the trained model that the alias refers to.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
         {
-          "name": "stub",
+          "description": "Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model. If the alias is already assigned and this parameter is false, the API returns an error.",
+          "name": "reassign",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -111027,21 +111026,11 @@
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {

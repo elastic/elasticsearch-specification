@@ -18,20 +18,25 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name ml.put_trained_model_alias
- * @since 7.10.0
+ * @since 7.13.0
  * @stability TODO
  */
 export interface Request extends RequestBase {
   path_parts: {
-    stub: string
+    /** The alias to create or update. This value cannot end in numbers. */
+    model_alias: string
+    /** The identifier for the trained model that the alias refers to. */
+    model_id: Id
   }
   query_parameters?: {
-    stub?: string
-  }
-  body?: {
-    stub?: string
+    /**
+     * Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model. If the alias is already assigned and this parameter is false, the API returns an error.
+     * @server_default false
+     */
+    reassign?: boolean
   }
 }
