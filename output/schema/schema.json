@@ -102179,6 +102179,7 @@
       },
       "properties": [
         {
+          "description": "The length of the bucket in seconds. Matches the job with the longest bucket_span value.",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -102190,6 +102191,7 @@
           }
         },
         {
+          "description": "If true, this is an interim result. In other words, the results are calculated based on partial input data.",
           "name": "is_interim",
           "required": true,
           "type": {
@@ -102201,6 +102203,7 @@
           }
         },
         {
+          "description": "An array of objects that contain the max_anomaly_score per job_id.",
           "name": "jobs",
           "required": true,
           "type": {
@@ -102215,6 +102218,7 @@
           }
         },
         {
+          "description": "The top_n average of the maximum bucket anomaly_score per job.",
           "name": "overall_score",
           "required": true,
           "type": {
@@ -102226,6 +102230,7 @@
           }
         },
         {
+          "description": "Internal. This is always set to overall_bucket.",
           "name": "result_type",
           "required": true,
           "type": {
@@ -102237,12 +102242,13 @@
           }
         },
         {
+          "description": "The start time of the bucket for which these results were calculated.",
           "name": "timestamp",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
+              "name": "Time",
               "namespace": "_types"
             }
           }
@@ -108162,72 +108168,6 @@
                 "namespace": "internal"
               }
             }
-          },
-          {
-            "name": "bucket_span",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "exclude_interim",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "overall_score",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "top_n",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
           }
         ]
       },
@@ -108244,6 +108184,7 @@
       },
       "path": [
         {
+          "description": " Identifier for the anomaly detection job. It can be a job identifier, a group name, a comma-separated list of jobs or groups, or a wildcard expression.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -108255,7 +108196,93 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "The span of the overall buckets. Must be greater or equal to the largest bucket span of the specified anomaly detection jobs, which is the default value.",
+          "name": "bucket_span",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns overall buckets with overall scores greater than or equal to this value.",
+          "name": "overall_score",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "The number of top anomaly detection job bucket scores to be used in the overall_score calculation.",
+          "name": "top_n",
+          "required": false,
+          "serverDefault": "1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns overall buckets with timestamps earlier than this time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns overall buckets with timestamps after this time.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": " If true, the output excludes interim results. By default, interim results are included.",
+          "name": "exclude_interim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -108273,6 +108300,7 @@
             }
           },
           {
+            "description": "Array of overall bucket objects",
             "name": "overall_buckets",
             "required": true,
             "type": {

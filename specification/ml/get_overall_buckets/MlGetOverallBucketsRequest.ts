@@ -29,15 +29,27 @@ import { DateString, Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**  Identifier for the anomaly detection job. It can be a job identifier, a group name, a comma-separated list of jobs or groups, or a wildcard expression. */
     job_id: Id
+  }
+  query_parameters?: {
+    /** The span of the overall buckets. Must be greater or equal to the largest bucket span of the specified anomaly detection jobs, which is the default value. */
+    bucket_span?: Time
+    /** Returns overall buckets with overall scores greater than or equal to this value. */
+    overall_score?: double | string
+    /**
+     * The number of top anomaly detection job bucket scores to be used in the overall_score calculation.
+     * @server_default 1
+     */
+    top_n?: integer
+    /** Returns overall buckets with timestamps earlier than this time. */
+    end?: Time
+    /** Returns overall buckets with timestamps after this time. */
+    start?: Time
+    /**  If true, the output excludes interim results. By default, interim results are included. */
+    exclude_interim?: boolean
   }
   body?: {
     allow_no_jobs?: boolean
-    bucket_span?: Time
-    end?: DateString
-    exclude_interim?: boolean
-    overall_score?: double
-    start?: DateString
-    top_n?: integer
   }
 }
