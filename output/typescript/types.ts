@@ -11428,15 +11428,12 @@ export interface MlPutTrainedModelResponse {
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
+  model_alias: string
+  model_id: Id
+  reassign?: boolean
 }
 
-export interface MlPutTrainedModelAliasResponse {
-  stub: boolean
-}
+export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase {}
 
 export interface MlRevertModelSnapshotRequest extends RequestBase {
   job_id: Id

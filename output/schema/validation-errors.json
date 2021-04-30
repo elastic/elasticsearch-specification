@@ -606,12 +606,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model_alias": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.revert_model_snapshot": {
       "request": [
         "Endpoint has \"@stability: TODO"
