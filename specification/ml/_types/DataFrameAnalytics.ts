@@ -175,6 +175,7 @@ export class DataFrameAnalysisFeatureProcessorNGramEncoding {
   n_grams: integer[]
   /** Specifies the zero-indexed start of the n-gram substring. Negative values are allowed for encoding n-grams of string suffixes. Defaults to 0. */
   start?: integer
+  custom?: boolean
 }
 
 export class DataFrameAnalysisFeatureProcessorOneHotEncoding {
