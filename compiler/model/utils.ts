@@ -948,7 +948,7 @@ export function verifyUniqueness (project: Project): void {
       assert(declaration, name != null, 'Anonymous classes cannot exists')
       assert(declaration, !name.endsWith('Request') && !name.endsWith('Response'), 'A type cannot end with "Request" or "Response"')
       assert(declaration, !common.includes(name), `${name} is already defined in ${namespace} is already defined in the global types`)
-      assert(declaration, !names.includes(name), `${declaration.getName()} is already defined in ${namespace} local types`)
+      assert(declaration, !names.includes(name), `${name} is already defined in ${namespace} local types`)
       names.push(name)
     }
 
