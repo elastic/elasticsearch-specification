@@ -404,7 +404,7 @@
     },
     "indices.exists_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -422,7 +422,7 @@
     },
     "indices.get_upgrade": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -458,7 +458,7 @@
     },
     "indices.simulate_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -524,7 +524,7 @@
     },
     "ml.find_file_structure": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },

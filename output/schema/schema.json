@@ -4056,10 +4056,17 @@
       "description": "Returns information about whether a particular index template exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.exists_index_template",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.exists_index_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.exists_index_template"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4605,10 +4612,17 @@
       "description": "DEPRECATED Returns a progress status of current upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.get_upgrade",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.get_upgrade"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.get_upgrade"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -5271,10 +5285,17 @@
       "description": "Simulate resolving the given template name or body",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.simulate_template",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.simulate_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.simulate_template"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6600,10 +6621,17 @@
       "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
       "name": "ml.find_file_structure",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.find_file_structure"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
+      "response": {
+        "name": "Response",
+        "namespace": "ml.find_file_structure"
+      },
+      "since": "5.4.0",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -84980,6 +85008,58 @@
       "kind": "request",
       "name": {
         "name": "Request",
+        "namespace": "indices.exists_index_template"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.exists_index_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
         "namespace": "indices.exists_template"
       },
       "path": [
@@ -87038,6 +87118,75 @@
       "name": {
         "name": "Response",
         "namespace": "indices.get_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.get_upgrade"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Any templates that were superseded by the specified template.",
+            "name": "overlapping",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "OverlappingIndexTemplate",
+                  "namespace": "indices.simulate_index_template"
+                }
+              }
+            }
+          },
+          {
+            "description": "The settings, mappings, and aliases that would be applied to matching indices.",
+            "name": "template",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TemplateMapping",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.get_upgrade"
       }
     },
     {
@@ -91007,6 +91156,97 @@
       "name": {
         "name": "Response",
         "namespace": "indices.simulate_index_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "IndexTemplate",
+            "namespace": "indices.get_index_template"
+          }
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.simulate_template"
+      },
+      "path": [
+        {
+          "description": "Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit this parameter and specify the template configuration in the request body.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If true, the template passed in the body is only used if no existing templates match the same index patterns. If false, the simulation uses the template with the highest priority. Note that the template is not permanently added or updated in either case; it is only used for the simulation.",
+          "name": "create",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.simulate_template"
       }
     },
     {
@@ -105105,6 +105345,59 @@
       "name": {
         "name": "Response",
         "namespace": "ml.explain_data_frame_analytics"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.find_file_structure"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.find_file_structure"
       }
     },
     {
