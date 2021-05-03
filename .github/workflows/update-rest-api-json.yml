@@ -1,6 +1,6 @@
 name: Update rest-api-spec
 
-on: [pull_request]
+on: [pull_request, push]
 
 # on:
 #   schedule:
