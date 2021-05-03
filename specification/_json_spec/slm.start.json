@@ -1,22 +1,24 @@
 {
-  "slm.start": {
-    "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html",
-      "description": "Turns on snapshot lifecycle management (SLM)."
+  "slm.start":{
+    "documentation":{
+      "url":"https://www.elastic.co/guide/en/elasticsearch/reference/current/slm-api-start.html",
+      "description":"Turns on snapshot lifecycle management (SLM)."
     },
-    "stability": "stable",
-    "visibility": "public",
-    "headers": {
-      "accept": ["application/json"]
+    "stability":"stable",
+    "visibility":"public",
+    "headers":{
+      "accept": [ "application/json"]
     },
-    "url": {
-      "paths": [
+    "url":{
+      "paths":[
         {
-          "path": "/_slm/start",
-          "methods": ["POST"]
+          "path":"/_slm/start",
+          "methods":[
+            "POST"
+          ]
         }
       ]
     },
-    "params": {}
+    "params":{}
   }
 }

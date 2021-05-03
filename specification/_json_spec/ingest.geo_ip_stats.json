@@ -7,13 +7,17 @@
     "stability": "stable",
     "visibility": "public",
     "headers": {
-      "accept": ["application/json"]
+      "accept": [
+        "application/json"
+      ]
     },
     "url": {
       "paths": [
         {
           "path": "/_ingest/geoip/stats",
-          "methods": ["GET"]
+          "methods": [
+            "GET"
+          ]
         }
       ]
     }
