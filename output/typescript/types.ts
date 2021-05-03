@@ -14790,7 +14790,7 @@ export interface XpackInfoResponse {
   tagline: string
 }
 
-export interface XpackUsageAnalytics extends XpackUsageUsage {
+export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics
 }
 
@@ -14810,12 +14810,17 @@ export interface XpackUsageAudit extends XpackUsageFeatureToggle {
   outputs?: string[]
 }
 
+export interface XpackUsageBase {
+  available: boolean
+  enabled: boolean
+}
+
 export interface XpackUsageBaseUrlConfig {
   url_name: string
   url_value: string
 }
 
-export interface XpackUsageCcr extends XpackUsageUsage {
+export interface XpackUsageCcr extends XpackUsageBase {
   auto_follow_patterns_count: integer
   follower_indices_count: integer
 }
@@ -14831,7 +14836,7 @@ export interface XpackUsageCustomSettings {
   job_tags?: Record<string, string>
 }
 
-export interface XpackUsageDataStreams extends XpackUsageUsage {
+export interface XpackUsageDataStreams extends XpackUsageBase {
   data_streams: long
   indices_count: long
 }
@@ -14849,7 +14854,7 @@ export interface XpackUsageDataTierPhaseStatistics {
   primary_shard_size_mad_bytes: long
 }
 
-export interface XpackUsageDataTiers extends XpackUsageUsage {
+export interface XpackUsageDataTiers extends XpackUsageBase {
   data_warm: XpackUsageDataTierPhaseStatistics
   data_frozen?: XpackUsageDataTierPhaseStatistics
   data_cold: XpackUsageDataTierPhaseStatistics
@@ -14861,7 +14866,7 @@ export interface XpackUsageDatafeed {
   count: long
 }
 
-export interface XpackUsageEql extends XpackUsageUsage {
+export interface XpackUsageEql extends XpackUsageBase {
   features: XpackUsageEqlFeatures
   queries: Record<string, XpackUsageQuery>
 }
@@ -14910,11 +14915,11 @@ export interface XpackUsageFeatureToggle {
   enabled: boolean
 }
 
-export interface XpackUsageFlattened extends XpackUsageUsage {
+export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
 }
 
-export interface XpackUsageFrozenIndices extends XpackUsageUsage {
+export interface XpackUsageFrozenIndices extends XpackUsageBase {
   indices_count: long
 }
 
@@ -14937,7 +14942,7 @@ export interface XpackUsageKibanaUrlConfig extends XpackUsageBaseUrlConfig {
   time_range?: string
 }
 
-export interface XpackUsageMachineLearning extends XpackUsageUsage {
+export interface XpackUsageMachineLearning extends XpackUsageBase {
   datafeeds: Record<string, XpackUsageDatafeed>
   jobs: Record<string, MlJob>
   node_count: integer
@@ -15001,7 +15006,7 @@ export interface XpackUsageMlJobForecasts {
   forecasted_jobs: long
 }
 
-export interface XpackUsageMonitoring extends XpackUsageUsage {
+export interface XpackUsageMonitoring extends XpackUsageBase {
   collection_enabled: boolean
   enabled_exporters: Record<string, long>
 }
@@ -15013,7 +15018,7 @@ export interface XpackUsageQuery {
   total?: integer
 }
 
-export interface XpackUsageRealm extends XpackUsageUsage {
+export interface XpackUsageRealm extends XpackUsageBase {
   name?: string[]
   order?: long[]
   size?: long[]
@@ -15033,33 +15038,33 @@ export interface XpackUsageRequest extends RequestBase {
 }
 
 export interface XpackUsageResponse {
-  aggregate_metric: XpackUsageUsage
+  aggregate_metric: XpackUsageBase
   analytics: XpackUsageAnalytics
   watcher: XpackUsageWatcher
   ccr: XpackUsageCcr
-  data_frame?: XpackUsageUsage
-  data_science?: XpackUsageUsage
+  data_frame?: XpackUsageBase
+  data_science?: XpackUsageBase
   data_streams?: XpackUsageDataStreams
   data_tiers: XpackUsageDataTiers
-  enrich?: XpackUsageUsage
+  enrich?: XpackUsageBase
   eql: XpackUsageEql
   flattened?: XpackUsageFlattened
   frozen_indices: XpackUsageFrozenIndices
-  graph: XpackUsageUsage
+  graph: XpackUsageBase
   ilm: XpackUsageIlm
-  logstash: XpackUsageUsage
+  logstash: XpackUsageBase
   ml: XpackUsageMachineLearning
   monitoring: XpackUsageMonitoring
-  rollup: XpackUsageUsage
+  rollup: XpackUsageBase
   runtime_fields?: XpackUsageRuntimeFieldTypes
-  spatial: XpackUsageUsage
+  spatial: XpackUsageBase
   searchable_snapshots: XpackUsageSearchableSnapshots
   security: XpackUsageSecurity
   slm: XpackUsageSlm
   sql: XpackUsageSql
-  transform: XpackUsageUsage
+  transform: XpackUsageBase
   vectors: XpackUsageVector
-  voting_only: XpackUsageUsage
+  voting_only: XpackUsageBase
 }
 
 export interface XpackUsageRoleMapping {
@@ -15067,7 +15072,7 @@ export interface XpackUsageRoleMapping {
   size: integer
 }
 
-export interface XpackUsageRuntimeFieldTypes extends XpackUsageUsage {
+export interface XpackUsageRuntimeFieldTypes extends XpackUsageBase {
   field_types: XpackUsageRuntimeFieldsType[]
 }
 
@@ -15088,13 +15093,13 @@ export interface XpackUsageRuntimeFieldsType {
   source_total: long
 }
 
-export interface XpackUsageSearchableSnapshots extends XpackUsageUsage {
+export interface XpackUsageSearchableSnapshots extends XpackUsageBase {
   indices_count: integer
   full_copy_indices_count?: integer
   shared_cache_indices_count?: integer
 }
 
-export interface XpackUsageSecurity extends XpackUsageUsage {
+export interface XpackUsageSecurity extends XpackUsageBase {
   api_key_service: XpackUsageFeatureToggle
   anonymous: XpackUsageFeatureToggle
   audit: XpackUsageAudit
@@ -15106,7 +15111,7 @@ export interface XpackUsageSecurity extends XpackUsageUsage {
   ssl: XpackUsageSsl
   system_key?: XpackUsageFeatureToggle
   token_service: XpackUsageFeatureToggle
-  operator_privileges: XpackUsageUsage
+  operator_privileges: XpackUsageBase
 }
 
 export interface XpackUsageSecurityRoles {
@@ -15137,12 +15142,12 @@ export interface XpackUsageSecurityRolesNative {
   size: long
 }
 
-export interface XpackUsageSlm extends XpackUsageUsage {
+export interface XpackUsageSlm extends XpackUsageBase {
   policy_count?: integer
   policy_stats?: SlmStatistics
 }
 
-export interface XpackUsageSql extends XpackUsageUsage {
+export interface XpackUsageSql extends XpackUsageBase {
   features: Record<string, integer>
   queries: Record<string, XpackUsageQuery>
 }
@@ -15154,18 +15159,13 @@ export interface XpackUsageSsl {
 
 export type XpackUsageUrlConfig = XpackUsageBaseUrlConfig | XpackUsageKibanaUrlConfig
 
-export interface XpackUsageUsage {
-  available: boolean
-  enabled: boolean
-}
-
-export interface XpackUsageVector extends XpackUsageUsage {
+export interface XpackUsageVector extends XpackUsageBase {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
 }
 
-export interface XpackUsageWatcher extends XpackUsageUsage {
+export interface XpackUsageWatcher extends XpackUsageBase {
   execution: XpackUsageWatcherActions
   watch: XpackUsageWatcherWatch
   count: XpackUsageCounter

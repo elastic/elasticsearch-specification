@@ -33,39 +33,39 @@ import {
   Security,
   Slm,
   Sql,
-  Usage,
+  Base,
   Vector,
   Watcher
 } from './types'
 
 export class Response {
   body: {
-    aggregate_metric: Usage
+    aggregate_metric: Base
     analytics: Analytics
     watcher: Watcher
     ccr: Ccr
-    data_frame?: Usage
-    data_science?: Usage
+    data_frame?: Base
+    data_science?: Base
     data_streams?: DataStreams
     data_tiers: DataTiers
-    enrich?: Usage
+    enrich?: Base
     eql: Eql
     flattened?: Flattened
     frozen_indices: FrozenIndices
-    graph: Usage
+    graph: Base
     ilm: Ilm
-    logstash: Usage
+    logstash: Base
     ml: MachineLearning
     monitoring: Monitoring
-    rollup: Usage
+    rollup: Base
     runtime_fields?: RuntimeFieldTypes
-    spatial: Usage
+    spatial: Base
     searchable_snapshots: SearchableSnapshots
     security: Security
     slm: Slm
     sql: Sql
-    transform: Usage
+    transform: Base
     vectors: Vector
-    voting_only: Usage
+    voting_only: Base
   }
 }

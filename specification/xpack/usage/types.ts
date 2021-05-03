@@ -24,7 +24,7 @@ import { Job, JobStatistics } from '@_types/ml/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
 import { Statistics } from '@_types/slm/Statistics'
 
-export class Usage {
+export class Base {
   available: boolean
   enabled: boolean
 }
@@ -78,7 +78,7 @@ export class Datafeed {
   count: long
 }
 
-export class DataStreams extends Usage {
+export class DataStreams extends Base {
   data_streams: long
   indices_count: long
 }
@@ -243,7 +243,7 @@ export class RoleMapping {
   size: integer
 }
 
-export class RuntimeFieldTypes extends Usage {
+export class RuntimeFieldTypes extends Base {
   field_types: RuntimeFieldsType[]
 }
 
@@ -292,22 +292,22 @@ export class SecurityRolesFile {
   size: long
 }
 
-export class Alerting extends Usage {
+export class Alerting extends Base {
   count: Counter
   execution: AlertingExecution
   watch: AlertingInput
 }
 
-export class Analytics extends Usage {
+export class Analytics extends Base {
   stats: AnalyticsStatistics
 }
 
-export class Ccr extends Usage {
+export class Ccr extends Base {
   auto_follow_patterns_count: integer
   follower_indices_count: integer
 }
 
-export class DataTiers extends Usage {
+export class DataTiers extends Base {
   data_warm: DataTierPhaseStatistics
   /** @since 7.13.0 */
   data_frozen?: DataTierPhaseStatistics
@@ -316,20 +316,20 @@ export class DataTiers extends Usage {
   data_hot: DataTierPhaseStatistics
 }
 
-export class Eql extends Usage {
+export class Eql extends Base {
   features: EqlFeatures
   queries: Dictionary<string, Query>
 }
 
-export class Flattened extends Usage {
+export class Flattened extends Base {
   field_count: integer
 }
 
-export class FrozenIndices extends Usage {
+export class FrozenIndices extends Base {
   indices_count: long
 }
 
-export class MachineLearning extends Usage {
+export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
   jobs: Dictionary<string, Job>
   node_count: integer
@@ -337,12 +337,12 @@ export class MachineLearning extends Usage {
   inference: MlInference
 }
 
-export class Monitoring extends Usage {
+export class Monitoring extends Base {
   collection_enabled: boolean
   enabled_exporters: Dictionary<string, long>
 }
 
-export class Sql extends Usage {
+export class Sql extends Base {
   features: Dictionary<string, integer>
   queries: Dictionary<string, Query>
 }
@@ -373,7 +373,7 @@ export class WatcherActionTotals {
   total_time_in_ms: long
 }
 
-export class Realm extends Usage {
+export class Realm extends Base {
   name?: string[]
   order?: long[]
   size?: long[]
@@ -384,13 +384,13 @@ export class Realm extends Usage {
   is_authentication_delegated?: boolean[]
 }
 
-export class SearchableSnapshots extends Usage {
+export class SearchableSnapshots extends Base {
   indices_count: integer
   full_copy_indices_count?: integer
   shared_cache_indices_count?: integer
 }
 
-export class Security extends Usage {
+export class Security extends Base {
   api_key_service: FeatureToggle
   anonymous: FeatureToggle
   audit: Audit
@@ -402,21 +402,21 @@ export class Security extends Usage {
   ssl: Ssl
   system_key?: FeatureToggle
   token_service: FeatureToggle
-  operator_privileges: Usage
+  operator_privileges: Base
 }
 
-export class Slm extends Usage {
+export class Slm extends Base {
   policy_count?: integer
   policy_stats?: Statistics
 }
 
-export class Vector extends Usage {
+export class Vector extends Base {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
 }
 
-export class Watcher extends Usage {
+export class Watcher extends Base {
   execution: WatcherActions
   watch: WatcherWatch
   count: Counter

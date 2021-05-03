@@ -139416,7 +139416,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -139579,6 +139579,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Base",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BaseUrlConfig",
         "namespace": "xpack.usage"
       },
@@ -139610,7 +139641,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -139734,7 +139765,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -139890,7 +139921,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -139981,7 +140012,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -140369,7 +140400,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -140395,7 +140426,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -140543,7 +140574,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -141022,7 +141053,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -141123,7 +141154,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -141307,7 +141338,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141351,7 +141382,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141362,7 +141393,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141395,7 +141426,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141439,7 +141470,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141461,7 +141492,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141494,7 +141525,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141516,7 +141547,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141571,7 +141602,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141593,7 +141624,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Usage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141640,7 +141671,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -141835,7 +141866,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -141883,7 +141914,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -142042,7 +142073,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Usage",
+              "name": "Base",
               "namespace": "xpack.usage"
             }
           }
@@ -142240,7 +142271,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -142277,7 +142308,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -142391,40 +142422,9 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Usage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "available",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
@@ -142472,7 +142472,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Usage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
