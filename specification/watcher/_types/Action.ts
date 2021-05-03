@@ -21,8 +21,8 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
+import { IndexAction } from './Actions'
 import { ConditionContainer } from './Conditions'
-import { ActionIndex } from './IndexAction'
 import { HttpInputRequestDefinition } from './Input'
 import { TransformContainer } from './Transform'
 
@@ -35,7 +35,7 @@ export class Action {
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index?: ActionIndex
+  index?: IndexAction
   logging?: LoggingAction
 }
 

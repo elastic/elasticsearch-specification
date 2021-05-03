@@ -23,10 +23,10 @@ import {
   Status,
   WebhookActionResult
 } from '@watcher/_types/Action'
-import { EmailActionResult } from '@watcher/_types/EmailAction'
-import { IndexActionResult } from '@watcher/_types/IndexAction'
-import { PagerDutyActionResult } from '@watcher/_types/PagerDutyAction'
-import { SlackActionResult } from '@watcher/_types/SlackAction'
+import { EmailActionResult } from '@watcher/_types/Actions'
+import { IndexActionResult } from '@watcher/_types/Actions'
+import { PagerDutyResult } from '@watcher/_types/Actions'
+import { SlackActionResult } from '@watcher/_types/Actions'
 import { Id } from '@_types/common'
 import { DateString } from '@_types/Time'
 import { integer, long } from '@_types/Numeric'
@@ -76,7 +76,7 @@ export class ExecutionResultAction {
   id: Id
   index?: IndexActionResult
   logging?: LoggingActionResult
-  pagerduty?: PagerDutyActionResult
+  pagerduty?: PagerDutyResult
   reason?: string
   slack?: SlackActionResult
   status: Status
