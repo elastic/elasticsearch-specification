@@ -2,22 +2,26 @@
   "searchable_snapshots.clear_cache": {
     "documentation": {
       "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "description": "Clear the cache of searchable snapshots."
+      "description" : "Clear the cache of searchable snapshots."
     },
     "stability": "experimental",
-    "visibility": "public",
-    "headers": {
-      "accept": ["application/json"]
+    "visibility":"public",
+    "headers":{
+      "accept": [ "application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_searchable_snapshots/cache/clear",
-          "methods": ["POST"]
+          "methods": [
+            "POST"
+          ]
         },
         {
           "path": "/{index}/_searchable_snapshots/cache/clear",
-          "methods": ["POST"],
+          "methods": [
+            "POST"
+          ],
           "parts": {
             "index": {
               "type": "list",
@@ -38,7 +42,12 @@
       },
       "expand_wildcards": {
         "type": "enum",
-        "options": ["open", "closed", "none", "all"],
+        "options": [
+          "open",
+          "closed",
+          "none",
+          "all"
+        ],
         "default": "open",
         "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both."
       },
