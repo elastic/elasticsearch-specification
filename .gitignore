@@ -47,3 +47,5 @@ specification/**/*.js
 specification/lib
 
 .DS_Store
+
+artifacts
