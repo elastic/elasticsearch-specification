@@ -18,35 +18,29 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { HttpHeaders, IndexName } from '@_types/common'
+import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
-import { IndexAction } from './Actions'
+import { Index, Logging } from './Actions'
 import { ConditionContainer } from './Conditions'
-import { HttpInputRequestDefinition } from './Input'
 import { TransformContainer } from './Transform'
 
 export class Action {
-  action_type?: ActionType
+  action_type?: Type
   condition?: ConditionContainer
   foreach?: string
   max_iterations?: integer
-  name?: string
+  name?: Name
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index?: IndexAction
-  logging?: LoggingAction
+  index?: Index
+  logging?: Logging
 }
 
 export type Actions = Dictionary<IndexName, ActionStatus>
 
-export class LoggingAction {
-  level: string
-  text: string
-}
-
-export enum ActionType {
+export enum Type {
   email = 0,
   webhook = 1,
   index = 2,
@@ -55,29 +49,12 @@ export enum ActionType {
   pagerduty = 5
 }
 
-export class LoggingActionResult {
-  logged_text: string
-}
-
-export class WebhookActionResult {
-  request: HttpInputRequestResult
-  response?: HttpInputResponseResult
-}
-
 export enum ActionExecutionMode {
   simulate = 0,
   force_simulate = 1,
   execute = 2,
   force_execute = 3,
   skip = 4
-}
-
-export class HttpInputRequestResult extends HttpInputRequestDefinition {}
-
-export class HttpInputResponseResult {
-  body: string
-  headers: HttpHeaders
-  status: integer
 }
 
 export class SimulatedActions {

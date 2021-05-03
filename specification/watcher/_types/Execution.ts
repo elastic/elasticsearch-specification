@@ -17,16 +17,15 @@
  * under the License.
  */
 
+import { Type, Status } from '@watcher/_types/Action'
 import {
-  ActionType,
-  LoggingActionResult,
-  Status,
-  WebhookActionResult
-} from '@watcher/_types/Action'
-import { EmailActionResult } from '@watcher/_types/Actions'
-import { IndexActionResult } from '@watcher/_types/Actions'
-import { PagerDutyResult } from '@watcher/_types/Actions'
-import { SlackActionResult } from '@watcher/_types/Actions'
+  EmailResult,
+  IndexResult,
+  LoggingResult,
+  PagerDutyResult,
+  SlackResult,
+  WebhookResult
+} from '@watcher/_types/Actions'
 import { Id } from '@_types/common'
 import { DateString } from '@_types/Time'
 import { integer, long } from '@_types/Numeric'
@@ -47,23 +46,23 @@ export enum ExecutionStatus {
 }
 
 export enum ExecutionPhase {
-    awaits_execution = 0,
-    started = 1,
-    input = 2,
-    condition = 3,
-    actions = 4,
-    watch_transform = 5,
-    aborted = 6,
-    finished = 7
-  }
+  awaits_execution = 0,
+  started = 1,
+  input = 2,
+  condition = 3,
+  actions = 4,
+  watch_transform = 5,
+  aborted = 6,
+  finished = 7
+}
 
 export class ExecutionResult {
-    actions: ExecutionResultAction[]
-    condition: ExecutionResultCondition
-    execution_duration: integer
-    execution_time: DateString
-    input: ExecutionResultInput
-  }
+  actions: ExecutionResultAction[]
+  condition: ExecutionResultCondition
+  execution_duration: integer
+  execution_time: DateString
+  input: ExecutionResultInput
+}
 
 export class ExecutionResultCondition {
   met: boolean
@@ -72,16 +71,16 @@ export class ExecutionResultCondition {
 }
 
 export class ExecutionResultAction {
-  email?: EmailActionResult
+  email?: EmailResult
   id: Id
-  index?: IndexActionResult
-  logging?: LoggingActionResult
+  index?: IndexResult
+  logging?: LoggingResult
   pagerduty?: PagerDutyResult
   reason?: string
-  slack?: SlackActionResult
+  slack?: SlackResult
   status: Status
-  type: ActionType
-  webhook?: WebhookActionResult
+  type: Type
+  webhook?: WebhookResult
 }
 
 export class ExecutionResultInput {
@@ -91,6 +90,6 @@ export class ExecutionResultInput {
 }
 
 export class ExecutionThreadPool {
-    max_size: long
-    queue_size: long
-  }
+  max_size: long
+  queue_size: long
+}
