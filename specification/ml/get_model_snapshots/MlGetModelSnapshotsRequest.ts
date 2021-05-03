@@ -17,11 +17,10 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DateString, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.get_model_snapshots

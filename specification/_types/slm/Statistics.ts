@@ -17,9 +17,31 @@
  * under the License.
  */
 
-import { Job } from '@_types/ml/Job'
+import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { DateString, EpochMillis } from '@_types/Time'
 
-export class Response {
-  body: { count: long; jobs: Job[] }
+export class Statistics {
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  /**
+   * @aliases snapshots_deleted
+   */
+  total_snapshots_deleted?: long
+  /**
+   * @aliases snapshot_deletion_failures
+   */
+  total_snapshot_deletion_failures?: long
+  /**
+   * @aliases snapshots_failed
+   */
+  total_snapshots_failed?: long
+  /**
+   * @aliases snapshots_taken
+   */
+  total_snapshots_taken?: long
 }

@@ -18,22 +18,11 @@
  */
 
 import { Phases } from '@ilm/_types/Phases'
-import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
-import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
-import { DataDescription } from '@ml/_types/DataDescription'
-import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
 import { Dictionary } from '@spec_utils/Dictionary'
-import {
-  ByteSize,
-  EmptyObject,
-  Field,
-  Id,
-  IndexName,
-  Name,
-  VersionString
-} from '@_types/common'
-import { double, integer, long, uint, ulong } from '@_types/Numeric'
-import { DateString, EpochMillis, Time } from '@_types/Time'
+import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
+import { Job, JobStatistics } from '@_types/ml/Job'
+import { integer, long, uint, ulong } from '@_types/Numeric'
+import { Statistics } from '@_types/slm/Statistics'
 
 export class Usage {
   available: boolean
@@ -160,36 +149,6 @@ export class IpFilterUsage {
   transport: boolean
 }
 
-export class Job {
-  allow_lazy_open?: boolean
-  analysis_config?: AnalysisConfig
-  analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
-  count?: integer
-  created_by?: EmptyObject
-  create_time?: integer
-  detectors?: JobStatistics
-  data_description?: DataDescription
-  description?: string
-  finished_time?: integer
-  forecasts?: MlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: ModelPlotConfig
-  model_size?: JobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
-  model_plot_config?: ModelPlotConfig
-  custom_settings?: CustomSettings
-  job_version?: VersionString
-  deleting?: boolean
-  daily_model_snapshot_retention_after_days?: long
-}
-
 export class CustomSettings {
   custom_urls?: UrlConfig[]
   created_by?: string
@@ -210,13 +169,6 @@ export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 export class MlJobForecasts {
   total: long
   forecasted_jobs: long
-}
-
-export class JobStatistics {
-  avg: double
-  max: double
-  min: double
-  total: double
 }
 
 export class MlDataFrameAnalyticsJobsUsage {
@@ -385,31 +337,6 @@ export class MonitoringUsage extends Usage {
   enabled_exporters: Dictionary<string, long>
 }
 
-export class SnapshotLifecycleStats {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
-  retention_failed?: long
-  retention_runs?: long
-  retention_timed_out?: long
-  policy?: Id
-  /**
-   * @aliases snapshots_deleted
-   */
-  total_snapshots_deleted?: long
-  /**
-   * @aliases snapshot_deletion_failures
-   */
-  total_snapshot_deletion_failures?: long
-  /**
-   * @aliases snapshots_failed
-   */
-  total_snapshots_failed?: long
-  /**
-   * @aliases snapshots_taken
-   */
-  total_snapshots_taken?: long
-}
-
 export class SqlUsage extends Usage {
   features: Dictionary<string, integer>
   queries: Dictionary<string, QueryUsage>
@@ -480,7 +407,7 @@ export class SecurityUsage extends Usage {
 
 export class SlmUsage extends Usage {
   policy_count?: integer
-  policy_stats?: SnapshotLifecycleStats
+  policy_stats?: Statistics
 }
 
 export class VectorUsage extends Usage {

@@ -49863,6 +49863,368 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "Job",
+        "namespace": "_types.ml"
+      },
+      "properties": [
+        {
+          "name": "allow_lazy_open",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "analysis_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis_limits",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisLimits",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "background_persist_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "detectors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "data_description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataDescription",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "finished_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "forecasts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlJobForecasts",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "job_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_plot",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "renormalization_window_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_index_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "model_plot_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "custom_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomSettings",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "job_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "deleting",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "JobStatistics",
+        "namespace": "_types.ml"
+      },
+      "properties": [
+        {
+          "name": "avg",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -57066,6 +57428,137 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Statistics",
+        "namespace": "_types.slm"
+      },
+      "properties": [
+        {
+          "name": "retention_deletion_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_deletion_time_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_runs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_timed_out",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "policy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_deleted"
+          ],
+          "name": "total_snapshots_deleted",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshot_deletion_failures"
+          ],
+          "name": "total_snapshot_deletion_failures",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_failed"
+          ],
+          "name": "total_snapshots_failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_taken"
+          ],
+          "name": "total_snapshots_taken",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -101481,7 +101974,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -101492,7 +101985,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -101503,7 +101996,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -107960,7 +108453,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Job",
-                  "namespace": "xpack.usage"
+                  "namespace": "_types.ml"
                 }
               }
             }
@@ -125581,8 +126074,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleStats",
-              "namespace": "xpack.usage"
+              "name": "Statistics",
+              "namespace": "_types.slm"
             }
           }
         }
@@ -137618,6 +138111,396 @@
     {
       "kind": "interface",
       "name": {
+        "name": "BuildInformation",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "date",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "hash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Feature",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "native_code_info",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NativeCodeInformation",
+              "namespace": "xpack.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Features",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "aggregate_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "analytics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ccr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_frame",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_science",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_streams",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_tiers",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "enrich",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "eql",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "flattened",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "frozen_indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "graph",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ilm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "logstash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ml",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "monitoring",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "rollup",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "runtime_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "searchable_snapshots",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "security",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "slm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "spatial",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "sql",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "transform",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "voting_only",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "watcher",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "MinimalLicenseInformation",
         "namespace": "xpack.info"
       },
@@ -137753,7 +138636,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackBuildInformation",
+                "name": "BuildInformation",
                 "namespace": "xpack.info"
               }
             }
@@ -137764,7 +138647,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackFeatures",
+                "name": "Features",
                 "namespace": "xpack.info"
               }
             }
@@ -137798,396 +138681,6 @@
         "name": "Response",
         "namespace": "xpack.info"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackBuildInformation",
-        "namespace": "xpack.info"
-      },
-      "properties": [
-        {
-          "name": "date",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "hash",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackFeature",
-        "namespace": "xpack.info"
-      },
-      "properties": [
-        {
-          "name": "available",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "native_code_info",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NativeCodeInformation",
-              "namespace": "xpack.info"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackFeatures",
-        "namespace": "xpack.info"
-      },
-      "properties": [
-        {
-          "name": "aggregate_metric",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "analytics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ccr",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_frame",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_science",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_streams",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_tiers",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "enrich",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "eql",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "flattened",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "frozen_indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "graph",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ilm",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "logstash",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ml",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "monitoring",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "rollup",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "runtime_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "searchable_snapshots",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "security",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "slm",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "spatial",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "sql",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "transform",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "vectors",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "voting_only",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "watcher",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -138300,7 +138793,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -138386,7 +138879,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -138479,7 +138972,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -138635,7 +139128,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -138659,6 +139152,7 @@
         {
           "name": "data_frozen",
           "required": false,
+          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -139045,7 +139539,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -139093,7 +139587,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -139119,7 +139613,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -139239,368 +139733,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Job",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "allow_lazy_open",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "analysis_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AnalysisConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "analysis_limits",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AnalysisLimits",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "background_persist_interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmptyObject",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "detectors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "data_description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataDescription",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "finished_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "forecasts",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlJobForecasts",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "job_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model_plot",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "model_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "model_snapshot_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "model_snapshot_retention_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "renormalization_window_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "results_index_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "results_retention_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "groups",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "model_plot_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "custom_settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CustomSettings",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "job_version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "deleting",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "daily_model_snapshot_retention_after_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "JobStatistics",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "BaseUrlConfig",
@@ -139629,7 +139761,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -139678,7 +139810,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Job",
-                "namespace": "xpack.usage"
+                "namespace": "_types.ml"
               }
             }
           }
@@ -139752,7 +139884,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         }
@@ -139973,7 +140105,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -139984,7 +140116,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -140108,7 +140240,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -140229,7 +140361,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -140393,7 +140525,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140437,7 +140569,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140448,7 +140580,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140481,7 +140613,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140525,7 +140657,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140547,7 +140679,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140580,7 +140712,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140602,7 +140734,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140657,7 +140789,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140679,7 +140811,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Usage",
                 "namespace": "xpack.usage"
               }
             }
@@ -140892,7 +141024,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -140921,7 +141053,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141006,7 +141138,7 @@
         },
         {
           "name": "memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -141177,7 +141309,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141336,7 +141468,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "XPackUsage",
+              "name": "Usage",
               "namespace": "xpack.usage"
             }
           }
@@ -141346,7 +141478,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141373,139 +141505,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleStats",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotLifecycleStats",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "retention_deletion_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_deletion_time_millis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_runs",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_timed_out",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "policy",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_deleted"
-          ],
-          "name": "total_snapshots_deleted",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshot_deletion_failures"
-          ],
-          "name": "total_snapshot_deletion_failures",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_failed"
-          ],
-          "name": "total_snapshots_failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_taken"
-          ],
-          "name": "total_snapshots_taken",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
+              "name": "Statistics",
+              "namespace": "_types.slm"
             }
           }
         }
@@ -141514,7 +141515,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141630,6 +141631,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Usage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "UsageCount",
         "namespace": "xpack.usage"
       },
@@ -141661,7 +141693,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141771,7 +141803,7 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Usage",
           "namespace": "xpack.usage"
         }
       },
@@ -141965,37 +141997,6 @@
             "type": {
               "name": "WatcherWatchTriggerUsage",
               "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "available",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }

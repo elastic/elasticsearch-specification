@@ -19,8 +19,6 @@
 
 import { ApplicationPrivileges } from '@security/put_role/ApplicationPrivileges'
 import { IndicesPrivileges } from '@security/put_role/IndicesPrivileges'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata } from '@_types/common'
 
 export class XPackRole {

@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
-import { TemplateMapping } from '@indices/_types/TemplateMapping'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 
 export class Response {
