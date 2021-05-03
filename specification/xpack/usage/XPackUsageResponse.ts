@@ -17,53 +17,55 @@
  * under the License.
  */
 
-import { AnalyticsUsage } from './AnalyticsUsage'
-import { CcrUsage } from './CcrUsage'
-import { DataStreamsUsage } from './DataStreamsUsage'
-import { DataTiersUsage } from './DataTiersUsage'
-import { EqlUsage } from './EqlUsage'
-import { FlattenedUsage } from './FlattenedUsage'
-import { FrozenIndicesUsage } from './FrozenIndicesUsage'
-import { IlmUsage } from './IlmUsage'
-import { MachineLearningUsage } from './MachineLearningUsage'
-import { MonitoringUsage } from './MonitoringUsage'
-import { RuntimeFieldsUsage } from './RuntimeFieldsUsage'
-import { SearchableSnapshotsUsage } from './SearchableSnapshotsUsage'
-import { SecurityUsage } from './SecurityUsage'
-import { SlmUsage } from './SlmUsage'
-import { SqlUsage } from './SqlUsage'
-import { VectorUsage } from './VectorUsage'
-import { WatcherUsage } from './WatcherUsage'
-import { XPackUsage } from './XPackUsage'
+import {
+  AnalyticsUsage,
+  CcrUsage,
+  DataStreamsUsage,
+  DataTiersUsage,
+  EqlUsage,
+  FlattenedUsage,
+  FrozenIndicesUsage,
+  IlmUsage,
+  MachineLearningUsage,
+  MonitoringUsage,
+  RuntimeFieldsUsage,
+  SearchableSnapshotsUsage,
+  SecurityUsage,
+  SlmUsage,
+  SqlUsage,
+  Usage,
+  VectorUsage,
+  WatcherUsage
+} from './types'
 
 export class Response {
   body: {
-    aggregate_metric: XPackUsage
+    aggregate_metric: Usage
     analytics: AnalyticsUsage
     watcher: WatcherUsage
     ccr: CcrUsage
-    data_frame?: XPackUsage
-    data_science?: XPackUsage
+    data_frame?: Usage
+    data_science?: Usage
     data_streams?: DataStreamsUsage
     data_tiers: DataTiersUsage
-    enrich?: XPackUsage
+    enrich?: Usage
     eql: EqlUsage
     flattened?: FlattenedUsage
     frozen_indices: FrozenIndicesUsage
-    graph: XPackUsage
+    graph: Usage
     ilm: IlmUsage
-    logstash: XPackUsage
+    logstash: Usage
     ml: MachineLearningUsage
     monitoring: MonitoringUsage
-    rollup: XPackUsage
+    rollup: Usage
     runtime_fields?: RuntimeFieldsUsage
-    spatial: XPackUsage
+    spatial: Usage
     searchable_snapshots: SearchableSnapshotsUsage
     security: SecurityUsage
     slm: SlmUsage
     sql: SqlUsage
-    transform: XPackUsage
+    transform: Usage
     vectors: VectorUsage
-    voting_only: XPackUsage
+    voting_only: Usage
   }
 }
