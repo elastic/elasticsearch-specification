@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Void } from "@spec_utils/VoidValue";
+import { Void } from '@spec_utils/VoidValue'
 
 /**
  * Response codes:
