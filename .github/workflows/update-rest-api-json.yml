@@ -20,10 +20,17 @@ jobs:
       - name: Install deps
         run: |
           npm install --prefix .github/download-artifacts
+          npm install --prefix compiler
+          npm install --prefix typescript-generator
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --version 8.0-SNAPSHOT
+          node .github/download-artifacts/index.js --version 7.x-SNAPSHOT
+
+      - name: Generate output
+        run: |
+          npm run generate-schema --prefix compiler
+          npm run start --prefix typescript-generator
 
       - name: Debug git status
         run: |
@@ -35,4 +42,5 @@ jobs:
           title: 'Update rest-api-spec'
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
+          delete-branch: true
           team-reviewers: elastic/clients-team
