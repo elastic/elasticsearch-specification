@@ -13957,6 +13957,13 @@ export interface TransformUpdateTransformResponse {
   version: VersionString
 }
 
+export interface WatcherAcknowledgeState {
+  state: WatcherAcknowledgementOptions
+  timestamp: DateString
+}
+
+export type WatcherAcknowledgementOptions = 'awaits_successful_execution' | 'ackable' | 'acked'
+
 export interface WatcherAction {
   action_type?: WatcherActionType
   condition?: WatcherConditionContainer
@@ -13977,7 +13984,27 @@ export interface WatcherActionIndex {
   doc_id?: Id
 }
 
+export interface WatcherActionStatus {
+  ack: WatcherAcknowledgeState
+  last_execution?: WatcherExecutionState
+  last_successful_execution?: WatcherExecutionState
+  last_throttle?: WatcherThrottleState
+}
+
 export type WatcherActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
+
+export type WatcherActions = Record<IndexName, WatcherActionStatus>
+
+export interface WatcherActivationState {
+  active: boolean
+  timestamp: Timestamp
+}
+
+export interface WatcherActivationStatus {
+  actions: WatcherActions
+  state: WatcherActivationState
+  version: VersionNumber
+}
 
 export interface WatcherAlwaysCondition {
 }
@@ -14059,6 +14086,11 @@ export interface WatcherEmailResult {
   sent_date: DateString
   subject: string
   to: string[]
+}
+
+export interface WatcherExecutionState {
+  successful: boolean
+  timestamp: DateString
 }
 
 export interface WatcherHourlySchedule {
@@ -14296,6 +14328,11 @@ export interface WatcherSlackMessage {
 
 export type WatcherStatus = 'success' | 'failure' | 'simulated' | 'throttled'
 
+export interface WatcherThrottleState {
+  reason: string
+  timestamp: DateString
+}
+
 export interface WatcherTimeOfDay {
   hour: integer[]
   minute: integer[]
@@ -14339,40 +14376,25 @@ export interface WatcherWatch {
   condition: WatcherConditionContainer
   input: WatcherInputContainer
   metadata?: Metadata
-  status?: WatcherAckWatchWatchStatus
+  status?: WatcherWatchStatus
   throttle_period?: string
   transform?: WatcherTransformContainer
   trigger: WatcherTriggerContainer
   throttle_period_in_millis?: long
 }
 
+export interface WatcherWatchStatus {
+  actions: WatcherActions
+  last_checked?: DateString
+  last_met_condition?: DateString
+  state: WatcherActivationState
+  version: VersionNumber
+  execution_state?: string
+}
+
 export interface WatcherWebhookActionResult {
   request: WatcherHttpInputRequestResult
   response?: WatcherHttpInputResponseResult
-}
-
-export interface WatcherAckWatchAcknowledgeState {
-  state: WatcherAckWatchAcknowledgementState
-  timestamp: DateString
-}
-
-export type WatcherAckWatchAcknowledgementState = 'awaits_successful_execution' | 'ackable' | 'acked'
-
-export interface WatcherAckWatchActionStatus {
-  ack: WatcherAckWatchAcknowledgeState
-  last_execution?: WatcherAckWatchExecutionState
-  last_successful_execution?: WatcherAckWatchExecutionState
-  last_throttle?: WatcherAckWatchThrottleState
-}
-
-export interface WatcherAckWatchActivationState {
-  active: boolean
-  timestamp: Timestamp
-}
-
-export interface WatcherAckWatchExecutionState {
-  successful: boolean
-  timestamp: DateString
 }
 
 export interface WatcherAckWatchRequest extends RequestBase {
@@ -14381,27 +14403,7 @@ export interface WatcherAckWatchRequest extends RequestBase {
 }
 
 export interface WatcherAckWatchResponse {
-  status: WatcherAckWatchWatchStatus
-}
-
-export interface WatcherAckWatchThrottleState {
-  reason: string
-  timestamp: DateString
-}
-
-export interface WatcherAckWatchWatchStatus {
-  actions: Record<IndexName, WatcherAckWatchActionStatus>
-  last_checked?: DateString
-  last_met_condition?: DateString
-  state: WatcherAckWatchActivationState
-  version: VersionNumber
-  execution_state?: string
-}
-
-export interface WatcherActivateWatchActivationStatus {
-  actions: Record<IndexName, WatcherAckWatchActionStatus>
-  state: WatcherAckWatchActivationState
-  version: VersionNumber
+  status: WatcherWatchStatus
 }
 
 export interface WatcherActivateWatchRequest extends RequestBase {
@@ -14409,7 +14411,7 @@ export interface WatcherActivateWatchRequest extends RequestBase {
 }
 
 export interface WatcherActivateWatchResponse {
-  status: WatcherActivateWatchActivationStatus
+  status: WatcherActivationStatus
 }
 
 export interface WatcherDeactivateWatchRequest extends RequestBase {
@@ -14417,7 +14419,7 @@ export interface WatcherDeactivateWatchRequest extends RequestBase {
 }
 
 export interface WatcherDeactivateWatchResponse {
-  status: WatcherActivateWatchActivationStatus
+  status: WatcherActivationStatus
 }
 
 export interface WatcherDeleteWatchRequest extends RequestBase {
@@ -14499,7 +14501,7 @@ export interface WatcherExecuteWatchWatchRecord {
   result: WatcherExecuteWatchExecutionResult
   state: WatcherExecuteWatchActionExecutionState
   trigger_event: WatcherExecuteWatchTriggerEventResult
-  user: string
+  user: Username
   watch_id: Id
 }
 
@@ -14510,7 +14512,7 @@ export interface WatcherGetWatchRequest extends RequestBase {
 export interface WatcherGetWatchResponse {
   found: boolean
   _id: Id
-  status?: WatcherAckWatchWatchStatus
+  status?: WatcherWatchStatus
   watch?: WatcherWatch
   _primary_term?: integer
   _seq_no?: SequenceNumber
@@ -14555,9 +14557,6 @@ export interface WatcherQueryWatchesResponse {
 }
 
 export interface WatcherStartRequest extends RequestBase {
-  body?: {
-    stub: integer
-  }
 }
 
 export interface WatcherStartResponse extends AcknowledgedResponseBase {}
@@ -14575,7 +14574,7 @@ export interface WatcherStatsRequest extends RequestBase {
 }
 
 export interface WatcherStatsResponse {
-  cluster_name: string
+  cluster_name: Name
   manually_stopped: boolean
   stats: WatcherStatsWatcherNodeStats[]
   _nodes: NodesNodeStatistics
@@ -14607,9 +14606,6 @@ export interface WatcherStatsWatcherNodeStats {
 export type WatcherStatsWatcherState = 'stopped' | 'starting' | 'started' | 'stopping'
 
 export interface WatcherStopRequest extends RequestBase {
-  body?: {
-    stub: integer
-  }
 }
 
 export interface WatcherStopResponse extends AcknowledgedResponseBase {}
