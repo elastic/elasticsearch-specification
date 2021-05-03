@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { LanguageContext } from './types'
 
 export class Response {
   body: {
     language_contexts: LanguageContext[]
     types_allowed: string[]
   }
-}
-
-export class LanguageContext {
-  contexts: string[]
-  language: Name
 }

@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Context } from './types'
+import { ScriptLanguage } from '@_types/Scripting'
 
-export class Response {
-  body: {
-    contexts: Context[]
-  }
+export class LanguageContext {
+  contexts: string[]
+  language: ScriptLanguage
 }
