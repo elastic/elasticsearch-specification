@@ -20,5 +20,5 @@
 import { RangePropertyBase } from '../RangeProperty'
 
 export class IntegerRangeProperty extends RangePropertyBase {
-  type?: 'integer_range'
+  type: 'integer_range'
 }

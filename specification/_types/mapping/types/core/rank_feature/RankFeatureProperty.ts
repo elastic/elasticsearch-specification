@@ -21,5 +21,5 @@ import { PropertyBase } from '../../Property'
 
 export class RankFeatureProperty extends PropertyBase {
   positive_score_impact?: boolean
-  type?: 'rank_feature'
+  type: 'rank_feature'
 }

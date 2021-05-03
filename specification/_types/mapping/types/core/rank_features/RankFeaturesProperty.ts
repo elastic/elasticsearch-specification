@@ -20,5 +20,5 @@
 import { PropertyBase } from '../../Property'
 
 export class RankFeaturesProperty extends PropertyBase {
-  type?: 'rank_features'
+  type: 'rank_features'
 }

@@ -35,5 +35,5 @@ export class GenericProperty extends DocValuesPropertyBase {
   position_increment_gap: integer
   search_analyzer: string
   term_vector: TermVectorOption
-  type?: string
+  type: string
 }

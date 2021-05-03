@@ -26,5 +26,5 @@ export class TokenCountProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: double
   enable_position_increments?: boolean
-  type?: 'token_count'
+  type: 'token_count'
 }

@@ -21,5 +21,5 @@ import { PropertyBase } from '../../Property'
 
 export class HistogramProperty extends PropertyBase {
   ignore_malformed?: boolean
-  type?: 'histogram'
+  type: 'histogram'
 }

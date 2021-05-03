@@ -28,5 +28,5 @@ export class ObjectProperty extends CorePropertyBase {
   dynamic?: boolean | DynamicMapping
   enabled?: boolean
   properties?: Dictionary<PropertyName, Property>
-  type?: 'object'
+  type: 'object'
 }

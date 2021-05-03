@@ -24,5 +24,5 @@ export class IpProperty extends DocValuesPropertyBase {
   boost?: double
   index?: boolean
   null_value?: string
-  type?: 'ip'
+  type: 'ip'
 }

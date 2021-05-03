@@ -20,5 +20,5 @@
 import { RangePropertyBase } from '../RangeProperty'
 
 export class IpRangeProperty extends RangePropertyBase {
-  type?: 'ip_range'
+  type: 'ip_range'
 }

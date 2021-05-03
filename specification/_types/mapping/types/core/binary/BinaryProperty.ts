@@ -20,5 +20,5 @@
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class BinaryProperty extends DocValuesPropertyBase {
-  type?: 'binary'
+  type: 'binary'
 }

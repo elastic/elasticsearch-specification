@@ -23,5 +23,5 @@ export class PointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: string
-  type?: 'point'
+  type: 'point'
 }

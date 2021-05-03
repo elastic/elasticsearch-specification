@@ -39,5 +39,5 @@ export class TextProperty extends CorePropertyBase {
   search_analyzer?: string
   search_quote_analyzer?: string
   term_vector?: TermVectorOption
-  type?: 'text'
+  type: 'text'
 }

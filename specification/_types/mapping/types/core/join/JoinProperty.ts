@@ -23,5 +23,5 @@ import { PropertyBase } from '../../Property'
 
 export class JoinProperty extends PropertyBase {
   relations?: Dictionary<RelationName, RelationName | RelationName[]>
-  type?: 'join'
+  type: 'join'
 }

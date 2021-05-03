@@ -28,5 +28,5 @@ export class CompletionProperty extends DocValuesPropertyBase {
   preserve_position_increments?: boolean
   preserve_separators?: boolean
   search_analyzer?: string
-  type?: 'completion'
+  type: 'completion'
 }

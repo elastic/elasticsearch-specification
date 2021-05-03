@@ -30,5 +30,5 @@ export class KeywordProperty extends DocValuesPropertyBase {
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
-  type?: 'keyword'
+  type: 'keyword'
 }

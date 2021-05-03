@@ -20,5 +20,5 @@
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class VersionProperty extends DocValuesPropertyBase {
-  type?: 'version'
+  type: 'version'
 }

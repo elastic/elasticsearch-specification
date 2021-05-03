@@ -20,5 +20,5 @@
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class WildcardProperty extends DocValuesPropertyBase {
-  type?: 'wildcard'
+  type: 'wildcard'
 }

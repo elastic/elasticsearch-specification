@@ -24,5 +24,5 @@ export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
-  type?: 'geo_point'
+  type: 'geo_point'
 }

@@ -20,5 +20,5 @@
 import { PropertyBase } from '../../Property'
 
 export class PercolatorProperty extends PropertyBase {
-  type?: 'percolator'
+  type: 'percolator'
 }

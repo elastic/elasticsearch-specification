@@ -29,5 +29,5 @@ export class NestedProperty extends CorePropertyBase {
   properties?: Dictionary<PropertyName, Property>
   include_in_parent?: boolean
   include_in_root?: boolean
-  type?: 'nested'
+  type: 'nested'
 }

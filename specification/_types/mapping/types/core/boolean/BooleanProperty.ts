@@ -26,5 +26,5 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
-  type?: 'boolean'
+  type: 'boolean'
 }

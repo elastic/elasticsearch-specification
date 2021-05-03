@@ -22,5 +22,5 @@ import { PropertyBase } from '../../Property'
 
 export class FieldAliasProperty extends PropertyBase {
   path?: Field
-  type?: 'alias'
+  type: 'alias'
 }
