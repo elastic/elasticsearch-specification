@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { ScriptingLanguageContext } from '@_types/Scripting'
 
 export class Response {
   body: {
-    language_contexts: LanguageContext[]
+    language_contexts: ScriptingLanguageContext[]
     types_allowed: string[]
   }
-}
-
-export class LanguageContext {
-  contexts: string[]
-  language: Name
 }

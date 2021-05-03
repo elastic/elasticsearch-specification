@@ -15904,6 +15904,7 @@
       ],
       "query": [
         {
+          "description": "Specify timeout for connection to master",
           "name": "master_timeout",
           "required": false,
           "type": {
@@ -15992,7 +15993,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "ScriptContext",
-                  "namespace": "_global.get_script_context"
+                  "namespace": "_types"
                 }
               }
             }
@@ -16004,150 +16005,6 @@
         "name": "Response",
         "namespace": "_global.get_script_context"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptContext",
-        "namespace": "_global.get_script_context"
-      },
-      "properties": [
-        {
-          "name": "methods",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScriptContextMethod",
-                "namespace": "_global.get_script_context"
-              }
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptContextMethod",
-        "namespace": "_global.get_script_context"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "return_type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "params",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ScriptContextMethodParam",
-                "namespace": "_global.get_script_context"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScriptContextMethodParam",
-        "namespace": "_global.get_script_context"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LanguageContext",
-        "namespace": "_global.get_script_languages"
-      },
-      "properties": [
-        {
-          "name": "contexts",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "language",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -16179,8 +16036,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "LanguageContext",
-                  "namespace": "_global.get_script_languages"
+                  "name": "ScriptingLanguageContext",
+                  "namespace": "_types"
                 }
               }
             }
@@ -30372,8 +30229,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
@@ -31806,8 +31663,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ScriptLanguage",
+              "namespace": "_types"
             }
           }
         },
@@ -31834,6 +31691,116 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ScriptContext",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "methods",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScriptContextMethod",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptContextMethod",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "return_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "params",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScriptContextMethodParam",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptContextMethodParam",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ScriptField",
         "namespace": "_types"
       },
@@ -31845,6 +31812,61 @@
             "kind": "instance_of",
             "type": {
               "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "painless"
+        },
+        {
+          "name": "expression"
+        },
+        {
+          "name": "mustache"
+        },
+        {
+          "name": "java"
+        }
+      ],
+      "name": {
+        "name": "ScriptLanguage",
+        "namespace": "_types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptingLanguageContext",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "contexts",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptLanguage",
               "namespace": "_types"
             }
           }
@@ -32694,8 +32716,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ScriptLanguage",
+              "namespace": "_types"
             }
           }
         },

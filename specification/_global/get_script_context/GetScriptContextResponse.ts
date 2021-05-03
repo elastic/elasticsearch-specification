@@ -17,26 +17,10 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
+import { ScriptContext } from '@_types/Scripting'
 
 export class Response {
   body: {
     contexts: ScriptContext[]
   }
-}
-
-export class ScriptContext {
-  methods: ScriptContextMethod[]
-  name: Name
-}
-
-export class ScriptContextMethod {
-  name: Name
-  return_type: string
-  params: ScriptContextMethodParam[]
-}
-
-export class ScriptContextMethodParam {
-  name: Name
-  type: string
 }

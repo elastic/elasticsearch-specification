@@ -19,20 +19,23 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, Name } from './common'
 
-export enum ScriptLang {
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html */
+export enum ScriptLanguage {
   painless = 0,
   expression = 1,
-  mustache = 2
+  mustache = 2,
+  java = 0
 }
 
 export class StoredScript {
-  lang?: string
+  lang?: ScriptLanguage
   source: string
 }
 
 export class ScriptBase {
-  lang?: string
+  lang?: ScriptLanguage
   params?: Dictionary<string, UserDefinedValue>
 }
 
@@ -41,11 +44,32 @@ export class InlineScript extends ScriptBase {
 }
 
 export class IndexedScript extends ScriptBase {
-  id: string
+  id: Id
 }
 
 export type Script = InlineScript | IndexedScript | string
 
 export class ScriptField {
   script: Script
+}
+
+export class ScriptContext {
+  methods: ScriptContextMethod[]
+  name: Name
+}
+
+export class ScriptContextMethod {
+  name: Name
+  return_type: string
+  params: ScriptContextMethodParam[]
+}
+
+export class ScriptContextMethodParam {
+  name: Name
+  type: string
+}
+
+export class ScriptingLanguageContext {
+  contexts: string[]
+  language: ScriptLanguage
 }

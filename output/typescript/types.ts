@@ -443,35 +443,14 @@ export interface GetScriptContextRequest extends RequestBase {
 }
 
 export interface GetScriptContextResponse {
-  contexts: GetScriptContextScriptContext[]
-}
-
-export interface GetScriptContextScriptContext {
-  methods: GetScriptContextScriptContextMethod[]
-  name: Name
-}
-
-export interface GetScriptContextScriptContextMethod {
-  name: Name
-  return_type: string
-  params: GetScriptContextScriptContextMethodParam[]
-}
-
-export interface GetScriptContextScriptContextMethodParam {
-  name: Name
-  type: string
-}
-
-export interface GetScriptLanguagesLanguageContext {
-  contexts: string[]
-  language: Name
+  contexts: ScriptContext[]
 }
 
 export interface GetScriptLanguagesRequest extends RequestBase {
 }
 
 export interface GetScriptLanguagesResponse {
-  language_contexts: GetScriptLanguagesLanguageContext[]
+  language_contexts: ScriptingLanguageContext[]
   types_allowed: string[]
 }
 
@@ -1951,7 +1930,7 @@ export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
 export interface IndexedScript extends ScriptBase {
-  id: string
+  id: Id
 }
 
 export interface IndexingStats {
@@ -2111,12 +2090,35 @@ export type Routing = string | number
 export type Script = InlineScript | IndexedScript | string
 
 export interface ScriptBase {
-  lang?: string
+  lang?: ScriptLanguage
   params?: Record<string, any>
+}
+
+export interface ScriptContext {
+  methods: ScriptContextMethod[]
+  name: Name
+}
+
+export interface ScriptContextMethod {
+  name: Name
+  return_type: string
+  params: ScriptContextMethodParam[]
+}
+
+export interface ScriptContextMethodParam {
+  name: Name
+  type: string
 }
 
 export interface ScriptField {
   script: Script
+}
+
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
+
+export interface ScriptingLanguageContext {
+  contexts: string[]
+  language: ScriptLanguage
 }
 
 export type ScrollId = string
@@ -2211,7 +2213,7 @@ export interface StoreStats {
 }
 
 export interface StoredScript {
-  lang?: string
+  lang?: ScriptLanguage
   source: string
 }
 
