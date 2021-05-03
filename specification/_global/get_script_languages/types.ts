@@ -17,4 +17,9 @@
  * under the License.
  */
 
-export class ReindexRouting {}
+import { ScriptLanguage } from '@_types/Scripting'
+
+export class LanguageContext {
+  contexts: string[]
+  language: ScriptLanguage
+}

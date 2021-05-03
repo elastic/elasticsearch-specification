@@ -439,32 +439,32 @@ export interface GetScriptResponse {
   script?: StoredScript
 }
 
-export interface GetScriptContextRequest extends RequestBase {
-}
-
-export interface GetScriptContextResponse {
-  contexts: GetScriptContextScriptContext[]
-}
-
-export interface GetScriptContextScriptContext {
-  methods: GetScriptContextScriptContextMethod[]
+export interface GetScriptContextContext {
+  methods: GetScriptContextContextMethod[]
   name: Name
 }
 
-export interface GetScriptContextScriptContextMethod {
+export interface GetScriptContextContextMethod {
   name: Name
   return_type: string
-  params: GetScriptContextScriptContextMethodParam[]
+  params: GetScriptContextContextMethodParam[]
 }
 
-export interface GetScriptContextScriptContextMethodParam {
+export interface GetScriptContextContextMethodParam {
   name: Name
   type: string
 }
 
+export interface GetScriptContextRequest extends RequestBase {
+}
+
+export interface GetScriptContextResponse {
+  contexts: GetScriptContextContext[]
+}
+
 export interface GetScriptLanguagesLanguageContext {
   contexts: string[]
-  language: Name
+  language: ScriptLanguage
 }
 
 export interface GetScriptLanguagesRequest extends RequestBase {
@@ -791,25 +791,12 @@ export interface RankEvalUnratedDocument {
   _index: IndexName
 }
 
-export interface ReindexReindexDestination {
+export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
   pipeline?: string
-  routing?: ReindexReindexRouting
+  routing?: Routing
   version_type?: VersionType
-}
-
-export interface ReindexReindexRouting {
-}
-
-export interface ReindexReindexSource {
-  index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
-  remote?: ReindexRemoteSource
-  size?: integer
-  slice?: SlicedScroll
-  sort?: SearchSortSort
-  _source?: Fields
 }
 
 export interface ReindexRemoteSource {
@@ -831,11 +818,11 @@ export interface ReindexRequest extends RequestBase {
   require_alias?: boolean
   body?: {
     conflicts?: Conflicts
-    dest?: ReindexReindexDestination
+    dest?: ReindexDestination
     max_docs?: long
     script?: Script
     size?: long
-    source?: ReindexReindexSource
+    source?: ReindexSource
   }
 }
 
@@ -856,6 +843,16 @@ export interface ReindexResponse {
   total?: long
   updated?: long
   version_conflicts?: long
+}
+
+export interface ReindexSource {
+  index: Indices
+  query?: QueryDslAbstractionsContainerQueryContainer
+  remote?: ReindexRemoteSource
+  size?: integer
+  slice?: SlicedScroll
+  sort?: SearchSortSort
+  _source?: Fields
 }
 
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
@@ -1954,7 +1951,7 @@ export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
 export interface IndexedScript extends ScriptBase {
-  id: string
+  id: Id
 }
 
 export interface IndexingStats {
@@ -2114,13 +2111,15 @@ export type Routing = string | number
 export type Script = InlineScript | IndexedScript | string
 
 export interface ScriptBase {
-  lang?: string
+  lang?: ScriptLanguage
   params?: Record<string, any>
 }
 
 export interface ScriptField {
   script: Script
 }
+
+export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
 
 export type ScrollId = string
 
@@ -2214,7 +2213,7 @@ export interface StoreStats {
 }
 
 export interface StoredScript {
-  lang?: string
+  lang?: ScriptLanguage
   source: string
 }
 
@@ -3672,8 +3671,8 @@ export interface IndexIndexSettings {
   'index.translog.durability'?: string
   'query_string.lenient'?: boolean | string
   'index.query_string.lenient'?: boolean | string
-  priority?: integer
-  'index.priority'?: integer
+  priority?: integer | string
+  'index.priority'?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndexIndexSettingsAnalysis
 }
@@ -3837,7 +3836,7 @@ export interface MappingTypesComplexObjectObjectProperty extends MappingTypesCor
   dynamic?: boolean | MappingDynamicMapping
   enabled?: boolean
   properties?: Record<PropertyName, MappingTypesProperty>
-  type: 'object'
+  type?: 'object'
 }
 
 export interface MappingTypesCoreBinaryBinaryProperty extends MappingTypesDocValuesPropertyBase {

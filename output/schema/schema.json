@@ -1717,7 +1717,7 @@
         "application/json"
       ],
       "description": "Returns cluster settings.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-get-settings.html",
       "name": "cluster.get_settings",
       "request": {
         "name": "Request",
@@ -3029,6 +3029,30 @@
             "POST"
           ],
           "path": "/{index}/_field_caps"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Returns the current global checkpoints for an index. This API is design for internal use by the fleet server project.",
+      "docUrl": null,
+      "name": "fleet.global_checkpoints",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/{index}/_fleet/global_checkpoints"
         }
       ],
       "visibility": "public"
@@ -7804,12 +7828,17 @@
         "namespace": "ml.start_data_frame_analytics"
       },
       "requestBodyRequired": false,
+<<<<<<< HEAD
       "response": {
         "name": "Response",
         "namespace": "ml.start_data_frame_analytics"
       },
       "since": "5.4.0",
       "stability": "TODO",
+=======
+      "response": null,
+      "stability": "stable",
+>>>>>>> master
       "urls": [
         {
           "methods": [
@@ -8160,7 +8189,7 @@
         "application/json"
       ],
       "contentType": [
-        "application/json"
+        "application/x-ndjson"
       ],
       "description": "Used by the monitoring features to send monitoring data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/monitor-elasticsearch-cluster.html",
@@ -9367,6 +9396,33 @@
       "accept": [
         "application/json"
       ],
+      "description": "Retrieve node-level cache statistics about searchable snapshots.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-apis.html",
+      "name": "searchable_snapshots.cache_stats",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_searchable_snapshots/cache/stats"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_searchable_snapshots/{node_id}/cache/stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Clear the cache of searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
@@ -9460,7 +9516,7 @@
       "accept": [
         "application/json"
       ],
-      "description": "Retrieve various statistics about searchable snapshots.",
+      "description": "Retrieve shard-level statistics about searchable snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
       "request": {
@@ -9673,6 +9729,27 @@
       "accept": [
         "application/json"
       ],
+      "description": "Evicts tokens from the service account token caches.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-service-token-caches.html",
+      "name": "security.clear_cached_service_tokens",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/service/{namespace}/{service}/credential/token/{name}/_clear_cache"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "contentType": [
         "application/json"
       ],
@@ -9697,6 +9774,34 @@
             "POST"
           ],
           "path": "/_security/api_key"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Creates a service account token for access without requiring basic authentication.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-service-token.html",
+      "name": "security.create_service_token",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/_security/service/{namespace}/{service}/credential/token/{name}"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/service/{namespace}/{service}/credential/token"
         }
       ],
       "visibility": "public"
@@ -9781,6 +9886,27 @@
             "DELETE"
           ],
           "path": "/_security/role_mapping/{name}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Deletes a service account token.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-service-token.html",
+      "name": "security.delete_service_token",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_security/service/{namespace}/{service}/credential/token/{name}"
         }
       ],
       "visibility": "public"
@@ -10031,6 +10157,60 @@
             "GET"
           ],
           "path": "/_security/role_mapping"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Retrieves information about service accounts.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-accounts.html",
+      "name": "security.get_service_accounts",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/service/{namespace}/{service}"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/service/{namespace}"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/service"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Retrieves information of all service credentials for a service account.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-credentials.html",
+      "name": "security.get_service_credentials",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/service/{namespace}/{service}/credential"
         }
       ],
       "visibility": "public"
@@ -15946,6 +16126,7 @@
       ],
       "query": [
         {
+          "description": "Specify timeout for connection to master",
           "name": "master_timeout",
           "required": false,
           "type": {
@@ -16004,53 +16185,9 @@
       }
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "_global.get_script_context"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "contexts",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ScriptContext",
-                  "namespace": "_global.get_script_context"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "_global.get_script_context"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
-        "name": "ScriptContext",
+        "name": "Context",
         "namespace": "_global.get_script_context"
       },
       "properties": [
@@ -16062,7 +16199,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ScriptContextMethod",
+                "name": "ContextMethod",
                 "namespace": "_global.get_script_context"
               }
             }
@@ -16084,7 +16221,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ScriptContextMethod",
+        "name": "ContextMethod",
         "namespace": "_global.get_script_context"
       },
       "properties": [
@@ -16118,7 +16255,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ScriptContextMethodParam",
+                "name": "ContextMethodParam",
                 "namespace": "_global.get_script_context"
               }
             }
@@ -16129,7 +16266,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ScriptContextMethodParam",
+        "name": "ContextMethodParam",
         "namespace": "_global.get_script_context"
       },
       "properties": [
@@ -16158,6 +16295,50 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.get_script_context"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "contexts",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Context",
+                  "namespace": "_global.get_script_context"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.get_script_context"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "LanguageContext",
@@ -16184,7 +16365,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "ScriptLanguage",
               "namespace": "_types"
             }
           }
@@ -19195,7 +19376,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ReindexDestination",
+        "name": "Destination",
         "namespace": "_global.reindex"
       },
       "properties": [
@@ -19238,8 +19419,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ReindexRouting",
-              "namespace": "_global.reindex"
+              "name": "Routing",
+              "namespace": "_types"
             }
           }
         },
@@ -19250,100 +19431,6 @@
             "kind": "instance_of",
             "type": {
               "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ReindexRouting",
-        "namespace": "_global.reindex"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ReindexSource",
-        "namespace": "_global.reindex"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl.abstractions.container"
-            }
-          }
-        },
-        {
-          "name": "remote",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RemoteSource",
-              "namespace": "_global.reindex"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SlicedScroll",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sort",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Sort",
-              "namespace": "_global.search.sort"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
               "namespace": "_types"
             }
           }
@@ -19438,7 +19525,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ReindexDestination",
+                "name": "Destination",
                 "namespace": "_global.reindex"
               }
             }
@@ -19482,7 +19569,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ReindexSource",
+                "name": "Source",
                 "namespace": "_global.reindex"
               }
             }
@@ -19782,6 +19869,92 @@
         "name": "Response",
         "namespace": "_global.reindex"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Source",
+        "namespace": "_global.reindex"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "remote",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RemoteSource",
+              "namespace": "_global.reindex"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SlicedScroll",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "_global.search.sort"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -30423,8 +30596,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
@@ -31857,8 +32030,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ScriptLanguage",
+              "namespace": "_types"
             }
           }
         },
@@ -31901,6 +32074,27 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "painless"
+        },
+        {
+          "name": "expression"
+        },
+        {
+          "name": "mustache"
+        },
+        {
+          "name": "java"
+        }
+      ],
+      "name": {
+        "name": "ScriptLanguage",
+        "namespace": "_types"
+      }
     },
     {
       "kind": "type_alias",
@@ -32745,8 +32939,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ScriptLanguage",
+              "namespace": "_types"
             }
           }
         },
@@ -45871,11 +46065,23 @@
           "name": "priority",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -47708,7 +47914,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "object"
@@ -85705,6 +85911,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported.",
           "name": "index",
           "required": true,
           "type": {
@@ -85720,6 +85927,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85729,8 +85937,10 @@
           }
         },
         {
+          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.",
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85740,8 +85950,10 @@
           }
         },
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85751,8 +85963,10 @@
           }
         },
         {
+          "description": "If false, requests that target a missing index return an error.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85762,8 +85976,10 @@
           }
         },
         {
+          "description": "If true, return all default settings in the response.",
           "name": "include_defaults",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85773,8 +85989,10 @@
           }
         },
         {
+          "description": "If true, a mapping type is expected in the body of mappings.",
           "name": "include_type_name",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85784,8 +86002,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85795,8 +86015,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {

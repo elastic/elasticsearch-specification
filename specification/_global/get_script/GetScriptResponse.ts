@@ -21,5 +21,9 @@ import { Id } from '@_types/common'
 import { StoredScript } from '@_types/Scripting'
 
 export class Response {
-  body: { _id: Id; found: boolean; script?: StoredScript }
+  body: {
+    _id: Id
+    found: boolean
+    script?: StoredScript
+  }
 }

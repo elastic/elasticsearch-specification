@@ -17,19 +17,20 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/sort/Sort'
-import { Fields, Indices } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { SlicedScroll } from '@_types/SlicedScroll'
-import { RemoteSource } from './RemoteSource'
+import { Name } from '@_types/common'
 
-export class ReindexSource {
-  index: Indices
-  query?: QueryContainer
-  remote?: RemoteSource
-  size?: integer
-  slice?: SlicedScroll
-  sort?: Sort
-  _source?: Fields
+export class Context {
+  methods: ContextMethod[]
+  name: Name
+}
+
+export class ContextMethod {
+  name: Name
+  return_type: string
+  params: ContextMethodParam[]
+}
+
+export class ContextMethodParam {
+  name: Name
+  type: string
 }

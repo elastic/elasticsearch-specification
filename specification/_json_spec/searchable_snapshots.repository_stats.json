@@ -6,14 +6,16 @@
     },
     "stability": "experimental",
     "visibility": "public",
-    "headers": {
-      "accept": ["application/json"]
+    "headers":{
+      "accept": [ "application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/_snapshot/{repository}/_stats",
-          "methods": ["GET"],
+          "methods": [
+            "GET"
+          ],
           "parts": {
             "repository": {
               "type": "string",

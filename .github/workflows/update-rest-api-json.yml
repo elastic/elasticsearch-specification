@@ -1,0 +1,46 @@
+name: Update rest-api-spec
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */3 * * *'  # At minute 0 past every 3rd hour.
+
+jobs:
+  update-rest-api:
+    name: Update rest-api-spec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install deps
+        run: |
+          npm install --prefix .github/download-artifacts
+          npm install --prefix compiler
+          npm install --prefix typescript-generator
+
+      - name: Download artifacts
+        run: |
+          node .github/download-artifacts/index.js --version 7.x-SNAPSHOT
+
+      - name: Generate output
+        run: |
+          npm run generate-schema --prefix compiler
+          npm run start --prefix typescript-generator
+
+      - name: Debug git status
+        run: |
+          git status --porcelain
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: 'Update rest-api-spec'
+          body: 'As titled.'
+          commit-message: 'Update rest-api-spec'
+          delete-branch: true
+          team-reviewers: elastic/clients-team

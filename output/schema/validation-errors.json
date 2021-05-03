@@ -336,6 +336,12 @@
       ],
       "response": []
     },
+    "fleet.global_checkpoints": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "get": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -730,6 +736,12 @@
       ],
       "response": []
     },
+    "searchable_snapshots.cache_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "searchable_snapshots.clear_cache": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -745,6 +757,36 @@
     "searchable_snapshots.stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_cached_service_tokens": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.create_service_token": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.delete_service_token": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.get_service_accounts": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.get_service_credentials": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
