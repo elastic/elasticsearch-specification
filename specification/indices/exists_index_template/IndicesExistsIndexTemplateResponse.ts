@@ -17,11 +17,13 @@
  * under the License.
  */
 
+import { Void } from "@spec_utils/VoidValue";
+
 /**
  * Response codes:
  * 200: Indicates all specified index templates exist.
  * 404: Indicates one or more specified index templates do not exist.
  */
 export class Response {
-  body: {}
+  body: Void
 }
