@@ -8460,7 +8460,7 @@ export interface IndicesExistsIndexTemplateRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesExistsIndexTemplateResponse {}
+export type IndicesExistsIndexTemplateResponse = boolean
 
 export interface IndicesExistsTemplateRequest extends RequestBase {
   name: Names
@@ -12827,14 +12827,14 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDisableUserResponse {}
+export type SecurityDisableUserResponse = boolean
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export interface SecurityEnableUserResponse {}
+export type SecurityEnableUserResponse = boolean
 
 export interface SecurityGetApiKeyApiKeys {
   creation: long

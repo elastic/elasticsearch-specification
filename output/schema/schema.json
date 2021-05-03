@@ -7828,17 +7828,12 @@
         "namespace": "ml.start_data_frame_analytics"
       },
       "requestBodyRequired": false,
-<<<<<<< HEAD
       "response": {
         "name": "Response",
         "namespace": "ml.start_data_frame_analytics"
       },
       "since": "5.4.0",
       "stability": "TODO",
-=======
-      "response": null,
-      "stability": "stable",
->>>>>>> master
       "urls": [
         {
           "methods": [
