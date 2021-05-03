@@ -29,20 +29,37 @@ export class Usage {
   enabled: boolean
 }
 
-export class SecurityFeatureToggle {
+
+export class Counter {
+  active: long
+  total: long
+}
+
+export class FeatureToggle {
   enabled: boolean
 }
+
+export class BaseUrlConfig {
+  url_name: string
+  url_value: string
+}
+
+export class KibanaUrlConfig extends BaseUrlConfig {
+  time_range?: string
+}
+
+export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export class AlertingExecution {
   actions: Dictionary<string, ExecutionAction>
 }
 
 export class AlertingInput {
-  input: Dictionary<string, UsageCount>
-  trigger: Dictionary<string, UsageCount>
+  input: Dictionary<string, Counter>
+  trigger: Dictionary<string, Counter>
 }
 
-export class AnalyticsStatsUsage {
+export class AnalyticsStatistics {
   boxplot_usage: long
   cumulative_cardinality_usage: long
   string_stats_usage: long
@@ -54,20 +71,20 @@ export class AnalyticsStatsUsage {
   multi_terms_usage?: long
 }
 
-export class AuditUsage extends SecurityFeatureToggle {
+export class Audit extends FeatureToggle {
   outputs?: string[]
 }
 
-export class DatafeedCount {
+export class Datafeed {
   count: long
 }
 
-export class DataStreamsUsage extends Usage {
+export class DataStreams extends Usage {
   data_streams: long
   indices_count: long
 }
 
-export class DataTierPhaseCountUsage {
+export class DataTierPhaseStatistics {
   node_count: long
   index_count: long
   total_shard_count: long
@@ -80,17 +97,17 @@ export class DataTierPhaseCountUsage {
   primary_shard_size_mad_bytes: long
 }
 
-export class EqlFeaturesUsage {
+export class EqlFeatures {
   join: uint
-  joins: EqlFeaturesJoinUsage
-  keys: EqlFeaturesKeysUsage
+  joins: EqlFeaturesJoin
+  keys: EqlFeaturesKeys
   event: uint
-  pipes: EqlFeaturesPipesUsage
+  pipes: EqlFeaturesPipes
   sequence: uint
-  sequences: EqlFeaturesSequencesUsage
+  sequences: EqlFeaturesSequences
 }
 
-export class EqlFeaturesJoinUsage {
+export class EqlFeaturesJoin {
   join_queries_two: uint
   join_queries_three: uint
   join_until: uint
@@ -98,7 +115,7 @@ export class EqlFeaturesJoinUsage {
   join_queries_four: uint
 }
 
-export class EqlFeaturesKeysUsage {
+export class EqlFeaturesKeys {
   join_keys_two: uint
   join_keys_one: uint
   join_keys_three: uint
@@ -106,12 +123,12 @@ export class EqlFeaturesKeysUsage {
   join_keys_four: uint
 }
 
-export class EqlFeaturesPipesUsage {
+export class EqlFeaturesPipes {
   pipe_tail: uint
   pipe_head: uint
 }
 
-export class EqlFeaturesSequencesUsage {
+export class EqlFeaturesSequences {
   sequence_queries_three: uint
   sequence_queries_four: uint
   sequence_queries_two: uint
@@ -139,12 +156,12 @@ export class IlmPolicyStatistics {
   phases: Phases
 }
 
-export class IlmUsage {
+export class Ilm {
   policy_count: integer
   policy_stats: IlmPolicyStatistics[]
 }
 
-export class IpFilterUsage {
+export class IpFilter {
   http: boolean
   transport: boolean
 }
@@ -155,62 +172,51 @@ export class CustomSettings {
   job_tags?: Dictionary<string, string>
 }
 
-export class BaseUrlConfig {
-  url_name: string
-  url_value: string
-}
-
-export class KibanaUrlConfig extends BaseUrlConfig {
-  time_range?: string
-}
-
-export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
-
 export class MlJobForecasts {
   total: long
   forecasted_jobs: long
 }
 
-export class MlDataFrameAnalyticsJobsUsage {
-  memory_usage?: MlDataFrameAnalyticsJobsMemoryUsage
-  _all: MlDataFrameAnalyticsJobsCountUsage
+export class MlDataFrameAnalyticsJobs {
+  memory_usage?: MlDataFrameAnalyticsJobsMemory
+  _all: MlDataFrameAnalyticsJobsCount
   analysis_counts?: EmptyObject
 }
 
-export class MlDataFrameAnalyticsJobsMemoryUsage {
+export class MlDataFrameAnalyticsJobsMemory {
   peak_usage_bytes: JobStatistics
 }
 
-export class MlDataFrameAnalyticsJobsCountUsage {
+export class MlDataFrameAnalyticsJobsCount {
   count: long
 }
 
-export class MlInferenceUsage {
-  ingest_processors: Dictionary<string, MlInferenceIngestProcessorUsage>
-  trained_models: MlInferenceTrainedModelsUsage
+export class MlInference {
+  ingest_processors: Dictionary<string, MlInferenceIngestProcessor>
+  trained_models: MlInferenceTrainedModels
 }
 
-export class MlInferenceIngestProcessorUsage {
-  num_docs_processed: MlInferenceIngestProcessorCountUsage
-  pipelines: MlUsageCounter
-  num_failures: MlInferenceIngestProcessorCountUsage
-  time_ms: MlInferenceIngestProcessorCountUsage
+export class MlInferenceIngestProcessor {
+  num_docs_processed: MlInferenceIngestProcessorCount
+  pipelines: MlCounter
+  num_failures: MlInferenceIngestProcessorCount
+  time_ms: MlInferenceIngestProcessorCount
 }
 
-export class MlInferenceTrainedModelsUsage {
+export class MlInferenceTrainedModels {
   estimated_operations?: JobStatistics
   estimated_heap_memory_usage_bytes?: JobStatistics
-  count?: MlInferenceTrainedModelsCountUsage
-  _all: MlUsageCounter
+  count?: MlInferenceTrainedModelsCount
+  _all: MlCounter
 }
 
-export class MlInferenceIngestProcessorCountUsage {
+export class MlInferenceIngestProcessorCount {
   max: long
   sum: long
   min: long
 }
 
-export class MlInferenceTrainedModelsCountUsage {
+export class MlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
@@ -218,31 +224,31 @@ export class MlInferenceTrainedModelsCountUsage {
   classification: long
 }
 
-export class MlUsageCounter {
+export class MlCounter {
   count: long
 }
 
-export class QueryUsage {
+export class Query {
   count?: integer
   failed?: integer
   paging?: integer
   total?: integer
 }
 
-export class RealmCacheUsage {
+export class RealmCache {
   size: long
 }
 
-export class RoleMappingUsage {
+export class RoleMapping {
   enabled: integer
   size: integer
 }
 
-export class RuntimeFieldsUsage extends Usage {
-  field_types: RuntimeFieldsTypeUsage[]
+export class RuntimeFields extends Usage {
+  field_types: RuntimeFieldsType[]
 }
 
-export class RuntimeFieldsTypeUsage {
+export class RuntimeFieldsType {
   chars_max: long
   chars_total: long
   count: long
@@ -259,170 +265,165 @@ export class RuntimeFieldsTypeUsage {
   source_total: long
 }
 
-export class SecurityRolesUsage {
-  native: SecurityRolesNativeUsage
-  dls: SecurityRolesDlsUsage
-  file: SecurityRolesFileUsage
+export class SecurityRoles {
+  native: SecurityRolesNative
+  dls: SecurityRolesDls
+  file: SecurityRolesFile
 }
 
-export class SecurityRolesNativeUsage {
+export class SecurityRolesNative {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export class SecurityRolesDlsUsage {
-  bit_set_cache: SecurityRolesDlsBitSetCacheUsage
+export class SecurityRolesDls {
+  bit_set_cache: SecurityRolesDlsBitSetCache
 }
 
-export class SecurityRolesDlsBitSetCacheUsage {
+export class SecurityRolesDlsBitSetCache {
   count: integer
   memory?: ByteSize
   memory_in_bytes: ulong
 }
 
-export class SecurityRolesFileUsage {
+export class SecurityRolesFile {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export class AlertingUsage extends Usage {
-  count: UsageCount
+export class Alerting extends Usage {
+  count: Counter
   execution: AlertingExecution
   watch: AlertingInput
 }
 
-export class AnalyticsUsage extends Usage {
-  stats: AnalyticsStatsUsage
+export class Analytics extends Usage {
+  stats: AnalyticsStatistics
 }
 
-export class CcrUsage extends Usage {
+export class Ccr extends Usage {
   auto_follow_patterns_count: integer
   follower_indices_count: integer
 }
 
-export class DataTiersUsage extends Usage {
-  data_warm: DataTierPhaseCountUsage
+export class DataTiers extends Usage {
+  data_warm: DataTierPhaseStatistics
   /** @since 7.13.0 */
-  data_frozen?: DataTierPhaseCountUsage
-  data_cold: DataTierPhaseCountUsage
-  data_content: DataTierPhaseCountUsage
-  data_hot: DataTierPhaseCountUsage
+  data_frozen?: DataTierPhaseStatistics
+  data_cold: DataTierPhaseStatistics
+  data_content: DataTierPhaseStatistics
+  data_hot: DataTierPhaseStatistics
 }
 
-export class EqlUsage extends Usage {
-  features: EqlFeaturesUsage
-  queries: Dictionary<string, QueryUsage>
+export class Eql extends Usage {
+  features: EqlFeatures
+  queries: Dictionary<string, Query>
 }
 
-export class FlattenedUsage extends Usage {
+export class Flattened extends Usage {
   field_count: integer
 }
 
-export class FrozenIndicesUsage extends Usage {
+export class FrozenIndices extends Usage {
   indices_count: long
 }
 
-export class MachineLearningUsage extends Usage {
-  datafeeds: Dictionary<string, DatafeedCount>
+export class MachineLearning extends Usage {
+  datafeeds: Dictionary<string, Datafeed>
   jobs: Dictionary<string, Job>
   node_count: integer
-  data_frame_analytics_jobs: MlDataFrameAnalyticsJobsUsage
-  inference: MlInferenceUsage
+  data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
+  inference: MlInference
 }
 
-export class MonitoringUsage extends Usage {
+export class Monitoring extends Usage {
   collection_enabled: boolean
   enabled_exporters: Dictionary<string, long>
 }
 
-export class SqlUsage extends Usage {
+export class Sql extends Usage {
   features: Dictionary<string, integer>
-  queries: Dictionary<string, QueryUsage>
+  queries: Dictionary<string, Query>
 }
 
-export class SslUsage {
-  http: SecurityFeatureToggle
-  transport: SecurityFeatureToggle
+export class Ssl {
+  http: FeatureToggle
+  transport: FeatureToggle
 }
 
-export class UsageCount {
-  active: long
-  total: long
+export class WatcherActions {
+  actions: Dictionary<Name, WatcherActionTotals>
 }
 
-export class WatcherActionsUsage {
-  actions: Dictionary<Name, WatcherActionTotalsUsage>
+export class WatcherWatch {
+  input: Dictionary<Name, Counter>
+  condition?: Dictionary<Name, Counter>
+  action?: Dictionary<Name, Counter>
+  trigger: WatcherWatchTrigger
 }
 
-export class WatcherWatchUsage {
-  input: Dictionary<Name, UsageCount>
-  condition?: Dictionary<Name, UsageCount>
-  action?: Dictionary<Name, UsageCount>
-  trigger: WatcherWatchTriggerUsage
+export class WatcherWatchTrigger {
+  schedule?: WatcherWatchTriggerSchedule
+  _all: Counter
 }
 
-export class WatcherWatchTriggerUsage {
-  schedule?: WatcherWatchTriggerScheduleUsage
-  _all: UsageCount
-}
-
-export class WatcherActionTotalsUsage {
+export class WatcherActionTotals {
   total: long
   total_time_in_ms: long
 }
 
-export class RealmUsage extends Usage {
+export class Realm extends Usage {
   name?: string[]
   order?: long[]
   size?: long[]
-  cache?: RealmCacheUsage[]
+  cache?: RealmCache[]
   has_authorization_realms?: boolean[]
   has_default_username_pattern?: boolean[]
   has_truststore?: boolean[]
   is_authentication_delegated?: boolean[]
 }
 
-export class SearchableSnapshotsUsage extends Usage {
+export class SearchableSnapshots extends Usage {
   indices_count: integer
   full_copy_indices_count?: integer
   shared_cache_indices_count?: integer
 }
 
-export class SecurityUsage extends Usage {
-  api_key_service: SecurityFeatureToggle
-  anonymous: SecurityFeatureToggle
-  audit: AuditUsage
-  fips_140: SecurityFeatureToggle
-  ipfilter: IpFilterUsage
-  realms: Dictionary<string, RealmUsage>
-  role_mapping: Dictionary<string, RoleMappingUsage>
-  roles: SecurityRolesUsage
-  ssl: SslUsage
-  system_key?: SecurityFeatureToggle
-  token_service: SecurityFeatureToggle
+export class Security extends Usage {
+  api_key_service: FeatureToggle
+  anonymous: FeatureToggle
+  audit: Audit
+  fips_140: FeatureToggle
+  ipfilter: IpFilter
+  realms: Dictionary<string, Realm>
+  role_mapping: Dictionary<string, RoleMapping>
+  roles: SecurityRoles
+  ssl: Ssl
+  system_key?: FeatureToggle
+  token_service: FeatureToggle
   operator_privileges: Usage
 }
 
-export class SlmUsage extends Usage {
+export class Slm extends Usage {
   policy_count?: integer
   policy_stats?: Statistics
 }
 
-export class VectorUsage extends Usage {
+export class Vector extends Usage {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
 }
 
-export class WatcherUsage extends Usage {
-  execution: WatcherActionsUsage
-  watch: WatcherWatchUsage
-  count: UsageCount
+export class Watcher extends Usage {
+  execution: WatcherActions
+  watch: WatcherWatch
+  count: Counter
 }
 
-export class WatcherWatchTriggerScheduleUsage extends UsageCount {
-  cron: UsageCount
-  _all: UsageCount
+export class WatcherWatchTriggerSchedule extends Counter {
+  cron: Counter
+  _all: Counter
 }

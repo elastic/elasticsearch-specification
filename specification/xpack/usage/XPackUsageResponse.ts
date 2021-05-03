@@ -18,54 +18,54 @@
  */
 
 import {
-  AnalyticsUsage,
-  CcrUsage,
-  DataStreamsUsage,
-  DataTiersUsage,
-  EqlUsage,
-  FlattenedUsage,
-  FrozenIndicesUsage,
-  IlmUsage,
-  MachineLearningUsage,
-  MonitoringUsage,
-  RuntimeFieldsUsage,
-  SearchableSnapshotsUsage,
-  SecurityUsage,
-  SlmUsage,
-  SqlUsage,
+  Analytics,
+  Ccr,
+  DataStreams,
+  DataTiers,
+  Eql,
+  Flattened,
+  FrozenIndices,
+  Ilm,
+  MachineLearning,
+  Monitoring,
+  RuntimeFields,
+  SearchableSnapshots,
+  Security,
+  Slm,
+  Sql,
   Usage,
-  VectorUsage,
-  WatcherUsage
+  Vector,
+  Watcher
 } from './types'
 
 export class Response {
   body: {
     aggregate_metric: Usage
-    analytics: AnalyticsUsage
-    watcher: WatcherUsage
-    ccr: CcrUsage
+    analytics: Analytics
+    watcher: Watcher
+    ccr: Ccr
     data_frame?: Usage
     data_science?: Usage
-    data_streams?: DataStreamsUsage
-    data_tiers: DataTiersUsage
+    data_streams?: DataStreams
+    data_tiers: DataTiers
     enrich?: Usage
-    eql: EqlUsage
-    flattened?: FlattenedUsage
-    frozen_indices: FrozenIndicesUsage
+    eql: Eql
+    flattened?: Flattened
+    frozen_indices: FrozenIndices
     graph: Usage
-    ilm: IlmUsage
+    ilm: Ilm
     logstash: Usage
-    ml: MachineLearningUsage
-    monitoring: MonitoringUsage
+    ml: MachineLearning
+    monitoring: Monitoring
     rollup: Usage
-    runtime_fields?: RuntimeFieldsUsage
+    runtime_fields?: RuntimeFields
     spatial: Usage
-    searchable_snapshots: SearchableSnapshotsUsage
-    security: SecurityUsage
-    slm: SlmUsage
-    sql: SqlUsage
+    searchable_snapshots: SearchableSnapshots
+    security: Security
+    slm: Slm
+    sql: Sql
     transform: Usage
-    vectors: VectorUsage
+    vectors: Vector
     voting_only: Usage
   }
 }
