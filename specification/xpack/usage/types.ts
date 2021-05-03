@@ -243,7 +243,7 @@ export class RoleMapping {
   size: integer
 }
 
-export class RuntimeFields extends Usage {
+export class RuntimeFieldTypes extends Usage {
   field_types: RuntimeFieldsType[]
 }
 

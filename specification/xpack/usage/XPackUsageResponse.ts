@@ -28,7 +28,7 @@ import {
   Ilm,
   MachineLearning,
   Monitoring,
-  RuntimeFields,
+  RuntimeFieldTypes,
   SearchableSnapshots,
   Security,
   Slm,
@@ -58,7 +58,7 @@ export class Response {
     ml: MachineLearning
     monitoring: Monitoring
     rollup: Usage
-    runtime_fields?: RuntimeFields
+    runtime_fields?: RuntimeFieldTypes
     spatial: Usage
     searchable_snapshots: SearchableSnapshots
     security: Security
