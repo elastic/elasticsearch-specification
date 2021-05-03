@@ -19,7 +19,18 @@
 
 import { LicenseStatus } from '@license/get_license/LicenseStatus'
 import { LicenseType } from '@license/get_license/LicenseType'
-import { EpochMillis } from '@_types/Time'
+import { VersionString } from '@_types/common'
+import { DateString, EpochMillis } from '@_types/Time'
+
+export class BuildInformation {
+  date: DateString
+  hash: string
+}
+
+export class NativeCodeInformation {
+  build_hash: string
+  version: VersionString
+}
 
 export class MinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis
@@ -27,4 +38,41 @@ export class MinimalLicenseInformation {
   status: LicenseStatus
   type: LicenseType
   uid: string
+}
+
+export class Features {
+  aggregate_metric: Feature
+  analytics: Feature
+  ccr: Feature
+  data_frame?: Feature
+  data_science?: Feature
+  data_streams: Feature
+  data_tiers: Feature
+  enrich: Feature
+  eql: Feature
+  flattened?: Feature
+  frozen_indices: Feature
+  graph: Feature
+  ilm: Feature
+  logstash: Feature
+  ml: Feature
+  monitoring: Feature
+  rollup: Feature
+  runtime_fields?: Feature
+  searchable_snapshots: Feature
+  security: Feature
+  slm: Feature
+  spatial: Feature
+  sql: Feature
+  transform: Feature
+  vectors: Feature
+  voting_only: Feature
+  watcher: Feature
+}
+
+export class Feature {
+  available: boolean
+  description?: string
+  enabled: boolean
+  native_code_info?: NativeCodeInformation
 }

@@ -17,14 +17,12 @@
  * under the License.
  */
 
-import { MinimalLicenseInformation } from './MinimalLicenseInformation'
-import { XPackBuildInformation } from './XPackBuildInformation'
-import { XPackFeatures } from './XPackFeatures'
+import { BuildInformation, Features, MinimalLicenseInformation } from './types'
 
 export class Response {
   body: {
-    build: XPackBuildInformation
-    features: XPackFeatures
+    build: BuildInformation
+    features: Features
     license: MinimalLicenseInformation
     tagline: string
   }
