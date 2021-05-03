@@ -18,8 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Id } from '@_types/common'
+import { GeoIpDownloadStatistics, GeoIpNodeDatabases } from './types'
 
 export class Response {
   body: {
@@ -28,30 +28,4 @@ export class Response {
     /** Downloaded GeoIP2 databases for each node. */
     nodes: Dictionary<Id, GeoIpNodeDatabases>
   }
-}
-
-export class GeoIpDownloadStatistics {
-  /** Total number of successful database downloads. */
-  successful_downloads: integer
-  /** Total number of failed database downloads. */
-  failed_downloads: integer
-  /** Total milliseconds spent downloading databases. */
-  total_download_time: integer
-  /** Current number of databases available for use. */
-  database_count: integer
-  /** Total number of database updates skipped. */
-  skipped_updates: integer
-}
-
-/** Downloaded databases for the node. The field key is the node ID. */
-export class GeoIpNodeDatabases {
-  /** Downloaded databases for the node. */
-  databases: GeoIpNodeDatabaseName[]
-  /** Downloaded database files, including related license files. Elasticsearch stores these files in the node’s temporary directory: $ES_TMPDIR/geoip-databases/<node_id>. */
-  files_in_temp: string[]
-}
-
-export class GeoIpNodeDatabaseName {
-  /** Name of the database. */
-  name: Name
 }

@@ -27,12 +27,11 @@ import { Time } from '@_types/Time'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
   query_parameters?: {
     master_timeout?: Time
     timeout?: Time
   }
-  body?: {}
 }

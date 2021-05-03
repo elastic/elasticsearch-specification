@@ -17,11 +17,38 @@
  * under the License.
  */
 
-import { ProcessorBase } from '@ingest/_types/ProcessorBase'
-import { Field } from '@_types/common'
+import { Status } from '@watcher/_types/Action'
 
-export class JsonProcessor extends ProcessorBase {
-  add_to_root: boolean
-  field: Field
-  target_field: Field
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, IndexName, Name, Type } from '@_types/common'
+import { DateString } from '@_types/Time'
+
+export class Ingest {
+  timestamp: DateString
+  pipeline?: Name
+}
+
+export class PipelineSimulation {
+  doc?: DocumentSimulation
+  processor_results?: PipelineSimulation[]
+  tag?: string
+  processor_type?: string
+  status?: Status
+}
+
+export class SimulatePipelineDocument {
+  _id?: Id
+  _index?: IndexName
+  _source: UserDefinedValue
+}
+
+export class DocumentSimulation {
+  _id: Id
+  _index: IndexName
+  _ingest: Ingest
+  _parent?: string
+  _routing?: string
+  _source: Dictionary<string, UserDefinedValue>
+  _type?: Type
 }

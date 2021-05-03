@@ -18,7 +18,7 @@
  */
 
 import { VersionNumber } from '@_types/common'
-import { ProcessorContainer } from './ProcessorContainer'
+import { ProcessorContainer } from './Processors'
 
 export class Pipeline {
   description?: string

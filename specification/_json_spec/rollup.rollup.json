@@ -1,22 +1,20 @@
 {
-  "rollup.rollup":{
-    "documentation":{
-      "url":"https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
-      "description":"Rollup an index"
+  "rollup.rollup": {
+    "documentation": {
+      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
+      "description": "Rollup an index"
     },
-    "stability":"stable",
-    "visibility":"public",
-    "headers":{
-      "accept": [ "application/json"],
+    "stability": "stable",
+    "visibility": "public",
+    "headers": {
+      "accept": ["application/json"],
       "content_type": ["application/json"]
     },
     "url": {
       "paths": [
         {
           "path": "/{index}/_rollup/{rollup_index}",
-          "methods": [
-            "POST"
-          ],
+          "methods": ["POST"],
           "parts": {
             "index": {
               "type": "string",
@@ -32,10 +30,10 @@
         }
       ]
     },
-    "params":{},
-    "body":{
-      "description":"The rollup configuration",
-      "required":true
+    "params": {},
+    "body": {
+      "description": "The rollup configuration",
+      "required": true
     }
   }
 }

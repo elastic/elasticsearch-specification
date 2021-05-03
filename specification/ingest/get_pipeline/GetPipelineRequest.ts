@@ -31,8 +31,9 @@ export interface Request extends RequestBase {
     id?: Id
   }
   query_parameters?: {
-    master_timeout?: Time // default: 30s
-    summary?: boolean // default: false
+    /** @server_default 30s */
+    master_timeout?: Time
+    /** @server_default false */
+    summary?: boolean
   }
-  body?: {}
 }

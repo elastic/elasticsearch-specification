@@ -17,11 +17,4 @@
  * under the License.
  */
 
-import { ProcessorContainer } from './ProcessorContainer'
-
-export class ProcessorBase {
-  if?: string
-  ignore_failure?: boolean
-  on_failure?: ProcessorContainer[]
-  tag?: string
-}
+import { ProcessorContainer } from './Processors'

@@ -17,12 +17,11 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/sort/SortOrder'
-import { ProcessorBase } from '@ingest/_types/ProcessorBase'
-import { Field } from '@_types/common'
+import { RequestBase } from '@_types/Base'
 
-export class SortProcessor extends ProcessorBase {
-  field: Field
-  order: SortOrder
-  target_field: Field
-}
+/**
+ * @rest_spec_name ingest.processor_grok
+ * @since 6.1.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {}
