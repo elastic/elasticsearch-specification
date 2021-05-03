@@ -132338,6 +132338,55 @@
     {
       "kind": "interface",
       "name": {
+        "name": "AcknowledgeState",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AcknowledgementOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "awaits_successful_execution"
+        },
+        {
+          "name": "ackable"
+        },
+        {
+          "name": "acked"
+        }
+      ],
+      "name": {
+        "name": "AcknowledgementOptions",
+        "namespace": "watcher._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Action",
         "namespace": "watcher._types"
       },
@@ -132510,6 +132559,59 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ActionStatus",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "ack",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AcknowledgeState",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "last_execution",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExecutionState",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "last_successful_execution",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExecutionState",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "last_throttle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ThrottleState",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -132535,6 +132637,104 @@
         "name": "ActionType",
         "namespace": "watcher._types"
       }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Actions",
+        "namespace": "watcher._types"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "IndexName",
+            "namespace": "_types"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": false,
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "ActionStatus",
+            "namespace": "watcher._types"
+          }
+        }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ActivationState",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "active",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Timestamp",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ActivationStatus",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "actions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Actions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActivationState",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -133162,6 +133362,37 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExecutionState",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "successful",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
             }
           }
         }
@@ -135049,6 +135280,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ThrottleState",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "TimeOfDay",
         "namespace": "watcher._types"
       },
@@ -135376,7 +135638,7 @@
             "kind": "instance_of",
             "type": {
               "name": "WatchStatus",
-              "namespace": "watcher.ack_watch"
+              "namespace": "watcher._types"
             }
           }
         },
@@ -135429,6 +135691,81 @@
     {
       "kind": "interface",
       "name": {
+        "name": "WatchStatus",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "actions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Actions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "last_checked",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "last_met_condition",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActivationState",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "execution_state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "WebhookActionResult",
         "namespace": "watcher._types"
       },
@@ -135452,170 +135789,6 @@
             "type": {
               "name": "HttpInputResponseResult",
               "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "AcknowledgeState",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AcknowledgementState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "awaits_successful_execution"
-        },
-        {
-          "name": "ackable"
-        },
-        {
-          "name": "acked"
-        }
-      ],
-      "name": {
-        "name": "AcknowledgementState",
-        "namespace": "watcher.ack_watch"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ActionStatus",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "ack",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AcknowledgeState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "last_execution",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExecutionState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "last_successful_execution",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExecutionState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "last_throttle",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ThrottleState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ActivationState",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "active",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Timestamp",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionState",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "successful",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
             }
           }
         }
@@ -135673,7 +135846,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "WatchStatus",
-                "namespace": "watcher.ack_watch"
+                "namespace": "watcher._types"
               }
             }
           }
@@ -135684,176 +135857,6 @@
         "name": "Response",
         "namespace": "watcher.ack_watch"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ThrottleState",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "WatchStatus",
-        "namespace": "watcher.ack_watch"
-      },
-      "properties": [
-        {
-          "name": "actions",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ActionStatus",
-                "namespace": "watcher.ack_watch"
-              }
-            }
-          }
-        },
-        {
-          "name": "last_checked",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "last_met_condition",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActivationState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "execution_state",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ActivationStatus",
-        "namespace": "watcher.activate_watch"
-      },
-      "properties": [
-        {
-          "name": "actions",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ActionStatus",
-                "namespace": "watcher.ack_watch"
-              }
-            }
-          }
-        },
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActivationState",
-              "namespace": "watcher.ack_watch"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -135896,7 +135899,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ActivationStatus",
-                "namespace": "watcher.activate_watch"
+                "namespace": "watcher._types"
               }
             }
           }
@@ -135949,7 +135952,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ActivationStatus",
-                "namespace": "watcher.activate_watch"
+                "namespace": "watcher._types"
               }
             }
           }
@@ -136668,8 +136671,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Username",
+              "namespace": "_types"
             }
           }
         },
@@ -136749,7 +136752,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "WatchStatus",
-                "namespace": "watcher.ack_watch"
+                "namespace": "watcher._types"
               }
             }
           },
@@ -137125,22 +137128,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -137325,8 +137312,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           },
@@ -137594,22 +137581,6 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
       "inherits": {
         "type": {
           "name": "RequestBase",
