@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { Void } from '@spec_utils/VoidValue'
+import { OverlappingIndexTemplate } from '@indices/simulate_index_template/IndicesSimulateIndexTemplateRequest'
+import { TemplateMapping } from '@indices/_types/TemplateMapping'
 
 export class Response {
-  body: Void
+  body: {
+    /** Any templates that were superseded by the specified template. */
+    overlapping?: OverlappingIndexTemplate[]
+    /** The settings, mappings, and aliases that would be applied to matching indices. */
+    template?: TemplateMapping
+  }
 }

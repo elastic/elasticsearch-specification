@@ -29,8 +29,7 @@ jobs:
 
       - name: Generate output
         run: |
-          npm run generate-schema --prefix compiler
-          npm run start --prefix typescript-generator
+          make contrib
 
       - name: Debug git status
         run: |

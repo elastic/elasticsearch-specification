@@ -8455,6 +8455,13 @@ export interface IndicesExistsAliasRequest extends RequestBase {
 
 export type IndicesExistsAliasResponse = boolean
 
+export interface IndicesExistsIndexTemplateRequest extends RequestBase {
+  name: Name
+  master_timeout?: Time
+}
+
+export type IndicesExistsIndexTemplateResponse = boolean
+
 export interface IndicesExistsTemplateRequest extends RequestBase {
   name: Names
   flat_settings?: boolean
@@ -8678,6 +8685,15 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {}
+
+export interface IndicesGetUpgradeRequest extends RequestBase {
+  stub: string
+}
+
+export interface IndicesGetUpgradeResponse {
+  overlapping?: IndicesSimulateIndexTemplateOverlappingIndexTemplate[]
+  template?: IndicesTemplateMapping
+}
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
@@ -9116,6 +9132,17 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
 }
 
 export interface IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {}
+
+export interface IndicesSimulateTemplateRequest extends RequestBase {
+  name?: Name
+  create?: boolean
+  master_timeout?: Time
+  body?: IndicesGetIndexTemplateIndexTemplate
+}
+
+export interface IndicesSimulateTemplateResponse {
+  stub: string
+}
 
 export interface IndicesSplitRequest extends RequestBase {
   index: IndexName
@@ -10745,6 +10772,14 @@ export interface MlExplainDataFrameAnalyticsResponse {
   memory_estimation: MlDataFrameAnalyticsMemoryEstimation
 }
 
+export interface MlFindFileStructureRequest extends RequestBase {
+  stub: string
+}
+
+export interface MlFindFileStructureResponse {
+  stub: string
+}
+
 export interface MlFlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string
@@ -11451,6 +11486,15 @@ export interface MlSetUpgradeModeRequest extends RequestBase {
 
 export interface MlSetUpgradeModeResponse extends AcknowledgedResponseBase {}
 
+export interface MlStartDataFrameAnalyticsRequest extends RequestBase {
+  id: Id
+  timeout?: Time
+}
+
+export interface MlStartDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
+  node: string
+}
+
 export interface MlStartDatafeedRequest extends RequestBase {
   datafeed_id: Id
   start?: Time
@@ -11611,6 +11655,18 @@ export interface MlUpdateModelSnapshotRequest extends RequestBase {
 
 export interface MlUpdateModelSnapshotResponse extends AcknowledgedResponseBase {
   model: MlModelSnapshot
+}
+
+export interface MlUpgradeJobSnapshotRequest extends RequestBase {
+  job_id: Id
+  snapshot_id: Id
+  wait_for_completion?: boolean
+  timeout?: Time
+}
+
+export interface MlUpgradeJobSnapshotResponse {
+  node: string
+  completed: boolean
 }
 
 export interface MlValidateDetectorRequest extends RequestBase {
@@ -12771,14 +12827,14 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDisableUserResponse {}
+export type SecurityDisableUserResponse = boolean
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export interface SecurityEnableUserResponse {}
+export type SecurityEnableUserResponse = boolean
 
 export interface SecurityGetApiKeyApiKeys {
   creation: long
