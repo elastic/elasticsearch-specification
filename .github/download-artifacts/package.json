@@ -12,6 +12,7 @@
   "dependencies": {
     "@actions/core": "^1.2.7",
     "cross-zip": "^4.0.0",
+    "minimist": "^1.2.5",
     "node-fetch": "^2.6.1",
     "rimraf": "^3.0.2"
   }

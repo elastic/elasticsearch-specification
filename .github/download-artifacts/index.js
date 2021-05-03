@@ -21,6 +21,7 @@
 
 const core = require('@actions/core')
 const { join } = require('path')
+const minimist = require('minimist')
 const stream = require('stream')
 const { promisify } = require('util')
 const { createWriteStream, promises } = require('fs')
@@ -60,6 +61,7 @@ async function downloadArtifacts (opts) {
   await rm(esFolder)
   await rm(specFolder)
   await mkdir(esFolder, { recursive: true })
+  await mkdir(specFolder, { recursive: true })
 
   core.info('Downloading artifacts')
   const response = await fetch(resolved.url)
@@ -78,6 +80,7 @@ async function downloadArtifacts (opts) {
   core.info('Moving files')
   const files = await readdir(downloadedSpec)
   for (const file of files) {
+    if (file === '_common.json') continue
     await rename(join(downloadedSpec, file), join(specFolder, file))
   }
 
@@ -137,7 +140,10 @@ async function main (options) {
   await downloadArtifacts(options)
 }
 
-main({ version: core.getInput('version') }).catch(t => {
+const options = minimist(process.argv.slice(2), {
+  string: ['id', 'version', 'hash']
+})
+main(options).catch(t => {
   core.error(t)
   process.exit(1)
 })

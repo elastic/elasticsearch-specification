@@ -1,9 +1,0 @@
-name: 'Download artifacts'
-description: 'Download latest rest-api-spec'
-inputs:
-  version:
-    description: 'stack version'
-    required: true
-runs:
-  using: 'node12'
-  main: 'index.js'
