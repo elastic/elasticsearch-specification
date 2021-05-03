@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ScriptingLanguageContext } from '@_types/Scripting'
+import { LanguageContext } from './types'
 
 export class Response {
   body: {
-    language_contexts: ScriptingLanguageContext[]
+    language_contexts: LanguageContext[]
     types_allowed: string[]
   }
 }

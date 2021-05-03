@@ -17,10 +17,20 @@
  * under the License.
  */
 
-import { Context } from './types'
+import { Name } from '@_types/common'
 
-export class Response {
-  body: {
-    contexts: Context[]
-  }
+export class Context {
+  methods: ContextMethod[]
+  name: Name
+}
+
+export class ContextMethod {
+  name: Name
+  return_type: string
+  params: ContextMethodParam[]
+}
+
+export class ContextMethodParam {
+  name: Name
+  type: string
 }

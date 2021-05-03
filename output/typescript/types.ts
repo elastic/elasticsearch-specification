@@ -439,18 +439,39 @@ export interface GetScriptResponse {
   script?: StoredScript
 }
 
+export interface GetScriptContextContext {
+  methods: GetScriptContextContextMethod[]
+  name: Name
+}
+
+export interface GetScriptContextContextMethod {
+  name: Name
+  return_type: string
+  params: GetScriptContextContextMethodParam[]
+}
+
+export interface GetScriptContextContextMethodParam {
+  name: Name
+  type: string
+}
+
 export interface GetScriptContextRequest extends RequestBase {
 }
 
 export interface GetScriptContextResponse {
-  contexts: ScriptContext[]
+  contexts: GetScriptContextContext[]
+}
+
+export interface GetScriptLanguagesLanguageContext {
+  contexts: string[]
+  language: ScriptLanguage
 }
 
 export interface GetScriptLanguagesRequest extends RequestBase {
 }
 
 export interface GetScriptLanguagesResponse {
-  language_contexts: ScriptingLanguageContext[]
+  language_contexts: GetScriptLanguagesLanguageContext[]
   types_allowed: string[]
 }
 
@@ -2094,32 +2115,11 @@ export interface ScriptBase {
   params?: Record<string, any>
 }
 
-export interface ScriptContext {
-  methods: ScriptContextMethod[]
-  name: Name
-}
-
-export interface ScriptContextMethod {
-  name: Name
-  return_type: string
-  params: ScriptContextMethodParam[]
-}
-
-export interface ScriptContextMethodParam {
-  name: Name
-  type: string
-}
-
 export interface ScriptField {
   script: Script
 }
 
 export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
-
-export interface ScriptingLanguageContext {
-  contexts: string[]
-  language: ScriptLanguage
-}
 
 export type ScrollId = string
 
