@@ -3660,8 +3660,8 @@ export interface IndexIndexSettings {
   'index.translog.durability'?: string
   'query_string.lenient'?: boolean | string
   'index.query_string.lenient'?: boolean | string
-  priority?: integer
-  'index.priority'?: integer
+  priority?: integer | string
+  'index.priority'?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndexIndexSettingsAnalysis
 }
@@ -3825,7 +3825,7 @@ export interface MappingTypesComplexObjectObjectProperty extends MappingTypesCor
   dynamic?: boolean | MappingDynamicMapping
   enabled?: boolean
   properties?: Record<PropertyName, MappingTypesProperty>
-  type: 'object'
+  type?: 'object'
 }
 
 export interface MappingTypesCoreBinaryBinaryProperty extends MappingTypesDocValuesPropertyBase {

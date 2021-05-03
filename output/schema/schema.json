@@ -45731,11 +45731,23 @@
           "name": "priority",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -47574,7 +47586,7 @@
         },
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "literal_value",
             "value": "object"
@@ -85429,6 +85441,7 @@
       },
       "path": [
         {
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported.",
           "name": "index",
           "required": true,
           "type": {
@@ -85444,6 +85457,7 @@
         {
           "name": "allow_no_indices",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85453,8 +85467,10 @@
           }
         },
         {
+          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.",
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85464,8 +85480,10 @@
           }
         },
         {
+          "description": "If true, returns settings in flat format.",
           "name": "flat_settings",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85475,8 +85493,10 @@
           }
         },
         {
+          "description": "If false, requests that target a missing index return an error.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85486,8 +85506,10 @@
           }
         },
         {
+          "description": "If true, return all default settings in the response.",
           "name": "include_defaults",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85497,8 +85519,10 @@
           }
         },
         {
+          "description": "If true, a mapping type is expected in the body of mappings.",
           "name": "include_type_name",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85508,8 +85532,10 @@
           }
         },
         {
+          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -85519,8 +85545,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
