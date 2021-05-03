@@ -1,0 +1,28 @@
+name: Auto Label
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # At minute 0 past every 3rd hour.
+
+jobs:
+  update-rest-api:
+    name: Update rest-api-spec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download artifacts
+        uses: .github/download-artifacts
+        with:
+          version: 8.0-SNAPSHOT
+
+      - name: Test 1
+        run: |
+          ls -al artifacts
+
+      - name: Test 2
+        run: |
+          ls -al specification/_json_spec
+
+      - name: Test 3
+        run: |
+          git status --porcelain
