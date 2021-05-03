@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { WatcherMetric } from './types';
+import { WatcherMetric } from './types'
 
 /**
  * @rest_spec_name watcher.stats
