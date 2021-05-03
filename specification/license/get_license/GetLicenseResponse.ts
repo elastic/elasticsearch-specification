@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LicenseInformation } from './LicenseInformation'
+import { LicenseInformation } from './types'
 
 export class Response {
   body: { license: LicenseInformation }

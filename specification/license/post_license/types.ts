@@ -17,7 +17,7 @@
  * under the License.
  */
 
-export class LicenseAcknowledgement {
+export class Acknowledgement {
   license: string[]
   message: string
 }

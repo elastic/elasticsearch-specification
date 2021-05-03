@@ -19,7 +19,26 @@
 
 import { long } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
-import { LicenseType } from './LicenseType'
+
+
+export enum Type {
+  missing = 0,
+  trial = 1,
+  basic = 2,
+  standard = 3,
+  dev = 4,
+  silver = 5,
+  gold = 6,
+  platinum = 7,
+  enterprise = 8
+}
+
+export enum Status {
+  active = 0,
+  valid = 1,
+  invalid = 2,
+  expired = 3
+}
 
 export class License {
   expiry_date_in_millis: EpochMillis
@@ -30,6 +49,6 @@ export class License {
   max_resource_units?: long
   signature: string
   start_date_in_millis: EpochMillis
-  type: LicenseType
+  type: Type
   uid: string
 }

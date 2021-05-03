@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LicenseType } from '@license/get_license/LicenseType'
+import { Type } from '@license/_types/License'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
@@ -25,6 +25,6 @@ export class Response extends AcknowledgedResponseBase {
     error_message?: string
     acknowledged: boolean
     trial_was_started: boolean
-    type: LicenseType
+    type: Type
   }
 }

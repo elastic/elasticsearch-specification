@@ -17,14 +17,22 @@
  * under the License.
  */
 
-export enum LicenseType {
-  missing = 0,
-  trial = 1,
-  basic = 2,
-  standard = 3,
-  dev = 4,
-  silver = 5,
-  gold = 6,
-  platinum = 7,
-  enterprise = 8
+import { Status, Type } from '@license/_types/License'
+import { Uuid } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { DateString, EpochMillis } from '@_types/Time'
+
+export class LicenseInformation {
+  expiry_date: DateString
+  expiry_date_in_millis: EpochMillis
+  issue_date: DateString
+  issue_date_in_millis: EpochMillis
+  issued_to: string
+  issuer: string
+  max_nodes: long
+  max_resource_units?: integer
+  status: Status
+  type: Type
+  uid: Uuid
+  start_date_in_millis: EpochMillis
 }
