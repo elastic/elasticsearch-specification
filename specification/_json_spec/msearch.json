@@ -49,12 +49,7 @@
     "params": {
       "search_type": {
         "type": "enum",
-        "options": [
-          "query_then_fetch",
-          "query_and_fetch",
-          "dfs_query_then_fetch",
-          "dfs_query_and_fetch"
-        ],
+        "options": ["query_then_fetch", "dfs_query_then_fetch"],
         "description": "Search operation type"
       },
       "max_concurrent_searches": {
