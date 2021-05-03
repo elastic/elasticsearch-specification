@@ -22,8 +22,7 @@ import { Conflicts, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Time } from '@_types/Time'
-import { ReindexDestination } from './ReindexDestination'
-import { ReindexSource } from './ReindexSource'
+import { Destination, Source } from './types'
 
 /**
  * @rest_spec_name reindex
@@ -43,10 +42,10 @@ export interface Request extends RequestBase {
   }
   body?: {
     conflicts?: Conflicts
-    dest?: ReindexDestination
+    dest?: Destination
     max_docs?: long
     script?: Script
     size?: long
-    source?: ReindexSource
+    source?: Source
   }
 }

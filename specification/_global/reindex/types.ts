@@ -17,9 +17,40 @@
  * under the License.
  */
 
-import { Password, Username } from '@_types/common'
+import {
+  IndexName,
+  OpType,
+  VersionType,
+  Fields,
+  Indices,
+  Password,
+  Username,
+  Routing
+} from '@_types/common'
+import { Sort } from '@global/search/sort/Sort'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { SlicedScroll } from '@_types/SlicedScroll'
 import { Host } from '@_types/Networking'
 import { Time } from '@_types/Time'
+
+export class Destination {
+  index: IndexName
+  op_type?: OpType
+  pipeline?: string
+  routing?: Routing
+  version_type?: VersionType
+}
+
+export class Source {
+  index: Indices
+  query?: QueryContainer
+  remote?: RemoteSource
+  size?: integer
+  slice?: SlicedScroll
+  sort?: Sort
+  _source?: Fields
+}
 
 export class RemoteSource {
   connect_timeout: Time

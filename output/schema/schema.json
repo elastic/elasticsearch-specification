@@ -19153,7 +19153,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ReindexDestination",
+        "name": "Destination",
         "namespace": "_global.reindex"
       },
       "properties": [
@@ -19196,8 +19196,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ReindexRouting",
-              "namespace": "_global.reindex"
+              "name": "Routing",
+              "namespace": "_types"
             }
           }
         },
@@ -19208,100 +19208,6 @@
             "kind": "instance_of",
             "type": {
               "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ReindexRouting",
-        "namespace": "_global.reindex"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ReindexSource",
-        "namespace": "_global.reindex"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl.abstractions.container"
-            }
-          }
-        },
-        {
-          "name": "remote",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RemoteSource",
-              "namespace": "_global.reindex"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SlicedScroll",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sort",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Sort",
-              "namespace": "_global.search.sort"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
               "namespace": "_types"
             }
           }
@@ -19396,7 +19302,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ReindexDestination",
+                "name": "Destination",
                 "namespace": "_global.reindex"
               }
             }
@@ -19440,7 +19346,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ReindexSource",
+                "name": "Source",
                 "namespace": "_global.reindex"
               }
             }
@@ -19740,6 +19646,92 @@
         "name": "Response",
         "namespace": "_global.reindex"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Source",
+        "namespace": "_global.reindex"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl.abstractions.container"
+            }
+          }
+        },
+        {
+          "name": "remote",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RemoteSource",
+              "namespace": "_global.reindex"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SlicedScroll",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "_global.search.sort"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
