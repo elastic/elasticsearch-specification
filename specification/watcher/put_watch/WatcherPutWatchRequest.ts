@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Action } from '@watcher/_types/Action'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'

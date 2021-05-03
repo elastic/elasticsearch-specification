@@ -18,11 +18,12 @@
  */
 
 import { NodeStatistics } from '@nodes/_types/NodeStatistics'
-import { WatcherNodeStats } from './WatcherNodeStats'
+import { Name } from '@_types/common'
+import { WatcherNodeStats } from './types'
 
 export class Response {
   body: {
-    cluster_name: string
+    cluster_name: Name
     manually_stopped: boolean
     stats: WatcherNodeStats[]
     _nodes: NodeStatistics
