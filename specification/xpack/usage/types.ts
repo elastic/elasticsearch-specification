@@ -29,7 +29,6 @@ export class Usage {
   enabled: boolean
 }
 
-
 export class Counter {
   active: long
   total: long

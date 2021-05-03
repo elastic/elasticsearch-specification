@@ -336,6 +336,12 @@
       ],
       "response": []
     },
+    "fleet.global_checkpoints": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "get": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -404,7 +410,7 @@
     },
     "indices.exists_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -422,7 +428,7 @@
     },
     "indices.get_upgrade": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -458,7 +464,7 @@
     },
     "indices.simulate_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -524,7 +530,7 @@
     },
     "ml.find_file_structure": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -612,12 +618,6 @@
       ],
       "response": []
     },
-    "ml.start_data_frame_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.start_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -627,12 +627,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.upgrade_job_snapshot": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -742,6 +736,12 @@
       ],
       "response": []
     },
+    "searchable_snapshots.cache_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "searchable_snapshots.clear_cache": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -757,6 +757,36 @@
     "searchable_snapshots.stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_cached_service_tokens": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.create_service_token": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.delete_service_token": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.get_service_accounts": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.get_service_credentials": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
