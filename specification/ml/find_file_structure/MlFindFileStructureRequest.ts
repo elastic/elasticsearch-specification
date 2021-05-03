@@ -17,8 +17,18 @@
  * under the License.
  */
 
-import { Void } from '@spec_utils/VoidValue'
+import { RequestBase } from '@_types/Base'
 
-export class Response {
-  body: Void
+/**
+ * Depreacted in 7.12
+ * see: https://www.elastic.co/guide/en/elasticsearch/reference/7.12/ml-find-file-structure.html
+ *
+ * @rest_spec_name ml.find_file_structure
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    stub: string
+  }
 }

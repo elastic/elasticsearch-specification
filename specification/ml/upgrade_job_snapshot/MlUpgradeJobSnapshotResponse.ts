@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { Void } from '@spec_utils/VoidValue'
-
 export class Response {
-  body: Void
+  body: {
+    /** The ID of the assigned node for the upgrade task if it is still running. */
+    node: string
+    /** When true, this means the task is complete. When false, it is still running. */
+    completed: boolean
+  }
 }
