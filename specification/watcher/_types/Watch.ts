@@ -18,10 +18,11 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
-import { IndexName, Metadata } from '@_types/common'
+import { ActionStatus } from '@watcher/ack_watch/ActionStatus'
+import { ActivationState } from '@watcher/ack_watch/ActivationState'
+import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
 import { Action } from './Action'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
@@ -38,4 +39,13 @@ export class Watch {
   transform?: TransformContainer
   trigger: TriggerContainer
   throttle_period_in_millis?: long
+}
+
+export class WatchStatus {
+  actions: Dictionary<IndexName, ActionStatus>
+  last_checked?: DateString
+  last_met_condition?: DateString
+  state: ActivationState
+  version: VersionNumber
+  execution_state?: string // TODO find execution states in export enum  in server codebase
 }
