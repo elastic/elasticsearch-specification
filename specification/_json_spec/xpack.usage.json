@@ -1,26 +1,28 @@
 {
-  "xpack.usage": {
-    "documentation": {
-      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/current/usage-api.html",
-      "description": "Retrieves usage information about the installed X-Pack features."
+  "xpack.usage":{
+    "documentation":{
+      "url":"https://www.elastic.co/guide/en/elasticsearch/reference/current/usage-api.html",
+      "description":"Retrieves usage information about the installed X-Pack features."
     },
-    "stability": "stable",
-    "visibility": "public",
-    "headers": {
-      "accept": ["application/json"]
+    "stability":"stable",
+    "visibility":"public",
+    "headers":{
+      "accept": [ "application/json"]
     },
-    "url": {
-      "paths": [
+    "url":{
+      "paths":[
         {
-          "path": "/_xpack/usage",
-          "methods": ["GET"]
+          "path":"/_xpack/usage",
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },
-    "params": {
-      "master_timeout": {
-        "type": "time",
-        "description": "Specify timeout for watch write operation"
+    "params":{
+      "master_timeout":{
+        "type":"time",
+        "description":"Specify timeout for watch write operation"
       }
     }
   }
