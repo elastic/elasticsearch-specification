@@ -410,7 +410,7 @@
     },
     "indices.exists_index_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -428,7 +428,7 @@
     },
     "indices.get_upgrade": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -464,7 +464,7 @@
     },
     "indices.simulate_template": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -530,7 +530,7 @@
     },
     "ml.find_file_structure": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -618,12 +618,6 @@
       ],
       "response": []
     },
-    "ml.start_data_frame_analytics": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.start_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -633,12 +627,6 @@
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.upgrade_job_snapshot": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },

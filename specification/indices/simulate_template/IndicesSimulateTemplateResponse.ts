@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Void } from '@spec_utils/VoidValue'
-
 export class Response {
-  body: Void
+  body: {
+    stub: string
+  }
 }

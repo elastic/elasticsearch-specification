@@ -17,8 +17,16 @@
  * under the License.
  */
 
-import { Void } from '@spec_utils/VoidValue'
+import { RequestBase } from '@_types/Base'
 
-export class Response {
-  body: Void
+/**
+ * @rest_spec_name indices.get_upgrade
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    stub: string
+  }
+  query_parameters?: {}
 }
