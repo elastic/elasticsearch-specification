@@ -18,7 +18,12 @@
  */
 
 import { DateString } from '@_types/Time'
-import { AcknowledgementState } from './AcknowledgementState'
+
+export enum AcknowledgementState {
+  awaits_successful_execution = 0,
+  ackable = 1,
+  acked = 2
+}
 
 export class AcknowledgeState {
   state: AcknowledgementState

@@ -30,6 +30,4 @@ export interface Request extends RequestBase {
     watch_id: Name
     action_id?: Names
   }
-  query_parameters?: {}
-  body?: {}
 }

@@ -18,12 +18,11 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ActionStatus } from '@watcher/ack_watch/ActionStatus'
 import { ActivationState } from '@watcher/ack_watch/ActivationState'
 import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-import { Action } from './Action'
+import { Action, Actions } from './Action'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
 import { TransformContainer } from './Transform'
@@ -42,7 +41,7 @@ export class Watch {
 }
 
 export class WatchStatus {
-  actions: Dictionary<IndexName, ActionStatus>
+  actions: Actions
   last_checked?: DateString
   last_met_condition?: DateString
   state: ActivationState

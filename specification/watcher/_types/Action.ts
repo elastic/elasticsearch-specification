@@ -17,7 +17,11 @@
  * under the License.
  */
 
-import { HttpHeaders } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { AcknowledgeState } from '@watcher/ack_watch/AcknowledgeState'
+import { ExecutionState } from '@watcher/ack_watch/ExecutionState'
+import { ThrottleState } from '@watcher/ack_watch/ThrottleState'
+import { HttpHeaders, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { EpochMillis, Time } from '@_types/Time'
 import { ConditionContainer } from './Conditions'
@@ -89,3 +93,12 @@ export enum Status {
   simulated = 2,
   throttled = 3
 }
+
+export class ActionStatus {
+  ack: AcknowledgeState
+  last_execution?: ExecutionState
+  last_successful_execution?: ExecutionState
+  last_throttle?: ThrottleState
+}
+
+export type Actions = Dictionary<IndexName, ActionStatus>
