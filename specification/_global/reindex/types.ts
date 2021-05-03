@@ -17,7 +17,16 @@
  * under the License.
  */
 
-import { IndexName, OpType, VersionType, Fields, Indices, Password, Username, Routing } from '@_types/common'
+import {
+  IndexName,
+  OpType,
+  VersionType,
+  Fields,
+  Indices,
+  Password,
+  Username,
+  Routing
+} from '@_types/common'
 import { Sort } from '@global/search/sort/Sort'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'

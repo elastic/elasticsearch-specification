@@ -791,25 +791,12 @@ export interface RankEvalUnratedDocument {
   _index: IndexName
 }
 
-export interface ReindexReindexDestination {
+export interface ReindexDestination {
   index: IndexName
   op_type?: OpType
   pipeline?: string
-  routing?: ReindexReindexRouting
+  routing?: Routing
   version_type?: VersionType
-}
-
-export interface ReindexReindexRouting {
-}
-
-export interface ReindexReindexSource {
-  index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
-  remote?: ReindexRemoteSource
-  size?: integer
-  slice?: SlicedScroll
-  sort?: SearchSortSort
-  _source?: Fields
 }
 
 export interface ReindexRemoteSource {
@@ -831,11 +818,11 @@ export interface ReindexRequest extends RequestBase {
   require_alias?: boolean
   body?: {
     conflicts?: Conflicts
-    dest?: ReindexReindexDestination
+    dest?: ReindexDestination
     max_docs?: long
     script?: Script
     size?: long
-    source?: ReindexReindexSource
+    source?: ReindexSource
   }
 }
 
@@ -856,6 +843,16 @@ export interface ReindexResponse {
   total?: long
   updated?: long
   version_conflicts?: long
+}
+
+export interface ReindexSource {
+  index: Indices
+  query?: QueryDslAbstractionsContainerQueryContainer
+  remote?: ReindexRemoteSource
+  size?: integer
+  slice?: SlicedScroll
+  sort?: SearchSortSort
+  _source?: Fields
 }
 
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
