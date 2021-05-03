@@ -17,45 +17,11 @@
  * under the License.
  */
 
+import { ExecutionStatus, ExecutionResult } from '@watcher/_types/Execution'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
-import { TriggerEventContainer } from '@watcher/_types/Trigger'
+import { TriggerEventResult } from '@watcher/_types/Trigger'
 import { Id, Metadata, Username } from '@_types/common'
-import { DateString } from '@_types/Time'
-import { integer } from '@_types/Numeric'
-
-import {
-  ActionType,
-  LoggingActionResult,
-  Status,
-  WebhookActionResult
-} from '@watcher/_types/Action'
-import { EmailActionResult } from '@watcher/_types/EmailAction'
-import { IndexActionResult } from '@watcher/_types/IndexAction'
-import { PagerDutyActionResult } from '@watcher/_types/PagerDutyAction'
-import { SlackActionResult } from '@watcher/_types/SlackAction'
-
-import { ConditionType } from '@watcher/_types/Conditions'
-import { InputType } from '@watcher/_types/Input'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Dictionary } from '@spec_utils/Dictionary'
-
-export enum ActionExecutionState {
-  awaits_execution = 0,
-  checking = 1,
-  execution_not_needed = 2,
-  throttled = 3,
-  executed = 4,
-  failed = 5,
-  deleted_while_queued = 6,
-  not_executed_already_queued = 7
-}
-
-export class TriggerEventResult {
-  manual: TriggerEventContainer
-  triggered_time: DateString
-  type: string
-}
 
 export class WatchRecord {
   condition: ConditionContainer
@@ -64,41 +30,8 @@ export class WatchRecord {
   metadata: Metadata
   node: string
   result: ExecutionResult
-  state: ActionExecutionState
+  state: ExecutionStatus
   trigger_event: TriggerEventResult
   user: Username
   watch_id: Id
-}
-
-export class ExecutionResultCondition {
-  met: boolean
-  status: Status
-  type: ConditionType
-}
-
-export class ExecutionResultAction {
-  email?: EmailActionResult
-  id: Id
-  index?: IndexActionResult
-  logging?: LoggingActionResult
-  pagerduty?: PagerDutyActionResult
-  reason?: string
-  slack?: SlackActionResult
-  status: Status
-  type: ActionType
-  webhook?: WebhookActionResult
-}
-
-export class ExecutionResult {
-  actions: ExecutionResultAction[]
-  condition: ExecutionResultCondition
-  execution_duration: integer
-  execution_time: DateString
-  input: ExecutionResultInput
-}
-
-export class ExecutionResultInput {
-  payload: Dictionary<string, UserDefinedValue>
-  status: Status
-  type: InputType
 }

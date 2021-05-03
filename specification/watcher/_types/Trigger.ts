@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { DateString } from '@_types/Time'
 import { ScheduleContainer, ScheduleTriggerEvent } from './Schedule'
 
 /**
@@ -33,4 +34,10 @@ export class TriggerEvent {}
  */
 export class TriggerEventContainer {
   schedule: ScheduleTriggerEvent
+}
+
+export class TriggerEventResult {
+  manual: TriggerEventContainer
+  triggered_time: DateString
+  type: string
 }

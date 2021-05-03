@@ -17,20 +17,10 @@
  * under the License.
  */
 
+import { ExecutionPhase, ExecutionThreadPool } from '@watcher/_types/Execution'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-
-export enum ExecutionPhase {
-  awaits_execution = 0,
-  started = 1,
-  input = 2,
-  condition = 3,
-  actions = 4,
-  watch_transform = 5,
-  aborted = 6,
-  finished = 7
-}
 
 export enum WatcherState {
   stopped = 0,
@@ -46,11 +36,6 @@ export class WatcherNodeStats {
   watch_count: long
   watcher_state: WatcherState
   node_id: Id
-}
-
-export class ExecutionThreadPool {
-  max_size: long
-  queue_size: long
 }
 
 export enum WatcherMetric {
