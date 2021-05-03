@@ -1,5 +1,7 @@
-name: Auto Label
+name: Update rest-api-spec
 on:
+  pull_request: # todo: remove this
+    types: [opened, synchronize]
   schedule:
     - cron: '0 */3 * * *'  # At minute 0 past every 3rd hour.
 
