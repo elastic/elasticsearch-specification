@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ActivationState } from '@watcher/ack_watch/ActivationState'
+import { ActivationState } from '@watcher/_types/Activation'
 import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'

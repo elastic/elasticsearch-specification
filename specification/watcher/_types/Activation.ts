@@ -17,9 +17,17 @@
  * under the License.
  */
 
-import { DateString } from '@_types/Time'
+import { Actions } from '@watcher/_types/Action'
+import { VersionNumber } from '@_types/common'
+import { Timestamp } from '@_types/Time'
 
-export class ThrottleState {
-  reason: string
-  timestamp: DateString
+export class ActivationState {
+  active: boolean
+  timestamp: Timestamp
+}
+
+export class ActivationStatus {
+  actions: Actions
+  state: ActivationState
+  version: VersionNumber
 }

@@ -18,12 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { AcknowledgeState } from '@watcher/ack_watch/AcknowledgeState'
-import { ExecutionState } from '@watcher/ack_watch/ExecutionState'
-import { ThrottleState } from '@watcher/ack_watch/ThrottleState'
 import { HttpHeaders, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
+import { DateString, EpochMillis, Time } from '@_types/Time'
 import { ConditionContainer } from './Conditions'
 import { ActionIndex } from './IndexAction'
 import { HttpInputRequestDefinition } from './Input'
@@ -41,6 +38,8 @@ export class Action {
   index?: ActionIndex
   logging?: LoggingAction
 }
+
+export type Actions = Dictionary<IndexName, ActionStatus>
 
 export class LoggingAction {
   level: string
@@ -94,11 +93,30 @@ export enum Status {
   throttled = 3
 }
 
+export enum AcknowledgementOptions {
+  awaits_successful_execution = 0,
+  ackable = 1,
+  acked = 2
+}
+
+export class AcknowledgeState {
+  state: AcknowledgementOptions
+  timestamp: DateString
+}
+
+export class ExecutionState {
+  successful: boolean
+  timestamp: DateString
+}
+
+export class ThrottleState {
+  reason: string
+  timestamp: DateString
+}
+
 export class ActionStatus {
   ack: AcknowledgeState
   last_execution?: ExecutionState
   last_successful_execution?: ExecutionState
   last_throttle?: ThrottleState
 }
-
-export type Actions = Dictionary<IndexName, ActionStatus>
