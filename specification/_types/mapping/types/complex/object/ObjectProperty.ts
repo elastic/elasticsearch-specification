@@ -24,9 +24,8 @@ import { CorePropertyBase } from '../../CoreProperty'
 import { Property } from '../../Property'
 
 export class ObjectProperty extends CorePropertyBase {
-  /** @prop_serializer DynamicMappingFormatter */
   dynamic?: boolean | DynamicMapping
   enabled?: boolean
   properties?: Dictionary<PropertyName, Property>
-  type: 'object'
+  type?: 'object'
 }
