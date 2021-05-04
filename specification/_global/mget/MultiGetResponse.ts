@@ -17,35 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import {
-  Id,
-  IndexName,
-  Routing,
-  SequenceNumber,
-  Type,
-  VersionNumber
-} from '@_types/common'
-import { MainError } from '@_types/Errors'
-import { long } from '@_types/Numeric'
+import { Hit } from './types'
 
 export class Response<TDocument> {
   body: {
-    docs: MultiGetHit<TDocument>[]
+    docs: Hit<TDocument>[]
   }
-}
-
-export class MultiGetHit<TDocument> {
-  error?: MainError
-  fields?: Dictionary<string, UserDefinedValue>
-  found?: boolean
-  _id: Id
-  _index: IndexName
-  _primary_term?: long
-  _routing?: Routing
-  _seq_no?: SequenceNumber
-  _source?: TDocument
-  _type?: Type
-  _version?: VersionNumber
 }

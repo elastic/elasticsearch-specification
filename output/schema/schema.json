@@ -16763,7 +16763,7 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "MultiGetHit",
+        "name": "Hit",
         "namespace": "_global.mget"
       },
       "properties": [
@@ -16926,7 +16926,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MultiGetOperation",
+        "name": "Operation",
         "namespace": "_global.mget"
       },
       "properties": [
@@ -17054,7 +17054,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiGetOperation",
+                  "name": "Operation",
                   "namespace": "_global.mget"
                 }
               }
@@ -17235,7 +17235,7 @@
                 ],
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiGetHit",
+                  "name": "Hit",
                   "namespace": "_global.mget"
                 }
               }

@@ -17,17 +17,9 @@
  * under the License.
  */
 
-import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { RequestBase } from '@_types/Base'
-import {
-  Fields,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber,
-  VersionType
-} from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Fields, IndexName, Routing, Type } from '@_types/common'
+import { MultiGetId, Operation } from './types'
 
 /**
  * @rest_spec_name mget
@@ -51,20 +43,7 @@ export interface Request extends RequestBase {
     stored_fields?: Fields
   }
   body?: {
-    docs?: MultiGetOperation[]
+    docs?: Operation[]
     ids?: MultiGetId[]
   }
 }
-
-export class MultiGetOperation {
-  _id: MultiGetId
-  _index?: IndexName
-  routing?: Routing
-  _source?: boolean | Fields | SourceFilter
-  stored_fields?: Fields
-  _type?: Type
-  version?: VersionNumber
-  version_type?: VersionType
-}
-
-export type MultiGetId = string | integer
