@@ -19,7 +19,7 @@
 
 import { DateString } from '@_types/Time'
 
-export class ClusterCertificateInformation {
+export class CertificateInformation {
   alias?: string
   expiry: DateString
   format: string

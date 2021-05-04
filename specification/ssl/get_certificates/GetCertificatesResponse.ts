@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ClusterCertificateInformation } from './ClusterCertificateInformation'
+import { CertificateInformation } from './types'
 
 export class Response {
-  body: Array<ClusterCertificateInformation>
+  body: Array<CertificateInformation>
 }
