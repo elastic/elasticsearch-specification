@@ -17,17 +17,16 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Time } from '@_types/Time'
+import { Destination, Source } from '@global/reindex/types'
 import {
-  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  Source,
   SyncContainer
 } from '@transform/_types/Transform'
+import { RequestBase } from '@_types/Base'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name transform.preview_transform

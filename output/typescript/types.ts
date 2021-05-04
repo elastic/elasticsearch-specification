@@ -511,7 +511,7 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
-export interface MgetMultiGetHit<TDocument = unknown> {
+export interface MgetHit<TDocument = unknown> {
   error?: MainError
   fields?: Record<string, any>
   found?: boolean
@@ -527,11 +527,11 @@ export interface MgetMultiGetHit<TDocument = unknown> {
 
 export type MgetMultiGetId = string | integer
 
-export interface MgetMultiGetOperation {
+export interface MgetOperation {
   _id: MgetMultiGetId
   _index?: IndexName
   routing?: Routing
-  _source?: boolean | Fields | SearchSourceFilteringSourceFilter
+  _source?: boolean | Fields | SearchTypesSourceFilter
   stored_fields?: Fields
   _type?: Type
   version?: VersionNumber
@@ -550,13 +550,13 @@ export interface MgetRequest extends RequestBase {
   _source_includes?: Fields
   stored_fields?: Fields
   body?: {
-    docs?: MgetMultiGetOperation[]
+    docs?: MgetOperation[]
     ids?: MgetMultiGetId[]
   }
 }
 
 export interface MgetResponse<TDocument = unknown> {
-  docs: MgetMultiGetHit<TDocument>[]
+  docs: MgetHit<TDocument>[]
 }
 
 export interface MsearchMultiSearchBody {
@@ -565,9 +565,9 @@ export interface MsearchMultiSearchBody {
   query?: QueryDslAbstractionsContainerQueryContainer
   from?: integer
   size?: integer
-  pit?: SearchPointInTimePointInTimeReference
+  pit?: SearchTypesPointInTimeReference
   track_total_hits?: boolean | integer
-  suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
+  suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
 }
 
 export interface MsearchMultiSearchHeader {
@@ -851,7 +851,7 @@ export interface ReindexSource {
   remote?: ReindexRemoteSource
   size?: integer
   slice?: SlicedScroll
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
   _source?: Fields
 }
 
@@ -994,33 +994,33 @@ export interface SearchRequest extends RequestBase {
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
-    collapse?: SearchCollapsingFieldCollapse
+    collapse?: SearchTypesFieldCollapse
     explain?: boolean
     from?: integer
-    highlight?: SearchHighlightingHighlight
+    highlight?: SearchTypesHighlight
     track_total_hits?: boolean | integer
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: SearchSourceFilteringDocValueField | (Field | SearchSourceFilteringDocValueField)[]
+    docvalue_fields?: SearchTypesDocValueField | (Field | SearchTypesDocValueField)[]
     min_score?: double
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     profile?: boolean
     query?: QueryDslAbstractionsContainerQueryContainer
-    rescore?: SearchRescoringRescore | SearchRescoringRescore[]
+    rescore?: SearchTypesRescore | SearchTypesRescore[]
     script_fields?: Record<string, ScriptField>
     search_after?: (integer | string)[]
     size?: integer
     slice?: SlicedScroll
-    sort?: SearchSortSort
-    _source?: boolean | Fields | SearchSourceFilteringSourceFilter
+    sort?: SearchTypesSort
+    _source?: boolean | Fields | SearchTypesSourceFilter
     fields?: (Field | DateField)[]
-    suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
+    suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
     version?: boolean
     seq_no_primary_term?: boolean
     stored_fields?: Fields
-    pit?: SearchPointInTimePointInTimeReference
+    pit?: SearchTypesPointInTimeReference
     runtime_mappings?: MappingRuntimeFieldsRuntimeFields
     stats?: string[]
   }
@@ -1030,159 +1030,21 @@ export interface SearchResponse<TDocument = unknown> {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
   aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
   documents?: TDocument[]
   fields?: Record<string, any>
   max_score?: double
   num_reduce_phases?: long
-  profile?: SearchProfileProfile
+  profile?: SearchTypesProfile
   pit_id?: Id
   _scroll_id?: ScrollId
-  suggest?: Record<SuggestionName, SearchSuggestersSuggest<TDocument>[]>
+  suggest?: Record<SuggestionName, SearchTypesSuggest<TDocument>[]>
   terminated_early?: boolean
 }
 
-export interface SearchCollapsingFieldCollapse {
-  field: Field
-  inner_hits?: SearchInnerHitsInnerHits | SearchInnerHitsInnerHits[]
-  max_concurrent_group_searches?: integer
-}
-
-export type SearchHighlightingBoundaryScanner = 'chars' | 'sentence' | 'word'
-
-export interface SearchHighlightingHighlight {
-  fields: Record<Field, SearchHighlightingHighlightField>
-  type?: SearchHighlightingHighlighterType
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: SearchHighlightingBoundaryScanner
-  boundary_scanner_locale?: string
-  encoder?: SearchHighlightingHighlighterEncoder
-  fragmenter?: SearchHighlightingHighlighterFragmenter
-  fragment_offset?: integer
-  fragment_size?: integer
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: SearchHighlightingHighlighterOrder
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: SearchHighlightingHighlighterTagsSchema
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
-  max_analyzed_offset?: string | integer
-}
-
-export interface SearchHighlightingHighlightField {
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: SearchHighlightingBoundaryScanner
-  boundary_scanner_locale?: string
-  field?: Field
-  force_source?: boolean
-  fragmenter?: SearchHighlightingHighlighterFragmenter
-  fragment_offset?: integer
-  fragment_size?: integer
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
-  matched_fields?: Fields
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: SearchHighlightingHighlighterOrder
-  phrase_limit?: integer
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: SearchHighlightingHighlighterTagsSchema
-  type?: SearchHighlightingHighlighterType | string
-}
-
-export type SearchHighlightingHighlighterEncoder = 'default' | 'html'
-
-export type SearchHighlightingHighlighterFragmenter = 'simple' | 'span'
-
-export type SearchHighlightingHighlighterOrder = 'score'
-
-export type SearchHighlightingHighlighterTagsSchema = 'styled'
-
-export type SearchHighlightingHighlighterType = 'plain' | 'fvh' | 'unified'
-
-export interface SearchHitsHit<TDocument = unknown> {
-  _index: IndexName
-  _id: Id
-  _score?: double
-  _type?: Type
-  _explanation?: ExplainExplanation
-  fields?: Record<string, any>
-  highlight?: Record<string, string[]>
-  inner_hits?: Record<string, SearchHitsInnerHitsResult>
-  matched_queries?: string[]
-  _nested?: SearchHitsNestedIdentity
-  _ignored?: string[]
-  _shard?: string
-  _node?: string
-  _routing?: string
-  _source?: TDocument
-  _seq_no?: SequenceNumber
-  _primary_term?: long
-  _version?: VersionNumber
-  sort?: SearchSortSortResults
-}
-
-export interface SearchHitsHitsMetadata<T = unknown> {
-  total: SearchHitsTotalHits | long
-  hits: SearchHitsHit<T>[]
-  max_score?: double
-}
-
-export interface SearchHitsInnerHitsMetadata {
-  total: SearchHitsTotalHits | long
-  hits: SearchHitsHit<Record<string, any>>[]
-  max_score?: double
-}
-
-export interface SearchHitsInnerHitsResult {
-  hits: SearchHitsInnerHitsMetadata
-}
-
-export interface SearchHitsNestedIdentity {
-  field: Field
-  offset: integer
-  _nested?: SearchHitsNestedIdentity
-}
-
-export interface SearchHitsTotalHits {
-  relation: SearchHitsTotalHitsRelation
-  value: long
-}
-
-export type SearchHitsTotalHitsRelation = 'eq' | 'gte'
-
-export interface SearchInnerHitsInnerHits {
-  name?: Name
-  size?: integer
-  from?: integer
-  collapse?: SearchCollapsingFieldCollapse
-  docvalue_fields?: Fields
-  explain?: boolean
-  highlight?: SearchHighlightingHighlight
-  ignore_unmapped?: boolean
-  script_fields?: Record<string, ScriptField>
-  seq_no_primary_term?: boolean
-  fields?: Fields
-  sort?: SearchSortSort
-  _source?: boolean | SearchSourceFilteringSourceFilter
-  version?: boolean
-}
-
-export interface SearchPointInTimePointInTimeReference {
-  id: Id
-  keep_alive?: Time
-}
-
-export interface SearchProfileAggregationBreakdown {
+export interface SearchTypesAggregationBreakdown {
   build_aggregation: long
   build_aggregation_count: long
   build_leaf_collector: long
@@ -1197,30 +1059,274 @@ export interface SearchProfileAggregationBreakdown {
   reduce_count: long
 }
 
-export interface SearchProfileAggregationProfile {
-  breakdown: SearchProfileAggregationBreakdown
+export interface SearchTypesAggregationProfile {
+  breakdown: SearchTypesAggregationBreakdown
   description: string
   time_in_nanos: long
   type: string
-  debug?: SearchProfileAggregationProfileDebug
-  children?: SearchProfileAggregationProfileDebug[]
+  debug?: SearchTypesAggregationProfileDebug
+  children?: SearchTypesAggregationProfileDebug[]
 }
 
-export interface SearchProfileAggregationProfileDebug {
+export interface SearchTypesAggregationProfileDebug {
 }
 
-export interface SearchProfileCollector {
+export type SearchTypesBoundaryScanner = 'chars' | 'sentence' | 'word'
+
+export interface SearchTypesCollector {
   name: string
   reason: string
   time_in_nanos: long
-  children?: SearchProfileCollector[]
+  children?: SearchTypesCollector[]
 }
 
-export interface SearchProfileProfile {
-  shards: SearchProfileShardProfile[]
+export interface SearchTypesCompletionSuggestOption<TDocument = unknown> {
+  collate_match?: boolean
+  contexts?: Record<string, SearchTypesContext[]>
+  fields?: Record<string, any>
+  _id: string
+  _index: IndexName
+  _type?: Type
+  _routing?: Routing
+  _score: double
+  _source: TDocument
+  text: string
 }
 
-export interface SearchProfileQueryBreakdown {
+export interface SearchTypesCompletionSuggester extends SearchTypesSuggesterBase {
+  contexts?: Record<string, string | string[] | QueryDslGeoGeoLocation | SearchTypesSuggestContextQuery[]>
+  fuzzy?: SearchTypesSuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
+}
+
+export type SearchTypesContext = string | QueryDslGeoGeoLocation
+
+export interface SearchTypesDirectGenerator {
+  field: Field
+  max_edits?: integer
+  max_inspections?: float
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  post_filter?: string
+  pre_filter?: string
+  prefix_length?: integer
+  size?: integer
+  suggest_mode?: SuggestMode
+}
+
+export interface SearchTypesDocValueField {
+  field: Field
+  format?: string
+}
+
+export interface SearchTypesFieldCollapse {
+  field: Field
+  inner_hits?: SearchTypesInnerHits | SearchTypesInnerHits[]
+  max_concurrent_group_searches?: integer
+}
+
+export interface SearchTypesFieldSort {
+  missing?: AggregationsMissing
+  mode?: SearchTypesSortMode
+  nested?: SearchTypesNestedSortValue
+  order?: SearchTypesSortOrder
+  unmapped_type?: MappingTypesFieldType
+}
+
+export interface SearchTypesGeoDistanceSortKeys {
+  mode?: SearchTypesSortMode
+  distance_type?: GeoDistanceType
+  order?: SearchTypesSortOrder
+  unit?: DistanceUnit
+}
+export type SearchTypesGeoDistanceSort = SearchTypesGeoDistanceSortKeys |
+    { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
+
+export interface SearchTypesHighlight {
+  fields: Record<Field, SearchTypesHighlightField>
+  type?: SearchTypesHighlighterType
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: SearchTypesBoundaryScanner
+  boundary_scanner_locale?: string
+  encoder?: SearchTypesHighlighterEncoder
+  fragmenter?: SearchTypesHighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: SearchTypesHighlighterOrder
+  post_tags?: string[]
+  pre_tags?: string[]
+  require_field_match?: boolean
+  tags_schema?: SearchTypesHighlighterTagsSchema
+  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  max_analyzed_offset?: string | integer
+}
+
+export interface SearchTypesHighlightField {
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: SearchTypesBoundaryScanner
+  boundary_scanner_locale?: string
+  field?: Field
+  force_source?: boolean
+  fragmenter?: SearchTypesHighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  matched_fields?: Fields
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: SearchTypesHighlighterOrder
+  phrase_limit?: integer
+  post_tags?: string[]
+  pre_tags?: string[]
+  require_field_match?: boolean
+  tags_schema?: SearchTypesHighlighterTagsSchema
+  type?: SearchTypesHighlighterType | string
+}
+
+export type SearchTypesHighlighterEncoder = 'default' | 'html'
+
+export type SearchTypesHighlighterFragmenter = 'simple' | 'span'
+
+export type SearchTypesHighlighterOrder = 'score'
+
+export type SearchTypesHighlighterTagsSchema = 'styled'
+
+export type SearchTypesHighlighterType = 'plain' | 'fvh' | 'unified'
+
+export interface SearchTypesHit<TDocument = unknown> {
+  _index: IndexName
+  _id: Id
+  _score?: double
+  _type?: Type
+  _explanation?: ExplainExplanation
+  fields?: Record<string, any>
+  highlight?: Record<string, string[]>
+  inner_hits?: Record<string, SearchTypesInnerHitsResult>
+  matched_queries?: string[]
+  _nested?: SearchTypesNestedIdentity
+  _ignored?: string[]
+  _shard?: string
+  _node?: string
+  _routing?: string
+  _source?: TDocument
+  _seq_no?: SequenceNumber
+  _primary_term?: long
+  _version?: VersionNumber
+  sort?: SearchTypesSortResults
+}
+
+export interface SearchTypesHitsMetadata<T = unknown> {
+  total: SearchTypesTotalHits | long
+  hits: SearchTypesHit<T>[]
+  max_score?: double
+}
+
+export interface SearchTypesInnerHits {
+  name?: Name
+  size?: integer
+  from?: integer
+  collapse?: SearchTypesFieldCollapse
+  docvalue_fields?: Fields
+  explain?: boolean
+  highlight?: SearchTypesHighlight
+  ignore_unmapped?: boolean
+  script_fields?: Record<string, ScriptField>
+  seq_no_primary_term?: boolean
+  fields?: Fields
+  sort?: SearchTypesSort
+  _source?: boolean | SearchTypesSourceFilter
+  version?: boolean
+}
+
+export interface SearchTypesInnerHitsMetadata {
+  total: SearchTypesTotalHits | long
+  hits: SearchTypesHit<Record<string, any>>[]
+  max_score?: double
+}
+
+export interface SearchTypesInnerHitsResult {
+  hits: SearchTypesInnerHitsMetadata
+}
+
+export interface SearchTypesLaplaceSmoothingModel {
+  alpha: double
+}
+
+export interface SearchTypesLinearInterpolationSmoothingModel {
+  bigram_lambda: double
+  trigram_lambda: double
+  unigram_lambda: double
+}
+
+export interface SearchTypesNestedIdentity {
+  field: Field
+  offset: integer
+  _nested?: SearchTypesNestedIdentity
+}
+
+export interface SearchTypesNestedSortValue {
+  filter?: QueryDslAbstractionsContainerQueryContainer
+  max_children?: integer
+  path: Field
+}
+
+export interface SearchTypesPhraseSuggestCollate {
+  params?: Record<string, any>
+  prune?: boolean
+  query: SearchTypesPhraseSuggestCollateQuery
+}
+
+export interface SearchTypesPhraseSuggestCollateQuery {
+  id?: Id
+  source?: string
+}
+
+export interface SearchTypesPhraseSuggestHighlight {
+  post_tag: string
+  pre_tag: string
+}
+
+export interface SearchTypesPhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+
+export interface SearchTypesPhraseSuggester extends SearchTypesSuggesterBase {
+  collate?: SearchTypesPhraseSuggestCollate
+  confidence?: double
+  direct_generator?: SearchTypesDirectGenerator[]
+  force_unigrams?: boolean
+  gram_size?: integer
+  highlight?: SearchTypesPhraseSuggestHighlight
+  max_errors?: double
+  real_word_error_likelihood?: double
+  separator?: string
+  shard_size?: integer
+  smoothing?: SearchTypesSmoothingModelContainer
+  text?: string
+  token_limit?: integer
+}
+
+export interface SearchTypesPointInTimeReference {
+  id: Id
+  keep_alive?: Time
+}
+
+export interface SearchTypesProfile {
+  shards: SearchTypesShardProfile[]
+}
+
+export interface SearchTypesQueryBreakdown {
   advance: long
   advance_count: long
   build_scorer: long
@@ -1241,163 +1347,114 @@ export interface SearchProfileQueryBreakdown {
   set_min_competitive_score_count: long
 }
 
-export interface SearchProfileQueryProfile {
-  breakdown: SearchProfileQueryBreakdown
+export interface SearchTypesQueryProfile {
+  breakdown: SearchTypesQueryBreakdown
   description: string
   time_in_nanos: long
   type: string
-  children?: SearchProfileQueryProfile[]
+  children?: SearchTypesQueryProfile[]
 }
 
-export interface SearchProfileSearchProfile {
-  collector: SearchProfileCollector[]
-  query: SearchProfileQueryProfile[]
-  rewrite_time: long
-}
-
-export interface SearchProfileShardProfile {
-  aggregations: SearchProfileAggregationProfile[]
-  id: string
-  searches: SearchProfileSearchProfile[]
-}
-
-export interface SearchRescoringRescore {
-  query: SearchRescoringRescoreQuery
+export interface SearchTypesRescore {
+  query: SearchTypesRescoreQuery
   window_size?: integer
 }
 
-export interface SearchRescoringRescoreQuery {
+export interface SearchTypesRescoreQuery {
   rescore_query: QueryDslAbstractionsContainerQueryContainer
   query_weight?: double
   rescore_query_weight?: double
-  score_mode?: SearchRescoringScoreMode
+  score_mode?: SearchTypesScoreMode
 }
 
-export type SearchRescoringScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
+export type SearchTypesScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
-export interface SearchSortFieldSort {
-  missing?: AggregationsMissing
-  mode?: SearchSortSortMode
-  nested?: SearchSortNestedSortValue
-  order?: SearchSortSortOrder
-  unmapped_type?: MappingTypesFieldType
+export interface SearchTypesScoreSort {
+  mode?: SearchTypesSortMode
+  order?: SearchTypesSortOrder
 }
 
-export interface SearchSortGeoDistanceSortKeys {
-  mode?: SearchSortSortMode
-  distance_type?: GeoDistanceType
-  order?: SearchSortSortOrder
-  unit?: DistanceUnit
-}
-export type SearchSortGeoDistanceSort = SearchSortGeoDistanceSortKeys |
-    { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
-
-export interface SearchSortNestedSortValue {
-  filter?: QueryDslAbstractionsContainerQueryContainer
-  max_children?: integer
-  path: Field
-}
-
-export interface SearchSortScoreSort {
-  mode?: SearchSortSortMode
-  order?: SearchSortSortOrder
-}
-
-export interface SearchSortScriptSort {
-  order?: SearchSortSortOrder
+export interface SearchTypesScriptSort {
+  order?: SearchTypesSortOrder
   script: Script
   type?: string
 }
 
-export type SearchSortSort = SearchSortSortCombinations | SearchSortSortCombinations[]
-
-export type SearchSortSortCombinations = Field | SearchSortSortContainer | SearchSortSortOrder
-
-export interface SearchSortSortContainerKeys {
-  _score?: SearchSortScoreSort
-  _doc?: SearchSortScoreSort
-  _geo_distance?: SearchSortGeoDistanceSort
-  _script?: SearchSortScriptSort
-}
-export type SearchSortSortContainer = SearchSortSortContainerKeys |
-    { [property: string]: SearchSortFieldSort | SearchSortSortOrder }
-
-export type SearchSortSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
-
-export type SearchSortSortOrder = 'asc' | 'desc' | '_doc'
-
-export type SearchSortSortResults = (long | double | string | null)[]
-
-export interface SearchSourceFilteringDocValueField {
-  field: Field
-  format?: string
+export interface SearchTypesSearchProfile {
+  collector: SearchTypesCollector[]
+  query: SearchTypesQueryProfile[]
+  rewrite_time: long
 }
 
-export interface SearchSourceFilteringSourceFilter {
+export interface SearchTypesShardProfile {
+  aggregations: SearchTypesAggregationProfile[]
+  id: string
+  searches: SearchTypesSearchProfile[]
+}
+
+export interface SearchTypesSmoothingModelContainer {
+  laplace?: SearchTypesLaplaceSmoothingModel
+  linear_interpolation?: SearchTypesLinearInterpolationSmoothingModel
+  stupid_backoff?: SearchTypesStupidBackoffSmoothingModel
+}
+
+export type SearchTypesSort = SearchTypesSortCombinations | SearchTypesSortCombinations[]
+
+export type SearchTypesSortCombinations = Field | SearchTypesSortContainer | SearchTypesSortOrder
+
+export interface SearchTypesSortContainerKeys {
+  _score?: SearchTypesScoreSort
+  _doc?: SearchTypesScoreSort
+  _geo_distance?: SearchTypesGeoDistanceSort
+  _script?: SearchTypesScriptSort
+}
+export type SearchTypesSortContainer = SearchTypesSortContainerKeys |
+    { [property: string]: SearchTypesFieldSort | SearchTypesSortOrder }
+
+export type SearchTypesSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
+
+export type SearchTypesSortOrder = 'asc' | 'desc' | '_doc'
+
+export type SearchTypesSortResults = (long | double | string | null)[]
+
+export interface SearchTypesSourceFilter {
   excludes?: Fields
   includes?: Fields
   exclude?: Fields
   include?: Fields
 }
 
-export interface SearchSuggestersCompletionSuggestOption<TDocument = unknown> {
-  collate_match?: boolean
-  contexts?: Record<string, SearchSuggestersContextSuggesterContext[]>
-  fields?: Record<string, any>
-  _id: string
-  _index: IndexName
-  _type?: Type
-  _routing?: Routing
-  _score: double
-  _source: TDocument
-  text: string
+export type SearchTypesStringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
+
+export interface SearchTypesStupidBackoffSmoothingModel {
+  discount: double
 }
 
-export interface SearchSuggestersPhraseSuggestOption {
-  text: string
-  highlighted: string
-  score: double
-}
-
-export interface SearchSuggestersSuggest<T = unknown> {
+export interface SearchTypesSuggest<T = unknown> {
   length: integer
   offset: integer
-  options: SearchSuggestersSuggestOption<T>[]
+  options: SearchTypesSuggestOption<T>[]
   text: string
 }
 
-export interface SearchSuggestersSuggestContainer {
-  completion?: SearchSuggestersCompletionSuggesterCompletionSuggester
-  phrase?: SearchSuggestersPhraseSuggesterPhraseSuggester
+export interface SearchTypesSuggestContainer {
+  completion?: SearchTypesCompletionSuggester
+  phrase?: SearchTypesPhraseSuggester
   prefix?: string
   regex?: string
-  term?: SearchSuggestersTermSuggesterTermSuggester
+  term?: SearchTypesTermSuggester
   text?: string
 }
 
-export type SearchSuggestersSuggestOption<TDocument = unknown> = SearchSuggestersCompletionSuggestOption<TDocument> | SearchSuggestersPhraseSuggestOption | SearchSuggestersTermSuggestOption
-
-export interface SearchSuggestersSuggesterBase {
-  field: Field
-  analyzer?: string
-  size?: integer
+export interface SearchTypesSuggestContextQuery {
+  boost?: double
+  context: SearchTypesContext
+  neighbours?: Distance[] | integer[]
+  precision?: Distance | integer
+  prefix?: boolean
 }
 
-export interface SearchSuggestersTermSuggestOption {
-  text: string
-  freq?: long
-  score: double
-}
-
-export interface SearchSuggestersCompletionSuggesterCompletionSuggester extends SearchSuggestersSuggesterBase {
-  contexts?: Record<string, string | string[] | QueryDslGeoGeoLocation | SearchSuggestersContextSuggesterSuggestContextQuery[]>
-  fuzzy?: SearchSuggestersCompletionSuggesterSuggestFuzziness
-  prefix?: string
-  regex?: string
-  skip_duplicates?: boolean
-}
-
-export interface SearchSuggestersCompletionSuggesterSuggestFuzziness {
+export interface SearchTypesSuggestFuzziness {
   fuzziness: Fuzziness
   min_length: integer
   prefix_length: integer
@@ -1405,87 +1462,23 @@ export interface SearchSuggestersCompletionSuggesterSuggestFuzziness {
   unicode_aware: boolean
 }
 
-export type SearchSuggestersContextSuggesterContext = string | QueryDslGeoGeoLocation
+export type SearchTypesSuggestOption<TDocument = unknown> = SearchTypesCompletionSuggestOption<TDocument> | SearchTypesPhraseSuggestOption | SearchTypesTermSuggestOption
 
-export interface SearchSuggestersContextSuggesterSuggestContextQuery {
-  boost?: double
-  context: SearchSuggestersContextSuggesterContext
-  neighbours?: Distance[] | integer[]
-  precision?: Distance | integer
-  prefix?: boolean
-}
+export type SearchTypesSuggestSort = 'score' | 'frequency'
 
-export interface SearchSuggestersPhraseSuggesterDirectGenerator {
+export interface SearchTypesSuggesterBase {
   field: Field
-  max_edits?: integer
-  max_inspections?: float
-  max_term_freq?: float
-  min_doc_freq?: float
-  min_word_length?: integer
-  post_filter?: string
-  pre_filter?: string
-  prefix_length?: integer
+  analyzer?: string
   size?: integer
-  suggest_mode?: SuggestMode
 }
 
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestCollate {
-  params?: Record<string, any>
-  prune?: boolean
-  query: SearchSuggestersPhraseSuggesterPhraseSuggestCollateQuery
+export interface SearchTypesTermSuggestOption {
+  text: string
+  freq?: long
+  score: double
 }
 
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestCollateQuery {
-  id?: Id
-  source?: string
-}
-
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestHighlight {
-  post_tag: string
-  pre_tag: string
-}
-
-export interface SearchSuggestersPhraseSuggesterPhraseSuggester extends SearchSuggestersSuggesterBase {
-  collate?: SearchSuggestersPhraseSuggesterPhraseSuggestCollate
-  confidence?: double
-  direct_generator?: SearchSuggestersPhraseSuggesterDirectGenerator[]
-  force_unigrams?: boolean
-  gram_size?: integer
-  highlight?: SearchSuggestersPhraseSuggesterPhraseSuggestHighlight
-  max_errors?: double
-  real_word_error_likelihood?: double
-  separator?: string
-  shard_size?: integer
-  smoothing?: SearchSuggestersPhraseSuggesterSmoothingModelSmoothingModelContainer
-  text?: string
-  token_limit?: integer
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelLaplaceSmoothingModel {
-  alpha: double
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelLinearInterpolationSmoothingModel {
-  bigram_lambda: double
-  trigram_lambda: double
-  unigram_lambda: double
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelSmoothingModelContainer {
-  laplace?: SearchSuggestersPhraseSuggesterSmoothingModelLaplaceSmoothingModel
-  linear_interpolation?: SearchSuggestersPhraseSuggesterSmoothingModelLinearInterpolationSmoothingModel
-  stupid_backoff?: SearchSuggestersPhraseSuggesterSmoothingModelStupidBackoffSmoothingModel
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelStupidBackoffSmoothingModel {
-  discount: double
-}
-
-export type SearchSuggestersTermSuggesterStringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
-
-export type SearchSuggestersTermSuggesterSuggestSort = 'score' | 'frequency'
-
-export interface SearchSuggestersTermSuggesterTermSuggester extends SearchSuggestersSuggesterBase {
+export interface SearchTypesTermSuggester extends SearchTypesSuggesterBase {
   lowercase_terms?: boolean
   max_edits?: integer
   max_inspections?: integer
@@ -1494,11 +1487,18 @@ export interface SearchSuggestersTermSuggesterTermSuggester extends SearchSugges
   min_word_length?: integer
   prefix_length?: integer
   shard_size?: integer
-  sort?: SearchSuggestersTermSuggesterSuggestSort
-  string_distance?: SearchSuggestersTermSuggesterStringDistance
+  sort?: SearchTypesSuggestSort
+  string_distance?: SearchTypesStringDistance
   suggest_mode?: SuggestMode
   text?: string
 }
+
+export interface SearchTypesTotalHits {
+  relation: SearchTypesTotalHitsRelation
+  value: long
+}
+
+export type SearchTypesTotalHitsRelation = 'eq' | 'gte'
 
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
@@ -1548,7 +1548,7 @@ export interface SearchTemplateResponse<TDocument = unknown> {
   _shards: ShardStatistics
   timed_out: boolean
   took: integer
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
 }
 
 export interface TermvectorsFieldStatistics {
@@ -1651,7 +1651,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
     doc_as_upsert?: boolean
     script?: Script
     scripted_upsert?: boolean
-    _source?: boolean | SearchSourceFilteringSourceFilter
+    _source?: boolean | SearchTypesSourceFilter
     upsert?: TDocument
   }
 }
@@ -2615,7 +2615,7 @@ export interface AggregationsTermsAggregate<TKey = unknown> extends Aggregations
 }
 
 export interface AggregationsTopHitsAggregate extends AggregationsAggregateBase {
-  hits: SearchHitsHitsMetadata<Record<string, any>>
+  hits: SearchTypesHitsMetadata<Record<string, any>>
 }
 
 export interface AggregationsTopMetrics {
@@ -2769,8 +2769,8 @@ export interface AggregationsBucketHistogramHistogramAggregation extends Aggrega
 }
 
 export interface AggregationsBucketHistogramHistogramOrder {
-  _count?: SearchSortSortOrder
-  _key?: SearchSortSortOrder
+  _count?: SearchTypesSortOrder
+  _key?: SearchTypesSortOrder
 }
 
 export interface AggregationsBucketIpRangeIpRangeAggregation extends AggregationsBucketBucketAggregationBase {
@@ -2913,7 +2913,7 @@ export type AggregationsBucketTermsTermsAggregationCollectMode = 'depth_first' |
 
 export type AggregationsBucketTermsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
-export type AggregationsBucketTermsTermsAggregationOrder = SearchSortSortOrder | Record<string, SearchSortSortOrder> | Record<string, SearchSortSortOrder>[]
+export type AggregationsBucketTermsTermsAggregationOrder = SearchTypesSortOrder | Record<string, SearchTypesSortOrder> | Record<string, SearchTypesSortOrder>[]
 
 export interface AggregationsBucketTermsTermsInclude {
   num_partitions: long
@@ -2981,7 +2981,7 @@ export interface AggregationsMetricGeoLineGeoLineAggregation {
   point: AggregationsMetricGeoLineGeoLinePoint
   sort: AggregationsMetricGeoLineGeoLineSort
   include_sort?: boolean
-  sort_order?: SearchSortSortOrder
+  sort_order?: SearchTypesSortOrder
   size?: integer
 }
 
@@ -3068,11 +3068,11 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
   docvalue_fields?: Fields
   explain?: boolean
   from?: integer
-  highlight?: SearchHighlightingHighlight
+  highlight?: SearchTypesHighlight
   script_fields?: Record<string, ScriptField>
   size?: integer
-  sort?: SearchSortSort
-  _source?: boolean | SearchSourceFilteringSourceFilter | Fields
+  sort?: SearchTypesSort
+  _source?: boolean | SearchTypesSourceFilter | Fields
   stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
@@ -3082,7 +3082,7 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
 export interface AggregationsMetricTopMetricsTopMetricsAggregation extends AggregationsMetricMetricAggregationBase {
   metrics?: AggregationsMetricTopMetricsTopMetricsValue | AggregationsMetricTopMetricsTopMetricsValue[]
   size?: integer
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
 }
 
 export interface AggregationsMetricTopMetricsTopMetricsValue {
@@ -3133,7 +3133,7 @@ export interface AggregationsPipelineBucketSortBucketSortAggregation extends Agg
   from?: integer
   gap_policy?: AggregationsPipelineGapPolicy
   size?: integer
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
 }
 
 export interface AggregationsPipelineCumulativeCardinalityCumulativeCardinalityAggregation extends AggregationsPipelinePipelineAggregationBase {
@@ -4120,6 +4120,43 @@ export interface MappingTypesSpecializedTokenCountTokenCountProperty extends Map
   type: 'token_count'
 }
 
+export interface MlJob {
+  allow_lazy_open?: boolean
+  analysis_config?: MlAnalysisConfig
+  analysis_limits?: MlAnalysisLimits
+  background_persist_interval?: Time
+  count?: integer
+  created_by?: EmptyObject
+  create_time?: integer
+  detectors?: MlJobStatistics
+  data_description?: MlDataDescription
+  description?: string
+  finished_time?: integer
+  forecasts?: XpackUsageMlJobForecasts
+  job_id?: Id
+  job_type?: string
+  model_plot?: MlModelPlotConfig
+  model_size?: MlJobStatistics
+  model_snapshot_id?: Id
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
+  results_index_name?: IndexName
+  results_retention_days?: long
+  groups?: string[]
+  model_plot_config?: MlModelPlotConfig
+  custom_settings?: XpackUsageCustomSettings
+  job_version?: VersionString
+  deleting?: boolean
+  daily_model_snapshot_retention_after_days?: long
+}
+
+export interface MlJobStatistics {
+  avg: double
+  max: double
+  min: double
+  total: double
+}
+
 export interface QueryDslMatchAllQuery extends QueryDslAbstractionsQueryQueryBase {
   norm_field?: string
 }
@@ -4574,7 +4611,7 @@ export type QueryDslJoiningHasChildChildScoreMode = 'none' | 'avg' | 'sum' | 'ma
 
 export interface QueryDslJoiningHasChildHasChildQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   max_children?: integer
   min_children?: integer
   query?: QueryDslAbstractionsContainerQueryContainer
@@ -4584,7 +4621,7 @@ export interface QueryDslJoiningHasChildHasChildQuery extends QueryDslAbstractio
 
 export interface QueryDslJoiningHasParentHasParentQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   parent_type?: RelationName
   query?: QueryDslAbstractionsContainerQueryContainer
   score?: boolean
@@ -4592,7 +4629,7 @@ export interface QueryDslJoiningHasParentHasParentQuery extends QueryDslAbstract
 
 export interface QueryDslJoiningNestedNestedQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   path?: Field
   query?: QueryDslAbstractionsContainerQueryContainer
   score_mode?: QueryDslJoiningNestedNestedScoreMode
@@ -4816,18 +4853,35 @@ export interface QueryDslTermLevelWildcardWildcardQuery extends QueryDslAbstract
   value: string
 }
 
+export interface SlmStatistics {
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  total_snapshots_deleted?: long
+  snapshots_deleted?: long
+  total_snapshot_deletion_failures?: long
+  snapshot_deletion_failures?: long
+  total_snapshots_failed?: long
+  snapshots_failed?: long
+  total_snapshots_taken?: long
+  snapshots_taken?: long
+}
+
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
   aggregations?: Record<string, AggregationsAggregate>
   _clusters?: ClusterStatistics
   fields?: Record<string, any>
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
   max_score?: double
   num_reduce_phases?: long
-  profile?: SearchProfileProfile
+  profile?: SearchTypesProfile
   pit_id?: Id
   _scroll_id?: Id
   _shards: ShardStatistics
-  suggest?: Record<SuggestionName, SearchSuggestersSuggest<TDocument>[]>
+  suggest?: Record<SuggestionName, SearchTypesSuggest<TDocument>[]>
   terminated_early?: boolean
   timed_out: boolean
   took: long
@@ -4882,14 +4936,14 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     analyzer?: string
     analyze_wildcard?: boolean
     batched_reduce_size?: long
-    collapse?: SearchCollapsingFieldCollapse
+    collapse?: SearchTypesFieldCollapse
     default_operator?: DefaultOperator
     df?: string
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
-    highlight?: SearchHighlightingHighlight
+    highlight?: SearchTypesHighlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     indices_boost?: Record<IndexName, double>[]
@@ -4901,22 +4955,22 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     preference?: string
     profile?: boolean
-    pit?: SearchPointInTimePointInTimeReference
+    pit?: SearchTypesPointInTimeReference
     query?: QueryDslAbstractionsContainerQueryContainer
     query_on_query_string?: string
     request_cache?: boolean
-    rescore?: SearchRescoringRescore[]
+    rescore?: SearchTypesRescore[]
     routing?: Routing
     script_fields?: Record<string, ScriptField>
     search_after?: any[]
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
-    sort?: SearchSortSort
-    _source?: boolean | SearchSourceFilteringSourceFilter
+    sort?: SearchTypesSort
+    _source?: boolean | SearchTypesSourceFilter
     stats?: string[]
     stored_fields?: Fields
-    suggest?: Record<string, SearchSuggestersSuggestContainer>
+    suggest?: Record<string, SearchTypesSuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
@@ -7852,7 +7906,7 @@ export interface EnrichStatsResponse {
 }
 
 export interface EqlEqlHits<TEvent = unknown> {
-  total?: SearchHitsTotalHits
+  total?: SearchTypesTotalHits
   events?: EqlEqlHitsEvent<TEvent>[]
   sequences?: EqlEqlHitsSequence<TEvent>[]
 }
@@ -9651,7 +9705,7 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
-  order: SearchSortSortOrder
+  order: SearchTypesSortOrder
   target_field: Field
 }
 
@@ -10356,9 +10410,9 @@ export interface MlInfluence {
 }
 
 export interface MlJobForecastStatistics {
-  memory_bytes?: XpackUsageJobStatistics
-  processing_time_ms?: XpackUsageJobStatistics
-  records?: XpackUsageJobStatistics
+  memory_bytes?: MlJobStatistics
+  processing_time_ms?: MlJobStatistics
+  records?: MlJobStatistics
   status?: Record<string, long>
   total: long
   forecasted_jobs: integer
@@ -11132,7 +11186,7 @@ export interface MlGetJobsRequest extends RequestBase {
 
 export interface MlGetJobsResponse {
   count: long
-  jobs: XpackUsageJob[]
+  jobs: MlJob[]
 }
 
 export interface MlGetModelSnapshotsRequest extends RequestBase {
@@ -13250,7 +13304,7 @@ export interface SlmSnapshotLifecyclePolicyMetadata {
   next_execution_millis: EpochMillis
   policy: SlmSnapshotLifecyclePolicy
   version: VersionNumber
-  stats: XpackUsageSnapshotLifecycleStats
+  stats: SlmStatistics
 }
 
 export interface SlmSnapshotRetentionConfiguration {
@@ -13651,9 +13705,9 @@ export interface SqlTranslateSqlRequest extends RequestBase {
 
 export interface SqlTranslateSqlResponse {
   size: long
-  _source: boolean | Fields | SearchSourceFilteringSourceFilter
+  _source: boolean | Fields | SearchTypesSourceFilter
   fields: Record<Field, string>[]
-  sort: SearchSortSort
+  sort: SearchTypesSort
 }
 
 export interface SslGetCertificatesClusterCertificateInformation {
@@ -13831,11 +13885,6 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
-export interface TransformDestination {
-  index?: IndexName
-  pipeline?: string
-}
-
 export interface TransformLatest {
   sort: Field
   unique_key: Field[]
@@ -13868,12 +13917,6 @@ export interface TransformSettings {
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
-}
-
-export interface TransformSource {
-  index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
-  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface TransformSyncContainer {
@@ -13971,11 +14014,11 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformPreviewTransformRequest extends RequestBase {
   body?: {
-    dest?: TransformDestination
+    dest?: ReindexDestination
     description?: string
     frequency?: Time
     pivot?: TransformPivot
-    source?: TransformSource
+    source?: ReindexSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
@@ -14019,12 +14062,12 @@ export interface TransformUpdateTransformRequest extends TransformPutTransformRe
 export interface TransformUpdateTransformResponse {
   create_time: long
   description: string
-  dest: TransformDestination
+  dest: ReindexDestination
   frequency: Time
   id: Id
   pivot: TransformPivot
   settings: TransformSettings
-  source: TransformSource
+  source: ReindexSource
   sync?: TransformSyncContainer
   version: VersionString
 }
@@ -14639,6 +14682,48 @@ export interface WatcherStopRequest extends RequestBase {
 
 export interface WatcherStopResponse extends AcknowledgedResponseBase {}
 
+export interface XpackInfoBuildInformation {
+  date: DateString
+  hash: string
+}
+
+export interface XpackInfoFeature {
+  available: boolean
+  description?: string
+  enabled: boolean
+  native_code_info?: XpackInfoNativeCodeInformation
+}
+
+export interface XpackInfoFeatures {
+  aggregate_metric: XpackInfoFeature
+  analytics: XpackInfoFeature
+  ccr: XpackInfoFeature
+  data_frame?: XpackInfoFeature
+  data_science?: XpackInfoFeature
+  data_streams: XpackInfoFeature
+  data_tiers: XpackInfoFeature
+  enrich: XpackInfoFeature
+  eql: XpackInfoFeature
+  flattened?: XpackInfoFeature
+  frozen_indices: XpackInfoFeature
+  graph: XpackInfoFeature
+  ilm: XpackInfoFeature
+  logstash: XpackInfoFeature
+  ml: XpackInfoFeature
+  monitoring: XpackInfoFeature
+  rollup: XpackInfoFeature
+  runtime_fields?: XpackInfoFeature
+  searchable_snapshots: XpackInfoFeature
+  security: XpackInfoFeature
+  slm: XpackInfoFeature
+  spatial: XpackInfoFeature
+  sql: XpackInfoFeature
+  transform: XpackInfoFeature
+  vectors: XpackInfoFeature
+  voting_only: XpackInfoFeature
+  watcher: XpackInfoFeature
+}
+
 export interface XpackInfoMinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis
   mode: LicenseLicenseType
@@ -14657,55 +14742,17 @@ export interface XpackInfoRequest extends RequestBase {
 }
 
 export interface XpackInfoResponse {
-  build: XpackInfoXPackBuildInformation
-  features: XpackInfoXPackFeatures
+  build: XpackInfoBuildInformation
+  features: XpackInfoFeatures
   license: XpackInfoMinimalLicenseInformation
   tagline: string
 }
 
-export interface XpackInfoXPackBuildInformation {
-  date: DateString
-  hash: string
+export interface XpackUsageAnalytics extends XpackUsageBase {
+  stats: XpackUsageAnalyticsStatistics
 }
 
-export interface XpackInfoXPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: XpackInfoNativeCodeInformation
-}
-
-export interface XpackInfoXPackFeatures {
-  aggregate_metric: XpackInfoXPackFeature
-  analytics: XpackInfoXPackFeature
-  ccr: XpackInfoXPackFeature
-  data_frame?: XpackInfoXPackFeature
-  data_science?: XpackInfoXPackFeature
-  data_streams: XpackInfoXPackFeature
-  data_tiers: XpackInfoXPackFeature
-  enrich: XpackInfoXPackFeature
-  eql: XpackInfoXPackFeature
-  flattened?: XpackInfoXPackFeature
-  frozen_indices: XpackInfoXPackFeature
-  graph: XpackInfoXPackFeature
-  ilm: XpackInfoXPackFeature
-  logstash: XpackInfoXPackFeature
-  ml: XpackInfoXPackFeature
-  monitoring: XpackInfoXPackFeature
-  rollup: XpackInfoXPackFeature
-  runtime_fields?: XpackInfoXPackFeature
-  searchable_snapshots: XpackInfoXPackFeature
-  security: XpackInfoXPackFeature
-  slm: XpackInfoXPackFeature
-  spatial: XpackInfoXPackFeature
-  sql: XpackInfoXPackFeature
-  transform: XpackInfoXPackFeature
-  vectors: XpackInfoXPackFeature
-  voting_only: XpackInfoXPackFeature
-  watcher: XpackInfoXPackFeature
-}
-
-export interface XpackUsageAnalyticsStatsUsage {
+export interface XpackUsageAnalyticsStatistics {
   boxplot_usage: long
   cumulative_cardinality_usage: long
   string_stats_usage: long
@@ -14717,12 +14764,13 @@ export interface XpackUsageAnalyticsStatsUsage {
   multi_terms_usage?: long
 }
 
-export interface XpackUsageAnalyticsUsage extends XpackUsageXPackUsage {
-  stats: XpackUsageAnalyticsStatsUsage
+export interface XpackUsageAudit extends XpackUsageFeatureToggle {
+  outputs?: string[]
 }
 
-export interface XpackUsageAuditUsage extends XpackUsageSecurityFeatureToggle {
-  outputs?: string[]
+export interface XpackUsageBase {
+  available: boolean
+  enabled: boolean
 }
 
 export interface XpackUsageBaseUrlConfig {
@@ -14730,9 +14778,14 @@ export interface XpackUsageBaseUrlConfig {
   url_value: string
 }
 
-export interface XpackUsageCcrUsage extends XpackUsageXPackUsage {
+export interface XpackUsageCcr extends XpackUsageBase {
   auto_follow_patterns_count: integer
   follower_indices_count: integer
+}
+
+export interface XpackUsageCounter {
+  active: long
+  total: long
 }
 
 export interface XpackUsageCustomSettings {
@@ -14741,12 +14794,12 @@ export interface XpackUsageCustomSettings {
   job_tags?: Record<string, string>
 }
 
-export interface XpackUsageDataStreamsUsage extends XpackUsageXPackUsage {
+export interface XpackUsageDataStreams extends XpackUsageBase {
   data_streams: long
   indices_count: long
 }
 
-export interface XpackUsageDataTierPhaseCountUsage {
+export interface XpackUsageDataTierPhaseStatistics {
   node_count: long
   index_count: long
   total_shard_count: long
@@ -14759,19 +14812,34 @@ export interface XpackUsageDataTierPhaseCountUsage {
   primary_shard_size_mad_bytes: long
 }
 
-export interface XpackUsageDataTiersUsage extends XpackUsageXPackUsage {
-  data_warm: XpackUsageDataTierPhaseCountUsage
-  data_frozen?: XpackUsageDataTierPhaseCountUsage
-  data_cold: XpackUsageDataTierPhaseCountUsage
-  data_content: XpackUsageDataTierPhaseCountUsage
-  data_hot: XpackUsageDataTierPhaseCountUsage
+export interface XpackUsageDataTiers extends XpackUsageBase {
+  data_warm: XpackUsageDataTierPhaseStatistics
+  data_frozen?: XpackUsageDataTierPhaseStatistics
+  data_cold: XpackUsageDataTierPhaseStatistics
+  data_content: XpackUsageDataTierPhaseStatistics
+  data_hot: XpackUsageDataTierPhaseStatistics
 }
 
-export interface XpackUsageDatafeedCount {
+export interface XpackUsageDatafeed {
   count: long
 }
 
-export interface XpackUsageEqlFeaturesJoinUsage {
+export interface XpackUsageEql extends XpackUsageBase {
+  features: XpackUsageEqlFeatures
+  queries: Record<string, XpackUsageQuery>
+}
+
+export interface XpackUsageEqlFeatures {
+  join: uint
+  joins: XpackUsageEqlFeaturesJoin
+  keys: XpackUsageEqlFeaturesKeys
+  event: uint
+  pipes: XpackUsageEqlFeaturesPipes
+  sequence: uint
+  sequences: XpackUsageEqlFeaturesSequences
+}
+
+export interface XpackUsageEqlFeaturesJoin {
   join_queries_two: uint
   join_queries_three: uint
   join_until: uint
@@ -14779,7 +14847,7 @@ export interface XpackUsageEqlFeaturesJoinUsage {
   join_queries_four: uint
 }
 
-export interface XpackUsageEqlFeaturesKeysUsage {
+export interface XpackUsageEqlFeaturesKeys {
   join_keys_two: uint
   join_keys_one: uint
   join_keys_three: uint
@@ -14787,12 +14855,12 @@ export interface XpackUsageEqlFeaturesKeysUsage {
   join_keys_four: uint
 }
 
-export interface XpackUsageEqlFeaturesPipesUsage {
+export interface XpackUsageEqlFeaturesPipes {
   pipe_tail: uint
   pipe_head: uint
 }
 
-export interface XpackUsageEqlFeaturesSequencesUsage {
+export interface XpackUsageEqlFeaturesSequences {
   sequence_queries_three: uint
   sequence_queries_four: uint
   sequence_queries_two: uint
@@ -14801,27 +14869,21 @@ export interface XpackUsageEqlFeaturesSequencesUsage {
   sequence_maxspan: uint
 }
 
-export interface XpackUsageEqlFeaturesUsage {
-  join: uint
-  joins: XpackUsageEqlFeaturesJoinUsage
-  keys: XpackUsageEqlFeaturesKeysUsage
-  event: uint
-  pipes: XpackUsageEqlFeaturesPipesUsage
-  sequence: uint
-  sequences: XpackUsageEqlFeaturesSequencesUsage
+export interface XpackUsageFeatureToggle {
+  enabled: boolean
 }
 
-export interface XpackUsageEqlUsage extends XpackUsageXPackUsage {
-  features: XpackUsageEqlFeaturesUsage
-  queries: Record<string, XpackUsageQueryUsage>
-}
-
-export interface XpackUsageFlattenedUsage extends XpackUsageXPackUsage {
+export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
 }
 
-export interface XpackUsageFrozenIndicesUsage extends XpackUsageXPackUsage {
+export interface XpackUsageFrozenIndices extends XpackUsageBase {
   indices_count: long
+}
+
+export interface XpackUsageIlm {
+  policy_count: integer
+  policy_stats: XpackUsageIlmPolicyStatistics[]
 }
 
 export interface XpackUsageIlmPolicyStatistics {
@@ -14829,93 +14891,67 @@ export interface XpackUsageIlmPolicyStatistics {
   phases: IlmPhases
 }
 
-export interface XpackUsageIlmUsage {
-  policy_count: integer
-  policy_stats: XpackUsageIlmPolicyStatistics[]
-}
-
-export interface XpackUsageIpFilterUsage {
+export interface XpackUsageIpFilter {
   http: boolean
   transport: boolean
-}
-
-export interface XpackUsageJob {
-  allow_lazy_open?: boolean
-  analysis_config?: MlAnalysisConfig
-  analysis_limits?: MlAnalysisLimits
-  background_persist_interval?: Time
-  count?: integer
-  created_by?: EmptyObject
-  create_time?: integer
-  detectors?: XpackUsageJobStatistics
-  data_description?: MlDataDescription
-  description?: string
-  finished_time?: integer
-  forecasts?: XpackUsageMlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: MlModelPlotConfig
-  model_size?: XpackUsageJobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
-  model_plot_config?: MlModelPlotConfig
-  custom_settings?: XpackUsageCustomSettings
-  job_version?: VersionString
-  deleting?: boolean
-  daily_model_snapshot_retention_after_days?: long
-}
-
-export interface XpackUsageJobStatistics {
-  avg: double
-  max: double
-  min: double
-  total: double
 }
 
 export interface XpackUsageKibanaUrlConfig extends XpackUsageBaseUrlConfig {
   time_range?: string
 }
 
-export interface XpackUsageMachineLearningUsage extends XpackUsageXPackUsage {
-  datafeeds: Record<string, XpackUsageDatafeedCount>
-  jobs: Record<string, XpackUsageJob>
+export interface XpackUsageMachineLearning extends XpackUsageBase {
+  datafeeds: Record<string, XpackUsageDatafeed>
+  jobs: Record<string, MlJob>
   node_count: integer
-  data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobsUsage
-  inference: XpackUsageMlInferenceUsage
+  data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
+  inference: XpackUsageMlInference
 }
 
-export interface XpackUsageMlDataFrameAnalyticsJobsCountUsage {
+export interface XpackUsageMlCounter {
   count: long
 }
 
-export interface XpackUsageMlDataFrameAnalyticsJobsMemoryUsage {
-  peak_usage_bytes: XpackUsageJobStatistics
-}
-
-export interface XpackUsageMlDataFrameAnalyticsJobsUsage {
-  memory_usage?: XpackUsageMlDataFrameAnalyticsJobsMemoryUsage
-  _all: XpackUsageMlDataFrameAnalyticsJobsCountUsage
+export interface XpackUsageMlDataFrameAnalyticsJobs {
+  memory_usage?: XpackUsageMlDataFrameAnalyticsJobsMemory
+  _all: XpackUsageMlDataFrameAnalyticsJobsCount
   analysis_counts?: EmptyObject
 }
 
-export interface XpackUsageMlInferenceIngestProcessorCountUsage {
+export interface XpackUsageMlDataFrameAnalyticsJobsCount {
+  count: long
+}
+
+export interface XpackUsageMlDataFrameAnalyticsJobsMemory {
+  peak_usage_bytes: MlJobStatistics
+}
+
+export interface XpackUsageMlInference {
+  ingest_processors: Record<string, XpackUsageMlInferenceIngestProcessor>
+  trained_models: XpackUsageMlInferenceTrainedModels
+}
+
+export interface XpackUsageMlInferenceIngestProcessor {
+  num_docs_processed: XpackUsageMlInferenceIngestProcessorCount
+  pipelines: XpackUsageMlCounter
+  num_failures: XpackUsageMlInferenceIngestProcessorCount
+  time_ms: XpackUsageMlInferenceIngestProcessorCount
+}
+
+export interface XpackUsageMlInferenceIngestProcessorCount {
   max: long
   sum: long
   min: long
 }
 
-export interface XpackUsageMlInferenceIngestProcessorUsage {
-  num_docs_processed: XpackUsageMlInferenceIngestProcessorCountUsage
-  pipelines: XpackUsageMlUsageCounter
-  num_failures: XpackUsageMlInferenceIngestProcessorCountUsage
-  time_ms: XpackUsageMlInferenceIngestProcessorCountUsage
+export interface XpackUsageMlInferenceTrainedModels {
+  estimated_operations?: MlJobStatistics
+  estimated_heap_memory_usage_bytes?: MlJobStatistics
+  count?: XpackUsageMlInferenceTrainedModelsCount
+  _all: XpackUsageMlCounter
 }
 
-export interface XpackUsageMlInferenceTrainedModelsCountUsage {
+export interface XpackUsageMlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
@@ -14923,52 +14959,36 @@ export interface XpackUsageMlInferenceTrainedModelsCountUsage {
   classification: long
 }
 
-export interface XpackUsageMlInferenceTrainedModelsUsage {
-  estimated_operations?: XpackUsageJobStatistics
-  estimated_heap_memory_usage_bytes?: XpackUsageJobStatistics
-  count?: XpackUsageMlInferenceTrainedModelsCountUsage
-  _all: XpackUsageMlUsageCounter
-}
-
-export interface XpackUsageMlInferenceUsage {
-  ingest_processors: Record<string, XpackUsageMlInferenceIngestProcessorUsage>
-  trained_models: XpackUsageMlInferenceTrainedModelsUsage
-}
-
 export interface XpackUsageMlJobForecasts {
   total: long
   forecasted_jobs: long
 }
 
-export interface XpackUsageMlUsageCounter {
-  count: long
-}
-
-export interface XpackUsageMonitoringUsage extends XpackUsageXPackUsage {
+export interface XpackUsageMonitoring extends XpackUsageBase {
   collection_enabled: boolean
   enabled_exporters: Record<string, long>
 }
 
-export interface XpackUsageQueryUsage {
+export interface XpackUsageQuery {
   count?: integer
   failed?: integer
   paging?: integer
   total?: integer
 }
 
-export interface XpackUsageRealmCacheUsage {
-  size: long
-}
-
-export interface XpackUsageRealmUsage extends XpackUsageXPackUsage {
+export interface XpackUsageRealm extends XpackUsageBase {
   name?: string[]
   order?: long[]
   size?: long[]
-  cache?: XpackUsageRealmCacheUsage[]
+  cache?: XpackUsageRealmCache[]
   has_authorization_realms?: boolean[]
   has_default_username_pattern?: boolean[]
   has_truststore?: boolean[]
   is_authentication_delegated?: boolean[]
+}
+
+export interface XpackUsageRealmCache {
+  size: long
 }
 
 export interface XpackUsageRequest extends RequestBase {
@@ -14976,41 +14996,45 @@ export interface XpackUsageRequest extends RequestBase {
 }
 
 export interface XpackUsageResponse {
-  aggregate_metric: XpackUsageXPackUsage
-  analytics: XpackUsageAnalyticsUsage
-  watcher: XpackUsageWatcherUsage
-  ccr: XpackUsageCcrUsage
-  data_frame?: XpackUsageXPackUsage
-  data_science?: XpackUsageXPackUsage
-  data_streams?: XpackUsageDataStreamsUsage
-  data_tiers: XpackUsageDataTiersUsage
-  enrich?: XpackUsageXPackUsage
-  eql: XpackUsageEqlUsage
-  flattened?: XpackUsageFlattenedUsage
-  frozen_indices: XpackUsageFrozenIndicesUsage
-  graph: XpackUsageXPackUsage
-  ilm: XpackUsageIlmUsage
-  logstash: XpackUsageXPackUsage
-  ml: XpackUsageMachineLearningUsage
-  monitoring: XpackUsageMonitoringUsage
-  rollup: XpackUsageXPackUsage
-  runtime_fields?: XpackUsageRuntimeFieldsUsage
-  spatial: XpackUsageXPackUsage
-  searchable_snapshots: XpackUsageSearchableSnapshotsUsage
-  security: XpackUsageSecurityUsage
-  slm: XpackUsageSlmUsage
-  sql: XpackUsageSqlUsage
-  transform: XpackUsageXPackUsage
-  vectors: XpackUsageVectorUsage
-  voting_only: XpackUsageXPackUsage
+  aggregate_metric: XpackUsageBase
+  analytics: XpackUsageAnalytics
+  watcher: XpackUsageWatcher
+  ccr: XpackUsageCcr
+  data_frame?: XpackUsageBase
+  data_science?: XpackUsageBase
+  data_streams?: XpackUsageDataStreams
+  data_tiers: XpackUsageDataTiers
+  enrich?: XpackUsageBase
+  eql: XpackUsageEql
+  flattened?: XpackUsageFlattened
+  frozen_indices: XpackUsageFrozenIndices
+  graph: XpackUsageBase
+  ilm: XpackUsageIlm
+  logstash: XpackUsageBase
+  ml: XpackUsageMachineLearning
+  monitoring: XpackUsageMonitoring
+  rollup: XpackUsageBase
+  runtime_fields?: XpackUsageRuntimeFieldTypes
+  spatial: XpackUsageBase
+  searchable_snapshots: XpackUsageSearchableSnapshots
+  security: XpackUsageSecurity
+  slm: XpackUsageSlm
+  sql: XpackUsageSql
+  transform: XpackUsageBase
+  vectors: XpackUsageVector
+  voting_only: XpackUsageBase
 }
 
-export interface XpackUsageRoleMappingUsage {
+export interface XpackUsageRoleMapping {
   enabled: integer
   size: integer
 }
 
-export interface XpackUsageRuntimeFieldsTypeUsage {
+export interface XpackUsageRuntimeFieldTypes extends XpackUsageBase {
+  field_types: XpackUsageRuntimeFieldsType[]
+}
+
+export interface XpackUsageRuntimeFieldsType {
   chars_max: long
   chars_total: long
   count: long
@@ -15027,143 +15051,108 @@ export interface XpackUsageRuntimeFieldsTypeUsage {
   source_total: long
 }
 
-export interface XpackUsageRuntimeFieldsUsage extends XpackUsageXPackUsage {
-  field_types: XpackUsageRuntimeFieldsTypeUsage[]
-}
-
-export interface XpackUsageSearchableSnapshotsUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSearchableSnapshots extends XpackUsageBase {
   indices_count: integer
   full_copy_indices_count?: integer
   shared_cache_indices_count?: integer
 }
 
-export interface XpackUsageSecurityFeatureToggle {
-  enabled: boolean
+export interface XpackUsageSecurity extends XpackUsageBase {
+  api_key_service: XpackUsageFeatureToggle
+  anonymous: XpackUsageFeatureToggle
+  audit: XpackUsageAudit
+  fips_140: XpackUsageFeatureToggle
+  ipfilter: XpackUsageIpFilter
+  realms: Record<string, XpackUsageRealm>
+  role_mapping: Record<string, XpackUsageRoleMapping>
+  roles: XpackUsageSecurityRoles
+  ssl: XpackUsageSsl
+  system_key?: XpackUsageFeatureToggle
+  token_service: XpackUsageFeatureToggle
+  operator_privileges: XpackUsageBase
 }
 
-export interface XpackUsageSecurityRolesDlsBitSetCacheUsage {
+export interface XpackUsageSecurityRoles {
+  native: XpackUsageSecurityRolesNative
+  dls: XpackUsageSecurityRolesDls
+  file: XpackUsageSecurityRolesFile
+}
+
+export interface XpackUsageSecurityRolesDls {
+  bit_set_cache: XpackUsageSecurityRolesDlsBitSetCache
+}
+
+export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
-  memory: ByteSize
+  memory?: ByteSize
   memory_in_bytes: ulong
 }
 
-export interface XpackUsageSecurityRolesDlsUsage {
-  bit_set_cache: XpackUsageSecurityRolesDlsBitSetCacheUsage
-}
-
-export interface XpackUsageSecurityRolesFileUsage {
+export interface XpackUsageSecurityRolesFile {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export interface XpackUsageSecurityRolesNativeUsage {
+export interface XpackUsageSecurityRolesNative {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export interface XpackUsageSecurityRolesUsage {
-  native: XpackUsageSecurityRolesNativeUsage
-  dls: XpackUsageSecurityRolesDlsUsage
-  file: XpackUsageSecurityRolesFileUsage
-}
-
-export interface XpackUsageSecurityUsage extends XpackUsageXPackUsage {
-  api_key_service: XpackUsageSecurityFeatureToggle
-  anonymous: XpackUsageSecurityFeatureToggle
-  audit: XpackUsageAuditUsage
-  fips_140: XpackUsageSecurityFeatureToggle
-  ipfilter: XpackUsageIpFilterUsage
-  realms: Record<string, XpackUsageRealmUsage>
-  role_mapping: Record<string, XpackUsageRoleMappingUsage>
-  roles: XpackUsageSecurityRolesUsage
-  ssl: XpackUsageSslUsage
-  system_key?: XpackUsageSecurityFeatureToggle
-  token_service: XpackUsageSecurityFeatureToggle
-  operator_privileges: XpackUsageXPackUsage
-}
-
-export interface XpackUsageSlmUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSlm extends XpackUsageBase {
   policy_count?: integer
-  policy_stats?: XpackUsageSnapshotLifecycleStats
+  policy_stats?: SlmStatistics
 }
 
-export interface XpackUsageSnapshotLifecycleStats {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
-  retention_failed?: long
-  retention_runs?: long
-  retention_timed_out?: long
-  policy?: Id
-  total_snapshots_deleted?: long
-  snapshots_deleted?: long
-  total_snapshot_deletion_failures?: long
-  snapshot_deletion_failures?: long
-  total_snapshots_failed?: long
-  snapshots_failed?: long
-  total_snapshots_taken?: long
-  snapshots_taken?: long
-}
-
-export interface XpackUsageSqlUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSql extends XpackUsageBase {
   features: Record<string, integer>
-  queries: Record<string, XpackUsageQueryUsage>
+  queries: Record<string, XpackUsageQuery>
 }
 
-export interface XpackUsageSslUsage {
-  http: XpackUsageSecurityFeatureToggle
-  transport: XpackUsageSecurityFeatureToggle
+export interface XpackUsageSsl {
+  http: XpackUsageFeatureToggle
+  transport: XpackUsageFeatureToggle
 }
 
 export type XpackUsageUrlConfig = XpackUsageBaseUrlConfig | XpackUsageKibanaUrlConfig
 
-export interface XpackUsageUsageCount {
-  active: long
-  total: long
-}
-
-export interface XpackUsageVectorUsage extends XpackUsageXPackUsage {
+export interface XpackUsageVector extends XpackUsageBase {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
 }
 
-export interface XpackUsageWatcherActionTotalsUsage {
+export interface XpackUsageWatcher extends XpackUsageBase {
+  execution: XpackUsageWatcherActions
+  watch: XpackUsageWatcherWatch
+  count: XpackUsageCounter
+}
+
+export interface XpackUsageWatcherActionTotals {
   total: long
   total_time_in_ms: long
 }
 
-export interface XpackUsageWatcherActionsUsage {
-  actions: Record<Name, XpackUsageWatcherActionTotalsUsage>
+export interface XpackUsageWatcherActions {
+  actions: Record<Name, XpackUsageWatcherActionTotals>
 }
 
-export interface XpackUsageWatcherUsage extends XpackUsageXPackUsage {
-  execution: XpackUsageWatcherActionsUsage
-  watch: XpackUsageWatcherWatchUsage
-  count: XpackUsageUsageCount
+export interface XpackUsageWatcherWatch {
+  input: Record<Name, XpackUsageCounter>
+  condition?: Record<Name, XpackUsageCounter>
+  action?: Record<Name, XpackUsageCounter>
+  trigger: XpackUsageWatcherWatchTrigger
 }
 
-export interface XpackUsageWatcherWatchTriggerScheduleUsage extends XpackUsageUsageCount {
-  cron: XpackUsageUsageCount
-  _all: XpackUsageUsageCount
+export interface XpackUsageWatcherWatchTrigger {
+  schedule?: XpackUsageWatcherWatchTriggerSchedule
+  _all: XpackUsageCounter
 }
 
-export interface XpackUsageWatcherWatchTriggerUsage {
-  schedule?: XpackUsageWatcherWatchTriggerScheduleUsage
-  _all: XpackUsageUsageCount
-}
-
-export interface XpackUsageWatcherWatchUsage {
-  input: Record<Name, XpackUsageUsageCount>
-  condition?: Record<Name, XpackUsageUsageCount>
-  action?: Record<Name, XpackUsageUsageCount>
-  trigger: XpackUsageWatcherWatchTriggerUsage
-}
-
-export interface XpackUsageXPackUsage {
-  available: boolean
-  enabled: boolean
+export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter {
+  cron: XpackUsageCounter
+  _all: XpackUsageCounter
 }
 
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {

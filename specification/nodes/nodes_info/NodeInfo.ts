@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ByteSize, Name, Uri, VersionString } from '@_types/common'
+import { ByteSize, Name, VersionString } from '@_types/common'
 import { IndexRouting } from '@_types/index/IndexRouting'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'

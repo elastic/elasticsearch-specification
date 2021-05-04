@@ -17,37 +17,45 @@
  * under the License.
  */
 
+import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ActionStatusOptions } from '@watcher/_types/Action'
-import { Id, IndexName, Name, Type } from '@_types/common'
-import { DateString } from '@_types/Time'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
+import { MainError } from '@_types/Errors'
+import { integer, long } from '@_types/Numeric'
 
-export class Ingest {
-  timestamp: DateString
-  pipeline?: Name
-}
-
-export class PipelineSimulation {
-  doc?: DocumentSimulation
-  processor_results?: PipelineSimulation[]
-  tag?: string
-  processor_type?: string
-  status?: ActionStatusOptions
-}
-
-export class SimulatePipelineDocument {
-  _id?: Id
+export class Operation {
+  _id: MultiGetId
   _index?: IndexName
-  _source: UserDefinedValue
+  routing?: Routing
+  _source?: boolean | Fields | SourceFilter
+  stored_fields?: Fields
+  _type?: Type
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
-export class DocumentSimulation {
+export type MultiGetId = string | integer
+
+export class Hit<TDocument> {
+  error?: MainError
+  fields?: Dictionary<string, UserDefinedValue>
+  found?: boolean
   _id: Id
   _index: IndexName
-  _ingest: Ingest
-  _parent?: string
-  _routing?: string
-  _source: Dictionary<string, UserDefinedValue>
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: SequenceNumber
+  _source?: TDocument
   _type?: Type
+  _version?: VersionNumber
 }

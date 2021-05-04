@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/sort/Sort'
+import { Sort } from '@global/search/_types/sort'
 import { Aggregation } from '@_types/aggregations/Aggregation'
 import { integer } from '@_types/Numeric'
 import { GapPolicy } from '../GapPolicy'

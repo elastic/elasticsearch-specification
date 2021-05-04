@@ -18,8 +18,6 @@
  */
 
 import { RoleMappingRuleBase } from '@security/put_role_mapping/SecurityPutRoleMappingRequest'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata } from '@_types/common'
 
 export class XPackRoleMapping {

@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { Job } from '@_types/ml/Job'
-import { long } from '@_types/Numeric'
+import { Field } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { InnerHits } from './hits'
 
-export class Response {
-  body: { count: long; jobs: Job[] }
+export class FieldCollapse {
+  field: Field
+  inner_hits?: InnerHits | InnerHits[]
+  max_concurrent_group_searches?: integer
 }

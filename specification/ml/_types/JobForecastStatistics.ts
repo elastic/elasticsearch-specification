@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { JobStatistics } from '@xpack/usage/JobStatistics'
+import { JobStatistics } from '@_types/ml/Job'
 import { integer, long } from '@_types/Numeric'
 
 export class JobForecastStatistics {

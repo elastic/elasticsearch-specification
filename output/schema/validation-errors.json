@@ -649,7 +649,7 @@
         "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",
         "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:ValueAggregate'",
         "type_alias definition _types.aggregations:MetricAggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:StatsAggregate'",
-        "type_alias definition _global.search.suggesters:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search.suggesters:TDocument'"
+        "type_alias definition _global.search._types:SuggestOption / union_of / instance_of / Generics / instance_of - No type definition for '_global.search._types:TDocument'"
       ]
     },
     "msearch_template": {

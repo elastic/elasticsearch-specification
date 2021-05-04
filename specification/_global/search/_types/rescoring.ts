@@ -17,9 +17,26 @@
  * under the License.
  */
 
-import { Job } from '@_types/ml/Job'
-import { long } from '@_types/Numeric'
+import { double, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class Response {
-  body: { count: long; jobs: Job[] }
+export class Rescore {
+  query: RescoreQuery
+  window_size?: integer
+}
+
+export class RescoreQuery {
+  /** @identifier Query */
+  rescore_query: QueryContainer
+  query_weight?: double
+  rescore_query_weight?: double
+  score_mode?: ScoreMode
+}
+
+export enum ScoreMode {
+  avg = 0,
+  max = 1,
+  min = 2,
+  multiply = 3,
+  total = 4
 }

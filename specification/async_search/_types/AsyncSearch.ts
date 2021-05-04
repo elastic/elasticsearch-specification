@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/hits/HitsMetadata'
-import { Profile } from '@global/search/profile/Profile'
-import { Suggest } from '@global/search/suggesters/Suggest'
+import { HitsMetadata } from '@global/search/_types/hits'
+import { Profile } from '@global/search/_types/profile'
+import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'

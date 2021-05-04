@@ -19,8 +19,7 @@
 
 import { IndexTemplate } from '@indices/get_index_template/IndicesGetIndexTemplateResponse'
 import { RequestBase } from '@_types/Base'
-import { Indices, Metadata, Name, VersionNumber } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { Name } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**

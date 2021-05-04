@@ -23,9 +23,9 @@ import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { Action, Actions } from './Action'
+import { TransformContainer } from '@_types/Transform'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
-import { TransformContainer } from '../../_types/Transform'
 import { TriggerContainer } from './Trigger'
 
 export class Watch {

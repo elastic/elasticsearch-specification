@@ -17,9 +17,22 @@
  * under the License.
  */
 
-import { Job } from '@_types/ml/Job'
-import { long } from '@_types/Numeric'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class Response {
-  body: { count: long; jobs: Job[] }
+export class PainlessContextSetup {
+  document: UserDefinedValue
+  index: IndexName
+  query: QueryContainer
+}
+
+/**
+ * If a painless script fails to execute this is returned on the serialized exception
+ */
+export class PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
 }

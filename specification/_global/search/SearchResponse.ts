@@ -23,9 +23,9 @@ import { Aggregate } from '@_types/aggregations/Aggregate'
 import { AggregateName, Id, ScrollId, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
-import { HitsMetadata } from './hits/HitsMetadata'
-import { Profile } from './profile/Profile'
-import { Suggest } from './suggesters/Suggest'
+import { HitsMetadata } from './_types/hits'
+import { Profile } from './_types/profile'
+import { Suggest } from './_types/suggester'
 
 export class Response<TDocument> {
   body: {

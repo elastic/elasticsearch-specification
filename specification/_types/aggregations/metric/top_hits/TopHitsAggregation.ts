@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Highlight } from '@global/search/highlighting/Highlight'
-import { Sort } from '@global/search/sort/Sort'
-import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { Highlight } from '@global/search/_types/highlighting'
+import { Sort } from '@global/search/_types/sort'
+import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
