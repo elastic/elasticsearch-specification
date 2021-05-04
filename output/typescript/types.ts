@@ -4120,6 +4120,43 @@ export interface MappingTypesSpecializedTokenCountTokenCountProperty extends Map
   type: 'token_count'
 }
 
+export interface MlJob {
+  allow_lazy_open?: boolean
+  analysis_config?: MlAnalysisConfig
+  analysis_limits?: MlAnalysisLimits
+  background_persist_interval?: Time
+  count?: integer
+  created_by?: EmptyObject
+  create_time?: integer
+  detectors?: MlJobStatistics
+  data_description?: MlDataDescription
+  description?: string
+  finished_time?: integer
+  forecasts?: XpackUsageMlJobForecasts
+  job_id?: Id
+  job_type?: string
+  model_plot?: MlModelPlotConfig
+  model_size?: MlJobStatistics
+  model_snapshot_id?: Id
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
+  results_index_name?: IndexName
+  results_retention_days?: long
+  groups?: string[]
+  model_plot_config?: MlModelPlotConfig
+  custom_settings?: XpackUsageCustomSettings
+  job_version?: VersionString
+  deleting?: boolean
+  daily_model_snapshot_retention_after_days?: long
+}
+
+export interface MlJobStatistics {
+  avg: double
+  max: double
+  min: double
+  total: double
+}
+
 export interface QueryDslMatchAllQuery extends QueryDslAbstractionsQueryQueryBase {
   norm_field?: string
 }
@@ -4814,6 +4851,23 @@ export interface QueryDslTermLevelTypeTypeQuery extends QueryDslAbstractionsQuer
 export interface QueryDslTermLevelWildcardWildcardQuery extends QueryDslAbstractionsQueryQueryBase {
   rewrite?: MultiTermQueryRewrite
   value: string
+}
+
+export interface SlmStatistics {
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  total_snapshots_deleted?: long
+  snapshots_deleted?: long
+  total_snapshot_deletion_failures?: long
+  snapshot_deletion_failures?: long
+  total_snapshots_failed?: long
+  snapshots_failed?: long
+  total_snapshots_taken?: long
+  snapshots_taken?: long
 }
 
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
@@ -10356,9 +10410,9 @@ export interface MlInfluence {
 }
 
 export interface MlJobForecastStatistics {
-  memory_bytes?: XpackUsageJobStatistics
-  processing_time_ms?: XpackUsageJobStatistics
-  records?: XpackUsageJobStatistics
+  memory_bytes?: MlJobStatistics
+  processing_time_ms?: MlJobStatistics
+  records?: MlJobStatistics
   status?: Record<string, long>
   total: long
   forecasted_jobs: integer
@@ -11132,7 +11186,7 @@ export interface MlGetJobsRequest extends RequestBase {
 
 export interface MlGetJobsResponse {
   count: long
-  jobs: XpackUsageJob[]
+  jobs: MlJob[]
 }
 
 export interface MlGetModelSnapshotsRequest extends RequestBase {
@@ -13250,7 +13304,7 @@ export interface SlmSnapshotLifecyclePolicyMetadata {
   next_execution_millis: EpochMillis
   policy: SlmSnapshotLifecyclePolicy
   version: VersionNumber
-  stats: XpackUsageSnapshotLifecycleStats
+  stats: SlmStatistics
 }
 
 export interface SlmSnapshotRetentionConfiguration {
@@ -14663,6 +14717,48 @@ export interface WatcherStopRequest extends RequestBase {
 
 export interface WatcherStopResponse extends AcknowledgedResponseBase {}
 
+export interface XpackInfoBuildInformation {
+  date: DateString
+  hash: string
+}
+
+export interface XpackInfoFeature {
+  available: boolean
+  description?: string
+  enabled: boolean
+  native_code_info?: XpackInfoNativeCodeInformation
+}
+
+export interface XpackInfoFeatures {
+  aggregate_metric: XpackInfoFeature
+  analytics: XpackInfoFeature
+  ccr: XpackInfoFeature
+  data_frame?: XpackInfoFeature
+  data_science?: XpackInfoFeature
+  data_streams: XpackInfoFeature
+  data_tiers: XpackInfoFeature
+  enrich: XpackInfoFeature
+  eql: XpackInfoFeature
+  flattened?: XpackInfoFeature
+  frozen_indices: XpackInfoFeature
+  graph: XpackInfoFeature
+  ilm: XpackInfoFeature
+  logstash: XpackInfoFeature
+  ml: XpackInfoFeature
+  monitoring: XpackInfoFeature
+  rollup: XpackInfoFeature
+  runtime_fields?: XpackInfoFeature
+  searchable_snapshots: XpackInfoFeature
+  security: XpackInfoFeature
+  slm: XpackInfoFeature
+  spatial: XpackInfoFeature
+  sql: XpackInfoFeature
+  transform: XpackInfoFeature
+  vectors: XpackInfoFeature
+  voting_only: XpackInfoFeature
+  watcher: XpackInfoFeature
+}
+
 export interface XpackInfoMinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis
   mode: LicenseLicenseType
@@ -14681,55 +14777,17 @@ export interface XpackInfoRequest extends RequestBase {
 }
 
 export interface XpackInfoResponse {
-  build: XpackInfoXPackBuildInformation
-  features: XpackInfoXPackFeatures
+  build: XpackInfoBuildInformation
+  features: XpackInfoFeatures
   license: XpackInfoMinimalLicenseInformation
   tagline: string
 }
 
-export interface XpackInfoXPackBuildInformation {
-  date: DateString
-  hash: string
+export interface XpackUsageAnalytics extends XpackUsageBase {
+  stats: XpackUsageAnalyticsStatistics
 }
 
-export interface XpackInfoXPackFeature {
-  available: boolean
-  description?: string
-  enabled: boolean
-  native_code_info?: XpackInfoNativeCodeInformation
-}
-
-export interface XpackInfoXPackFeatures {
-  aggregate_metric: XpackInfoXPackFeature
-  analytics: XpackInfoXPackFeature
-  ccr: XpackInfoXPackFeature
-  data_frame?: XpackInfoXPackFeature
-  data_science?: XpackInfoXPackFeature
-  data_streams: XpackInfoXPackFeature
-  data_tiers: XpackInfoXPackFeature
-  enrich: XpackInfoXPackFeature
-  eql: XpackInfoXPackFeature
-  flattened?: XpackInfoXPackFeature
-  frozen_indices: XpackInfoXPackFeature
-  graph: XpackInfoXPackFeature
-  ilm: XpackInfoXPackFeature
-  logstash: XpackInfoXPackFeature
-  ml: XpackInfoXPackFeature
-  monitoring: XpackInfoXPackFeature
-  rollup: XpackInfoXPackFeature
-  runtime_fields?: XpackInfoXPackFeature
-  searchable_snapshots: XpackInfoXPackFeature
-  security: XpackInfoXPackFeature
-  slm: XpackInfoXPackFeature
-  spatial: XpackInfoXPackFeature
-  sql: XpackInfoXPackFeature
-  transform: XpackInfoXPackFeature
-  vectors: XpackInfoXPackFeature
-  voting_only: XpackInfoXPackFeature
-  watcher: XpackInfoXPackFeature
-}
-
-export interface XpackUsageAnalyticsStatsUsage {
+export interface XpackUsageAnalyticsStatistics {
   boxplot_usage: long
   cumulative_cardinality_usage: long
   string_stats_usage: long
@@ -14741,12 +14799,13 @@ export interface XpackUsageAnalyticsStatsUsage {
   multi_terms_usage?: long
 }
 
-export interface XpackUsageAnalyticsUsage extends XpackUsageXPackUsage {
-  stats: XpackUsageAnalyticsStatsUsage
+export interface XpackUsageAudit extends XpackUsageFeatureToggle {
+  outputs?: string[]
 }
 
-export interface XpackUsageAuditUsage extends XpackUsageSecurityFeatureToggle {
-  outputs?: string[]
+export interface XpackUsageBase {
+  available: boolean
+  enabled: boolean
 }
 
 export interface XpackUsageBaseUrlConfig {
@@ -14754,9 +14813,14 @@ export interface XpackUsageBaseUrlConfig {
   url_value: string
 }
 
-export interface XpackUsageCcrUsage extends XpackUsageXPackUsage {
+export interface XpackUsageCcr extends XpackUsageBase {
   auto_follow_patterns_count: integer
   follower_indices_count: integer
+}
+
+export interface XpackUsageCounter {
+  active: long
+  total: long
 }
 
 export interface XpackUsageCustomSettings {
@@ -14765,12 +14829,12 @@ export interface XpackUsageCustomSettings {
   job_tags?: Record<string, string>
 }
 
-export interface XpackUsageDataStreamsUsage extends XpackUsageXPackUsage {
+export interface XpackUsageDataStreams extends XpackUsageBase {
   data_streams: long
   indices_count: long
 }
 
-export interface XpackUsageDataTierPhaseCountUsage {
+export interface XpackUsageDataTierPhaseStatistics {
   node_count: long
   index_count: long
   total_shard_count: long
@@ -14783,19 +14847,34 @@ export interface XpackUsageDataTierPhaseCountUsage {
   primary_shard_size_mad_bytes: long
 }
 
-export interface XpackUsageDataTiersUsage extends XpackUsageXPackUsage {
-  data_warm: XpackUsageDataTierPhaseCountUsage
-  data_frozen?: XpackUsageDataTierPhaseCountUsage
-  data_cold: XpackUsageDataTierPhaseCountUsage
-  data_content: XpackUsageDataTierPhaseCountUsage
-  data_hot: XpackUsageDataTierPhaseCountUsage
+export interface XpackUsageDataTiers extends XpackUsageBase {
+  data_warm: XpackUsageDataTierPhaseStatistics
+  data_frozen?: XpackUsageDataTierPhaseStatistics
+  data_cold: XpackUsageDataTierPhaseStatistics
+  data_content: XpackUsageDataTierPhaseStatistics
+  data_hot: XpackUsageDataTierPhaseStatistics
 }
 
-export interface XpackUsageDatafeedCount {
+export interface XpackUsageDatafeed {
   count: long
 }
 
-export interface XpackUsageEqlFeaturesJoinUsage {
+export interface XpackUsageEql extends XpackUsageBase {
+  features: XpackUsageEqlFeatures
+  queries: Record<string, XpackUsageQuery>
+}
+
+export interface XpackUsageEqlFeatures {
+  join: uint
+  joins: XpackUsageEqlFeaturesJoin
+  keys: XpackUsageEqlFeaturesKeys
+  event: uint
+  pipes: XpackUsageEqlFeaturesPipes
+  sequence: uint
+  sequences: XpackUsageEqlFeaturesSequences
+}
+
+export interface XpackUsageEqlFeaturesJoin {
   join_queries_two: uint
   join_queries_three: uint
   join_until: uint
@@ -14803,7 +14882,7 @@ export interface XpackUsageEqlFeaturesJoinUsage {
   join_queries_four: uint
 }
 
-export interface XpackUsageEqlFeaturesKeysUsage {
+export interface XpackUsageEqlFeaturesKeys {
   join_keys_two: uint
   join_keys_one: uint
   join_keys_three: uint
@@ -14811,12 +14890,12 @@ export interface XpackUsageEqlFeaturesKeysUsage {
   join_keys_four: uint
 }
 
-export interface XpackUsageEqlFeaturesPipesUsage {
+export interface XpackUsageEqlFeaturesPipes {
   pipe_tail: uint
   pipe_head: uint
 }
 
-export interface XpackUsageEqlFeaturesSequencesUsage {
+export interface XpackUsageEqlFeaturesSequences {
   sequence_queries_three: uint
   sequence_queries_four: uint
   sequence_queries_two: uint
@@ -14825,27 +14904,21 @@ export interface XpackUsageEqlFeaturesSequencesUsage {
   sequence_maxspan: uint
 }
 
-export interface XpackUsageEqlFeaturesUsage {
-  join: uint
-  joins: XpackUsageEqlFeaturesJoinUsage
-  keys: XpackUsageEqlFeaturesKeysUsage
-  event: uint
-  pipes: XpackUsageEqlFeaturesPipesUsage
-  sequence: uint
-  sequences: XpackUsageEqlFeaturesSequencesUsage
+export interface XpackUsageFeatureToggle {
+  enabled: boolean
 }
 
-export interface XpackUsageEqlUsage extends XpackUsageXPackUsage {
-  features: XpackUsageEqlFeaturesUsage
-  queries: Record<string, XpackUsageQueryUsage>
-}
-
-export interface XpackUsageFlattenedUsage extends XpackUsageXPackUsage {
+export interface XpackUsageFlattened extends XpackUsageBase {
   field_count: integer
 }
 
-export interface XpackUsageFrozenIndicesUsage extends XpackUsageXPackUsage {
+export interface XpackUsageFrozenIndices extends XpackUsageBase {
   indices_count: long
+}
+
+export interface XpackUsageIlm {
+  policy_count: integer
+  policy_stats: XpackUsageIlmPolicyStatistics[]
 }
 
 export interface XpackUsageIlmPolicyStatistics {
@@ -14853,93 +14926,67 @@ export interface XpackUsageIlmPolicyStatistics {
   phases: IlmPhases
 }
 
-export interface XpackUsageIlmUsage {
-  policy_count: integer
-  policy_stats: XpackUsageIlmPolicyStatistics[]
-}
-
-export interface XpackUsageIpFilterUsage {
+export interface XpackUsageIpFilter {
   http: boolean
   transport: boolean
-}
-
-export interface XpackUsageJob {
-  allow_lazy_open?: boolean
-  analysis_config?: MlAnalysisConfig
-  analysis_limits?: MlAnalysisLimits
-  background_persist_interval?: Time
-  count?: integer
-  created_by?: EmptyObject
-  create_time?: integer
-  detectors?: XpackUsageJobStatistics
-  data_description?: MlDataDescription
-  description?: string
-  finished_time?: integer
-  forecasts?: XpackUsageMlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: MlModelPlotConfig
-  model_size?: XpackUsageJobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
-  model_plot_config?: MlModelPlotConfig
-  custom_settings?: XpackUsageCustomSettings
-  job_version?: VersionString
-  deleting?: boolean
-  daily_model_snapshot_retention_after_days?: long
-}
-
-export interface XpackUsageJobStatistics {
-  avg: double
-  max: double
-  min: double
-  total: double
 }
 
 export interface XpackUsageKibanaUrlConfig extends XpackUsageBaseUrlConfig {
   time_range?: string
 }
 
-export interface XpackUsageMachineLearningUsage extends XpackUsageXPackUsage {
-  datafeeds: Record<string, XpackUsageDatafeedCount>
-  jobs: Record<string, XpackUsageJob>
+export interface XpackUsageMachineLearning extends XpackUsageBase {
+  datafeeds: Record<string, XpackUsageDatafeed>
+  jobs: Record<string, MlJob>
   node_count: integer
-  data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobsUsage
-  inference: XpackUsageMlInferenceUsage
+  data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
+  inference: XpackUsageMlInference
 }
 
-export interface XpackUsageMlDataFrameAnalyticsJobsCountUsage {
+export interface XpackUsageMlCounter {
   count: long
 }
 
-export interface XpackUsageMlDataFrameAnalyticsJobsMemoryUsage {
-  peak_usage_bytes: XpackUsageJobStatistics
-}
-
-export interface XpackUsageMlDataFrameAnalyticsJobsUsage {
-  memory_usage?: XpackUsageMlDataFrameAnalyticsJobsMemoryUsage
-  _all: XpackUsageMlDataFrameAnalyticsJobsCountUsage
+export interface XpackUsageMlDataFrameAnalyticsJobs {
+  memory_usage?: XpackUsageMlDataFrameAnalyticsJobsMemory
+  _all: XpackUsageMlDataFrameAnalyticsJobsCount
   analysis_counts?: EmptyObject
 }
 
-export interface XpackUsageMlInferenceIngestProcessorCountUsage {
+export interface XpackUsageMlDataFrameAnalyticsJobsCount {
+  count: long
+}
+
+export interface XpackUsageMlDataFrameAnalyticsJobsMemory {
+  peak_usage_bytes: MlJobStatistics
+}
+
+export interface XpackUsageMlInference {
+  ingest_processors: Record<string, XpackUsageMlInferenceIngestProcessor>
+  trained_models: XpackUsageMlInferenceTrainedModels
+}
+
+export interface XpackUsageMlInferenceIngestProcessor {
+  num_docs_processed: XpackUsageMlInferenceIngestProcessorCount
+  pipelines: XpackUsageMlCounter
+  num_failures: XpackUsageMlInferenceIngestProcessorCount
+  time_ms: XpackUsageMlInferenceIngestProcessorCount
+}
+
+export interface XpackUsageMlInferenceIngestProcessorCount {
   max: long
   sum: long
   min: long
 }
 
-export interface XpackUsageMlInferenceIngestProcessorUsage {
-  num_docs_processed: XpackUsageMlInferenceIngestProcessorCountUsage
-  pipelines: XpackUsageMlUsageCounter
-  num_failures: XpackUsageMlInferenceIngestProcessorCountUsage
-  time_ms: XpackUsageMlInferenceIngestProcessorCountUsage
+export interface XpackUsageMlInferenceTrainedModels {
+  estimated_operations?: MlJobStatistics
+  estimated_heap_memory_usage_bytes?: MlJobStatistics
+  count?: XpackUsageMlInferenceTrainedModelsCount
+  _all: XpackUsageMlCounter
 }
 
-export interface XpackUsageMlInferenceTrainedModelsCountUsage {
+export interface XpackUsageMlInferenceTrainedModelsCount {
   total: long
   prepackaged: long
   other: long
@@ -14947,52 +14994,36 @@ export interface XpackUsageMlInferenceTrainedModelsCountUsage {
   classification: long
 }
 
-export interface XpackUsageMlInferenceTrainedModelsUsage {
-  estimated_operations?: XpackUsageJobStatistics
-  estimated_heap_memory_usage_bytes?: XpackUsageJobStatistics
-  count?: XpackUsageMlInferenceTrainedModelsCountUsage
-  _all: XpackUsageMlUsageCounter
-}
-
-export interface XpackUsageMlInferenceUsage {
-  ingest_processors: Record<string, XpackUsageMlInferenceIngestProcessorUsage>
-  trained_models: XpackUsageMlInferenceTrainedModelsUsage
-}
-
 export interface XpackUsageMlJobForecasts {
   total: long
   forecasted_jobs: long
 }
 
-export interface XpackUsageMlUsageCounter {
-  count: long
-}
-
-export interface XpackUsageMonitoringUsage extends XpackUsageXPackUsage {
+export interface XpackUsageMonitoring extends XpackUsageBase {
   collection_enabled: boolean
   enabled_exporters: Record<string, long>
 }
 
-export interface XpackUsageQueryUsage {
+export interface XpackUsageQuery {
   count?: integer
   failed?: integer
   paging?: integer
   total?: integer
 }
 
-export interface XpackUsageRealmCacheUsage {
-  size: long
-}
-
-export interface XpackUsageRealmUsage extends XpackUsageXPackUsage {
+export interface XpackUsageRealm extends XpackUsageBase {
   name?: string[]
   order?: long[]
   size?: long[]
-  cache?: XpackUsageRealmCacheUsage[]
+  cache?: XpackUsageRealmCache[]
   has_authorization_realms?: boolean[]
   has_default_username_pattern?: boolean[]
   has_truststore?: boolean[]
   is_authentication_delegated?: boolean[]
+}
+
+export interface XpackUsageRealmCache {
+  size: long
 }
 
 export interface XpackUsageRequest extends RequestBase {
@@ -15000,41 +15031,45 @@ export interface XpackUsageRequest extends RequestBase {
 }
 
 export interface XpackUsageResponse {
-  aggregate_metric: XpackUsageXPackUsage
-  analytics: XpackUsageAnalyticsUsage
-  watcher: XpackUsageWatcherUsage
-  ccr: XpackUsageCcrUsage
-  data_frame?: XpackUsageXPackUsage
-  data_science?: XpackUsageXPackUsage
-  data_streams?: XpackUsageDataStreamsUsage
-  data_tiers: XpackUsageDataTiersUsage
-  enrich?: XpackUsageXPackUsage
-  eql: XpackUsageEqlUsage
-  flattened?: XpackUsageFlattenedUsage
-  frozen_indices: XpackUsageFrozenIndicesUsage
-  graph: XpackUsageXPackUsage
-  ilm: XpackUsageIlmUsage
-  logstash: XpackUsageXPackUsage
-  ml: XpackUsageMachineLearningUsage
-  monitoring: XpackUsageMonitoringUsage
-  rollup: XpackUsageXPackUsage
-  runtime_fields?: XpackUsageRuntimeFieldsUsage
-  spatial: XpackUsageXPackUsage
-  searchable_snapshots: XpackUsageSearchableSnapshotsUsage
-  security: XpackUsageSecurityUsage
-  slm: XpackUsageSlmUsage
-  sql: XpackUsageSqlUsage
-  transform: XpackUsageXPackUsage
-  vectors: XpackUsageVectorUsage
-  voting_only: XpackUsageXPackUsage
+  aggregate_metric: XpackUsageBase
+  analytics: XpackUsageAnalytics
+  watcher: XpackUsageWatcher
+  ccr: XpackUsageCcr
+  data_frame?: XpackUsageBase
+  data_science?: XpackUsageBase
+  data_streams?: XpackUsageDataStreams
+  data_tiers: XpackUsageDataTiers
+  enrich?: XpackUsageBase
+  eql: XpackUsageEql
+  flattened?: XpackUsageFlattened
+  frozen_indices: XpackUsageFrozenIndices
+  graph: XpackUsageBase
+  ilm: XpackUsageIlm
+  logstash: XpackUsageBase
+  ml: XpackUsageMachineLearning
+  monitoring: XpackUsageMonitoring
+  rollup: XpackUsageBase
+  runtime_fields?: XpackUsageRuntimeFieldTypes
+  spatial: XpackUsageBase
+  searchable_snapshots: XpackUsageSearchableSnapshots
+  security: XpackUsageSecurity
+  slm: XpackUsageSlm
+  sql: XpackUsageSql
+  transform: XpackUsageBase
+  vectors: XpackUsageVector
+  voting_only: XpackUsageBase
 }
 
-export interface XpackUsageRoleMappingUsage {
+export interface XpackUsageRoleMapping {
   enabled: integer
   size: integer
 }
 
-export interface XpackUsageRuntimeFieldsTypeUsage {
+export interface XpackUsageRuntimeFieldTypes extends XpackUsageBase {
+  field_types: XpackUsageRuntimeFieldsType[]
+}
+
+export interface XpackUsageRuntimeFieldsType {
   chars_max: long
   chars_total: long
   count: long
@@ -15051,143 +15086,108 @@ export interface XpackUsageRuntimeFieldsTypeUsage {
   source_total: long
 }
 
-export interface XpackUsageRuntimeFieldsUsage extends XpackUsageXPackUsage {
-  field_types: XpackUsageRuntimeFieldsTypeUsage[]
-}
-
-export interface XpackUsageSearchableSnapshotsUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSearchableSnapshots extends XpackUsageBase {
   indices_count: integer
   full_copy_indices_count?: integer
   shared_cache_indices_count?: integer
 }
 
-export interface XpackUsageSecurityFeatureToggle {
-  enabled: boolean
+export interface XpackUsageSecurity extends XpackUsageBase {
+  api_key_service: XpackUsageFeatureToggle
+  anonymous: XpackUsageFeatureToggle
+  audit: XpackUsageAudit
+  fips_140: XpackUsageFeatureToggle
+  ipfilter: XpackUsageIpFilter
+  realms: Record<string, XpackUsageRealm>
+  role_mapping: Record<string, XpackUsageRoleMapping>
+  roles: XpackUsageSecurityRoles
+  ssl: XpackUsageSsl
+  system_key?: XpackUsageFeatureToggle
+  token_service: XpackUsageFeatureToggle
+  operator_privileges: XpackUsageBase
 }
 
-export interface XpackUsageSecurityRolesDlsBitSetCacheUsage {
+export interface XpackUsageSecurityRoles {
+  native: XpackUsageSecurityRolesNative
+  dls: XpackUsageSecurityRolesDls
+  file: XpackUsageSecurityRolesFile
+}
+
+export interface XpackUsageSecurityRolesDls {
+  bit_set_cache: XpackUsageSecurityRolesDlsBitSetCache
+}
+
+export interface XpackUsageSecurityRolesDlsBitSetCache {
   count: integer
-  memory: ByteSize
+  memory?: ByteSize
   memory_in_bytes: ulong
 }
 
-export interface XpackUsageSecurityRolesDlsUsage {
-  bit_set_cache: XpackUsageSecurityRolesDlsBitSetCacheUsage
-}
-
-export interface XpackUsageSecurityRolesFileUsage {
+export interface XpackUsageSecurityRolesFile {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export interface XpackUsageSecurityRolesNativeUsage {
+export interface XpackUsageSecurityRolesNative {
   dls: boolean
   fls: boolean
   size: long
 }
 
-export interface XpackUsageSecurityRolesUsage {
-  native: XpackUsageSecurityRolesNativeUsage
-  dls: XpackUsageSecurityRolesDlsUsage
-  file: XpackUsageSecurityRolesFileUsage
-}
-
-export interface XpackUsageSecurityUsage extends XpackUsageXPackUsage {
-  api_key_service: XpackUsageSecurityFeatureToggle
-  anonymous: XpackUsageSecurityFeatureToggle
-  audit: XpackUsageAuditUsage
-  fips_140: XpackUsageSecurityFeatureToggle
-  ipfilter: XpackUsageIpFilterUsage
-  realms: Record<string, XpackUsageRealmUsage>
-  role_mapping: Record<string, XpackUsageRoleMappingUsage>
-  roles: XpackUsageSecurityRolesUsage
-  ssl: XpackUsageSslUsage
-  system_key?: XpackUsageSecurityFeatureToggle
-  token_service: XpackUsageSecurityFeatureToggle
-  operator_privileges: XpackUsageXPackUsage
-}
-
-export interface XpackUsageSlmUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSlm extends XpackUsageBase {
   policy_count?: integer
-  policy_stats?: XpackUsageSnapshotLifecycleStats
+  policy_stats?: SlmStatistics
 }
 
-export interface XpackUsageSnapshotLifecycleStats {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
-  retention_failed?: long
-  retention_runs?: long
-  retention_timed_out?: long
-  policy?: Id
-  total_snapshots_deleted?: long
-  snapshots_deleted?: long
-  total_snapshot_deletion_failures?: long
-  snapshot_deletion_failures?: long
-  total_snapshots_failed?: long
-  snapshots_failed?: long
-  total_snapshots_taken?: long
-  snapshots_taken?: long
-}
-
-export interface XpackUsageSqlUsage extends XpackUsageXPackUsage {
+export interface XpackUsageSql extends XpackUsageBase {
   features: Record<string, integer>
-  queries: Record<string, XpackUsageQueryUsage>
+  queries: Record<string, XpackUsageQuery>
 }
 
-export interface XpackUsageSslUsage {
-  http: XpackUsageSecurityFeatureToggle
-  transport: XpackUsageSecurityFeatureToggle
+export interface XpackUsageSsl {
+  http: XpackUsageFeatureToggle
+  transport: XpackUsageFeatureToggle
 }
 
 export type XpackUsageUrlConfig = XpackUsageBaseUrlConfig | XpackUsageKibanaUrlConfig
 
-export interface XpackUsageUsageCount {
-  active: long
-  total: long
-}
-
-export interface XpackUsageVectorUsage extends XpackUsageXPackUsage {
+export interface XpackUsageVector extends XpackUsageBase {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
 }
 
-export interface XpackUsageWatcherActionTotalsUsage {
+export interface XpackUsageWatcher extends XpackUsageBase {
+  execution: XpackUsageWatcherActions
+  watch: XpackUsageWatcherWatch
+  count: XpackUsageCounter
+}
+
+export interface XpackUsageWatcherActionTotals {
   total: long
   total_time_in_ms: long
 }
 
-export interface XpackUsageWatcherActionsUsage {
-  actions: Record<Name, XpackUsageWatcherActionTotalsUsage>
+export interface XpackUsageWatcherActions {
+  actions: Record<Name, XpackUsageWatcherActionTotals>
 }
 
-export interface XpackUsageWatcherUsage extends XpackUsageXPackUsage {
-  execution: XpackUsageWatcherActionsUsage
-  watch: XpackUsageWatcherWatchUsage
-  count: XpackUsageUsageCount
+export interface XpackUsageWatcherWatch {
+  input: Record<Name, XpackUsageCounter>
+  condition?: Record<Name, XpackUsageCounter>
+  action?: Record<Name, XpackUsageCounter>
+  trigger: XpackUsageWatcherWatchTrigger
 }
 
-export interface XpackUsageWatcherWatchTriggerScheduleUsage extends XpackUsageUsageCount {
-  cron: XpackUsageUsageCount
-  _all: XpackUsageUsageCount
+export interface XpackUsageWatcherWatchTrigger {
+  schedule?: XpackUsageWatcherWatchTriggerSchedule
+  _all: XpackUsageCounter
 }
 
-export interface XpackUsageWatcherWatchTriggerUsage {
-  schedule?: XpackUsageWatcherWatchTriggerScheduleUsage
-  _all: XpackUsageUsageCount
-}
-
-export interface XpackUsageWatcherWatchUsage {
-  input: Record<Name, XpackUsageUsageCount>
-  condition?: Record<Name, XpackUsageUsageCount>
-  action?: Record<Name, XpackUsageUsageCount>
-  trigger: XpackUsageWatcherWatchTriggerUsage
-}
-
-export interface XpackUsageXPackUsage {
-  available: boolean
-  enabled: boolean
+export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter {
+  cron: XpackUsageCounter
+  _all: XpackUsageCounter
 }
 
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {

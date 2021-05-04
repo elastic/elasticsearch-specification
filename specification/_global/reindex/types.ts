@@ -17,21 +17,21 @@
  * under the License.
  */
 
-import {
-  IndexName,
-  OpType,
-  VersionType,
-  Fields,
-  Indices,
-  Password,
-  Username,
-  Routing
-} from '@_types/common'
 import { Sort } from '@global/search/sort/Sort'
+import {
+  Fields,
+  IndexName,
+  Indices,
+  OpType,
+  Password,
+  Routing,
+  Username,
+  VersionType
+} from '@_types/common'
+import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { Host } from '@_types/Networking'
 import { Time } from '@_types/Time'
 
 export class Destination {

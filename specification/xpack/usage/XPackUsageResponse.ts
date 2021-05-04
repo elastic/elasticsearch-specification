@@ -17,53 +17,55 @@
  * under the License.
  */
 
-import { AnalyticsUsage } from './AnalyticsUsage'
-import { CcrUsage } from './CcrUsage'
-import { DataStreamsUsage } from './DataStreamsUsage'
-import { DataTiersUsage } from './DataTiersUsage'
-import { EqlUsage } from './EqlUsage'
-import { FlattenedUsage } from './FlattenedUsage'
-import { FrozenIndicesUsage } from './FrozenIndicesUsage'
-import { IlmUsage } from './IlmUsage'
-import { MachineLearningUsage } from './MachineLearningUsage'
-import { MonitoringUsage } from './MonitoringUsage'
-import { RuntimeFieldsUsage } from './RuntimeFieldsUsage'
-import { SearchableSnapshotsUsage } from './SearchableSnapshotsUsage'
-import { SecurityUsage } from './SecurityUsage'
-import { SlmUsage } from './SlmUsage'
-import { SqlUsage } from './SqlUsage'
-import { VectorUsage } from './VectorUsage'
-import { WatcherUsage } from './WatcherUsage'
-import { XPackUsage } from './XPackUsage'
+import {
+  Analytics,
+  Ccr,
+  DataStreams,
+  DataTiers,
+  Eql,
+  Flattened,
+  FrozenIndices,
+  Ilm,
+  MachineLearning,
+  Monitoring,
+  RuntimeFieldTypes,
+  SearchableSnapshots,
+  Security,
+  Slm,
+  Sql,
+  Base,
+  Vector,
+  Watcher
+} from './types'
 
 export class Response {
   body: {
-    aggregate_metric: XPackUsage
-    analytics: AnalyticsUsage
-    watcher: WatcherUsage
-    ccr: CcrUsage
-    data_frame?: XPackUsage
-    data_science?: XPackUsage
-    data_streams?: DataStreamsUsage
-    data_tiers: DataTiersUsage
-    enrich?: XPackUsage
-    eql: EqlUsage
-    flattened?: FlattenedUsage
-    frozen_indices: FrozenIndicesUsage
-    graph: XPackUsage
-    ilm: IlmUsage
-    logstash: XPackUsage
-    ml: MachineLearningUsage
-    monitoring: MonitoringUsage
-    rollup: XPackUsage
-    runtime_fields?: RuntimeFieldsUsage
-    spatial: XPackUsage
-    searchable_snapshots: SearchableSnapshotsUsage
-    security: SecurityUsage
-    slm: SlmUsage
-    sql: SqlUsage
-    transform: XPackUsage
-    vectors: VectorUsage
-    voting_only: XPackUsage
+    aggregate_metric: Base
+    analytics: Analytics
+    watcher: Watcher
+    ccr: Ccr
+    data_frame?: Base
+    data_science?: Base
+    data_streams?: DataStreams
+    data_tiers: DataTiers
+    enrich?: Base
+    eql: Eql
+    flattened?: Flattened
+    frozen_indices: FrozenIndices
+    graph: Base
+    ilm: Ilm
+    logstash: Base
+    ml: MachineLearning
+    monitoring: Monitoring
+    rollup: Base
+    runtime_fields?: RuntimeFieldTypes
+    spatial: Base
+    searchable_snapshots: SearchableSnapshots
+    security: Security
+    slm: Slm
+    sql: Sql
+    transform: Base
+    vectors: Vector
+    voting_only: Base
   }
 }

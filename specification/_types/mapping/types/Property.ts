@@ -18,7 +18,6 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata, PropertyName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DynamicMapping } from '../DynamicMapping'
