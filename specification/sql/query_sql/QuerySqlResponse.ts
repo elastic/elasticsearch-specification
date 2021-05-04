@@ -18,8 +18,12 @@
  */
 
 import { SqlRow } from '@_types/common'
-import { SqlColumn } from './SqlColumn'
+import { SqlColumn } from './types'
 
 export class Response {
-  body: { columns?: SqlColumn[]; cursor?: string; rows: SqlRow[] }
+  body: {
+    columns?: SqlColumn[]
+    cursor?: string
+    rows: SqlRow[]
+  }
 }
