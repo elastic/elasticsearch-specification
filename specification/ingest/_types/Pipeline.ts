@@ -46,5 +46,3 @@ export class PipelineConfig {
   version?: VersionNumber
   processors: ProcessorContainer[]
 }
-
-
