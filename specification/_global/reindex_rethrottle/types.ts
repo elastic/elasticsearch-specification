@@ -19,9 +19,37 @@
 
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskId } from '@_types/common'
-import { ReindexTask } from './ReindexTask'
+import { HttpHeaders, Name, TaskId } from '@_types/common'
+import { long, float } from '@_types/Numeric'
+import { Retries } from '@_types/Retries'
 
 export class ReindexNode extends BaseNode {
   tasks: Dictionary<TaskId, ReindexTask>
+}
+
+export class ReindexStatus {
+  batches: long
+  created: long
+  deleted: long
+  noops: long
+  requests_per_second: float
+  retries: Retries
+  throttled_millis: long
+  throttled_until_millis: long
+  total: long
+  updated: long
+  version_conflicts: long
+}
+
+export class ReindexTask {
+  action: string
+  cancellable: boolean
+  description: string
+  id: long
+  node: Name
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status: ReindexStatus
+  type: string
+  headers: HttpHeaders
 }
