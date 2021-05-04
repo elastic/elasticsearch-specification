@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Status, Type } from '@license/_types/License'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { Uuid } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DateString, EpochMillis } from '@_types/Time'
@@ -31,8 +31,8 @@ export class LicenseInformation {
   issuer: string
   max_nodes: long
   max_resource_units?: integer
-  status: Status
-  type: Type
+  status: LicenseStatus
+  type: LicenseType
   uid: Uuid
   start_date_in_millis: EpochMillis
 }

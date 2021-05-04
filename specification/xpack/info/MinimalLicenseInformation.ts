@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { Status, Type } from '@license/_types/License'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { EpochMillis } from '@_types/Time'
 
 export class MinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis
-  mode: Type
-  status: Status
-  type: Type
+  mode: LicenseType
+  status: LicenseStatus
+  type: LicenseType
   uid: string
 }
