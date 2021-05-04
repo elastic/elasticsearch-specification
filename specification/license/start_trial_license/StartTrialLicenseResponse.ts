@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LicenseType } from '@license/get_license/LicenseType'
+import { LicenseType } from '@license/_types/License'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {

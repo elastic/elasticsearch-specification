@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { PipelineConfig } from '@ingest/_types/PipelineConfig'
+import { PipelineConfig } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
+import { FieldStat } from './types'
 
 export class Response {
   body: {
@@ -49,21 +49,4 @@ export class Response {
     should_trim_fields?: boolean
     ingest_pipeline: PipelineConfig
   }
-}
-
-export class FieldStat {
-  count: integer
-  cardinality: integer
-  top_hits: TopHit[]
-  mean_value?: integer
-  median_value?: integer
-  max_value?: integer
-  min_value?: integer
-  earliest?: string
-  latest?: string
-}
-
-export class TopHit {
-  count: long
-  value: UserDefinedValue
 }

@@ -21,9 +21,9 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
+import { TransformContainer } from '@_types/Transform'
 import { Index, Logging } from './Actions'
 import { ConditionContainer } from './Conditions'
-import { TransformContainer } from './Transform'
 
 export class Action {
   action_type?: ActionType

@@ -17,13 +17,37 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/_types/License'
-import { Acknowledgement } from './types'
+import { long } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
-export class Response {
-  body: {
-    acknowledge?: Acknowledgement
-    acknowledged: boolean
-    license_status: LicenseStatus
-  }
+export enum LicenseType {
+  missing = 0,
+  trial = 1,
+  basic = 2,
+  standard = 3,
+  dev = 4,
+  silver = 5,
+  gold = 6,
+  platinum = 7,
+  enterprise = 8
+}
+
+export enum LicenseStatus {
+  active = 0,
+  valid = 1,
+  invalid = 2,
+  expired = 3
+}
+
+export class License {
+  expiry_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochMillis
+  issued_to: string
+  issuer: string
+  max_nodes?: long
+  max_resource_units?: long
+  signature: string
+  start_date_in_millis: EpochMillis
+  type: LicenseType
+  uid: string
 }

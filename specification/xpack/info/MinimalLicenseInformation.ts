@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/get_license/LicenseStatus'
-import { LicenseType } from '@license/get_license/LicenseType'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { EpochMillis } from '@_types/Time'
 
 export class MinimalLicenseInformation {

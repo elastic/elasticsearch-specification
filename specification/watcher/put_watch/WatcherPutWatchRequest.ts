@@ -21,11 +21,11 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Action } from '@watcher/_types/Action'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
-import { TransformContainer } from '@watcher/_types/Transform'
 import { TriggerContainer } from '@watcher/_types/Trigger'
 import { RequestBase } from '@_types/Base'
 import { Id, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { TransformContainer } from '@_types/Transform'
 
 /**
  * @rest_spec_name watcher.put_watch

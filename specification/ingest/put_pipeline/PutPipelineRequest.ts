@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/ProcessorContainer'
+import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
 import { Id, VersionNumber } from '@_types/common'
 import { Time } from '@_types/Time'
@@ -28,11 +28,13 @@ import { Time } from '@_types/Time'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
   query_parameters?: {
+    /** @server_default 30s */
     master_timeout?: Time
+    /** @server_default 30s */
     timeout?: Time
   }
   body?: {

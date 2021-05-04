@@ -29,5 +29,4 @@ export interface Request extends RequestBase {
     acknowledge?: boolean
     type_query_string?: string
   }
-  body?: {}
 }

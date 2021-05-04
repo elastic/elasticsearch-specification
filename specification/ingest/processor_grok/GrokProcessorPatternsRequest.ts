@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/_types/License'
-import { Acknowledgement } from './types'
+import { RequestBase } from '@_types/Base'
 
-export class Response {
-  body: {
-    acknowledge?: Acknowledgement
-    acknowledged: boolean
-    license_status: LicenseStatus
-  }
-}
+/**
+ * @rest_spec_name ingest.processor_grok
+ * @since 6.1.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {}

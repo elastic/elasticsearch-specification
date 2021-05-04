@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Transform } from '@watcher/_types/Transform'
+import { Transform } from '@_types/Transform'
 import { long } from '@_types/Numeric'
 
 export class Response {

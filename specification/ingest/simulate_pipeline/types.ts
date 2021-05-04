@@ -17,20 +17,37 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/Processors'
-import { Id, VersionNumber } from '@_types/common'
+import { ActionStatusOptions } from '@watcher/_types/Action'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, IndexName, Name, Type } from '@_types/common'
+import { DateString } from '@_types/Time'
 
-export class ClusterStateIngest {
-  pipeline: ClusterStateIngestPipeline[]
+export class Ingest {
+  timestamp: DateString
+  pipeline?: Name
 }
 
-export class ClusterStateIngestPipeline {
-  id: Id
-  config: ClusterStateIngestPipelineConfig
+export class PipelineSimulation {
+  doc?: DocumentSimulation
+  processor_results?: PipelineSimulation[]
+  tag?: string
+  processor_type?: string
+  status?: ActionStatusOptions
 }
 
-export class ClusterStateIngestPipelineConfig {
-  description?: string
-  version?: VersionNumber
-  processors: ProcessorContainer[]
+export class SimulatePipelineDocument {
+  _id?: Id
+  _index?: IndexName
+  _source: UserDefinedValue
+}
+
+export class DocumentSimulation {
+  _id: Id
+  _index: IndexName
+  _ingest: Ingest
+  _parent?: string
+  _routing?: string
+  _source: Dictionary<string, UserDefinedValue>
+  _type?: Type
 }
