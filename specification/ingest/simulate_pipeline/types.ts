@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { Status } from '@watcher/_types/Action'
-
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Status } from '@watcher/_types/Action'
 import { Id, IndexName, Name, Type } from '@_types/common'
 import { DateString } from '@_types/Time'
 

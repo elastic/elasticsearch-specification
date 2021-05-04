@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/sort/Sort'
+import { Sort } from '@global/search/_types/sort'
 import {
   Fields,
   IndexName,

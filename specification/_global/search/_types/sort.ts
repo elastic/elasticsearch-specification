@@ -22,12 +22,26 @@ import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'
 import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/types/FieldType'
-import { double, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
 import { Script } from '@_types/Scripting'
-import { NestedSortValue } from './NestedSort'
-import { SortMode } from './SortMode'
-import { SortOrder } from './SortOrder'
+
+export class NestedSortValue {
+  filter?: QueryContainer
+  max_children?: integer
+  path: Field
+  // nested: NestedSortValue
+}
+
+// export type NestedSort = Dictionary<Field, NestedSortKey>
+
+export enum NumericType {
+  long = 0,
+  double = 1,
+  date = 2,
+  date_nanos = 3
+}
 
 export class FieldSort {
   missing?: Missing
@@ -77,3 +91,23 @@ sort?:
   SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
   >
 */
+
+export enum SortMode {
+  min = 0,
+  max = 1,
+  sum = 2,
+  avg = 3,
+  median = 4
+}
+
+export enum SortOrder {
+  asc = 0,
+  desc = 1,
+  /** @identifier Document */
+  _doc = 2
+}
+
+export enum SortSpecialField {
+  _score = 0,
+  _doc = 1
+}

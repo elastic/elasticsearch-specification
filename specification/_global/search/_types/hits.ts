@@ -21,16 +21,21 @@ import { Explanation } from '@global/explain/Explanation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
+  Field,
+  Fields,
   Id,
   IndexName,
+  Name,
   SequenceNumber,
   Type,
   VersionNumber
 } from '@_types/common'
-import { double, long } from '@_types/Numeric'
-import { SortResults } from '../sort/Sort'
-import { InnerHitsResult } from './InnerHitsResult'
-import { NestedIdentity } from './NestedIdentity'
+import { double, integer, long } from '@_types/Numeric'
+import { ScriptField } from '@_types/Scripting'
+import { FieldCollapse } from './FieldCollapse'
+import { Highlight } from './highlighting'
+import { Sort, SortResults } from './sort'
+import { SourceFilter } from './SourceFilter'
 
 export class Hit<TDocument> {
   _index: IndexName
@@ -55,4 +60,68 @@ export class Hit<TDocument> {
   _primary_term?: long
   _version?: VersionNumber
   sort?: SortResults
+}
+
+export class HitsMetadata<T> {
+  total: TotalHits | long
+  hits: Hit<T>[]
+
+  max_score?: double
+}
+
+export class HitMetadata<TDocument> {
+  _id: Id
+  _index: IndexName
+  _primary_term: long
+  _routing: string
+  _seq_no: SequenceNumber
+  _source: TDocument
+  _type: Type
+  _version: VersionNumber
+}
+
+export class InnerHitsMetadata {
+  total: TotalHits | long
+  hits: Hit<Dictionary<string, UserDefinedValue>>[]
+
+  max_score?: double
+}
+
+export class InnerHitsResult {
+  hits: InnerHitsMetadata
+}
+
+export class NestedIdentity {
+  field: Field
+  offset: integer
+  _nested?: NestedIdentity
+}
+
+export class TotalHits {
+  relation: TotalHitsRelation
+  value: long
+}
+
+export enum TotalHitsRelation {
+  /** Accurate */
+  eq = 0,
+  /** Lower bound, including returned events or sequences */
+  gte = 1
+}
+
+export class InnerHits {
+  name?: Name
+  size?: integer
+  from?: integer
+  collapse?: FieldCollapse
+  docvalue_fields?: Fields
+  explain?: boolean
+  highlight?: Highlight
+  ignore_unmapped?: boolean
+  script_fields?: Dictionary<string, ScriptField>
+  seq_no_primary_term?: boolean
+  fields?: Fields
+  sort?: Sort
+  _source?: boolean | SourceFilter
+  version?: boolean
 }

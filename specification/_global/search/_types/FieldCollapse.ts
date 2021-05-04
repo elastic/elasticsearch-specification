@@ -17,10 +17,12 @@
  * under the License.
  */
 
-import { double } from '@_types/Numeric'
+import { Field } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { InnerHits } from './hits'
 
-export class LinearInterpolationSmoothingModel {
-  bigram_lambda: double
-  trigram_lambda: double
-  unigram_lambda: double
+export class FieldCollapse {
+  field: Field
+  inner_hits?: InnerHits | InnerHits[]
+  max_concurrent_group_searches?: integer
 }

@@ -20,7 +20,7 @@
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Name, TaskId } from '@_types/common'
-import { long, float } from '@_types/Numeric'
+import { float, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 
 export class ReindexNode extends BaseNode {

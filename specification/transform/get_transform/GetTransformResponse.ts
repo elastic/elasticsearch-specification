@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Transform } from '@_types/Transform'
 import { long } from '@_types/Numeric'
+import { Transform } from '@_types/Transform'
 
 export class Response {
   body: { count: long; transforms: Transform[] }

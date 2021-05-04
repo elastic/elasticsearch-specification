@@ -20,10 +20,10 @@
 import { HttpHeaders } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { EpochMillis, Time } from '@_types/Time'
+import { TransformContainer } from '@_types/Transform'
 import { ConditionContainer } from './Conditions'
 import { ActionIndex } from './IndexAction'
 import { HttpInputRequestDefinition } from './Input'
-import { TransformContainer } from '../../_types/Transform'
 
 export class Action {
   action_type?: ActionType

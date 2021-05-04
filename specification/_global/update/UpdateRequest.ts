@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
