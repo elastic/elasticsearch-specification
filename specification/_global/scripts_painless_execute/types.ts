@@ -19,10 +19,26 @@
 
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 export class PainlessContextSetup {
   document: UserDefinedValue
   index: IndexName
   query: QueryContainer
+}
+
+export class Response<TResult> {
+  body: {
+    result: TResult
+  }
+}
+
+/**
+ * If a painless script fails to execute this is returned on the serialized exception
+ */
+export class PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
 }
