@@ -511,7 +511,7 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
-export interface MgetMultiGetHit<TDocument = unknown> {
+export interface MgetHit<TDocument = unknown> {
   error?: MainError
   fields?: Record<string, any>
   found?: boolean
@@ -527,7 +527,7 @@ export interface MgetMultiGetHit<TDocument = unknown> {
 
 export type MgetMultiGetId = string | integer
 
-export interface MgetMultiGetOperation {
+export interface MgetOperation {
   _id: MgetMultiGetId
   _index?: IndexName
   routing?: Routing
@@ -550,13 +550,13 @@ export interface MgetRequest extends RequestBase {
   _source_includes?: Fields
   stored_fields?: Fields
   body?: {
-    docs?: MgetMultiGetOperation[]
+    docs?: MgetOperation[]
     ids?: MgetMultiGetId[]
   }
 }
 
 export interface MgetResponse<TDocument = unknown> {
-  docs: MgetMultiGetHit<TDocument>[]
+  docs: MgetHit<TDocument>[]
 }
 
 export interface MsearchMultiSearchBody {
