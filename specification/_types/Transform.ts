@@ -19,8 +19,8 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Time } from '@_types/Time'
-import { SearchInputRequestDefinition } from '../watcher/_types/Input'
+import { SearchInputRequestDefinition } from '@watcher/_types/Input'
+import { Time } from './Time'
 
 export class Transform {}
 

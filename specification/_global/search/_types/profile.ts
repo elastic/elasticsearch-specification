@@ -19,6 +19,44 @@
 
 import { long } from '@_types/Numeric'
 
+export class AggregationBreakdown {
+  build_aggregation: long
+  build_aggregation_count: long
+  build_leaf_collector: long
+  build_leaf_collector_count: long
+  collect: long
+  collect_count: long
+  initialize: long
+  initialize_count: long
+  post_collection?: long
+  post_collection_count?: long
+  reduce: long
+  reduce_count: long
+}
+
+export class AggregationProfileDebug {}
+
+export class AggregationProfile {
+  breakdown: AggregationBreakdown
+  description: string
+  time_in_nanos: long
+  type: string
+  debug?: AggregationProfileDebug
+  children?: AggregationProfileDebug[]
+}
+
+export class Collector {
+  name: string
+  reason: string
+  time_in_nanos: long
+
+  children?: Collector[]
+}
+
+export class Profile {
+  shards: ShardProfile[]
+}
+
 export class QueryBreakdown {
   advance: long
   advance_count: long
@@ -38,4 +76,25 @@ export class QueryBreakdown {
   compute_max_score_count: long
   set_min_competitive_score: long
   set_min_competitive_score_count: long
+}
+
+export class QueryProfile {
+  breakdown: QueryBreakdown
+  description: string
+  time_in_nanos: long
+  type: string
+
+  children?: QueryProfile[]
+}
+
+export class SearchProfile {
+  collector: Collector[]
+  query: QueryProfile[]
+  rewrite_time: long
+}
+
+export class ShardProfile {
+  aggregations: AggregationProfile[]
+  id: string
+  searches: SearchProfile[]
 }

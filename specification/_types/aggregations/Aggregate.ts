@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/hits/HitsMetadata'
+import { HitsMetadata } from '@global/search/_types/hits'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

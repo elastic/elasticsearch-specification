@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/sort/SortOrder'
+import { SortOrder } from '@global/search/_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'

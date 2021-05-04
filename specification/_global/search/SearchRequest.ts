@@ -20,32 +20,20 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Field,
-  Fields,
-  IndexName,
-  Indices,
-  Routing,
-  SearchType,
-  SuggestMode,
-  Types,
-  VersionString
-} from '@_types/common'
+import { DefaultOperator, ExpandWildcards, Field, Fields, IndexName, Indices, Routing, SearchType, SuggestMode, Types, VersionString } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { DateField, Time } from '@_types/Time'
-import { FieldCollapse } from './collapsing/FieldCollapse'
-import { Highlight } from './highlighting/Highlight'
-import { PointInTimeReference } from './point_in_time/PointInTimeReference'
-import { Rescore } from './rescoring/Rescore'
-import { Sort } from './sort/Sort'
-import { DocValueField, SourceFilter } from './source_filtering/SourceFilter'
-import { SuggestContainer } from './suggesters/SuggestContainer'
+import { FieldCollapse } from './_types/FieldCollapse'
+import { Highlight } from './_types/highlighting'
+import { PointInTimeReference } from './_types/PointInTimeReference'
+import { Rescore } from './_types/rescoring'
+import { Sort } from './_types/sort'
+import { DocValueField, SourceFilter } from './_types/SourceFilter'
+import { SuggestContainer } from './_types/suggester'
 
 /**
  * @rest_spec_name search

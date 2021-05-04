@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import {
-  ActionType,
-  LoggingActionResult,
-  Status,
-  WebhookActionResult
-} from '@watcher/_types/Action'
+import { ActionType, LoggingActionResult, Status, WebhookActionResult } from '@watcher/_types/Action'
 import { EmailActionResult } from '@watcher/_types/EmailAction'
 import { IndexActionResult } from '@watcher/_types/IndexAction'
 import { PagerDutyActionResult } from '@watcher/_types/PagerDutyAction'

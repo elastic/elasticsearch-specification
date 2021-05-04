@@ -18,16 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Time } from '@_types/Time'
-import { Field, IndexName, Indices } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { float, integer } from '@_types/Numeric'
+import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { DateHistogramAggregation } from '@_types/aggregations/bucket/date_histogram/DateHistogramAggregation'
 import { GeoTileGridAggregation } from '@_types/aggregations/bucket/geo_tile_grid/GeoTileGridAggregation'
 import { HistogramAggregation } from '@_types/aggregations/bucket/histogram/HistogramAggregation'
 import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggregation'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
+import { Field, IndexName, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { float, integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Time } from '@_types/Time'
 
 export class Destination {
   /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SortOrder } from '@global/search/sort/SortOrder'
+import { SortOrder } from '@global/search/_types/sort'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
 

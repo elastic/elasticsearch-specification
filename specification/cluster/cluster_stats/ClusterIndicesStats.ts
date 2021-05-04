@@ -19,14 +19,7 @@
 
 import { Name, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import {
-  CompletionStats,
-  DocStats,
-  FielddataStats,
-  QueryCacheStats,
-  SegmentsStats,
-  StoreStats
-} from '@_types/Stats'
+import { CompletionStats, DocStats, FielddataStats, QueryCacheStats, SegmentsStats, StoreStats } from '@_types/Stats'
 import { ClusterIndicesShardsStats } from './ClusterIndicesShardsStats'
 
 export class ClusterIndicesStats {

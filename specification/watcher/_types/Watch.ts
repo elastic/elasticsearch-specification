@@ -18,14 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { WatchStatus } from '@watcher/ack_watch/WatchStatus'
 import { IndexName, Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { TransformContainer } from '@_types/Transform'
 import { Action } from './Action'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
-import { TransformContainer } from '../../_types/Transform'
 import { TriggerContainer } from './Trigger'
 
 export class Watch {

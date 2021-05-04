@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Sort } from '@global/search/sort/Sort'
-import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
+import { Sort } from '@global/search/_types/sort'
+import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'

@@ -18,14 +18,7 @@
  */
 
 import { CommonQueryParameters } from '@spec_utils/behaviors'
-import {
-  Id,
-  IndexName,
-  SequenceNumber,
-  Type,
-  VersionNumber,
-  VersionString
-} from './common'
+import { Id, IndexName, SequenceNumber, Type, VersionNumber, VersionString } from './common'
 import { ErrorCause, MainError } from './Errors'
 import { integer, long } from './Numeric'
 import { Result } from './Result'

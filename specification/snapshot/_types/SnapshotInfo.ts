@@ -18,15 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import {
-  IndexName,
-  Metadata,
-  Name,
-  Uuid,
-  VersionNumber,
-  VersionString
-} from '@_types/common'
+import { IndexName, Metadata, Name, Uuid, VersionNumber, VersionString } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 import { EpochMillis, Time } from '@_types/Time'
 import { SnapshotIndexDetails } from './SnapshotIndexDetails'

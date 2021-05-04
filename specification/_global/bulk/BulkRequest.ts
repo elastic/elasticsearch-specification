@@ -18,14 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  Fields,
-  IndexName,
-  Refresh,
-  Routing,
-  Type,
-  WaitForActiveShards
-} from '@_types/common'
+import { Fields, IndexName, Refresh, Routing, Type, WaitForActiveShards } from '@_types/common'
 import { Time } from '@_types/Time'
 import { BulkOperationContainer } from './BulkOperation'
 

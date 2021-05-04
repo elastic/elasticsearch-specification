@@ -18,17 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  Conflicts,
-  DefaultOperator,
-  ExpandWildcards,
-  Fields,
-  Indices,
-  Routing,
-  SearchType,
-  Types,
-  WaitForActiveShards
-} from '@_types/common'
+import { Conflicts, DefaultOperator, ExpandWildcards, Fields, Indices, Routing, SearchType, Types, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { SlicedScroll } from '@_types/SlicedScroll'

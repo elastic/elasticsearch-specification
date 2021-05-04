@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { HitsMetadata } from '@global/search/hits/HitsMetadata'
+import { HitsMetadata } from '@global/search/_types/hits'
 import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 

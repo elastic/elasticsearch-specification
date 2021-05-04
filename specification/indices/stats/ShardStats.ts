@@ -17,24 +17,7 @@
  * under the License.
  */
 
-import {
-  BulkStats,
-  CompletionStats,
-  DocStats,
-  FielddataStats,
-  FlushStats,
-  GetStats,
-  IndexingStats,
-  MergesStats,
-  RecoveryStats,
-  RefreshStats,
-  RequestCacheStats,
-  SearchStats,
-  SegmentsStats,
-  StoreStats,
-  TranslogStats,
-  WarmerStats
-} from '@_types/Stats'
+import { BulkStats, CompletionStats, DocStats, FielddataStats, FlushStats, GetStats, IndexingStats, MergesStats, RecoveryStats, RefreshStats, RequestCacheStats, SearchStats, SegmentsStats, StoreStats, TranslogStats, WarmerStats } from '@_types/Stats'
 import { ShardCommit } from './ShardCommit'
 import { ShardPath } from './ShardPath'
 import { ShardQueryCache } from './ShardQueryCache'

@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata, Name, Username } from '@_types/common'
 
 export class XPackUser {

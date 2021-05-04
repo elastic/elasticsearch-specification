@@ -18,18 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  Id,
-  IndexName,
-  OpType,
-  Refresh,
-  Routing,
-  SequenceNumber,
-  Type,
-  VersionNumber,
-  VersionType,
-  WaitForActiveShards
-} from '@_types/common'
+import { Id, IndexName, OpType, Refresh, Routing, SequenceNumber, Type, VersionNumber, VersionType, WaitForActiveShards } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 

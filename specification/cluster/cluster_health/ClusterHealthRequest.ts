@@ -18,14 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Indices,
-  Level,
-  WaitForActiveShards,
-  WaitForEvents,
-  WaitForStatus
-} from '@_types/common'
+import { ExpandWildcards, Indices, Level, WaitForActiveShards, WaitForEvents, WaitForStatus } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**

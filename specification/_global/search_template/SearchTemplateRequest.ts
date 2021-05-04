@@ -20,14 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Id,
-  Indices,
-  Routing,
-  SearchType,
-  Types
-} from '@_types/common'
+import { ExpandWildcards, Id, Indices, Routing, SearchType, Types } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**

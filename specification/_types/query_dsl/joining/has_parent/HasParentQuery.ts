@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/inner_hits/InnerHits'
+import { InnerHits } from '@global/search/_types/hits'
 import { RelationName } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'

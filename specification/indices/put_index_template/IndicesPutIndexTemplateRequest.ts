@@ -20,14 +20,7 @@
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
-import {
-  EmptyObject,
-  IndexName,
-  Indices,
-  Metadata,
-  Name,
-  VersionNumber
-} from '@_types/common'
+import { EmptyObject, IndexName, Indices, Metadata, Name, VersionNumber } from '@_types/common'
 import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { PointInTimeReference } from '@global/search/point_in_time/PointInTimeReference'
-import { SuggestContainer } from '@global/search/suggesters/SuggestContainer'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { SuggestContainer } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'

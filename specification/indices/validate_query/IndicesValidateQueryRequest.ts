@@ -18,12 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  DefaultOperator,
-  ExpandWildcards,
-  Indices,
-  Types
-} from '@_types/common'
+import { DefaultOperator, ExpandWildcards, Indices, Types } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
 /**

@@ -18,14 +18,7 @@
  */
 
 import { DataStreamHealthStatus } from '@indices/_types/DataStreamStatus'
-import {
-  DataStreamName,
-  Field,
-  IndexName,
-  Metadata,
-  Name,
-  Uuid
-} from '@_types/common'
+import { DataStreamName, Field, IndexName, Metadata, Name, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class Response {

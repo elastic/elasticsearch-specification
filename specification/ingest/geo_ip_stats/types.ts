@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, Name } from '@_types/common'
+import { Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class GeoIpDownloadStatistics {

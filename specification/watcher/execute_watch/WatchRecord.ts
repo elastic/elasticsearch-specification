@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
 import { Id, Metadata } from '@_types/common'

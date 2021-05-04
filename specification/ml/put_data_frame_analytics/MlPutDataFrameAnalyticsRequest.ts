@@ -17,12 +17,7 @@
  * under the License.
  */
 
-import {
-  DataFrameAnalysisAnalyzedFields,
-  DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
+import { DataFrameAnalysisAnalyzedFields, DataFrameAnalysisContainer, DataFrameAnalyticsDestination, DataFrameAnalyticsSource } from '@ml/_types/DataFrameAnalytics'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
