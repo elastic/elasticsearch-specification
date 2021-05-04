@@ -19,7 +19,6 @@
 
 import { Id, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Statistics } from '@_types/slm/Statistics'
 import { DateString, EpochMillis } from '@_types/Time'
 import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
 import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
@@ -44,4 +43,29 @@ export class SnapshotLifecyclePolicyMetadataStats {
   snapshot_deletion_failures: long
   snapshots_failed: long
   snapshots_taken: long
+}
+
+export class Statistics {
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  /**
+   * @aliases snapshots_deleted
+   */
+  total_snapshots_deleted?: long
+  /**
+   * @aliases snapshot_deletion_failures
+   */
+  total_snapshot_deletion_failures?: long
+  /**
+   * @aliases snapshots_failed
+   */
+  total_snapshots_failed?: long
+  /**
+   * @aliases snapshots_taken
+   */
+  total_snapshots_taken?: long
 }

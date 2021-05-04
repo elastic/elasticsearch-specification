@@ -18,11 +18,11 @@
  */
 
 import { Phases } from '@ilm/_types/Phases'
+import { Statistics } from '@slm/_types/SnapshotLifecyclePolicyMetadata'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@_types/ml/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
-import { Statistics } from '@_types/slm/Statistics'
 
 export class Base {
   available: boolean

@@ -1,0 +1,163 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { AdditionalProperties } from "@spec_utils/behaviors"
+import { MinimumShouldMatch, Field } from "@_types/common"
+import { Distance } from "@_types/Geo"
+import { double, float, long } from "@_types/Numeric"
+import { Script } from "@_types/Scripting"
+import { DateMath, Time } from "@_types/Time"
+import { QueryBase, QueryContainer } from "./abstractions"
+import { GeoLocation } from "./geo/GeoLocation"
+
+export class BoolQuery extends QueryBase {
+  filter?: QueryContainer | QueryContainer[]
+  minimum_should_match?: MinimumShouldMatch
+  must?: QueryContainer | QueryContainer[]
+  must_not?: QueryContainer | QueryContainer[]
+  should?: QueryContainer | QueryContainer[]
+}
+
+export class BoostingQuery extends QueryBase {
+  negative_boost?: double
+  negative?: QueryContainer
+  positive?: QueryContainer
+}
+
+export class ConstantScoreQuery extends QueryBase {
+  filter?: QueryContainer
+  boost?: float
+}
+
+export class DisMaxQuery extends QueryBase {
+  queries?: QueryContainer[]
+  tie_breaker?: double
+  boost?: float
+}
+
+export class FunctionScoreQuery extends QueryBase {
+  boost_mode?: FunctionBoostMode
+  functions?: FunctionScoreContainer[]
+  max_boost?: double
+  min_score?: double
+  query?: QueryContainer
+  score_mode?: FunctionScoreMode
+  boost?: float
+}
+
+export class ScoreFunctionBase {
+  filter?: QueryContainer
+  weight?: double
+}
+
+export class WeightScoreFunction extends ScoreFunctionBase {}
+
+export class ScriptScoreFunction extends ScoreFunctionBase {
+  script: Script
+}
+
+export class RandomScoreFunction extends ScoreFunctionBase {
+  field?: Field
+  seed?: long | string
+}
+
+export class FieldValueFactorScoreFunction extends ScoreFunctionBase {
+  field: Field
+  factor?: double
+  missing?: double
+  modifier?: FieldValueFactorModifier
+}
+
+export class DecayPlacement<TOrigin, TScale> {
+  decay?: double
+  offset?: TScale
+  scale?: TScale
+  origin?: TOrigin
+}
+
+export class DecayFunctionBase extends ScoreFunctionBase {
+  multi_value_mode?: MultiValueMode
+}
+
+export class NumericDecayFunction
+  extends DecayFunctionBase
+  implements AdditionalProperties<string, DecayPlacement<double, double>> {}
+
+export class DateDecayFunction
+  extends DecayFunctionBase
+  implements AdditionalProperties<string, DecayPlacement<DateMath, Time>> {}
+
+export class GeoDecayFunction
+  extends DecayFunctionBase
+  implements
+    AdditionalProperties<string, DecayPlacement<GeoLocation, Distance>> {}
+
+export type DecayFunction =
+  | DateDecayFunction
+  | NumericDecayFunction
+  | GeoDecayFunction
+
+export class FunctionScoreContainer {
+  exp?: DecayFunction
+  gauss?: DecayFunction
+  linear?: DecayFunction
+  field_value_factor?: FieldValueFactorScoreFunction
+  random_score?: RandomScoreFunction
+  script_score?: ScriptScoreFunction
+  filter?: QueryContainer
+  weight?: double
+}
+
+export enum FunctionScoreMode {
+  multiply = 0,
+  sum = 1,
+  avg = 2,
+  first = 3,
+  max = 4,
+  min = 5
+}
+
+export enum FunctionBoostMode {
+  multiply = 0,
+  replace = 1,
+  sum = 2,
+  avg = 3,
+  max = 4,
+  min = 5
+}
+
+export enum FieldValueFactorModifier {
+  none = 0,
+  log = 1,
+  log1p = 2,
+  log2p = 3,
+  ln = 4,
+  ln1p = 5,
+  ln2p = 6,
+  square = 7,
+  sqrt = 8,
+  reciprocal = 9
+}
+
+export enum MultiValueMode {
+  min = 0,
+  max = 1,
+  avg = 2,
+  sum = 3
+}
