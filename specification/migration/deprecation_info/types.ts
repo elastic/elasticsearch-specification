@@ -20,6 +20,16 @@
 export enum DeprecationWarningLevel {
   none = 0,
   info = 1,
+  /** You can upgrade directly, but you are using deprecated functionality which will not be available or behave differently in the next major version. */
   warning = 2,
+  /** You cannot upgrade without fixing this problem. */
   critical = 3
+}
+
+export class Deprecation {
+  details: string
+  /** The level property describes the significance of the issue. */
+  level: DeprecationWarningLevel
+  message: string
+  url: string
 }
