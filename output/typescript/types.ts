@@ -9939,24 +9939,24 @@ export interface LogstashPipelinePutResponse {
   stub: integer
 }
 
-export interface MigrationDeprecationInfoDeprecationInfo {
+export interface MigrationDeprecationInfoDeprecation {
   details: string
-  level: MigrationDeprecationInfoDeprecationWarningLevel
+  level: MigrationDeprecationInfoDeprecationLevel
   message: string
   url: string
 }
 
-export type MigrationDeprecationInfoDeprecationWarningLevel = 'none' | 'info' | 'warning' | 'critical'
+export type MigrationDeprecationInfoDeprecationLevel = 'none' | 'info' | 'warning' | 'critical'
 
 export interface MigrationDeprecationInfoRequest extends RequestBase {
   index?: IndexName
 }
 
 export interface MigrationDeprecationInfoResponse {
-  cluster_settings: MigrationDeprecationInfoDeprecationInfo[]
-  index_settings: Record<string, MigrationDeprecationInfoDeprecationInfo[]>
-  node_settings: MigrationDeprecationInfoDeprecationInfo[]
-  ml_settings: MigrationDeprecationInfoDeprecationInfo[]
+  cluster_settings: MigrationDeprecationInfoDeprecation[]
+  index_settings: Record<string, MigrationDeprecationInfoDeprecation[]>
+  node_settings: MigrationDeprecationInfoDeprecation[]
+  ml_settings: MigrationDeprecationInfoDeprecation[]
 }
 
 export interface MlAnalysisConfig {

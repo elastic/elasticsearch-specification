@@ -18,13 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { DeprecationInfo } from './DeprecationInfo'
+import { Deprecation } from './types'
 
 export class Response {
   body: {
-    cluster_settings: DeprecationInfo[]
-    index_settings: Dictionary<string, DeprecationInfo[]>
-    node_settings: DeprecationInfo[]
-    ml_settings: DeprecationInfo[]
+    cluster_settings: Deprecation[]
+    index_settings: Dictionary<string, Deprecation[]>
+    node_settings: Deprecation[]
+    ml_settings: Deprecation[]
   }
 }

@@ -98282,7 +98282,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DeprecationInfo",
+        "name": "Deprecation",
         "namespace": "migration.deprecation_info"
       },
       "properties": [
@@ -98298,12 +98298,13 @@
           }
         },
         {
+          "description": "The level property describes the significance of the issue.",
           "name": "level",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DeprecationWarningLevel",
+              "name": "DeprecationLevel",
               "namespace": "migration.deprecation_info"
             }
           }
@@ -98342,14 +98343,16 @@
           "name": "info"
         },
         {
+          "description": "You can upgrade directly, but you are using deprecated functionality which will not be available or behave differently in the next major version.",
           "name": "warning"
         },
         {
+          "description": "You cannot upgrade without fixing this problem.",
           "name": "critical"
         }
       ],
       "name": {
-        "name": "DeprecationWarningLevel",
+        "name": "DeprecationLevel",
         "namespace": "migration.deprecation_info"
       }
     },
@@ -98370,6 +98373,7 @@
       },
       "path": [
         {
+          "description": "Comma-separate list of data streams or indices to check. Wildcard (*) expressions are supported.",
           "name": "index",
           "required": false,
           "type": {
@@ -98395,7 +98399,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "DeprecationInfo",
+                  "name": "Deprecation",
                   "namespace": "migration.deprecation_info"
                 }
               }
@@ -98419,7 +98423,7 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "DeprecationInfo",
+                    "name": "Deprecation",
                     "namespace": "migration.deprecation_info"
                   }
                 }
@@ -98434,7 +98438,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "DeprecationInfo",
+                  "name": "Deprecation",
                   "namespace": "migration.deprecation_info"
                 }
               }
@@ -98448,7 +98452,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "DeprecationInfo",
+                  "name": "Deprecation",
                   "namespace": "migration.deprecation_info"
                 }
               }
