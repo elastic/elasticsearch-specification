@@ -12615,6 +12615,12 @@ export interface SearchableSnapshotsClearCacheResponse {
   stub: integer
 }
 
+export interface SearchableSnapshotsMountMountedSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
+}
+
 export interface SearchableSnapshotsMountRequest extends RequestBase {
   repository: Name
   snapshot: Name
@@ -12630,13 +12636,7 @@ export interface SearchableSnapshotsMountRequest extends RequestBase {
 }
 
 export interface SearchableSnapshotsMountResponse {
-  snapshot: SearchableSnapshotsMountSearchableSnapshotsMountSnapshot
-}
-
-export interface SearchableSnapshotsMountSearchableSnapshotsMountSnapshot {
-  snapshot: Name
-  indices: Indices
-  shards: ShardStatistics
+  snapshot: SearchableSnapshotsMountMountedSnapshot
 }
 
 export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {

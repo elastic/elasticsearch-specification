@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { MountedSnapshot } from './types'
+import { Indices, Name } from '@_types/common'
+import { ShardStatistics } from '@_types/Stats'
 
-export class Response {
-  body: {
-    snapshot: MountedSnapshot
-  }
+export class MountedSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
 }
