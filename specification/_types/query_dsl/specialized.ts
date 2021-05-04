@@ -17,16 +17,27 @@
  * under the License.
  */
 
-import { Dictionary } from "@spec_utils/Dictionary"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { StopWords } from "@_types/analysis/StopWords"
-import { Field, Fields, MinimumShouldMatch, Routing, VersionNumber, VersionType, Id, Type, IndexName, ShapeRelation } from "@_types/common"
-import { Distance } from "@_types/Geo"
-import { double, integer, long } from "@_types/Numeric"
-import { Script } from "@_types/Scripting"
-import { DateMath, Time } from "@_types/Time"
-import { QueryBase, QueryContainer, FieldLookup } from "./abstractions"
-import { GeoCoordinate, GeoShape } from "./geo"
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { StopWords } from '@_types/analysis/StopWords'
+import {
+  Field,
+  Fields,
+  Id,
+  IndexName,
+  MinimumShouldMatch,
+  Routing,
+  ShapeRelation,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
+import { Distance } from '@_types/Geo'
+import { double, integer, long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { DateMath, Time } from '@_types/Time'
+import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
+import { GeoCoordinate, GeoShape } from './geo'
 
 export class DistanceFeatureQuery extends QueryBase {
   origin?: Array<number> | GeoCoordinate | DateMath
@@ -70,9 +81,9 @@ export class LikeDocument {
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters
  *
  */
- export type Like = string | LikeDocument
+export type Like = string | LikeDocument
 
- export class PercolateQuery extends QueryBase {
+export class PercolateQuery extends QueryBase {
   document?: UserDefinedValue
   documents?: UserDefinedValue[]
   field?: Field

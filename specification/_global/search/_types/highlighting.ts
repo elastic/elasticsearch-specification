@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export enum BoundaryScanner {
   chars = 0,

@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class RankEvalRequestItem {
   /** The search request’s ID, used to group result details later. */

@@ -17,11 +17,17 @@
  * under the License.
  */
 
-import { MinimumShouldMatch, Fuzziness, Field, MultiTermQueryRewrite, Fields } from "@_types/common"
-import { double, integer, float } from "@_types/Numeric"
-import { Script } from "@_types/Scripting"
-import { QueryBase } from "./abstractions"
-import { Operator } from "./Operator"
+import {
+  Field,
+  Fields,
+  Fuzziness,
+  MinimumShouldMatch,
+  MultiTermQueryRewrite
+} from '@_types/common'
+import { double, float, integer } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { QueryBase } from './abstractions'
+import { Operator } from './Operator'
 
 export class CommonTermsQuery extends QueryBase {
   analyzer?: string
@@ -51,7 +57,7 @@ export class IntervalsAnyOf {
 /**
  * @variants container
  */
- export class IntervalsContainer {
+export class IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf
   fuzzy?: IntervalsFuzzy
@@ -71,7 +77,6 @@ export class IntervalsFilter {
   overlapping?: IntervalsContainer
   script?: Script
 }
-
 
 export class IntervalsFuzzy {
   analyzer?: string

@@ -26,7 +26,7 @@ import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggrega
 import { Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 
 export class Destination {

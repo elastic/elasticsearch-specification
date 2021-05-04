@@ -30,7 +30,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'

@@ -17,14 +17,14 @@
  * under the License.
  */
 
-import { AdditionalProperties } from "@spec_utils/behaviors"
-import { MinimumShouldMatch, Field } from "@_types/common"
-import { Distance } from "@_types/Geo"
-import { double, float, long } from "@_types/Numeric"
-import { Script } from "@_types/Scripting"
-import { DateMath, Time } from "@_types/Time"
-import { QueryBase, QueryContainer } from "./abstractions"
-import { GeoLocation } from "./geo/GeoLocation"
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { Field, MinimumShouldMatch } from '@_types/common'
+import { Distance } from '@_types/Geo'
+import { double, float, long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { DateMath, Time } from '@_types/Time'
+import { QueryBase, QueryContainer } from './abstractions'
+import { GeoLocation } from './geo'
 
 export class BoolQuery extends QueryBase {
   filter?: QueryContainer | QueryContainer[]

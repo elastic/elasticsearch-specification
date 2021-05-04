@@ -17,62 +17,76 @@
  * under the License.
  */
 
-import { AdditionalProperties } from "@spec_utils/behaviors"
-import { SingleKeyDictionary } from "@spec_utils/Dictionary"
-import { Field, Id, IndexName, Routing } from "@_types/common"
-import { float, long } from "@_types/Numeric"
-import { BoolQuery } from "./compound/bool/BoolQuery"
-import { BoostingQuery } from "./compound/boosting/BoostingQuery"
-import { ConstantScoreQuery } from "./compound/constant_score/ConstantScoreQuery"
-import { DisMaxQuery } from "./compound/dismax/DisMaxQuery"
-import { FunctionScoreQuery } from "./compound/function_score/FunctionScoreQuery"
-import { CommonTermsQuery } from "./full_text/common_terms/CommonTermsQuery"
-import { IntervalsQuery } from "./full_text/intervals/IntervalsQuery"
-import { MatchQuery } from "./full_text/match/MatchQuery"
-import { MatchBoolPrefixQuery } from "./full_text/match_bool_prefix/MatchBoolPrefixQuery"
-import { MatchPhraseQuery } from "./full_text/match_phrase/MatchPhraseQuery"
-import { MatchPhrasePrefixQuery } from "./full_text/match_phrase_prefix/MatchPhrasePrefixQuery"
-import { MultiMatchQuery } from "./full_text/multi_match/MultiMatchQuery"
-import { QueryStringQuery } from "./full_text/query_string/QueryStringQuery"
-import { SimpleQueryStringQuery } from "./full_text/simple_query_string/SimpleQueryStringQuery"
-import { GeoBoundingBoxQuery } from "./geo/bounding_box/GeoBoundingBoxQuery"
-import { GeoDistanceQuery } from "./geo/distance/GeoDistanceQuery"
-import { GeoPolygonQuery } from "./geo/polygon/GeoPolygonQuery"
-import { GeoShapeQuery } from "./geo/shape/GeoShapeQuery"
-import { HasChildQuery } from "./joining/has_child/HasChildQuery"
-import { HasParentQuery } from "./joining/has_parent/HasParentQuery"
-import { NestedQuery } from "./joining/nested/NestedQuery"
-import { ParentIdQuery } from "./joining/parent_id/ParentIdQuery"
-import { MatchAllQuery } from "./MatchAllQuery"
-import { MatchNoneQuery } from "./MatchNoneQuery"
-import { SpanContainingQuery } from "./span/containing/SpanContainingQuery"
-import { SpanFieldMaskingQuery } from "./span/field_masking/SpanFieldMaskingQuery"
-import { SpanFirstQuery } from "./span/first/SpanFirstQuery"
-import { SpanMultiTermQuery } from "./span/multi_term/SpanMultiTermQuery"
-import { SpanNearQuery } from "./span/near/SpanNearQuery"
-import { SpanNotQuery } from "./span/not/SpanNotQuery"
-import { SpanOrQuery } from "./span/or/SpanOrQuery"
-import { SpanTermQuery } from "./span/term/SpanTermQuery"
-import { SpanWithinQuery } from "./span/within/SpanWithinQuery"
-import { DistanceFeatureQuery } from "./specialized/distance_feature/DistanceFeatureQuery"
-import { MoreLikeThisQuery } from "./specialized/more_like_this/MoreLikeThisQuery"
-import { PercolateQuery } from "./specialized/percolate/PercolateQuery"
-import { PinnedQuery } from "./specialized/pinned/PinnedQuery"
-import { RankFeatureQuery } from "./specialized/rank_feature/RankFeatureQuery"
-import { ScriptQuery } from "./specialized/script/ScriptQuery"
-import { ScriptScoreQuery } from "./specialized/script_score/ScriptScoreQuery"
-import { ShapeQuery } from "./specialized/shape/ShapeQuery"
-import { ExistsQuery } from "./term_level/exists/ExistsQuery"
-import { FuzzyQuery } from "./term_level/fuzzy/FuzzyQuery"
-import { IdsQuery } from "./term_level/ids/IdsQuery"
-import { PrefixQuery } from "./term_level/prefix/PrefixQuery"
-import { RangeQuery } from "./term_level/range/RangeQuery"
-import { RegexpQuery } from "./term_level/regexp/RegexpQuery"
-import { TermQuery } from "./term_level/term/TermQuery"
-import { TermsQuery } from "./term_level/terms/TermsQuery"
-import { TermsSetQuery } from "./term_level/terms_set/TermsSetQuery"
-import { TypeQuery } from "./term_level/type/TypeQuery"
-import { WildcardQuery } from "./term_level/wildcard/WildcardQuery"
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Field, Id, IndexName, Routing } from '@_types/common'
+import { float, long } from '@_types/Numeric'
+import {
+  BoolQuery,
+  BoostingQuery,
+  ConstantScoreQuery,
+  DisMaxQuery,
+  FunctionScoreQuery
+} from './compound'
+import {
+  CommonTermsQuery,
+  IntervalsQuery,
+  MatchBoolPrefixQuery,
+  MatchPhrasePrefixQuery,
+  MatchPhraseQuery,
+  MatchQuery,
+  MultiMatchQuery,
+  QueryStringQuery,
+  SimpleQueryStringQuery
+} from './fulltext'
+import {
+  GeoBoundingBoxQuery,
+  GeoDistanceQuery,
+  GeoPolygonQuery,
+  GeoShapeQuery
+} from './geo'
+import {
+  HasChildQuery,
+  HasParentQuery,
+  NestedQuery,
+  ParentIdQuery
+} from './joining'
+import { MatchAllQuery } from './MatchAllQuery'
+import { MatchNoneQuery } from './MatchNoneQuery'
+import {
+  SpanContainingQuery,
+  SpanFieldMaskingQuery,
+  SpanFirstQuery,
+  SpanMultiTermQuery,
+  SpanNearQuery,
+  SpanNotQuery,
+  SpanOrQuery,
+  SpanTermQuery,
+  SpanWithinQuery
+} from './span'
+import {
+  DistanceFeatureQuery,
+  MoreLikeThisQuery,
+  PercolateQuery,
+  PinnedQuery,
+  RankFeatureQuery,
+  ScriptQuery,
+  ScriptScoreQuery,
+  ShapeQuery
+} from './specialized'
+import {
+  ExistsQuery,
+  FuzzyQuery,
+  IdsQuery,
+  PrefixQuery,
+  RangeQuery,
+  RegexpQuery,
+  TermQuery,
+  TermsQuery,
+  TermsSetQuery,
+  TypeQuery,
+  WildcardQuery
+} from './term'
 
 /**
  * @variants container

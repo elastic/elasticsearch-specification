@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { AdditionalProperties } from "@spec_utils/behaviors"
-import { LatLon, Distance, GeoDistanceType, GeoShapeRelation } from "@_types/Geo"
-import { double } from "@_types/Numeric"
-import { QueryBase, FieldLookup } from "./abstractions"
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import {
+  Distance,
+  GeoDistanceType,
+  GeoShapeRelation,
+  LatLon
+} from '@_types/Geo'
+import { double } from '@_types/Numeric'
+import { FieldLookup, QueryBase } from './abstractions'
 
 export class BoundingBox {
   bottom_right?: GeoLocation

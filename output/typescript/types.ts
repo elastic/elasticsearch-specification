@@ -143,7 +143,7 @@ export interface CountRequest extends RequestBase {
   terminate_after?: long
   q?: string
   body?: {
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
   }
 }
 
@@ -222,7 +222,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   wait_for_completion?: boolean
   body?: {
     max_docs?: long
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     slice?: SlicedScroll
   }
 }
@@ -333,7 +333,7 @@ export interface ExplainRequest extends RequestBase {
   stored_fields?: Fields
   q?: string
   body?: {
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
   }
 }
 
@@ -562,7 +562,7 @@ export interface MgetResponse<TDocument = unknown> {
 export interface MsearchMultiSearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  query?: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslQueryContainer
   from?: integer
   size?: integer
   pit?: SearchTypesPointInTimeReference
@@ -756,7 +756,7 @@ export interface RankEvalRankEvalMetricRecall extends RankEvalRankEvalMetricRati
 }
 
 export interface RankEvalRankEvalQuery {
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
   size?: integer
 }
 
@@ -847,7 +847,7 @@ export interface ReindexResponse {
 
 export interface ReindexSource {
   index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslQueryContainer
   remote?: ReindexRemoteSource
   size?: integer
   slice?: SlicedScroll
@@ -910,7 +910,7 @@ export interface RenderSearchTemplateResponse {
 export interface ScriptsPainlessExecutePainlessContextSetup {
   document: any
   index: IndexName
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
 }
 
 export interface ScriptsPainlessExecutePainlessExecutionPosition {
@@ -1002,9 +1002,9 @@ export interface SearchRequest extends RequestBase {
     indices_boost?: Record<IndexName, double>[]
     docvalue_fields?: SearchTypesDocValueField | (Field | SearchTypesDocValueField)[]
     min_score?: double
-    post_filter?: QueryDslAbstractionsContainerQueryContainer
+    post_filter?: QueryDslQueryContainer
     profile?: boolean
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     rescore?: SearchTypesRescore | SearchTypesRescore[]
     script_fields?: Record<string, ScriptField>
     search_after?: (integer | string)[]
@@ -1094,14 +1094,14 @@ export interface SearchTypesCompletionSuggestOption<TDocument = unknown> {
 }
 
 export interface SearchTypesCompletionSuggester extends SearchTypesSuggesterBase {
-  contexts?: Record<string, string | string[] | QueryDslGeoGeoLocation | SearchTypesSuggestContextQuery[]>
+  contexts?: Record<string, string | string[] | QueryDslGeoLocation | SearchTypesSuggestContextQuery[]>
   fuzzy?: SearchTypesSuggestFuzziness
   prefix?: string
   regex?: string
   skip_duplicates?: boolean
 }
 
-export type SearchTypesContext = string | QueryDslGeoGeoLocation
+export type SearchTypesContext = string | QueryDslGeoLocation
 
 export interface SearchTypesDirectGenerator {
   field: Field
@@ -1143,7 +1143,7 @@ export interface SearchTypesGeoDistanceSortKeys {
   unit?: DistanceUnit
 }
 export type SearchTypesGeoDistanceSort = SearchTypesGeoDistanceSortKeys |
-    { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
+    { [property: string]: QueryDslGeoLocation | QueryDslGeoLocation[] }
 
 export interface SearchTypesHighlight {
   fields: Record<Field, SearchTypesHighlightField>
@@ -1164,7 +1164,7 @@ export interface SearchTypesHighlight {
   pre_tags?: string[]
   require_field_match?: boolean
   tags_schema?: SearchTypesHighlighterTagsSchema
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  highlight_query?: QueryDslQueryContainer
   max_analyzed_offset?: string | integer
 }
 
@@ -1178,7 +1178,7 @@ export interface SearchTypesHighlightField {
   fragmenter?: SearchTypesHighlighterFragmenter
   fragment_offset?: integer
   fragment_size?: integer
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  highlight_query?: QueryDslQueryContainer
   matched_fields?: Fields
   max_fragment_length?: integer
   no_match_size?: integer
@@ -1274,7 +1274,7 @@ export interface SearchTypesNestedIdentity {
 }
 
 export interface SearchTypesNestedSortValue {
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
   max_children?: integer
   path: Field
 }
@@ -1361,7 +1361,7 @@ export interface SearchTypesRescore {
 }
 
 export interface SearchTypesRescoreQuery {
-  rescore_query: QueryDslAbstractionsContainerQueryContainer
+  rescore_query: QueryDslQueryContainer
   query_weight?: double
   rescore_query_weight?: double
   score_mode?: SearchTypesScoreMode
@@ -1518,7 +1518,7 @@ export interface SearchShardsResponse {
 
 export interface SearchShardsShardStoreIndex {
   aliases?: Name[]
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
 }
 
 export interface SearchTemplateRequest extends RequestBase {
@@ -1699,7 +1699,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   wait_for_completion?: boolean
   body?: {
     max_docs?: long
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     script?: Script
     slice?: SlicedScroll
     conflicts?: Conflicts
@@ -2354,7 +2354,7 @@ export interface AggregationsAggregationContainer {
   diversified_sampler?: AggregationsBucketDiversifiedSamplerDiversifiedSamplerAggregation
   extended_stats?: AggregationsMetricExtendedStatsExtendedStatsAggregation
   extended_stats_bucket?: AggregationsPipelineExtendedStatsBucketExtendedStatsBucketAggregation
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
   filters?: AggregationsBucketFiltersFiltersAggregation
   geo_bounds?: AggregationsMetricGeoBoundsGeoBoundsAggregation
   geo_centroid?: AggregationsMetricGeoCentroidGeoCentroidAggregation
@@ -2477,7 +2477,7 @@ export interface AggregationsGeoBoundsAggregate extends AggregationsAggregateBas
 
 export interface AggregationsGeoCentroidAggregate extends AggregationsAggregateBase {
   count: long
-  location: QueryDslGeoGeoLocation
+  location: QueryDslGeoLocation
 }
 
 export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase {
@@ -2518,7 +2518,7 @@ export interface AggregationsKeyedValueAggregate extends AggregationsValueAggreg
 }
 
 export interface AggregationsLineStringGeoShape {
-  coordinates: QueryDslGeoGeoCoordinate[]
+  coordinates: QueryDslGeoCoordinate[]
 }
 
 export interface AggregationsMatrixStatsAggregate extends AggregationsAggregateBase {
@@ -2637,7 +2637,7 @@ export interface AggregationsBucketBucketAggregationBase extends AggregationsAgg
 }
 
 export interface AggregationsBucketAdjacencyMatrixAdjacencyMatrixAggregation extends AggregationsBucketBucketAggregationBase {
-  filters?: Record<string, QueryDslAbstractionsContainerQueryContainer>
+  filters?: Record<string, QueryDslQueryContainer>
 }
 
 export interface AggregationsBucketAutoDateHistogramAutoDateHistogramAggregation extends AggregationsBucketBucketAggregationBase {
@@ -2718,7 +2718,7 @@ export interface AggregationsBucketDiversifiedSamplerDiversifiedSamplerAggregati
 export type AggregationsBucketDiversifiedSamplerSamplerAggregationExecutionHint = 'map' | 'global_ordinals' | 'bytes_hash'
 
 export interface AggregationsBucketFiltersFiltersAggregation extends AggregationsBucketBucketAggregationBase {
-  filters?: Record<string, QueryDslAbstractionsContainerQueryContainer> | QueryDslAbstractionsContainerQueryContainer[]
+  filters?: Record<string, QueryDslQueryContainer> | QueryDslQueryContainer[]
   other_bucket?: boolean
   other_bucket_key?: string
 }
@@ -2726,13 +2726,13 @@ export interface AggregationsBucketFiltersFiltersAggregation extends Aggregation
 export interface AggregationsBucketGeoDistanceGeoDistanceAggregation extends AggregationsBucketBucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
-  origin?: QueryDslGeoGeoLocation | string
+  origin?: QueryDslGeoLocation | string
   ranges?: AggregationsBucketRangeAggregationRange[]
   unit?: DistanceUnit
 }
 
 export interface AggregationsBucketGeoHashGridGeoHashGridAggregation extends AggregationsBucketBucketAggregationBase {
-  bounds?: QueryDslGeoBoundingBoxBoundingBox
+  bounds?: QueryDslBoundingBox
   field?: Field
   precision?: GeoHashPrecision
   shard_size?: integer
@@ -2836,7 +2836,7 @@ export interface AggregationsBucketSamplerSamplerAggregation extends Aggregation
 }
 
 export interface AggregationsBucketSignificantTermsSignificantTermsAggregation extends AggregationsBucketBucketAggregationBase {
-  background_filter?: QueryDslAbstractionsContainerQueryContainer
+  background_filter?: QueryDslQueryContainer
   chi_square?: AggregationsBucketSignificantTermsHeuristicsChiSquareHeuristic
   exclude?: string | string[]
   execution_hint?: AggregationsBucketTermsTermsAggregationExecutionHint
@@ -2874,7 +2874,7 @@ export interface AggregationsBucketSignificantTermsHeuristicsScriptedHeuristic {
 }
 
 export interface AggregationsBucketSignificantTextSignificantTextAggregation extends AggregationsBucketBucketAggregationBase {
-  background_filter?: QueryDslAbstractionsContainerQueryContainer
+  background_filter?: QueryDslQueryContainer
   chi_square?: AggregationsBucketSignificantTermsHeuristicsChiSquareHeuristic
   exclude?: string | string[]
   execution_hint?: AggregationsBucketTermsTermsAggregationExecutionHint
@@ -2974,7 +2974,7 @@ export interface AggregationsMetricGeoBoundsGeoBoundsAggregation extends Aggrega
 
 export interface AggregationsMetricGeoCentroidGeoCentroidAggregation extends AggregationsMetricMetricAggregationBase {
   count?: long
-  location?: QueryDslGeoGeoLocation
+  location?: QueryDslGeoLocation
 }
 
 export interface AggregationsMetricGeoLineGeoLineAggregation {
@@ -3061,7 +3061,7 @@ export type AggregationsMetricTTestTTestType = 'paired' | 'homoscedastic' | 'het
 export interface AggregationsMetricTTestTestPopulation {
   field: Field
   script?: Script
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
 }
 
 export interface AggregationsMetricTopHitsTopHitsAggregation extends AggregationsMetricMetricAggregationBase {
@@ -4019,7 +4019,7 @@ export interface MappingTypesCoreWildcardWildcardProperty extends MappingTypesDo
 export interface MappingTypesGeoGeoPointGeoPointProperty extends MappingTypesDocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
-  null_value?: QueryDslGeoGeoLocation
+  null_value?: QueryDslGeoLocation
   type: 'geo_point'
 }
 
@@ -4157,206 +4157,35 @@ export interface MlJobStatistics {
   total: double
 }
 
-export interface QueryDslMatchAllQuery extends QueryDslAbstractionsQueryQueryBase {
-  norm_field?: string
+export interface QueryDslBoolQuery extends QueryDslQueryBase {
+  filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  minimum_should_match?: MinimumShouldMatch
+  must?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  must_not?: QueryDslQueryContainer | QueryDslQueryContainer[]
+  should?: QueryDslQueryContainer | QueryDslQueryContainer[]
 }
 
-export interface QueryDslMatchNoneQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslBoostingQuery extends QueryDslQueryBase {
+  negative_boost?: double
+  negative?: QueryDslQueryContainer
+  positive?: QueryDslQueryContainer
 }
 
-export type QueryDslOperator = 'and' | 'or' | 'AND' | 'OR'
-
-export interface QueryDslAbstractionsContainerQueryContainer {
-  bool?: QueryDslCompoundBoolBoolQuery
-  boosting?: QueryDslCompoundBoostingBoostingQuery
-  common?: Record<Field, QueryDslFullTextCommonTermsCommonTermsQuery | string>
-  combined_fields?: QueryDslAbstractionsQueryCombinedFieldsQuery
-  constant_score?: QueryDslCompoundConstantScoreConstantScoreQuery
-  dis_max?: QueryDslCompoundDismaxDisMaxQuery
-  distance_feature?: Record<Field, QueryDslSpecializedDistanceFeatureDistanceFeatureQuery | string> | QueryDslSpecializedDistanceFeatureDistanceFeatureQuery
-  exists?: QueryDslTermLevelExistsExistsQuery
-  function_score?: QueryDslCompoundFunctionScoreFunctionScoreQuery
-  fuzzy?: Record<Field, QueryDslTermLevelFuzzyFuzzyQuery | string>
-  geo_bounding_box?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoBoundingBoxGeoBoundingBoxQuery | string>
-  geo_distance?: QueryDslGeoDistanceGeoDistanceQuery
-  geo_polygon?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoPolygonGeoPolygonQuery | string>
-  geo_shape?: QueryDslAbstractionsQueryNamedQuery<QueryDslGeoShapeGeoShapeQuery | string>
-  has_child?: QueryDslJoiningHasChildHasChildQuery
-  has_parent?: QueryDslJoiningHasParentHasParentQuery
-  ids?: QueryDslTermLevelIdsIdsQuery
-  intervals?: QueryDslAbstractionsQueryNamedQuery<QueryDslFullTextIntervalsIntervalsQuery | string>
-  match?: QueryDslAbstractionsQueryNamedQuery<QueryDslFullTextMatchMatchQuery | string | float | boolean>
-  match_all?: QueryDslMatchAllQuery
-  match_bool_prefix?: QueryDslAbstractionsQueryNamedQuery<QueryDslFullTextMatchBoolPrefixMatchBoolPrefixQuery | string>
-  match_none?: QueryDslMatchNoneQuery
-  match_phrase?: QueryDslAbstractionsQueryNamedQuery<QueryDslFullTextMatchPhraseMatchPhraseQuery | string>
-  match_phrase_prefix?: QueryDslAbstractionsQueryNamedQuery<QueryDslFullTextMatchPhrasePrefixMatchPhrasePrefixQuery | string>
-  more_like_this?: QueryDslSpecializedMoreLikeThisMoreLikeThisQuery
-  multi_match?: QueryDslFullTextMultiMatchMultiMatchQuery
-  nested?: QueryDslJoiningNestedNestedQuery
-  parent_id?: QueryDslJoiningParentIdParentIdQuery
-  percolate?: QueryDslSpecializedPercolatePercolateQuery
-  pinned?: QueryDslSpecializedPinnedPinnedQuery
-  prefix?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelPrefixPrefixQuery | string>
-  query_string?: QueryDslFullTextQueryStringQueryStringQuery
-  range?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelRangeRangeQuery>
-  rank_feature?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpecializedRankFeatureRankFeatureQuery | string>
-  regexp?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelRegexpRegexpQuery | string>
-  script?: QueryDslSpecializedScriptScriptQuery
-  script_score?: QueryDslSpecializedScriptScoreScriptScoreQuery
-  shape?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpecializedShapeShapeQuery | string>
-  simple_query_string?: QueryDslFullTextSimpleQueryStringSimpleQueryStringQuery
-  span_containing?: QueryDslSpanContainingSpanContainingQuery
-  field_masking_span?: QueryDslSpanFieldMaskingSpanFieldMaskingQuery
-  span_first?: QueryDslSpanFirstSpanFirstQuery
-  span_multi?: QueryDslSpanMultiTermSpanMultiTermQuery
-  span_near?: QueryDslSpanNearSpanNearQuery
-  span_not?: QueryDslSpanNotSpanNotQuery
-  span_or?: QueryDslSpanOrSpanOrQuery
-  span_term?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanTermSpanTermQuery | string>
-  span_within?: QueryDslSpanWithinSpanWithinQuery
-  template?: QueryDslAbstractionsContainerQueryTemplate
-  term?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelTermTermQuery | string | float | boolean>
-  terms?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelTermsTermsQuery | string[] | long[]>
-  terms_set?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelTermsSetTermsSetQuery | string>
-  wildcard?: QueryDslAbstractionsQueryNamedQuery<QueryDslTermLevelWildcardWildcardQuery | string>
-  type?: QueryDslTermLevelTypeTypeQuery
+export interface QueryDslBoundingBox {
+  bottom_right?: QueryDslGeoLocation
+  top_left?: QueryDslGeoLocation
+  wkt?: string
 }
 
-export interface QueryDslAbstractionsContainerQueryTemplate {
-  source: string
-}
+export type QueryDslChildScoreMode = 'none' | 'avg' | 'sum' | 'max' | 'min'
 
-export interface QueryDslAbstractionsFieldLookupFieldLookup {
-  id?: Id
-  index?: IndexName
-  path?: Field
-  routing?: Routing
-}
-
-export interface QueryDslAbstractionsQueryCombinedFieldsQuery {
+export interface QueryDslCombinedFieldsQuery {
   query: string
   fields: Field[]
   operator?: string
 }
 
-export interface QueryDslAbstractionsQueryNamedQueryKeys<TQuery = unknown> {
-  boost?: float
-  _name?: string
-  ignore_unmapped?: boolean
-}
-export type QueryDslAbstractionsQueryNamedQuery<TQuery = unknown> = QueryDslAbstractionsQueryNamedQueryKeys<TQuery> |
-    { [property: string]: TQuery }
-
-export interface QueryDslAbstractionsQueryQueryBase {
-  boost?: float
-  _name?: string
-}
-
-export interface QueryDslCompoundBoolBoolQuery extends QueryDslAbstractionsQueryQueryBase {
-  filter?: QueryDslAbstractionsContainerQueryContainer | QueryDslAbstractionsContainerQueryContainer[]
-  minimum_should_match?: MinimumShouldMatch
-  must?: QueryDslAbstractionsContainerQueryContainer | QueryDslAbstractionsContainerQueryContainer[]
-  must_not?: QueryDslAbstractionsContainerQueryContainer | QueryDslAbstractionsContainerQueryContainer[]
-  should?: QueryDslAbstractionsContainerQueryContainer | QueryDslAbstractionsContainerQueryContainer[]
-}
-
-export interface QueryDslCompoundBoostingBoostingQuery extends QueryDslAbstractionsQueryQueryBase {
-  negative_boost?: double
-  negative?: QueryDslAbstractionsContainerQueryContainer
-  positive?: QueryDslAbstractionsContainerQueryContainer
-}
-
-export interface QueryDslCompoundConstantScoreConstantScoreQuery extends QueryDslAbstractionsQueryQueryBase {
-  filter?: QueryDslAbstractionsContainerQueryContainer
-  boost?: float
-}
-
-export interface QueryDslCompoundDismaxDisMaxQuery extends QueryDslAbstractionsQueryQueryBase {
-  queries?: QueryDslAbstractionsContainerQueryContainer[]
-  tie_breaker?: double
-  boost?: float
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionScoreQuery extends QueryDslAbstractionsQueryQueryBase {
-  boost_mode?: QueryDslCompoundFunctionScoreFunctionsFunctionBoostMode
-  functions?: QueryDslCompoundFunctionScoreFunctionsFunctionScoreContainer[]
-  max_boost?: double
-  min_score?: double
-  query?: QueryDslAbstractionsContainerQueryContainer
-  score_mode?: QueryDslCompoundFunctionScoreFunctionsFunctionScoreMode
-  boost?: float
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionsDateDecayFunctionKeys extends QueryDslCompoundFunctionScoreFunctionsDecayFunctionBase {
-}
-export type QueryDslCompoundFunctionScoreFunctionsDateDecayFunction = QueryDslCompoundFunctionScoreFunctionsDateDecayFunctionKeys |
-    { [property: string]: QueryDslCompoundFunctionScoreFunctionsDecayPlacement<DateMath, Time> }
-
-export type QueryDslCompoundFunctionScoreFunctionsDecayFunction = QueryDslCompoundFunctionScoreFunctionsDateDecayFunction | QueryDslCompoundFunctionScoreFunctionsNumericDecayFunction | QueryDslCompoundFunctionScoreFunctionsGeoDecayFunction
-
-export interface QueryDslCompoundFunctionScoreFunctionsDecayFunctionBase extends QueryDslCompoundFunctionScoreFunctionsScoreFunctionBase {
-  multi_value_mode?: QueryDslCompoundFunctionScoreFunctionsDecayMultiValueMode
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionsDecayPlacement<TOrigin = unknown, TScale = unknown> {
-  decay?: double
-  offset?: TScale
-  scale?: TScale
-  origin?: TOrigin
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionsFieldValueFactorScoreFunction extends QueryDslCompoundFunctionScoreFunctionsScoreFunctionBase {
-  field: Field
-  factor?: double
-  missing?: double
-  modifier?: QueryDslCompoundFunctionScoreFunctionsFieldValueFieldValueFactorModifier
-}
-
-export type QueryDslCompoundFunctionScoreFunctionsFunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
-
-export interface QueryDslCompoundFunctionScoreFunctionsFunctionScoreContainer {
-  exp?: QueryDslCompoundFunctionScoreFunctionsDecayFunction
-  gauss?: QueryDslCompoundFunctionScoreFunctionsDecayFunction
-  linear?: QueryDslCompoundFunctionScoreFunctionsDecayFunction
-  field_value_factor?: QueryDslCompoundFunctionScoreFunctionsFieldValueFactorScoreFunction
-  random_score?: QueryDslCompoundFunctionScoreFunctionsRandomScoreFunction
-  script_score?: QueryDslCompoundFunctionScoreFunctionsScriptScoreFunction
-  filter?: QueryDslAbstractionsContainerQueryContainer
-  weight?: double
-}
-
-export type QueryDslCompoundFunctionScoreFunctionsFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
-
-export interface QueryDslCompoundFunctionScoreFunctionsGeoDecayFunctionKeys extends QueryDslCompoundFunctionScoreFunctionsDecayFunctionBase {
-}
-export type QueryDslCompoundFunctionScoreFunctionsGeoDecayFunction = QueryDslCompoundFunctionScoreFunctionsGeoDecayFunctionKeys |
-    { [property: string]: QueryDslCompoundFunctionScoreFunctionsDecayPlacement<QueryDslGeoGeoLocation, Distance> }
-
-export interface QueryDslCompoundFunctionScoreFunctionsNumericDecayFunctionKeys extends QueryDslCompoundFunctionScoreFunctionsDecayFunctionBase {
-}
-export type QueryDslCompoundFunctionScoreFunctionsNumericDecayFunction = QueryDslCompoundFunctionScoreFunctionsNumericDecayFunctionKeys |
-    { [property: string]: QueryDslCompoundFunctionScoreFunctionsDecayPlacement<double, double> }
-
-export interface QueryDslCompoundFunctionScoreFunctionsRandomScoreFunction extends QueryDslCompoundFunctionScoreFunctionsScoreFunctionBase {
-  field?: Field
-  seed?: long | string
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionsScoreFunctionBase {
-  filter?: QueryDslAbstractionsContainerQueryContainer
-  weight?: double
-}
-
-export interface QueryDslCompoundFunctionScoreFunctionsScriptScoreFunction extends QueryDslCompoundFunctionScoreFunctionsScoreFunctionBase {
-  script: Script
-}
-
-export type QueryDslCompoundFunctionScoreFunctionsDecayMultiValueMode = 'min' | 'max' | 'avg' | 'sum'
-
-export type QueryDslCompoundFunctionScoreFunctionsFieldValueFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
-
-export interface QueryDslFullTextCommonTermsCommonTermsQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslCommonTermsQuery extends QueryDslQueryBase {
   analyzer?: string
   cutoff_frequency?: double
   high_freq_operator?: QueryDslOperator
@@ -4365,40 +4194,196 @@ export interface QueryDslFullTextCommonTermsCommonTermsQuery extends QueryDslAbs
   query?: string
 }
 
-export interface QueryDslFullTextIntervalsIntervalsAllOf {
-  intervals?: QueryDslFullTextIntervalsIntervalsContainer[]
+export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
+  filter?: QueryDslQueryContainer
+  boost?: float
+}
+
+export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
+}
+export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys |
+    { [property: string]: QueryDslDecayPlacement<DateMath, Time> }
+
+export type QueryDslDecayFunction = QueryDslDateDecayFunction | QueryDslNumericDecayFunction | QueryDslGeoDecayFunction
+
+export interface QueryDslDecayFunctionBase extends QueryDslScoreFunctionBase {
+  multi_value_mode?: QueryDslMultiValueMode
+}
+
+export interface QueryDslDecayPlacement<TOrigin = unknown, TScale = unknown> {
+  decay?: double
+  offset?: TScale
+  scale?: TScale
+  origin?: TOrigin
+}
+
+export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
+  queries?: QueryDslQueryContainer[]
+  tie_breaker?: double
+  boost?: float
+}
+
+export interface QueryDslDistanceFeatureQuery extends QueryDslQueryBase {
+  origin?: number[] | QueryDslGeoCoordinate | DateMath
+  pivot?: Distance | Time
+  field?: Field
+}
+
+export interface QueryDslExistsQuery extends QueryDslQueryBase {
+  field?: Field
+}
+
+export interface QueryDslFieldLookup {
+  id?: Id
+  index?: IndexName
+  path?: Field
+  routing?: Routing
+}
+
+export type QueryDslFieldValueFactorModifier = 'none' | 'log' | 'log1p' | 'log2p' | 'ln' | 'ln1p' | 'ln2p' | 'square' | 'sqrt' | 'reciprocal'
+
+export interface QueryDslFieldValueFactorScoreFunction extends QueryDslScoreFunctionBase {
+  field: Field
+  factor?: double
+  missing?: double
+  modifier?: QueryDslFieldValueFactorModifier
+}
+
+export type QueryDslFunctionBoostMode = 'multiply' | 'replace' | 'sum' | 'avg' | 'max' | 'min'
+
+export interface QueryDslFunctionScoreContainer {
+  exp?: QueryDslDecayFunction
+  gauss?: QueryDslDecayFunction
+  linear?: QueryDslDecayFunction
+  field_value_factor?: QueryDslFieldValueFactorScoreFunction
+  random_score?: QueryDslRandomScoreFunction
+  script_score?: QueryDslScriptScoreFunction
+  filter?: QueryDslQueryContainer
+  weight?: double
+}
+
+export type QueryDslFunctionScoreMode = 'multiply' | 'sum' | 'avg' | 'first' | 'max' | 'min'
+
+export interface QueryDslFunctionScoreQuery extends QueryDslQueryBase {
+  boost_mode?: QueryDslFunctionBoostMode
+  functions?: QueryDslFunctionScoreContainer[]
+  max_boost?: double
+  min_score?: double
+  query?: QueryDslQueryContainer
+  score_mode?: QueryDslFunctionScoreMode
+  boost?: float
+}
+
+export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
+  max_expansions?: integer
+  prefix_length?: integer
+  rewrite?: MultiTermQueryRewrite
+  transpositions?: boolean
+  fuzziness?: Fuzziness
+  value: any
+}
+
+export interface QueryDslGeoBoundingBoxQuery extends QueryDslQueryBase {
+  bounding_box?: QueryDslBoundingBox
+  type?: QueryDslGeoExecution
+  validation_method?: QueryDslGeoValidationMethod
+  top_left?: LatLon
+  bottom_right?: LatLon
+}
+
+export type QueryDslGeoCoordinate = string | double[] | QueryDslThreeDimensionalPoint
+
+export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase {
+}
+export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys |
+    { [property: string]: QueryDslDecayPlacement<QueryDslGeoLocation, Distance> }
+
+export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
+  distance?: Distance
+  distance_type?: GeoDistanceType
+  validation_method?: QueryDslGeoValidationMethod
+}
+export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys |
+    { [property: string]: QueryDslGeoLocation }
+
+export type QueryDslGeoExecution = 'memory' | 'indexed'
+
+export type QueryDslGeoLocation = string | double[] | QueryDslTwoDimensionalPoint
+
+export interface QueryDslGeoPolygonQuery extends QueryDslQueryBase {
+  points?: QueryDslGeoLocation[]
+  validation_method?: QueryDslGeoValidationMethod
+}
+
+export interface QueryDslGeoShape {
+  type?: string
+}
+
+export interface QueryDslGeoShapeQuery extends QueryDslQueryBase {
+  ignore_unmapped?: boolean
+  indexed_shape?: QueryDslFieldLookup
+  relation?: GeoShapeRelation
+  shape?: QueryDslGeoShape
+}
+
+export type QueryDslGeoValidationMethod = 'coerce' | 'ignore_malformed' | 'strict'
+
+export interface QueryDslHasChildQuery extends QueryDslQueryBase {
+  ignore_unmapped?: boolean
+  inner_hits?: SearchTypesInnerHits
+  max_children?: integer
+  min_children?: integer
+  query?: QueryDslQueryContainer
+  score_mode?: QueryDslChildScoreMode
+  type?: RelationName
+}
+
+export interface QueryDslHasParentQuery extends QueryDslQueryBase {
+  ignore_unmapped?: boolean
+  inner_hits?: SearchTypesInnerHits
+  parent_type?: RelationName
+  query?: QueryDslQueryContainer
+  score?: boolean
+}
+
+export interface QueryDslIdsQuery extends QueryDslQueryBase {
+  values?: Id[] | long[]
+}
+
+export interface QueryDslIntervalsAllOf {
+  intervals?: QueryDslIntervalsContainer[]
   max_gaps?: integer
   ordered?: boolean
-  filter?: QueryDslFullTextIntervalsIntervalsFilter
+  filter?: QueryDslIntervalsFilter
 }
 
-export interface QueryDslFullTextIntervalsIntervalsAnyOf {
-  intervals?: QueryDslFullTextIntervalsIntervalsContainer[]
-  filter?: QueryDslFullTextIntervalsIntervalsFilter
+export interface QueryDslIntervalsAnyOf {
+  intervals?: QueryDslIntervalsContainer[]
+  filter?: QueryDslIntervalsFilter
 }
 
-export interface QueryDslFullTextIntervalsIntervalsContainer {
-  all_of?: QueryDslFullTextIntervalsIntervalsAllOf
-  any_of?: QueryDslFullTextIntervalsIntervalsAnyOf
-  fuzzy?: QueryDslFullTextIntervalsIntervalsFuzzy
-  match?: QueryDslFullTextIntervalsIntervalsMatch
-  prefix?: QueryDslFullTextIntervalsIntervalsPrefix
-  wildcard?: QueryDslFullTextIntervalsIntervalsWildcard
+export interface QueryDslIntervalsContainer {
+  all_of?: QueryDslIntervalsAllOf
+  any_of?: QueryDslIntervalsAnyOf
+  fuzzy?: QueryDslIntervalsFuzzy
+  match?: QueryDslIntervalsMatch
+  prefix?: QueryDslIntervalsPrefix
+  wildcard?: QueryDslIntervalsWildcard
 }
 
-export interface QueryDslFullTextIntervalsIntervalsFilter {
-  after?: QueryDslFullTextIntervalsIntervalsContainer
-  before?: QueryDslFullTextIntervalsIntervalsContainer
-  contained_by?: QueryDslFullTextIntervalsIntervalsContainer
-  containing?: QueryDslFullTextIntervalsIntervalsContainer
-  not_contained_by?: QueryDslFullTextIntervalsIntervalsContainer
-  not_containing?: QueryDslFullTextIntervalsIntervalsContainer
-  not_overlapping?: QueryDslFullTextIntervalsIntervalsContainer
-  overlapping?: QueryDslFullTextIntervalsIntervalsContainer
+export interface QueryDslIntervalsFilter {
+  after?: QueryDslIntervalsContainer
+  before?: QueryDslIntervalsContainer
+  contained_by?: QueryDslIntervalsContainer
+  containing?: QueryDslIntervalsContainer
+  not_contained_by?: QueryDslIntervalsContainer
+  not_containing?: QueryDslIntervalsContainer
+  not_overlapping?: QueryDslIntervalsContainer
+  overlapping?: QueryDslIntervalsContainer
   script?: Script
 }
 
-export interface QueryDslFullTextIntervalsIntervalsFuzzy {
+export interface QueryDslIntervalsFuzzy {
   analyzer?: string
   fuzziness?: Fuzziness
   prefix_length?: integer
@@ -4407,37 +4392,82 @@ export interface QueryDslFullTextIntervalsIntervalsFuzzy {
   use_field?: Field
 }
 
-export interface QueryDslFullTextIntervalsIntervalsMatch {
+export interface QueryDslIntervalsMatch {
   analyzer?: string
   max_gaps?: integer
   ordered?: boolean
   query?: string
   use_field?: Field
-  filter?: QueryDslFullTextIntervalsIntervalsFilter
+  filter?: QueryDslIntervalsFilter
 }
 
-export interface QueryDslFullTextIntervalsIntervalsPrefix {
+export interface QueryDslIntervalsPrefix {
   analyzer?: string
   prefix?: string
   use_field?: Field
 }
 
-export interface QueryDslFullTextIntervalsIntervalsQuery extends QueryDslAbstractionsQueryQueryBase {
-  all_of?: QueryDslFullTextIntervalsIntervalsAllOf
-  any_of?: QueryDslFullTextIntervalsIntervalsAnyOf
-  fuzzy?: QueryDslFullTextIntervalsIntervalsFuzzy
-  match?: QueryDslFullTextIntervalsIntervalsMatch
-  prefix?: QueryDslFullTextIntervalsIntervalsPrefix
-  wildcard?: QueryDslFullTextIntervalsIntervalsWildcard
+export interface QueryDslIntervalsQuery extends QueryDslQueryBase {
+  all_of?: QueryDslIntervalsAllOf
+  any_of?: QueryDslIntervalsAnyOf
+  fuzzy?: QueryDslIntervalsFuzzy
+  match?: QueryDslIntervalsMatch
+  prefix?: QueryDslIntervalsPrefix
+  wildcard?: QueryDslIntervalsWildcard
 }
 
-export interface QueryDslFullTextIntervalsIntervalsWildcard {
+export interface QueryDslIntervalsWildcard {
   analyzer?: string
   pattern?: string
   use_field?: Field
 }
 
-export interface QueryDslFullTextMatchMatchQuery extends QueryDslAbstractionsQueryQueryBase {
+export type QueryDslLike = string | QueryDslLikeDocument
+
+export interface QueryDslLikeDocument {
+  doc?: any
+  fields?: Fields
+  _id?: Id | number
+  _type?: Type
+  _index?: IndexName
+  per_field_analyzer?: Record<Field, string>
+  routing?: Routing
+}
+
+export interface QueryDslMatchAllQuery extends QueryDslQueryBase {
+  norm_field?: string
+}
+
+export interface QueryDslMatchBoolPrefixQuery extends QueryDslQueryBase {
+  analyzer?: string
+  fuzziness?: Fuzziness
+  fuzzy_rewrite?: MultiTermQueryRewrite
+  fuzzy_transpositions?: boolean
+  max_expansions?: integer
+  minimum_should_match?: MinimumShouldMatch
+  operator?: QueryDslOperator
+  prefix_length?: integer
+  query?: string
+}
+
+export interface QueryDslMatchNoneQuery extends QueryDslQueryBase {
+}
+
+export interface QueryDslMatchPhrasePrefixQuery extends QueryDslQueryBase {
+  analyzer?: string
+  max_expansions?: integer
+  query?: string
+  slop?: integer
+  zero_terms_query?: QueryDslZeroTermsQuery
+}
+
+export interface QueryDslMatchPhraseQuery extends QueryDslQueryBase {
+  analyzer?: string
+  query?: string
+  slop?: integer
+}
+
+export interface QueryDslMatchQuery extends QueryDslQueryBase {
   analyzer?: string
   auto_generate_synonyms_phrase_query?: boolean
   cutoff_frequency?: double
@@ -4450,36 +4480,31 @@ export interface QueryDslFullTextMatchMatchQuery extends QueryDslAbstractionsQue
   operator?: QueryDslOperator
   prefix_length?: integer
   query?: string | float | boolean
-  zero_terms_query?: QueryDslFullTextMultiMatchZeroTermsQuery
+  zero_terms_query?: QueryDslZeroTermsQuery
 }
 
-export interface QueryDslFullTextMatchBoolPrefixMatchBoolPrefixQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   analyzer?: string
-  fuzziness?: Fuzziness
-  fuzzy_rewrite?: MultiTermQueryRewrite
-  fuzzy_transpositions?: boolean
-  max_expansions?: integer
+  boost_terms?: double
+  fields?: Fields
+  include?: boolean
+  like?: QueryDslLike | QueryDslLike[]
+  max_doc_freq?: integer
+  max_query_terms?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
   minimum_should_match?: MinimumShouldMatch
-  operator?: QueryDslOperator
-  prefix_length?: integer
-  query?: string
+  min_term_freq?: integer
+  min_word_length?: integer
+  per_field_analyzer?: Record<Field, string>
+  routing?: Routing
+  stop_words?: AnalysisStopWords
+  unlike?: QueryDslLike | QueryDslLike[]
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
-export interface QueryDslFullTextMatchPhraseMatchPhraseQuery extends QueryDslAbstractionsQueryQueryBase {
-  analyzer?: string
-  query?: string
-  slop?: integer
-}
-
-export interface QueryDslFullTextMatchPhrasePrefixMatchPhrasePrefixQuery extends QueryDslAbstractionsQueryQueryBase {
-  analyzer?: string
-  max_expansions?: integer
-  query?: string
-  slop?: integer
-  zero_terms_query?: QueryDslFullTextMultiMatchZeroTermsQuery
-}
-
-export interface QueryDslFullTextMultiMatchMultiMatchQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslMultiMatchQuery extends QueryDslQueryBase {
   analyzer?: string
   auto_generate_synonyms_phrase_query?: boolean
   cutoff_frequency?: double
@@ -4495,16 +4520,128 @@ export interface QueryDslFullTextMultiMatchMultiMatchQuery extends QueryDslAbstr
   query?: string
   slop?: integer
   tie_breaker?: double
-  type?: QueryDslFullTextMultiMatchTextQueryType
+  type?: QueryDslTextQueryType
   use_dis_max?: boolean
-  zero_terms_query?: QueryDslFullTextMultiMatchZeroTermsQuery
+  zero_terms_query?: QueryDslZeroTermsQuery
 }
 
-export type QueryDslFullTextMultiMatchTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
+export type QueryDslMultiValueMode = 'min' | 'max' | 'avg' | 'sum'
 
-export type QueryDslFullTextMultiMatchZeroTermsQuery = 'all' | 'none'
+export interface QueryDslNamedQueryKeys<TQuery = unknown> {
+  boost?: float
+  _name?: string
+  ignore_unmapped?: boolean
+}
+export type QueryDslNamedQuery<TQuery = unknown> = QueryDslNamedQueryKeys<TQuery> |
+    { [property: string]: TQuery }
 
-export interface QueryDslFullTextQueryStringQueryStringQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslNestedQuery extends QueryDslQueryBase {
+  ignore_unmapped?: boolean
+  inner_hits?: SearchTypesInnerHits
+  path?: Field
+  query?: QueryDslQueryContainer
+  score_mode?: QueryDslNestedScoreMode
+}
+
+export type QueryDslNestedScoreMode = 'avg' | 'sum' | 'min' | 'max' | 'none'
+
+export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
+}
+export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys |
+    { [property: string]: QueryDslDecayPlacement<double, double> }
+
+export type QueryDslOperator = 'and' | 'or' | 'AND' | 'OR'
+
+export interface QueryDslParentIdQuery extends QueryDslQueryBase {
+  id?: Id
+  ignore_unmapped?: boolean
+  type?: RelationName
+}
+
+export interface QueryDslPercolateQuery extends QueryDslQueryBase {
+  document?: any
+  documents?: any[]
+  field?: Field
+  id?: Id
+  index?: IndexName
+  preference?: string
+  routing?: Routing
+  version?: VersionNumber
+}
+
+export interface QueryDslPinnedQuery extends QueryDslQueryBase {
+  ids?: Id[] | long[]
+  organic?: QueryDslQueryContainer
+}
+
+export interface QueryDslPrefixQuery extends QueryDslQueryBase {
+  rewrite?: MultiTermQueryRewrite
+  value: string
+}
+
+export interface QueryDslQueryBase {
+  boost?: float
+  _name?: string
+}
+
+export interface QueryDslQueryContainer {
+  bool?: QueryDslBoolQuery
+  boosting?: QueryDslBoostingQuery
+  common?: Record<Field, QueryDslCommonTermsQuery | string>
+  combined_fields?: QueryDslCombinedFieldsQuery
+  constant_score?: QueryDslConstantScoreQuery
+  dis_max?: QueryDslDisMaxQuery
+  distance_feature?: Record<Field, QueryDslDistanceFeatureQuery | string> | QueryDslDistanceFeatureQuery
+  exists?: QueryDslExistsQuery
+  function_score?: QueryDslFunctionScoreQuery
+  fuzzy?: Record<Field, QueryDslFuzzyQuery | string>
+  geo_bounding_box?: QueryDslNamedQuery<QueryDslGeoBoundingBoxQuery | string>
+  geo_distance?: QueryDslGeoDistanceQuery
+  geo_polygon?: QueryDslNamedQuery<QueryDslGeoPolygonQuery | string>
+  geo_shape?: QueryDslNamedQuery<QueryDslGeoShapeQuery | string>
+  has_child?: QueryDslHasChildQuery
+  has_parent?: QueryDslHasParentQuery
+  ids?: QueryDslIdsQuery
+  intervals?: QueryDslNamedQuery<QueryDslIntervalsQuery | string>
+  match?: QueryDslNamedQuery<QueryDslMatchQuery | string | float | boolean>
+  match_all?: QueryDslMatchAllQuery
+  match_bool_prefix?: QueryDslNamedQuery<QueryDslMatchBoolPrefixQuery | string>
+  match_none?: QueryDslMatchNoneQuery
+  match_phrase?: QueryDslNamedQuery<QueryDslMatchPhraseQuery | string>
+  match_phrase_prefix?: QueryDslNamedQuery<QueryDslMatchPhrasePrefixQuery | string>
+  more_like_this?: QueryDslMoreLikeThisQuery
+  multi_match?: QueryDslMultiMatchQuery
+  nested?: QueryDslNestedQuery
+  parent_id?: QueryDslParentIdQuery
+  percolate?: QueryDslPercolateQuery
+  pinned?: QueryDslPinnedQuery
+  prefix?: QueryDslNamedQuery<QueryDslPrefixQuery | string>
+  query_string?: QueryDslQueryStringQuery
+  range?: QueryDslNamedQuery<QueryDslRangeQuery>
+  rank_feature?: QueryDslNamedQuery<QueryDslRankFeatureQuery | string>
+  regexp?: QueryDslNamedQuery<QueryDslRegexpQuery | string>
+  script?: QueryDslScriptQuery
+  script_score?: QueryDslScriptScoreQuery
+  shape?: QueryDslNamedQuery<QueryDslShapeQuery | string>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  span_containing?: QueryDslSpanContainingQuery
+  field_masking_span?: QueryDslSpanFieldMaskingQuery
+  span_first?: QueryDslSpanFirstQuery
+  span_multi?: QueryDslSpanMultiTermQuery
+  span_near?: QueryDslSpanNearQuery
+  span_not?: QueryDslSpanNotQuery
+  span_or?: QueryDslSpanOrQuery
+  span_term?: QueryDslNamedQuery<QueryDslSpanTermQuery | string>
+  span_within?: QueryDslSpanWithinQuery
+  template?: QueryDslQueryTemplate
+  term?: QueryDslNamedQuery<QueryDslTermQuery | string | float | boolean>
+  terms?: QueryDslNamedQuery<QueryDslTermsQuery | string[] | long[]>
+  terms_set?: QueryDslNamedQuery<QueryDslTermsSetQuery | string>
+  wildcard?: QueryDslNamedQuery<QueryDslWildcardQuery | string>
+  type?: QueryDslTypeQuery
+}
+
+export interface QueryDslQueryStringQuery extends QueryDslQueryBase {
   allow_leading_wildcard?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -4529,18 +4666,78 @@ export interface QueryDslFullTextQueryStringQueryStringQuery extends QueryDslAbs
   rewrite?: MultiTermQueryRewrite
   tie_breaker?: double
   time_zone?: string
-  type?: QueryDslFullTextMultiMatchTextQueryType
+  type?: QueryDslTextQueryType
 }
 
-export type QueryDslFullTextSimpleQueryStringSimpleQueryStringFlags = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
+export interface QueryDslQueryTemplate {
+  source: string
+}
 
-export interface QueryDslFullTextSimpleQueryStringSimpleQueryStringQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslRandomScoreFunction extends QueryDslScoreFunctionBase {
+  field?: Field
+  seed?: long | string
+}
+
+export interface QueryDslRangeQuery extends QueryDslQueryBase {
+  gt?: double | DateMath
+  gte?: double | DateMath
+  lt?: double | DateMath
+  lte?: double | DateMath
+  relation?: QueryDslRangeRelation
+  time_zone?: string
+  from?: double | DateMath
+  to?: double | DateMath
+}
+
+export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
+
+export interface QueryDslRankFeatureFunction {
+}
+
+export interface QueryDslRankFeatureQuery extends QueryDslQueryBase {
+  function?: QueryDslRankFeatureFunction
+}
+
+export interface QueryDslRegexpQuery extends QueryDslQueryBase {
+  flags?: string
+  max_determinized_states?: integer
+  value?: string
+}
+
+export interface QueryDslScoreFunctionBase {
+  filter?: QueryDslQueryContainer
+  weight?: double
+}
+
+export interface QueryDslScriptQuery extends QueryDslQueryBase {
+  script?: Script
+}
+
+export interface QueryDslScriptScoreFunction extends QueryDslScoreFunctionBase {
+  script: Script
+}
+
+export interface QueryDslScriptScoreQuery extends QueryDslQueryBase {
+  query?: QueryDslQueryContainer
+  script?: Script
+}
+
+export interface QueryDslShapeQuery extends QueryDslQueryBase {
+  ignore_unmapped?: boolean
+  indexed_shape?: QueryDslFieldLookup
+  relation?: ShapeRelation
+  shape?: QueryDslGeoShape
+}
+
+export type QueryDslSimpleQueryStringFlags = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
+
+export interface QueryDslSimpleQueryStringQuery extends QueryDslQueryBase {
   analyzer?: string
   analyze_wildcard?: boolean
   auto_generate_synonyms_phrase_query?: boolean
   default_operator?: QueryDslOperator
   fields?: Fields
-  flags?: QueryDslFullTextSimpleQueryStringSimpleQueryStringFlags | string
+  flags?: QueryDslSimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean
@@ -4550,287 +4747,75 @@ export interface QueryDslFullTextSimpleQueryStringSimpleQueryStringQuery extends
   quote_field_suffix?: string
 }
 
-export type QueryDslGeoGeoCoordinate = string | double[] | QueryDslGeoThreeDimensionalPoint
-
-export type QueryDslGeoGeoLocation = string | double[] | QueryDslGeoTwoDimensionalPoint
-
-export type QueryDslGeoGeoValidationMethod = 'coerce' | 'ignore_malformed' | 'strict'
-
-export interface QueryDslGeoThreeDimensionalPoint {
-  lat: double
-  lon: double
-  z?: double
+export interface QueryDslSpanContainingQuery extends QueryDslQueryBase {
+  big?: QueryDslSpanQuery
+  little?: QueryDslSpanQuery
 }
 
-export interface QueryDslGeoTwoDimensionalPoint {
-  lat: double
-  lon: double
-}
-
-export interface QueryDslGeoBoundingBoxBoundingBox {
-  bottom_right?: QueryDslGeoGeoLocation
-  top_left?: QueryDslGeoGeoLocation
-  wkt?: string
-}
-
-export interface QueryDslGeoBoundingBoxGeoBoundingBoxQuery extends QueryDslAbstractionsQueryQueryBase {
-  bounding_box?: QueryDslGeoBoundingBoxBoundingBox
-  type?: QueryDslGeoBoundingBoxGeoExecution
-  validation_method?: QueryDslGeoGeoValidationMethod
-  top_left?: LatLon
-  bottom_right?: LatLon
-}
-
-export type QueryDslGeoBoundingBoxGeoExecution = 'memory' | 'indexed'
-
-export interface QueryDslGeoDistanceGeoDistanceQueryKeys extends QueryDslAbstractionsQueryQueryBase {
-  distance?: Distance
-  distance_type?: GeoDistanceType
-  validation_method?: QueryDslGeoGeoValidationMethod
-}
-export type QueryDslGeoDistanceGeoDistanceQuery = QueryDslGeoDistanceGeoDistanceQueryKeys |
-    { [property: string]: QueryDslGeoGeoLocation }
-
-export interface QueryDslGeoPolygonGeoPolygonQuery extends QueryDslAbstractionsQueryQueryBase {
-  points?: QueryDslGeoGeoLocation[]
-  validation_method?: QueryDslGeoGeoValidationMethod
-}
-
-export interface QueryDslGeoShapeGeoShape {
-  type?: string
-}
-
-export interface QueryDslGeoShapeGeoShapeQuery extends QueryDslAbstractionsQueryQueryBase {
-  ignore_unmapped?: boolean
-  indexed_shape?: QueryDslAbstractionsFieldLookupFieldLookup
-  relation?: GeoShapeRelation
-  shape?: QueryDslGeoShapeGeoShape
-}
-
-export type QueryDslJoiningHasChildChildScoreMode = 'none' | 'avg' | 'sum' | 'max' | 'min'
-
-export interface QueryDslJoiningHasChildHasChildQuery extends QueryDslAbstractionsQueryQueryBase {
-  ignore_unmapped?: boolean
-  inner_hits?: SearchTypesInnerHits
-  max_children?: integer
-  min_children?: integer
-  query?: QueryDslAbstractionsContainerQueryContainer
-  score_mode?: QueryDslJoiningHasChildChildScoreMode
-  type?: RelationName
-}
-
-export interface QueryDslJoiningHasParentHasParentQuery extends QueryDslAbstractionsQueryQueryBase {
-  ignore_unmapped?: boolean
-  inner_hits?: SearchTypesInnerHits
-  parent_type?: RelationName
-  query?: QueryDslAbstractionsContainerQueryContainer
-  score?: boolean
-}
-
-export interface QueryDslJoiningNestedNestedQuery extends QueryDslAbstractionsQueryQueryBase {
-  ignore_unmapped?: boolean
-  inner_hits?: SearchTypesInnerHits
-  path?: Field
-  query?: QueryDslAbstractionsContainerQueryContainer
-  score_mode?: QueryDslJoiningNestedNestedScoreMode
-}
-
-export type QueryDslJoiningNestedNestedScoreMode = 'avg' | 'sum' | 'min' | 'max' | 'none'
-
-export interface QueryDslJoiningParentIdParentIdQuery extends QueryDslAbstractionsQueryQueryBase {
-  id?: Id
-  ignore_unmapped?: boolean
-  type?: RelationName
-}
-
-export interface QueryDslSpanSpanQuery extends QueryDslAbstractionsQueryQueryBase {
-  span_containing?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanContainingSpanContainingQuery | string>
-  field_masking_span?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanFieldMaskingSpanFieldMaskingQuery | string>
-  span_first?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanFirstSpanFirstQuery | string>
-  span_gap?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanGapSpanGapQuery | integer>
-  span_multi?: QueryDslSpanMultiTermSpanMultiTermQuery
-  span_near?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanNearSpanNearQuery | string>
-  span_not?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanNotSpanNotQuery | string>
-  span_or?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanOrSpanOrQuery | string>
-  span_term?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanTermSpanTermQuery | string>
-  span_within?: QueryDslAbstractionsQueryNamedQuery<QueryDslSpanWithinSpanWithinQuery | string>
-}
-
-export interface QueryDslSpanContainingSpanContainingQuery extends QueryDslAbstractionsQueryQueryBase {
-  big?: QueryDslSpanSpanQuery
-  little?: QueryDslSpanSpanQuery
-}
-
-export interface QueryDslSpanFieldMaskingSpanFieldMaskingQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslSpanFieldMaskingQuery extends QueryDslQueryBase {
   field?: Field
-  query?: QueryDslSpanSpanQuery
+  query?: QueryDslSpanQuery
 }
 
-export interface QueryDslSpanFirstSpanFirstQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslSpanFirstQuery extends QueryDslQueryBase {
   end?: integer
-  match?: QueryDslSpanSpanQuery
+  match?: QueryDslSpanQuery
 }
 
-export interface QueryDslSpanGapSpanGapQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslSpanGapQuery extends QueryDslQueryBase {
   field?: Field
   width?: integer
 }
 
-export interface QueryDslSpanMultiTermSpanMultiTermQuery extends QueryDslAbstractionsQueryQueryBase {
-  match?: QueryDslAbstractionsContainerQueryContainer
+export interface QueryDslSpanMultiTermQuery extends QueryDslQueryBase {
+  match?: QueryDslQueryContainer
 }
 
-export interface QueryDslSpanNearSpanNearQuery extends QueryDslAbstractionsQueryQueryBase {
-  clauses?: QueryDslSpanSpanQuery[]
+export interface QueryDslSpanNearQuery extends QueryDslQueryBase {
+  clauses?: QueryDslSpanQuery[]
   in_order?: boolean
   slop?: integer
 }
 
-export interface QueryDslSpanNotSpanNotQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslSpanNotQuery extends QueryDslQueryBase {
   dist?: integer
-  exclude?: QueryDslSpanSpanQuery
-  include?: QueryDslSpanSpanQuery
+  exclude?: QueryDslSpanQuery
+  include?: QueryDslSpanQuery
   post?: integer
   pre?: integer
 }
 
-export interface QueryDslSpanOrSpanOrQuery extends QueryDslAbstractionsQueryQueryBase {
-  clauses?: QueryDslSpanSpanQuery[]
+export interface QueryDslSpanOrQuery extends QueryDslQueryBase {
+  clauses?: QueryDslSpanQuery[]
 }
 
-export interface QueryDslSpanTermSpanTermQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslSpanQuery extends QueryDslQueryBase {
+  span_containing?: QueryDslNamedQuery<QueryDslSpanContainingQuery | string>
+  field_masking_span?: QueryDslNamedQuery<QueryDslSpanFieldMaskingQuery | string>
+  span_first?: QueryDslNamedQuery<QueryDslSpanFirstQuery | string>
+  span_gap?: QueryDslNamedQuery<QueryDslSpanGapQuery | integer>
+  span_multi?: QueryDslSpanMultiTermQuery
+  span_near?: QueryDslNamedQuery<QueryDslSpanNearQuery | string>
+  span_not?: QueryDslNamedQuery<QueryDslSpanNotQuery | string>
+  span_or?: QueryDslNamedQuery<QueryDslSpanOrQuery | string>
+  span_term?: QueryDslNamedQuery<QueryDslSpanTermQuery | string>
+  span_within?: QueryDslNamedQuery<QueryDslSpanWithinQuery | string>
+}
+
+export interface QueryDslSpanTermQuery extends QueryDslQueryBase {
   value: string
 }
 
-export interface QueryDslSpanWithinSpanWithinQuery extends QueryDslAbstractionsQueryQueryBase {
-  big?: QueryDslSpanSpanQuery
-  little?: QueryDslSpanSpanQuery
+export interface QueryDslSpanWithinQuery extends QueryDslQueryBase {
+  big?: QueryDslSpanQuery
+  little?: QueryDslSpanQuery
 }
 
-export interface QueryDslSpecializedDistanceFeatureDistanceFeatureQuery extends QueryDslAbstractionsQueryQueryBase {
-  origin?: number[] | QueryDslGeoGeoCoordinate | DateMath
-  pivot?: Distance | Time
-  field?: Field
-}
-
-export interface QueryDslSpecializedMoreLikeThisMoreLikeThisQuery extends QueryDslAbstractionsQueryQueryBase {
-  analyzer?: string
-  boost_terms?: double
-  fields?: Fields
-  include?: boolean
-  like?: QueryDslSpecializedMoreLikeThisLikeLike | QueryDslSpecializedMoreLikeThisLikeLike[]
-  max_doc_freq?: integer
-  max_query_terms?: integer
-  max_word_length?: integer
-  min_doc_freq?: integer
-  minimum_should_match?: MinimumShouldMatch
-  min_term_freq?: integer
-  min_word_length?: integer
-  per_field_analyzer?: Record<Field, string>
-  routing?: Routing
-  stop_words?: AnalysisStopWords
-  unlike?: QueryDslSpecializedMoreLikeThisLikeLike | QueryDslSpecializedMoreLikeThisLikeLike[]
-  version?: VersionNumber
-  version_type?: VersionType
-}
-
-export type QueryDslSpecializedMoreLikeThisLikeLike = string | QueryDslSpecializedMoreLikeThisLikeLikeDocument
-
-export interface QueryDslSpecializedMoreLikeThisLikeLikeDocument {
-  doc?: any
-  fields?: Fields
-  _id?: Id | number
-  _type?: Type
-  _index?: IndexName
-  per_field_analyzer?: Record<Field, string>
-  routing?: Routing
-}
-
-export interface QueryDslSpecializedPercolatePercolateQuery extends QueryDslAbstractionsQueryQueryBase {
-  document?: any
-  documents?: any[]
-  field?: Field
-  id?: Id
-  index?: IndexName
-  preference?: string
-  routing?: Routing
-  version?: VersionNumber
-}
-
-export interface QueryDslSpecializedPinnedPinnedQuery extends QueryDslAbstractionsQueryQueryBase {
-  ids?: Id[] | long[]
-  organic?: QueryDslAbstractionsContainerQueryContainer
-}
-
-export interface QueryDslSpecializedRankFeatureRankFeatureFunction {
-}
-
-export interface QueryDslSpecializedRankFeatureRankFeatureQuery extends QueryDslAbstractionsQueryQueryBase {
-  function?: QueryDslSpecializedRankFeatureRankFeatureFunction
-}
-
-export interface QueryDslSpecializedScriptScriptQuery extends QueryDslAbstractionsQueryQueryBase {
-  script?: Script
-}
-
-export interface QueryDslSpecializedScriptScoreScriptScoreQuery extends QueryDslAbstractionsQueryQueryBase {
-  query?: QueryDslAbstractionsContainerQueryContainer
-  script?: Script
-}
-
-export interface QueryDslSpecializedShapeShapeQuery extends QueryDslAbstractionsQueryQueryBase {
-  ignore_unmapped?: boolean
-  indexed_shape?: QueryDslAbstractionsFieldLookupFieldLookup
-  relation?: ShapeRelation
-  shape?: QueryDslGeoShapeGeoShape
-}
-
-export interface QueryDslTermLevelExistsExistsQuery extends QueryDslAbstractionsQueryQueryBase {
-  field?: Field
-}
-
-export interface QueryDslTermLevelFuzzyFuzzyQuery extends QueryDslAbstractionsQueryQueryBase {
-  max_expansions?: integer
-  prefix_length?: integer
-  rewrite?: MultiTermQueryRewrite
-  transpositions?: boolean
-  fuzziness?: Fuzziness
-  value: any
-}
-
-export interface QueryDslTermLevelIdsIdsQuery extends QueryDslAbstractionsQueryQueryBase {
-  values?: Id[] | long[]
-}
-
-export interface QueryDslTermLevelPrefixPrefixQuery extends QueryDslAbstractionsQueryQueryBase {
-  rewrite?: MultiTermQueryRewrite
-  value: string
-}
-
-export interface QueryDslTermLevelRangeRangeQuery extends QueryDslAbstractionsQueryQueryBase {
-  gt?: double | DateMath
-  gte?: double | DateMath
-  lt?: double | DateMath
-  lte?: double | DateMath
-  relation?: QueryDslTermLevelRangeRangeRelation
-  time_zone?: string
-  from?: double | DateMath
-  to?: double | DateMath
-}
-
-export type QueryDslTermLevelRangeRangeRelation = 'within' | 'contains' | 'intersects'
-
-export interface QueryDslTermLevelRegexpRegexpQuery extends QueryDslAbstractionsQueryQueryBase {
-  flags?: string
-  max_determinized_states?: integer
-  value?: string
-}
-
-export interface QueryDslTermLevelTermTermQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslTermQuery extends QueryDslQueryBase {
   value?: string | float | boolean
 }
 
-export interface QueryDslTermLevelTermsTermsQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslTermsQuery extends QueryDslQueryBase {
   terms?: string[]
   index?: IndexName
   id?: Id
@@ -4838,37 +4823,35 @@ export interface QueryDslTermLevelTermsTermsQuery extends QueryDslAbstractionsQu
   routing?: Routing
 }
 
-export interface QueryDslTermLevelTermsSetTermsSetQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
   minimum_should_match_script?: Script
   terms?: string[]
 }
 
-export interface QueryDslTermLevelTypeTypeQuery extends QueryDslAbstractionsQueryQueryBase {
+export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
+
+export interface QueryDslThreeDimensionalPoint {
+  lat: double
+  lon: double
+  z?: double
+}
+
+export interface QueryDslTwoDimensionalPoint {
+  lat: double
+  lon: double
+}
+
+export interface QueryDslTypeQuery extends QueryDslQueryBase {
   value: string
 }
 
-export interface QueryDslTermLevelWildcardWildcardQuery extends QueryDslAbstractionsQueryQueryBase {
+export interface QueryDslWildcardQuery extends QueryDslQueryBase {
   rewrite?: MultiTermQueryRewrite
   value: string
 }
 
-export interface SlmStatistics {
-  retention_deletion_time?: DateString
-  retention_deletion_time_millis?: EpochMillis
-  retention_failed?: long
-  retention_runs?: long
-  retention_timed_out?: long
-  policy?: Id
-  total_snapshots_deleted?: long
-  snapshots_deleted?: long
-  total_snapshot_deletion_failures?: long
-  snapshot_deletion_failures?: long
-  total_snapshots_failed?: long
-  snapshots_failed?: long
-  total_snapshots_taken?: long
-  snapshots_taken?: long
-}
+export type QueryDslZeroTermsQuery = 'all' | 'none'
 
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
   aggregations?: Record<string, AggregationsAggregate>
@@ -4952,11 +4935,11 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     lenient?: boolean
     max_concurrent_shard_requests?: long
     min_score?: double
-    post_filter?: QueryDslAbstractionsContainerQueryContainer
+    post_filter?: QueryDslQueryContainer
     preference?: string
     profile?: boolean
     pit?: SearchTypesPointInTimeReference
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     query_on_query_string?: string
     request_cache?: boolean
     rescore?: SearchTypesRescore[]
@@ -7981,7 +7964,7 @@ export interface EqlSearchRequest extends RequestBase {
     tiebreaker_field?: Field
     timestamp_field?: Field
     fetch_size?: uint
-    filter?: QueryDslAbstractionsContainerQueryContainer | QueryDslAbstractionsContainerQueryContainer[]
+    filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
     keep_alive?: Time
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
@@ -8054,7 +8037,7 @@ export interface GraphExploreGraphVertexInclude {
 
 export interface GraphExploreHop {
   connections?: GraphExploreHop
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
   vertices: GraphExploreGraphVertexDefinition[]
 }
 
@@ -8066,7 +8049,7 @@ export interface GraphExploreRequest extends RequestBase {
   body?: {
     connections?: GraphExploreHop
     controls?: GraphExploreGraphExploreControls
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     vertices?: GraphExploreGraphVertexDefinition[]
   }
 }
@@ -8235,7 +8218,7 @@ export interface IlmStopRequest extends RequestBase {
 export interface IlmStopResponse extends AcknowledgedResponseBase {}
 
 export interface IndicesAlias {
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
   index_routing?: Routing
   is_hidden?: boolean
   is_write_index?: boolean
@@ -8244,7 +8227,7 @@ export interface IndicesAlias {
 }
 
 export interface IndicesAliasDefinition {
-  filter?: QueryDslAbstractionsContainerQueryContainer
+  filter?: QueryDslQueryContainer
   index_routing?: string
   is_write_index?: boolean
   routing?: string
@@ -8806,7 +8789,7 @@ export interface IndicesPutAliasRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body?: {
-    filter?: QueryDslAbstractionsContainerQueryContainer
+    filter?: QueryDslQueryContainer
     index_routing?: Routing
     is_write_index?: boolean
     routing?: Routing
@@ -9430,7 +9413,7 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   rewrite?: boolean
   q?: string
   body?: {
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
   }
 }
 
@@ -10254,7 +10237,7 @@ export interface MlDataFrameAnalyticsMemoryEstimation {
 
 export interface MlDataFrameAnalyticsSource {
   index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
+  query?: QueryDslQueryContainer
   _source?: MlDataFrameAnalysisAnalyzedFields
   runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
@@ -10331,7 +10314,7 @@ export interface MlDatafeed {
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
   query_delay?: Timestamp
   script_fields?: Record<string, ScriptField>
   scroll_size?: integer
@@ -10813,7 +10796,7 @@ export interface MlEvaluateDataFrameRequest extends RequestBase {
   body?: {
     evaluation: MlDataFrameEvaluationContainer
     index: IndexName
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
   }
 }
 
@@ -11449,7 +11432,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     indexes?: string[]
     job_id?: Id
     max_empty_searches?: integer
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     query_delay?: Time
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
@@ -11464,7 +11447,7 @@ export interface MlPutDatafeedResponse {
   indices: Indices
   job_id: Id
   max_empty_searches: integer
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
   query_delay: Time
   script_fields: Record<string, ScriptField>
   scroll_size: integer
@@ -11628,7 +11611,7 @@ export interface MlUpdateDataFeedRequest extends RequestBase {
     indices_options?: MlUpdateDataFeedDatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     query_delay?: Time
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
@@ -11643,7 +11626,7 @@ export interface MlUpdateDataFeedResponse {
   indices: Indices
   job_id: Id
   max_empty_searches?: integer
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
   query_delay: Time
   script_fields?: Record<string, ScriptField>
   scroll_size: integer
@@ -12577,7 +12560,7 @@ export interface RollupRollupSearchRequest extends RequestBase {
   typed_keys?: boolean
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
-    query?: QueryDslAbstractionsContainerQueryContainer
+    query?: QueryDslQueryContainer
     size?: integer
   }
 }
@@ -13173,7 +13156,7 @@ export interface SecurityPutRoleIndicesPrivileges {
   field_security?: SecurityFieldSecurity
   names: Indices
   privileges: string[]
-  query?: string | QueryDslAbstractionsContainerQueryContainer
+  query?: string | QueryDslQueryContainer
   allow_restricted_indices?: boolean
 }
 
@@ -13311,6 +13294,23 @@ export interface SlmSnapshotRetentionConfiguration {
   expire_after: Time
   max_count: integer
   min_count: integer
+}
+
+export interface SlmStatistics {
+  retention_deletion_time?: DateString
+  retention_deletion_time_millis?: EpochMillis
+  retention_failed?: long
+  retention_runs?: long
+  retention_timed_out?: long
+  policy?: Id
+  total_snapshots_deleted?: long
+  snapshots_deleted?: long
+  total_snapshot_deletion_failures?: long
+  snapshot_deletion_failures?: long
+  total_snapshots_failed?: long
+  snapshots_failed?: long
+  total_snapshots_taken?: long
+  snapshots_taken?: long
 }
 
 export interface SlmDeleteLifecycleRequest extends RequestBase {
@@ -13674,7 +13674,7 @@ export interface SqlQuerySqlRequest extends RequestBase {
     columnar?: boolean
     cursor?: string
     fetch_size?: integer
-    filter?: QueryDslAbstractionsContainerQueryContainer
+    filter?: QueryDslQueryContainer
     query?: string
     request_timeout?: Time
     page_timeout?: Time
@@ -13697,7 +13697,7 @@ export interface SqlQuerySqlSqlColumn {
 export interface SqlTranslateSqlRequest extends RequestBase {
   body?: {
     fetch_size?: integer
-    filter?: QueryDslAbstractionsContainerQueryContainer
+    filter?: QueryDslQueryContainer
     query: string
     time_zone?: string
   }
@@ -14390,7 +14390,7 @@ export interface WatcherSearchInput {
 }
 
 export interface WatcherSearchInputRequestBody {
-  query: QueryDslAbstractionsContainerQueryContainer
+  query: QueryDslQueryContainer
 }
 
 export interface WatcherSearchInputRequestDefinition {

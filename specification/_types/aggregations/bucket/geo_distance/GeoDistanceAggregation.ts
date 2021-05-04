@@ -19,7 +19,7 @@
 
 import { Field } from '@_types/common'
 import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
-import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { GeoLocation } from '@_types/query_dsl/geo'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { AggregationRange } from '../range/RangeAggregation'
 

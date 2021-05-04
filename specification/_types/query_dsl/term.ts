@@ -17,12 +17,19 @@
  * under the License.
  */
 
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { Field, MultiTermQueryRewrite, Fuzziness, Id, IndexName, Routing } from "@_types/common"
-import { integer, long, double, float } from "@_types/Numeric"
-import { Script } from "@_types/Scripting"
-import { DateMath } from "@_types/Time"
-import { QueryBase } from "./abstractions"
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import {
+  Field,
+  Fuzziness,
+  Id,
+  IndexName,
+  MultiTermQueryRewrite,
+  Routing
+} from '@_types/common'
+import { double, float, integer, long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { DateMath } from '@_types/Time'
+import { QueryBase } from './abstractions'
 
 export class ExistsQuery extends QueryBase {
   field?: Field

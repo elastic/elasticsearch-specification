@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Field } from "@_types/common"
-import { integer } from "@_types/Numeric"
-import { QueryBase, QueryContainer, NamedQuery } from "./abstractions"
+import { Field } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { NamedQuery, QueryBase, QueryContainer } from './abstractions'
 
 export class SpanContainingQuery extends QueryBase {
   big?: SpanQuery

@@ -40,7 +40,7 @@ import {
   SuggestMode
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { DateField, Time } from '@_types/Time'
 
