@@ -9918,12 +9918,12 @@ export interface LogstashPipelinePutResponse {
 
 export interface MigrationDeprecationInfoDeprecation {
   details: string
-  level: MigrationDeprecationInfoDeprecationWarningLevel
+  level: MigrationDeprecationInfoDeprecationLevel
   message: string
   url: string
 }
 
-export type MigrationDeprecationInfoDeprecationWarningLevel = 'none' | 'info' | 'warning' | 'critical'
+export type MigrationDeprecationInfoDeprecationLevel = 'none' | 'info' | 'warning' | 'critical'
 
 export interface MigrationDeprecationInfoRequest extends RequestBase {
   index?: IndexName

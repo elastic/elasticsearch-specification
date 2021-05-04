@@ -98159,7 +98159,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DeprecationWarningLevel",
+              "name": "DeprecationLevel",
               "namespace": "migration.deprecation_info"
             }
           }
@@ -98207,7 +98207,7 @@
         }
       ],
       "name": {
-        "name": "DeprecationWarningLevel",
+        "name": "DeprecationLevel",
         "namespace": "migration.deprecation_info"
       }
     },
