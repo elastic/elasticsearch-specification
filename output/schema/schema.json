@@ -29027,6 +29027,29 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ChainTransform",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "transforms",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TransformContainer",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterStatistics",
         "namespace": "_types"
       },
@@ -32092,6 +32115,44 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ScriptTransform",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "lang",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "params",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "ScrollId",
@@ -32274,6 +32335,37 @@
                 "name": "SearchStats",
                 "namespace": "_types"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchTransform",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "request",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchInputRequestDefinition",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
             }
           }
         }
@@ -33083,6 +33175,59 @@
           "name": "string",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Transform",
+        "namespace": "_types"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransformContainer",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "chain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChainTransform",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptTransform",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "search",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchTransform",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
       }
     },
     {
@@ -131399,7 +131544,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformDestination",
+        "name": "Destination",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131433,7 +131578,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformLatest",
+        "name": "Latest",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131469,7 +131614,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformPivot",
+        "name": "Pivot",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131514,7 +131659,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformPivotGroupByContainer",
+                "name": "PivotGroupByContainer",
                 "namespace": "transform._types"
               }
             }
@@ -131536,7 +131681,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformPivotGroupByContainer",
+        "name": "PivotGroupByContainer",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131592,7 +131737,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformRetentionPolicy",
+        "name": "RetentionPolicy",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131625,7 +131770,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformRetentionPolicyContainer",
+        "name": "RetentionPolicyContainer",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131636,7 +131781,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransformRetentionPolicy",
+              "name": "RetentionPolicy",
               "namespace": "transform._types"
             }
           }
@@ -131650,7 +131795,7 @@
       "description": "The source of the data for the transform.",
       "kind": "interface",
       "name": {
-        "name": "TransformSettings",
+        "name": "Settings",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131697,7 +131842,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformSource",
+        "name": "Source",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131744,7 +131889,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformSyncContainer",
+        "name": "SyncContainer",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131755,7 +131900,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransformTimeSync",
+              "name": "TimeSync",
               "namespace": "transform._types"
             }
           }
@@ -131768,7 +131913,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TransformTimeSync",
+        "name": "TimeSync",
         "namespace": "transform._types"
       },
       "properties": [
@@ -131952,7 +132097,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Transform",
-                  "namespace": "watcher._types"
+                  "namespace": "_types"
                 }
               }
             }
@@ -131964,6 +132109,145 @@
         "name": "Response",
         "namespace": "transform.get_transform"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CheckpointStats",
+        "namespace": "transform.get_transform_stats"
+      },
+      "properties": [
+        {
+          "name": "checkpoint",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "checkpoint_progress",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransformProgress",
+              "namespace": "transform.get_transform_stats"
+            }
+          }
+        },
+        {
+          "name": "timestamp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timestamp_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_upper_bound",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_upper_bound_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Checkpointing",
+        "namespace": "transform.get_transform_stats"
+      },
+      "properties": [
+        {
+          "name": "changes_last_detected_at",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "changes_last_detected_at_date_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "last",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CheckpointStats",
+              "namespace": "transform.get_transform_stats"
+            }
+          }
+        },
+        {
+          "name": "next",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CheckpointStats",
+              "namespace": "transform.get_transform_stats"
+            }
+          }
+        },
+        {
+          "name": "operations_behind",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -132065,145 +132349,6 @@
         "name": "Response",
         "namespace": "transform.get_transform_stats"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformCheckpointStats",
-        "namespace": "transform.get_transform_stats"
-      },
-      "properties": [
-        {
-          "name": "checkpoint",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "checkpoint_progress",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformProgress",
-              "namespace": "transform.get_transform_stats"
-            }
-          }
-        },
-        {
-          "name": "timestamp",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timestamp_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_upper_bound",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_upper_bound_millis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformCheckpointingInfo",
-        "namespace": "transform.get_transform_stats"
-      },
-      "properties": [
-        {
-          "name": "changes_last_detected_at",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "changes_last_detected_at_date_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "last",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformCheckpointStats",
-              "namespace": "transform.get_transform_stats"
-            }
-          }
-        },
-        {
-          "name": "next",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformCheckpointStats",
-              "namespace": "transform.get_transform_stats"
-            }
-          }
-        },
-        {
-          "name": "operations_behind",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -132456,7 +132601,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TransformCheckpointingInfo",
+              "name": "Checkpointing",
               "namespace": "transform.get_transform_stats"
             }
           }
@@ -132532,7 +132677,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformDestination",
+                "name": "Destination",
                 "namespace": "transform._types"
               }
             }
@@ -132569,7 +132714,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformPivot",
+                "name": "Pivot",
                 "namespace": "transform._types"
               }
             }
@@ -132581,7 +132726,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSource",
+                "name": "Source",
                 "namespace": "transform._types"
               }
             }
@@ -132593,7 +132738,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSettings",
+                "name": "Settings",
                 "namespace": "transform._types"
               }
             }
@@ -132605,7 +132750,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSyncContainer",
+                "name": "SyncContainer",
                 "namespace": "transform._types"
               }
             }
@@ -132617,7 +132762,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformRetentionPolicyContainer",
+                "name": "RetentionPolicyContainer",
                 "namespace": "transform._types"
               }
             }
@@ -132629,7 +132774,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformLatest",
+                "name": "Latest",
                 "namespace": "transform._types"
               }
             }
@@ -132954,7 +133099,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformDestination",
+                "name": "Destination",
                 "namespace": "transform._types"
               }
             }
@@ -132987,7 +133132,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformPivot",
+                "name": "Pivot",
                 "namespace": "transform._types"
               }
             }
@@ -132998,7 +133143,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSettings",
+                "name": "Settings",
                 "namespace": "transform._types"
               }
             }
@@ -133009,7 +133154,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSource",
+                "name": "Source",
                 "namespace": "transform._types"
               }
             }
@@ -133020,7 +133165,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TransformSyncContainer",
+                "name": "SyncContainer",
                 "namespace": "transform._types"
               }
             }
@@ -133135,7 +133280,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransformContainer",
-              "namespace": "watcher._types"
+              "namespace": "_types"
             }
           }
         },
@@ -133329,29 +133474,6 @@
               "kind": "instance_of",
               "type": {
                 "name": "InputContainer",
-                "namespace": "watcher._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ChainTransform",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "transforms",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TransformContainer",
                 "namespace": "watcher._types"
               }
             }
@@ -135118,44 +135240,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ScriptTransform",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "lang",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "params",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "SearchInput",
         "namespace": "watcher._types"
       },
@@ -135291,37 +135375,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchTransform",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "request",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SearchInputRequestDefinition",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "timeout",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
             }
           }
         }
@@ -135920,59 +135973,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "Transform",
-        "namespace": "watcher._types"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransformContainer",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "chain",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ChainTransform",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptTransform",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "search",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SearchTransform",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "TriggerContainer",
         "namespace": "watcher._types"
       },
@@ -136107,7 +136107,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TransformContainer",
-              "namespace": "watcher._types"
+              "namespace": "_types"
             }
           }
         },
@@ -137594,7 +137594,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TransformContainer",
-                "namespace": "watcher._types"
+                "namespace": "_types"
               }
             }
           },

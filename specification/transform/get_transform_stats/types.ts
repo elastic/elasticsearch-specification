@@ -17,7 +17,27 @@
  * under the License.
  */
 
+import { NodeAttributes } from '@nodes/_types/NodeAttributes'
+import { Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
+import { DateString, EpochMillis } from '@_types/Time'
+
+export class TransformStats {
+  checkpointing: Checkpointing
+  id: Id
+  node?: NodeAttributes
+  reason?: string
+  state: string
+  stats: TransformIndexerStats
+}
+
+export class TransformProgress {
+  docs_indexed: long
+  docs_processed: long
+  docs_remaining: long
+  percent_complete: double
+  total_docs: long
+}
 
 export class TransformIndexerStats {
   documents_indexed: long
@@ -35,4 +55,21 @@ export class TransformIndexerStats {
   search_time_in_ms: long
   search_total: long
   trigger_count: long
+}
+
+export class CheckpointStats {
+  checkpoint: long
+  checkpoint_progress?: TransformProgress
+  timestamp?: DateString
+  timestamp_millis: EpochMillis
+  time_upper_bound?: DateString
+  time_upper_bound_millis?: EpochMillis
+}
+
+export class Checkpointing {
+  changes_last_detected_at: long
+  changes_last_detected_at_date_time?: DateString
+  last: CheckpointStats
+  next?: CheckpointStats
+  operations_behind?: long
 }

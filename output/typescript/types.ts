@@ -1777,6 +1777,10 @@ export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p
 
 export type CategoryId = string
 
+export interface ChainTransform {
+  transforms: TransformContainer[]
+}
+
 export interface ClusterStatistics {
   skipped: integer
   successful: integer
@@ -2121,6 +2125,11 @@ export interface ScriptField {
 
 export type ScriptLanguage = 'painless' | 'expression' | 'mustache' | 'java'
 
+export interface ScriptTransform {
+  lang: string
+  params: Record<string, any>
+}
+
 export type ScrollId = string
 
 export interface SearchStats {
@@ -2138,6 +2147,11 @@ export interface SearchStats {
   suggest_time_in_millis: long
   suggest_total: long
   groups?: Record<string, SearchStats>
+}
+
+export interface SearchTransform {
+  request: WatcherSearchInputRequestDefinition
+  timeout: Time
 }
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
@@ -2230,6 +2244,15 @@ export type Time = string | integer
 export type TimeSpan = string
 
 export type Timestamp = string
+
+export interface Transform {
+}
+
+export interface TransformContainer {
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
+}
 
 export interface TranslogStats {
   earliest_last_modified_age: long
@@ -13815,56 +13838,56 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
-export interface TransformTransformDestination {
+export interface TransformDestination {
   index?: IndexName
   pipeline?: string
 }
 
-export interface TransformTransformLatest {
+export interface TransformLatest {
   sort: Field
   unique_key: Field[]
 }
 
-export interface TransformTransformPivot {
+export interface TransformPivot {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  group_by: Record<string, TransformTransformPivotGroupByContainer>
+  group_by: Record<string, TransformPivotGroupByContainer>
   max_page_search_size?: integer
 }
 
-export interface TransformTransformPivotGroupByContainer {
+export interface TransformPivotGroupByContainer {
   date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
   geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
   histogram?: AggregationsBucketHistogramHistogramAggregation
   terms?: AggregationsBucketTermsTermsAggregation
 }
 
-export interface TransformTransformRetentionPolicy {
+export interface TransformRetentionPolicy {
   field: Field
   max_age: Time
 }
 
-export interface TransformTransformRetentionPolicyContainer {
-  time: TransformTransformRetentionPolicy
+export interface TransformRetentionPolicyContainer {
+  time: TransformRetentionPolicy
 }
 
-export interface TransformTransformSettings {
+export interface TransformSettings {
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
 }
 
-export interface TransformTransformSource {
+export interface TransformSource {
   index: Indices
   query?: QueryDslAbstractionsContainerQueryContainer
   runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
-export interface TransformTransformSyncContainer {
-  time: TransformTransformTimeSync
+export interface TransformSyncContainer {
+  time: TransformTimeSync
 }
 
-export interface TransformTransformTimeSync {
+export interface TransformTimeSync {
   delay?: Time
   field: Field
 }
@@ -13886,7 +13909,24 @@ export interface TransformGetTransformRequest extends RequestBase {
 
 export interface TransformGetTransformResponse {
   count: long
-  transforms: WatcherTransform[]
+  transforms: Transform[]
+}
+
+export interface TransformGetTransformStatsCheckpointStats {
+  checkpoint: long
+  checkpoint_progress?: TransformGetTransformStatsTransformProgress
+  timestamp?: DateString
+  timestamp_millis: EpochMillis
+  time_upper_bound?: DateString
+  time_upper_bound_millis?: EpochMillis
+}
+
+export interface TransformGetTransformStatsCheckpointing {
+  changes_last_detected_at: long
+  changes_last_detected_at_date_time?: DateString
+  last: TransformGetTransformStatsCheckpointStats
+  next?: TransformGetTransformStatsCheckpointStats
+  operations_behind?: long
 }
 
 export interface TransformGetTransformStatsRequest extends RequestBase {
@@ -13899,23 +13939,6 @@ export interface TransformGetTransformStatsRequest extends RequestBase {
 export interface TransformGetTransformStatsResponse {
   count: long
   transforms: TransformGetTransformStatsTransformStats[]
-}
-
-export interface TransformGetTransformStatsTransformCheckpointStats {
-  checkpoint: long
-  checkpoint_progress?: TransformGetTransformStatsTransformProgress
-  timestamp?: DateString
-  timestamp_millis: EpochMillis
-  time_upper_bound?: DateString
-  time_upper_bound_millis?: EpochMillis
-}
-
-export interface TransformGetTransformStatsTransformCheckpointingInfo {
-  changes_last_detected_at: long
-  changes_last_detected_at_date_time?: DateString
-  last: TransformGetTransformStatsTransformCheckpointStats
-  next?: TransformGetTransformStatsTransformCheckpointStats
-  operations_behind?: long
 }
 
 export interface TransformGetTransformStatsTransformIndexerStats {
@@ -13945,7 +13968,7 @@ export interface TransformGetTransformStatsTransformProgress {
 }
 
 export interface TransformGetTransformStatsTransformStats {
-  checkpointing: TransformGetTransformStatsTransformCheckpointingInfo
+  checkpointing: TransformGetTransformStatsCheckpointing
   id: Id
   node?: NodesNodeAttributes
   reason?: string
@@ -13955,15 +13978,15 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformPreviewTransformRequest extends RequestBase {
   body?: {
-    dest?: TransformTransformDestination
+    dest?: TransformDestination
     description?: string
     frequency?: Time
-    pivot?: TransformTransformPivot
-    source?: TransformTransformSource
-    settings?: TransformTransformSettings
-    sync?: TransformTransformSyncContainer
-    retention_policy?: TransformTransformRetentionPolicyContainer
-    latest?: TransformTransformLatest
+    pivot?: TransformPivot
+    source?: TransformSource
+    settings?: TransformSettings
+    sync?: TransformSyncContainer
+    retention_policy?: TransformRetentionPolicyContainer
+    latest?: TransformLatest
   }
 }
 
@@ -14003,13 +14026,13 @@ export interface TransformUpdateTransformRequest extends TransformPutTransformRe
 export interface TransformUpdateTransformResponse {
   create_time: long
   description: string
-  dest: TransformTransformDestination
+  dest: TransformDestination
   frequency: Time
   id: Id
-  pivot: TransformTransformPivot
-  settings: TransformTransformSettings
-  source: TransformTransformSource
-  sync?: TransformTransformSyncContainer
+  pivot: TransformPivot
+  settings: TransformSettings
+  source: TransformSource
+  sync?: TransformSyncContainer
   version: VersionString
 }
 
@@ -14021,7 +14044,7 @@ export interface WatcherAction {
   name?: string
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
-  transform?: WatcherTransformContainer
+  transform?: TransformContainer
   index?: WatcherActionIndex
   logging?: WatcherLoggingAction
 }
@@ -14048,10 +14071,6 @@ export interface WatcherArrayCompareCondition {
 
 export interface WatcherChainInput {
   inputs: WatcherInputContainer[]
-}
-
-export interface WatcherChainTransform {
-  transforms: WatcherTransformContainer[]
 }
 
 export interface WatcherCompareCondition {
@@ -14272,11 +14291,6 @@ export interface WatcherScriptCondition {
   source: string
 }
 
-export interface WatcherScriptTransform {
-  lang: string
-  params: Record<string, any>
-}
-
 export interface WatcherSearchInput {
   extract?: string[]
   request: WatcherSearchInputRequestDefinition
@@ -14294,11 +14308,6 @@ export interface WatcherSearchInputRequestDefinition {
   search_type?: SearchType
   template?: SearchTemplateRequest
   rest_total_hits_as_int?: boolean
-}
-
-export interface WatcherSearchTransform {
-  request: WatcherSearchInputRequestDefinition
-  timeout: Time
 }
 
 export interface WatcherSimulatedActions {
@@ -14373,15 +14382,6 @@ export interface WatcherTimeOfYear {
   on: integer[]
 }
 
-export interface WatcherTransform {
-}
-
-export interface WatcherTransformContainer {
-  chain?: WatcherChainTransform
-  script?: WatcherScriptTransform
-  search?: WatcherSearchTransform
-}
-
 export interface WatcherTriggerContainer {
   schedule: WatcherScheduleContainer
 }
@@ -14397,7 +14397,7 @@ export interface WatcherWatch {
   metadata?: Metadata
   status?: WatcherAckWatchWatchStatus
   throttle_period?: string
-  transform?: WatcherTransformContainer
+  transform?: TransformContainer
   trigger: WatcherTriggerContainer
   throttle_period_in_millis?: long
 }
@@ -14585,7 +14585,7 @@ export interface WatcherPutWatchRequest extends RequestBase {
     input?: WatcherInputContainer
     metadata?: Metadata
     throttle_period?: string
-    transform?: WatcherTransformContainer
+    transform?: TransformContainer
     trigger?: WatcherTriggerContainer
   }
 }

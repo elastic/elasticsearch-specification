@@ -33,5 +33,4 @@ export interface Request extends RequestBase {
   query_parameters?: {
     timeout?: Time
   }
-  body?: {}
 }

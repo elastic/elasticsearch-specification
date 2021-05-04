@@ -17,15 +17,17 @@
  * under the License.
  */
 
-import { TransformDestination } from '@transform/_types/TransformDestination'
-import { TransformLatest } from '@transform/_types/TransformLatest'
-import { TransformPivot } from '@transform/_types/TransformPivot'
-import { TransformRetentionPolicyContainer } from '@transform/_types/TransformRetentionPolicy'
-import { TransformSettings } from '@transform/_types/TransformSettings'
-import { TransformSource } from '@transform/_types/TransformSource'
-import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
 import { RequestBase } from '@_types/Base'
 import { Time } from '@_types/Time'
+import {
+  Destination,
+  Latest,
+  Pivot,
+  RetentionPolicyContainer,
+  Settings,
+  Source,
+  SyncContainer
+} from '@transform/_types/Transform'
 
 /**
  * @rest_spec_name transform.preview_transform
@@ -35,7 +37,7 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   body?: {
     /** The destination for the transform. */
-    dest?: TransformDestination
+    dest?: Destination
     /** Free text description of the transform. */
     description?: string
     /**
@@ -44,16 +46,16 @@ export interface Request extends RequestBase {
      */
     frequency?: Time
     /** The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data. */
-    pivot?: TransformPivot
+    pivot?: Pivot
     /** The source of the data for the transform. */
-    source?: TransformSource
+    source?: Source
     /** Defines optional transform settings. */
-    settings?: TransformSettings
+    settings?: Settings
     /**  Defines the properties transforms require to run continuously. */
-    sync?: TransformSyncContainer
+    sync?: SyncContainer
     /** Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index. */
-    retention_policy?: TransformRetentionPolicyContainer
+    retention_policy?: RetentionPolicyContainer
     /**  The latest method transforms the data by finding the latest document for each unique key. */
-    latest?: TransformLatest
+    latest?: Latest
   }
 }
