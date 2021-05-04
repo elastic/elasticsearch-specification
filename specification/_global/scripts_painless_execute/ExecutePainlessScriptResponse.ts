@@ -17,19 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
-
 export class Response<TResult> {
   body: {
     result: TResult
   }
-}
-
-/**
- * If a painless script fails to execute this is returned on the serialized exception
- */
-export class PainlessExecutionPosition {
-  offset: integer
-  start: integer
-  end: integer
 }
