@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SnapshotLifecycleStats } from '@xpack/usage/SnapshotLifecycleStats'
 import { Id, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Statistics } from '@_types/slm/Statistics'
 import { DateString, EpochMillis } from '@_types/Time'
 import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
 import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
@@ -35,7 +35,7 @@ export class SnapshotLifecyclePolicyMetadata {
   next_execution_millis: EpochMillis
   policy: SnapshotLifecyclePolicy
   version: VersionNumber
-  stats: SnapshotLifecycleStats
+  stats: Statistics
 }
 
 export class SnapshotLifecyclePolicyMetadataStats {

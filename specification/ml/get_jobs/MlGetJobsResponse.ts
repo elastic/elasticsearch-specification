@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Job } from '@xpack/usage/Job'
+import { Job } from '@_types/ml/Job'
 import { long } from '@_types/Numeric'
 
 export class Response {

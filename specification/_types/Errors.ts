@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PainlessExecutionPosition } from '@global/scripts_painless_execute/ExecutePainlessScriptResponse'
+import { PainlessExecutionPosition } from '@global/scripts_painless_execute/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, Id, Ids, IndexName, Uuid } from './common'
 import { integer, long } from './Numeric'

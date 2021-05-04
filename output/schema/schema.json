@@ -16763,7 +16763,7 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "MultiGetHit",
+        "name": "Hit",
         "namespace": "_global.mget"
       },
       "properties": [
@@ -16926,7 +16926,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MultiGetOperation",
+        "name": "Operation",
         "namespace": "_global.mget"
       },
       "properties": [
@@ -17054,7 +17054,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiGetOperation",
+                  "name": "Operation",
                   "namespace": "_global.mget"
                 }
               }
@@ -17235,7 +17235,7 @@
                 ],
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiGetHit",
+                  "name": "Hit",
                   "namespace": "_global.mget"
                 }
               }
@@ -50260,6 +50260,368 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "Job",
+        "namespace": "_types.ml"
+      },
+      "properties": [
+        {
+          "name": "allow_lazy_open",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "analysis_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis_limits",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisLimits",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "background_persist_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "detectors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "data_description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataDescription",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "finished_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "forecasts",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlJobForecasts",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "job_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_plot",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "renormalization_window_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_index_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "model_plot_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "custom_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomSettings",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "job_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "deleting",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "JobStatistics",
+        "namespace": "_types.ml"
+      },
+      "properties": [
+        {
+          "name": "avg",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -57463,6 +57825,137 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Statistics",
+        "namespace": "_types.slm"
+      },
+      "properties": [
+        {
+          "name": "retention_deletion_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_deletion_time_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_runs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retention_timed_out",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "policy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_deleted"
+          ],
+          "name": "total_snapshots_deleted",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshot_deletion_failures"
+          ],
+          "name": "total_snapshot_deletion_failures",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_failed"
+          ],
+          "name": "total_snapshots_failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "snapshots_taken"
+          ],
+          "name": "total_snapshots_taken",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -102054,7 +102547,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -102065,7 +102558,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -102076,7 +102569,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobStatistics",
-              "namespace": "xpack.usage"
+              "namespace": "_types.ml"
             }
           }
         },
@@ -108586,7 +109079,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Job",
-                  "namespace": "xpack.usage"
+                  "namespace": "_types.ml"
                 }
               }
             }
@@ -126399,8 +126892,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleStats",
-              "namespace": "xpack.usage"
+              "name": "Statistics",
+              "namespace": "_types.slm"
             }
           }
         }
@@ -138210,6 +138703,396 @@
     {
       "kind": "interface",
       "name": {
+        "name": "BuildInformation",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "date",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "hash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Feature",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "native_code_info",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NativeCodeInformation",
+              "namespace": "xpack.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Features",
+        "namespace": "xpack.info"
+      },
+      "properties": [
+        {
+          "name": "aggregate_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "analytics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ccr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_frame",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_science",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_streams",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "data_tiers",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "enrich",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "eql",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "flattened",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "frozen_indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "graph",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ilm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "logstash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "ml",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "monitoring",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "rollup",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "runtime_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "searchable_snapshots",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "security",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "slm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "spatial",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "sql",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "transform",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "voting_only",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "name": "watcher",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "MinimalLicenseInformation",
         "namespace": "xpack.info"
       },
@@ -138345,7 +139228,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackBuildInformation",
+                "name": "BuildInformation",
                 "namespace": "xpack.info"
               }
             }
@@ -138356,7 +139239,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackFeatures",
+                "name": "Features",
                 "namespace": "xpack.info"
               }
             }
@@ -138392,31 +139275,26 @@
       }
     },
     {
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "XPackBuildInformation",
-        "namespace": "xpack.info"
+        "name": "Analytics",
+        "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "date",
+          "name": "stats",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "hash",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "AnalyticsStatistics",
+              "namespace": "xpack.usage"
             }
           }
         }
@@ -138425,366 +139303,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "XPackFeature",
-        "namespace": "xpack.info"
-      },
-      "properties": [
-        {
-          "name": "available",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "native_code_info",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NativeCodeInformation",
-              "namespace": "xpack.info"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackFeatures",
-        "namespace": "xpack.info"
-      },
-      "properties": [
-        {
-          "name": "aggregate_metric",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "analytics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ccr",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_frame",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_science",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_streams",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "data_tiers",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "enrich",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "eql",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "flattened",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "frozen_indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "graph",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ilm",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "logstash",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "ml",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "monitoring",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "rollup",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "runtime_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "searchable_snapshots",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "security",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "slm",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "spatial",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "sql",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "transform",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "vectors",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "voting_only",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        },
-        {
-          "name": "watcher",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackFeature",
-              "namespace": "xpack.info"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "AnalyticsStatsUsage",
+        "name": "AnalyticsStatistics",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -138892,39 +139411,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "FeatureToggle",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "AnalyticsUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "stats",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AnalyticsStatsUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "SecurityFeatureToggle",
-          "namespace": "xpack.usage"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "AuditUsage",
+        "name": "Audit",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -138939,6 +139432,37 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Base",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "available",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -138978,13 +139502,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "CcrUsage",
+        "name": "Ccr",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139006,6 +139530,37 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Counter",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "active",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "_types"
             }
           }
@@ -139071,13 +139626,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "DataStreamsUsage",
+        "name": "DataStreams",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139108,7 +139663,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DataTierPhaseCountUsage",
+        "name": "DataTierPhaseStatistics",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139227,13 +139782,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "DataTiersUsage",
+        "name": "DataTiers",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139243,7 +139798,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataTierPhaseCountUsage",
+              "name": "DataTierPhaseStatistics",
               "namespace": "xpack.usage"
             }
           }
@@ -139251,10 +139806,11 @@
         {
           "name": "data_frozen",
           "required": false,
+          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataTierPhaseCountUsage",
+              "name": "DataTierPhaseStatistics",
               "namespace": "xpack.usage"
             }
           }
@@ -139265,7 +139821,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataTierPhaseCountUsage",
+              "name": "DataTierPhaseStatistics",
               "namespace": "xpack.usage"
             }
           }
@@ -139276,7 +139832,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataTierPhaseCountUsage",
+              "name": "DataTierPhaseStatistics",
               "namespace": "xpack.usage"
             }
           }
@@ -139287,7 +139843,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataTierPhaseCountUsage",
+              "name": "DataTierPhaseStatistics",
               "namespace": "xpack.usage"
             }
           }
@@ -139297,7 +139853,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DatafeedCount",
+        "name": "Datafeed",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139315,9 +139871,143 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "EqlFeaturesJoinUsage",
+        "name": "Eql",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "features",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeatures",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "queries",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Query",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EqlFeatures",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "join",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "joins",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeaturesJoin",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "keys",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeaturesKeys",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "event",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pipes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeaturesPipes",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "sequence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sequences",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EqlFeaturesSequences",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EqlFeaturesJoin",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139381,7 +140071,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EqlFeaturesKeysUsage",
+        "name": "EqlFeaturesKeys",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139445,7 +140135,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EqlFeaturesPipesUsage",
+        "name": "EqlFeaturesPipes",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139476,7 +140166,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EqlFeaturesSequencesUsage",
+        "name": "EqlFeaturesSequences",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139551,84 +140241,18 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EqlFeaturesUsage",
+        "name": "FeatureToggle",
         "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "join",
+          "name": "enabled",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "uint",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "joins",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesJoinUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "keys",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesKeysUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "event",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "uint",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "pipes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesPipesUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "sequence",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "uint",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sequences",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesSequencesUsage",
-              "namespace": "xpack.usage"
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -139637,61 +140261,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "EqlUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "features",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EqlFeaturesUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "queries",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "QueryUsage",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "XPackUsage",
-          "namespace": "xpack.usage"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "FlattenedUsage",
+        "name": "Flattened",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139711,13 +140287,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "FrozenIndicesUsage",
+        "name": "FrozenIndices",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139729,6 +140305,40 @@
             "type": {
               "name": "long",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Ilm",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "policy_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "policy_stats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IlmPolicyStatistics",
+                "namespace": "xpack.usage"
+              }
             }
           }
         }
@@ -139768,41 +140378,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IlmUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "policy_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "policy_stats",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IlmPolicyStatistics",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IpFilterUsage",
+        "name": "IpFilter",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -139825,368 +140401,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Job",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "allow_lazy_open",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "analysis_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AnalysisConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "analysis_limits",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AnalysisLimits",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "background_persist_interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmptyObject",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "detectors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "data_description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataDescription",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "finished_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "forecasts",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlJobForecasts",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "job_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model_plot",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "model_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "model_snapshot_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "model_snapshot_retention_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "renormalization_window_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "results_index_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "results_retention_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "groups",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "model_plot_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "custom_settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CustomSettings",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "job_version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "deleting",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "daily_model_snapshot_retention_after_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "JobStatistics",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "avg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
             }
           }
         }
@@ -140221,13 +140435,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "MachineLearningUsage",
+        "name": "MachineLearning",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140247,7 +140461,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "DatafeedCount",
+                "name": "Datafeed",
                 "namespace": "xpack.usage"
               }
             }
@@ -140270,7 +140484,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Job",
-                "namespace": "xpack.usage"
+                "namespace": "_types.ml"
               }
             }
           }
@@ -140292,7 +140506,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlDataFrameAnalyticsJobsUsage",
+              "name": "MlDataFrameAnalyticsJobs",
               "namespace": "xpack.usage"
             }
           }
@@ -140303,7 +140517,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlInferenceUsage",
+              "name": "MlInference",
               "namespace": "xpack.usage"
             }
           }
@@ -140313,7 +140527,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlDataFrameAnalyticsJobsCountUsage",
+        "name": "MlCounter",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140333,27 +140547,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlDataFrameAnalyticsJobsMemoryUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "peak_usage_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MlDataFrameAnalyticsJobsUsage",
+        "name": "MlDataFrameAnalyticsJobs",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140363,7 +140557,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlDataFrameAnalyticsJobsMemoryUsage",
+              "name": "MlDataFrameAnalyticsJobsMemory",
               "namespace": "xpack.usage"
             }
           }
@@ -140374,7 +140568,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlDataFrameAnalyticsJobsCountUsage",
+              "name": "MlDataFrameAnalyticsJobsCount",
               "namespace": "xpack.usage"
             }
           }
@@ -140395,7 +140589,142 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlInferenceIngestProcessorCountUsage",
+        "name": "MlDataFrameAnalyticsJobsCount",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MlDataFrameAnalyticsJobsMemory",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "peak_usage_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MlInference",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "ingest_processors",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MlInferenceIngestProcessor",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        },
+        {
+          "name": "trained_models",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlInferenceTrainedModels",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MlInferenceIngestProcessor",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "num_docs_processed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlInferenceIngestProcessorCount",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "pipelines",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlCounter",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "num_failures",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlInferenceIngestProcessorCount",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "time_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlInferenceIngestProcessorCount",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MlInferenceIngestProcessorCount",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140437,50 +140766,50 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlInferenceIngestProcessorUsage",
+        "name": "MlInferenceTrainedModels",
         "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "num_docs_processed",
-          "required": true,
+          "name": "estimated_operations",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlInferenceIngestProcessorCountUsage",
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "estimated_heap_memory_usage_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "_types.ml"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MlInferenceTrainedModelsCount",
               "namespace": "xpack.usage"
             }
           }
         },
         {
-          "name": "pipelines",
+          "name": "_all",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MlUsageCounter",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "num_failures",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlInferenceIngestProcessorCountUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "time_ms",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlInferenceIngestProcessorCountUsage",
+              "name": "MlCounter",
               "namespace": "xpack.usage"
             }
           }
@@ -140490,7 +140819,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlInferenceTrainedModelsCountUsage",
+        "name": "MlInferenceTrainedModelsCount",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140554,101 +140883,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MlInferenceTrainedModelsUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "estimated_operations",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "estimated_heap_memory_usage_bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlInferenceTrainedModelsCountUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "_all",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlUsageCounter",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MlInferenceUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "ingest_processors",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "MlInferenceIngestProcessorUsage",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "name": "trained_models",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlInferenceTrainedModelsUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "MlJobForecasts",
         "namespace": "xpack.usage"
       },
@@ -140678,35 +140912,15 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "MlUsageCounter",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "MonitoringUsage",
+        "name": "Monitoring",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140748,7 +140962,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "QueryUsage",
+        "name": "Query",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140799,35 +141013,15 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "RealmCacheUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "RealmUsage",
+        "name": "Realm",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -140881,7 +141075,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "RealmCacheUsage",
+                "name": "RealmCache",
                 "namespace": "xpack.usage"
               }
             }
@@ -140946,6 +141140,26 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "RealmCache",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -140985,7 +141199,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -140996,7 +141210,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "AnalyticsUsage",
+                "name": "Analytics",
                 "namespace": "xpack.usage"
               }
             }
@@ -141007,7 +141221,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "WatcherUsage",
+                "name": "Watcher",
                 "namespace": "xpack.usage"
               }
             }
@@ -141018,7 +141232,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "CcrUsage",
+                "name": "Ccr",
                 "namespace": "xpack.usage"
               }
             }
@@ -141029,7 +141243,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141040,7 +141254,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141051,7 +141265,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "DataStreamsUsage",
+                "name": "DataStreams",
                 "namespace": "xpack.usage"
               }
             }
@@ -141062,7 +141276,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "DataTiersUsage",
+                "name": "DataTiers",
                 "namespace": "xpack.usage"
               }
             }
@@ -141073,7 +141287,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141084,7 +141298,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "EqlUsage",
+                "name": "Eql",
                 "namespace": "xpack.usage"
               }
             }
@@ -141095,7 +141309,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "FlattenedUsage",
+                "name": "Flattened",
                 "namespace": "xpack.usage"
               }
             }
@@ -141106,7 +141320,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "FrozenIndicesUsage",
+                "name": "FrozenIndices",
                 "namespace": "xpack.usage"
               }
             }
@@ -141117,7 +141331,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141128,7 +141342,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "IlmUsage",
+                "name": "Ilm",
                 "namespace": "xpack.usage"
               }
             }
@@ -141139,7 +141353,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141150,7 +141364,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "MachineLearningUsage",
+                "name": "MachineLearning",
                 "namespace": "xpack.usage"
               }
             }
@@ -141161,7 +141375,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "MonitoringUsage",
+                "name": "Monitoring",
                 "namespace": "xpack.usage"
               }
             }
@@ -141172,7 +141386,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141183,7 +141397,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RuntimeFieldsUsage",
+                "name": "RuntimeFieldTypes",
                 "namespace": "xpack.usage"
               }
             }
@@ -141194,7 +141408,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141205,7 +141419,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SearchableSnapshotsUsage",
+                "name": "SearchableSnapshots",
                 "namespace": "xpack.usage"
               }
             }
@@ -141216,7 +141430,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SecurityUsage",
+                "name": "Security",
                 "namespace": "xpack.usage"
               }
             }
@@ -141227,7 +141441,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SlmUsage",
+                "name": "Slm",
                 "namespace": "xpack.usage"
               }
             }
@@ -141238,7 +141452,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SqlUsage",
+                "name": "Sql",
                 "namespace": "xpack.usage"
               }
             }
@@ -141249,7 +141463,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141260,7 +141474,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "VectorUsage",
+                "name": "Vector",
                 "namespace": "xpack.usage"
               }
             }
@@ -141271,7 +141485,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "XPackUsage",
+                "name": "Base",
                 "namespace": "xpack.usage"
               }
             }
@@ -141287,7 +141501,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RoleMappingUsage",
+        "name": "RoleMapping",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141316,9 +141530,38 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "RuntimeFieldsTypeUsage",
+        "name": "RuntimeFieldTypes",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "field_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFieldsType",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RuntimeFieldsType",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141484,42 +141727,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "RuntimeFieldsUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "field_types",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RuntimeFieldsTypeUsage",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "XPackUsage",
-          "namespace": "xpack.usage"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SearchableSnapshotsUsage",
+        "name": "SearchableSnapshots",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141559,20 +141773,169 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "SecurityFeatureToggle",
+        "name": "Security",
         "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "enabled",
+          "name": "api_key_service",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "FeatureToggle",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "anonymous",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureToggle",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "audit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Audit",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "fips_140",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureToggle",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "ipfilter",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpFilter",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "realms",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Realm",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        },
+        {
+          "name": "role_mapping",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleMapping",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityRoles",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "ssl",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ssl",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "system_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureToggle",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "token_service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FeatureToggle",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "operator_privileges",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Base",
+              "namespace": "xpack.usage"
             }
           }
         }
@@ -141581,7 +141944,69 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SecurityRolesDlsBitSetCacheUsage",
+        "name": "SecurityRoles",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "native",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityRolesNative",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "dls",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityRolesDls",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "file",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityRolesFile",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SecurityRolesDls",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "bit_set_cache",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SecurityRolesDlsBitSetCache",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SecurityRolesDlsBitSetCache",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141598,7 +142023,7 @@
         },
         {
           "name": "memory",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -141623,27 +142048,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SecurityRolesDlsUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "bit_set_cache",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityRolesDlsBitSetCacheUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SecurityRolesFileUsage",
+        "name": "SecurityRolesFile",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141685,7 +142090,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SecurityRolesNativeUsage",
+        "name": "SecurityRolesNative",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141725,226 +142130,15 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "SecurityRolesUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "native",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityRolesNativeUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "dls",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityRolesDlsUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "file",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityRolesFileUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "SecurityUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "api_key_service",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityFeatureToggle",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "anonymous",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityFeatureToggle",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "audit",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "AuditUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "fips_140",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityFeatureToggle",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "ipfilter",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IpFilterUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "realms",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RealmUsage",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "name": "role_mapping",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RoleMappingUsage",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityRolesUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "ssl",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SslUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "system_key",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityFeatureToggle",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "token_service",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SecurityFeatureToggle",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "operator_privileges",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "XPackUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "XPackUsage",
-          "namespace": "xpack.usage"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SlmUsage",
+        "name": "Slm",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -141965,139 +142159,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleStats",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotLifecycleStats",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "retention_deletion_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_deletion_time_millis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_runs",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retention_timed_out",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "policy",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_deleted"
-          ],
-          "name": "total_snapshots_deleted",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshot_deletion_failures"
-          ],
-          "name": "total_snapshot_deletion_failures",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_failed"
-          ],
-          "name": "total_snapshots_failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "snapshots_taken"
-          ],
-          "name": "total_snapshots_taken",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
+              "name": "Statistics",
+              "namespace": "_types.slm"
             }
           }
         }
@@ -142106,13 +142169,13 @@
     {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "SqlUsage",
+        "name": "Sql",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142154,7 +142217,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "QueryUsage",
+                "name": "Query",
                 "namespace": "xpack.usage"
               }
             }
@@ -142165,7 +142228,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SslUsage",
+        "name": "Ssl",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142175,7 +142238,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SecurityFeatureToggle",
+              "name": "FeatureToggle",
               "namespace": "xpack.usage"
             }
           }
@@ -142186,7 +142249,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SecurityFeatureToggle",
+              "name": "FeatureToggle",
               "namespace": "xpack.usage"
             }
           }
@@ -142220,46 +142283,15 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "UsageCount",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "active",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
-          "name": "XPackUsage",
+          "name": "Base",
           "namespace": "xpack.usage"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "VectorUsage",
+        "name": "Vector",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142299,9 +142331,57 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "WatcherActionTotalsUsage",
+        "name": "Watcher",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "execution",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WatcherActions",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "watch",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WatcherWatch",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Counter",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WatcherActionTotals",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142332,7 +142412,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "WatcherActionsUsage",
+        "name": "WatcherActions",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142352,7 +142432,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "WatcherActionTotalsUsage",
+                "name": "WatcherActionTotals",
                 "namespace": "xpack.usage"
               }
             }
@@ -142361,125 +142441,9 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "XPackUsage",
-          "namespace": "xpack.usage"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "WatcherUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "execution",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "WatcherActionsUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "watch",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "WatcherWatchUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UsageCount",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "UsageCount",
-          "namespace": "xpack.usage"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "WatcherWatchTriggerScheduleUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "cron",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UsageCount",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "_all",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UsageCount",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "WatcherWatchTriggerUsage",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "schedule",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "WatcherWatchTriggerScheduleUsage",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
-          "name": "_all",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UsageCount",
-              "namespace": "xpack.usage"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "WatcherWatchUsage",
+        "name": "WatcherWatch",
         "namespace": "xpack.usage"
       },
       "properties": [
@@ -142499,7 +142463,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "UsageCount",
+                "name": "Counter",
                 "namespace": "xpack.usage"
               }
             }
@@ -142521,7 +142485,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "UsageCount",
+                "name": "Counter",
                 "namespace": "xpack.usage"
               }
             }
@@ -142543,7 +142507,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "UsageCount",
+                "name": "Counter",
                 "namespace": "xpack.usage"
               }
             }
@@ -142555,7 +142519,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "WatcherWatchTriggerUsage",
+              "name": "WatcherWatchTrigger",
               "namespace": "xpack.usage"
             }
           }
@@ -142565,29 +142529,66 @@
     {
       "kind": "interface",
       "name": {
-        "name": "XPackUsage",
+        "name": "WatcherWatchTrigger",
         "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "available",
-          "required": true,
+          "name": "schedule",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "WatcherWatchTriggerSchedule",
+              "namespace": "xpack.usage"
             }
           }
         },
         {
-          "name": "enabled",
+          "name": "_all",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "Counter",
+              "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "Counter",
+          "namespace": "xpack.usage"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "WatcherWatchTriggerSchedule",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "cron",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Counter",
+              "namespace": "xpack.usage"
+            }
+          }
+        },
+        {
+          "name": "_all",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Counter",
+              "namespace": "xpack.usage"
             }
           }
         }

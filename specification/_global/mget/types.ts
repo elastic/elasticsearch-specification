@@ -17,15 +17,45 @@
  * under the License.
  */
 
+import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { JobStatistics } from '@_types/ml/Job'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
+import { MainError } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 
-export class JobForecastStatistics {
-  memory_bytes?: JobStatistics
-  processing_time_ms?: JobStatistics
-  records?: JobStatistics
-  status?: Dictionary<string, long>
-  total: long
-  forecasted_jobs: integer
+export class Operation {
+  _id: MultiGetId
+  _index?: IndexName
+  routing?: Routing
+  _source?: boolean | Fields | SourceFilter
+  stored_fields?: Fields
+  _type?: Type
+  version?: VersionNumber
+  version_type?: VersionType
+}
+
+export type MultiGetId = string | integer
+
+export class Hit<TDocument> {
+  error?: MainError
+  fields?: Dictionary<string, UserDefinedValue>
+  found?: boolean
+  _id: Id
+  _index: IndexName
+  _primary_term?: long
+  _routing?: Routing
+  _seq_no?: SequenceNumber
+  _source?: TDocument
+  _type?: Type
+  _version?: VersionNumber
 }

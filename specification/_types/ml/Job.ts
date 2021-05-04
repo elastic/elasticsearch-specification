@@ -21,11 +21,17 @@ import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
 import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
 import { DataDescription } from '@ml/_types/DataDescription'
 import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { CustomSettings, MlJobForecasts } from '@xpack/usage/types'
 import { EmptyObject, Id, IndexName, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { JobStatistics } from './JobStatistics'
+
+export class JobStatistics {
+  avg: double
+  max: double
+  min: double
+  total: double
+}
 
 export class Job {
   allow_lazy_open?: boolean
@@ -55,26 +61,4 @@ export class Job {
   job_version?: VersionString
   deleting?: boolean
   daily_model_snapshot_retention_after_days?: long
-}
-
-export class CustomSettings {
-  custom_urls?: UrlConfig[]
-  created_by?: string
-  job_tags?: Dictionary<string, string>
-}
-
-export class BaseUrlConfig {
-  url_name: string
-  url_value: string
-}
-
-export class KibanaUrlConfig extends BaseUrlConfig {
-  time_range?: string
-}
-
-export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
-
-export class MlJobForecasts {
-  total: long
-  forecasted_jobs: long
 }
