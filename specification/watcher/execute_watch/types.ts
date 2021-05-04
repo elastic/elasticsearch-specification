@@ -17,13 +17,21 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Status } from '@watcher/_types/Action'
-import { InputType } from '@watcher/_types/Input'
+import { ExecutionStatus, ExecutionResult } from '@watcher/_types/Execution'
+import { ConditionContainer } from '@watcher/_types/Conditions'
+import { InputContainer } from '@watcher/_types/Input'
+import { TriggerEventResult } from '@watcher/_types/Trigger'
+import { Id, Metadata, Username } from '@_types/common'
 
-export class ExecutionResultInput {
-  payload: Dictionary<string, UserDefinedValue>
-  status: Status
-  type: InputType
+export class WatchRecord {
+  condition: ConditionContainer
+  input: InputContainer
+  messages: string[]
+  metadata: Metadata
+  node: string
+  result: ExecutionResult
+  state: ExecutionStatus
+  trigger_event: TriggerEventResult
+  user: Username
+  watch_id: Id
 }

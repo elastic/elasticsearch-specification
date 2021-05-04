@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ActivationStatus } from './ActivationStatus'
+import { ActivationStatus } from '../_types/Activation'
 
 export class Response {
   body: { status: ActivationStatus }

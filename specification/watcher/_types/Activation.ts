@@ -17,6 +17,17 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { Actions } from '@watcher/_types/Action'
+import { VersionNumber } from '@_types/common'
+import { Timestamp } from '@_types/Time'
 
-export class Response extends AcknowledgedResponseBase {}
+export class ActivationState {
+  active: boolean
+  timestamp: Timestamp
+}
+
+export class ActivationStatus {
+  actions: Actions
+  state: ActivationState
+  version: VersionNumber
+}

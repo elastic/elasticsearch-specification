@@ -17,31 +17,28 @@
  * under the License.
  */
 
-import { HttpHeaders } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
+import { DateString, EpochMillis, Time } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
+import { Index, Logging } from './Actions'
 import { ConditionContainer } from './Conditions'
-import { ActionIndex } from './IndexAction'
-import { HttpInputRequestDefinition } from './Input'
 
 export class Action {
   action_type?: ActionType
   condition?: ConditionContainer
   foreach?: string
   max_iterations?: integer
-  name?: string
+  name?: Name
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: TransformContainer
-  index?: ActionIndex
-  logging?: LoggingAction
+  index?: Index
+  logging?: Logging
 }
 
-export class LoggingAction {
-  level: string
-  text: string
-}
+export type Actions = Dictionary<IndexName, ActionStatus>
 
 export enum ActionType {
   email = 0,
@@ -52,15 +49,6 @@ export enum ActionType {
   pagerduty = 5
 }
 
-export class LoggingActionResult {
-  logged_text: string
-}
-
-export class WebhookActionResult {
-  request: HttpInputRequestResult
-  response?: HttpInputResponseResult
-}
-
 export enum ActionExecutionMode {
   simulate = 0,
   force_simulate = 1,
@@ -69,23 +57,43 @@ export enum ActionExecutionMode {
   skip = 4
 }
 
-export class HttpInputRequestResult extends HttpInputRequestDefinition {}
-
-export class HttpInputResponseResult {
-  body: string
-  headers: HttpHeaders
-  status: integer
-}
-
 export class SimulatedActions {
   actions: string[]
   all: SimulatedActions
   use_all: boolean
 }
 
-export enum Status {
+export enum ActionStatusOptions {
   success = 0,
   failure = 1,
   simulated = 2,
   throttled = 3
+}
+
+export enum AcknowledgementOptions {
+  awaits_successful_execution = 0,
+  ackable = 1,
+  acked = 2
+}
+
+export class AcknowledgeState {
+  state: AcknowledgementOptions
+  timestamp: DateString
+}
+
+export class ExecutionState {
+  successful: boolean
+  timestamp: DateString
+}
+
+export class ThrottleState {
+  reason: string
+  timestamp: DateString
+}
+
+export class ActionStatus {
+  ack: AcknowledgeState
+  last_execution?: ExecutionState
+  last_successful_execution?: ExecutionState
+  last_throttle?: ThrottleState
 }

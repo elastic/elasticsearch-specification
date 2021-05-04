@@ -27,7 +27,5 @@ import { integer } from '@_types/Numeric'
  */
 export interface Request extends RequestBase {
   query_parameters?: {}
-  body?: {
-    stub: integer
-  }
+  body?: {}
 }

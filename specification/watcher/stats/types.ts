@@ -17,9 +17,42 @@
  * under the License.
  */
 
+import { ExecutionPhase, ExecutionThreadPool } from '@watcher/_types/Execution'
+import { Id } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
+
+export enum WatcherState {
+  stopped = 0,
+  starting = 1,
+  started = 2,
+  stopping = 3
+}
+
+export class WatcherNodeStats {
+  current_watches?: WatchRecordStats[]
+  execution_thread_pool: ExecutionThreadPool
+  queued_watches?: WatchRecordQueuedStats[]
+  watch_count: long
+  watcher_state: WatcherState
+  node_id: Id
+}
+
 export enum WatcherMetric {
   '_all' = 0,
   'queued_watches' = 1,
   'current_watches' = 2,
   'pending_watches' = 3
+}
+
+export class WatchRecordQueuedStats {
+  execution_time: DateString
+}
+
+export class WatchRecordStats extends WatchRecordQueuedStats {
+  execution_phase: ExecutionPhase
+  triggered_time: DateString
+  executed_actions?: Array<string>
+  watch_id: Id
+  watch_record_id: Id
 }

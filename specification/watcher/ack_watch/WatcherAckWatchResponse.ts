@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { WatchStatus } from './WatchStatus'
+import { WatchStatus } from '@watcher/_types/Watch'
 
 export class Response {
   body: { status: WatchStatus }

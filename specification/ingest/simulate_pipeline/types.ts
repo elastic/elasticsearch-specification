@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Status } from '@watcher/_types/Action'
+import { ActionStatusOptions } from '@watcher/_types/Action'
 import { Id, IndexName, Name, Type } from '@_types/common'
 import { DateString } from '@_types/Time'
 
@@ -33,7 +33,7 @@ export class PipelineSimulation {
   processor_results?: PipelineSimulation[]
   tag?: string
   processor_type?: string
-  status?: Status
+  status?: ActionStatusOptions
 }
 
 export class SimulatePipelineDocument {

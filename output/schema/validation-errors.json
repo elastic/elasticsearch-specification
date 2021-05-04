@@ -892,19 +892,7 @@
       ],
       "response": []
     },
-    "watcher.start": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "watcher.stats": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "watcher.stop": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
