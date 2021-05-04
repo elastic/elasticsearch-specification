@@ -13710,7 +13710,7 @@ export interface SqlTranslateSqlResponse {
   sort: SearchTypesSort
 }
 
-export interface SslGetCertificatesClusterCertificateInformation {
+export interface SslGetCertificatesCertificateInformation {
   alias?: string
   expiry: DateString
   format: string
@@ -13723,7 +13723,7 @@ export interface SslGetCertificatesClusterCertificateInformation {
 export interface SslGetCertificatesRequest extends RequestBase {
 }
 
-export type SslGetCertificatesResponse = SslGetCertificatesClusterCertificateInformation[]
+export type SslGetCertificatesResponse = SslGetCertificatesCertificateInformation[]
 
 export interface TaskCancelTasksRequest extends RequestBase {
   task_id?: TaskId
