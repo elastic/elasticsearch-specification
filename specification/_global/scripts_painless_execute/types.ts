@@ -28,12 +28,6 @@ export class PainlessContextSetup {
   query: QueryContainer
 }
 
-export class Response<TResult> {
-  body: {
-    result: TResult
-  }
-}
-
 /**
  * If a painless script fails to execute this is returned on the serialized exception
  */
