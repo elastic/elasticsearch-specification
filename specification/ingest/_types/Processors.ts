@@ -23,48 +23,49 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
 
 /**
  * @variants container
  */
 export class ProcessorContainer {
-  attachment?: Attachment
-  append?: Append
-  csv?: Csv
-  convert?: Convert
-  date?: Date
-  date_index_name?: DateIndexName
-  dot_expander?: DotExpander
-  enrich?: Enrich
-  fail?: Fail
-  foreach?: Foreach
-  json?: Json
-  user_agent?: UserAgent
-  kv?: KeyValue
-  geoip?: GeoIp
-  grok?: Grok
-  gsub?: Gsub
-  join?: Join
-  lowercase?: Lowercase
-  remove?: Remove
-  rename?: Rename
+  attachment?: AttachmentProcessor
+  append?: AppendProcessor
+  csv?: CsvProcessor
+  convert?: ConvertProcessor
+  date?: DateProcessor
+  date_index_name?: DateIndexNameProcessor
+  dot_expander?: DotExpanderProcessor
+  enrich?: EnrichProcessor
+  fail?: FailProcessor
+  foreach?: ForeachProcessor
+  json?: JsonProcessor
+  user_agent?: UserAgentProcessor
+  kv?: KeyValueProcessor
+  geoip?: GeoIpProcessor
+  grok?: GrokProcessor
+  gsub?: GsubProcessor
+  join?: JoinProcessor
+  lowercase?: LowercaseProcessor
+  remove?: RemoveProcessor
+  rename?: RenameProcessor
   script?: Script
-  set?: Set
-  sort?: Sort
-  split?: Split
-  trim?: Trim
-  uppercase?: Uppercase
-  urldecode?: UrlDecode
-  bytes?: Bytes
-  dissect?: Dissect
-  set_security_user?: SetSecurityUser
-  pipeline?: Pipeline
-  drop?: Drop
-  circle?: Circle
-  inference?: Inference
+  set?: SetProcessor
+  sort?: SortProcessor
+  split?: SplitProcessor
+  trim?: TrimProcessor
+  uppercase?: UppercaseProcessor
+  urldecode?: UrlDecodeProcessor
+  bytes?: BytesProcessor
+  dissect?: DissectProcessor
+  set_security_user?: SetSecurityUserProcessor
+  pipeline?: PipelineProcessor
+  drop?: DropProcessor
+  circle?: CircleProcessor
+  inference?: InferenceProcessor
 }
 
-export class Base {
+export class ProcessorBase {
   if?: string
   ignore_failure?: boolean
   on_failure?: ProcessorContainer[]
@@ -84,13 +85,13 @@ export enum UserAgentProperty {
   BUILD = 9
 }
 
-export class Append extends Base {
+export class AppendProcessor extends ProcessorBase {
   field: Field
   value: UserDefinedValue[]
   allow_duplicates?: boolean
 }
 
-export class Attachment extends Base {
+export class AttachmentProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   indexed_chars?: long
@@ -100,7 +101,7 @@ export class Attachment extends Base {
   resource_name?: string
 }
 
-export class GeoIp extends Base {
+export class GeoIpProcessor extends ProcessorBase {
   database_file: string
   field: Field
   first_only: boolean
@@ -109,7 +110,7 @@ export class GeoIp extends Base {
   target_field: Field
 }
 
-export class UserAgent extends Base {
+export class UserAgentProcessor extends ProcessorBase {
   field: Field
   ignore_missing: boolean
   options: UserAgentProperty[]
@@ -117,13 +118,13 @@ export class UserAgent extends Base {
   target_field: Field
 }
 
-export class Bytes extends Base {
+export class BytesProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
 }
 
-export class Circle extends Base {
+export class CircleProcessor extends ProcessorBase {
   error_distance: double
   field: Field
   ignore_missing: boolean
@@ -141,14 +142,14 @@ export enum ConvertType {
   auto = 6
 }
 
-export class Convert extends Base {
+export class ConvertProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field: Field
   type: ConvertType
 }
 
-export class Csv extends Base {
+export class CsvProcessor extends ProcessorBase {
   empty_value: UserDefinedValue
   description?: string
   field: Field
@@ -176,7 +177,7 @@ export enum DateRounding {
   y = 6
 }
 
-export class DateIndexName extends Base {
+export class DateIndexNameProcessor extends ProcessorBase {
   date_formats: string[]
   date_rounding: string | DateRounding
   field: Field
@@ -186,7 +187,7 @@ export class DateIndexName extends Base {
   timezone: string
 }
 
-export class Date extends Base {
+export class DateProcessor extends ProcessorBase {
   field: Field
   formats: string[]
   locale?: string
@@ -194,21 +195,21 @@ export class Date extends Base {
   timezone?: string
 }
 
-export class Dissect extends Base {
+export class DissectProcessor extends ProcessorBase {
   append_separator: string
   field: Field
   ignore_missing: boolean
   pattern: string
 }
 
-export class DotExpander extends Base {
+export class DotExpanderProcessor extends ProcessorBase {
   field: Field
   path?: string
 }
 
-export class Drop extends Base {}
+export class DropProcessor extends ProcessorBase {}
 
-export class Enrich extends Base {
+export class EnrichProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   max_matches?: integer
@@ -218,17 +219,17 @@ export class Enrich extends Base {
   target_field: Field
 }
 
-export class Fail extends Base {
+export class FailProcessor extends ProcessorBase {
   message: string
 }
 
-export class Foreach extends Base {
+export class ForeachProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   processor: ProcessorContainer
 }
 
-export class Grok extends Base {
+export class GrokProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   pattern_definitions: Dictionary<string, string>
@@ -236,7 +237,7 @@ export class Grok extends Base {
   trace_match?: boolean
 }
 
-export class Gsub extends Base {
+export class GsubProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   pattern: string
@@ -244,7 +245,7 @@ export class Gsub extends Base {
   target_field?: Field
 }
 
-export class Inference extends Base {
+export class InferenceProcessor extends ProcessorBase {
   model_id: Id
   target_field: Field
   field_map?: Dictionary<Field, UserDefinedValue>
@@ -259,19 +260,19 @@ export class InferenceConfigRegression {
   results_field: string
 }
 
-export class Join extends Base {
+export class JoinProcessor extends ProcessorBase {
   field: Field
   separator: string
   target_field?: Field
 }
 
-export class Json extends Base {
+export class JsonProcessor extends ProcessorBase {
   add_to_root: boolean
   field: Field
   target_field: Field
 }
 
-export class KeyValue extends Base {
+export class KeyValueProcessor extends ProcessorBase {
   exclude_keys?: string[]
   field: Field
   field_split: string
@@ -285,41 +286,41 @@ export class KeyValue extends Base {
   value_split: string
 }
 
-export class Lowercase extends Base {
+export class LowercaseProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
 }
 
-export class Pipeline extends Base {
+export class PipelineProcessor extends ProcessorBase {
   name: Name
 }
 
-export class Remove extends Base {
+export class RemoveProcessor extends ProcessorBase {
   field: Fields
   ignore_missing?: boolean
 }
 
-export class Rename extends Base {
+export class RenameProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field: Field
 }
 
-export class Script extends Base {
+export class ScriptProcessor extends ProcessorBase {
   id?: Id
   lang?: string
   params?: Dictionary<string, UserDefinedValue>
   source: string
 }
 
-export class Set extends Base {
+export class SetProcessor extends ProcessorBase {
   field: Field
   override?: boolean
   value: UserDefinedValue
 }
 
-export class SetSecurityUser extends Base {
+export class SetSecurityUserProcessor extends ProcessorBase {
   field: Field
   properties?: string[]
 }
@@ -329,13 +330,13 @@ export enum ShapeType {
   shape = 1
 }
 
-export class Sort extends Base {
+export class SortProcessor extends ProcessorBase {
   field: Field
   order: SortOrder
   target_field: Field
 }
 
-export class Split extends Base {
+export class SplitProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   preserve_trailing?: boolean
@@ -343,19 +344,19 @@ export class Split extends Base {
   target_field?: Field
 }
 
-export class Trim extends Base {
+export class TrimProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
 }
 
-export class Uppercase extends Base {
+export class UppercaseProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field
 }
 
-export class UrlDecode extends Base {
+export class UrlDecodeProcessor extends ProcessorBase {
   field: Field
   ignore_missing?: boolean
   target_field?: Field

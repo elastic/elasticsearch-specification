@@ -27,6 +27,7 @@ export class Pipeline {
   version?: VersionNumber
 }
 
+// Unused .. but let's keep it for now
 export enum PipelineFailure {
   BadAuthentication = 0,
   BadResponse = 1,
@@ -39,3 +40,11 @@ export enum PipelineFailure {
   BadRequest = 8,
   NoNodesAttempted = 9
 }
+
+export class PipelineConfig {
+  description?: string
+  version?: VersionNumber
+  processors: ProcessorContainer[]
+}
+
+

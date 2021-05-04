@@ -9364,6 +9364,183 @@ export interface IndicesValidateQueryResponse {
   error?: string
 }
 
+export interface IngestAppendProcessor extends IngestProcessorBase {
+  field: Field
+  value: any[]
+  allow_duplicates?: boolean
+}
+
+export interface IngestAttachmentProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  indexed_chars?: long
+  indexed_chars_field?: Field
+  properties?: string[]
+  target_field?: Field
+  resource_name?: string
+}
+
+export interface IngestBytesProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
+export interface IngestCircleProcessor extends IngestProcessorBase {
+  error_distance: double
+  field: Field
+  ignore_missing: boolean
+  shape_type: IngestShapeType
+  target_field: Field
+}
+
+export interface IngestConvertProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field: Field
+  type: IngestConvertType
+}
+
+export type IngestConvertType = 'integer' | 'long' | 'float' | 'double' | 'string' | 'boolean' | 'auto'
+
+export interface IngestCsvProcessor extends IngestProcessorBase {
+  empty_value: any
+  description?: string
+  field: Field
+  ignore_missing?: boolean
+  quote?: string
+  separator?: string
+  target_fields: Fields
+  trim: boolean
+}
+
+export interface IngestDateIndexNameProcessor extends IngestProcessorBase {
+  date_formats: string[]
+  date_rounding: string | IngestDateRounding
+  field: Field
+  index_name_format: string
+  index_name_prefix: string
+  locale: string
+  timezone: string
+}
+
+export interface IngestDateProcessor extends IngestProcessorBase {
+  field: Field
+  formats: string[]
+  locale?: string
+  target_field?: Field
+  timezone?: string
+}
+
+export type IngestDateRounding = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y'
+
+export interface IngestDissectProcessor extends IngestProcessorBase {
+  append_separator: string
+  field: Field
+  ignore_missing: boolean
+  pattern: string
+}
+
+export interface IngestDotExpanderProcessor extends IngestProcessorBase {
+  field: Field
+  path?: string
+}
+
+export interface IngestDropProcessor extends IngestProcessorBase {
+}
+
+export interface IngestEnrichProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  max_matches?: integer
+  override?: boolean
+  policy_name: string
+  shape_relation?: GeoShapeRelation
+  target_field: Field
+}
+
+export interface IngestFailProcessor extends IngestProcessorBase {
+  message: string
+}
+
+export interface IngestForeachProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  processor: IngestProcessorContainer
+}
+
+export interface IngestGeoIpProcessor extends IngestProcessorBase {
+  database_file: string
+  field: Field
+  first_only: boolean
+  ignore_missing: boolean
+  properties: string[]
+  target_field: Field
+}
+
+export interface IngestGrokProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  pattern_definitions: Record<string, string>
+  patterns: string[]
+  trace_match?: boolean
+}
+
+export interface IngestGsubProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  pattern: string
+  replacement: string
+  target_field?: Field
+}
+
+export interface IngestInferenceConfig {
+  regression?: IngestInferenceConfigRegression
+}
+
+export interface IngestInferenceConfigRegression {
+  results_field: string
+}
+
+export interface IngestInferenceProcessor extends IngestProcessorBase {
+  model_id: Id
+  target_field: Field
+  field_map?: Record<Field, any>
+  inference_config?: IngestInferenceConfig
+}
+
+export interface IngestJoinProcessor extends IngestProcessorBase {
+  field: Field
+  separator: string
+  target_field?: Field
+}
+
+export interface IngestJsonProcessor extends IngestProcessorBase {
+  add_to_root: boolean
+  field: Field
+  target_field: Field
+}
+
+export interface IngestKeyValueProcessor extends IngestProcessorBase {
+  exclude_keys?: string[]
+  field: Field
+  field_split: string
+  ignore_missing?: boolean
+  include_keys?: string[]
+  prefix?: string
+  strip_brackets?: boolean
+  target_field?: Field
+  trim_key?: string
+  trim_value?: string
+  value_split: string
+}
+
+export interface IngestLowercaseProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
 export interface IngestPipeline {
   description?: string
   on_failure?: IngestProcessorContainer[]
@@ -9377,6 +9554,10 @@ export interface IngestPipelineConfig {
   processors: IngestProcessorContainer[]
 }
 
+export interface IngestPipelineProcessor extends IngestProcessorBase {
+  name: Name
+}
+
 export interface IngestProcessorBase {
   if?: string
   ignore_failure?: boolean
@@ -9385,41 +9566,107 @@ export interface IngestProcessorBase {
 }
 
 export interface IngestProcessorContainer {
-  attachment?: IngestProcessorsPluginsAttachmentProcessor
-  append?: IngestProcessorsAppendProcessor
-  csv?: IngestProcessorsCsvProcessor
-  convert?: IngestProcessorsConvertProcessor
-  date?: IngestProcessorsDateProcessor
-  date_index_name?: IngestProcessorsDateIndexNameProcessor
-  dot_expander?: IngestProcessorsDotExpanderProcessor
-  enrich?: IngestProcessorsEnrichProcessor
-  fail?: IngestProcessorsFailProcessor
-  foreach?: IngestProcessorsForeachProcessor
-  json?: IngestProcessorsJsonProcessor
-  user_agent?: IngestProcessorsPluginsUserAgentProcessor
-  kv?: IngestProcessorsKeyValueProcessor
-  geoip?: IngestProcessorsPluginsGeoIpProcessor
-  grok?: IngestProcessorsGrokProcessor
-  gsub?: IngestProcessorsGsubProcessor
-  join?: IngestProcessorsJoinProcessor
-  lowercase?: IngestProcessorsLowercaseProcessor
-  remove?: IngestProcessorsRemoveProcessor
-  rename?: IngestProcessorsRenameProcessor
-  script?: IngestProcessorsScriptProcessor
-  set?: IngestProcessorsSetProcessor
-  sort?: IngestProcessorsSortProcessor
-  split?: IngestProcessorsSplitProcessor
-  trim?: IngestProcessorsTrimProcessor
-  uppercase?: IngestProcessorsUppercaseProcessor
-  urldecode?: IngestProcessorsUrlDecodeProcessor
-  bytes?: IngestProcessorsBytesProcessor
-  dissect?: IngestProcessorsDissectProcessor
-  set_security_user?: IngestProcessorsSetSecurityUserProcessor
-  pipeline?: IngestProcessorsPipelineProcessor
-  drop?: IngestProcessorsDropProcessor
-  circle?: IngestProcessorsCircleProcessor
-  inference?: IngestProcessorsInferenceProcessor
+  attachment?: IngestAttachmentProcessor
+  append?: IngestAppendProcessor
+  csv?: IngestCsvProcessor
+  convert?: IngestConvertProcessor
+  date?: IngestDateProcessor
+  date_index_name?: IngestDateIndexNameProcessor
+  dot_expander?: IngestDotExpanderProcessor
+  enrich?: IngestEnrichProcessor
+  fail?: IngestFailProcessor
+  foreach?: IngestForeachProcessor
+  json?: IngestJsonProcessor
+  user_agent?: IngestUserAgentProcessor
+  kv?: IngestKeyValueProcessor
+  geoip?: IngestGeoIpProcessor
+  grok?: IngestGrokProcessor
+  gsub?: IngestGsubProcessor
+  join?: IngestJoinProcessor
+  lowercase?: IngestLowercaseProcessor
+  remove?: IngestRemoveProcessor
+  rename?: IngestRenameProcessor
+  script?: Script
+  set?: IngestSetProcessor
+  sort?: IngestSortProcessor
+  split?: IngestSplitProcessor
+  trim?: IngestTrimProcessor
+  uppercase?: IngestUppercaseProcessor
+  urldecode?: IngestUrlDecodeProcessor
+  bytes?: IngestBytesProcessor
+  dissect?: IngestDissectProcessor
+  set_security_user?: IngestSetSecurityUserProcessor
+  pipeline?: IngestPipelineProcessor
+  drop?: IngestDropProcessor
+  circle?: IngestCircleProcessor
+  inference?: IngestInferenceProcessor
 }
+
+export interface IngestRemoveProcessor extends IngestProcessorBase {
+  field: Fields
+  ignore_missing?: boolean
+}
+
+export interface IngestRenameProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field: Field
+}
+
+export interface IngestSetProcessor extends IngestProcessorBase {
+  field: Field
+  override?: boolean
+  value: any
+}
+
+export interface IngestSetSecurityUserProcessor extends IngestProcessorBase {
+  field: Field
+  properties?: string[]
+}
+
+export type IngestShapeType = 'geo_shape' | 'shape'
+
+export interface IngestSortProcessor extends IngestProcessorBase {
+  field: Field
+  order: SearchSortSortOrder
+  target_field: Field
+}
+
+export interface IngestSplitProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  preserve_trailing?: boolean
+  separator: string
+  target_field?: Field
+}
+
+export interface IngestTrimProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
+export interface IngestUppercaseProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
+export interface IngestUrlDecodeProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing?: boolean
+  target_field?: Field
+}
+
+export interface IngestUserAgentProcessor extends IngestProcessorBase {
+  field: Field
+  ignore_missing: boolean
+  options: IngestUserAgentProperty[]
+  regex_file: string
+  target_field: Field
+}
+
+export type IngestUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export interface IngestDeletePipelineRequest extends RequestBase {
   id: Id
@@ -9462,266 +9709,12 @@ export interface IngestGetPipelineRequest extends RequestBase {
 
 export interface IngestGetPipelineResponse extends DictionaryResponseBase<string, IngestPipeline> {}
 
-export interface IngestProcessorRequest extends RequestBase {
+export interface IngestProcessorGrokRequest extends RequestBase {
 }
 
-export interface IngestProcessorResponse {
+export interface IngestProcessorGrokResponse {
   patterns: Record<string, string>
 }
-
-export interface IngestProcessorsAppendProcessor extends IngestProcessorBase {
-  field: Field
-  value: any[]
-  allow_duplicates?: boolean
-}
-
-export interface IngestProcessorsBytesProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field?: Field
-}
-
-export interface IngestProcessorsCircleProcessor extends IngestProcessorBase {
-  error_distance: double
-  field: Field
-  ignore_missing: boolean
-  shape_type: IngestProcessorsShapeType
-  target_field: Field
-}
-
-export interface IngestProcessorsConvertProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field: Field
-  type: IngestProcessorsConvertProcessorType
-}
-
-export type IngestProcessorsConvertProcessorType = 'integer' | 'long' | 'float' | 'double' | 'string' | 'boolean' | 'auto'
-
-export interface IngestProcessorsCsvProcessor extends IngestProcessorBase {
-  empty_value: any
-  description?: string
-  field: Field
-  ignore_missing?: boolean
-  quote?: string
-  separator?: string
-  target_fields: Fields
-  trim: boolean
-}
-
-export interface IngestProcessorsDateIndexNameProcessor extends IngestProcessorBase {
-  date_formats: string[]
-  date_rounding: string | IngestProcessorsDateRounding
-  field: Field
-  index_name_format: string
-  index_name_prefix: string
-  locale: string
-  timezone: string
-}
-
-export interface IngestProcessorsDateProcessor extends IngestProcessorBase {
-  field: Field
-  formats: string[]
-  locale?: string
-  target_field?: Field
-  timezone?: string
-}
-
-export type IngestProcessorsDateRounding = 's' | 'm' | 'h' | 'd' | 'w' | 'M' | 'y'
-
-export interface IngestProcessorsDissectProcessor extends IngestProcessorBase {
-  append_separator: string
-  field: Field
-  ignore_missing: boolean
-  pattern: string
-}
-
-export interface IngestProcessorsDotExpanderProcessor extends IngestProcessorBase {
-  field: Field
-  path?: string
-}
-
-export interface IngestProcessorsDropProcessor extends IngestProcessorBase {
-}
-
-export interface IngestProcessorsEnrichProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  max_matches?: integer
-  override?: boolean
-  policy_name: string
-  shape_relation?: GeoShapeRelation
-  target_field: Field
-}
-
-export interface IngestProcessorsFailProcessor extends IngestProcessorBase {
-  message: string
-}
-
-export interface IngestProcessorsForeachProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  processor: IngestProcessorContainer
-}
-
-export interface IngestProcessorsGrokProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  pattern_definitions: Record<string, string>
-  patterns: string[]
-  trace_match?: boolean
-}
-
-export interface IngestProcessorsGsubProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  pattern: string
-  replacement: string
-  target_field?: Field
-}
-
-export interface IngestProcessorsInferenceProcessor extends IngestProcessorBase {
-  model_id: Id
-  target_field: Field
-  field_map?: Record<Field, any>
-  inference_config?: IngestProcessorsInferenceProcessorConfig
-}
-
-export interface IngestProcessorsInferenceProcessorConfig {
-  regression?: IngestProcessorsInferenceProcessorConfigRegression
-}
-
-export interface IngestProcessorsInferenceProcessorConfigRegression {
-  results_field: string
-}
-
-export interface IngestProcessorsJoinProcessor extends IngestProcessorBase {
-  field: Field
-  separator: string
-  target_field?: Field
-}
-
-export interface IngestProcessorsJsonProcessor extends IngestProcessorBase {
-  add_to_root: boolean
-  field: Field
-  target_field: Field
-}
-
-export interface IngestProcessorsKeyValueProcessor extends IngestProcessorBase {
-  exclude_keys?: string[]
-  field: Field
-  field_split: string
-  ignore_missing?: boolean
-  include_keys?: string[]
-  prefix?: string
-  strip_brackets?: boolean
-  target_field?: Field
-  trim_key?: string
-  trim_value?: string
-  value_split: string
-}
-
-export interface IngestProcessorsLowercaseProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field?: Field
-}
-
-export interface IngestProcessorsPipelineProcessor extends IngestProcessorBase {
-  name: string
-}
-
-export interface IngestProcessorsRemoveProcessor extends IngestProcessorBase {
-  field: Fields
-  ignore_missing?: boolean
-}
-
-export interface IngestProcessorsRenameProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field: Field
-}
-
-export interface IngestProcessorsScriptProcessor extends IngestProcessorBase {
-  id?: Id
-  lang?: string
-  params?: Record<string, any>
-  source: string
-}
-
-export interface IngestProcessorsSetProcessor extends IngestProcessorBase {
-  field: Field
-  override?: boolean
-  value: any
-}
-
-export interface IngestProcessorsSetSecurityUserProcessor extends IngestProcessorBase {
-  field: Field
-  properties?: string[]
-}
-
-export type IngestProcessorsShapeType = 'geo_shape' | 'shape'
-
-export interface IngestProcessorsSortProcessor extends IngestProcessorBase {
-  field: Field
-  order: SearchSortSortOrder
-  target_field: Field
-}
-
-export interface IngestProcessorsSplitProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  preserve_trailing?: boolean
-  separator: string
-  target_field?: Field
-}
-
-export interface IngestProcessorsTrimProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field?: Field
-}
-
-export interface IngestProcessorsUppercaseProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field?: Field
-}
-
-export interface IngestProcessorsUrlDecodeProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  target_field?: Field
-}
-
-export interface IngestProcessorsPluginsAttachmentProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing?: boolean
-  indexed_chars?: long
-  indexed_chars_field?: Field
-  properties?: string[]
-  target_field?: Field
-  resource_name?: string
-}
-
-export interface IngestProcessorsPluginsGeoIpProcessor extends IngestProcessorBase {
-  database_file: string
-  field: Field
-  first_only: boolean
-  ignore_missing: boolean
-  properties: string[]
-  target_field: Field
-}
-
-export interface IngestProcessorsPluginsUserAgentProcessor extends IngestProcessorBase {
-  field: Field
-  ignore_missing: boolean
-  options: IngestProcessorsPluginsUserAgentUserAgentProperty[]
-  regex_file: string
-  target_field: Field
-}
-
-export type IngestProcessorsPluginsUserAgentUserAgentProperty = 'NAME' | 'MAJOR' | 'MINOR' | 'PATCH' | 'OS' | 'OS_NAME' | 'OS_MAJOR' | 'OS_MINOR' | 'DEVICE' | 'BUILD'
 
 export interface IngestPutPipelineRequest extends RequestBase {
   id: Id
@@ -9749,7 +9742,7 @@ export interface IngestSimulatePipelineDocumentSimulation {
 
 export interface IngestSimulatePipelineIngest {
   timestamp: DateString
-  pipeline?: string
+  pipeline?: Name
 }
 
 export interface IngestSimulatePipelinePipelineSimulation {

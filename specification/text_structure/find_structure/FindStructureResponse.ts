@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PipelineConfig } from '@ingest/_types/PipelineConfig'
+import { PipelineConfig } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field } from '@_types/common'
