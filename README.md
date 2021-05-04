@@ -61,7 +61,7 @@ Usage:
   spec-compile     Compile the specification
   spec-imports-fix  Fix the TypeScript imports
   spec-dangling-types  Generate the dangling types rreport
-  contrib-install  Install dependencies for contrib target
+  setup-env        Install dependencies for contrib target
   contrib          Pre contribution target
   help             Display help
 ```

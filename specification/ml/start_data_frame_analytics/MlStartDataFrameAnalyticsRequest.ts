@@ -17,9 +17,24 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ReindexNode } from './types'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Time } from '@_types/Time'
 
-export class Response {
-  body: { nodes: Dictionary<string, ReindexNode> }
+/**
+ * @rest_spec_name ml.start_data_frame_analytics
+ * @since 5.4.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    id: Id
+  }
+  query_parameters?: {
+    /**
+     * Controls the amount of time to wait until the data frame analytics job starts.
+     * @server_default 20s
+     */
+    timeout?: Time
+  }
 }

@@ -17,9 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ReindexNode } from './types'
+import { Void } from '@spec_utils/VoidValue'
 
+/**
+ * Response codes:
+ * 200: Indicates all specified index templates exist.
+ * 404: Indicates one or more specified index templates do not exist.
+ */
 export class Response {
-  body: { nodes: Dictionary<string, ReindexNode> }
+  body: Void
 }

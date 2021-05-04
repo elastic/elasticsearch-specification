@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ReindexNode } from './types'
-
 export class Response {
-  body: { nodes: Dictionary<string, ReindexNode> }
+  body: {
+    /** The ID of the assigned node for the upgrade task if it is still running. */
+    node: string
+    /** When true, this means the task is complete. When false, it is still running. */
+    completed: boolean
+  }
 }

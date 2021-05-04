@@ -17,11 +17,16 @@
  * under the License.
  */
 
-import { BaseNode } from '@spec_utils/BaseNode'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskId } from '@_types/common'
-import { ReindexTask } from './ReindexTask'
+import { RequestBase } from '@_types/Base'
 
-export class ReindexNode extends BaseNode {
-  tasks: Dictionary<TaskId, ReindexTask>
+/**
+ * @rest_spec_name indices.get_upgrade
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    stub: string
+  }
+  query_parameters?: {}
 }

@@ -4080,10 +4080,17 @@
       "description": "Returns information about whether a particular index template exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.exists_index_template",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.exists_index_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.exists_index_template"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -4629,10 +4636,17 @@
       "description": "DEPRECATED Returns a progress status of current upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.get_upgrade",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.get_upgrade"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.get_upgrade"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -5295,10 +5309,17 @@
       "description": "Simulate resolving the given template name or body",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
       "name": "indices.simulate_template",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.simulate_template"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "indices.simulate_template"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -6624,10 +6645,17 @@
       "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
       "name": "ml.find_file_structure",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.find_file_structure"
+      },
       "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
+      "response": {
+        "name": "Response",
+        "namespace": "ml.find_file_structure"
+      },
+      "since": "5.4.0",
+      "stability": "TODO",
       "urls": [
         {
           "deprecation": {
@@ -7795,10 +7823,17 @@
       "description": "Starts a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.start_data_frame_analytics"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "ml.start_data_frame_analytics"
+      },
+      "since": "5.4.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -8061,10 +8096,17 @@
       "description": "Upgrades a given job snapshot to the current major version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
       "name": "ml.upgrade_job_snapshot",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.upgrade_job_snapshot"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
+      "response": {
+        "name": "Response",
+        "namespace": "ml.upgrade_job_snapshot"
+      },
+      "since": "5.4.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -28699,6 +28741,7 @@
       },
       "properties": [
         {
+          "description": "For a successful response, this value is always true. On failure, an exception is returned instead.",
           "name": "acknowledged",
           "required": true,
           "type": {
@@ -85181,6 +85224,64 @@
       "kind": "request",
       "name": {
         "name": "Request",
+        "namespace": "indices.exists_index_template"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "void_value"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.exists_index_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
         "namespace": "indices.exists_template"
       },
       "path": [
@@ -87255,6 +87356,75 @@
       "name": {
         "name": "Response",
         "namespace": "indices.get_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.get_upgrade"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Any templates that were superseded by the specified template.",
+            "name": "overlapping",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "OverlappingIndexTemplate",
+                  "namespace": "indices.simulate_index_template"
+                }
+              }
+            }
+          },
+          {
+            "description": "The settings, mappings, and aliases that would be applied to matching indices.",
+            "name": "template",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TemplateMapping",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.get_upgrade"
       }
     },
     {
@@ -91224,6 +91394,97 @@
       "name": {
         "name": "Response",
         "namespace": "indices.simulate_index_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "IndexTemplate",
+            "namespace": "indices.get_index_template"
+          }
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.simulate_template"
+      },
+      "path": [
+        {
+          "description": "Name of the index template to simulate. To test a template configuration before you add it to the cluster, omit this parameter and specify the template configuration in the request body.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If true, the template passed in the body is only used if no existing templates match the same index patterns. If false, the simulation uses the template with the highest priority. Note that the template is not permanently added or updated in either case; it is only used for the simulation.",
+          "name": "create",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.simulate_template"
       }
     },
     {
@@ -105328,6 +105589,59 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.find_file_structure"
+      },
+      "path": [
+        {
+          "name": "stub",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.find_file_structure"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -111385,6 +111699,80 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.start_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Controls the amount of time to wait until the data frame analytics job starts.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": " The ID of the node that the job was started on. If the job is allowed to open lazily and has not yet been assigned to a node, this value is an empty string.",
+            "name": "node",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.start_data_frame_analytics"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
       "body": {
         "kind": "properties",
         "properties": [
@@ -112846,6 +113234,112 @@
       "name": {
         "name": "Response",
         "namespace": "ml.update_model_snapshot"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.upgrade_job_snapshot"
+      },
+      "path": [
+        {
+          "description": "Identifier for the anomaly detection job.",
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A numerical character string that uniquely identifies the model snapshot.",
+          "name": "snapshot_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "When true, the API won’t respond until the upgrade is complete. Otherwise, it responds as soon as the upgrade task is assigned to a node.",
+          "name": "wait_for_completion",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Controls the time to wait for the request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The ID of the assigned node for the upgrade task if it is still running.",
+            "name": "node",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "When true, this means the task is complete. When false, it is still running.",
+            "name": "completed",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.upgrade_job_snapshot"
       }
     },
     {
@@ -122433,6 +122927,12 @@
       ]
     },
     {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "void_value"
+        }
+      },
       "kind": "response",
       "name": {
         "name": "Response",
@@ -122482,6 +122982,12 @@
       ]
     },
     {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "void_value"
+        }
+      },
       "kind": "response",
       "name": {
         "name": "Response",

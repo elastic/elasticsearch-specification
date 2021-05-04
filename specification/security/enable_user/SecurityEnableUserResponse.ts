@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { Void } from '@spec_utils/VoidValue'
 
 export class Response {
-  body: {}
+  body: Void
 }

@@ -17,9 +17,29 @@
  * under the License.
  */
 
-import { HttpHeaders, Name } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { ReindexStatus } from './ReindexStatus'
+import { BaseNode } from '@spec_utils/BaseNode'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { HttpHeaders, Name, TaskId } from '@_types/common'
+import { long, float } from '@_types/Numeric'
+import { Retries } from '@_types/Retries'
+
+export class ReindexNode extends BaseNode {
+  tasks: Dictionary<TaskId, ReindexTask>
+}
+
+export class ReindexStatus {
+  batches: long
+  created: long
+  deleted: long
+  noops: long
+  requests_per_second: float
+  retries: Retries
+  throttled_millis: long
+  throttled_until_millis: long
+  total: long
+  updated: long
+  version_conflicts: long
+}
 
 export class ReindexTask {
   action: string
