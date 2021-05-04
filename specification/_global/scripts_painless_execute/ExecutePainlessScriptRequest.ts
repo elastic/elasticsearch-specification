@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { InlineScript } from '@_types/Scripting'
-import { PainlessContextSetup } from './PainlessContextSetup'
+import { PainlessContextSetup } from './types'
 
 /**
  * @rest_spec_name scripts_painless_execute

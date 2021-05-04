@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/get_license/LicenseStatus'
-import { LicenseType } from '@license/get_license/LicenseType'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
 import { DateString, EpochMillis } from '@_types/Time'
 

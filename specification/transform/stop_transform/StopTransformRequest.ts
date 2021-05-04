@@ -37,5 +37,4 @@ export interface Request extends RequestBase {
     wait_for_checkpoint?: boolean
     wait_for_completion?: boolean
   }
-  body?: {}
 }

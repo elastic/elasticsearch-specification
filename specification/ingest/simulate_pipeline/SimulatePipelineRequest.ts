@@ -20,7 +20,8 @@
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SimulatePipelineDocument } from './SimulatePipelineDocument'
+
+import { SimulatePipelineDocument } from './types'
 
 /**
  * @rest_spec_name ingest.simulate

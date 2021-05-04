@@ -27,8 +27,7 @@ import { IndexName } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
+    /** Comma-separate list of data streams or indices to check. Wildcard (*) expressions are supported. */
     index?: IndexName
   }
-  query_parameters?: {}
-  body?: {}
 }

@@ -17,13 +17,22 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/_types/License'
-import { Acknowledgement } from './types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { integer, long } from '@_types/Numeric'
 
-export class Response {
-  body: {
-    acknowledge?: Acknowledgement
-    acknowledged: boolean
-    license_status: LicenseStatus
-  }
+export class FieldStat {
+  count: integer
+  cardinality: integer
+  top_hits: TopHit[]
+  mean_value?: integer
+  median_value?: integer
+  max_value?: integer
+  min_value?: integer
+  earliest?: string
+  latest?: string
+}
+
+export class TopHit {
+  count: long
+  value: UserDefinedValue
 }

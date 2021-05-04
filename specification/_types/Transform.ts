@@ -17,13 +17,32 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/_types/License'
-import { Acknowledgement } from './types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Time } from '@_types/Time'
+import { SearchInputRequestDefinition } from '../watcher/_types/Input'
 
-export class Response {
-  body: {
-    acknowledge?: Acknowledgement
-    acknowledged: boolean
-    license_status: LicenseStatus
-  }
+export class Transform {}
+
+/**
+ * @variants container
+ */
+export class TransformContainer {
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
+}
+
+export class ChainTransform {
+  transforms: TransformContainer[]
+}
+
+export class ScriptTransform {
+  lang: string
+  params: Dictionary<string, UserDefinedValue>
+}
+
+export class SearchTransform {
+  request: SearchInputRequestDefinition
+  timeout: Time
 }

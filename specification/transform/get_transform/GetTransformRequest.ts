@@ -36,5 +36,4 @@ export interface Request extends RequestBase {
     size?: integer
     exclude_generated?: boolean
   }
-  body?: {}
 }

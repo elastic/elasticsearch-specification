@@ -17,13 +17,22 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/_types/License'
-import { Acknowledgement } from './types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
 
-export class Response {
-  body: {
-    acknowledge?: Acknowledgement
-    acknowledged: boolean
-    license_status: LicenseStatus
-  }
+export class PainlessContextSetup {
+  document: UserDefinedValue
+  index: IndexName
+  query: QueryContainer
+}
+
+/**
+ * If a painless script fails to execute this is returned on the serialized exception
+ */
+export class PainlessExecutionPosition {
+  offset: integer
+  start: integer
+  end: integer
 }
