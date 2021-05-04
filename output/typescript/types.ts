@@ -9757,7 +9757,7 @@ export interface IngestSimulatePipelinePipelineSimulation {
   processor_results?: IngestSimulatePipelinePipelineSimulation[]
   tag?: string
   processor_type?: string
-  status?: WatcherStatus
+  status?: WatcherActionStatusOptions
 }
 
 export interface IngestSimulatePipelineRequest extends RequestBase {
@@ -14025,20 +14025,15 @@ export interface WatcherAction {
   condition?: WatcherConditionContainer
   foreach?: string
   max_iterations?: integer
-  name?: string
+  name?: Name
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
   transform?: WatcherTransformContainer
-  index?: WatcherActionIndex
-  logging?: WatcherLoggingAction
+  index?: WatcherIndex
+  logging?: WatcherLogging
 }
 
 export type WatcherActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
-
-export interface WatcherActionIndex {
-  index: IndexName
-  doc_id?: Id
-}
 
 export interface WatcherActionStatus {
   ack: WatcherAcknowledgeState
@@ -14046,6 +14041,8 @@ export interface WatcherActionStatus {
   last_successful_execution?: WatcherExecutionState
   last_throttle?: WatcherThrottleState
 }
+
+export type WatcherActionStatusOptions = 'success' | 'failure' | 'simulated' | 'throttled'
 
 export type WatcherActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
 
@@ -14118,35 +14115,57 @@ export interface WatcherDailySchedule {
 
 export type WatcherDay = 'sunday' | 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday'
 
-export interface WatcherEmailActionResult {
+export interface WatcherEmailResult {
   account?: string
   message: WatcherEmailResult
   reason?: string
 }
 
-export interface WatcherEmailBody {
-  html: string
-  text: string
+export type WatcherExecutionPhase = 'awaits_execution' | 'started' | 'input' | 'condition' | 'actions' | 'watch_transform' | 'aborted' | 'finished'
+
+export interface WatcherExecutionResult {
+  actions: WatcherExecutionResultAction[]
+  condition: WatcherExecutionResultCondition
+  execution_duration: integer
+  execution_time: DateString
+  input: WatcherExecutionResultInput
 }
 
-export type WatcherEmailPriority = 'lowest' | 'low' | 'normal' | 'high' | 'highest'
-
-export interface WatcherEmailResult {
-  bcc?: string[]
-  body?: WatcherEmailBody
-  cc?: string[]
-  from?: string
+export interface WatcherExecutionResultAction {
+  email?: WatcherEmailResult
   id: Id
-  priority?: WatcherEmailPriority
-  reply_to?: string[]
-  sent_date: DateString
-  subject: string
-  to: string[]
+  index?: WatcherIndexResult
+  logging?: WatcherLoggingResult
+  pagerduty?: WatcherPagerDutyResult
+  reason?: string
+  slack?: WatcherSlackResult
+  status: WatcherActionStatusOptions
+  type: WatcherActionType
+  webhook?: WatcherWebhookResult
+}
+
+export interface WatcherExecutionResultCondition {
+  met: boolean
+  status: WatcherActionStatusOptions
+  type: WatcherConditionType
+}
+
+export interface WatcherExecutionResultInput {
+  payload: Record<string, any>
+  status: WatcherActionStatusOptions
+  type: WatcherInputType
 }
 
 export interface WatcherExecutionState {
   successful: boolean
   timestamp: DateString
+}
+
+export type WatcherExecutionStatus = 'awaits_execution' | 'checking' | 'execution_not_needed' | 'throttled' | 'executed' | 'failed' | 'deleted_while_queued' | 'not_executed_already_queued'
+
+export interface WatcherExecutionThreadPool {
+  max_size: long
+  queue_size: long
 }
 
 export interface WatcherHourlySchedule {
@@ -14201,8 +14220,22 @@ export interface WatcherHttpInputResponseResult {
   status: integer
 }
 
-export interface WatcherIndexActionResult {
-  response: WatcherResponseIndexActionResult
+export interface WatcherIndex {
+  index: IndexName
+  doc_id?: Id
+}
+
+export interface WatcherIndexResult {
+  response: WatcherIndexResultSummary
+}
+
+export interface WatcherIndexResultSummary {
+  created: boolean
+  id: Id
+  index: IndexName
+  result: Result
+  version: VersionNumber
+  type?: Type
 }
 
 export interface WatcherIndicesOptions {
@@ -14221,12 +14254,12 @@ export interface WatcherInputContainer {
 
 export type WatcherInputType = 'http' | 'search' | 'simple'
 
-export interface WatcherLoggingAction {
+export interface WatcherLogging {
   level: string
   text: string
 }
 
-export interface WatcherLoggingActionResult {
+export interface WatcherLoggingResult {
   logged_text: string
 }
 
@@ -14240,10 +14273,6 @@ export interface WatcherPagerDutyActionEventResult {
   reason: string
   request: WatcherHttpInputRequestResult
   response: WatcherHttpInputResponseResult
-}
-
-export interface WatcherPagerDutyActionResult {
-  sent_event: WatcherPagerDutyActionEventResult
 }
 
 export interface WatcherPagerDutyContext {
@@ -14267,18 +14296,13 @@ export interface WatcherPagerDutyEvent {
 
 export type WatcherPagerDutyEventType = 'trigger' | 'resolve' | 'acknowledge'
 
+export interface WatcherPagerDutyResult {
+  sent_event: WatcherPagerDutyActionEventResult
+}
+
 export type WatcherQuantifier = 'some' | 'all'
 
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
-
-export interface WatcherResponseIndexActionResult {
-  created: boolean
-  id: Id
-  index: IndexName
-  result: Result
-  version: VersionNumber
-  type?: Type
-}
 
 export interface WatcherScheduleBase {
 }
@@ -14339,11 +14363,6 @@ export interface WatcherSimulatedActions {
   use_all: boolean
 }
 
-export interface WatcherSlackActionResult {
-  account?: string
-  message: WatcherSlackMessage
-}
-
 export interface WatcherSlackAttachment {
   author_icon?: string
   author_link?: string
@@ -14382,7 +14401,10 @@ export interface WatcherSlackMessage {
   to: string[]
 }
 
-export type WatcherStatus = 'success' | 'failure' | 'simulated' | 'throttled'
+export interface WatcherSlackResult {
+  account?: string
+  message: WatcherSlackMessage
+}
 
 export interface WatcherThrottleState {
   reason: string
@@ -14427,6 +14449,12 @@ export interface WatcherTriggerEventContainer {
   schedule: WatcherScheduleTriggerEvent
 }
 
+export interface WatcherTriggerEventResult {
+  manual: WatcherTriggerEventContainer
+  triggered_time: DateString
+  type: string
+}
+
 export interface WatcherWatch {
   actions: Record<IndexName, WatcherAction>
   condition: WatcherConditionContainer
@@ -14448,7 +14476,7 @@ export interface WatcherWatchStatus {
   execution_state?: string
 }
 
-export interface WatcherWebhookActionResult {
+export interface WatcherWebhookResult {
   request: WatcherHttpInputRequestResult
   response?: WatcherHttpInputResponseResult
 }
@@ -14488,41 +14516,6 @@ export interface WatcherDeleteWatchResponse {
   _version: VersionNumber
 }
 
-export type WatcherExecuteWatchActionExecutionState = 'awaits_execution' | 'checking' | 'execution_not_needed' | 'throttled' | 'executed' | 'failed' | 'deleted_while_queued' | 'not_executed_already_queued'
-
-export interface WatcherExecuteWatchExecutionResult {
-  actions: WatcherExecuteWatchExecutionResultAction[]
-  condition: WatcherExecuteWatchExecutionResultCondition
-  execution_duration: integer
-  execution_time: DateString
-  input: WatcherExecuteWatchExecutionResultInput
-}
-
-export interface WatcherExecuteWatchExecutionResultAction {
-  email?: WatcherEmailActionResult
-  id: Id
-  index?: WatcherIndexActionResult
-  logging?: WatcherLoggingActionResult
-  pagerduty?: WatcherPagerDutyActionResult
-  reason?: string
-  slack?: WatcherSlackActionResult
-  status: WatcherStatus
-  type: WatcherActionType
-  webhook?: WatcherWebhookActionResult
-}
-
-export interface WatcherExecuteWatchExecutionResultCondition {
-  met: boolean
-  status: WatcherStatus
-  type: WatcherConditionType
-}
-
-export interface WatcherExecuteWatchExecutionResultInput {
-  payload: Record<string, any>
-  status: WatcherStatus
-  type: WatcherInputType
-}
-
 export interface WatcherExecuteWatchRequest extends RequestBase {
   id?: Id
   debug?: boolean
@@ -14542,21 +14535,15 @@ export interface WatcherExecuteWatchResponse {
   watch_record: WatcherExecuteWatchWatchRecord
 }
 
-export interface WatcherExecuteWatchTriggerEventResult {
-  manual: WatcherTriggerEventContainer
-  triggered_time: DateString
-  type: string
-}
-
 export interface WatcherExecuteWatchWatchRecord {
   condition: WatcherConditionContainer
   input: WatcherInputContainer
   messages: string[]
   metadata: Metadata
   node: string
-  result: WatcherExecuteWatchExecutionResult
-  state: WatcherExecuteWatchActionExecutionState
-  trigger_event: WatcherExecuteWatchTriggerEventResult
+  result: WatcherExecutionResult
+  state: WatcherExecutionStatus
+  trigger_event: WatcherTriggerEventResult
   user: Username
   watch_id: Id
 }
@@ -14617,13 +14604,6 @@ export interface WatcherStartRequest extends RequestBase {
 
 export interface WatcherStartResponse extends AcknowledgedResponseBase {}
 
-export type WatcherStatsExecutionPhase = 'awaits_execution' | 'started' | 'input' | 'condition' | 'actions' | 'watch_transform' | 'aborted' | 'finished'
-
-export interface WatcherStatsExecutionThreadPool {
-  max_size: long
-  queue_size: long
-}
-
 export interface WatcherStatsRequest extends RequestBase {
   metric?: WatcherStatsWatcherMetric | WatcherStatsWatcherMetric[]
   emit_stacktraces?: boolean
@@ -14641,7 +14621,7 @@ export interface WatcherStatsWatchRecordQueuedStats {
 }
 
 export interface WatcherStatsWatchRecordStats extends WatcherStatsWatchRecordQueuedStats {
-  execution_phase: WatcherStatsExecutionPhase
+  execution_phase: WatcherExecutionPhase
   triggered_time: DateString
   executed_actions?: string[]
   watch_id: Id
@@ -14652,7 +14632,7 @@ export type WatcherStatsWatcherMetric = '_all' | 'queued_watches' | 'current_wat
 
 export interface WatcherStatsWatcherNodeStats {
   current_watches?: WatcherStatsWatchRecordStats[]
-  execution_thread_pool: WatcherStatsExecutionThreadPool
+  execution_thread_pool: WatcherExecutionThreadPool
   queued_watches?: WatcherStatsWatchRecordQueuedStats[]
   watch_count: long
   watcher_state: WatcherStatsWatcherState

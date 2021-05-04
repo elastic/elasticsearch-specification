@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Type, Status } from '@watcher/_types/Action'
 import {
   EmailResult,
   IndexResult,
@@ -33,6 +32,7 @@ import { ConditionType } from '@watcher/_types/Conditions'
 import { InputType } from '@watcher/_types/Input'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { ActionStatusOptions, ActionType } from './Action'
 
 export enum ExecutionStatus {
   awaits_execution = 0,
@@ -66,7 +66,7 @@ export class ExecutionResult {
 
 export class ExecutionResultCondition {
   met: boolean
-  status: Status
+  status: ActionStatusOptions
   type: ConditionType
 }
 
@@ -78,14 +78,14 @@ export class ExecutionResultAction {
   pagerduty?: PagerDutyResult
   reason?: string
   slack?: SlackResult
-  status: Status
-  type: Type
+  status: ActionStatusOptions
+  type: ActionType
   webhook?: WebhookResult
 }
 
 export class ExecutionResultInput {
   payload: Dictionary<string, UserDefinedValue>
-  status: Status
+  status: ActionStatusOptions
   type: InputType
 }
 

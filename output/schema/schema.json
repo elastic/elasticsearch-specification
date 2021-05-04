@@ -96905,7 +96905,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Status",
+              "name": "ActionStatusOptions",
               "namespace": "watcher._types"
             }
           }
@@ -133150,8 +133150,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -133194,7 +133194,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ActionIndex",
+              "name": "Index",
               "namespace": "watcher._types"
             }
           }
@@ -133205,7 +133205,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "LoggingAction",
+              "name": "Logging",
               "namespace": "watcher._types"
             }
           }
@@ -133235,37 +133235,6 @@
         "name": "ActionExecutionMode",
         "namespace": "watcher._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ActionIndex",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "doc_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -133319,6 +133288,27 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "success"
+        },
+        {
+          "name": "failure"
+        },
+        {
+          "name": "simulated"
+        },
+        {
+          "name": "throttled"
+        }
+      ],
+      "name": {
+        "name": "ActionStatusOptions",
+        "namespace": "watcher._types"
+      }
     },
     {
       "kind": "enum",
@@ -133851,7 +133841,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EmailActionResult",
+        "name": "EmailResult",
         "namespace": "watcher._types"
       },
       "properties": [
@@ -133891,114 +133881,120 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "EmailBody",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "html",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
-          "name": "lowest"
+          "name": "awaits_execution"
         },
         {
-          "name": "low"
+          "name": "started"
         },
         {
-          "name": "normal"
+          "name": "input"
         },
         {
-          "name": "high"
+          "name": "condition"
         },
         {
-          "name": "highest"
+          "name": "actions"
+        },
+        {
+          "name": "watch_transform"
+        },
+        {
+          "name": "aborted"
+        },
+        {
+          "name": "finished"
         }
       ],
       "name": {
-        "name": "EmailPriority",
+        "name": "ExecutionPhase",
         "namespace": "watcher._types"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "EmailResult",
+        "name": "ExecutionResult",
         "namespace": "watcher._types"
       },
       "properties": [
         {
-          "name": "bcc",
-          "required": false,
+          "name": "actions",
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "ExecutionResultAction",
+                "namespace": "watcher._types"
               }
             }
           }
         },
         {
-          "name": "body",
-          "required": false,
+          "name": "condition",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "EmailBody",
+              "name": "ExecutionResultCondition",
               "namespace": "watcher._types"
             }
           }
         },
         {
-          "name": "cc",
-          "required": false,
+          "name": "execution_duration",
+          "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "from",
+          "name": "execution_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "input",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExecutionResultInput",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExecutionResultAction",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "email",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "EmailResult",
+              "namespace": "watcher._types"
             }
           }
         },
@@ -134014,44 +134010,41 @@
           }
         },
         {
-          "name": "priority",
+          "name": "index",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "EmailPriority",
+              "name": "IndexResult",
               "namespace": "watcher._types"
             }
           }
         },
         {
-          "name": "reply_to",
+          "name": "logging",
           "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "sent_date",
-          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateString",
-              "namespace": "_types"
+              "name": "LoggingResult",
+              "namespace": "watcher._types"
             }
           }
         },
         {
-          "name": "subject",
-          "required": true,
+          "name": "pagerduty",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PagerDutyResult",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134061,16 +134054,137 @@
           }
         },
         {
-          "name": "to",
+          "name": "slack",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SlackResult",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "status",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionType",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "webhook",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WebhookResult",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExecutionResultCondition",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "met",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ConditionType",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExecutionResultInput",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "payload",
+          "required": true,
+          "type": {
+            "key": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionStatusOptions",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InputType",
+              "namespace": "watcher._types"
             }
           }
         }
@@ -134101,6 +134215,70 @@
             "kind": "instance_of",
             "type": {
               "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "awaits_execution"
+        },
+        {
+          "name": "checking"
+        },
+        {
+          "name": "execution_not_needed"
+        },
+        {
+          "name": "throttled"
+        },
+        {
+          "name": "executed"
+        },
+        {
+          "name": "failed"
+        },
+        {
+          "name": "deleted_while_queued"
+        },
+        {
+          "name": "not_executed_already_queued"
+        }
+      ],
+      "name": {
+        "name": "ExecutionStatus",
+        "namespace": "watcher._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExecutionThreadPool",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "max_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "queue_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "_types"
             }
           }
@@ -134525,7 +134703,38 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IndexActionResult",
+        "name": "Index",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "doc_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexResult",
         "namespace": "watcher._types"
       },
       "properties": [
@@ -134535,8 +134744,83 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ResponseIndexActionResult",
+              "name": "IndexResultSummary",
               "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexResultSummary",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "result",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Result",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "_types"
             }
           }
         }
@@ -134679,7 +134963,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LoggingAction",
+        "name": "Logging",
         "namespace": "watcher._types"
       },
       "properties": [
@@ -134710,7 +134994,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LoggingActionResult",
+        "name": "LoggingResult",
         "namespace": "watcher._types"
       },
       "properties": [
@@ -134827,26 +135111,6 @@
             "kind": "instance_of",
             "type": {
               "name": "HttpInputResponseResult",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PagerDutyActionResult",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "sent_event",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PagerDutyActionEventResult",
               "namespace": "watcher._types"
             }
           }
@@ -135029,6 +135293,26 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PagerDutyResult",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "sent_event",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PagerDutyActionEventResult",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -135060,81 +135344,6 @@
         "name": "ResponseContentType",
         "namespace": "watcher._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ResponseIndexActionResult",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "result",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Result",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -135606,37 +135815,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SlackActionResult",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "account",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "message",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SlackMessage",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "SlackAttachment",
         "namespace": "watcher._types"
       },
@@ -135966,25 +136144,35 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "success"
-        },
-        {
-          "name": "failure"
-        },
-        {
-          "name": "simulated"
-        },
-        {
-          "name": "throttled"
-        }
-      ],
+      "kind": "interface",
       "name": {
-        "name": "Status",
+        "name": "SlackResult",
         "namespace": "watcher._types"
-      }
+      },
+      "properties": [
+        {
+          "name": "account",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "message",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SlackMessage",
+              "namespace": "watcher._types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -136281,6 +136469,48 @@
     {
       "kind": "interface",
       "name": {
+        "name": "TriggerEventResult",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "manual",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TriggerEventContainer",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "triggered_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Watch",
         "namespace": "watcher._types"
       },
@@ -136475,7 +136705,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "WebhookActionResult",
+        "name": "WebhookResult",
         "namespace": "watcher._types"
       },
       "properties": [
@@ -136749,316 +136979,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "awaits_execution"
-        },
-        {
-          "name": "checking"
-        },
-        {
-          "name": "execution_not_needed"
-        },
-        {
-          "name": "throttled"
-        },
-        {
-          "name": "executed"
-        },
-        {
-          "name": "failed"
-        },
-        {
-          "name": "deleted_while_queued"
-        },
-        {
-          "name": "not_executed_already_queued"
-        }
-      ],
-      "name": {
-        "name": "ActionExecutionState",
-        "namespace": "watcher.execute_watch"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionResult",
-        "namespace": "watcher.execute_watch"
-      },
-      "properties": [
-        {
-          "name": "actions",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ExecutionResultAction",
-                "namespace": "watcher.execute_watch"
-              }
-            }
-          }
-        },
-        {
-          "name": "condition",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExecutionResultCondition",
-              "namespace": "watcher.execute_watch"
-            }
-          }
-        },
-        {
-          "name": "execution_duration",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "execution_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "input",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExecutionResultInput",
-              "namespace": "watcher.execute_watch"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionResultAction",
-        "namespace": "watcher.execute_watch"
-      },
-      "properties": [
-        {
-          "name": "email",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmailActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "logging",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LoggingActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "pagerduty",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PagerDutyActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "slack",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SlackActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Status",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActionType",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "webhook",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "WebhookActionResult",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionResultCondition",
-        "namespace": "watcher.execute_watch"
-      },
-      "properties": [
-        {
-          "name": "met",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Status",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ConditionType",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionResultInput",
-        "namespace": "watcher.execute_watch"
-      },
-      "properties": [
-        {
-          "name": "payload",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Status",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InputType",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -137237,48 +137157,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TriggerEventResult",
-        "namespace": "watcher.execute_watch"
-      },
-      "properties": [
-        {
-          "name": "manual",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TriggerEventContainer",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "triggered_time",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "WatchRecord",
         "namespace": "watcher.execute_watch"
       },
@@ -137348,7 +137226,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ExecutionResult",
-              "namespace": "watcher.execute_watch"
+              "namespace": "watcher._types"
             }
           }
         },
@@ -137358,8 +137236,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ActionExecutionState",
-              "namespace": "watcher.execute_watch"
+              "name": "ExecutionStatus",
+              "namespace": "watcher._types"
             }
           }
         },
@@ -137370,7 +137248,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TriggerEventResult",
-              "namespace": "watcher.execute_watch"
+              "namespace": "watcher._types"
             }
           }
         },
@@ -137865,70 +137743,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "awaits_execution"
-        },
-        {
-          "name": "started"
-        },
-        {
-          "name": "input"
-        },
-        {
-          "name": "condition"
-        },
-        {
-          "name": "actions"
-        },
-        {
-          "name": "watch_transform"
-        },
-        {
-          "name": "aborted"
-        },
-        {
-          "name": "finished"
-        }
-      ],
-      "name": {
-        "name": "ExecutionPhase",
-        "namespace": "watcher.stats"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ExecutionThreadPool",
-        "namespace": "watcher.stats"
-      },
-      "properties": [
-        {
-          "name": "max_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "queue_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -138110,7 +137924,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ExecutionPhase",
-              "namespace": "watcher.stats"
+              "namespace": "watcher._types"
             }
           }
         },
@@ -138212,7 +138026,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ExecutionThreadPool",
-              "namespace": "watcher.stats"
+              "namespace": "watcher._types"
             }
           }
         },

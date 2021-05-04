@@ -26,7 +26,7 @@ import { ConditionContainer } from './Conditions'
 import { TransformContainer } from './Transform'
 
 export class Action {
-  action_type?: Type
+  action_type?: ActionType
   condition?: ConditionContainer
   foreach?: string
   max_iterations?: integer
@@ -40,7 +40,7 @@ export class Action {
 
 export type Actions = Dictionary<IndexName, ActionStatus>
 
-export enum Type {
+export enum ActionType {
   email = 0,
   webhook = 1,
   index = 2,
@@ -63,7 +63,7 @@ export class SimulatedActions {
   use_all: boolean
 }
 
-export enum Status {
+export enum ActionStatusOptions {
   success = 0,
   failure = 1,
   simulated = 2,

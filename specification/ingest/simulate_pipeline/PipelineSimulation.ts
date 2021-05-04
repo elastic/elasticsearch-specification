@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Status } from '@watcher/_types/Action'
+import { ActionStatusOptions } from '@watcher/_types/Action'
 import { DocumentSimulation } from './DocumentSimulation'
 
 export class PipelineSimulation {
@@ -25,5 +25,5 @@ export class PipelineSimulation {
   processor_results?: PipelineSimulation[]
   tag?: string
   processor_type?: string
-  status?: Status
+  status?: ActionStatusOptions
 }
