@@ -20,7 +20,6 @@
 import { long } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
 
-
 export enum Type {
   missing = 0,
   trial = 1,

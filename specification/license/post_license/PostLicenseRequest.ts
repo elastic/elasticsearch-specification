@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { License } from '@license/_types/License';
+import { License } from '@license/_types/License'
 import { RequestBase } from '@_types/Base'
 
 /**
