@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices } from '@_types/common'
 
-export class FieldCapabilities {
+export class FieldCapability {
   aggregatable: boolean
   indices?: Indices
   meta?: Dictionary<string, string[]>
