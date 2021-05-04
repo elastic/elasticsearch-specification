@@ -20,15 +20,16 @@
 import { SourceFilter } from '@global/search/source_filtering/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { 
-  Fields, 
-  Id, 
-  IndexName, 
-  Routing, 
-  SequenceNumber, 
-  Type, 
-  VersionNumber, 
-  VersionType } from '@_types/common'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { MainError } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 
