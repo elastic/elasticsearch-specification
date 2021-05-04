@@ -5692,12 +5692,12 @@
       "name": "ingest.processor_grok",
       "request": {
         "name": "Request",
-        "namespace": "ingest.processor"
+        "namespace": "ingest.processor_grok"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ingest.processor"
+        "namespace": "ingest.processor_grok"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -93584,6 +93584,1577 @@
       }
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AppendProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "allow_duplicates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AttachmentProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indexed_chars",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indexed_chars_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "resource_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "BytesProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CircleProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "error_distance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shape_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShapeType",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ConvertProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ConvertType",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "integer"
+        },
+        {
+          "name": "long"
+        },
+        {
+          "name": "float"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "string"
+        },
+        {
+          "name": "boolean"
+        },
+        {
+          "name": "auto"
+        }
+      ],
+      "name": {
+        "name": "ConvertType",
+        "namespace": "ingest._types"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CsvProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "empty_value",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "quote",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_fields",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "trim",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateIndexNameProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "date_formats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "date_rounding",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DateRounding",
+                  "namespace": "ingest._types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_name_format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index_name_prefix",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "timezone",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "formats",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "locale",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timezone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "identifier": "Second",
+          "name": "s"
+        },
+        {
+          "identifier": "Minute",
+          "name": "m"
+        },
+        {
+          "identifier": "Hour",
+          "name": "h"
+        },
+        {
+          "identifier": "Day",
+          "name": "d"
+        },
+        {
+          "identifier": "Week",
+          "name": "w"
+        },
+        {
+          "identifier": "Month",
+          "name": "M"
+        },
+        {
+          "identifier": "Year",
+          "name": "y"
+        }
+      ],
+      "name": {
+        "name": "DateRounding",
+        "namespace": "ingest._types"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DissectProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "append_separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DotExpanderProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DropProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "EnrichProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_matches",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "override",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "policy_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shape_relation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoShapeRelation",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "FailProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "message",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ForeachProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "processor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ProcessorContainer",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoIpProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "database_file",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "first_only",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GrokProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern_definitions",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "patterns",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "trace_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GsubProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "replacement",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfig",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfigRegression",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceConfigRegression",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "results_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "InferenceProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field_map",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "inference_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceConfig",
+              "namespace": "ingest._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "JoinProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "JsonProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "add_to_root",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KeyValueProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "exclude_keys",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field_split",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include_keys",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "strip_brackets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "trim_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "trim_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "value_split",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LowercaseProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Pipeline",
@@ -93688,6 +95259,32 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PipelineProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "ProcessorBase",
@@ -93757,7 +95354,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AttachmentProcessor",
-              "namespace": "ingest.processors.plugins"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93768,7 +95365,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AppendProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93779,7 +95376,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CsvProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93790,7 +95387,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ConvertProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93801,7 +95398,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DateProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93812,7 +95409,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DateIndexNameProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93823,7 +95420,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DotExpanderProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93834,7 +95431,7 @@
             "kind": "instance_of",
             "type": {
               "name": "EnrichProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93845,7 +95442,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FailProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93856,7 +95453,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ForeachProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93867,7 +95464,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JsonProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93878,7 +95475,7 @@
             "kind": "instance_of",
             "type": {
               "name": "UserAgentProcessor",
-              "namespace": "ingest.processors.plugins"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93889,7 +95486,7 @@
             "kind": "instance_of",
             "type": {
               "name": "KeyValueProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93900,7 +95497,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoIpProcessor",
-              "namespace": "ingest.processors.plugins"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93911,7 +95508,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GrokProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93922,7 +95519,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GsubProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93933,7 +95530,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JoinProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93944,7 +95541,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LowercaseProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93955,7 +95552,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RemoveProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93966,7 +95563,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RenameProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93976,8 +95573,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ScriptProcessor",
-              "namespace": "ingest.processors"
+              "name": "Script",
+              "namespace": "_types"
             }
           }
         },
@@ -93988,7 +95585,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SetProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -93999,7 +95596,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SortProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94010,7 +95607,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SplitProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94021,7 +95618,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TrimProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94032,7 +95629,7 @@
             "kind": "instance_of",
             "type": {
               "name": "UppercaseProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94043,7 +95640,7 @@
             "kind": "instance_of",
             "type": {
               "name": "UrlDecodeProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94054,7 +95651,7 @@
             "kind": "instance_of",
             "type": {
               "name": "BytesProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94065,7 +95662,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DissectProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94076,7 +95673,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SetSecurityUserProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94087,7 +95684,7 @@
             "kind": "instance_of",
             "type": {
               "name": "PipelineProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94098,7 +95695,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DropProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94109,7 +95706,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CircleProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         },
@@ -94120,13 +95717,571 @@
             "kind": "instance_of",
             "type": {
               "name": "InferenceProcessor",
-              "namespace": "ingest.processors"
+              "namespace": "ingest._types"
             }
           }
         }
       ],
       "variants": {
         "kind": "container"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RemoveProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RenameProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SetProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "override",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SetSecurityUserProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "properties",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "geo_shape"
+        },
+        {
+          "name": "shape"
+        }
+      ],
+      "name": {
+        "name": "ShapeType",
+        "namespace": "ingest._types"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SortProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "order",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_global.search.sort"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SplitProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "preserve_trailing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TrimProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UppercaseProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UrlDecodeProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UserAgentProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_missing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "options",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UserAgentProperty",
+                "namespace": "ingest._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "regex_file",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "NAME"
+        },
+        {
+          "name": "MAJOR"
+        },
+        {
+          "name": "MINOR"
+        },
+        {
+          "name": "PATCH"
+        },
+        {
+          "name": "OS"
+        },
+        {
+          "name": "OS_NAME"
+        },
+        {
+          "name": "OS_MAJOR"
+        },
+        {
+          "name": "OS_MINOR"
+        },
+        {
+          "name": "DEVICE"
+        },
+        {
+          "name": "BUILD"
+        }
+      ],
+      "name": {
+        "name": "UserAgentProperty",
+        "namespace": "ingest._types"
       }
     },
     {
@@ -94422,6 +96577,7 @@
         {
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94433,6 +96589,7 @@
         {
           "name": "summary",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94485,7 +96642,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ingest.processor"
+        "namespace": "ingest.processor_grok"
       },
       "path": [],
       "query": []
@@ -94521,2228 +96678,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ingest.processor"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "AppendProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "allow_duplicates",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "BytesProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "CircleProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "error_distance",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "shape_type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShapeType",
-              "namespace": "ingest.processors"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "ConvertProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ConvertProcessorType",
-              "namespace": "ingest.processors"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "integer"
-        },
-        {
-          "name": "long"
-        },
-        {
-          "name": "float"
-        },
-        {
-          "name": "double"
-        },
-        {
-          "name": "string"
-        },
-        {
-          "name": "boolean"
-        },
-        {
-          "name": "auto"
-        }
-      ],
-      "name": {
-        "name": "ConvertProcessorType",
-        "namespace": "ingest.processors"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "CsvProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "empty_value",
-          "required": true,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "quote",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "separator",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_fields",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "trim",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DateIndexNameProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "date_formats",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "date_rounding",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateRounding",
-                  "namespace": "ingest.processors"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index_name_format",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "index_name_prefix",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "locale",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "timezone",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DateProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "formats",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "locale",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timezone",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "identifier": "Second",
-          "name": "s"
-        },
-        {
-          "identifier": "Minute",
-          "name": "m"
-        },
-        {
-          "identifier": "Hour",
-          "name": "h"
-        },
-        {
-          "identifier": "Day",
-          "name": "d"
-        },
-        {
-          "identifier": "Week",
-          "name": "w"
-        },
-        {
-          "identifier": "Month",
-          "name": "M"
-        },
-        {
-          "identifier": "Year",
-          "name": "y"
-        }
-      ],
-      "name": {
-        "name": "DateRounding",
-        "namespace": "ingest.processors"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DissectProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "append_separator",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DotExpanderProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "path",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DropProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "EnrichProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_matches",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "override",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "policy_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "shape_relation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoShapeRelation",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "FailProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "message",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "ForeachProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "processor",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ProcessorContainer",
-              "namespace": "ingest._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "GrokProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pattern_definitions",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "patterns",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "trace_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "GsubProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "replacement",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "InferenceProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "model_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field_map",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "inference_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceProcessorConfig",
-              "namespace": "ingest.processors"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceProcessorConfig",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "regression",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceProcessorConfigRegression",
-              "namespace": "ingest.processors"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceProcessorConfigRegression",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "results_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "JoinProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "separator",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "JsonProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "add_to_root",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "KeyValueProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "exclude_keys",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field_split",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "include_keys",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "prefix",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "strip_brackets",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "trim_key",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "trim_value",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "value_split",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "LowercaseProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "PipelineProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RemoveProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "RenameProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "ScriptProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "lang",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SetProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "override",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SetSecurityUserProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "geo_shape"
-        },
-        {
-          "name": "shape"
-        }
-      ],
-      "name": {
-        "name": "ShapeType",
-        "namespace": "ingest.processors"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SortProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "order",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_global.search.sort"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "SplitProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "preserve_trailing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "separator",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "TrimProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "UppercaseProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "UrlDecodeProcessor",
-        "namespace": "ingest.processors"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "AttachmentProcessor",
-        "namespace": "ingest.processors.plugins"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "indexed_chars",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "indexed_chars_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "resource_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "GeoIpProcessor",
-        "namespace": "ingest.processors.plugins"
-      },
-      "properties": [
-        {
-          "name": "database_file",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "first_only",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ProcessorBase",
-          "namespace": "ingest._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "UserAgentProcessor",
-        "namespace": "ingest.processors.plugins"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "ignore_missing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "options",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "UserAgentProperty",
-                "namespace": "ingest.processors.plugins.user_agent"
-              }
-            }
-          }
-        },
-        {
-          "name": "regex_file",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "target_field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "NAME"
-        },
-        {
-          "name": "MAJOR"
-        },
-        {
-          "name": "MINOR"
-        },
-        {
-          "name": "PATCH"
-        },
-        {
-          "name": "OS"
-        },
-        {
-          "name": "OS_NAME"
-        },
-        {
-          "name": "OS_MAJOR"
-        },
-        {
-          "name": "OS_MINOR"
-        },
-        {
-          "name": "DEVICE"
-        },
-        {
-          "name": "BUILD"
-        }
-      ],
-      "name": {
-        "name": "UserAgentProperty",
-        "namespace": "ingest.processors.plugins.user_agent"
+        "namespace": "ingest.processor_grok"
       }
     },
     {
@@ -96832,6 +96768,7 @@
         {
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -96843,6 +96780,7 @@
         {
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -96983,8 +96921,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
