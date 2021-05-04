@@ -18,12 +18,12 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ActivationState } from '@watcher/_types/Activation'
 import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
-import { Action, Actions } from './Action'
 import { TransformContainer } from '@_types/Transform'
+import { Action, Actions } from './Action'
+import { ActivationState } from './Activation'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
 import { TriggerContainer } from './Trigger'

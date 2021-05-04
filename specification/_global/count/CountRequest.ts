@@ -26,7 +26,7 @@ import {
   Types
 } from '@_types/common'
 import { double, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name count

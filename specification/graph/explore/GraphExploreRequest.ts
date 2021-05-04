@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Indices, Routing, Types } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 import { GraphExploreControls } from './GraphExploreControls'
 import { GraphVertexDefinition } from './GraphVertexDefinition'

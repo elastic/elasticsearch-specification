@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name watcher.stop

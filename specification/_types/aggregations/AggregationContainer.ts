@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { AdjacencyMatrixAggregation } from './bucket/adjacency_matrix/AdjacencyMatrixAggregation'
 import { AutoDateHistogramAggregation } from './bucket/auto_date_histogram/AutoDateHistogramAggregation'
 import { ChildrenAggregation } from './bucket/children/ChildrenAggregation'

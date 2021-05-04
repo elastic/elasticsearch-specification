@@ -29,7 +29,7 @@ import {
 } from '@_types/common'
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 
 export class ChainInput {

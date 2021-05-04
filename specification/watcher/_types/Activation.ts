@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Actions } from '@watcher/_types/Action'
 import { VersionNumber } from '@_types/common'
 import { Timestamp } from '@_types/Time'
+import { Actions } from './Action'
 
 export class ActivationState {
   active: boolean

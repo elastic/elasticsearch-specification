@@ -18,8 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, IndexName, Field, VersionNumber } from '@_types/common'
-import { integer, long, double } from '@_types/Numeric'
+import { Field, Id, IndexName, VersionNumber } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
 
 export class FieldStatistics {
   doc_count: integer

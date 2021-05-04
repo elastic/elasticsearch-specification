@@ -19,7 +19,7 @@
 
 import { Aggregation } from '@_types/aggregations/Aggregation'
 import { Field } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 
 export class TTestAggregation extends Aggregation {

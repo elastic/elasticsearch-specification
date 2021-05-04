@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class FiltersAggregation extends BucketAggregationBase {
