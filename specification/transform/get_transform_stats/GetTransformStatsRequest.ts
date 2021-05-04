@@ -35,5 +35,4 @@ export interface Request extends RequestBase {
     from?: long
     size?: long
   }
-  body?: {}
 }

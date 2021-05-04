@@ -17,21 +17,32 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Time } from '@_types/Time'
+import { SearchInputRequestDefinition } from '../watcher/_types/Input'
 
-export class TransformSource {
-  /**The source indices for the transform. */
-  index: Indices
-  /**
-   * A query clause that retrieves a subset of data from the source index.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
-   */
-  query?: QueryContainer
-  /**
-   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
-   * @since 7.12.0
-   */
-  runtime_mappings?: RuntimeFields
+export class Transform {}
+
+/**
+ * @variants container
+ */
+export class TransformContainer {
+  chain?: ChainTransform
+  script?: ScriptTransform
+  search?: SearchTransform
+}
+
+export class ChainTransform {
+  transforms: TransformContainer[]
+}
+
+export class ScriptTransform {
+  lang: string
+  params: Dictionary<string, UserDefinedValue>
+}
+
+export class SearchTransform {
+  request: SearchInputRequestDefinition
+  timeout: Time
 }

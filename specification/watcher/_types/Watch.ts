@@ -25,7 +25,7 @@ import { long } from '@_types/Numeric'
 import { Action } from './Action'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'
-import { TransformContainer } from './Transform'
+import { TransformContainer } from '../../_types/Transform'
 import { TriggerContainer } from './Trigger'
 
 export class Watch {

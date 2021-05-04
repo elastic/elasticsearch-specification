@@ -23,7 +23,7 @@ import { EpochMillis, Time } from '@_types/Time'
 import { ConditionContainer } from './Conditions'
 import { ActionIndex } from './IndexAction'
 import { HttpInputRequestDefinition } from './Input'
-import { TransformContainer } from './Transform'
+import { TransformContainer } from '../../_types/Transform'
 
 export class Action {
   action_type?: ActionType

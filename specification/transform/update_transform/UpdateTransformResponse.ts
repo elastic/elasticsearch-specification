@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { TransformDestination } from '@transform/_types/TransformDestination'
-import { TransformPivot } from '@transform/_types/TransformPivot'
-import { TransformSettings } from '@transform/_types/TransformSettings'
-import { TransformSource } from '@transform/_types/TransformSource'
-import { TransformSyncContainer } from '@transform/_types/TransformSyncContainer'
+import {
+  Destination,
+  Pivot,
+  Settings,
+  Source,
+  SyncContainer
+} from '@transform/_types/Transform'
 import { Id, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
@@ -31,13 +33,13 @@ export class Response {
     create_time: long
     //  create_time_date_time?: DateString
     description: string
-    dest: TransformDestination
+    dest: Destination
     frequency: Time
     id: Id
-    pivot: TransformPivot
-    settings: TransformSettings
-    source: TransformSource
-    sync?: TransformSyncContainer
+    pivot: Pivot
+    settings: Settings
+    source: Source
+    sync?: SyncContainer
     version: VersionString
   }
 }
