@@ -19,7 +19,14 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, Routing, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { MainError } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 

@@ -18,7 +18,16 @@
  */
 
 import { Sort } from '@global/search/_types/sort'
-import { Fields, IndexName, Indices, OpType, Password, Routing, Username, VersionType } from '@_types/common'
+import {
+  Fields,
+  IndexName,
+  Indices,
+  OpType,
+  Password,
+  Routing,
+  Username,
+  VersionType
+} from '@_types/common'
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'

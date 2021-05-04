@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { DataFrameAnalyticsFieldSelection, DataFrameAnalyticsMemoryEstimation } from '@ml/_types/DataFrameAnalytics'
+import {
+  DataFrameAnalyticsFieldSelection,
+  DataFrameAnalyticsMemoryEstimation
+} from '@ml/_types/DataFrameAnalytics'
 
 export class Response {
   body: {

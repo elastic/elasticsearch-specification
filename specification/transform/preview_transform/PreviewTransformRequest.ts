@@ -18,7 +18,13 @@
  */
 
 import { Destination, Source } from '@global/reindex/types'
-import { Latest, Pivot, RetentionPolicyContainer, Settings, SyncContainer } from '@transform/_types/Transform'
+import {
+  Latest,
+  Pivot,
+  RetentionPolicyContainer,
+  Settings,
+  SyncContainer
+} from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
 import { Time } from '@_types/Time'
 

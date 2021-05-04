@@ -19,7 +19,15 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Fuzziness, Id, IndexName, Routing, SuggestMode, Type } from '@_types/common'
+import {
+  Field,
+  Fuzziness,
+  Id,
+  IndexName,
+  Routing,
+  SuggestMode,
+  Type
+} from '@_types/common'
 import { Distance } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
@@ -34,7 +42,7 @@ export class Suggest<T> {
 /**
  * @variants container
  */
- export class SuggestContainer {
+export class SuggestContainer {
   completion?: CompletionSuggester
   phrase?: PhraseSuggester
   prefix?: string
@@ -78,7 +86,6 @@ export class TermSuggestOption {
   freq?: long
   score: double
 }
-
 
 // completion suggester
 
@@ -181,7 +188,7 @@ export class SmoothingModel {}
 /**
  * @variants container
  */
- export class SmoothingModelContainer {
+export class SmoothingModelContainer {
   laplace?: LaplaceSmoothingModel
   linear_interpolation?: LinearInterpolationSmoothingModel
   stupid_backoff?: StupidBackoffSmoothingModel

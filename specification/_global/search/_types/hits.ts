@@ -20,7 +20,16 @@
 import { Explanation } from '@global/explain/Explanation'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Fields, Id, IndexName, Name, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Field,
+  Fields,
+  Id,
+  IndexName,
+  Name,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
@@ -70,7 +79,6 @@ export class HitMetadata<TDocument> {
   _type: Type
   _version: VersionNumber
 }
-
 
 export class InnerHitsMetadata {
   total: TotalHits | long

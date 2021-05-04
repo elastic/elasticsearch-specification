@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { SnapshotRepository, SnapshotRepositorySettings } from '@snapshot/_types/SnapshotRepository'
+import {
+  SnapshotRepository,
+  SnapshotRepositorySettings
+} from '@snapshot/_types/SnapshotRepository'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { Time } from '@_types/Time'

@@ -19,7 +19,13 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, SequenceNumber, Type, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 
 export class Response<TDocument> {

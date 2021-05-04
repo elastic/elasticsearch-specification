@@ -18,7 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices, Level, Metrics, Types } from '@_types/common'
+import {
+  ExpandWildcards,
+  Fields,
+  Indices,
+  Level,
+  Metrics,
+  Types
+} from '@_types/common'
 
 /**
  * @rest_spec_name indices.stats

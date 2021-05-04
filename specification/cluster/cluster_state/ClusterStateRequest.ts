@@ -18,7 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Metrics, VersionNumber } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  Metrics,
+  VersionNumber
+} from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**

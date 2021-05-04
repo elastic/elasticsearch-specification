@@ -531,7 +531,7 @@ export interface MgetMultiGetOperation {
   _id: MgetMultiGetId
   _index?: IndexName
   routing?: Routing
-  _source?: boolean | Fields | SearchSourceFilteringSourceFilter
+  _source?: boolean | Fields | SearchTypesSourceFilter
   stored_fields?: Fields
   _type?: Type
   version?: VersionNumber
@@ -565,9 +565,9 @@ export interface MsearchMultiSearchBody {
   query?: QueryDslAbstractionsContainerQueryContainer
   from?: integer
   size?: integer
-  pit?: SearchPointInTimePointInTimeReference
+  pit?: SearchTypesPointInTimeReference
   track_total_hits?: boolean | integer
-  suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
+  suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
 }
 
 export interface MsearchMultiSearchHeader {
@@ -851,7 +851,7 @@ export interface ReindexSource {
   remote?: ReindexRemoteSource
   size?: integer
   slice?: SlicedScroll
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
   _source?: Fields
 }
 
@@ -994,33 +994,33 @@ export interface SearchRequest extends RequestBase {
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
-    collapse?: SearchCollapsingFieldCollapse
+    collapse?: SearchTypesFieldCollapse
     explain?: boolean
     from?: integer
-    highlight?: SearchHighlightingHighlight
+    highlight?: SearchTypesHighlight
     track_total_hits?: boolean | integer
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: SearchSourceFilteringDocValueField | (Field | SearchSourceFilteringDocValueField)[]
+    docvalue_fields?: SearchTypesDocValueField | (Field | SearchTypesDocValueField)[]
     min_score?: double
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     profile?: boolean
     query?: QueryDslAbstractionsContainerQueryContainer
-    rescore?: SearchRescoringRescore | SearchRescoringRescore[]
+    rescore?: SearchTypesRescore | SearchTypesRescore[]
     script_fields?: Record<string, ScriptField>
     search_after?: (integer | string)[]
     size?: integer
     slice?: SlicedScroll
-    sort?: SearchSortSort
-    _source?: boolean | Fields | SearchSourceFilteringSourceFilter
+    sort?: SearchTypesSort
+    _source?: boolean | Fields | SearchTypesSourceFilter
     fields?: (Field | DateField)[]
-    suggest?: SearchSuggestersSuggestContainer | Record<string, SearchSuggestersSuggestContainer>
+    suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
     version?: boolean
     seq_no_primary_term?: boolean
     stored_fields?: Fields
-    pit?: SearchPointInTimePointInTimeReference
+    pit?: SearchTypesPointInTimeReference
     runtime_mappings?: MappingRuntimeFieldsRuntimeFields
     stats?: string[]
   }
@@ -1030,159 +1030,21 @@ export interface SearchResponse<TDocument = unknown> {
   took: long
   timed_out: boolean
   _shards: ShardStatistics
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
   aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
   documents?: TDocument[]
   fields?: Record<string, any>
   max_score?: double
   num_reduce_phases?: long
-  profile?: SearchProfileProfile
+  profile?: SearchTypesProfile
   pit_id?: Id
   _scroll_id?: ScrollId
-  suggest?: Record<SuggestionName, SearchSuggestersSuggest<TDocument>[]>
+  suggest?: Record<SuggestionName, SearchTypesSuggest<TDocument>[]>
   terminated_early?: boolean
 }
 
-export interface SearchCollapsingFieldCollapse {
-  field: Field
-  inner_hits?: SearchInnerHitsInnerHits | SearchInnerHitsInnerHits[]
-  max_concurrent_group_searches?: integer
-}
-
-export type SearchHighlightingBoundaryScanner = 'chars' | 'sentence' | 'word'
-
-export interface SearchHighlightingHighlight {
-  fields: Record<Field, SearchHighlightingHighlightField>
-  type?: SearchHighlightingHighlighterType
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: SearchHighlightingBoundaryScanner
-  boundary_scanner_locale?: string
-  encoder?: SearchHighlightingHighlighterEncoder
-  fragmenter?: SearchHighlightingHighlighterFragmenter
-  fragment_offset?: integer
-  fragment_size?: integer
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: SearchHighlightingHighlighterOrder
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: SearchHighlightingHighlighterTagsSchema
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
-  max_analyzed_offset?: string | integer
-}
-
-export interface SearchHighlightingHighlightField {
-  boundary_chars?: string
-  boundary_max_scan?: integer
-  boundary_scanner?: SearchHighlightingBoundaryScanner
-  boundary_scanner_locale?: string
-  field?: Field
-  force_source?: boolean
-  fragmenter?: SearchHighlightingHighlighterFragmenter
-  fragment_offset?: integer
-  fragment_size?: integer
-  highlight_query?: QueryDslAbstractionsContainerQueryContainer
-  matched_fields?: Fields
-  max_fragment_length?: integer
-  no_match_size?: integer
-  number_of_fragments?: integer
-  order?: SearchHighlightingHighlighterOrder
-  phrase_limit?: integer
-  post_tags?: string[]
-  pre_tags?: string[]
-  require_field_match?: boolean
-  tags_schema?: SearchHighlightingHighlighterTagsSchema
-  type?: SearchHighlightingHighlighterType | string
-}
-
-export type SearchHighlightingHighlighterEncoder = 'default' | 'html'
-
-export type SearchHighlightingHighlighterFragmenter = 'simple' | 'span'
-
-export type SearchHighlightingHighlighterOrder = 'score'
-
-export type SearchHighlightingHighlighterTagsSchema = 'styled'
-
-export type SearchHighlightingHighlighterType = 'plain' | 'fvh' | 'unified'
-
-export interface SearchHitsHit<TDocument = unknown> {
-  _index: IndexName
-  _id: Id
-  _score?: double
-  _type?: Type
-  _explanation?: ExplainExplanation
-  fields?: Record<string, any>
-  highlight?: Record<string, string[]>
-  inner_hits?: Record<string, SearchHitsInnerHitsResult>
-  matched_queries?: string[]
-  _nested?: SearchHitsNestedIdentity
-  _ignored?: string[]
-  _shard?: string
-  _node?: string
-  _routing?: string
-  _source?: TDocument
-  _seq_no?: SequenceNumber
-  _primary_term?: long
-  _version?: VersionNumber
-  sort?: SearchSortSortResults
-}
-
-export interface SearchHitsHitsMetadata<T = unknown> {
-  total: SearchHitsTotalHits | long
-  hits: SearchHitsHit<T>[]
-  max_score?: double
-}
-
-export interface SearchHitsInnerHitsMetadata {
-  total: SearchHitsTotalHits | long
-  hits: SearchHitsHit<Record<string, any>>[]
-  max_score?: double
-}
-
-export interface SearchHitsInnerHitsResult {
-  hits: SearchHitsInnerHitsMetadata
-}
-
-export interface SearchHitsNestedIdentity {
-  field: Field
-  offset: integer
-  _nested?: SearchHitsNestedIdentity
-}
-
-export interface SearchHitsTotalHits {
-  relation: SearchHitsTotalHitsRelation
-  value: long
-}
-
-export type SearchHitsTotalHitsRelation = 'eq' | 'gte'
-
-export interface SearchInnerHitsInnerHits {
-  name?: Name
-  size?: integer
-  from?: integer
-  collapse?: SearchCollapsingFieldCollapse
-  docvalue_fields?: Fields
-  explain?: boolean
-  highlight?: SearchHighlightingHighlight
-  ignore_unmapped?: boolean
-  script_fields?: Record<string, ScriptField>
-  seq_no_primary_term?: boolean
-  fields?: Fields
-  sort?: SearchSortSort
-  _source?: boolean | SearchSourceFilteringSourceFilter
-  version?: boolean
-}
-
-export interface SearchPointInTimePointInTimeReference {
-  id: Id
-  keep_alive?: Time
-}
-
-export interface SearchProfileAggregationBreakdown {
+export interface SearchTypesAggregationBreakdown {
   build_aggregation: long
   build_aggregation_count: long
   build_leaf_collector: long
@@ -1197,30 +1059,274 @@ export interface SearchProfileAggregationBreakdown {
   reduce_count: long
 }
 
-export interface SearchProfileAggregationProfile {
-  breakdown: SearchProfileAggregationBreakdown
+export interface SearchTypesAggregationProfile {
+  breakdown: SearchTypesAggregationBreakdown
   description: string
   time_in_nanos: long
   type: string
-  debug?: SearchProfileAggregationProfileDebug
-  children?: SearchProfileAggregationProfileDebug[]
+  debug?: SearchTypesAggregationProfileDebug
+  children?: SearchTypesAggregationProfileDebug[]
 }
 
-export interface SearchProfileAggregationProfileDebug {
+export interface SearchTypesAggregationProfileDebug {
 }
 
-export interface SearchProfileCollector {
+export type SearchTypesBoundaryScanner = 'chars' | 'sentence' | 'word'
+
+export interface SearchTypesCollector {
   name: string
   reason: string
   time_in_nanos: long
-  children?: SearchProfileCollector[]
+  children?: SearchTypesCollector[]
 }
 
-export interface SearchProfileProfile {
-  shards: SearchProfileShardProfile[]
+export interface SearchTypesCompletionSuggestOption<TDocument = unknown> {
+  collate_match?: boolean
+  contexts?: Record<string, SearchTypesContext[]>
+  fields?: Record<string, any>
+  _id: string
+  _index: IndexName
+  _type?: Type
+  _routing?: Routing
+  _score: double
+  _source: TDocument
+  text: string
 }
 
-export interface SearchProfileQueryBreakdown {
+export interface SearchTypesCompletionSuggester extends SearchTypesSuggesterBase {
+  contexts?: Record<string, string | string[] | QueryDslGeoGeoLocation | SearchTypesSuggestContextQuery[]>
+  fuzzy?: SearchTypesSuggestFuzziness
+  prefix?: string
+  regex?: string
+  skip_duplicates?: boolean
+}
+
+export type SearchTypesContext = string | QueryDslGeoGeoLocation
+
+export interface SearchTypesDirectGenerator {
+  field: Field
+  max_edits?: integer
+  max_inspections?: float
+  max_term_freq?: float
+  min_doc_freq?: float
+  min_word_length?: integer
+  post_filter?: string
+  pre_filter?: string
+  prefix_length?: integer
+  size?: integer
+  suggest_mode?: SuggestMode
+}
+
+export interface SearchTypesDocValueField {
+  field: Field
+  format?: string
+}
+
+export interface SearchTypesFieldCollapse {
+  field: Field
+  inner_hits?: SearchTypesInnerHits | SearchTypesInnerHits[]
+  max_concurrent_group_searches?: integer
+}
+
+export interface SearchTypesFieldSort {
+  missing?: AggregationsMissing
+  mode?: SearchTypesSortMode
+  nested?: SearchTypesNestedSortValue
+  order?: SearchTypesSortOrder
+  unmapped_type?: MappingTypesFieldType
+}
+
+export interface SearchTypesGeoDistanceSortKeys {
+  mode?: SearchTypesSortMode
+  distance_type?: GeoDistanceType
+  order?: SearchTypesSortOrder
+  unit?: DistanceUnit
+}
+export type SearchTypesGeoDistanceSort = SearchTypesGeoDistanceSortKeys |
+    { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
+
+export interface SearchTypesHighlight {
+  fields: Record<Field, SearchTypesHighlightField>
+  type?: SearchTypesHighlighterType
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: SearchTypesBoundaryScanner
+  boundary_scanner_locale?: string
+  encoder?: SearchTypesHighlighterEncoder
+  fragmenter?: SearchTypesHighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: SearchTypesHighlighterOrder
+  post_tags?: string[]
+  pre_tags?: string[]
+  require_field_match?: boolean
+  tags_schema?: SearchTypesHighlighterTagsSchema
+  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  max_analyzed_offset?: string | integer
+}
+
+export interface SearchTypesHighlightField {
+  boundary_chars?: string
+  boundary_max_scan?: integer
+  boundary_scanner?: SearchTypesBoundaryScanner
+  boundary_scanner_locale?: string
+  field?: Field
+  force_source?: boolean
+  fragmenter?: SearchTypesHighlighterFragmenter
+  fragment_offset?: integer
+  fragment_size?: integer
+  highlight_query?: QueryDslAbstractionsContainerQueryContainer
+  matched_fields?: Fields
+  max_fragment_length?: integer
+  no_match_size?: integer
+  number_of_fragments?: integer
+  order?: SearchTypesHighlighterOrder
+  phrase_limit?: integer
+  post_tags?: string[]
+  pre_tags?: string[]
+  require_field_match?: boolean
+  tags_schema?: SearchTypesHighlighterTagsSchema
+  type?: SearchTypesHighlighterType | string
+}
+
+export type SearchTypesHighlighterEncoder = 'default' | 'html'
+
+export type SearchTypesHighlighterFragmenter = 'simple' | 'span'
+
+export type SearchTypesHighlighterOrder = 'score'
+
+export type SearchTypesHighlighterTagsSchema = 'styled'
+
+export type SearchTypesHighlighterType = 'plain' | 'fvh' | 'unified'
+
+export interface SearchTypesHit<TDocument = unknown> {
+  _index: IndexName
+  _id: Id
+  _score?: double
+  _type?: Type
+  _explanation?: ExplainExplanation
+  fields?: Record<string, any>
+  highlight?: Record<string, string[]>
+  inner_hits?: Record<string, SearchTypesInnerHitsResult>
+  matched_queries?: string[]
+  _nested?: SearchTypesNestedIdentity
+  _ignored?: string[]
+  _shard?: string
+  _node?: string
+  _routing?: string
+  _source?: TDocument
+  _seq_no?: SequenceNumber
+  _primary_term?: long
+  _version?: VersionNumber
+  sort?: SearchTypesSortResults
+}
+
+export interface SearchTypesHitsMetadata<T = unknown> {
+  total: SearchTypesTotalHits | long
+  hits: SearchTypesHit<T>[]
+  max_score?: double
+}
+
+export interface SearchTypesInnerHits {
+  name?: Name
+  size?: integer
+  from?: integer
+  collapse?: SearchTypesFieldCollapse
+  docvalue_fields?: Fields
+  explain?: boolean
+  highlight?: SearchTypesHighlight
+  ignore_unmapped?: boolean
+  script_fields?: Record<string, ScriptField>
+  seq_no_primary_term?: boolean
+  fields?: Fields
+  sort?: SearchTypesSort
+  _source?: boolean | SearchTypesSourceFilter
+  version?: boolean
+}
+
+export interface SearchTypesInnerHitsMetadata {
+  total: SearchTypesTotalHits | long
+  hits: SearchTypesHit<Record<string, any>>[]
+  max_score?: double
+}
+
+export interface SearchTypesInnerHitsResult {
+  hits: SearchTypesInnerHitsMetadata
+}
+
+export interface SearchTypesLaplaceSmoothingModel {
+  alpha: double
+}
+
+export interface SearchTypesLinearInterpolationSmoothingModel {
+  bigram_lambda: double
+  trigram_lambda: double
+  unigram_lambda: double
+}
+
+export interface SearchTypesNestedIdentity {
+  field: Field
+  offset: integer
+  _nested?: SearchTypesNestedIdentity
+}
+
+export interface SearchTypesNestedSortValue {
+  filter?: QueryDslAbstractionsContainerQueryContainer
+  max_children?: integer
+  path: Field
+}
+
+export interface SearchTypesPhraseSuggestCollate {
+  params?: Record<string, any>
+  prune?: boolean
+  query: SearchTypesPhraseSuggestCollateQuery
+}
+
+export interface SearchTypesPhraseSuggestCollateQuery {
+  id?: Id
+  source?: string
+}
+
+export interface SearchTypesPhraseSuggestHighlight {
+  post_tag: string
+  pre_tag: string
+}
+
+export interface SearchTypesPhraseSuggestOption {
+  text: string
+  highlighted: string
+  score: double
+}
+
+export interface SearchTypesPhraseSuggester extends SearchTypesSuggesterBase {
+  collate?: SearchTypesPhraseSuggestCollate
+  confidence?: double
+  direct_generator?: SearchTypesDirectGenerator[]
+  force_unigrams?: boolean
+  gram_size?: integer
+  highlight?: SearchTypesPhraseSuggestHighlight
+  max_errors?: double
+  real_word_error_likelihood?: double
+  separator?: string
+  shard_size?: integer
+  smoothing?: SearchTypesSmoothingModelContainer
+  text?: string
+  token_limit?: integer
+}
+
+export interface SearchTypesPointInTimeReference {
+  id: Id
+  keep_alive?: Time
+}
+
+export interface SearchTypesProfile {
+  shards: SearchTypesShardProfile[]
+}
+
+export interface SearchTypesQueryBreakdown {
   advance: long
   advance_count: long
   build_scorer: long
@@ -1241,163 +1347,114 @@ export interface SearchProfileQueryBreakdown {
   set_min_competitive_score_count: long
 }
 
-export interface SearchProfileQueryProfile {
-  breakdown: SearchProfileQueryBreakdown
+export interface SearchTypesQueryProfile {
+  breakdown: SearchTypesQueryBreakdown
   description: string
   time_in_nanos: long
   type: string
-  children?: SearchProfileQueryProfile[]
+  children?: SearchTypesQueryProfile[]
 }
 
-export interface SearchProfileSearchProfile {
-  collector: SearchProfileCollector[]
-  query: SearchProfileQueryProfile[]
-  rewrite_time: long
-}
-
-export interface SearchProfileShardProfile {
-  aggregations: SearchProfileAggregationProfile[]
-  id: string
-  searches: SearchProfileSearchProfile[]
-}
-
-export interface SearchRescoringRescore {
-  query: SearchRescoringRescoreQuery
+export interface SearchTypesRescore {
+  query: SearchTypesRescoreQuery
   window_size?: integer
 }
 
-export interface SearchRescoringRescoreQuery {
+export interface SearchTypesRescoreQuery {
   rescore_query: QueryDslAbstractionsContainerQueryContainer
   query_weight?: double
   rescore_query_weight?: double
-  score_mode?: SearchRescoringScoreMode
+  score_mode?: SearchTypesScoreMode
 }
 
-export type SearchRescoringScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
+export type SearchTypesScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
-export interface SearchSortFieldSort {
-  missing?: AggregationsMissing
-  mode?: SearchSortSortMode
-  nested?: SearchSortNestedSortValue
-  order?: SearchSortSortOrder
-  unmapped_type?: MappingTypesFieldType
+export interface SearchTypesScoreSort {
+  mode?: SearchTypesSortMode
+  order?: SearchTypesSortOrder
 }
 
-export interface SearchSortGeoDistanceSortKeys {
-  mode?: SearchSortSortMode
-  distance_type?: GeoDistanceType
-  order?: SearchSortSortOrder
-  unit?: DistanceUnit
-}
-export type SearchSortGeoDistanceSort = SearchSortGeoDistanceSortKeys |
-    { [property: string]: QueryDslGeoGeoLocation | QueryDslGeoGeoLocation[] }
-
-export interface SearchSortNestedSortValue {
-  filter?: QueryDslAbstractionsContainerQueryContainer
-  max_children?: integer
-  path: Field
-}
-
-export interface SearchSortScoreSort {
-  mode?: SearchSortSortMode
-  order?: SearchSortSortOrder
-}
-
-export interface SearchSortScriptSort {
-  order?: SearchSortSortOrder
+export interface SearchTypesScriptSort {
+  order?: SearchTypesSortOrder
   script: Script
   type?: string
 }
 
-export type SearchSortSort = SearchSortSortCombinations | SearchSortSortCombinations[]
-
-export type SearchSortSortCombinations = Field | SearchSortSortContainer | SearchSortSortOrder
-
-export interface SearchSortSortContainerKeys {
-  _score?: SearchSortScoreSort
-  _doc?: SearchSortScoreSort
-  _geo_distance?: SearchSortGeoDistanceSort
-  _script?: SearchSortScriptSort
-}
-export type SearchSortSortContainer = SearchSortSortContainerKeys |
-    { [property: string]: SearchSortFieldSort | SearchSortSortOrder }
-
-export type SearchSortSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
-
-export type SearchSortSortOrder = 'asc' | 'desc' | '_doc'
-
-export type SearchSortSortResults = (long | double | string | null)[]
-
-export interface SearchSourceFilteringDocValueField {
-  field: Field
-  format?: string
+export interface SearchTypesSearchProfile {
+  collector: SearchTypesCollector[]
+  query: SearchTypesQueryProfile[]
+  rewrite_time: long
 }
 
-export interface SearchSourceFilteringSourceFilter {
+export interface SearchTypesShardProfile {
+  aggregations: SearchTypesAggregationProfile[]
+  id: string
+  searches: SearchTypesSearchProfile[]
+}
+
+export interface SearchTypesSmoothingModelContainer {
+  laplace?: SearchTypesLaplaceSmoothingModel
+  linear_interpolation?: SearchTypesLinearInterpolationSmoothingModel
+  stupid_backoff?: SearchTypesStupidBackoffSmoothingModel
+}
+
+export type SearchTypesSort = SearchTypesSortCombinations | SearchTypesSortCombinations[]
+
+export type SearchTypesSortCombinations = Field | SearchTypesSortContainer | SearchTypesSortOrder
+
+export interface SearchTypesSortContainerKeys {
+  _score?: SearchTypesScoreSort
+  _doc?: SearchTypesScoreSort
+  _geo_distance?: SearchTypesGeoDistanceSort
+  _script?: SearchTypesScriptSort
+}
+export type SearchTypesSortContainer = SearchTypesSortContainerKeys |
+    { [property: string]: SearchTypesFieldSort | SearchTypesSortOrder }
+
+export type SearchTypesSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
+
+export type SearchTypesSortOrder = 'asc' | 'desc' | '_doc'
+
+export type SearchTypesSortResults = (long | double | string | null)[]
+
+export interface SearchTypesSourceFilter {
   excludes?: Fields
   includes?: Fields
   exclude?: Fields
   include?: Fields
 }
 
-export interface SearchSuggestersCompletionSuggestOption<TDocument = unknown> {
-  collate_match?: boolean
-  contexts?: Record<string, SearchSuggestersContextSuggesterContext[]>
-  fields?: Record<string, any>
-  _id: string
-  _index: IndexName
-  _type?: Type
-  _routing?: Routing
-  _score: double
-  _source: TDocument
-  text: string
+export type SearchTypesStringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
+
+export interface SearchTypesStupidBackoffSmoothingModel {
+  discount: double
 }
 
-export interface SearchSuggestersPhraseSuggestOption {
-  text: string
-  highlighted: string
-  score: double
-}
-
-export interface SearchSuggestersSuggest<T = unknown> {
+export interface SearchTypesSuggest<T = unknown> {
   length: integer
   offset: integer
-  options: SearchSuggestersSuggestOption<T>[]
+  options: SearchTypesSuggestOption<T>[]
   text: string
 }
 
-export interface SearchSuggestersSuggestContainer {
-  completion?: SearchSuggestersCompletionSuggesterCompletionSuggester
-  phrase?: SearchSuggestersPhraseSuggesterPhraseSuggester
+export interface SearchTypesSuggestContainer {
+  completion?: SearchTypesCompletionSuggester
+  phrase?: SearchTypesPhraseSuggester
   prefix?: string
   regex?: string
-  term?: SearchSuggestersTermSuggesterTermSuggester
+  term?: SearchTypesTermSuggester
   text?: string
 }
 
-export type SearchSuggestersSuggestOption<TDocument = unknown> = SearchSuggestersCompletionSuggestOption<TDocument> | SearchSuggestersPhraseSuggestOption | SearchSuggestersTermSuggestOption
-
-export interface SearchSuggestersSuggesterBase {
-  field: Field
-  analyzer?: string
-  size?: integer
+export interface SearchTypesSuggestContextQuery {
+  boost?: double
+  context: SearchTypesContext
+  neighbours?: Distance[] | integer[]
+  precision?: Distance | integer
+  prefix?: boolean
 }
 
-export interface SearchSuggestersTermSuggestOption {
-  text: string
-  freq?: long
-  score: double
-}
-
-export interface SearchSuggestersCompletionSuggesterCompletionSuggester extends SearchSuggestersSuggesterBase {
-  contexts?: Record<string, string | string[] | QueryDslGeoGeoLocation | SearchSuggestersContextSuggesterSuggestContextQuery[]>
-  fuzzy?: SearchSuggestersCompletionSuggesterSuggestFuzziness
-  prefix?: string
-  regex?: string
-  skip_duplicates?: boolean
-}
-
-export interface SearchSuggestersCompletionSuggesterSuggestFuzziness {
+export interface SearchTypesSuggestFuzziness {
   fuzziness: Fuzziness
   min_length: integer
   prefix_length: integer
@@ -1405,87 +1462,23 @@ export interface SearchSuggestersCompletionSuggesterSuggestFuzziness {
   unicode_aware: boolean
 }
 
-export type SearchSuggestersContextSuggesterContext = string | QueryDslGeoGeoLocation
+export type SearchTypesSuggestOption<TDocument = unknown> = SearchTypesCompletionSuggestOption<TDocument> | SearchTypesPhraseSuggestOption | SearchTypesTermSuggestOption
 
-export interface SearchSuggestersContextSuggesterSuggestContextQuery {
-  boost?: double
-  context: SearchSuggestersContextSuggesterContext
-  neighbours?: Distance[] | integer[]
-  precision?: Distance | integer
-  prefix?: boolean
-}
+export type SearchTypesSuggestSort = 'score' | 'frequency'
 
-export interface SearchSuggestersPhraseSuggesterDirectGenerator {
+export interface SearchTypesSuggesterBase {
   field: Field
-  max_edits?: integer
-  max_inspections?: float
-  max_term_freq?: float
-  min_doc_freq?: float
-  min_word_length?: integer
-  post_filter?: string
-  pre_filter?: string
-  prefix_length?: integer
+  analyzer?: string
   size?: integer
-  suggest_mode?: SuggestMode
 }
 
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestCollate {
-  params?: Record<string, any>
-  prune?: boolean
-  query: SearchSuggestersPhraseSuggesterPhraseSuggestCollateQuery
+export interface SearchTypesTermSuggestOption {
+  text: string
+  freq?: long
+  score: double
 }
 
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestCollateQuery {
-  id?: Id
-  source?: string
-}
-
-export interface SearchSuggestersPhraseSuggesterPhraseSuggestHighlight {
-  post_tag: string
-  pre_tag: string
-}
-
-export interface SearchSuggestersPhraseSuggesterPhraseSuggester extends SearchSuggestersSuggesterBase {
-  collate?: SearchSuggestersPhraseSuggesterPhraseSuggestCollate
-  confidence?: double
-  direct_generator?: SearchSuggestersPhraseSuggesterDirectGenerator[]
-  force_unigrams?: boolean
-  gram_size?: integer
-  highlight?: SearchSuggestersPhraseSuggesterPhraseSuggestHighlight
-  max_errors?: double
-  real_word_error_likelihood?: double
-  separator?: string
-  shard_size?: integer
-  smoothing?: SearchSuggestersPhraseSuggesterSmoothingModelSmoothingModelContainer
-  text?: string
-  token_limit?: integer
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelLaplaceSmoothingModel {
-  alpha: double
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelLinearInterpolationSmoothingModel {
-  bigram_lambda: double
-  trigram_lambda: double
-  unigram_lambda: double
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelSmoothingModelContainer {
-  laplace?: SearchSuggestersPhraseSuggesterSmoothingModelLaplaceSmoothingModel
-  linear_interpolation?: SearchSuggestersPhraseSuggesterSmoothingModelLinearInterpolationSmoothingModel
-  stupid_backoff?: SearchSuggestersPhraseSuggesterSmoothingModelStupidBackoffSmoothingModel
-}
-
-export interface SearchSuggestersPhraseSuggesterSmoothingModelStupidBackoffSmoothingModel {
-  discount: double
-}
-
-export type SearchSuggestersTermSuggesterStringDistance = 'internal' | 'damerau_levenshtein' | 'levenshtein' | 'jaro_winkler' | 'ngram'
-
-export type SearchSuggestersTermSuggesterSuggestSort = 'score' | 'frequency'
-
-export interface SearchSuggestersTermSuggesterTermSuggester extends SearchSuggestersSuggesterBase {
+export interface SearchTypesTermSuggester extends SearchTypesSuggesterBase {
   lowercase_terms?: boolean
   max_edits?: integer
   max_inspections?: integer
@@ -1494,11 +1487,18 @@ export interface SearchSuggestersTermSuggesterTermSuggester extends SearchSugges
   min_word_length?: integer
   prefix_length?: integer
   shard_size?: integer
-  sort?: SearchSuggestersTermSuggesterSuggestSort
-  string_distance?: SearchSuggestersTermSuggesterStringDistance
+  sort?: SearchTypesSuggestSort
+  string_distance?: SearchTypesStringDistance
   suggest_mode?: SuggestMode
   text?: string
 }
+
+export interface SearchTypesTotalHits {
+  relation: SearchTypesTotalHitsRelation
+  value: long
+}
+
+export type SearchTypesTotalHitsRelation = 'eq' | 'gte'
 
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
@@ -1548,7 +1548,7 @@ export interface SearchTemplateResponse<TDocument = unknown> {
   _shards: ShardStatistics
   timed_out: boolean
   took: integer
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
 }
 
 export interface TermvectorsFieldStatistics {
@@ -1651,7 +1651,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
     doc_as_upsert?: boolean
     script?: Script
     scripted_upsert?: boolean
-    _source?: boolean | SearchSourceFilteringSourceFilter
+    _source?: boolean | SearchTypesSourceFilter
     upsert?: TDocument
   }
 }
@@ -2615,7 +2615,7 @@ export interface AggregationsTermsAggregate<TKey = unknown> extends Aggregations
 }
 
 export interface AggregationsTopHitsAggregate extends AggregationsAggregateBase {
-  hits: SearchHitsHitsMetadata<Record<string, any>>
+  hits: SearchTypesHitsMetadata<Record<string, any>>
 }
 
 export interface AggregationsTopMetrics {
@@ -2769,8 +2769,8 @@ export interface AggregationsBucketHistogramHistogramAggregation extends Aggrega
 }
 
 export interface AggregationsBucketHistogramHistogramOrder {
-  _count?: SearchSortSortOrder
-  _key?: SearchSortSortOrder
+  _count?: SearchTypesSortOrder
+  _key?: SearchTypesSortOrder
 }
 
 export interface AggregationsBucketIpRangeIpRangeAggregation extends AggregationsBucketBucketAggregationBase {
@@ -2913,7 +2913,7 @@ export type AggregationsBucketTermsTermsAggregationCollectMode = 'depth_first' |
 
 export type AggregationsBucketTermsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
-export type AggregationsBucketTermsTermsAggregationOrder = SearchSortSortOrder | Record<string, SearchSortSortOrder> | Record<string, SearchSortSortOrder>[]
+export type AggregationsBucketTermsTermsAggregationOrder = SearchTypesSortOrder | Record<string, SearchTypesSortOrder> | Record<string, SearchTypesSortOrder>[]
 
 export interface AggregationsBucketTermsTermsInclude {
   num_partitions: long
@@ -2981,7 +2981,7 @@ export interface AggregationsMetricGeoLineGeoLineAggregation {
   point: AggregationsMetricGeoLineGeoLinePoint
   sort: AggregationsMetricGeoLineGeoLineSort
   include_sort?: boolean
-  sort_order?: SearchSortSortOrder
+  sort_order?: SearchTypesSortOrder
   size?: integer
 }
 
@@ -3068,11 +3068,11 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
   docvalue_fields?: Fields
   explain?: boolean
   from?: integer
-  highlight?: SearchHighlightingHighlight
+  highlight?: SearchTypesHighlight
   script_fields?: Record<string, ScriptField>
   size?: integer
-  sort?: SearchSortSort
-  _source?: boolean | SearchSourceFilteringSourceFilter | Fields
+  sort?: SearchTypesSort
+  _source?: boolean | SearchTypesSourceFilter | Fields
   stored_fields?: Fields
   track_scores?: boolean
   version?: boolean
@@ -3082,7 +3082,7 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
 export interface AggregationsMetricTopMetricsTopMetricsAggregation extends AggregationsMetricMetricAggregationBase {
   metrics?: AggregationsMetricTopMetricsTopMetricsValue | AggregationsMetricTopMetricsTopMetricsValue[]
   size?: integer
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
 }
 
 export interface AggregationsMetricTopMetricsTopMetricsValue {
@@ -3133,7 +3133,7 @@ export interface AggregationsPipelineBucketSortBucketSortAggregation extends Agg
   from?: integer
   gap_policy?: AggregationsPipelineGapPolicy
   size?: integer
-  sort?: SearchSortSort
+  sort?: SearchTypesSort
 }
 
 export interface AggregationsPipelineCumulativeCardinalityCumulativeCardinalityAggregation extends AggregationsPipelinePipelineAggregationBase {
@@ -4574,7 +4574,7 @@ export type QueryDslJoiningHasChildChildScoreMode = 'none' | 'avg' | 'sum' | 'ma
 
 export interface QueryDslJoiningHasChildHasChildQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   max_children?: integer
   min_children?: integer
   query?: QueryDslAbstractionsContainerQueryContainer
@@ -4584,7 +4584,7 @@ export interface QueryDslJoiningHasChildHasChildQuery extends QueryDslAbstractio
 
 export interface QueryDslJoiningHasParentHasParentQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   parent_type?: RelationName
   query?: QueryDslAbstractionsContainerQueryContainer
   score?: boolean
@@ -4592,7 +4592,7 @@ export interface QueryDslJoiningHasParentHasParentQuery extends QueryDslAbstract
 
 export interface QueryDslJoiningNestedNestedQuery extends QueryDslAbstractionsQueryQueryBase {
   ignore_unmapped?: boolean
-  inner_hits?: SearchInnerHitsInnerHits
+  inner_hits?: SearchTypesInnerHits
   path?: Field
   query?: QueryDslAbstractionsContainerQueryContainer
   score_mode?: QueryDslJoiningNestedNestedScoreMode
@@ -4820,14 +4820,14 @@ export interface AsyncSearchAsyncSearch<TDocument = unknown> {
   aggregations?: Record<string, AggregationsAggregate>
   _clusters?: ClusterStatistics
   fields?: Record<string, any>
-  hits: SearchHitsHitsMetadata<TDocument>
+  hits: SearchTypesHitsMetadata<TDocument>
   max_score?: double
   num_reduce_phases?: long
-  profile?: SearchProfileProfile
+  profile?: SearchTypesProfile
   pit_id?: Id
   _scroll_id?: Id
   _shards: ShardStatistics
-  suggest?: Record<SuggestionName, SearchSuggestersSuggest<TDocument>[]>
+  suggest?: Record<SuggestionName, SearchTypesSuggest<TDocument>[]>
   terminated_early?: boolean
   timed_out: boolean
   took: long
@@ -4882,14 +4882,14 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     analyzer?: string
     analyze_wildcard?: boolean
     batched_reduce_size?: long
-    collapse?: SearchCollapsingFieldCollapse
+    collapse?: SearchTypesFieldCollapse
     default_operator?: DefaultOperator
     df?: string
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
-    highlight?: SearchHighlightingHighlight
+    highlight?: SearchTypesHighlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
     indices_boost?: Record<IndexName, double>[]
@@ -4901,22 +4901,22 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     post_filter?: QueryDslAbstractionsContainerQueryContainer
     preference?: string
     profile?: boolean
-    pit?: SearchPointInTimePointInTimeReference
+    pit?: SearchTypesPointInTimeReference
     query?: QueryDslAbstractionsContainerQueryContainer
     query_on_query_string?: string
     request_cache?: boolean
-    rescore?: SearchRescoringRescore[]
+    rescore?: SearchTypesRescore[]
     routing?: Routing
     script_fields?: Record<string, ScriptField>
     search_after?: any[]
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
-    sort?: SearchSortSort
-    _source?: boolean | SearchSourceFilteringSourceFilter
+    sort?: SearchTypesSort
+    _source?: boolean | SearchTypesSourceFilter
     stats?: string[]
     stored_fields?: Fields
-    suggest?: Record<string, SearchSuggestersSuggestContainer>
+    suggest?: Record<string, SearchTypesSuggestContainer>
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
@@ -7852,7 +7852,7 @@ export interface EnrichStatsResponse {
 }
 
 export interface EqlEqlHits<TEvent = unknown> {
-  total?: SearchHitsTotalHits
+  total?: SearchTypesTotalHits
   events?: EqlEqlHitsEvent<TEvent>[]
   sequences?: EqlEqlHitsSequence<TEvent>[]
 }
@@ -9651,7 +9651,7 @@ export type IngestShapeType = 'geo_shape' | 'shape'
 
 export interface IngestSortProcessor extends IngestProcessorBase {
   field: Field
-  order: SearchSortSortOrder
+  order: SearchTypesSortOrder
   target_field: Field
 }
 
@@ -13651,9 +13651,9 @@ export interface SqlTranslateSqlRequest extends RequestBase {
 
 export interface SqlTranslateSqlResponse {
   size: long
-  _source: boolean | Fields | SearchSourceFilteringSourceFilter
+  _source: boolean | Fields | SearchTypesSourceFilter
   fields: Record<Field, string>[]
-  sort: SearchSortSort
+  sort: SearchTypesSort
 }
 
 export interface SslGetCertificatesClusterCertificateInformation {
@@ -13831,11 +13831,6 @@ export interface TextStructureFindStructureTopHit {
   value: any
 }
 
-export interface TransformDestination {
-  index?: IndexName
-  pipeline?: string
-}
-
 export interface TransformLatest {
   sort: Field
   unique_key: Field[]
@@ -13868,12 +13863,6 @@ export interface TransformSettings {
   dates_as_epoch_millis?: boolean
   docs_per_second?: float
   max_page_search_size?: integer
-}
-
-export interface TransformSource {
-  index: Indices
-  query?: QueryDslAbstractionsContainerQueryContainer
-  runtime_mappings?: MappingRuntimeFieldsRuntimeFields
 }
 
 export interface TransformSyncContainer {
@@ -13971,11 +13960,11 @@ export interface TransformGetTransformStatsTransformStats {
 
 export interface TransformPreviewTransformRequest extends RequestBase {
   body?: {
-    dest?: TransformDestination
+    dest?: ReindexDestination
     description?: string
     frequency?: Time
     pivot?: TransformPivot
-    source?: TransformSource
+    source?: ReindexSource
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer
@@ -14019,12 +14008,12 @@ export interface TransformUpdateTransformRequest extends TransformPutTransformRe
 export interface TransformUpdateTransformResponse {
   create_time: long
   description: string
-  dest: TransformDestination
+  dest: ReindexDestination
   frequency: Time
   id: Id
   pivot: TransformPivot
   settings: TransformSettings
-  source: TransformSource
+  source: ReindexSource
   sync?: TransformSyncContainer
   version: VersionString
 }

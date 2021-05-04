@@ -18,7 +18,14 @@
  */
 
 import { TermVectorFilter } from '@global/termvectors/TermVectorFilter'
-import { Fields, Id, IndexName, Routing, VersionNumber, VersionType } from '@_types/common'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 
 export class MultiTermVectorOperation {
   doc: any

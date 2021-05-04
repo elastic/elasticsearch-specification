@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { Field, Fields, Fuzziness, MinimumShouldMatch, MultiTermQueryRewrite } from '@_types/common'
+import {
+  Field,
+  Fields,
+  Fuzziness,
+  MinimumShouldMatch,
+  MultiTermQueryRewrite
+} from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { QueryBase } from '@_types/query_dsl/abstractions/query/Query'
 import { Operator } from '@_types/query_dsl/Operator'
