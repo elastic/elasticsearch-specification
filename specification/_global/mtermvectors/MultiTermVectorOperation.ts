@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TermVectorFilter } from '@global/termvectors/TermVectorFilter'
+import { TermVectorFilter } from '@global/termvectors/types'
 import {
   Fields,
   Id,
