@@ -19,11 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Indices } from '@_types/common'
-import { FieldCapabilities } from './FieldCapabilities'
+import { FieldCapability } from './types'
 
 export class Response {
   body: {
     indices: Indices
-    fields: Dictionary<Field, Dictionary<string, FieldCapabilities>>
+    fields: Dictionary<Field, Dictionary<string, FieldCapability>>
   }
 }

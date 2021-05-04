@@ -346,16 +346,6 @@ export interface ExplainResponse<TDocument = unknown> {
   get?: ExplainInlineGet<TDocument>
 }
 
-export interface FieldCapsFieldCapabilities {
-  aggregatable: boolean
-  indices?: Indices
-  meta?: Record<string, string[]>
-  non_aggregatable_indices?: Indices
-  non_searchable_indices?: Indices
-  searchable: boolean
-  type: string
-}
-
 export interface FieldCapsFieldCapabilitiesBodyIndexFilter {
   range?: FieldCapsFieldCapabilitiesBodyIndexFilterRange
   match_none?: EmptyObject
@@ -381,6 +371,16 @@ export interface FieldCapsFieldCapabilitiesBodyIndexFilterTermVersionControl {
   value: string
 }
 
+export interface FieldCapsFieldCapability {
+  aggregatable: boolean
+  indices?: Indices
+  meta?: Record<string, string[]>
+  non_aggregatable_indices?: Indices
+  non_searchable_indices?: Indices
+  searchable: boolean
+  type: string
+}
+
 export interface FieldCapsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -395,7 +395,7 @@ export interface FieldCapsRequest extends RequestBase {
 
 export interface FieldCapsResponse {
   indices: Indices
-  fields: Record<Field, Record<string, FieldCapsFieldCapabilities>>
+  fields: Record<Field, Record<string, FieldCapsFieldCapability>>
 }
 
 export interface GetRequest extends RequestBase {
