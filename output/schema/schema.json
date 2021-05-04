@@ -121425,6 +121425,7 @@
         {
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121436,6 +121437,7 @@
         {
           "name": "wait_for_completion",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121447,6 +121449,7 @@
         {
           "name": "storage",
           "required": false,
+          "serverDefault": "full_copy",
           "type": {
             "kind": "instance_of",
             "type": {
