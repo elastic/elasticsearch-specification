@@ -29,5 +29,4 @@ export interface Request extends RequestBase {
     accept_enterprise?: boolean
     local?: boolean
   }
-  body?: {}
 }

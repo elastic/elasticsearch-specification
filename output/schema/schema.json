@@ -97194,82 +97194,10 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "license.delete_license"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "license.delete_license"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "license.get_basic_license_status"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "eligible_to_start_basic",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "license.get_basic_license_status"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "License",
-        "namespace": "license.get_license"
+        "namespace": "license._types"
       },
       "properties": [
         {
@@ -97367,7 +97295,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseType",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },
@@ -97383,6 +97311,135 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "active"
+        },
+        {
+          "name": "valid"
+        },
+        {
+          "name": "invalid"
+        },
+        {
+          "name": "expired"
+        }
+      ],
+      "name": {
+        "name": "LicenseStatus",
+        "namespace": "license._types"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "missing"
+        },
+        {
+          "name": "trial"
+        },
+        {
+          "name": "basic"
+        },
+        {
+          "name": "standard"
+        },
+        {
+          "name": "dev"
+        },
+        {
+          "name": "silver"
+        },
+        {
+          "name": "gold"
+        },
+        {
+          "name": "platinum"
+        },
+        {
+          "name": "enterprise"
+        }
+      ],
+      "name": {
+        "name": "LicenseType",
+        "namespace": "license._types"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "license.delete_license"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "license.delete_license"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "license.get_basic_license_status"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "eligible_to_start_basic",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "license.get_basic_license_status"
+      }
     },
     {
       "kind": "interface",
@@ -97486,7 +97543,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseStatus",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },
@@ -97497,7 +97554,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseType",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },
@@ -97524,63 +97581,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "active"
-        },
-        {
-          "name": "valid"
-        },
-        {
-          "name": "invalid"
-        },
-        {
-          "name": "expired"
-        }
-      ],
-      "name": {
-        "name": "LicenseStatus",
-        "namespace": "license.get_license"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "missing"
-        },
-        {
-          "name": "trial"
-        },
-        {
-          "name": "basic"
-        },
-        {
-          "name": "standard"
-        },
-        {
-          "name": "dev"
-        },
-        {
-          "name": "silver"
-        },
-        {
-          "name": "gold"
-        },
-        {
-          "name": "platinum"
-        },
-        {
-          "name": "enterprise"
-        }
-      ],
-      "name": {
-        "name": "LicenseType",
-        "namespace": "license.get_license"
-      }
     },
     {
       "attachedBehaviors": [
@@ -97690,7 +97690,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LicenseAcknowledgement",
+        "name": "Acknowledgement",
         "namespace": "license.post_license"
       },
       "properties": [
@@ -97735,7 +97735,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "License",
-                "namespace": "license.get_license"
+                "namespace": "license._types"
               }
             }
           },
@@ -97748,7 +97748,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "License",
-                  "namespace": "license.get_license"
+                  "namespace": "license._types"
                 }
               }
             }
@@ -97791,7 +97791,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "LicenseAcknowledgement",
+                "name": "Acknowledgement",
                 "namespace": "license.post_license"
               }
             }
@@ -97814,7 +97814,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "LicenseStatus",
-                "namespace": "license.get_license"
+                "namespace": "license._types"
               }
             }
           }
@@ -98018,7 +98018,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "LicenseType",
-                "namespace": "license.get_license"
+                "namespace": "license._types"
               }
             }
           }
@@ -138375,7 +138375,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseType",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },
@@ -138386,7 +138386,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseStatus",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },
@@ -138397,7 +138397,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LicenseType",
-              "namespace": "license.get_license"
+              "namespace": "license._types"
             }
           }
         },

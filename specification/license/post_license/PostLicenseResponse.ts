@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { LicenseStatus } from '@license/get_license/LicenseStatus'
-import { LicenseAcknowledgement } from './LicenseAcknowledgement'
+import { LicenseStatus } from '@license/_types/License'
+import { Acknowledgement } from './types'
 
 export class Response {
   body: {
-    acknowledge?: LicenseAcknowledgement
+    acknowledge?: Acknowledgement
     acknowledged: boolean
     license_status: LicenseStatus
   }

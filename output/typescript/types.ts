@@ -9802,6 +9802,23 @@ export interface IngestSimulatePipelineSimulatePipelineDocument {
   _source: any
 }
 
+export interface LicenseLicense {
+  expiry_date_in_millis: EpochMillis
+  issue_date_in_millis: EpochMillis
+  issued_to: string
+  issuer: string
+  max_nodes?: long
+  max_resource_units?: long
+  signature: string
+  start_date_in_millis: EpochMillis
+  type: LicenseLicenseType
+  uid: string
+}
+
+export type LicenseLicenseStatus = 'active' | 'valid' | 'invalid' | 'expired'
+
+export type LicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'dev' | 'silver' | 'gold' | 'platinum' | 'enterprise'
+
 export interface LicenseDeleteLicenseRequest extends RequestBase {
 }
 
@@ -9814,19 +9831,6 @@ export interface LicenseGetBasicLicenseStatusResponse {
   eligible_to_start_basic: boolean
 }
 
-export interface LicenseGetLicenseLicense {
-  expiry_date_in_millis: EpochMillis
-  issue_date_in_millis: EpochMillis
-  issued_to: string
-  issuer: string
-  max_nodes?: long
-  max_resource_units?: long
-  signature: string
-  start_date_in_millis: EpochMillis
-  type: LicenseGetLicenseLicenseType
-  uid: string
-}
-
 export interface LicenseGetLicenseLicenseInformation {
   expiry_date: DateString
   expiry_date_in_millis: EpochMillis
@@ -9836,15 +9840,11 @@ export interface LicenseGetLicenseLicenseInformation {
   issuer: string
   max_nodes: long
   max_resource_units?: integer
-  status: LicenseGetLicenseLicenseStatus
-  type: LicenseGetLicenseLicenseType
+  status: LicenseLicenseStatus
+  type: LicenseLicenseType
   uid: Uuid
   start_date_in_millis: EpochMillis
 }
-
-export type LicenseGetLicenseLicenseStatus = 'active' | 'valid' | 'invalid' | 'expired'
-
-export type LicenseGetLicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'dev' | 'silver' | 'gold' | 'platinum' | 'enterprise'
 
 export interface LicenseGetLicenseRequest extends RequestBase {
   accept_enterprise?: boolean
@@ -9862,7 +9862,7 @@ export interface LicenseGetTrialLicenseStatusResponse {
   eligible_to_start_trial: boolean
 }
 
-export interface LicensePostLicenseLicenseAcknowledgement {
+export interface LicensePostLicenseAcknowledgement {
   license: string[]
   message: string
 }
@@ -9870,15 +9870,15 @@ export interface LicensePostLicenseLicenseAcknowledgement {
 export interface LicensePostLicenseRequest extends RequestBase {
   acknowledge?: boolean
   body?: {
-    license?: LicenseGetLicenseLicense
-    licenses?: LicenseGetLicenseLicense[]
+    license?: LicenseLicense
+    licenses?: LicenseLicense[]
   }
 }
 
 export interface LicensePostLicenseResponse {
-  acknowledge?: LicensePostLicenseLicenseAcknowledgement
+  acknowledge?: LicensePostLicenseAcknowledgement
   acknowledged: boolean
-  license_status: LicenseGetLicenseLicenseStatus
+  license_status: LicenseLicenseStatus
 }
 
 export interface LicenseStartBasicLicenseRequest extends RequestBase {
@@ -9900,7 +9900,7 @@ export interface LicenseStartTrialLicenseResponse extends AcknowledgedResponseBa
   error_message?: string
   acknowledged: boolean
   trial_was_started: boolean
-  type: LicenseGetLicenseLicenseType
+  type: LicenseLicenseType
 }
 
 export interface LogstashPipelineDeleteRequest extends RequestBase {
@@ -14672,9 +14672,9 @@ export interface WatcherStopResponse extends AcknowledgedResponseBase {}
 
 export interface XpackInfoMinimalLicenseInformation {
   expiry_date_in_millis: EpochMillis
-  mode: LicenseGetLicenseLicenseType
-  status: LicenseGetLicenseLicenseStatus
-  type: LicenseGetLicenseLicenseType
+  mode: LicenseLicenseType
+  status: LicenseLicenseStatus
+  type: LicenseLicenseType
   uid: string
 }
 
