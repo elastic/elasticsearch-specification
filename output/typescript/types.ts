@@ -14044,15 +14044,9 @@ export interface WatcherAction {
   name?: Name
   throttle_period?: Time
   throttle_period_in_millis?: EpochMillis
-<<<<<<< HEAD
-  transform?: WatcherTransformContainer
+  transform?: TransformContainer
   index?: WatcherIndex
   logging?: WatcherLogging
-=======
-  transform?: TransformContainer
-  index?: WatcherActionIndex
-  logging?: WatcherLoggingAction
->>>>>>> master
 }
 
 export type WatcherActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
