@@ -17,17 +17,17 @@
  * under the License.
  */
 
+import { Vertex } from '@graph/_types/Vertex'
 import { ShardFailure } from '@_types/Errors'
 import { long } from '@_types/Numeric'
-import { GraphConnection } from './GraphConnection'
-import { GraphVertex } from './GraphVertex'
+import { Connection } from '../_types/Connection'
 
 export class Response {
   body: {
-    connections: GraphConnection[]
+    connections: Connection[]
     failures: ShardFailure[]
     timed_out: boolean
     took: long
-    vertices: GraphVertex[]
+    vertices: Vertex[]
   }
 }

@@ -18,14 +18,17 @@
  */
 
 import { Field } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { GraphVertexInclude } from './GraphVertexInclude'
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
-export class GraphVertexDefinition {
-  exclude?: string[]
+export class ExploreControls {
+  sample_diversity?: SampleDiversity
+  sample_size?: integer
+  timeout?: Time
+  use_significance: boolean
+}
+
+export class SampleDiversity {
   field: Field
-  include?: GraphVertexInclude[]
-  min_doc_count?: long
-  shard_min_doc_count?: long
-  size?: integer
+  max_docs_per_value: integer
 }

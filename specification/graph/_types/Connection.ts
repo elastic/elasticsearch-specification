@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { double } from '@_types/Numeric'
+import { double, long } from '@_types/Numeric'
 
-export class GraphVertexInclude {
-  boost: double
-  term: string
+export class Connection {
+  doc_count: long
+  source: long
+  target: long
+  weight: double
 }

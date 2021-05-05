@@ -18,10 +18,10 @@
  */
 
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GraphVertexDefinition } from './GraphVertexDefinition'
+import { VertexDefinition } from './Vertex'
 
 export class Hop {
   connections?: Hop
   query: QueryContainer
-  vertices: GraphVertexDefinition[]
+  vertices: VertexDefinition[]
 }
