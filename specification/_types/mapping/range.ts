@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { double } from "@_types/Numeric"
-import { DocValuesPropertyBase } from "./core"
+import { double } from '@_types/Numeric'
+import { DocValuesPropertyBase } from './core'
 
 export class RangePropertyBase extends DocValuesPropertyBase {
   boost?: double

@@ -17,25 +17,25 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from "@indices/_types/FielddataFrequencyFilter"
-import { NumericFielddata } from "@indices/_types/NumericFielddata"
-import { Dictionary } from "@spec_utils/Dictionary"
-import { Fields, RelationName } from "@_types/common"
-import { double, integer } from "@_types/Numeric"
-import { DateString } from "@_types/Time"
-import { TermVectorOption } from "../TermVectorOption"
-import { ObjectProperty, NestedProperty } from "./complex"
-import { GeoPointProperty } from "./geo/geo_point/GeoPointProperty"
-import { GeoShapeProperty } from "./geo/geo_shape/GeoShapeProperty"
-import { PointProperty } from "./geo/point/PointProperty"
-import { PropertyBase } from "./Property"
-import { RangeProperty } from "./range"
-import { CompletionProperty } from "./specialized/completion/CompletionProperty"
-import { GenericProperty } from "./specialized/generic/GenericProperty"
-import { IpProperty } from "./specialized/ip/IpProperty"
-import { Murmur3HashProperty } from "./specialized/murmur3_hash/Murmur3HashProperty"
-import { ShapeProperty } from "./specialized/shape/ShapeProperty"
-import { TokenCountProperty } from "./specialized/token_count/TokenCountProperty"
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Fields, RelationName } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
+import { NestedProperty, ObjectProperty } from './complex'
+import { GeoPointProperty, GeoShapeProperty, PointProperty } from './geo'
+import { PropertyBase } from './Property'
+import { RangeProperty } from './range'
+import {
+  CompletionProperty,
+  GenericProperty,
+  IpProperty,
+  Murmur3HashProperty,
+  ShapeProperty,
+  TokenCountProperty
+} from './specialized'
+import { TermVectorOption } from './TermVectorOption'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -50,29 +50,29 @@ export type CoreProperty =
   | TextProperty
   | DocValuesProperty
 
-  export class DocValuesPropertyBase extends CorePropertyBase {
-    doc_values?: boolean
-  }
-  
-  export type DocValuesProperty =
-    | BinaryProperty
-    | BooleanProperty
-    | DateProperty
-    | DateNanosProperty
-    | KeywordProperty
-    | NumberProperty
-    | RangeProperty
-    | GeoPointProperty
-    | GeoShapeProperty
-    | CompletionProperty
-    | GenericProperty
-    | IpProperty
-    | Murmur3HashProperty
-    | ShapeProperty
-    | TokenCountProperty
-    | VersionProperty
-    | WildcardProperty
-    | PointProperty
+export class DocValuesPropertyBase extends CorePropertyBase {
+  doc_values?: boolean
+}
+
+export type DocValuesProperty =
+  | BinaryProperty
+  | BooleanProperty
+  | DateProperty
+  | DateNanosProperty
+  | KeywordProperty
+  | NumberProperty
+  | RangeProperty
+  | GeoPointProperty
+  | GeoShapeProperty
+  | CompletionProperty
+  | GenericProperty
+  | IpProperty
+  | Murmur3HashProperty
+  | ShapeProperty
+  | TokenCountProperty
+  | VersionProperty
+  | WildcardProperty
+  | PointProperty
 
 export class BinaryProperty extends DocValuesPropertyBase {
   type: 'binary'

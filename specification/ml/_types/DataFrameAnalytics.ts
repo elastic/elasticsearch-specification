@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ByteSize, Field, IndexName, Indices, Name } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 

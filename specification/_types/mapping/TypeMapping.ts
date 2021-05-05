@@ -19,16 +19,17 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, PropertyName } from '@_types/common'
-import { DynamicMapping } from './DynamicMapping'
-import { DynamicTemplate } from './dynamic_template/DynamicTemplate'
-import { AllField } from './meta_fields/all/AllField'
-import { FieldNamesField } from './meta_fields/field_names/FieldNamesField'
-import { IndexField } from './meta_fields/index/IndexField'
-import { RoutingField } from './meta_fields/routing/RoutingField'
-import { SizeField } from './meta_fields/size/SizeField'
-import { SourceField } from './meta_fields/source/SourceField'
-import { RuntimeField } from './runtime_fields/RuntimeFields'
-import { Property } from './types/Property'
+import { DynamicMapping, DynamicTemplate } from './dynamic-template'
+import {
+  AllField,
+  FieldNamesField,
+  IndexField,
+  RoutingField,
+  SizeField,
+  SourceField
+} from './meta-fields'
+import { Property } from './Property'
+import { RuntimeField } from './RuntimeFields'
 
 export class TypeMapping {
   all_field?: AllField

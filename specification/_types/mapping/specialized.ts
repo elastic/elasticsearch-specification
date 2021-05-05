@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { StringFielddata } from "@indices/_types/StringFielddata"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { Name, Field } from "@_types/common"
-import { integer, double } from "@_types/Numeric"
-import { TermVectorOption } from "../TermVectorOption"
-import { DocValuesPropertyBase, IndexOptions } from "./core"
-import { PropertyBase } from "./Property"
+import { StringFielddata } from '@indices/_types/StringFielddata'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, Name } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
+import { DocValuesPropertyBase, IndexOptions } from './core'
+import { PropertyBase } from './Property'
+import { TermVectorOption } from './TermVectorOption'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string

@@ -17,13 +17,23 @@
  * under the License.
  */
 
-import { Dictionary } from "@spec_utils/Dictionary"
-import { Metadata, PropertyName } from "@_types/common"
-import { integer } from "@_types/Numeric"
-import { DynamicMapping } from "../dynamic-template"
-import { FlattenedProperty } from "./complex"
-import { JoinProperty, PercolatorProperty, RankFeatureProperty, RankFeaturesProperty, CoreProperty } from "./core"
-import { ConstantKeywordProperty, FieldAliasProperty, HistogramProperty } from "./specialized"
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Metadata, PropertyName } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { FlattenedProperty } from './complex'
+import {
+  CoreProperty,
+  JoinProperty,
+  PercolatorProperty,
+  RankFeatureProperty,
+  RankFeaturesProperty
+} from './core'
+import { DynamicMapping } from './dynamic-template'
+import {
+  ConstantKeywordProperty,
+  FieldAliasProperty,
+  HistogramProperty
+} from './specialized'
 
 export class PropertyBase {
   local_metadata?: Metadata

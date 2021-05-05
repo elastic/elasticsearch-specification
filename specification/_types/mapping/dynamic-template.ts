@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { PropertyBase } from "./types/Property"
+import { PropertyBase } from './Property'
 
 export class DynamicTemplate {
   mapping?: PropertyBase
