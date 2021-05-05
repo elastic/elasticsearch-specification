@@ -18,11 +18,11 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { IndexState } from '@indices/_types/IndexState'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, VersionNumber } from '@_types/common'
-import { IndexSettings } from '@_types/index/IndexSettings'
-import { IndexState } from '@_types/index/IndexState'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
 

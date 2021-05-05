@@ -17,7 +17,18 @@
  * under the License.
  */
 
-export enum IndexSortMode {
-  min = 0,
-  max = 1
+import { Dictionary } from '@spec_utils/Dictionary'
+import { IndexName } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Alias } from './Alias'
+import { IndexSettings } from './IndexSettings'
+
+export class IndexState {
+  aliases?: Dictionary<IndexName, Alias>
+  mappings?: TypeMapping
+  settings: IndexSettings | IndexStatePrefixedSettings
+}
+
+export class IndexStatePrefixedSettings {
+  index: IndexSettings
 }

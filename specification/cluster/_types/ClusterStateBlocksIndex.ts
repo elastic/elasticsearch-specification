@@ -18,10 +18,10 @@
  */
 
 import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexAlias, IndexName, VersionNumber } from '@_types/common'
-import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 
