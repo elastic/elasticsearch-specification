@@ -511,9 +511,9 @@ export interface InfoRequest extends RequestBase {
 }
 
 export interface InfoResponse {
-  cluster_name: string
-  cluster_uuid: string
-  name: string
+  cluster_name: Name
+  cluster_uuid: Uuid
+  name: Name
   tagline: string
   version: ElasticsearchVersionInfo
 }
