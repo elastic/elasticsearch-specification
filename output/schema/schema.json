@@ -81338,8 +81338,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GraphConnection",
-        "namespace": "graph.explore"
+        "name": "Connection",
+        "namespace": "graph._types"
       },
       "properties": [
         {
@@ -81391,8 +81391,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GraphExploreControls",
-        "namespace": "graph.explore"
+        "name": "ExploreControls",
+        "namespace": "graph._types"
       },
       "properties": [
         {
@@ -81402,7 +81402,7 @@
             "kind": "instance_of",
             "type": {
               "name": "SampleDiversity",
-              "namespace": "graph.explore"
+              "namespace": "graph._types"
             }
           }
         },
@@ -81444,8 +81444,84 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GraphVertex",
-        "namespace": "graph.explore"
+        "name": "Hop",
+        "namespace": "graph._types"
+      },
+      "properties": [
+        {
+          "name": "connections",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Hop",
+              "namespace": "graph._types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "vertices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VertexDefinition",
+                "namespace": "graph._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SampleDiversity",
+        "namespace": "graph._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_docs_per_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Vertex",
+        "namespace": "graph._types"
       },
       "properties": [
         {
@@ -81465,8 +81541,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Field",
+              "namespace": "_types"
             }
           }
         },
@@ -81497,8 +81573,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GraphVertexDefinition",
-        "namespace": "graph.explore"
+        "name": "VertexDefinition",
+        "namespace": "graph._types"
       },
       "properties": [
         {
@@ -81534,8 +81610,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "GraphVertexInclude",
-                "namespace": "graph.explore"
+                "name": "VertexInclude",
+                "namespace": "graph._types"
               }
             }
           }
@@ -81578,8 +81654,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GraphVertexInclude",
-        "namespace": "graph.explore"
+        "name": "VertexInclude",
+        "namespace": "graph._types"
       },
       "properties": [
         {
@@ -81607,51 +81683,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Hop",
-        "namespace": "graph.explore"
-      },
-      "properties": [
-        {
-          "name": "connections",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Hop",
-              "namespace": "graph.explore"
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "vertices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "GraphVertexDefinition",
-                "namespace": "graph.explore"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81665,7 +81696,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Hop",
-                "namespace": "graph.explore"
+                "namespace": "graph._types"
               }
             }
           },
@@ -81675,8 +81706,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "GraphExploreControls",
-                "namespace": "graph.explore"
+                "name": "ExploreControls",
+                "namespace": "graph._types"
               }
             }
           },
@@ -81699,8 +81730,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "GraphVertexDefinition",
-                  "namespace": "graph.explore"
+                  "name": "VertexDefinition",
+                  "namespace": "graph._types"
                 }
               }
             }
@@ -81779,8 +81810,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "GraphConnection",
-                  "namespace": "graph.explore"
+                  "name": "Connection",
+                  "namespace": "graph._types"
                 }
               }
             }
@@ -81829,8 +81860,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "GraphVertex",
-                  "namespace": "graph.explore"
+                  "name": "Vertex",
+                  "namespace": "graph._types"
                 }
               }
             }
@@ -81842,37 +81873,6 @@
         "name": "Response",
         "namespace": "graph.explore"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SampleDiversity",
-        "namespace": "graph.explore"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_docs_per_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",

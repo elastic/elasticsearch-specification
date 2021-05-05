@@ -7990,45 +7990,50 @@ export interface FeaturesResetFeaturesResponse {
   stub: integer
 }
 
-export interface GraphExploreGraphConnection {
+export interface GraphConnection {
   doc_count: long
   source: long
   target: long
   weight: double
 }
 
-export interface GraphExploreGraphExploreControls {
-  sample_diversity?: GraphExploreSampleDiversity
+export interface GraphExploreControls {
+  sample_diversity?: GraphSampleDiversity
   sample_size?: integer
   timeout?: Time
   use_significance: boolean
 }
 
-export interface GraphExploreGraphVertex {
+export interface GraphHop {
+  connections?: GraphHop
+  query: QueryDslQueryContainer
+  vertices: GraphVertexDefinition[]
+}
+
+export interface GraphSampleDiversity {
+  field: Field
+  max_docs_per_value: integer
+}
+
+export interface GraphVertex {
   depth: long
-  field: string
+  field: Field
   term: string
   weight: double
 }
 
-export interface GraphExploreGraphVertexDefinition {
+export interface GraphVertexDefinition {
   exclude?: string[]
   field: Field
-  include?: GraphExploreGraphVertexInclude[]
+  include?: GraphVertexInclude[]
   min_doc_count?: long
   shard_min_doc_count?: long
   size?: integer
 }
 
-export interface GraphExploreGraphVertexInclude {
+export interface GraphVertexInclude {
   boost: double
   term: string
-}
-
-export interface GraphExploreHop {
-  connections?: GraphExploreHop
-  query: QueryDslQueryContainer
-  vertices: GraphExploreGraphVertexDefinition[]
 }
 
 export interface GraphExploreRequest extends RequestBase {
@@ -8037,24 +8042,19 @@ export interface GraphExploreRequest extends RequestBase {
   routing?: Routing
   timeout?: Time
   body?: {
-    connections?: GraphExploreHop
-    controls?: GraphExploreGraphExploreControls
+    connections?: GraphHop
+    controls?: GraphExploreControls
     query?: QueryDslQueryContainer
-    vertices?: GraphExploreGraphVertexDefinition[]
+    vertices?: GraphVertexDefinition[]
   }
 }
 
 export interface GraphExploreResponse {
-  connections: GraphExploreGraphConnection[]
+  connections: GraphConnection[]
   failures: ShardFailure[]
   timed_out: boolean
   took: long
-  vertices: GraphExploreGraphVertex[]
-}
-
-export interface GraphExploreSampleDiversity {
-  field: Field
-  max_docs_per_value: integer
+  vertices: GraphVertex[]
 }
 
 export interface IlmLifecycleAction {
