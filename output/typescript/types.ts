@@ -12377,13 +12377,45 @@ export interface NodesReloadSecureSettingsResponse extends NodesNodesResponseBas
   nodes: Record<string, NodesNodesStatsNodeStats | NodesReloadSecureSettingsNodeReloadException>
 }
 
+export interface RollupDateHistogramGrouping {
+  delay?: Time
+  field: Field
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
+}
+
+export interface RollupFieldMetric {
+  field: Field
+  metrics: RollupMetric[]
+}
+
+export interface RollupGroupings {
+  date_histogram?: RollupDateHistogramGrouping
+  histogram?: RollupHistogramGrouping
+  terms?: RollupTermsGrouping
+}
+
+export interface RollupHistogramGrouping {
+  fields: Fields
+  interval: long
+}
+
+export type RollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
+
+export interface RollupTermsGrouping {
+  fields: Fields
+}
+
 export interface RollupCreateRollupJobRequest extends RequestBase {
   id: Id
   body?: {
     cron?: string
-    groups?: RollupRollupConfigurationRollupGroupings
+    groups?: RollupGroupings
     index_pattern?: string
-    metrics?: RollupRollupConfigurationRollupFieldMetric[]
+    metrics?: RollupFieldMetric[]
     page_size?: long
     rollup_index?: IndexName
   }
@@ -12396,7 +12428,19 @@ export interface RollupDeleteRollupJobRequest extends RequestBase {
 }
 
 export interface RollupDeleteRollupJobResponse extends AcknowledgedResponseBase {
-  task_failures?: RollupGetRollupJobRollupJobTaskFailure[]
+  task_failures?: RollupDeleteRollupJobTaskFailure[]
+}
+
+export interface RollupDeleteRollupJobTaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: RollupDeleteRollupJobTaskFailureReason
+}
+
+export interface RollupDeleteRollupJobTaskFailureReason {
+  type: string
+  reason: string
 }
 
 export interface RollupGetRollupCapabilitiesRequest extends RequestBase {
@@ -12406,34 +12450,34 @@ export interface RollupGetRollupCapabilitiesRequest extends RequestBase {
 export interface RollupGetRollupCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupCapabilitiesRollupCapabilities> {}
 
 export interface RollupGetRollupCapabilitiesRollupCapabilities {
-  rollup_jobs: RollupGetRollupCapabilitiesRollupCapabilitiesJob[]
+  rollup_jobs: RollupGetRollupCapabilitiesRollupCapabilitySummary[]
 }
 
-export interface RollupGetRollupCapabilitiesRollupCapabilitiesJob {
+export interface RollupGetRollupCapabilitiesRollupCapabilitySummary {
   fields: Record<Field, Record<string, any>>
   index_pattern: string
   job_id: string
   rollup_index: string
 }
 
+export interface RollupGetRollupIndexCapabilitiesIndexCapabilities {
+  rollup_jobs: RollupGetRollupIndexCapabilitiesRollupJobSummary[]
+}
+
 export interface RollupGetRollupIndexCapabilitiesRequest extends RequestBase {
   index: Id
 }
 
-export interface RollupGetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupIndexCapabilitiesRollupIndexCapabilities> {}
+export interface RollupGetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupIndexCapabilitiesIndexCapabilities> {}
 
-export interface RollupGetRollupIndexCapabilitiesRollupIndexCapabilities {
-  rollup_jobs: RollupGetRollupIndexCapabilitiesRollupIndexCapabilitiesJob[]
-}
-
-export interface RollupGetRollupIndexCapabilitiesRollupIndexCapabilitiesJob {
-  fields: Record<Field, RollupGetRollupIndexCapabilitiesRollupIndexCapabilitiesJobField[]>
+export interface RollupGetRollupIndexCapabilitiesRollupJobSummary {
+  fields: Record<Field, RollupGetRollupIndexCapabilitiesRollupJobSummaryField[]>
   index_pattern: string
   job_id: Id
   rollup_index: IndexName
 }
 
-export interface RollupGetRollupIndexCapabilitiesRollupIndexCapabilitiesJobField {
+export interface RollupGetRollupIndexCapabilitiesRollupJobSummaryField {
   agg: string
   time_zone?: string
   calendar_interval?: Time
@@ -12446,24 +12490,24 @@ export interface RollupGetRollupJobRequest extends RequestBase {
 }
 
 export interface RollupGetRollupJobResponse {
-  jobs: RollupGetRollupJobRollupJobInformation[]
+  jobs: RollupGetRollupJobRollupJob[]
+}
+
+export interface RollupGetRollupJobRollupJob {
+  config: RollupGetRollupJobRollupJobConfiguration
+  stats: RollupGetRollupJobRollupJobStats
+  status: RollupGetRollupJobRollupJobStatus
 }
 
 export interface RollupGetRollupJobRollupJobConfiguration {
   cron: string
-  groups: RollupRollupConfigurationRollupGroupings
+  groups: RollupGroupings
   id: Id
   index_pattern: string
-  metrics: RollupRollupConfigurationRollupFieldMetric[]
+  metrics: RollupFieldMetric[]
   page_size: long
   rollup_index: IndexName
   timeout: Time
-}
-
-export interface RollupGetRollupJobRollupJobInformation {
-  config: RollupGetRollupJobRollupJobConfiguration
-  stats: RollupGetRollupJobRollupJobStats
-  status: RollupGetRollupJobRollupJobStatus
 }
 
 export interface RollupGetRollupJobRollupJobStats {
@@ -12487,18 +12531,6 @@ export interface RollupGetRollupJobRollupJobStatus {
   upgraded_doc_id?: boolean
 }
 
-export interface RollupGetRollupJobRollupJobTaskFailure {
-  task_id: TaskId
-  node_id: Id
-  status: string
-  reason: RollupGetRollupJobRollupJobTaskFailureReason
-}
-
-export interface RollupGetRollupJobRollupJobTaskFailureReason {
-  type: string
-  reason: string
-}
-
 export interface RollupRollupRequest extends RequestBase {
   stubb: integer
   stuba: integer
@@ -12509,38 +12541,6 @@ export interface RollupRollupRequest extends RequestBase {
 
 export interface RollupRollupResponse {
   stub: integer
-}
-
-export interface RollupRollupConfigurationDateHistogramRollupGrouping {
-  delay?: Time
-  field: Field
-  format?: string
-  interval?: Time
-  calendar_interval?: Time
-  fixed_interval?: Time
-  time_zone?: string
-}
-
-export interface RollupRollupConfigurationHistogramRollupGrouping {
-  fields: Fields
-  interval: long
-}
-
-export interface RollupRollupConfigurationRollupFieldMetric {
-  field: Field
-  metrics: RollupRollupConfigurationRollupMetric[]
-}
-
-export interface RollupRollupConfigurationRollupGroupings {
-  date_histogram?: RollupRollupConfigurationDateHistogramRollupGrouping
-  histogram?: RollupRollupConfigurationHistogramRollupGrouping
-  terms?: RollupRollupConfigurationTermsRollupGrouping
-}
-
-export type RollupRollupConfigurationRollupMetric = 'min' | 'max' | 'sum' | 'avg' | 'value_count'
-
-export interface RollupRollupConfigurationTermsRollupGrouping {
-  fields: Fields
 }
 
 export interface RollupRollupSearchRequest extends RequestBase {

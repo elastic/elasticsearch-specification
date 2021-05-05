@@ -119424,6 +119424,243 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "DateHistogramGrouping",
+        "namespace": "rollup._types"
+      },
+      "properties": [
+        {
+          "name": "delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fixed_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldMetric",
+        "namespace": "rollup._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "metrics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metric",
+                "namespace": "rollup._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Groupings",
+        "namespace": "rollup._types"
+      },
+      "properties": [
+        {
+          "name": "date_histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramGrouping",
+              "namespace": "rollup._types"
+            }
+          }
+        },
+        {
+          "name": "histogram",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramGrouping",
+              "namespace": "rollup._types"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsGrouping",
+              "namespace": "rollup._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "HistogramGrouping",
+        "namespace": "rollup._types"
+      },
+      "properties": [
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "interval",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "min"
+        },
+        {
+          "name": "max"
+        },
+        {
+          "name": "sum"
+        },
+        {
+          "name": "avg"
+        },
+        {
+          "name": "value_count"
+        }
+      ],
+      "name": {
+        "name": "Metric",
+        "namespace": "rollup._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermsGrouping",
+        "namespace": "rollup._types"
+      },
+      "properties": [
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -119447,8 +119684,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RollupGroupings",
-                "namespace": "rollup.rollup_configuration"
+                "name": "Groupings",
+                "namespace": "rollup._types"
               }
             }
           },
@@ -119471,8 +119708,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RollupFieldMetric",
-                  "namespace": "rollup.rollup_configuration"
+                  "name": "FieldMetric",
+                  "namespace": "rollup._types"
                 }
               }
             }
@@ -119582,8 +119819,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RollupJobTaskFailure",
-                  "namespace": "rollup.get_rollup_job"
+                  "name": "TaskFailure",
+                  "namespace": "rollup.delete_rollup_job"
                 }
               }
             }
@@ -119601,6 +119838,90 @@
         "name": "Response",
         "namespace": "rollup.delete_rollup_job"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TaskFailure",
+        "namespace": "rollup.delete_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "task_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskFailureReason",
+              "namespace": "rollup.delete_rollup_job"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TaskFailureReason",
+        "namespace": "rollup.delete_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -119676,7 +119997,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "RollupCapabilitiesJob",
+                "name": "RollupCapabilitySummary",
                 "namespace": "rollup.get_rollup_capabilities"
               }
             }
@@ -119687,7 +120008,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RollupCapabilitiesJob",
+        "name": "RollupCapabilitySummary",
         "namespace": "rollup.get_rollup_capabilities"
       },
       "properties": [
@@ -119756,6 +120077,29 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "IndexCapabilities",
+        "namespace": "rollup.get_rollup_index_capabilities"
+      },
+      "properties": [
+        {
+          "name": "rollup_jobs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RollupJobSummary",
+                "namespace": "rollup.get_rollup_index_capabilities"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -119798,7 +120142,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "RollupIndexCapabilities",
+              "name": "IndexCapabilities",
               "namespace": "rollup.get_rollup_index_capabilities"
             }
           }
@@ -119817,30 +120161,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RollupIndexCapabilities",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      },
-      "properties": [
-        {
-          "name": "rollup_jobs",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RollupIndexCapabilitiesJob",
-                "namespace": "rollup.get_rollup_index_capabilities"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupIndexCapabilitiesJob",
+        "name": "RollupJobSummary",
         "namespace": "rollup.get_rollup_index_capabilities"
       },
       "properties": [
@@ -119862,7 +120183,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RollupIndexCapabilitiesJobField",
+                  "name": "RollupJobSummaryField",
                   "namespace": "rollup.get_rollup_index_capabilities"
                 }
               }
@@ -119907,7 +120228,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RollupIndexCapabilitiesJobField",
+        "name": "RollupJobSummaryField",
         "namespace": "rollup.get_rollup_index_capabilities"
       },
       "properties": [
@@ -120012,7 +120333,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RollupJobInformation",
+                  "name": "RollupJob",
                   "namespace": "rollup.get_rollup_job"
                 }
               }
@@ -120025,6 +120346,48 @@
         "name": "Response",
         "namespace": "rollup.get_rollup_job"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJob",
+        "namespace": "rollup.get_rollup_job"
+      },
+      "properties": [
+        {
+          "name": "config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupJobConfiguration",
+              "namespace": "rollup.get_rollup_job"
+            }
+          }
+        },
+        {
+          "name": "stats",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupJobStats",
+              "namespace": "rollup.get_rollup_job"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupJobStatus",
+              "namespace": "rollup.get_rollup_job"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -120050,8 +120413,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RollupGroupings",
-              "namespace": "rollup.rollup_configuration"
+              "name": "Groupings",
+              "namespace": "rollup._types"
             }
           }
         },
@@ -120085,8 +120448,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "RollupFieldMetric",
-                "namespace": "rollup.rollup_configuration"
+                "name": "FieldMetric",
+                "namespace": "rollup._types"
               }
             }
           }
@@ -120121,48 +120484,6 @@
             "type": {
               "name": "Time",
               "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupJobInformation",
-        "namespace": "rollup.get_rollup_job"
-      },
-      "properties": [
-        {
-          "name": "config",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RollupJobConfiguration",
-              "namespace": "rollup.get_rollup_job"
-            }
-          }
-        },
-        {
-          "name": "stats",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RollupJobStats",
-              "namespace": "rollup.get_rollup_job"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RollupJobStatus",
-              "namespace": "rollup.get_rollup_job"
             }
           }
         }
@@ -120359,90 +120680,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "RollupJobTaskFailure",
-        "namespace": "rollup.get_rollup_job"
-      },
-      "properties": [
-        {
-          "name": "task_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TaskId",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "node_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RollupJobTaskFailureReason",
-              "namespace": "rollup.get_rollup_job"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupJobTaskFailureReason",
-        "namespace": "rollup.get_rollup_job"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -120522,243 +120759,6 @@
         "name": "Response",
         "namespace": "rollup.rollup"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "DateHistogramRollupGrouping",
-        "namespace": "rollup.rollup_configuration"
-      },
-      "properties": [
-        {
-          "name": "delay",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "calendar_interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "fixed_interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_zone",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "HistogramRollupGrouping",
-        "namespace": "rollup.rollup_configuration"
-      },
-      "properties": [
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "interval",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupFieldMetric",
-        "namespace": "rollup.rollup_configuration"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "metrics",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RollupMetric",
-                "namespace": "rollup.rollup_configuration"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupGroupings",
-        "namespace": "rollup.rollup_configuration"
-      },
-      "properties": [
-        {
-          "name": "date_histogram",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateHistogramRollupGrouping",
-              "namespace": "rollup.rollup_configuration"
-            }
-          }
-        },
-        {
-          "name": "histogram",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HistogramRollupGrouping",
-              "namespace": "rollup.rollup_configuration"
-            }
-          }
-        },
-        {
-          "name": "terms",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TermsRollupGrouping",
-              "namespace": "rollup.rollup_configuration"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "min"
-        },
-        {
-          "name": "max"
-        },
-        {
-          "name": "sum"
-        },
-        {
-          "name": "avg"
-        },
-        {
-          "name": "value_count"
-        }
-      ],
-      "name": {
-        "name": "RollupMetric",
-        "namespace": "rollup.rollup_configuration"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermsRollupGrouping",
-        "namespace": "rollup.rollup_configuration"
-      },
-      "properties": [
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [

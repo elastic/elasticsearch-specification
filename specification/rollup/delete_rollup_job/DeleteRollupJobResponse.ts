@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RollupJobTaskFailure } from '@rollup/get_rollup_job/RollupJobTaskFailure'
+import { TaskFailure } from '@rollup/delete_rollup_job/types'
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response extends AcknowledgedResponseBase {
   body: {
-    task_failures?: RollupJobTaskFailure[]
+    task_failures?: TaskFailure[]
   }
 }

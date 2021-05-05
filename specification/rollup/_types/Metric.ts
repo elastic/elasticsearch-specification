@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { Id, TaskId } from '@_types/common'
+import { Field } from '@_types/common'
 
-export class RollupJobTaskFailure {
-  task_id: TaskId
-  node_id: Id
-  status: string
-  reason: RollupJobTaskFailureReason
+export enum Metric {
+  min = 0,
+  max = 1,
+  sum = 2,
+  avg = 3,
+  value_count = 4
 }
 
-export class RollupJobTaskFailureReason {
-  type: string
-  reason: string
+export class FieldMetric {
+  field: Field
+  metrics: Metric[]
 }
