@@ -18,6 +18,7 @@
  */
 
 import { Alias } from '@indices/_types/Alias'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
@@ -28,7 +29,6 @@ import {
   Name,
   VersionNumber
 } from '@_types/common'
-import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 

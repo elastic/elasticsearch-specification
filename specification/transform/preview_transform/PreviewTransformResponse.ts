@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexState } from '@_types/index/IndexState'
+import { IndexState } from '@indices/_types/IndexState'
 
 export class Response<TTransform> {
   body: {

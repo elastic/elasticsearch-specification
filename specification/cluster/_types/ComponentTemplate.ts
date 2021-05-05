@@ -18,9 +18,9 @@
  */
 
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
+import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
-import { IndexSettings } from '@_types/index/IndexSettings'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class ComponentTemplate {

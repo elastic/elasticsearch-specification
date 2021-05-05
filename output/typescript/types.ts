@@ -3565,161 +3565,6 @@ export interface AnalysisTokenizersNGramNGramTokenizer extends AnalysisTokenizer
 
 export type AnalysisTokenizersNGramTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
 
-export type IndexIndexCheckOnStartup = 'false' | 'checksum' | 'true'
-
-export interface IndexIndexRouting {
-  allocation?: IndexIndexRoutingAllocation
-  rebalance?: IndexIndexRoutingRebalance
-}
-
-export interface IndexIndexRoutingAllocation {
-  enable?: IndexIndexRoutingAllocationOptions
-  include?: IndexIndexRoutingAllocationInclude
-  initial_recovery?: IndexIndexRoutingAllocationInitialRecovery
-  disk?: IndexIndexRoutingAllocationDisk
-}
-
-export interface IndexIndexRoutingAllocationDisk {
-  threshold_enabled: boolean | string
-}
-
-export interface IndexIndexRoutingAllocationInclude {
-  _tier_preference?: string
-  _id?: Id
-}
-
-export interface IndexIndexRoutingAllocationInitialRecovery {
-  _id?: Id
-}
-
-export type IndexIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export interface IndexIndexRoutingRebalance {
-  enable: IndexIndexRoutingRebalanceOptions
-}
-
-export type IndexIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
-
-export interface IndexIndexSettingBlocks {
-  read_only?: boolean
-  'index.blocks.read_only'?: boolean
-  read_only_allow_delete?: boolean
-  'index.blocks.read_only_allow_delete'?: boolean
-  read?: boolean
-  'index.blocks.read'?: boolean
-  write?: boolean | string
-  'index.blocks.write'?: boolean | string
-  metadata?: boolean
-  'index.blocks.metadata'?: boolean
-}
-
-export interface IndexIndexSettings {
-  number_of_shards?: integer | string
-  'index.number_of_shards'?: integer | string
-  number_of_replicas?: integer | string
-  'index.number_of_replicas'?: integer | string
-  number_of_routing_shards?: integer
-  'index.number_of_routing_shards'?: integer
-  check_on_startup?: IndexIndexCheckOnStartup
-  'index.check_on_startup'?: IndexIndexCheckOnStartup
-  codec?: string
-  'index.codec'?: string
-  routing_partition_size?: integer | string
-  'index.routing_partition_size'?: integer | string
-  'soft_deletes.retention_lease.period'?: Time
-  'index.soft_deletes.retention_lease.period'?: Time
-  load_fixed_bitset_filters_eagerly?: boolean
-  'index.load_fixed_bitset_filters_eagerly'?: boolean
-  hidden?: boolean | string
-  'index.hidden'?: boolean | string
-  auto_expand_replicas?: string
-  'index.auto_expand_replicas'?: string
-  'search.idle.after'?: Time
-  'index.search.idle.after'?: Time
-  refresh_interval?: Time
-  'index.refresh_interval'?: Time
-  max_result_window?: integer
-  'index.max_result_window'?: integer
-  max_inner_result_window?: integer
-  'index.max_inner_result_window'?: integer
-  max_rescore_window?: integer
-  'index.max_rescore_window'?: integer
-  max_docvalue_fields_search?: integer
-  'index.max_docvalue_fields_search'?: integer
-  max_script_fields?: integer
-  'index.max_script_fields'?: integer
-  max_ngram_diff?: integer
-  'index.max_ngram_diff'?: integer
-  max_shingle_diff?: integer
-  'index.max_shingle_diff'?: integer
-  blocks?: IndexIndexSettingBlocks
-  'index.blocks'?: IndexIndexSettingBlocks
-  max_refresh_listeners?: integer
-  'index.max_refresh_listeners'?: integer
-  'analyze.max_token_count'?: integer
-  'index.analyze.max_token_count'?: integer
-  'highlight.max_analyzed_offset'?: integer
-  'index.highlight.max_analyzed_offset'?: integer
-  max_terms_count?: integer
-  'index.max_terms_count'?: integer
-  max_regex_length?: integer
-  'index.max_regex_length'?: integer
-  routing?: IndexIndexRouting
-  'index.routing'?: IndexIndexRouting
-  gc_deletes?: Time
-  'index.gc_deletes'?: Time
-  default_pipeline?: PipelineName
-  'index.default_pipeline'?: PipelineName
-  final_pipeline?: PipelineName
-  'index.final_pipeline'?: PipelineName
-  lifecycle?: IndexIndexSettingsLifecycle
-  'index.lifecycle'?: IndexIndexSettingsLifecycle
-  provided_name?: Name
-  'index.provided_name'?: Name
-  creation_date?: DateString
-  'index.creation_date'?: DateString
-  uuid?: Uuid
-  'index.uuid'?: Uuid
-  version?: IndexIndexVersioning
-  'index.version'?: IndexIndexVersioning
-  verified_before_close?: boolean | string
-  'index.verified_before_close'?: boolean | string
-  format?: string | integer
-  'index.format'?: string | integer
-  max_slices_per_scroll?: integer
-  'index.max_slices_per_scroll'?: integer
-  'translog.durability'?: string
-  'index.translog.durability'?: string
-  'query_string.lenient'?: boolean | string
-  'index.query_string.lenient'?: boolean | string
-  priority?: integer | string
-  'index.priority'?: integer | string
-  top_metrics_max_size?: integer
-  analysis?: IndexIndexSettingsAnalysis
-}
-
-export interface IndexIndexSettingsAnalysis {
-  char_filter?: Record<string, AnalysisCharFiltersCharFilter>
-}
-
-export interface IndexIndexSettingsLifecycle {
-  name: Name
-}
-
-export interface IndexIndexState {
-  aliases?: Record<IndexName, IndicesAlias>
-  mappings?: MappingTypeMapping
-  settings: IndexIndexSettings | IndexIndexStatePrefixedSettings
-}
-
-export interface IndexIndexStatePrefixedSettings {
-  index: IndexIndexSettings
-}
-
-export interface IndexIndexVersioning {
-  created: VersionString
-}
-
 export interface MappingAllField {
   analyzer: string
   enabled: boolean
@@ -7006,7 +6851,7 @@ export interface ClusterClusterStateBlockIndex {
   settings_version?: VersionNumber
   routing_num_shards?: VersionNumber
   state?: string
-  settings?: Record<IndexName, IndexIndexSettings>
+  settings?: Record<IndexName, IndicesIndexSettings>
   in_sync_allocations?: Record<string, string[]>
   primary_terms?: Record<string, integer>
   mappings?: Record<string, MappingTypeMapping>
@@ -7104,7 +6949,7 @@ export interface ClusterComponentTemplateNode {
 export interface ClusterComponentTemplateSummary {
   _meta?: Metadata
   version?: VersionNumber
-  settings: Record<IndexName, IndexIndexSettings>
+  settings: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
 }
@@ -7374,10 +7219,10 @@ export interface ClusterClusterPutComponentTemplateRequest extends RequestBase {
   create?: boolean
   master_timeout?: Time
   body?: {
-    template: IndexIndexState
+    template: IndicesIndexState
     aliases?: Record<string, IndicesAliasDefinition>
     mappings?: MappingTypeMapping
-    settings?: IndexIndexSettings
+    settings?: IndicesIndexSettings
     version?: VersionNumber
     _meta?: Metadata
   }
@@ -8240,6 +8085,128 @@ export interface IndicesFielddataFrequencyFilter {
   min_segment_size: integer
 }
 
+export type IndicesIndexCheckOnStartup = 'false' | 'checksum' | 'true'
+
+export interface IndicesIndexSettingBlocks {
+  read_only?: boolean
+  'index.blocks.read_only'?: boolean
+  read_only_allow_delete?: boolean
+  'index.blocks.read_only_allow_delete'?: boolean
+  read?: boolean
+  'index.blocks.read'?: boolean
+  write?: boolean | string
+  'index.blocks.write'?: boolean | string
+  metadata?: boolean
+  'index.blocks.metadata'?: boolean
+}
+
+export interface IndicesIndexSettings {
+  number_of_shards?: integer | string
+  'index.number_of_shards'?: integer | string
+  number_of_replicas?: integer | string
+  'index.number_of_replicas'?: integer | string
+  number_of_routing_shards?: integer
+  'index.number_of_routing_shards'?: integer
+  check_on_startup?: IndicesIndexCheckOnStartup
+  'index.check_on_startup'?: IndicesIndexCheckOnStartup
+  codec?: string
+  'index.codec'?: string
+  routing_partition_size?: integer | string
+  'index.routing_partition_size'?: integer | string
+  'soft_deletes.retention_lease.period'?: Time
+  'index.soft_deletes.retention_lease.period'?: Time
+  load_fixed_bitset_filters_eagerly?: boolean
+  'index.load_fixed_bitset_filters_eagerly'?: boolean
+  hidden?: boolean | string
+  'index.hidden'?: boolean | string
+  auto_expand_replicas?: string
+  'index.auto_expand_replicas'?: string
+  'search.idle.after'?: Time
+  'index.search.idle.after'?: Time
+  refresh_interval?: Time
+  'index.refresh_interval'?: Time
+  max_result_window?: integer
+  'index.max_result_window'?: integer
+  max_inner_result_window?: integer
+  'index.max_inner_result_window'?: integer
+  max_rescore_window?: integer
+  'index.max_rescore_window'?: integer
+  max_docvalue_fields_search?: integer
+  'index.max_docvalue_fields_search'?: integer
+  max_script_fields?: integer
+  'index.max_script_fields'?: integer
+  max_ngram_diff?: integer
+  'index.max_ngram_diff'?: integer
+  max_shingle_diff?: integer
+  'index.max_shingle_diff'?: integer
+  blocks?: IndicesIndexSettingBlocks
+  'index.blocks'?: IndicesIndexSettingBlocks
+  max_refresh_listeners?: integer
+  'index.max_refresh_listeners'?: integer
+  'analyze.max_token_count'?: integer
+  'index.analyze.max_token_count'?: integer
+  'highlight.max_analyzed_offset'?: integer
+  'index.highlight.max_analyzed_offset'?: integer
+  max_terms_count?: integer
+  'index.max_terms_count'?: integer
+  max_regex_length?: integer
+  'index.max_regex_length'?: integer
+  routing?: NodesIndexRouting
+  'index.routing'?: NodesIndexRouting
+  gc_deletes?: Time
+  'index.gc_deletes'?: Time
+  default_pipeline?: PipelineName
+  'index.default_pipeline'?: PipelineName
+  final_pipeline?: PipelineName
+  'index.final_pipeline'?: PipelineName
+  lifecycle?: IndicesIndexSettingsLifecycle
+  'index.lifecycle'?: IndicesIndexSettingsLifecycle
+  provided_name?: Name
+  'index.provided_name'?: Name
+  creation_date?: DateString
+  'index.creation_date'?: DateString
+  uuid?: Uuid
+  'index.uuid'?: Uuid
+  version?: IndicesIndexVersioning
+  'index.version'?: IndicesIndexVersioning
+  verified_before_close?: boolean | string
+  'index.verified_before_close'?: boolean | string
+  format?: string | integer
+  'index.format'?: string | integer
+  max_slices_per_scroll?: integer
+  'index.max_slices_per_scroll'?: integer
+  'translog.durability'?: string
+  'index.translog.durability'?: string
+  'query_string.lenient'?: boolean | string
+  'index.query_string.lenient'?: boolean | string
+  priority?: integer | string
+  'index.priority'?: integer | string
+  top_metrics_max_size?: integer
+  analysis?: IndicesIndexSettingsAnalysis
+}
+
+export interface IndicesIndexSettingsAnalysis {
+  char_filter?: Record<string, AnalysisCharFiltersCharFilter>
+}
+
+export interface IndicesIndexSettingsLifecycle {
+  name: Name
+}
+
+export interface IndicesIndexState {
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings: IndicesIndexSettings | IndicesIndexStatePrefixedSettings
+}
+
+export interface IndicesIndexStatePrefixedSettings {
+  index: IndicesIndexSettings
+}
+
+export interface IndicesIndexVersioning {
+  created: VersionString
+}
+
 export interface IndicesNumericFielddata {
   format: IndicesNumericFielddataFormat
 }
@@ -8600,7 +8567,7 @@ export interface IndicesGetRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetResponse extends DictionaryResponseBase<IndexName, IndexIndexState> {}
+export interface IndicesGetResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {}
 
 export interface IndicesGetAliasIndexAliases {
   aliases: Record<string, IndicesAliasDefinition>
@@ -8732,7 +8699,7 @@ export interface IndicesGetSettingsRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetSettingsResponse extends DictionaryResponseBase<IndexName, IndexIndexState> {}
+export interface IndicesGetSettingsResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {}
 
 export interface IndicesGetTemplateRequest extends RequestBase {
   name?: Names
@@ -8800,7 +8767,7 @@ export interface IndicesPutAliasResponse {}
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
-  settings?: IndexIndexSettings
+  settings?: IndicesIndexSettings
 }
 
 export interface IndicesPutIndexTemplateRequest extends RequestBase {
@@ -8848,8 +8815,8 @@ export interface IndicesPutMappingRequest extends RequestBase {
 
 export interface IndicesPutMappingResponse extends IndicesResponseBase {}
 
-export interface IndicesPutSettingsIndexSettingsBody extends IndexIndexSettings {
-  settings?: IndexIndexSettings
+export interface IndicesPutSettingsIndexSettingsBody extends IndicesIndexSettings {
+  settings?: IndicesIndexSettings
 }
 
 export interface IndicesPutSettingsRequest extends RequestBase {
@@ -11753,6 +11720,39 @@ export interface MonitoringBulkResponse {
   stub: integer
 }
 
+export interface NodesIndexRouting {
+  allocation?: NodesIndexRoutingAllocation
+  rebalance?: NodesIndexRoutingRebalance
+}
+
+export interface NodesIndexRoutingAllocation {
+  enable?: NodesIndexRoutingAllocationOptions
+  include?: NodesIndexRoutingAllocationInclude
+  initial_recovery?: NodesIndexRoutingAllocationInitialRecovery
+  disk?: NodesIndexRoutingAllocationDisk
+}
+
+export interface NodesIndexRoutingAllocationDisk {
+  threshold_enabled: boolean | string
+}
+
+export interface NodesIndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface NodesIndexRoutingAllocationInitialRecovery {
+  _id?: Id
+}
+
+export type NodesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface NodesIndexRoutingRebalance {
+  enable: NodesIndexRoutingRebalanceOptions
+}
+
+export type NodesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface NodesNodeAttributes {
   attributes: Record<string, string>
   ephemeral_id: Id
@@ -11959,7 +11959,7 @@ export interface NodesNodesInfoNodeInfoSettings {
 
 export interface NodesNodesInfoNodeInfoSettingsCluster {
   name: Name
-  routing?: IndexIndexRouting
+  routing?: NodesIndexRouting
   election: NodesNodesInfoNodeInfoSettingsClusterElection
   initial_master_nodes?: string
 }
@@ -14027,7 +14027,7 @@ export interface TransformPreviewTransformRequest extends RequestBase {
 }
 
 export interface TransformPreviewTransformResponse<TTransform = unknown> {
-  generated_dest_index: IndexIndexState
+  generated_dest_index: IndicesIndexState
   preview: TTransform[]
 }
 

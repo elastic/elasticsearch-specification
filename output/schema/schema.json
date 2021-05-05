@@ -45184,1213 +45184,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "false"
-        },
-        {
-          "name": "checksum"
-        },
-        {
-          "name": "true"
-        }
-      ],
-      "name": {
-        "name": "IndexCheckOnStartup",
-        "namespace": "_types.index"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRouting",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "allocation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocation",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "name": "rebalance",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingRebalance",
-              "namespace": "_types.index"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocation",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "enable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationOptions",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationInclude",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "name": "initial_recovery",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationInitialRecovery",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "name": "disk",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationDisk",
-              "namespace": "_types.index"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationDisk",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "threshold_enabled",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationInclude",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "_tier_preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationInitialRecovery",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "new_primaries"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexRoutingAllocationOptions",
-        "namespace": "_types.index"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingRebalance",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "enable",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingRebalanceOptions",
-              "namespace": "_types.index"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "replicas"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexRoutingRebalanceOptions",
-        "namespace": "_types.index"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingBlocks",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "aliases": [
-            "index.blocks.read_only"
-          ],
-          "name": "read_only",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.blocks.read_only_allow_delete"
-          ],
-          "name": "read_only_allow_delete",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.blocks.read"
-          ],
-          "name": "read",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.blocks.write"
-          ],
-          "name": "write",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.blocks.metadata"
-          ],
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings",
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettings",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "aliases": [
-            "index.number_of_shards"
-          ],
-          "description": "server_default 1",
-          "name": "number_of_shards",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.number_of_replicas"
-          ],
-          "description": "server_default 0",
-          "name": "number_of_replicas",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.number_of_routing_shards"
-          ],
-          "name": "number_of_routing_shards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.check_on_startup"
-          ],
-          "name": "check_on_startup",
-          "required": false,
-          "serverDefault": "false",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexCheckOnStartup",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.codec"
-          ],
-          "name": "codec",
-          "required": false,
-          "serverDefault": "LZ4",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.routing_partition_size"
-          ],
-          "description": "server_default 1",
-          "name": "routing_partition_size",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.soft_deletes.retention_lease.period"
-          ],
-          "name": "soft_deletes.retention_lease.period",
-          "required": false,
-          "serverDefault": "12h",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.load_fixed_bitset_filters_eagerly"
-          ],
-          "name": "load_fixed_bitset_filters_eagerly",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.hidden"
-          ],
-          "description": "server_default false",
-          "name": "hidden",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.auto_expand_replicas"
-          ],
-          "name": "auto_expand_replicas",
-          "required": false,
-          "serverDefault": "false",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.search.idle.after"
-          ],
-          "name": "search.idle.after",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.refresh_interval"
-          ],
-          "name": "refresh_interval",
-          "required": false,
-          "serverDefault": "1s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_result_window"
-          ],
-          "name": "max_result_window",
-          "required": false,
-          "serverDefault": "10000",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_inner_result_window"
-          ],
-          "name": "max_inner_result_window",
-          "required": false,
-          "serverDefault": "100",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_rescore_window"
-          ],
-          "name": "max_rescore_window",
-          "required": false,
-          "serverDefault": "10000",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_docvalue_fields_search"
-          ],
-          "name": "max_docvalue_fields_search",
-          "required": false,
-          "serverDefault": "100",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_script_fields"
-          ],
-          "name": "max_script_fields",
-          "required": false,
-          "serverDefault": "32",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_ngram_diff"
-          ],
-          "name": "max_ngram_diff",
-          "required": false,
-          "serverDefault": "1",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_shingle_diff"
-          ],
-          "name": "max_shingle_diff",
-          "required": false,
-          "serverDefault": "3",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.blocks"
-          ],
-          "name": "blocks",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettingBlocks",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_refresh_listeners"
-          ],
-          "name": "max_refresh_listeners",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.analyze.max_token_count"
-          ],
-          "name": "analyze.max_token_count",
-          "required": false,
-          "serverDefault": "10000",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.highlight.max_analyzed_offset"
-          ],
-          "name": "highlight.max_analyzed_offset",
-          "required": false,
-          "serverDefault": "1000000",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_terms_count"
-          ],
-          "name": "max_terms_count",
-          "required": false,
-          "serverDefault": "65536",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.max_regex_length"
-          ],
-          "name": "max_regex_length",
-          "required": false,
-          "serverDefault": "1000",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.routing"
-          ],
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRouting",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.gc_deletes"
-          ],
-          "name": "gc_deletes",
-          "required": false,
-          "serverDefault": "60s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.default_pipeline"
-          ],
-          "name": "default_pipeline",
-          "required": false,
-          "serverDefault": "_none",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.final_pipeline"
-          ],
-          "name": "final_pipeline",
-          "required": false,
-          "serverDefault": "_none",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PipelineName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.lifecycle"
-          ],
-          "name": "lifecycle",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettingsLifecycle",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.provided_name"
-          ],
-          "name": "provided_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.creation_date"
-          ],
-          "name": "creation_date",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.uuid"
-          ],
-          "name": "uuid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Uuid",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.version"
-          ],
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexVersioning",
-              "namespace": "_types.index"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.verified_before_close"
-          ],
-          "name": "verified_before_close",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.format"
-          ],
-          "name": "format",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.max_slices_per_scroll"
-          ],
-          "name": "max_slices_per_scroll",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.translog.durability"
-          ],
-          "name": "translog.durability",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index.query_string.lenient"
-          ],
-          "name": "query_string.lenient",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "aliases": [
-            "index.priority"
-          ],
-          "name": "priority",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "top_metrics_max_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "analysis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettingsAnalysis",
-              "namespace": "_types.index"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingsAnalysis",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "char_filter",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "CharFilter",
-                "namespace": "_types.analysis.char_filters"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingsLifecycle",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexState",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "aliases",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Alias",
-                "namespace": "indices._types"
-              }
-            }
-          }
-        },
-        {
-          "name": "mappings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TypeMapping",
-              "namespace": "_types.mapping"
-            }
-          }
-        },
-        {
-          "name": "settings",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexSettings",
-                  "namespace": "_types.index"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexStatePrefixedSettings",
-                  "namespace": "_types.index"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexStatePrefixedSettings",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettings",
-              "namespace": "_types.index"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexVersioning",
-        "namespace": "_types.index"
-      },
-      "properties": [
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "AllField",
@@ -72633,7 +71426,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexSettings",
-                "namespace": "_types.index"
+                "namespace": "indices._types"
               }
             }
           }
@@ -73480,7 +72273,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexSettings",
-                "namespace": "_types.index"
+                "namespace": "indices._types"
               }
             }
           }
@@ -75938,7 +74731,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexState",
-                "namespace": "_types.index"
+                "namespace": "indices._types"
               }
             }
           },
@@ -75982,7 +74775,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexSettings",
-                "namespace": "_types.index"
+                "namespace": "indices._types"
               }
             }
           },
@@ -83287,6 +82080,984 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "false"
+        },
+        {
+          "name": "checksum"
+        },
+        {
+          "name": "true"
+        }
+      ],
+      "name": {
+        "name": "IndexCheckOnStartup",
+        "namespace": "indices._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingBlocks",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "index.blocks.read_only"
+          ],
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.read_only_allow_delete"
+          ],
+          "name": "read_only_allow_delete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.read"
+          ],
+          "name": "read",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.write"
+          ],
+          "name": "write",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.metadata"
+          ],
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings",
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettings",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "aliases": [
+            "index.number_of_shards"
+          ],
+          "description": "server_default 1",
+          "name": "number_of_shards",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_replicas"
+          ],
+          "description": "server_default 0",
+          "name": "number_of_replicas",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.number_of_routing_shards"
+          ],
+          "name": "number_of_routing_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.check_on_startup"
+          ],
+          "name": "check_on_startup",
+          "required": false,
+          "serverDefault": "false",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexCheckOnStartup",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.codec"
+          ],
+          "name": "codec",
+          "required": false,
+          "serverDefault": "LZ4",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing_partition_size"
+          ],
+          "description": "server_default 1",
+          "name": "routing_partition_size",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.soft_deletes.retention_lease.period"
+          ],
+          "name": "soft_deletes.retention_lease.period",
+          "required": false,
+          "serverDefault": "12h",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.load_fixed_bitset_filters_eagerly"
+          ],
+          "name": "load_fixed_bitset_filters_eagerly",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.hidden"
+          ],
+          "description": "server_default false",
+          "name": "hidden",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.auto_expand_replicas"
+          ],
+          "name": "auto_expand_replicas",
+          "required": false,
+          "serverDefault": "false",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.search.idle.after"
+          ],
+          "name": "search.idle.after",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.refresh_interval"
+          ],
+          "name": "refresh_interval",
+          "required": false,
+          "serverDefault": "1s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_result_window"
+          ],
+          "name": "max_result_window",
+          "required": false,
+          "serverDefault": "10000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_inner_result_window"
+          ],
+          "name": "max_inner_result_window",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_rescore_window"
+          ],
+          "name": "max_rescore_window",
+          "required": false,
+          "serverDefault": "10000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_docvalue_fields_search"
+          ],
+          "name": "max_docvalue_fields_search",
+          "required": false,
+          "serverDefault": "100",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_script_fields"
+          ],
+          "name": "max_script_fields",
+          "required": false,
+          "serverDefault": "32",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_ngram_diff"
+          ],
+          "name": "max_ngram_diff",
+          "required": false,
+          "serverDefault": "1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_shingle_diff"
+          ],
+          "name": "max_shingle_diff",
+          "required": false,
+          "serverDefault": "3",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks"
+          ],
+          "name": "blocks",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingBlocks",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_refresh_listeners"
+          ],
+          "name": "max_refresh_listeners",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.analyze.max_token_count"
+          ],
+          "name": "analyze.max_token_count",
+          "required": false,
+          "serverDefault": "10000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.highlight.max_analyzed_offset"
+          ],
+          "name": "highlight.max_analyzed_offset",
+          "required": false,
+          "serverDefault": "1000000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_terms_count"
+          ],
+          "name": "max_terms_count",
+          "required": false,
+          "serverDefault": "65536",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.max_regex_length"
+          ],
+          "name": "max_regex_length",
+          "required": false,
+          "serverDefault": "1000",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.routing"
+          ],
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRouting",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.gc_deletes"
+          ],
+          "name": "gc_deletes",
+          "required": false,
+          "serverDefault": "60s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.default_pipeline"
+          ],
+          "name": "default_pipeline",
+          "required": false,
+          "serverDefault": "_none",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.final_pipeline"
+          ],
+          "name": "final_pipeline",
+          "required": false,
+          "serverDefault": "_none",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.lifecycle"
+          ],
+          "name": "lifecycle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingsLifecycle",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.provided_name"
+          ],
+          "name": "provided_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.creation_date"
+          ],
+          "name": "creation_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.uuid"
+          ],
+          "name": "uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.version"
+          ],
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexVersioning",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.verified_before_close"
+          ],
+          "name": "verified_before_close",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.format"
+          ],
+          "name": "format",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.max_slices_per_scroll"
+          ],
+          "name": "max_slices_per_scroll",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.translog.durability"
+          ],
+          "name": "translog.durability",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.query_string.lenient"
+          ],
+          "name": "query_string.lenient",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.priority"
+          ],
+          "name": "priority",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "top_metrics_max_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "analysis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettingsAnalysis",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingsAnalysis",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CharFilter",
+                "namespace": "_types.analysis.char_filters"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexSettingsLifecycle",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexState",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Alias",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexSettings",
+                  "namespace": "indices._types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexStatePrefixedSettings",
+                  "namespace": "indices._types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexStatePrefixedSettings",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexVersioning",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NumericFielddata",
@@ -86531,7 +86302,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexState",
-              "namespace": "_types.index"
+              "namespace": "indices._types"
             }
           }
         ],
@@ -87732,7 +87503,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexState",
-              "namespace": "_types.index"
+              "namespace": "indices._types"
             }
           }
         ],
@@ -88320,7 +88091,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexSettings",
-              "namespace": "_types.index"
+              "namespace": "indices._types"
             }
           }
         }
@@ -88821,7 +88592,7 @@
       "inherits": {
         "type": {
           "name": "IndexSettings",
-          "namespace": "_types.index"
+          "namespace": "indices._types"
         }
       },
       "kind": "interface",
@@ -88837,7 +88608,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexSettings",
-              "namespace": "_types.index"
+              "namespace": "indices._types"
             }
           }
         }
@@ -114026,6 +113797,235 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndexRouting",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "allocation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocation",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "name": "rebalance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalance",
+              "namespace": "nodes._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocation",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationOptions",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "name": "include",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationInclude",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "name": "initial_recovery",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationInitialRecovery",
+              "namespace": "nodes._types"
+            }
+          }
+        },
+        {
+          "name": "disk",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationDisk",
+              "namespace": "nodes._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationDisk",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "threshold_enabled",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationInclude",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "_tier_preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationInitialRecovery",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "new_primaries"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingAllocationOptions",
+        "namespace": "nodes._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingRebalance",
+        "namespace": "nodes._types"
+      },
+      "properties": [
+        {
+          "name": "enable",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalanceOptions",
+              "namespace": "nodes._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "replicas"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingRebalanceOptions",
+        "namespace": "nodes._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeAttributes",
         "namespace": "nodes._types"
       },
@@ -115731,7 +115731,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexRouting",
-              "namespace": "_types.index"
+              "namespace": "nodes._types"
             }
           }
         },
@@ -133162,7 +133162,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexState",
-                "namespace": "_types.index"
+                "namespace": "indices._types"
               }
             }
           },
