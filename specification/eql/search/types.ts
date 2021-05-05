@@ -19,7 +19,7 @@
 
 import { Field } from '@_types/common'
 
-export class EqlSearchFieldFormatted {
+export class SearchFieldFormatted {
   /**
    * Wildcard pattern. The request returns values for field names matching this pattern.
    */
@@ -33,7 +33,7 @@ export class EqlSearchFieldFormatted {
 /**
  * Set of matching events or sequences to return.
  */
-export enum EqlResultPosition {
+export enum ResultPosition {
   /**
    * Return the most recent matches, similar to the Unix tail command.
    */

@@ -22,7 +22,7 @@ import { ExpandWildcards, Field, IndexName } from '@_types/common'
 import { float, uint } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
-import { EqlResultPosition, EqlSearchFieldFormatted } from './types'
+import { ResultPosition, SearchFieldFormatted } from './types'
 
 /**
  * @rest_spec_name eql.search
@@ -103,10 +103,10 @@ export interface Request extends RequestBase {
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    fields?: Array<Field | EqlSearchFieldFormatted>
+    fields?: Array<Field | SearchFieldFormatted>
     /**
      * @server_default tail
      */
-    result_position?: EqlResultPosition
+    result_position?: ResultPosition
   }
 }
