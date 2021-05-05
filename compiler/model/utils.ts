@@ -247,13 +247,6 @@ export function modelType (node: Node): model.ValueOf {
           return type
         }
 
-        case 'Void': {
-          const type: model.VoidValue = {
-            kind: 'void_value'
-          }
-          return type
-        }
-
         default: {
           const generics = node.getTypeArguments().map(node => modelType(node))
           const identifier = node.getTypeName()

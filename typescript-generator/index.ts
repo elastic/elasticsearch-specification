@@ -100,8 +100,6 @@ function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number 
       return 'any'
     case 'literal_value':
       return typeof type.value === 'string' ? `'${type.value}'` : type.value
-    case 'void_value':
-      return 'boolean'
   }
 }
 
@@ -254,13 +252,13 @@ function buildRequest (type: M.Request): string {
     if (pathPropertiesNames.includes(property.name)) continue
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
-  if ((type.body != null) && type.body.kind === 'properties') {
+  if (type.body.kind === 'properties') {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
     }
     code += '  }\n'
-  } else if (type.body != null && type.body.kind === 'value') {
+  } else if (type.body.kind === 'value') {
     code += `  body${isBodyRequired() ? '' : '?'}: ${buildValue(type.body.value, openGenerics)}\n`
   }
   code += '}\n'
@@ -279,15 +277,15 @@ function buildRequest (type: M.Request): string {
 function buildResponse (type: M.Response): string {
   const openGenerics = type.generics?.map(t => t.name) ?? []
 
-  if (type.body == null) {
-    return `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {}\n`
-  } else if (type.body.kind === 'properties') {
+  if (type.body.kind === 'properties') {
     let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
     for (const property of type.body.properties) {
       code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
     }
     code += '}\n'
     return code
+  } else if (type.body.kind === 'no_body') {
+    return `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = boolean\n`
   } else {
     return `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = ${buildValue(type.body.value, openGenerics)}\n`
   }

@@ -166,7 +166,8 @@ export interface CreateRequest<TDocument = unknown> extends RequestBase {
   body?: TDocument
 }
 
-export interface CreateResponse extends WriteResponseBase {}
+export interface CreateResponse extends WriteResponseBase {
+}
 
 export interface DeleteRequest extends RequestBase {
   id: Id
@@ -182,7 +183,8 @@ export interface DeleteRequest extends RequestBase {
   wait_for_active_shards?: WaitForActiveShards
 }
 
-export interface DeleteResponse extends WriteResponseBase {}
+export interface DeleteResponse extends WriteResponseBase {
+}
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
@@ -249,7 +251,8 @@ export interface DeleteByQueryRethrottleRequest extends RequestBase {
   requests_per_second?: long
 }
 
-export interface DeleteByQueryRethrottleResponse extends TaskListTasksResponse {}
+export interface DeleteByQueryRethrottleResponse extends TaskListTasksResponse {
+}
 
 export interface DeleteScriptRequest extends RequestBase {
   id: Id
@@ -257,7 +260,8 @@ export interface DeleteScriptRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface DeleteScriptResponse extends AcknowledgedResponseBase {}
+export interface DeleteScriptResponse extends AcknowledgedResponseBase {
+}
 
 export interface ExistsRequest extends RequestBase {
   id: Id
@@ -476,6 +480,8 @@ export interface GetScriptLanguagesResponse {
 }
 
 export interface GetSourceRequest extends GetRequest {
+  body?: {
+  }
 }
 
 export type GetSourceResponse<TDocument = unknown> = TDocument
@@ -498,7 +504,8 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   body?: TDocument
 }
 
-export interface IndexResponse extends WriteResponseBase {}
+export interface IndexResponse extends WriteResponseBase {
+}
 
 export interface InfoRequest extends RequestBase {
 }
@@ -703,7 +710,8 @@ export interface PutScriptRequest extends RequestBase {
   }
 }
 
-export interface PutScriptResponse extends AcknowledgedResponseBase {}
+export interface PutScriptResponse extends AcknowledgedResponseBase {
+}
 
 export interface RankEvalDocumentRating {
   _id: Id
@@ -952,7 +960,8 @@ export interface ScrollRequest extends RequestBase {
   }
 }
 
-export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {}
+export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDocument> {
+}
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
@@ -4729,7 +4738,8 @@ export interface AsyncSearchDeleteRequest extends RequestBase {
   id: Id
 }
 
-export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {}
+export interface AsyncSearchDeleteResponse extends AcknowledgedResponseBase {
+}
 
 export interface AsyncSearchGetRequest extends RequestBase {
   id: Id
@@ -4738,7 +4748,8 @@ export interface AsyncSearchGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {}
+export interface AsyncSearchGetResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {
+}
 
 export interface AsyncSearchStatusRequest extends RequestBase {
   id: Id
@@ -4812,7 +4823,8 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   }
 }
 
-export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {}
+export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {
+}
 
 export interface AutoscalingCapacityGetRequest extends RequestBase {
   stub_a: string
@@ -6674,7 +6686,8 @@ export interface CcrDeleteAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
-export interface CcrDeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {}
+export interface CcrDeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrFollowIndexStatsRequest extends RequestBase {
   index: Indices
@@ -6746,13 +6759,15 @@ export interface CcrPauseAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
-export interface CcrPauseAutoFollowPatternResponse extends AcknowledgedResponseBase {}
+export interface CcrPauseAutoFollowPatternResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrPauseFollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
-export interface CcrPauseFollowIndexResponse extends AcknowledgedResponseBase {}
+export interface CcrPauseFollowIndexResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrPutAutoFollowPatternRequest extends RequestBase {
   name: Name
@@ -6774,13 +6789,15 @@ export interface CcrPutAutoFollowPatternRequest extends RequestBase {
   }
 }
 
-export interface CcrPutAutoFollowPatternResponse extends AcknowledgedResponseBase {}
+export interface CcrPutAutoFollowPatternResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrResumeAutoFollowPatternRequest extends RequestBase {
   name: Name
 }
 
-export interface CcrResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {}
+export interface CcrResumeAutoFollowPatternResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrResumeFollowIndexRequest extends RequestBase {
   index: IndexName
@@ -6798,7 +6815,8 @@ export interface CcrResumeFollowIndexRequest extends RequestBase {
   }
 }
 
-export interface CcrResumeFollowIndexResponse extends AcknowledgedResponseBase {}
+export interface CcrResumeFollowIndexResponse extends AcknowledgedResponseBase {
+}
 
 export interface CcrStatsAutoFollowStats {
   auto_followed_clusters: CcrStatsAutoFollowedCluster[]
@@ -6830,7 +6848,8 @@ export interface CcrUnfollowIndexRequest extends RequestBase {
   index: IndexName
 }
 
-export interface CcrUnfollowIndexResponse extends AcknowledgedResponseBase {}
+export interface CcrUnfollowIndexResponse extends AcknowledgedResponseBase {
+}
 
 export interface ClusterClusterStateBlockIndex {
   description?: string
@@ -7086,7 +7105,8 @@ export interface ClusterClusterDeleteComponentTemplateRequest extends RequestBas
   timeout?: Time
 }
 
-export interface ClusterClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {}
+export interface ClusterClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface ClusterClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
   body?: {
@@ -7220,7 +7240,8 @@ export interface ClusterClusterPutComponentTemplateRequest extends RequestBase {
   }
 }
 
-export interface ClusterClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {}
+export interface ClusterClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface ClusterClusterPutSettingsRequest extends RequestBase {
   flat_settings?: boolean
@@ -7264,7 +7285,8 @@ export interface ClusterClusterRemoteInfoRequest extends RequestBase {
   }
 }
 
-export interface ClusterClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterClusterRemoteInfoClusterRemoteInfo> {}
+export interface ClusterClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterClusterRemoteInfoClusterRemoteInfo> {
+}
 
 export interface ClusterClusterRerouteClusterRerouteCommand {
   cancel?: ClusterClusterRerouteClusterRerouteCommandCancelAction
@@ -7666,7 +7688,8 @@ export interface EnrichDeletePolicyRequest extends RequestBase {
   name: Name
 }
 
-export interface EnrichDeletePolicyResponse extends AcknowledgedResponseBase {}
+export interface EnrichDeletePolicyResponse extends AcknowledgedResponseBase {
+}
 
 export type EnrichExecutePolicyEnrichPolicyPhase = 'SCHEDULED' | 'RUNNING' | 'COMPLETE' | 'FAILED'
 
@@ -7700,7 +7723,8 @@ export interface EnrichPutPolicyRequest extends RequestBase {
   }
 }
 
-export interface EnrichPutPolicyResponse extends AcknowledgedResponseBase {}
+export interface EnrichPutPolicyResponse extends AcknowledgedResponseBase {
+}
 
 export interface EnrichStatsCoordinatorStats {
   executed_searches_total: long
@@ -7754,7 +7778,8 @@ export interface EqlDeleteRequest extends RequestBase {
   id: Id
 }
 
-export interface EqlDeleteResponse extends AcknowledgedResponseBase {}
+export interface EqlDeleteResponse extends AcknowledgedResponseBase {
+}
 
 export interface EqlGetRequest extends RequestBase {
   id: Id
@@ -7762,7 +7787,8 @@ export interface EqlGetRequest extends RequestBase {
   wait_for_completion_timeout?: Time
 }
 
-export interface EqlGetResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {}
+export interface EqlGetResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {
+}
 
 export interface EqlGetStatusRequest extends RequestBase {
   id: Id
@@ -7802,7 +7828,8 @@ export interface EqlSearchRequest extends RequestBase {
   }
 }
 
-export interface EqlSearchResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {}
+export interface EqlSearchResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {
+}
 
 export type EqlSearchResultPosition = 'tail' | 'head'
 
@@ -7927,7 +7954,8 @@ export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy_id: Id
 }
 
-export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {}
+export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
+}
 
 export interface IlmExplainLifecycleLifecycleExplain {
   action: Name
@@ -7984,7 +8012,8 @@ export interface IlmGetLifecycleRequest extends RequestBase {
   policy_id?: Id
 }
 
-export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecyclePolicy> {}
+export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecyclePolicy> {
+}
 
 export type IlmGetStatusLifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
@@ -8003,7 +8032,8 @@ export interface IlmMoveToStepRequest extends RequestBase {
   }
 }
 
-export interface IlmMoveToStepResponse extends AcknowledgedResponseBase {}
+export interface IlmMoveToStepResponse extends AcknowledgedResponseBase {
+}
 
 export interface IlmMoveToStepStepKey {
   action: string
@@ -8019,7 +8049,8 @@ export interface IlmPutLifecycleRequest extends RequestBase {
   }
 }
 
-export interface IlmPutLifecycleResponse extends AcknowledgedResponseBase {}
+export interface IlmPutLifecycleResponse extends AcknowledgedResponseBase {
+}
 
 export interface IlmRemovePolicyRequest extends RequestBase {
   index: IndexName
@@ -8034,7 +8065,8 @@ export interface IlmRetryRequest extends RequestBase {
   index: IndexName
 }
 
-export interface IlmRetryResponse extends AcknowledgedResponseBase {}
+export interface IlmRetryResponse extends AcknowledgedResponseBase {
+}
 
 export interface IlmStartRequest extends RequestBase {
   body?: {
@@ -8042,7 +8074,8 @@ export interface IlmStartRequest extends RequestBase {
   }
 }
 
-export interface IlmStartResponse extends AcknowledgedResponseBase {}
+export interface IlmStartResponse extends AcknowledgedResponseBase {
+}
 
 export interface IlmStopRequest extends RequestBase {
   body?: {
@@ -8050,7 +8083,8 @@ export interface IlmStopRequest extends RequestBase {
   }
 }
 
-export interface IlmStopResponse extends AcknowledgedResponseBase {}
+export interface IlmStopResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesAlias {
   filter?: QueryDslQueryContainer
@@ -8319,7 +8353,8 @@ export interface IndicesClearCacheRequest extends RequestBase {
   request?: boolean
 }
 
-export interface IndicesClearCacheResponse extends ShardsOperationResponseBase {}
+export interface IndicesClearCacheResponse extends ShardsOperationResponseBase {
+}
 
 export interface IndicesCloneRequest extends RequestBase {
   index: IndexName
@@ -8384,7 +8419,8 @@ export interface IndicesCreateDataStreamRequest extends RequestBase {
   name: DataStreamName
 }
 
-export interface IndicesCreateDataStreamResponse extends AcknowledgedResponseBase {}
+export interface IndicesCreateDataStreamResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesDataStreamsStatsDataStreamsStatsItem {
   backing_indices: integer
@@ -8418,7 +8454,8 @@ export interface IndicesDeleteRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface IndicesDeleteResponse extends IndicesResponseBase {}
+export interface IndicesDeleteResponse extends IndicesResponseBase {
+}
 
 export interface IndicesDeleteAliasRequest extends RequestBase {
   index: Indices
@@ -8427,19 +8464,21 @@ export interface IndicesDeleteAliasRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface IndicesDeleteAliasResponse {}
+export type IndicesDeleteAliasResponse = boolean
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
   name: DataStreamName
 }
 
-export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {}
+export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesDeleteIndexTemplateRequest extends RequestBase {
   name: Name
 }
 
-export interface IndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {}
+export interface IndicesDeleteIndexTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesDeleteTemplateRequest extends RequestBase {
   name: Name
@@ -8447,7 +8486,8 @@ export interface IndicesDeleteTemplateRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface IndicesDeleteTemplateResponse extends AcknowledgedResponseBase {}
+export interface IndicesDeleteTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesExistsRequest extends RequestBase {
   index: Indices
@@ -8508,7 +8548,8 @@ export interface IndicesFlushRequest extends RequestBase {
   wait_if_ongoing?: boolean
 }
 
-export interface IndicesFlushResponse extends ShardsOperationResponseBase {}
+export interface IndicesFlushResponse extends ShardsOperationResponseBase {
+}
 
 export interface IndicesFlushSyncedRequest extends RequestBase {
   index?: Indices
@@ -8531,7 +8572,8 @@ export interface IndicesForcemergeRequest extends RequestBase {
   only_expunge_deletes?: boolean
 }
 
-export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {}
+export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {
+}
 
 export interface IndicesFreezeRequest extends RequestBase {
   index: IndexName
@@ -8559,7 +8601,8 @@ export interface IndicesGetRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {}
+export interface IndicesGetResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {
+}
 
 export interface IndicesGetAliasIndexAliases {
   aliases: Record<string, IndicesAliasDefinition>
@@ -8574,7 +8617,8 @@ export interface IndicesGetAliasRequest extends RequestBase {
   local?: boolean
 }
 
-export interface IndicesGetAliasResponse extends DictionaryResponseBase<IndexName, IndicesGetAliasIndexAliases> {}
+export interface IndicesGetAliasResponse extends DictionaryResponseBase<IndexName, IndicesGetAliasIndexAliases> {
+}
 
 export interface IndicesGetDataStreamIndicesGetDataStreamItem {
   name: DataStreamName
@@ -8619,7 +8663,8 @@ export interface IndicesGetFieldMappingRequest extends RequestBase {
   local?: boolean
 }
 
-export interface IndicesGetFieldMappingResponse extends DictionaryResponseBase<IndexName, IndicesGetFieldMappingTypeFieldMappings> {}
+export interface IndicesGetFieldMappingResponse extends DictionaryResponseBase<IndexName, IndicesGetFieldMappingTypeFieldMappings> {
+}
 
 export interface IndicesGetFieldMappingTypeFieldMappings {
   mappings: Record<Field, MappingFieldMapping>
@@ -8677,7 +8722,8 @@ export interface IndicesGetMappingRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndicesGetMappingIndexMappingRecord> {}
+export interface IndicesGetMappingResponse extends DictionaryResponseBase<IndexName, IndicesGetMappingIndexMappingRecord> {
+}
 
 export interface IndicesGetSettingsRequest extends RequestBase {
   index?: Indices
@@ -8691,7 +8737,8 @@ export interface IndicesGetSettingsRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetSettingsResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {}
+export interface IndicesGetSettingsResponse extends DictionaryResponseBase<IndexName, IndicesIndexState> {
+}
 
 export interface IndicesGetTemplateRequest extends RequestBase {
   name?: Names
@@ -8701,7 +8748,8 @@ export interface IndicesGetTemplateRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {}
+export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {
+}
 
 export interface IndicesGetUpgradeRequest extends RequestBase {
   stub: string
@@ -8716,7 +8764,8 @@ export interface IndicesMigrateToDataStreamRequest extends RequestBase {
   name: IndexName
 }
 
-export interface IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {}
+export interface IndicesMigrateToDataStreamResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesOpenRequest extends RequestBase {
   index: Indices
@@ -8754,7 +8803,7 @@ export interface IndicesPutAliasRequest extends RequestBase {
   }
 }
 
-export interface IndicesPutAliasResponse {}
+export type IndicesPutAliasResponse = boolean
 
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
@@ -8775,7 +8824,8 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
   }
 }
 
-export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBase {}
+export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesPutMappingRequest extends RequestBase {
   index?: Indices
@@ -8805,7 +8855,8 @@ export interface IndicesPutMappingRequest extends RequestBase {
   }
 }
 
-export interface IndicesPutMappingResponse extends IndicesResponseBase {}
+export interface IndicesPutMappingResponse extends IndicesResponseBase {
+}
 
 export interface IndicesPutSettingsIndexSettingsBody extends IndicesIndexSettings {
   settings?: IndicesIndexSettings
@@ -8823,7 +8874,8 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   body?: IndicesPutSettingsIndexSettingsBody
 }
 
-export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {}
+export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesPutTemplateRequest extends RequestBase {
   name: Name
@@ -8842,7 +8894,8 @@ export interface IndicesPutTemplateRequest extends RequestBase {
   }
 }
 
-export interface IndicesPutTemplateResponse extends AcknowledgedResponseBase {}
+export interface IndicesPutTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesRecoveryRecoveryBytes {
   percent: Percentage
@@ -8926,7 +8979,8 @@ export interface IndicesRecoveryRequest extends RequestBase {
   detailed?: boolean
 }
 
-export interface IndicesRecoveryResponse extends DictionaryResponseBase<IndexName, IndicesRecoveryRecoveryStatus> {}
+export interface IndicesRecoveryResponse extends DictionaryResponseBase<IndexName, IndicesRecoveryRecoveryStatus> {
+}
 
 export interface IndicesRecoveryShardRecovery {
   id: long
@@ -8954,7 +9008,8 @@ export interface IndicesRefreshRequest extends RequestBase {
   ignore_unavailable?: boolean
 }
 
-export interface IndicesRefreshResponse extends ShardsOperationResponseBase {}
+export interface IndicesRefreshResponse extends ShardsOperationResponseBase {
+}
 
 export interface IndicesReloadSearchAnalyzersReloadDetails {
   index: string
@@ -9148,7 +9203,8 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   }
 }
 
-export interface IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {}
+export interface IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
@@ -9332,7 +9388,8 @@ export interface IndicesUpdateAliasesRequest extends RequestBase {
   }
 }
 
-export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {}
+export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesUpgradeRequest extends RequestBase {
   stub_b: integer
@@ -9691,7 +9748,8 @@ export interface IngestDeletePipelineRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface IngestDeletePipelineResponse extends AcknowledgedResponseBase {}
+export interface IngestDeletePipelineResponse extends AcknowledgedResponseBase {
+}
 
 export interface IngestGeoIpStatsGeoIpDownloadStatistics {
   successful_downloads: integer
@@ -9724,7 +9782,8 @@ export interface IngestGetPipelineRequest extends RequestBase {
   summary?: boolean
 }
 
-export interface IngestGetPipelineResponse extends DictionaryResponseBase<string, IngestPipeline> {}
+export interface IngestGetPipelineResponse extends DictionaryResponseBase<string, IngestPipeline> {
+}
 
 export interface IngestProcessorGrokRequest extends RequestBase {
 }
@@ -9745,7 +9804,8 @@ export interface IngestPutPipelineRequest extends RequestBase {
   }
 }
 
-export interface IngestPutPipelineResponse extends AcknowledgedResponseBase {}
+export interface IngestPutPipelineResponse extends AcknowledgedResponseBase {
+}
 
 export interface IngestSimulatePipelineDocumentSimulation {
   _id: Id
@@ -9809,7 +9869,8 @@ export type LicenseLicenseType = 'missing' | 'trial' | 'basic' | 'standard' | 'd
 export interface LicenseDeleteLicenseRequest extends RequestBase {
 }
 
-export interface LicenseDeleteLicenseResponse extends AcknowledgedResponseBase {}
+export interface LicenseDeleteLicenseResponse extends AcknowledgedResponseBase {
+}
 
 export interface LicenseGetBasicLicenseStatusRequest extends RequestBase {
 }
@@ -10566,14 +10627,16 @@ export interface MlDeleteCalendarRequest extends RequestBase {
   calendar_id: Id
 }
 
-export interface MlDeleteCalendarResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteCalendarResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteCalendarEventRequest extends RequestBase {
   calendar_id: Id
   event_id: Id
 }
 
-export interface MlDeleteCalendarEventResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteCalendarEventResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteCalendarJobRequest extends RequestBase {
   calendar_id: Id
@@ -10592,14 +10655,16 @@ export interface MlDeleteDataFrameAnalyticsRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface MlDeleteDataFrameAnalyticsResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteDatafeedRequest extends RequestBase {
   datafeed_id: Id
   force?: boolean
 }
 
-export interface MlDeleteDatafeedResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteDatafeedResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteExpiredDataRequest extends RequestBase {
   name?: Name
@@ -10619,7 +10684,8 @@ export interface MlDeleteFilterRequest extends RequestBase {
   filter_id: Id
 }
 
-export interface MlDeleteFilterResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteFilterResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteForecastRequest extends RequestBase {
   job_id: Id
@@ -10628,7 +10694,8 @@ export interface MlDeleteForecastRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface MlDeleteForecastResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteForecastResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteJobRequest extends RequestBase {
   job_id: Id
@@ -10636,27 +10703,31 @@ export interface MlDeleteJobRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface MlDeleteJobResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteJobResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
 }
 
-export interface MlDeleteModelSnapshotResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteModelSnapshotResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteTrainedModelRequest extends RequestBase {
   model_id: Id
 }
 
-export interface MlDeleteTrainedModelResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteTrainedModelResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlDeleteTrainedModelAliasRequest extends RequestBase {
   model_alias: Name
   model_id: Id
 }
 
-export interface MlDeleteTrainedModelAliasResponse extends AcknowledgedResponseBase {}
+export interface MlDeleteTrainedModelAliasResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlEstimateModelMemoryRequest extends RequestBase {
   body?: {
@@ -11475,7 +11546,8 @@ export interface MlPutTrainedModelAliasRequest extends RequestBase {
   reassign?: boolean
 }
 
-export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase {}
+export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlRevertModelSnapshotRequest extends RequestBase {
   job_id: Id
@@ -11494,7 +11566,8 @@ export interface MlSetUpgradeModeRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface MlSetUpgradeModeResponse extends AcknowledgedResponseBase {}
+export interface MlSetUpgradeModeResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlStartDataFrameAnalyticsRequest extends RequestBase {
   id: Id
@@ -11683,7 +11756,8 @@ export interface MlValidateDetectorRequest extends RequestBase {
   body?: MlDetector
 }
 
-export interface MlValidateDetectorResponse extends AcknowledgedResponseBase {}
+export interface MlValidateDetectorResponse extends AcknowledgedResponseBase {
+}
 
 export interface MlValidateJobRequest extends RequestBase {
   body?: {
@@ -11698,7 +11772,8 @@ export interface MlValidateJobRequest extends RequestBase {
   }
 }
 
-export interface MlValidateJobResponse extends AcknowledgedResponseBase {}
+export interface MlValidateJobResponse extends AcknowledgedResponseBase {
+}
 
 export interface MonitoringBulkRequest extends RequestBase {
   stub_a: string
@@ -12421,7 +12496,8 @@ export interface RollupCreateRollupJobRequest extends RequestBase {
   }
 }
 
-export interface RollupCreateRollupJobResponse extends AcknowledgedResponseBase {}
+export interface RollupCreateRollupJobResponse extends AcknowledgedResponseBase {
+}
 
 export interface RollupDeleteRollupJobRequest extends RequestBase {
   id: Id
@@ -12447,7 +12523,8 @@ export interface RollupGetRollupCapabilitiesRequest extends RequestBase {
   id?: Id
 }
 
-export interface RollupGetRollupCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupCapabilitiesRollupCapabilities> {}
+export interface RollupGetRollupCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupCapabilitiesRollupCapabilities> {
+}
 
 export interface RollupGetRollupCapabilitiesRollupCapabilities {
   rollup_jobs: RollupGetRollupCapabilitiesRollupCapabilitySummary[]
@@ -12468,7 +12545,8 @@ export interface RollupGetRollupIndexCapabilitiesRequest extends RequestBase {
   index: Id
 }
 
-export interface RollupGetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupIndexCapabilitiesIndexCapabilities> {}
+export interface RollupGetRollupIndexCapabilitiesResponse extends DictionaryResponseBase<IndexName, RollupGetRollupIndexCapabilitiesIndexCapabilities> {
+}
 
 export interface RollupGetRollupIndexCapabilitiesRollupJobSummary {
   fields: Record<Field, RollupGetRollupIndexCapabilitiesRollupJobSummaryField[]>
@@ -12555,7 +12633,7 @@ export interface RollupRollupSearchRequest extends RequestBase {
   }
 }
 
-export interface RollupRollupSearchResponse<TDocument = unknown> {}
+export type RollupRollupSearchResponse<TDocument = unknown> = boolean
 
 export interface RollupStartRollupJobRequest extends RequestBase {
   id: Id
@@ -12741,7 +12819,7 @@ export interface SecurityChangePasswordRequest extends RequestBase {
   }
 }
 
-export interface SecurityChangePasswordResponse {}
+export type SecurityChangePasswordResponse = boolean
 
 export interface SecurityClearApiKeyCacheClearApiKeyCacheNode {
   name: Name
@@ -12836,7 +12914,8 @@ export interface SecurityDeletePrivilegesRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDeletePrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityDeletePrivilegesFoundUserPrivilege>> {}
+export interface SecurityDeletePrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityDeletePrivilegesFoundUserPrivilege>> {
+}
 
 export interface SecurityDeleteRoleRequest extends RequestBase {
   name: Name
@@ -12915,19 +12994,22 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPrivilegesActions>> {}
+export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPrivilegesActions>> {
+}
 
 export interface SecurityGetRoleRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityXPackRole> {}
+export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityXPackRole> {
+}
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityXPackRoleMapping> {}
+export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityXPackRoleMapping> {
+}
 
 export interface SecurityGetTokenAuthenticatedUser extends SecurityXPackUser {
   authentication_realm: SecurityGetTokenUserRealm
@@ -12971,7 +13053,8 @@ export interface SecurityGetUserRequest extends RequestBase {
   username?: Username | Username[]
 }
 
-export interface SecurityGetUserResponse extends DictionaryResponseBase<string, SecurityXPackUser> {}
+export interface SecurityGetUserResponse extends DictionaryResponseBase<string, SecurityXPackUser> {
+}
 
 export interface SecurityGetUserPrivilegesApplicationGlobalUserPrivileges {
   manage: SecurityGetUserPrivilegesManageUserPrivileges
@@ -13134,7 +13217,8 @@ export interface SecurityPutPrivilegesRequest extends RequestBase {
   body?: Record<string, Record<string, SecurityPutPrivilegesPrivilegesActions>>
 }
 
-export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPutPrivilegesStatus>> {}
+export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPutPrivilegesStatus>> {
+}
 
 export interface SecurityPutRoleApplicationPrivileges {
   application: string
@@ -13307,7 +13391,8 @@ export interface SlmDeleteLifecycleRequest extends RequestBase {
   policy_id: Name
 }
 
-export interface SlmDeleteLifecycleResponse extends AcknowledgedResponseBase {}
+export interface SlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
+}
 
 export interface SlmExecuteLifecycleRequest extends RequestBase {
   policy_id: Name
@@ -13320,13 +13405,15 @@ export interface SlmExecuteLifecycleResponse {
 export interface SlmExecuteRetentionRequest extends RequestBase {
 }
 
-export interface SlmExecuteRetentionResponse extends AcknowledgedResponseBase {}
+export interface SlmExecuteRetentionResponse extends AcknowledgedResponseBase {
+}
 
 export interface SlmGetLifecycleRequest extends RequestBase {
   policy_id?: Names
 }
 
-export interface SlmGetLifecycleResponse extends DictionaryResponseBase<Id, SlmSnapshotLifecyclePolicyMetadata> {}
+export interface SlmGetLifecycleResponse extends DictionaryResponseBase<Id, SlmSnapshotLifecyclePolicyMetadata> {
+}
 
 export interface SlmGetStatsRequest extends RequestBase {
 }
@@ -13362,17 +13449,20 @@ export interface SlmPutLifecycleRequest extends RequestBase {
   }
 }
 
-export interface SlmPutLifecycleResponse extends AcknowledgedResponseBase {}
+export interface SlmPutLifecycleResponse extends AcknowledgedResponseBase {
+}
 
 export interface SlmStartRequest extends RequestBase {
 }
 
-export interface SlmStartResponse extends AcknowledgedResponseBase {}
+export interface SlmStartResponse extends AcknowledgedResponseBase {
+}
 
 export interface SlmStopRequest extends RequestBase {
 }
 
-export interface SlmStopResponse extends AcknowledgedResponseBase {}
+export interface SlmStopResponse extends AcknowledgedResponseBase {
+}
 
 export interface SnapshotFileCountSnapshotStats {
   file_count: integer
@@ -13515,7 +13605,8 @@ export interface SnapshotCloneRequest extends RequestBase {
   }
 }
 
-export interface SnapshotCloneResponse extends AcknowledgedResponseBase {}
+export interface SnapshotCloneResponse extends AcknowledgedResponseBase {
+}
 
 export interface SnapshotCreateRequest extends RequestBase {
   repository: Name
@@ -13548,7 +13639,8 @@ export interface SnapshotCreateRepositoryRequest extends RequestBase {
   }
 }
 
-export interface SnapshotCreateRepositoryResponse extends AcknowledgedResponseBase {}
+export interface SnapshotCreateRepositoryResponse extends AcknowledgedResponseBase {
+}
 
 export interface SnapshotDeleteRequest extends RequestBase {
   repository: Name
@@ -13556,7 +13648,8 @@ export interface SnapshotDeleteRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface SnapshotDeleteResponse extends AcknowledgedResponseBase {}
+export interface SnapshotDeleteResponse extends AcknowledgedResponseBase {
+}
 
 export interface SnapshotDeleteRepositoryRequest extends RequestBase {
   repository: Names
@@ -13564,7 +13657,8 @@ export interface SnapshotDeleteRepositoryRequest extends RequestBase {
   timeout?: Time
 }
 
-export interface SnapshotDeleteRepositoryResponse extends AcknowledgedResponseBase {}
+export interface SnapshotDeleteRepositoryResponse extends AcknowledgedResponseBase {
+}
 
 export interface SnapshotGetRequest extends RequestBase {
   repository: Name
@@ -13593,7 +13687,8 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface SnapshotGetRepositoryResponse extends DictionaryResponseBase<string, SnapshotSnapshotRepository> {}
+export interface SnapshotGetRepositoryResponse extends DictionaryResponseBase<string, SnapshotSnapshotRepository> {
+}
 
 export interface SnapshotRestoreRequest extends RequestBase {
   repository: Name
@@ -13925,7 +14020,8 @@ export interface TransformDeleteTransformRequest extends RequestBase {
   force?: boolean
 }
 
-export interface TransformDeleteTransformResponse extends AcknowledgedResponseBase {}
+export interface TransformDeleteTransformResponse extends AcknowledgedResponseBase {
+}
 
 export interface TransformGetTransformRequest extends RequestBase {
   transform_id?: Name
@@ -14026,16 +14122,20 @@ export interface TransformPreviewTransformResponse<TTransform = unknown> {
 export interface TransformPutTransformRequest extends TransformPreviewTransformRequest {
   transform_id: Id
   defer_validation?: boolean
+  body?: {
+  }
 }
 
-export interface TransformPutTransformResponse extends AcknowledgedResponseBase {}
+export interface TransformPutTransformResponse extends AcknowledgedResponseBase {
+}
 
 export interface TransformStartTransformRequest extends RequestBase {
   transform_id: Name
   timeout?: Time
 }
 
-export interface TransformStartTransformResponse extends AcknowledgedResponseBase {}
+export interface TransformStartTransformResponse extends AcknowledgedResponseBase {
+}
 
 export interface TransformStopTransformRequest extends RequestBase {
   transform_id: Name
@@ -14046,9 +14146,12 @@ export interface TransformStopTransformRequest extends RequestBase {
   wait_for_completion?: boolean
 }
 
-export interface TransformStopTransformResponse extends AcknowledgedResponseBase {}
+export interface TransformStopTransformResponse extends AcknowledgedResponseBase {
+}
 
 export interface TransformUpdateTransformRequest extends TransformPutTransformRequest {
+  body?: {
+  }
 }
 
 export interface TransformUpdateTransformResponse {
@@ -14630,7 +14733,8 @@ export interface WatcherQueryWatchesResponse {
 export interface WatcherStartRequest extends RequestBase {
 }
 
-export interface WatcherStartResponse extends AcknowledgedResponseBase {}
+export interface WatcherStartResponse extends AcknowledgedResponseBase {
+}
 
 export interface WatcherStatsRequest extends RequestBase {
   metric?: WatcherStatsWatcherMetric | WatcherStatsWatcherMetric[]
@@ -14672,7 +14776,8 @@ export type WatcherStatsWatcherState = 'stopped' | 'starting' | 'started' | 'sto
 export interface WatcherStopRequest extends RequestBase {
 }
 
-export interface WatcherStopResponse extends AcknowledgedResponseBase {}
+export interface WatcherStopResponse extends AcknowledgedResponseBase {
+}
 
 export interface XpackInfoBuildInformation {
   date: DateString

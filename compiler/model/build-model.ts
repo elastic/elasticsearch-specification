@@ -179,6 +179,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     )
   }
 
+  let bodyWasSet = false
+
   // Request and Response definitions needs to be handled
   // differently from normal classes
   if (name === 'Request' || name === 'Response') {
@@ -188,7 +190,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         kind: 'request',
         name: { name, namespace: getNameSpace(declaration) },
         path: new Array<model.Property>(),
-        query: new Array<model.Property>()
+        query: new Array<model.Property>(),
+        body: { kind: 'no_body' }
       }
 
       const response: model.TypeName = {
@@ -210,20 +213,27 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
           type.query = property.properties
-        } else {
-          // the body can either by a value (eg Array<string> or an object with properties)
+        } else if (property.name === 'body') {
+          bodyWasSet = true
+          // the body can either be a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
-            type.body = { kind: 'value', value: property.valueOf }
+            if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
+              type.body = { kind: 'no_body' }
+            } else {
+              type.body = { kind: 'value', value: property.valueOf }
+            }
           } else if (property.properties.length > 0) {
             type.body = { kind: 'properties', properties: property.properties }
           }
+        } else {
+          assert(member, false, 'Unknown request property ' + property.name)
         }
       }
     } else {
       type = {
         kind: 'response',
         name: { name, namespace: getNameSpace(declaration) },
-        body: undefined
+        body: { kind: 'no_body' }
       }
 
       for (const member of declaration.getMembers()) {
@@ -235,9 +245,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
         const property = visitRequestOrResponseProperty(member)
         if (property.name === 'body') {
+          bodyWasSet = true
           // the body can either by a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
-            type.body = { kind: 'value', value: property.valueOf }
+            if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
+              type.body = { kind: 'no_body' }
+            } else {
+              type.body = { kind: 'value', value: property.valueOf }
+            }
           } else if (property.properties.length > 0) {
             type.body = { kind: 'properties', properties: property.properties }
           }
@@ -277,6 +292,15 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         name: modelGenerics(typeParameter),
         namespace: type.name.namespace
       })
+    }
+
+    // If the body wasn't set and we have a parent class, then it's a property body with no additional properties
+    if (!bodyWasSet && type.inherits != null) {
+      const parent = type.inherits.type
+      // RequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
+      if (!(parent.name === 'RequestBase' && parent.namespace === '_types')) {
+        type.body = { kind: 'properties', properties: new Array<model.Property>() }
+      }
     }
 
     return type
