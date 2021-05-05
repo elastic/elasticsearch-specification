@@ -17,7 +17,12 @@
  * under the License.
  */
 
-export class SqlColumn {
-  name: string
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Name } from '@_types/common'
+
+export class Column {
+  name: Name
   type: string
 }
+
+export type Row = UserDefinedValue[]

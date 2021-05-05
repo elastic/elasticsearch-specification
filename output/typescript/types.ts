@@ -2215,8 +2215,6 @@ export interface SlicedScroll {
   max: integer
 }
 
-export type SqlRow = any[]
-
 export interface StoreStats {
   size?: ByteSize
   size_in_bytes: integer
@@ -13668,6 +13666,11 @@ export interface SqlClearSqlCursorResponse {
   succeeded: boolean
 }
 
+export interface SqlQuerySqlColumn {
+  name: Name
+  type: string
+}
+
 export interface SqlQuerySqlRequest extends RequestBase {
   format?: string
   body?: {
@@ -13684,15 +13687,12 @@ export interface SqlQuerySqlRequest extends RequestBase {
 }
 
 export interface SqlQuerySqlResponse {
-  columns?: SqlQuerySqlSqlColumn[]
+  columns?: SqlQuerySqlColumn[]
   cursor?: string
-  rows: SqlRow[]
+  rows: SqlQuerySqlRow[]
 }
 
-export interface SqlQuerySqlSqlColumn {
-  name: string
-  type: string
-}
+export type SqlQuerySqlRow = any[]
 
 export interface SqlTranslateSqlRequest extends RequestBase {
   body?: {
