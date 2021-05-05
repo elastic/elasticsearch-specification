@@ -27,7 +27,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { MultiTermVectorOperation } from './MultiTermVectorOperation'
+import { Operation } from './types'
 
 /**
  * @rest_spec_name mtermvectors
@@ -53,7 +53,7 @@ export interface Request extends RequestBase {
     version_type?: VersionType
   }
   body?: {
-    docs?: MultiTermVectorOperation[]
+    docs?: Operation[]
     ids?: Id[]
   }
 }

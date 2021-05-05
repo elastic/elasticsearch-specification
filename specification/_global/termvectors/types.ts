@@ -18,8 +18,12 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Field, Id, IndexName, VersionNumber } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
+
+export class TermVector {
+  field_statistics: FieldStatistics
+  terms: Dictionary<string, Term>
+}
 
 export class FieldStatistics {
   doc_count: integer
@@ -27,31 +31,7 @@ export class FieldStatistics {
   sum_ttf: long
 }
 
-export class TermVector {
-  field_statistics: FieldStatistics
-  terms: Dictionary<string, TermVectorTerm>
-}
-
-export class TermVectorFilter {
-  max_doc_freq?: integer
-  max_num_terms?: integer
-  max_term_freq?: integer
-  max_word_length?: integer
-  min_doc_freq?: integer
-  min_term_freq?: integer
-  min_word_length?: integer
-}
-
-export class TermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Dictionary<Field, TermVector>
-  took: long
-  version: VersionNumber
-}
-
-export class TermVectorTerm {
+export class Term {
   doc_freq?: integer
   score?: double
   term_freq: integer
@@ -64,4 +44,14 @@ export class Token {
   payload?: string
   position: integer
   start_offset?: integer
+}
+
+export class Filter {
+  max_doc_freq?: integer
+  max_num_terms?: integer
+  max_term_freq?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
+  min_term_freq?: integer
+  min_word_length?: integer
 }

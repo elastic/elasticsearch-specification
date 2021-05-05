@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { TermVectorFilter } from '@global/termvectors/types'
+import { Filter, TermVector } from '@global/termvectors/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
+  Field,
   Fields,
   Id,
   IndexName,
@@ -26,12 +28,13 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { long } from '@_types/Numeric'
 
-export class MultiTermVectorOperation {
+export class Operation {
   doc: any
   fields: Fields
   field_statistics: boolean
-  filter: TermVectorFilter
+  filter: Filter
   _id: Id
   _index: IndexName
   offsets: boolean
@@ -41,4 +44,13 @@ export class MultiTermVectorOperation {
   term_statistics: boolean
   version: VersionNumber
   version_type: VersionType
+}
+
+export class TermVectorsResult {
+  found: boolean
+  id: Id
+  index: IndexName
+  term_vectors: Dictionary<Field, TermVector>
+  took: long
+  version: VersionNumber
 }

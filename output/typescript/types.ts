@@ -630,11 +630,11 @@ export interface MsearchTemplateTemplateItem {
   source?: string
 }
 
-export interface MtermvectorsMultiTermVectorOperation {
+export interface MtermvectorsOperation {
   doc: object
   fields: Fields
   field_statistics: boolean
-  filter: TermvectorsTermVectorFilter
+  filter: TermvectorsFilter
   _id: Id
   _index: IndexName
   offsets: boolean
@@ -661,13 +661,22 @@ export interface MtermvectorsRequest extends RequestBase {
   version?: VersionNumber
   version_type?: VersionType
   body?: {
-    docs?: MtermvectorsMultiTermVectorOperation[]
+    docs?: MtermvectorsOperation[]
     ids?: Id[]
   }
 }
 
 export interface MtermvectorsResponse {
-  docs: TermvectorsTermVectorsResult[]
+  docs: MtermvectorsTermVectorsResult[]
+}
+
+export interface MtermvectorsTermVectorsResult {
+  found: boolean
+  id: Id
+  index: IndexName
+  term_vectors: Record<Field, TermvectorsTermVector>
+  took: long
+  version: VersionNumber
 }
 
 export interface OpenPointInTimeRequest extends RequestBase {
@@ -1557,6 +1566,16 @@ export interface TermvectorsFieldStatistics {
   sum_ttf: long
 }
 
+export interface TermvectorsFilter {
+  max_doc_freq?: integer
+  max_num_terms?: integer
+  max_term_freq?: integer
+  max_word_length?: integer
+  min_doc_freq?: integer
+  min_term_freq?: integer
+  min_word_length?: integer
+}
+
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
@@ -1574,7 +1593,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   version_type?: VersionType
   body?: {
     doc?: TDocument
-    filter?: TermvectorsTermVectorFilter
+    filter?: TermvectorsFilter
     per_field_analyzer?: Record<Field, string>
   }
 }
@@ -1589,22 +1608,7 @@ export interface TermvectorsResponse {
   _version: VersionNumber
 }
 
-export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
-  terms: Record<string, TermvectorsTermVectorTerm>
-}
-
-export interface TermvectorsTermVectorFilter {
-  max_doc_freq?: integer
-  max_num_terms?: integer
-  max_term_freq?: integer
-  max_word_length?: integer
-  min_doc_freq?: integer
-  min_term_freq?: integer
-  min_word_length?: integer
-}
-
-export interface TermvectorsTermVectorTerm {
+export interface TermvectorsTerm {
   doc_freq?: integer
   score?: double
   term_freq: integer
@@ -1612,13 +1616,9 @@ export interface TermvectorsTermVectorTerm {
   ttf?: integer
 }
 
-export interface TermvectorsTermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Record<Field, TermvectorsTermVector>
-  took: long
-  version: VersionNumber
+export interface TermvectorsTermVector {
+  field_statistics: TermvectorsFieldStatistics
+  terms: Record<string, TermvectorsTerm>
 }
 
 export interface TermvectorsToken {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TermVectorsResult } from '@global/termvectors/types'
+import { TermVectorsResult } from './types'
 
 export class Response {
   body: { docs: TermVectorsResult[] }
