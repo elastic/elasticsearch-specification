@@ -17819,66 +17819,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "MultiSearchTemplateItem",
-        "namespace": "_global.msearch_template"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "params",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "source",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17889,7 +17829,7 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "MultiSearchTemplateItem",
+              "name": "TemplateItem",
               "namespace": "_global.msearch_template"
             }
           }
@@ -18039,6 +17979,66 @@
         "name": "Response",
         "namespace": "_global.msearch_template"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TemplateItem",
+        "namespace": "_global.msearch_template"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

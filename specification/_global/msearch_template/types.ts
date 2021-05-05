@@ -17,28 +17,13 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Indices, SearchType, Types } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { TemplateItem } from './types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, Indices } from '@_types/common'
 
-/**
- * @rest_spec_name msearch_template
- * @since 5.0.0
- *
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    index?: Indices
-    type?: Types
-  }
-  query_parameters?: {
-    ccs_minimize_roundtrips?: boolean
-    max_concurrent_searches?: long
-    search_type?: SearchType
-    rest_total_hits_as_int?: boolean
-    typed_keys?: boolean
-  }
-  body: Array<TemplateItem>
+export class TemplateItem {
+  id?: Id
+  index?: Indices
+  params?: Dictionary<string, UserDefinedValue>
+  source?: string
 }
