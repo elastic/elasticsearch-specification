@@ -607,13 +607,6 @@ export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse
   status: integer
 }
 
-export interface MsearchTemplateMultiSearchTemplateItem {
-  id?: Id
-  index?: Indices
-  params?: Record<string, any>
-  source?: string
-}
-
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
   type?: Types
@@ -622,12 +615,19 @@ export interface MsearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body?: MsearchTemplateMultiSearchTemplateItem[]
+  body?: MsearchTemplateTemplateItem[]
 }
 
 export interface MsearchTemplateResponse<TDocument = unknown> {
   responses: SearchResponse<TDocument>[]
   took: long
+}
+
+export interface MsearchTemplateTemplateItem {
+  id?: Id
+  index?: Indices
+  params?: Record<string, any>
+  source?: string
 }
 
 export interface MtermvectorsMultiTermVectorOperation {
