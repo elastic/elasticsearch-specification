@@ -17,11 +17,26 @@
  * under the License.
  */
 
-import { double, long } from '@_types/Numeric'
+import { Field } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
 
-export class GraphConnection {
-  doc_count: long
-  source: long
-  target: long
+export class Vertex {
+  depth: long
+  field: Field
+  term: string
   weight: double
+}
+
+export class VertexDefinition {
+  exclude?: string[]
+  field: Field
+  include?: VertexInclude[]
+  min_doc_count?: long
+  shard_min_doc_count?: long
+  size?: integer
+}
+
+export class VertexInclude {
+  boost: double
+  term: string
 }

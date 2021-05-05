@@ -21,9 +21,9 @@ import { RequestBase } from '@_types/Base'
 import { Indices, Routing, Types } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
-import { GraphExploreControls } from './GraphExploreControls'
-import { GraphVertexDefinition } from './GraphVertexDefinition'
-import { Hop } from './Hop'
+import { ExploreControls } from '../_types/ExploreControls'
+import { Hop } from '../_types/Hop'
+import { VertexDefinition } from '@graph/_types/Vertex'
 
 /**
  * @rest_spec_name graph.explore
@@ -41,8 +41,8 @@ export interface Request extends RequestBase {
   }
   body?: {
     connections?: Hop
-    controls?: GraphExploreControls
+    controls?: ExploreControls
     query?: QueryContainer
-    vertices?: GraphVertexDefinition[]
+    vertices?: VertexDefinition[]
   }
 }
