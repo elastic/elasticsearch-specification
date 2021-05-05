@@ -29,6 +29,4 @@ export interface Request extends RequestBase {
   path_parts?: {
     name?: Name // param name in docs: auto_follow_pattern_name
   }
-  query_parameters?: {}
-  body?: {}
 }

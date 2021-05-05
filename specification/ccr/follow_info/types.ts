@@ -17,10 +17,33 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
-import { AutoFollowPattern } from './AutoFollowPattern'
+import { IndexName, Name } from '@_types/common'
 
-export class AutoFollowPatternItem {
-  name: Name
-  pattern: AutoFollowPattern
+export class FollowerIndex {
+  follower_index: IndexName
+  leader_index: IndexName
+  parameters?: FollowerIndexParameters
+  remote_cluster: Name
+  status: FollowerIndexStatus
+}
+
+export enum FollowerIndexStatus {
+  active = 0,
+  paused = 1
+}
+
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
+
+export class FollowerIndexParameters {
+  max_outstanding_read_requests: integer
+  max_outstanding_write_requests: integer
+  max_read_request_operation_count: integer
+  max_read_request_size: string
+  max_retry_delay: Time
+  max_write_buffer_count: integer
+  max_write_buffer_size: string
+  max_write_request_operation_count: integer
+  max_write_request_size: string
+  read_poll_timeout: Time
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { AutoFollowPatternItem } from './AutoFollowPatternItem'
+import { AutoFollowPattern } from './types'
 
 export class Response {
-  body: { patterns: AutoFollowPatternItem[] }
+  body: { patterns: AutoFollowPattern[] }
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, Uuid } from '@_types/common'
 
 /**
  * @rest_spec_name ccr.forget_follower
@@ -29,11 +29,10 @@ export interface Request extends RequestBase {
   path_parts?: {
     index: IndexName
   }
-  query_parameters?: {}
   body?: {
     follower_cluster?: string
     follower_index?: IndexName
-    follower_index_uuid?: string
+    follower_index_uuid?: Uuid
     leader_remote_cluster?: string
   }
 }
