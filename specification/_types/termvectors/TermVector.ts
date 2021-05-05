@@ -17,43 +17,31 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import {
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type,
-  VersionNumber,
-  VersionType
-} from '@_types/common'
-import { Operation } from './types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { double, integer, long } from '@_types/Numeric'
 
-/**
- * @rest_spec_name mtermvectors
- * @since 0.0.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    index?: IndexName
-    type?: Type
-  }
-  query_parameters?: {
-    fields?: Fields
-    field_statistics?: boolean
-    offsets?: boolean
-    payloads?: boolean
-    positions?: boolean
-    preference?: string
-    realtime?: boolean
-    routing?: Routing
-    term_statistics?: boolean
-    version?: VersionNumber
-    version_type?: VersionType
-  }
-  body?: {
-    docs?: Operation[]
-    ids?: Id[]
-  }
+export class TermVector {
+  field_statistics: FieldStatistics
+  terms: Dictionary<string, TermVectorTerm>
+}
+
+export class FieldStatistics {
+  doc_count: integer
+  sum_doc_freq: long
+  sum_ttf: long
+}
+
+export class TermVectorTerm {
+  doc_freq?: integer
+  score?: double
+  term_freq: integer
+  tokens: Token[]
+  ttf?: integer
+}
+
+export class Token {
+  end_offset?: integer
+  payload?: string
+  position: integer
+  start_offset?: integer
 }

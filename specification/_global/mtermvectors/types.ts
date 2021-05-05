@@ -18,7 +18,9 @@
  */
 
 import { TermVectorFilter } from '@global/termvectors/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
+  Field,
   Fields,
   Id,
   IndexName,
@@ -26,8 +28,10 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { TermVector } from '@_types/termvectors/TermVector'
 
-export class MultiTermVectorOperation {
+export class Operation {
   doc: any
   fields: Fields
   field_statistics: boolean
@@ -41,4 +45,13 @@ export class MultiTermVectorOperation {
   term_statistics: boolean
   version: VersionNumber
   version_type: VersionType
+}
+
+export class TermVectorResult {
+  found: boolean
+  id: Id
+  index: IndexName
+  term_vectors: Dictionary<Field, TermVector>
+  took: long
+  version: VersionNumber
 }

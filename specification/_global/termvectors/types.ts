@@ -17,20 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Field, Id, IndexName, VersionNumber } from '@_types/common'
-import { double, integer, long } from '@_types/Numeric'
-
-export class FieldStatistics {
-  doc_count: integer
-  sum_doc_freq: long
-  sum_ttf: long
-}
-
-export class TermVector {
-  field_statistics: FieldStatistics
-  terms: Dictionary<string, TermVectorTerm>
-}
+import { integer } from '@_types/Numeric'
 
 export class TermVectorFilter {
   max_doc_freq?: integer
@@ -40,28 +27,4 @@ export class TermVectorFilter {
   min_doc_freq?: integer
   min_term_freq?: integer
   min_word_length?: integer
-}
-
-export class TermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Dictionary<Field, TermVector>
-  took: long
-  version: VersionNumber
-}
-
-export class TermVectorTerm {
-  doc_freq?: integer
-  score?: double
-  term_freq: integer
-  tokens: Token[]
-  ttf?: integer
-}
-
-export class Token {
-  end_offset?: integer
-  payload?: string
-  position: integer
-  start_offset?: integer
 }

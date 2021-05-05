@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Id, IndexName, Type, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TermVector } from './types'
+import { TermVector } from '@_types/termvectors/TermVector'
 
 export class Response {
   body: {

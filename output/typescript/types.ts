@@ -661,13 +661,22 @@ export interface MtermvectorsRequest extends RequestBase {
   version?: VersionNumber
   version_type?: VersionType
   body?: {
-    docs?: MtermvectorsMultiTermVectorOperation[]
+    docs?: MtermvectorsOperation[]
     ids?: Id[]
   }
 }
 
 export interface MtermvectorsResponse {
-  docs: TermvectorsTermVectorsResult[]
+  docs: MtermvectorsTermVectorResult[]
+}
+
+export interface MtermvectorsTermVectorResult {
+  found: boolean
+  id: Id
+  index: IndexName
+  term_vectors: Record<Field, TermvectorsTermVector>
+  took: long
+  version: VersionNumber
 }
 
 export interface OpenPointInTimeRequest extends RequestBase {
@@ -1551,12 +1560,6 @@ export interface SearchTemplateResponse<TDocument = unknown> {
   hits: SearchTypesHitsMetadata<TDocument>
 }
 
-export interface TermvectorsFieldStatistics {
-  doc_count: integer
-  sum_doc_freq: long
-  sum_ttf: long
-}
-
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
@@ -1589,11 +1592,6 @@ export interface TermvectorsResponse {
   _version: VersionNumber
 }
 
-export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
-  terms: Record<string, TermvectorsTermVectorTerm>
-}
-
 export interface TermvectorsTermVectorFilter {
   max_doc_freq?: integer
   max_num_terms?: integer
@@ -1602,30 +1600,6 @@ export interface TermvectorsTermVectorFilter {
   min_doc_freq?: integer
   min_term_freq?: integer
   min_word_length?: integer
-}
-
-export interface TermvectorsTermVectorTerm {
-  doc_freq?: integer
-  score?: double
-  term_freq: integer
-  tokens: TermvectorsToken[]
-  ttf?: integer
-}
-
-export interface TermvectorsTermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Record<Field, TermvectorsTermVector>
-  took: long
-  version: VersionNumber
-}
-
-export interface TermvectorsToken {
-  end_offset?: integer
-  payload?: string
-  position: integer
-  start_offset?: integer
 }
 
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
@@ -4695,6 +4669,32 @@ export interface QueryDslWildcardQuery extends QueryDslQueryBase {
 }
 
 export type QueryDslZeroTermsQuery = 'all' | 'none'
+
+export interface TermvectorsFieldStatistics {
+  doc_count: integer
+  sum_doc_freq: long
+  sum_ttf: long
+}
+
+export interface TermvectorsTermVector {
+  field_statistics: TermvectorsFieldStatistics
+  terms: Record<string, TermvectorsTermVectorTerm>
+}
+
+export interface TermvectorsTermVectorTerm {
+  doc_freq?: integer
+  score?: double
+  term_freq: integer
+  tokens: TermvectorsToken[]
+  ttf?: integer
+}
+
+export interface TermvectorsToken {
+  end_offset?: integer
+  payload?: string
+  position: integer
+  start_offset?: integer
+}
 
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
   aggregations?: Record<string, AggregationsAggregate>

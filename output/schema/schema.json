@@ -18207,7 +18207,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiTermVectorOperation",
+                  "name": "Operation",
                   "namespace": "_global.mtermvectors"
                 }
               }
@@ -18400,8 +18400,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "TermVectorsResult",
-                  "namespace": "_global.termvectors"
+                  "name": "TermVectorResult",
+                  "namespace": "_global.mtermvectors"
                 }
               }
             }
@@ -18413,6 +18413,92 @@
         "name": "Response",
         "namespace": "_global.mtermvectors"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermVectorResult",
+        "namespace": "_global.mtermvectors"
+      },
+      "properties": [
+        {
+          "name": "found",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "term_vectors",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermVector",
+                "namespace": "_types.termvectors"
+              }
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -26820,48 +26906,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "FieldStatistics",
-        "namespace": "_global.termvectors"
-      },
-      "properties": [
-        {
-          "name": "doc_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sum_doc_freq",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sum_ttf",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -27144,7 +27188,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TermVector",
-                  "namespace": "_global.termvectors"
+                  "namespace": "_types.termvectors"
                 }
               }
             }
@@ -27189,48 +27233,6 @@
         "name": "Response",
         "namespace": "_global.termvectors"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermVector",
-        "namespace": "_global.termvectors"
-      },
-      "properties": [
-        {
-          "name": "field_statistics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldStatistics",
-              "namespace": "_global.termvectors"
-            }
-          }
-        },
-        {
-          "name": "terms",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TermVectorTerm",
-                "namespace": "_global.termvectors"
-              }
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -27307,212 +27309,6 @@
         },
         {
           "name": "min_word_length",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermVectorTerm",
-        "namespace": "_global.termvectors"
-      },
-      "properties": [
-        {
-          "name": "doc_freq",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "term_freq",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "tokens",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Token",
-                "namespace": "_global.termvectors"
-              }
-            }
-          }
-        },
-        {
-          "name": "ttf",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermVectorsResult",
-        "namespace": "_global.termvectors"
-      },
-      "properties": [
-        {
-          "name": "found",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "term_vectors",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TermVector",
-                "namespace": "_global.termvectors"
-              }
-            }
-          }
-        },
-        {
-          "name": "took",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Token",
-        "namespace": "_global.termvectors"
-      },
-      "properties": [
-        {
-          "name": "end_offset",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "payload",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "position",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "start_offset",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -56608,6 +56404,210 @@
         "name": "ZeroTermsQuery",
         "namespace": "_types.query_dsl"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldStatistics",
+        "namespace": "_types.termvectors"
+      },
+      "properties": [
+        {
+          "name": "doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sum_doc_freq",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "sum_ttf",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermVector",
+        "namespace": "_types.termvectors"
+      },
+      "properties": [
+        {
+          "name": "field_statistics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldStatistics",
+              "namespace": "_types.termvectors"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermVectorTerm",
+                "namespace": "_types.termvectors"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermVectorTerm",
+        "namespace": "_types.termvectors"
+      },
+      "properties": [
+        {
+          "name": "doc_freq",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "score",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "term_freq",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "tokens",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Token",
+                "namespace": "_types.termvectors"
+              }
+            }
+          }
+        },
+        {
+          "name": "ttf",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Token",
+        "namespace": "_types.termvectors"
+      },
+      "properties": [
+        {
+          "name": "end_offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "payload",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "position",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "start_offset",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "generics": [
