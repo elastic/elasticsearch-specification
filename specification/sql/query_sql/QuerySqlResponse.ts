@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { SqlRow } from '@_types/common'
-import { SqlColumn } from './SqlColumn'
+import { Column, Row } from './types'
 
 export class Response {
-  body: { columns?: SqlColumn[]; cursor?: string; rows: SqlRow[] }
+  body: {
+    columns?: Column[]
+    cursor?: string
+    rows: Row[]
+  }
 }

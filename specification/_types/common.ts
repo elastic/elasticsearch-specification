@@ -115,11 +115,6 @@ export type AggregateName = string
  */
 export type SuggestionName = string
 
-/**
- * QL Types
- */
-export type SqlRow = UserDefinedValue[]
-
 // Container Type for HTTP Headers
 export type HttpHeaders = Dictionary<string, string | string[]>
 
