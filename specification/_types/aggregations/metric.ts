@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Highlight } from "@global/search/_types/highlighting"
-import { SortOrder, Sort } from "@global/search/_types/sort"
-import { SourceFilter } from "@global/search/_types/SourceFilter"
-import { Dictionary } from "@spec_utils/Dictionary"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { Field, Fields } from "@_types/common"
-import { double, integer, long } from "@_types/Numeric"
-import { QueryContainer } from "@_types/query_dsl/abstractions"
-import { GeoLocation } from "@_types/query_dsl/geo"
-import { Script, ScriptField } from "@_types/Scripting"
-import { Aggregation } from "./Aggregation"
-import { Missing } from "./AggregationContainer"
-import { DateInterval } from "./bucket"
+import { Highlight } from '@global/search/_types/highlighting'
+import { SortOrder, Sort } from '@global/search/_types/sort'
+import { SourceFilter } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, Fields } from '@_types/common'
+import { double, integer, long } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { GeoLocation } from '@_types/query_dsl/geo'
+import { Script, ScriptField } from '@_types/Scripting'
+import { Aggregation } from './Aggregation'
+import { Missing } from './AggregationContainer'
+import { DateInterval } from './bucket'
 
 export class MetricAggregationBase {
   field?: Field

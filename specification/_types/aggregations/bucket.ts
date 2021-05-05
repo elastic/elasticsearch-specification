@@ -17,19 +17,24 @@
  * under the License.
  */
 
-import { SortOrder } from "@global/search/_types/sort"
-import { Dictionary } from "@spec_utils/Dictionary"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { Field, RelationName, Fields } from "@_types/common"
-import { GeoDistanceType, DistanceUnit, GeoHashPrecision, GeoTilePrecision } from "@_types/Geo"
-import { integer, float, long, double } from "@_types/Numeric"
-import { QueryContainer } from "@_types/query_dsl/abstractions"
-import { GeoLocation, BoundingBox } from "@_types/query_dsl/geo"
-import { Script } from "@_types/Scripting"
-import { DateString, Time, DateMath } from "@_types/Time"
-import { GeoBounds } from "./Aggregate"
-import { Aggregation } from "./Aggregation"
-import { AggregationContainer, Missing } from "./AggregationContainer"
+import { SortOrder } from '@global/search/_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, RelationName, Fields } from '@_types/common'
+import {
+  GeoDistanceType,
+  DistanceUnit,
+  GeoHashPrecision,
+  GeoTilePrecision
+} from '@_types/Geo'
+import { integer, float, long, double } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { GeoLocation, BoundingBox } from '@_types/query_dsl/geo'
+import { Script } from '@_types/Scripting'
+import { DateString, Time, DateMath } from '@_types/Time'
+import { GeoBounds } from './Aggregate'
+import { Aggregation } from './Aggregation'
+import { AggregationContainer, Missing } from './AggregationContainer'
 
 export class BucketAggregationBase extends Aggregation {
   aggregations?: Dictionary<string, AggregationContainer>
@@ -227,7 +232,6 @@ export class NestedAggregation extends BucketAggregationBase {
 export class ParentAggregation extends BucketAggregationBase {
   type?: RelationName
 }
-
 
 export class RangeAggregation extends BucketAggregationBase {
   field?: Field

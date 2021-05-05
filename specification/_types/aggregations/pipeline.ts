@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Sort } from "@global/search/_types/sort"
-import { Name, Field } from "@_types/common"
-import { integer, double, float } from "@_types/Numeric"
-import { Script } from "@_types/Scripting"
-import { Aggregation } from "./Aggregation"
+import { Sort } from '@global/search/_types/sort'
+import { Name, Field } from '@_types/common'
+import { integer, double, float } from '@_types/Numeric'
+import { Script } from '@_types/Scripting'
+import { Aggregation } from './Aggregation'
 
 export class PipelineAggregationBase extends Aggregation {
   buckets_path?: BucketsPath
@@ -176,7 +176,6 @@ export enum NormalizeMethod {
 export class PercentilesBucketAggregation extends PipelineAggregationBase {
   percents?: double[]
 }
-
 
 export class SerialDifferencingAggregation extends PipelineAggregationBase {
   lag?: integer

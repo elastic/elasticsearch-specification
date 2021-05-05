@@ -19,7 +19,12 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { DateHistogramAggregation, GeoTileGridAggregation, HistogramAggregation, TermsAggregation } from '@_types/aggregations/bucket'
+import {
+  DateHistogramAggregation,
+  GeoTileGridAggregation,
+  HistogramAggregation,
+  TermsAggregation
+} from '@_types/aggregations/bucket'
 import { Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'

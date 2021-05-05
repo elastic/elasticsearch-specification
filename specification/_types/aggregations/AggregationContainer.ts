@@ -17,14 +17,84 @@
  * under the License.
  */
 
-import { Dictionary } from "@spec_utils/Dictionary"
-import { UserDefinedValue } from "@spec_utils/UserDefinedValue"
-import { integer, double } from "@_types/Numeric"
-import { QueryContainer } from "@_types/query_dsl/abstractions"
-import { AdjacencyMatrixAggregation, AutoDateHistogramAggregation, ChildrenAggregation, CompositeAggregation, DateHistogramAggregation, DateRangeAggregation, DiversifiedSamplerAggregation, FiltersAggregation, GeoDistanceAggregation, GeoHashGridAggregation, GeoTileGridAggregation, GlobalAggregation, HistogramAggregation, IpRangeAggregation, MissingAggregation, MultiTermsAggregation, NestedAggregation, ParentAggregation, RangeAggregation, RareTermsAggregation, ReverseNestedAggregation, SamplerAggregation, SignificantTermsAggregation, SignificantTextAggregation, TermsAggregation, VariableWidthHistogramAggregation } from "./bucket"
-import { MatrixStatsAggregation } from "./matrix"
-import { AverageAggregation, BoxplotAggregation, CardinalityAggregation, ExtendedStatsAggregation, GeoBoundsAggregation, GeoCentroidAggregation, GeoLineAggregation, MaxAggregation, MedianAbsoluteDeviationAggregation, MinAggregation, PercentileRanksAggregation, PercentilesAggregation, RateAggregation, ScriptedMetricAggregation, StatsAggregation, StringStatsAggregation, SumAggregation, TopHitsAggregation, TTestAggregation, TopMetricsAggregation, ValueCountAggregation, WeightedAverageAggregation } from "./metric"
-import { AverageBucketAggregation, BucketScriptAggregation, BucketSelectorAggregation, BucketSortAggregation, CumulativeCardinalityAggregation, CumulativeSumAggregation, DerivativeAggregation, ExtendedStatsBucketAggregation, InferenceAggregation, MaxBucketAggregation, MinBucketAggregation, MovingAverageAggregation, MovingPercentilesAggregation, MovingFunctionAggregation, NormalizeAggregation, PercentilesBucketAggregation, SerialDifferencingAggregation, StatsBucketAggregation, SumBucketAggregation } from "./pipeline"
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { integer, double } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import {
+  AdjacencyMatrixAggregation,
+  AutoDateHistogramAggregation,
+  ChildrenAggregation,
+  CompositeAggregation,
+  DateHistogramAggregation,
+  DateRangeAggregation,
+  DiversifiedSamplerAggregation,
+  FiltersAggregation,
+  GeoDistanceAggregation,
+  GeoHashGridAggregation,
+  GeoTileGridAggregation,
+  GlobalAggregation,
+  HistogramAggregation,
+  IpRangeAggregation,
+  MissingAggregation,
+  MultiTermsAggregation,
+  NestedAggregation,
+  ParentAggregation,
+  RangeAggregation,
+  RareTermsAggregation,
+  ReverseNestedAggregation,
+  SamplerAggregation,
+  SignificantTermsAggregation,
+  SignificantTextAggregation,
+  TermsAggregation,
+  VariableWidthHistogramAggregation
+} from './bucket'
+import { MatrixStatsAggregation } from './matrix'
+import {
+  AverageAggregation,
+  BoxplotAggregation,
+  CardinalityAggregation,
+  ExtendedStatsAggregation,
+  GeoBoundsAggregation,
+  GeoCentroidAggregation,
+  GeoLineAggregation,
+  MaxAggregation,
+  MedianAbsoluteDeviationAggregation,
+  MinAggregation,
+  PercentileRanksAggregation,
+  PercentilesAggregation,
+  RateAggregation,
+  ScriptedMetricAggregation,
+  StatsAggregation,
+  StringStatsAggregation,
+  SumAggregation,
+  TopHitsAggregation,
+  TTestAggregation,
+  TopMetricsAggregation,
+  ValueCountAggregation,
+  WeightedAverageAggregation
+} from './metric'
+import {
+  AverageBucketAggregation,
+  BucketScriptAggregation,
+  BucketSelectorAggregation,
+  BucketSortAggregation,
+  CumulativeCardinalityAggregation,
+  CumulativeSumAggregation,
+  DerivativeAggregation,
+  ExtendedStatsBucketAggregation,
+  InferenceAggregation,
+  MaxBucketAggregation,
+  MinBucketAggregation,
+  MovingAverageAggregation,
+  MovingPercentilesAggregation,
+  MovingFunctionAggregation,
+  NormalizeAggregation,
+  PercentilesBucketAggregation,
+  SerialDifferencingAggregation,
+  StatsBucketAggregation,
+  SumBucketAggregation
+} from './pipeline'
 
 /**
  * @variants container
