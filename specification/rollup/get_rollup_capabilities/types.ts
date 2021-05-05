@@ -17,10 +17,17 @@
  * under the License.
  */
 
-export enum RollupMetric {
-  min = 0,
-  max = 1,
-  sum = 2,
-  avg = 3,
-  value_count = 4
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field } from '@_types/common'
+
+export class RollupCapabilities {
+  rollup_jobs: RollupCapabilitySummary[]
+}
+
+export class RollupCapabilitySummary {
+  fields: Dictionary<Field, Dictionary<string, UserDefinedValue>>
+  index_pattern: string
+  job_id: string
+  rollup_index: string
 }

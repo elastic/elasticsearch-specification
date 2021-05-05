@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RollupFieldMetric } from '@rollup/rollup_configuration/RollupFieldMetric'
-import { RollupGroupings } from '@rollup/rollup_configuration/RollupGroupings'
+import { Groupings } from '@rollup/_types/Groupings'
+import { FieldMetric } from '@rollup/_types/Metric'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
@@ -32,12 +32,11 @@ export interface Request extends RequestBase {
   path_parts?: {
     id: Id
   }
-  query_parameters?: {}
   body?: {
     cron?: string
-    groups?: RollupGroupings
+    groups?: Groupings
     index_pattern?: string
-    metrics?: RollupFieldMetric[]
+    metrics?: FieldMetric[]
     page_size?: long
     rollup_index?: IndexName
   }

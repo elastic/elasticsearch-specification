@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field } from '@_types/common'
+import { Id, TaskId } from '@_types/common'
 
-export class RollupCapabilitiesJob {
-  fields: Dictionary<Field, Dictionary<string, UserDefinedValue>>
-  index_pattern: string
-  job_id: string
-  rollup_index: string
+export class TaskFailure {
+  task_id: TaskId
+  node_id: Id
+  status: string
+  reason: TaskFailureReason
+}
+
+export class TaskFailureReason {
+  type: string
+  reason: string
 }

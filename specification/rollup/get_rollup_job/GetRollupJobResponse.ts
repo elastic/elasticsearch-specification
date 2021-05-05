@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { RollupJobInformation } from './RollupJobInformation'
+import { RollupJob } from './types'
 
 export class Response {
-  body: { jobs: RollupJobInformation[] }
+  body: { jobs: RollupJob[] }
 }

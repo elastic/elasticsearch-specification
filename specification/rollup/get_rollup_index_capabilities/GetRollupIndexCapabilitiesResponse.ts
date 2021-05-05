@@ -19,9 +19,9 @@
 
 import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { RollupIndexCapabilities } from './RollupIndexCapabilities'
+import { IndexCapabilities } from './types'
 
 export class Response extends DictionaryResponseBase<
   IndexName,
-  RollupIndexCapabilities
+  IndexCapabilities
 > {}

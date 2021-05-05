@@ -17,10 +17,31 @@
  * under the License.
  */
 
-import { Fields } from '@_types/common'
+import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
-export class HistogramRollupGrouping {
+export class Groupings {
+  date_histogram?: DateHistogramGrouping
+  histogram?: HistogramGrouping
+  terms?: TermsGrouping
+}
+
+export class DateHistogramGrouping {
+  delay?: Time
+  field: Field
+  format?: string
+  interval?: Time
+  calendar_interval?: Time
+  fixed_interval?: Time
+  time_zone?: string
+}
+
+export class TermsGrouping {
+  fields: Fields
+}
+
+export class HistogramGrouping {
   fields: Fields
   interval: long
 }

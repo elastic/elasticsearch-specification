@@ -17,8 +17,23 @@
  * under the License.
  */
 
-import { Fields } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Field, Id, IndexName } from '@_types/common'
+import { Time } from '@_types/Time'
 
-export class TermsRollupGrouping {
-  fields: Fields
+export class IndexCapabilities {
+  rollup_jobs: RollupJobSummary[]
+}
+
+export class RollupJobSummary {
+  fields: Dictionary<Field, RollupJobSummaryField[]>
+  index_pattern: string
+  job_id: Id
+  rollup_index: IndexName
+}
+
+export class RollupJobSummaryField {
+  agg: string
+  time_zone?: string
+  calendar_interval?: Time
 }
