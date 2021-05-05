@@ -4676,17 +4676,17 @@ export interface TermvectorsFieldStatistics {
   sum_ttf: long
 }
 
-export interface TermvectorsTermVector {
-  field_statistics: TermvectorsFieldStatistics
-  terms: Record<string, TermvectorsTermVectorTerm>
-}
-
-export interface TermvectorsTermVectorTerm {
+export interface TermvectorsTerm {
   doc_freq?: integer
   score?: double
   term_freq: integer
   tokens: TermvectorsToken[]
   ttf?: integer
+}
+
+export interface TermvectorsTermVector {
+  field_statistics: TermvectorsFieldStatistics
+  terms: Record<string, TermvectorsTerm>
 }
 
 export interface TermvectorsToken {

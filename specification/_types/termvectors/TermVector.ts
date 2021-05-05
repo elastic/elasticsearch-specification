@@ -22,7 +22,7 @@ import { double, integer, long } from '@_types/Numeric'
 
 export class TermVector {
   field_statistics: FieldStatistics
-  terms: Dictionary<string, TermVectorTerm>
+  terms: Dictionary<string, Term>
 }
 
 export class FieldStatistics {
@@ -31,7 +31,7 @@ export class FieldStatistics {
   sum_ttf: long
 }
 
-export class TermVectorTerm {
+export class Term {
   doc_freq?: integer
   score?: double
   term_freq: integer

@@ -56450,49 +56450,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TermVector",
-        "namespace": "_types.termvectors"
-      },
-      "properties": [
-        {
-          "name": "field_statistics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldStatistics",
-              "namespace": "_types.termvectors"
-            }
-          }
-        },
-        {
-          "name": "terms",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TermVectorTerm",
-                "namespace": "_types.termvectors"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermVectorTerm",
+        "name": "Term",
         "namespace": "_types.termvectors"
       },
       "properties": [
@@ -56551,6 +56509,48 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermVector",
+        "namespace": "_types.termvectors"
+      },
+      "properties": [
+        {
+          "name": "field_statistics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldStatistics",
+              "namespace": "_types.termvectors"
+            }
+          }
+        },
+        {
+          "name": "terms",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Term",
+                "namespace": "_types.termvectors"
+              }
             }
           }
         }
