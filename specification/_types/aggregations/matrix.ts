@@ -17,4 +17,24 @@
  * under the License.
  */
 
-export class BucketsPath {}
+import { Dictionary } from "@spec_utils/Dictionary"
+import { Fields, Field } from "@_types/common"
+import { double } from "@_types/Numeric"
+import { Aggregation } from "./Aggregation"
+
+export class MatrixAggregation extends Aggregation {
+  fields?: Fields
+  missing?: Dictionary<Field, double>
+}
+
+export class MatrixStatsAggregation extends MatrixAggregation {
+  mode?: MatrixStatsMode
+}
+
+export enum MatrixStatsMode {
+  avg = 0,
+  min = 1,
+  max = 2,
+  sum = 3,
+  median = 4
+}

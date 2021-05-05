@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { InferenceConfigContainer } from '@_types/aggregations/pipeline/inference_bucket/InferenceBucketAggregation'
+import { InferenceConfigContainer } from '@_types/aggregations/pipeline'
 import { Field, Id, Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
