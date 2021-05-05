@@ -17,7 +17,34 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { double, integer, long } from '@_types/Numeric'
+
+export class TermVector {
+  field_statistics: FieldStatistics
+  terms: Dictionary<string, Term>
+}
+
+export class FieldStatistics {
+  doc_count: integer
+  sum_doc_freq: long
+  sum_ttf: long
+}
+
+export class Term {
+  doc_freq?: integer
+  score?: double
+  term_freq: integer
+  tokens: Token[]
+  ttf?: integer
+}
+
+export class Token {
+  end_offset?: integer
+  payload?: string
+  position: integer
+  start_offset?: integer
+}
 
 export class TermVectorFilter {
   max_doc_freq?: integer

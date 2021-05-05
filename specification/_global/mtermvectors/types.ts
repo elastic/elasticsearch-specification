@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { TermVectorFilter } from '@global/termvectors/types'
+import { Filter, TermVector } from '@global/termvectors/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Field,
@@ -29,13 +29,12 @@ import {
   VersionType
 } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { TermVector } from '@_types/termvectors/TermVector'
 
 export class Operation {
   doc: any
   fields: Fields
   field_statistics: boolean
-  filter: TermVectorFilter
+  filter: Filter
   _id: Id
   _index: IndexName
   offsets: boolean
