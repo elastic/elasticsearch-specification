@@ -17,9 +17,41 @@
  * under the License.
  */
 
-export enum DynamicMapping {
-  strict = 0,
-  runtime = 1,
-  true = 2,
-  false = 3
+export class FieldMapping {}
+
+export class AllField {
+  analyzer: string
+  enabled: boolean
+  omit_norms: boolean
+  search_analyzer: string
+  similarity: string
+  store: boolean
+  store_term_vector_offsets: boolean
+  store_term_vector_payloads: boolean
+  store_term_vector_positions: boolean
+  store_term_vectors: boolean
+}
+
+export class FieldNamesField {
+  enabled: boolean
+}
+
+export class IndexField {
+  enabled: boolean
+}
+
+export class RoutingField {
+  required: boolean
+}
+
+export class SizeField {
+  enabled: boolean
+}
+
+export class SourceField {
+  compress?: boolean
+  compress_threshold?: string
+  enabled: boolean
+  excludes?: string[]
+  includes?: string[]
 }

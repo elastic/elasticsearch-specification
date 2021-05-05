@@ -17,6 +17,24 @@
  * under the License.
  */
 
-export class RoutingField {
-  required: boolean
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Field } from '@_types/common'
+import { Script } from '@_types/Scripting'
+
+export type RuntimeFields = Dictionary<Field, RuntimeField>
+
+export class RuntimeField {
+  format?: string
+  script?: Script
+  type: RuntimeFieldType
+}
+
+export enum RuntimeFieldType {
+  boolean = 0,
+  date = 1,
+  double = 2,
+  geo_point = 3,
+  ip = 4,
+  keyword = 5,
+  long = 6
 }

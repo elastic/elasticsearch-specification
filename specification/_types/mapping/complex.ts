@@ -17,18 +17,38 @@
  * under the License.
  */
 
-import { double } from '@_types/Numeric'
-import { DocValuesPropertyBase } from '../../DocValuesProperty'
-import { IndexOptions } from '../text/IndexOptions'
+import { Dictionary } from "@spec_utils/Dictionary"
+import { PropertyName } from "@_types/common"
+import { double, integer } from "@_types/Numeric"
+import { DynamicMapping } from "../dynamic-template"
+import { IndexOptions, CorePropertyBase } from "./core"
+import { PropertyBase, Property } from "./Property"
 
-export class KeywordProperty extends DocValuesPropertyBase {
+export class FlattenedProperty extends PropertyBase {
   boost?: double
+  depth_limit?: integer
+  doc_values?: boolean
   eager_global_ordinals?: boolean
   index?: boolean
   index_options?: IndexOptions
-  normalizer?: string
-  norms?: boolean
   null_value?: string
+  similarity?: string
   split_queries_on_whitespace?: boolean
-  type: 'keyword'
+  type: 'flattened'
+}
+
+export class NestedProperty extends CorePropertyBase {
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  include_in_parent?: boolean
+  include_in_root?: boolean
+  type: 'nested'
+}
+
+export class ObjectProperty extends CorePropertyBase {
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  type?: 'object'
 }

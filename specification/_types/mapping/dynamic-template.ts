@@ -17,19 +17,26 @@
  * under the License.
  */
 
-import { TermVectorOption } from '@_types/mapping/TermVectorOption'
-import { integer } from '@_types/Numeric'
-import { CorePropertyBase } from '../../CoreProperty'
-import { IndexOptions } from '../text/IndexOptions'
+import { PropertyBase } from "./types/Property"
 
-export class SearchAsYouTypeProperty extends CorePropertyBase {
-  analyzer?: string
-  index?: boolean
-  index_options?: IndexOptions
-  max_shingle_size?: integer
-  norms?: boolean
-  search_analyzer?: string
-  search_quote_analyzer?: string
-  term_vector?: TermVectorOption
-  type: 'search_as_you_type'
+export class DynamicTemplate {
+  mapping?: PropertyBase
+  match?: string
+  match_mapping_type?: string
+  match_pattern?: MatchType
+  path_match?: string
+  path_unmatch?: string
+  unmatch?: string
+}
+
+export enum MatchType {
+  simple = 0,
+  regex = 1
+}
+
+export enum DynamicMapping {
+  strict = 0,
+  runtime = 1,
+  true = 2,
+  false = 3
 }
