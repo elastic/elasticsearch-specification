@@ -17,6 +17,46 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Metadata, PropertyName } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { FlattenedProperty } from './complex'
+import {
+  CoreProperty,
+  JoinProperty,
+  PercolatorProperty,
+  RankFeatureProperty,
+  RankFeaturesProperty
+} from './core'
+import { DynamicMapping } from './dynamic-template'
+import {
+  ConstantKeywordProperty,
+  FieldAliasProperty,
+  HistogramProperty
+} from './specialized'
+
+export class PropertyBase {
+  local_metadata?: Metadata
+  meta?: Dictionary<string, string>
+  name?: PropertyName
+  properties?: Dictionary<PropertyName, Property>
+  ignore_above?: integer
+  dynamic?: boolean | DynamicMapping
+  fields?: Dictionary<PropertyName, Property>
+}
+
+/** @variants internal tag='type' */
+export type Property =
+  | FlattenedProperty
+  | JoinProperty
+  | PercolatorProperty
+  | RankFeatureProperty
+  | RankFeaturesProperty
+  | ConstantKeywordProperty
+  | FieldAliasProperty
+  | HistogramProperty
+  | CoreProperty
+
 export enum FieldType {
   none = 0,
   geo_point = 1,
@@ -58,3 +98,5 @@ export enum FieldType {
   histogram = 37,
   constant_keyword = 38
 }
+
+export class PropertyWithClrOrigin {}

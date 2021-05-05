@@ -17,27 +17,38 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { TermVectorOption } from '@_types/mapping/TermVectorOption'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { PropertyName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { CorePropertyBase } from '../../CoreProperty'
-import { IndexOptions } from './IndexOptions'
-import { TextIndexPrefixes } from './TextIndexPrefixes'
+import { CorePropertyBase, IndexOptions } from './core'
+import { DynamicMapping } from './dynamic-template'
+import { Property, PropertyBase } from './Property'
 
-export class TextProperty extends CorePropertyBase {
-  analyzer?: string
+export class FlattenedProperty extends PropertyBase {
   boost?: double
+  depth_limit?: integer
+  doc_values?: boolean
   eager_global_ordinals?: boolean
-  fielddata?: boolean
-  fielddata_frequency_filter?: FielddataFrequencyFilter
   index?: boolean
   index_options?: IndexOptions
-  index_phrases?: boolean
-  index_prefixes?: TextIndexPrefixes
-  norms?: boolean
-  position_increment_gap?: integer
-  search_analyzer?: string
-  search_quote_analyzer?: string
-  term_vector?: TermVectorOption
-  type: 'text'
+  null_value?: string
+  similarity?: string
+  split_queries_on_whitespace?: boolean
+  type: 'flattened'
+}
+
+export class NestedProperty extends CorePropertyBase {
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  include_in_parent?: boolean
+  include_in_root?: boolean
+  type: 'nested'
+}
+
+export class ObjectProperty extends CorePropertyBase {
+  dynamic?: boolean | DynamicMapping
+  enabled?: boolean
+  properties?: Dictionary<PropertyName, Property>
+  type?: 'object'
 }

@@ -24,7 +24,7 @@ import { GeoTileGridAggregation } from '@_types/aggregations/bucket/geo_tile_gri
 import { HistogramAggregation } from '@_types/aggregations/bucket/histogram/HistogramAggregation'
 import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggregation'
 import { Field, IndexName, Indices } from '@_types/common'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'

@@ -18,13 +18,43 @@
  */
 
 import { double } from '@_types/Numeric'
-import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { DocValuesPropertyBase } from './core'
 
-export class TokenCountProperty extends DocValuesPropertyBase {
-  analyzer?: string
+export class RangePropertyBase extends DocValuesPropertyBase {
   boost?: double
+  coerce?: boolean
   index?: boolean
-  null_value?: double
-  enable_position_increments?: boolean
-  type: 'token_count'
+}
+
+export type RangeProperty =
+  | LongRangeProperty
+  | IpRangeProperty
+  | IntegerRangeProperty
+  | FloatRangeProperty
+  | DoubleRangeProperty
+  | DateRangeProperty
+
+export class DateRangeProperty extends RangePropertyBase {
+  format?: string
+  type: 'date_range'
+}
+
+export class DoubleRangeProperty extends RangePropertyBase {
+  type: 'double_range'
+}
+
+export class FloatRangeProperty extends RangePropertyBase {
+  type: 'float_range'
+}
+
+export class IntegerRangeProperty extends RangePropertyBase {
+  type: 'integer_range'
+}
+
+export class IpRangeProperty extends RangePropertyBase {
+  type: 'ip_range'
+}
+
+export class LongRangeProperty extends RangePropertyBase {
+  type: 'long_range'
 }

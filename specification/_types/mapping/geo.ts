@@ -18,11 +18,52 @@
  */
 
 import { GeoLocation } from '@_types/query_dsl/geo'
-import { DocValuesPropertyBase } from '../../DocValuesProperty'
+import { DocValuesPropertyBase } from './core'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   ignore_z_value?: boolean
   null_value?: GeoLocation
   type: 'geo_point'
+}
+
+export enum GeoOrientation {
+  right = 0,
+  RIGHT = 1,
+  counterclockwise = 2,
+  COUNTERCLOCKWISE = 3,
+  ccw = 4,
+  CCW = 5,
+  left = 6,
+  LEFT = 7,
+  clockwise = 8,
+  CLOCKWISE = 9,
+  cw = 10,
+  CW = 11
+}
+
+export class GeoShapeProperty extends DocValuesPropertyBase {
+  coerce?: boolean
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  orientation?: GeoOrientation
+  strategy?: GeoStrategy
+  type: 'geo_shape'
+}
+
+export enum GeoStrategy {
+  recursive = 0,
+  term = 1
+}
+
+export enum GeoTree {
+  geohash = 0,
+  quadtree = 1
+}
+
+export class PointProperty extends DocValuesPropertyBase {
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  null_value?: string
+  type: 'point'
 }

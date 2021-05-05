@@ -17,6 +17,26 @@
  * under the License.
  */
 
-export class RoutingField {
-  required: boolean
+import { PropertyBase } from './Property'
+
+export class DynamicTemplate {
+  mapping?: PropertyBase
+  match?: string
+  match_mapping_type?: string
+  match_pattern?: MatchType
+  path_match?: string
+  path_unmatch?: string
+  unmatch?: string
+}
+
+export enum MatchType {
+  simple = 0,
+  regex = 1
+}
+
+export enum DynamicMapping {
+  strict = 0,
+  runtime = 1,
+  true = 2,
+  false = 3
 }

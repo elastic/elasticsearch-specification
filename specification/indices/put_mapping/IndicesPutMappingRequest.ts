@@ -21,16 +21,20 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, PropertyName, Type } from '@_types/common'
-import { DynamicMapping } from '@_types/mapping/DynamicMapping'
-import { DynamicTemplate } from '@_types/mapping/dynamic_template/DynamicTemplate'
-import { AllField } from '@_types/mapping/meta_fields/all/AllField'
-import { FieldNamesField } from '@_types/mapping/meta_fields/field_names/FieldNamesField'
-import { IndexField } from '@_types/mapping/meta_fields/index/IndexField'
-import { RoutingField } from '@_types/mapping/meta_fields/routing/RoutingField'
-import { SizeField } from '@_types/mapping/meta_fields/size/SizeField'
-import { SourceField } from '@_types/mapping/meta_fields/source/SourceField'
-import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
-import { Property } from '@_types/mapping/types/Property'
+import {
+  DynamicMapping,
+  DynamicTemplate
+} from '@_types/mapping/dynamic-template'
+import {
+  AllField,
+  FieldNamesField,
+  IndexField,
+  RoutingField,
+  SizeField,
+  SourceField
+} from '@_types/mapping/meta-fields'
+import { Property } from '@_types/mapping/Property'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Time } from '@_types/Time'
 
 /**
