@@ -6757,6 +6757,49 @@ export interface CatCatTransformsRequest extends CatCatRequestBase {
 
 export type CatCatTransformsResponse = CatCatTransformsCatTransformsRecord[]
 
+export interface CcrFollowIndexStats {
+  index: IndexName
+  shards: CcrShardStats[]
+}
+
+export interface CcrReadException {
+  exception: ErrorCause
+  from_seq_no: SequenceNumber
+  retries: integer
+}
+
+export interface CcrShardStats {
+  bytes_read: long
+  failed_read_requests: long
+  failed_write_requests: long
+  fatal_exception?: ErrorCause
+  follower_aliases_version: VersionNumber
+  follower_global_checkpoint: long
+  follower_index: string
+  follower_mapping_version: VersionNumber
+  follower_max_seq_no: SequenceNumber
+  follower_settings_version: VersionNumber
+  last_requested_seq_no: SequenceNumber
+  leader_global_checkpoint: long
+  leader_index: string
+  leader_max_seq_no: SequenceNumber
+  operations_read: long
+  operations_written: long
+  outstanding_read_requests: integer
+  outstanding_write_requests: integer
+  read_exceptions: CcrReadException[]
+  remote_cluster: string
+  shard_id: integer
+  successful_read_requests: long
+  successful_write_requests: long
+  time_since_last_read_millis: EpochMillis
+  total_read_remote_exec_time_millis: EpochMillis
+  total_read_time_millis: EpochMillis
+  total_write_time_millis: EpochMillis
+  write_buffer_operation_count: long
+  write_buffer_size_in_bytes: ByteSize
+}
+
 export interface CcrCreateFollowIndexRequest extends RequestBase {
   index: IndexName
   wait_for_active_shards?: WaitForActiveShards
@@ -6788,58 +6831,23 @@ export interface CcrDeleteAutoFollowPatternRequest extends RequestBase {
 
 export interface CcrDeleteAutoFollowPatternResponse extends AcknowledgedResponseBase {}
 
-export interface CcrFollowIndexStatsFollowIndexReadException {
-  exception: ErrorCause
-  from_seq_no: SequenceNumber
-  retries: integer
-}
-
-export interface CcrFollowIndexStatsFollowIndexShardStats {
-  bytes_read: long
-  failed_read_requests: long
-  failed_write_requests: long
-  fatal_exception?: ErrorCause
-  follower_aliases_version: VersionNumber
-  follower_global_checkpoint: long
-  follower_index: string
-  follower_mapping_version: VersionNumber
-  follower_max_seq_no: SequenceNumber
-  follower_settings_version: VersionNumber
-  last_requested_seq_no: SequenceNumber
-  leader_global_checkpoint: long
-  leader_index: string
-  leader_max_seq_no: SequenceNumber
-  operations_read: long
-  operations_written: long
-  outstanding_read_requests: integer
-  outstanding_write_requests: integer
-  read_exceptions: CcrFollowIndexStatsFollowIndexReadException[]
-  remote_cluster: string
-  shard_id: integer
-  successful_read_requests: long
-  successful_write_requests: long
-  time_since_last_read_millis: EpochMillis
-  total_read_remote_exec_time_millis: EpochMillis
-  total_read_time_millis: EpochMillis
-  total_write_time_millis: EpochMillis
-  write_buffer_operation_count: long
-  write_buffer_size_in_bytes: ByteSize
-}
-
-export interface CcrFollowIndexStatsFollowIndexStats {
-  index: IndexName
-  shards: CcrFollowIndexStatsFollowIndexShardStats[]
-}
-
 export interface CcrFollowIndexStatsRequest extends RequestBase {
   index: Indices
 }
 
 export interface CcrFollowIndexStatsResponse {
-  indices: CcrFollowIndexStatsFollowIndexStats[]
+  indices: CcrFollowIndexStats[]
 }
 
-export interface CcrFollowInfoFollowConfig {
+export interface CcrFollowInfoFollowerIndex {
+  follower_index: IndexName
+  leader_index: IndexName
+  parameters?: CcrFollowInfoFollowerIndexParameters
+  remote_cluster: Name
+  status: CcrFollowInfoFollowerIndexStatus
+}
+
+export interface CcrFollowInfoFollowerIndexParameters {
   max_outstanding_read_requests: integer
   max_outstanding_write_requests: integer
   max_read_request_operation_count: integer
@@ -6854,20 +6862,12 @@ export interface CcrFollowInfoFollowConfig {
 
 export type CcrFollowInfoFollowerIndexStatus = 'active' | 'paused'
 
-export interface CcrFollowInfoFollowerInfo {
-  follower_index: IndexName
-  leader_index: IndexName
-  parameters?: CcrFollowInfoFollowConfig
-  remote_cluster: Name
-  status: CcrFollowInfoFollowerIndexStatus
-}
-
 export interface CcrFollowInfoRequest extends RequestBase {
   index: Indices
 }
 
 export interface CcrFollowInfoResponse {
-  follower_indices: CcrFollowInfoFollowerInfo[]
+  follower_indices: CcrFollowInfoFollowerIndex[]
 }
 
 export interface CcrForgetFollowerIndexRequest extends RequestBase {
@@ -6875,7 +6875,7 @@ export interface CcrForgetFollowerIndexRequest extends RequestBase {
   body?: {
     follower_cluster?: string
     follower_index?: IndexName
-    follower_index_uuid?: string
+    follower_index_uuid?: Uuid
     leader_remote_cluster?: string
   }
 }
@@ -6885,14 +6885,6 @@ export interface CcrForgetFollowerIndexResponse {
 }
 
 export interface CcrGetAutoFollowPatternAutoFollowPattern {
-  active: boolean
-  remote_cluster: string
-  follow_index_pattern?: IndexPattern
-  leader_index_patterns: IndexPatterns
-  max_outstanding_read_requests: integer
-}
-
-export interface CcrGetAutoFollowPatternAutoFollowPatternItem {
   name: Name
   pattern: CcrGetAutoFollowPatternAutoFollowPattern
 }
@@ -6902,7 +6894,7 @@ export interface CcrGetAutoFollowPatternRequest extends RequestBase {
 }
 
 export interface CcrGetAutoFollowPatternResponse {
-  patterns: CcrGetAutoFollowPatternAutoFollowPatternItem[]
+  patterns: CcrGetAutoFollowPatternAutoFollowPattern[]
 }
 
 export interface CcrPauseAutoFollowPatternRequest extends RequestBase {
@@ -6963,13 +6955,7 @@ export interface CcrResumeFollowIndexRequest extends RequestBase {
 
 export interface CcrResumeFollowIndexResponse extends AcknowledgedResponseBase {}
 
-export interface CcrStatsAutoFollowedCluster {
-  cluster_name: Name
-  last_seen_metadata_version: VersionNumber
-  time_since_last_check_millis: DateString
-}
-
-export interface CcrStatsCcrAutoFollowStats {
+export interface CcrStatsAutoFollowStats {
   auto_followed_clusters: CcrStatsAutoFollowedCluster[]
   number_of_failed_follow_indices: long
   number_of_failed_remote_cluster_state_requests: long
@@ -6977,16 +6963,22 @@ export interface CcrStatsCcrAutoFollowStats {
   recent_auto_follow_errors: ErrorCause[]
 }
 
-export interface CcrStatsCcrFollowStats {
-  indices: CcrFollowIndexStatsFollowIndexStats[]
+export interface CcrStatsAutoFollowedCluster {
+  cluster_name: Name
+  last_seen_metadata_version: VersionNumber
+  time_since_last_check_millis: DateString
+}
+
+export interface CcrStatsFollowStats {
+  indices: CcrFollowIndexStats[]
 }
 
 export interface CcrStatsRequest extends RequestBase {
 }
 
 export interface CcrStatsResponse {
-  auto_follow_stats: CcrStatsCcrAutoFollowStats
-  follow_stats: CcrStatsCcrFollowStats
+  auto_follow_stats: CcrStatsAutoFollowStats
+  follow_stats: CcrStatsFollowStats
 }
 
 export interface CcrUnfollowIndexRequest extends RequestBase {
