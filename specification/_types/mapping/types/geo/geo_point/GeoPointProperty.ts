@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { GeoLocation } from '@_types/query_dsl/geo'
 import { DocValuesPropertyBase } from '../../DocValuesProperty'
 
 export class GeoPointProperty extends DocValuesPropertyBase {

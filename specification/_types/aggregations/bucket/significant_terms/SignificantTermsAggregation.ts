@@ -19,7 +19,7 @@
 
 import { Field } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 import { TermsAggregationExecutionHint } from '../terms/TermsAggregationExecutionHint'
 import { ChiSquareHeuristic } from './heuristics/ChiSquareHeuristic'

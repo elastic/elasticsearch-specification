@@ -18,7 +18,7 @@
  */
 
 import { double, integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class Rescore {
   query: RescoreQuery

@@ -23,8 +23,8 @@ import { Field } from '@_types/common'
 import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/types/FieldType'
 import { double, integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
-import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { GeoLocation } from '@_types/query_dsl/geo'
 import { Script } from '@_types/Scripting'
 
 export class NestedSortValue {

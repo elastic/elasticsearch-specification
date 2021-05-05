@@ -24,7 +24,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregateName } from '@_types/common'
 import { LatLon } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { GeoCoordinate, GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { GeoCoordinate, GeoLocation } from '@_types/query_dsl/geo'
 import { DateMathTime } from '@_types/Time'
 
 /*

@@ -18,7 +18,7 @@
  */
 
 import { long } from '@_types/Numeric'
-import { GeoLocation } from '@_types/query_dsl/geo/GeoLocation'
+import { GeoLocation } from '@_types/query_dsl/geo'
 import { MetricAggregationBase } from '../MetricAggregation'
 
 export class GeoCentroidAggregation extends MetricAggregationBase {

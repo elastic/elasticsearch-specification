@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { ActivationStatus } from '@watcher/_types/Activation'
+import { Indices, Name } from '@_types/common'
+import { ShardStatistics } from '@_types/Stats'
 
-export class Response {
-  body: { status: ActivationStatus }
+export class MountedSnapshot {
+  snapshot: Name
+  indices: Indices
+  shards: ShardStatistics
 }

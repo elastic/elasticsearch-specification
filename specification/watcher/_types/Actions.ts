@@ -16,14 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// PageDuty ----------------------------- //
 
 import { HttpHeaders, Id, IndexName, Type, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
 import { DateString } from '@_types/Time'
 import { HttpInputRequestDefinition } from './Input'
-
-// PageDuty ----------------------------- //
 
 export class PagerDutyEvent {
   account: string

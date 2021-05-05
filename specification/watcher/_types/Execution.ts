@@ -17,6 +17,12 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
+import { ActionStatusOptions, ActionType } from './Action'
 import {
   EmailResult,
   IndexResult,
@@ -24,15 +30,9 @@ import {
   PagerDutyResult,
   SlackResult,
   WebhookResult
-} from '@watcher/_types/Actions'
-import { Id } from '@_types/common'
-import { DateString } from '@_types/Time'
-import { integer, long } from '@_types/Numeric'
-import { ConditionType } from '@watcher/_types/Conditions'
-import { InputType } from '@watcher/_types/Input'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ActionStatusOptions, ActionType } from './Action'
+} from './Actions'
+import { ConditionType } from './Conditions'
+import { InputType } from './Input'
 
 export enum ExecutionStatus {
   awaits_execution = 0,

@@ -30,7 +30,7 @@ import {
 } from '@_types/common'
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
 

@@ -22,7 +22,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ByteSize, Field, IndexName, Indices, Name } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/runtime_fields/RuntimeFields'
 import { double, integer, Percentage } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class DataFrameAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. */

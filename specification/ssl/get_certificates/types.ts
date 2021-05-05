@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { ActivationStatus } from '@watcher/_types/Activation'
+import { DateString } from '@_types/Time'
 
-export class Response {
-  body: { status: ActivationStatus }
+export class CertificateInformation {
+  alias?: string
+  expiry: DateString
+  format: string
+  has_private_key: boolean
+  path: string
+  serial_number: string
+  subject_dn: string
 }

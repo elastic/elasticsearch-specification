@@ -20,7 +20,7 @@
 import { Field } from '@_types/common'
 import { GeoHashPrecision } from '@_types/Geo'
 import { integer } from '@_types/Numeric'
-import { BoundingBox } from '@_types/query_dsl/geo/bounding_box/BoundingBox'
+import { BoundingBox } from '@_types/query_dsl/geo'
 import { BucketAggregationBase } from '../BucketAggregationBase'
 
 export class GeoHashGridAggregation extends BucketAggregationBase {

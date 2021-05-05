@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Field, IndexName } from '@_types/common'
 import { float, uint } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 import { EqlResultPosition, EqlSearchFieldFormatted } from './types'
 

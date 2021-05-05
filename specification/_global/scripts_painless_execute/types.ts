@@ -20,7 +20,7 @@
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class PainlessContextSetup {
   document: UserDefinedValue

@@ -19,6 +19,7 @@
 
 import {
   Analytics,
+  Base,
   Ccr,
   DataStreams,
   DataTiers,
@@ -33,7 +34,6 @@ import {
   Security,
   Slm,
   Sql,
-  Base,
   Vector,
   Watcher
 } from './types'

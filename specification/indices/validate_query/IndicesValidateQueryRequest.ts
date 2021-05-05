@@ -24,7 +24,7 @@ import {
   Indices,
   Types
 } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name indices.validate_query

@@ -34,9 +34,12 @@ export interface Request extends RequestBase {
     snapshot: Name
   }
   query_parameters?: {
-    master_timeout?: Time // default: 30s
-    wait_for_completion?: boolean // default: false
-    storage?: string // default: full_copy
+    /** @server_default 30s */
+    master_timeout?: Time
+    /** @server_default false */
+    wait_for_completion?: boolean
+    /** @server_default full_copy */
+    storage?: string
   }
   body?: {
     index: IndexName

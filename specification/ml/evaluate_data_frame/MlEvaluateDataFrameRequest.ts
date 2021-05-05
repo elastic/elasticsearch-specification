@@ -20,7 +20,7 @@
 import { DataFrameEvaluationContainer } from '@ml/_types/DataFrameEvaluation'
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions/container/QueryContainer'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name ml.evaluate_data_frame
