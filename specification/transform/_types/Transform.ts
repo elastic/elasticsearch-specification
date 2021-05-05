@@ -19,10 +19,12 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { DateHistogramAggregation } from '@_types/aggregations/bucket/date_histogram/DateHistogramAggregation'
-import { GeoTileGridAggregation } from '@_types/aggregations/bucket/geo_tile_grid/GeoTileGridAggregation'
-import { HistogramAggregation } from '@_types/aggregations/bucket/histogram/HistogramAggregation'
-import { TermsAggregation } from '@_types/aggregations/bucket/terms/TermsAggregation'
+import {
+  DateHistogramAggregation,
+  GeoTileGridAggregation,
+  HistogramAggregation,
+  TermsAggregation
+} from '@_types/aggregations/bucket'
 import { Field, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'

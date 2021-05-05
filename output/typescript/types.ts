@@ -2318,6 +2318,10 @@ export type uint = number
 
 export type ulong = number
 
+export interface AggregationsAdjacencyMatrixAggregation extends AggregationsBucketAggregationBase {
+  filters?: Record<string, QueryDslQueryContainer>
+}
+
 export type AggregationsAggregate = AggregationsSingleBucketAggregate | AggregationsAutoDateHistogramAggregate | AggregationsFiltersAggregate | AggregationsSignificantTermsAggregate<any> | AggregationsTermsAggregate<any> | AggregationsBucketAggregate | AggregationsCompositeBucketAggregate | AggregationsMultiBucketAggregate<AggregationsBucket> | AggregationsMatrixStatsAggregate | AggregationsKeyedValueAggregate | AggregationsMetricAggregate
 
 export interface AggregationsAggregateBase {
@@ -2332,81 +2336,105 @@ export interface AggregationsAggregation {
 export interface AggregationsAggregationContainer {
   aggs?: Record<string, AggregationsAggregationContainer>
   meta?: Record<string, any>
-  adjacency_matrix?: AggregationsBucketAdjacencyMatrixAdjacencyMatrixAggregation
+  adjacency_matrix?: AggregationsAdjacencyMatrixAggregation
   aggregations?: Record<string, AggregationsAggregationContainer>
-  auto_date_histogram?: AggregationsBucketAutoDateHistogramAutoDateHistogramAggregation
-  avg?: AggregationsMetricAverageAverageAggregation
-  avg_bucket?: AggregationsPipelineAverageBucketAverageBucketAggregation
-  boxplot?: AggregationsMetricBoxplotBoxplotAggregation
-  bucket_script?: AggregationsPipelineBucketScriptBucketScriptAggregation
-  bucket_selector?: AggregationsPipelineBucketSelectorBucketSelectorAggregation
-  bucket_sort?: AggregationsPipelineBucketSortBucketSortAggregation
-  cardinality?: AggregationsMetricCardinalityCardinalityAggregation
-  children?: AggregationsBucketChildrenChildrenAggregation
-  composite?: AggregationsBucketCompositeCompositeAggregation
-  cumulative_cardinality?: AggregationsPipelineCumulativeCardinalityCumulativeCardinalityAggregation
-  cumulative_sum?: AggregationsPipelineCumulativeSumCumulativeSumAggregation
-  date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
-  date_range?: AggregationsBucketDateRangeDateRangeAggregation
-  derivative?: AggregationsPipelineDerivativeDerivativeAggregation
-  diversified_sampler?: AggregationsBucketDiversifiedSamplerDiversifiedSamplerAggregation
-  extended_stats?: AggregationsMetricExtendedStatsExtendedStatsAggregation
-  extended_stats_bucket?: AggregationsPipelineExtendedStatsBucketExtendedStatsBucketAggregation
+  auto_date_histogram?: AggregationsAutoDateHistogramAggregation
+  avg?: AggregationsAverageAggregation
+  avg_bucket?: AggregationsAverageBucketAggregation
+  boxplot?: AggregationsBoxplotAggregation
+  bucket_script?: AggregationsBucketScriptAggregation
+  bucket_selector?: AggregationsBucketSelectorAggregation
+  bucket_sort?: AggregationsBucketSortAggregation
+  cardinality?: AggregationsCardinalityAggregation
+  children?: AggregationsChildrenAggregation
+  composite?: AggregationsCompositeAggregation
+  cumulative_cardinality?: AggregationsCumulativeCardinalityAggregation
+  cumulative_sum?: AggregationsCumulativeSumAggregation
+  date_histogram?: AggregationsDateHistogramAggregation
+  date_range?: AggregationsDateRangeAggregation
+  derivative?: AggregationsDerivativeAggregation
+  diversified_sampler?: AggregationsDiversifiedSamplerAggregation
+  extended_stats?: AggregationsExtendedStatsAggregation
+  extended_stats_bucket?: AggregationsExtendedStatsBucketAggregation
   filter?: QueryDslQueryContainer
-  filters?: AggregationsBucketFiltersFiltersAggregation
-  geo_bounds?: AggregationsMetricGeoBoundsGeoBoundsAggregation
-  geo_centroid?: AggregationsMetricGeoCentroidGeoCentroidAggregation
-  geo_distance?: AggregationsBucketGeoDistanceGeoDistanceAggregation
-  geohash_grid?: AggregationsBucketGeoHashGridGeoHashGridAggregation
-  geo_line?: AggregationsMetricGeoLineGeoLineAggregation
-  geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
-  global?: AggregationsBucketGlobalGlobalAggregation
-  histogram?: AggregationsBucketHistogramHistogramAggregation
-  ip_range?: AggregationsBucketIpRangeIpRangeAggregation
-  inference?: AggregationsPipelineInferenceBucketInferenceAggregation
-  line?: AggregationsMetricGeoLineGeoLineAggregation
-  matrix_stats?: AggregationsMatrixMatrixStatsMatrixStatsAggregation
-  max?: AggregationsMetricMaxMaxAggregation
-  max_bucket?: AggregationsPipelineMaxBucketMaxBucketAggregation
-  median_absolute_deviation?: AggregationsMetricMedianAbsoluteDeviationMedianAbsoluteDeviationAggregation
-  min?: AggregationsMetricMinMinAggregation
-  min_bucket?: AggregationsPipelineMinBucketMinBucketAggregation
-  missing?: AggregationsBucketMissingMissingAggregation
-  moving_avg?: AggregationsPipelineMovingAverageMovingAverageAggregation
-  moving_percentiles?: AggregationsPipelineMovingPercentilesMovingPercentilesAggregation
-  moving_fn?: AggregationsPipelineMovingFunctionMovingFunctionAggregation
-  multi_terms?: AggregationsBucketMultiTermsMultiTermsAggregation
-  nested?: AggregationsBucketNestedNestedAggregation
-  normalize?: AggregationsPipelineNormalizeNormalizeAggregation
-  parent?: AggregationsBucketParentParentAggregation
-  percentile_ranks?: AggregationsMetricPercentileRanksPercentileRanksAggregation
-  percentiles?: AggregationsMetricPercentilesPercentilesAggregation
-  percentiles_bucket?: AggregationsPipelinePercentilesBucketPercentilesBucketAggregation
-  range?: AggregationsBucketRangeRangeAggregation
-  rare_terms?: AggregationsBucketRareTermsRareTermsAggregation
-  rate?: AggregationsMetricRateRateAggregation
-  reverse_nested?: AggregationsBucketReverseNestedReverseNestedAggregation
-  sampler?: AggregationsBucketSamplerSamplerAggregation
-  scripted_metric?: AggregationsMetricScriptedMetricScriptedMetricAggregation
-  serial_diff?: AggregationsPipelineSerialDifferencingSerialDifferencingAggregation
-  significant_terms?: AggregationsBucketSignificantTermsSignificantTermsAggregation
-  significant_text?: AggregationsBucketSignificantTextSignificantTextAggregation
-  stats?: AggregationsMetricStatsStatsAggregation
-  stats_bucket?: AggregationsPipelineStatsBucketStatsBucketAggregation
-  string_stats?: AggregationsMetricStringStatsStringStatsAggregation
-  sum?: AggregationsMetricSumSumAggregation
-  sum_bucket?: AggregationsPipelineSumBucketSumBucketAggregation
-  terms?: AggregationsBucketTermsTermsAggregation
-  top_hits?: AggregationsMetricTopHitsTopHitsAggregation
-  t_test?: AggregationsMetricTTestTTestAggregation
-  top_metrics?: AggregationsMetricTopMetricsTopMetricsAggregation
-  value_count?: AggregationsMetricValueCountValueCountAggregation
-  weighted_avg?: AggregationsMetricWeightedAverageWeightedAverageAggregation
-  variable_width_histogram?: AggregationsBucketVariableWidthHistogramVariableWidthHistogramAggregation
+  filters?: AggregationsFiltersAggregation
+  geo_bounds?: AggregationsGeoBoundsAggregation
+  geo_centroid?: AggregationsGeoCentroidAggregation
+  geo_distance?: AggregationsGeoDistanceAggregation
+  geohash_grid?: AggregationsGeoHashGridAggregation
+  geo_line?: AggregationsGeoLineAggregation
+  geotile_grid?: AggregationsGeoTileGridAggregation
+  global?: AggregationsGlobalAggregation
+  histogram?: AggregationsHistogramAggregation
+  ip_range?: AggregationsIpRangeAggregation
+  inference?: AggregationsInferenceAggregation
+  line?: AggregationsGeoLineAggregation
+  matrix_stats?: AggregationsMatrixStatsAggregation
+  max?: AggregationsMaxAggregation
+  max_bucket?: AggregationsMaxBucketAggregation
+  median_absolute_deviation?: AggregationsMedianAbsoluteDeviationAggregation
+  min?: AggregationsMinAggregation
+  min_bucket?: AggregationsMinBucketAggregation
+  missing?: AggregationsMissingAggregation
+  moving_avg?: AggregationsMovingAverageAggregation
+  moving_percentiles?: AggregationsMovingPercentilesAggregation
+  moving_fn?: AggregationsMovingFunctionAggregation
+  multi_terms?: AggregationsMultiTermsAggregation
+  nested?: AggregationsNestedAggregation
+  normalize?: AggregationsNormalizeAggregation
+  parent?: AggregationsParentAggregation
+  percentile_ranks?: AggregationsPercentileRanksAggregation
+  percentiles?: AggregationsPercentilesAggregation
+  percentiles_bucket?: AggregationsPercentilesBucketAggregation
+  range?: AggregationsRangeAggregation
+  rare_terms?: AggregationsRareTermsAggregation
+  rate?: AggregationsRateAggregation
+  reverse_nested?: AggregationsReverseNestedAggregation
+  sampler?: AggregationsSamplerAggregation
+  scripted_metric?: AggregationsScriptedMetricAggregation
+  serial_diff?: AggregationsSerialDifferencingAggregation
+  significant_terms?: AggregationsSignificantTermsAggregation
+  significant_text?: AggregationsSignificantTextAggregation
+  stats?: AggregationsStatsAggregation
+  stats_bucket?: AggregationsStatsBucketAggregation
+  string_stats?: AggregationsStringStatsAggregation
+  sum?: AggregationsSumAggregation
+  sum_bucket?: AggregationsSumBucketAggregation
+  terms?: AggregationsTermsAggregation
+  top_hits?: AggregationsTopHitsAggregation
+  t_test?: AggregationsTTestAggregation
+  top_metrics?: AggregationsTopMetricsAggregation
+  value_count?: AggregationsValueCountAggregation
+  weighted_avg?: AggregationsWeightedAverageAggregation
+  variable_width_histogram?: AggregationsVariableWidthHistogramAggregation
+}
+
+export interface AggregationsAggregationRange {
+  from?: double | string
+  key?: string
+  to?: double | string
 }
 
 export interface AggregationsAutoDateHistogramAggregate extends AggregationsMultiBucketAggregate<AggregationsKeyedBucket<long>> {
   interval: DateMathTime
+}
+
+export interface AggregationsAutoDateHistogramAggregation extends AggregationsBucketAggregationBase {
+  buckets?: integer
+  field?: Field
+  format?: string
+  minimum_interval?: AggregationsMinimumInterval
+  missing?: DateString
+  offset?: string
+  params?: Record<string, any>
+  script?: Script
+  time_zone?: string
+}
+
+export interface AggregationsAverageAggregation extends AggregationsFormatMetricAggregationBase {
+}
+
+export interface AggregationsAverageBucketAggregation extends AggregationsPipelineAggregationBase {
 }
 
 export interface AggregationsBoxPlotAggregate extends AggregationsAggregateBase {
@@ -2415,6 +2443,10 @@ export interface AggregationsBoxPlotAggregate extends AggregationsAggregateBase 
   q1: double
   q2: double
   q3: double
+}
+
+export interface AggregationsBoxplotAggregation extends AggregationsMetricAggregationBase {
+  compression?: double
 }
 
 export type AggregationsBucket = AggregationsCompositeBucket | AggregationsDateHistogramBucket | AggregationsFiltersBucketItem | AggregationsIpRangeBucket | AggregationsRangeBucket | AggregationsRareTermsBucket<any> | AggregationsSignificantTermsBucket<any> | AggregationsKeyedBucket<any>
@@ -2429,6 +2461,63 @@ export interface AggregationsBucketAggregate extends AggregationsAggregateBase {
   items: AggregationsBucket
 }
 
+export interface AggregationsBucketAggregationBase extends AggregationsAggregation {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+}
+
+export interface AggregationsBucketScriptAggregation extends AggregationsPipelineAggregationBase {
+  script?: Script
+}
+
+export interface AggregationsBucketSelectorAggregation extends AggregationsPipelineAggregationBase {
+  script?: Script
+}
+
+export interface AggregationsBucketSortAggregation extends AggregationsAggregation {
+  from?: integer
+  gap_policy?: AggregationsGapPolicy
+  size?: integer
+  sort?: SearchTypesSort
+}
+
+export interface AggregationsBucketsPath {
+}
+
+export interface AggregationsCardinalityAggregation extends AggregationsMetricAggregationBase {
+  precision_threshold?: integer
+  rehash?: boolean
+}
+
+export interface AggregationsChiSquareHeuristic {
+  background_is_superset: boolean
+  include_negatives: boolean
+}
+
+export interface AggregationsChildrenAggregation extends AggregationsBucketAggregationBase {
+  type?: RelationName
+}
+
+export interface AggregationsClassificationInferenceOptions {
+  num_top_classes?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_type?: string
+  results_field?: string
+  top_classes_results_field?: string
+}
+
+export interface AggregationsCompositeAggregation extends AggregationsBucketAggregationBase {
+  after?: Record<string, string | float | null>
+  size?: integer
+  sources?: Record<string, AggregationsCompositeAggregationSource>[]
+}
+
+export interface AggregationsCompositeAggregationSource {
+  terms?: AggregationsTermsAggregation
+  histogram?: AggregationsHistogramAggregation
+  date_histogram?: AggregationsDateHistogramAggregation
+  geotile_grid?: AggregationsGeoTileGridAggregation
+}
+
 export interface AggregationsCompositeBucketKeys {
 }
 export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys |
@@ -2438,10 +2527,72 @@ export interface AggregationsCompositeBucketAggregate extends AggregationsMultiB
   after_key: Record<string, any>
 }
 
+export interface AggregationsCumulativeCardinalityAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsCumulativeSumAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsDateHistogramAggregation extends AggregationsBucketAggregationBase {
+  calendar_interval?: AggregationsDateInterval | Time
+  extended_bounds?: AggregationsExtendedBounds<DateMath | long>
+  hard_bounds?: AggregationsExtendedBounds<DateMath | long>
+  field?: Field
+  fixed_interval?: AggregationsDateInterval | Time
+  format?: string
+  interval?: AggregationsDateInterval | Time
+  min_doc_count?: integer
+  missing?: DateString
+  offset?: Time
+  order?: AggregationsHistogramOrder
+  params?: Record<string, any>
+  script?: Script
+  time_zone?: string
+}
+
 export interface AggregationsDateHistogramBucketKeys {
 }
 export type AggregationsDateHistogramBucket = AggregationsDateHistogramBucketKeys |
     { [property: string]: AggregationsAggregate }
+
+export type AggregationsDateInterval = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year'
+
+export interface AggregationsDateRangeAggregation extends AggregationsBucketAggregationBase {
+  field?: Field
+  format?: string
+  missing?: AggregationsMissing
+  ranges?: AggregationsDateRangeExpression[]
+  time_zone?: string
+}
+
+export interface AggregationsDateRangeExpression {
+  from?: DateMath | float
+  from_as_string?: string
+  to_as_string?: string
+  key?: string
+  to?: DateMath | float
+  doc_count?: long
+}
+
+export interface AggregationsDerivativeAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsDiversifiedSamplerAggregation extends AggregationsBucketAggregationBase {
+  execution_hint?: AggregationsSamplerAggregationExecutionHint
+  max_docs_per_value?: integer
+  script?: Script
+  shard_size?: integer
+  field?: Field
+}
+
+export interface AggregationsEwmaModelSettings {
+  alpha?: float
+}
+
+export interface AggregationsExtendedBounds<T = unknown> {
+  max: T
+  min: T
+}
 
 export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAggregate {
   std_deviation_bounds: AggregationsStandardDeviationBounds
@@ -2454,8 +2605,22 @@ export interface AggregationsExtendedStatsAggregate extends AggregationsStatsAgg
   std_deviation_sampling?: double
 }
 
+export interface AggregationsExtendedStatsAggregation extends AggregationsFormatMetricAggregationBase {
+  sigma?: double
+}
+
+export interface AggregationsExtendedStatsBucketAggregation extends AggregationsPipelineAggregationBase {
+  sigma?: double
+}
+
 export interface AggregationsFiltersAggregate extends AggregationsAggregateBase {
   buckets: AggregationsFiltersBucketItem[] | Record<string, AggregationsFiltersBucketItem>
+}
+
+export interface AggregationsFiltersAggregation extends AggregationsBucketAggregationBase {
+  filters?: Record<string, QueryDslQueryContainer> | QueryDslQueryContainer[]
+  other_bucket?: boolean
+  other_bucket_key?: string
 }
 
 export interface AggregationsFiltersBucketItemKeys {
@@ -2463,6 +2628,16 @@ export interface AggregationsFiltersBucketItemKeys {
 }
 export type AggregationsFiltersBucketItem = AggregationsFiltersBucketItemKeys |
     { [property: string]: AggregationsAggregate }
+
+export interface AggregationsFormatMetricAggregationBase extends AggregationsMetricAggregationBase {
+  format?: string
+}
+
+export interface AggregationsFormattableMetricAggregation extends AggregationsMetricAggregationBase {
+  format?: string
+}
+
+export type AggregationsGapPolicy = 'skip' | 'insert_zeros'
 
 export interface AggregationsGeoBounds {
   bottom_right: LatLon
@@ -2473,9 +2648,34 @@ export interface AggregationsGeoBoundsAggregate extends AggregationsAggregateBas
   bounds: AggregationsGeoBounds
 }
 
+export interface AggregationsGeoBoundsAggregation extends AggregationsMetricAggregationBase {
+  wrap_longitude?: boolean
+}
+
 export interface AggregationsGeoCentroidAggregate extends AggregationsAggregateBase {
   count: long
   location: QueryDslGeoLocation
+}
+
+export interface AggregationsGeoCentroidAggregation extends AggregationsMetricAggregationBase {
+  count?: long
+  location?: QueryDslGeoLocation
+}
+
+export interface AggregationsGeoDistanceAggregation extends AggregationsBucketAggregationBase {
+  distance_type?: GeoDistanceType
+  field?: Field
+  origin?: QueryDslGeoLocation | string
+  ranges?: AggregationsAggregationRange[]
+  unit?: DistanceUnit
+}
+
+export interface AggregationsGeoHashGridAggregation extends AggregationsBucketAggregationBase {
+  bounds?: QueryDslBoundingBox
+  field?: Field
+  precision?: GeoHashPrecision
+  shard_size?: integer
+  size?: integer
 }
 
 export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase {
@@ -2484,9 +2684,44 @@ export interface AggregationsGeoLineAggregate extends AggregationsAggregateBase 
   properties: AggregationsGeoLineProperties
 }
 
+export interface AggregationsGeoLineAggregation {
+  point: AggregationsGeoLinePoint
+  sort: AggregationsGeoLineSort
+  include_sort?: boolean
+  sort_order?: SearchTypesSortOrder
+  size?: integer
+}
+
+export interface AggregationsGeoLinePoint {
+  field: Field
+}
+
 export interface AggregationsGeoLineProperties {
   complete: boolean
   sort_values: double[]
+}
+
+export interface AggregationsGeoLineSort {
+  field: Field
+}
+
+export interface AggregationsGeoTileGridAggregation extends AggregationsBucketAggregationBase {
+  field?: Field
+  precision?: GeoTilePrecision
+  shard_size?: integer
+  size?: integer
+  bounds?: AggregationsGeoBounds
+}
+
+export interface AggregationsGlobalAggregation extends AggregationsBucketAggregationBase {
+}
+
+export interface AggregationsGoogleNormalizedDistanceHeuristic {
+  background_is_superset: boolean
+}
+
+export interface AggregationsHdrMethod {
+  number_of_significant_value_digits?: integer
 }
 
 export interface AggregationsHdrPercentileItem {
@@ -2496,6 +2731,61 @@ export interface AggregationsHdrPercentileItem {
 
 export interface AggregationsHdrPercentilesAggregate extends AggregationsAggregateBase {
   values: AggregationsHdrPercentileItem[]
+}
+
+export interface AggregationsHistogramAggregation extends AggregationsBucketAggregationBase {
+  extended_bounds?: AggregationsExtendedBounds<double>
+  hard_bounds?: AggregationsExtendedBounds<double>
+  field?: Field
+  interval?: double
+  min_doc_count?: integer
+  missing?: double
+  offset?: double
+  order?: AggregationsHistogramOrder
+  script?: Script
+  format?: string
+}
+
+export interface AggregationsHistogramOrder {
+  _count?: SearchTypesSortOrder
+  _key?: SearchTypesSortOrder
+}
+
+export interface AggregationsHoltLinearModelSettings {
+  alpha?: float
+  beta?: float
+}
+
+export interface AggregationsHoltWintersModelSettings {
+  alpha?: float
+  beta?: float
+  gamma?: float
+  pad?: boolean
+  period?: integer
+  type?: AggregationsHoltWintersType
+}
+
+export type AggregationsHoltWintersType = 'add' | 'mult'
+
+export interface AggregationsInferenceAggregation extends AggregationsPipelineAggregationBase {
+  model_id: Name
+  inference_config?: AggregationsInferenceConfigContainer
+}
+
+export interface AggregationsInferenceConfigContainer {
+  regression?: AggregationsRegressionInferenceOptions
+  classification?: AggregationsClassificationInferenceOptions
+}
+
+export interface AggregationsIpRangeAggregation extends AggregationsBucketAggregationBase {
+  field?: Field
+  ranges?: AggregationsIpRangeAggregationRange[]
+}
+
+export interface AggregationsIpRangeAggregationRange {
+  from?: string
+  mask?: string
+  to?: string
 }
 
 export interface AggregationsIpRangeBucketKeys {
@@ -2519,6 +2809,11 @@ export interface AggregationsLineStringGeoShape {
   coordinates: QueryDslGeoCoordinate[]
 }
 
+export interface AggregationsMatrixAggregation extends AggregationsAggregation {
+  fields?: Fields
+  missing?: Record<Field, double>
+}
+
 export interface AggregationsMatrixStatsAggregate extends AggregationsAggregateBase {
   correlation: Record<string, double>
   covariance: Record<string, double>
@@ -2530,12 +2825,100 @@ export interface AggregationsMatrixStatsAggregate extends AggregationsAggregateB
   name: string
 }
 
+export interface AggregationsMatrixStatsAggregation extends AggregationsMatrixAggregation {
+  mode?: AggregationsMatrixStatsMode
+}
+
+export type AggregationsMatrixStatsMode = 'avg' | 'min' | 'max' | 'sum' | 'median'
+
+export interface AggregationsMaxAggregation extends AggregationsFormatMetricAggregationBase {
+}
+
+export interface AggregationsMaxBucketAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsMedianAbsoluteDeviationAggregation extends AggregationsFormatMetricAggregationBase {
+  compression?: double
+}
+
 export type AggregationsMetricAggregate = AggregationsValueAggregate | AggregationsBoxPlotAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsGeoLineAggregate | AggregationsPercentilesAggregate | AggregationsScriptedMetricAggregate | AggregationsStatsAggregate | AggregationsStringStatsAggregate | AggregationsTopHitsAggregate | AggregationsTopMetricsAggregate | AggregationsExtendedStatsAggregate | AggregationsTDigestPercentilesAggregate | AggregationsHdrPercentilesAggregate
+
+export interface AggregationsMetricAggregationBase {
+  field?: Field
+  missing?: AggregationsMissing
+  script?: Script
+}
+
+export interface AggregationsMinAggregation extends AggregationsFormatMetricAggregationBase {
+}
+
+export interface AggregationsMinBucketAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export type AggregationsMinimumInterval = 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
 
 export type AggregationsMissing = string | integer | double | boolean
 
+export interface AggregationsMissingAggregation extends AggregationsBucketAggregationBase {
+  field?: Field
+  missing?: AggregationsMissing
+}
+
+export interface AggregationsMovingAverageAggregation extends AggregationsPipelineAggregationBase {
+  minimize?: boolean
+  model?: AggregationsMovingAverageModel
+  settings: AggregationsMovingAverageSettings
+  predict?: integer
+  window?: integer
+}
+
+export type AggregationsMovingAverageModel = 'linear' | 'simple' | 'ewma' | 'holt' | 'holt_winters'
+
+export type AggregationsMovingAverageSettings = AggregationsEwmaModelSettings | AggregationsHoltLinearModelSettings | AggregationsHoltWintersModelSettings
+
+export interface AggregationsMovingFunctionAggregation extends AggregationsPipelineAggregationBase {
+  script?: string
+  shift?: integer
+  window?: integer
+}
+
+export interface AggregationsMovingPercentilesAggregation extends AggregationsPipelineAggregationBase {
+  window?: integer
+  shift?: integer
+}
+
 export interface AggregationsMultiBucketAggregate<TBucket = unknown> extends AggregationsAggregateBase {
   buckets: TBucket[]
+}
+
+export interface AggregationsMultiTermLookup {
+  field: Field
+}
+
+export interface AggregationsMultiTermsAggregation extends AggregationsBucketAggregationBase {
+  terms: AggregationsMultiTermLookup[]
+}
+
+export interface AggregationsMutualInformationHeuristic {
+  background_is_superset: boolean
+  include_negatives: boolean
+}
+
+export interface AggregationsNestedAggregation extends AggregationsBucketAggregationBase {
+  path?: Field
+}
+
+export interface AggregationsNormalizeAggregation extends AggregationsPipelineAggregationBase {
+  method?: AggregationsNormalizeMethod
+}
+
+export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
+
+export interface AggregationsParentAggregation extends AggregationsBucketAggregationBase {
+  type?: RelationName
+}
+
+export interface AggregationsPercentageScoreHeuristic {
 }
 
 export interface AggregationsPercentileItem {
@@ -2543,8 +2926,38 @@ export interface AggregationsPercentileItem {
   value: double
 }
 
+export interface AggregationsPercentileRanksAggregation extends AggregationsFormatMetricAggregationBase {
+  keyed?: boolean
+  values?: double[]
+  hdr?: AggregationsHdrMethod
+  tdigest?: AggregationsTDigest
+}
+
 export interface AggregationsPercentilesAggregate extends AggregationsAggregateBase {
   items: AggregationsPercentileItem[]
+}
+
+export interface AggregationsPercentilesAggregation extends AggregationsFormatMetricAggregationBase {
+  keyed?: boolean
+  percents?: double[]
+  hdr?: AggregationsHdrMethod
+  tdigest?: AggregationsTDigest
+}
+
+export interface AggregationsPercentilesBucketAggregation extends AggregationsPipelineAggregationBase {
+  percents?: double[]
+}
+
+export interface AggregationsPipelineAggregationBase extends AggregationsAggregation {
+  buckets_path?: AggregationsBucketsPath
+  format?: string
+  gap_policy?: AggregationsGapPolicy
+}
+
+export interface AggregationsRangeAggregation extends AggregationsBucketAggregationBase {
+  field?: Field
+  ranges?: AggregationsAggregationRange[]
+  script?: Script
 }
 
 export interface AggregationsRangeBucketKeys {
@@ -2552,13 +2965,61 @@ export interface AggregationsRangeBucketKeys {
 export type AggregationsRangeBucket = AggregationsRangeBucketKeys |
     { [property: string]: AggregationsAggregate }
 
+export interface AggregationsRareTermsAggregation extends AggregationsBucketAggregationBase {
+  exclude?: string | string[]
+  field?: Field
+  include?: string | string[] | AggregationsTermsInclude
+  max_doc_count?: long
+  missing?: AggregationsMissing
+  precision?: double
+  value_type?: string
+}
+
 export interface AggregationsRareTermsBucketKeys<TKey = unknown> {
 }
 export type AggregationsRareTermsBucket<TKey = unknown> = AggregationsRareTermsBucketKeys<TKey> |
     { [property: string]: AggregationsAggregate }
 
+export interface AggregationsRateAggregation extends AggregationsFormatMetricAggregationBase {
+  unit?: AggregationsDateInterval
+  mode?: AggregationsRateMode
+}
+
+export type AggregationsRateMode = 'sum' | 'value_count'
+
+export interface AggregationsRegressionInferenceOptions {
+  results_field: Field
+  num_top_feature_importance_values?: integer
+}
+
+export interface AggregationsReverseNestedAggregation extends AggregationsBucketAggregationBase {
+  path?: Field
+}
+
+export interface AggregationsSamplerAggregation extends AggregationsBucketAggregationBase {
+  shard_size?: integer
+}
+
+export type AggregationsSamplerAggregationExecutionHint = 'map' | 'global_ordinals' | 'bytes_hash'
+
+export interface AggregationsScriptedHeuristic {
+  script: Script
+}
+
 export interface AggregationsScriptedMetricAggregate extends AggregationsAggregateBase {
   value: any
+}
+
+export interface AggregationsScriptedMetricAggregation extends AggregationsMetricAggregationBase {
+  combine_script?: Script
+  init_script?: Script
+  map_script?: Script
+  params?: Record<string, any>
+  reduce_script?: Script
+}
+
+export interface AggregationsSerialDifferencingAggregation extends AggregationsPipelineAggregationBase {
+  lag?: integer
 }
 
 export interface AggregationsSignificantTermsAggregate<TKey = unknown> extends AggregationsMultiBucketAggregate<TKey> {
@@ -2566,10 +3027,46 @@ export interface AggregationsSignificantTermsAggregate<TKey = unknown> extends A
   doc_count: long
 }
 
+export interface AggregationsSignificantTermsAggregation extends AggregationsBucketAggregationBase {
+  background_filter?: QueryDslQueryContainer
+  chi_square?: AggregationsChiSquareHeuristic
+  exclude?: string | string[]
+  execution_hint?: AggregationsTermsAggregationExecutionHint
+  field?: Field
+  gnd?: AggregationsGoogleNormalizedDistanceHeuristic
+  include?: string | string[]
+  min_doc_count?: long
+  mutual_information?: AggregationsMutualInformationHeuristic
+  percentage?: AggregationsPercentageScoreHeuristic
+  script_heuristic?: AggregationsScriptedHeuristic
+  shard_min_doc_count?: long
+  shard_size?: integer
+  size?: integer
+}
+
 export interface AggregationsSignificantTermsBucketKeys<TKey = unknown> {
 }
 export type AggregationsSignificantTermsBucket<TKey = unknown> = AggregationsSignificantTermsBucketKeys<TKey> |
     { [property: string]: AggregationsAggregate }
+
+export interface AggregationsSignificantTextAggregation extends AggregationsBucketAggregationBase {
+  background_filter?: QueryDslQueryContainer
+  chi_square?: AggregationsChiSquareHeuristic
+  exclude?: string | string[]
+  execution_hint?: AggregationsTermsAggregationExecutionHint
+  field?: Field
+  filter_duplicate_text?: boolean
+  gnd?: AggregationsGoogleNormalizedDistanceHeuristic
+  include?: string | string[]
+  min_doc_count?: long
+  mutual_information?: AggregationsMutualInformationHeuristic
+  percentage?: AggregationsPercentageScoreHeuristic
+  script_heuristic?: AggregationsScriptedHeuristic
+  shard_min_doc_count?: long
+  shard_size?: integer
+  size?: integer
+  source_fields?: Fields
+}
 
 export interface AggregationsSingleBucketAggregateKeys extends AggregationsAggregateBase {
   doc_count: double
@@ -2594,6 +3091,12 @@ export interface AggregationsStatsAggregate extends AggregationsAggregateBase {
   min?: double
 }
 
+export interface AggregationsStatsAggregation extends AggregationsFormatMetricAggregationBase {
+}
+
+export interface AggregationsStatsBucketAggregation extends AggregationsPipelineAggregationBase {
+}
+
 export interface AggregationsStringStatsAggregate extends AggregationsAggregateBase {
   count: long
   min_length: integer
@@ -2603,466 +3106,76 @@ export interface AggregationsStringStatsAggregate extends AggregationsAggregateB
   distribution?: Record<string, double>
 }
 
+export interface AggregationsStringStatsAggregation extends AggregationsMetricAggregationBase {
+  show_distribution?: boolean
+}
+
+export interface AggregationsSumAggregation extends AggregationsFormatMetricAggregationBase {
+}
+
+export interface AggregationsSumBucketAggregation extends AggregationsPipelineAggregationBase {
+}
+
+export interface AggregationsTDigest {
+  compression?: integer
+}
+
 export interface AggregationsTDigestPercentilesAggregate extends AggregationsAggregateBase {
   values: Record<string, double>
 }
+
+export interface AggregationsTTestAggregation extends AggregationsAggregation {
+  a?: AggregationsTestPopulation
+  b?: AggregationsTestPopulation
+  type?: AggregationsTTestType
+}
+
+export type AggregationsTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
 
 export interface AggregationsTermsAggregate<TKey = unknown> extends AggregationsMultiBucketAggregate<TKey> {
   doc_count_error_upper_bound: long
   sum_other_doc_count: long
 }
 
-export interface AggregationsTopHitsAggregate extends AggregationsAggregateBase {
-  hits: SearchTypesHitsMetadata<Record<string, any>>
-}
-
-export interface AggregationsTopMetrics {
-  sort: (long | double | string)[]
-  metrics: Record<string, long | double | string>
-}
-
-export interface AggregationsTopMetricsAggregate extends AggregationsAggregateBase {
-  top: AggregationsTopMetrics[]
-}
-
-export interface AggregationsValueAggregate extends AggregationsAggregateBase {
-  value: double
-  value_as_string?: string
-}
-
-export interface AggregationsBucketBucketAggregationBase extends AggregationsAggregation {
-  aggregations?: Record<string, AggregationsAggregationContainer>
-}
-
-export interface AggregationsBucketAdjacencyMatrixAdjacencyMatrixAggregation extends AggregationsBucketBucketAggregationBase {
-  filters?: Record<string, QueryDslQueryContainer>
-}
-
-export interface AggregationsBucketAutoDateHistogramAutoDateHistogramAggregation extends AggregationsBucketBucketAggregationBase {
-  buckets?: integer
-  field?: Field
-  format?: string
-  minimum_interval?: AggregationsBucketAutoDateHistogramMinimumInterval
-  missing?: DateString
-  offset?: string
-  params?: Record<string, any>
-  script?: Script
-  time_zone?: string
-}
-
-export type AggregationsBucketAutoDateHistogramMinimumInterval = 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
-
-export interface AggregationsBucketChildrenChildrenAggregation extends AggregationsBucketBucketAggregationBase {
-  type?: RelationName
-}
-
-export interface AggregationsBucketCompositeCompositeAggregation extends AggregationsBucketBucketAggregationBase {
-  after?: Record<string, string | float | null>
-  size?: integer
-  sources?: Record<string, AggregationsBucketCompositeCompositeAggregationSource>[]
-}
-
-export interface AggregationsBucketCompositeCompositeAggregationSource {
-  terms?: AggregationsBucketTermsTermsAggregation
-  histogram?: AggregationsBucketHistogramHistogramAggregation
-  date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
-  geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
-}
-
-export interface AggregationsBucketDateHistogramDateHistogramAggregation extends AggregationsBucketBucketAggregationBase {
-  calendar_interval?: AggregationsBucketDateHistogramDateInterval | Time
-  extended_bounds?: AggregationsBucketHistogramExtendedBounds<DateMath | long>
-  hard_bounds?: AggregationsBucketHistogramExtendedBounds<DateMath | long>
-  field?: Field
-  fixed_interval?: AggregationsBucketDateHistogramDateInterval | Time
-  format?: string
-  interval?: AggregationsBucketDateHistogramDateInterval | Time
-  min_doc_count?: integer
-  missing?: DateString
-  offset?: Time
-  order?: AggregationsBucketHistogramHistogramOrder
-  params?: Record<string, any>
-  script?: Script
-  time_zone?: string
-}
-
-export type AggregationsBucketDateHistogramDateInterval = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year'
-
-export interface AggregationsBucketDateRangeDateRangeAggregation extends AggregationsBucketBucketAggregationBase {
-  field?: Field
-  format?: string
-  missing?: AggregationsMissing
-  ranges?: AggregationsBucketDateRangeDateRangeExpression[]
-  time_zone?: string
-}
-
-export interface AggregationsBucketDateRangeDateRangeExpression {
-  from?: DateMath | float
-  from_as_string?: string
-  to_as_string?: string
-  key?: string
-  to?: DateMath | float
-  doc_count?: long
-}
-
-export interface AggregationsBucketDiversifiedSamplerDiversifiedSamplerAggregation extends AggregationsBucketBucketAggregationBase {
-  execution_hint?: AggregationsBucketDiversifiedSamplerSamplerAggregationExecutionHint
-  max_docs_per_value?: integer
-  script?: Script
-  shard_size?: integer
-  field?: Field
-}
-
-export type AggregationsBucketDiversifiedSamplerSamplerAggregationExecutionHint = 'map' | 'global_ordinals' | 'bytes_hash'
-
-export interface AggregationsBucketFiltersFiltersAggregation extends AggregationsBucketBucketAggregationBase {
-  filters?: Record<string, QueryDslQueryContainer> | QueryDslQueryContainer[]
-  other_bucket?: boolean
-  other_bucket_key?: string
-}
-
-export interface AggregationsBucketGeoDistanceGeoDistanceAggregation extends AggregationsBucketBucketAggregationBase {
-  distance_type?: GeoDistanceType
-  field?: Field
-  origin?: QueryDslGeoLocation | string
-  ranges?: AggregationsBucketRangeAggregationRange[]
-  unit?: DistanceUnit
-}
-
-export interface AggregationsBucketGeoHashGridGeoHashGridAggregation extends AggregationsBucketBucketAggregationBase {
-  bounds?: QueryDslBoundingBox
-  field?: Field
-  precision?: GeoHashPrecision
-  shard_size?: integer
-  size?: integer
-}
-
-export interface AggregationsBucketGeoTileGridGeoTileGridAggregation extends AggregationsBucketBucketAggregationBase {
-  field?: Field
-  precision?: GeoTilePrecision
-  shard_size?: integer
-  size?: integer
-  bounds?: AggregationsGeoBounds
-}
-
-export interface AggregationsBucketGlobalGlobalAggregation extends AggregationsBucketBucketAggregationBase {
-}
-
-export interface AggregationsBucketHistogramExtendedBounds<T = unknown> {
-  max: T
-  min: T
-}
-
-export interface AggregationsBucketHistogramHistogramAggregation extends AggregationsBucketBucketAggregationBase {
-  extended_bounds?: AggregationsBucketHistogramExtendedBounds<double>
-  hard_bounds?: AggregationsBucketHistogramExtendedBounds<double>
-  field?: Field
-  interval?: double
-  min_doc_count?: integer
-  missing?: double
-  offset?: double
-  order?: AggregationsBucketHistogramHistogramOrder
-  script?: Script
-  format?: string
-}
-
-export interface AggregationsBucketHistogramHistogramOrder {
-  _count?: SearchTypesSortOrder
-  _key?: SearchTypesSortOrder
-}
-
-export interface AggregationsBucketIpRangeIpRangeAggregation extends AggregationsBucketBucketAggregationBase {
-  field?: Field
-  ranges?: AggregationsBucketIpRangeIpRangeAggregationRange[]
-}
-
-export interface AggregationsBucketIpRangeIpRangeAggregationRange {
-  from?: string
-  mask?: string
-  to?: string
-}
-
-export interface AggregationsBucketMissingMissingAggregation extends AggregationsBucketBucketAggregationBase {
-  field?: Field
-  missing?: AggregationsMissing
-}
-
-export interface AggregationsBucketMultiTermsMultiTermLookup {
-  field: Field
-}
-
-export interface AggregationsBucketMultiTermsMultiTermsAggregation extends AggregationsBucketBucketAggregationBase {
-  terms: AggregationsBucketMultiTermsMultiTermLookup[]
-}
-
-export interface AggregationsBucketNestedNestedAggregation extends AggregationsBucketBucketAggregationBase {
-  path?: Field
-}
-
-export interface AggregationsBucketParentParentAggregation extends AggregationsBucketBucketAggregationBase {
-  type?: RelationName
-}
-
-export interface AggregationsBucketRangeAggregationRange {
-  from?: double | string
-  key?: string
-  to?: double | string
-}
-
-export interface AggregationsBucketRangeRangeAggregation extends AggregationsBucketBucketAggregationBase {
-  field?: Field
-  ranges?: AggregationsBucketRangeAggregationRange[]
-  script?: Script
-}
-
-export interface AggregationsBucketRareTermsRareTermsAggregation extends AggregationsBucketBucketAggregationBase {
+export interface AggregationsTermsAggregation extends AggregationsBucketAggregationBase {
+  collect_mode?: AggregationsTermsAggregationCollectMode
   exclude?: string | string[]
+  execution_hint?: AggregationsTermsAggregationExecutionHint
   field?: Field
-  include?: string | string[] | AggregationsBucketTermsTermsInclude
-  max_doc_count?: long
-  missing?: AggregationsMissing
-  precision?: double
-  value_type?: string
-}
-
-export interface AggregationsBucketReverseNestedReverseNestedAggregation extends AggregationsBucketBucketAggregationBase {
-  path?: Field
-}
-
-export interface AggregationsBucketSamplerSamplerAggregation extends AggregationsBucketBucketAggregationBase {
-  shard_size?: integer
-}
-
-export interface AggregationsBucketSignificantTermsSignificantTermsAggregation extends AggregationsBucketBucketAggregationBase {
-  background_filter?: QueryDslQueryContainer
-  chi_square?: AggregationsBucketSignificantTermsHeuristicsChiSquareHeuristic
-  exclude?: string | string[]
-  execution_hint?: AggregationsBucketTermsTermsAggregationExecutionHint
-  field?: Field
-  gnd?: AggregationsBucketSignificantTermsHeuristicsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
-  min_doc_count?: long
-  mutual_information?: AggregationsBucketSignificantTermsHeuristicsMutualInformationHeuristic
-  percentage?: AggregationsBucketSignificantTermsHeuristicsPercentageScoreHeuristic
-  script_heuristic?: AggregationsBucketSignificantTermsHeuristicsScriptedHeuristic
-  shard_min_doc_count?: long
-  shard_size?: integer
-  size?: integer
-}
-
-export interface AggregationsBucketSignificantTermsHeuristicsChiSquareHeuristic {
-  background_is_superset: boolean
-  include_negatives: boolean
-}
-
-export interface AggregationsBucketSignificantTermsHeuristicsGoogleNormalizedDistanceHeuristic {
-  background_is_superset: boolean
-}
-
-export interface AggregationsBucketSignificantTermsHeuristicsMutualInformationHeuristic {
-  background_is_superset: boolean
-  include_negatives: boolean
-}
-
-export interface AggregationsBucketSignificantTermsHeuristicsPercentageScoreHeuristic {
-}
-
-export interface AggregationsBucketSignificantTermsHeuristicsScriptedHeuristic {
-  script: Script
-}
-
-export interface AggregationsBucketSignificantTextSignificantTextAggregation extends AggregationsBucketBucketAggregationBase {
-  background_filter?: QueryDslQueryContainer
-  chi_square?: AggregationsBucketSignificantTermsHeuristicsChiSquareHeuristic
-  exclude?: string | string[]
-  execution_hint?: AggregationsBucketTermsTermsAggregationExecutionHint
-  field?: Field
-  filter_duplicate_text?: boolean
-  gnd?: AggregationsBucketSignificantTermsHeuristicsGoogleNormalizedDistanceHeuristic
-  include?: string | string[]
-  min_doc_count?: long
-  mutual_information?: AggregationsBucketSignificantTermsHeuristicsMutualInformationHeuristic
-  percentage?: AggregationsBucketSignificantTermsHeuristicsPercentageScoreHeuristic
-  script_heuristic?: AggregationsBucketSignificantTermsHeuristicsScriptedHeuristic
-  shard_min_doc_count?: long
-  shard_size?: integer
-  size?: integer
-  source_fields?: Fields
-}
-
-export interface AggregationsBucketTermsTermsAggregation extends AggregationsBucketBucketAggregationBase {
-  collect_mode?: AggregationsBucketTermsTermsAggregationCollectMode
-  exclude?: string | string[]
-  execution_hint?: AggregationsBucketTermsTermsAggregationExecutionHint
-  field?: Field
-  include?: string | string[] | AggregationsBucketTermsTermsInclude
+  include?: string | string[] | AggregationsTermsInclude
   min_doc_count?: integer
   missing?: AggregationsMissing
   missing_bucket?: boolean
   value_type?: string
-  order?: AggregationsBucketTermsTermsAggregationOrder
+  order?: AggregationsTermsAggregationOrder
   script?: Script
   shard_size?: integer
   show_term_doc_count_error?: boolean
   size?: integer
 }
 
-export type AggregationsBucketTermsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
+export type AggregationsTermsAggregationCollectMode = 'depth_first' | 'breadth_first'
 
-export type AggregationsBucketTermsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
+export type AggregationsTermsAggregationExecutionHint = 'map' | 'global_ordinals' | 'global_ordinals_hash' | 'global_ordinals_low_cardinality'
 
-export type AggregationsBucketTermsTermsAggregationOrder = SearchTypesSortOrder | Record<string, SearchTypesSortOrder> | Record<string, SearchTypesSortOrder>[]
+export type AggregationsTermsAggregationOrder = SearchTypesSortOrder | Record<string, SearchTypesSortOrder> | Record<string, SearchTypesSortOrder>[]
 
-export interface AggregationsBucketTermsTermsInclude {
+export interface AggregationsTermsInclude {
   num_partitions: long
   partition: long
 }
 
-export interface AggregationsBucketVariableWidthHistogramVariableWidthHistogramAggregation {
-  field?: Field
-  buckets?: integer
-  shard_size?: integer
-  initial_buffer?: integer
-}
-
-export interface AggregationsMatrixMatrixAggregation extends AggregationsAggregation {
-  fields?: Fields
-  missing?: Record<Field, double>
-}
-
-export interface AggregationsMatrixMatrixStatsMatrixStatsAggregation extends AggregationsMatrixMatrixAggregation {
-  mode?: AggregationsMatrixMatrixStatsMatrixStatsMode
-}
-
-export type AggregationsMatrixMatrixStatsMatrixStatsMode = 'avg' | 'min' | 'max' | 'sum' | 'median'
-
-export interface AggregationsMetricFormatMetricAggregationBase extends AggregationsMetricMetricAggregationBase {
-  format?: string
-}
-
-export interface AggregationsMetricFormattableMetricAggregation extends AggregationsMetricMetricAggregationBase {
-  format?: string
-}
-
-export interface AggregationsMetricMetricAggregationBase {
-  field?: Field
-  missing?: AggregationsMissing
-  script?: Script
-}
-
-export interface AggregationsMetricAverageAverageAggregation extends AggregationsMetricFormatMetricAggregationBase {
-}
-
-export interface AggregationsMetricBoxplotBoxplotAggregation extends AggregationsMetricMetricAggregationBase {
-  compression?: double
-}
-
-export interface AggregationsMetricCardinalityCardinalityAggregation extends AggregationsMetricMetricAggregationBase {
-  precision_threshold?: integer
-  rehash?: boolean
-}
-
-export interface AggregationsMetricExtendedStatsExtendedStatsAggregation extends AggregationsMetricFormatMetricAggregationBase {
-  sigma?: double
-}
-
-export interface AggregationsMetricGeoBoundsGeoBoundsAggregation extends AggregationsMetricMetricAggregationBase {
-  wrap_longitude?: boolean
-}
-
-export interface AggregationsMetricGeoCentroidGeoCentroidAggregation extends AggregationsMetricMetricAggregationBase {
-  count?: long
-  location?: QueryDslGeoLocation
-}
-
-export interface AggregationsMetricGeoLineGeoLineAggregation {
-  point: AggregationsMetricGeoLineGeoLinePoint
-  sort: AggregationsMetricGeoLineGeoLineSort
-  include_sort?: boolean
-  sort_order?: SearchTypesSortOrder
-  size?: integer
-}
-
-export interface AggregationsMetricGeoLineGeoLinePoint {
-  field: Field
-}
-
-export interface AggregationsMetricGeoLineGeoLineSort {
-  field: Field
-}
-
-export interface AggregationsMetricMaxMaxAggregation extends AggregationsMetricFormatMetricAggregationBase {
-}
-
-export interface AggregationsMetricMedianAbsoluteDeviationMedianAbsoluteDeviationAggregation extends AggregationsMetricFormatMetricAggregationBase {
-  compression?: double
-}
-
-export interface AggregationsMetricMinMinAggregation extends AggregationsMetricFormatMetricAggregationBase {
-}
-
-export interface AggregationsMetricPercentileRanksPercentileRanksAggregation extends AggregationsMetricFormatMetricAggregationBase {
-  keyed?: boolean
-  values?: double[]
-  hdr?: AggregationsMetricPercentilesHdrMethod
-  tdigest?: AggregationsMetricPercentilesTDigest
-}
-
-export interface AggregationsMetricPercentilesHdrMethod {
-  number_of_significant_value_digits?: integer
-}
-
-export interface AggregationsMetricPercentilesPercentilesAggregation extends AggregationsMetricFormatMetricAggregationBase {
-  keyed?: boolean
-  percents?: double[]
-  hdr?: AggregationsMetricPercentilesHdrMethod
-  tdigest?: AggregationsMetricPercentilesTDigest
-}
-
-export interface AggregationsMetricPercentilesTDigest {
-  compression?: integer
-}
-
-export interface AggregationsMetricRateRateAggregation extends AggregationsMetricFormatMetricAggregationBase {
-  unit?: AggregationsBucketDateHistogramDateInterval
-  mode?: AggregationsMetricRateRateMode
-}
-
-export type AggregationsMetricRateRateMode = 'sum' | 'value_count'
-
-export interface AggregationsMetricScriptedMetricScriptedMetricAggregation extends AggregationsMetricMetricAggregationBase {
-  combine_script?: Script
-  init_script?: Script
-  map_script?: Script
-  params?: Record<string, any>
-  reduce_script?: Script
-}
-
-export interface AggregationsMetricStatsStatsAggregation extends AggregationsMetricFormatMetricAggregationBase {
-}
-
-export interface AggregationsMetricStringStatsStringStatsAggregation extends AggregationsMetricMetricAggregationBase {
-  show_distribution?: boolean
-}
-
-export interface AggregationsMetricSumSumAggregation extends AggregationsMetricFormatMetricAggregationBase {
-}
-
-export interface AggregationsMetricTTestTTestAggregation extends AggregationsAggregation {
-  a?: AggregationsMetricTTestTestPopulation
-  b?: AggregationsMetricTTestTestPopulation
-  type?: AggregationsMetricTTestTTestType
-}
-
-export type AggregationsMetricTTestTTestType = 'paired' | 'homoscedastic' | 'heteroscedastic'
-
-export interface AggregationsMetricTTestTestPopulation {
+export interface AggregationsTestPopulation {
   field: Field
   script?: Script
   filter?: QueryDslQueryContainer
 }
 
-export interface AggregationsMetricTopHitsTopHitsAggregation extends AggregationsMetricMetricAggregationBase {
+export interface AggregationsTopHitsAggregate extends AggregationsAggregateBase {
+  hits: SearchTypesHitsMetadata<Record<string, any>>
+}
+
+export interface AggregationsTopHitsAggregation extends AggregationsMetricAggregationBase {
   docvalue_fields?: Fields
   explain?: boolean
   from?: integer
@@ -3077,166 +3190,53 @@ export interface AggregationsMetricTopHitsTopHitsAggregation extends Aggregation
   seq_no_primary_term?: boolean
 }
 
-export interface AggregationsMetricTopMetricsTopMetricsAggregation extends AggregationsMetricMetricAggregationBase {
-  metrics?: AggregationsMetricTopMetricsTopMetricsValue | AggregationsMetricTopMetricsTopMetricsValue[]
+export interface AggregationsTopMetrics {
+  sort: (long | double | string)[]
+  metrics: Record<string, long | double | string>
+}
+
+export interface AggregationsTopMetricsAggregate extends AggregationsAggregateBase {
+  top: AggregationsTopMetrics[]
+}
+
+export interface AggregationsTopMetricsAggregation extends AggregationsMetricAggregationBase {
+  metrics?: AggregationsTopMetricsValue | AggregationsTopMetricsValue[]
   size?: integer
   sort?: SearchTypesSort
 }
 
-export interface AggregationsMetricTopMetricsTopMetricsValue {
+export interface AggregationsTopMetricsValue {
   field: Field
 }
 
-export interface AggregationsMetricValueCountValueCountAggregation extends AggregationsMetricFormattableMetricAggregation {
+export interface AggregationsValueAggregate extends AggregationsAggregateBase {
+  value: double
+  value_as_string?: string
 }
 
-export type AggregationsMetricWeightedAverageValueType = 'string' | 'long' | 'double' | 'number' | 'date' | 'date_nanos' | 'ip' | 'numeric' | 'geo_point' | 'boolean'
+export interface AggregationsValueCountAggregation extends AggregationsFormattableMetricAggregation {
+}
 
-export interface AggregationsMetricWeightedAverageWeightedAverageAggregation extends AggregationsAggregation {
+export type AggregationsValueType = 'string' | 'long' | 'double' | 'number' | 'date' | 'date_nanos' | 'ip' | 'numeric' | 'geo_point' | 'boolean'
+
+export interface AggregationsVariableWidthHistogramAggregation {
+  field?: Field
+  buckets?: integer
+  shard_size?: integer
+  initial_buffer?: integer
+}
+
+export interface AggregationsWeightedAverageAggregation extends AggregationsAggregation {
   format?: string
-  value?: AggregationsMetricWeightedAverageWeightedAverageValue
-  value_type?: AggregationsMetricWeightedAverageValueType
-  weight?: AggregationsMetricWeightedAverageWeightedAverageValue
+  value?: AggregationsWeightedAverageValue
+  value_type?: AggregationsValueType
+  weight?: AggregationsWeightedAverageValue
 }
 
-export interface AggregationsMetricWeightedAverageWeightedAverageValue {
+export interface AggregationsWeightedAverageValue {
   field?: Field
   missing?: double
   script?: Script
-}
-
-export interface AggregationsPipelineBucketsPath {
-}
-
-export type AggregationsPipelineGapPolicy = 'skip' | 'insert_zeros'
-
-export interface AggregationsPipelinePipelineAggregationBase extends AggregationsAggregation {
-  buckets_path?: AggregationsPipelineBucketsPath
-  format?: string
-  gap_policy?: AggregationsPipelineGapPolicy
-}
-
-export interface AggregationsPipelineAverageBucketAverageBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineBucketScriptBucketScriptAggregation extends AggregationsPipelinePipelineAggregationBase {
-  script?: Script
-}
-
-export interface AggregationsPipelineBucketSelectorBucketSelectorAggregation extends AggregationsPipelinePipelineAggregationBase {
-  script?: Script
-}
-
-export interface AggregationsPipelineBucketSortBucketSortAggregation extends AggregationsAggregation {
-  from?: integer
-  gap_policy?: AggregationsPipelineGapPolicy
-  size?: integer
-  sort?: SearchTypesSort
-}
-
-export interface AggregationsPipelineCumulativeCardinalityCumulativeCardinalityAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineCumulativeSumCumulativeSumAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineDerivativeDerivativeAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineExtendedStatsBucketExtendedStatsBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-  sigma?: double
-}
-
-export interface AggregationsPipelineInferenceBucketClassificationInferenceOptions {
-  num_top_classes?: integer
-  num_top_feature_importance_values?: integer
-  prediction_field_type?: string
-  results_field?: string
-  top_classes_results_field?: string
-}
-
-export interface AggregationsPipelineInferenceBucketInferenceAggregation extends AggregationsPipelinePipelineAggregationBase {
-  model_id: Name
-  inference_config?: AggregationsPipelineInferenceBucketInferenceConfigContainer
-}
-
-export interface AggregationsPipelineInferenceBucketInferenceConfigContainer {
-  regression?: AggregationsPipelineInferenceBucketRegressionInferenceOptions
-  classification?: AggregationsPipelineInferenceBucketClassificationInferenceOptions
-}
-
-export interface AggregationsPipelineInferenceBucketRegressionInferenceOptions {
-  results_field: Field
-  num_top_feature_importance_values?: integer
-}
-
-export interface AggregationsPipelineMaxBucketMaxBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineMinBucketMinBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineMovingAverageMovingAverageAggregation extends AggregationsPipelinePipelineAggregationBase {
-  minimize?: boolean
-  model?: AggregationsPipelineMovingAverageModelsMovingAverageModel
-  settings: AggregationsPipelineMovingAverageModelsMovingAverageSettings
-  predict?: integer
-  window?: integer
-}
-
-export interface AggregationsPipelineMovingAverageModelsEwmaModelSettings {
-  alpha?: float
-}
-
-export interface AggregationsPipelineMovingAverageModelsHoltLinearModelSettings {
-  alpha?: float
-  beta?: float
-}
-
-export interface AggregationsPipelineMovingAverageModelsHoltWintersModelSettings {
-  alpha?: float
-  beta?: float
-  gamma?: float
-  pad?: boolean
-  period?: integer
-  type?: AggregationsPipelineMovingAverageModelsHoltWintersType
-}
-
-export type AggregationsPipelineMovingAverageModelsHoltWintersType = 'add' | 'mult'
-
-export type AggregationsPipelineMovingAverageModelsMovingAverageModel = 'linear' | 'simple' | 'ewma' | 'holt' | 'holt_winters'
-
-export type AggregationsPipelineMovingAverageModelsMovingAverageSettings = AggregationsPipelineMovingAverageModelsEwmaModelSettings | AggregationsPipelineMovingAverageModelsHoltLinearModelSettings | AggregationsPipelineMovingAverageModelsHoltWintersModelSettings
-
-export interface AggregationsPipelineMovingFunctionMovingFunctionAggregation extends AggregationsPipelinePipelineAggregationBase {
-  script?: string
-  shift?: integer
-  window?: integer
-}
-
-export interface AggregationsPipelineMovingPercentilesMovingPercentilesAggregation extends AggregationsPipelinePipelineAggregationBase {
-  window?: integer
-  shift?: integer
-}
-
-export interface AggregationsPipelineNormalizeNormalizeAggregation extends AggregationsPipelinePipelineAggregationBase {
-  method?: AggregationsPipelineNormalizeNormalizeMethod
-}
-
-export type AggregationsPipelineNormalizeNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
-
-export interface AggregationsPipelinePercentilesBucketPercentilesBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-  percents?: double[]
-}
-
-export interface AggregationsPipelineSerialDifferencingSerialDifferencingAggregation extends AggregationsPipelinePipelineAggregationBase {
-  lag?: integer
-}
-
-export interface AggregationsPipelineStatsBucketStatsBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
-}
-
-export interface AggregationsPipelineSumBucketSumBucketAggregation extends AggregationsPipelinePipelineAggregationBase {
 }
 
 export type AnalysisStopWords = string | string[]
@@ -10519,7 +10519,7 @@ export interface MlTrainedModelConfig {
   description: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
-  inference_config: AggregationsPipelineInferenceBucketInferenceConfigContainer
+  inference_config: AggregationsInferenceConfigContainer
   input: MlTrainedModelConfigInput
   license_level?: string
   metadata?: MlTrainedModelConfigMetadata
@@ -13890,10 +13890,10 @@ export interface TransformPivot {
 }
 
 export interface TransformPivotGroupByContainer {
-  date_histogram?: AggregationsBucketDateHistogramDateHistogramAggregation
-  geotile_grid?: AggregationsBucketGeoTileGridGeoTileGridAggregation
-  histogram?: AggregationsBucketHistogramHistogramAggregation
-  terms?: AggregationsBucketTermsTermsAggregation
+  date_histogram?: AggregationsDateHistogramAggregation
+  geotile_grid?: AggregationsGeoTileGridAggregation
+  histogram?: AggregationsHistogramAggregation
+  terms?: AggregationsTermsAggregation
 }
 
 export interface TransformRetentionPolicy {
