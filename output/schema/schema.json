@@ -80357,7 +80357,7 @@
               ],
               "kind": "instance_of",
               "type": {
-                "name": "EqlHitsEvent",
+                "name": "HitsEvent",
                 "namespace": "eql._types"
               }
             }
@@ -80382,132 +80382,9 @@
               ],
               "kind": "instance_of",
               "type": {
-                "name": "EqlHitsSequence",
+                "name": "HitsSequence",
                 "namespace": "eql._types"
               }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "generics": [
-        {
-          "name": "TEvent",
-          "namespace": "eql._types"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "EqlHitsEvent",
-        "namespace": "eql._types"
-      },
-      "properties": [
-        {
-          "description": "Name of the index containing the event.",
-          "name": "_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Unique identifier for the event. This ID is only unique within the index.",
-          "name": "_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Original JSON body passed for the event at index time.",
-          "name": "_source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TEvent",
-              "namespace": "eql._types"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "generics": [
-        {
-          "name": "TEvent",
-          "namespace": "eql._types"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "EqlHitsSequence",
-        "namespace": "eql._types"
-      },
-      "properties": [
-        {
-          "description": "Contains events matching the query. Each object represents a matching event.",
-          "name": "events",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "generics": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TEvent",
-                    "namespace": "eql._types"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "EqlHitsEvent",
-                "namespace": "eql._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.",
-          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
-          "name": "join_keys",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "user_defined_value"
             }
           }
         }
@@ -80605,6 +80482,129 @@
             "type": {
               "name": "EqlHits",
               "namespace": "eql._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TEvent",
+          "namespace": "eql._types"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "HitsEvent",
+        "namespace": "eql._types"
+      },
+      "properties": [
+        {
+          "description": "Name of the index containing the event.",
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Unique identifier for the event. This ID is only unique within the index.",
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Original JSON body passed for the event at index time.",
+          "name": "_source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TEvent",
+              "namespace": "eql._types"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TEvent",
+          "namespace": "eql._types"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "HitsSequence",
+        "namespace": "eql._types"
+      },
+      "properties": [
+        {
+          "description": "Contains events matching the query. Each object represents a matching event.",
+          "name": "events",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TEvent",
+                    "namespace": "eql._types"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "HitsEvent",
+                "namespace": "eql._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences",
+          "name": "join_keys",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
@@ -80854,56 +80854,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Return the most recent matches, similar to the Unix tail command.",
-          "name": "tail"
-        },
-        {
-          "description": "Return the earliest matches, similar to the Unix head command.",
-          "name": "head"
-        }
-      ],
-      "name": {
-        "name": "EqlResultPosition",
-        "namespace": "eql.search"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "EqlSearchFieldFormatted",
-        "namespace": "eql.search"
-      },
-      "properties": [
-        {
-          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Format in which the values are returned.",
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81088,7 +81038,7 @@
                   {
                     "kind": "instance_of",
                     "type": {
-                      "name": "EqlSearchFieldFormatted",
+                      "name": "SearchFieldFormatted",
                       "namespace": "eql.search"
                     }
                   }
@@ -81104,7 +81054,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "EqlResultPosition",
+                "name": "ResultPosition",
                 "namespace": "eql.search"
               }
             }
@@ -81240,6 +81190,56 @@
         "name": "Response",
         "namespace": "eql.search"
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Return the most recent matches, similar to the Unix tail command.",
+          "name": "tail"
+        },
+        {
+          "description": "Return the earliest matches, similar to the Unix head command.",
+          "name": "head"
+        }
+      ],
+      "name": {
+        "name": "ResultPosition",
+        "namespace": "eql.search"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SearchFieldFormatted",
+        "namespace": "eql.search"
+      },
+      "properties": [
+        {
+          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Format in which the values are returned.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [

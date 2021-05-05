@@ -18,8 +18,9 @@
  */
 
 import { TotalHits } from '@global/search/_types/hits'
-import { EqlHitsEvent } from './EqlHitsEvent'
-import { EqlHitsSequence } from './EqlHitsSequence'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Field, Id, IndexName } from '@_types/common'
 
 export class EqlHits<TEvent> {
   /**
@@ -29,10 +30,30 @@ export class EqlHits<TEvent> {
   /**
    * Contains events matching the query. Each object represents a matching event.
    */
-  events?: EqlHitsEvent<TEvent>[]
+  events?: HitsEvent<TEvent>[]
   /**
    * Contains event sequences matching the query. Each object represents a matching sequence. This parameter is only returned for EQL queries containing a sequence.
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
    */
-  sequences?: EqlHitsSequence<TEvent>[]
+  sequences?: HitsSequence<TEvent>[]
+}
+
+export class HitsEvent<TEvent> {
+  /** Name of the index containing the event. */
+  _index: IndexName
+  /** Unique identifier for the event. This ID is only unique within the index. */
+  _id: Id
+  /** Original JSON body passed for the event at index time. */
+  _source: TEvent
+  fields?: Dictionary<Field, UserDefinedValue[]>
+}
+
+export class HitsSequence<TEvent> {
+  /** Contains events matching the query. Each object represents a matching event. */
+  events: HitsEvent<TEvent>[]
+  /**
+   * Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.
+   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   */
+  join_keys: UserDefinedValue[]
 }

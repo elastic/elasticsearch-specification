@@ -7890,20 +7890,8 @@ export interface EnrichStatsResponse {
 
 export interface EqlEqlHits<TEvent = unknown> {
   total?: SearchTypesTotalHits
-  events?: EqlEqlHitsEvent<TEvent>[]
-  sequences?: EqlEqlHitsSequence<TEvent>[]
-}
-
-export interface EqlEqlHitsEvent<TEvent = unknown> {
-  _index: IndexName
-  _id: Id
-  _source: TEvent
-  fields?: Record<Field, any[]>
-}
-
-export interface EqlEqlHitsSequence<TEvent = unknown> {
-  events: EqlEqlHitsEvent<TEvent>[]
-  join_keys: any[]
+  events?: EqlHitsEvent<TEvent>[]
+  sequences?: EqlHitsSequence<TEvent>[]
 }
 
 export interface EqlEqlSearchResponseBase<TEvent = unknown> {
@@ -7913,6 +7901,18 @@ export interface EqlEqlSearchResponseBase<TEvent = unknown> {
   took?: integer
   timed_out?: boolean
   hits: EqlEqlHits<TEvent>
+}
+
+export interface EqlHitsEvent<TEvent = unknown> {
+  _index: IndexName
+  _id: Id
+  _source: TEvent
+  fields?: Record<Field, any[]>
+}
+
+export interface EqlHitsSequence<TEvent = unknown> {
+  events: EqlHitsEvent<TEvent>[]
+  join_keys: any[]
 }
 
 export interface EqlDeleteRequest extends RequestBase {
@@ -7942,13 +7942,6 @@ export interface EqlGetStatusResponse {
   completion_status?: integer
 }
 
-export type EqlSearchEqlResultPosition = 'tail' | 'head'
-
-export interface EqlSearchEqlSearchFieldFormatted {
-  field: Field
-  format?: string
-}
-
 export interface EqlSearchRequest extends RequestBase {
   index: IndexName
   allow_no_indices?: boolean
@@ -7969,12 +7962,19 @@ export interface EqlSearchRequest extends RequestBase {
     keep_on_completion?: boolean
     wait_for_completion_timeout?: Time
     size?: uint | float
-    fields?: (Field | EqlSearchEqlSearchFieldFormatted)[]
-    result_position?: EqlSearchEqlResultPosition
+    fields?: (Field | EqlSearchSearchFieldFormatted)[]
+    result_position?: EqlSearchResultPosition
   }
 }
 
 export interface EqlSearchResponse<TEvent = unknown> extends EqlEqlSearchResponseBase<TEvent> {}
+
+export type EqlSearchResultPosition = 'tail' | 'head'
+
+export interface EqlSearchSearchFieldFormatted {
+  field: Field
+  format?: string
+}
 
 export interface FeaturesGetFeaturesRequest extends RequestBase {
   stub_a: string

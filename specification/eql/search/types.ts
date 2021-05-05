@@ -17,15 +17,29 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { EqlHitsEvent } from './EqlHitsEvent'
+import { Field } from '@_types/common'
 
-export class EqlHitsSequence<TEvent> {
-  /** Contains events matching the query. Each object represents a matching event. */
-  events: EqlHitsEvent<TEvent>[]
+export class SearchFieldFormatted {
   /**
-   * Shared field values used to constrain matches in the sequence. These are defined using the by keyword in the EQL query syntax.
-   * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-sequences
+   * Wildcard pattern. The request returns values for field names matching this pattern.
    */
-  join_keys: UserDefinedValue[]
+  field: Field
+  /**
+   * Format in which the values are returned.
+   */
+  format?: string
+}
+
+/**
+ * Set of matching events or sequences to return.
+ */
+export enum ResultPosition {
+  /**
+   * Return the most recent matches, similar to the Unix tail command.
+   */
+  tail = 0,
+  /**
+   * Return the earliest matches, similar to the Unix head command.
+   */
+  head = 1
 }
