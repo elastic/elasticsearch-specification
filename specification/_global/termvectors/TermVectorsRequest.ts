@@ -29,7 +29,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { TermVectorFilter } from './types'
+import { Filter } from './types'
 
 /**
  * @rest_spec_name termvectors
@@ -57,7 +57,7 @@ export interface Request<TDocument> extends RequestBase {
   }
   body?: {
     doc?: TDocument
-    filter?: TermVectorFilter
+    filter?: Filter
     per_field_analyzer?: Dictionary<Field, string>
   }
 }

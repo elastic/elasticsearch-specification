@@ -46,7 +46,7 @@ export class Token {
   start_offset?: integer
 }
 
-export class TermVectorFilter {
+export class Filter {
   max_doc_freq?: integer
   max_num_terms?: integer
   max_term_freq?: integer
