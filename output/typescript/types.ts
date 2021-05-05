@@ -559,7 +559,7 @@ export interface MgetResponse<TDocument = unknown> {
   docs: MgetHit<TDocument>[]
 }
 
-export interface MsearchMultiSearchBody {
+export interface MsearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
   query?: QueryDslQueryContainer
@@ -570,7 +570,7 @@ export interface MsearchMultiSearchBody {
   suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
 }
 
-export interface MsearchMultiSearchHeader {
+export interface MsearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -579,10 +579,6 @@ export interface MsearchMultiSearchHeader {
   request_cache?: boolean
   routing?: string
   search_type?: SearchType
-}
-
-export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
-  status: integer
 }
 
 export interface MsearchRequest extends RequestBase {
@@ -599,12 +595,16 @@ export interface MsearchRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body?: (MsearchMultiSearchHeader | MsearchMultiSearchBody)[]
+  body?: (MsearchHeader | MsearchBody)[]
 }
 
 export interface MsearchResponse<TDocument = unknown> {
   took: long
-  responses: (MsearchMultiSearchResult<TDocument> | ErrorResponseBase)[]
+  responses: (MsearchSearchResult<TDocument> | ErrorResponseBase)[]
+}
+
+export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
+  status: integer
 }
 
 export interface MsearchTemplateMultiSearchTemplateItem {

@@ -17258,7 +17258,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "MultiSearchBody",
+        "name": "Body",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -17413,7 +17413,7 @@
       "description": "Contains parameters used to limit or change the subsequent search body request.",
       "kind": "interface",
       "name": {
-        "name": "MultiSearchHeader",
+        "name": "Header",
         "namespace": "_global.msearch"
       },
       "properties": [
@@ -17508,47 +17508,6 @@
       ]
     },
     {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "_global.msearch"
-        }
-      ],
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.msearch"
-            }
-          }
-        ],
-        "type": {
-          "name": "Response",
-          "namespace": "_global.search"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "MultiSearchResult",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -17561,14 +17520,14 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiSearchHeader",
+                  "name": "Header",
                   "namespace": "_global.msearch"
                 }
               },
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "MultiSearchBody",
+                  "name": "Body",
                   "namespace": "_global.msearch"
                 }
               }
@@ -17788,7 +17747,7 @@
                     ],
                     "kind": "instance_of",
                     "type": {
-                      "name": "MultiSearchResult",
+                      "name": "SearchResult",
                       "namespace": "_global.msearch"
                     }
                   },
@@ -17817,6 +17776,47 @@
         "name": "Response",
         "namespace": "_global.msearch"
       }
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.msearch"
+        }
+      ],
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "_global.msearch"
+            }
+          }
+        ],
+        "type": {
+          "name": "Response",
+          "namespace": "_global.search"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SearchResult",
+        "namespace": "_global.msearch"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { SuggestContainer } from '@global/search/_types/suggester'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { long } from '@_types/Numeric'
+import { Body, Header } from './types'
 
 /**
  * @rest_spec_name msearch
@@ -91,32 +87,5 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  body?: Array<MultiSearchHeader | MultiSearchBody>
-}
-
-/**
- * Contains parameters used to limit or change the subsequent search body request.
- */
-export class MultiSearchHeader {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  index?: Indices
-  preference?: string
-  request_cache?: boolean
-  routing?: string
-  search_type?: SearchType
-}
-
-// Might contain the same parameters of SearchRequest['body'], but there are inconsistencies
-// https://github.com/elastic/elasticsearch/issues/4227
-export class MultiSearchBody {
-  aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
-  query?: QueryContainer
-  from?: integer
-  size?: integer
-  pit?: PointInTimeReference
-  track_total_hits?: boolean | integer
-  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+  body?: Array<Header | Body>
 }
