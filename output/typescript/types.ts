@@ -667,10 +667,10 @@ export interface MtermvectorsRequest extends RequestBase {
 }
 
 export interface MtermvectorsResponse {
-  docs: MtermvectorsTermVectorResult[]
+  docs: MtermvectorsTermVectorsResult[]
 }
 
-export interface MtermvectorsTermVectorResult {
+export interface MtermvectorsTermVectorsResult {
   found: boolean
   id: Id
   index: IndexName

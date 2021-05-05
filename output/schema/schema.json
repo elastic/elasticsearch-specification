@@ -18400,7 +18400,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "TermVectorResult",
+                  "name": "TermVectorsResult",
                   "namespace": "_global.mtermvectors"
                 }
               }
@@ -18417,7 +18417,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "TermVectorResult",
+        "name": "TermVectorsResult",
         "namespace": "_global.mtermvectors"
       },
       "properties": [

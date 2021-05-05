@@ -47,7 +47,7 @@ export class Operation {
   version_type: VersionType
 }
 
-export class TermVectorResult {
+export class TermVectorsResult {
   found: boolean
   id: Id
   index: IndexName
