@@ -121193,6 +121193,48 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "MountedSnapshot",
+        "namespace": "searchable_snapshots.mount"
+      },
+      "properties": [
+        {
+          "name": "snapshot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -121339,7 +121381,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SearchableSnapshotsMountSnapshot",
+                "name": "MountedSnapshot",
                 "namespace": "searchable_snapshots.mount"
               }
             }
@@ -121351,48 +121393,6 @@
         "name": "Response",
         "namespace": "searchable_snapshots.mount"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchableSnapshotsMountSnapshot",
-        "namespace": "searchable_snapshots.mount"
-      },
-      "properties": [
-        {
-          "name": "snapshot",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "shards",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardStatistics",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
