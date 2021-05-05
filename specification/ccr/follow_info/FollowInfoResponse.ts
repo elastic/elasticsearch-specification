@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { FollowerInfo } from './FollowerInfo'
+import { FollowerIndex } from './types'
 
 export class Response {
-  body: { follower_indices: FollowerInfo[] }
+  body: { follower_indices: FollowerIndex[] }
 }

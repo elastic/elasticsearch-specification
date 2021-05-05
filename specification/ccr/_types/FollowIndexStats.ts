@@ -17,13 +17,22 @@
  * under the License.
  */
 
-import { ByteSize, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  ByteSize,
+  SequenceNumber,
+  VersionNumber,
+  IndexName
+} from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
-import { FollowIndexReadException } from './FollowIndexReadException'
 
-export class FollowIndexShardStats {
+export class FollowIndexStats {
+  index: IndexName
+  shards: ShardStats[]
+}
+
+export class ShardStats {
   bytes_read: long
   failed_read_requests: long
   failed_write_requests: long
@@ -42,7 +51,7 @@ export class FollowIndexShardStats {
   operations_written: long
   outstanding_read_requests: integer
   outstanding_write_requests: integer
-  read_exceptions: FollowIndexReadException[]
+  read_exceptions: ReadException[]
   remote_cluster: string
   shard_id: integer
   successful_read_requests: long
@@ -53,4 +62,10 @@ export class FollowIndexShardStats {
   total_write_time_millis: EpochMillis
   write_buffer_operation_count: long
   write_buffer_size_in_bytes: ByteSize
+}
+
+export class ReadException {
+  exception: ErrorCause
+  from_seq_no: SequenceNumber
+  retries: integer
 }

@@ -70531,6 +70531,413 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "FollowIndexStats",
+        "namespace": "ccr._types"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStats",
+                "namespace": "ccr._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ReadException",
+        "namespace": "ccr._types"
+      },
+      "properties": [
+        {
+          "name": "exception",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "from_seq_no",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "retries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardStats",
+        "namespace": "ccr._types"
+      },
+      "properties": [
+        {
+          "name": "bytes_read",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "failed_read_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "failed_write_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fatal_exception",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "follower_aliases_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "follower_global_checkpoint",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "follower_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "follower_mapping_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "follower_max_seq_no",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "follower_settings_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "last_requested_seq_no",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "leader_global_checkpoint",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "leader_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "leader_max_seq_no",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "operations_read",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "operations_written",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "outstanding_read_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "outstanding_write_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "read_exceptions",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ReadException",
+                "namespace": "ccr._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "remote_cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shard_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "successful_read_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "successful_write_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_since_last_read_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_read_remote_exec_time_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_read_time_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_write_time_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "write_buffer_operation_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "write_buffer_size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -70798,413 +71205,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "FollowIndexReadException",
-        "namespace": "ccr.follow_index_stats"
-      },
-      "properties": [
-        {
-          "name": "exception",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "from_seq_no",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retries",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FollowIndexShardStats",
-        "namespace": "ccr.follow_index_stats"
-      },
-      "properties": [
-        {
-          "name": "bytes_read",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "failed_read_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "failed_write_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "fatal_exception",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "follower_aliases_version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "follower_global_checkpoint",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "follower_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "follower_mapping_version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "follower_max_seq_no",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "follower_settings_version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "last_requested_seq_no",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "leader_global_checkpoint",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "leader_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "leader_max_seq_no",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "operations_read",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "operations_written",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "outstanding_read_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "outstanding_write_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "read_exceptions",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FollowIndexReadException",
-                "namespace": "ccr.follow_index_stats"
-              }
-            }
-          }
-        },
-        {
-          "name": "remote_cluster",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "shard_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "successful_read_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "successful_write_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_since_last_read_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_read_remote_exec_time_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_read_time_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_write_time_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "write_buffer_operation_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "write_buffer_size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FollowIndexStats",
-        "namespace": "ccr.follow_index_stats"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "shards",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FollowIndexShardStats",
-                "namespace": "ccr.follow_index_stats"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -71247,7 +71247,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "FollowIndexStats",
-                  "namespace": "ccr.follow_index_stats"
+                  "namespace": "ccr._types"
                 }
               }
             }
@@ -71263,7 +71263,71 @@
     {
       "kind": "interface",
       "name": {
-        "name": "FollowConfig",
+        "name": "FollowerIndex",
+        "namespace": "ccr.follow_info"
+      },
+      "properties": [
+        {
+          "name": "follower_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "leader_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FollowerIndexParameters",
+              "namespace": "ccr.follow_info"
+            }
+          }
+        },
+        {
+          "name": "remote_cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FollowerIndexStatus",
+              "namespace": "ccr.follow_info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FollowerIndexParameters",
         "namespace": "ccr.follow_info"
       },
       "properties": [
@@ -71395,70 +71459,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "FollowerInfo",
-        "namespace": "ccr.follow_info"
-      },
-      "properties": [
-        {
-          "name": "follower_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "leader_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "parameters",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FollowConfig",
-              "namespace": "ccr.follow_info"
-            }
-          }
-        },
-        {
-          "name": "remote_cluster",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FollowerIndexStatus",
-              "namespace": "ccr.follow_info"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -71500,7 +71500,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "FollowerInfo",
+                  "name": "FollowerIndex",
                   "namespace": "ccr.follow_info"
                 }
               }
@@ -71549,8 +71549,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Uuid",
+                "namespace": "_types"
               }
             }
           },
@@ -71624,70 +71624,6 @@
       },
       "properties": [
         {
-          "name": "active",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "remote_cluster",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "follow_index_pattern",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexPattern",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "leader_index_patterns",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexPatterns",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_outstanding_read_requests",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "AutoFollowPatternItem",
-        "namespace": "ccr.get_auto_follow_pattern"
-      },
-      "properties": [
-        {
           "name": "name",
           "required": true,
           "type": {
@@ -71753,7 +71689,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "AutoFollowPatternItem",
+                  "name": "AutoFollowPattern",
                   "namespace": "ccr.get_auto_follow_pattern"
                 }
               }
@@ -71896,6 +71832,7 @@
           {
             "name": "max_outstanding_read_requests",
             "required": false,
+            "serverDefault": "12",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71925,6 +71862,7 @@
           {
             "name": "max_outstanding_write_requests",
             "required": false,
+            "serverDefault": "9",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71936,6 +71874,7 @@
           {
             "name": "read_poll_timeout",
             "required": false,
+            "serverDefault": "1m",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71947,6 +71886,7 @@
           {
             "name": "max_read_request_operation_count",
             "required": false,
+            "serverDefault": "5120",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71958,6 +71898,7 @@
           {
             "name": "max_read_request_size",
             "required": false,
+            "serverDefault": "32mb",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71969,6 +71910,7 @@
           {
             "name": "max_retry_delay",
             "required": false,
+            "serverDefault": "500ms",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71980,6 +71922,7 @@
           {
             "name": "max_write_buffer_count",
             "required": false,
+            "serverDefault": "2147483647",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71991,6 +71934,7 @@
           {
             "name": "max_write_buffer_size",
             "required": false,
+            "serverDefault": "512mb",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -72002,6 +71946,7 @@
           {
             "name": "max_write_request_operation_count",
             "required": false,
+            "serverDefault": "5120",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -72013,6 +71958,7 @@
           {
             "name": "max_write_request_size",
             "required": false,
+            "serverDefault": "9223372036854775807b",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -72266,49 +72212,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "AutoFollowedCluster",
-        "namespace": "ccr.stats"
-      },
-      "properties": [
-        {
-          "name": "cluster_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "last_seen_metadata_version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_since_last_check_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CcrAutoFollowStats",
+        "name": "AutoFollowStats",
         "namespace": "ccr.stats"
       },
       "properties": [
@@ -72378,7 +72282,49 @@
     {
       "kind": "interface",
       "name": {
-        "name": "CcrFollowStats",
+        "name": "AutoFollowedCluster",
+        "namespace": "ccr.stats"
+      },
+      "properties": [
+        {
+          "name": "cluster_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "last_seen_metadata_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_since_last_check_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FollowStats",
         "namespace": "ccr.stats"
       },
       "properties": [
@@ -72391,7 +72337,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "FollowIndexStats",
-                "namespace": "ccr.follow_index_stats"
+                "namespace": "ccr._types"
               }
             }
           }
@@ -72426,7 +72372,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "CcrAutoFollowStats",
+                "name": "AutoFollowStats",
                 "namespace": "ccr.stats"
               }
             }
@@ -72437,7 +72383,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "CcrFollowStats",
+                "name": "FollowStats",
                 "namespace": "ccr.stats"
               }
             }

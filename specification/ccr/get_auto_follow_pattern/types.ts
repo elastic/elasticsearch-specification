@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { IndexPattern, IndexPatterns } from '@_types/common'
+import { IndexPattern, IndexPatterns, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class AutoFollowPattern {
+  name: Name
+  pattern: AutoFollowPattern
+}
+
+export class AutoFollowPatternSummary {
   active: boolean
   remote_cluster: string
   follow_index_pattern?: IndexPattern

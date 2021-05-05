@@ -17,9 +17,11 @@
  * under the License.
  */
 
-import { CcrAutoFollowStats } from './CcrAutoFollowStats'
-import { CcrFollowStats } from './CcrFollowStats'
+import { AutoFollowStats, FollowStats } from './types.ts'
 
 export class Response {
-  body: { auto_follow_stats: CcrAutoFollowStats; follow_stats: CcrFollowStats }
+  body: {
+    auto_follow_stats: AutoFollowStats
+    follow_stats: FollowStats
+  }
 }

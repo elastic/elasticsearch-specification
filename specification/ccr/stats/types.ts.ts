@@ -17,7 +17,27 @@
  * under the License.
  */
 
-export enum FollowerIndexStatus {
-  active = 0,
-  paused = 1
+import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
+import { ErrorCause } from '@_types/Errors'
+import { long } from '@_types/Numeric'
+
+import { Name, VersionNumber } from '@_types/common'
+import { DateString } from '@_types/Time'
+
+export class AutoFollowedCluster {
+  cluster_name: Name
+  last_seen_metadata_version: VersionNumber
+  time_since_last_check_millis: DateString
+}
+
+export class AutoFollowStats {
+  auto_followed_clusters: AutoFollowedCluster[]
+  number_of_failed_follow_indices: long
+  number_of_failed_remote_cluster_state_requests: long
+  number_of_successful_follow_indices: long
+  recent_auto_follow_errors: ErrorCause[]
+}
+
+export class FollowStats {
+  indices: FollowIndexStats[]
 }
