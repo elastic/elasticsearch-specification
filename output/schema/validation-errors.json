@@ -1,5 +1,23 @@
 {
   "endpointErrors": {
+    "async_search.delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "async_search.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "async_search.status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "async_search.submit": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -180,6 +198,66 @@
       ],
       "response": []
     },
+    "ccr.delete_auto_follow_pattern": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.follow_info": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.follow_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.get_auto_follow_pattern": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.pause_auto_follow_pattern": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.pause_follow": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.resume_auto_follow_pattern": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ccr.unfollow": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.delete_component_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "cluster.delete_voting_config_exclusions": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -193,6 +271,24 @@
       "response": []
     },
     "cluster.get_component_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.get_settings": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.health": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.pending_tasks": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -217,6 +313,18 @@
       "response": []
     },
     "cluster.reroute": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.state": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "cluster.stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -294,7 +402,67 @@
       ],
       "response": []
     },
+    "delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "delete_by_query_rethrottle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "delete_script": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "enrich.delete_policy": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "enrich.execute_policy": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "enrich.get_policy": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "enrich.put_policy": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "enrich.stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "eql.delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "eql.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "eql.get_status": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -348,6 +516,24 @@
       ],
       "response": []
     },
+    "get_script": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "get_script_context": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "get_script_languages": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "get_source": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -360,13 +546,37 @@
       ],
       "response": []
     },
+    "ilm.explain_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ilm.get_lifecycle": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
+    "ilm.get_status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ilm.put_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ilm.remove_policy": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ilm.retry": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -384,6 +594,12 @@
       ],
       "response": []
     },
+    "indices.add_block": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.analyze": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -391,6 +607,36 @@
       "response": []
     },
     "indices.clear_cache": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.close": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.create_data_stream": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.data_streams_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.delete_alias": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -408,7 +654,73 @@
       ],
       "response": []
     },
+    "indices.delete_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.exists": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.exists_alias": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.exists_index_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.exists_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.exists_type": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.flush": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.flush_synced": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.forcemerge": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.freeze": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.get_alias": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -420,13 +732,55 @@
       ],
       "response": []
     },
+    "indices.get_field_mapping": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.get_index_template": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
+    "indices.get_mapping": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.get_settings": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.get_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.get_upgrade": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.migrate_to_data_stream": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.open": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.promote_data_stream": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -445,6 +799,42 @@
       "response": []
     },
     "indices.put_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.recovery": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.refresh": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.reload_search_analyzers": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.resolve_index": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.segments": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.shard_stores": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -474,6 +864,18 @@
       ],
       "response": []
     },
+    "indices.stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.unfreeze": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.upgrade": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -481,6 +883,66 @@
       "response": []
     },
     "indices.validate_query": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "info": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ingest.delete_pipeline": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ingest.geo_ip_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ingest.get_pipeline": {
+      "request": [
+        "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "ingest.processor_grok": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "license.delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "license.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "license.get_basic_status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "license.get_trial_status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "license.post_start_basic": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -510,13 +972,85 @@
       ],
       "response": []
     },
+    "migration.deprecations": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.close_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
+    "ml.delete_calendar": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_calendar_event": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_calendar_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_data_frame_analytics": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_datafeed": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.delete_expired_data": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_filter": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_forecast": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_model_snapshot": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_trained_model": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.delete_trained_model_alias": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -558,6 +1092,18 @@
       ],
       "response": []
     },
+    "ml.get_data_frame_analytics": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.get_data_frame_analytics_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.get_datafeed_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -565,6 +1111,12 @@
       "response": []
     },
     "ml.get_datafeeds": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.get_filters": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -600,7 +1152,25 @@
       ],
       "response": []
     },
+    "ml.get_trained_models_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.info": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.open_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.put_calendar_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -612,7 +1182,19 @@
       ],
       "response": []
     },
+    "ml.put_trained_model_alias": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.revert_model_snapshot": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.set_upgrade_mode": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -625,6 +1207,12 @@
       "response": []
     },
     "ml.stop_datafeed": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.upgrade_job_snapshot": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -688,7 +1276,19 @@
       ],
       "response": []
     },
+    "nodes.usage": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "open_point_in_time": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ping": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -706,13 +1306,55 @@
       ],
       "response": []
     },
+    "reindex_rethrottle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "render_search_template": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
+    "rollup.delete_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "rollup.get_jobs": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "rollup.get_rollup_caps": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "rollup.get_rollup_index_caps": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "rollup.rollup": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "rollup.start_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "rollup.stop_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -725,6 +1367,12 @@
       "response": []
     },
     "search": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "search_shards": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -760,6 +1408,36 @@
       ],
       "response": []
     },
+    "security.authenticate": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_api_key_cache": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_cached_privileges": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_cached_realms": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.clear_cached_roles": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "security.clear_cached_service_tokens": {
       "request": [
         "Missing request & response"
@@ -772,9 +1450,75 @@
       ],
       "response": []
     },
+    "security.delete_privileges": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.delete_role": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.delete_role_mapping": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "security.delete_service_token": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.delete_user": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.disable_user": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.enable_user": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.get_api_key": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.get_builtin_privileges": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.get_privileges": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.get_role": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.get_role_mapping": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -826,7 +1570,73 @@
       ],
       "response": []
     },
+    "slm.delete_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.execute_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.execute_retention": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.get_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.get_stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.get_status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.start": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.stop": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "snapshot.cleanup_repository": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "snapshot.clone": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "snapshot.delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "snapshot.delete_repository": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -838,7 +1648,67 @@
       ],
       "response": []
     },
+    "snapshot.get_repository": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "snapshot.restore": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "snapshot.status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "snapshot.verify_repository": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ssl.certificates": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "tasks.cancel": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "tasks.get": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "tasks.list": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.delete_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.get_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.get_transform_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -851,6 +1721,18 @@
       "response": []
     },
     "transform.put_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.start_transform": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "transform.stop_transform": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -874,7 +1756,43 @@
       ],
       "response": []
     },
+    "update_by_query_rethrottle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.ack_watch": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.activate_watch": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.deactivate_watch": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.delete_watch": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "watcher.execute_watch": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.get_watch": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -892,7 +1810,19 @@
       ],
       "response": []
     },
+    "watcher.start": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "watcher.stats": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "watcher.stop": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

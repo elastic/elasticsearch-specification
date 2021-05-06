@@ -335,7 +335,7 @@ export {
              hasRequiredProps(requestType.query) ||
              hasRequiredProps(requestType.body)
 
-      function hasRequiredProps (props?: M.Property[] | M.ValueBody | M.PropertiesBody): boolean {
+      function hasRequiredProps (props?: M.Property[] | M.Body): boolean {
         if (!Array.isArray(props)) return false
         for (const prop of props) {
           if (prop.required) return true

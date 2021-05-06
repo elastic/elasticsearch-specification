@@ -68,8 +68,10 @@ export class ValidationErrors {
     let count = 0
     const logArray = function (errs: string[], prefix = ''): void {
       for (const err of errs) {
-        console.error(`${prefix}${err}`)
-        count++
+        if (err !== 'Endpoint has "@stability: TODO' && err !== 'Missing request & response') {
+          console.error(`${prefix}${err}`)
+          count++
+        }
       }
     }
 

@@ -49,7 +49,7 @@ export class TypeName {
 /**
  * Type of a value. Used both for property types and nested type definitions.
  */
-export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | UserDefinedValue | LiteralValue | VoidValue
+export type ValueOf = InstanceOf | ArrayOf | UnionOf | DictionaryOf | UserDefinedValue | LiteralValue
 
 /**
  * A single value
@@ -114,13 +114,6 @@ export class UserDefinedValue {
 export class LiteralValue {
   kind: 'literal_value'
   value: string | number | boolean
-}
-
-/**
- * The absence of any type. This is commonly used in APIs that returns an empty body.
- */
-export class VoidValue {
-  kind: 'void_value'
 }
 
 /**
@@ -225,6 +218,7 @@ export class Request extends BaseType {
   // Note: does not extend Interface as properties are split across path, query and body
   kind: 'request'
   generics?: TypeName[]
+  /** The parent defines additional body properties that are added to the body, that has to be a PropertyBody */
   inherits?: Inherits
   implements?: Inherits[]
   /** URL path properties */
@@ -239,10 +233,11 @@ export class Request extends BaseType {
   // We can also pull path parameter descriptions on body properties they replace
 
   /**
-   * Body type. In most cases this is just a list of properties, except for a few specific cases like bulk requests
-   * (an array of bulk operations) or create requests (a user provided document type).
+   * Body type. Most often a list of properties (that can extend those of the inherited class, see above), except for a
+   * few specific cases that use other types such as bulk (array) or create (generic parameter). Or NoBody for requests
+   * that don't have a body.
    */
-  body?: ValueBody | PropertiesBody
+  body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
 }
@@ -255,10 +250,12 @@ export class Response extends BaseType {
   generics?: TypeName[]
   inherits?: Inherits
   implements?: Inherits[]
-  body?: ValueBody | PropertiesBody
+  body: Body
   behaviors?: Inherits[]
   attachedBehaviors?: string[]
 }
+
+export type Body = ValueBody | PropertiesBody | NoBody
 
 export class ValueBody {
   kind: 'value'
@@ -268,6 +265,10 @@ export class ValueBody {
 export class PropertiesBody {
   kind: 'properties'
   properties: Property[]
+}
+
+export class NoBody {
+  kind: 'no_body'
 }
 
 /**
