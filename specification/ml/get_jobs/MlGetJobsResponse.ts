@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Job } from '@_types/ml/Job'
+import { Job } from '@ml/_types/Job'
 import { long } from '@_types/Numeric'
 
 export class Response {
