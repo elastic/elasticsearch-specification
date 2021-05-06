@@ -480,8 +480,6 @@ export interface GetScriptLanguagesResponse {
 }
 
 export interface GetSourceRequest extends GetRequest {
-  body?: {
-  }
 }
 
 export type GetSourceResponse<TDocument = unknown> = TDocument
@@ -14122,8 +14120,6 @@ export interface TransformPreviewTransformResponse<TTransform = unknown> {
 export interface TransformPutTransformRequest extends TransformPreviewTransformRequest {
   transform_id: Id
   defer_validation?: boolean
-  body?: {
-  }
 }
 
 export interface TransformPutTransformResponse extends AcknowledgedResponseBase {
@@ -14150,8 +14146,6 @@ export interface TransformStopTransformResponse extends AcknowledgedResponseBase
 }
 
 export interface TransformUpdateTransformRequest extends TransformPutTransformRequest {
-  body?: {
-  }
 }
 
 export interface TransformUpdateTransformResponse {
