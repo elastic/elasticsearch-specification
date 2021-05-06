@@ -3277,168 +3277,29 @@ export interface AggregationsWeightedAverageValue {
   script?: Script
 }
 
-export type AnalysisStopWords = string | string[]
+export interface AnalysisAsciiFoldingTokenFilter extends AnalysisTokenFilterBase {
+  preserve_original: boolean
+}
 
-export type AnalysisCharFiltersCharFilter = AnalysisCharFiltersHtmlStripCharFilter | AnalysisCharFiltersMappingCharFilter | AnalysisTokenFiltersPatternReplaceTokenFilter
+export type AnalysisCharFilter = AnalysisHtmlStripCharFilter | AnalysisMappingCharFilter | AnalysisPatternReplaceTokenFilter
 
-export interface AnalysisCharFiltersCharFilterBase {
+export interface AnalysisCharFilterBase {
   type: string
   version?: VersionString
 }
 
-export interface AnalysisCharFiltersHtmlStripCharFilter extends AnalysisCharFiltersCharFilterBase {
+export interface AnalysisCharGroupTokenizer extends AnalysisTokenizerBase {
+  tokenize_on_chars: string[]
 }
 
-export interface AnalysisCharFiltersMappingCharFilter extends AnalysisCharFiltersCharFilterBase {
-  mappings: string[]
-  mappings_path: string
-}
-
-export type AnalysisLanguagesSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Kp' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Spanish' | 'Swedish' | 'Turkish'
-
-export interface AnalysisTokenFiltersAsciiFoldingTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  preserve_original: boolean
-}
-
-export interface AnalysisTokenFiltersCommonGramsTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisCommonGramsTokenFilter extends AnalysisTokenFilterBase {
   common_words: string[]
   common_words_path: string
   ignore_case: boolean
   query_mode: boolean
 }
 
-export interface AnalysisTokenFiltersConditionTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  filter: string[]
-  script: Script
-}
-
-export interface AnalysisTokenFiltersElisionTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  articles: string[]
-  articles_case: boolean
-}
-
-export interface AnalysisTokenFiltersFingerprintTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  max_output_size: integer
-  separator: string
-}
-
-export interface AnalysisTokenFiltersHunspellTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  dedup: boolean
-  dictionary: string
-  locale: string
-  longest_only: boolean
-}
-
-export interface AnalysisTokenFiltersKStemTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export type AnalysisTokenFiltersKeepTypesMode = 'include' | 'exclude'
-
-export interface AnalysisTokenFiltersKeepTypesTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  mode: AnalysisTokenFiltersKeepTypesMode
-  types: string[]
-}
-
-export interface AnalysisTokenFiltersKeepWordsTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  keep_words: string[]
-  keep_words_case: boolean
-  keep_words_path: string
-}
-
-export interface AnalysisTokenFiltersKeywordMarkerTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  ignore_case: boolean
-  keywords: string[]
-  keywords_path: string
-  keywords_pattern: string
-}
-
-export interface AnalysisTokenFiltersLengthTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  max: integer
-  min: integer
-}
-
-export interface AnalysisTokenFiltersLimitTokenCountTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  consume_all_tokens: boolean
-  max_token_count: integer
-}
-
-export interface AnalysisTokenFiltersLowercaseTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  language: string
-}
-
-export interface AnalysisTokenFiltersMultiplexerTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  filters: string[]
-  preserve_original: boolean
-}
-
-export interface AnalysisTokenFiltersNGramTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  max_gram: integer
-  min_gram: integer
-}
-
-export interface AnalysisTokenFiltersNoriPartOfSpeechTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  stoptags: string[]
-}
-
-export interface AnalysisTokenFiltersPatternCaptureTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  patterns: string[]
-  preserve_original: boolean
-}
-
-export interface AnalysisTokenFiltersPatternReplaceTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  flags: string
-  pattern: string
-  replacement: string
-}
-
-export interface AnalysisTokenFiltersPorterStemTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export interface AnalysisTokenFiltersPredicateTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  script: Script
-}
-
-export interface AnalysisTokenFiltersRemoveDuplicatesTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export interface AnalysisTokenFiltersReverseTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export interface AnalysisTokenFiltersSnowballTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  language: AnalysisLanguagesSnowballLanguage
-}
-
-export interface AnalysisTokenFiltersStemmerOverrideTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  rules: string[]
-  rules_path: string
-}
-
-export interface AnalysisTokenFiltersStemmerTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  language: string
-}
-
-export type AnalysisTokenFiltersTokenFilter = AnalysisTokenFiltersAsciiFoldingTokenFilter | AnalysisTokenFiltersCommonGramsTokenFilter | AnalysisTokenFiltersConditionTokenFilter | AnalysisTokenFiltersDelimitedPayloadDelimitedPayloadTokenFilter | AnalysisTokenFiltersEdgeNGramEdgeNGramTokenFilter | AnalysisTokenFiltersElisionTokenFilter | AnalysisTokenFiltersFingerprintTokenFilter | AnalysisTokenFiltersHunspellTokenFilter | AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter | AnalysisTokenFiltersKeepTypesTokenFilter | AnalysisTokenFiltersKeepWordsTokenFilter | AnalysisTokenFiltersKeywordMarkerTokenFilter | AnalysisTokenFiltersKStemTokenFilter | AnalysisTokenFiltersLengthTokenFilter | AnalysisTokenFiltersLimitTokenCountTokenFilter | AnalysisTokenFiltersLowercaseTokenFilter | AnalysisTokenFiltersMultiplexerTokenFilter | AnalysisTokenFiltersNGramTokenFilter | AnalysisTokenFiltersNoriPartOfSpeechTokenFilter | AnalysisTokenFiltersPatternCaptureTokenFilter | AnalysisTokenFiltersPatternReplaceTokenFilter | AnalysisTokenFiltersPorterStemTokenFilter | AnalysisTokenFiltersPredicateTokenFilter | AnalysisTokenFiltersRemoveDuplicatesTokenFilter | AnalysisTokenFiltersReverseTokenFilter | AnalysisTokenFiltersShingleShingleTokenFilter | AnalysisTokenFiltersSnowballTokenFilter | AnalysisTokenFiltersStemmerOverrideTokenFilter | AnalysisTokenFiltersStemmerTokenFilter | AnalysisTokenFiltersStopStopTokenFilter | AnalysisTokenFiltersSynonymSynonymGraphTokenFilter | AnalysisTokenFiltersSynonymSynonymTokenFilter | AnalysisTokenFiltersTrimTokenFilter | AnalysisTokenFiltersTruncateTokenFilter | AnalysisTokenFiltersUniqueTokenFilter | AnalysisTokenFiltersUppercaseTokenFilter | AnalysisTokenFiltersWordDelimiterGraphWordDelimiterGraphTokenFilter | AnalysisTokenFiltersWordDelimiterWordDelimiterTokenFilter
-
-export interface AnalysisTokenFiltersTokenFilterBase {
-  type: string
-  version?: VersionString
-}
-
-export interface AnalysisTokenFiltersTrimTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export interface AnalysisTokenFiltersTruncateTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  length: integer
-}
-
-export interface AnalysisTokenFiltersUniqueTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  only_on_same_position: boolean
-}
-
-export interface AnalysisTokenFiltersUppercaseTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-}
-
-export interface AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisCompoundWordTokenFilterBase extends AnalysisTokenFilterBase {
   hyphenation_patterns_path: string
   max_subword_size: integer
   min_subword_size: integer
@@ -3448,25 +3309,171 @@ export interface AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase ext
   word_list_path: string
 }
 
-export interface AnalysisTokenFiltersCompoundWordHyphenationDecompounderTokenFilter extends AnalysisTokenFiltersCompoundWordCompoundWordTokenFilterBase {
+export interface AnalysisConditionTokenFilter extends AnalysisTokenFilterBase {
+  filter: string[]
+  script: Script
 }
 
-export type AnalysisTokenFiltersDelimitedPayloadDelimitedPayloadEncoding = 'int' | 'float' | 'identity'
+export type AnalysisDelimitedPayloadEncoding = 'int' | 'float' | 'identity'
 
-export interface AnalysisTokenFiltersDelimitedPayloadDelimitedPayloadTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisDelimitedPayloadTokenFilter extends AnalysisTokenFilterBase {
   delimiter: string
-  encoding: AnalysisTokenFiltersDelimitedPayloadDelimitedPayloadEncoding
+  encoding: AnalysisDelimitedPayloadEncoding
 }
 
-export type AnalysisTokenFiltersEdgeNGramEdgeNGramSide = 'front' | 'back'
+export type AnalysisEdgeNGramSide = 'front' | 'back'
 
-export interface AnalysisTokenFiltersEdgeNGramEdgeNGramTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
   max_gram: integer
   min_gram: integer
-  side: AnalysisTokenFiltersEdgeNGramEdgeNGramSide
+  side: AnalysisEdgeNGramSide
 }
 
-export interface AnalysisTokenFiltersShingleShingleTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
+  custom_token_chars: string
+  max_gram: integer
+  min_gram: integer
+  token_chars: AnalysisTokenChar[]
+}
+
+export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
+  articles: string[]
+  articles_case: boolean
+}
+
+export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase {
+  max_output_size: integer
+  separator: string
+}
+
+export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
+}
+
+export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
+  dedup: boolean
+  dictionary: string
+  locale: string
+  longest_only: boolean
+}
+
+export interface AnalysisHyphenationDecompounderTokenFilter extends AnalysisCompoundWordTokenFilterBase {
+}
+
+export interface AnalysisKStemTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export type AnalysisKeepTypesMode = 'include' | 'exclude'
+
+export interface AnalysisKeepTypesTokenFilter extends AnalysisTokenFilterBase {
+  mode: AnalysisKeepTypesMode
+  types: string[]
+}
+
+export interface AnalysisKeepWordsTokenFilter extends AnalysisTokenFilterBase {
+  keep_words: string[]
+  keep_words_case: boolean
+  keep_words_path: string
+}
+
+export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBase {
+  ignore_case: boolean
+  keywords: string[]
+  keywords_path: string
+  keywords_pattern: string
+}
+
+export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
+  buffer_size: integer
+}
+
+export interface AnalysisLengthTokenFilter extends AnalysisTokenFilterBase {
+  max: integer
+  min: integer
+}
+
+export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
+}
+
+export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterBase {
+  consume_all_tokens: boolean
+  max_token_count: integer
+}
+
+export interface AnalysisLowercaseTokenFilter extends AnalysisTokenFilterBase {
+  language: string
+}
+
+export interface AnalysisLowercaseTokenizer extends AnalysisTokenizerBase {
+}
+
+export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
+  mappings: string[]
+  mappings_path: string
+}
+
+export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
+  filters: string[]
+  preserve_original: boolean
+}
+
+export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
+  max_gram: integer
+  min_gram: integer
+}
+
+export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
+  custom_token_chars: string
+  max_gram: integer
+  min_gram: integer
+  token_chars: AnalysisTokenChar[]
+}
+
+export type AnalysisNoriDecompoundMode = 'discard' | 'none' | 'mixed'
+
+export interface AnalysisNoriPartOfSpeechTokenFilter extends AnalysisTokenFilterBase {
+  stoptags: string[]
+}
+
+export interface AnalysisNoriTokenizer extends AnalysisTokenizerBase {
+  decompound_mode: AnalysisNoriDecompoundMode
+  discard_punctuation: boolean
+  user_dictionary: string
+  user_dictionary_rules: string[]
+}
+
+export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
+  buffer_size: integer
+  delimiter: string
+  replacement: string
+  reverse: boolean
+  skip: integer
+}
+
+export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
+  patterns: string[]
+  preserve_original: boolean
+}
+
+export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
+  flags: string
+  pattern: string
+  replacement: string
+}
+
+export interface AnalysisPorterStemTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export interface AnalysisPredicateTokenFilter extends AnalysisTokenFilterBase {
+  script: Script
+}
+
+export interface AnalysisRemoveDuplicatesTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export interface AnalysisReverseTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export interface AnalysisShingleTokenFilter extends AnalysisTokenFilterBase {
   filler_token: string
   max_shingle_size: integer
   min_shingle_size: integer
@@ -3475,18 +3482,39 @@ export interface AnalysisTokenFiltersShingleShingleTokenFilter extends AnalysisT
   token_separator: string
 }
 
-export interface AnalysisTokenFiltersStopStopTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Kp' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Spanish' | 'Swedish' | 'Turkish'
+
+export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
+  language: AnalysisSnowballLanguage
+}
+
+export interface AnalysisStandardTokenizer extends AnalysisTokenizerBase {
+  max_token_length: integer
+}
+
+export interface AnalysisStemmerOverrideTokenFilter extends AnalysisTokenFilterBase {
+  rules: string[]
+  rules_path: string
+}
+
+export interface AnalysisStemmerTokenFilter extends AnalysisTokenFilterBase {
+  language: string
+}
+
+export interface AnalysisStopTokenFilter extends AnalysisTokenFilterBase {
   ignore_case?: boolean
   remove_trailing?: boolean
   stopwords: AnalysisStopWords
   stopwords_path?: string
 }
 
-export type AnalysisTokenFiltersSynonymSynonymFormat = 'solr' | 'wordnet'
+export type AnalysisStopWords = string | string[]
 
-export interface AnalysisTokenFiltersSynonymSynonymGraphTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export type AnalysisSynonymFormat = 'solr' | 'wordnet'
+
+export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase {
   expand: boolean
-  format: AnalysisTokenFiltersSynonymSynonymFormat
+  format: AnalysisSynonymFormat
   lenient: boolean
   synonyms: string[]
   synonyms_path: string
@@ -3494,9 +3522,9 @@ export interface AnalysisTokenFiltersSynonymSynonymGraphTokenFilter extends Anal
   updateable: boolean
 }
 
-export interface AnalysisTokenFiltersSynonymSynonymTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
   expand: boolean
-  format: AnalysisTokenFiltersSynonymSynonymFormat
+  format: AnalysisSynonymFormat
   lenient: boolean
   synonyms: string[]
   synonyms_path: string
@@ -3504,23 +3532,45 @@ export interface AnalysisTokenFiltersSynonymSynonymTokenFilter extends AnalysisT
   updateable: boolean
 }
 
-export interface AnalysisTokenFiltersWordDelimiterWordDelimiterTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
-  catenate_all: boolean
-  catenate_numbers: boolean
-  catenate_words: boolean
-  generate_number_parts: boolean
-  generate_word_parts: boolean
-  preserve_original: boolean
-  protected_words: string[]
-  protected_words_path: string
-  split_on_case_change: boolean
-  split_on_numerics: boolean
-  stem_english_possessive: boolean
-  type_table: string[]
-  type_table_path: string
+export type AnalysisTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
+
+export type AnalysisTokenFilter = AnalysisAsciiFoldingTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter
+
+export interface AnalysisTokenFilterBase {
+  type: string
+  version?: VersionString
 }
 
-export interface AnalysisTokenFiltersWordDelimiterGraphWordDelimiterGraphTokenFilter extends AnalysisTokenFiltersTokenFilterBase {
+export type AnalysisTokenizer = AnalysisCharGroupTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisNoriTokenizer | AnalysisPathHierarchyTokenizer | AnalysisStandardTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer
+
+export interface AnalysisTokenizerBase {
+  type: string
+  version?: VersionString
+}
+
+export interface AnalysisTrimTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export interface AnalysisTruncateTokenFilter extends AnalysisTokenFilterBase {
+  length: integer
+}
+
+export interface AnalysisUaxEmailUrlTokenizer extends AnalysisTokenizerBase {
+  max_token_length: integer
+}
+
+export interface AnalysisUniqueTokenFilter extends AnalysisTokenFilterBase {
+  only_on_same_position: boolean
+}
+
+export interface AnalysisUppercaseTokenFilter extends AnalysisTokenFilterBase {
+}
+
+export interface AnalysisWhitespaceTokenizer extends AnalysisTokenizerBase {
+  max_token_length: integer
+}
+
+export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilterBase {
   adjust_offsets: boolean
   catenate_all: boolean
   catenate_numbers: boolean
@@ -3537,71 +3587,21 @@ export interface AnalysisTokenFiltersWordDelimiterGraphWordDelimiterGraphTokenFi
   type_table_path: string
 }
 
-export interface AnalysisTokenizersCharGroupTokenizer extends AnalysisTokenizersTokenizerBase {
-  tokenize_on_chars: string[]
+export interface AnalysisWordDelimiterTokenFilter extends AnalysisTokenFilterBase {
+  catenate_all: boolean
+  catenate_numbers: boolean
+  catenate_words: boolean
+  generate_number_parts: boolean
+  generate_word_parts: boolean
+  preserve_original: boolean
+  protected_words: string[]
+  protected_words_path: string
+  split_on_case_change: boolean
+  split_on_numerics: boolean
+  stem_english_possessive: boolean
+  type_table: string[]
+  type_table_path: string
 }
-
-export interface AnalysisTokenizersKeywordTokenizer extends AnalysisTokenizersTokenizerBase {
-  buffer_size: integer
-}
-
-export interface AnalysisTokenizersLetterTokenizer extends AnalysisTokenizersTokenizerBase {
-}
-
-export interface AnalysisTokenizersLowercaseTokenizer extends AnalysisTokenizersTokenizerBase {
-}
-
-export type AnalysisTokenizersNoriDecompoundMode = 'discard' | 'none' | 'mixed'
-
-export interface AnalysisTokenizersNoriTokenizer extends AnalysisTokenizersTokenizerBase {
-  decompound_mode: AnalysisTokenizersNoriDecompoundMode
-  discard_punctuation: boolean
-  user_dictionary: string
-  user_dictionary_rules: string[]
-}
-
-export interface AnalysisTokenizersPathHierarchyTokenizer extends AnalysisTokenizersTokenizerBase {
-  buffer_size: integer
-  delimiter: string
-  replacement: string
-  reverse: boolean
-  skip: integer
-}
-
-export interface AnalysisTokenizersStandardTokenizer extends AnalysisTokenizersTokenizerBase {
-  max_token_length: integer
-}
-
-export type AnalysisTokenizersTokenizer = AnalysisTokenizersCharGroupTokenizer | AnalysisTokenizersNGramEdgeNGramTokenizer | AnalysisTokenizersKeywordTokenizer | AnalysisTokenizersLetterTokenizer | AnalysisTokenizersLowercaseTokenizer | AnalysisTokenizersNGramNGramTokenizer | AnalysisTokenizersNoriTokenizer | AnalysisTokenizersPathHierarchyTokenizer | AnalysisTokenizersStandardTokenizer | AnalysisTokenizersUaxEmailUrlTokenizer | AnalysisTokenizersWhitespaceTokenizer
-
-export interface AnalysisTokenizersTokenizerBase {
-  type: string
-  version?: VersionString
-}
-
-export interface AnalysisTokenizersUaxEmailUrlTokenizer extends AnalysisTokenizersTokenizerBase {
-  max_token_length: integer
-}
-
-export interface AnalysisTokenizersWhitespaceTokenizer extends AnalysisTokenizersTokenizerBase {
-  max_token_length: integer
-}
-
-export interface AnalysisTokenizersNGramEdgeNGramTokenizer extends AnalysisTokenizersTokenizerBase {
-  custom_token_chars: string
-  max_gram: integer
-  min_gram: integer
-  token_chars: AnalysisTokenizersNGramTokenChar[]
-}
-
-export interface AnalysisTokenizersNGramNGramTokenizer extends AnalysisTokenizersTokenizerBase {
-  custom_token_chars: string
-  max_gram: integer
-  min_gram: integer
-  token_chars: AnalysisTokenizersNGramTokenChar[]
-}
-
-export type AnalysisTokenizersNGramTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
 
 export interface MappingAllField {
   analyzer: string
@@ -8274,7 +8274,7 @@ export interface IndicesIndexSettings {
 }
 
 export interface IndicesIndexSettingsAnalysis {
-  char_filter?: Record<string, AnalysisCharFiltersCharFilter>
+  char_filter?: Record<string, AnalysisCharFilter>
 }
 
 export interface IndicesIndexSettingsLifecycle {
@@ -8382,13 +8382,13 @@ export interface IndicesAnalyzeRequest extends RequestBase {
   body?: {
     analyzer?: string
     attributes?: string[]
-    char_filter?: (string | AnalysisCharFiltersCharFilter)[]
+    char_filter?: (string | AnalysisCharFilter)[]
     explain?: boolean
     field?: Field
-    filter?: (string | AnalysisTokenFiltersTokenFilter)[]
+    filter?: (string | AnalysisTokenFilter)[]
     normalizer?: string
     text?: IndicesAnalyzeTextToAnalyze
-    tokenizer?: string | AnalysisTokenizersTokenizer
+    tokenizer?: string | AnalysisTokenizer
   }
 }
 
@@ -11337,9 +11337,9 @@ export interface MlInfoAnomalyDetectors {
 }
 
 export interface MlInfoCategorizationAnalyzer {
-  filter?: (string | AnalysisTokenFiltersTokenFilter)[]
-  tokenizer?: string | AnalysisTokenizersTokenizer
-  char_filter?: (string | AnalysisCharFiltersCharFilter)[]
+  filter?: (string | AnalysisTokenFilter)[]
+  tokenizer?: string | AnalysisTokenizer
+  char_filter?: (string | AnalysisCharFilter)[]
 }
 
 export interface MlInfoDatafeeds {
