@@ -17,33 +17,28 @@
  * under the License.
  */
 
-import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer } from '@_types/analysis/tokenizers'
-import { TokenFilter } from '@_types/analysis/token_filters'
-import { RequestBase } from '@_types/Base'
-import { Field, IndexName } from '@_types/common'
+import { VersionString } from '@_types/common'
+import { PatternReplaceTokenFilter } from './token_filters'
 
-/**
- * @rest_spec_name indices.analyze
- * @since 0.0.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    index?: IndexName
-  }
-  query_parameters?: {}
-  body?: {
-    analyzer?: string
-    attributes?: string[]
-    char_filter?: Array<string | CharFilter>
-    explain?: boolean
-    field?: Field
-    filter?: Array<string | TokenFilter>
-    normalizer?: string
-    text?: TextToAnalyze
-    tokenizer?: string | Tokenizer
-  }
+export class CharFilterBase {
+  type: string
+  version?: VersionString
 }
 
-export type TextToAnalyze = string | Array<string>
+export type CharFilter =
+  | HtmlStripCharFilter
+  | MappingCharFilter
+  | PatternReplaceTokenFilter
+
+export class HtmlStripCharFilter extends CharFilterBase {}
+
+export class MappingCharFilter extends CharFilterBase {
+  mappings: string[]
+  mappings_path: string
+}
+
+export class PatternReplaceCharFilter extends CharFilterBase {
+  flags: string
+  pattern: string
+  replacement: string
+}

@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { JobStatistics } from '@_types/ml/Job'
+import { JobStatistics } from './Job'
 import { integer, long } from '@_types/Numeric'
 
 export class JobForecastStatistics {
