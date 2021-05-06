@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { SnapshotLifecycleConfig } from '@slm/_types/SnapshotLifecycleConfig'
-import { SnapshotRetentionConfiguration } from '@slm/_types/SnapshotRetentionConfiguration'
+import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
 import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
@@ -32,12 +31,11 @@ export interface Request extends RequestBase {
   path_parts?: {
     policy_id: Name
   }
-  query_parameters?: {}
   body?: {
-    config?: SnapshotLifecycleConfig
-    name?: string
+    config?: Configuration
+    name?: Name
     repository?: string
-    retention?: SnapshotRetentionConfiguration
+    retention?: Retention
     schedule?: CronExpression
   }
 }

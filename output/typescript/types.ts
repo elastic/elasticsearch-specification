@@ -2001,6 +2001,8 @@ export interface LatLon {
 
 export type Level = 'cluster' | 'indices' | 'shards'
 
+export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
+
 export interface MainError extends ErrorCause {
   headers?: Record<string, string>
   root_cause: ErrorCause[]
@@ -6869,7 +6871,7 @@ export interface ClusterClusterStateDeletedSnapshots {
 
 export interface ClusterClusterStateIndexLifecycle {
   policies: Record<IndexName, ClusterClusterStateIndexLifecycleSummary>
-  operation_mode: IlmGetStatusLifecycleOperationMode
+  operation_mode: LifecycleOperationMode
 }
 
 export interface ClusterClusterStateIndexLifecyclePolicy {
@@ -8007,13 +8009,11 @@ export interface IlmGetLifecycleRequest extends RequestBase {
 export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecyclePolicy> {
 }
 
-export type IlmGetStatusLifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
-
 export interface IlmGetStatusRequest extends RequestBase {
 }
 
 export interface IlmGetStatusResponse {
-  operation_mode: IlmGetStatusLifecycleOperationMode
+  operation_mode: LifecycleOperationMode
 }
 
 export interface IlmMoveToStepRequest extends RequestBase {
@@ -13318,49 +13318,49 @@ export interface ShutdownPutNodeResponse {
   stub: boolean
 }
 
-export interface SlmSnapshotLifecycleConfig {
+export interface SlmConfiguration {
   ignore_unavailable?: boolean
   include_global_state?: boolean
   indices: Indices
 }
 
-export interface SlmSnapshotLifecycleInProgress {
-  name: string
+export interface SlmInProgress {
+  name: Name
   start_time_millis: DateString
   state: string
-  uuid: string
+  uuid: Uuid
 }
 
-export interface SlmSnapshotLifecycleInvocationRecord {
-  snapshot_name: string
+export interface SlmInvocation {
+  snapshot_name: Name
   time: DateString
 }
 
-export interface SlmSnapshotLifecyclePolicy {
-  config: SlmSnapshotLifecycleConfig
-  name: string
+export interface SlmPolicy {
+  config: SlmConfiguration
+  name: Name
   repository: string
-  retention: SlmSnapshotRetentionConfiguration
+  retention: SlmRetention
   schedule: WatcherCronExpression
 }
 
-export interface SlmSnapshotLifecyclePolicyMetadata {
-  in_progress?: SlmSnapshotLifecycleInProgress
-  last_failure?: SlmSnapshotLifecycleInvocationRecord
-  last_success?: SlmSnapshotLifecycleInvocationRecord
+export interface SlmRetention {
+  expire_after: Time
+  max_count: integer
+  min_count: integer
+}
+
+export interface SlmSnapshotLifecycle {
+  in_progress?: SlmInProgress
+  last_failure?: SlmInvocation
+  last_success?: SlmInvocation
   modified_date?: DateString
   modified_date_millis: EpochMillis
   next_execution?: DateString
   next_execution_millis: EpochMillis
-  policy: SlmSnapshotLifecyclePolicy
+  policy: SlmPolicy
   version: VersionNumber
   stats: SlmStatistics
-}
-
-export interface SlmSnapshotRetentionConfiguration {
-  expire_after: Time
-  max_count: integer
-  min_count: integer
 }
 
 export interface SlmStatistics {
@@ -13392,7 +13392,7 @@ export interface SlmExecuteLifecycleRequest extends RequestBase {
 }
 
 export interface SlmExecuteLifecycleResponse {
-  snapshot_name: string
+  snapshot_name: Name
 }
 
 export interface SlmExecuteRetentionRequest extends RequestBase {
@@ -13405,7 +13405,7 @@ export interface SlmGetLifecycleRequest extends RequestBase {
   policy_id?: Names
 }
 
-export interface SlmGetLifecycleResponse extends DictionaryResponseBase<Id, SlmSnapshotLifecyclePolicyMetadata> {
+export interface SlmGetLifecycleResponse extends DictionaryResponseBase<Id, SlmSnapshotLifecycle> {
 }
 
 export interface SlmGetStatsRequest extends RequestBase {
@@ -13428,16 +13428,16 @@ export interface SlmGetStatusRequest extends RequestBase {
 }
 
 export interface SlmGetStatusResponse {
-  operation_mode: IlmGetStatusLifecycleOperationMode
+  operation_mode: LifecycleOperationMode
 }
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
   body?: {
-    config?: SlmSnapshotLifecycleConfig
-    name?: string
+    config?: SlmConfiguration
+    name?: Name
     repository?: string
-    retention?: SlmSnapshotRetentionConfiguration
+    retention?: SlmRetention
     schedule?: WatcherCronExpression
   }
 }

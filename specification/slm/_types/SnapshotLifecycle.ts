@@ -17,32 +17,22 @@
  * under the License.
  */
 
-import { Id, VersionNumber } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { DateString, EpochMillis } from '@_types/Time'
-import { SnapshotLifecycleInProgress } from './SnapshotLifecycleInProgress'
-import { SnapshotLifecycleInvocationRecord } from './SnapshotLifecycleInvocationRecord'
-import { SnapshotLifecyclePolicy } from './SnapshotLifecyclePolicy'
+import { CronExpression } from '@watcher/_types/Schedule'
+import { Id, Indices, Name, Uuid, VersionNumber } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
+import { DateString, EpochMillis, Time } from '@_types/Time'
 
-export class SnapshotLifecyclePolicyMetadata {
-  in_progress?: SnapshotLifecycleInProgress
-  last_failure?: SnapshotLifecycleInvocationRecord
-  last_success?: SnapshotLifecycleInvocationRecord
+export class SnapshotLifecycle {
+  in_progress?: InProgress
+  last_failure?: Invocation
+  last_success?: Invocation
   modified_date?: DateString
   modified_date_millis: EpochMillis
   next_execution?: DateString
   next_execution_millis: EpochMillis
-  policy: SnapshotLifecyclePolicy
+  policy: Policy
   version: VersionNumber
   stats: Statistics
-}
-
-export class SnapshotLifecyclePolicyMetadataStats {
-  policy: Id
-  snapshots_deleted: long
-  snapshot_deletion_failures: long
-  snapshots_failed: long
-  snapshots_taken: long
 }
 
 export class Statistics {
@@ -68,4 +58,36 @@ export class Statistics {
    * @aliases snapshots_taken
    */
   total_snapshots_taken?: long
+}
+
+export class Policy {
+  config: Configuration
+  name: Name
+  repository: string
+  retention: Retention
+  schedule: CronExpression
+}
+
+export class Retention {
+  expire_after: Time
+  max_count: integer
+  min_count: integer
+}
+
+export class Configuration {
+  ignore_unavailable?: boolean
+  include_global_state?: boolean
+  indices: Indices
+}
+
+export class InProgress {
+  name: Name
+  start_time_millis: DateString
+  state: string
+  uuid: Uuid
+}
+
+export class Invocation {
+  snapshot_name: Name
+  time: DateString
 }

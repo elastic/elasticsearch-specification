@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Name } from "@_types/common";
+
 export class Response {
-  body: { snapshot_name: string }
+  body: { snapshot_name: Name }
 }

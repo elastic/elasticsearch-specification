@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
+import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { Phases } from '@ilm/_types/Phases'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
