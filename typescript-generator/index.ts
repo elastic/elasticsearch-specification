@@ -252,7 +252,7 @@ function buildRequest (type: M.Request): string {
     if (pathPropertiesNames.includes(property.name)) continue
     code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
   }
-  if (type.body.kind === 'properties') {
+  if (type.body.kind === 'properties' && type.body.properties.length > 0) {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
