@@ -63,7 +63,7 @@ export class NodeShard {
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
  */
- export enum NodeRole {
+export enum NodeRole {
   master = 0,
   data = 1,
   data_cold = 2,

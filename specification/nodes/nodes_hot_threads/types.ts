@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Id, Name } from "@_types/common"
-import { Host } from "@_types/Networking"
+import { Id, Name } from '@_types/common'
+import { Host } from '@_types/Networking'
 
 export class HotThread {
   hosts: Host[]

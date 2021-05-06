@@ -230,4 +230,3 @@ export class Transport {
   tx_size: string
   tx_size_in_bytes: long
 }
-
