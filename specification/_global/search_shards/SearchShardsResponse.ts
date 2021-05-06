@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { NodeAttributes } from '@nodes/_types/NodeAttributes'
-import { NodeShard } from '@nodes/_types/NodeShard'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
+import { NodeAttributes, NodeShard } from '@_types/Node'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 export class Response {

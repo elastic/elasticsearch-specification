@@ -17,8 +17,14 @@
  * under the License.
  */
 
+import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
+import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
+import { NodeRoles } from '@nodes/nodes_info/NodeRole'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
+import { Id, IndexName, Name, NodeName } from './common'
+import { TransportAddress } from './Networking'
 
 export class NodeStatistics {
   failures?: ErrorCause[]
@@ -28,4 +34,29 @@ export class NodeStatistics {
   successful: integer
   /** Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response. */
   failed: integer
+}
+
+export class NodeAttributes {
+  /** Lists node attributes. */
+  attributes: Dictionary<string, string>
+  /** The ephemeral ID of the node. */
+  ephemeral_id: Id
+  /** The unique identifier of the node. */
+  id?: Id
+  /** The unique identifier of the node. */
+  name: NodeName
+  /** The host and port where transport HTTP connections are accepted. */
+  transport_address: TransportAddress
+  roles?: NodeRoles
+}
+
+export class NodeShard {
+  state: ShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Dictionary<string, Id>
+  recovery_source?: Dictionary<string, Id>
+  unassigned_info?: UnassignedInformation
 }

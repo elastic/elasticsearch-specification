@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Id } from '@_types/common'
+import { NodeAttributes } from '@_types/Node'
 import { double, long } from '@_types/Numeric'
 import { DateString, EpochMillis } from '@_types/Time'
 

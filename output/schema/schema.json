@@ -26508,7 +26508,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeAttributes",
-                  "namespace": "nodes._types"
+                  "namespace": "_types"
                 }
               }
             }
@@ -26524,7 +26524,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "NodeShard",
-                    "namespace": "nodes._types"
+                    "namespace": "_types"
                   }
                 }
               }
@@ -31311,6 +31311,97 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NodeAttributes",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Lists node attributes.",
+          "name": "attributes",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "The ephemeral ID of the node.",
+          "name": "ephemeral_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the node.",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unique identifier of the node.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The host and port where transport HTTP connections are accepted.",
+          "name": "transport_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransportAddress",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "roles",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "nodes.nodes_info"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "NodeId",
@@ -31352,6 +31443,184 @@
           "namespace": "internal"
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeShard",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardRoutingState",
+              "namespace": "indices.stats"
+            }
+          }
+        },
+        {
+          "name": "primary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "allocation_id",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "recovery_source",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "unassigned_info",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnassignedInformation",
+              "namespace": "cluster.cluster_allocation_explain"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeStatistics",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "failures",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorCause",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Total number of nodes selected by the request.",
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Number of nodes that responded successfully to the request.",
+          "name": "successful",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
+          "name": "failed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -72022,7 +72291,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeShard",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           }
@@ -72046,7 +72315,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeShard",
-                  "namespace": "nodes._types"
+                  "namespace": "_types"
                 }
               }
             }
@@ -75713,7 +75982,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeAttributes",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           }
@@ -76257,7 +76526,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeAttributes",
-                  "namespace": "nodes._types"
+                  "namespace": "_types"
                 }
               }
             }
@@ -82046,6 +82315,235 @@
     {
       "kind": "interface",
       "name": {
+        "name": "IndexRouting",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "allocation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocation",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "name": "rebalance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalance",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocation",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "enable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationOptions",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "name": "include",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationInclude",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "name": "initial_recovery",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationInitialRecovery",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "name": "disk",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationDisk",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationDisk",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "threshold_enabled",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationInclude",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "_tier_preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingAllocationInitialRecovery",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "new_primaries"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingAllocationOptions",
+        "namespace": "indices._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexRoutingRebalance",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "enable",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingRebalanceOptions",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "primaries"
+        },
+        {
+          "name": "replicas"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "IndexRoutingRebalanceOptions",
+        "namespace": "indices._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "IndexSettingBlocks",
         "namespace": "indices._types"
       },
@@ -82572,7 +83070,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexRouting",
-              "namespace": "nodes._types"
+              "namespace": "indices._types"
             }
           }
         },
@@ -107401,7 +107899,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeAttributes",
-              "namespace": "nodes._types"
+              "namespace": "_types"
             }
           }
         },
@@ -113743,504 +114241,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IndexRouting",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "allocation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocation",
-              "namespace": "nodes._types"
-            }
-          }
-        },
-        {
-          "name": "rebalance",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingRebalance",
-              "namespace": "nodes._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocation",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "enable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationOptions",
-              "namespace": "nodes._types"
-            }
-          }
-        },
-        {
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationInclude",
-              "namespace": "nodes._types"
-            }
-          }
-        },
-        {
-          "name": "initial_recovery",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationInitialRecovery",
-              "namespace": "nodes._types"
-            }
-          }
-        },
-        {
-          "name": "disk",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingAllocationDisk",
-              "namespace": "nodes._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationDisk",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "threshold_enabled",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationInclude",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "_tier_preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingAllocationInitialRecovery",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "new_primaries"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexRoutingAllocationOptions",
-        "namespace": "nodes._types"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexRoutingRebalance",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "enable",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexRoutingRebalanceOptions",
-              "namespace": "nodes._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "all"
-        },
-        {
-          "name": "primaries"
-        },
-        {
-          "name": "replicas"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "IndexRoutingRebalanceOptions",
-        "namespace": "nodes._types"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeAttributes",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "description": "Lists node attributes.",
-          "name": "attributes",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "The ephemeral ID of the node.",
-          "name": "ephemeral_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The unique identifier of the node.",
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The unique identifier of the node.",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The host and port where transport HTTP connections are accepted.",
-          "name": "transport_address",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransportAddress",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeRoles",
-              "namespace": "nodes.nodes_info"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeShard",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "state",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardRoutingState",
-              "namespace": "indices.stats"
-            }
-          }
-        },
-        {
-          "name": "primary",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "shard",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "allocation_id",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "recovery_source",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Id",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "name": "unassigned_info",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UnassignedInformation",
-              "namespace": "cluster.cluster_allocation_explain"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeStatistics",
-        "namespace": "nodes._types"
-      },
-      "properties": [
-        {
-          "name": "failures",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ErrorCause",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Total number of nodes selected by the request.",
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nodes that responded successfully to the request.",
-          "name": "successful",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
-          "name": "failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "NodesResponseBase",
         "namespace": "nodes._types"
       },
@@ -114254,7 +114254,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeStatistics",
-              "namespace": "nodes._types"
+              "namespace": "_types"
             }
           }
         }
@@ -114263,7 +114263,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "HotThreadInformation",
+        "name": "HotThread",
         "namespace": "nodes.nodes_hot_threads"
       },
       "properties": [
@@ -114275,8 +114275,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Host",
+                "namespace": "_types"
               }
             }
           }
@@ -114287,8 +114287,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },
@@ -114298,8 +114298,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -114428,7 +114428,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "HotThreadInformation",
+                  "name": "HotThread",
                   "namespace": "nodes.nodes_hot_threads"
                 }
               }
@@ -115677,7 +115677,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexRouting",
-              "namespace": "nodes._types"
+              "namespace": "indices._types"
             }
           }
         },
@@ -119057,7 +119057,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "NodeUsageInformation",
+        "name": "NodeUsage",
         "namespace": "nodes.nodes_usage"
       },
       "properties": [
@@ -119188,8 +119188,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           },
@@ -119209,7 +119209,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "NodeUsageInformation",
+                  "name": "NodeUsage",
                   "namespace": "nodes.nodes_usage"
                 }
               }
@@ -122337,7 +122337,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeStatistics",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           },
@@ -122443,7 +122443,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeStatistics",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           },
@@ -122577,7 +122577,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeStatistics",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           }
@@ -122663,7 +122663,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeStatistics",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           }
@@ -132926,7 +132926,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeAttributes",
-              "namespace": "nodes._types"
+              "namespace": "_types"
             }
           }
         },
@@ -138174,7 +138174,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeStatistics",
-                "namespace": "nodes._types"
+                "namespace": "_types"
               }
             }
           }

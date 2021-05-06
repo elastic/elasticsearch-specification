@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexRouting } from '@nodes/_types/IndexRouting'
+import { IndexRouting } from '@indices/_types/IndexRouting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ByteSize, Name, VersionString } from '@_types/common'

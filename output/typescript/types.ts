@@ -1520,8 +1520,8 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse {
-  nodes: Record<string, NodesNodeAttributes>
-  shards: NodesNodeShard[][]
+  nodes: Record<string, NodeAttributes>
+  shards: NodeShard[][]
   indices: Record<IndexName, SearchShardsShardStoreIndex>
 }
 
@@ -2030,11 +2030,38 @@ export type Name = string
 
 export type Names = string | string[]
 
+export interface NodeAttributes {
+  attributes: Record<string, string>
+  ephemeral_id: Id
+  id?: Id
+  name: NodeName
+  transport_address: TransportAddress
+  roles?: NodesNodesInfoNodeRoles
+}
+
 export type NodeId = string
 
 export type NodeIds = string
 
 export type NodeName = string
+
+export interface NodeShard {
+  state: IndicesStatsShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Record<string, Id>
+  recovery_source?: Record<string, Id>
+  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
+}
+
+export interface NodeStatistics {
+  failures?: ErrorCause[]
+  total: integer
+  successful: integer
+  failed: integer
+}
 
 export type OpType = 'index' | 'create'
 
@@ -6917,8 +6944,8 @@ export interface ClusterClusterStateMetadataTemplate {
 }
 
 export interface ClusterClusterStateRoutingNodes {
-  unassigned: NodesNodeShard[]
-  nodes: Record<string, NodesNodeShard[]>
+  unassigned: NodeShard[]
+  nodes: Record<string, NodeShard[]>
 }
 
 export interface ClusterClusterStateSnapshots {
@@ -7328,7 +7355,7 @@ export interface ClusterClusterRerouteClusterRerouteState {
   master_node?: string
   version?: VersionNumber
   blocks?: EmptyObject
-  nodes?: Record<NodeName, NodesNodeAttributes>
+  nodes?: Record<NodeName, NodeAttributes>
   routing_table?: Record<string, EmptyObject>
   routing_nodes?: ClusterClusterStateRoutingNodes
   security_tokens?: Record<string, string>
@@ -7380,7 +7407,7 @@ export interface ClusterClusterStateResponse {
   version?: VersionNumber
   blocks?: ClusterClusterStateClusterStateBlocks
   metadata?: ClusterClusterStateMetadata
-  nodes?: Record<NodeName, NodesNodeAttributes>
+  nodes?: Record<NodeName, NodeAttributes>
   routing_table?: Record<string, EmptyObject>
   routing_nodes?: ClusterClusterStateRoutingNodes
   snapshots?: ClusterClusterStateSnapshots
@@ -8079,6 +8106,39 @@ export interface IndicesFielddataFrequencyFilter {
 
 export type IndicesIndexCheckOnStartup = 'false' | 'checksum' | 'true'
 
+export interface IndicesIndexRouting {
+  allocation?: IndicesIndexRoutingAllocation
+  rebalance?: IndicesIndexRoutingRebalance
+}
+
+export interface IndicesIndexRoutingAllocation {
+  enable?: IndicesIndexRoutingAllocationOptions
+  include?: IndicesIndexRoutingAllocationInclude
+  initial_recovery?: IndicesIndexRoutingAllocationInitialRecovery
+  disk?: IndicesIndexRoutingAllocationDisk
+}
+
+export interface IndicesIndexRoutingAllocationDisk {
+  threshold_enabled: boolean | string
+}
+
+export interface IndicesIndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface IndicesIndexRoutingAllocationInitialRecovery {
+  _id?: Id
+}
+
+export type IndicesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface IndicesIndexRoutingRebalance {
+  enable: IndicesIndexRoutingRebalanceOptions
+}
+
+export type IndicesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface IndicesIndexSettingBlocks {
   read_only?: boolean
   'index.blocks.read_only'?: boolean
@@ -8143,8 +8203,8 @@ export interface IndicesIndexSettings {
   'index.max_terms_count'?: integer
   max_regex_length?: integer
   'index.max_regex_length'?: integer
-  routing?: NodesIndexRouting
-  'index.routing'?: NodesIndexRouting
+  routing?: IndicesIndexRouting
+  'index.routing'?: IndicesIndexRouting
   gc_deletes?: Time
   'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
@@ -10977,7 +11037,7 @@ export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem {
   data_counts: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts
   id: Id
   memory_usage: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage
-  node?: NodesNodeAttributes
+  node?: NodeAttributes
   progress: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress[]
   state: MlDataFrameState
 }
@@ -11712,74 +11772,14 @@ export interface MonitoringBulkResponse {
   stub: integer
 }
 
-export interface NodesIndexRouting {
-  allocation?: NodesIndexRoutingAllocation
-  rebalance?: NodesIndexRoutingRebalance
-}
-
-export interface NodesIndexRoutingAllocation {
-  enable?: NodesIndexRoutingAllocationOptions
-  include?: NodesIndexRoutingAllocationInclude
-  initial_recovery?: NodesIndexRoutingAllocationInitialRecovery
-  disk?: NodesIndexRoutingAllocationDisk
-}
-
-export interface NodesIndexRoutingAllocationDisk {
-  threshold_enabled: boolean | string
-}
-
-export interface NodesIndexRoutingAllocationInclude {
-  _tier_preference?: string
-  _id?: Id
-}
-
-export interface NodesIndexRoutingAllocationInitialRecovery {
-  _id?: Id
-}
-
-export type NodesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export interface NodesIndexRoutingRebalance {
-  enable: NodesIndexRoutingRebalanceOptions
-}
-
-export type NodesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
-
-export interface NodesNodeAttributes {
-  attributes: Record<string, string>
-  ephemeral_id: Id
-  id?: Id
-  name: Name
-  transport_address: TransportAddress
-  roles?: NodesNodesInfoNodeRoles
-}
-
-export interface NodesNodeShard {
-  state: IndicesStatsShardRoutingState
-  primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Record<string, string>
-  recovery_source?: Record<string, Id>
-  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
-}
-
-export interface NodesNodeStatistics {
-  failures?: ErrorCause[]
-  total: integer
-  successful: integer
-  failed: integer
-}
-
 export interface NodesNodesResponseBase {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
-export interface NodesNodesHotThreadsHotThreadInformation {
-  hosts: string[]
-  node_id: string
-  node_name: string
+export interface NodesNodesHotThreadsHotThread {
+  hosts: Host[]
+  node_id: Id
+  node_name: Name
   threads: string[]
 }
 
@@ -11794,7 +11794,7 @@ export interface NodesNodesHotThreadsRequest extends RequestBase {
 }
 
 export interface NodesNodesHotThreadsResponse {
-  hot_threads: NodesNodesHotThreadsHotThreadInformation[]
+  hot_threads: NodesNodesHotThreadsHotThread[]
 }
 
 export interface NodesNodesInfoClusterOperatingSystemPrettyName {
@@ -11951,7 +11951,7 @@ export interface NodesNodesInfoNodeInfoSettings {
 
 export interface NodesNodesInfoNodeInfoSettingsCluster {
   name: Name
-  routing?: NodesIndexRouting
+  routing?: IndicesIndexRouting
   election: NodesNodesInfoNodeInfoSettingsClusterElection
   initial_master_nodes?: string
 }
@@ -12335,7 +12335,7 @@ export interface NodesNodesStatsStatisticsNodeIngestStats {
   total: NodesNodesStatsStatisticsIngestStats
 }
 
-export interface NodesNodesUsageNodeUsageInformation {
+export interface NodesNodesUsageNodeUsage {
   rest_actions: Record<string, integer>
   since: EpochMillis
   timestamp: EpochMillis
@@ -12349,8 +12349,8 @@ export interface NodesNodesUsageRequest extends RequestBase {
 }
 
 export interface NodesNodesUsageResponse extends NodesNodesResponseBase {
-  cluster_name: string
-  nodes: Record<string, NodesNodesUsageNodeUsageInformation>
+  cluster_name: Name
+  nodes: Record<string, NodesNodesUsageNodeUsage>
 }
 
 export interface NodesReloadSecureSettingsNodeReloadException {
@@ -12752,7 +12752,7 @@ export interface SecurityClearApiKeyCacheRequest extends RequestBase {
 }
 
 export interface SecurityClearApiKeyCacheResponse {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, SecurityClearApiKeyCacheClearApiKeyCacheNode>
 }
@@ -12766,7 +12766,7 @@ export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
 }
 
 export interface SecurityClearCachedPrivilegesResponse {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, SecurityClearCachedPrivilegesClearCachedPrivilegeNode>
 }
@@ -12779,7 +12779,7 @@ export interface SecurityClearCachedRealmsRequest extends RequestBase {
 export interface SecurityClearCachedRealmsResponse {
   cluster_name: Name
   nodes: Record<string, SecuritySecurityNode>
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface SecurityClearCachedRolesRequest extends RequestBase {
@@ -12789,7 +12789,7 @@ export interface SecurityClearCachedRolesRequest extends RequestBase {
 export interface SecurityClearCachedRolesResponse {
   cluster_name: string
   nodes: Record<string, SecuritySecurityNode>
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface SecurityCreateApiKeyApiKeyApplication {
@@ -13998,7 +13998,7 @@ export interface TransformGetTransformStatsTransformProgress {
 export interface TransformGetTransformStatsTransformStats {
   checkpointing: TransformGetTransformStatsCheckpointing
   id: Id
-  node?: NodesNodeAttributes
+  node?: NodeAttributes
   reason?: string
   state: string
   stats: TransformGetTransformStatsTransformIndexerStats
@@ -14641,7 +14641,7 @@ export interface WatcherStatsResponse {
   cluster_name: Name
   manually_stopped: boolean
   stats: WatcherStatsWatcherNodeStats[]
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface WatcherStatsWatchRecordQueuedStats {

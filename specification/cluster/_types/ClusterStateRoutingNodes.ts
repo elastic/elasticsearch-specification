@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NodeShard } from '@nodes/_types/NodeShard'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { NodeShard } from '@_types/Node'
 
 export class ClusterStateRoutingNodes {
   unassigned: NodeShard[]
