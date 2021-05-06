@@ -17,15 +17,43 @@
  * under the License.
  */
 
-import { TokenizerBase } from '@_types/analysis/tokenizers/TokenizerBase'
 import { integer } from '@_types/Numeric'
-import { KuromojiTokenizationMode } from './KuromojiTokenizationMode'
+import { AnalyzerBase } from './analyzers'
+import { CharFilterBase } from './char_filters'
+import { TokenizerBase } from './tokenizers'
+import { TokenFilterBase } from './token_filters'
+
+export class KuromojiAnalyzer extends AnalyzerBase {
+  mode: KuromojiTokenizationMode
+  user_dictionary: string
+}
+
+export class KuromojiIterationMarkCharFilter extends CharFilterBase {
+  normalize_kana: boolean
+  normalize_kanji: boolean
+}
+
+export class KuromojiPartOfSpeechTokenFilter extends TokenFilterBase {
+  stoptags: string[]
+}
+
+export class KuromojiReadingFormTokenFilter extends TokenFilterBase {
+  use_romaji: boolean
+}
+
+export class KuromojiStemmerTokenFilter extends TokenFilterBase {
+  minimum_length: integer
+}
+
+export enum KuromojiTokenizationMode {
+  normal = 0,
+  search = 1,
+  extended = 2
+}
 
 export class KuromojiTokenizer extends TokenizerBase {
-  /** @prop_serializer NullableStringBooleanFormatter */
   discard_punctuation: boolean
   mode: KuromojiTokenizationMode
-  /** @prop_serializer NullableStringIntFormatter */
   nbest_cost: integer
   nbest_examples: string
   user_dictionary: string

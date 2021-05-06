@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { integer } from '@_types/Numeric'
+import { TokenFilterBase } from './token_filters'
+
 export enum PhoneticEncoder {
   metaphone = 0,
   double_metaphone = 1,
@@ -30,4 +33,39 @@ export enum PhoneticEncoder {
   haasephonetik = 9,
   beider_morse = 10,
   daitch_mokotoff = 11
+}
+
+export enum PhoneticLanguage {
+  any = 0,
+  comomon = 1,
+  cyrillic = 2,
+  english = 3,
+  french = 4,
+  german = 5,
+  hebrew = 6,
+  hungarian = 7,
+  polish = 8,
+  romanian = 9,
+  russian = 10,
+  spanish = 11
+}
+
+export enum PhoneticNameType {
+  generic = 0,
+  ashkenazi = 1,
+  sephardic = 2
+}
+
+export enum PhoneticRuleType {
+  approx = 0,
+  exact = 1
+}
+
+export class PhoneticTokenFilter extends TokenFilterBase {
+  encoder: PhoneticEncoder
+  languageset: PhoneticLanguage[]
+  max_code_len: integer
+  name_type: PhoneticNameType
+  replace: boolean
+  rule_type: PhoneticRuleType
 }

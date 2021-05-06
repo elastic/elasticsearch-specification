@@ -17,6 +17,43 @@
  * under the License.
  */
 
+export enum Language {
+  Arabic = 0,
+  Armenian = 1,
+  Basque = 2,
+  Brazilian = 3,
+  Bulgarian = 4,
+  Catalan = 5,
+  Chinese = 6,
+  Cjk = 7,
+  Czech = 8,
+  Danish = 9,
+  Dutch = 10,
+  English = 11,
+  Estonian = 12,
+  Finnish = 13,
+  French = 14,
+  Galician = 15,
+  German = 16,
+  Greek = 17,
+  Hindi = 18,
+  Hungarian = 19,
+  Indonesian = 20,
+  Irish = 21,
+  Italian = 22,
+  Latvian = 23,
+  Norwegian = 24,
+  Persian = 25,
+  Portuguese = 26,
+  Romanian = 27,
+  Russian = 28,
+  Sorani = 29,
+  Spanish = 30,
+  Swedish = 31,
+  Turkish = 32,
+  Thai = 33
+}
+
 export enum SnowballLanguage {
   Armenian = 0,
   Basque = 1,

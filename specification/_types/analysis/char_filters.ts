@@ -17,6 +17,28 @@
  * under the License.
  */
 
-import { CompoundWordTokenFilterBase } from './CompoundWordTokenFilterBase'
+import { VersionString } from '@_types/common'
+import { PatternReplaceTokenFilter } from './token_filters'
 
-export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {}
+export class CharFilterBase {
+  type: string
+  version?: VersionString
+}
+
+export type CharFilter =
+  | HtmlStripCharFilter
+  | MappingCharFilter
+  | PatternReplaceTokenFilter
+
+export class HtmlStripCharFilter extends CharFilterBase {}
+
+export class MappingCharFilter extends CharFilterBase {
+  mappings: string[]
+  mappings_path: string
+}
+
+export class PatternReplaceCharFilter extends CharFilterBase {
+  flags: string
+  pattern: string
+  replacement: string
+}

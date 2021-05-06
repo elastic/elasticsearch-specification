@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CharFilter } from '@_types/analysis/char_filters/CharFilterBase'
-import { Tokenizer } from '@_types/analysis/tokenizers/TokenizerBase'
-import { TokenFilter } from '@_types/analysis/token_filters/TokenFilterBase'
+import { CharFilter } from '@_types/analysis/char_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
+import { TokenFilter } from '@_types/analysis/token_filters'
 import { RequestBase } from '@_types/Base'
 import { Field, IndexName } from '@_types/common'
 

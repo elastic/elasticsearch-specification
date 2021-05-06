@@ -19,7 +19,7 @@
 
 import { IndexRouting } from '@indices/_types/IndexRouting'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { CharFilter } from '@_types/analysis/char_filters/CharFilterBase'
+import { CharFilter } from '@_types/analysis/char_filters'
 import { Name, PipelineName, Uuid, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
