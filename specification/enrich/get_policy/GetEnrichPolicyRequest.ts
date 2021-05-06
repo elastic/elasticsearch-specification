@@ -29,6 +29,4 @@ export interface Request extends RequestBase {
   path_parts?: {
     name?: Names
   }
-  query_parameters?: {}
-  body?: {}
 }

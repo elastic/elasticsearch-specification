@@ -17,9 +17,24 @@
  * under the License.
  */
 
-import { TaskInfo } from '@task/get_task/TaskInfo'
+import { Field, Fields, Indices, Name } from '@_types/common'
 
-export class ExecutingPolicy {
-  name: string
-  task: TaskInfo
+export class Summary {
+  config: Configuration
+}
+
+export class Configuration {
+  geo_match?: Policy
+  match: Policy
+}
+
+export class Policy {
+  enrich_fields: Fields
+  indices: Indices
+  match_field: Field
+  query?: string
+}
+
+export class NamedPolicy extends Policy {
+  name: Name
 }

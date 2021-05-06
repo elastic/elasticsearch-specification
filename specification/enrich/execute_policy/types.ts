@@ -17,11 +17,13 @@
  * under the License.
  */
 
-import { Field, Fields, Indices } from '@_types/common'
+export class ExecuteEnrichPolicyStatus {
+  phase: EnrichPolicyPhase
+}
 
-export class EnrichPolicy {
-  enrich_fields: Fields
-  indices: Indices
-  match_field: Field
-  query?: string
+export enum EnrichPolicyPhase {
+  SCHEDULED = 0,
+  RUNNING = 1,
+  COMPLETE = 2,
+  FAILED = 3
 }

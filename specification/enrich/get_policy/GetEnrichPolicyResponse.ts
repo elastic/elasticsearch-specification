@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NamedPolicyMetadata } from '@enrich/_types/NamedPolicyMetadata'
+import { Summary } from '@enrich/_types/Policy'
 
 export class Response {
-  body: { policies: NamedPolicyMetadata[] }
+  body: { policies: Summary[] }
 }

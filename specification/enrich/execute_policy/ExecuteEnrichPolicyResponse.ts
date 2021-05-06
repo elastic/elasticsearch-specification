@@ -18,8 +18,11 @@
  */
 
 import { TaskId } from '@_types/common'
-import { ExecuteEnrichPolicyStatus } from './ExecuteEnrichPolicyStatus'
+import { ExecuteEnrichPolicyStatus } from './types'
 
 export class Response {
-  body: { status: ExecuteEnrichPolicyStatus; task_id?: TaskId }
+  body: {
+    status: ExecuteEnrichPolicyStatus
+    task_id?: TaskId
+  }
 }
