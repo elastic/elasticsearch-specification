@@ -39,5 +39,4 @@ export interface Request extends RequestBase {
     thread_type?: ThreadType
     timeout?: Time
   }
-  body?: {}
 }

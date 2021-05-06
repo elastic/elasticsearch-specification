@@ -17,9 +17,5 @@
  * under the License.
  */
 
+import { Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
-
-export class ClusterOperatingSystemName {
-  count: integer
-  name: string
-}

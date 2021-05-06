@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexRouting } from '@nodes/_types/IndexRouting'
+import { IndexRouting } from '@indices/_types/IndexRouting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { CharFilter } from '@_types/analysis/char_filters/CharFilterBase'
 import { Name, PipelineName, Uuid, VersionString } from '@_types/common'

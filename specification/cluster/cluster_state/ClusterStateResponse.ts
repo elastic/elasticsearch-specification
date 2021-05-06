@@ -24,7 +24,6 @@ import {
   ClusterStateDeletedSnapshots,
   ClusterStateSnapshots
 } from '@cluster/_types/ClusterStateSnapshots'
-import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
   EmptyObject,
@@ -34,6 +33,7 @@ import {
   Uuid,
   VersionNumber
 } from '@_types/common'
+import { NodeAttributes } from '@_types/Node'
 
 export class Response {
   body: {

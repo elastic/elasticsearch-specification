@@ -17,16 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { double, integer, long } from '@_types/Numeric'
+import { Id, Name } from '@_types/common'
+import { Host } from '@_types/Networking'
 
-export class CPUStats {
-  percent: integer
-  sys?: string
-  sys_in_millis?: long
-  total?: string
-  total_in_millis?: long
-  user?: string
-  user_in_millis?: long
-  load_average?: Dictionary<string, double>
+export class HotThread {
+  hosts: Host[]
+  node_id: Id
+  node_name: Name
+  threads: string[]
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { HotThreadInformation } from './HotThreadInformation'
+import { HotThread } from './types'
 
 export class Response {
-  body: { hot_threads: HotThreadInformation[] }
+  body: { hot_threads: HotThread[] }
 }

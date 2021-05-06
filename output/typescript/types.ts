@@ -1527,8 +1527,8 @@ export interface SearchShardsRequest extends RequestBase {
 }
 
 export interface SearchShardsResponse {
-  nodes: Record<string, NodesNodeAttributes>
-  shards: NodesNodeShard[][]
+  nodes: Record<string, NodeAttributes>
+  shards: NodeShard[][]
   indices: Record<IndexName, SearchShardsShardStoreIndex>
 }
 
@@ -1748,7 +1748,7 @@ export interface SpecUtilsBaseNode {
   host: Host
   ip: Ip
   name: Name
-  roles?: NodesNodesInfoNodeRole[]
+  roles?: NodeRoles
   transport_address: TransportAddress
 }
 
@@ -2037,11 +2037,42 @@ export type Name = string
 
 export type Names = string | string[]
 
+export interface NodeAttributes {
+  attributes: Record<string, string>
+  ephemeral_id: Id
+  id?: Id
+  name: NodeName
+  transport_address: TransportAddress
+  roles?: NodeRoles
+}
+
 export type NodeId = string
 
 export type NodeIds = string
 
 export type NodeName = string
+
+export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
+
+export type NodeRoles = NodeRole[]
+
+export interface NodeShard {
+  state: IndicesStatsShardRoutingState
+  primary: boolean
+  node?: NodeName
+  shard: integer
+  index: IndexName
+  allocation_id?: Record<string, Id>
+  recovery_source?: Record<string, Id>
+  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
+}
+
+export interface NodeStatistics {
+  failures?: ErrorCause[]
+  total: integer
+  successful: integer
+  failed: integer
+}
 
 export type OpType = 'index' | 'create'
 
@@ -6934,8 +6965,8 @@ export interface ClusterClusterStateMetadataTemplate {
 }
 
 export interface ClusterClusterStateRoutingNodes {
-  unassigned: NodesNodeShard[]
-  nodes: Record<string, NodesNodeShard[]>
+  unassigned: NodeShard[]
+  nodes: Record<string, NodeShard[]>
 }
 
 export interface ClusterClusterStateSnapshots {
@@ -7348,7 +7379,7 @@ export interface ClusterClusterRerouteClusterRerouteState {
   master_node?: string
   version?: VersionNumber
   blocks?: EmptyObject
-  nodes?: Record<NodeName, NodesNodeAttributes>
+  nodes?: Record<NodeName, NodeAttributes>
   routing_table?: Record<string, EmptyObject>
   routing_nodes?: ClusterClusterStateRoutingNodes
   security_tokens?: Record<string, string>
@@ -7400,7 +7431,7 @@ export interface ClusterClusterStateResponse {
   version?: VersionNumber
   blocks?: ClusterClusterStateClusterStateBlocks
   metadata?: ClusterClusterStateMetadata
-  nodes?: Record<NodeName, NodesNodeAttributes>
+  nodes?: Record<NodeName, NodeAttributes>
   routing_table?: Record<string, EmptyObject>
   routing_nodes?: ClusterClusterStateRoutingNodes
   snapshots?: ClusterClusterStateSnapshots
@@ -7521,7 +7552,7 @@ export interface ClusterClusterStatsClusterOperatingSystemArchitecture {
 
 export interface ClusterClusterStatsClusterOperatingSystemName {
   count: integer
-  name: string
+  name: Name
 }
 
 export interface ClusterClusterStatsClusterOperatingSystemStats {
@@ -7529,7 +7560,7 @@ export interface ClusterClusterStatsClusterOperatingSystemStats {
   available_processors: integer
   mem: ClusterClusterStatsOperatingSystemMemoryInfo
   names: ClusterClusterStatsClusterOperatingSystemName[]
-  pretty_names: NodesNodesInfoClusterOperatingSystemPrettyName[]
+  pretty_names: ClusterClusterStatsClusterOperatingSystemName[]
   architectures?: ClusterClusterStatsClusterOperatingSystemArchitecture[]
 }
 
@@ -8111,6 +8142,39 @@ export interface IndicesFielddataFrequencyFilter {
 
 export type IndicesIndexCheckOnStartup = 'false' | 'checksum' | 'true'
 
+export interface IndicesIndexRouting {
+  allocation?: IndicesIndexRoutingAllocation
+  rebalance?: IndicesIndexRoutingRebalance
+}
+
+export interface IndicesIndexRoutingAllocation {
+  enable?: IndicesIndexRoutingAllocationOptions
+  include?: IndicesIndexRoutingAllocationInclude
+  initial_recovery?: IndicesIndexRoutingAllocationInitialRecovery
+  disk?: IndicesIndexRoutingAllocationDisk
+}
+
+export interface IndicesIndexRoutingAllocationDisk {
+  threshold_enabled: boolean | string
+}
+
+export interface IndicesIndexRoutingAllocationInclude {
+  _tier_preference?: string
+  _id?: Id
+}
+
+export interface IndicesIndexRoutingAllocationInitialRecovery {
+  _id?: Id
+}
+
+export type IndicesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export interface IndicesIndexRoutingRebalance {
+  enable: IndicesIndexRoutingRebalanceOptions
+}
+
+export type IndicesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
+
 export interface IndicesIndexSettingBlocks {
   read_only?: boolean
   'index.blocks.read_only'?: boolean
@@ -8175,8 +8239,8 @@ export interface IndicesIndexSettings {
   'index.max_terms_count'?: integer
   max_regex_length?: integer
   'index.max_regex_length'?: integer
-  routing?: NodesIndexRouting
-  'index.routing'?: NodesIndexRouting
+  routing?: IndicesIndexRouting
+  'index.routing'?: IndicesIndexRouting
   gc_deletes?: Time
   'index.gc_deletes'?: Time
   default_pipeline?: PipelineName
@@ -11046,7 +11110,7 @@ export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem {
   data_counts: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts
   id: Id
   memory_usage: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage
-  node?: NodesNodeAttributes
+  node?: NodeAttributes
   progress: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress[]
   state: MlDataFrameState
 }
@@ -11785,74 +11849,221 @@ export interface MonitoringBulkResponse {
   stub: integer
 }
 
-export interface NodesIndexRouting {
-  allocation?: NodesIndexRoutingAllocation
-  rebalance?: NodesIndexRoutingRebalance
+export interface NodesAdaptiveSelection {
+  avg_queue_size: long
+  avg_response_time: long
+  avg_response_time_ns: long
+  avg_service_time: string
+  avg_service_time_ns: long
+  outgoing_searches: long
+  rank: string
 }
 
-export interface NodesIndexRoutingAllocation {
-  enable?: NodesIndexRoutingAllocationOptions
-  include?: NodesIndexRoutingAllocationInclude
-  initial_recovery?: NodesIndexRoutingAllocationInitialRecovery
-  disk?: NodesIndexRoutingAllocationDisk
+export interface NodesBreaker {
+  estimated_size: string
+  estimated_size_in_bytes: long
+  limit_size: string
+  limit_size_in_bytes: long
+  overhead: float
+  tripped: float
 }
 
-export interface NodesIndexRoutingAllocationDisk {
-  threshold_enabled: boolean | string
+export interface NodesCpu {
+  percent: integer
+  sys?: string
+  sys_in_millis?: long
+  total?: string
+  total_in_millis?: long
+  user?: string
+  user_in_millis?: long
+  load_average?: Record<string, double>
 }
 
-export interface NodesIndexRoutingAllocationInclude {
-  _tier_preference?: string
-  _id?: Id
+export interface NodesDataPathStats {
+  available: string
+  available_in_bytes: long
+  disk_queue: string
+  disk_reads: long
+  disk_read_size: string
+  disk_read_size_in_bytes: long
+  disk_writes: long
+  disk_write_size: string
+  disk_write_size_in_bytes: long
+  free: string
+  free_in_bytes: long
+  mount: string
+  path: string
+  total: string
+  total_in_bytes: long
+  type: string
 }
 
-export interface NodesIndexRoutingAllocationInitialRecovery {
-  _id?: Id
+export interface NodesExtendedMemoryStats extends NodesMemoryStats {
+  free_percent: integer
+  used_percent: integer
+  total_in_bytes: integer
+  free_in_bytes: integer
+  used_in_bytes: integer
 }
 
-export type NodesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
-
-export interface NodesIndexRoutingRebalance {
-  enable: NodesIndexRoutingRebalanceOptions
+export interface NodesFileSystem {
+  data: NodesDataPathStats[]
+  timestamp: long
+  total: NodesFileSystemTotal
 }
 
-export type NodesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replicas' | 'none'
-
-export interface NodesNodeAttributes {
-  attributes: Record<string, string>
-  ephemeral_id: Id
-  id?: Id
-  name: Name
-  transport_address: TransportAddress
-  roles?: NodesNodesInfoNodeRoles
+export interface NodesFileSystemTotal {
+  available: string
+  available_in_bytes: long
+  free: string
+  free_in_bytes: long
+  total: string
+  total_in_bytes: long
 }
 
-export interface NodesNodeShard {
-  state: IndicesStatsShardRoutingState
-  primary: boolean
-  node?: NodeName
-  shard: integer
-  index: IndexName
-  allocation_id?: Record<string, string>
-  recovery_source?: Record<string, Id>
-  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
+export interface NodesGarbageCollector {
+  collectors: Record<string, NodesGarbageCollectorTotal>
 }
 
-export interface NodesNodeStatistics {
-  failures?: ErrorCause[]
-  total: integer
-  successful: integer
-  failed: integer
+export interface NodesGarbageCollectorTotal {
+  collection_count: long
+  collection_time: string
+  collection_time_in_millis: long
+}
+
+export interface NodesHttp {
+  current_open: integer
+  total_opened: long
+}
+
+export interface NodesIngest {
+  pipelines: Record<string, NodesIngestTotal>
+  total: NodesIngestTotal
+}
+
+export interface NodesIngestTotal {
+  count: long
+  current: long
+  failed: long
+  processors: NodesKeyedProcessor[]
+  time_in_millis: long
+}
+
+export interface NodesJvm {
+  buffer_pools: Record<string, NodesNodeBufferPool>
+  classes: NodesJvmClasses
+  gc: NodesGarbageCollector
+  mem: NodesMemoryStats
+  threads: NodesJvmThreads
+  timestamp: long
+  uptime: string
+  uptime_in_millis: long
+}
+
+export interface NodesJvmClasses {
+  current_loaded_count: long
+  total_loaded_count: long
+  total_unloaded_count: long
+}
+
+export interface NodesJvmThreads {
+  count: long
+  peak_count: long
+}
+
+export interface NodesKeyedProcessor {
+  statistics: NodesProcess
+  type: string
+}
+
+export interface NodesMemoryStats {
+  resident?: string
+  resident_in_bytes?: long
+  share?: string
+  share_in_bytes?: long
+  total_virtual?: string
+  total_virtual_in_bytes?: long
+  total_in_bytes: long
+  free_in_bytes: long
+  used_in_bytes: long
+}
+
+export interface NodesNodeBufferPool {
+  count: long
+  total_capacity: string
+  total_capacity_in_bytes: long
+  used: string
+  used_in_bytes: long
 }
 
 export interface NodesNodesResponseBase {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
-export interface NodesNodesHotThreadsHotThreadInformation {
-  hosts: string[]
-  node_id: string
-  node_name: string
+export interface NodesOperatingSystem {
+  cpu: NodesCpu
+  mem: NodesExtendedMemoryStats
+  swap: NodesMemoryStats
+  timestamp: long
+}
+
+export interface NodesProcess {
+  cpu: NodesCpu
+  mem: NodesMemoryStats
+  open_file_descriptors: integer
+  timestamp: long
+}
+
+export interface NodesScripting {
+  cache_evictions: long
+  compilations: long
+}
+
+export interface NodesStats {
+  adaptive_selection: Record<string, NodesAdaptiveSelection>
+  breakers: Record<string, NodesBreaker>
+  fs: NodesFileSystem
+  host: Host
+  http: NodesHttp
+  indices: IndicesStatsIndexStats
+  ingest: NodesIngest
+  ip: Ip | Ip[]
+  jvm: NodesJvm
+  name: Name
+  os: NodesOperatingSystem
+  process: NodesProcess
+  roles: NodeRoles
+  script: NodesScripting
+  thread_pool: Record<string, NodesThreadCount>
+  timestamp: long
+  transport: NodesTransport
+  transport_address: TransportAddress
+  attributes: Record<Field, string>
+}
+
+export interface NodesThreadCount {
+  active: long
+  completed: long
+  largest: long
+  queue: long
+  rejected: long
+  threads: long
+}
+
+export interface NodesTransport {
+  rx_count: long
+  rx_size: string
+  rx_size_in_bytes: long
+  server_open: integer
+  tx_count: long
+  tx_size: string
+  tx_size_in_bytes: long
+}
+
+export interface NodesNodesHotThreadsHotThread {
+  hosts: Host[]
+  node_id: Id
+  node_name: Name
   threads: string[]
 }
 
@@ -11867,12 +12078,7 @@ export interface NodesNodesHotThreadsRequest extends RequestBase {
 }
 
 export interface NodesNodesHotThreadsResponse {
-  hot_threads: NodesNodesHotThreadsHotThreadInformation[]
-}
-
-export interface NodesNodesInfoClusterOperatingSystemPrettyName {
-  count: integer
-  pretty_name: string
+  hot_threads: NodesNodesHotThreadsHotThread[]
 }
 
 export interface NodesNodesInfoNodeInfo {
@@ -11889,7 +12095,7 @@ export interface NodesNodesInfoNodeInfo {
   os?: NodesNodesInfoNodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodesNodesInfoNodeProcessInfo
-  roles: NodesNodesInfoNodeRole[]
+  roles: NodeRoles
   settings?: NodesNodesInfoNodeInfoSettings
   thread_pool?: Record<string, NodesNodesInfoNodeThreadPoolInfo>
   total_indexing_buffer?: long
@@ -11963,7 +12169,7 @@ export interface NodesNodesInfoNodeInfoNetwork {
 export interface NodesNodesInfoNodeInfoNetworkInterface {
   address: string
   mac_address: string
-  name: string
+  name: Name
 }
 
 export interface NodesNodesInfoNodeInfoOSCPU {
@@ -12024,7 +12230,7 @@ export interface NodesNodesInfoNodeInfoSettings {
 
 export interface NodesNodesInfoNodeInfoSettingsCluster {
   name: Name
-  routing?: NodesIndexRouting
+  routing?: IndicesIndexRouting
   election: NodesNodesInfoNodeInfoSettingsClusterElection
   initial_master_nodes?: string
 }
@@ -12154,10 +12360,6 @@ export interface NodesNodesInfoNodeProcessInfo {
   refresh_interval_in_millis: long
 }
 
-export type NodesNodesInfoNodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
-
-export type NodesNodesInfoNodeRoles = NodesNodesInfoNodeRole[]
-
 export interface NodesNodesInfoNodeThreadPoolInfo {
   core?: integer
   keep_alive?: string
@@ -12180,157 +12382,6 @@ export interface NodesNodesInfoResponse extends NodesNodesResponseBase {
   nodes: Record<string, NodesNodesInfoNodeInfo>
 }
 
-export interface NodesNodesStatsAdaptiveSelectionStats {
-  avg_queue_size: long
-  avg_response_time: long
-  avg_response_time_ns: long
-  avg_service_time: string
-  avg_service_time_ns: long
-  outgoing_searches: long
-  rank: string
-}
-
-export interface NodesNodesStatsBreakerStats {
-  estimated_size: string
-  estimated_size_in_bytes: long
-  limit_size: string
-  limit_size_in_bytes: long
-  overhead: float
-  tripped: float
-}
-
-export interface NodesNodesStatsCPUStats {
-  percent: integer
-  sys?: string
-  sys_in_millis?: long
-  total?: string
-  total_in_millis?: long
-  user?: string
-  user_in_millis?: long
-  load_average?: Record<string, double>
-}
-
-export interface NodesNodesStatsDataPathStats {
-  available: string
-  available_in_bytes: long
-  disk_queue: string
-  disk_reads: long
-  disk_read_size: string
-  disk_read_size_in_bytes: long
-  disk_writes: long
-  disk_write_size: string
-  disk_write_size_in_bytes: long
-  free: string
-  free_in_bytes: long
-  mount: string
-  path: string
-  total: string
-  total_in_bytes: long
-  type: string
-}
-
-export interface NodesNodesStatsExtendedMemoryStats extends NodesNodesStatsMemoryStats {
-  free_percent: integer
-  used_percent: integer
-  total_in_bytes: integer
-  free_in_bytes: integer
-  used_in_bytes: integer
-}
-
-export interface NodesNodesStatsFileSystemStats {
-  data: NodesNodesStatsDataPathStats[]
-  timestamp: long
-  total: NodesNodesStatsTotalFileSystemStats
-}
-
-export interface NodesNodesStatsGarbageCollectionGenerationStats {
-  collection_count: long
-  collection_time: string
-  collection_time_in_millis: long
-}
-
-export interface NodesNodesStatsGarbageCollectionStats {
-  collectors: Record<string, NodesNodesStatsGarbageCollectionGenerationStats>
-}
-
-export interface NodesNodesStatsHttpStats {
-  current_open: integer
-  total_opened: long
-}
-
-export interface NodesNodesStatsJvmClassesStats {
-  current_loaded_count: long
-  total_loaded_count: long
-  total_unloaded_count: long
-}
-
-export interface NodesNodesStatsMemoryStats {
-  resident?: string
-  resident_in_bytes?: long
-  share?: string
-  share_in_bytes?: long
-  total_virtual?: string
-  total_virtual_in_bytes?: long
-  total_in_bytes: long
-  free_in_bytes: long
-  used_in_bytes: long
-}
-
-export interface NodesNodesStatsNodeBufferPool {
-  count: long
-  total_capacity: string
-  total_capacity_in_bytes: long
-  used: string
-  used_in_bytes: long
-}
-
-export interface NodesNodesStatsNodeJvmStats {
-  buffer_pools: Record<string, NodesNodesStatsNodeBufferPool>
-  classes: NodesNodesStatsJvmClassesStats
-  gc: NodesNodesStatsGarbageCollectionStats
-  mem: NodesNodesStatsMemoryStats
-  threads: NodesNodesStatsThreadStats
-  timestamp: long
-  uptime: string
-  uptime_in_millis: long
-}
-
-export interface NodesNodesStatsNodeStats {
-  adaptive_selection: Record<string, NodesNodesStatsAdaptiveSelectionStats>
-  breakers: Record<string, NodesNodesStatsBreakerStats>
-  fs: NodesNodesStatsFileSystemStats
-  host: Host
-  http: NodesNodesStatsHttpStats
-  indices: IndicesStatsIndexStats
-  ingest: NodesNodesStatsStatisticsNodeIngestStats
-  ip: Ip | Ip[]
-  jvm: NodesNodesStatsNodeJvmStats
-  name: Name
-  os: NodesNodesStatsOperatingSystemStats
-  process: NodesNodesStatsProcessStats
-  roles: NodesNodesInfoNodeRole[]
-  script: NodesNodesStatsScriptStats
-  thread_pool: Record<string, NodesNodesStatsThreadCountStats>
-  timestamp: long
-  transport: NodesNodesStatsTransportStats
-  transport_address: TransportAddress
-  attributes: Record<Field, string>
-}
-
-export interface NodesNodesStatsOperatingSystemStats {
-  cpu: NodesNodesStatsCPUStats
-  mem: NodesNodesStatsExtendedMemoryStats
-  swap: NodesNodesStatsMemoryStats
-  timestamp: long
-}
-
-export interface NodesNodesStatsProcessStats {
-  cpu: NodesNodesStatsCPUStats
-  mem: NodesNodesStatsMemoryStats
-  open_file_descriptors: integer
-  timestamp: long
-}
-
 export interface NodesNodesStatsRequest extends RequestBase {
   node_id?: NodeIds
   metric?: Metrics
@@ -12349,66 +12400,10 @@ export interface NodesNodesStatsRequest extends RequestBase {
 
 export interface NodesNodesStatsResponse extends NodesNodesResponseBase {
   cluster_name: Name
-  nodes: Record<string, NodesNodesStatsNodeStats>
+  nodes: Record<string, NodesStats>
 }
 
-export interface NodesNodesStatsScriptStats {
-  cache_evictions: long
-  compilations: long
-}
-
-export interface NodesNodesStatsThreadCountStats {
-  active: long
-  completed: long
-  largest: long
-  queue: long
-  rejected: long
-  threads: long
-}
-
-export interface NodesNodesStatsThreadStats {
-  count: long
-  peak_count: long
-}
-
-export interface NodesNodesStatsTotalFileSystemStats {
-  available: string
-  available_in_bytes: long
-  free: string
-  free_in_bytes: long
-  total: string
-  total_in_bytes: long
-}
-
-export interface NodesNodesStatsTransportStats {
-  rx_count: long
-  rx_size: string
-  rx_size_in_bytes: long
-  server_open: integer
-  tx_count: long
-  tx_size: string
-  tx_size_in_bytes: long
-}
-
-export interface NodesNodesStatsStatisticsIngestStats {
-  count: long
-  current: long
-  failed: long
-  processors: NodesNodesStatsStatisticsKeyedProcessorStats[]
-  time_in_millis: long
-}
-
-export interface NodesNodesStatsStatisticsKeyedProcessorStats {
-  statistics: NodesNodesStatsProcessStats
-  type: string
-}
-
-export interface NodesNodesStatsStatisticsNodeIngestStats {
-  pipelines: Record<string, NodesNodesStatsStatisticsIngestStats>
-  total: NodesNodesStatsStatisticsIngestStats
-}
-
-export interface NodesNodesUsageNodeUsageInformation {
+export interface NodesNodesUsageNodeUsage {
   rest_actions: Record<string, integer>
   since: EpochMillis
   timestamp: EpochMillis
@@ -12422,8 +12417,8 @@ export interface NodesNodesUsageRequest extends RequestBase {
 }
 
 export interface NodesNodesUsageResponse extends NodesNodesResponseBase {
-  cluster_name: string
-  nodes: Record<string, NodesNodesUsageNodeUsageInformation>
+  cluster_name: Name
+  nodes: Record<string, NodesNodesUsageNodeUsage>
 }
 
 export interface NodesReloadSecureSettingsNodeReloadException {
@@ -12447,7 +12442,7 @@ export interface NodesReloadSecureSettingsRequest extends RequestBase {
 
 export interface NodesReloadSecureSettingsResponse extends NodesNodesResponseBase {
   cluster_name: Name
-  nodes: Record<string, NodesNodesStatsNodeStats | NodesReloadSecureSettingsNodeReloadException>
+  nodes: Record<string, NodesStats | NodesReloadSecureSettingsNodeReloadException>
 }
 
 export interface RollupDateHistogramGrouping {
@@ -12828,7 +12823,7 @@ export interface SecurityClearApiKeyCacheRequest extends RequestBase {
 }
 
 export interface SecurityClearApiKeyCacheResponse {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, SecurityClearApiKeyCacheClearApiKeyCacheNode>
 }
@@ -12842,7 +12837,7 @@ export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
 }
 
 export interface SecurityClearCachedPrivilegesResponse {
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
   cluster_name: Name
   nodes: Record<string, SecurityClearCachedPrivilegesClearCachedPrivilegeNode>
 }
@@ -12855,7 +12850,7 @@ export interface SecurityClearCachedRealmsRequest extends RequestBase {
 export interface SecurityClearCachedRealmsResponse {
   cluster_name: Name
   nodes: Record<string, SecuritySecurityNode>
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface SecurityClearCachedRolesRequest extends RequestBase {
@@ -12865,7 +12860,7 @@ export interface SecurityClearCachedRolesRequest extends RequestBase {
 export interface SecurityClearCachedRolesResponse {
   cluster_name: string
   nodes: Record<string, SecuritySecurityNode>
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface SecurityCreateApiKeyApiKeyApplication {
@@ -14092,7 +14087,7 @@ export interface TransformGetTransformStatsTransformProgress {
 export interface TransformGetTransformStatsTransformStats {
   checkpointing: TransformGetTransformStatsCheckpointing
   id: Id
-  node?: NodesNodeAttributes
+  node?: NodeAttributes
   reason?: string
   state: string
   stats: TransformGetTransformStatsTransformIndexerStats
@@ -14739,7 +14734,7 @@ export interface WatcherStatsResponse {
   cluster_name: Name
   manually_stopped: boolean
   stats: WatcherStatsWatcherNodeStats[]
-  _nodes: NodesNodeStatistics
+  _nodes: NodeStatistics
 }
 
 export interface WatcherStatsWatchRecordQueuedStats {

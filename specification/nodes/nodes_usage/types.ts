@@ -17,10 +17,14 @@
  * under the License.
  */
 
-import { long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { integer } from '@_types/Numeric'
+import { EpochMillis } from '@_types/Time'
 
-export class JvmClassesStats {
-  current_loaded_count: long
-  total_loaded_count: long
-  total_unloaded_count: long
+export class NodeUsage {
+  rest_actions: Dictionary<string, integer>
+  since: EpochMillis
+  timestamp: EpochMillis
+  aggregations: Dictionary<string, UserDefinedValue>
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { NodeRole } from '@nodes/nodes_info/NodeRole'
 import { Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
+import { NodeRoles } from '@_types/Node'
 import { Dictionary } from './Dictionary'
 
 export class BaseNode {
@@ -27,6 +27,6 @@ export class BaseNode {
   host: Host
   ip: Ip
   name: Name
-  roles?: NodeRole[]
+  roles?: NodeRoles
   transport_address: TransportAddress
 }

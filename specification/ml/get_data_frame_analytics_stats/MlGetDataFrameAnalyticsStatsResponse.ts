@@ -18,8 +18,8 @@
  */
 
 import { DataFrameState } from '@ml/_types/DataFrameState'
-import { NodeAttributes } from '@nodes/_types/NodeAttributes'
 import { Id } from '@_types/common'
+import { NodeAttributes } from '@_types/Node'
 import { double, integer, long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 

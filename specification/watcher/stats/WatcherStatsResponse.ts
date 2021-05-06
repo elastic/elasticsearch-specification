@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { NodeStatistics } from '@_types/Node'
 import { Name } from '@_types/common'
 import { WatcherNodeStats } from './types'
 

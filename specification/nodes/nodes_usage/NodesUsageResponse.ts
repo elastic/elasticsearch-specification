@@ -19,11 +19,12 @@
 
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { NodeUsageInformation } from './NodeUsageInformation'
+import { Name } from '@_types/common'
+import { NodeUsage } from './types'
 
 export class Response extends NodesResponseBase {
   body: {
-    cluster_name: string
-    nodes: Dictionary<string, NodeUsageInformation>
+    cluster_name: Name
+    nodes: Dictionary<string, NodeUsage>
   }
 }
