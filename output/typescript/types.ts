@@ -4001,43 +4001,6 @@ export interface MappingWildcardProperty extends MappingDocValuesPropertyBase {
   type: 'wildcard'
 }
 
-export interface MlJob {
-  allow_lazy_open?: boolean
-  analysis_config?: MlAnalysisConfig
-  analysis_limits?: MlAnalysisLimits
-  background_persist_interval?: Time
-  count?: integer
-  created_by?: EmptyObject
-  create_time?: integer
-  detectors?: MlJobStatistics
-  data_description?: MlDataDescription
-  description?: string
-  finished_time?: integer
-  forecasts?: XpackUsageMlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: MlModelPlotConfig
-  model_size?: MlJobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
-  model_plot_config?: MlModelPlotConfig
-  custom_settings?: XpackUsageCustomSettings
-  job_version?: VersionString
-  deleting?: boolean
-  daily_model_snapshot_retention_after_days?: long
-}
-
-export interface MlJobStatistics {
-  avg: double
-  max: double
-  min: double
-  total: double
-}
-
 export interface QueryDslBoolQuery extends QueryDslQueryBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   minimum_should_match?: MinimumShouldMatch
@@ -10472,6 +10435,36 @@ export interface MlInfluence {
   influencer_field_values: string[]
 }
 
+export interface MlJob {
+  allow_lazy_open?: boolean
+  analysis_config?: MlAnalysisConfig
+  analysis_limits?: MlAnalysisLimits
+  background_persist_interval?: Time
+  count?: integer
+  created_by?: EmptyObject
+  create_time?: integer
+  detectors?: MlJobStatistics
+  data_description?: MlDataDescription
+  description?: string
+  finished_time?: integer
+  forecasts?: XpackUsageMlJobForecasts
+  job_id?: Id
+  job_type?: string
+  model_plot?: MlModelPlotConfig
+  model_size?: MlJobStatistics
+  model_snapshot_id?: Id
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
+  results_index_name?: IndexName
+  results_retention_days?: long
+  groups?: string[]
+  model_plot_config?: MlModelPlotConfig
+  custom_settings?: XpackUsageCustomSettings
+  job_version?: VersionString
+  deleting?: boolean
+  daily_model_snapshot_retention_after_days?: long
+}
+
 export interface MlJobForecastStatistics {
   memory_bytes?: MlJobStatistics
   processing_time_ms?: MlJobStatistics
@@ -10482,6 +10475,13 @@ export interface MlJobForecastStatistics {
 }
 
 export type MlJobState = 'closing' | 'closed' | 'opened' | 'failed' | 'opening'
+
+export interface MlJobStatistics {
+  avg: double
+  max: double
+  min: double
+  total: double
+}
 
 export interface MlJobStats {
   assignment_explanation?: string
