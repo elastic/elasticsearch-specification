@@ -31005,6 +31005,24 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "RUNNING"
+        },
+        {
+          "name": "STOPPING"
+        },
+        {
+          "name": "STOPPED"
+        }
+      ],
+      "name": {
+        "name": "LifecycleOperationMode",
+        "namespace": "_types"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "ErrorCause",
@@ -71750,7 +71768,7 @@
             "kind": "instance_of",
             "type": {
               "name": "LifecycleOperationMode",
-              "namespace": "ilm.get_status"
+              "namespace": "_types"
             }
           }
         }
@@ -81653,24 +81671,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "RUNNING"
-        },
-        {
-          "name": "STOPPING"
-        },
-        {
-          "name": "STOPPED"
-        }
-      ],
-      "name": {
-        "name": "LifecycleOperationMode",
-        "namespace": "ilm.get_status"
-      }
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81702,7 +81702,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "LifecycleOperationMode",
-                "namespace": "ilm.get_status"
+                "namespace": "_types"
               }
             }
           }
@@ -127214,7 +127214,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotLifecycleConfig",
+        "name": "Configuration",
         "namespace": "slm._types"
       },
       "properties": [
@@ -127256,7 +127256,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotLifecycleInProgress",
+        "name": "InProgress",
         "namespace": "slm._types"
       },
       "properties": [
@@ -127266,8 +127266,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -127299,8 +127299,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Uuid",
+              "namespace": "_types"
             }
           }
         }
@@ -127309,7 +127309,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotLifecycleInvocationRecord",
+        "name": "Invocation",
         "namespace": "slm._types"
       },
       "properties": [
@@ -127319,8 +127319,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -127340,7 +127340,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotLifecyclePolicy",
+        "name": "Policy",
         "namespace": "slm._types"
       },
       "properties": [
@@ -127350,7 +127350,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleConfig",
+              "name": "Configuration",
               "namespace": "slm._types"
             }
           }
@@ -127361,8 +127361,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
@@ -127383,7 +127383,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotRetentionConfiguration",
+              "name": "Retention",
               "namespace": "slm._types"
             }
           }
@@ -127404,7 +127404,49 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotLifecyclePolicyMetadata",
+        "name": "Retention",
+        "namespace": "slm._types"
+      },
+      "properties": [
+        {
+          "name": "expire_after",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SnapshotLifecycle",
         "namespace": "slm._types"
       },
       "properties": [
@@ -127414,7 +127456,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleInProgress",
+              "name": "InProgress",
               "namespace": "slm._types"
             }
           }
@@ -127425,7 +127467,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleInvocationRecord",
+              "name": "Invocation",
               "namespace": "slm._types"
             }
           }
@@ -127436,7 +127478,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecycleInvocationRecord",
+              "name": "Invocation",
               "namespace": "slm._types"
             }
           }
@@ -127491,7 +127533,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecyclePolicy",
+              "name": "Policy",
               "namespace": "slm._types"
             }
           }
@@ -127515,48 +127557,6 @@
             "type": {
               "name": "Statistics",
               "namespace": "slm._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotRetentionConfiguration",
-        "namespace": "slm._types"
-      },
-      "properties": [
-        {
-          "name": "expire_after",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
             }
           }
         }
@@ -127786,8 +127786,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           }
@@ -127887,7 +127887,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotLifecyclePolicyMetadata",
+              "name": "SnapshotLifecycle",
               "namespace": "slm._types"
             }
           }
@@ -128081,7 +128081,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "LifecycleOperationMode",
-                "namespace": "ilm.get_status"
+                "namespace": "_types"
               }
             }
           }
@@ -128106,7 +128106,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotLifecycleConfig",
+                "name": "Configuration",
                 "namespace": "slm._types"
               }
             }
@@ -128117,8 +128117,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           },
@@ -128139,7 +128139,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotRetentionConfiguration",
+                "name": "Retention",
                 "namespace": "slm._types"
               }
             }

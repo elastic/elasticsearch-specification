@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { LifecycleOperationMode } from '@ilm/get_status/LifecycleOperationMode'
+import { LifecycleOperationMode } from '@_types/Lifecycle'
 
 export class Response {
   body: { operation_mode: LifecycleOperationMode }

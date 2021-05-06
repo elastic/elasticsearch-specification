@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { SnapshotLifecyclePolicyMetadata } from '@slm/_types/SnapshotLifecyclePolicyMetadata'
+import { SnapshotLifecycle } from '@slm/_types/SnapshotLifecycle'
 import { DictionaryResponseBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<
-  Id,
-  SnapshotLifecyclePolicyMetadata
-> {}
+export class Response extends DictionaryResponseBase<Id, SnapshotLifecycle> {}

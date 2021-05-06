@@ -18,7 +18,7 @@
  */
 
 import { Phases } from '@ilm/_types/Phases'
-import { Statistics } from '@slm/_types/SnapshotLifecyclePolicyMetadata'
+import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
