@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeStats } from '@nodes/nodes_stats/NodeStats'
+import { Stats } from '@nodes/_types/Stats'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
@@ -26,6 +26,6 @@ import { NodeReloadException } from './types'
 export class Response extends NodesResponseBase {
   body: {
     cluster_name: Name
-    nodes: Dictionary<string, NodeStats | NodeReloadException>
+    nodes: Dictionary<string, Stats | NodeReloadException>
   }
 }
