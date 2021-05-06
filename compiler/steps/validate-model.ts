@@ -392,22 +392,28 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateProperties(typeDef.query, openGenerics)
     context.pop()
 
-    if (typeDef.body != null) {
-      context.push('body')
-      switch (typeDef.body.kind) {
-        case 'properties':
-          validateProperties(typeDef.body.properties, openGenerics)
-          break
-        case 'value':
-          validateValueOf(typeDef.body.value, openGenerics)
-          break
-        default:
-          // @ts-expect-error
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+    context.push('body')
+    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
+      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
+        modelError('A request with inherited properties must have a PropertyBody')
       }
-      context.pop()
     }
+    switch (typeDef.body.kind) {
+      case 'properties':
+        validateProperties(typeDef.body.properties, openGenerics)
+        break
+      case 'value':
+        validateValueOf(typeDef.body.value, openGenerics)
+        break
+      case 'no_body':
+        // Nothing to validate
+        break
+      default:
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+    }
+    context.pop()
   }
 
   function validateResponse (typeDef: model.Response): void {
@@ -421,22 +427,28 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
-    if (typeDef.body != null) {
-      context.push('body')
-      switch (typeDef.body.kind) {
-        case 'properties':
-          validateProperties(typeDef.body.properties, openGenerics)
-          break
-        case 'value':
-          validateValueOf(typeDef.body.value, openGenerics)
-          break
-        default:
-          // @ts-expect-error
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+    context.push('body')
+    if (typeDef.inherits != null && typeDef.body.kind !== 'properties') {
+      if (fqn(typeDef.inherits.type) !== '_types:RequestBase') {
+        modelError('A response with inherited properties must have a PropertyBody')
       }
-      context.pop()
     }
+    switch (typeDef.body.kind) {
+      case 'properties':
+        validateProperties(typeDef.body.properties, openGenerics)
+        break
+      case 'value':
+        validateValueOf(typeDef.body.value, openGenerics)
+        break
+      case 'no_body':
+        // Nothing to validate
+        break
+      default:
+        // @ts-expect-error
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        throw new Error(`Unknown kind: ${typeDef.body.kind}`)
+    }
+    context.pop()
   }
 
   function validateInterface (typeDef: model.Interface): void {
@@ -724,10 +736,6 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         break
 
       case 'literal_value':
-        // Nothing to validate
-        break
-
-      case 'void_value':
         // Nothing to validate
         break
 
