@@ -253,7 +253,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             } else {
               type.body = { kind: 'value', value: property.valueOf }
             }
-          } else if (property.properties.length > 0) {
+          } else {
             type.body = { kind: 'properties', properties: property.properties }
           }
         } else {
