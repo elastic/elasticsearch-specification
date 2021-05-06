@@ -29,7 +29,7 @@ export class NodeShard {
   node?: NodeName
   shard: integer
   index: IndexName
-  allocation_id?: Dictionary<string, string>
+  allocation_id?: Dictionary<string, Id>
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
 }

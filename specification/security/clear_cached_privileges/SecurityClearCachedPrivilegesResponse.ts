@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@nodes/_types/NodeStatistics'
+import { NodeStatistics } from '@_types/Node'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 

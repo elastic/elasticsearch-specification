@@ -17,14 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { integer } from '@_types/Numeric'
-import { EpochMillis } from '@_types/Time'
+import { Id, Name } from "@_types/common"
+import { Host } from "@_types/Networking"
 
-export class NodeUsageInformation {
-  rest_actions: Dictionary<string, integer>
-  since: EpochMillis
-  timestamp: EpochMillis
-  aggregations: Dictionary<string, UserDefinedValue>
+export class HotThread {
+  hosts: Host[]
+  node_id: Id
+  node_name: Name
+  threads: string[]
 }
