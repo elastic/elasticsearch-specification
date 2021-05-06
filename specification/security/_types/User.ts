@@ -17,9 +17,13 @@
  * under the License.
  */
 
-export enum AccessTokenGrantType {
-  password = 0,
-  client_credentials = 1,
-  _kerberos = 2,
-  refresh_token = 3
+import { Metadata, Name, Username } from '@_types/common'
+
+export class User {
+  email?: string
+  full_name?: Name
+  metadata: Metadata
+  roles: string[]
+  username: Username
+  enabled: boolean
 }

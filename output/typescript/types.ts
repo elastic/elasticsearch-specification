@@ -2223,6 +2223,8 @@ export interface SegmentsStats {
 
 export type SequenceNumber = integer
 
+export type Service = string
+
 export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 
 export interface ShardFailure {
@@ -12707,29 +12709,43 @@ export interface SearchableSnapshotsStatsResponse {
   stub: integer
 }
 
-export type SecurityAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
+export interface SecurityApplicationGlobalUserPrivileges {
+  manage: SecurityManageUserPrivileges
+}
+
+export interface SecurityApplicationPrivileges {
+  application: string
+  privileges: string[]
+  resources: string[]
+}
+
+export interface SecurityClusterNode {
+  name: Name
+}
+
+export interface SecurityCreatedStatus {
+  created: boolean
+}
 
 export interface SecurityFieldSecurity {
   except?: Fields
   grant: Fields
 }
 
-export interface SecurityInlineRoleTemplate {
-  template: SecurityInlineRoleTemplateSource
-  format?: SecurityRoleTemplateFormat
+export interface SecurityGlobalPrivileges {
+  application: SecurityApplicationGlobalUserPrivileges
 }
 
-export interface SecurityInlineRoleTemplateSource {
-  source: string
+export interface SecurityIndicesPrivileges {
+  field_security?: SecurityFieldSecurity
+  names: Indices
+  privileges: string[]
+  query?: string | QueryDslQueryContainer
+  allow_restricted_indices?: boolean
 }
 
-export interface SecurityInvalidRoleTemplate {
-  template: string
-  format?: SecurityRoleTemplateFormat
-}
-
-export interface SecurityPutRoleMappingStatus {
-  created: boolean
+export interface SecurityManageUserPrivileges {
+  applications: string[]
 }
 
 export interface SecurityRealmInfo {
@@ -12737,45 +12753,17 @@ export interface SecurityRealmInfo {
   type: string
 }
 
-export type SecurityRoleTemplate = SecurityInlineRoleTemplate | SecurityStoredRoleTemplate | SecurityInvalidRoleTemplate
-
-export type SecurityRoleTemplateFormat = 'string' | 'json'
-
-export interface SecuritySecurityNode {
-  name: Name
-}
-
-export interface SecurityStoredRoleTemplate {
-  template: SecurityStoredRoleTemplateId
-  format?: SecurityRoleTemplateFormat
-}
-
-export interface SecurityStoredRoleTemplateId {
-  id: string
-}
-
-export interface SecurityTransientMetadata {
-  enabled: boolean
-}
-
-export interface SecurityXPackRole {
-  cluster: string[]
-  indices: SecurityPutRoleIndicesPrivileges[]
-  metadata: Metadata
-  run_as: string[]
-  transient_metadata: SecurityTransientMetadata
-  applications: SecurityPutRoleApplicationPrivileges[]
-  role_templates?: SecurityRoleTemplate[]
-}
-
-export interface SecurityXPackRoleMapping {
+export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
   roles: string[]
-  rules: SecurityPutRoleMappingRoleMappingRuleBase
+  rules: SecurityRoleMappingRuleBase
 }
 
-export interface SecurityXPackUser {
+export interface SecurityRoleMappingRuleBase {
+}
+
+export interface SecurityUser {
   email?: string
   full_name?: Name
   metadata: Metadata
@@ -12797,10 +12785,10 @@ export interface SecurityAuthenticateResponse {
   username: Username
   enabled: boolean
   authentication_type: string
-  token?: SecurityAuthenticateSecurityAuthenticateToken
+  token?: SecurityAuthenticateToken
 }
 
-export interface SecurityAuthenticateSecurityAuthenticateToken {
+export interface SecurityAuthenticateToken {
   name: Name
 }
 
@@ -12814,10 +12802,6 @@ export interface SecurityChangePasswordRequest extends RequestBase {
 
 export type SecurityChangePasswordResponse = boolean
 
-export interface SecurityClearApiKeyCacheClearApiKeyCacheNode {
-  name: Name
-}
-
 export interface SecurityClearApiKeyCacheRequest extends RequestBase {
   ids?: Ids
 }
@@ -12825,11 +12809,7 @@ export interface SecurityClearApiKeyCacheRequest extends RequestBase {
 export interface SecurityClearApiKeyCacheResponse {
   _nodes: NodeStatistics
   cluster_name: Name
-  nodes: Record<string, SecurityClearApiKeyCacheClearApiKeyCacheNode>
-}
-
-export interface SecurityClearCachedPrivilegesClearCachedPrivilegeNode {
-  name: Name
+  nodes: Record<string, SecurityClusterNode>
 }
 
 export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
@@ -12839,7 +12819,7 @@ export interface SecurityClearCachedPrivilegesRequest extends RequestBase {
 export interface SecurityClearCachedPrivilegesResponse {
   _nodes: NodeStatistics
   cluster_name: Name
-  nodes: Record<string, SecurityClearCachedPrivilegesClearCachedPrivilegeNode>
+  nodes: Record<string, SecurityClusterNode>
 }
 
 export interface SecurityClearCachedRealmsRequest extends RequestBase {
@@ -12863,21 +12843,21 @@ export interface SecurityClearCachedRolesResponse {
   _nodes: NodeStatistics
 }
 
-export interface SecurityCreateApiKeyApiKeyApplication {
-  application: string
-  privileges: string[]
-  resources: string[]
+export interface SecurityClearCachedServiceTokensRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+  name: Names
 }
 
-export interface SecurityCreateApiKeyApiKeyPrivileges {
+export interface SecurityClearCachedServiceTokensResponse {
+  _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, SecurityClusterNode>
+}
+
+export interface SecurityCreateApiKeyIndexPrivileges {
   names: Indices
   privileges: string[]
-}
-
-export interface SecurityCreateApiKeyApiKeyRole {
-  cluster: string[]
-  index: SecurityCreateApiKeyApiKeyPrivileges[]
-  applications?: SecurityCreateApiKeyApiKeyApplication[]
 }
 
 export interface SecurityCreateApiKeyRequest extends RequestBase {
@@ -12885,7 +12865,7 @@ export interface SecurityCreateApiKeyRequest extends RequestBase {
   body?: {
     expiration?: Time
     name?: Name
-    role_descriptors?: Record<string, SecurityCreateApiKeyApiKeyRole>
+    role_descriptors?: Record<string, SecurityCreateApiKeyRoleDescriptor>
     metadata?: Metadata
   }
 }
@@ -12897,7 +12877,29 @@ export interface SecurityCreateApiKeyResponse {
   name: Name
 }
 
-export interface SecurityDeletePrivilegesFoundUserPrivilege {
+export interface SecurityCreateApiKeyRoleDescriptor {
+  cluster: string[]
+  index: SecurityCreateApiKeyIndexPrivileges[]
+  applications?: SecurityApplicationPrivileges[]
+}
+
+export interface SecurityCreateServiceTokenRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+  name: Name
+}
+
+export interface SecurityCreateServiceTokenResponse {
+  created: boolean
+  token: SecurityCreateServiceTokenToken
+}
+
+export interface SecurityCreateServiceTokenToken {
+  name: Name
+  value: string
+}
+
+export interface SecurityDeletePrivilegesFoundStatus {
   found: boolean
 }
 
@@ -12928,6 +12930,17 @@ export interface SecurityDeleteRoleMappingResponse {
   found: boolean
 }
 
+export interface SecurityDeleteServiceTokenRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+  name: Name
+  refresh?: Refresh
+}
+
+export interface SecurityDeleteServiceTokenResponse {
+  found: boolean
+}
+
 export interface SecurityDeleteUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
@@ -12942,16 +12955,16 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export type SecurityDisableUserResponse = boolean
+export interface SecurityDisableUserResponse {}
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export type SecurityEnableUserResponse = boolean
+export interface SecurityEnableUserResponse {}
 
-export interface SecurityGetApiKeyApiKeys {
+export interface SecurityGetApiKeyApiKey {
   creation: long
   expiration?: long
   id: Id
@@ -12971,7 +12984,7 @@ export interface SecurityGetApiKeyRequest extends RequestBase {
 }
 
 export interface SecurityGetApiKeyResponse {
-  api_keys: SecurityGetApiKeyApiKeys[]
+  api_keys: SecurityGetApiKeyApiKey[]
 }
 
 export interface SecurityGetBuiltinPrivilegesRequest extends RequestBase {
@@ -13004,7 +13017,7 @@ export interface SecurityGetRoleMappingRequest extends RequestBase {
 export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityXPackRoleMapping> {
 }
 
-export interface SecurityGetTokenAuthenticatedUser extends SecurityXPackUser {
+export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
   authentication_realm: SecurityGetTokenUserRealm
   lookup_realm: SecurityGetTokenUserRealm
   authentication_provider?: SecurityGetTokenAuthenticationProvider
@@ -13018,7 +13031,7 @@ export interface SecurityGetTokenAuthenticationProvider {
 
 export interface SecurityGetTokenRequest extends RequestBase {
   body?: {
-    grant_type?: SecurityAccessTokenGrantType
+    grant_type?: SecurityGetTokenAccessTokenGrantType
     scope?: string
     password?: Password
     kerberos_ticket?: string
@@ -13082,23 +13095,11 @@ export interface SecurityGetUserPrivilegesRequest extends RequestBase {
 }
 
 export interface SecurityGetUserPrivilegesResponse {
-  applications: SecurityGetUserPrivilegesApplicationResourcePrivileges[]
+  applications: SecurityApplicationPrivileges[]
   cluster: string[]
-  global: SecurityGetUserPrivilegesGlobalPrivileges[]
-  indices: SecurityGetUserPrivilegesUserIndicesPrivileges[]
+  global: SecurityGlobalPrivileges[]
+  indices: SecurityIndicesPrivileges[]
   run_as: string[]
-}
-
-export interface SecurityGetUserPrivilegesTermUserPrivileges {
-  apps: boolean
-}
-
-export interface SecurityGetUserPrivilegesUserIndicesPrivileges {
-  field_security?: SecurityGetUserPrivilegesFieldSecuritySettings
-  names: string[]
-  privileges: string[]
-  query?: SecurityGetUserPrivilegesQueryUserPrivileges
-  allow_restricted_indices: boolean
 }
 
 export interface SecurityGrantApiKeyApiKey {
@@ -13194,20 +13195,16 @@ export interface SecurityInvalidateTokenResponse {
   previously_invalidated_tokens: long
 }
 
-export interface SecurityPutPrivilegesPrivilegesActions {
+export interface SecurityPutPrivilegesActions {
   actions: string[]
   application?: string
   name?: Name
   metadata?: Metadata
 }
 
-export interface SecurityPutPrivilegesPutPrivilegesStatus {
-  created: boolean
-}
-
 export interface SecurityPutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
-  body?: Record<string, Record<string, SecurityPutPrivilegesPrivilegesActions>>
+  body?: Record<string, Record<string, SecurityPutPrivilegesActions>>
 }
 
 export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPutPrivilegesStatus>> {
@@ -13235,18 +13232,18 @@ export interface SecurityPutRoleRequest extends RequestBase {
   name: Name
   refresh?: Refresh
   body?: {
-    applications?: SecurityPutRoleApplicationPrivileges[]
+    applications?: SecurityApplicationPrivileges[]
     cluster?: string[]
     global?: Record<string, any>
-    indices?: SecurityPutRoleIndicesPrivileges[]
+    indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
     run_as?: string[]
-    transient_metadata?: SecurityTransientMetadata
+    transient_metadata?: SecurityGetRoleTransientMetadata
   }
 }
 
 export interface SecurityPutRoleResponse {
-  role: SecurityPutRolePutRoleStatus
+  role: SecurityCreatedStatus
 }
 
 export interface SecurityPutRoleMappingRequest extends RequestBase {
@@ -13256,17 +13253,14 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
-    rules?: SecurityPutRoleMappingRoleMappingRuleBase
+    rules?: SecurityRoleMappingRuleBase
     run_as?: string[]
   }
 }
 
 export interface SecurityPutRoleMappingResponse {
   created?: boolean
-  role_mapping: SecurityPutRoleMappingStatus
-}
-
-export interface SecurityPutRoleMappingRoleMappingRuleBase {
+  role_mapping: SecurityCreatedStatus
 }
 
 export interface SecurityPutUserRequest extends RequestBase {

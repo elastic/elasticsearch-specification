@@ -17,6 +17,16 @@
  * under the License.
  */
 
-export class PutRoleMappingStatus {
-  created: boolean
+import { RequestBase } from '@_types/Base'
+import { Names } from '@_types/common'
+
+/**
+ * @rest_spec_name security.clear_cached_roles
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    name: Names
+  }
 }

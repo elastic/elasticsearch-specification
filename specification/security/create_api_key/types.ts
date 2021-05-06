@@ -17,16 +17,16 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { Indices } from '@_types/common'
 
-/**
- * @rest_spec_name security.clear_cached_roles
- * @since 0.0.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    name: Names
-  }
+export class RoleDescriptor {
+  cluster: string[]
+  index: IndexPrivileges[]
+  applications?: ApplicationPrivileges[]
+}
+
+export class IndexPrivileges {
+  names: Indices
+  privileges: string[]
 }

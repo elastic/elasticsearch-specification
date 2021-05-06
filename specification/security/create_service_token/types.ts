@@ -17,7 +17,9 @@
  * under the License.
  */
 
-export class IndexPrivilegesCheck {
-  names: string[]
-  privileges: string[]
+import { Name } from '@_types/common'
+
+export class Token {
+  name: Name
+  value: string
 }

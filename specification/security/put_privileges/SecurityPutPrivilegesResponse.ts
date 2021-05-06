@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { CreatedStatus } from '@security/_types/CreatedStatus'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
-import { PutPrivilegesStatus } from './PutPrivilegesStatus'
 
 export class Response extends DictionaryResponseBase<
   string,
-  Dictionary<string, PutPrivilegesStatus>
+  Dictionary<string, CreatedStatus>
 > {}

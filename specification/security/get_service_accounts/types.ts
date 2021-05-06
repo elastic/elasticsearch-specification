@@ -17,6 +17,23 @@
  * under the License.
  */
 
-export class PutPrivilegesStatus {
-  created: boolean
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { GlobalPrivileges } from '@security/_types/GlobalPrivileges'
+import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
+
+export class RoleDescriptorWrapper {
+  role_descriptor: RoleDescriptor
+}
+
+export class RoleDescriptor {
+  cluster: string[]
+  indices: IndicesPrivileges[]
+  global?: GlobalPrivileges[]
+  applications?: ApplicationPrivileges[]
+  metadata?: Metadata
+  run_as?: string[]
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }

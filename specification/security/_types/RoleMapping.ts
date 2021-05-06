@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { FieldSecuritySettings } from './FieldSecuritySettings'
-import { QueryUserPrivileges } from './QueryUserPrivileges'
+import { Metadata } from '@_types/common'
+import { RoleMappingRuleBase } from './RoleMappingRuleBase'
 
-export class UserIndicesPrivileges {
-  field_security?: FieldSecuritySettings
-  names: string[]
-  privileges: string[]
-  query?: QueryUserPrivileges
-  allow_restricted_indices: boolean
+export class RoleMapping {
+  enabled: boolean
+  metadata: Metadata
+  roles: string[]
+  rules: RoleMappingRuleBase
 }

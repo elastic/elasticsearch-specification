@@ -17,11 +17,22 @@
  * under the License.
  */
 
-import { ApiKeyApplication } from './ApiKeyApplication'
-import { ApiKeyPrivileges } from './ApiKeyPrivileges'
+import { RequestBase } from '@_types/Base'
+import { Name, Namespace, Refresh, Service } from '@_types/common'
 
-export class ApiKeyRole {
-  cluster: string[]
-  index: ApiKeyPrivileges[]
-  applications?: ApiKeyApplication[]
+/**
+ * @rest_spec_name security.delete_service_token
+ * @since 5.5.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts?: {
+    namespace: Namespace
+    service: Service
+    name: Name
+  }
+  query_parameters?: {
+    refresh?: Refresh
+  }
+  body?: {}
 }

@@ -18,7 +18,8 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName, Name, Username } from '@_types/common'
+import { IndexName, Username } from '@_types/common'
+import { ApplicationsPrivileges, Privileges } from './types'
 
 export class Response {
   body: {
@@ -29,7 +30,3 @@ export class Response {
     username: Username
   }
 }
-
-export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>
-export type ResourcePrivileges = Dictionary<Name, Privileges>
-export type Privileges = Dictionary<string, boolean>

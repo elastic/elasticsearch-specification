@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { XPackUser } from '@security/_types/XPackUser'
+import { User } from '@security/_types/User'
 import { DictionaryResponseBase } from '@_types/Base'
 
-export class Response extends DictionaryResponseBase<string, XPackUser> {}
+export class Response extends DictionaryResponseBase<string, User> {}

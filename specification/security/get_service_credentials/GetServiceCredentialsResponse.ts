@@ -17,12 +17,16 @@
  * under the License.
  */
 
-import { RoleMappingRuleBase } from '@security/put_role_mapping/SecurityPutRoleMappingRequest'
-import { Metadata } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { EmptyObject, NodeName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
-export class XPackRoleMapping {
-  enabled: boolean
-  metadata: Metadata
-  roles: string[]
-  rules: RoleMappingRuleBase
+export class Response {
+  body: {
+    service_account: string
+    node_name: NodeName
+    count: integer
+    tokens: Dictionary<string, EmptyObject>
+    file_tokens: Dictionary<string, EmptyObject>
+  }
 }

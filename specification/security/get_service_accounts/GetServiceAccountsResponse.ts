@@ -17,8 +17,10 @@
  * under the License.
  */
 
-export class ApplicationResourcePrivileges {
-  application: string
-  privileges: string[]
-  resources: string[]
-}
+import { DictionaryResponseBase } from '@_types/Base'
+import { RoleDescriptorWrapper } from './types'
+
+export class Response extends DictionaryResponseBase<
+  string,
+  RoleDescriptorWrapper
+> {}

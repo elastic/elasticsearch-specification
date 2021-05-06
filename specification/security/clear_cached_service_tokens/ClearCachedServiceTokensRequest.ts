@@ -17,8 +17,18 @@
  * under the License.
  */
 
-import { TermUserPrivileges } from './TermUserPrivileges'
+import { RequestBase } from '@_types/Base'
+import { Names, Namespace, Service } from '@_types/common'
 
-export class QueryUserPrivileges {
-  term: TermUserPrivileges
+/**
+ * @rest_spec_name security.clear_cached_service_tokens
+ * @since 0.0.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    namespace: Namespace
+    service: Service
+    name: Names
+  }
 }

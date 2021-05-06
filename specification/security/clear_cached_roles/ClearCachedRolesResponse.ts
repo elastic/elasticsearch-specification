@@ -17,8 +17,15 @@
  * under the License.
  */
 
+import { ClusterNode } from '@security/_types/ClusterNode'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
+import { NodeStatistics } from '@_types/Stats'
 
-export class SecurityNode {
-  name: Name
+export class Response {
+  body: {
+    _nodes: NodeStatistics
+    cluster_name: Name
+    nodes: Dictionary<string, ClusterNode>
+  }
 }

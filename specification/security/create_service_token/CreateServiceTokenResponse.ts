@@ -17,13 +17,11 @@
  * under the License.
  */
 
-import { Metadata, Name, Username } from '@_types/common'
+import { Token } from './types'
 
-export class XPackUser {
-  email?: string
-  full_name?: Name
-  metadata: Metadata
-  roles: string[]
-  username: Username
-  enabled: boolean
+export class Response {
+  body: {
+    created: boolean
+    token: Token
+  }
 }

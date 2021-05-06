@@ -19,12 +19,9 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { DictionaryResponseBase } from '@_types/Base'
+import { FoundStatus } from './types'
 
 export class Response extends DictionaryResponseBase<
   string,
-  Dictionary<string, FoundUserPrivilege>
+  Dictionary<string, FoundStatus>
 > {}
-
-export class FoundUserPrivilege {
-  found: boolean
-}

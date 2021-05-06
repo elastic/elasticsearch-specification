@@ -17,8 +17,17 @@
  * under the License.
  */
 
-export class ApplicationPrivilegesCheck {
-  application: string
-  privileges: string[]
-  resources: string[]
+import { Id, Metadata, Name, Username } from '@_types/common'
+import { long } from '@_types/Numeric'
+
+export class ApiKey {
+  creation: long
+  expiration?: long
+  id: Id
+  invalidated: boolean
+  name: Name
+  realm: string
+  username: Username
+  /** @since 7.13.0 */
+  metadata?: Metadata
 }

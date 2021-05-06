@@ -17,6 +17,20 @@
  * under the License.
  */
 
-export class PutRoleStatus {
-  created: boolean
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Name } from '@_types/common'
+
+export class ApplicationPrivilegesCheck {
+  application: string
+  privileges: string[]
+  resources: string[]
 }
+
+export class IndexPrivilegesCheck {
+  names: string[]
+  privileges: string[]
+}
+
+export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>
+export type ResourcePrivileges = Dictionary<Name, Privileges>
+export type Privileges = Dictionary<string, boolean>

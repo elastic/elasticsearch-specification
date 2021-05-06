@@ -17,16 +17,6 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@_types/Node'
-import { Name } from '@_types/common'
-import { NodeStatistics } from '@_types/Stats'
-import { WatcherNodeStats } from './types'
-
 export class Response {
-  body: {
-    cluster_name: Name
-    manually_stopped: boolean
-    stats: WatcherNodeStats[]
-    _nodes: NodeStatistics
-  }
+  body: { found: boolean }
 }

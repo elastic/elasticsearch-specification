@@ -17,17 +17,4 @@
  * under the License.
  */
 
-import { Id, Metadata, Name, Username } from '@_types/common'
-import { long } from '@_types/Numeric'
-
-export class ApiKeys {
-  creation: long
-  expiration?: long
-  id: Id
-  invalidated: boolean
-  name: Name
-  realm: string
-  username: Username
-  /** @since 7.13.0 */
-  metadata?: Metadata
-}
+export class RoleMappingRuleBase {}

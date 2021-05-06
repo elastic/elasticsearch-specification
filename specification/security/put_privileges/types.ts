@@ -17,16 +17,11 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@_types/Node'
-import { Name } from '@_types/common'
-import { NodeStatistics } from '@_types/Stats'
-import { WatcherNodeStats } from './types'
+import { Metadata, Name } from '@_types/common'
 
-export class Response {
-  body: {
-    cluster_name: Name
-    manually_stopped: boolean
-    stats: WatcherNodeStats[]
-    _nodes: NodeStatistics
-  }
+export class Actions {
+  actions: string[]
+  application?: string
+  name?: Name
+  metadata?: Metadata
 }

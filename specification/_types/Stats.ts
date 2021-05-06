@@ -20,7 +20,7 @@
 import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
-import { ShardFailure } from './Errors'
+import { ErrorCause, ShardFailure } from './Errors'
 import { integer, long, uint } from './Numeric'
 
 export class ClusterStatistics {
@@ -249,4 +249,14 @@ export class WarmerStats {
   total: long
   total_time?: string
   total_time_in_millis: long
+}
+
+export class NodeStatistics {
+  failures?: ErrorCause[]
+  /** Total number of nodes selected by the request. */
+  total: integer
+  /** Number of nodes that responded successfully to the request. */
+  successful: integer
+  /** Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response. */
+  failed: integer
 }

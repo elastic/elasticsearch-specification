@@ -17,16 +17,18 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@_types/Node'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Name } from '@_types/common'
-import { NodeStatistics } from '@_types/Stats'
-import { WatcherNodeStats } from './types'
+import { Time } from '@_types/Time'
 
-export class Response {
-  body: {
-    cluster_name: Name
-    manually_stopped: boolean
-    stats: WatcherNodeStats[]
-    _nodes: NodeStatistics
-  }
+export class ApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: Dictionary<string, UserDefinedValue>[]
+}
+
+export enum ApiKeyGrantType {
+  access_token = 0,
+  password = 1
 }

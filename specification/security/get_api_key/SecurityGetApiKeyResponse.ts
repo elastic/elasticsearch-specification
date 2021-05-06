@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ApiKeys } from './ApiKeys'
+import { ApiKey } from './types'
 
 export class Response {
-  body: { api_keys: ApiKeys[] }
+  body: { api_keys: ApiKey[] }
 }
