@@ -85632,7 +85632,14 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
@@ -88667,7 +88674,14 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
@@ -123016,7 +123030,8 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": []
       },
       "kind": "response",
       "name": {
@@ -124091,7 +124106,8 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": []
       },
       "kind": "response",
       "name": {
@@ -124146,7 +124162,8 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": []
       },
       "kind": "response",
       "name": {
