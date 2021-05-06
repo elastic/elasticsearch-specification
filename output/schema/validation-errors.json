@@ -1440,13 +1440,13 @@
     },
     "security.clear_cached_service_tokens": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
     "security.create_service_token": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -1470,7 +1470,7 @@
     },
     "security.delete_service_token": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -1524,13 +1524,13 @@
     },
     "security.get_service_accounts": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
     "security.get_service_credentials": {
       "request": [
-        "Missing request & response"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },

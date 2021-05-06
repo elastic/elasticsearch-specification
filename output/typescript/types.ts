@@ -2037,6 +2037,8 @@ export type Name = string
 
 export type Names = string | string[]
 
+export type Namespace = string
+
 export interface NodeAttributes {
   attributes: Record<string, string>
   ephemeral_id: Id
@@ -12829,7 +12831,7 @@ export interface SecurityClearCachedRealmsRequest extends RequestBase {
 
 export interface SecurityClearCachedRealmsResponse {
   cluster_name: Name
-  nodes: Record<string, SecuritySecurityNode>
+  nodes: Record<string, SecurityClusterNode>
   _nodes: NodeStatistics
 }
 
@@ -12838,9 +12840,9 @@ export interface SecurityClearCachedRolesRequest extends RequestBase {
 }
 
 export interface SecurityClearCachedRolesResponse {
-  cluster_name: string
-  nodes: Record<string, SecuritySecurityNode>
   _nodes: NodeStatistics
+  cluster_name: Name
+  nodes: Record<string, SecurityClusterNode>
 }
 
 export interface SecurityClearCachedServiceTokensRequest extends RequestBase {
@@ -12909,7 +12911,7 @@ export interface SecurityDeletePrivilegesRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDeletePrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityDeletePrivilegesFoundUserPrivilege>> {
+export interface SecurityDeletePrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityDeletePrivilegesFoundStatus>> {
 }
 
 export interface SecurityDeleteRoleRequest extends RequestBase {
@@ -12955,14 +12957,14 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export interface SecurityDisableUserResponse {}
+export type SecurityDisableUserResponse = boolean
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export interface SecurityEnableUserResponse {}
+export type SecurityEnableUserResponse = boolean
 
 export interface SecurityGetApiKeyApiKey {
   creation: long
@@ -13000,22 +13002,100 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPrivilegesActions>> {
+export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesActions>> {
+}
+
+export interface SecurityGetRoleInlineRoleTemplate {
+  template: SecurityGetRoleInlineRoleTemplateSource
+  format?: SecurityGetRoleTemplateFormat
+}
+
+export interface SecurityGetRoleInlineRoleTemplateSource {
+  source: string
+}
+
+export interface SecurityGetRoleInvalidRoleTemplate {
+  template: string
+  format?: SecurityGetRoleTemplateFormat
 }
 
 export interface SecurityGetRoleRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityXPackRole> {
+export interface SecurityGetRoleResponse extends DictionaryResponseBase<string, SecurityGetRoleRole> {
+}
+
+export interface SecurityGetRoleRole {
+  cluster: string[]
+  indices: SecurityIndicesPrivileges[]
+  metadata: Metadata
+  run_as: string[]
+  transient_metadata: SecurityGetRoleTransientMetadata
+  applications: SecurityApplicationPrivileges[]
+  role_templates?: SecurityGetRoleRoleTemplate[]
+}
+
+export type SecurityGetRoleRoleTemplate = SecurityGetRoleInlineRoleTemplate | SecurityGetRoleStoredRoleTemplate | SecurityGetRoleInvalidRoleTemplate
+
+export interface SecurityGetRoleStoredRoleTemplate {
+  template: SecurityGetRoleStoredRoleTemplateId
+  format?: SecurityGetRoleTemplateFormat
+}
+
+export interface SecurityGetRoleStoredRoleTemplateId {
+  id: string
+}
+
+export type SecurityGetRoleTemplateFormat = 'string' | 'json'
+
+export interface SecurityGetRoleTransientMetadata {
+  enabled: boolean
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityXPackRoleMapping> {
+export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityRoleMapping> {
 }
+
+export interface SecurityGetServiceAccountsRequest extends RequestBase {
+  namespace?: Namespace
+  service?: Service
+}
+
+export interface SecurityGetServiceAccountsResponse extends DictionaryResponseBase<string, SecurityGetServiceAccountsRoleDescriptorWrapper> {
+}
+
+export interface SecurityGetServiceAccountsRoleDescriptor {
+  cluster: string[]
+  indices: SecurityIndicesPrivileges[]
+  global?: SecurityGlobalPrivileges[]
+  applications?: SecurityApplicationPrivileges[]
+  metadata?: Metadata
+  run_as?: string[]
+  transient_metadata?: Record<string, any>
+}
+
+export interface SecurityGetServiceAccountsRoleDescriptorWrapper {
+  role_descriptor: SecurityGetServiceAccountsRoleDescriptor
+}
+
+export interface SecurityGetServiceCredentialsRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+}
+
+export interface SecurityGetServiceCredentialsResponse {
+  service_account: string
+  node_name: NodeName
+  count: integer
+  tokens: Record<string, EmptyObject>
+  file_tokens: Record<string, EmptyObject>
+}
+
+export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
 
 export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
   authentication_realm: SecurityGetTokenUserRealm
@@ -13059,34 +13139,7 @@ export interface SecurityGetUserRequest extends RequestBase {
   username?: Username | Username[]
 }
 
-export interface SecurityGetUserResponse extends DictionaryResponseBase<string, SecurityXPackUser> {
-}
-
-export interface SecurityGetUserPrivilegesApplicationGlobalUserPrivileges {
-  manage: SecurityGetUserPrivilegesManageUserPrivileges
-}
-
-export interface SecurityGetUserPrivilegesApplicationResourcePrivileges {
-  application: string
-  privileges: string[]
-  resources: string[]
-}
-
-export interface SecurityGetUserPrivilegesFieldSecuritySettings {
-  except: string[]
-  grant: string[]
-}
-
-export interface SecurityGetUserPrivilegesGlobalPrivileges {
-  application: SecurityGetUserPrivilegesApplicationGlobalUserPrivileges
-}
-
-export interface SecurityGetUserPrivilegesManageUserPrivileges {
-  applications: string[]
-}
-
-export interface SecurityGetUserPrivilegesQueryUserPrivileges {
-  term: SecurityGetUserPrivilegesTermUserPrivileges
+export interface SecurityGetUserResponse extends DictionaryResponseBase<string, SecurityUser> {
 }
 
 export interface SecurityGetUserPrivilegesRequest extends RequestBase {
@@ -13207,25 +13260,7 @@ export interface SecurityPutPrivilegesRequest extends RequestBase {
   body?: Record<string, Record<string, SecurityPutPrivilegesActions>>
 }
 
-export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesPutPrivilegesStatus>> {
-}
-
-export interface SecurityPutRoleApplicationPrivileges {
-  application: string
-  privileges: string[]
-  resources: string[]
-}
-
-export interface SecurityPutRoleIndicesPrivileges {
-  field_security?: SecurityFieldSecurity
-  names: Indices
-  privileges: string[]
-  query?: string | QueryDslQueryContainer
-  allow_restricted_indices?: boolean
-}
-
-export interface SecurityPutRolePutRoleStatus {
-  created: boolean
+export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityCreatedStatus>> {
 }
 
 export interface SecurityPutRoleRequest extends RequestBase {

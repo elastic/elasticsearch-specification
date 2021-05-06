@@ -31411,6 +31411,20 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Namespace",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NodeAttributes",
@@ -31504,20 +31518,6 @@
     {
       "kind": "type_alias",
       "name": {
-        "name": "Namespace",
-        "namespace": "_types"
-      },
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
         "name": "NodeId",
         "namespace": "_types"
       },
@@ -31557,65 +31557,6 @@
           "namespace": "internal"
         }
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeStatistics",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "failures",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ErrorCause",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Total number of nodes selected by the request.",
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nodes that responded successfully to the request.",
-          "name": "successful",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
-          "name": "failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "enum",
@@ -123383,17 +123324,6 @@
                 }
               }
             }
-          },
-          {
-            "name": "_nodes",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStatistics",
-                "namespace": "_types"
-              }
-            }
           }
         ]
       },
@@ -123407,6 +123337,9 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -123752,6 +123685,9 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124215,6 +124151,9 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125171,6 +125110,9 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125209,6 +125151,10 @@
       "query": []
     },
     {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
       "inherits": {
         "generics": [
           {
@@ -125369,6 +125315,9 @@
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",

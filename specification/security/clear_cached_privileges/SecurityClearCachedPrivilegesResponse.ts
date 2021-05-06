@@ -20,7 +20,7 @@
 import { ClusterNode } from '@security/_types/ClusterNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { NodeStatistics } from '@_types/Stats'
+import { NodeStatistics } from '@_types/Node'
 
 export class Response {
   body: {

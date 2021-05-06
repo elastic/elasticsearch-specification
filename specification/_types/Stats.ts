@@ -250,13 +250,3 @@ export class WarmerStats {
   total_time?: string
   total_time_in_millis: long
 }
-
-export class NodeStatistics {
-  failures?: ErrorCause[]
-  /** Total number of nodes selected by the request. */
-  total: integer
-  /** Number of nodes that responded successfully to the request. */
-  successful: integer
-  /** Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response. */
-  failed: integer
-}
