@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { ClusterOperatingSystemPrettyName } from '@nodes/nodes_info/ClusterOperatingSystemPrettyName'
+import { Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { ClusterOperatingSystemArchitecture } from './ClusterOperatingSystemArchitecture'
-import { ClusterOperatingSystemName } from './ClusterOperatingSystemName'
 import { OperatingSystemMemoryInfo } from './OperatingSystemMemoryInfo'
 
 export class ClusterOperatingSystemStats {
@@ -28,6 +27,11 @@ export class ClusterOperatingSystemStats {
   available_processors: integer
   mem: OperatingSystemMemoryInfo
   names: ClusterOperatingSystemName[]
-  pretty_names: ClusterOperatingSystemPrettyName[]
+  pretty_names: ClusterOperatingSystemName[]
   architectures?: ClusterOperatingSystemArchitecture[]
+}
+
+export class ClusterOperatingSystemName {
+  count: integer
+  name: Name
 }

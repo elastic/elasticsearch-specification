@@ -1741,7 +1741,7 @@ export interface SpecUtilsBaseNode {
   host: Host
   ip: Ip
   name: Name
-  roles?: NodesNodesInfoNodeRole[]
+  roles?: NodeRoles
   transport_address: TransportAddress
 }
 
@@ -2036,7 +2036,7 @@ export interface NodeAttributes {
   id?: Id
   name: NodeName
   transport_address: TransportAddress
-  roles?: NodesNodesInfoNodeRoles
+  roles?: NodeRoles
 }
 
 export type NodeId = string
@@ -2044,6 +2044,10 @@ export type NodeId = string
 export type NodeIds = string
 
 export type NodeName = string
+
+export type NodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
+
+export type NodeRoles = NodeRole[]
 
 export interface NodeShard {
   state: IndicesStatsShardRoutingState
@@ -7528,7 +7532,7 @@ export interface ClusterClusterStatsClusterOperatingSystemArchitecture {
 
 export interface ClusterClusterStatsClusterOperatingSystemName {
   count: integer
-  name: string
+  name: Name
 }
 
 export interface ClusterClusterStatsClusterOperatingSystemStats {
@@ -7536,7 +7540,7 @@ export interface ClusterClusterStatsClusterOperatingSystemStats {
   available_processors: integer
   mem: ClusterClusterStatsOperatingSystemMemoryInfo
   names: ClusterClusterStatsClusterOperatingSystemName[]
-  pretty_names: NodesNodesInfoClusterOperatingSystemPrettyName[]
+  pretty_names: ClusterClusterStatsClusterOperatingSystemName[]
   architectures?: ClusterClusterStatsClusterOperatingSystemArchitecture[]
 }
 
@@ -11797,11 +11801,6 @@ export interface NodesNodesHotThreadsResponse {
   hot_threads: NodesNodesHotThreadsHotThread[]
 }
 
-export interface NodesNodesInfoClusterOperatingSystemPrettyName {
-  count: integer
-  pretty_name: string
-}
-
 export interface NodesNodesInfoNodeInfo {
   attributes: Record<string, string>
   build_flavor: string
@@ -11816,7 +11815,7 @@ export interface NodesNodesInfoNodeInfo {
   os?: NodesNodesInfoNodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodesNodesInfoNodeProcessInfo
-  roles: NodesNodesInfoNodeRole[]
+  roles: NodeRoles
   settings?: NodesNodesInfoNodeInfoSettings
   thread_pool?: Record<string, NodesNodesInfoNodeThreadPoolInfo>
   total_indexing_buffer?: long
@@ -11890,7 +11889,7 @@ export interface NodesNodesInfoNodeInfoNetwork {
 export interface NodesNodesInfoNodeInfoNetworkInterface {
   address: string
   mac_address: string
-  name: string
+  name: Name
 }
 
 export interface NodesNodesInfoNodeInfoOSCPU {
@@ -12081,10 +12080,6 @@ export interface NodesNodesInfoNodeProcessInfo {
   refresh_interval_in_millis: long
 }
 
-export type NodesNodesInfoNodeRole = 'master' | 'data' | 'data_cold' | 'data_content' | 'data_frozen' | 'data_hot' | 'data_warm' | 'client' | 'ingest' | 'ml' | 'voting_only' | 'transform' | 'remote_cluster_client' | 'coordinating_only'
-
-export type NodesNodesInfoNodeRoles = NodesNodesInfoNodeRole[]
-
 export interface NodesNodesInfoNodeThreadPoolInfo {
   core?: integer
   keep_alive?: string
@@ -12235,7 +12230,7 @@ export interface NodesNodesStatsNodeStats {
   name: Name
   os: NodesNodesStatsOperatingSystemStats
   process: NodesNodesStatsProcessStats
-  roles: NodesNodesInfoNodeRole[]
+  roles: NodeRoles
   script: NodesNodesStatsScriptStats
   thread_pool: Record<string, NodesNodesStatsThreadCountStats>
   timestamp: long

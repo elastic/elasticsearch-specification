@@ -24,14 +24,7 @@ import { ByteSize, Name, VersionString } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { integer, long } from '@_types/Numeric'
 import { PluginStats } from '@_types/Stats'
-import { NodeInfoHttp } from './NodeInfoHttp'
-import { NodeInfoNetwork } from './NodeInfoNetwork'
-import { NodeInfoTransport } from './NodeInfoTransport'
-import { NodeJvmInfo } from './NodeJvmInfo'
-import { NodeOperatingSystemInfo } from './NodeOperatingSystemInfo'
-import { NodeProcessInfo } from './NodeProcessInfo'
-import { NodeRole } from './NodeRole'
-import { NodeThreadPoolInfo } from './NodeThreadPoolInfo'
+import { NodeRoles } from '@_types/Node'
 
 export class NodeInfo {
   attributes: Dictionary<string, string>
@@ -51,7 +44,7 @@ export class NodeInfo {
   os?: NodeOperatingSystemInfo
   plugins?: PluginStats[]
   process?: NodeProcessInfo
-  roles: NodeRole[]
+  roles: NodeRoles
   settings?: NodeInfoSettings
   thread_pool?: Dictionary<string, NodeThreadPoolInfo>
   /**
@@ -233,4 +226,110 @@ export class NodeInfoSearch {
 
 export class NodeInfoSearchRemote {
   connect: string
+}
+
+export class NodeThreadPoolInfo {
+  core?: integer
+  keep_alive?: string
+  max?: integer
+  queue_size: integer
+  size?: integer
+  type: string
+}
+
+export class NodeInfoHttp {
+  bound_address: string[]
+  max_content_length?: ByteSize
+  max_content_length_in_bytes: long
+  publish_address: string
+}
+
+export class NodeInfoJvmMemory {
+  direct_max?: ByteSize
+  direct_max_in_bytes: long
+  heap_init?: ByteSize
+  heap_init_in_bytes: long
+  heap_max?: ByteSize
+  heap_max_in_bytes: long
+  non_heap_init?: ByteSize
+  non_heap_init_in_bytes: long
+  non_heap_max?: ByteSize
+  non_heap_max_in_bytes: long
+}
+
+export class NodeInfoMemory {
+  total: string
+  total_in_bytes: long
+}
+
+export class NodeInfoNetwork {
+  primary_interface: NodeInfoNetworkInterface
+  refresh_interval: integer
+}
+
+export class NodeInfoNetworkInterface {
+  address: string
+  mac_address: string
+  name: Name
+}
+
+export class NodeInfoOSCPU {
+  cache_size: string
+  cache_size_in_bytes: integer
+  cores_per_socket: integer
+  mhz: integer
+  model: string
+  total_cores: integer
+  total_sockets: integer
+  vendor: string
+}
+
+export class NodeInfoTransport {
+  bound_address: string[]
+  publish_address: string
+  profiles: Dictionary<string, string>
+}
+
+export class NodeJvmInfo {
+  gc_collectors: string[]
+  mem: NodeInfoJvmMemory
+  memory_pools: string[]
+  pid: integer
+  start_time_in_millis: long
+  version: VersionString
+  vm_name: Name
+  vm_vendor: string
+  vm_version: VersionString
+  bundled_jdk: boolean
+  using_bundled_jdk: boolean
+  using_compressed_ordinary_object_pointers?: boolean | string
+  input_arguments: string[]
+}
+
+export class NodeOperatingSystemInfo {
+  /** Name of the JVM architecture (ex: amd64, x86) */
+  arch: string
+  /** Number of processors available to the Java virtual machine */
+  available_processors: integer
+  /** The number of processors actually used to calculate thread pool size. This number can be set with the node.processors setting of a node and defaults to the number of processors reported by the OS. */
+  allocated_processors?: integer
+  /** Name of the operating system (ex: Linux, Windows, Mac OS X) */
+  name: Name
+  pretty_name: Name
+  /** Refresh interval for the OS statistics */
+  refresh_interval_in_millis: integer
+  /** Version of the operating system */
+  version: VersionString
+  cpu?: NodeInfoOSCPU
+  mem?: NodeInfoMemory
+  swap?: NodeInfoMemory
+}
+
+export class NodeProcessInfo {
+  /** Process identifier (PID) */
+  id: long
+  /** Indicates if the process address space has been successfully locked in memory */
+  mlockall: boolean
+  /** Refresh interval for the process statistics */
+  refresh_interval_in_millis: long
 }

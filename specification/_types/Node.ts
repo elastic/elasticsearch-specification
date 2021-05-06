@@ -19,7 +19,6 @@
 
 import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
 import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
-import { NodeRoles } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
@@ -60,3 +59,28 @@ export class NodeShard {
   recovery_source?: Dictionary<string, Id>
   unassigned_info?: UnassignedInformation
 }
+
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ */
+ export enum NodeRole {
+  master = 0,
+  data = 1,
+  data_cold = 2,
+  data_content = 3,
+  data_frozen = 4,
+  data_hot = 5,
+  data_warm = 6,
+  client = 7,
+  ingest = 8,
+  ml = 9,
+  voting_only = 10,
+  transform = 11,
+  remote_cluster_client = 12,
+  coordinating_only = 13
+}
+
+/**
+ * * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles
+ */
+export type NodeRoles = NodeRole[]

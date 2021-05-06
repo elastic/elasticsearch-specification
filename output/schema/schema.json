@@ -28710,13 +28710,10 @@
           "name": "roles",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeRole",
-                "namespace": "nodes.nodes_info"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "_types"
             }
           }
         },
@@ -31395,7 +31392,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeRoles",
-              "namespace": "nodes.nodes_info"
+              "namespace": "_types"
             }
           }
         }
@@ -31441,6 +31438,75 @@
         "type": {
           "name": "string",
           "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "master"
+        },
+        {
+          "name": "data"
+        },
+        {
+          "name": "data_cold"
+        },
+        {
+          "name": "data_content"
+        },
+        {
+          "name": "data_frozen"
+        },
+        {
+          "name": "data_hot"
+        },
+        {
+          "name": "data_warm"
+        },
+        {
+          "name": "client"
+        },
+        {
+          "name": "ingest"
+        },
+        {
+          "name": "ml"
+        },
+        {
+          "name": "voting_only"
+        },
+        {
+          "name": "transform"
+        },
+        {
+          "name": "remote_cluster_client"
+        },
+        {
+          "name": "coordinating_only"
+        }
+      ],
+      "name": {
+        "name": "NodeRole",
+        "namespace": "_types"
+      }
+    },
+    {
+      "description": "* @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles",
+      "kind": "type_alias",
+      "name": {
+        "name": "NodeRoles",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "NodeRole",
+            "namespace": "_types"
+          }
         }
       }
     },
@@ -77653,8 +77719,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
@@ -77722,8 +77788,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterOperatingSystemPrettyName",
-                "namespace": "nodes.nodes_info"
+                "name": "ClusterOperatingSystemName",
+                "namespace": "cluster.cluster_stats"
               }
             }
           }
@@ -114445,37 +114511,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterOperatingSystemPrettyName",
-        "namespace": "nodes.nodes_info"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "pretty_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "NodeInfo",
         "namespace": "nodes.nodes_info"
       },
@@ -114645,13 +114680,10 @@
           "name": "roles",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeRole",
-                "namespace": "nodes.nodes_info"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "_types"
             }
           }
         },
@@ -115215,8 +115247,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
@@ -116727,75 +116759,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "master"
-        },
-        {
-          "name": "data"
-        },
-        {
-          "name": "data_cold"
-        },
-        {
-          "name": "data_content"
-        },
-        {
-          "name": "data_frozen"
-        },
-        {
-          "name": "data_hot"
-        },
-        {
-          "name": "data_warm"
-        },
-        {
-          "name": "client"
-        },
-        {
-          "name": "ingest"
-        },
-        {
-          "name": "ml"
-        },
-        {
-          "name": "voting_only"
-        },
-        {
-          "name": "transform"
-        },
-        {
-          "name": "remote_cluster_client"
-        },
-        {
-          "name": "coordinating_only"
-        }
-      ],
-      "name": {
-        "name": "NodeRole",
-        "namespace": "nodes.nodes_info"
-      }
-    },
-    {
-      "description": "* @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#node-roles",
-      "kind": "type_alias",
-      "name": {
-        "name": "NodeRoles",
-        "namespace": "nodes.nodes_info"
-      },
-      "type": {
-        "kind": "array_of",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "NodeRole",
-            "namespace": "nodes.nodes_info"
-          }
-        }
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "NodeThreadPoolInfo",
@@ -118179,13 +118142,10 @@
           "name": "roles",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeRole",
-                "namespace": "nodes.nodes_info"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeRoles",
+              "namespace": "_types"
             }
           }
         },

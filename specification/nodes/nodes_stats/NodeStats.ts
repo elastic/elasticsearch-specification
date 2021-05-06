@@ -18,10 +18,10 @@
  */
 
 import { IndexStats } from '@indices/stats/IndexStats'
-import { NodeRole } from '@nodes/nodes_info/NodeRole'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
+import { NodeRoles } from '@_types/Node'
 import { long } from '@_types/Numeric'
 import { AdaptiveSelectionStats } from './AdaptiveSelectionStats'
 import { BreakerStats } from './BreakerStats'
@@ -48,7 +48,7 @@ export class NodeStats {
   name: Name
   os: OperatingSystemStats
   process: ProcessStats
-  roles: NodeRole[]
+  roles: NodeRoles
   script: ScriptStats
   thread_pool: Dictionary<string, ThreadCountStats>
   timestamp: long

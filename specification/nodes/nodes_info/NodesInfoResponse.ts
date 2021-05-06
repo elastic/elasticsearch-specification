@@ -20,7 +20,7 @@
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { NodeInfo } from './NodeInfo'
+import { NodeInfo } from './types'
 
 export class Response extends NodesResponseBase {
   body: {
