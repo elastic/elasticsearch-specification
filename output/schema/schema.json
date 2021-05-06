@@ -78719,7 +78719,38 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EnrichPolicy",
+        "name": "Configuration",
+        "namespace": "enrich._types"
+      },
+      "properties": [
+        {
+          "name": "geo_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Policy",
+              "namespace": "enrich._types"
+            }
+          }
+        },
+        {
+          "name": "match",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Policy",
+              "namespace": "enrich._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Policy",
         "namespace": "enrich._types"
       },
       "properties": [
@@ -78770,66 +78801,9 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "EnrichPolicy",
-          "namespace": "enrich._types"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "NamedPolicy",
-        "namespace": "enrich._types"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NamedPolicyConfig",
-        "namespace": "enrich._types"
-      },
-      "properties": [
-        {
-          "name": "geo_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedPolicy",
-              "namespace": "enrich._types"
-            }
-          }
-        },
-        {
-          "name": "match",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedPolicy",
-              "namespace": "enrich._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NamedPolicyMetadata",
+        "name": "Summary",
         "namespace": "enrich._types"
       },
       "properties": [
@@ -78839,7 +78813,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "NamedPolicyConfig",
+              "name": "Configuration",
               "namespace": "enrich._types"
             }
           }
@@ -79061,7 +79035,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "NamedPolicyMetadata",
+                  "name": "Summary",
                   "namespace": "enrich._types"
                 }
               }
@@ -79088,7 +79062,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "EnrichPolicy",
+                "name": "Policy",
                 "namespace": "enrich._types"
               }
             }
@@ -79099,7 +79073,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "EnrichPolicy",
+                "name": "Policy",
                 "namespace": "enrich._types"
               }
             }
@@ -79173,8 +79147,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         },
@@ -79226,8 +79200,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         },
