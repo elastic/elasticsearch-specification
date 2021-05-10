@@ -17,6 +17,10 @@
  * under the License.
  */
 
+export class ExecuteEnrichPolicyStatus {
+  phase: EnrichPolicyPhase
+}
+
 export enum EnrichPolicyPhase {
   SCHEDULED = 0,
   RUNNING = 1,

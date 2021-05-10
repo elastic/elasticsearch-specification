@@ -7662,24 +7662,20 @@ export interface DanglingIndicesIndicesListResponse {
   stub: integer
 }
 
-export interface EnrichEnrichPolicy {
+export interface EnrichConfiguration {
+  geo_match?: EnrichPolicy
+  match: EnrichPolicy
+}
+
+export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string
 }
 
-export interface EnrichNamedPolicy extends EnrichEnrichPolicy {
-  name: string
-}
-
-export interface EnrichNamedPolicyConfig {
-  geo_match?: EnrichNamedPolicy
-  match: EnrichNamedPolicy
-}
-
-export interface EnrichNamedPolicyMetadata {
-  config: EnrichNamedPolicyConfig
+export interface EnrichSummary {
+  config: EnrichConfiguration
 }
 
 export interface EnrichDeletePolicyRequest extends RequestBase {
@@ -7710,14 +7706,14 @@ export interface EnrichGetPolicyRequest extends RequestBase {
 }
 
 export interface EnrichGetPolicyResponse {
-  policies: EnrichNamedPolicyMetadata[]
+  policies: EnrichSummary[]
 }
 
 export interface EnrichPutPolicyRequest extends RequestBase {
   name: Name
   body?: {
-    geo_match?: EnrichEnrichPolicy
-    match?: EnrichEnrichPolicy
+    geo_match?: EnrichPolicy
+    match?: EnrichPolicy
   }
 }
 
@@ -7726,14 +7722,14 @@ export interface EnrichPutPolicyResponse extends AcknowledgedResponseBase {
 
 export interface EnrichStatsCoordinatorStats {
   executed_searches_total: long
-  node_id: string
+  node_id: Id
   queue_size: integer
   remote_requests_current: integer
   remote_requests_total: long
 }
 
 export interface EnrichStatsExecutingPolicy {
-  name: string
+  name: Name
   task: TaskGetTaskTaskInfo
 }
 

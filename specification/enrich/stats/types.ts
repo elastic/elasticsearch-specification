@@ -18,8 +18,18 @@
  */
 
 import { TaskInfo } from '@task/get_task/TaskInfo'
+import { Id, Name } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 
 export class ExecutingPolicy {
-  name: string
+  name: Name
   task: TaskInfo
+}
+
+export class CoordinatorStats {
+  executed_searches_total: long
+  node_id: Id
+  queue_size: integer
+  remote_requests_current: integer
+  remote_requests_total: long
 }

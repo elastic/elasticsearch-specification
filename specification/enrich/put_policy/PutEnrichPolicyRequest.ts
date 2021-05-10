@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { EnrichPolicy } from '@enrich/_types/EnrichPolicy'
+import { Policy } from '@enrich/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 
@@ -30,9 +30,8 @@ export interface Request extends RequestBase {
   path_parts?: {
     name: Name
   }
-  query_parameters?: {}
   body?: {
-    geo_match?: EnrichPolicy
-    match?: EnrichPolicy
+    geo_match?: Policy
+    match?: Policy
   }
 }

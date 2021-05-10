@@ -17,11 +17,24 @@
  * under the License.
  */
 
-import { Field, Fields, Indices } from '@_types/common'
+import { Field, Fields, Indices, Name } from '@_types/common'
 
-export class EnrichPolicy {
+export class Summary {
+  config: Configuration
+}
+
+export class Configuration {
+  geo_match?: Policy
+  match: Policy
+}
+
+export class Policy {
   enrich_fields: Fields
   indices: Indices
   match_field: Field
   query?: string
+}
+
+export class NamedPolicy extends Policy {
+  name: Name
 }
