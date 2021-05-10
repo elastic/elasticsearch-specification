@@ -49,6 +49,7 @@ export class BulkResponseItemBase {
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
+/** @variants container */
 export class BulkResponseItemContainer {
   index?: BulkIndexResponseItem
   create?: BulkCreateResponseItem
@@ -73,6 +74,7 @@ export class BulkOperation {
   version_type: VersionType
 }
 
+/** @variants container */
 export class BulkOperationContainer {
   index?: BulkIndexOperation
   create?: BulkCreateOperation
