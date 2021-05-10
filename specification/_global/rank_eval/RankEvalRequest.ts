@@ -19,8 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices } from '@_types/common'
-import { RankEvalMetric } from './RankEvalMetric'
-import { RankEvalRequestItem } from './RankEvalRequestItem'
+import { RankEvalMetric, RankEvalRequestItem } from './types'
 
 /**
  * @rest_spec_name rank_eval
