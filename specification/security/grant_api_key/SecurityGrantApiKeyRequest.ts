@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Name, Password, Username } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Password, Username } from '@_types/common'
+import { ApiKey, ApiKeyGrantType } from './types'
 
 /**
  * @rest_spec_name security.grant_api_key
@@ -36,15 +34,4 @@ export interface Request extends RequestBase {
     username?: Username
     password?: Password
   }
-}
-
-export class ApiKey {
-  name: Name
-  expiration?: Time
-  role_descriptors?: Dictionary<string, UserDefinedValue>[]
-}
-
-export enum ApiKeyGrantType {
-  access_token = 0,
-  password = 1
 }

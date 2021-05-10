@@ -19,6 +19,7 @@
 
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Metadata, Name, Username } from '@_types/common'
+import { Token } from './types'
 
 export class Response {
   body: {
@@ -32,10 +33,6 @@ export class Response {
     enabled: boolean
     authentication_type: string
     /** @since 7.14.0 */
-    token?: SecurityAuthenticateToken
+    token?: Token
   }
-}
-
-export class SecurityAuthenticateToken {
-  name: Name
 }

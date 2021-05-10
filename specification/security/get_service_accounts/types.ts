@@ -17,11 +17,23 @@
  * under the License.
  */
 
-import { ApiKeyApplication } from './ApiKeyApplication'
-import { ApiKeyPrivileges } from './ApiKeyPrivileges'
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { GlobalPrivileges } from '@security/_types/GlobalPrivileges'
+import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
 
-export class ApiKeyRole {
+export class RoleDescriptorWrapper {
+  role_descriptor: RoleDescriptor
+}
+
+export class RoleDescriptor {
   cluster: string[]
-  index: ApiKeyPrivileges[]
-  applications?: ApiKeyApplication[]
+  indices: IndicesPrivileges[]
+  global?: GlobalPrivileges[]
+  applications?: ApplicationPrivileges[]
+  metadata?: Metadata
+  run_as?: string[]
+  transient_metadata?: Dictionary<string, UserDefinedValue>
 }

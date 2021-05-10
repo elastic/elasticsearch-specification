@@ -17,13 +17,22 @@
  * under the License.
  */
 
-import { Metadata, Name, Username } from '@_types/common'
+import { RequestBase } from '@_types/Base'
+import { Name, Namespace, Refresh, Service } from '@_types/common'
 
-export class XPackUser {
-  email?: string
-  full_name?: Name
-  metadata: Metadata
-  roles: string[]
-  username: Username
-  enabled: boolean
+/**
+ * @rest_spec_name security.delete_service_token
+ * @since 5.5.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts?: {
+    namespace: Namespace
+    service: Service
+    name: Name
+  }
+  query_parameters?: {
+    refresh?: Refresh
+  }
+  body?: {}
 }

@@ -17,9 +17,13 @@
  * under the License.
  */
 
-import { Indices } from '@_types/common'
+import { Metadata, Name, Username } from '@_types/common'
 
-export class ApiKeyPrivileges {
-  names: Indices
-  privileges: string[]
+export class User {
+  email?: string
+  full_name?: Name
+  metadata: Metadata
+  roles: string[]
+  username: Username
+  enabled: boolean
 }

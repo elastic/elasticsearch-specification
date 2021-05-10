@@ -17,13 +17,10 @@
  * under the License.
  */
 
-import { FieldSecuritySettings } from './FieldSecuritySettings'
-import { QueryUserPrivileges } from './QueryUserPrivileges'
+import { DictionaryResponseBase } from '@_types/Base'
+import { RoleDescriptorWrapper } from './types'
 
-export class UserIndicesPrivileges {
-  field_security?: FieldSecuritySettings
-  names: string[]
-  privileges: string[]
-  query?: QueryUserPrivileges
-  allow_restricted_indices: boolean
-}
+export class Response extends DictionaryResponseBase<
+  string,
+  RoleDescriptorWrapper
+> {}

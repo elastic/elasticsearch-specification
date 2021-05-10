@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { XPackUser } from '@security/_types/XPackUser'
-import { Name } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { AuthenticatedUser } from './types'
 
 export class Response {
   body: {
@@ -31,21 +30,4 @@ export class Response {
     kerberos_authentication_response_token?: string
     authentication: AuthenticatedUser
   }
-}
-
-export class UserRealm {
-  name: Name
-  type: string
-}
-
-export class AuthenticationProvider {
-  type: string
-  name: Name
-}
-
-export class AuthenticatedUser extends XPackUser {
-  authentication_realm: UserRealm
-  lookup_realm: UserRealm
-  authentication_provider?: AuthenticationProvider
-  authentication_type: string
 }

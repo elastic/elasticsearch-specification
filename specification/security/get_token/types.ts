@@ -17,8 +17,29 @@
  * under the License.
  */
 
+import { User } from '@security/_types/User'
 import { Name } from '@_types/common'
 
-export class SecurityNode {
+export enum AccessTokenGrantType {
+  password = 0,
+  client_credentials = 1,
+  _kerberos = 2,
+  refresh_token = 3
+}
+
+export class UserRealm {
   name: Name
+  type: string
+}
+
+export class AuthenticationProvider {
+  type: string
+  name: Name
+}
+
+export class AuthenticatedUser extends User {
+  authentication_realm: UserRealm
+  lookup_realm: UserRealm
+  authentication_provider?: AuthenticationProvider
+  authentication_type: string
 }

@@ -17,17 +17,20 @@
  * under the License.
  */
 
-import { Id, Metadata, Name, Username } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Name } from '@_types/common'
 
-export class ApiKeys {
-  creation: long
-  expiration?: long
-  id: Id
-  invalidated: boolean
-  name: Name
-  realm: string
-  username: Username
-  /** @since 7.13.0 */
-  metadata?: Metadata
+export class ApplicationPrivilegesCheck {
+  application: string
+  privileges: string[]
+  resources: string[]
 }
+
+export class IndexPrivilegesCheck {
+  names: string[]
+  privileges: string[]
+}
+
+export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>
+export type ResourcePrivileges = Dictionary<Name, Privileges>
+export type Privileges = Dictionary<string, boolean>

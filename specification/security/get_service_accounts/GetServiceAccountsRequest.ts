@@ -17,7 +17,17 @@
  * under the License.
  */
 
-export class FieldSecuritySettings {
-  except: string[]
-  grant: string[]
+import { RequestBase } from '@_types/Base'
+import { Namespace, Service } from '@_types/common'
+
+/**
+ * @rest_spec_name security.get_service_accounts
+ * @since 7.13.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts?: {
+    namespace?: Namespace
+    service?: Service
+  }
 }

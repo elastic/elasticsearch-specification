@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
-import { PrivilegesActions } from './PrivilegesActions'
+import { Actions } from './types'
 
 /**
  * @rest_spec_name security.put_privileges
@@ -32,5 +32,5 @@ export interface Request extends RequestBase {
   query_parameters?: {
     refresh?: Refresh
   }
-  body?: Dictionary<string, Dictionary<string, PrivilegesActions>>
+  body?: Dictionary<string, Dictionary<string, Actions>>
 }

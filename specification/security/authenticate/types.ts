@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { Actions } from '@security/put_privileges/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { DictionaryResponseBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
-export class Response extends DictionaryResponseBase<
-  string,
-  Dictionary<string, Actions>
-> {}
+export class Token {
+  name: Name
+}

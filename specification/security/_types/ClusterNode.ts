@@ -17,6 +17,8 @@
  * under the License.
  */
 
-export class TermUserPrivileges {
-  apps: boolean
+import { Name } from '@_types/common'
+
+export class ClusterNode {
+  name: Name
 }

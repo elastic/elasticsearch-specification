@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { Id, Metadata, Name, Username } from '@_types/common'
+import { long } from '@_types/Numeric'
 
-/**
- * @rest_spec_name security.clear_cached_roles
- * @since 0.0.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    name: Names
-  }
+export class ApiKey {
+  creation: long
+  expiration?: long
+  id: Id
+  invalidated: boolean
+  name: Name
+  realm: string
+  username: Username
+  /** @since 7.13.0 */
+  metadata?: Metadata
 }

@@ -59,6 +59,9 @@ export type Metrics = string | string[]
 export type Name = string
 export type Names = string | string[]
 
+export type Namespace = string
+export type Service = string
+
 export type PipelineName = string
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html#modules-node */

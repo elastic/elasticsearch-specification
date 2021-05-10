@@ -19,8 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
-import { ApplicationPrivilegesCheck } from './ApplicationPrivilegesCheck'
-import { IndexPrivilegesCheck } from './IndexPrivilegesCheck'
+import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 
 /**
  * @rest_spec_name security.has_privileges
