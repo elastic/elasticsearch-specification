@@ -16,15 +16,54 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+// TODO remap this as a good bulk response item and an error response item
 
+import { InlineGet } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
   Routing,
+  SequenceNumber,
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { ErrorCause } from '@_types/Errors'
+import { integer, long } from '@_types/Numeric'
+import { ShardStatistics } from '@_types/Stats'
+
+export class BulkResponseItemBase {
+  _id?: string | null
+  _index: string
+  status: integer
+
+  error?: ErrorCause
+  _primary_term?: long
+  result?: string
+  _seq_no?: SequenceNumber
+  _shards?: ShardStatistics
+  _type?: string
+  _version?: VersionNumber
+  forced_refresh?: boolean
+  get?: InlineGet<Dictionary<string, UserDefinedValue>>
+}
+
+/** @variants container */
+export class BulkResponseItemContainer {
+  index?: BulkIndexResponseItem
+  create?: BulkCreateResponseItem
+  update?: BulkUpdateResponseItem
+  delete?: BulkDeleteResponseItem
+}
+
+export class BulkIndexResponseItem extends BulkResponseItemBase {}
+
+export class BulkCreateResponseItem extends BulkResponseItemBase {}
+
+export class BulkUpdateResponseItem extends BulkResponseItemBase {}
+
+export class BulkDeleteResponseItem extends BulkResponseItemBase {}
 
 export class BulkOperation {
   _id: Id
@@ -35,6 +74,7 @@ export class BulkOperation {
   version_type: VersionType
 }
 
+/** @variants container */
 export class BulkOperationContainer {
   index?: BulkIndexOperation
   create?: BulkCreateOperation
