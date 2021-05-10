@@ -20,5 +20,9 @@
 import { Id, Ids } from '@_types/common'
 
 export class Response {
-  body: { calendar_id: Id; description?: string; job_ids: Ids }
+  body: {
+    calendar_id: Id
+    description?: string
+    job_ids: Ids
+  }
 }
