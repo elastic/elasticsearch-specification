@@ -1731,7 +1731,7 @@ export interface UpdateByQueryRethrottleResponse {
 }
 
 export interface UpdateByQueryRethrottleUpdateByQueryRethrottleNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TaskGetTaskTaskInfo>
+  tasks: Record<TaskId, TaskInfo>
 }
 
 export interface SpecUtilsBaseNode {
@@ -7730,7 +7730,7 @@ export interface EnrichStatsCoordinatorStats {
 
 export interface EnrichStatsExecutingPolicy {
   name: Name
-  task: TaskGetTaskTaskInfo
+  task: TaskInfo
 }
 
 export interface EnrichStatsRequest extends RequestBase {
@@ -13835,6 +13835,59 @@ export interface SslGetCertificatesRequest extends RequestBase {
 
 export type SslGetCertificatesResponse = SslGetCertificatesCertificateInformation[]
 
+export interface TaskInfo {
+  action: string
+  cancellable: boolean
+  children?: TaskInfo[]
+  description?: string
+  headers: HttpHeaders
+  id: long
+  node: string
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: TaskStatus
+  type: string
+  parent_task_id?: Id
+}
+
+export interface TaskState {
+  action: string
+  cancellable: boolean
+  description?: string
+  headers: HttpHeaders
+  id: long
+  node: string
+  parent_task_id?: TaskId
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: TaskStatus
+  type: string
+}
+
+export interface TaskStatus {
+  batches: long
+  canceled?: string
+  created: long
+  deleted: long
+  noops: long
+  failures?: string[]
+  requests_per_second: float
+  retries: Retries
+  throttled?: Time
+  throttled_millis: long
+  throttled_until?: Time
+  throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
+  total: long
+  updated: long
+  version_conflicts: long
+}
+
+export interface TaskTaskExecutingNode extends SpecUtilsBaseNode {
+  tasks: Record<TaskId, TaskState>
+}
+
 export interface TaskCancelTasksRequest extends RequestBase {
   task_id?: TaskId
   actions?: string | string[]
@@ -13845,7 +13898,7 @@ export interface TaskCancelTasksRequest extends RequestBase {
 
 export interface TaskCancelTasksResponse {
   node_failures?: ErrorCause[]
-  nodes: Record<string, TaskListTasksTaskExecutingNode>
+  nodes: Record<string, TaskTaskExecutingNode>
 }
 
 export interface TaskGetTaskRequest extends RequestBase {
@@ -13856,24 +13909,9 @@ export interface TaskGetTaskRequest extends RequestBase {
 
 export interface TaskGetTaskResponse {
   completed: boolean
-  task: TaskGetTaskTaskInfo
-  response?: TaskListTasksTaskStatus
+  task: TaskInfo
+  response?: TaskStatus
   error?: ErrorCause
-}
-
-export interface TaskGetTaskTaskInfo {
-  action: string
-  cancellable: boolean
-  children?: TaskGetTaskTaskInfo[]
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskListTasksTaskStatus
-  type: string
-  parent_task_id?: Id
 }
 
 export interface TaskListTasksRequest extends RequestBase {
@@ -13888,51 +13926,8 @@ export interface TaskListTasksRequest extends RequestBase {
 
 export interface TaskListTasksResponse {
   node_failures?: ErrorCause[]
-  nodes?: Record<string, TaskListTasksTaskExecutingNode>
-  tasks?: Record<string, TaskGetTaskTaskInfo> | TaskGetTaskTaskInfo[]
-}
-
-export interface TaskListTasksTaskExecutingNode extends SpecUtilsBaseNode {
-  tasks: Record<TaskId, TaskListTasksTaskState>
-}
-
-export interface TaskListTasksTaskRetries {
-  bulk: integer
-  search: integer
-}
-
-export interface TaskListTasksTaskState {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskListTasksTaskStatus
-  type: string
-}
-
-export interface TaskListTasksTaskStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: TaskListTasksTaskRetries
-  throttled?: Time
-  throttled_millis: long
-  throttled_until?: Time
-  throttled_until_millis: long
-  timed_out?: boolean
-  took?: long
-  total: long
-  updated: long
-  version_conflicts: long
+  nodes?: Record<string, TaskTaskExecutingNode>
+  tasks?: Record<string, TaskInfo> | TaskInfo[]
 }
 
 export interface TextStructureFindStructureFieldStat {
