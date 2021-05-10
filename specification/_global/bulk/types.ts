@@ -21,7 +21,14 @@
 import { InlineGet } from '@global/explain/InlineGet'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
@@ -42,6 +49,7 @@ export class BulkResponseItemBase {
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
+/** @variants container */
 export class BulkResponseItemContainer {
   index?: BulkIndexResponseItem
   create?: BulkCreateResponseItem
@@ -56,3 +64,28 @@ export class BulkCreateResponseItem extends BulkResponseItemBase {}
 export class BulkUpdateResponseItem extends BulkResponseItemBase {}
 
 export class BulkDeleteResponseItem extends BulkResponseItemBase {}
+
+export class BulkOperation {
+  _id: Id
+  _index: IndexName
+  retry_on_conflict: integer
+  routing: Routing
+  version: VersionNumber
+  version_type: VersionType
+}
+
+/** @variants container */
+export class BulkOperationContainer {
+  index?: BulkIndexOperation
+  create?: BulkCreateOperation
+  update?: BulkUpdateOperation
+  delete?: BulkDeleteOperation
+}
+
+export class BulkIndexOperation extends BulkOperation {}
+
+export class BulkCreateOperation extends BulkOperation {}
+
+export class BulkUpdateOperation extends BulkOperation {}
+
+export class BulkDeleteOperation extends BulkOperation {}

@@ -12563,7 +12563,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -12785,7 +12788,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": {

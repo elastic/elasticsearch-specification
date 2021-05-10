@@ -27,7 +27,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { Time } from '@_types/Time'
-import { BulkOperationContainer } from './BulkOperation'
+import { BulkOperationContainer } from './types'
 
 /**
  * @rest_spec_name bulk

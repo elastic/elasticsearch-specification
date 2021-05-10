@@ -18,7 +18,7 @@
  */
 
 import { long } from '@_types/Numeric'
-import { BulkResponseItemContainer } from './BulkResponseItemBase'
+import { BulkResponseItemContainer } from './types'
 
 export class Response {
   body: {
