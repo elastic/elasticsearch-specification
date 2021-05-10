@@ -63,7 +63,7 @@ export interface BulkBulkResponseItemBase {
   _type?: string
   _version?: VersionNumber
   forced_refresh?: boolean
-  get?: ExplainInlineGet<Record<string, any>>
+  get?: InlineGet<Record<string, any>>
 }
 
 export interface BulkBulkResponseItemContainer {
@@ -310,15 +310,6 @@ export interface ExplainExplanationDetail {
   value: float
 }
 
-export interface ExplainInlineGet<TDocument = unknown> {
-  fields?: Record<string, any>
-  found: boolean
-  _seq_no: SequenceNumber
-  _primary_term: long
-  _routing?: Routing
-  _source: TDocument
-}
-
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
@@ -347,7 +338,7 @@ export interface ExplainResponse<TDocument = unknown> {
   _id: Id
   matched: boolean
   explanation?: ExplainExplanationDetail
-  get?: ExplainInlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface FieldCapsFieldCapabilitiesBodyIndexFilter {
@@ -1664,7 +1655,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
 }
 
 export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
-  get?: ExplainInlineGet<TDocument>
+  get?: InlineGet<TDocument>
 }
 
 export interface UpdateByQueryRequest extends RequestBase {
@@ -1986,6 +1977,15 @@ export type Indices = string | string[]
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
+}
+
+export interface InlineGet<TDocument = unknown> {
+  fields?: Record<string, any>
+  found: boolean
+  _seq_no: SequenceNumber
+  _primary_term: long
+  _routing?: Routing
+  _source: TDocument
 }
 
 export interface InlineScript extends ScriptBase {
