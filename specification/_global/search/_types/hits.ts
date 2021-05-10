@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Explanation } from '@global/explain/Explanation'
+import { Explanation } from '@global/explain/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {

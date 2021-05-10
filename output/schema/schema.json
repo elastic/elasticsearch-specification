@@ -12731,7 +12731,7 @@
             "kind": "instance_of",
             "type": {
               "name": "InlineGet",
-              "namespace": "_global.explain"
+              "namespace": "_types"
             }
           }
         }
@@ -15003,94 +15003,6 @@
       ]
     },
     {
-      "generics": [
-        {
-          "name": "TDocument",
-          "namespace": "_global.explain"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "InlineGet",
-        "namespace": "_global.explain"
-      },
-      "properties": [
-        {
-          "name": "fields",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "found",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_seq_no",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_primary_term",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.explain"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -15389,7 +15301,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "InlineGet",
-                "namespace": "_global.explain"
+                "namespace": "_types"
               }
             }
           }
@@ -27962,7 +27874,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "InlineGet",
-                "namespace": "_global.explain"
+                "namespace": "_types"
               }
             }
           }
@@ -30950,6 +30862,94 @@
             "kind": "instance_of",
             "type": {
               "name": "ShardStatistics",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_types"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "InlineGet",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
               "namespace": "_types"
             }
           }

@@ -18,7 +18,7 @@
  */
 // TODO remap this as a good bulk response item and an error response item
 
-import { InlineGet } from '@global/explain/InlineGet'
+import { InlineGet } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {

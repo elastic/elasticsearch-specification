@@ -284,3 +284,12 @@ export enum WaitForStatus {
   yellow = 1,
   red = 2
 }
+
+export class InlineGet<TDocument> {
+  fields?: Dictionary<string, UserDefinedValue>
+  found: boolean
+  _seq_no: SequenceNumber
+  _primary_term: long
+  _routing?: Routing
+  _source: TDocument
+}
