@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Uuid, Id, SequenceNumber, VersionNumber } from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import {
   BulkStats,
   CompletionStats,
@@ -70,5 +73,103 @@ export class IndexStats {
   translog?: TranslogStats
   /** Contains statistics about index warming operations for the node. */
   warmer?: WarmerStats
+  bulk?: BulkStats
+}
+
+export class IndicesStats {
+  primaries: IndexStats
+  shards?: Dictionary<string, ShardStats[]>
+  total: IndexStats
+  uuid?: Uuid
+}
+
+export class ShardCommit {
+  generation: integer
+  id: Id
+  num_docs: long
+  user_data: Dictionary<string, string>
+}
+
+export class ShardFielddata {
+  evictions: long
+  memory_size_in_bytes: long
+}
+
+export class ShardFileSizeInfo {
+  description: string
+  size_in_bytes: long
+}
+
+export class ShardLease {
+  id: Id
+  retaining_seq_no: SequenceNumber
+  timestamp: long
+  source: string
+}
+
+export class ShardPath {
+  data_path: string
+  is_custom_data_path: boolean
+  state_path: string
+}
+
+export class ShardQueryCache {
+  cache_count: long
+  cache_size: long
+  evictions: long
+  hit_count: long
+  memory_size_in_bytes: long
+  miss_count: long
+  total_count: long
+}
+
+export class ShardRetentionLeases {
+  primary_term: long
+  version: VersionNumber
+  leases: ShardLease[]
+}
+
+export class ShardRouting {
+  node: string
+  primary: boolean
+  relocating_node?: string
+  state: ShardRoutingState
+}
+
+export enum ShardRoutingState {
+  UNASSIGNED = 0,
+  INITIALIZING = 1,
+  STARTED = 2,
+  RELOCATING = 3
+}
+
+export class ShardSequenceNumber {
+  global_checkpoint: long
+  local_checkpoint: long
+  max_seq_no: SequenceNumber
+}
+
+export class ShardStats {
+  commit: ShardCommit
+  completion: CompletionStats
+  docs: DocStats
+  fielddata: FielddataStats
+  flush: FlushStats
+  get: GetStats
+  indexing: IndexingStats
+  merges: MergesStats
+  shard_path: ShardPath
+  query_cache: ShardQueryCache
+  recovery: RecoveryStats
+  refresh: RefreshStats
+  request_cache: RequestCacheStats
+  retention_leases: ShardRetentionLeases
+  routing: ShardRouting
+  search: SearchStats
+  segments: SegmentsStats
+  seq_no: ShardSequenceNumber
+  store: StoreStats
+  translog: TranslogStats
+  warmer: WarmerStats
   bulk?: BulkStats
 }

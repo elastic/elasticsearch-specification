@@ -17,13 +17,50 @@
  * under the License.
  */
 
-import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
 
-export class IndicesRolloverConditions {
-  max_age?: Time
-  max_docs?: long
-  max_size?: string
-  max_primary_shard_size?: ByteSize
+export class AnalyzeDetail {
+  analyzer?: AnalyzerDetail
+  charfilters?: CharFilterDetail[]
+  custom_analyzer: boolean
+  tokenfilters?: TokenDetail[]
+  tokenizer?: TokenDetail
+}
+
+export class AnalyzerDetail {
+  name: string
+  tokens: Array<ExplainAnalyzeToken>
+}
+
+export class AnalyzeToken {
+  end_offset: long
+  position: long
+  position_length?: long
+  start_offset: long
+  token: string
+  type: string
+}
+
+export class CharFilterDetail {
+  filtered_text: string[]
+  name: string
+}
+
+export class ExplainAnalyzeToken {
+  bytes: string
+  end_offset: long
+  keyword?: boolean
+  position: long
+  positionLength: long
+  start_offset: long
+  termFrequency: long
+  token: string
+  type: string
+}
+
+export type TextToAnalyze = string | Array<string>
+
+export class TokenDetail {
+  name: string
+  tokens: ExplainAnalyzeToken[]
 }

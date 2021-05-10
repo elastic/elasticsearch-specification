@@ -17,8 +17,13 @@
  * under the License.
  */
 
-import { ShardStore } from './ShardStore'
+import { ByteSize } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
-export class ShardStoreWrapper {
-  stores: ShardStore[]
+export class RolloverConditions {
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }

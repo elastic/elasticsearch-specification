@@ -18,7 +18,7 @@
  */
 
 import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
-import { ShardRoutingState } from '@indices/stats/ShardRoutingState'
+import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'

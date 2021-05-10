@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndicesRolloverConditions } from '@indices/rollover/IndicesRolloverConditions'
+import { RolloverConditions } from '@indices/rollover/types'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -40,7 +40,7 @@ export class ClusterStateBlockIndex {
   in_sync_allocations?: Dictionary<string, string[]>
   primary_terms?: Dictionary<string, integer>
   mappings?: Dictionary<string, TypeMapping>
-  rollover_info?: Dictionary<string, IndicesRolloverConditions> // TODO: not sure if this is correect
+  rollover_info?: Dictionary<string, RolloverConditions> // TODO: not sure if this is correect
   timestamp_range?: Dictionary<string, UserDefinedValue>
   system?: boolean
 }

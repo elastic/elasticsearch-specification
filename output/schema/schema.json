@@ -71741,7 +71741,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "IndicesRolloverConditions",
+                "name": "RolloverConditions",
                 "namespace": "indices.rollover"
               }
             }
@@ -89655,6 +89655,48 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FileDetails",
+        "namespace": "indices.recovery"
+      },
+      "properties": [
+        {
+          "name": "length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "recovered",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "RecoveryBytes",
         "namespace": "indices.recovery"
       },
@@ -89741,48 +89783,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RecoveryFileDetails",
-        "namespace": "indices.recovery"
-      },
-      "properties": [
-        {
-          "name": "length",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "recovered",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "RecoveryFiles",
         "namespace": "indices.recovery"
       },
@@ -89795,7 +89795,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "RecoveryFileDetails",
+                "name": "FileDetails",
                 "namespace": "indices.recovery"
               }
             }
@@ -90151,134 +90151,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "RecoveryTranslogStatus",
-        "namespace": "indices.recovery"
-      },
-      "properties": [
-        {
-          "name": "percent",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Percentage",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "recovered",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_on_start",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RecoveryVerifyIndex",
-        "namespace": "indices.recovery"
-      },
-      "properties": [
-        {
-          "name": "check_index_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "check_index_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -90523,7 +90395,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RecoveryTranslogStatus",
+              "name": "TranslogStatus",
               "namespace": "indices.recovery"
             }
           }
@@ -90545,8 +90417,136 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RecoveryVerifyIndex",
+              "name": "VerifyIndex",
               "namespace": "indices.recovery"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TranslogStatus",
+        "namespace": "indices.recovery"
+      },
+      "properties": [
+        {
+          "name": "percent",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentage",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "recovered",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_on_start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "total_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "VerifyIndex",
+        "namespace": "indices.recovery"
+      },
+      "properties": [
+        {
+          "name": "check_index_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "check_index_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
             }
           }
         }
@@ -91020,59 +91020,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "IndicesRolloverConditions",
-        "namespace": "indices.rollover"
-      },
-      "properties": [
-        {
-          "name": "max_age",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_docs",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_primary_shard_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -91107,7 +91054,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "IndicesRolloverConditions",
+                "name": "RolloverConditions",
                 "namespace": "indices.rollover"
               }
             }
@@ -91353,6 +91300,59 @@
         "name": "Response",
         "namespace": "indices.rollover"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RolloverConditions",
+        "namespace": "indices.rollover"
+      },
+      "properties": [
+        {
+          "name": "max_age",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_docs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_primary_shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",

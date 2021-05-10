@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexStats } from '@indices/stats/IndexStats'
+import { IndexStats } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'

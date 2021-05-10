@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ShardStatistics } from '@_types/Stats'
-import { IndicesStats } from './IndicesStats'
+import { IndicesStats } from './types'
 
 export class Response {
   body: {

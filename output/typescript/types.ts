@@ -6864,7 +6864,7 @@ export interface ClusterClusterStateBlockIndex {
   in_sync_allocations?: Record<string, string[]>
   primary_terms?: Record<string, integer>
   mappings?: Record<string, MappingTypeMapping>
-  rollover_info?: Record<string, IndicesRolloverIndicesRolloverConditions>
+  rollover_info?: Record<string, IndicesRolloverRolloverConditions>
   timestamp_range?: Record<string, any>
   system?: boolean
 }
@@ -8924,6 +8924,12 @@ export interface IndicesPutTemplateRequest extends RequestBase {
 export interface IndicesPutTemplateResponse extends AcknowledgedResponseBase {
 }
 
+export interface IndicesRecoveryFileDetails {
+  length: long
+  name: string
+  recovered: long
+}
+
 export interface IndicesRecoveryRecoveryBytes {
   percent: Percentage
   recovered?: ByteSize
@@ -8934,14 +8940,8 @@ export interface IndicesRecoveryRecoveryBytes {
   total_in_bytes: ByteSize
 }
 
-export interface IndicesRecoveryRecoveryFileDetails {
-  length: long
-  name: string
-  recovered: long
-}
-
 export interface IndicesRecoveryRecoveryFiles {
-  details?: IndicesRecoveryRecoveryFileDetails[]
+  details?: IndicesRecoveryFileDetails[]
   percent: Percentage
   recovered: long
   reused: long
@@ -8984,22 +8984,6 @@ export interface IndicesRecoveryRecoveryStatus {
   shards: IndicesRecoveryShardRecovery[]
 }
 
-export interface IndicesRecoveryRecoveryTranslogStatus {
-  percent: Percentage
-  recovered: long
-  total: long
-  total_on_start: long
-  total_time?: string
-  total_time_in_millis: EpochMillis
-}
-
-export interface IndicesRecoveryRecoveryVerifyIndex {
-  check_index_time?: Time
-  check_index_time_in_millis: EpochMillis
-  total_time?: Time
-  total_time_in_millis: EpochMillis
-}
-
 export interface IndicesRecoveryRequest extends RequestBase {
   index?: Indices
   active_only?: boolean
@@ -9023,9 +9007,25 @@ export interface IndicesRecoveryShardRecovery {
   target: IndicesRecoveryRecoveryOrigin
   total_time?: DateString
   total_time_in_millis: EpochMillis
-  translog: IndicesRecoveryRecoveryTranslogStatus
+  translog: IndicesRecoveryTranslogStatus
   type: Type
-  verify_index: IndicesRecoveryRecoveryVerifyIndex
+  verify_index: IndicesRecoveryVerifyIndex
+}
+
+export interface IndicesRecoveryTranslogStatus {
+  percent: Percentage
+  recovered: long
+  total: long
+  total_on_start: long
+  total_time?: string
+  total_time_in_millis: EpochMillis
+}
+
+export interface IndicesRecoveryVerifyIndex {
+  check_index_time?: Time
+  check_index_time_in_millis: EpochMillis
+  total_time?: Time
+  total_time_in_millis: EpochMillis
 }
 
 export interface IndicesRefreshRequest extends RequestBase {
@@ -9085,13 +9085,6 @@ export interface IndicesResolveIndexResponse {
   data_streams: IndicesResolveIndexResolveIndexDataStreamsItem[]
 }
 
-export interface IndicesRolloverIndicesRolloverConditions {
-  max_age?: Time
-  max_docs?: long
-  max_size?: string
-  max_primary_shard_size?: ByteSize
-}
-
 export interface IndicesRolloverRequest extends RequestBase {
   alias: IndexAlias
   new_index?: IndexName
@@ -9102,7 +9095,7 @@ export interface IndicesRolloverRequest extends RequestBase {
   wait_for_active_shards?: WaitForActiveShards
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
-    conditions?: IndicesRolloverIndicesRolloverConditions
+    conditions?: IndicesRolloverRolloverConditions
     mappings?: Record<string, MappingTypeMapping> | MappingTypeMapping
     settings?: Record<string, any>
   }
@@ -9115,6 +9108,13 @@ export interface IndicesRolloverResponse extends AcknowledgedResponseBase {
   old_index: string
   rolled_over: boolean
   shards_acknowledged: boolean
+}
+
+export interface IndicesRolloverRolloverConditions {
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }
 
 export interface IndicesSegmentsIndexSegment {

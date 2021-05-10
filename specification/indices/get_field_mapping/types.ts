@@ -18,8 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ShardsSegment } from './ShardsSegment'
+import { Field } from '@_types/common'
+import { FieldMapping } from '@_types/mapping/meta-fields'
 
-export class IndexSegment {
-  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>
+export class TypeFieldMappings {
+  mappings: Dictionary<Field, FieldMapping>
 }

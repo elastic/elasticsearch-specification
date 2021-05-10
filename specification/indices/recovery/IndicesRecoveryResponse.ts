@@ -19,7 +19,7 @@
 
 import { DictionaryResponseBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { RecoveryStatus } from './RecoveryStatus'
+import { RecoveryStatus } from './types'
 
 export class Response extends DictionaryResponseBase<
   IndexName,
