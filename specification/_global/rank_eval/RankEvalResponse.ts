@@ -19,8 +19,9 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, Type } from '@_types/common'
+import { Id } from '@_types/common'
 import { double } from '@_types/Numeric'
+import { RankEvalMetricDetail } from './types'
 
 export class Response {
   body: {
@@ -30,32 +31,4 @@ export class Response {
     details: Dictionary<Id, RankEvalMetricDetail>
     failures: Dictionary<string, UserDefinedValue> // TODO -- incomplete tests
   }
-}
-
-export class RankEvalMetricDetail {
-  /** The metric_score in the details section shows the contribution of this query to the global quality metric score */
-  metric_score: double
-  /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
-  unrated_docs: UnratedDocument[]
-  /** The hits section shows a grouping of the search results with their supplied ratings */
-  hits: RankEvalHitItem[]
-  /** The metric_details give additional information about the calculated quality metric (e.g. how many of the retrieved documents were relevant). The content varies for each metric but allows for better interpretation of the results */
-  metric_details: Dictionary<string, Dictionary<string, UserDefinedValue>>
-}
-
-export class RankEvalHitItem {
-  hit: RankEvalHit
-  rating?: double
-}
-
-export class RankEvalHit {
-  _id: Id
-  _index: IndexName
-  _type?: Type
-  _score: double
-}
-
-export class UnratedDocument {
-  _id: Id
-  _index: IndexName
 }
