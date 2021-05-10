@@ -17,20 +17,11 @@
  * under the License.
  */
 
-import { HttpHeaders, TaskId } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { TaskStatus } from './TaskStatus'
+import { BaseNode } from '@spec_utils/BaseNode'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { TaskId } from '@_types/common'
+import { State } from './TaskState'
 
-export class TaskState {
-  action: string
-  cancellable: boolean
-  description?: string
-  headers: HttpHeaders
-  id: long
-  node: string
-  parent_task_id?: TaskId
-  running_time_in_nanos: long
-  start_time_in_millis: long
-  status?: TaskStatus
-  type: string
+export class TaskExecutingNode extends BaseNode {
+  tasks: Dictionary<TaskId, State>
 }

@@ -18,14 +18,14 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskInfo } from '@task/get_task/TaskInfo'
+import { Info } from '@task/_types/TaskInfo'
 import { ErrorCause } from '@_types/Errors'
-import { TaskExecutingNode } from './TaskExecutingNode'
+import { TaskExecutingNode } from '../_types/TaskExecutingNode'
 
 export class Response {
   body: {
     node_failures?: ErrorCause[]
     nodes?: Dictionary<string, TaskExecutingNode>
-    tasks?: Dictionary<string, TaskInfo> | Array<TaskInfo>
+    tasks?: Dictionary<string, Info> | Array<Info>
   }
 }

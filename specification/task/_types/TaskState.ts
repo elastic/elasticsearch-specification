@@ -17,26 +17,20 @@
  * under the License.
  */
 
-import { float, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
-import { TaskRetries } from './TaskRetries'
+import { HttpHeaders, TaskId } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Status } from './TaskStatus'
 
-export class TaskStatus {
-  batches: long
-  canceled?: string
-  created: long
-  deleted: long
-  noops: long
-  failures?: string[]
-  requests_per_second: float
-  retries: TaskRetries
-  throttled?: Time
-  throttled_millis: long
-  throttled_until?: Time
-  throttled_until_millis: long
-  timed_out?: boolean
-  took?: long
-  total: long
-  updated: long
-  version_conflicts: long
+export class State {
+  action: string
+  cancellable: boolean
+  description?: string
+  headers: HttpHeaders
+  id: long
+  node: string
+  parent_task_id?: TaskId
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: Status
+  type: string
 }

@@ -19,9 +19,9 @@
 
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskInfo } from '@task/get_task/TaskInfo'
+import { Info } from '@task/_types/TaskInfo'
 import { TaskId } from '@_types/common'
 
 export class UpdateByQueryRethrottleNode extends BaseNode {
-  tasks: Dictionary<TaskId, TaskInfo>
+  tasks: Dictionary<TaskId, Info>
 }
