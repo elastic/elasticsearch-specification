@@ -17,10 +17,34 @@
  * under the License.
  */
 
-import { ByteSize } from '@_types/common'
+import { CategorizationAnalyzer } from '@ml/_types/Analysis'
+import { ByteSize, VersionString } from '@_types/common'
+import { integer } from '@_types/Numeric'
+
+export class Defaults {
+  anomaly_detectors: AnomalyDetectors
+  datafeeds: Datafeeds
+}
+
+export class NativeCode {
+  build_hash: string
+  version: VersionString
+}
 
 export class Limits {
   max_model_memory_limit?: ByteSize
   effective_max_model_memory_limit: ByteSize
   total_ml_memory: ByteSize
+}
+
+export class Datafeeds {
+  scroll_size: integer
+}
+
+export class AnomalyDetectors {
+  categorization_analyzer: CategorizationAnalyzer
+  categorization_examples_limit: integer
+  model_memory_limit: ByteSize
+  model_snapshot_retention_days: integer
+  daily_model_snapshot_retention_after_days: integer
 }

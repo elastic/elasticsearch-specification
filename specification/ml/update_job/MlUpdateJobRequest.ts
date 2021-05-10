@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import { PerPartitionCategorization, AnalysisMemoryLimit } from '@ml/_types/Analysis'
+import {
+  PerPartitionCategorization,
+  AnalysisMemoryLimit
+} from '@ml/_types/Analysis'
 import { Detector } from '@ml/_types/Detector'
 import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'

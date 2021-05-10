@@ -19,7 +19,15 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ByteSize, Field, Id, IndexName, Indices, Name, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Field,
+  Id,
+  IndexName,
+  Indices,
+  Name,
+  VersionString
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
@@ -212,7 +220,6 @@ export class DataframeAnalyticsSummary {
   create_time?: long
   version?: VersionString
 }
-
 
 export class DataframeAnalytics {
   /** An object containing information about the analysis job. */

@@ -17,9 +17,7 @@
  * under the License.
  */
 
-import {
-  DataframeAnalyticsSummary
-} from '@ml/_types/DataframeAnalytics'
+import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
@@ -30,4 +28,3 @@ export class Response {
     data_frame_analytics: DataframeAnalyticsSummary[]
   }
 }
-

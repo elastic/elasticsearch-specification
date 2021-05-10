@@ -17,9 +17,7 @@
  * under the License.
  */
 
-import { Defaults } from './Defaults'
-import { Limits } from './Limits'
-import { NativeCode } from './NativeCode'
+import { Defaults, Limits, NativeCode } from './types'
 
 export class Response {
   body: {

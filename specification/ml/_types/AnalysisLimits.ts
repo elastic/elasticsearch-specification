@@ -18,5 +18,3 @@
  */
 
 import { long } from '@_types/Numeric'
-
-

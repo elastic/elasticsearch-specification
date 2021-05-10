@@ -17,7 +17,11 @@
  * under the License.
  */
 
-import { DataframeClassificationSummary, DataframeOutlierDetectionSummary, DataframeRegressionSummary } from './types'
+import {
+  DataframeClassificationSummary,
+  DataframeOutlierDetectionSummary,
+  DataframeRegressionSummary
+} from './types'
 
 /** @variants container */
 export class Response {

@@ -28,7 +28,7 @@ export class ModelPlotConfig {
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
  */
- export class ModelPlotConfigEnabled {
+export class ModelPlotConfigEnabled {
   /**
    * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
    */
