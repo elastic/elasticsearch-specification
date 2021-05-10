@@ -17,7 +17,15 @@
  * under the License.
  */
 
-import { ByteSize, Id, IndexName, Name, Type, Uuid, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  Id,
+  IndexName,
+  Name,
+  Type,
+  Uuid,
+  VersionString
+} from '@_types/common'
 import { Host, TransportAddress, Ip } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
 import { Time, EpochMillis, DateString } from '@_types/Time'

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from "@_types/Numeric"
+import { long } from '@_types/Numeric'
 
 export class AnalyzeDetail {
   analyzer?: AnalyzerDetail

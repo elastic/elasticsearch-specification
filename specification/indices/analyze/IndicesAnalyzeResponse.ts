@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalyzeDetail, AnalyzeToken } from "./types";
+import { AnalyzeDetail, AnalyzeToken } from './types'
 
 export class Response {
   body: {
