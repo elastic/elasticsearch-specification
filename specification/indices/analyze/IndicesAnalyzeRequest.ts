@@ -22,6 +22,7 @@ import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { RequestBase } from '@_types/Base'
 import { Field, IndexName } from '@_types/common'
+import { TextToAnalyze } from './types'
 
 /**
  * @rest_spec_name indices.analyze
@@ -45,5 +46,3 @@ export interface Request extends RequestBase {
     tokenizer?: string | Tokenizer
   }
 }
-
-export type TextToAnalyze = string | Array<string>

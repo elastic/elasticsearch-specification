@@ -19,7 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { VersionString } from '@_types/common'
-import { double, integer, long } from '@_types/Numeric'
+import { long, integer, double } from '@_types/Numeric'
+
+export class IndexSegment {
+  shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>
+}
 
 export class Segment {
   attributes: Dictionary<string, string>
@@ -32,4 +36,17 @@ export class Segment {
   size_in_bytes: double
   num_docs: long
   version: VersionString
+}
+
+export class ShardSegmentRouting {
+  node: string
+  primary: boolean
+  state: string
+}
+
+export class ShardsSegment {
+  num_committed_segments: integer
+  routing: ShardSegmentRouting
+  num_search_segments: integer
+  segments: Dictionary<string, Segment>
 }

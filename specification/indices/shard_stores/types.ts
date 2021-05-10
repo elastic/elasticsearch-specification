@@ -17,7 +17,36 @@
  * under the License.
  */
 
-import { ShardStore } from './ShardStore'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Id, VersionNumber, Name } from '@_types/common'
+import { TransportAddress } from '@_types/Networking'
+
+export class IndicesShardStores {
+  shards: Dictionary<string, ShardStoreWrapper>
+}
+
+export class ShardStore {
+  allocation: ShardStoreAllocation
+  allocation_id: Id
+  attributes: Dictionary<string, UserDefinedValue>
+  id: Id
+  legacy_version: VersionNumber
+  name: Name
+  store_exception: ShardStoreException
+  transport_address: TransportAddress
+}
+
+export enum ShardStoreAllocation {
+  primary = 0,
+  replica = 1,
+  unused = 2
+}
+
+export class ShardStoreException {
+  reason: string
+  type: string
+}
 
 export class ShardStoreWrapper {
   stores: ShardStore[]

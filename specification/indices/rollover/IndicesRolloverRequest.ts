@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
 import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
-import { IndicesRolloverConditions } from './IndicesRolloverConditions'
+import { RolloverConditions } from './types'
 
 /**
  * @rest_spec_name indices.rollover
@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
   }
   body?: {
     aliases?: Dictionary<IndexName, Alias>
-    conditions?: IndicesRolloverConditions
+    conditions?: RolloverConditions
     mappings?: Dictionary<string, TypeMapping> | TypeMapping
     settings?: Dictionary<string, UserDefinedValue>
   }

@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
-import { IndicesShardStores } from './IndicesShardStores'
+import { IndicesShardStores } from './types'
 
 export class Response {
   body: { indices: Dictionary<IndexName, IndicesShardStores> }

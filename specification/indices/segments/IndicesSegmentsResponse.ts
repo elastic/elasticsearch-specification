@@ -19,8 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ShardStatistics } from '@_types/Stats'
-import { IndexSegment } from './IndexSegment'
+import { IndexSegment } from './types'
 
 export class Response {
-  body: { indices: Dictionary<string, IndexSegment>; _shards: ShardStatistics }
+  body: {
+    indices: Dictionary<string, IndexSegment>
+    _shards: ShardStatistics
+  }
 }

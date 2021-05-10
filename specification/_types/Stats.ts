@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ShardFileSizeInfo } from '@indices/stats/ShardFileSizeInfo'
+import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
 import { ErrorCause, ShardFailure } from './Errors'

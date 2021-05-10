@@ -17,14 +17,13 @@
  * under the License.
  */
 
+import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
-export class ShardQueryCache {
-  cache_count: long
-  cache_size: long
-  evictions: long
-  hit_count: long
-  memory_size_in_bytes: long
-  miss_count: long
-  total_count: long
+export class RolloverConditions {
+  max_age?: Time
+  max_docs?: long
+  max_size?: string
+  max_primary_shard_size?: ByteSize
 }
