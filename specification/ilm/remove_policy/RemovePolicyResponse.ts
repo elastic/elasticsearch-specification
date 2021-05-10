@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from "@_types/common";
+import { IndexName } from '@_types/common'
 
 export class Response {
   body: {
