@@ -21,7 +21,14 @@
 import { InlineGet } from '@global/explain/InlineGet'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName, Routing, SequenceNumber, VersionNumber, VersionType } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  Routing,
+  SequenceNumber,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
