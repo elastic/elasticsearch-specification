@@ -7923,11 +7923,11 @@ export interface GraphExploreResponse {
   vertices: GraphVertex[]
 }
 
-export interface IlmLifecycleAction {
+export interface IlmAction {
 }
 
 export interface IlmPhase {
-  actions: Record<string, IlmLifecycleAction> | string[]
+  actions: Record<string, IlmAction> | string[]
   min_age?: Time
 }
 
@@ -7940,7 +7940,7 @@ export interface IlmPhases {
 
 export interface IlmPolicy {
   phases: IlmPhases
-  name?: string
+  name?: Name
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
@@ -7995,7 +7995,7 @@ export interface IlmExplainLifecycleResponse {
   indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain> | IlmExplainLifecycleLifecycleExplainProject
 }
 
-export interface IlmGetLifecycleLifecyclePolicy {
+export interface IlmGetLifecycleLifecycle {
   modified_date: DateString
   policy: IlmPolicy
   version: VersionNumber
@@ -8006,7 +8006,7 @@ export interface IlmGetLifecycleRequest extends RequestBase {
   policy_id?: Id
 }
 
-export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecyclePolicy> {
+export interface IlmGetLifecycleResponse extends DictionaryResponseBase<string, IlmGetLifecycleLifecycle> {
 }
 
 export interface IlmGetStatusRequest extends RequestBase {
@@ -8049,7 +8049,7 @@ export interface IlmRemovePolicyRequest extends RequestBase {
 }
 
 export interface IlmRemovePolicyResponse {
-  failed_indexes: string[]
+  failed_indexes: IndexName[]
   has_failures: boolean
 }
 

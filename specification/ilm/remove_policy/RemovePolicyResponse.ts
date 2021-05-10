@@ -17,6 +17,11 @@
  * under the License.
  */
 
+import { IndexName } from "@_types/common";
+
 export class Response {
-  body: { failed_indexes: string[]; has_failures: boolean }
+  body: {
+    failed_indexes: IndexName[]
+    has_failures: boolean
+  }
 }

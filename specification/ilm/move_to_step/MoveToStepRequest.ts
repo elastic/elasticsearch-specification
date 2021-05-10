@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { IndexName } from '@_types/common'
-import { StepKey } from './StepKey'
+import { StepKey } from './types'
 
 /**
  * @rest_spec_name ilm.move_to_step
@@ -30,7 +30,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     index: IndexName
   }
-  query_parameters?: {}
   body?: {
     current_step?: StepKey
     next_step?: StepKey

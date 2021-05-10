@@ -18,6 +18,6 @@
  */
 
 import { DictionaryResponseBase } from '@_types/Base'
-import { LifecyclePolicy } from './LifecyclePolicy'
+import { Lifecycle } from './types'
 
-export class Response extends DictionaryResponseBase<string, LifecyclePolicy> {}
+export class Response extends DictionaryResponseBase<string, Lifecycle> {}

@@ -47,3 +47,12 @@ export class LifecycleExplainPhaseExecution {
   version: VersionNumber
   modified_date_in_millis: EpochMillis
 }
+
+export class LifecycleExplainProject {
+  project: LifecycleExplainProjectSummary
+}
+
+export class LifecycleExplainProjectSummary {
+  index: IndexName
+  managed: boolean
+}

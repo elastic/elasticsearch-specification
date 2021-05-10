@@ -19,9 +19,17 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Time } from '@_types/Time'
-import { LifecycleAction } from './LifecycleAction'
 
 export class Phase {
-  actions: Dictionary<string, LifecycleAction> | string[]
+  actions: Dictionary<string, Action> | string[]
   min_age?: Time
 }
+
+export class Phases {
+  cold?: Phase
+  delete?: Phase
+  hot?: Phase
+  warm?: Phase
+}
+
+export class Action {}

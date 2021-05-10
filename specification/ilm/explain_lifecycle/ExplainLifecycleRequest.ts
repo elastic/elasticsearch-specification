@@ -33,5 +33,4 @@ export interface Request extends RequestBase {
     only_errors?: boolean
     only_managed?: boolean
   }
-  body?: {}
 }
