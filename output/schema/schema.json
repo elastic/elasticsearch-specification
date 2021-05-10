@@ -300,12 +300,12 @@
       "name": "cat.aliases",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_aliases"
+        "namespace": "cat.aliases"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_aliases"
+        "namespace": "cat.aliases"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -335,12 +335,12 @@
       "name": "cat.allocation",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_allocation"
+        "namespace": "cat.allocation"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_allocation"
+        "namespace": "cat.allocation"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -370,12 +370,12 @@
       "name": "cat.count",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_count"
+        "namespace": "cat.count"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_count"
+        "namespace": "cat.count"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -405,12 +405,12 @@
       "name": "cat.fielddata",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_fielddata"
+        "namespace": "cat.fielddata"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_fielddata"
+        "namespace": "cat.fielddata"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -440,12 +440,12 @@
       "name": "cat.health",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_health"
+        "namespace": "cat.health"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_health"
+        "namespace": "cat.health"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -468,12 +468,12 @@
       "name": "cat.help",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_help"
+        "namespace": "cat.help"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_help"
+        "namespace": "cat.help"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -497,12 +497,12 @@
       "name": "cat.indices",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_indices"
+        "namespace": "cat.indices"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_indices"
+        "namespace": "cat.indices"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -532,12 +532,12 @@
       "name": "cat.master",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_master"
+        "namespace": "cat.master"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_master"
+        "namespace": "cat.master"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -561,12 +561,12 @@
       "name": "cat.ml_data_frame_analytics",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_data_frame_analytics"
+        "namespace": "cat.data_frame_analytics"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_data_frame_analytics"
+        "namespace": "cat.data_frame_analytics"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -596,12 +596,12 @@
       "name": "cat.ml_datafeeds",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_datafeeds"
+        "namespace": "cat.datafeeds"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_datafeeds"
+        "namespace": "cat.datafeeds"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -631,12 +631,12 @@
       "name": "cat.ml_jobs",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -666,12 +666,12 @@
       "name": "cat.ml_trained_models",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_trained_models"
+        "namespace": "cat.trained_models"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_trained_models"
+        "namespace": "cat.trained_models"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -701,12 +701,12 @@
       "name": "cat.nodeattrs",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_node_attributes"
+        "namespace": "cat.node_attributes"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_node_attributes"
+        "namespace": "cat.node_attributes"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -730,12 +730,12 @@
       "name": "cat.nodes",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_nodes"
+        "namespace": "cat.nodes"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_nodes"
+        "namespace": "cat.nodes"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -759,12 +759,12 @@
       "name": "cat.pending_tasks",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_pending_tasks"
+        "namespace": "cat.pending_tasks"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_pending_tasks"
+        "namespace": "cat.pending_tasks"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -788,12 +788,12 @@
       "name": "cat.plugins",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_plugins"
+        "namespace": "cat.plugins"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_plugins"
+        "namespace": "cat.plugins"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -817,12 +817,12 @@
       "name": "cat.recovery",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_recovery"
+        "namespace": "cat.recovery"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_recovery"
+        "namespace": "cat.recovery"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -852,12 +852,12 @@
       "name": "cat.repositories",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_repositories"
+        "namespace": "cat.repositories"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_repositories"
+        "namespace": "cat.repositories"
       },
       "since": "2.1.0",
       "stability": "TODO",
@@ -881,12 +881,12 @@
       "name": "cat.segments",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_segments"
+        "namespace": "cat.segments"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_segments"
+        "namespace": "cat.segments"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -916,12 +916,12 @@
       "name": "cat.shards",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_shards"
+        "namespace": "cat.shards"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_shards"
+        "namespace": "cat.shards"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -951,12 +951,12 @@
       "name": "cat.snapshots",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_snapshots"
+        "namespace": "cat.snapshots"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_snapshots"
+        "namespace": "cat.snapshots"
       },
       "since": "2.1.0",
       "stability": "TODO",
@@ -986,12 +986,12 @@
       "name": "cat.tasks",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_tasks"
+        "namespace": "cat.tasks"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_tasks"
+        "namespace": "cat.tasks"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -1015,12 +1015,12 @@
       "name": "cat.templates",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_templates"
+        "namespace": "cat.templates"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_templates"
+        "namespace": "cat.templates"
       },
       "since": "5.2.0",
       "stability": "TODO",
@@ -1050,12 +1050,12 @@
       "name": "cat.thread_pool",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_thread_pool"
+        "namespace": "cat.thread_pool"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_thread_pool"
+        "namespace": "cat.thread_pool"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1085,12 +1085,12 @@
       "name": "cat.transforms",
       "request": {
         "name": "Request",
-        "namespace": "cat.cat_transforms"
+        "namespace": "cat.transforms"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.cat_transforms"
+        "namespace": "cat.transforms"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -58416,8 +58416,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "CatAliasesRecord",
-        "namespace": "cat.cat_aliases"
+        "name": "AliasesRecord",
+        "namespace": "cat.aliases"
       },
       "properties": [
         {
@@ -58534,7 +58534,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_aliases"
+        "namespace": "cat.aliases"
       },
       "path": [
         {
@@ -58571,8 +58571,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatAliasesRecord",
-              "namespace": "cat.cat_aliases"
+              "name": "AliasesRecord",
+              "namespace": "cat.aliases"
             }
           }
         }
@@ -58580,14 +58580,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_aliases"
+        "namespace": "cat.aliases"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatAllocationRecord",
-        "namespace": "cat.cat_allocation"
+        "name": "AllocationRecord",
+        "namespace": "cat.allocation"
       },
       "properties": [
         {
@@ -58746,7 +58746,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_allocation"
+        "namespace": "cat.allocation"
       },
       "path": [
         {
@@ -58783,8 +58783,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatAllocationRecord",
-              "namespace": "cat.cat_allocation"
+              "name": "AllocationRecord",
+              "namespace": "cat.allocation"
             }
           }
         }
@@ -58792,14 +58792,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_allocation"
+        "namespace": "cat.allocation"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatCountRecord",
-        "namespace": "cat.cat_count"
+        "name": "CountRecord",
+        "namespace": "cat.count"
       },
       "properties": [
         {
@@ -58871,7 +58871,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_count"
+        "namespace": "cat.count"
       },
       "path": [
         {
@@ -58896,8 +58896,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatCountRecord",
-              "namespace": "cat.cat_count"
+              "name": "CountRecord",
+              "namespace": "cat.count"
             }
           }
         }
@@ -58905,14 +58905,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_count"
+        "namespace": "cat.count"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatDataFrameAnalyticsRecord",
-        "namespace": "cat.cat_data_frame_analytics"
+        "name": "DataFrameAnalyticsRecord",
+        "namespace": "cat.data_frame_analytics"
       },
       "properties": [
         {
@@ -59181,7 +59181,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_data_frame_analytics"
+        "namespace": "cat.data_frame_analytics"
       },
       "path": [
         {
@@ -59229,8 +59229,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatDataFrameAnalyticsRecord",
-              "namespace": "cat.cat_data_frame_analytics"
+              "name": "DataFrameAnalyticsRecord",
+              "namespace": "cat.data_frame_analytics"
             }
           }
         }
@@ -59238,14 +59238,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_data_frame_analytics"
+        "namespace": "cat.data_frame_analytics"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatDatafeedsRecord",
-        "namespace": "cat.cat_datafeeds"
+        "name": "DatafeedsRecord",
+        "namespace": "cat.datafeeds"
       },
       "properties": [
         {
@@ -59453,7 +59453,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_datafeeds"
+        "namespace": "cat.datafeeds"
       },
       "path": [
         {
@@ -59490,8 +59490,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatDatafeedsRecord",
-              "namespace": "cat.cat_datafeeds"
+              "name": "DatafeedsRecord",
+              "namespace": "cat.datafeeds"
             }
           }
         }
@@ -59499,14 +59499,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_datafeeds"
+        "namespace": "cat.datafeeds"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatFielddataRecord",
-        "namespace": "cat.cat_fielddata"
+        "name": "FielddataRecord",
+        "namespace": "cat.fielddata"
       },
       "properties": [
         {
@@ -59609,7 +59609,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_fielddata"
+        "namespace": "cat.fielddata"
       },
       "path": [
         {
@@ -59646,8 +59646,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatFielddataRecord",
-              "namespace": "cat.cat_fielddata"
+              "name": "FielddataRecord",
+              "namespace": "cat.fielddata"
             }
           }
         }
@@ -59655,14 +59655,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_fielddata"
+        "namespace": "cat.fielddata"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatHealthRecord",
-        "namespace": "cat.cat_health"
+        "name": "HealthRecord",
+        "namespace": "cat.health"
       },
       "properties": [
         {
@@ -59912,7 +59912,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_health"
+        "namespace": "cat.health"
       },
       "path": [],
       "query": [
@@ -59948,8 +59948,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatHealthRecord",
-              "namespace": "cat.cat_health"
+              "name": "HealthRecord",
+              "namespace": "cat.health"
             }
           }
         }
@@ -59957,14 +59957,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_health"
+        "namespace": "cat.health"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatHelpRecord",
-        "namespace": "cat.cat_help"
+        "name": "HelpRecord",
+        "namespace": "cat.help"
       },
       "properties": [
         {
@@ -59997,7 +59997,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_help"
+        "namespace": "cat.help"
       },
       "path": [],
       "query": []
@@ -60010,8 +60010,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatHelpRecord",
-              "namespace": "cat.cat_help"
+              "name": "HelpRecord",
+              "namespace": "cat.help"
             }
           }
         }
@@ -60019,14 +60019,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_help"
+        "namespace": "cat.help"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatIndicesRecord",
-        "namespace": "cat.cat_indices"
+        "name": "IndicesRecord",
+        "namespace": "cat.indices"
       },
       "properties": [
         {
@@ -62038,7 +62038,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_indices"
+        "namespace": "cat.indices"
       },
       "path": [
         {
@@ -62119,8 +62119,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatIndicesRecord",
-              "namespace": "cat.cat_indices"
+              "name": "IndicesRecord",
+              "namespace": "cat.indices"
             }
           }
         }
@@ -62128,14 +62128,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_indices"
+        "namespace": "cat.indices"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatJobsRecord",
-        "namespace": "cat.cat_jobs"
+        "name": "JobsRecord",
+        "namespace": "cat.jobs"
       },
       "properties": [
         {
@@ -62479,7 +62479,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ModelMemoryStatus",
-              "namespace": "cat.cat_jobs"
+              "namespace": "cat.jobs"
             }
           }
         },
@@ -62591,7 +62591,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ModelCategorizationStatus",
-              "namespace": "cat.cat_jobs"
+              "namespace": "cat.jobs"
             }
           }
         },
@@ -63104,7 +63104,7 @@
       ],
       "name": {
         "name": "ModelCategorizationStatus",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       }
     },
     {
@@ -63122,7 +63122,7 @@
       ],
       "name": {
         "name": "ModelMemoryStatus",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       }
     },
     {
@@ -63142,7 +63142,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       },
       "path": [
         {
@@ -63190,8 +63190,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatJobsRecord",
-              "namespace": "cat.cat_jobs"
+              "name": "JobsRecord",
+              "namespace": "cat.jobs"
             }
           }
         }
@@ -63199,14 +63199,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_jobs"
+        "namespace": "cat.jobs"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatMasterRecord",
-        "namespace": "cat.cat_master"
+        "name": "MasterRecord",
+        "namespace": "cat.master"
       },
       "properties": [
         {
@@ -63282,7 +63282,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_master"
+        "namespace": "cat.master"
       },
       "path": [],
       "query": []
@@ -63295,8 +63295,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatMasterRecord",
-              "namespace": "cat.cat_master"
+              "name": "MasterRecord",
+              "namespace": "cat.master"
             }
           }
         }
@@ -63304,14 +63304,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_master"
+        "namespace": "cat.master"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatNodeAttributesRecord",
-        "namespace": "cat.cat_node_attributes"
+        "name": "NodeAttributesRecord",
+        "namespace": "cat.node_attributes"
       },
       "properties": [
         {
@@ -63435,7 +63435,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_node_attributes"
+        "namespace": "cat.node_attributes"
       },
       "path": [],
       "query": []
@@ -63448,8 +63448,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatNodeAttributesRecord",
-              "namespace": "cat.cat_node_attributes"
+              "name": "NodeAttributesRecord",
+              "namespace": "cat.node_attributes"
             }
           }
         }
@@ -63457,14 +63457,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_node_attributes"
+        "namespace": "cat.node_attributes"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatNodesRecord",
-        "namespace": "cat.cat_nodes"
+        "name": "NodesRecord",
+        "namespace": "cat.nodes"
       },
       "properties": [
         {
@@ -64991,7 +64991,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_nodes"
+        "namespace": "cat.nodes"
       },
       "path": [],
       "query": [
@@ -65039,8 +65039,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatNodesRecord",
-              "namespace": "cat.cat_nodes"
+              "name": "NodesRecord",
+              "namespace": "cat.nodes"
             }
           }
         }
@@ -65048,14 +65048,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_nodes"
+        "namespace": "cat.nodes"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatPendingTasksRecord",
-        "namespace": "cat.cat_pending_tasks"
+        "name": "PendingTasksRecord",
+        "namespace": "cat.pending_tasks"
       },
       "properties": [
         {
@@ -65137,7 +65137,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_pending_tasks"
+        "namespace": "cat.pending_tasks"
       },
       "path": [],
       "query": []
@@ -65150,8 +65150,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatPendingTasksRecord",
-              "namespace": "cat.cat_pending_tasks"
+              "name": "PendingTasksRecord",
+              "namespace": "cat.pending_tasks"
             }
           }
         }
@@ -65159,14 +65159,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_pending_tasks"
+        "namespace": "cat.pending_tasks"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatPluginsRecord",
-        "namespace": "cat.cat_plugins"
+        "name": "PluginsRecord",
+        "namespace": "cat.plugins"
       },
       "properties": [
         {
@@ -65275,7 +65275,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_plugins"
+        "namespace": "cat.plugins"
       },
       "path": [],
       "query": []
@@ -65288,8 +65288,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatPluginsRecord",
-              "namespace": "cat.cat_plugins"
+              "name": "PluginsRecord",
+              "namespace": "cat.plugins"
             }
           }
         }
@@ -65297,14 +65297,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_plugins"
+        "namespace": "cat.plugins"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatRecoveryRecord",
-        "namespace": "cat.cat_recovery"
+        "name": "RecoveryRecord",
+        "namespace": "cat.recovery"
       },
       "properties": [
         {
@@ -65719,7 +65719,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_recovery"
+        "namespace": "cat.recovery"
       },
       "path": [
         {
@@ -65778,8 +65778,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatRecoveryRecord",
-              "namespace": "cat.cat_recovery"
+              "name": "RecoveryRecord",
+              "namespace": "cat.recovery"
             }
           }
         }
@@ -65787,14 +65787,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_recovery"
+        "namespace": "cat.recovery"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatRepositoriesRecord",
-        "namespace": "cat.cat_repositories"
+        "name": "RepositoriesRecord",
+        "namespace": "cat.repositories"
       },
       "properties": [
         {
@@ -65846,7 +65846,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_repositories"
+        "namespace": "cat.repositories"
       },
       "path": [],
       "query": []
@@ -65859,8 +65859,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatRepositoriesRecord",
-              "namespace": "cat.cat_repositories"
+              "name": "RepositoriesRecord",
+              "namespace": "cat.repositories"
             }
           }
         }
@@ -65868,14 +65868,80 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_repositories"
+        "namespace": "cat.repositories"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "CatRequestBase",
+          "namespace": "cat._types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cat.segments"
+      },
+      "path": [
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Bytes",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SegmentsRecord",
+              "namespace": "cat.segments"
+            }
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "cat.segments"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatSegmentsRecord",
-        "namespace": "cat.cat_segments"
+        "name": "SegmentsRecord",
+        "namespace": "cat.segments"
       },
       "properties": [
         {
@@ -66127,7 +66193,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_segments"
+        "namespace": "cat.shards"
       },
       "path": [
         {
@@ -66164,8 +66230,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatSegmentsRecord",
-              "namespace": "cat.cat_segments"
+              "name": "ShardsRecord",
+              "namespace": "cat.shards"
             }
           }
         }
@@ -66173,14 +66239,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_segments"
+        "namespace": "cat.shards"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatShardsRecord",
-        "namespace": "cat.cat_shards"
+        "name": "ShardsRecord",
+        "namespace": "cat.shards"
       },
       "properties": [
         {
@@ -67391,16 +67457,16 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_shards"
+        "namespace": "cat.snapshots"
       },
       "path": [
         {
-          "name": "index",
+          "name": "repository",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Indices",
+              "name": "Names",
               "namespace": "_types"
             }
           }
@@ -67408,13 +67474,13 @@
       ],
       "query": [
         {
-          "name": "bytes",
+          "name": "ignore_unavailable",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Bytes",
-              "namespace": "_types"
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -67428,8 +67494,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatShardsRecord",
-              "namespace": "cat.cat_shards"
+              "name": "SnapshotsRecord",
+              "namespace": "cat.snapshots"
             }
           }
         }
@@ -67437,14 +67503,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_shards"
+        "namespace": "cat.snapshots"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatSnapshotsRecord",
-        "namespace": "cat.cat_snapshots"
+        "name": "SnapshotsRecord",
+        "namespace": "cat.snapshots"
       },
       "properties": [
         {
@@ -67666,30 +67732,57 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_snapshots"
+        "namespace": "cat.tasks"
       },
-      "path": [
-        {
-          "name": "repository",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Names",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
+      "path": [],
       "query": [
         {
-          "name": "ignore_unavailable",
+          "name": "actions",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "detailed",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "node_id",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "parent_task",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -67703,8 +67796,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatSnapshotsRecord",
-              "namespace": "cat.cat_snapshots"
+              "name": "TasksRecord",
+              "namespace": "cat.tasks"
             }
           }
         }
@@ -67712,14 +67805,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_snapshots"
+        "namespace": "cat.tasks"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatTasksRecord",
-        "namespace": "cat.cat_tasks"
+        "name": "TasksRecord",
+        "namespace": "cat.tasks"
       },
       "properties": [
         {
@@ -67977,61 +68070,22 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_tasks"
+        "namespace": "cat.templates"
       },
-      "path": [],
-      "query": [
+      "path": [
         {
-          "name": "actions",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "detailed",
+          "name": "name",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "node_id",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "parent_task",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
+              "name": "Name",
               "namespace": "_types"
             }
           }
         }
-      ]
+      ],
+      "query": []
     },
     {
       "body": {
@@ -68041,8 +68095,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatTasksRecord",
-              "namespace": "cat.cat_tasks"
+              "name": "TemplatesRecord",
+              "namespace": "cat.templates"
             }
           }
         }
@@ -68050,14 +68104,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_tasks"
+        "namespace": "cat.templates"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatTemplatesRecord",
-        "namespace": "cat.cat_templates"
+        "name": "TemplatesRecord",
+        "namespace": "cat.templates"
       },
       "properties": [
         {
@@ -68155,22 +68209,46 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_templates"
+        "namespace": "cat.thread_pool"
       },
       "path": [
         {
-          "name": "name",
+          "name": "thread_pool_patterns",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Names",
               "namespace": "_types"
             }
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Size",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -68180,8 +68258,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatTemplatesRecord",
-              "namespace": "cat.cat_templates"
+              "name": "ThreadPoolRecord",
+              "namespace": "cat.thread_pool"
             }
           }
         }
@@ -68189,14 +68267,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_templates"
+        "namespace": "cat.thread_pool"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatThreadPoolRecord",
-        "namespace": "cat.cat_thread_pool"
+        "name": "ThreadPoolRecord",
+        "namespace": "cat.thread_pool"
       },
       "properties": [
         {
@@ -68518,16 +68596,16 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_thread_pool"
+        "namespace": "cat.trained_models"
       },
       "path": [
         {
-          "name": "thread_pool_patterns",
+          "name": "model_id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Names",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -68535,26 +68613,47 @@
       ],
       "query": [
         {
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Bytes",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "size",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Size",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
           }
         }
       ]
@@ -68567,8 +68666,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatThreadPoolRecord",
-              "namespace": "cat.cat_thread_pool"
+              "name": "TrainedModelsRecord",
+              "namespace": "cat.trained_models"
             }
           }
         }
@@ -68576,14 +68675,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_thread_pool"
+        "namespace": "cat.trained_models"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatTrainedModelsRecord",
-        "namespace": "cat.cat_trained_models"
+        "name": "TrainedModelsRecord",
+        "namespace": "cat.trained_models"
       },
       "properties": [
         {
@@ -68869,11 +68968,11 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.cat_trained_models"
+        "namespace": "cat.transforms"
       },
       "path": [
         {
-          "name": "model_id",
+          "name": "transform_id",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -68893,17 +68992,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Bytes",
-              "namespace": "_types"
             }
           }
         },
@@ -68939,8 +69027,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "CatTrainedModelsRecord",
-              "namespace": "cat.cat_trained_models"
+              "name": "TransformsRecord",
+              "namespace": "cat.transforms"
             }
           }
         }
@@ -68948,14 +69036,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.cat_trained_models"
+        "namespace": "cat.transforms"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "CatTransformsRecord",
-        "namespace": "cat.cat_transforms"
+        "name": "TransformsRecord",
+        "namespace": "cat.transforms"
       },
       "properties": [
         {
@@ -69458,94 +69546,6 @@
           }
         }
       ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonCatQueryParameters",
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "CatRequestBase",
-          "namespace": "cat._types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "cat.cat_transforms"
-      },
-      "path": [
-        {
-          "name": "transform_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "allow_no_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CatTransformsRecord",
-              "namespace": "cat.cat_transforms"
-            }
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "cat.cat_transforms"
-      }
     },
     {
       "kind": "interface",

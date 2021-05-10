@@ -19,8 +19,7 @@
 
 import { Id, VersionString } from '@_types/common'
 
-export class 
-TransformsRecord {
+export class TransformsRecord {
   /**
    * the id
    */

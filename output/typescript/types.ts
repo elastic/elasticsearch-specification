@@ -4875,7 +4875,7 @@ export interface AutoscalingPolicyPutResponse {
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {
 }
 
-export interface CatCatAliasesCatAliasesRecord {
+export interface CatAliasesAliasesRecord {
   alias?: string
   a?: string
   index?: IndexName
@@ -4895,14 +4895,14 @@ export interface CatCatAliasesCatAliasesRecord {
   isWriteIndex?: string
 }
 
-export interface CatCatAliasesRequest extends CatCatRequestBase {
+export interface CatAliasesRequest extends CatCatRequestBase {
   name?: Names
   expand_wildcards?: ExpandWildcards
 }
 
-export type CatCatAliasesResponse = CatCatAliasesCatAliasesRecord[]
+export type CatAliasesResponse = CatAliasesAliasesRecord[]
 
-export interface CatCatAllocationCatAllocationRecord {
+export interface CatAllocationAllocationRecord {
   shards?: string
   s?: string
   'disk.indices'?: ByteSize
@@ -4927,14 +4927,14 @@ export interface CatCatAllocationCatAllocationRecord {
   n?: string
 }
 
-export interface CatCatAllocationRequest extends CatCatRequestBase {
+export interface CatAllocationRequest extends CatCatRequestBase {
   node_id?: NodeIds
   bytes?: Bytes
 }
 
-export type CatCatAllocationResponse = CatCatAllocationCatAllocationRecord[]
+export type CatAllocationResponse = CatAllocationAllocationRecord[]
 
-export interface CatCatCountCatCountRecord {
+export interface CatCountCountRecord {
   epoch?: EpochMillis
   t?: EpochMillis
   time?: EpochMillis
@@ -4948,13 +4948,13 @@ export interface CatCatCountCatCountRecord {
   docsCount?: string
 }
 
-export interface CatCatCountRequest extends CatCatRequestBase {
+export interface CatCountRequest extends CatCatRequestBase {
   index?: Indices
 }
 
-export type CatCatCountResponse = CatCatCountCatCountRecord[]
+export type CatCountResponse = CatCountCountRecord[]
 
-export interface CatCatDataFrameAnalyticsCatDataFrameAnalyticsRecord {
+export interface CatDataFrameAnalyticsDataFrameAnalyticsRecord {
   id?: Id
   type?: Type
   t?: Type
@@ -4998,15 +4998,15 @@ export interface CatCatDataFrameAnalyticsCatDataFrameAnalyticsRecord {
   nodeAddress?: string
 }
 
-export interface CatCatDataFrameAnalyticsRequest extends CatCatRequestBase {
+export interface CatDataFrameAnalyticsRequest extends CatCatRequestBase {
   id?: Id
   allow_no_match?: boolean
   bytes?: Bytes
 }
 
-export type CatCatDataFrameAnalyticsResponse = CatCatDataFrameAnalyticsCatDataFrameAnalyticsRecord[]
+export type CatDataFrameAnalyticsResponse = CatDataFrameAnalyticsDataFrameAnalyticsRecord[]
 
-export interface CatCatDatafeedsCatDatafeedsRecord {
+export interface CatDatafeedsDatafeedsRecord {
   id?: string
   state?: MlDatafeedState
   s?: MlDatafeedState
@@ -5041,14 +5041,14 @@ export interface CatCatDatafeedsCatDatafeedsRecord {
   nodeAddress?: string
 }
 
-export interface CatCatDatafeedsRequest extends CatCatRequestBase {
+export interface CatDatafeedsRequest extends CatCatRequestBase {
   datafeed_id?: Id
   allow_no_datafeeds?: boolean
 }
 
-export type CatCatDatafeedsResponse = CatCatDatafeedsCatDatafeedsRecord[]
+export type CatDatafeedsResponse = CatDatafeedsDatafeedsRecord[]
 
-export interface CatCatFielddataCatFielddataRecord {
+export interface CatFielddataFielddataRecord {
   id?: string
   host?: string
   h?: string
@@ -5060,14 +5060,14 @@ export interface CatCatFielddataCatFielddataRecord {
   size?: string
 }
 
-export interface CatCatFielddataRequest extends CatCatRequestBase {
+export interface CatFielddataRequest extends CatCatRequestBase {
   fields?: Fields
   bytes?: Bytes
 }
 
-export type CatCatFielddataResponse = CatCatFielddataCatFielddataRecord[]
+export type CatFielddataResponse = CatFielddataFielddataRecord[]
 
-export interface CatCatHealthCatHealthRecord {
+export interface CatHealthHealthRecord {
   epoch?: EpochMillis
   time?: EpochMillis
   timestamp?: DateString
@@ -5116,23 +5116,23 @@ export interface CatCatHealthCatHealthRecord {
   activeShardsPercent?: string
 }
 
-export interface CatCatHealthRequest extends CatCatRequestBase {
+export interface CatHealthRequest extends CatCatRequestBase {
   include_timestamp?: boolean
   ts?: boolean
 }
 
-export type CatCatHealthResponse = CatCatHealthCatHealthRecord[]
+export type CatHealthResponse = CatHealthHealthRecord[]
 
-export interface CatCatHelpCatHelpRecord {
+export interface CatHelpHelpRecord {
   endpoint: string
 }
 
-export interface CatCatHelpRequest extends CatCatRequestBase {
+export interface CatHelpRequest extends CatCatRequestBase {
 }
 
-export type CatCatHelpResponse = CatCatHelpCatHelpRecord[]
+export type CatHelpResponse = CatHelpHelpRecord[]
 
-export interface CatCatIndicesCatIndicesRecord {
+export interface CatIndicesIndicesRecord {
   health?: string
   h?: string
   status?: string
@@ -5422,7 +5422,7 @@ export interface CatCatIndicesCatIndicesRecord {
   'pri.bulk.avg_size_in_bytes'?: string
 }
 
-export interface CatCatIndicesRequest extends CatCatRequestBase {
+export interface CatIndicesRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
   expand_wildcards?: ExpandWildcards
@@ -5431,9 +5431,9 @@ export interface CatCatIndicesRequest extends CatCatRequestBase {
   pri?: boolean
 }
 
-export type CatCatIndicesResponse = CatCatIndicesCatIndicesRecord[]
+export type CatIndicesResponse = CatIndicesIndicesRecord[]
 
-export interface CatCatJobsCatJobsRecord {
+export interface CatJobsJobsRecord {
   id?: Id
   state?: MlJobState
   s?: MlJobState
@@ -5492,9 +5492,9 @@ export interface CatCatJobsCatJobsRecord {
   'model.bytes'?: ByteSize
   mb?: ByteSize
   modelBytes?: ByteSize
-  'model.memory_status'?: CatCatJobsModelMemoryStatus
-  mms?: CatCatJobsModelMemoryStatus
-  modelMemoryStatus?: CatCatJobsModelMemoryStatus
+  'model.memory_status'?: CatJobsModelMemoryStatus
+  mms?: CatJobsModelMemoryStatus
+  modelMemoryStatus?: CatJobsModelMemoryStatus
   'model.bytes_exceeded'?: ByteSize
   mbe?: ByteSize
   modelBytesExceeded?: ByteSize
@@ -5513,9 +5513,9 @@ export interface CatCatJobsCatJobsRecord {
   'model.bucket_allocation_failures'?: string
   mbaf?: string
   modelBucketAllocationFailures?: string
-  'model.categorization_status'?: CatCatJobsModelCategorizationStatus
-  mcs?: CatCatJobsModelCategorizationStatus
-  modelCategorizationStatus?: CatCatJobsModelCategorizationStatus
+  'model.categorization_status'?: CatJobsModelCategorizationStatus
+  mcs?: CatJobsModelCategorizationStatus
+  modelCategorizationStatus?: CatJobsModelCategorizationStatus
   'model.categorized_doc_count'?: string
   mcdc?: string
   modelCategorizedDocCount?: string
@@ -5610,19 +5610,19 @@ export interface CatCatJobsCatJobsRecord {
   bucketsTimeExpAvgHour?: string
 }
 
-export type CatCatJobsModelCategorizationStatus = 'ok' | 'warn'
+export type CatJobsModelCategorizationStatus = 'ok' | 'warn'
 
-export type CatCatJobsModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
+export type CatJobsModelMemoryStatus = 'ok' | 'soft_limit' | 'hard_limit'
 
-export interface CatCatJobsRequest extends CatCatRequestBase {
+export interface CatJobsRequest extends CatCatRequestBase {
   job_id?: Id
   allow_no_jobs?: boolean
   bytes?: Bytes
 }
 
-export type CatCatJobsResponse = CatCatJobsCatJobsRecord[]
+export type CatJobsResponse = CatJobsJobsRecord[]
 
-export interface CatCatMasterCatMasterRecord {
+export interface CatMasterMasterRecord {
   id?: string
   host?: string
   h?: string
@@ -5631,12 +5631,12 @@ export interface CatCatMasterCatMasterRecord {
   n?: string
 }
 
-export interface CatCatMasterRequest extends CatCatRequestBase {
+export interface CatMasterRequest extends CatCatRequestBase {
 }
 
-export type CatCatMasterResponse = CatCatMasterCatMasterRecord[]
+export type CatMasterResponse = CatMasterMasterRecord[]
 
-export interface CatCatNodeAttributesCatNodeAttributesRecord {
+export interface CatNodeAttributesNodeAttributesRecord {
   node?: string
   id?: string
   pid?: string
@@ -5649,12 +5649,12 @@ export interface CatCatNodeAttributesCatNodeAttributesRecord {
   value?: string
 }
 
-export interface CatCatNodeAttributesRequest extends CatCatRequestBase {
+export interface CatNodeAttributesRequest extends CatCatRequestBase {
 }
 
-export type CatCatNodeAttributesResponse = CatCatNodeAttributesCatNodeAttributesRecord[]
+export type CatNodeAttributesResponse = CatNodeAttributesNodeAttributesRecord[]
 
-export interface CatCatNodesCatNodesRecord {
+export interface CatNodesNodesRecord {
   id?: Id
   nodeId?: Id
   pid?: string
@@ -5924,14 +5924,14 @@ export interface CatCatNodesCatNodesRecord {
   bulkAvgSizeInBytes?: string
 }
 
-export interface CatCatNodesRequest extends CatCatRequestBase {
+export interface CatNodesRequest extends CatCatRequestBase {
   bytes?: Bytes
   full_id?: boolean | string
 }
 
-export type CatCatNodesResponse = CatCatNodesCatNodesRecord[]
+export type CatNodesResponse = CatNodesNodesRecord[]
 
-export interface CatCatPendingTasksCatPendingTasksRecord {
+export interface CatPendingTasksPendingTasksRecord {
   insertOrder?: string
   o?: string
   timeInQueue?: string
@@ -5942,12 +5942,12 @@ export interface CatCatPendingTasksCatPendingTasksRecord {
   s?: string
 }
 
-export interface CatCatPendingTasksRequest extends CatCatRequestBase {
+export interface CatPendingTasksRequest extends CatCatRequestBase {
 }
 
-export type CatCatPendingTasksResponse = CatCatPendingTasksCatPendingTasksRecord[]
+export type CatPendingTasksResponse = CatPendingTasksPendingTasksRecord[]
 
-export interface CatCatPluginsCatPluginsRecord {
+export interface CatPluginsPluginsRecord {
   id?: NodeId
   name?: Name
   n?: Name
@@ -5961,12 +5961,12 @@ export interface CatCatPluginsCatPluginsRecord {
   t?: Type
 }
 
-export interface CatCatPluginsRequest extends CatCatRequestBase {
+export interface CatPluginsRequest extends CatCatRequestBase {
 }
 
-export type CatCatPluginsResponse = CatCatPluginsCatPluginsRecord[]
+export type CatPluginsResponse = CatPluginsPluginsRecord[]
 
-export interface CatCatRecoveryCatRecoveryRecord {
+export interface CatRecoveryRecoveryRecord {
   index?: IndexName
   i?: IndexName
   idx?: IndexName
@@ -6024,28 +6024,35 @@ export interface CatCatRecoveryCatRecoveryRecord {
   top?: Percentage
 }
 
-export interface CatCatRecoveryRequest extends CatCatRequestBase {
+export interface CatRecoveryRequest extends CatCatRequestBase {
   index?: Indices
   active_only?: boolean
   bytes?: Bytes
   detailed?: boolean
 }
 
-export type CatCatRecoveryResponse = CatCatRecoveryCatRecoveryRecord[]
+export type CatRecoveryResponse = CatRecoveryRecoveryRecord[]
 
-export interface CatCatRepositoriesCatRepositoriesRecord {
+export interface CatRepositoriesRepositoriesRecord {
   id?: string
   repoId?: string
   type?: string
   t?: string
 }
 
-export interface CatCatRepositoriesRequest extends CatCatRequestBase {
+export interface CatRepositoriesRequest extends CatCatRequestBase {
 }
 
-export type CatCatRepositoriesResponse = CatCatRepositoriesCatRepositoriesRecord[]
+export type CatRepositoriesResponse = CatRepositoriesRepositoriesRecord[]
 
-export interface CatCatSegmentsCatSegmentsRecord {
+export interface CatSegmentsRequest extends CatCatRequestBase {
+  index?: Indices
+  bytes?: Bytes
+}
+
+export type CatSegmentsResponse = CatSegmentsSegmentsRecord[]
+
+export interface CatSegmentsSegmentsRecord {
   index?: IndexName
   i?: IndexName
   idx?: IndexName
@@ -6087,14 +6094,14 @@ export interface CatCatSegmentsCatSegmentsRecord {
   isCompound?: string
 }
 
-export interface CatCatSegmentsRequest extends CatCatRequestBase {
+export interface CatShardsRequest extends CatCatRequestBase {
   index?: Indices
   bytes?: Bytes
 }
 
-export type CatCatSegmentsResponse = CatCatSegmentsCatSegmentsRecord[]
+export type CatShardsResponse = CatShardsShardsRecord[]
 
-export interface CatCatShardsCatShardsRecord {
+export interface CatShardsShardsRecord {
   index?: string
   i?: string
   idx?: string
@@ -6308,14 +6315,14 @@ export interface CatCatShardsCatShardsRecord {
   bulkAvgSizeInBytes?: string
 }
 
-export interface CatCatShardsRequest extends CatCatRequestBase {
-  index?: Indices
-  bytes?: Bytes
+export interface CatSnapshotsRequest extends CatCatRequestBase {
+  repository?: Names
+  ignore_unavailable?: boolean
 }
 
-export type CatCatShardsResponse = CatCatShardsCatShardsRecord[]
+export type CatSnapshotsResponse = CatSnapshotsSnapshotsRecord[]
 
-export interface CatCatSnapshotsCatSnapshotsRecord {
+export interface CatSnapshotsSnapshotsRecord {
   id?: string
   snapshot?: string
   repository?: string
@@ -6349,14 +6356,16 @@ export interface CatCatSnapshotsCatSnapshotsRecord {
   r?: string
 }
 
-export interface CatCatSnapshotsRequest extends CatCatRequestBase {
-  repository?: Names
-  ignore_unavailable?: boolean
+export interface CatTasksRequest extends CatCatRequestBase {
+  actions?: string[]
+  detailed?: boolean
+  node_id?: string[]
+  parent_task?: long
 }
 
-export type CatCatSnapshotsResponse = CatCatSnapshotsCatSnapshotsRecord[]
+export type CatTasksResponse = CatTasksTasksRecord[]
 
-export interface CatCatTasksCatTasksRecord {
+export interface CatTasksTasksRecord {
   id?: Id
   action?: string
   ac?: string
@@ -6391,16 +6400,13 @@ export interface CatCatTasksCatTasksRecord {
   desc?: string
 }
 
-export interface CatCatTasksRequest extends CatCatRequestBase {
-  actions?: string[]
-  detailed?: boolean
-  node_id?: string[]
-  parent_task?: long
+export interface CatTemplatesRequest extends CatCatRequestBase {
+  name?: Name
 }
 
-export type CatCatTasksResponse = CatCatTasksCatTasksRecord[]
+export type CatTemplatesResponse = CatTemplatesTemplatesRecord[]
 
-export interface CatCatTemplatesCatTemplatesRecord {
+export interface CatTemplatesTemplatesRecord {
   name?: Name
   n?: Name
   index_patterns?: string
@@ -6414,13 +6420,14 @@ export interface CatCatTemplatesCatTemplatesRecord {
   c?: string
 }
 
-export interface CatCatTemplatesRequest extends CatCatRequestBase {
-  name?: Name
+export interface CatThreadPoolRequest extends CatCatRequestBase {
+  thread_pool_patterns?: Names
+  size?: Size | boolean
 }
 
-export type CatCatTemplatesResponse = CatCatTemplatesCatTemplatesRecord[]
+export type CatThreadPoolResponse = CatThreadPoolThreadPoolRecord[]
 
-export interface CatCatThreadPoolCatThreadPoolRecord {
+export interface CatThreadPoolThreadPoolRecord {
   node_name?: string
   nn?: string
   node_id?: NodeId
@@ -6463,14 +6470,17 @@ export interface CatCatThreadPoolCatThreadPoolRecord {
   ka?: string
 }
 
-export interface CatCatThreadPoolRequest extends CatCatRequestBase {
-  thread_pool_patterns?: Names
-  size?: Size | boolean
+export interface CatTrainedModelsRequest extends CatCatRequestBase {
+  model_id?: Id
+  allow_no_match?: boolean
+  bytes?: Bytes
+  from?: integer
+  size?: integer
 }
 
-export type CatCatThreadPoolResponse = CatCatThreadPoolCatThreadPoolRecord[]
+export type CatTrainedModelsResponse = CatTrainedModelsTrainedModelsRecord[]
 
-export interface CatCatTrainedModelsCatTrainedModelsRecord {
+export interface CatTrainedModelsTrainedModelsRecord {
   id?: Id
   created_by?: string
   c?: string
@@ -6518,17 +6528,16 @@ export interface CatCatTrainedModelsCatTrainedModelsRecord {
   dataFrameAnalyticsAnalysis?: string
 }
 
-export interface CatCatTrainedModelsRequest extends CatCatRequestBase {
-  model_id?: Id
+export interface CatTransformsRequest extends CatCatRequestBase {
+  transform_id?: Id
   allow_no_match?: boolean
-  bytes?: Bytes
   from?: integer
   size?: integer
 }
 
-export type CatCatTrainedModelsResponse = CatCatTrainedModelsCatTrainedModelsRecord[]
+export type CatTransformsResponse = CatTransformsTransformsRecord[]
 
-export interface CatCatTransformsCatTransformsRecord {
+export interface CatTransformsTransformsRecord {
   id?: Id
   state?: string
   s?: string
@@ -6602,15 +6611,6 @@ export interface CatCatTransformsCatTransformsRecord {
   processed_documents_exp_avg?: string
   pdea?: string
 }
-
-export interface CatCatTransformsRequest extends CatCatRequestBase {
-  transform_id?: Id
-  allow_no_match?: boolean
-  from?: integer
-  size?: integer
-}
-
-export type CatCatTransformsResponse = CatCatTransformsCatTransformsRecord[]
 
 export interface CcrFollowIndexStats {
   index: IndexName
