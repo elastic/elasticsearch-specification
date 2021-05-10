@@ -31,7 +31,6 @@ export interface Request extends RequestBase {
     policy?: Name
     policy_id?: Id
   }
-  query_parameters?: {}
   body?: {
     policy?: Policy
   }

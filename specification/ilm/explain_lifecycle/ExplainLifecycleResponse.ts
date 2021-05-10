@@ -19,19 +19,10 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
-import { LifecycleExplain } from './LifecycleExplain'
+import { LifecycleExplain, LifecycleExplainProject } from './types'
 
 export class Response {
   body: {
     indices: Dictionary<IndexName, LifecycleExplain> | LifecycleExplainProject
   }
-}
-
-export class LifecycleExplainProject {
-  project: LifecycleExplainProjectSummary
-}
-
-export class LifecycleExplainProjectSummary {
-  index: IndexName
-  managed: boolean
 }

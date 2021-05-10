@@ -21,7 +21,7 @@ import { Policy } from '@ilm/_types/Policy'
 import { VersionNumber } from '@_types/common'
 import { DateString } from '@_types/Time'
 
-export class LifecyclePolicy {
+export class Lifecycle {
   modified_date: DateString
   policy: Policy
   version: VersionNumber

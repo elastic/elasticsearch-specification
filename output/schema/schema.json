@@ -81000,7 +81000,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LifecycleAction",
+        "name": "Action",
         "namespace": "ilm._types"
       },
       "properties": []
@@ -81030,7 +81030,7 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "LifecycleAction",
+                    "name": "Action",
                     "namespace": "ilm._types"
                   }
                 }
@@ -81139,8 +81139,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
@@ -81597,7 +81597,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LifecyclePolicy",
+        "name": "Lifecycle",
         "namespace": "ilm.get_lifecycle"
       },
       "properties": [
@@ -81697,7 +81697,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "LifecyclePolicy",
+              "name": "Lifecycle",
               "namespace": "ilm.get_lifecycle"
             }
           }
@@ -81992,8 +81992,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "IndexName",
+                  "namespace": "_types"
                 }
               }
             }

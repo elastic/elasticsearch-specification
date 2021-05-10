@@ -18,7 +18,7 @@
  */
 
 import { LifecycleOperationMode } from '@_types/Lifecycle'
-import { Phases } from '@ilm/_types/Phases'
+import { Phases } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'

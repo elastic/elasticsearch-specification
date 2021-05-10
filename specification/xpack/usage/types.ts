@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Phases } from '@ilm/_types/Phases'
+import { Phases } from '@ilm/_types/Phase'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
