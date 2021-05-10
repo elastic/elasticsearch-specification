@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { ByteSize } from "@_types/common";
+
 export class Response {
-  body: { model_memory_estimate: string }
+  body: { model_memory_estimate: ByteSize }
 }

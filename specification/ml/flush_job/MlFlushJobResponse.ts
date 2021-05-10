@@ -20,5 +20,8 @@
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: { flushed: boolean; last_finalized_bucket_end?: integer }
+  body: {
+    flushed: boolean
+    last_finalized_bucket_end?: integer
+  }
 }

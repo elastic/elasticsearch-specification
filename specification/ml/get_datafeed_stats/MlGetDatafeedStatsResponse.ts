@@ -21,5 +21,8 @@ import { DatafeedStats } from '@ml/_types/DatafeedStats'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: long; datafeeds: DatafeedStats[] }
+  body: {
+    count: long
+    datafeeds: DatafeedStats[]
+  }
 }

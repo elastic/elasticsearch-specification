@@ -17,32 +17,22 @@
  * under the License.
  */
 
-import { double, integer } from '@_types/Numeric'
-import { EpochMillis, Time } from '@_types/Time'
-import { AnomalyCause } from './AnomalyCause'
-import { Influence } from './Influence'
+import { Id } from '@_types/common'
+import { double, long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
+import { BucketInfluencer } from './BucketInfluencer'
+import { PartitionScore } from './PartitionScore'
 
-export class AnomalyRecord {
-  actual?: double[]
+export class Bucket {
+  anomaly_score: double
+  bucket_influencers: BucketInfluencer[]
   bucket_span: Time
-  by_field_name?: string
-  by_field_value?: string
-  causes?: AnomalyCause[]
-  detector_index: integer
-  field_name?: string
-  function?: string
-  function_description?: string
-  influencers?: Influence[]
-  initial_record_score: double
+  event_count: long
+  initial_anomaly_score: double
   is_interim: boolean
-  job_id: string
-  over_field_name?: string
-  over_field_value?: string
-  partition_field_name?: string
-  partition_field_value?: string
-  probability: double
-  record_score: double
+  job_id: Id
+  partition_scores?: PartitionScore[]
+  processing_time_ms: double
   result_type: string
-  timestamp: EpochMillis
-  typical?: double[]
+  timestamp: Time
 }

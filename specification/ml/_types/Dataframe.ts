@@ -17,22 +17,10 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
-import { double, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
-import { BucketInfluencer } from './BucketInfluencer'
-import { PartitionScore } from './PartitionScore'
-
-export class ResultBucket {
-  anomaly_score: double
-  bucket_influencers: BucketInfluencer[]
-  bucket_span: Time
-  event_count: long
-  initial_anomaly_score: double
-  is_interim: boolean
-  job_id: Id
-  partition_scores?: PartitionScore[]
-  processing_time_ms: double
-  result_type: string
-  timestamp: Time
+export enum DataframeState {
+  started = 0,
+  stopped = 1,
+  starting = 2,
+  stopping = 3,
+  failed = 4
 }

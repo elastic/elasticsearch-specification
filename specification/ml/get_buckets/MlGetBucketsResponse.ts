@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { ResultBucket } from '@ml/_types/ResultBucket'
+import { Bucket } from '@ml/_types/Buckets'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { buckets: ResultBucket[]; count: long }
+  body: {
+    buckets: Bucket[]
+    count: long
+  }
 }

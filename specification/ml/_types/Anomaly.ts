@@ -17,10 +17,32 @@
  * under the License.
  */
 
-export enum DataFrameState {
-  started = 0,
-  stopped = 1,
-  starting = 2,
-  stopping = 3,
-  failed = 4
+import { double, integer } from '@_types/Numeric'
+import { EpochMillis, Time } from '@_types/Time'
+import { AnomalyCause } from './AnomalyCause'
+import { Influence } from './Influence'
+
+export class Anomaly {
+  actual?: double[]
+  bucket_span: Time
+  by_field_name?: string
+  by_field_value?: string
+  causes?: AnomalyCause[]
+  detector_index: integer
+  field_name?: string
+  function?: string
+  function_description?: string
+  influencers?: Influence[]
+  initial_record_score: double
+  is_interim: boolean
+  job_id: string
+  over_field_name?: string
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
+  probability: double
+  record_score: double
+  result_type: string
+  timestamp: EpochMillis
+  typical?: double[]
 }

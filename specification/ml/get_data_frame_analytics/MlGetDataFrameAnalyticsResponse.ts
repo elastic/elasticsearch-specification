@@ -18,32 +18,16 @@
  */
 
 import {
-  DataFrameAnalysisAnalyzedFields,
-  DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
+  DataframeAnalyticsSummary
+} from '@ml/_types/DataframeAnalytics'
 import { ByteSize, Id, VersionString } from '@_types/common'
-import { integer, long } from '@_types/Numeric'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
     count: integer
     /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
-    data_frame_analytics: DataFrameAnalyticsSummary[]
+    data_frame_analytics: DataframeAnalyticsSummary[]
   }
 }
 
-export class DataFrameAnalyticsSummary {
-  id: Id
-  source: DataFrameAnalyticsSource
-  dest: DataFrameAnalyticsDestination
-  analysis: DataFrameAnalysisContainer
-  description?: string
-  model_memory_limit?: ByteSize
-  max_num_threads?: integer
-  analyzed_fields?: DataFrameAnalysisAnalyzedFields
-  allow_lazy_start?: boolean
-  create_time?: long
-  version?: VersionString
-}

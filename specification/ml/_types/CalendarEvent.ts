@@ -20,7 +20,7 @@
 import { Id } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
-export class ScheduledEvent {
+export class CalendarEvent {
   calendar_id?: Id
   event_id?: Id
   /** A description of the scheduled event. */

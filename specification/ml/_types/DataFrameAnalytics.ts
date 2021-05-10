@@ -19,10 +19,13 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ByteSize, Field, IndexName, Indices, Name } from '@_types/common'
+import { ByteSize, Field, Id, IndexName, Indices, Name, VersionString } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { double, integer, Percentage } from '@_types/Numeric'
+import { NodeAttributes } from '@_types/Node'
+import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { DateString } from '@_types/Time'
+import { DataframeState } from './Dataframe'
 
 export class DataFrameAnalyticsSource {
   /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. */
@@ -194,4 +197,130 @@ export class DataFrameAnalysisFeatureProcessorTargetMeanEncoding {
   field: Field
   /** The field value to target mean transition map. */
   target_map: Dictionary<string, UserDefinedValue>
+}
+
+export class DataframeAnalyticsSummary {
+  id: Id
+  source: DataFrameAnalyticsSource
+  dest: DataFrameAnalyticsDestination
+  analysis: DataFrameAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: DataFrameAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
+}
+
+
+export class DataframeAnalytics {
+  /** An object containing information about the analysis job. */
+  analysis_stats?: DataframeAnalyticsStatsContainer
+  /** For running jobs only, contains messages relating to the selection of a node to run the job. */
+  assignment_explanation?: string
+  /** An object that provides counts for the quantity of documents skipped, used in training, or available for testing. */
+  data_counts: DataframeAnalyticsStatsDataCounts
+  /** The unique identifier of the data frame analytics job. */
+  id: Id
+  /** An object describing memory usage of the analytics. It is present only after the job is started and memory usage is reported. */
+  memory_usage: DataframeAnalyticsStatsMemoryUsage
+  /** Contains properties for the node that runs the job. This information is available only for running jobs. */
+  node?: NodeAttributes
+  /** The progress report of the data frame analytics job by phase. */
+  progress: DataframeAnalyticsStatsProgress[]
+  /** The status of the data frame analytics job, which can be one of the following values: failed, started, starting, stopping, stopped. */
+  state: DataframeState
+}
+
+export class DataframeAnalyticsStatsProgress {
+  /** Defines the phase of the data frame analytics job. */
+  phase: string
+  /** The progress that the data frame analytics job has made expressed in percentage. */
+  progress_percent: integer
+}
+
+export class DataframeAnalyticsStatsMemoryUsage {
+  /** This value is present when the status is hard_limit and it is a new estimate of how much memory the job needs. */
+  memory_reestimate_bytes?: long
+  /** The number of bytes used at the highest peak of memory usage. */
+  peak_usage_bytes: long
+  /** The memory usage status. */
+  status: string
+  /** The timestamp when memory usage was calculated. */
+  timestamp?: DateString
+}
+
+export class DataframeAnalyticsStatsDataCounts {
+  /** The number of documents that are skipped during the analysis because they contained values that are not supported by the analysis. For example, outlier detection does not support missing fields so it skips documents with missing fields. Likewise, all types of analysis skip documents that contain arrays with more than one element. */
+  skipped_docs_count: integer
+  /** The number of documents that are not used for training the model and can be used for testing. */
+  test_docs_count: integer
+  /** The number of documents that are used for training the model. */
+  training_docs_count: integer
+}
+
+/** @variants container */
+export class DataframeAnalyticsStatsContainer {
+  /** An object containing information about the classification analysis job. */
+  classification_stats?: DataframeAnalyticsStatsHyperparameters
+  /** An object containing information about the outlier detection job. */
+  outlier_detection_stats?: DataframeAnalyticsStatsOutlierDetection
+  /** An object containing information about the regression analysis. */
+  regression_stats?: DataframeAnalyticsStatsHyperparameters
+}
+
+export class DataframeAnalyticsStatsHyperparameters {
+  hyperparameters: Hyperparameters
+  /** The number of iterations on the analysis. */
+  iteration: integer
+  timestamp: DateString
+  timing_stats: TimingStats
+  validation_loss: ValidationLoss
+}
+
+export class DataframeAnalyticsStatsOutlierDetection {
+  parameters: OutlierDetectionParameters
+  timestamp: DateString
+  timing_stats: TimingStats
+}
+
+export class Hyperparameters {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  downsample_factor?: double
+  max_attempts_to_add_tree?: integer
+  max_optimization_rounds_per_hyperparameter?: integer
+  max_trees?: integer
+  num_folds?: integer
+  num_splits_per_feature?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+}
+
+export class OutlierDetectionParameters {
+  compute_feature_influence?: boolean
+  feature_influence_threshold?: double
+  method?: string
+  n_neighbors?: integer
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
+
+export class TimingStats {
+  /** Runtime of the analysis in milliseconds. */
+  elapsed_time: integer
+  /** Runtime of the latest iteration of the analysis in milliseconds. */
+  iteration_time?: integer
+}
+
+export class ValidationLoss {
+  /** Validation loss values for every added decision tree during the forest growing procedure. */
+  fold_values: string[]
+  /** The type of the loss metric. For example, binomial_logistic. */
+  loss_type: string
 }

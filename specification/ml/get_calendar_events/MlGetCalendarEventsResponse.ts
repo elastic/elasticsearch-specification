@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { ScheduledEvent } from '@ml/post_calendar_events/ScheduledEvent'
-import { integer } from '@_types/Numeric'
+import { CalendarEvent } from '@ml/_types/CalendarEvent'
+import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: integer; events: ScheduledEvent[] }
+  body: {
+    count: long
+    events: CalendarEvent[]
+  }
 }

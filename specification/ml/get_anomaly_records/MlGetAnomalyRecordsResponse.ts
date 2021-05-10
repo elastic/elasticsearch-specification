@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { AnomalyRecord } from '@ml/_types/AnomalyRecord'
+import { Anomaly } from '@ml/_types/Anomaly'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: long; records: AnomalyRecord[] }
+  body: {
+    count: long
+    records: Anomaly[]
+  }
 }

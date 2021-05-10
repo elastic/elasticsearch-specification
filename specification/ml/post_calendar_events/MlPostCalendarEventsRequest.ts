@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { ScheduledEvent } from './ScheduledEvent'
+import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
  * @rest_spec_name ml.post_calendar_events
@@ -33,6 +33,6 @@ export interface Request extends RequestBase {
   }
   body: {
     /** A list of one of more scheduled events. The event’s start and end times may be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
-    events: ScheduledEvent[]
+    events: CalendarEvent[]
   }
 }
