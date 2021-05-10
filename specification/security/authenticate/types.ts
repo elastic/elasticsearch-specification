@@ -17,6 +17,8 @@
  * under the License.
  */
 
-export class Response {
-  body: {}
+import { Name } from '@_types/common'
+
+export class Token {
+  name: Name
 }

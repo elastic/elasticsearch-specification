@@ -17,14 +17,17 @@
  * under the License.
  */
 
-import { NodeStatistics } from '@_types/Node'
-import { SecurityNode } from '@security/_types/SecurityNode'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { RequestBase } from '@_types/Base'
+import { Namespace, Service } from '@_types/common'
 
-export class Response {
-  body: {
-    cluster_name: string
-    nodes: Dictionary<string, SecurityNode>
-    _nodes: NodeStatistics
+/**
+ * @rest_spec_name security.get_service_credentials
+ * @since 7.13.0
+ * @stability TODO
+ */
+export interface Request extends RequestBase {
+  path_parts: {
+    namespace: Namespace
+    service: Service
   }
 }

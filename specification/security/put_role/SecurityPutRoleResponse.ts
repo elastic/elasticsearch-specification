@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { PutRoleStatus } from './PutRoleStatus'
+import { CreatedStatus } from '@security/_types/CreatedStatus'
 
 export class Response {
-  body: { role: PutRoleStatus }
+  body: { role: CreatedStatus }
 }

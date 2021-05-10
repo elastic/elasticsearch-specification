@@ -17,6 +17,12 @@
  * under the License.
  */
 
-export class PutRoleStatus {
-  created: boolean
+import { Metadata } from '@_types/common'
+import { RoleMappingRuleBase } from './RoleMappingRuleBase'
+
+export class RoleMapping {
+  enabled: boolean
+  metadata: Metadata
+  roles: string[]
+  rules: RoleMappingRuleBase
 }

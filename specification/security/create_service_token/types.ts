@@ -17,6 +17,9 @@
  * under the License.
  */
 
-export class PutPrivilegesStatus {
-  created: boolean
+import { Name } from '@_types/common'
+
+export class Token {
+  name: Name
+  value: string
 }

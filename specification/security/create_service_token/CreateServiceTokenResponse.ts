@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { TermUserPrivileges } from './TermUserPrivileges'
+import { Token } from './types'
 
-export class QueryUserPrivileges {
-  term: TermUserPrivileges
+export class Response {
+  body: {
+    created: boolean
+    token: Token
+  }
 }

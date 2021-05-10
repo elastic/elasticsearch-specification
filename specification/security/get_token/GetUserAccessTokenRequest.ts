@@ -18,9 +18,9 @@
  */
 // TODO: once the compiler can handle it, the body should use the commented classes in this file
 
-import { AccessTokenGrantType } from '@security/_types/AccessTokenGrantType'
 import { RequestBase } from '@_types/Base'
 import { Password, Username } from '@_types/common'
+import { AccessTokenGrantType } from './types'
 
 /**
  * @rest_spec_name security.get_token
@@ -29,7 +29,6 @@ import { Password, Username } from '@_types/common'
  */
 export interface Request extends RequestBase {
   query_parameters?: {}
-  // body: AccessTokenGrantTypePassword | AccessTokenGrantTypeClientCredentials | AccessTokenGrantTypeKerberos | AccessTokenGrantTypeRefresh
   body?: {
     grant_type?: AccessTokenGrantType
     scope?: string
@@ -39,27 +38,3 @@ export interface Request extends RequestBase {
     username?: Username
   }
 }
-
-// export class AccessTokenGrantTypePassword {
-//   grant_type: 'password'
-//   username: string
-//   password: string
-//   scope?: string
-// }
-
-// export class AccessTokenGrantTypeClientCredentials {
-//   grant_type: 'client_credentials'
-//   scope?: string
-// }
-
-// export class AccessTokenGrantTypeKerberos {
-//   grant_type: '_kerberos'
-//   kerberos_ticket: string
-//   scope?: string
-// }
-
-// export class AccessTokenGrantTypeRefresh {
-//   grant_type: 'refresh_token'
-//   refresh_token: string
-//   scope?: string
-// }

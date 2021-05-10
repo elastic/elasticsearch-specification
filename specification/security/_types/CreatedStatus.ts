@@ -17,6 +17,6 @@
  * under the License.
  */
 
-export class Response {
-  body: {}
+export class CreatedStatus {
+  created: boolean
 }

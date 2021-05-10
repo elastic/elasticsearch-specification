@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { TransientMetadata } from '@security/_types/XPackRole'
+import { TransientMetadata } from '@security/get_role/types'
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
-import { ApplicationPrivileges } from './ApplicationPrivileges'
-import { IndicesPrivileges } from './IndicesPrivileges'
 
 /**
  * @rest_spec_name security.put_role

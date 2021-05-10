@@ -17,9 +17,18 @@
  * under the License.
  */
 
-export enum AccessTokenGrantType {
-  password = 0,
-  client_credentials = 1,
-  _kerberos = 2,
-  refresh_token = 3
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Name } from '@_types/common'
+import { Time } from '@_types/Time'
+
+export class ApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: Dictionary<string, UserDefinedValue>[]
+}
+
+export enum ApiKeyGrantType {
+  access_token = 0,
+  password = 1
 }

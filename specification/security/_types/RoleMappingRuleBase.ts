@@ -17,11 +17,4 @@
  * under the License.
  */
 
-import { Metadata, Name } from '@_types/common'
-
-export class PrivilegesActions {
-  actions: string[]
-  application?: string
-  name?: Name
-  metadata?: Metadata
-}
+export class RoleMappingRuleBase {}

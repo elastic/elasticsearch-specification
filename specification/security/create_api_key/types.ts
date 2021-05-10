@@ -17,12 +17,16 @@
  * under the License.
  */
 
-import { RoleMappingRuleBase } from '@security/put_role_mapping/SecurityPutRoleMappingRequest'
-import { Metadata } from '@_types/common'
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { Indices } from '@_types/common'
 
-export class XPackRoleMapping {
-  enabled: boolean
-  metadata: Metadata
-  roles: string[]
-  rules: RoleMappingRuleBase
+export class RoleDescriptor {
+  cluster: string[]
+  index: IndexPrivileges[]
+  applications?: ApplicationPrivileges[]
+}
+
+export class IndexPrivileges {
+  names: Indices
+  privileges: string[]
 }

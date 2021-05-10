@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { ApplicationPrivileges } from '@security/put_role/ApplicationPrivileges'
-import { IndicesPrivileges } from '@security/put_role/IndicesPrivileges'
+import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
 import { Metadata } from '@_types/common'
 
-export class XPackRole {
+export class Role {
   cluster: string[]
   indices: IndicesPrivileges[]
   metadata: Metadata
@@ -35,14 +35,14 @@ export class TransientMetadata {
   enabled: boolean
 }
 
-export enum RoleTemplateFormat {
+export enum TemplateFormat {
   string = 0,
   json = 1
 }
 
 export class InlineRoleTemplate {
   template: InlineRoleTemplateSource
-  format?: RoleTemplateFormat
+  format?: TemplateFormat
 }
 
 export class InlineRoleTemplateSource {
@@ -51,7 +51,7 @@ export class InlineRoleTemplateSource {
 
 export class StoredRoleTemplate {
   template: StoredRoleTemplateId
-  format?: RoleTemplateFormat
+  format?: TemplateFormat
 }
 
 export class StoredRoleTemplateId {
@@ -60,7 +60,7 @@ export class StoredRoleTemplateId {
 
 export class InvalidRoleTemplate {
   template: string
-  format?: RoleTemplateFormat
+  format?: TemplateFormat
 }
 
 export type RoleTemplate =

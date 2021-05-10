@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { PutRoleMappingStatus } from '@security/_types/PutRoleMappingStatus'
+import { CreatedStatus } from '@security/_types/CreatedStatus'
 
 export class Response {
-  body: { created?: boolean; role_mapping: PutRoleMappingStatus }
+  body: { created?: boolean; role_mapping: CreatedStatus }
 }

@@ -9727,10 +9727,17 @@
       "description": "Evicts tokens from the service account token caches.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-clear-service-token-caches.html",
       "name": "security.clear_cached_service_tokens",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "security.clear_cached_service_tokens"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "security.clear_cached_service_tokens"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9780,10 +9787,17 @@
       "description": "Creates a service account token for access without requiring basic authentication.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-service-token.html",
       "name": "security.create_service_token",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "security.create_service_token"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "security.create_service_token"
+      },
+      "since": "0.0.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -9892,10 +9906,17 @@
       "description": "Deletes a service account token.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-delete-service-token.html",
       "name": "security.delete_service_token",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "security.delete_service_token"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "security.delete_service_token"
+      },
+      "since": "5.5.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10163,10 +10184,17 @@
       "description": "Retrieves information about service accounts.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-accounts.html",
       "name": "security.get_service_accounts",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "security.get_service_accounts"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "security.get_service_accounts"
+      },
+      "since": "7.13.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -10196,10 +10224,17 @@
       "description": "Retrieves information of all service credentials for a service account.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-service-credentials.html",
       "name": "security.get_service_credentials",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "security.get_service_credentials"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "security.get_service_credentials"
+      },
+      "since": "7.13.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -31394,6 +31429,20 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Namespace",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "NodeAttributes",
@@ -33104,6 +33153,20 @@
         "type": {
           "name": "integer",
           "namespace": "_types"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Service",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
         }
       }
     },
@@ -122231,25 +122294,112 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "password"
-        },
-        {
-          "name": "client_credentials"
-        },
-        {
-          "name": "_kerberos"
-        },
-        {
-          "name": "refresh_token"
-        }
-      ],
+      "kind": "interface",
       "name": {
-        "name": "AccessTokenGrantType",
+        "name": "ApplicationGlobalUserPrivileges",
         "namespace": "security._types"
-      }
+      },
+      "properties": [
+        {
+          "name": "manage",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApplicationPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "resources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterNode",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CreatedStatus",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "created",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -122285,100 +122435,120 @@
     {
       "kind": "interface",
       "name": {
-        "name": "InlineRoleTemplate",
+        "name": "GlobalPrivileges",
         "namespace": "security._types"
       },
       "properties": [
         {
-          "name": "template",
+          "name": "application",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "InlineRoleTemplateSource",
+              "name": "ApplicationGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndicesPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "field_security",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSecurity",
               "namespace": "security._types"
             }
           }
         },
         {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateFormat",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InlineRoleTemplateSource",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "source",
+          "name": "names",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InvalidRoleTemplate",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "template",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Indices",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "format",
-          "required": false,
+          "name": "privileges",
+          "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateFormat",
-              "namespace": "security._types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PutRoleMappingStatus",
-        "namespace": "security._types"
-      },
-      "properties": [
+        },
         {
-          "name": "created",
-          "required": true,
+          "name": "query",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryContainer",
+                  "namespace": "_types.query_dsl"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "allow_restricted_indices",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -122416,249 +122586,9 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "RoleTemplate",
-        "namespace": "security._types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InlineRoleTemplate",
-              "namespace": "security._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StoredRoleTemplate",
-              "namespace": "security._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InvalidRoleTemplate",
-              "namespace": "security._types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "string"
-        },
-        {
-          "name": "json"
-        }
-      ],
-      "name": {
-        "name": "RoleTemplateFormat",
-        "namespace": "security._types"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
-        "name": "SecurityNode",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StoredRoleTemplate",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "template",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StoredRoleTemplateId",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleTemplateFormat",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StoredRoleTemplateId",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TransientMetadata",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackRole",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "cluster",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndicesPrivileges",
-                "namespace": "security.put_role"
-              }
-            }
-          }
-        },
-        {
-          "name": "metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "run_as",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "transient_metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransientMetadata",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "name": "applications",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApplicationPrivileges",
-                "namespace": "security.put_role"
-              }
-            }
-          }
-        },
-        {
-          "name": "role_templates",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RoleTemplate",
-                "namespace": "security._types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "XPackRoleMapping",
+        "name": "RoleMapping",
         "namespace": "security._types"
       },
       "properties": [
@@ -122705,7 +122635,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RoleMappingRuleBase",
-              "namespace": "security.put_role_mapping"
+              "namespace": "security._types"
             }
           }
         }
@@ -122714,7 +122644,15 @@
     {
       "kind": "interface",
       "name": {
-        "name": "XPackUser",
+        "name": "RoleMappingRuleBase",
+        "namespace": "security._types"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "User",
         "namespace": "security._types"
       },
       "properties": [
@@ -122923,7 +122861,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SecurityAuthenticateToken",
+                "name": "Token",
                 "namespace": "security.authenticate"
               }
             }
@@ -122939,7 +122877,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SecurityAuthenticateToken",
+        "name": "Token",
         "namespace": "security.authenticate"
       },
       "properties": [
@@ -123025,26 +122963,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "ClearApiKeyCacheNode",
-        "namespace": "security.clear_api_key_cache"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -123119,8 +123037,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ClearApiKeyCacheNode",
-                  "namespace": "security.clear_api_key_cache"
+                  "name": "ClusterNode",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -123132,26 +123050,6 @@
         "name": "Response",
         "namespace": "security.clear_api_key_cache"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClearCachedPrivilegeNode",
-        "namespace": "security.clear_cached_privileges"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -123228,8 +123126,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ClearCachedPrivilegeNode",
-                  "namespace": "security.clear_cached_privileges"
+                  "name": "ClusterNode",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -123321,7 +123219,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SecurityNode",
+                  "name": "ClusterNode",
                   "namespace": "security._types"
                 }
               }
@@ -123384,13 +123282,24 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "_nodes",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "cluster_name",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           },
@@ -123410,20 +123319,9 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SecurityNode",
+                  "name": "ClusterNode",
                   "namespace": "security._types"
                 }
-              }
-            }
-          },
-          {
-            "name": "_nodes",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStatistics",
-                "namespace": "_types"
               }
             }
           }
@@ -123436,57 +123334,120 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "ApiKeyApplication",
-        "namespace": "security.create_api_key"
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
       },
-      "properties": [
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.clear_cached_service_tokens"
+      },
+      "path": [
         {
-          "name": "application",
+          "name": "namespace",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Namespace",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "privileges",
+          "name": "service",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
             }
           }
         },
         {
-          "name": "resources",
+          "name": "name",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
             }
           }
         }
-      ]
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "_nodes",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "cluster_name",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "nodes",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ClusterNode",
+                  "namespace": "security._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.clear_cached_service_tokens"
+      }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKeyPrivileges",
+        "name": "IndexPrivileges",
         "namespace": "security.create_api_key"
       },
       "properties": [
@@ -123511,57 +123472,6 @@
               "type": {
                 "name": "string",
                 "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApiKeyRole",
-        "namespace": "security.create_api_key"
-      },
-      "properties": [
-        {
-          "name": "cluster",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApiKeyPrivileges",
-                "namespace": "security.create_api_key"
-              }
-            }
-          }
-        },
-        {
-          "name": "applications",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApiKeyApplication",
-                "namespace": "security.create_api_key"
               }
             }
           }
@@ -123617,7 +123527,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ApiKeyRole",
+                  "name": "RoleDescriptor",
                   "namespace": "security.create_api_key"
                 }
               }
@@ -123723,7 +123633,178 @@
     {
       "kind": "interface",
       "name": {
-        "name": "FoundUserPrivilege",
+        "name": "RoleDescriptor",
+        "namespace": "security.create_api_key"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexPrivileges",
+                "namespace": "security.create_api_key"
+              }
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.create_service_token"
+      },
+      "path": [
+        {
+          "name": "namespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "created",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "token",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Token",
+                "namespace": "security.create_service_token"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.create_service_token"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Token",
+        "namespace": "security.create_service_token"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FoundStatus",
         "namespace": "security.delete_privileges"
       },
       "properties": [
@@ -123823,7 +123904,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FoundUserPrivilege",
+                "name": "FoundStatus",
                 "namespace": "security.delete_privileges"
               }
             }
@@ -123992,6 +124073,96 @@
       "kind": "request",
       "name": {
         "name": "Request",
+        "namespace": "security.delete_service_token"
+      },
+      "path": [
+        {
+          "name": "namespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "found",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.delete_service_token"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
         "namespace": "security.delete_user"
       },
       "path": [
@@ -124157,7 +124328,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKeys",
+        "name": "ApiKey",
         "namespace": "security.get_api_key"
       },
       "properties": [
@@ -124341,7 +124512,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ApiKeys",
+                  "name": "ApiKey",
                   "namespace": "security.get_api_key"
                 }
               }
@@ -124484,7 +124655,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PrivilegesActions",
+                "name": "Actions",
                 "namespace": "security.put_privileges"
               }
             }
@@ -124502,6 +124673,88 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "InlineRoleTemplate",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "InlineRoleTemplateSource",
+              "namespace": "security.get_role"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TemplateFormat",
+              "namespace": "security.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InlineRoleTemplateSource",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InvalidRoleTemplate",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TemplateFormat",
+              "namespace": "security.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -124551,8 +124804,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "XPackRole",
-              "namespace": "security._types"
+              "name": "Role",
+              "namespace": "security.get_role"
             }
           }
         ],
@@ -124566,6 +124819,226 @@
         "name": "Response",
         "namespace": "security.get_role"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Role",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "run_as",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "transient_metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TransientMetadata",
+              "namespace": "security.get_role"
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "role_templates",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleTemplate",
+                "namespace": "security.get_role"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "RoleTemplate",
+        "namespace": "security.get_role"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InlineRoleTemplate",
+              "namespace": "security.get_role"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StoredRoleTemplate",
+              "namespace": "security.get_role"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InvalidRoleTemplate",
+              "namespace": "security.get_role"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StoredRoleTemplate",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StoredRoleTemplateId",
+              "namespace": "security.get_role"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TemplateFormat",
+              "namespace": "security.get_role"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StoredRoleTemplateId",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "string"
+        },
+        {
+          "name": "json"
+        }
+      ],
+      "name": {
+        "name": "TemplateFormat",
+        "namespace": "security.get_role"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TransientMetadata",
+        "namespace": "security.get_role"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -124617,7 +125090,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "XPackRoleMapping",
+              "name": "RoleMapping",
               "namespace": "security._types"
             }
           }
@@ -124634,9 +125107,368 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "inherits": {
         "type": {
-          "name": "XPackUser",
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.get_service_accounts"
+      },
+      "path": [
+        {
+          "name": "namespace",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "service",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleDescriptorWrapper",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        ],
+        "type": {
+          "name": "DictionaryResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.get_service_accounts"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoleDescriptor",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "global",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GlobalPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "applications",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "run_as",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "transient_metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoleDescriptorWrapper",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "name": "role_descriptor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleDescriptor",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "security.get_service_credentials"
+      },
+      "path": [
+        {
+          "name": "namespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "service_account",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "node_name",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeName",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "count",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "tokens",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "EmptyObject",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "name": "file_tokens",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "EmptyObject",
+                  "namespace": "_types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "security.get_service_credentials"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "password"
+        },
+        {
+          "name": "client_credentials"
+        },
+        {
+          "name": "_kerberos"
+        },
+        {
+          "name": "refresh_token"
+        }
+      ],
+      "name": {
+        "name": "AccessTokenGrantType",
+        "namespace": "security.get_token"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "User",
           "namespace": "security._types"
         }
       },
@@ -124737,7 +125569,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "AccessTokenGrantType",
-                "namespace": "security._types"
+                "namespace": "security.get_token"
               }
             }
           },
@@ -124998,7 +125830,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "XPackUser",
+              "name": "User",
               "namespace": "security._types"
             }
           }
@@ -125013,174 +125845,6 @@
         "name": "Response",
         "namespace": "security.get_user"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationGlobalUserPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "manage",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ManageUserPrivileges",
-              "namespace": "security.get_user_privileges"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationResourcePrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "resources",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FieldSecuritySettings",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "except",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "grant",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "GlobalPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ApplicationGlobalUserPrivileges",
-              "namespace": "security.get_user_privileges"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ManageUserPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "applications",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "QueryUserPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "term",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TermUserPrivileges",
-              "namespace": "security.get_user_privileges"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -125240,8 +125904,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ApplicationResourcePrivileges",
-                  "namespace": "security.get_user_privileges"
+                  "name": "ApplicationPrivileges",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -125269,7 +125933,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "GlobalPrivileges",
-                  "namespace": "security.get_user_privileges"
+                  "namespace": "security._types"
                 }
               }
             }
@@ -125282,8 +125946,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "UserIndicesPrivileges",
-                  "namespace": "security.get_user_privileges"
+                  "name": "IndicesPrivileges",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -125309,96 +125973,6 @@
         "name": "Response",
         "namespace": "security.get_user_privileges"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TermUserPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "apps",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "UserIndicesPrivileges",
-        "namespace": "security.get_user_privileges"
-      },
-      "properties": [
-        {
-          "name": "field_security",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSecuritySettings",
-              "namespace": "security.get_user_privileges"
-            }
-          }
-        },
-        {
-          "name": "names",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryUserPrivileges",
-              "namespace": "security.get_user_privileges"
-            }
-          }
-        },
-        {
-          "name": "allow_restricted_indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -126213,7 +126787,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "PrivilegesActions",
+        "name": "Actions",
         "namespace": "security.put_privileges"
       },
       "properties": [
@@ -126267,26 +126841,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "PutPrivilegesStatus",
-        "namespace": "security.put_privileges"
-      },
-      "properties": [
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -126315,7 +126869,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PrivilegesActions",
+                "name": "Actions",
                 "namespace": "security.put_privileges"
               }
             }
@@ -126375,8 +126929,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "PutPrivilegesStatus",
-                "namespace": "security.put_privileges"
+                "name": "CreatedStatus",
+                "namespace": "security._types"
               }
             }
           }
@@ -126391,153 +126945,6 @@
         "name": "Response",
         "namespace": "security.put_privileges"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationPrivileges",
-        "namespace": "security.put_role"
-      },
-      "properties": [
-        {
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "resources",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndicesPrivileges",
-        "namespace": "security.put_role"
-      },
-      "properties": [
-        {
-          "name": "field_security",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSecurity",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "name": "names",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryContainer",
-                  "namespace": "_types.query_dsl"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "allow_restricted_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PutRoleStatus",
-        "namespace": "security.put_role"
-      },
-      "properties": [
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -126555,7 +126962,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "ApplicationPrivileges",
-                  "namespace": "security.put_role"
+                  "namespace": "security._types"
                 }
               }
             }
@@ -126601,7 +127008,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "IndicesPrivileges",
-                  "namespace": "security.put_role"
+                  "namespace": "security._types"
                 }
               }
             }
@@ -126638,7 +127045,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "TransientMetadata",
-                "namespace": "security._types"
+                "namespace": "security.get_role"
               }
             }
           }
@@ -126692,8 +127099,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "PutRoleStatus",
-                "namespace": "security.put_role"
+                "name": "CreatedStatus",
+                "namespace": "security._types"
               }
             }
           }
@@ -126755,7 +127162,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "RoleMappingRuleBase",
-                "namespace": "security.put_role_mapping"
+                "namespace": "security._types"
               }
             }
           },
@@ -126834,7 +127241,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "PutRoleMappingStatus",
+                "name": "CreatedStatus",
                 "namespace": "security._types"
               }
             }
@@ -126846,14 +127253,6 @@
         "name": "Response",
         "namespace": "security.put_role_mapping"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RoleMappingRuleBase",
-        "namespace": "security.put_role_mapping"
-      },
-      "properties": []
     },
     {
       "attachedBehaviors": [

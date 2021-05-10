@@ -17,6 +17,11 @@
  * under the License.
  */
 
-export class PutRoleMappingStatus {
-  created: boolean
+import { Metadata, Name } from '@_types/common'
+
+export class Actions {
+  actions: string[]
+  application?: string
+  name?: Name
+  metadata?: Metadata
 }
