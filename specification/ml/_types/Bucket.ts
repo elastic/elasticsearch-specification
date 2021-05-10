@@ -20,6 +20,21 @@
 import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { PartitionScore } from './PartitionScore'
+
+export class Bucket {
+  anomaly_score: double
+  bucket_influencers: BucketInfluencer[]
+  bucket_span: Time
+  event_count: long
+  initial_anomaly_score: double
+  is_interim: boolean
+  job_id: Id
+  partition_scores?: PartitionScore[]
+  processing_time_ms: double
+  result_type: string
+  timestamp: Time
+}
 
 export class BucketInfluencer {
   /** The length of the bucket in seconds. This value matches the bucket_span that is specified in the job. */
@@ -43,4 +58,23 @@ export class BucketInfluencer {
   /** The start time of the bucket for which these results were calculated. */
   timestamp: Time
   foo?: string // TODO ??? - the tests carry this prop but :shrug:
+}
+
+export class OverallBucket {
+  /** The length of the bucket in seconds. Matches the job with the longest bucket_span value. */
+  bucket_span: long
+  /** If true, this is an interim result. In other words, the results are calculated based on partial input data. */
+  is_interim: boolean
+  /** An array of objects that contain the max_anomaly_score per job_id. */
+  jobs: OverallBucketJob[]
+  /** The top_n average of the maximum bucket anomaly_score per job. */
+  overall_score: double
+  /** Internal. This is always set to overall_bucket. */
+  result_type: string
+  /** The start time of the bucket for which these results were calculated. */
+  timestamp: Time
+}
+export class OverallBucketJob {
+  job_id: Id
+  max_anomaly_score: double
 }

@@ -19,7 +19,4 @@
 
 import { long } from '@_types/Numeric'
 
-export class AnalysisLimits {
-  categorization_examples_limit?: long
-  model_memory_limit: string
-}
+

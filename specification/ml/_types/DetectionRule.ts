@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
-import { FilterRef } from './FilterRef'
+import { FilterRef } from './Filter'
 import { RuleAction } from './RuleAction'
 import { RuleCondition } from './RuleCondition'
 

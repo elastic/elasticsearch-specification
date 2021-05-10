@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { JobState } from '@ml/_types/JobState'
+import { JobState } from '@ml/_types/Job'
 import { ByteSize, Id, NodeId } from '@_types/common'
 
 export enum ModelCategorizationStatus {

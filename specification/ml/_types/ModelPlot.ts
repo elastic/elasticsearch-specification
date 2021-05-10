@@ -17,15 +17,30 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
-import { DatafeedState } from './DatafeedState'
-import { DatafeedTimingStats } from './DatafeedTimingStats'
-import { DiscoveryNode } from './DiscoveryNode'
+import { Field } from '@_types/common'
 
-export class DatafeedStats {
-  assignment_explanation?: string
-  datafeed_id: Id
-  node?: DiscoveryNode
-  state: DatafeedState
-  timing_stats: DatafeedTimingStats
+export class ModelPlotConfig {
+  terms?: Field
+  enabled: boolean
+  annotations_enabled?: boolean
+}
+
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
+ */
+ export class ModelPlotConfigEnabled {
+  /**
+   * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
+   */
+  enabled: boolean
+  /**
+   * @since 7.9.0
+   * @server_default true
+   */
+  annotations_enabled?: boolean
+  /**
+   * stability: experimental
+   * @since 7.9.0
+   */
+  terms?: string
 }

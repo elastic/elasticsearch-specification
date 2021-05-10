@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
-import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/DataDescription'
-import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'

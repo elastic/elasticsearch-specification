@@ -22,11 +22,12 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
-import { integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Time, Timestamp } from '@_types/Time'
 import { ChunkingConfig } from './ChunkingConfig'
+import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
   aggregations?: Dictionary<string, AggregationContainer>
@@ -50,4 +51,27 @@ export class Datafeed {
 export class DelayedDataCheckConfig {
   check_window?: Time // default: null
   enabled: boolean // default: true
+}
+
+export enum DatafeedState {
+  started = 0,
+  stopped = 1,
+  starting = 2,
+  stopping = 3
+}
+
+export class DatafeedStats {
+  assignment_explanation?: string
+  datafeed_id: Id
+  node?: DiscoveryNode
+  state: DatafeedState
+  timing_stats: DatafeedTimingStats
+}
+
+export class DatafeedTimingStats {
+  bucket_count: long
+  exponential_average_search_time_per_hour_ms: double
+  job_id: Id
+  search_count: long
+  total_search_time_ms: double
 }

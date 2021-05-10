@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Bucket } from '@ml/_types/Buckets'
+import { Bucket } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
 
 export class Response {

@@ -17,14 +17,25 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
-import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/DataDescription'
-import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings, MlJobForecasts } from '@xpack/usage/types'
 import { EmptyObject, Id, IndexName, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { Time } from '@_types/Time'
+import { DateString, Time } from '@_types/Time'
+import { DataCounts } from './DataCounts'
+import { DiscoveryNode } from './DiscoveryNode'
+import { ModelSizeStats } from './Model'
+
+export enum JobState {
+  closing = 0,
+  closed = 1,
+  opened = 2,
+  failed = 3,
+  opening = 4
+}
 
 export class JobStatistics {
   avg: double
@@ -61,4 +72,37 @@ export class Job {
   job_version?: VersionString
   deleting?: boolean
   daily_model_snapshot_retention_after_days?: long
+}
+
+export class JobStats {
+  assignment_explanation?: string
+  data_counts: DataCounts
+  forecasts_stats: JobForecastStatistics
+  job_id: string
+  model_size_stats: ModelSizeStats
+  node?: DiscoveryNode
+  open_time?: DateString
+  state: JobState
+  timing_stats: JobTimingStats
+  deleting?: boolean
+}
+
+export class JobTimingStats {
+  average_bucket_processing_time_ms?: double
+  bucket_count: long
+  exponential_average_bucket_processing_time_ms?: double
+  exponential_average_bucket_processing_time_per_hour_ms: double
+  job_id: Id
+  total_bucket_processing_time_ms: double
+  maximum_bucket_processing_time_ms?: double
+  minimum_bucket_processing_time_ms?: double
+}
+
+export class JobForecastStatistics {
+  memory_bytes?: JobStatistics
+  processing_time_ms?: JobStatistics
+  records?: JobStatistics
+  status?: Dictionary<string, long>
+  total: long
+  forecasted_jobs: integer
 }

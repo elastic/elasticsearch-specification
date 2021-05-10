@@ -18,9 +18,19 @@
  */
 
 import { Id } from '@_types/common'
-import { RuleFilterType } from './RuleFilterType'
+
+export class Filter {
+  description?: string
+  filter_id: Id
+  items: string[]
+}
 
 export class FilterRef {
   filter_id: Id
-  filter_type: RuleFilterType
+  filter_type: FilterType
+}
+
+export enum FilterType {
+  include = 0,
+  exclude = 1
 }

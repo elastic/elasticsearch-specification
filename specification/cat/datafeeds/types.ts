@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { DatafeedState } from '@ml/_types/DatafeedState'
+import { DatafeedState } from '@ml/_types/Datafeed'
 
 export class DatafeedsRecord {
   /**
