@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskExecutingNode } from '@task/list_tasks/TaskExecutingNode'
+import { TaskExecutingNode } from '@task/_types/TaskExecutingNode'
 import { ErrorCause } from '@_types/Errors'
 
 export class Response {
