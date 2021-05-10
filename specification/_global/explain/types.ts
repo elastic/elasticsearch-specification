@@ -18,10 +18,15 @@
  */
 
 import { float } from '@_types/Numeric'
-import { ExplanationDetail } from './ExplanationDetail'
 
 export class Explanation {
   description: string
   details: ExplanationDetail[]
+  value: float
+}
+
+export class ExplanationDetail {
+  description: string
+  details?: ExplanationDetail[]
   value: float
 }

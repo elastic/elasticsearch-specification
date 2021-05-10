@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { Id, IndexName, Type } from '@_types/common'
-import { ExplanationDetail } from './ExplanationDetail'
-import { InlineGet } from './InlineGet'
+import { Id, IndexName, Type, InlineGet } from '@_types/common'
+import { ExplanationDetail } from './types'
 
 export class Response<TDocument> {
   body: {
