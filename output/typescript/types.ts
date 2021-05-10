@@ -8493,7 +8493,8 @@ export interface IndicesDeleteAliasRequest extends RequestBase {
   timeout?: Time
 }
 
-export type IndicesDeleteAliasResponse = boolean
+export interface IndicesDeleteAliasResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
   name: DataStreamName
@@ -8832,7 +8833,8 @@ export interface IndicesPutAliasRequest extends RequestBase {
   }
 }
 
-export type IndicesPutAliasResponse = boolean
+export interface IndicesPutAliasResponse extends AcknowledgedResponseBase {
+}
 
 export interface IndicesPutIndexTemplateIndexTemplateMapping {
   aliases?: Record<IndexName, IndicesAlias>
@@ -12802,7 +12804,8 @@ export interface SecurityChangePasswordRequest extends RequestBase {
   }
 }
 
-export type SecurityChangePasswordResponse = boolean
+export interface SecurityChangePasswordResponse {
+}
 
 export interface SecurityClearApiKeyCacheRequest extends RequestBase {
   ids?: Ids
@@ -12957,14 +12960,16 @@ export interface SecurityDisableUserRequest extends RequestBase {
   refresh?: Refresh
 }
 
-export type SecurityDisableUserResponse = boolean
+export interface SecurityDisableUserResponse {
+}
 
 export interface SecurityEnableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
 }
 
-export type SecurityEnableUserResponse = boolean
+export interface SecurityEnableUserResponse {
+}
 
 export interface SecurityGetApiKeyApiKey {
   creation: long

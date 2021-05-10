@@ -17,4 +17,6 @@
  * under the License.
  */
 
-export class Response {}
+export class Response {
+  body: {}
+}

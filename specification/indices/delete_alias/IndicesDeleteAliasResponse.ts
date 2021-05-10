@@ -17,4 +17,6 @@
  * under the License.
  */
 
-export class Response {}
+import { AcknowledgedResponseBase } from '@_types/Base'
+
+export class Response extends AcknowledgedResponseBase {}
