@@ -10349,11 +10349,6 @@ export interface MlDataframeAnalyticsDestination {
   results_field?: Field
 }
 
-export interface MlDataframeAnalyticsMemoryEstimation {
-  expected_memory_with_disk: ByteSize
-  expected_memory_without_disk: ByteSize
-}
-
 export interface MlDataframeAnalyticsSource {
   index: Indices
   query?: QueryDslQueryContainer
@@ -11033,7 +11028,7 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 
 export interface MlExplainDataFrameAnalyticsResponse {
   field_selection: any[]
-  memory_estimation: MlDataframeAnalyticsMemoryEstimation
+  memory_estimation: any
 }
 
 export interface MlFindFileStructureRequest extends RequestBase {
