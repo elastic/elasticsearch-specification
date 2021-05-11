@@ -10349,6 +10349,20 @@ export interface MlDataframeAnalyticsDestination {
   results_field?: Field
 }
 
+export interface MlDataframeAnalyticsFieldSelection {
+  is_included: boolean
+  is_required: boolean
+  feature_type?: string
+  mapping_types: string[]
+  name: Field
+  reason?: string
+}
+
+export interface MlDataframeAnalyticsMemoryEstimation {
+  expected_memory_with_disk: ByteSize
+  expected_memory_without_disk: ByteSize
+}
+
 export interface MlDataframeAnalyticsSource {
   index: Indices
   query?: QueryDslQueryContainer
@@ -11027,8 +11041,8 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 }
 
 export interface MlExplainDataFrameAnalyticsResponse {
-  field_selection: any[]
-  memory_estimation: any
+  field_selection: MlDataframeAnalyticsFieldSelection[]
+  memory_estimation: MlDataframeAnalyticsMemoryEstimation
 }
 
 export interface MlFindFileStructureRequest extends RequestBase {
