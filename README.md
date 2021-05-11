@@ -1,4 +1,4 @@
-# elastic client generator
+# Elasticsearch Specification
 
 This repository contains the Elasticsearch request/response definitions in TypeScript,
 you can find them inside [`/specification`](./specification).
