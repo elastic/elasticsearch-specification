@@ -11042,7 +11042,7 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 
 export interface MlExplainDataFrameAnalyticsResponse {
   field_selection: MlDataframeAnalyticsFieldSelection[]
-  memory_estimation: MlDataframeAnalyticsMemoryEstimation[]
+  memory_estimation: MlDataframeAnalyticsMemoryEstimation
 }
 
 export interface MlFindFileStructureRequest extends RequestBase {
