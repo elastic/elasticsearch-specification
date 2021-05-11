@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { Phases } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { HttpHeaders, IndexName, VersionNumber } from '@_types/common'
-import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 

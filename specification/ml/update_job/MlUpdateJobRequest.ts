@@ -18,8 +18,8 @@
  */
 
 import {
-  AnalysisMemoryLimit,
-  PerPartitionCategorization
+  PerPartitionCategorization,
+  AnalysisMemoryLimit
 } from '@ml/_types/Analysis'
 import { Detector } from '@ml/_types/Detector'
 import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlot'

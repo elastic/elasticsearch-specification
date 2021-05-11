@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings, MlJobForecasts } from '@xpack/usage/types'
 import {
@@ -28,10 +30,8 @@ import {
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
-import { AnalysisConfig, AnalysisLimits } from './Analysis'
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
-import { ModelPlotConfig } from './ModelPlot'
 
 export enum JobState {
   closing = 0,

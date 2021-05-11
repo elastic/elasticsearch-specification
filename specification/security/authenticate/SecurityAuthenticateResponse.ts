@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Token } from '@global/termvectors/types'
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Metadata, Name, Username } from '@_types/common'
+import { Token } from './types'
 
 export class Response {
   body: {

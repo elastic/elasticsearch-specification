@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Header } from './types'
+import { Body, Header } from './types'
 
 /**
  * @rest_spec_name msearch

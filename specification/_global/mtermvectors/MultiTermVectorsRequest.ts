@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Operation } from '@global/mget/types'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
@@ -28,6 +27,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { Operation } from './types'
 
 /**
  * @rest_spec_name mtermvectors

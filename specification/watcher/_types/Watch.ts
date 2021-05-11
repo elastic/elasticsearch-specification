@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { Action } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Metadata, VersionNumber } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
-import { Actions } from './Action'
+import { Action, Actions } from './Action'
 import { ActivationState } from './Activation'
 import { ConditionContainer } from './Conditions'
 import { InputContainer } from './Input'

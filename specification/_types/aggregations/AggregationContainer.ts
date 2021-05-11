@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { double, integer } from '@_types/Numeric'
+import { integer, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import {
   AdjacencyMatrixAggregation,
@@ -69,8 +69,8 @@ import {
   StringStatsAggregation,
   SumAggregation,
   TopHitsAggregation,
-  TopMetricsAggregation,
   TTestAggregation,
+  TopMetricsAggregation,
   ValueCountAggregation,
   WeightedAverageAggregation
 } from './metric'
@@ -87,8 +87,8 @@ import {
   MaxBucketAggregation,
   MinBucketAggregation,
   MovingAverageAggregation,
-  MovingFunctionAggregation,
   MovingPercentilesAggregation,
+  MovingFunctionAggregation,
   NormalizeAggregation,
   PercentilesBucketAggregation,
   SerialDifferencingAggregation,

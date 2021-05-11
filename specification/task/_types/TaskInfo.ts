@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Status } from '@snapshot/_types/SnapshotStatus'
+import { Status } from '@task/_types/TaskStatus'
 import { HttpHeaders, Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 

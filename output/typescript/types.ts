@@ -555,6 +555,17 @@ export interface MgetResponse<TDocument = unknown> {
   docs: MgetHit<TDocument>[]
 }
 
+export interface MsearchBody {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  query?: QueryDslQueryContainer
+  from?: integer
+  size?: integer
+  pit?: SearchTypesPointInTimeReference
+  track_total_hits?: boolean | integer
+  suggest?: SearchTypesSuggestContainer | Record<string, SearchTypesSuggestContainer>
+}
+
 export interface MsearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -580,7 +591,7 @@ export interface MsearchRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body?: (MsearchHeader | UsersDelvedorDevelopmentElasticElastic-client-generator-2CompilerNodeModulesTypescriptLibBody)[]
+  body?: (MsearchHeader | MsearchBody)[]
 }
 
 export interface MsearchResponse<TDocument = unknown> {
@@ -615,6 +626,22 @@ export interface MsearchTemplateTemplateItem {
   source?: string
 }
 
+export interface MtermvectorsOperation {
+  doc: object
+  fields: Fields
+  field_statistics: boolean
+  filter: TermvectorsFilter
+  _id: Id
+  _index: IndexName
+  offsets: boolean
+  payloads: boolean
+  positions: boolean
+  routing: Routing
+  term_statistics: boolean
+  version: VersionNumber
+  version_type: VersionType
+}
+
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
   type?: Type
@@ -630,7 +657,7 @@ export interface MtermvectorsRequest extends RequestBase {
   version?: VersionNumber
   version_type?: VersionType
   body?: {
-    docs?: MgetOperation[]
+    docs?: MtermvectorsOperation[]
     ids?: Id[]
   }
 }
@@ -7911,6 +7938,11 @@ export interface IlmPhases {
   warm?: IlmPhase
 }
 
+export interface IlmPolicy {
+  phases: IlmPhases
+  name?: Name
+}
+
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id: Id
@@ -7965,7 +7997,7 @@ export interface IlmExplainLifecycleResponse {
 
 export interface IlmGetLifecycleLifecycle {
   modified_date: DateString
-  policy: EnrichPolicy
+  policy: IlmPolicy
   version: VersionNumber
 }
 
@@ -8005,7 +8037,7 @@ export interface IlmPutLifecycleRequest extends RequestBase {
   policy?: Name
   policy_id?: Id
   body?: {
-    policy?: EnrichPolicy
+    policy?: IlmPolicy
   }
 }
 
@@ -10487,6 +10519,12 @@ export interface MlDiscoveryNode {
 
 export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
 
+export interface MlFilter {
+  description?: string
+  filter_id: Id
+  items: string[]
+}
+
 export interface MlFilterRef {
   filter_id: Id
   filter_type: MlFilterType
@@ -11204,7 +11242,7 @@ export interface MlGetFiltersRequest extends RequestBase {
 
 export interface MlGetFiltersResponse {
   count: long
-  filters: TermvectorsFilter[]
+  filters: MlFilter[]
 }
 
 export interface MlGetInfluencersRequest extends RequestBase {
@@ -12676,6 +12714,13 @@ export interface SecurityRealmInfo {
   type: string
 }
 
+export interface SecurityRoleMapping {
+  enabled: boolean
+  metadata: Metadata
+  roles: string[]
+  rules: SecurityRoleMappingRuleBase
+}
+
 export interface SecurityRoleMappingRuleBase {
 }
 
@@ -12701,7 +12746,11 @@ export interface SecurityAuthenticateResponse {
   username: Username
   enabled: boolean
   authentication_type: string
-  token?: TermvectorsToken
+  token?: SecurityAuthenticateToken
+}
+
+export interface SecurityAuthenticateToken {
+  name: Name
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
@@ -12804,7 +12853,12 @@ export interface SecurityCreateServiceTokenRequest extends RequestBase {
 
 export interface SecurityCreateServiceTokenResponse {
   created: boolean
-  token: TermvectorsToken
+  token: SecurityCreateServiceTokenToken
+}
+
+export interface SecurityCreateServiceTokenToken {
+  name: Name
+  value: string
 }
 
 export interface SecurityDeletePrivilegesFoundStatus {
@@ -12910,7 +12964,7 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, WatcherActions>> {
+export interface SecurityGetPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityPutPrivilegesActions>> {
 }
 
 export interface SecurityGetRoleInlineRoleTemplate {
@@ -12965,7 +13019,7 @@ export interface SecurityGetRoleMappingRequest extends RequestBase {
   name?: Name
 }
 
-export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, XpackUsageRoleMapping> {
+export interface SecurityGetRoleMappingResponse extends DictionaryResponseBase<string, SecurityRoleMapping> {
 }
 
 export interface SecurityGetServiceAccountsRequest extends RequestBase {
@@ -13063,11 +13117,17 @@ export interface SecurityGetUserPrivilegesResponse {
   run_as: string[]
 }
 
+export interface SecurityGrantApiKeyApiKey {
+  name: Name
+  expiration?: Time
+  role_descriptors?: Record<string, any>[]
+}
+
 export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
 
 export interface SecurityGrantApiKeyRequest extends RequestBase {
   body?: {
-    api_key: SecurityGetApiKeyApiKey
+    api_key: SecurityGrantApiKeyApiKey
     grant_type: SecurityGrantApiKeyApiKeyGrantType
     access_token?: string
     username?: Username
@@ -13150,9 +13210,16 @@ export interface SecurityInvalidateTokenResponse {
   previously_invalidated_tokens: long
 }
 
+export interface SecurityPutPrivilegesActions {
+  actions: string[]
+  application?: string
+  name?: Name
+  metadata?: Metadata
+}
+
 export interface SecurityPutPrivilegesRequest extends RequestBase {
   refresh?: Refresh
-  body?: Record<string, Record<string, WatcherActions>>
+  body?: Record<string, Record<string, SecurityPutPrivilegesActions>>
 }
 
 export interface SecurityPutPrivilegesResponse extends DictionaryResponseBase<string, Record<string, SecurityCreatedStatus>> {
@@ -13358,7 +13425,7 @@ export interface SlmGetStatusResponse {
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
   body?: {
-    config?: EnrichConfiguration
+    config?: SlmConfiguration
     name?: Name
     repository?: string
     retention?: SlmRetention
@@ -13739,7 +13806,7 @@ export interface TaskInfo {
   node: string
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: SnapshotStatus
+  status?: TaskStatus
   type: string
   parent_task_id?: Id
 }
@@ -13754,8 +13821,28 @@ export interface TaskState {
   parent_task_id?: TaskId
   running_time_in_nanos: long
   start_time_in_millis: long
-  status?: SnapshotStatus
+  status?: TaskStatus
   type: string
+}
+
+export interface TaskStatus {
+  batches: long
+  canceled?: string
+  created: long
+  deleted: long
+  noops: long
+  failures?: string[]
+  requests_per_second: float
+  retries: Retries
+  throttled?: Time
+  throttled_millis: long
+  throttled_until?: Time
+  throttled_until_millis: long
+  timed_out?: boolean
+  took?: long
+  total: long
+  updated: long
+  version_conflicts: long
 }
 
 export interface TaskTaskExecutingNode extends SpecUtilsBaseNode {
@@ -13784,7 +13871,7 @@ export interface TaskGetTaskRequest extends RequestBase {
 export interface TaskGetTaskResponse {
   completed: boolean
   task: TaskInfo
-  response?: SnapshotStatus
+  response?: TaskStatus
   error?: ErrorCause
 }
 
@@ -14062,6 +14149,19 @@ export interface WatcherAcknowledgeState {
 
 export type WatcherAcknowledgementOptions = 'awaits_successful_execution' | 'ackable' | 'acked'
 
+export interface WatcherAction {
+  action_type?: WatcherActionType
+  condition?: WatcherConditionContainer
+  foreach?: string
+  max_iterations?: integer
+  name?: Name
+  throttle_period?: Time
+  throttle_period_in_millis?: EpochMillis
+  transform?: TransformContainer
+  index?: WatcherIndex
+  logging?: WatcherLogging
+}
+
 export type WatcherActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
 
 export interface WatcherActionStatus {
@@ -14245,6 +14345,11 @@ export interface WatcherHttpInputResponseResult {
   status: integer
 }
 
+export interface WatcherIndex {
+  index: IndexName
+  doc_id?: Id
+}
+
 export interface WatcherIndexResult {
   response: WatcherIndexResultSummary
 }
@@ -14273,6 +14378,11 @@ export interface WatcherInputContainer {
 }
 
 export type WatcherInputType = 'http' | 'search' | 'simple'
+
+export interface WatcherLogging {
+  level: string
+  text: string
+}
 
 export interface WatcherLoggingResult {
   logged_text: string
@@ -14452,7 +14562,7 @@ export interface WatcherTriggerEventResult {
 }
 
 export interface WatcherWatch {
-  actions: Record<IndexName, IlmAction>
+  actions: Record<IndexName, WatcherAction>
   condition: WatcherConditionContainer
   input: WatcherInputContainer
   metadata?: Metadata
@@ -14565,7 +14675,7 @@ export interface WatcherPutWatchRequest extends RequestBase {
   if_sequence_number?: long
   version?: VersionNumber
   body?: {
-    actions?: Record<string, IlmAction>
+    actions?: Record<string, WatcherAction>
     condition?: WatcherConditionContainer
     input?: WatcherInputContainer
     metadata?: Metadata

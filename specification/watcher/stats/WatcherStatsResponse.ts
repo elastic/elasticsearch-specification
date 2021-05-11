@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
+import { Name } from '@_types/common'
 import { WatcherNodeStats } from './types'
 
 export class Response {

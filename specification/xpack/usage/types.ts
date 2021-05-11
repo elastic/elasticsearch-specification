@@ -18,10 +18,10 @@
  */
 
 import { Phases } from '@ilm/_types/Phase'
-import { Job, JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
+import { Job, JobStatistics } from '@ml/_types/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
 
 export class Base {

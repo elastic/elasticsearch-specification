@@ -17,8 +17,8 @@
  * under the License.
  */
 
+import { Actions } from '@security/put_privileges/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Actions } from '@watcher/_types/Action'
 import { DictionaryResponseBase } from '@_types/Base'
 
 export class Response extends DictionaryResponseBase<

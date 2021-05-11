@@ -20,10 +20,10 @@
 import { UnassignedInformation } from '@cluster/cluster_allocation_explain/UnassignedInformation'
 import { ShardRoutingState } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, IndexName, NodeName } from './common'
-import { ErrorCause } from './Errors'
+import { ErrorCause } from '@_types/Errors'
+import { integer } from '@_types/Numeric'
+import { Id, IndexName, Name, NodeName } from './common'
 import { TransportAddress } from './Networking'
-import { integer } from './Numeric'
 
 export class NodeStatistics {
   failures?: ErrorCause[]

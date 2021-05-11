@@ -22,7 +22,7 @@ import {
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
+} from '@ml/_types/DataframeAnalytics'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 

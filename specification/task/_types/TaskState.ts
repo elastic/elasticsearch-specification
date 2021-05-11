@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Status } from '@snapshot/_types/SnapshotStatus'
 import { HttpHeaders, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Status } from './TaskStatus'
 
 export class State {
   action: string

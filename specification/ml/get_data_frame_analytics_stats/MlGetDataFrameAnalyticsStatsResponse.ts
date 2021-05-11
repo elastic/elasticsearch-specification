@@ -18,6 +18,7 @@
  */
 
 import { DataframeAnalytics } from '@ml/_types/DataFrameAnalytics'
+import { DataframeState } from '@ml/_types/Dataframe'
 import { long } from '@_types/Numeric'
 
 export class Response {

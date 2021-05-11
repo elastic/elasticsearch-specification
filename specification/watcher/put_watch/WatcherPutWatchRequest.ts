@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Action } from '@ilm/_types/Phase'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { Action } from '@watcher/_types/Action'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { InputContainer } from '@watcher/_types/Input'
 import { TriggerContainer } from '@watcher/_types/Trigger'

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RoleMapping } from '@xpack/usage/types'
+import { RoleMapping } from '@security/_types/RoleMapping'
 import { DictionaryResponseBase } from '@_types/Base'
 
 export class Response extends DictionaryResponseBase<string, RoleMapping> {}

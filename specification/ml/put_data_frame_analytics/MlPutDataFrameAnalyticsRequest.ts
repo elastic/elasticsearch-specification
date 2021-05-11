@@ -22,7 +22,7 @@ import {
   DataframeAnalysisContainer,
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
+} from '@ml/_types/DataframeAnalytics'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'

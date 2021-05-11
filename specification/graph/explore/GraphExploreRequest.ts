@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ExploreControls } from '@graph/_types/ExploreControls'
-import { Hop } from '@graph/_types/Hop'
-import { VertexDefinition } from '@graph/_types/Vertex'
 import { RequestBase } from '@_types/Base'
 import { Indices, Routing, Types } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
+import { ExploreControls } from '../_types/ExploreControls'
+import { Hop } from '../_types/Hop'
+import { VertexDefinition } from '@graph/_types/Vertex'
 
 /**
  * @rest_spec_name graph.explore

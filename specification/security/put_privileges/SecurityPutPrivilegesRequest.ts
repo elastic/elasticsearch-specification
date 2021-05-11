@@ -18,9 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Actions } from '@watcher/_types/Action'
 import { RequestBase } from '@_types/Base'
 import { Refresh } from '@_types/common'
+import { Actions } from './types'
 
 /**
  * @rest_spec_name security.put_privileges

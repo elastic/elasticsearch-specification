@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Token } from '@global/termvectors/types'
+import { Token } from './types'
 
 export class Response {
   body: {

@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id, SequenceNumber, Uuid, VersionNumber } from '@_types/common'
+import { Uuid, Id, SequenceNumber, VersionNumber } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import {
   BulkStats,

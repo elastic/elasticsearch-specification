@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Field, Fields } from '@_types/common'
+import { Fields, Field } from '@_types/common'
 import { double } from '@_types/Numeric'
 import { Aggregation } from './Aggregation'
 

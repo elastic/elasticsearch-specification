@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Stats } from '@nodes/_types/Stats'
+import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 import { NodeReloadException } from './types'

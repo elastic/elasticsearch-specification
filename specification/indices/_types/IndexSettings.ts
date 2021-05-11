@@ -17,12 +17,12 @@
  * under the License.
  */
 
+import { IndexRouting } from '@indices/_types/IndexRouting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Name, PipelineName, Uuid, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
-import { IndexRouting } from './IndexRouting'
 
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings

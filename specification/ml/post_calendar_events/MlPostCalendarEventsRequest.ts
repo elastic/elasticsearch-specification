@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CalendarEvent } from '@ml/_types/CalendarEvent'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
  * @rest_spec_name ml.post_calendar_events

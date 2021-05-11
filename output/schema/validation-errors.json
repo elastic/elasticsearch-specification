@@ -1236,7 +1236,8 @@
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "request definition _global.msearch:Request / body / array_of / union_of / instance_of - No type definition for '.Users.delvedor.Development.elastic.elastic-client-generator-2.compiler.node_modules.typescript.lib:Body'"
+        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'AND'",
+        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'OR'"
       ],
       "response": [
         "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",

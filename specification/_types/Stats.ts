@@ -20,7 +20,7 @@
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name, VersionString } from './common'
-import { ShardFailure } from './Errors'
+import { ErrorCause, ShardFailure } from './Errors'
 import { integer, long, uint } from './Numeric'
 
 export class ClusterStatistics {
