@@ -2068,7 +2068,7 @@ export interface NodeShard {
   index: IndexName
   allocation_id?: Record<string, Id>
   recovery_source?: Record<string, Id>
-  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
+  unassigned_info?: ClusterAllocationExplainUnassignedInformation
 }
 
 export interface NodeStatistics {
@@ -6979,15 +6979,15 @@ export interface ClusterVotingConfigExclusionsItem {
   node_name: Name
 }
 
-export interface ClusterClusterAllocationExplainAllocationDecision {
+export interface ClusterAllocationExplainAllocationDecision {
   decider: string
-  decision: ClusterClusterAllocationExplainAllocationExplainDecision
+  decision: ClusterAllocationExplainAllocationExplainDecision
   explanation: string
 }
 
-export type ClusterClusterAllocationExplainAllocationExplainDecision = 'NO' | 'YES' | 'THROTTLE' | 'ALWAYS'
+export type ClusterAllocationExplainAllocationExplainDecision = 'NO' | 'YES' | 'THROTTLE' | 'ALWAYS'
 
-export interface ClusterClusterAllocationExplainAllocationStore {
+export interface ClusterAllocationExplainAllocationStore {
   allocation_id: string
   found: boolean
   in_sync: boolean
@@ -6996,15 +6996,15 @@ export interface ClusterClusterAllocationExplainAllocationStore {
   store_exception: string
 }
 
-export interface ClusterClusterAllocationExplainClusterInfo {
-  nodes: Record<string, ClusterClusterAllocationExplainNodeDiskUsage>
+export interface ClusterAllocationExplainClusterInfo {
+  nodes: Record<string, ClusterAllocationExplainNodeDiskUsage>
   shard_sizes: Record<string, long>
   shard_data_set_sizes?: Record<string, string>
   shard_paths: Record<string, string>
-  reserved_sizes: ClusterClusterAllocationExplainReservedSize[]
+  reserved_sizes: ClusterAllocationExplainReservedSize[]
 }
 
-export interface ClusterClusterAllocationExplainCurrentNode {
+export interface ClusterAllocationExplainCurrentNode {
   id: Id
   name: Name
   attributes: Record<string, string>
@@ -7012,9 +7012,9 @@ export interface ClusterClusterAllocationExplainCurrentNode {
   weight_ranking: integer
 }
 
-export type ClusterClusterAllocationExplainDecision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
+export type ClusterAllocationExplainDecision = 'yes' | 'no' | 'worse_balance' | 'throttled' | 'awaiting_info' | 'allocation_delayed' | 'no_valid_shard_copy' | 'no_attempt'
 
-export interface ClusterClusterAllocationExplainDiskUsage {
+export interface ClusterAllocationExplainDiskUsage {
   path: string
   total_bytes: long
   used_bytes: long
@@ -7023,24 +7023,24 @@ export interface ClusterClusterAllocationExplainDiskUsage {
   used_disk_percent: double
 }
 
-export interface ClusterClusterAllocationExplainNodeAllocationExplanation {
-  deciders: ClusterClusterAllocationExplainAllocationDecision[]
+export interface ClusterAllocationExplainNodeAllocationExplanation {
+  deciders: ClusterAllocationExplainAllocationDecision[]
   node_attributes: Record<string, string>
-  node_decision: ClusterClusterAllocationExplainDecision
+  node_decision: ClusterAllocationExplainDecision
   node_id: Id
   node_name: Name
-  store?: ClusterClusterAllocationExplainAllocationStore
+  store?: ClusterAllocationExplainAllocationStore
   transport_address: TransportAddress
   weight_ranking: integer
 }
 
-export interface ClusterClusterAllocationExplainNodeDiskUsage {
+export interface ClusterAllocationExplainNodeDiskUsage {
   node_name: Name
-  least_available: ClusterClusterAllocationExplainDiskUsage
-  most_available: ClusterClusterAllocationExplainDiskUsage
+  least_available: ClusterAllocationExplainDiskUsage
+  most_available: ClusterAllocationExplainDiskUsage
 }
 
-export interface ClusterClusterAllocationExplainRequest extends RequestBase {
+export interface ClusterAllocationExplainRequest extends RequestBase {
   include_disk_info?: boolean
   include_yes_decisions?: boolean
   body?: {
@@ -7051,72 +7051,72 @@ export interface ClusterClusterAllocationExplainRequest extends RequestBase {
   }
 }
 
-export interface ClusterClusterAllocationExplainReservedSize {
+export interface ClusterAllocationExplainReservedSize {
   node_id: Id
   path: string
   total: long
   shards: string[]
 }
 
-export interface ClusterClusterAllocationExplainResponse {
+export interface ClusterAllocationExplainResponse {
   allocate_explanation?: string
   allocation_delay?: string
   allocation_delay_in_millis?: long
-  can_allocate?: ClusterClusterAllocationExplainDecision
-  can_move_to_other_node?: ClusterClusterAllocationExplainDecision
-  can_rebalance_cluster?: ClusterClusterAllocationExplainDecision
-  can_rebalance_cluster_decisions?: ClusterClusterAllocationExplainAllocationDecision[]
-  can_rebalance_to_other_node?: ClusterClusterAllocationExplainDecision
-  can_remain_decisions?: ClusterClusterAllocationExplainAllocationDecision[]
-  can_remain_on_current_node?: ClusterClusterAllocationExplainDecision
-  cluster_info?: ClusterClusterAllocationExplainClusterInfo
+  can_allocate?: ClusterAllocationExplainDecision
+  can_move_to_other_node?: ClusterAllocationExplainDecision
+  can_rebalance_cluster?: ClusterAllocationExplainDecision
+  can_rebalance_cluster_decisions?: ClusterAllocationExplainAllocationDecision[]
+  can_rebalance_to_other_node?: ClusterAllocationExplainDecision
+  can_remain_decisions?: ClusterAllocationExplainAllocationDecision[]
+  can_remain_on_current_node?: ClusterAllocationExplainDecision
+  cluster_info?: ClusterAllocationExplainClusterInfo
   configured_delay?: string
   configured_delay_in_millis?: long
-  current_node?: ClusterClusterAllocationExplainCurrentNode
+  current_node?: ClusterAllocationExplainCurrentNode
   current_state: string
   index: IndexName
   move_explanation?: string
-  node_allocation_decisions?: ClusterClusterAllocationExplainNodeAllocationExplanation[]
+  node_allocation_decisions?: ClusterAllocationExplainNodeAllocationExplanation[]
   primary: boolean
   rebalance_explanation?: string
   remaining_delay?: string
   remaining_delay_in_millis?: long
   shard: integer
-  unassigned_info?: ClusterClusterAllocationExplainUnassignedInformation
+  unassigned_info?: ClusterAllocationExplainUnassignedInformation
 }
 
-export interface ClusterClusterAllocationExplainUnassignedInformation {
+export interface ClusterAllocationExplainUnassignedInformation {
   at: DateString
   last_allocation_status?: string
-  reason: ClusterClusterAllocationExplainUnassignedInformationReason
+  reason: ClusterAllocationExplainUnassignedInformationReason
   details?: string
   failed_allocation_attempts?: integer
   delayed?: boolean
   allocation_status?: string
 }
 
-export type ClusterClusterAllocationExplainUnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
+export type ClusterAllocationExplainUnassignedInformationReason = 'INDEX_CREATED' | 'CLUSTER_RECOVERED' | 'INDEX_REOPENED' | 'DANGLING_INDEX_IMPORTED' | 'NEW_INDEX_RESTORED' | 'EXISTING_INDEX_RESTORED' | 'REPLICA_ADDED' | 'ALLOCATION_FAILED' | 'NODE_LEFT' | 'REROUTE_CANCELLED' | 'REINITIALIZED' | 'REALLOCATED_REPLICA' | 'PRIMARY_FAILED' | 'FORCED_EMPTY_PRIMARY' | 'MANUAL_ALLOCATION'
 
-export interface ClusterClusterDeleteComponentTemplateRequest extends RequestBase {
+export interface ClusterDeleteComponentTemplateRequest extends RequestBase {
   name: Name
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface ClusterClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {
+export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface ClusterClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
+export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
   body?: {
     stub: string
   }
 }
 
-export interface ClusterClusterDeleteVotingConfigExclusionsResponse {
+export interface ClusterDeleteVotingConfigExclusionsResponse {
   stub: integer
 }
 
-export interface ClusterClusterExistsComponentTemplateRequest extends RequestBase {
+export interface ClusterExistsComponentTemplateRequest extends RequestBase {
   stub_a: string
   stub_b: string
   body?: {
@@ -7124,47 +7124,47 @@ export interface ClusterClusterExistsComponentTemplateRequest extends RequestBas
   }
 }
 
-export interface ClusterClusterExistsComponentTemplateResponse {
+export interface ClusterExistsComponentTemplateResponse {
   stub: integer
 }
 
-export interface ClusterClusterGetComponentTemplateRequest extends RequestBase {
+export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
   flat_settings?: boolean
   local?: boolean
   master_timeout?: Time
 }
 
-export interface ClusterClusterGetComponentTemplateResponse {
+export interface ClusterGetComponentTemplateResponse {
   component_templates: ClusterComponentTemplate[]
 }
 
-export interface ClusterClusterGetSettingsRequest extends RequestBase {
+export interface ClusterGetSettingsRequest extends RequestBase {
   flat_settings?: boolean
   include_defaults?: boolean
   master_timeout?: Time
   timeout?: Time
 }
 
-export interface ClusterClusterGetSettingsResponse {
+export interface ClusterGetSettingsResponse {
   persistent: Record<string, any>
   transient: Record<string, any>
   defaults?: Record<string, any>
 }
 
-export interface ClusterClusterHealthIndexHealthStats {
+export interface ClusterHealthIndexHealthStats {
   active_primary_shards: integer
   active_shards: integer
   initializing_shards: integer
   number_of_replicas: integer
   number_of_shards: integer
   relocating_shards: integer
-  shards?: Record<string, ClusterClusterHealthShardHealthStats>
+  shards?: Record<string, ClusterHealthShardHealthStats>
   status: Health
   unassigned_shards: integer
 }
 
-export interface ClusterClusterHealthRequest extends RequestBase {
+export interface ClusterHealthRequest extends RequestBase {
   index?: Indices
   expand_wildcards?: ExpandWildcards
   level?: Level
@@ -7179,13 +7179,13 @@ export interface ClusterClusterHealthRequest extends RequestBase {
   wait_for_status?: WaitForStatus
 }
 
-export interface ClusterClusterHealthResponse {
+export interface ClusterHealthResponse {
   active_primary_shards: integer
   active_shards: integer
   active_shards_percent_as_number: Percentage
   cluster_name: string
   delayed_unassigned_shards: integer
-  indices?: Record<IndexName, ClusterClusterHealthIndexHealthStats>
+  indices?: Record<IndexName, ClusterHealthIndexHealthStats>
   initializing_shards: integer
   number_of_data_nodes: integer
   number_of_in_flight_fetch: integer
@@ -7198,7 +7198,7 @@ export interface ClusterClusterHealthResponse {
   unassigned_shards: integer
 }
 
-export interface ClusterClusterHealthShardHealthStats {
+export interface ClusterHealthShardHealthStats {
   active_shards: integer
   initializing_shards: integer
   primary_active: boolean
@@ -7207,7 +7207,7 @@ export interface ClusterClusterHealthShardHealthStats {
   unassigned_shards: integer
 }
 
-export interface ClusterClusterPendingTasksPendingTask {
+export interface ClusterPendingTasksPendingTask {
   insert_order: integer
   priority: string
   source: string
@@ -7215,16 +7215,16 @@ export interface ClusterClusterPendingTasksPendingTask {
   time_in_queue_millis: integer
 }
 
-export interface ClusterClusterPendingTasksRequest extends RequestBase {
+export interface ClusterPendingTasksRequest extends RequestBase {
   local?: boolean
   master_timeout?: Time
 }
 
-export interface ClusterClusterPendingTasksResponse {
-  tasks: ClusterClusterPendingTasksPendingTask[]
+export interface ClusterPendingTasksResponse {
+  tasks: ClusterPendingTasksPendingTask[]
 }
 
-export interface ClusterClusterPutComponentTemplateRequest extends RequestBase {
+export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
   create?: boolean
   master_timeout?: Time
@@ -7238,10 +7238,10 @@ export interface ClusterClusterPutComponentTemplateRequest extends RequestBase {
   }
 }
 
-export interface ClusterClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {
+export interface ClusterPutComponentTemplateResponse extends AcknowledgedResponseBase {
 }
 
-export interface ClusterClusterPutSettingsRequest extends RequestBase {
+export interface ClusterPutSettingsRequest extends RequestBase {
   flat_settings?: boolean
   master_timeout?: Time
   timeout?: Time
@@ -7251,24 +7251,24 @@ export interface ClusterClusterPutSettingsRequest extends RequestBase {
   }
 }
 
-export interface ClusterClusterPutSettingsResponse {
+export interface ClusterPutSettingsResponse {
   acknowledged: boolean
   persistent: Record<string, any>
   transient: Record<string, any>
 }
 
-export interface ClusterClusterPutVotingConfigExclusionsRequest extends RequestBase {
+export interface ClusterPutVotingConfigExclusionsRequest extends RequestBase {
   node_names?: Names
   node_ids?: Ids
   timeout?: Time
   wait_for_removal?: boolean
 }
 
-export interface ClusterClusterPutVotingConfigExclusionsResponse {
+export interface ClusterPutVotingConfigExclusionsResponse {
   stub: integer
 }
 
-export interface ClusterClusterRemoteInfoClusterRemoteInfo {
+export interface ClusterRemoteInfoClusterRemoteInfo {
   connected: boolean
   initial_connect_timeout: Time
   max_connections_per_cluster: integer
@@ -7277,63 +7277,75 @@ export interface ClusterClusterRemoteInfoClusterRemoteInfo {
   skip_unavailable: boolean
 }
 
-export interface ClusterClusterRemoteInfoRequest extends RequestBase {
+export interface ClusterRemoteInfoRequest extends RequestBase {
   body?: {
     stub: string
   }
 }
 
-export interface ClusterClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterClusterRemoteInfoClusterRemoteInfo> {
+export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfoClusterRemoteInfo> {
 }
 
-export interface ClusterClusterRerouteClusterRerouteCommand {
-  cancel?: ClusterClusterRerouteClusterRerouteCommandCancelAction
-  move?: ClusterClusterRerouteClusterRerouteCommandMoveAction
-  allocate_replica?: ClusterClusterRerouteClusterRerouteCommandAllocateReplicaAction
-  allocate_stale_primary?: ClusterClusterRerouteClusterRerouteCommandAllocatePrimaryAction
-  allocate_empty_primary?: ClusterClusterRerouteClusterRerouteCommandAllocatePrimaryAction
+export interface ClusterRerouteCommand {
+  cancel?: ClusterRerouteCommandCancelAction
+  move?: ClusterRerouteCommandMoveAction
+  allocate_replica?: ClusterRerouteCommandAllocateReplicaAction
+  allocate_stale_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
 }
 
-export interface ClusterClusterRerouteClusterRerouteCommandAllocatePrimaryAction {
+export interface ClusterRerouteCommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
   accept_data_loss: boolean
 }
 
-export interface ClusterClusterRerouteClusterRerouteCommandAllocateReplicaAction {
+export interface ClusterRerouteCommandAllocateReplicaAction {
   index: IndexName
   shard: integer
   node: string
 }
 
-export interface ClusterClusterRerouteClusterRerouteCommandCancelAction {
+export interface ClusterRerouteCommandCancelAction {
   index: IndexName
   shard: integer
   node: string
   allow_primary?: boolean
 }
 
-export interface ClusterClusterRerouteClusterRerouteCommandMoveAction {
+export interface ClusterRerouteCommandMoveAction {
   index: IndexName
   shard: integer
   from_node: string
   to_node: string
 }
 
-export interface ClusterClusterRerouteClusterRerouteDecision {
+export interface ClusterRerouteRequest extends RequestBase {
+  dry_run?: boolean
+  explain?: boolean
+  metric?: Metrics
+  retry_failed?: boolean
+  master_timeout?: Time
+  timeout?: Time
+  body?: {
+    commands?: ClusterRerouteCommand[]
+  }
+}
+
+export interface ClusterRerouteRerouteDecision {
   decider: string
   decision: string
   explanation: string
 }
 
-export interface ClusterClusterRerouteClusterRerouteExplanation {
+export interface ClusterRerouteRerouteExplanation {
   command: string
-  decisions: ClusterClusterRerouteClusterRerouteDecision[]
-  parameters: ClusterClusterRerouteClusterRerouteParameters
+  decisions: ClusterRerouteRerouteDecision[]
+  parameters: ClusterRerouteRerouteParameters
 }
 
-export interface ClusterClusterRerouteClusterRerouteParameters {
+export interface ClusterRerouteRerouteParameters {
   allow_primary: boolean
   index: IndexName
   node: NodeName
@@ -7342,7 +7354,7 @@ export interface ClusterClusterRerouteClusterRerouteParameters {
   to_node?: NodeName
 }
 
-export interface ClusterClusterRerouteClusterRerouteState {
+export interface ClusterRerouteRerouteState {
   cluster_uuid: Uuid
   state_uuid?: Uuid
   master_node?: string
@@ -7357,28 +7369,16 @@ export interface ClusterClusterRerouteClusterRerouteState {
   metadata?: ClusterClusterStateMetadata
 }
 
-export interface ClusterClusterRerouteRequest extends RequestBase {
-  dry_run?: boolean
-  explain?: boolean
-  metric?: Metrics
-  retry_failed?: boolean
-  master_timeout?: Time
-  timeout?: Time
-  body?: {
-    commands?: ClusterClusterRerouteClusterRerouteCommand[]
-  }
+export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
+  explanations?: ClusterRerouteRerouteExplanation[]
+  state: ClusterRerouteRerouteState
 }
 
-export interface ClusterClusterRerouteResponse extends AcknowledgedResponseBase {
-  explanations?: ClusterClusterRerouteClusterRerouteExplanation[]
-  state: ClusterClusterRerouteClusterRerouteState
-}
-
-export interface ClusterClusterStateClusterStateBlocks {
+export interface ClusterStateClusterStateBlocks {
   indices?: Record<IndexName, Record<string, ClusterClusterStateBlockIndex>>
 }
 
-export interface ClusterClusterStateRequest extends RequestBase {
+export interface ClusterStateRequest extends RequestBase {
   metric?: Metrics
   index?: Indices
   allow_no_indices?: boolean
@@ -7391,14 +7391,14 @@ export interface ClusterClusterStateRequest extends RequestBase {
   wait_for_timeout?: Time
 }
 
-export interface ClusterClusterStateResponse {
+export interface ClusterStateResponse {
   cluster_name: Name
   cluster_uuid: Uuid
   master_node?: string
   state?: string[]
   state_uuid?: Uuid
   version?: VersionNumber
-  blocks?: ClusterClusterStateClusterStateBlocks
+  blocks?: ClusterStateClusterStateBlocks
   metadata?: ClusterClusterStateMetadata
   nodes?: Record<NodeName, NodeAttributes>
   routing_table?: Record<string, EmptyObject>
@@ -7407,68 +7407,68 @@ export interface ClusterClusterStateResponse {
   snapshot_deletions?: ClusterClusterStateDeletedSnapshots
 }
 
-export interface ClusterClusterStatsCharFilterTypes {
-  char_filter_types: ClusterClusterStatsFieldTypesStats[]
-  tokenizer_types: ClusterClusterStatsFieldTypesStats[]
-  filter_types: ClusterClusterStatsFieldTypesStats[]
-  analyzer_types: ClusterClusterStatsFieldTypesStats[]
-  built_in_char_filters: ClusterClusterStatsFieldTypesStats[]
-  built_in_tokenizers: ClusterClusterStatsFieldTypesStats[]
-  built_in_filters: ClusterClusterStatsFieldTypesStats[]
-  built_in_analyzers: ClusterClusterStatsFieldTypesStats[]
+export interface ClusterStatsCharFilterTypes {
+  char_filter_types: ClusterStatsFieldTypes[]
+  tokenizer_types: ClusterStatsFieldTypes[]
+  filter_types: ClusterStatsFieldTypes[]
+  analyzer_types: ClusterStatsFieldTypes[]
+  built_in_char_filters: ClusterStatsFieldTypes[]
+  built_in_tokenizers: ClusterStatsFieldTypes[]
+  built_in_filters: ClusterStatsFieldTypes[]
+  built_in_analyzers: ClusterStatsFieldTypes[]
 }
 
-export interface ClusterClusterStatsClusterFileSystem {
+export interface ClusterStatsClusterFileSystem {
   available_in_bytes: long
   free_in_bytes: long
   total_in_bytes: long
 }
 
-export interface ClusterClusterStatsClusterIndicesShardsIndexStats {
-  primaries: ClusterClusterStatsClusterShardMetrics
-  replication: ClusterClusterStatsClusterShardMetrics
-  shards: ClusterClusterStatsClusterShardMetrics
-}
-
-export interface ClusterClusterStatsClusterIndicesShardsStats {
-  index?: ClusterClusterStatsClusterIndicesShardsIndexStats
-  primaries?: double
-  replication?: double
-  total?: double
-}
-
-export interface ClusterClusterStatsClusterIndicesStats {
+export interface ClusterStatsClusterIndices {
   completion: CompletionStats
   count: long
   docs: DocStats
   fielddata: FielddataStats
   query_cache: QueryCacheStats
   segments: SegmentsStats
-  shards: ClusterClusterStatsClusterIndicesShardsStats
+  shards: ClusterStatsClusterIndicesShards
   store: StoreStats
-  mappings: ClusterClusterStatsFieldTypesMappings
-  analysis: ClusterClusterStatsCharFilterTypes
-  versions?: ClusterClusterStatsIndicesVersionsStats[]
+  mappings: ClusterStatsFieldTypesMappings
+  analysis: ClusterStatsCharFilterTypes
+  versions?: ClusterStatsIndicesVersions[]
 }
 
-export interface ClusterClusterStatsClusterIngestStats {
+export interface ClusterStatsClusterIndicesShards {
+  index?: ClusterStatsClusterIndicesShardsIndex
+  primaries?: double
+  replication?: double
+  total?: double
+}
+
+export interface ClusterStatsClusterIndicesShardsIndex {
+  primaries: ClusterStatsClusterShardMetrics
+  replication: ClusterStatsClusterShardMetrics
+  shards: ClusterStatsClusterShardMetrics
+}
+
+export interface ClusterStatsClusterIngest {
   number_of_pipelines: integer
-  processor_stats: Record<string, ClusterClusterStatsClusterProcessorStats>
+  processor_stats: Record<string, ClusterStatsClusterProcessor>
 }
 
-export interface ClusterClusterStatsClusterJvm {
+export interface ClusterStatsClusterJvm {
   max_uptime_in_millis: long
-  mem: ClusterClusterStatsClusterJvmMemory
+  mem: ClusterStatsClusterJvmMemory
   threads: long
-  versions: ClusterClusterStatsClusterJvmVersion[]
+  versions: ClusterStatsClusterJvmVersion[]
 }
 
-export interface ClusterClusterStatsClusterJvmMemory {
+export interface ClusterStatsClusterJvmMemory {
   heap_max_in_bytes: long
   heap_used_in_bytes: long
 }
 
-export interface ClusterClusterStatsClusterJvmVersion {
+export interface ClusterStatsClusterJvmVersion {
   bundled_jdk: boolean
   count: integer
   using_bundled_jdk: boolean
@@ -7478,12 +7478,12 @@ export interface ClusterClusterStatsClusterJvmVersion {
   vm_version: VersionString
 }
 
-export interface ClusterClusterStatsClusterNetworkTypes {
+export interface ClusterStatsClusterNetworkTypes {
   http_types: Record<string, integer>
   transport_types: Record<string, integer>
 }
 
-export interface ClusterClusterStatsClusterNodeCount {
+export interface ClusterStatsClusterNodeCount {
   coordinating_only: integer
   data: integer
   ingest: integer
@@ -7500,93 +7500,93 @@ export interface ClusterClusterStatsClusterNodeCount {
   transform: integer
 }
 
-export interface ClusterClusterStatsClusterNodesStats {
-  count: ClusterClusterStatsClusterNodeCount
+export interface ClusterStatsClusterNodes {
+  count: ClusterStatsClusterNodeCount
   discovery_types: Record<string, integer>
-  fs: ClusterClusterStatsClusterFileSystem
-  ingest: ClusterClusterStatsClusterIngestStats
-  jvm: ClusterClusterStatsClusterJvm
-  network_types: ClusterClusterStatsClusterNetworkTypes
-  os: ClusterClusterStatsClusterOperatingSystemStats
-  packaging_types: ClusterClusterStatsNodePackagingType[]
+  fs: ClusterStatsClusterFileSystem
+  ingest: ClusterStatsClusterIngest
+  jvm: ClusterStatsClusterJvm
+  network_types: ClusterStatsClusterNetworkTypes
+  os: ClusterStatsClusterOperatingSystem
+  packaging_types: ClusterStatsNodePackagingType[]
   plugins: PluginStats[]
-  process: ClusterClusterStatsClusterProcess
+  process: ClusterStatsClusterProcess
   versions: VersionString[]
 }
 
-export interface ClusterClusterStatsClusterOperatingSystemArchitecture {
+export interface ClusterStatsClusterOperatingSystem {
+  allocated_processors: integer
+  available_processors: integer
+  mem: ClusterStatsOperatingSystemMemoryInfo
+  names: ClusterStatsClusterOperatingSystemName[]
+  pretty_names: ClusterStatsClusterOperatingSystemName[]
+  architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
+}
+
+export interface ClusterStatsClusterOperatingSystemArchitecture {
   count: integer
   arch: string
 }
 
-export interface ClusterClusterStatsClusterOperatingSystemName {
+export interface ClusterStatsClusterOperatingSystemName {
   count: integer
   name: Name
 }
 
-export interface ClusterClusterStatsClusterOperatingSystemStats {
-  allocated_processors: integer
-  available_processors: integer
-  mem: ClusterClusterStatsOperatingSystemMemoryInfo
-  names: ClusterClusterStatsClusterOperatingSystemName[]
-  pretty_names: ClusterClusterStatsClusterOperatingSystemName[]
-  architectures?: ClusterClusterStatsClusterOperatingSystemArchitecture[]
+export interface ClusterStatsClusterProcess {
+  cpu: ClusterStatsClusterProcessCpu
+  open_file_descriptors: ClusterStatsClusterProcessOpenFileDescriptors
 }
 
-export interface ClusterClusterStatsClusterProcess {
-  cpu: ClusterClusterStatsClusterProcessCpu
-  open_file_descriptors: ClusterClusterStatsClusterProcessOpenFileDescriptors
-}
-
-export interface ClusterClusterStatsClusterProcessCpu {
+export interface ClusterStatsClusterProcessCpu {
   percent: integer
 }
 
-export interface ClusterClusterStatsClusterProcessOpenFileDescriptors {
+export interface ClusterStatsClusterProcessOpenFileDescriptors {
   avg: long
   max: long
   min: long
 }
 
-export interface ClusterClusterStatsClusterProcessorStats {
+export interface ClusterStatsClusterProcessor {
   count: long
   current: long
   failed: long
   time_in_millis: long
 }
 
-export interface ClusterClusterStatsClusterShardMetrics {
+export interface ClusterStatsClusterShardMetrics {
   avg: double
   max: double
   min: double
 }
 
-export interface ClusterClusterStatsFieldTypesMappings {
-  field_types: ClusterClusterStatsFieldTypesStats[]
-  runtime_field_types?: ClusterClusterStatsRuntimeFieldTypesStats[]
-}
-
-export interface ClusterClusterStatsFieldTypesStats {
+export interface ClusterStatsFieldTypes {
   name: Name
   count: integer
   index_count: integer
   script_count?: integer
 }
 
-export interface ClusterClusterStatsIndicesVersionsStats {
+export interface ClusterStatsFieldTypesMappings {
+  field_types: ClusterStatsFieldTypes[]
+  runtime_field_types?: ClusterStatsRuntimeFieldTypes[]
+}
+
+export interface ClusterStatsIndicesVersions {
   index_count: integer
   primary_shard_count: integer
   total_primary_bytes: long
   version: VersionString
 }
 
-export interface ClusterClusterStatsNodePackagingType {
+export interface ClusterStatsNodePackagingType {
   count: integer
   flavor: string
   type: string
 }
 
-export interface ClusterClusterStatsOperatingSystemMemoryInfo {
+export interface ClusterStatsOperatingSystemMemoryInfo {
   free_in_bytes: long
   free_percent: integer
   total_in_bytes: long
@@ -7594,22 +7594,22 @@ export interface ClusterClusterStatsOperatingSystemMemoryInfo {
   used_percent: integer
 }
 
-export interface ClusterClusterStatsRequest extends RequestBase {
+export interface ClusterStatsRequest extends RequestBase {
   node_id?: NodeIds
   flat_settings?: boolean
   timeout?: Time
 }
 
-export interface ClusterClusterStatsResponse extends NodesNodesResponseBase {
+export interface ClusterStatsResponse extends NodesNodesResponseBase {
   cluster_name: Name
   cluster_uuid: Uuid
-  indices: ClusterClusterStatsClusterIndicesStats
-  nodes: ClusterClusterStatsClusterNodesStats
+  indices: ClusterStatsClusterIndices
+  nodes: ClusterStatsClusterNodes
   status: ClusterClusterStatus
   timestamp: long
 }
 
-export interface ClusterClusterStatsRuntimeFieldTypesStats {
+export interface ClusterStatsRuntimeFieldTypes {
   name: Name
   count: integer
   index_count: integer

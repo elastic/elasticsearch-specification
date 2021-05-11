@@ -21,8 +21,7 @@ import { ClusterStatus } from '@cluster/_types/ClusterStatus'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { ClusterIndicesStats } from './ClusterIndicesStats'
-import { ClusterNodesStats } from './ClusterNodesStats'
+import { ClusterIndices, ClusterNodes } from './types'
 
 export class Response extends NodesResponseBase {
   body: {
@@ -38,12 +37,12 @@ export class Response extends NodesResponseBase {
     /**
      * Contains statistics about indices with shards assigned to selected nodes.
      */
-    indices: ClusterIndicesStats
+    indices: ClusterIndices
     /**
      * Contains statistics about nodes selected by the request’s node filters.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
      */
-    nodes: ClusterNodesStats
+    nodes: ClusterNodes
     /**
      * Health status of the cluster, based on the state of its primary and replica shards.
      */

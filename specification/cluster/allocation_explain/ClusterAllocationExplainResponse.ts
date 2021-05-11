@@ -19,12 +19,14 @@
 
 import { IndexName } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { AllocationDecision } from './AllocationDecision'
-import { ClusterInfo } from './ClusterInfo'
-import { CurrentNode } from './CurrentNode'
-import { Decision } from './Decision'
-import { NodeAllocationExplanation } from './NodeAllocationExplanation'
-import { UnassignedInformation } from './UnassignedInformation'
+import {
+  Decision,
+  AllocationDecision,
+  ClusterInfo,
+  CurrentNode,
+  NodeAllocationExplanation,
+  UnassignedInformation
+} from './types'
 
 export class Response {
   body: {

@@ -17,16 +17,12 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
-import { DateString } from '@_types/Time'
-import { UnassignedInformationReason } from './UnassignedInformationReason'
+import { AcknowledgedResponseBase } from '@_types/Base'
+import { RerouteExplanation, RerouteState } from './types'
 
-export class UnassignedInformation {
-  at: DateString
-  last_allocation_status?: string
-  reason: UnassignedInformationReason
-  details?: string
-  failed_allocation_attempts?: integer
-  delayed?: boolean
-  allocation_status?: string
+export class Response extends AcknowledgedResponseBase {
+  body: {
+    explanations?: RerouteExplanation[]
+    state: RerouteState
+  }
 }

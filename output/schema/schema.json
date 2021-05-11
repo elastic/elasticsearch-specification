@@ -1574,12 +1574,12 @@
       "name": "cluster.allocation_explain",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -1603,12 +1603,12 @@
       "name": "cluster.delete_component_template",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_delete_component_template"
+        "namespace": "cluster.delete_component_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_delete_component_template"
+        "namespace": "cluster.delete_component_template"
       },
       "since": "7.8.0",
       "stability": "TODO",
@@ -1631,12 +1631,12 @@
       "name": "cluster.delete_voting_config_exclusions",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+        "namespace": "cluster.delete_voting_config_exclusions"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+        "namespace": "cluster.delete_voting_config_exclusions"
       },
       "since": "7.0.0",
       "stability": "TODO",
@@ -1659,12 +1659,12 @@
       "name": "cluster.exists_component_template",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_exists_component_template"
+        "namespace": "cluster.exists_component_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_exists_component_template"
+        "namespace": "cluster.exists_component_template"
       },
       "since": "7.8.0",
       "stability": "TODO",
@@ -1687,12 +1687,12 @@
       "name": "cluster.get_component_template",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_get_component_template"
+        "namespace": "cluster.get_component_template"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_get_component_template"
+        "namespace": "cluster.get_component_template"
       },
       "since": "7.8.0",
       "stability": "TODO",
@@ -1721,12 +1721,12 @@
       "name": "cluster.get_settings",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_get_settings"
+        "namespace": "cluster.get_settings"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_get_settings"
+        "namespace": "cluster.get_settings"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1749,12 +1749,12 @@
       "name": "cluster.health",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       },
       "since": "1.3.0",
       "stability": "TODO",
@@ -1783,12 +1783,12 @@
       "name": "cluster.pending_tasks",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_pending_tasks"
+        "namespace": "cluster.pending_tasks"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_pending_tasks"
+        "namespace": "cluster.pending_tasks"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1811,12 +1811,12 @@
       "name": "cluster.post_voting_config_exclusions",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_voting_config_exclusions"
+        "namespace": "cluster.put_voting_config_exclusions"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_voting_config_exclusions"
+        "namespace": "cluster.put_voting_config_exclusions"
       },
       "since": "7.0.0",
       "stability": "TODO",
@@ -1842,12 +1842,12 @@
       "name": "cluster.put_component_template",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_component_template"
+        "namespace": "cluster.put_component_template"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_component_template"
+        "namespace": "cluster.put_component_template"
       },
       "since": "7.8.0",
       "stability": "TODO",
@@ -1874,12 +1874,12 @@
       "name": "cluster.put_settings",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_settings"
+        "namespace": "cluster.put_settings"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_settings"
+        "namespace": "cluster.put_settings"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1902,12 +1902,12 @@
       "name": "cluster.remote_info",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_remote_info"
+        "namespace": "cluster.remote_info"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_remote_info"
+        "namespace": "cluster.remote_info"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -1933,12 +1933,12 @@
       "name": "cluster.reroute",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_reroute"
+        "namespace": "cluster.reroute"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_reroute"
+        "namespace": "cluster.reroute"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -1961,12 +1961,12 @@
       "name": "cluster.state",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster.state"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster.state"
       },
       "since": "1.3.0",
       "stability": "TODO",
@@ -2001,12 +2001,12 @@
       "name": "cluster.stats",
       "request": {
         "name": "Request",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "since": "1.3.0",
       "stability": "TODO",
@@ -31757,7 +31757,7 @@
             "kind": "instance_of",
             "type": {
               "name": "UnassignedInformation",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         }
@@ -72639,7 +72639,7 @@
       "kind": "interface",
       "name": {
         "name": "AllocationDecision",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -72660,7 +72660,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AllocationExplainDecision",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         },
@@ -72695,14 +72695,14 @@
       ],
       "name": {
         "name": "AllocationExplainDecision",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "AllocationStore",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -72777,7 +72777,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterInfo",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -72797,7 +72797,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeDiskUsage",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           }
@@ -72877,7 +72877,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ReservedSize",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           }
@@ -72888,7 +72888,7 @@
       "kind": "interface",
       "name": {
         "name": "CurrentNode",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -72989,14 +72989,14 @@
       ],
       "name": {
         "name": "Decision",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "DiskUsage",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -73071,7 +73071,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeAllocationExplanation",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -73083,7 +73083,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "AllocationDecision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           }
@@ -73117,7 +73117,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Decision",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         },
@@ -73150,7 +73150,7 @@
             "kind": "instance_of",
             "type": {
               "name": "AllocationStore",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         },
@@ -73182,7 +73182,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeDiskUsage",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -73203,7 +73203,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DiskUsage",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         },
@@ -73214,7 +73214,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DiskUsage",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         }
@@ -73286,7 +73286,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "path": [],
       "query": [
@@ -73322,7 +73322,7 @@
       "kind": "interface",
       "name": {
         "name": "ReservedSize",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -73418,7 +73418,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Decision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73429,7 +73429,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Decision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73440,7 +73440,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Decision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73453,7 +73453,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "AllocationDecision",
-                  "namespace": "cluster.cluster_allocation_explain"
+                  "namespace": "cluster.allocation_explain"
                 }
               }
             }
@@ -73465,7 +73465,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Decision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73478,7 +73478,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "AllocationDecision",
-                  "namespace": "cluster.cluster_allocation_explain"
+                  "namespace": "cluster.allocation_explain"
                 }
               }
             }
@@ -73490,7 +73490,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Decision",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73501,7 +73501,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterInfo",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73534,7 +73534,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "CurrentNode",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           },
@@ -73580,7 +73580,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeAllocationExplanation",
-                  "namespace": "cluster.cluster_allocation_explain"
+                  "namespace": "cluster.allocation_explain"
                 }
               }
             }
@@ -73647,7 +73647,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "UnassignedInformation",
-                "namespace": "cluster.cluster_allocation_explain"
+                "namespace": "cluster.allocation_explain"
               }
             }
           }
@@ -73656,14 +73656,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "UnassignedInformation",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       },
       "properties": [
         {
@@ -73695,7 +73695,7 @@
             "kind": "instance_of",
             "type": {
               "name": "UnassignedInformationReason",
-              "namespace": "cluster.cluster_allocation_explain"
+              "namespace": "cluster.allocation_explain"
             }
           }
         },
@@ -73796,7 +73796,7 @@
       ],
       "name": {
         "name": "UnassignedInformationReason",
-        "namespace": "cluster.cluster_allocation_explain"
+        "namespace": "cluster.allocation_explain"
       }
     },
     {
@@ -73815,7 +73815,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_delete_component_template"
+        "namespace": "cluster.delete_component_template"
       },
       "path": [
         {
@@ -73871,7 +73871,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_delete_component_template"
+        "namespace": "cluster.delete_component_template"
       }
     },
     {
@@ -73903,7 +73903,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+        "namespace": "cluster.delete_voting_config_exclusions"
       },
       "path": [],
       "query": []
@@ -73928,7 +73928,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_delete_voting_config_exclusions"
+        "namespace": "cluster.delete_voting_config_exclusions"
       }
     },
     {
@@ -73960,7 +73960,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_exists_component_template"
+        "namespace": "cluster.exists_component_template"
       },
       "path": [
         {
@@ -74009,7 +74009,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_exists_component_template"
+        "namespace": "cluster.exists_component_template"
       }
     },
     {
@@ -74028,7 +74028,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_get_component_template"
+        "namespace": "cluster.get_component_template"
       },
       "path": [
         {
@@ -74105,7 +74105,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_get_component_template"
+        "namespace": "cluster.get_component_template"
       }
     },
     {
@@ -74124,7 +74124,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_get_settings"
+        "namespace": "cluster.get_settings"
       },
       "path": [],
       "query": [
@@ -74237,14 +74237,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_get_settings"
+        "namespace": "cluster.get_settings"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "IndexHealthStats",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       },
       "properties": [
         {
@@ -74330,7 +74330,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ShardHealthStats",
-                "namespace": "cluster.cluster_health"
+                "namespace": "cluster.health"
               }
             }
           }
@@ -74375,7 +74375,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       },
       "path": [
         {
@@ -74613,7 +74613,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "IndexHealthStats",
-                  "namespace": "cluster.cluster_health"
+                  "namespace": "cluster.health"
                 }
               }
             }
@@ -74741,14 +74741,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "ShardHealthStats",
-        "namespace": "cluster.cluster_health"
+        "namespace": "cluster.health"
       },
       "properties": [
         {
@@ -74823,7 +74823,7 @@
       "kind": "interface",
       "name": {
         "name": "PendingTask",
-        "namespace": "cluster.cluster_pending_tasks"
+        "namespace": "cluster.pending_tasks"
       },
       "properties": [
         {
@@ -74899,7 +74899,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_pending_tasks"
+        "namespace": "cluster.pending_tasks"
       },
       "path": [],
       "query": [
@@ -74941,7 +74941,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "PendingTask",
-                  "namespace": "cluster.cluster_pending_tasks"
+                  "namespace": "cluster.pending_tasks"
                 }
               }
             }
@@ -74951,7 +74951,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_pending_tasks"
+        "namespace": "cluster.pending_tasks"
       }
     },
     {
@@ -75050,7 +75050,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_component_template"
+        "namespace": "cluster.put_component_template"
       },
       "path": [
         {
@@ -75106,7 +75106,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_component_template"
+        "namespace": "cluster.put_component_template"
       }
     },
     {
@@ -75163,7 +75163,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_settings"
+        "namespace": "cluster.put_settings"
       },
       "path": [],
       "query": [
@@ -75260,7 +75260,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_settings"
+        "namespace": "cluster.put_settings"
       }
     },
     {
@@ -75279,7 +75279,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_put_voting_config_exclusions"
+        "namespace": "cluster.put_voting_config_exclusions"
       },
       "path": [],
       "query": [
@@ -75351,14 +75351,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_put_voting_config_exclusions"
+        "namespace": "cluster.put_voting_config_exclusions"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "ClusterRemoteInfo",
-        "namespace": "cluster.cluster_remote_info"
+        "namespace": "cluster.remote_info"
       },
       "properties": [
         {
@@ -75461,7 +75461,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_remote_info"
+        "namespace": "cluster.remote_info"
       },
       "path": [],
       "query": []
@@ -75484,7 +75484,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterRemoteInfo",
-              "namespace": "cluster.cluster_remote_info"
+              "namespace": "cluster.remote_info"
             }
           }
         ],
@@ -75496,15 +75496,15 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_remote_info"
+        "namespace": "cluster.remote_info"
       }
     },
     {
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body",
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommand",
-        "namespace": "cluster.cluster_reroute"
+        "name": "Command",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75514,8 +75514,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandCancelAction",
-              "namespace": "cluster.cluster_reroute"
+              "name": "CommandCancelAction",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -75526,8 +75526,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandMoveAction",
-              "namespace": "cluster.cluster_reroute"
+              "name": "CommandMoveAction",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -75538,8 +75538,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAllocateReplicaAction",
-              "namespace": "cluster.cluster_reroute"
+              "name": "CommandAllocateReplicaAction",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -75550,8 +75550,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAllocatePrimaryAction",
-              "namespace": "cluster.cluster_reroute"
+              "name": "CommandAllocatePrimaryAction",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -75562,8 +75562,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteCommandAllocatePrimaryAction",
-              "namespace": "cluster.cluster_reroute"
+              "name": "CommandAllocatePrimaryAction",
+              "namespace": "cluster.reroute"
             }
           }
         }
@@ -75572,8 +75572,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandAllocatePrimaryAction",
-        "namespace": "cluster.cluster_reroute"
+        "name": "CommandAllocatePrimaryAction",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75627,8 +75627,8 @@
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html",
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandAllocateReplicaAction",
-        "namespace": "cluster.cluster_reroute"
+        "name": "CommandAllocateReplicaAction",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75669,8 +75669,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandCancelAction",
-        "namespace": "cluster.cluster_reroute"
+        "name": "CommandCancelAction",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75722,8 +75722,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteCommandMoveAction",
-        "namespace": "cluster.cluster_reroute"
+        "name": "CommandMoveAction",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75775,10 +75775,127 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Defines the commands to perform.",
+            "name": "commands",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Command",
+                  "namespace": "cluster.reroute"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cluster.reroute"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "If true, then the request simulates the operation only and returns the resulting state.",
+          "name": "dry_run",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
+          "name": "explain",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Limits the information returned to the specified metrics.",
+          "name": "metric",
+          "required": false,
+          "serverDefault": "all",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metrics",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.",
+          "name": "retry_failed",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteDecision",
-        "namespace": "cluster.cluster_reroute"
+        "name": "RerouteDecision",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75819,8 +75936,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteExplanation",
-        "namespace": "cluster.cluster_reroute"
+        "name": "RerouteExplanation",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75842,8 +75959,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterRerouteDecision",
-                "namespace": "cluster.cluster_reroute"
+                "name": "RerouteDecision",
+                "namespace": "cluster.reroute"
               }
             }
           }
@@ -75854,8 +75971,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterRerouteParameters",
-              "namespace": "cluster.cluster_reroute"
+              "name": "RerouteParameters",
+              "namespace": "cluster.reroute"
             }
           }
         }
@@ -75864,8 +75981,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteParameters",
-        "namespace": "cluster.cluster_reroute"
+        "name": "RerouteParameters",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -75939,8 +76056,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterRerouteState",
-        "namespace": "cluster.cluster_reroute"
+        "name": "RerouteState",
+        "namespace": "cluster.reroute"
       },
       "properties": [
         {
@@ -76111,123 +76228,6 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "Defines the commands to perform.",
-            "name": "commands",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ClusterRerouteCommand",
-                  "namespace": "cluster.cluster_reroute"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "cluster.cluster_reroute"
-      },
-      "path": [],
-      "query": [
-        {
-          "description": "If true, then the request simulates the operation only and returns the resulting state.",
-          "name": "dry_run",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "If true, then the response contains an explanation of why the commands can or cannot be executed.",
-          "name": "explain",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Limits the information returned to the specified metrics.",
-          "name": "metric",
-          "required": false,
-          "serverDefault": "all",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metrics",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "If true, then retries allocation of shards that are blocked due to too many subsequent allocation failures.",
-          "name": "retry_failed",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
-          "name": "master_timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
-          "name": "timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "body": {
         "kind": "properties",
         "properties": [
@@ -76239,8 +76239,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "ClusterRerouteExplanation",
-                  "namespace": "cluster.cluster_reroute"
+                  "name": "RerouteExplanation",
+                  "namespace": "cluster.reroute"
                 }
               }
             }
@@ -76251,8 +76251,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterRerouteState",
-                "namespace": "cluster.cluster_reroute"
+                "name": "RerouteState",
+                "namespace": "cluster.reroute"
               }
             }
           }
@@ -76267,14 +76267,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_reroute"
+        "namespace": "cluster.reroute"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "ClusterStateBlocks",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster.state"
       },
       "properties": [
         {
@@ -76328,7 +76328,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster.state"
       },
       "path": [
         {
@@ -76530,7 +76530,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterStateBlocks",
-                "namespace": "cluster.cluster_state"
+                "namespace": "cluster.state"
               }
             }
           },
@@ -76627,14 +76627,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_state"
+        "namespace": "cluster.state"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "CharFilterTypes",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -76645,8 +76645,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76659,8 +76659,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76673,8 +76673,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76687,8 +76687,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76701,8 +76701,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76715,8 +76715,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76729,8 +76729,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76743,8 +76743,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -76755,7 +76755,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterFileSystem",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -76796,111 +76796,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterIndicesShardsIndexStats",
-        "namespace": "cluster.cluster_stats"
-      },
-      "properties": [
-        {
-          "description": "Contains statistics about the number of primary shards assigned to selected nodes.",
-          "name": "primaries",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ClusterShardMetrics",
-              "namespace": "cluster.cluster_stats"
-            }
-          }
-        },
-        {
-          "description": "Contains statistics about the number of replication shards assigned to selected nodes.",
-          "name": "replication",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ClusterShardMetrics",
-              "namespace": "cluster.cluster_stats"
-            }
-          }
-        },
-        {
-          "description": "Contains statistics about the number of shards assigned to selected nodes.",
-          "name": "shards",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ClusterShardMetrics",
-              "namespace": "cluster.cluster_stats"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "description": "Contains statistics about shards assigned to selected nodes.",
-      "kind": "interface",
-      "name": {
-        "name": "ClusterIndicesShardsStats",
-        "namespace": "cluster.cluster_stats"
-      },
-      "properties": [
-        {
-          "description": "Contains statistics about shards assigned to selected nodes.",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ClusterIndicesShardsIndexStats",
-              "namespace": "cluster.cluster_stats"
-            }
-          }
-        },
-        {
-          "description": "Number of primary shards assigned to selected nodes.",
-          "name": "primaries",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Ratio of replica shards to primary shards across all selected nodes.",
-          "name": "replication",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Total number of shards assigned to selected nodes.",
-          "name": "total",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterIndicesStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "ClusterIndices",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -76983,8 +76880,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterIndicesShardsStats",
-              "namespace": "cluster.cluster_stats"
+              "name": "ClusterIndicesShards",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77009,7 +76906,7 @@
             "kind": "instance_of",
             "type": {
               "name": "FieldTypesMappings",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77022,7 +76919,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CharFilterTypes",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77034,9 +76931,67 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "IndicesVersionsStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "IndicesVersions",
+                "namespace": "cluster.stats"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Contains statistics about shards assigned to selected nodes.",
+      "kind": "interface",
+      "name": {
+        "name": "ClusterIndicesShards",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "description": "Contains statistics about shards assigned to selected nodes.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterIndicesShardsIndex",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
+          "description": "Number of primary shards assigned to selected nodes.",
+          "name": "primaries",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Ratio of replica shards to primary shards across all selected nodes.",
+          "name": "replication",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Total number of shards assigned to selected nodes.",
+          "name": "total",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
             }
           }
         }
@@ -77045,8 +77000,53 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterIngestStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "ClusterIndicesShardsIndex",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "description": "Contains statistics about the number of primary shards assigned to selected nodes.",
+          "name": "primaries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterShardMetrics",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
+          "description": "Contains statistics about the number of replication shards assigned to selected nodes.",
+          "name": "replication",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterShardMetrics",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
+          "description": "Contains statistics about the number of shards assigned to selected nodes.",
+          "name": "shards",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterShardMetrics",
+              "namespace": "cluster.stats"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterIngest",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77076,8 +77076,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterProcessorStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "ClusterProcessor",
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77088,7 +77088,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterJvm",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77109,7 +77109,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterJvmMemory",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77133,7 +77133,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterJvmVersion",
-                "namespace": "cluster.cluster_stats"
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77144,7 +77144,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterJvmMemory",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77175,7 +77175,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterJvmVersion",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77261,7 +77261,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterNetworkTypes",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77314,7 +77314,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterNodeCount",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77397,6 +77397,7 @@
         {
           "name": "data_frozen",
           "required": false,
+          "since": "7.13.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -77476,8 +77477,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterNodesStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "ClusterNodes",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77488,7 +77489,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterNodeCount",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77524,7 +77525,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterFileSystem",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77534,8 +77535,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterIngestStats",
-              "namespace": "cluster.cluster_stats"
+              "name": "ClusterIngest",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77547,7 +77548,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterJvm",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77559,7 +77560,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterNetworkTypes",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77570,8 +77571,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ClusterOperatingSystemStats",
-              "namespace": "cluster.cluster_stats"
+              "name": "ClusterOperatingSystem",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77585,7 +77586,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodePackagingType",
-                "namespace": "cluster.cluster_stats"
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77613,7 +77614,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterProcess",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77637,70 +77638,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterOperatingSystemArchitecture",
-        "namespace": "cluster.cluster_stats"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "arch",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterOperatingSystemName",
-        "namespace": "cluster.cluster_stats"
-      },
-      "properties": [
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ClusterOperatingSystemStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "ClusterOperatingSystem",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77732,7 +77671,7 @@
             "kind": "instance_of",
             "type": {
               "name": "OperatingSystemMemoryInfo",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77745,7 +77684,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterOperatingSystemName",
-                "namespace": "cluster.cluster_stats"
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77759,7 +77698,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterOperatingSystemName",
-                "namespace": "cluster.cluster_stats"
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77773,7 +77712,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ClusterOperatingSystemArchitecture",
-                "namespace": "cluster.cluster_stats"
+                "namespace": "cluster.stats"
               }
             }
           }
@@ -77783,8 +77722,70 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ClusterOperatingSystemArchitecture",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "arch",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterOperatingSystemName",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterProcess",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77794,7 +77795,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterProcessCpu",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -77805,7 +77806,7 @@
             "kind": "instance_of",
             "type": {
               "name": "ClusterProcessOpenFileDescriptors",
-              "namespace": "cluster.cluster_stats"
+              "namespace": "cluster.stats"
             }
           }
         }
@@ -77815,7 +77816,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterProcessCpu",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77835,7 +77836,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterProcessOpenFileDescriptors",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77876,8 +77877,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ClusterProcessorStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "ClusterProcessor",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77930,7 +77931,7 @@
       "kind": "interface",
       "name": {
         "name": "ClusterShardMetrics",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -77971,45 +77972,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "FieldTypesMappings",
-        "namespace": "cluster.cluster_stats"
-      },
-      "properties": [
-        {
-          "name": "field_types",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "FieldTypesStats",
-                "namespace": "cluster.cluster_stats"
-              }
-            }
-          }
-        },
-        {
-          "name": "runtime_field_types",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RuntimeFieldTypesStats",
-                "namespace": "cluster.cluster_stats"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FieldTypesStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "FieldTypes",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -78062,8 +78026,45 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IndicesVersionsStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "FieldTypesMappings",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "field_types",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldTypes",
+                "namespace": "cluster.stats"
+              }
+            }
+          }
+        },
+        {
+          "name": "runtime_field_types",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFieldTypes",
+                "namespace": "cluster.stats"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndicesVersions",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -78116,7 +78117,7 @@
       "kind": "interface",
       "name": {
         "name": "NodePackagingType",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -78158,7 +78159,7 @@
       "kind": "interface",
       "name": {
         "name": "OperatingSystemMemoryInfo",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
@@ -78234,7 +78235,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       },
       "path": [
         {
@@ -78312,8 +78313,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterIndicesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "ClusterIndices",
+                "namespace": "cluster.stats"
               }
             }
           },
@@ -78325,8 +78326,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterNodesStats",
-                "namespace": "cluster.cluster_stats"
+                "name": "ClusterNodes",
+                "namespace": "cluster.stats"
               }
             }
           },
@@ -78366,14 +78367,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cluster.cluster_stats"
+        "namespace": "cluster.stats"
       }
     },
     {
       "kind": "interface",
       "name": {
-        "name": "RuntimeFieldTypesStats",
-        "namespace": "cluster.cluster_stats"
+        "name": "RuntimeFieldTypes",
+        "namespace": "cluster.stats"
       },
       "properties": [
         {
