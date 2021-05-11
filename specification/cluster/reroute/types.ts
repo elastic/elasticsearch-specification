@@ -17,41 +17,46 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
+import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
+import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
+import { ClusterStateSnapshots, ClusterStateDeletedSnapshots } from '@cluster/_types/ClusterStateSnapshots'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { EmptyObject, IndexName, NodeName, Uuid, VersionNumber } from '@_types/common'
+import { NodeAttributes } from '@_types/Node'
 import { integer } from '@_types/Numeric'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
-export class ClusterRerouteCommand {
+export class Command {
   /**
    * Cancel allocation of a shard (or recovery). Accepts index and shard for index name and shard number, and node for the node to cancel the shard allocation on. This can be used to force resynchronization of existing replicas from the primary shard by cancelling them and allowing them to be reinitialized through the standard recovery process. By default only replica shard allocations can be cancelled. If it is necessary to cancel the allocation of a primary shard then the allow_primary flag must also be included in the request.
    */
-  cancel?: ClusterRerouteCommandCancelAction
+  cancel?: CommandCancelAction
   /**
    * Move a started shard from one node to another node. Accepts index and shard for index name and shard number, from_node for the node to move the shard from, and to_node for the node to move the shard to.
    */
-  move?: ClusterRerouteCommandMoveAction
+  move?: CommandMoveAction
   /**
    * Allocate an unassigned replica shard to a node. Accepts index and shard for index name and shard number, and node to allocate the shard to. Takes allocation deciders into account.
    */
-  allocate_replica?: ClusterRerouteCommandAllocateReplicaAction
+  allocate_replica?: CommandAllocateReplicaAction
   /**
    * Allocate a primary shard to a node that holds a stale copy. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command may lead to data loss for the provided shard id. If a node which has the good copy of the data rejoins the cluster later on, that data will be deleted or overwritten with the data of the stale copy that was forcefully allocated with this command. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.
    */
-  allocate_stale_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_stale_primary?: CommandAllocatePrimaryAction
   /**
    * Allocate an empty primary shard to a node. Accepts the index and shard for index name and shard number, and node to allocate the shard to. Using this command leads to a complete loss of all data that was indexed into this shard, if it was previously started. If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true.
    */
-  allocate_empty_primary?: ClusterRerouteCommandAllocatePrimaryAction
+  allocate_empty_primary?: CommandAllocatePrimaryAction
 }
 
-export class ClusterRerouteCommandCancelAction {
+export class CommandCancelAction {
   index: IndexName
   shard: integer
   node: string
   allow_primary?: boolean
 }
 
-export class ClusterRerouteCommandAction {
+export class CommandAction {
   index: IndexName
   shard: integer
   node: string
@@ -59,7 +64,7 @@ export class ClusterRerouteCommandAction {
   allow_primary?: boolean
 }
 
-export class ClusterRerouteCommandMoveAction {
+export class CommandMoveAction {
   index: IndexName
   shard: integer
   /** The node to move the shard from */
@@ -71,16 +76,52 @@ export class ClusterRerouteCommandMoveAction {
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html
  */
-export class ClusterRerouteCommandAllocateReplicaAction {
+export class CommandAllocateReplicaAction {
   index: IndexName
   shard: integer
   node: string
 }
 
-export class ClusterRerouteCommandAllocatePrimaryAction {
+export class CommandAllocatePrimaryAction {
   index: IndexName
   shard: integer
   node: string
   /** If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true */
   accept_data_loss: boolean
+}
+
+export class RerouteDecision {
+  decider: string
+  decision: string
+  explanation: string
+}
+
+export class RerouteExplanation {
+  command: string
+  decisions: RerouteDecision[]
+  parameters: RerouteParameters
+}
+
+export class RerouteParameters {
+  allow_primary: boolean
+  index: IndexName
+  node: NodeName
+  shard: integer
+  from_node?: NodeName
+  to_node?: NodeName
+}
+
+export class RerouteState {
+  cluster_uuid: Uuid
+  state_uuid?: Uuid
+  master_node?: string
+  version?: VersionNumber
+  blocks?: EmptyObject // TODO: this is likely wrong too
+  nodes?: Dictionary<NodeName, NodeAttributes>
+  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_nodes?: ClusterStateRoutingNodes
+  security_tokens?: Dictionary<string, string>
+  snapshots?: ClusterStateSnapshots
+  snapshot_deletions?: ClusterStateDeletedSnapshots
+  metadata?: ClusterStateMetadata
 }

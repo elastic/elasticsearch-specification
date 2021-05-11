@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Metrics } from '@_types/common'
 import { Time } from '@_types/Time'
-import { ClusterRerouteCommand } from './ClusterRerouteCommand'
+import { Command } from './types'
 
 /**
  * @rest_spec_name cluster.reroute
@@ -64,6 +64,6 @@ export interface Request extends RequestBase {
     /**
      * Defines the commands to perform.
      */
-    commands?: ClusterRerouteCommand[]
+    commands?: Command[]
   }
 }

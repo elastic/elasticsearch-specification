@@ -21,7 +21,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Health, IndexName } from '@_types/common'
 import { integer, Percentage } from '@_types/Numeric'
 import { EpochMillis } from '@_types/Time'
-import { IndexHealthStats } from './IndexHealthStats'
+import { IndexHealthStats } from './types'
 
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body

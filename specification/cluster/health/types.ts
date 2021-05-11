@@ -17,10 +17,27 @@
  * under the License.
  */
 
-import { double } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Health } from '@_types/common'
+import { integer } from '@_types/Numeric'
 
-export class ClusterShardMetrics {
-  avg: double
-  max: double
-  min: double
+export class IndexHealthStats {
+  active_primary_shards: integer
+  active_shards: integer
+  initializing_shards: integer
+  number_of_replicas: integer
+  number_of_shards: integer
+  relocating_shards: integer
+  shards?: Dictionary<string, ShardHealthStats>
+  status: Health
+  unassigned_shards: integer
+}
+
+export class ShardHealthStats {
+  active_shards: integer
+  initializing_shards: integer
+  primary_active: boolean
+  relocating_shards: integer
+  status: Health
+  unassigned_shards: integer
 }
