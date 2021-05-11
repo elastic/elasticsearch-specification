@@ -266,6 +266,7 @@ export function modelType (node: Node): model.ValueOf {
             return type
           }
 
+          console.log(node.getKindName())
           assert(
             node,
             Node.isClassDeclaration(declaration) ||
