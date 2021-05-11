@@ -25,11 +25,11 @@ import { JsonSpec } from '../model/json-spec'
  */
 export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   model._info = {
-    version: '7.11.0',
+    version: '7.13.0',
     title: 'Elasticsearch Request & Response Specification',
     license: {
       name: 'Apache 2.0',
-      url: 'https://github.com/elastic/elastic-client-generator/blob/master/LICENSE'
+      url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
     }
   }
   return model
