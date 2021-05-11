@@ -102738,136 +102738,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DataframeAnalyticsSummary",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataframeAnalyticsSource",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "dest",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataframeAnalyticsDestination",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "analysis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataframeAnalysisContainer",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model_memory_limit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_num_threads",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "analyzed_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataframeAnalysisAnalyzedFields",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "allow_lazy_start",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "DataframeEvaluationClassification",
         "namespace": "ml._types"
       },
@@ -109415,11 +109285,7 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DataframeAnalyticsSummary",
-                  "namespace": "ml._types"
-                }
+                "kind": "user_defined_value"
               }
             }
           }
