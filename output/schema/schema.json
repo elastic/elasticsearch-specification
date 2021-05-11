@@ -102274,90 +102274,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "DataframeAnalyticsFieldSelection",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "Whether the field is selected to be included in the analysis.",
-          "name": "is_included",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether the field is required.",
-          "name": "is_required",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "The feature type of this field for the analysis. May be categorical or numerical.",
-          "name": "feature_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "The mapping types of the field.",
-          "name": "mapping_types",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "description": "The field name.",
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The reason a field is not selected to be included in the analysis.",
-          "name": "reason",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "DataframeAnalyticsMemoryEstimation",
         "namespace": "ml._types"
       },
@@ -108091,11 +108007,7 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DataframeAnalyticsFieldSelection",
-                  "namespace": "ml._types"
-                }
+                "kind": "user_defined_value"
               }
             }
           },
