@@ -77600,8 +77600,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "Plugin",
-                "namespace": ".Users.delvedor.Development.elastic.elastic-client-generator-2.compiler.node_modules.typescript.lib"
+                "name": "PluginStats",
+                "namespace": "_types"
               }
             }
           }

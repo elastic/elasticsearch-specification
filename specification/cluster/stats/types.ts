@@ -210,7 +210,7 @@ export class ClusterNodes {
   /** Contains statistics about Elasticsearch distributions installed on selected nodes. */
   packaging_types: NodePackagingType[]
   /** Contains statistics about installed plugins and modules by selected nodes. */
-  plugins: Plugin[]
+  plugins: PluginStats[]
   /** Contains statistics about processes used by selected nodes. */
   process: ClusterProcess
   /** Array of Elasticsearch versions used on selected nodes. */

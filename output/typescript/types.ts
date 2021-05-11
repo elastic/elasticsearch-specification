@@ -7509,7 +7509,7 @@ export interface ClusterStatsClusterNodes {
   network_types: ClusterStatsClusterNetworkTypes
   os: ClusterStatsClusterOperatingSystem
   packaging_types: ClusterStatsNodePackagingType[]
-  plugins: UsersDelvedorDevelopmentElasticElastic-client-generator-2CompilerNodeModulesTypescriptLibPlugin[]
+  plugins: PluginStats[]
   process: ClusterStatsClusterProcess
   versions: VersionString[]
 }
