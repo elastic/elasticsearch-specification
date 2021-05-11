@@ -20,5 +20,5 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 
-// https://github.com/elastic/elastic-client-generator/pull/373 is merged.
+// https://github.com/elastic/elasticsearch-specification/pull/373 is merged.
 export class Response extends AcknowledgedResponseBase {}

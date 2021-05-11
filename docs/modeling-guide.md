@@ -125,7 +125,7 @@ type Indices = string | string[]
 ...
 ```
 
-You can find the full list [here](https://github.com/elastic/elastic-client-generator/blob/update-docs/specification/specs/common.ts),
+You can find the full list [here](https://github.com/elastic/elasticsearch-specification/blob/update-docs/specification/specs/common.ts),
 feel free to add more if it feels appropriate!
 
 ### Dates

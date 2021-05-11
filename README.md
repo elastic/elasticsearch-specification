@@ -29,7 +29,7 @@ nvm install 14
 
 ```
 # clone the project
-$ git clone https://github.com/elastic/elastic-client-generator.git
+$ git clone https://github.com/elastic/elasticsearch-specification.git
 
 # install the dependencies
 $ npm install --prefix specification
@@ -187,10 +187,10 @@ how to generate a token.
 Once you have configured the environment, run the following commands:
 
 ```sh
-git clone https://github.com/elastic/elastic-client-generator.git
+git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
-cd elastic-client-generator
+cd elasticsearch-specification
 ./run-validations.sh
 ```
 

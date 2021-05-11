@@ -46,7 +46,7 @@ expectAssignable<T.IndexRequest<any>>({
 ```
 
 You can play with the response to better understand where is the problem, once you have done it
-you should search inside `elastic-client-generator/specification` the type definition,
+you should search inside `elasticsearch-specification/specification` the type definition,
 open it with your favourite editor and perform the fix
 
 ```diff
