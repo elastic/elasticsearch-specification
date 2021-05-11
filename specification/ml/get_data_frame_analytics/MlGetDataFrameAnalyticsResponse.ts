@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
 import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
     count: integer
     /** An array of data frame analytics job resources, which are sorted by the id value in ascending order. */
-    data_frame_analytics: UserDefinedValue[]
+    data_frame_analytics: DataframeAnalyticsSummary[]
   }
 }

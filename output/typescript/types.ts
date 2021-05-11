@@ -10408,6 +10408,20 @@ export interface MlDataframeAnalyticsStatsProgress {
   progress_percent: integer
 }
 
+export interface MlDataframeAnalyticsSummary {
+  id: Id
+  source: MlDataframeAnalyticsSource
+  dest: MlDataframeAnalyticsDestination
+  analysis: MlDataframeAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
+}
+
 export interface MlDataframeEvaluationClassification {
   actual_field: Field
   predicted_field?: Field
@@ -11183,7 +11197,7 @@ export interface MlGetDataFrameAnalyticsRequest extends RequestBase {
 
 export interface MlGetDataFrameAnalyticsResponse {
   count: integer
-  data_frame_analytics: any[]
+  data_frame_analytics: MlDataframeAnalyticsSummary[]
 }
 
 export interface MlGetDataFrameAnalyticsStatsRequest extends RequestBase {
