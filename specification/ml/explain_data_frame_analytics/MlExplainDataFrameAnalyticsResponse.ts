@@ -20,7 +20,7 @@
 import {
   DataframeAnalyticsFieldSelection,
   DataframeAnalyticsMemoryEstimation
-} from '@ml/_types/DataFrameAnalytics'
+} from '@ml/_types/DataframeAnalytics'
 
 export class Response {
   body: {
