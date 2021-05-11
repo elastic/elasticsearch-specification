@@ -21,7 +21,7 @@ import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
-export class Bucket {
+export class BucketSummary {
   anomaly_score: double
   bucket_influencers: BucketInfluencer[]
   bucket_span: Time

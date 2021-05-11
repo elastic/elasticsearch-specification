@@ -10044,7 +10044,7 @@ export interface MlAnalysisConfig {
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
   summary_count_field_name?: Field
-  categorization_analyzer?: MlInfoCategorizationAnalyzer | string
+  categorization_analyzer?: MlCategorizationAnalyzer | string
 }
 
 export interface MlAnalysisLimits {
@@ -10056,24 +10056,7 @@ export interface MlAnalysisMemoryLimit {
   model_memory_limit: string
 }
 
-export interface MlAnomalyCause {
-  actual: double[]
-  by_field_name: Name
-  by_field_value: string
-  correlated_by_field_value: string
-  field_name: Field
-  function: string
-  function_description: string
-  influencers: MlInfluence[]
-  over_field_name: Name
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
-  probability: double
-  typical: double[]
-}
-
-export interface MlAnomalyRecord {
+export interface MlAnomaly {
   actual?: double[]
   bucket_span: Time
   by_field_name?: string
@@ -10098,6 +10081,23 @@ export interface MlAnomalyRecord {
   typical?: double[]
 }
 
+export interface MlAnomalyCause {
+  actual: double[]
+  by_field_name: Name
+  by_field_value: string
+  correlated_by_field_value: string
+  field_name: Field
+  function: string
+  function_description: string
+  influencers: MlInfluence[]
+  over_field_name: Name
+  over_field_value: string
+  partition_field_name: string
+  partition_field_value: string
+  probability: double
+  typical: double[]
+}
+
 export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
@@ -10114,7 +10114,35 @@ export interface MlBucketInfluencer {
   foo?: string
 }
 
-export interface MlCategoryDefinition {
+export interface MlBucketSummary {
+  anomaly_score: double
+  bucket_influencers: MlBucketInfluencer[]
+  bucket_span: Time
+  event_count: long
+  initial_anomaly_score: double
+  is_interim: boolean
+  job_id: Id
+  partition_scores?: MlPartitionScore[]
+  processing_time_ms: double
+  result_type: string
+  timestamp: Time
+}
+
+export interface MlCalendarEvent {
+  calendar_id?: Id
+  event_id?: Id
+  description: string
+  end_time: EpochMillis
+  start_time: EpochMillis
+}
+
+export interface MlCategorizationAnalyzer {
+  filter?: (string | AnalysisTokenFilter)[]
+  tokenizer?: string | AnalysisTokenizer
+  char_filter?: (string | AnalysisCharFilter)[]
+}
+
+export interface MlCategory {
   category_id: ulong
   examples: string[]
   grok_pattern?: string
@@ -10168,187 +10196,6 @@ export interface MlDataDescription {
   field_delimiter?: string
 }
 
-export interface MlDataFrameAnalysis {
-  dependent_variable: string
-  prediction_field_name?: Field
-  alpha?: double
-  lambda?: double
-  gamma?: double
-  eta?: double
-  eta_growth_rate_per_tree?: double
-  feature_bag_fraction?: double
-  max_trees?: integer
-  maximum_number_trees?: integer
-  soft_tree_depth_limit?: integer
-  soft_tree_depth_tolerance?: double
-  downsample_factor?: double
-  max_optimization_rounds_per_hyperparameter?: integer
-  early_stopping_enabled?: boolean
-  num_top_feature_importance_values?: integer
-  feature_processors?: MlDataFrameAnalysisFeatureProcessor[]
-  randomize_seed?: double
-  training_percent?: Percentage
-}
-
-export type MlDataFrameAnalysisAnalyzedFields = string[] | MlDataFrameAnalysisAnalyzedFieldsIncludeExclude
-
-export interface MlDataFrameAnalysisAnalyzedFieldsIncludeExclude {
-  includes: string[]
-  excludes: string[]
-}
-
-export interface MlDataFrameAnalysisClassification extends MlDataFrameAnalysis {
-  class_assignment_objective?: string
-  num_top_classes?: integer
-}
-
-export interface MlDataFrameAnalysisContainer {
-  outlier_detection?: MlDataFrameAnalysisOutlierDetection
-  regression?: MlDataFrameAnalysisRegression
-  classification?: MlDataFrameAnalysisClassification
-}
-
-export interface MlDataFrameAnalysisFeatureProcessor {
-  frequency_encoding?: MlDataFrameAnalysisFeatureProcessorFrequencyEncoding
-  multi_encoding?: MlDataFrameAnalysisFeatureProcessorMultiEncoding
-  n_gram_encoding?: MlDataFrameAnalysisFeatureProcessorNGramEncoding
-  one_hot_encoding?: MlDataFrameAnalysisFeatureProcessorOneHotEncoding
-  target_mean_encoding?: MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding
-}
-
-export interface MlDataFrameAnalysisFeatureProcessorFrequencyEncoding {
-  feature_name: Name
-  field: Field
-  frequency_map: Record<string, double>
-}
-
-export interface MlDataFrameAnalysisFeatureProcessorMultiEncoding {
-  processors: integer[]
-}
-
-export interface MlDataFrameAnalysisFeatureProcessorNGramEncoding {
-  feature_prefix?: string
-  field: Field
-  length?: integer
-  n_grams: integer[]
-  start?: integer
-  custom?: boolean
-}
-
-export interface MlDataFrameAnalysisFeatureProcessorOneHotEncoding {
-  field: Field
-  hot_map: string
-}
-
-export interface MlDataFrameAnalysisFeatureProcessorTargetMeanEncoding {
-  default_value: integer
-  feature_name: Name
-  field: Field
-  target_map: Record<string, any>
-}
-
-export interface MlDataFrameAnalysisOutlierDetection {
-  n_neighbors?: integer
-  method?: string
-  feature_influence_threshold?: double
-  compute_feature_influence?: boolean
-  outlier_fraction?: double
-  standardization_enabled?: boolean
-}
-
-export interface MlDataFrameAnalysisRegression extends MlDataFrameAnalysis {
-  loss_function?: string
-  loss_function_parameter?: double
-}
-
-export interface MlDataFrameAnalyticsDestination {
-  index: IndexName
-  results_field?: Field
-}
-
-export interface MlDataFrameAnalyticsFieldSelection {
-  is_included: boolean
-  is_required: boolean
-  feature_type?: string
-  mapping_types: string[]
-  name: Field
-  reason?: string
-}
-
-export interface MlDataFrameAnalyticsMemoryEstimation {
-  expected_memory_with_disk: ByteSize
-  expected_memory_without_disk: ByteSize
-}
-
-export interface MlDataFrameAnalyticsSource {
-  index: Indices
-  query?: QueryDslQueryContainer
-  _source?: MlDataFrameAnalysisAnalyzedFields
-  runtime_mappings?: MappingRuntimeFields
-}
-
-export interface MlDataFrameEvaluationClassification {
-  actual_field: Field
-  predicted_field?: Field
-  top_classes_field?: Field
-  metrics?: MlDataFrameEvaluationClassificationMetrics
-}
-
-export interface MlDataFrameEvaluationClassificationMetrics extends MlDataFrameEvaluationMetrics {
-  accuracy?: Record<string, any>
-  multiclass_confusion_matrix?: Record<string, any>
-}
-
-export interface MlDataFrameEvaluationClassificationMetricsAucRoc {
-  class_name?: Name
-  include_curve?: boolean
-}
-
-export interface MlDataFrameEvaluationContainer {
-  classification?: MlDataFrameEvaluationClassification
-  outlier_detection?: MlDataFrameEvaluationOutlierDetection
-  regression?: MlDataFrameEvaluationRegression
-}
-
-export interface MlDataFrameEvaluationMetrics {
-  auc_roc?: MlDataFrameEvaluationClassificationMetricsAucRoc
-  precision?: Record<string, any>
-  recall?: Record<string, any>
-}
-
-export interface MlDataFrameEvaluationOutlierDetection {
-  actual_field: Field
-  predicted_probability_field: Field
-  metrics?: MlDataFrameEvaluationOutlierDetectionMetrics
-}
-
-export interface MlDataFrameEvaluationOutlierDetectionMetrics extends MlDataFrameEvaluationMetrics {
-  confusion_matrix?: Record<string, any>
-}
-
-export interface MlDataFrameEvaluationRegression {
-  actual_field: Field
-  predicted_field: Field
-  metrics?: MlDataFrameEvaluationRegressionMetrics
-}
-
-export interface MlDataFrameEvaluationRegressionMetrics {
-  mse?: Record<string, any>
-  msle?: MlDataFrameEvaluationRegressionMetricsMsle
-  huber?: MlDataFrameEvaluationRegressionMetricsHuber
-  r_squared?: Record<string, any>
-}
-
-export interface MlDataFrameEvaluationRegressionMetricsHuber {
-  delta?: double
-}
-
-export interface MlDataFrameEvaluationRegressionMetricsMsle {
-  offset?: double
-}
-
-export type MlDataFrameState = 'started' | 'stopped' | 'starting' | 'stopping' | 'failed'
-
 export interface MlDatafeed {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
@@ -10365,7 +10212,14 @@ export interface MlDatafeed {
   scroll_size?: integer
   delayed_data_check_config: MlDelayedDataCheckConfig
   runtime_mappings?: MappingRuntimeFields
-  indices_options?: MlUpdateDataFeedDatafeedIndicesOptions
+  indices_options?: MlDatafeedIndicesOptions
+}
+
+export interface MlDatafeedIndicesOptions {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
 }
 
 export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
@@ -10381,10 +10235,254 @@ export interface MlDatafeedStats {
 export interface MlDatafeedTimingStats {
   bucket_count: long
   exponential_average_search_time_per_hour_ms: double
-  job_id: string
+  job_id: Id
   search_count: long
   total_search_time_ms: double
 }
+
+export interface MlDataframeAnalysis {
+  dependent_variable: string
+  prediction_field_name?: Field
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  max_trees?: integer
+  maximum_number_trees?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
+  downsample_factor?: double
+  max_optimization_rounds_per_hyperparameter?: integer
+  early_stopping_enabled?: boolean
+  num_top_feature_importance_values?: integer
+  feature_processors?: MlDataframeAnalysisFeatureProcessor[]
+  randomize_seed?: double
+  training_percent?: Percentage
+}
+
+export type MlDataframeAnalysisAnalyzedFields = string[] | MlDataframeAnalysisAnalyzedFieldsIncludeExclude
+
+export interface MlDataframeAnalysisAnalyzedFieldsIncludeExclude {
+  includes: string[]
+  excludes: string[]
+}
+
+export interface MlDataframeAnalysisClassification extends MlDataframeAnalysis {
+  class_assignment_objective?: string
+  num_top_classes?: integer
+}
+
+export interface MlDataframeAnalysisContainer {
+  outlier_detection?: MlDataframeAnalysisOutlierDetection
+  regression?: MlDataframeAnalysisRegression
+  classification?: MlDataframeAnalysisClassification
+}
+
+export interface MlDataframeAnalysisFeatureProcessor {
+  frequency_encoding?: MlDataframeAnalysisFeatureProcessorFrequencyEncoding
+  multi_encoding?: MlDataframeAnalysisFeatureProcessorMultiEncoding
+  n_gram_encoding?: MlDataframeAnalysisFeatureProcessorNGramEncoding
+  one_hot_encoding?: MlDataframeAnalysisFeatureProcessorOneHotEncoding
+  target_mean_encoding?: MlDataframeAnalysisFeatureProcessorTargetMeanEncoding
+}
+
+export interface MlDataframeAnalysisFeatureProcessorFrequencyEncoding {
+  feature_name: Name
+  field: Field
+  frequency_map: Record<string, double>
+}
+
+export interface MlDataframeAnalysisFeatureProcessorMultiEncoding {
+  processors: integer[]
+}
+
+export interface MlDataframeAnalysisFeatureProcessorNGramEncoding {
+  feature_prefix?: string
+  field: Field
+  length?: integer
+  n_grams: integer[]
+  start?: integer
+  custom?: boolean
+}
+
+export interface MlDataframeAnalysisFeatureProcessorOneHotEncoding {
+  field: Field
+  hot_map: string
+}
+
+export interface MlDataframeAnalysisFeatureProcessorTargetMeanEncoding {
+  default_value: integer
+  feature_name: Name
+  field: Field
+  target_map: Record<string, any>
+}
+
+export interface MlDataframeAnalysisOutlierDetection {
+  n_neighbors?: integer
+  method?: string
+  feature_influence_threshold?: double
+  compute_feature_influence?: boolean
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
+
+export interface MlDataframeAnalysisRegression extends MlDataframeAnalysis {
+  loss_function?: string
+  loss_function_parameter?: double
+}
+
+export interface MlDataframeAnalytics {
+  analysis_stats?: MlDataframeAnalyticsStatsContainer
+  assignment_explanation?: string
+  data_counts: MlDataframeAnalyticsStatsDataCounts
+  id: Id
+  memory_usage: MlDataframeAnalyticsStatsMemoryUsage
+  node?: NodeAttributes
+  progress: MlDataframeAnalyticsStatsProgress[]
+  state: MlDataframeState
+}
+
+export interface MlDataframeAnalyticsDestination {
+  index: IndexName
+  results_field?: Field
+}
+
+export interface MlDataframeAnalyticsFieldSelection {
+  is_included: boolean
+  is_required: boolean
+  feature_type?: string
+  mapping_types: string[]
+  name: Field
+  reason?: string
+}
+
+export interface MlDataframeAnalyticsMemoryEstimation {
+  expected_memory_with_disk: ByteSize
+  expected_memory_without_disk: ByteSize
+}
+
+export interface MlDataframeAnalyticsSource {
+  index: Indices
+  query?: QueryDslQueryContainer
+  _source?: MlDataframeAnalysisAnalyzedFields
+  runtime_mappings?: MappingRuntimeFields
+}
+
+export interface MlDataframeAnalyticsStatsContainer {
+  classification_stats?: MlDataframeAnalyticsStatsHyperparameters
+  outlier_detection_stats?: MlDataframeAnalyticsStatsOutlierDetection
+  regression_stats?: MlDataframeAnalyticsStatsHyperparameters
+}
+
+export interface MlDataframeAnalyticsStatsDataCounts {
+  skipped_docs_count: integer
+  test_docs_count: integer
+  training_docs_count: integer
+}
+
+export interface MlDataframeAnalyticsStatsHyperparameters {
+  hyperparameters: MlHyperparameters
+  iteration: integer
+  timestamp: DateString
+  timing_stats: MlTimingStats
+  validation_loss: MlValidationLoss
+}
+
+export interface MlDataframeAnalyticsStatsMemoryUsage {
+  memory_reestimate_bytes?: long
+  peak_usage_bytes: long
+  status: string
+  timestamp?: DateString
+}
+
+export interface MlDataframeAnalyticsStatsOutlierDetection {
+  parameters: MlOutlierDetectionParameters
+  timestamp: DateString
+  timing_stats: MlTimingStats
+}
+
+export interface MlDataframeAnalyticsStatsProgress {
+  phase: string
+  progress_percent: integer
+}
+
+export interface MlDataframeAnalyticsSummary {
+  id: Id
+  source: MlDataframeAnalyticsSource
+  dest: MlDataframeAnalyticsDestination
+  analysis: MlDataframeAnalysisContainer
+  description?: string
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields
+  allow_lazy_start?: boolean
+  create_time?: long
+  version?: VersionString
+}
+
+export interface MlDataframeEvaluationClassification {
+  actual_field: Field
+  predicted_field?: Field
+  top_classes_field?: Field
+  metrics?: MlDataframeEvaluationClassificationMetrics
+}
+
+export interface MlDataframeEvaluationClassificationMetrics extends MlDataframeEvaluationMetrics {
+  accuracy?: Record<string, any>
+  multiclass_confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataframeEvaluationClassificationMetricsAucRoc {
+  class_name?: Name
+  include_curve?: boolean
+}
+
+export interface MlDataframeEvaluationContainer {
+  classification?: MlDataframeEvaluationClassification
+  outlier_detection?: MlDataframeEvaluationOutlierDetection
+  regression?: MlDataframeEvaluationRegression
+}
+
+export interface MlDataframeEvaluationMetrics {
+  auc_roc?: MlDataframeEvaluationClassificationMetricsAucRoc
+  precision?: Record<string, any>
+  recall?: Record<string, any>
+}
+
+export interface MlDataframeEvaluationOutlierDetection {
+  actual_field: Field
+  predicted_probability_field: Field
+  metrics?: MlDataframeEvaluationOutlierDetectionMetrics
+}
+
+export interface MlDataframeEvaluationOutlierDetectionMetrics extends MlDataframeEvaluationMetrics {
+  confusion_matrix?: Record<string, any>
+}
+
+export interface MlDataframeEvaluationRegression {
+  actual_field: Field
+  predicted_field: Field
+  metrics?: MlDataframeEvaluationRegressionMetrics
+}
+
+export interface MlDataframeEvaluationRegressionMetrics {
+  mse?: Record<string, any>
+  msle?: MlDataframeEvaluationRegressionMetricsMsle
+  huber?: MlDataframeEvaluationRegressionMetricsHuber
+  r_squared?: Record<string, any>
+}
+
+export interface MlDataframeEvaluationRegressionMetricsHuber {
+  delta?: double
+}
+
+export interface MlDataframeEvaluationRegressionMetricsMsle {
+  offset?: double
+}
+
+export type MlDataframeState = 'started' | 'stopped' | 'starting' | 'stopping' | 'failed'
 
 export interface MlDelayedDataCheckConfig {
   check_window?: Time
@@ -10402,7 +10500,7 @@ export interface MlDetector {
   custom_rules?: MlDetectionRule[]
   detector_description?: string
   detector_index?: integer
-  exclude_frequent?: MlPutJobExcludeFrequent
+  exclude_frequent?: MlExcludeFrequent
   field_name?: Field
   function?: string
   use_null?: boolean
@@ -10419,10 +10517,20 @@ export interface MlDiscoveryNode {
   transport_address: TransportAddress
 }
 
+export type MlExcludeFrequent = 'all' | 'none' | 'by' | 'over'
+
+export interface MlFilter {
+  description?: string
+  filter_id: Id
+  items: string[]
+}
+
 export interface MlFilterRef {
   filter_id: Id
-  filter_type: MlRuleFilterType
+  filter_type: MlFilterType
 }
+
+export type MlFilterType = 'include' | 'exclude'
 
 export interface MlHyperparameter {
   absolute_importance?: double
@@ -10430,6 +10538,23 @@ export interface MlHyperparameter {
   relative_importance?: double
   supplied: boolean
   value: double
+}
+
+export interface MlHyperparameters {
+  alpha?: double
+  lambda?: double
+  gamma?: double
+  eta?: double
+  eta_growth_rate_per_tree?: double
+  feature_bag_fraction?: double
+  downsample_factor?: double
+  max_attempts_to_add_tree?: integer
+  max_optimization_rounds_per_hyperparameter?: integer
+  max_trees?: integer
+  num_folds?: integer
+  num_splits_per_feature?: integer
+  soft_tree_depth_limit?: integer
+  soft_tree_depth_tolerance?: double
 }
 
 export interface MlInfluence {
@@ -10560,16 +10685,25 @@ export interface MlModelSnapshot {
   timestamp: Time
 }
 
+export interface MlOutlierDetectionParameters {
+  compute_feature_influence?: boolean
+  feature_influence_threshold?: double
+  method?: string
+  n_neighbors?: integer
+  outlier_fraction?: double
+  standardization_enabled?: boolean
+}
+
 export interface MlOverallBucket {
   bucket_span: long
   is_interim: boolean
-  jobs: MlOverallBucketJobInfo[]
+  jobs: MlOverallBucketJob[]
   overall_score: double
   result_type: string
   timestamp: Time
 }
 
-export interface MlOverallBucketJobInfo {
+export interface MlOverallBucketJob {
   job_id: Id
   max_anomaly_score: double
 }
@@ -10581,7 +10715,7 @@ export interface MlPage {
 
 export interface MlPartitionScore {
   initial_record_score: double
-  partition_field_name: Name
+  partition_field_name: Field
   partition_field_value: string
   probability: double
   record_score: double
@@ -10592,20 +10726,6 @@ export interface MlPerPartitionCategorization {
   stop_on_warn?: boolean
 }
 
-export interface MlResultBucket {
-  anomaly_score: double
-  bucket_influencers: MlBucketInfluencer[]
-  bucket_span: Time
-  event_count: long
-  initial_anomaly_score: double
-  is_interim: boolean
-  job_id: Id
-  partition_scores?: MlPartitionScore[]
-  processing_time_ms: double
-  result_type: string
-  timestamp: Time
-}
-
 export type MlRuleAction = 'skip_result' | 'skip_model_update'
 
 export interface MlRuleCondition {
@@ -10614,7 +10734,10 @@ export interface MlRuleCondition {
   value: double
 }
 
-export type MlRuleFilterType = 'include' | 'exclude'
+export interface MlTimingStats {
+  elapsed_time: integer
+  iteration_time?: integer
+}
 
 export interface MlTotalFeatureImportance {
   feature_name: Name
@@ -10674,6 +10797,11 @@ export interface MlTrainedModelStats {
   pipeline_count: integer
   inference_stats?: MlTrainedModelInferenceStats
   ingest?: Record<string, any>
+}
+
+export interface MlValidationLoss {
+  fold_values: string[]
+  loss_type: string
 }
 
 export interface MlCloseJobRequest extends RequestBase {
@@ -10802,7 +10930,7 @@ export interface MlEstimateModelMemoryRequest extends RequestBase {
 }
 
 export interface MlEstimateModelMemoryResponse {
-  model_memory_estimate: string
+  model_memory_estimate: ByteSize
 }
 
 export interface MlEvaluateDataFrameConfusionMatrixItem {
@@ -10824,97 +10952,97 @@ export interface MlEvaluateDataFrameConfusionMatrixTreshold {
   fn: integer
 }
 
-export interface MlEvaluateDataFrameDataFrameClassificationSummary {
-  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
-  accuracy?: MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy
-  multiclass_confusion_matrix?: MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix
-  precision?: MlEvaluateDataFrameDataFrameClassificationSummaryPrecision
-  recall?: MlEvaluateDataFrameDataFrameClassificationSummaryRecall
+export interface MlEvaluateDataFrameDataframeClassificationSummary {
+  auc_roc?: MlEvaluateDataFrameDataframeEvaluationSummaryAucRoc
+  accuracy?: MlEvaluateDataFrameDataframeClassificationSummaryAccuracy
+  multiclass_confusion_matrix?: MlEvaluateDataFrameDataframeClassificationSummaryMulticlassConfusionMatrix
+  precision?: MlEvaluateDataFrameDataframeClassificationSummaryPrecision
+  recall?: MlEvaluateDataFrameDataframeClassificationSummaryRecall
 }
 
-export interface MlEvaluateDataFrameDataFrameClassificationSummaryAccuracy {
-  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+export interface MlEvaluateDataFrameDataframeClassificationSummaryAccuracy {
+  classes: MlEvaluateDataFrameDataframeEvaluationClass[]
   overall_accuracy: double
 }
 
-export interface MlEvaluateDataFrameDataFrameClassificationSummaryMulticlassConfusionMatrix {
+export interface MlEvaluateDataFrameDataframeClassificationSummaryMulticlassConfusionMatrix {
   confusion_matrix: MlEvaluateDataFrameConfusionMatrixItem[]
   other_actual_class_count: integer
 }
 
-export interface MlEvaluateDataFrameDataFrameClassificationSummaryPrecision {
-  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+export interface MlEvaluateDataFrameDataframeClassificationSummaryPrecision {
+  classes: MlEvaluateDataFrameDataframeEvaluationClass[]
   avg_precision: double
 }
 
-export interface MlEvaluateDataFrameDataFrameClassificationSummaryRecall {
-  classes: MlEvaluateDataFrameDataFrameEvaluationClass[]
+export interface MlEvaluateDataFrameDataframeClassificationSummaryRecall {
+  classes: MlEvaluateDataFrameDataframeEvaluationClass[]
   avg_recall: double
 }
 
-export interface MlEvaluateDataFrameDataFrameEvaluationClass extends MlEvaluateDataFrameDataFrameEvaluationValue {
+export interface MlEvaluateDataFrameDataframeEvaluationClass extends MlEvaluateDataFrameDataframeEvaluationValue {
   class_name: Name
 }
 
-export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc extends MlEvaluateDataFrameDataFrameEvaluationValue {
-  curve?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem[]
+export interface MlEvaluateDataFrameDataframeEvaluationSummaryAucRoc extends MlEvaluateDataFrameDataframeEvaluationValue {
+  curve?: MlEvaluateDataFrameDataframeEvaluationSummaryAucRocCurveItem[]
 }
 
-export interface MlEvaluateDataFrameDataFrameEvaluationSummaryAucRocCurveItem {
+export interface MlEvaluateDataFrameDataframeEvaluationSummaryAucRocCurveItem {
   tpr: double
   fpr: double
   threshold: double
 }
 
-export interface MlEvaluateDataFrameDataFrameEvaluationValue {
+export interface MlEvaluateDataFrameDataframeEvaluationValue {
   value: double
 }
 
-export interface MlEvaluateDataFrameDataFrameOutlierDetectionSummary {
-  auc_roc?: MlEvaluateDataFrameDataFrameEvaluationSummaryAucRoc
+export interface MlEvaluateDataFrameDataframeOutlierDetectionSummary {
+  auc_roc?: MlEvaluateDataFrameDataframeEvaluationSummaryAucRoc
   precision?: Record<string, double>
   recall?: Record<string, double>
   confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixTreshold>
 }
 
-export interface MlEvaluateDataFrameDataFrameRegressionSummary {
-  huber?: MlEvaluateDataFrameDataFrameEvaluationValue
-  mse?: MlEvaluateDataFrameDataFrameEvaluationValue
-  msle?: MlEvaluateDataFrameDataFrameEvaluationValue
-  r_squared?: MlEvaluateDataFrameDataFrameEvaluationValue
+export interface MlEvaluateDataFrameDataframeRegressionSummary {
+  huber?: MlEvaluateDataFrameDataframeEvaluationValue
+  mse?: MlEvaluateDataFrameDataframeEvaluationValue
+  msle?: MlEvaluateDataFrameDataframeEvaluationValue
+  r_squared?: MlEvaluateDataFrameDataframeEvaluationValue
 }
 
 export interface MlEvaluateDataFrameRequest extends RequestBase {
   body?: {
-    evaluation: MlDataFrameEvaluationContainer
+    evaluation: MlDataframeEvaluationContainer
     index: IndexName
     query?: QueryDslQueryContainer
   }
 }
 
 export interface MlEvaluateDataFrameResponse {
-  classification?: MlEvaluateDataFrameDataFrameClassificationSummary
-  outlier_detection?: MlEvaluateDataFrameDataFrameOutlierDetectionSummary
-  regression?: MlEvaluateDataFrameDataFrameRegressionSummary
+  classification?: MlEvaluateDataFrameDataframeClassificationSummary
+  outlier_detection?: MlEvaluateDataFrameDataframeOutlierDetectionSummary
+  regression?: MlEvaluateDataFrameDataframeRegressionSummary
 }
 
 export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
   id?: Id
   body?: {
-    source?: MlDataFrameAnalyticsSource
-    dest?: MlDataFrameAnalyticsDestination
-    analysis: MlDataFrameAnalysisContainer
+    source?: MlDataframeAnalyticsSource
+    dest?: MlDataframeAnalyticsDestination
+    analysis: MlDataframeAnalysisContainer
     description?: string
     model_memory_limit?: ByteSize
     max_num_threads?: integer
-    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    analyzed_fields?: MlDataframeAnalysisAnalyzedFields
     allow_lazy_start?: boolean
   }
 }
 
 export interface MlExplainDataFrameAnalyticsResponse {
-  field_selection: MlDataFrameAnalyticsFieldSelection[]
-  memory_estimation: MlDataFrameAnalyticsMemoryEstimation
+  field_selection: MlDataframeAnalyticsFieldSelection[]
+  memory_estimation: MlDataframeAnalyticsMemoryEstimation
 }
 
 export interface MlFindFileStructureRequest extends RequestBase {
@@ -10973,7 +11101,7 @@ export interface MlGetAnomalyRecordsRequest extends RequestBase {
 
 export interface MlGetAnomalyRecordsResponse {
   count: long
-  records: MlAnomalyRecord[]
+  records: MlAnomaly[]
 }
 
 export interface MlGetBucketsRequest extends RequestBase {
@@ -10999,7 +11127,7 @@ export interface MlGetBucketsRequest extends RequestBase {
 }
 
 export interface MlGetBucketsResponse {
-  buckets: MlResultBucket[]
+  buckets: MlBucketSummary[]
   count: long
 }
 
@@ -11019,8 +11147,8 @@ export interface MlGetCalendarEventsRequest extends RequestBase {
 }
 
 export interface MlGetCalendarEventsResponse {
-  count: integer
-  events: MlPostCalendarEventsScheduledEvent[]
+  count: long
+  events: MlCalendarEvent[]
 }
 
 export interface MlGetCalendarsCalendar {
@@ -11055,22 +11183,8 @@ export interface MlGetCategoriesRequest extends RequestBase {
 }
 
 export interface MlGetCategoriesResponse {
-  categories: MlCategoryDefinition[]
+  categories: MlCategory[]
   count: long
-}
-
-export interface MlGetDataFrameAnalyticsDataFrameAnalyticsSummary {
-  id: Id
-  source: MlDataFrameAnalyticsSource
-  dest: MlDataFrameAnalyticsDestination
-  analysis: MlDataFrameAnalysisContainer
-  description?: string
-  model_memory_limit?: ByteSize
-  max_num_threads?: integer
-  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
-  allow_lazy_start?: boolean
-  create_time?: long
-  version?: VersionString
 }
 
 export interface MlGetDataFrameAnalyticsRequest extends RequestBase {
@@ -11083,82 +11197,7 @@ export interface MlGetDataFrameAnalyticsRequest extends RequestBase {
 
 export interface MlGetDataFrameAnalyticsResponse {
   count: integer
-  data_frame_analytics: MlGetDataFrameAnalyticsDataFrameAnalyticsSummary[]
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer {
-  classification_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
-  outlier_detection_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection
-  regression_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts {
-  skipped_docs_count: integer
-  test_docs_count: integer
-  training_docs_count: integer
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsHyperparameters {
-  hyperparameters: MlGetDataFrameAnalyticsStatsHyperparameters
-  iteration: integer
-  timestamp: DateString
-  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
-  validation_loss: MlGetDataFrameAnalyticsStatsValidationLoss
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem {
-  analysis_stats?: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsContainer
-  assignment_explanation?: string
-  data_counts: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsDataCounts
-  id: Id
-  memory_usage: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage
-  node?: NodeAttributes
-  progress: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress[]
-  state: MlDataFrameState
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsMemoryUsage {
-  memory_reestimate_bytes?: long
-  peak_usage_bytes: long
-  status: string
-  timestamp?: DateString
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsOutlierDetection {
-  parameters: MlGetDataFrameAnalyticsStatsOutlierDetectionParameters
-  timestamp: DateString
-  timing_stats: MlGetDataFrameAnalyticsStatsTimingStats
-}
-
-export interface MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsProgress {
-  phase: string
-  progress_percent: integer
-}
-
-export interface MlGetDataFrameAnalyticsStatsHyperparameters {
-  alpha?: double
-  lambda?: double
-  gamma?: double
-  eta?: double
-  eta_growth_rate_per_tree?: double
-  feature_bag_fraction?: double
-  downsample_factor?: double
-  max_attempts_to_add_tree?: integer
-  max_optimization_rounds_per_hyperparameter?: integer
-  max_trees?: integer
-  num_folds?: integer
-  num_splits_per_feature?: integer
-  soft_tree_depth_limit?: integer
-  soft_tree_depth_tolerance?: double
-}
-
-export interface MlGetDataFrameAnalyticsStatsOutlierDetectionParameters {
-  compute_feature_influence?: boolean
-  feature_influence_threshold?: double
-  method?: string
-  n_neighbors?: integer
-  outlier_fraction?: double
-  standardization_enabled?: boolean
+  data_frame_analytics: MlDataframeAnalyticsSummary[]
 }
 
 export interface MlGetDataFrameAnalyticsStatsRequest extends RequestBase {
@@ -11170,18 +11209,8 @@ export interface MlGetDataFrameAnalyticsStatsRequest extends RequestBase {
 }
 
 export interface MlGetDataFrameAnalyticsStatsResponse {
-  count: integer
-  data_frame_analytics: MlGetDataFrameAnalyticsStatsDataFrameAnalyticsStatsItem[]
-}
-
-export interface MlGetDataFrameAnalyticsStatsTimingStats {
-  elapsed_time: integer
-  iteration_time?: integer
-}
-
-export interface MlGetDataFrameAnalyticsStatsValidationLoss {
-  fold_values: string[]
-  loss_type: string
+  count: long
+  data_frame_analytics: MlDataframeAnalytics[]
 }
 
 export interface MlGetDatafeedStatsRequest extends RequestBase {
@@ -11205,12 +11234,6 @@ export interface MlGetDatafeedsResponse {
   datafeeds: MlDatafeed[]
 }
 
-export interface MlGetFiltersFilter {
-  description?: string
-  filter_id: Id
-  items: string[]
-}
-
 export interface MlGetFiltersRequest extends RequestBase {
   filter_id?: Id
   from?: integer
@@ -11219,7 +11242,7 @@ export interface MlGetFiltersRequest extends RequestBase {
 
 export interface MlGetFiltersResponse {
   count: long
-  filters: MlGetFiltersFilter[]
+  filters: MlFilter[]
 }
 
 export interface MlGetInfluencersRequest extends RequestBase {
@@ -11331,17 +11354,11 @@ export interface MlGetTrainedModelsStatsResponse {
 }
 
 export interface MlInfoAnomalyDetectors {
-  categorization_analyzer: MlInfoCategorizationAnalyzer
+  categorization_analyzer: MlCategorizationAnalyzer
   categorization_examples_limit: integer
   model_memory_limit: ByteSize
   model_snapshot_retention_days: integer
   daily_model_snapshot_retention_after_days: integer
-}
-
-export interface MlInfoCategorizationAnalyzer {
-  filter?: (string | AnalysisTokenFilter)[]
-  tokenizer?: string | AnalysisTokenizer
-  char_filter?: (string | AnalysisCharFilter)[]
 }
 
 export interface MlInfoDatafeeds {
@@ -11388,20 +11405,12 @@ export interface MlOpenJobResponse {
 export interface MlPostCalendarEventsRequest extends RequestBase {
   calendar_id?: Id
   body?: {
-    events: MlPostCalendarEventsScheduledEvent[]
+    events: MlCalendarEvent[]
   }
 }
 
 export interface MlPostCalendarEventsResponse {
-  events: MlPostCalendarEventsScheduledEvent[]
-}
-
-export interface MlPostCalendarEventsScheduledEvent {
-  calendar_id?: Id
-  event_id?: Id
-  description: string
-  end_time: EpochMillis
-  start_time: EpochMillis
+  events: MlCalendarEvent[]
 }
 
 export interface MlPostJobDataRequest extends RequestBase {
@@ -11431,18 +11440,18 @@ export interface MlPostJobDataResponse {
   sparse_bucket_count: long
 }
 
-export interface MlPreviewDataFrameAnalyticsDataFramePreviewConfig {
-  source: MlDataFrameAnalyticsSource
-  analysis: MlDataFrameAnalysisContainer
+export interface MlPreviewDataFrameAnalyticsDataframePreviewConfig {
+  source: MlDataframeAnalyticsSource
+  analysis: MlDataframeAnalysisContainer
   model_memory_limit?: ByteSize
   max_num_threads?: integer
-  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields
 }
 
 export interface MlPreviewDataFrameAnalyticsRequest extends RequestBase {
   id?: Id
   body?: {
-    config?: MlPreviewDataFrameAnalyticsDataFramePreviewConfig
+    config?: MlPreviewDataFrameAnalyticsDataframePreviewConfig
   }
 }
 
@@ -11468,7 +11477,7 @@ export interface MlPutCalendarRequest extends RequestBase {
 export interface MlPutCalendarResponse {
   calendar_id: Id
   description: string
-  job_ids: Id[]
+  job_ids: Ids
 }
 
 export interface MlPutCalendarJobRequest extends RequestBase {
@@ -11479,19 +11488,19 @@ export interface MlPutCalendarJobRequest extends RequestBase {
 export interface MlPutCalendarJobResponse {
   calendar_id: Id
   description?: string
-  job_ids: Id[]
+  job_ids: Ids
 }
 
 export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   body?: {
-    source?: MlDataFrameAnalyticsSource
-    dest: MlDataFrameAnalyticsDestination
-    analysis: MlDataFrameAnalysisContainer
+    source?: MlDataframeAnalyticsSource
+    dest: MlDataframeAnalyticsDestination
+    analysis: MlDataframeAnalysisContainer
     description?: string
     model_memory_limit?: ByteSize
     max_num_threads?: integer
-    analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+    analyzed_fields?: MlDataframeAnalysisAnalyzedFields
     allow_lazy_start?: boolean
   }
 }
@@ -11500,14 +11509,14 @@ export interface MlPutDataFrameAnalyticsResponse {
   id: Id
   create_time: long
   version: VersionString
-  source: MlDataFrameAnalyticsSource
+  source: MlDataframeAnalyticsSource
   description?: string
-  dest: MlDataFrameAnalyticsDestination
+  dest: MlDataframeAnalyticsDestination
   model_memory_limit: ByteSize
   allow_lazy_start: boolean
   max_num_threads: integer
-  analysis: MlDataFrameAnalysisContainer
-  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+  analysis: MlDataframeAnalysisContainer
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields
 }
 
 export interface MlPutDatafeedRequest extends RequestBase {
@@ -11559,8 +11568,6 @@ export interface MlPutFilterResponse {
   items: string[]
 }
 
-export type MlPutJobExcludeFrequent = 'all' | 'none' | 'by' | 'over'
-
 export interface MlPutJobRequest extends RequestBase {
   job_id: Id
   body?: {
@@ -11586,7 +11593,7 @@ export interface MlPutJobResponse {
   job_id: Id
   job_type: string
   model_plot: MlModelPlotConfig
-  model_snapshot_id: string
+  model_snapshot_id: Id
   model_snapshot_retention_days: long
   renormalization_window_days: long
   results_index_name: string
@@ -11639,7 +11646,7 @@ export interface MlStartDataFrameAnalyticsRequest extends RequestBase {
 }
 
 export interface MlStartDataFrameAnalyticsResponse extends AcknowledgedResponseBase {
-  node: string
+  node: NodeId
 }
 
 export interface MlStartDatafeedRequest extends RequestBase {
@@ -11682,52 +11689,6 @@ export interface MlStopDatafeedResponse {
   stopped: boolean
 }
 
-export interface MlUpdateDataFeedDatafeedIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
-}
-
-export interface MlUpdateDataFeedRequest extends RequestBase {
-  datafeed_id: Id
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_throttled?: boolean
-  ignore_unavailable?: boolean
-  body?: {
-    aggregations?: Record<string, AggregationsAggregationContainer>
-    chunking_config?: MlChunkingConfig
-    delayed_data_check_config?: MlDelayedDataCheckConfig
-    frequency?: Time
-    indexes?: Indices
-    indices?: Indices
-    indices_options?: MlUpdateDataFeedDatafeedIndicesOptions
-    job_id?: Id
-    max_empty_searches?: integer
-    query?: QueryDslQueryContainer
-    query_delay?: Time
-    script_fields?: Record<string, ScriptField>
-    scroll_size?: integer
-  }
-}
-
-export interface MlUpdateDataFeedResponse {
-  aggregations?: Record<string, AggregationsAggregationContainer>
-  chunking_config?: MlChunkingConfig
-  datafeed_id: Id
-  frequency?: Time
-  indices: Indices
-  job_id: Id
-  max_empty_searches?: integer
-  query: QueryDslQueryContainer
-  query_delay: Time
-  script_fields?: Record<string, ScriptField>
-  scroll_size: integer
-  indices_options: MlUpdateDataFeedDatafeedIndicesOptions
-  delayed_data_check_config: MlDelayedDataCheckConfig
-}
-
 export interface MlUpdateDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   body?: {
@@ -11742,14 +11703,14 @@ export interface MlUpdateDataFrameAnalyticsResponse {
   id: Id
   create_time: long
   version: VersionString
-  source: MlDataFrameAnalyticsSource
+  source: MlDataframeAnalyticsSource
   description?: string
-  dest: MlDataFrameAnalyticsDestination
+  dest: MlDataframeAnalyticsDestination
   model_memory_limit: ByteSize
   allow_lazy_start: boolean
   max_num_threads: integer
-  analysis: MlDataFrameAnalysisContainer
-  analyzed_fields?: MlDataFrameAnalysisAnalyzedFields
+  analysis: MlDataframeAnalysisContainer
+  analyzed_fields?: MlDataframeAnalysisAnalyzedFields
 }
 
 export interface MlUpdateFilterRequest extends RequestBase {
@@ -11812,7 +11773,7 @@ export interface MlUpgradeJobSnapshotRequest extends RequestBase {
 }
 
 export interface MlUpgradeJobSnapshotResponse {
-  node: string
+  node: NodeId
   completed: boolean
 }
 

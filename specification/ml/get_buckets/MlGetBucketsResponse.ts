@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { Bucket } from '@ml/_types/Bucket'
+import { BucketSummary } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
 
 export class Response {
   body: {
-    buckets: Bucket[]
+    buckets: BucketSummary[]
     count: long
   }
 }
