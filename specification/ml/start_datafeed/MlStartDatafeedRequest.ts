@@ -36,6 +36,7 @@ export interface Request extends RequestBase {
   body?: {
     end?: Time // default ""
     start?: Time // default ""
-    timeout?: Time // default 20s
+    /** @server_default 20s */
+    timeout?: Time
   }
 }

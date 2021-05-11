@@ -17,16 +17,14 @@
  * under the License.
  */
 
-import { DatafeedIndicesOptions } from '@ml/update_data_feed/DatafeedIndicesOptions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { Id, Indices } from '@_types/common'
+import { ExpandWildcards, Id, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Time, Timestamp } from '@_types/Time'
-import { ChunkingConfig } from './ChunkingConfig'
 import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
@@ -74,4 +72,23 @@ export class DatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
+}
+
+export enum ChunkingMode {
+  auto = 0,
+  manual = 1,
+  off = 2
+}
+
+export class ChunkingConfig {
+  mode: ChunkingMode
+  /** @server_default 3h */
+  time_span?: Time
+}
+
+export class DatafeedIndicesOptions {
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  ignore_throttled?: boolean
 }

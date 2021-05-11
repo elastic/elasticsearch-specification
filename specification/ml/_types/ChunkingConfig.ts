@@ -18,10 +18,4 @@
  */
 
 import { Time } from '@_types/Time'
-import { ChunkingMode } from './ChunkingMode'
 
-export class ChunkingConfig {
-  mode: ChunkingMode
-  /** @server_default 3h */
-  time_span?: Time
-}

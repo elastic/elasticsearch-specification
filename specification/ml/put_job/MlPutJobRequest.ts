@@ -33,7 +33,6 @@ export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  query_parameters?: {}
   body?: {
     allow_lazy_open?: boolean
     analysis_config?: AnalysisConfig
