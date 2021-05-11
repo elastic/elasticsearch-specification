@@ -20,7 +20,15 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
-import { CompletionStats, DocStats, FielddataStats, QueryCacheStats, SegmentsStats, StoreStats, PluginStats } from '@_types/Stats'
+import {
+  CompletionStats,
+  DocStats,
+  FielddataStats,
+  QueryCacheStats,
+  SegmentsStats,
+  StoreStats,
+  PluginStats
+} from '@_types/Stats'
 
 export class ClusterFileSystem {
   available_in_bytes: long
@@ -40,7 +48,7 @@ export class ClusterIndicesShardsIndex {
 /**
  * Contains statistics about shards assigned to selected nodes.
  */
- export class ClusterIndicesShards {
+export class ClusterIndicesShards {
   /** Contains statistics about shards assigned to selected nodes. */
   index?: ClusterIndicesShardsIndex
   /** Number of primary shards assigned to selected nodes. */

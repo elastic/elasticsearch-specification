@@ -19,9 +19,18 @@
 
 import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
 import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
-import { ClusterStateSnapshots, ClusterStateDeletedSnapshots } from '@cluster/_types/ClusterStateSnapshots'
+import {
+  ClusterStateSnapshots,
+  ClusterStateDeletedSnapshots
+} from '@cluster/_types/ClusterStateSnapshots'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { EmptyObject, IndexName, NodeName, Uuid, VersionNumber } from '@_types/common'
+import {
+  EmptyObject,
+  IndexName,
+  NodeName,
+  Uuid,
+  VersionNumber
+} from '@_types/common'
 import { NodeAttributes } from '@_types/Node'
 import { integer } from '@_types/Numeric'
 

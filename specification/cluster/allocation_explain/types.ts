@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from "@spec_utils/Dictionary"
-import { Name, Id } from "@_types/common"
-import { TransportAddress } from "@_types/Networking"
-import { long, double, integer } from "@_types/Numeric"
-import { DateString } from "@_types/Time"
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Name, Id } from '@_types/common'
+import { TransportAddress } from '@_types/Networking'
+import { long, double, integer } from '@_types/Numeric'
+import { DateString } from '@_types/Time'
 
 export class AllocationDecision {
   decider: string
@@ -127,7 +127,7 @@ export class UnassignedInformation {
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cat-shards.html#cat-shards-query-params
  */
- export enum UnassignedInformationReason {
+export enum UnassignedInformationReason {
   INDEX_CREATED = 0,
   CLUSTER_RECOVERED = 1,
   INDEX_REOPENED = 2,
