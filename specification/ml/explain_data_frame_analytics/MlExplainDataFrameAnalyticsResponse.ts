@@ -27,6 +27,6 @@ export class Response {
     /** An array of objects that explain selection for each field, sorted by the field names. */
     field_selection: DataframeAnalyticsFieldSelection[]
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    memory_estimation: DataframeAnalyticsMemoryEstimation
+    memory_estimation: DataframeAnalyticsMemoryEstimation[]
   }
 }

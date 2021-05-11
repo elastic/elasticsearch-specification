@@ -108104,10 +108104,13 @@
             "name": "memory_estimation",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DataframeAnalyticsMemoryEstimation",
-                "namespace": "ml._types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "DataframeAnalyticsMemoryEstimation",
+                  "namespace": "ml._types"
+                }
               }
             }
           }
