@@ -20,7 +20,6 @@
 import { Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { MemoryStatus } from './MemoryStatus'
 
 export class ModelSnapshot {
   /** An optional description of the job. */
@@ -67,4 +66,10 @@ export class ModelSizeStats {
   rare_category_count: integer
   total_category_count: integer
   timestamp?: long
+}
+
+export enum MemoryStatus {
+  ok = 0,
+  soft_limit = 1,
+  hard_limit = 2
 }

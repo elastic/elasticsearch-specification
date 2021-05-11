@@ -20,7 +20,6 @@
 import { Field, Id } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { PartitionScore } from './PartitionScore'
 
 export class Bucket {
   anomaly_score: double
@@ -77,4 +76,12 @@ export class OverallBucket {
 export class OverallBucketJob {
   job_id: Id
   max_anomaly_score: double
+}
+
+export class PartitionScore {
+  initial_record_score: double
+  partition_field_name: Field
+  partition_field_value: string
+  probability: double
+  record_score: double
 }

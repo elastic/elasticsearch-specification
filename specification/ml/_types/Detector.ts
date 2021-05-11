@@ -19,11 +19,8 @@
 
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DetectionRule } from './DetectionRule'
+import { DetectionRule } from './Rule'
 
-/**
- *
- */
 export class Detector {
   by_field_name?: Field
   custom_rules?: DetectionRule[]

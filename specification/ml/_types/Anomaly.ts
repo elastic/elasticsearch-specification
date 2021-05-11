@@ -17,10 +17,9 @@
  * under the License.
  */
 
+import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { EpochMillis, Time } from '@_types/Time'
-import { AnomalyCause } from './AnomalyCause'
-import { Influence } from './Influence'
 
 export class Anomaly {
   actual?: double[]
@@ -45,4 +44,26 @@ export class Anomaly {
   result_type: string
   timestamp: EpochMillis
   typical?: double[]
+}
+
+export class AnomalyCause {
+  actual: double[]
+  by_field_name: Name
+  by_field_value: string
+  correlated_by_field_value: string
+  field_name: Field
+  function: string
+  function_description: string
+  influencers: Influence[]
+  over_field_name: Name
+  over_field_value: string
+  partition_field_name: string
+  partition_field_value: string
+  probability: double
+  typical: double[]
+}
+
+export class Influence {
+  influencer_field_name: string
+  influencer_field_values: string[]
 }

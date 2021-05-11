@@ -18,7 +18,7 @@
  */
 
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { DataDescription } from '@ml/_types/DataDescription'
+import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'

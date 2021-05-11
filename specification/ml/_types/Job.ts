@@ -18,14 +18,18 @@
  */
 
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
-import { DataDescription } from '@ml/_types/DataDescription'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings, MlJobForecasts } from '@xpack/usage/types'
-import { EmptyObject, Id, IndexName, VersionString } from '@_types/common'
+import {
+  EmptyObject,
+  Field,
+  Id,
+  IndexName,
+  VersionString
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
-import { DataCounts } from './DataCounts'
 import { DiscoveryNode } from './DiscoveryNode'
 import { ModelSizeStats } from './Model'
 
@@ -105,4 +109,32 @@ export class JobForecastStatistics {
   status?: Dictionary<string, long>
   total: long
   forecasted_jobs: integer
+}
+
+export class DataCounts {
+  bucket_count: long
+  earliest_record_timestamp?: long
+  empty_bucket_count: long
+  input_bytes: long
+  input_field_count: long
+  input_record_count: long
+  invalid_date_count: long
+  job_id: Id
+  last_data_time?: long
+  latest_empty_bucket_timestamp?: long
+  latest_record_timestamp?: long
+  latest_sparse_bucket_timestamp?: long
+  latest_bucket_timestamp?: long
+  missing_field_count: long
+  out_of_order_timestamp_count: long
+  processed_field_count: long
+  processed_record_count: long
+  sparse_bucket_count: long
+}
+
+export class DataDescription {
+  format?: string
+  time_field: Field
+  time_format?: string
+  field_delimiter?: string
 }
