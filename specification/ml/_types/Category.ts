@@ -20,7 +20,7 @@
 import { Id } from '@_types/common'
 import { long, ulong } from '@_types/Numeric'
 
-export class CategoryDefinition {
+export class Category {
   /** A unique identifier for the category. category_id is unique at the job level, even when per-partition categorization is enabled. */
   category_id: ulong
   /** A list of examples of actual values that matched the category. */

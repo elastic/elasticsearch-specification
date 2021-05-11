@@ -34,7 +34,6 @@ export interface Request extends RequestBase {
     allow_no_jobs?: boolean
     force?: boolean
     /** @server_default 30s */
-    timeout?: Time // default: 30s
+    timeout?: Time
   }
-  body?: {}
 }

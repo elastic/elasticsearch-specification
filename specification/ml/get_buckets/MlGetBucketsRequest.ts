@@ -36,17 +36,22 @@ export interface Request extends RequestBase {
   query_parameters?: {
     from?: integer
     size?: integer
-    exclude_interim?: boolean // default: false
+    /** @server_default false */
+    exclude_interim?: boolean
     sort?: Field
-    desc?: boolean // default: false
+    /** @server_default false */
+    desc?: boolean
     start?: DateString
     end?: DateString
   }
   body?: {
     anomaly_score?: double
-    desc?: boolean // default: false
-    exclude_interim?: boolean // default: false
-    expand?: boolean // default: false
+    /** @server_default false */
+    desc?: boolean
+    /** @server_default false */
+    exclude_interim?: boolean
+    /** @server_default false */
+    expand?: boolean
     page?: Page
     sort?: Field
     start?: DateString

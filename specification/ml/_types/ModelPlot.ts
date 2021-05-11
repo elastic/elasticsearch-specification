@@ -17,11 +17,30 @@
  * under the License.
  */
 
-import { ExpandWildcards } from '@_types/common'
+import { Field } from '@_types/common'
 
-export class DatafeedIndicesOptions {
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  ignore_throttled?: boolean
+export class ModelPlotConfig {
+  terms?: Field
+  enabled: boolean
+  annotations_enabled?: boolean
+}
+
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig
+ */
+export class ModelPlotConfigEnabled {
+  /**
+   * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
+   */
+  enabled: boolean
+  /**
+   * @since 7.9.0
+   * @server_default true
+   */
+  annotations_enabled?: boolean
+  /**
+   * stability: experimental
+   * @since 7.9.0
+   */
+  terms?: string
 }

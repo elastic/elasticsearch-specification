@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { CategoryDefinition } from '@ml/_types/CategoryDefinition'
+import { Category } from '@ml/_types/Category'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { categories: CategoryDefinition[]; count: long }
+  body: {
+    categories: Category[]
+    count: long
+  }
 }

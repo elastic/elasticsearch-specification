@@ -17,10 +17,38 @@
  * under the License.
  */
 
-import { ByteSize } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Field } from '@_types/common'
+import { double } from '@_types/Numeric'
+import { FilterRef } from './Filter'
 
-export class Limits {
-  max_model_memory_limit?: ByteSize
-  effective_max_model_memory_limit: ByteSize
-  total_ml_memory: ByteSize
+export class DetectionRule {
+  actions?: RuleAction[]
+  conditions: RuleCondition[]
+  scope?: Dictionary<Field, FilterRef>
+}
+
+export enum RuleAction {
+  skip_result = 0,
+  skip_model_update = 1
+}
+
+export class RuleCondition {
+  applies_to: AppliesTo
+  operator: ConditionOperator
+  value: double
+}
+
+export enum AppliesTo {
+  actual = 0,
+  typical = 1,
+  diff_from_typical = 2,
+  time = 3
+}
+
+export enum ConditionOperator {
+  gt = 0,
+  gte = 1,
+  lt = 2,
+  lte = 3
 }

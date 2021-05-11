@@ -17,9 +17,20 @@
  * under the License.
  */
 
-export class AnalysisMemoryLimit {
-  /**
-   * Limits can be applied for the resources required to hold the mathematical models in memory. These limits are approximate and can be set per job. They do not control the memory used by other processes, for example the Elasticsearch Java processes.
-   */
-  model_memory_limit: string
+import { Id } from '@_types/common'
+
+export class Filter {
+  description?: string
+  filter_id: Id
+  items: string[]
+}
+
+export class FilterRef {
+  filter_id: Id
+  filter_type: FilterType
+}
+
+export enum FilterType {
+  include = 0,
+  exclude = 1
 }

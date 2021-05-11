@@ -31,11 +31,15 @@ export interface Request extends RequestBase {
     datafeed_id: Ids
   }
   query_parameters?: {
-    allow_no_match?: boolean // default: true
-    force?: boolean // default: false
+    /** @server_default true */
+    allow_no_match?: boolean
+    /** @server_default false */
+    force?: boolean
   }
   body?: {
-    force?: boolean // default: false
-    timeout?: Time // default: 20s
+    /** @server_default false */
+    force?: boolean
+    /** @server_default 20s */
+    timeout?: Time
   }
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { ScheduledEvent } from './ScheduledEvent'
+import { CalendarEvent } from '../_types/CalendarEvent'
 
 export class Response {
-  body: { events: ScheduledEvent[] }
+  body: { events: CalendarEvent[] }
 }

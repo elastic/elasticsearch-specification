@@ -18,8 +18,33 @@
  */
 
 import { Field, Name } from '@_types/common'
-import { double } from '@_types/Numeric'
-import { Influence } from './Influence'
+import { double, integer } from '@_types/Numeric'
+import { EpochMillis, Time } from '@_types/Time'
+
+export class Anomaly {
+  actual?: double[]
+  bucket_span: Time
+  by_field_name?: string
+  by_field_value?: string
+  causes?: AnomalyCause[]
+  detector_index: integer
+  field_name?: string
+  function?: string
+  function_description?: string
+  influencers?: Influence[]
+  initial_record_score: double
+  is_interim: boolean
+  job_id: string
+  over_field_name?: string
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
+  probability: double
+  record_score: double
+  result_type: string
+  timestamp: EpochMillis
+  typical?: double[]
+}
 
 export class AnomalyCause {
   actual: double[]
@@ -36,4 +61,9 @@ export class AnomalyCause {
   partition_field_value: string
   probability: double
   typical: double[]
+}
+
+export class Influence {
+  influencer_field_name: string
+  influencer_field_values: string[]
 }

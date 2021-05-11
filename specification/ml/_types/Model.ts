@@ -17,10 +17,32 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import { MemoryStatus } from './MemoryStatus'
+
+export class ModelSnapshot {
+  /** An optional description of the job. */
+  description?: string
+  /** A numerical character string that uniquely identifies the job that the snapshot was created for. */
+  job_id: Id
+  /** The timestamp of the latest processed record. */
+  latest_record_time_stamp?: Time
+  /** The timestamp of the latest bucket result. */
+  latest_result_time_stamp?: Time
+  /** The minimum version required to be able to restore the model snapshot. */
+  min_version: VersionString
+  /** Summary information describing the model. */
+  model_size_stats?: ModelSizeStats
+  /**  If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false. */
+  retain: boolean
+  /** For internal use only. */
+  snapshot_doc_count: long
+  /** A numerical character string that uniquely identifies the model snapshot. */
+  snapshot_id: Id
+  /** The creation timestamp for the snapshot. */
+  timestamp: Time
+}
 
 export class ModelSizeStats {
   bucket_allocation_failures_count: long
@@ -44,4 +66,10 @@ export class ModelSizeStats {
   rare_category_count: integer
   total_category_count: integer
   timestamp?: long
+}
+
+export enum MemoryStatus {
+  ok = 0,
+  soft_limit = 1,
+  hard_limit = 2
 }

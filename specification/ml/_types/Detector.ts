@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { ExcludeFrequent } from '@ml/put_job/ExcludeFrequent'
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { DetectionRule } from './DetectionRule'
+import { DetectionRule } from './Rule'
 
-/**
- *
- */
 export class Detector {
   by_field_name?: Field
   custom_rules?: DetectionRule[]
@@ -37,4 +33,11 @@ export class Detector {
   over_field_name?: Field
   partition_field_name?: Field
   description?: string
+}
+
+export enum ExcludeFrequent {
+  all = 0,
+  none = 1,
+  by = 2,
+  over = 3
 }

@@ -17,9 +17,12 @@
  * under the License.
  */
 
+import { Filter } from '@ml/_types/Filter'
 import { long } from '@_types/Numeric'
-import { Filter } from './Filter'
 
 export class Response {
-  body: { count: long; filters: Filter[] }
+  body: {
+    count: long
+    filters: Filter[]
+  }
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { BucketInfluencer } from '@ml/_types/BucketInfluencer'
+import { BucketInfluencer } from '@ml/_types/Bucket'
 import { long } from '@_types/Numeric'
 
 export class Response {

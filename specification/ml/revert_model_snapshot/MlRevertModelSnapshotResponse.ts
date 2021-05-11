@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ModelSnapshot } from '@ml/_types/ModelSnapshot'
+import { ModelSnapshot } from '@ml/_types/Model'
 
 export class Response {
   body: { model: ModelSnapshot }

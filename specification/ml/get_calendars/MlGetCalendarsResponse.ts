@@ -18,7 +18,7 @@
  */
 
 import { long } from '@_types/Numeric'
-import { Calendar } from './Calendar'
+import { Calendar } from './types'
 
 export class Response {
   body: { calendars: Calendar[]; count: long }

@@ -17,10 +17,12 @@
  * under the License.
  */
 
-import { PerPartitionCategorization } from '@ml/_types/AnalysisConfig'
-import { AnalysisMemoryLimit } from '@ml/_types/AnalysisMemoryLimit'
+import {
+  PerPartitionCategorization,
+  AnalysisMemoryLimit
+} from '@ml/_types/Analysis'
 import { Detector } from '@ml/_types/Detector'
-import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlotConfigEnabled'
+import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'

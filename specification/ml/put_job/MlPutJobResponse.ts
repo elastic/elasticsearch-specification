@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
-import { AnalysisLimits } from '@ml/_types/AnalysisLimits'
-import { DataDescription } from '@ml/_types/DataDescription'
-import { ModelPlotConfig } from '@ml/_types/ModelPlotConfig'
+import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { DataDescription } from '@ml/_types/Job'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Id } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
@@ -37,7 +36,7 @@ export class Response {
     job_id: Id
     job_type: string
     model_plot: ModelPlotConfig
-    model_snapshot_id: string
+    model_snapshot_id: Id
     model_snapshot_retention_days: long
     renormalization_window_days: long
     results_index_name: string

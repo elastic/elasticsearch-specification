@@ -17,8 +17,12 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, Ids } from '@_types/common'
 
 export class Response {
-  body: { calendar_id: Id; description: string; job_ids: Id[] }
+  body: {
+    calendar_id: Id
+    description: string
+    job_ids: Ids
+  }
 }

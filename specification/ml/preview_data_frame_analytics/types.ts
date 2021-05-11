@@ -17,9 +17,18 @@
  * under the License.
  */
 
-export enum ExcludeFrequent {
-  all = 0,
-  none = 1,
-  by = 2,
-  over = 3
+import {
+  DataframeAnalysisAnalyzedFields,
+  DataframeAnalysisContainer,
+  DataframeAnalyticsSource
+} from '@ml/_types/DataframeAnalytics'
+import { ByteSize, Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
+
+export class DataframePreviewConfig {
+  source: DataframeAnalyticsSource
+  analysis: DataframeAnalysisContainer
+  model_memory_limit?: ByteSize
+  max_num_threads?: integer
+  analyzed_fields?: DataframeAnalysisAnalyzedFields
 }

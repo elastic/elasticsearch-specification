@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ChunkingConfig } from '@ml/_types/ChunkingConfig'
+import { ChunkingConfig } from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices } from '@_types/common'

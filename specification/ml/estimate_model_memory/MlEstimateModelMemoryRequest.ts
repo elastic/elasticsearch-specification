@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalysisConfig } from '@ml/_types/AnalysisConfig'
+import { AnalysisConfig } from '@ml/_types/Analysis'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import { Field } from '@_types/common'

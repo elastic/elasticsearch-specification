@@ -32,12 +32,12 @@ export interface Request extends RequestBase {
     name?: Name
   }
   query_parameters?: {
-    requests_per_second?: float // default: no throttling
+    requests_per_second?: float
     /** @server_default 8h */
     timeout?: Time
   }
   body?: {
-    requests_per_second?: float // default: no throttling
+    requests_per_second?: float
     /** @server_default 8h */
     timeout?: Time
   }

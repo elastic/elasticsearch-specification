@@ -20,5 +20,8 @@
 import { NodeIds } from '@_types/common'
 
 export class Response {
-  body: { node: NodeIds; started: boolean }
+  body: {
+    node: NodeIds
+    started: boolean
+  }
 }

@@ -18,11 +18,11 @@
  */
 
 import {
-  DataFrameAnalysisAnalyzedFields,
-  DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource
-} from '@ml/_types/DataFrameAnalytics'
+  DataframeAnalysisAnalyzedFields,
+  DataframeAnalysisContainer,
+  DataframeAnalyticsDestination,
+  DataframeAnalyticsSource
+} from '@ml/_types/DataframeAnalytics'
 import { RequestBase } from '@_types/Base'
 import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -39,11 +39,11 @@ export interface Request extends RequestBase {
   }
   body?: {
     /** The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified. */
-    source?: DataFrameAnalyticsSource
+    source?: DataframeAnalyticsSource
     /** The destination configuration, consisting of index and optionally results_field (ml by default). */
-    dest: DataFrameAnalyticsDestination
+    dest: DataframeAnalyticsDestination
     /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
-    analysis: DataFrameAnalysisContainer
+    analysis: DataframeAnalysisContainer
     /** A description of the job. */
     description?: string
     /**
@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /** The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself. */
     max_num_threads?: integer
     /** Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis. */
-    analyzed_fields?: DataFrameAnalysisAnalyzedFields
+    analyzed_fields?: DataframeAnalysisAnalyzedFields
     /**
      * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.
      * @server_default false

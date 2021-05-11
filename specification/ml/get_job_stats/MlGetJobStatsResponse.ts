@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { JobStats } from '@ml/_types/JobStats'
+import { JobStats } from '@ml/_types/Job'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: long; jobs: JobStats[] }
+  body: {
+    count: long
+    jobs: JobStats[]
+  }
 }

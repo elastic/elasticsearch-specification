@@ -18,15 +18,15 @@
  */
 
 import {
-  DataFrameAnalyticsFieldSelection,
-  DataFrameAnalyticsMemoryEstimation
-} from '@ml/_types/DataFrameAnalytics'
+  DataframeAnalyticsFieldSelection,
+  DataframeAnalyticsMemoryEstimation
+} from '@ml/_types/DataframeAnalytics'
 
 export class Response {
   body: {
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    field_selection: DataFrameAnalyticsFieldSelection[]
+    field_selection: DataframeAnalyticsFieldSelection[]
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    memory_estimation: DataFrameAnalyticsMemoryEstimation
+    memory_estimation: DataframeAnalyticsMemoryEstimation
   }
 }

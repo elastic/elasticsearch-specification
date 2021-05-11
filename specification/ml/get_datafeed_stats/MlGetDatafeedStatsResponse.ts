@@ -17,9 +17,12 @@
  * under the License.
  */
 
-import { DatafeedStats } from '@ml/_types/DatafeedStats'
+import { DatafeedStats } from '@ml/_types/Datafeed'
 import { long } from '@_types/Numeric'
 
 export class Response {
-  body: { count: long; datafeeds: DatafeedStats[] }
+  body: {
+    count: long
+    datafeeds: DatafeedStats[]
+  }
 }

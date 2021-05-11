@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { ByteSize } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { CategorizationAnalyzer } from './CategorizationAnalyzer'
-
-export class AnomalyDetectors {
-  categorization_analyzer: CategorizationAnalyzer
-  categorization_examples_limit: integer
-  model_memory_limit: ByteSize
-  model_snapshot_retention_days: integer
-  daily_model_snapshot_retention_after_days: integer
+export enum DataframeState {
+  started = 0,
+  stopped = 1,
+  starting = 2,
+  stopping = 3,
+  failed = 4
 }
