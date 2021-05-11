@@ -18,10 +18,10 @@
  */
 
 import {
-  DataFrameAnalysisAnalyzedFields,
-  DataFrameAnalysisContainer,
-  DataFrameAnalyticsDestination,
-  DataFrameAnalyticsSource
+  DataframeAnalysisAnalyzedFields,
+  DataframeAnalysisContainer,
+  DataframeAnalyticsDestination,
+  DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -31,13 +31,13 @@ export class Response {
     id: Id
     create_time: long
     version: VersionString
-    source: DataFrameAnalyticsSource
+    source: DataframeAnalyticsSource
     description?: string
-    dest: DataFrameAnalyticsDestination
+    dest: DataframeAnalyticsDestination
     model_memory_limit: ByteSize
     allow_lazy_start: boolean
     max_num_threads: integer
-    analysis: DataFrameAnalysisContainer
-    analyzed_fields?: DataFrameAnalysisAnalyzedFields
+    analysis: DataframeAnalysisContainer
+    analyzed_fields?: DataframeAnalysisAnalyzedFields
   }
 }
