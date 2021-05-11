@@ -6939,7 +6939,7 @@ export interface ClusterClusterStateRoutingNodes {
 }
 
 export interface ClusterClusterStateSnapshots {
-  snapshots: SnapshotSnapshotStatus[]
+  snapshots: SnapshotStatus[]
 }
 
 export type ClusterClusterStatus = 'green' | 'yellow' | 'red'
@@ -13453,16 +13453,59 @@ export interface SnapshotFileCountSnapshotStats {
   size_in_bytes: long
 }
 
-export interface SnapshotSnapshotIndexDetails {
+export interface SnapshotIndexDetails {
   shard_count: integer
   size?: ByteSize
   size_in_bytes: long
   max_segments_per_shard: long
 }
 
+export interface SnapshotInfoFeatureState {
+  feature_name: string
+  indices: Indices
+}
+
+export interface SnapshotRepository {
+  type: string
+  uuid?: Uuid
+  settings: SnapshotRepositorySettings
+}
+
+export interface SnapshotRepositorySettings {
+  chunk_size?: string
+  compress?: string | boolean
+  concurrent_streams?: string | integer
+  location: string
+  read_only?: string | boolean
+  readonly?: string | boolean
+}
+
+export interface SnapshotShardsStats {
+  done: long
+  failed: long
+  finalizing: long
+  initializing: long
+  started: long
+  total: long
+}
+
+export type SnapshotShardsStatsStage = 'DONE' | 'FAILURE' | 'FINALIZE' | 'INIT' | 'STARTED'
+
+export interface SnapshotShardsStatsSummary {
+  incremental: SnapshotShardsStatsSummaryItem
+  total: SnapshotShardsStatsSummaryItem
+  start_time_in_millis: long
+  time_in_millis: long
+}
+
+export interface SnapshotShardsStatsSummaryItem {
+  file_count: long
+  size_in_bytes: long
+}
+
 export interface SnapshotSnapshotIndexStats {
   shards: Record<string, SnapshotSnapshotShardsStatus>
-  shards_stats: SnapshotSnapshotShardsStats
+  shards_stats: SnapshotShardsStats
   stats: SnapshotSnapshotStats
 }
 
@@ -13475,7 +13518,7 @@ export interface SnapshotSnapshotInfo {
   failures?: SnapshotSnapshotShardFailure[]
   include_global_state?: boolean
   indices: IndexName[]
-  index_details?: Record<IndexName, SnapshotSnapshotIndexDetails>
+  index_details?: Record<IndexName, SnapshotIndexDetails>
   metadata?: Metadata
   reason?: string
   snapshot: Name
@@ -13486,27 +13529,7 @@ export interface SnapshotSnapshotInfo {
   uuid: Uuid
   version?: VersionString
   version_id?: VersionNumber
-  feature_states?: SnapshotSnapshotInfoFeatureState[]
-}
-
-export interface SnapshotSnapshotInfoFeatureState {
-  feature_name: string
-  indices: Indices
-}
-
-export interface SnapshotSnapshotRepository {
-  type: string
-  uuid?: Uuid
-  settings: SnapshotSnapshotRepositorySettings
-}
-
-export interface SnapshotSnapshotRepositorySettings {
-  chunk_size?: string
-  compress?: string | boolean
-  concurrent_streams?: string | integer
-  location: string
-  read_only?: string | boolean
-  readonly?: string | boolean
+  feature_states?: SnapshotInfoFeatureState[]
 }
 
 export interface SnapshotSnapshotShardFailure {
@@ -13517,32 +13540,9 @@ export interface SnapshotSnapshotShardFailure {
   status: string
 }
 
-export interface SnapshotSnapshotShardsStats {
-  done: long
-  failed: long
-  finalizing: long
-  initializing: long
-  started: long
-  total: long
-}
-
-export type SnapshotSnapshotShardsStatsStage = 'DONE' | 'FAILURE' | 'FINALIZE' | 'INIT' | 'STARTED'
-
-export interface SnapshotSnapshotShardsStatsSummary {
-  incremental: SnapshotSnapshotShardsStatsSummaryItem
-  total: SnapshotSnapshotShardsStatsSummaryItem
-  start_time_in_millis: long
-  time_in_millis: long
-}
-
-export interface SnapshotSnapshotShardsStatsSummaryItem {
-  file_count: long
-  size_in_bytes: long
-}
-
 export interface SnapshotSnapshotShardsStatus {
-  stage: SnapshotSnapshotShardsStatsStage
-  stats: SnapshotSnapshotShardsStatsSummary
+  stage: SnapshotShardsStatsStage
+  stats: SnapshotShardsStatsSummary
 }
 
 export interface SnapshotSnapshotStats {
@@ -13552,11 +13552,11 @@ export interface SnapshotSnapshotStats {
   total: SnapshotFileCountSnapshotStats
 }
 
-export interface SnapshotSnapshotStatus {
+export interface SnapshotStatus {
   include_global_state: boolean
   indices: Record<string, SnapshotSnapshotIndexStats>
   repository: string
-  shards_stats: SnapshotSnapshotShardsStats
+  shards_stats: SnapshotShardsStats
   snapshot: string
   state: string
   stats: SnapshotSnapshotStats
@@ -13617,9 +13617,9 @@ export interface SnapshotCreateRepositoryRequest extends RequestBase {
   timeout?: Time
   verify?: boolean
   body?: {
-    repository?: SnapshotSnapshotRepository
+    repository?: SnapshotRepository
     type: string
-    settings: SnapshotSnapshotRepositorySettings
+    settings: SnapshotRepositorySettings
   }
 }
 
@@ -13671,7 +13671,7 @@ export interface SnapshotGetRepositoryRequest extends RequestBase {
   master_timeout?: Time
 }
 
-export interface SnapshotGetRepositoryResponse extends DictionaryResponseBase<string, SnapshotSnapshotRepository> {
+export interface SnapshotGetRepositoryResponse extends DictionaryResponseBase<string, SnapshotRepository> {
 }
 
 export interface SnapshotRestoreRequest extends RequestBase {
@@ -13710,7 +13710,7 @@ export interface SnapshotStatusRequest extends RequestBase {
 }
 
 export interface SnapshotStatusResponse {
-  snapshots: SnapshotSnapshotStatus[]
+  snapshots: SnapshotStatus[]
 }
 
 export interface SnapshotVerifyRepositoryCompactNodeInfo {

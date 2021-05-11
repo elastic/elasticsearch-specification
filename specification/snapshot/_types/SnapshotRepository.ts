@@ -20,13 +20,13 @@
 import { Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
-export class SnapshotRepository {
+export class Repository {
   type: string
   uuid?: Uuid
-  settings: SnapshotRepositorySettings
+  settings: RepositorySettings
 }
 
-export class SnapshotRepositorySettings {
+export class RepositorySettings {
   chunk_size?: string
   compress?: string | boolean
   concurrent_streams?: string | integer

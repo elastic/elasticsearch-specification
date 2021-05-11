@@ -72341,7 +72341,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotStatus",
+                "name": "Status",
                 "namespace": "snapshot._types"
               }
             }
@@ -128280,7 +128280,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotIndexDetails",
+        "name": "IndexDetails",
         "namespace": "snapshot._types"
       },
       "properties": [
@@ -128333,6 +128333,370 @@
     {
       "kind": "interface",
       "name": {
+        "name": "InfoFeatureState",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Repository",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "uuid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Uuid",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RepositorySettings",
+              "namespace": "snapshot._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RepositorySettings",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "chunk_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "compress",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "concurrent_streams",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "location",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "readonly"
+          ],
+          "name": "read_only",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardsStats",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "done",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "failed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "finalizing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "initializing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "started",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Number of shards in the snapshot that were successfully stored in the repository.",
+          "name": "DONE"
+        },
+        {
+          "description": "Number of shards in the snapshot that were not successfully stored in the repository.",
+          "name": "FAILURE"
+        },
+        {
+          "description": "Number of shards in the snapshot that are in the finalizing stage of being stored in the repository.",
+          "name": "FINALIZE"
+        },
+        {
+          "description": "Number of shards in the snapshot that are in the initializing stage of being stored in the repository.",
+          "name": "INIT"
+        },
+        {
+          "description": "Number of shards in the snapshot that are in the started stage of being stored in the repository.",
+          "name": "STARTED"
+        }
+      ],
+      "name": {
+        "name": "ShardsStatsStage",
+        "namespace": "snapshot._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardsStatsSummary",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "incremental",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardsStatsSummaryItem",
+              "namespace": "snapshot._types"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardsStatsSummaryItem",
+              "namespace": "snapshot._types"
+            }
+          }
+        },
+        {
+          "name": "start_time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_in_millis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardsStatsSummaryItem",
+        "namespace": "snapshot._types"
+      },
+      "properties": [
+        {
+          "name": "file_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "SnapshotIndexStats",
         "namespace": "snapshot._types"
       },
@@ -128365,7 +128729,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotShardsStats",
+              "name": "ShardsStats",
               "namespace": "snapshot._types"
             }
           }
@@ -128504,7 +128868,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotIndexDetails",
+                "name": "IndexDetails",
                 "namespace": "snapshot._types"
               }
             }
@@ -128628,186 +128992,10 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotInfoFeatureState",
+                "name": "InfoFeatureState",
                 "namespace": "snapshot._types"
               }
             }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotInfoFeatureState",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "feature_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "indices",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotRepository",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "uuid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Uuid",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "settings",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SnapshotRepositorySettings",
-              "namespace": "snapshot._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotRepositorySettings",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "chunk_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "compress",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "concurrent_streams",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "location",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "readonly"
-          ],
-          "name": "read_only",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
           }
         }
       ]
@@ -128879,194 +129067,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotShardsStats",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "done",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "finalizing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "initializing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "started",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Number of shards in the snapshot that were successfully stored in the repository.",
-          "name": "DONE"
-        },
-        {
-          "description": "Number of shards in the snapshot that were not successfully stored in the repository.",
-          "name": "FAILURE"
-        },
-        {
-          "description": "Number of shards in the snapshot that are in the finalizing stage of being stored in the repository.",
-          "name": "FINALIZE"
-        },
-        {
-          "description": "Number of shards in the snapshot that are in the initializing stage of being stored in the repository.",
-          "name": "INIT"
-        },
-        {
-          "description": "Number of shards in the snapshot that are in the started stage of being stored in the repository.",
-          "name": "STARTED"
-        }
-      ],
-      "name": {
-        "name": "SnapshotShardsStatsStage",
-        "namespace": "snapshot._types"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotShardsStatsSummary",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "incremental",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SnapshotShardsStatsSummaryItem",
-              "namespace": "snapshot._types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SnapshotShardsStatsSummaryItem",
-              "namespace": "snapshot._types"
-            }
-          }
-        },
-        {
-          "name": "start_time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "time_in_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SnapshotShardsStatsSummaryItem",
-        "namespace": "snapshot._types"
-      },
-      "properties": [
-        {
-          "name": "file_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "SnapshotShardsStatus",
         "namespace": "snapshot._types"
       },
@@ -129077,7 +129077,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotShardsStatsStage",
+              "name": "ShardsStatsStage",
               "namespace": "snapshot._types"
             }
           }
@@ -129088,7 +129088,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotShardsStatsSummary",
+              "name": "ShardsStatsSummary",
               "namespace": "snapshot._types"
             }
           }
@@ -129151,7 +129151,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SnapshotStatus",
+        "name": "Status",
         "namespace": "snapshot._types"
       },
       "properties": [
@@ -129205,7 +129205,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotShardsStats",
+              "name": "ShardsStats",
               "namespace": "snapshot._types"
             }
           }
@@ -129645,7 +129645,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotRepository",
+                "name": "Repository",
                 "namespace": "snapshot._types"
               }
             }
@@ -129667,7 +129667,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "SnapshotRepositorySettings",
+                "name": "RepositorySettings",
                 "namespace": "snapshot._types"
               }
             }
@@ -130156,7 +130156,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SnapshotRepository",
+              "name": "Repository",
               "namespace": "snapshot._types"
             }
           }
@@ -130490,7 +130490,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SnapshotStatus",
+                  "name": "Status",
                   "namespace": "snapshot._types"
                 }
               }

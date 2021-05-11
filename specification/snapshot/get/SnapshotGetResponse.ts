@@ -22,7 +22,10 @@ import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 
 export class Response {
-  body: { responses?: SnapshotResponseItem[]; snapshots?: SnapshotInfo[] }
+  body: {
+    responses?: SnapshotResponseItem[]
+    snapshots?: SnapshotInfo[]
+  }
 }
 
 export class SnapshotResponseItem {

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { SnapshotStatus } from '@snapshot/_types/SnapshotStatus'
+import { Status } from '@snapshot/_types/SnapshotStatus'
 
 export class ClusterStateSnapshots {
-  snapshots: SnapshotStatus[] // TODO: just a guess, but the tests are not exhaustive enough
+  snapshots: Status[] // TODO: just a guess, but the tests are not exhaustive enough
 }
 
 export class ClusterStateDeletedSnapshots {

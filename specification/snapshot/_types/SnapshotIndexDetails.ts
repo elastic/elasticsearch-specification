@@ -20,7 +20,7 @@
 import { ByteSize } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
-export class SnapshotIndexDetails {
+export class IndexDetails {
   shard_count: integer
   size?: ByteSize
   size_in_bytes: long
