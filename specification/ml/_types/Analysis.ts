@@ -17,13 +17,13 @@
  * under the License.
  */
 
+import { CharFilter } from '@_types/analysis/char_filters'
+import { Tokenizer } from '@_types/analysis/tokenizers'
+import { TokenFilter } from '@_types/analysis/token_filters'
 import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time, TimeSpan } from '@_types/Time'
 import { Detector } from './Detector'
-import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer } from '@_types/analysis/tokenizers'
-import { TokenFilter } from '@_types/analysis/token_filters'
 
 export class AnalysisConfig {
   bucket_span: TimeSpan

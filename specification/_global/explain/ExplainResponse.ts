@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, IndexName, Type, InlineGet } from '@_types/common'
+import { Id, IndexName, InlineGet, Type } from '@_types/common'
 import { ExplanationDetail } from './types'
 
 export class Response<TDocument> {

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Filter } from '@ml/_types/Filter'
+import { Filter } from '@global/termvectors/types'
 import { long } from '@_types/Numeric'
 
 export class Response {

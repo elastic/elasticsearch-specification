@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, VersionNumber, Name } from '@_types/common'
+import { Id, Name, VersionNumber } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 
 export class IndicesShardStores {

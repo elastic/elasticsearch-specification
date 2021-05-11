@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Status } from '@task/_types/TaskStatus'
+import { Status } from '@snapshot/_types/SnapshotStatus'
+import { Info } from '@task/_types/TaskInfo'
 import { ErrorCause } from '@_types/Errors'
-import { Info } from '../_types/TaskInfo'
 
 export class Response {
   body: {

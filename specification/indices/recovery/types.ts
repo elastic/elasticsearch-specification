@@ -26,9 +26,9 @@ import {
   Uuid,
   VersionString
 } from '@_types/common'
-import { Host, TransportAddress, Ip } from '@_types/Networking'
+import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { long, Percentage } from '@_types/Numeric'
-import { Time, EpochMillis, DateString } from '@_types/Time'
+import { DateString, EpochMillis, Time } from '@_types/Time'
 
 export class RecoveryBytes {
   percent: Percentage

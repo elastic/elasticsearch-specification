@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { Connection } from '@graph/_types/Connection'
 import { Vertex } from '@graph/_types/Vertex'
 import { ShardFailure } from '@_types/Errors'
 import { long } from '@_types/Numeric'
-import { Connection } from '../_types/Connection'
 
 export class Response {
   body: {

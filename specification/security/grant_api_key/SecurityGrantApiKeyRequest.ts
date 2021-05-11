@@ -17,9 +17,10 @@
  * under the License.
  */
 
+import { ApiKey } from '@security/get_api_key/types'
 import { RequestBase } from '@_types/Base'
 import { Password, Username } from '@_types/common'
-import { ApiKey, ApiKeyGrantType } from './types'
+import { ApiKeyGrantType } from './types'
 
 /**
  * @rest_spec_name security.grant_api_key

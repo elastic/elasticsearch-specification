@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { CalendarEvent } from '../_types/CalendarEvent'
+import { CalendarEvent } from '@ml/_types/CalendarEvent'
 
 export class Response {
   body: { events: CalendarEvent[] }

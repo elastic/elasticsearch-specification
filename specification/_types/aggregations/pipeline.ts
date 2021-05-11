@@ -18,8 +18,8 @@
  */
 
 import { Sort } from '@global/search/_types/sort'
-import { Name, Field } from '@_types/common'
-import { integer, double, float } from '@_types/Numeric'
+import { Field, Name } from '@_types/common'
+import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 

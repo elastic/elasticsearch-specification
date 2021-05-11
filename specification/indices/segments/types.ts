@@ -19,7 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { VersionString } from '@_types/common'
-import { long, integer, double } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 
 export class IndexSegment {
   shards: Dictionary<string, ShardsSegment | Array<ShardsSegment>>

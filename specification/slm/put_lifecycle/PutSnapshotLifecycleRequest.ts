@@ -17,7 +17,8 @@
  * under the License.
  */
 
-import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
+import { Configuration } from '@enrich/_types/Policy'
+import { Retention } from '@slm/_types/SnapshotLifecycle'
 import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'

@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
-import { ByteSize, Id, VersionString } from '@_types/common'
+import { DataframeAnalyticsSummary } from '@ml/_types/DataFrameAnalytics'
 import { integer } from '@_types/Numeric'
 
 export class Response {

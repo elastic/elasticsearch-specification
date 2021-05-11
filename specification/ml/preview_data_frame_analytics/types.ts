@@ -21,8 +21,8 @@ import {
   DataframeAnalysisAnalyzedFields,
   DataframeAnalysisContainer,
   DataframeAnalyticsSource
-} from '@ml/_types/DataframeAnalytics'
-import { ByteSize, Id } from '@_types/common'
+} from '@ml/_types/DataFrameAnalytics'
+import { ByteSize } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class DataframePreviewConfig {

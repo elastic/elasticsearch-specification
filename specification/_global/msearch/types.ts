@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+import { Response as SearchResponse } from '@global/search/SearchResponse'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
 import { SuggestContainer } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -24,7 +24,6 @@ import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { Response as SearchResponse } from '@global/search/SearchResponse'
 
 /**
  * Contains parameters used to limit or change the subsequent search body request.

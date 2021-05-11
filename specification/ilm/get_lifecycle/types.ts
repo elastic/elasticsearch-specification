@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
+import { Policy } from '@enrich/_types/Policy'
 import { VersionNumber } from '@_types/common'
 import { DateString } from '@_types/Time'
 

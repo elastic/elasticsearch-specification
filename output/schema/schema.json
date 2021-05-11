@@ -17250,160 +17250,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Body",
-        "namespace": "_global.msearch"
-      },
-      "properties": [
-        {
-          "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "pit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PointInTimeReference",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "track_total_hits",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "suggest",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContainer",
-                  "namespace": "_global.search._types"
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SuggestContainer",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
-    },
-    {
       "description": "Contains parameters used to limit or change the subsequent search body request.",
       "kind": "interface",
       "name": {
@@ -17522,7 +17368,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Body",
-                  "namespace": "_global.msearch"
+                  "namespace": ".Users.delvedor.Development.elastic.elastic-client-generator-2.compiler.node_modules.typescript.lib"
                 }
               }
             ],
@@ -18035,158 +17881,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Operation",
-        "namespace": "_global.mtermvectors"
-      },
-      "properties": [
-        {
-          "name": "doc",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "object",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field_statistics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Filter",
-              "namespace": "_global.termvectors"
-            }
-          }
-        },
-        {
-          "name": "_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "offsets",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "payloads",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "positions",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "routing",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "term_statistics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -18202,7 +17896,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Operation",
-                  "namespace": "_global.mtermvectors"
+                  "namespace": "_global.mget"
                 }
               }
             }
@@ -81109,37 +80803,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Policy",
-        "namespace": "ilm._types"
-      },
-      "properties": [
-        {
-          "name": "phases",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Phases",
-              "namespace": "ilm._types"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -81612,7 +81275,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Policy",
-              "namespace": "ilm._types"
+              "namespace": "enrich._types"
             }
           }
         },
@@ -81880,7 +81543,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Policy",
-                "namespace": "ilm._types"
+                "namespace": "enrich._types"
               }
             }
           }
@@ -103701,51 +103364,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "Filter",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "items",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "FilterRef",
         "namespace": "ml._types"
       },
@@ -109810,7 +109428,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Filter",
-                  "namespace": "ml._types"
+                  "namespace": "_global.termvectors"
                 }
               }
             }
@@ -122156,62 +121774,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RoleMapping",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "metadata",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "roles",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "rules",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RoleMappingRuleBase",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "RoleMappingRuleBase",
         "namespace": "security._types"
       },
@@ -122430,7 +121992,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Token",
-                "namespace": "security.authenticate"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -122441,26 +122003,6 @@
         "name": "Response",
         "namespace": "security.authenticate"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Token",
-        "namespace": "security.authenticate"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -123327,7 +122869,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Token",
-                "namespace": "security.create_service_token"
+                "namespace": "_global.termvectors"
               }
             }
           }
@@ -123338,37 +122880,6 @@
         "name": "Response",
         "namespace": "security.create_service_token"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Token",
-        "namespace": "security.create_service_token"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -124227,7 +123738,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Actions",
-                "namespace": "security.put_privileges"
+                "namespace": "watcher._types"
               }
             }
           }
@@ -124662,7 +124173,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RoleMapping",
-              "namespace": "security._types"
+              "namespace": "xpack.usage"
             }
           }
         ],
@@ -125546,58 +125057,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "ApiKey",
-        "namespace": "security.grant_api_key"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "expiration",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "role_descriptors",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -125626,7 +125085,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "ApiKey",
-                "namespace": "security.grant_api_key"
+                "namespace": "security.get_api_key"
               }
             }
           },
@@ -126356,62 +125815,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Actions",
-        "namespace": "security.put_privileges"
-      },
-      "properties": [
-        {
-          "name": "actions",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "application",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -126441,7 +125844,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Actions",
-                "namespace": "security.put_privileges"
+                "namespace": "watcher._types"
               }
             }
           }
@@ -128077,7 +127480,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Configuration",
-                "namespace": "slm._types"
+                "namespace": "enrich._types"
               }
             }
           },
@@ -131314,7 +130717,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Status",
-              "namespace": "task._types"
+              "namespace": "snapshot._types"
             }
           }
         },
@@ -131455,7 +130858,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Status",
-              "namespace": "task._types"
+              "namespace": "snapshot._types"
             }
           }
         },
@@ -131467,205 +130870,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Status",
-        "namespace": "task._types"
-      },
-      "properties": [
-        {
-          "name": "batches",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "canceled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "created",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "deleted",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "noops",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "failures",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "requests_per_second",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "retries",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Retries",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttled_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttled_until",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttled_until_millis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timed_out",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "took",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "updated",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_conflicts",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
             }
           }
         }
@@ -131941,7 +131145,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Status",
-                "namespace": "task._types"
+                "namespace": "snapshot._types"
               }
             }
           },
@@ -134437,125 +133641,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "Action",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "action_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ActionType",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "condition",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ConditionContainer",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "foreach",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "max_iterations",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttle_period",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "throttle_period_in_millis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EpochMillis",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "transform",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TransformContainer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Index",
-              "namespace": "watcher._types"
-            }
-          }
-        },
-        {
-          "name": "logging",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Logging",
-              "namespace": "watcher._types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -136023,37 +135108,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "Index",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "doc_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "IndexResult",
         "namespace": "watcher._types"
       },
@@ -136279,37 +135333,6 @@
         "name": "InputType",
         "namespace": "watcher._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Logging",
-        "namespace": "watcher._types"
-      },
-      "properties": [
-        {
-          "name": "level",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -137730,7 +136753,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Action",
-                "namespace": "watcher._types"
+                "namespace": "ilm._types"
               }
             }
           }
@@ -138632,7 +137655,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Action",
-                  "namespace": "watcher._types"
+                  "namespace": "ilm._types"
                 }
               }
             }

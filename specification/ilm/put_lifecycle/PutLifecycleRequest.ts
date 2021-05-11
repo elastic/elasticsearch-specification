@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Policy } from '@ilm/_types/Policy'
+import { Policy } from '@enrich/_types/Policy'
 import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 

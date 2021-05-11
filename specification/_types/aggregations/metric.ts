@@ -18,7 +18,7 @@
  */
 
 import { Highlight } from '@global/search/_types/highlighting'
-import { SortOrder, Sort } from '@global/search/_types/sort'
+import { Sort, SortOrder } from '@global/search/_types/sort'
 import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'

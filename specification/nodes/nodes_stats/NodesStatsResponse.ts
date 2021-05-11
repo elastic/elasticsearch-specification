@@ -18,9 +18,9 @@
  */
 
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
+import { Stats } from '@nodes/_types/Stats'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { Stats } from '../_types/Stats'
 
 export class Response extends NodesResponseBase {
   body: {

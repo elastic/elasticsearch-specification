@@ -18,6 +18,8 @@
  */
 
 import { IndexName, Name } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 export class FollowerIndex {
   follower_index: IndexName
@@ -31,9 +33,6 @@ export enum FollowerIndexStatus {
   active = 0,
   paused = 1
 }
-
-import { integer } from '@_types/Numeric'
-import { Time } from '@_types/Time'
 
 export class FollowerIndexParameters {
   max_outstanding_read_requests: integer

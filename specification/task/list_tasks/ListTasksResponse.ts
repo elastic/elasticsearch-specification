@@ -18,9 +18,9 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
+import { TaskExecutingNode } from '@task/_types/TaskExecutingNode'
 import { Info } from '@task/_types/TaskInfo'
 import { ErrorCause } from '@_types/Errors'
-import { TaskExecutingNode } from '../_types/TaskExecutingNode'
 
 export class Response {
   body: {

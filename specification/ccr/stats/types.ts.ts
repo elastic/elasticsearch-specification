@@ -18,10 +18,9 @@
  */
 
 import { FollowIndexStats } from '@ccr/_types/FollowIndexStats'
+import { Name, VersionNumber } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
-
-import { Name, VersionNumber } from '@_types/common'
 import { DateString } from '@_types/Time'
 
 export class AutoFollowedCluster {

@@ -20,18 +20,18 @@
 import { SortOrder } from '@global/search/_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, RelationName, Fields } from '@_types/common'
+import { Field, Fields, RelationName } from '@_types/common'
 import {
-  GeoDistanceType,
   DistanceUnit,
+  GeoDistanceType,
   GeoHashPrecision,
   GeoTilePrecision
 } from '@_types/Geo'
-import { integer, float, long, double } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GeoLocation, BoundingBox } from '@_types/query_dsl/geo'
+import { BoundingBox, GeoLocation } from '@_types/query_dsl/geo'
 import { Script } from '@_types/Scripting'
-import { DateString, Time, DateMath } from '@_types/Time'
+import { DateMath, DateString, Time } from '@_types/Time'
 import { GeoBounds } from './Aggregate'
 import { Aggregation } from './Aggregation'
 import { AggregationContainer, Missing } from './AggregationContainer'
