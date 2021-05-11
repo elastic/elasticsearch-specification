@@ -28,8 +28,8 @@ import {
 } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 import { EpochMillis, Time } from '@_types/Time'
-import { SnapshotIndexDetails } from './SnapshotIndexDetails'
-import { SnapshotInfoFeatureState } from './SnapshotInfoFeatureState'
+import { IndexDetails } from './SnapshotIndexDetails'
+import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
@@ -42,7 +42,7 @@ export class SnapshotInfo {
   include_global_state?: boolean
   indices: IndexName[]
   /** @since 7.13.0 */
-  index_details?: Dictionary<IndexName, SnapshotIndexDetails>
+  index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
   reason?: string
   snapshot: Name
@@ -53,5 +53,5 @@ export class SnapshotInfo {
   uuid: Uuid
   version?: VersionString
   version_id?: VersionNumber
-  feature_states?: SnapshotInfoFeatureState[]
+  feature_states?: InfoFeatureState[]
 }

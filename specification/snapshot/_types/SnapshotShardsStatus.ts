@@ -18,21 +18,21 @@
  */
 
 import { long } from '@_types/Numeric'
-import { SnapshotShardsStatsStage } from './SnapshotShardsStatsStage'
+import { ShardsStatsStage } from './SnapshotShardsStatsStage'
 
 export class SnapshotShardsStatus {
-  stage: SnapshotShardsStatsStage
-  stats: SnapshotShardsStatsSummary
+  stage: ShardsStatsStage
+  stats: ShardsStatsSummary
 }
 
-export class SnapshotShardsStatsSummary {
-  incremental: SnapshotShardsStatsSummaryItem
-  total: SnapshotShardsStatsSummaryItem
+export class ShardsStatsSummary {
+  incremental: ShardsStatsSummaryItem
+  total: ShardsStatsSummaryItem
   start_time_in_millis: long
   time_in_millis: long
 }
 
-export class SnapshotShardsStatsSummaryItem {
+export class ShardsStatsSummaryItem {
   file_count: long
   size_in_bytes: long
 }

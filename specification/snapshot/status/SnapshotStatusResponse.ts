@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SnapshotStatus } from '@snapshot/_types/SnapshotStatus'
+import { Status } from '@snapshot/_types/SnapshotStatus'
 
 export class Response {
-  body: { snapshots: SnapshotStatus[] }
+  body: { snapshots: Status[] }
 }

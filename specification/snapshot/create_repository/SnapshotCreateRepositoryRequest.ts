@@ -18,8 +18,8 @@
  */
 
 import {
-  SnapshotRepository,
-  SnapshotRepositorySettings
+  Repository,
+  RepositorySettings
 } from '@snapshot/_types/SnapshotRepository'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
@@ -41,8 +41,8 @@ export interface Request extends RequestBase {
     verify?: boolean
   }
   body?: {
-    repository?: SnapshotRepository
+    repository?: Repository
     type: string
-    settings: SnapshotRepositorySettings
+    settings: RepositorySettings
   }
 }

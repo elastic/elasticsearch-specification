@@ -19,7 +19,7 @@
 
 import { Indices } from '@_types/common'
 
-export class SnapshotInfoFeatureState {
+export class InfoFeatureState {
   feature_name: string
   indices: Indices
 }

@@ -18,12 +18,12 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { ShardsStats } from './SnapshotShardsStats'
 import { SnapshotShardsStatus } from './SnapshotShardsStatus'
 import { SnapshotStats } from './SnapshotStats'
 
 export class SnapshotIndexStats {
   shards: Dictionary<string, SnapshotShardsStatus>
-  shards_stats: SnapshotShardsStats
+  shards_stats: ShardsStats
   stats: SnapshotStats
 }

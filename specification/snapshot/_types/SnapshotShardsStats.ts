@@ -19,7 +19,7 @@
 
 import { long } from '@_types/Numeric'
 
-export class SnapshotShardsStats {
+export class ShardsStats {
   done: long
   failed: long
   finalizing: long

@@ -20,7 +20,7 @@
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/get-snapshot-status-api.html
  */
-export enum SnapshotShardsStatsStage {
+export enum ShardsStatsStage {
   /** Number of shards in the snapshot that were successfully stored in the repository. */
   DONE = 0,
   /** Number of shards in the snapshot that were not successfully stored in the repository. */

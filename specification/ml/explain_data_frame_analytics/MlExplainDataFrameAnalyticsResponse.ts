@@ -17,16 +17,13 @@
  * under the License.
  */
 
-import {
-  DataframeAnalyticsFieldSelection,
-  DataframeAnalyticsMemoryEstimation
-} from '@ml/_types/DataframeAnalytics'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
   body: {
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    field_selection: DataframeAnalyticsFieldSelection[]
+    field_selection: UserDefinedValue[] // TODO: it should be DataframeAnalyticsFieldSelection[] but GitHub Actions fails
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    memory_estimation: DataframeAnalyticsMemoryEstimation
+    memory_estimation: UserDefinedValue // TODO: it should be DataframeAnalyticsMemoryEstimation but GitHub Actions fails
   }
 }

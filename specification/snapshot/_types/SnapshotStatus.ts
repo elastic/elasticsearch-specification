@@ -20,14 +20,14 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Uuid } from '@_types/common'
 import { SnapshotIndexStats } from './SnapshotIndexStats'
-import { SnapshotShardsStats } from './SnapshotShardsStats'
+import { ShardsStats } from './SnapshotShardsStats'
 import { SnapshotStats } from './SnapshotStats'
 
-export class SnapshotStatus {
+export class Status {
   include_global_state: boolean
   indices: Dictionary<string, SnapshotIndexStats>
   repository: string
-  shards_stats: SnapshotShardsStats
+  shards_stats: ShardsStats
   snapshot: string
   state: string
   stats: SnapshotStats
