@@ -25,7 +25,7 @@ import {
 export class Response {
   body: {
     /** An array of objects that explain selection for each field, sorted by the field names. */
-    field_selection: Array<DataframeAnalyticsFieldSelection>
+    field_selection: DataframeAnalyticsFieldSelection[]
     /** An array of objects that explain selection for each field, sorted by the field names. */
     memory_estimation: DataframeAnalyticsMemoryEstimation
   }
