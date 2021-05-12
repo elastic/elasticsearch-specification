@@ -9319,6 +9319,10 @@ export interface IndicesStatsShardCommit {
 export interface IndicesStatsShardFileSizeInfo {
   description: string
   size_in_bytes: long
+  min_size_in_bytes?: long
+  max_size_in_bytes?: long
+  average_size_in_bytes?: long
+  count?: long
 }
 
 export interface IndicesStatsShardLease {
