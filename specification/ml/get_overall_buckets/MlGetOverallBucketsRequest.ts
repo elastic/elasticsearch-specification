@@ -48,6 +48,7 @@ export interface Request extends RequestBase {
     start?: Time
     /**  If true, the output excludes interim results. By default, interim results are included. */
     exclude_interim?: boolean
+    allow_no_match?: boolean
   }
   body?: {
     allow_no_jobs?: boolean

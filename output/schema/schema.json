@@ -110506,6 +110506,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
