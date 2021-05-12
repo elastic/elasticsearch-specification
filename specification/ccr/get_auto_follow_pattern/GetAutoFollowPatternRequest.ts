@@ -27,6 +27,7 @@ import { Name } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    name?: Name // param name in docs: auto_follow_pattern_name
+    /** Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections. */
+    name?: Name
   }
 }

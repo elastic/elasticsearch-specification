@@ -6742,7 +6742,15 @@ export interface CcrForgetFollowerIndexResponse {
 
 export interface CcrGetAutoFollowPatternAutoFollowPattern {
   name: Name
-  pattern: CcrGetAutoFollowPatternAutoFollowPattern
+  pattern: CcrGetAutoFollowPatternAutoFollowPatternSummary
+}
+
+export interface CcrGetAutoFollowPatternAutoFollowPatternSummary {
+  active: boolean
+  remote_cluster: string
+  follow_index_pattern?: IndexPattern
+  leader_index_patterns: IndexPatterns
+  max_outstanding_read_requests: integer
 }
 
 export interface CcrGetAutoFollowPatternRequest extends RequestBase {

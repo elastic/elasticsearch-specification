@@ -22,7 +22,7 @@ import { integer } from '@_types/Numeric'
 
 export class AutoFollowPattern {
   name: Name
-  pattern: AutoFollowPattern
+  pattern: AutoFollowPatternSummary
 }
 
 export class AutoFollowPatternSummary {
