@@ -12589,7 +12589,14 @@ export interface RollupRollupSearchRequest extends RequestBase {
   }
 }
 
-export type RollupRollupSearchResponse<TDocument = unknown> = boolean
+export interface RollupRollupSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  terminated_early?: boolean
+  _shards: ShardStatistics
+  hits: SearchTypesHitsMetadata<TDocument>
+  aggregations?: Record<AggregateName, AggregationsAggregate>
+}
 
 export interface RollupStartRollupJobRequest extends RequestBase {
   id: Id

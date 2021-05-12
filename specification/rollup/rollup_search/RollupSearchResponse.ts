@@ -17,4 +17,20 @@
  * under the License.
  */
 
-export class Response<TDocument> {}
+import { HitsMetadata } from "@global/search/_types/hits"
+import { Dictionary } from "@spec_utils/Dictionary"
+import { Aggregate } from "@_types/aggregations/Aggregate"
+import { AggregateName } from "@_types/common"
+import { long } from "@_types/Numeric"
+import { ShardStatistics } from '@_types/Stats'
+
+export class Response<TDocument> {
+  body: {
+    took: long
+    timed_out: boolean
+    terminated_early?: boolean
+    _shards: ShardStatistics
+    hits: HitsMetadata<TDocument>
+    aggregations?: Dictionary<AggregateName, Aggregate>
+  }
+}
