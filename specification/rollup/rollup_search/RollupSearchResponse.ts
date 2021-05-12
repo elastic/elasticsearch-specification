@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { HitsMetadata } from "@global/search/_types/hits"
-import { Dictionary } from "@spec_utils/Dictionary"
-import { Aggregate } from "@_types/aggregations/Aggregate"
-import { AggregateName } from "@_types/common"
-import { long } from "@_types/Numeric"
+import { HitsMetadata } from '@global/search/_types/hits'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Aggregate } from '@_types/aggregations/Aggregate'
+import { AggregateName } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response<TDocument> {
