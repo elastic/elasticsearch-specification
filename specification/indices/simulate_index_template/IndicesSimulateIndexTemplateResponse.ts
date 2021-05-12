@@ -16,9 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// TODO must be changed to HttpStatusCodeResponse once
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-
-// https://github.com/elastic/elasticsearch-specification/pull/373 is merged.
-export class Response extends AcknowledgedResponseBase {}
+export class Response {
+  body: {}
+}

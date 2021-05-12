@@ -83622,6 +83622,40 @@
     {
       "kind": "interface",
       "name": {
+        "name": "OverlappingIndexTemplate",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_patterns",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "StringFielddata",
         "namespace": "indices._types"
       },
@@ -88325,7 +88359,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "OverlappingIndexTemplate",
-                  "namespace": "indices.simulate_index_template"
+                  "namespace": "indices._types"
                 }
               }
             }
@@ -92248,40 +92282,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "OverlappingIndexTemplate",
-        "namespace": "indices.simulate_index_template"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index_patterns",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92326,7 +92326,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "OverlappingIndexTemplate",
-                  "namespace": "indices.simulate_index_template"
+                  "namespace": "indices._types"
                 }
               }
             }
@@ -92375,12 +92375,6 @@
       "body": {
         "kind": "properties",
         "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
       },
       "kind": "response",
       "name": {

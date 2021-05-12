@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { OverlappingIndexTemplate } from '@indices/simulate_index_template/IndicesSimulateIndexTemplateRequest'
+import { OverlappingIndexTemplate } from '@indices/_types/OverlappingIndexTemplate'
 import { TemplateMapping } from '@indices/_types/TemplateMapping'
 
 export class Response {

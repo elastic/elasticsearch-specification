@@ -17,26 +17,9 @@
  * under the License.
  */
 
-import { OverlappingIndexTemplate } from '@indices/_types/OverlappingIndexTemplate'
-import { TemplateMapping } from '@indices/_types/TemplateMapping'
-import { RequestBase } from '@_types/Base'
 import { IndexName, Name } from '@_types/common'
 
-/**
- * @rest_spec_name indices.simulate_index_template
- * @since 7.9.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    /** Index or template name to simulate */
-    name?: Name
-  }
-  body?: {
-    index_patterns?: IndexName[]
-    composed_of?: Name[]
-    /** Any overlapping templates that would have matched, but have lower priority */
-    overlapping?: OverlappingIndexTemplate[]
-    template?: TemplateMapping
-  }
+export class OverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
 }
