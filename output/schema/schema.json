@@ -121242,7 +121242,95 @@
     },
     {
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "took",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "timed_out",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "terminated_early",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "_shards",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "hits",
+            "required": true,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "rollup.rollup_search"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "HitsMetadata",
+                "namespace": "_global.search._types"
+              }
+            }
+          },
+          {
+            "name": "aggregations",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AggregateName",
+                  "namespace": "_types"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Aggregate",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            }
+          }
+        ]
       },
       "generics": [
         {
