@@ -438,12 +438,6 @@
       ],
       "response": []
     },
-    "enrich.put_policy": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "enrich.stats": {
       "request": [
         "Endpoint has \"@stability: TODO"

@@ -33,8 +33,5 @@ export class Policy {
   indices: Indices
   match_field: Field
   query?: string
-}
-
-export class NamedPolicy extends Policy {
-  name: Name
+  name?: Name
 }

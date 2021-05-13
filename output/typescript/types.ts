@@ -7680,6 +7680,7 @@ export interface EnrichPolicy {
   indices: Indices
   match_field: Field
   query?: string
+  name?: Name
 }
 
 export interface EnrichSummary {
