@@ -70663,8 +70663,72 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "AutoFollowPattern",
+              "name": "AutoFollowPatternSummary",
               "namespace": "ccr.get_auto_follow_pattern"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoFollowPatternSummary",
+        "namespace": "ccr.get_auto_follow_pattern"
+      },
+      "properties": [
+        {
+          "name": "active",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "remote_cluster",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "follow_index_pattern",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPattern",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "leader_index_patterns",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPatterns",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_outstanding_read_requests",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }
@@ -70690,6 +70754,7 @@
       },
       "path": [
         {
+          "description": "Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections.",
           "name": "name",
           "required": false,
           "type": {
