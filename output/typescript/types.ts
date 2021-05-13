@@ -8264,6 +8264,11 @@ export interface IndicesNumericFielddata {
 
 export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
+export interface IndicesOverlappingIndexTemplate {
+  name: Name
+  index_patterns?: IndexName[]
+}
+
 export interface IndicesStringFielddata {
   format: IndicesStringFielddataFormat
 }
@@ -8782,7 +8787,7 @@ export interface IndicesGetUpgradeRequest extends RequestBase {
 }
 
 export interface IndicesGetUpgradeResponse {
-  overlapping?: IndicesSimulateIndexTemplateOverlappingIndexTemplate[]
+  overlapping?: IndicesOverlappingIndexTemplate[]
   template?: IndicesTemplateMapping
 }
 
@@ -9215,22 +9220,17 @@ export interface IndicesShrinkResponse extends AcknowledgedResponseBase {
   index: IndexName
 }
 
-export interface IndicesSimulateIndexTemplateOverlappingIndexTemplate {
-  name: Name
-  index_patterns?: IndexName[]
-}
-
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   name?: Name
   body?: {
     index_patterns?: IndexName[]
     composed_of?: Name[]
-    overlapping?: IndicesSimulateIndexTemplateOverlappingIndexTemplate[]
+    overlapping?: IndicesOverlappingIndexTemplate[]
     template?: IndicesTemplateMapping
   }
 }
 
-export interface IndicesSimulateIndexTemplateResponse extends AcknowledgedResponseBase {
+export interface IndicesSimulateIndexTemplateResponse {
 }
 
 export interface IndicesSimulateTemplateRequest extends RequestBase {
