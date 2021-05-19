@@ -5790,12 +5790,12 @@
       "name": "license.delete",
       "request": {
         "name": "Request",
-        "namespace": "license.delete_license"
+        "namespace": "license.delete"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.delete_license"
+        "namespace": "license.delete"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -5818,12 +5818,12 @@
       "name": "license.get",
       "request": {
         "name": "Request",
-        "namespace": "license.get_license"
+        "namespace": "license.get"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.get_license"
+        "namespace": "license.get"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -5846,12 +5846,12 @@
       "name": "license.get_basic_status",
       "request": {
         "name": "Request",
-        "namespace": "license.get_basic_license_status"
+        "namespace": "license.get_basic_status"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.get_basic_license_status"
+        "namespace": "license.get_basic_status"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -5874,12 +5874,12 @@
       "name": "license.get_trial_status",
       "request": {
         "name": "Request",
-        "namespace": "license.get_trial_license_status"
+        "namespace": "license.get_trial_status"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.get_trial_license_status"
+        "namespace": "license.get_trial_status"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -5905,12 +5905,12 @@
       "name": "license.post",
       "request": {
         "name": "Request",
-        "namespace": "license.post_license"
+        "namespace": "license.post"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.post_license"
+        "namespace": "license.post"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -5934,12 +5934,12 @@
       "name": "license.post_start_basic",
       "request": {
         "name": "Request",
-        "namespace": "license.start_basic_license"
+        "namespace": "license.post_start_basic"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.start_basic_license"
+        "namespace": "license.post_start_basic"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -5962,12 +5962,12 @@
       "name": "license.post_start_trial",
       "request": {
         "name": "Request",
-        "namespace": "license.start_trial_license"
+        "namespace": "license.post_start_trial"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "license.start_trial_license"
+        "namespace": "license.post_start_trial"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -8374,12 +8374,12 @@
       "name": "nodes.hot_threads",
       "request": {
         "name": "Request",
-        "namespace": "nodes.nodes_hot_threads"
+        "namespace": "nodes.hot_threads"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "nodes.nodes_hot_threads"
+        "namespace": "nodes.hot_threads"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8468,12 +8468,12 @@
       "name": "nodes.info",
       "request": {
         "name": "Request",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "since": "1.3.0",
       "stability": "TODO",
@@ -8551,12 +8551,12 @@
       "name": "nodes.stats",
       "request": {
         "name": "Request",
-        "namespace": "nodes.nodes_stats"
+        "namespace": "nodes.stats"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "nodes.nodes_stats"
+        "namespace": "nodes.stats"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -8609,12 +8609,12 @@
       "name": "nodes.usage",
       "request": {
         "name": "Request",
-        "namespace": "nodes.nodes_usage"
+        "namespace": "nodes.usage"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "nodes.nodes_usage"
+        "namespace": "nodes.usage"
       },
       "since": "6.0.0",
       "stability": "TODO",
@@ -11303,12 +11303,12 @@
       "name": "sql.clear_cursor",
       "request": {
         "name": "Request",
-        "namespace": "sql.clear_sql_cursor"
+        "namespace": "sql.clear_cursor"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "sql.clear_sql_cursor"
+        "namespace": "sql.clear_cursor"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -11334,12 +11334,12 @@
       "name": "sql.query",
       "request": {
         "name": "Request",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -11366,12 +11366,12 @@
       "name": "sql.translate",
       "request": {
         "name": "Request",
-        "namespace": "sql.translate_sql"
+        "namespace": "sql.translate"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "sql.translate_sql"
+        "namespace": "sql.translate"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -11423,12 +11423,12 @@
       "name": "tasks.cancel",
       "request": {
         "name": "Request",
-        "namespace": "task.cancel_tasks"
+        "namespace": "task.cancel"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.cancel_tasks"
+        "namespace": "task.cancel"
       },
       "since": "2.3.0",
       "stability": "TODO",
@@ -11457,12 +11457,12 @@
       "name": "tasks.get",
       "request": {
         "name": "Request",
-        "namespace": "task.get_task"
+        "namespace": "task.get"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.get_task"
+        "namespace": "task.get"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -11485,12 +11485,12 @@
       "name": "tasks.list",
       "request": {
         "name": "Request",
-        "namespace": "task.list_tasks"
+        "namespace": "task.list"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.list_tasks"
+        "namespace": "task.list"
       },
       "since": "2.3.0",
       "stability": "TODO",
@@ -12374,13 +12374,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkOperation",
+          "name": "Operation",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkCreateOperation",
+        "name": "CreateOperation",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12388,13 +12388,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkResponseItemBase",
+          "name": "ResponseItemBase",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkCreateResponseItem",
+        "name": "CreateResponseItem",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12402,13 +12402,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkOperation",
+          "name": "Operation",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkDeleteOperation",
+        "name": "DeleteOperation",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12416,13 +12416,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkResponseItemBase",
+          "name": "ResponseItemBase",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkDeleteResponseItem",
+        "name": "DeleteResponseItem",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12430,13 +12430,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkOperation",
+          "name": "Operation",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkIndexOperation",
+        "name": "IndexOperation",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12444,13 +12444,13 @@
     {
       "inherits": {
         "type": {
-          "name": "BulkResponseItemBase",
+          "name": "ResponseItemBase",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "BulkIndexResponseItem",
+        "name": "IndexResponseItem",
         "namespace": "_global.bulk"
       },
       "properties": []
@@ -12458,7 +12458,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "BulkOperation",
+        "name": "Operation",
         "namespace": "_global.bulk"
       },
       "properties": [
@@ -12533,7 +12533,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "BulkOperationContainer",
+        "name": "OperationContainer",
         "namespace": "_global.bulk"
       },
       "properties": [
@@ -12543,7 +12543,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BulkIndexOperation",
+              "name": "IndexOperation",
               "namespace": "_global.bulk"
             }
           }
@@ -12554,7 +12554,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BulkCreateOperation",
+              "name": "CreateOperation",
               "namespace": "_global.bulk"
             }
           }
@@ -12565,7 +12565,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BulkUpdateOperation",
+              "name": "UpdateOperation",
               "namespace": "_global.bulk"
             }
           }
@@ -12576,7 +12576,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BulkDeleteOperation",
+              "name": "DeleteOperation",
               "namespace": "_global.bulk"
             }
           }
@@ -12585,259 +12585,6 @@
       "variants": {
         "kind": "container"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "BulkResponseItemBase",
-        "namespace": "_global.bulk"
-      },
-      "properties": [
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "error",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_primary_term",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "result",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_seq_no",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SequenceNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_shards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardStatistics",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "_version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "forced_refresh",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "get",
-          "required": false,
-          "type": {
-            "generics": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "user_defined_value"
-                }
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "InlineGet",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "BulkResponseItemContainer",
-        "namespace": "_global.bulk"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BulkIndexResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "create",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BulkCreateResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "update",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BulkUpdateResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "delete",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BulkDeleteResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "BulkOperation",
-          "namespace": "_global.bulk"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "BulkUpdateOperation",
-        "namespace": "_global.bulk"
-      },
-      "properties": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "BulkResponseItemBase",
-          "namespace": "_global.bulk"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "BulkUpdateResponseItem",
-        "namespace": "_global.bulk"
-      },
-      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -12852,7 +12599,7 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkOperationContainer",
+                  "name": "OperationContainer",
                   "namespace": "_global.bulk"
                 }
               },
@@ -13059,7 +12806,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkResponseItemContainer",
+                  "name": "ResponseItemContainer",
                   "namespace": "_global.bulk"
                 }
               }
@@ -13094,6 +12841,259 @@
         "name": "Response",
         "namespace": "_global.bulk"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ResponseItemBase",
+        "namespace": "_global.bulk"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "result",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardStatistics",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "forced_refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "get",
+          "required": false,
+          "type": {
+            "generics": [
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "user_defined_value"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "InlineGet",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ResponseItemContainer",
+        "namespace": "_global.bulk"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexResponseItem",
+              "namespace": "_global.bulk"
+            }
+          }
+        },
+        {
+          "name": "create",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CreateResponseItem",
+              "namespace": "_global.bulk"
+            }
+          }
+        },
+        {
+          "name": "update",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "UpdateResponseItem",
+              "namespace": "_global.bulk"
+            }
+          }
+        },
+        {
+          "name": "delete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DeleteResponseItem",
+              "namespace": "_global.bulk"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "Operation",
+          "namespace": "_global.bulk"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UpdateOperation",
+        "namespace": "_global.bulk"
+      },
+      "properties": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ResponseItemBase",
+          "namespace": "_global.bulk"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UpdateResponseItem",
+        "namespace": "_global.bulk"
+      },
+      "properties": []
     },
     {
       "attachedBehaviors": [
@@ -14507,7 +14507,7 @@
       "inherits": {
         "type": {
           "name": "Response",
-          "namespace": "task.list_tasks"
+          "namespace": "task.list"
         }
       },
       "kind": "response",
@@ -98343,7 +98343,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.delete_license"
+        "namespace": "license.delete"
       },
       "path": [],
       "query": []
@@ -98362,58 +98362,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.delete_license"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "license.get_basic_license_status"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "eligible_to_start_basic",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "license.get_basic_license_status"
+        "namespace": "license.delete"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "LicenseInformation",
-        "namespace": "license.get_license"
+        "namespace": "license.get"
       },
       "properties": [
         {
@@ -98566,7 +98522,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.get_license"
+        "namespace": "license.get"
       },
       "path": [],
       "query": [
@@ -98605,7 +98561,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "LicenseInformation",
-                "namespace": "license.get_license"
+                "namespace": "license.get"
               }
             }
           }
@@ -98614,7 +98570,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.get_license"
+        "namespace": "license.get"
       }
     },
     {
@@ -98633,7 +98589,51 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.get_trial_license_status"
+        "namespace": "license.get_basic_status"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "eligible_to_start_basic",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "license.get_basic_status"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "license.get_trial_status"
       },
       "path": [],
       "query": []
@@ -98658,14 +98658,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.get_trial_license_status"
+        "namespace": "license.get_trial_status"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "Acknowledgement",
-        "namespace": "license.post_license"
+        "namespace": "license.post"
       },
       "properties": [
         {
@@ -98738,7 +98738,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.post_license"
+        "namespace": "license.post"
       },
       "path": [],
       "query": [
@@ -98766,7 +98766,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Acknowledgement",
-                "namespace": "license.post_license"
+                "namespace": "license.post"
               }
             }
           },
@@ -98797,7 +98797,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.post_license"
+        "namespace": "license.post"
       }
     },
     {
@@ -98816,7 +98816,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.start_basic_license"
+        "namespace": "license.post_start_basic"
       },
       "path": [],
       "query": [
@@ -98907,7 +98907,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.start_basic_license"
+        "namespace": "license.post_start_basic"
       }
     },
     {
@@ -98926,7 +98926,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "license.start_trial_license"
+        "namespace": "license.post_start_trial"
       },
       "path": [],
       "query": [
@@ -99013,7 +99013,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "license.start_trial_license"
+        "namespace": "license.post_start_trial"
       }
     },
     {
@@ -116662,7 +116662,7 @@
       "kind": "interface",
       "name": {
         "name": "HotThread",
-        "namespace": "nodes.nodes_hot_threads"
+        "namespace": "nodes.hot_threads"
       },
       "properties": [
         {
@@ -116733,7 +116733,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "nodes.nodes_hot_threads"
+        "namespace": "nodes.hot_threads"
       },
       "path": [
         {
@@ -116830,7 +116830,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "HotThread",
-                  "namespace": "nodes.nodes_hot_threads"
+                  "namespace": "nodes.hot_threads"
                 }
               }
             }
@@ -116840,14 +116840,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "nodes.nodes_hot_threads"
+        "namespace": "nodes.hot_threads"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "NodeInfo",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -116925,7 +116925,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoHttp",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -116948,7 +116948,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeJvmInfo",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -116971,7 +116971,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoNetwork",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -116982,7 +116982,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeOperatingSystemInfo",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117007,7 +117007,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeProcessInfo",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117029,7 +117029,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettings",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117050,7 +117050,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeThreadPoolInfo",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -117087,7 +117087,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoTransport",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117136,7 +117136,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoIngest",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117157,7 +117157,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeInfoAggregation",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -117168,7 +117168,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoAction",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117188,7 +117188,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoAggregation",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117211,7 +117211,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoBootstrap",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117231,7 +117231,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoClient",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117251,7 +117251,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoDiscover",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117271,7 +117271,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoHttp",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117327,7 +117327,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoIngest",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117339,7 +117339,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeInfoIngestProcessor",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -117350,7 +117350,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoIngestProcessor",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117370,7 +117370,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoJvmMemory",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117489,7 +117489,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoMemory",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117520,7 +117520,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoNetwork",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117530,7 +117530,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoNetworkInterface",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117551,7 +117551,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoNetworkInterface",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117593,7 +117593,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoOSCPU",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117690,7 +117690,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoPath",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117749,7 +117749,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoRepositories",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117759,7 +117759,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoRepositoriesUrl",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -117769,7 +117769,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoRepositoriesUrl",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117789,7 +117789,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoScript",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117820,7 +117820,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSearch",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117830,7 +117830,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSearchRemote",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -117840,7 +117840,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSearchRemote",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117860,7 +117860,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettings",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -117870,7 +117870,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsCluster",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117881,7 +117881,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsNode",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117892,7 +117892,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoPath",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117903,7 +117903,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoRepositories",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117914,7 +117914,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoDiscover",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117925,7 +117925,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoAction",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117936,7 +117936,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoClient",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117947,7 +117947,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsHttp",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117958,7 +117958,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoBootstrap",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117969,7 +117969,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsTransport",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117980,7 +117980,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsNetwork",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -117991,7 +117991,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpack",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118002,7 +118002,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoScript",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118013,7 +118013,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSearch",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -118023,7 +118023,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsCluster",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118055,7 +118055,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsClusterElection",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118076,7 +118076,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsClusterElection",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118096,7 +118096,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsHttp",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118115,7 +118115,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeInfoSettingsHttpType",
-                  "namespace": "nodes.nodes_info"
+                  "namespace": "nodes.info"
                 }
               }
             ],
@@ -118185,7 +118185,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsHttpType",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118205,7 +118205,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsNetwork",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118225,7 +118225,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsNode",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118274,7 +118274,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsTransport",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118293,7 +118293,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeInfoSettingsTransportType",
-                  "namespace": "nodes.nodes_info"
+                  "namespace": "nodes.info"
                 }
               }
             ],
@@ -118318,7 +118318,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoSettingsTransportFeatures",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -118328,7 +118328,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsTransportFeatures",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118348,7 +118348,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoSettingsTransportType",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118368,7 +118368,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoTransport",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118424,7 +118424,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpack",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118434,7 +118434,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackLicense",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118445,7 +118445,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecurity",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118473,7 +118473,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackLicense",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118483,7 +118483,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackLicenseType",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -118493,7 +118493,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackLicenseType",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118513,7 +118513,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecurity",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118523,7 +118523,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecuritySsl",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118545,7 +118545,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecuritySsl",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118556,7 +118556,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecurityAuthc",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -118566,7 +118566,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecurityAuthc",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118576,7 +118576,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecurityAuthcRealms",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118587,7 +118587,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoXpackSecurityAuthcToken",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -118597,7 +118597,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecurityAuthcRealms",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118617,7 +118617,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -118639,7 +118639,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -118661,7 +118661,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
-                "namespace": "nodes.nodes_info"
+                "namespace": "nodes.info"
               }
             }
           }
@@ -118672,7 +118672,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecurityAuthcRealmsStatus",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118703,7 +118703,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecurityAuthcToken",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118723,7 +118723,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeInfoXpackSecuritySsl",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118754,7 +118754,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeJvmInfo",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -118778,7 +118778,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoJvmMemory",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -118927,7 +118927,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeOperatingSystemInfo",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -119020,7 +119020,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoOSCPU",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -119031,7 +119031,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoMemory",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         },
@@ -119042,7 +119042,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeInfoMemory",
-              "namespace": "nodes.nodes_info"
+              "namespace": "nodes.info"
             }
           }
         }
@@ -119052,7 +119052,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeProcessInfo",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -119097,7 +119097,7 @@
       "kind": "interface",
       "name": {
         "name": "NodeThreadPoolInfo",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "properties": [
         {
@@ -119184,7 +119184,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
       },
       "path": [
         {
@@ -119286,7 +119286,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeInfo",
-                  "namespace": "nodes.nodes_info"
+                  "namespace": "nodes.info"
                 }
               }
             }
@@ -119302,7 +119302,201 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "nodes.nodes_info"
+        "namespace": "nodes.info"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeReloadException",
+        "namespace": "nodes.reload_secure_settings"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "reload_exception",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeReloadExceptionCausedBy",
+              "namespace": "nodes.reload_secure_settings"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeReloadExceptionCausedBy",
+        "namespace": "nodes.reload_secure_settings"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "caused_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeReloadExceptionCausedBy",
+              "namespace": "nodes.reload_secure_settings"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "secure_settings_password",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Password",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "nodes.reload_secure_settings"
+      },
+      "path": [
+        {
+          "name": "node_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeIds",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "cluster_name",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "nodes",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "items": [
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "Stats",
+                      "namespace": "nodes._types"
+                    }
+                  },
+                  {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "NodeReloadException",
+                      "namespace": "nodes.reload_secure_settings"
+                    }
+                  }
+                ],
+                "kind": "union_of"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "NodesResponseBase",
+          "namespace": "nodes._types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "nodes.reload_secure_settings"
       }
     },
     {
@@ -119321,7 +119515,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "nodes.nodes_stats"
+        "namespace": "nodes.stats"
       },
       "path": [
         {
@@ -119536,14 +119730,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "nodes.nodes_stats"
+        "namespace": "nodes.stats"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "NodeUsage",
-        "namespace": "nodes.nodes_usage"
+        "namespace": "nodes.usage"
       },
       "properties": [
         {
@@ -119626,7 +119820,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "nodes.nodes_usage"
+        "namespace": "nodes.usage"
       },
       "path": [
         {
@@ -119698,7 +119892,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "NodeUsage",
-                  "namespace": "nodes.nodes_usage"
+                  "namespace": "nodes.usage"
                 }
               }
             }
@@ -119714,201 +119908,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "nodes.nodes_usage"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeReloadException",
-        "namespace": "nodes.reload_secure_settings"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "reload_exception",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeReloadExceptionCausedBy",
-              "namespace": "nodes.reload_secure_settings"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "NodeReloadExceptionCausedBy",
-        "namespace": "nodes.reload_secure_settings"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "caused_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeReloadExceptionCausedBy",
-              "namespace": "nodes.reload_secure_settings"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "secure_settings_password",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Password",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "nodes.reload_secure_settings"
-      },
-      "path": [
-        {
-          "name": "node_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeIds",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "cluster_name",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Name",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "nodes",
-            "required": true,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Stats",
-                      "namespace": "nodes._types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "NodeReloadException",
-                      "namespace": "nodes.reload_secure_settings"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "NodesResponseBase",
-          "namespace": "nodes._types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "nodes.reload_secure_settings"
+        "namespace": "nodes.usage"
       }
     },
     {
@@ -130882,7 +130882,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "sql.clear_sql_cursor"
+        "namespace": "sql.clear_cursor"
       },
       "path": [],
       "query": []
@@ -130907,14 +130907,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "sql.clear_sql_cursor"
+        "namespace": "sql.clear_cursor"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "Column",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       },
       "properties": [
         {
@@ -131072,7 +131072,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       },
       "path": [],
       "query": [
@@ -131103,7 +131103,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Column",
-                  "namespace": "sql.query_sql"
+                  "namespace": "sql.query"
                 }
               }
             }
@@ -131128,7 +131128,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Row",
-                  "namespace": "sql.query_sql"
+                  "namespace": "sql.query"
                 }
               }
             }
@@ -131138,14 +131138,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       }
     },
     {
       "kind": "type_alias",
       "name": {
         "name": "Row",
-        "namespace": "sql.query_sql"
+        "namespace": "sql.query"
       },
       "type": {
         "kind": "array_of",
@@ -131216,7 +131216,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "sql.translate_sql"
+        "namespace": "sql.translate"
       },
       "path": [],
       "query": []
@@ -131307,7 +131307,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "sql.translate_sql"
+        "namespace": "sql.translate"
       }
     },
     {
@@ -131963,7 +131963,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.cancel_tasks"
+        "namespace": "task.cancel"
       },
       "path": [
         {
@@ -132088,7 +132088,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.cancel_tasks"
+        "namespace": "task.cancel"
       }
     },
     {
@@ -132107,7 +132107,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.get_task"
+        "namespace": "task.get"
       },
       "path": [
         {
@@ -132200,7 +132200,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.get_task"
+        "namespace": "task.get"
       }
     },
     {
@@ -132219,7 +132219,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.list_tasks"
+        "namespace": "task.list"
       },
       "path": [],
       "query": [
@@ -132402,7 +132402,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.list_tasks"
+        "namespace": "task.list"
       }
     },
     {
