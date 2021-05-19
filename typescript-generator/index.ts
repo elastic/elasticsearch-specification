@@ -307,6 +307,9 @@ function createName (type: M.TypeName): string {
 
   function strip (namespace: string): string {
     if (namespace.startsWith('_global')) {
+      if (namespace.includes('_types')) {
+        return namespace.slice(8).split('.').filter(n => n !== '_types').join('.')
+      }
       return namespace.slice(8)
     }
     if (namespace.includes('_types')) {

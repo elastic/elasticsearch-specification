@@ -33,7 +33,7 @@ import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class BulkResponseItemBase {
+export class ResponseItemBase {
   _id?: string | null
   _index: string
   status: integer
@@ -50,22 +50,22 @@ export class BulkResponseItemBase {
 }
 
 /** @variants container */
-export class BulkResponseItemContainer {
-  index?: BulkIndexResponseItem
-  create?: BulkCreateResponseItem
-  update?: BulkUpdateResponseItem
-  delete?: BulkDeleteResponseItem
+export class ResponseItemContainer {
+  index?: IndexResponseItem
+  create?: CreateResponseItem
+  update?: UpdateResponseItem
+  delete?: DeleteResponseItem
 }
 
-export class BulkIndexResponseItem extends BulkResponseItemBase {}
+export class IndexResponseItem extends ResponseItemBase {}
 
-export class BulkCreateResponseItem extends BulkResponseItemBase {}
+export class CreateResponseItem extends ResponseItemBase {}
 
-export class BulkUpdateResponseItem extends BulkResponseItemBase {}
+export class UpdateResponseItem extends ResponseItemBase {}
 
-export class BulkDeleteResponseItem extends BulkResponseItemBase {}
+export class DeleteResponseItem extends ResponseItemBase {}
 
-export class BulkOperation {
+export class Operation {
   _id: Id
   _index: IndexName
   retry_on_conflict: integer
@@ -75,17 +75,17 @@ export class BulkOperation {
 }
 
 /** @variants container */
-export class BulkOperationContainer {
-  index?: BulkIndexOperation
-  create?: BulkCreateOperation
-  update?: BulkUpdateOperation
-  delete?: BulkDeleteOperation
+export class OperationContainer {
+  index?: IndexOperation
+  create?: CreateOperation
+  update?: UpdateOperation
+  delete?: DeleteOperation
 }
 
-export class BulkIndexOperation extends BulkOperation {}
+export class IndexOperation extends Operation {}
 
-export class BulkCreateOperation extends BulkOperation {}
+export class CreateOperation extends Operation {}
 
-export class BulkUpdateOperation extends BulkOperation {}
+export class UpdateOperation extends Operation {}
 
-export class BulkDeleteOperation extends BulkOperation {}
+export class DeleteOperation extends Operation {}
