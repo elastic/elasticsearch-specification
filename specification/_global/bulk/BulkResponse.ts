@@ -18,12 +18,12 @@
  */
 
 import { long } from '@_types/Numeric'
-import { BulkResponseItemContainer } from './types'
+import { ResponseItemContainer } from './types'
 
 export class Response {
   body: {
     errors: boolean
-    items: BulkResponseItemContainer[]
+    items: ResponseItemContainer[]
     took: long
     ingest_took?: long
   }

@@ -27,7 +27,7 @@ import {
   WaitForActiveShards
 } from '@_types/common'
 import { Time } from '@_types/Time'
-import { BulkOperationContainer } from './types'
+import { OperationContainer } from './types'
 
 /**
  * @rest_spec_name bulk
@@ -52,5 +52,5 @@ export interface Request<TSource> extends RequestBase {
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
-  body?: Array<BulkOperationContainer | TSource>
+  body?: Array<OperationContainer | TSource>
 }
