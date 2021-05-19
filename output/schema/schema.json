@@ -11511,6 +11511,31 @@
       "contentType": [
         "application/json"
       ],
+      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html",
+      "name": "terms_enum",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "beta",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_terms_enum"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns information and statistics about terms in the fields of a particular document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
       "name": "termvectors",
