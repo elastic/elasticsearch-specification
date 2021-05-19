@@ -11514,10 +11514,17 @@
       "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-terms-enum.html",
       "name": "terms_enum",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "_global.terms_enum"
+      },
       "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
+      "response": {
+        "name": "Response",
+        "namespace": "_global.terms_enum"
+      },
+      "since": "7.14.0",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -26939,6 +26946,177 @@
       "name": {
         "name": "Response",
         "namespace": "_global.search_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The string to match at the start of indexed terms. If not provided, all terms in the field are considered.",
+            "name": "field",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "How many matching terms to return.",
+            "name": "size",
+            "required": false,
+            "serverDefault": "10",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum length of time to spend collecting results. Defaults to \"1s\" (one second). If the timeout is exceeded the complete flag set to false in the response and the results may be partial or empty.",
+            "name": "timeout",
+            "required": false,
+            "serverDefault": "1s",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "When true the provided search string is matched against index terms without case sensitivity.",
+            "name": "case_insensitive",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Allows to filter an index shard if the provided query rewrites to match_none.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
+            "name": "index_filter",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "The string after which terms in the index should be returned. Allows for a form of pagination if the last result from one request is passed as the search_after parameter for a subsequent request.",
+            "name": "string",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "search_after",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.terms_enum"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of data streams, indices, and index aliases to search. Wildcard (*) expressions are supported.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "_shards",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "terms",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "name": "complete",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.terms_enum"
       }
     },
     {

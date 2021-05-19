@@ -17,20 +17,12 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { WatcherMetric } from './types'
+import { ShardStatistics } from '@_types/Stats'
 
-/**
- * @rest_spec_name watcher.stats
- * @since 5.5.0
- * @stability TODO
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    metric?: WatcherMetric | WatcherMetric[]
-  }
-  query_parameters?: {
-    emit_stacktraces?: boolean
-    metric?: WatcherMetric | WatcherMetric[]
+export class Response {
+  body: {
+    _shards: ShardStatistics
+    terms: string[]
+    complete: boolean
   }
 }
