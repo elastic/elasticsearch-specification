@@ -20,7 +20,7 @@
 import { Pipeline } from '@ingest/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
-import { SimulatePipelineDocument } from './types'
+import { Document } from './types'
 
 /**
  * @rest_spec_name ingest.simulate
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
     verbose?: boolean
   }
   body?: {
-    docs?: SimulatePipelineDocument[]
+    docs?: Document[]
     pipeline?: Pipeline
   }
 }

@@ -9847,6 +9847,12 @@ export interface IngestPutPipelineRequest extends RequestBase {
 export interface IngestPutPipelineResponse extends AcknowledgedResponseBase {
 }
 
+export interface IngestSimulatePipelineDocument {
+  _id?: Id
+  _index?: IndexName
+  _source: any
+}
+
 export interface IngestSimulatePipelineDocumentSimulation {
   _id: Id
   _index: IndexName
@@ -9874,19 +9880,13 @@ export interface IngestSimulatePipelineRequest extends RequestBase {
   id?: Id
   verbose?: boolean
   body?: {
-    docs?: IngestSimulatePipelineSimulatePipelineDocument[]
+    docs?: IngestSimulatePipelineDocument[]
     pipeline?: IngestPipeline
   }
 }
 
 export interface IngestSimulatePipelineResponse {
   docs: IngestSimulatePipelinePipelineSimulation[]
-}
-
-export interface IngestSimulatePipelineSimulatePipelineDocument {
-  _id?: Id
-  _index?: IndexName
-  _source: any
 }
 
 export interface LicenseLicense {

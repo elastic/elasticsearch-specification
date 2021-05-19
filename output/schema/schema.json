@@ -97827,6 +97827,44 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Document",
+        "namespace": "ingest.simulate_pipeline"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_source",
+          "required": true,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "DocumentSimulation",
         "namespace": "ingest.simulate_pipeline"
       },
@@ -98030,7 +98068,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "SimulatePipelineDocument",
+                  "name": "Document",
                   "namespace": "ingest.simulate_pipeline"
                 }
               }
@@ -98112,44 +98150,6 @@
         "name": "Response",
         "namespace": "ingest.simulate_pipeline"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SimulatePipelineDocument",
-        "namespace": "ingest.simulate_pipeline"
-      },
-      "properties": [
-        {
-          "name": "_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_source",
-          "required": true,
-          "type": {
-            "kind": "user_defined_value"
-          }
-        }
-      ]
     },
     {
       "kind": "interface",

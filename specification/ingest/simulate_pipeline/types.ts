@@ -36,7 +36,7 @@ export class PipelineSimulation {
   status?: ActionStatusOptions
 }
 
-export class SimulatePipelineDocument {
+export class Document {
   _id?: Id
   _index?: IndexName
   _source: UserDefinedValue
