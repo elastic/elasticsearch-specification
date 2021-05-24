@@ -4042,7 +4042,6 @@ export interface QueryDslCommonTermsQuery extends QueryDslQueryBase {
 
 export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter?: QueryDslQueryContainer
-  boost?: float
 }
 
 export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {

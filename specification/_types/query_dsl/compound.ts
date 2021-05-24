@@ -42,7 +42,6 @@ export class BoostingQuery extends QueryBase {
 
 export class ConstantScoreQuery extends QueryBase {
   filter?: QueryContainer
-  boost?: float
 }
 
 export class DisMaxQuery extends QueryBase {

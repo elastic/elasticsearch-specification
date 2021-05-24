@@ -49849,17 +49849,6 @@
               "namespace": "_types.query_dsl"
             }
           }
-        },
-        {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
         }
       ]
     },
