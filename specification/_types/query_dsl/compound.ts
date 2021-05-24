@@ -48,7 +48,6 @@ export class ConstantScoreQuery extends QueryBase {
 export class DisMaxQuery extends QueryBase {
   queries?: QueryContainer[]
   tie_breaker?: double
-  boost?: float
 }
 
 export class FunctionScoreQuery extends QueryBase {
@@ -58,7 +57,6 @@ export class FunctionScoreQuery extends QueryBase {
   min_score?: double
   query?: QueryContainer
   score_mode?: FunctionScoreMode
-  boost?: float
 }
 
 export class ScoreFunctionBase {

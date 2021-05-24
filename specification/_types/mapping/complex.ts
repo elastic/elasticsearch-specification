@@ -38,17 +38,13 @@ export class FlattenedProperty extends PropertyBase {
 }
 
 export class NestedProperty extends CorePropertyBase {
-  dynamic?: boolean | DynamicMapping
   enabled?: boolean
-  properties?: Dictionary<PropertyName, Property>
   include_in_parent?: boolean
   include_in_root?: boolean
   type: 'nested'
 }
 
 export class ObjectProperty extends CorePropertyBase {
-  dynamic?: boolean | DynamicMapping
   enabled?: boolean
-  properties?: Dictionary<PropertyName, Property>
   type?: 'object'
 }

@@ -47731,29 +47731,6 @@
       },
       "properties": [
         {
-          "name": "dynamic",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DynamicMapping",
-                  "namespace": "_types.mapping"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
           "name": "enabled",
           "required": false,
           "type": {
@@ -47761,28 +47738,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyName",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Property",
-                "namespace": "_types.mapping"
-              }
             }
           }
         },
@@ -47971,29 +47926,6 @@
       },
       "properties": [
         {
-          "name": "dynamic",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DynamicMapping",
-                  "namespace": "_types.mapping"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
           "name": "enabled",
           "required": false,
           "type": {
@@ -48001,28 +47933,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PropertyName",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Property",
-                "namespace": "_types.mapping"
-              }
             }
           }
         },
@@ -50169,17 +50079,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
         }
       ]
     },
@@ -50672,17 +50571,6 @@
             "type": {
               "name": "FunctionScoreMode",
               "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
             }
           }
         }
