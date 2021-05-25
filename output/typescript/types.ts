@@ -3825,9 +3825,7 @@ export interface MappingMurmur3HashProperty extends MappingDocValuesPropertyBase
 }
 
 export interface MappingNestedProperty extends MappingCorePropertyBase {
-  dynamic?: boolean | MappingDynamicMapping
   enabled?: boolean
-  properties?: Record<PropertyName, MappingProperty>
   include_in_parent?: boolean
   include_in_root?: boolean
   type: 'nested'
@@ -3847,9 +3845,7 @@ export interface MappingNumberProperty extends MappingDocValuesPropertyBase {
 export type MappingNumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte' | 'unsigned_long'
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
-  dynamic?: boolean | MappingDynamicMapping
   enabled?: boolean
-  properties?: Record<PropertyName, MappingProperty>
   type?: 'object'
 }
 
@@ -4046,7 +4042,6 @@ export interface QueryDslCommonTermsQuery extends QueryDslQueryBase {
 
 export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter?: QueryDslQueryContainer
-  boost?: float
 }
 
 export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
@@ -4070,7 +4065,6 @@ export interface QueryDslDecayPlacement<TOrigin = unknown, TScale = unknown> {
 export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
   queries?: QueryDslQueryContainer[]
   tie_breaker?: double
-  boost?: float
 }
 
 export interface QueryDslDistanceFeatureQuery extends QueryDslQueryBase {
@@ -4121,7 +4115,6 @@ export interface QueryDslFunctionScoreQuery extends QueryDslQueryBase {
   min_score?: double
   query?: QueryDslQueryContainer
   score_mode?: QueryDslFunctionScoreMode
-  boost?: float
 }
 
 export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
