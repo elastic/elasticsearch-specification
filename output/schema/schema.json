@@ -10598,6 +10598,30 @@
       "contentType": [
         "application/json"
       ],
+      "description": "Verifies the logout response sent from the SAML IdP",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-complete-logout.html",
+      "name": "security.saml_complete_logout",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/saml/complete_logout"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Removes a node from the shutdown list",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.delete_node",
@@ -11188,6 +11212,27 @@
             "GET"
           ],
           "path": "/_snapshot/{repository}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Analyzes a repository for correctness and performance",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "name": "snapshot.repository_analyze",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_snapshot/{repository}/_analyze"
         }
       ],
       "visibility": "public"
