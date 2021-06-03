@@ -50,27 +50,27 @@ export class JobStatistics {
 
 export class Job {
   allow_lazy_open?: boolean
-  analysis_config?: AnalysisConfig
+  analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
+  background_persist_interval: Time
   count?: integer
   created_by?: EmptyObject
-  create_time?: integer
+  create_time: integer
   detectors?: JobStatistics
-  data_description?: DataDescription
-  description?: string
-  finished_time?: integer
+  data_description: DataDescription
+  description: string
+  finished_time: integer
   forecasts?: MlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: ModelPlotConfig
+  job_id: Id
+  job_type: string
+  model_plot: ModelPlotConfig
   model_size?: JobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
+  model_snapshot_id: Id
+  model_snapshot_retention_days: long
+  renormalization_window_days: long
+  results_index_name: IndexName
+  results_retention_days: long
+  groups: string[]
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
   job_version?: VersionString

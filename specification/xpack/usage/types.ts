@@ -331,6 +331,8 @@ export class FrozenIndices extends Base {
 
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
+  // TODO: xPack marks the entire Job definition as optional
+  //       while the MlJob has many required properties.
   jobs: Dictionary<string, Job>
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
