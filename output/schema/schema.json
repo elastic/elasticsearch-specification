@@ -62596,8 +62596,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ModelMemoryStatus",
-              "namespace": "cat.jobs"
+              "name": "MemoryStatus",
+              "namespace": "ml._types"
             }
           }
         },
@@ -62708,8 +62708,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ModelCategorizationStatus",
-              "namespace": "cat.jobs"
+              "name": "CategorizationStatus",
+              "namespace": "ml._types"
             }
           }
         },
@@ -63209,39 +63209,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "ok"
-        },
-        {
-          "name": "warn"
-        }
-      ],
-      "name": {
-        "name": "ModelCategorizationStatus",
-        "namespace": "cat.jobs"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "ok"
-        },
-        {
-          "name": "soft_limit"
-        },
-        {
-          "name": "hard_limit"
-        }
-      ],
-      "name": {
-        "name": "ModelMemoryStatus",
-        "namespace": "cat.jobs"
-      }
     },
     {
       "attachedBehaviors": [
@@ -99608,7 +99575,7 @@
         },
         {
           "name": "influencers",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -100625,6 +100592,21 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "ok"
+        },
+        {
+          "name": "warn"
+        }
+      ],
+      "name": {
+        "name": "CategorizationStatus",
+        "namespace": "ml._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Category",
@@ -100878,6 +100860,62 @@
     {
       "kind": "interface",
       "name": {
+        "name": "CustomSettings",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "custom_urls",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "UrlConfig",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        },
+        {
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "job_tags",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "DataCounts",
         "namespace": "ml._types"
       },
@@ -100895,7 +100933,7 @@
         },
         {
           "name": "earliest_record_timestamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100972,7 +101010,7 @@
         },
         {
           "name": "last_data_time",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100983,7 +101021,7 @@
         },
         {
           "name": "latest_empty_bucket_timestamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100994,7 +101032,7 @@
         },
         {
           "name": "latest_record_timestamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101005,7 +101043,7 @@
         },
         {
           "name": "latest_sparse_bucket_timestamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101016,7 +101054,7 @@
         },
         {
           "name": "latest_bucket_timestamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101439,7 +101477,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101461,7 +101499,7 @@
         },
         {
           "name": "node",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101553,6 +101591,17 @@
             "type": {
               "name": "double",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "average_search_time_per_bucket_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "number",
+              "namespace": "internal"
             }
           }
         }
@@ -102609,8 +102658,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -102621,8 +102670,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -103043,8 +103092,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -103673,7 +103722,7 @@
         },
         {
           "name": "conditions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -103787,7 +103836,7 @@
         },
         {
           "name": "function",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103826,17 +103875,6 @@
             "type": {
               "name": "Field",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -104348,28 +104386,6 @@
           }
         },
         {
-          "name": "count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmptyObject",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "name": "create_time",
           "required": true,
           "type": {
@@ -104377,17 +104393,6 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "detectors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "ml._types"
             }
           }
         },
@@ -104425,17 +104430,6 @@
           }
         },
         {
-          "name": "forecasts",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MlJobForecasts",
-              "namespace": "xpack.usage"
-            }
-          }
-        },
-        {
           "name": "job_id",
           "required": true,
           "type": {
@@ -104454,28 +104448,6 @@
             "type": {
               "name": "string",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model_plot",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "model_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "JobStatistics",
-              "namespace": "ml._types"
             }
           }
         },
@@ -104514,7 +104486,7 @@
         },
         {
           "name": "results_index_name",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104525,7 +104497,7 @@
         },
         {
           "name": "results_retention_days",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104536,7 +104508,7 @@
         },
         {
           "name": "groups",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -104566,7 +104538,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CustomSettings",
-              "namespace": "xpack.usage"
+              "namespace": "ml._types"
             }
           }
         },
@@ -104777,7 +104749,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104832,7 +104804,7 @@
         },
         {
           "name": "node",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104896,7 +104868,7 @@
       "properties": [
         {
           "name": "average_bucket_processing_time_ms",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104918,7 +104890,7 @@
         },
         {
           "name": "exponential_average_bucket_processing_time_ms",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104962,7 +104934,7 @@
         },
         {
           "name": "maximum_bucket_processing_time_ms",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104973,7 +104945,7 @@
         },
         {
           "name": "minimum_bucket_processing_time_ms",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105045,54 +105017,6 @@
       ]
     },
     {
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
-      "kind": "interface",
-      "name": {
-        "name": "ModelPlotConfigEnabled",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "annotations_enabled",
-          "required": false,
-          "serverDefault": true,
-          "since": "7.9.0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "stability: experimental",
-          "name": "terms",
-          "required": false,
-          "since": "7.9.0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "ModelSizeStats",
@@ -105156,7 +105080,7 @@
         },
         {
           "name": "model_bytes_exceeded",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105167,7 +105091,7 @@
         },
         {
           "name": "model_bytes_memory_limit",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105178,7 +105102,7 @@
         },
         {
           "name": "peak_model_bytes",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105248,8 +105172,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "CategorizationStatus",
+              "namespace": "ml._types"
             }
           }
         },
@@ -105370,7 +105294,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -105382,7 +105306,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -105402,7 +105326,7 @@
         {
           "description": "Summary information describing the model.",
           "name": "model_size_stats",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105454,7 +105378,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Time",
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -107462,8 +107386,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
@@ -108248,8 +108172,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -111105,8 +111029,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -111761,8 +111685,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -111882,7 +111806,31 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "job_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Job",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "datafeed_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Datafeed",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        ]
       },
       "inherits": {
         "type": {
@@ -112433,6 +112381,17 @@
             }
           },
           {
+            "name": "delayed_data_check_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DelayedDataCheckConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
             "name": "frequency",
             "required": false,
             "type": {
@@ -112465,6 +112424,17 @@
                   "name": "string",
                   "namespace": "internal"
                 }
+              }
+            }
+          },
+          {
+            "name": "indices_options",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatafeedIndicesOptions",
+                "namespace": "ml._types"
               }
             }
           },
@@ -112509,6 +112479,17 @@
               "type": {
                 "name": "Time",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
               }
             }
           },
@@ -112656,6 +112637,17 @@
             }
           },
           {
+            "name": "delayed_data_check_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DelayedDataCheckConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
             "name": "datafeed_id",
             "required": true,
             "type": {
@@ -112700,6 +112692,17 @@
             }
           },
           {
+            "name": "indices_options",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatafeedIndicesOptions",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
             "name": "max_empty_searches",
             "required": true,
             "type": {
@@ -112733,8 +112736,19 @@
             }
           },
           {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "name": "script_fields",
-            "required": true,
+            "required": false,
             "type": {
               "key": {
                 "kind": "instance_of",
@@ -112901,7 +112915,7 @@
           },
           {
             "name": "analysis_config",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -112922,6 +112936,28 @@
             }
           },
           {
+            "name": "background_persist_interval",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "custom_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CustomSettings",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
             "name": "data_description",
             "required": false,
             "type": {
@@ -112929,6 +112965,31 @@
               "type": {
                 "name": "DataDescription",
                 "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "daily_model_snapshot_retention_after_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "groups",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -112944,7 +113005,7 @@
             }
           },
           {
-            "name": "model_plot",
+            "name": "model_plot_config",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -112972,6 +113033,17 @@
               "kind": "instance_of",
               "type": {
                 "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "results_retention_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
                 "namespace": "_types"
               }
             }
@@ -113032,7 +113104,7 @@
           },
           {
             "name": "analysis_limits",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113064,6 +113136,17 @@
             }
           },
           {
+            "name": "custom_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CustomSettings",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
             "name": "data_description",
             "required": true,
             "type": {
@@ -113071,6 +113154,31 @@
               "type": {
                 "name": "DataDescription",
                 "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "daily_model_snapshot_retention_after_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "groups",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -113108,7 +113216,7 @@
             }
           },
           {
-            "name": "model_plot",
+            "name": "model_plot_config",
             "required": true,
             "type": {
               "kind": "instance_of",
@@ -113164,7 +113272,7 @@
           },
           {
             "name": "results_retention_days",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113819,7 +113927,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Ids",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -113902,8 +114010,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -114038,8 +114146,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -114312,7 +114420,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ModelPlotConfigEnabled",
+                "name": "ModelPlotConfig",
                 "namespace": "ml._types"
               }
             }
@@ -140571,62 +140679,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "CustomSettings",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "custom_urls",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "UrlConfig",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "job_tags",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "Base",
@@ -141872,37 +141924,6 @@
         },
         {
           "name": "classification",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MlJobForecasts",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "forecasted_jobs",
           "required": true,
           "type": {
             "kind": "instance_of",
