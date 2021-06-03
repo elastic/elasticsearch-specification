@@ -23,7 +23,7 @@ import {
   DataframeAnalyticsDestination,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { ByteSize, Id, VersionString } from '@_types/common'
+import { Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
 export class Response {
@@ -34,7 +34,7 @@ export class Response {
     source: DataframeAnalyticsSource
     description?: string
     dest: DataframeAnalyticsDestination
-    model_memory_limit: ByteSize
+    model_memory_limit: string
     allow_lazy_start: boolean
     max_num_threads: integer
     analysis: DataframeAnalysisContainer

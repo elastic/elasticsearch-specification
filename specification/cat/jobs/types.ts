@@ -18,18 +18,8 @@
  */
 
 import { JobState } from '@ml/_types/Job'
+import { CategorizationStatus, MemoryStatus } from '@ml/_types/Model'
 import { ByteSize, Id, NodeId } from '@_types/common'
-
-export enum ModelCategorizationStatus {
-  ok = 0,
-  warn = 1
-}
-
-export enum ModelMemoryStatus {
-  ok = 0,
-  soft_limit = 1,
-  hard_limit = 2
-}
 
 export class JobsRecord {
   /**
@@ -141,7 +131,7 @@ export class JobsRecord {
    * current memory status
    * @aliases mms, modelMemoryStatus
    */
-  'model.memory_status'?: ModelMemoryStatus
+  'model.memory_status'?: MemoryStatus
   /**
    * how much the model has exceeded the limit
    * @aliases mbe, modelBytesExceeded
@@ -176,7 +166,7 @@ export class JobsRecord {
    * current categorization status
    * @aliases mcs, modelCategorizationStatus
    */
-  'model.categorization_status'?: ModelCategorizationStatus
+  'model.categorization_status'?: CategorizationStatus
   /**
    * count of categorized documents
    * @aliases mcdc, modelCategorizedDocCount

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -28,7 +28,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    datafeed_id: Ids
+    datafeed_id: Id
   }
   query_parameters?: {
     /** @server_default true */

@@ -17,8 +17,11 @@
  * under the License.
  */
 
-export class Response {
-  body: {
-    model_memory_estimate: string
-  }
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UrlConfig } from '@xpack/usage/types'
+
+export class CustomSettings {
+  custom_urls?: UrlConfig[]
+  created_by?: string
+  job_tags?: Dictionary<string, string>
 }

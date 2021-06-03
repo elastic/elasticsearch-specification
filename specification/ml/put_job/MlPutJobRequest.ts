@@ -20,9 +20,11 @@
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
+import { CustomSettings } from '@ml/_types/Settings'
 import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ml.put_job
@@ -35,12 +37,17 @@ export interface Request extends RequestBase {
   }
   body?: {
     allow_lazy_open?: boolean
-    analysis_config?: AnalysisConfig
+    analysis_config: AnalysisConfig
     analysis_limits?: AnalysisLimits
+    background_persist_interval: Time
+    custom_settings?: CustomSettings
     data_description?: DataDescription
+    daily_model_snapshot_retention_after_days?: long
+    groups?: string[]
     description?: string
-    model_plot?: ModelPlotConfig
+    model_plot_config?: ModelPlotConfig
     model_snapshot_retention_days?: long
     results_index_name?: IndexName
+    results_retention_days?: long
   }
 }

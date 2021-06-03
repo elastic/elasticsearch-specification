@@ -22,13 +22,12 @@ import {
   DataframeAnalysisContainer,
   DataframeAnalyticsSource
 } from '@ml/_types/DataframeAnalytics'
-import { ByteSize } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class DataframePreviewConfig {
   source: DataframeAnalyticsSource
   analysis: DataframeAnalysisContainer
-  model_memory_limit?: ByteSize
+  model_memory_limit?: string
   max_num_threads?: integer
   analyzed_fields?: DataframeAnalysisAnalyzedFields
 }

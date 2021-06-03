@@ -165,12 +165,6 @@ export class IpFilter {
   transport: boolean
 }
 
-export class CustomSettings {
-  custom_urls?: UrlConfig[]
-  created_by?: string
-  job_tags?: Dictionary<string, string>
-}
-
 export class MlJobForecasts {
   total: long
   forecasted_jobs: long

@@ -22,7 +22,7 @@ import {
   AnalysisMemoryLimit
 } from '@ml/_types/Analysis'
 import { Detector } from '@ml/_types/Detector'
-import { ModelPlotConfigEnabled } from '@ml/_types/ModelPlot'
+import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html
      */
     description?: string
-    model_plot_config?: ModelPlotConfigEnabled
+    model_plot_config?: ModelPlotConfig
     /**
      * @server_default 1
      */

@@ -20,14 +20,8 @@
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { CustomSettings, MlJobForecasts } from '@xpack/usage/types'
-import {
-  EmptyObject,
-  Field,
-  Id,
-  IndexName,
-  VersionString
-} from '@_types/common'
+import { CustomSettings } from '@ml/_types/Settings'
+import { Field, Id, IndexName, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
@@ -53,24 +47,18 @@ export class Job {
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
   background_persist_interval: Time
-  count?: integer
-  created_by?: EmptyObject
   create_time: integer
-  detectors?: JobStatistics
   data_description: DataDescription
   description: string
   finished_time: integer
-  forecasts?: MlJobForecasts
   job_id: Id
   job_type: string
-  model_plot: ModelPlotConfig
-  model_size?: JobStatistics
   model_snapshot_id: Id
   model_snapshot_retention_days: long
   renormalization_window_days: long
-  results_index_name: IndexName
-  results_retention_days: long
-  groups: string[]
+  results_index_name?: IndexName
+  results_retention_days?: long
+  groups?: string[]
   model_plot_config?: ModelPlotConfig
   custom_settings?: CustomSettings
   job_version?: VersionString
@@ -79,12 +67,12 @@ export class Job {
 }
 
 export class JobStats {
-  assignment_explanation?: string
+  assignment_explanation: string
   data_counts: DataCounts
   forecasts_stats: JobForecastStatistics
   job_id: string
   model_size_stats: ModelSizeStats
-  node?: DiscoveryNode
+  node: DiscoveryNode
   open_time?: DateString
   state: JobState
   timing_stats: JobTimingStats
@@ -92,14 +80,14 @@ export class JobStats {
 }
 
 export class JobTimingStats {
-  average_bucket_processing_time_ms?: double
+  average_bucket_processing_time_ms: double
   bucket_count: long
-  exponential_average_bucket_processing_time_ms?: double
+  exponential_average_bucket_processing_time_ms: double
   exponential_average_bucket_processing_time_per_hour_ms: double
   job_id: Id
   total_bucket_processing_time_ms: double
-  maximum_bucket_processing_time_ms?: double
-  minimum_bucket_processing_time_ms?: double
+  maximum_bucket_processing_time_ms: double
+  minimum_bucket_processing_time_ms: double
 }
 
 export class JobForecastStatistics {
@@ -113,18 +101,18 @@ export class JobForecastStatistics {
 
 export class DataCounts {
   bucket_count: long
-  earliest_record_timestamp?: long
+  earliest_record_timestamp: long
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
   input_record_count: long
   invalid_date_count: long
   job_id: Id
-  last_data_time?: long
-  latest_empty_bucket_timestamp?: long
-  latest_record_timestamp?: long
-  latest_sparse_bucket_timestamp?: long
-  latest_bucket_timestamp?: long
+  last_data_time: long
+  latest_empty_bucket_timestamp: long
+  latest_record_timestamp: long
+  latest_sparse_bucket_timestamp: long
+  latest_bucket_timestamp: long
   missing_field_count: long
   out_of_order_timestamp_count: long
   processed_field_count: long

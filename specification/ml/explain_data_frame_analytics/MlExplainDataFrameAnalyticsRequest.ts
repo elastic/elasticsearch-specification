@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      * The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html
      */
-    model_memory_limit?: ByteSize
+    model_memory_limit?: string
     /** The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself. */
     max_num_threads?: integer
     /** Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis. */
