@@ -17,10 +17,15 @@
  * under the License.
  */
 
-import { ChunkingConfig } from '@ml/_types/Datafeed'
+import {
+  ChunkingConfig,
+  DatafeedIndicesOptions,
+  DelayedDataCheckConfig
+} from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
@@ -30,14 +35,17 @@ export class Response {
   body: {
     aggregations: Dictionary<string, AggregationContainer>
     chunking_config: ChunkingConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id
     frequency: Time
     indices: Indices
     job_id: Id
+    indices_options?: DatafeedIndicesOptions
     max_empty_searches: integer
     query: QueryContainer
     query_delay: Time
-    script_fields: Dictionary<string, ScriptField>
+    runtime_mappings?: RuntimeFields
+    script_fields?: Dictionary<string, ScriptField>
     scroll_size: integer
   }
 }

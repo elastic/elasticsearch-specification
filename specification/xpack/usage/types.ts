@@ -165,12 +165,6 @@ export class IpFilter {
   transport: boolean
 }
 
-export class CustomSettings {
-  custom_urls?: UrlConfig[]
-  created_by?: string
-  job_tags?: Dictionary<string, string>
-}
-
 export class MlJobForecasts {
   total: long
   forecasted_jobs: long
@@ -331,6 +325,8 @@ export class FrozenIndices extends Base {
 
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
+  // TODO: xPack marks the entire Job definition as optional
+  //       while the MlJob has many required properties.
   jobs: Dictionary<string, Job>
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs

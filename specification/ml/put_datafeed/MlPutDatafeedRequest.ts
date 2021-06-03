@@ -17,11 +17,16 @@
  * under the License.
  */
 
-import { ChunkingConfig } from '@ml/_types/Datafeed'
+import {
+  ChunkingConfig,
+  DatafeedIndicesOptions,
+  DelayedDataCheckConfig
+} from '@ml/_types/Datafeed'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Id, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
@@ -45,13 +50,16 @@ export interface Request extends RequestBase {
   body?: {
     aggregations?: Dictionary<string, AggregationContainer>
     chunking_config?: ChunkingConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
     frequency?: Time
     indices?: Indices
     indexes?: string[]
+    indices_options?: DatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
     query?: QueryContainer
     query_delay?: Time
+    runtime_mappings?: RuntimeFields
     script_fields?: Dictionary<string, ScriptField>
     scroll_size?: integer
   }

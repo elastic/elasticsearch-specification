@@ -65,9 +65,9 @@ export class DataframeAnalyticsFieldSelection {
 
 export class DataframeAnalyticsMemoryEstimation {
   /** Estimated memory usage under the assumption that overflowing to disk is allowed during data frame analytics. expected_memory_with_disk is usually smaller than expected_memory_without_disk as using disk allows to limit the main memory needed to perform data frame analytics. */
-  expected_memory_with_disk: ByteSize
+  expected_memory_with_disk: string
   /** Estimated memory usage under the assumption that the whole data frame analytics should happen in memory (i.e. without overflowing to disk). */
-  expected_memory_without_disk: ByteSize
+  expected_memory_without_disk: string
 }
 
 export class DataframeAnalyticsDestination {
@@ -213,7 +213,7 @@ export class DataframeAnalyticsSummary {
   dest: DataframeAnalyticsDestination
   analysis: DataframeAnalysisContainer
   description?: string
-  model_memory_limit?: ByteSize
+  model_memory_limit?: string
   max_num_threads?: integer
   analyzed_fields?: DataframeAnalysisAnalyzedFields
   allow_lazy_start?: boolean

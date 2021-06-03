@@ -19,6 +19,8 @@
 
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
+import { Job } from '@ml/_types/Job'
+import { Datafeed } from '@ml/_types/Datafeed'
 
 /**
  * @rest_spec_name ml.preview_datafeed
@@ -28,5 +30,9 @@ import { Id } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     datafeed_id: Id
+  }
+  body?: {
+    job_config?: Job
+    datafeed_config?: Datafeed
   }
 }
