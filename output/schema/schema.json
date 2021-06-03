@@ -104316,7 +104316,7 @@
         },
         {
           "name": "analysis_config",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104338,7 +104338,7 @@
         },
         {
           "name": "background_persist_interval",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104371,7 +104371,7 @@
         },
         {
           "name": "create_time",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104393,7 +104393,7 @@
         },
         {
           "name": "data_description",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104404,7 +104404,7 @@
         },
         {
           "name": "description",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104415,7 +104415,7 @@
         },
         {
           "name": "finished_time",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104437,7 +104437,7 @@
         },
         {
           "name": "job_id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104448,7 +104448,7 @@
         },
         {
           "name": "job_type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104459,7 +104459,7 @@
         },
         {
           "name": "model_plot",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104481,7 +104481,7 @@
         },
         {
           "name": "model_snapshot_id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104492,7 +104492,7 @@
         },
         {
           "name": "model_snapshot_retention_days",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104503,7 +104503,7 @@
         },
         {
           "name": "renormalization_window_days",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104514,7 +104514,7 @@
         },
         {
           "name": "results_index_name",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104525,7 +104525,7 @@
         },
         {
           "name": "results_retention_days",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104536,7 +104536,7 @@
         },
         {
           "name": "groups",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {

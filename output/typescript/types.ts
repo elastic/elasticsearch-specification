@@ -10589,27 +10589,27 @@ export interface MlInfluence {
 
 export interface MlJob {
   allow_lazy_open?: boolean
-  analysis_config?: MlAnalysisConfig
+  analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
-  background_persist_interval?: Time
+  background_persist_interval: Time
   count?: integer
   created_by?: EmptyObject
-  create_time?: integer
+  create_time: integer
   detectors?: MlJobStatistics
-  data_description?: MlDataDescription
-  description?: string
-  finished_time?: integer
+  data_description: MlDataDescription
+  description: string
+  finished_time: integer
   forecasts?: XpackUsageMlJobForecasts
-  job_id?: Id
-  job_type?: string
-  model_plot?: MlModelPlotConfig
+  job_id: Id
+  job_type: string
+  model_plot: MlModelPlotConfig
   model_size?: MlJobStatistics
-  model_snapshot_id?: Id
-  model_snapshot_retention_days?: long
-  renormalization_window_days?: long
-  results_index_name?: IndexName
-  results_retention_days?: long
-  groups?: string[]
+  model_snapshot_id: Id
+  model_snapshot_retention_days: long
+  renormalization_window_days: long
+  results_index_name: IndexName
+  results_retention_days: long
+  groups: string[]
   model_plot_config?: MlModelPlotConfig
   custom_settings?: XpackUsageCustomSettings
   job_version?: VersionString
