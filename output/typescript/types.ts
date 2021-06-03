@@ -1558,6 +1558,25 @@ export interface SearchTemplateResponse<TDocument = unknown> {
   hits: SearchHitsMetadata<TDocument>
 }
 
+export interface TermsEnumRequest extends RequestBase {
+  index: IndexName
+  body?: {
+    field: Field
+    size?: integer
+    timeout?: Time
+    case_insensitive?: boolean
+    index_filter?: QueryDslQueryContainer
+    string?: string
+    search_after?: string
+  }
+}
+
+export interface TermsEnumResponse {
+  _shards: ShardStatistics
+  terms: string[]
+  complete: boolean
+}
+
 export interface TermvectorsFieldStatistics {
   doc_count: integer
   sum_doc_freq: long

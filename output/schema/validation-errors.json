@@ -1708,12 +1708,6 @@
       ],
       "response": []
     },
-    "terms_enum": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "transform.delete_transform": {
       "request": [
         "Endpoint has \"@stability: TODO"
