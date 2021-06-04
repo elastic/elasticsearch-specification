@@ -33,7 +33,7 @@ export class Datafeed {
   chunking_config?: ChunkingConfig
   datafeed_id: Id
   frequency?: Timestamp
-  indices: Indices
+  indices: string[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer

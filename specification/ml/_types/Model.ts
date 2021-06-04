@@ -27,9 +27,9 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the job that the snapshot was created for. */
   job_id: Id
   /** The timestamp of the latest processed record. */
-  latest_record_time_stamp?: integer
+  latest_record_time_stamp: integer
   /** The timestamp of the latest bucket result. */
-  latest_result_time_stamp?: integer
+  latest_result_time_stamp: integer
   /** The minimum version required to be able to restore the model snapshot. */
   min_version: VersionString
   /** Summary information describing the model. */

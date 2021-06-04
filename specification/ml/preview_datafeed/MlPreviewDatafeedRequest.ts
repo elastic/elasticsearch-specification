@@ -29,7 +29,7 @@ import { Datafeed } from '@ml/_types/Datafeed'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    datafeed_id: Id
+    datafeed_id?: Id
   }
   body?: {
     job_config?: Job

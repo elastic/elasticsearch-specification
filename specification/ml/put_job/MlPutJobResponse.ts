@@ -39,7 +39,7 @@ export class Response {
     description: string
     job_id: Id
     job_type: string
-    model_plot_config: ModelPlotConfig
+    model_plot_config?: ModelPlotConfig
     model_snapshot_id: Id
     model_snapshot_retention_days: long
     renormalization_window_days: long

@@ -101261,10 +101261,13 @@
           "name": "indices",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -105290,7 +105293,7 @@
         {
           "description": "The timestamp of the latest processed record.",
           "name": "latest_record_time_stamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105302,7 +105305,7 @@
         {
           "description": "The timestamp of the latest bucket result.",
           "name": "latest_result_time_stamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109826,7 +109829,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -111122,8 +111125,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -111133,8 +111136,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -111144,8 +111147,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -111846,7 +111849,7 @@
       "path": [
         {
           "name": "datafeed_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112135,8 +112138,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -112283,8 +112286,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ByteSize",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -112406,10 +112409,13 @@
             "name": "indices",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -112673,10 +112679,13 @@
             "name": "indices",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -113217,7 +113226,7 @@
           },
           {
             "name": "model_plot_config",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
