@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Ids } from '@_types/common'
 
 /**
  * @rest_spec_name ml.get_datafeeds
@@ -27,7 +27,7 @@ import { Id } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    datafeed_id?: Id
+    datafeed_id?: Ids
   }
   query_parameters?: {
     allow_no_datafeeds?: boolean

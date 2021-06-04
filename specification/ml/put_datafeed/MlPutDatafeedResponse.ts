@@ -38,7 +38,7 @@ export class Response {
     delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id
     frequency: Time
-    indices: Indices
+    indices: string[]
     job_id: Id
     indices_options?: DatafeedIndicesOptions
     max_empty_searches: integer

@@ -18,7 +18,7 @@
  */
 
 import { CategorizationAnalyzer } from '@ml/_types/Analysis'
-import { ByteSize, VersionString } from '@_types/common'
+import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class Defaults {
@@ -32,9 +32,9 @@ export class NativeCode {
 }
 
 export class Limits {
-  max_model_memory_limit?: ByteSize
-  effective_max_model_memory_limit: ByteSize
-  total_ml_memory: ByteSize
+  max_model_memory_limit?: string
+  effective_max_model_memory_limit: string
+  total_ml_memory: string
 }
 
 export class Datafeeds {
