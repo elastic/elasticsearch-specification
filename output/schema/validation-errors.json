@@ -1182,6 +1182,12 @@
       ],
       "response": []
     },
+    "ml.reset_job": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.revert_model_snapshot": {
       "request": [
         "Endpoint has \"@stability: TODO"

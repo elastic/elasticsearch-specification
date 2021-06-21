@@ -7758,6 +7758,27 @@
       "accept": [
         "application/json"
       ],
+      "description": "Resets an existing anomaly detection job.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
+      "name": "ml.reset_job",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/anomaly_detectors/{job_id}/_reset"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "contentType": [
         "application/json"
       ],
