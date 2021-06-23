@@ -10328,8 +10328,8 @@
       "accept": [
         "application/json"
       ],
-      "description": "Retrieves application privileges.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-privileges.html",
+      "description": "Retrieves security privileges for the logged in user.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-user-privileges.html",
       "name": "security.get_user_privileges",
       "request": {
         "name": "Request",
