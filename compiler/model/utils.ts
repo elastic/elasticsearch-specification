@@ -611,7 +611,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       }
     } else if (tag === 'variant') {
       assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
-      property.container_property = true
+      property.containerProperty = true
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on property ${property.name}`)
     }
