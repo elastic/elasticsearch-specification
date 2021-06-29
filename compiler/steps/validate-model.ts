@@ -460,7 +460,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateProperties(typeDef.properties, openGenerics)
 
     if (typeDef.variants?.kind === 'container') {
-      const variants = typeDef.properties.filter(prop => !(prop.container_property ?? false))
+      const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
       if (variants.length === 1) {
         // Single-variant containers must have a required property
         if (!variants[0].required) {

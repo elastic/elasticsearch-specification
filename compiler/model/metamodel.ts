@@ -136,7 +136,7 @@ export class Property {
   /** An optional set of aliases for `name` */
   aliases?: string[]
   /** If the enclosing class is a variants container, is this a property of the container and not a variant? */
-  container_property?: boolean
+  containerProperty?: boolean
 }
 
 // ------------------------------------------------------------------------------------------------
