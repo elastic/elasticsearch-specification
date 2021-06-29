@@ -699,14 +699,14 @@ export function getNameSpace (node: Node): string {
   }
 
   return cleanPath(declaration.getSourceFile().getFilePath())
+}
 
-  function cleanPath (path: string): string {
-    path = dirname(path)
-      .replace(/.*[/\\]specification[/\\]?/, '')
-      .replace(/[/\\]/g, '.')
-    if (path === '') path = 'internal'
-    return path
-  }
+function cleanPath (path: string): string {
+  path = dirname(path)
+    .replace(/.*[/\\]specification[/\\]?/, '')
+    .replace(/[/\\]/g, '.')
+  if (path === '') path = 'internal'
+  return path
 }
 
 /**
@@ -779,24 +779,54 @@ export function parseVariantsTag (jsDoc: JSDoc[]): model.Variants | undefined {
     return undefined
   }
 
-  const [type, value] = tags.variants.split(' ')
+  // Parse variants type and optional attributes
+  const [type, ...values] = tags.variants.split(' ')
+  const props: Record<string, string> = {}
+  values.forEach(kv => {
+    const [k, v] = kv.split('=')
+    props[k] = v?.replace(/'/g, '')
+  })
+
+  let baseClass: model.TypeName | undefined
+  if (props.base_class != null) {
+    baseClass = {
+      name: props.base_class,
+      // FIXME: need to resolve the actual type location
+      namespace: cleanPath(jsDoc[0].getSourceFile().getFilePath())
+    }
+  }
+  delete props.base_class
+
+  function checkEmptyProps (): void {
+    assert(jsDoc, Object.keys(props).length === 0, `Unknown variants attributes: ${Object.keys(props).toString()}`)
+  }
+
   if (type === 'external') {
-    return { kind: 'external_tag' }
+    checkEmptyProps()
+    return {
+      kind: 'external_tag',
+      baseClass: baseClass
+    }
   }
 
   if (type === 'container') {
-    return { kind: 'container' }
+    checkEmptyProps()
+    return {
+      kind: 'container',
+      baseClass: baseClass
+    }
   }
 
-  assert(jsDoc, type === 'internal', `Bad variant type: ${type}`)
-  assert(jsDoc, typeof value === 'string', 'Internal variant requires a tag definition')
-  const [tag, property] = value.split('=')
-  assert(jsDoc, tag === 'tag', 'The tag name should be "tag"')
-  assert(jsDoc, typeof property === 'string', 'The tag property is not defined')
+  assert(jsDoc, type === 'internal', `Unknown variant type: ${type}`)
+  assert(jsDoc, props.tag !== null, 'Internal variant requires a tag definition')
 
+  const tag = props.tag
+  delete props.tag
+  checkEmptyProps()
   return {
     kind: 'internal_tag',
-    tag: property.replace(/'/g, '')
+    baseClass: baseClass,
+    tag: tag
   }
 }
 

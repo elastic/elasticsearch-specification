@@ -164,15 +164,22 @@ export type Variants = ExternalTag | InternalTag | Container
 
 export class ExternalTag {
   kind: 'external_tag'
+  /**
+   * Base class for all variants, if any. This is a hint for OOP language generators that can use this base class
+   * as a type that can be assigned any of the variants.
+   */
+  baseClass?: TypeName
 }
 
 export class InternalTag {
   kind: 'internal_tag'
+  baseClass?: TypeName
   tag: string // Name of the property that holds the variant tag
 }
 
 export class Container {
   kind: 'container'
+  baseClass?: TypeName
 }
 
 /**
