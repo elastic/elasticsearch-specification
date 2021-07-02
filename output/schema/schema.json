@@ -3385,6 +3385,30 @@
       "contentType": [
         "application/json"
       ],
+      "description": "Migrates the indices and ILM policies away from custom node attribute allocation routing to data tiers routing",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-migrate-to-data-tiers.html",
+      "name": "ilm.migrate_to_data_tiers",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ilm/migrate_to_data_tiers"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Manually moves an index into the specified step and executes that step.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-move-to-step.html",
       "name": "ilm.move_to_step",
@@ -8874,7 +8898,7 @@
         "application/json"
       ],
       "description": "Allows to use the Mustache language to pre-render a search definition.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html#_validating_templates",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/render-search-template-api.html",
       "name": "render_search_template",
       "request": {
         "name": "Request",
@@ -10619,6 +10643,30 @@
       "contentType": [
         "application/json"
       ],
+      "description": "Exchanges a SAML Response message for an Elasticsearch access token and refresh token pair",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-authenticate.html",
+      "name": "security.saml_authenticate",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/saml/authenticate"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Verifies the logout response sent from the SAML IdP",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-complete-logout.html",
       "name": "security.saml_complete_logout",
@@ -10632,6 +10680,102 @@
             "POST"
           ],
           "path": "/_security/saml/complete_logout"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Consumes a SAML LogoutRequest",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-invalidate.html",
+      "name": "security.saml_invalidate",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/saml/invalidate"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Invalidates an access token and a refresh token that were generated via the SAML Authenticate API",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-logout.html",
+      "name": "security.saml_logout",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/saml/logout"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Creates a SAML authentication request",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-prepare-authentication.html",
+      "name": "security.saml_prepare_authentication",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_security/saml/prepare"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Generates SAML metadata for the Elastic stack SAML 2.0 Service Provider",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-saml-sp-metadata.html",
+      "name": "security.saml_service_provider_metadata",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/saml/metadata/{realm_name}"
         }
       ],
       "visibility": "public"
