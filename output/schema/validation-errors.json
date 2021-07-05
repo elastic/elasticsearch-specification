@@ -558,6 +558,12 @@
       ],
       "response": []
     },
+    "ilm.migrate_to_data_tiers": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ilm.put_lifecycle": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1558,7 +1564,37 @@
       ],
       "response": []
     },
+    "security.saml_authenticate": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.saml_complete_logout": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.saml_invalidate": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.saml_logout": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.saml_prepare_authentication": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.saml_service_provider_metadata": {
       "request": [
         "Missing request & response"
       ],
