@@ -23,4 +23,4 @@
  * Also accepts an array of stop words.
  * @class_serializer: StopWordsFormatter
  */
-export type StopWords = string | string[]
+export type StopWords = string[]

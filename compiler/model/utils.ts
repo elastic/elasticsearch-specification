@@ -45,6 +45,7 @@ import { dirname, sep } from 'path'
  */
 export const knownBehaviors = [
   'AdditionalProperties',
+  'AdditionalProperty',
   'CommonQueryParameters',
   'CommonCatQueryParameters'
 ]
@@ -228,7 +229,8 @@ export function modelType (node: Node): model.ValueOf {
           return type
         }
 
-        case 'SingleKeyDictionary': {
+        case 'SingleKeyDictionary':
+        case 'AdditionalProperty': {
           assert(node, node.getTypeArguments().length === 2, 'A SingleKeyDictionary must have two arguments')
           const [key, value] = node.getTypeArguments().map(node => modelType(node))
           const type: model.DictionaryOf = {
@@ -549,7 +551,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant']
+  const validTags = ['class_serializer', 'doc_url', 'behavior', 'variants', 'variant', 'shortcut_property']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -559,6 +561,12 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
     if (tag === 'stability') {
     } else if (tag.endsWith('_serializer')) {
+    } else if (tag === 'shortcut_property') {
+      if (type.kind === 'interface') {
+        type.shortcutProperty = value
+      } else {
+        assert(jsDocs, false, 'Request and Responses cannot have @shortcut_property')
+      }
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
     } else if (tag === 'doc_url') {

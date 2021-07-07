@@ -31,28 +31,34 @@ export enum ChildScoreMode {
 }
 
 export class HasChildQuery extends QueryBase {
+  /** @server_default false */
   ignore_unmapped?: boolean
   inner_hits?: InnerHits
   max_children?: integer
   min_children?: integer
-  query?: QueryContainer
+  query: QueryContainer
+  /** @server_default 'none' */
   score_mode?: ChildScoreMode
-  type?: RelationName
+  type: RelationName
 }
 
 export class HasParentQuery extends QueryBase {
+  /** @server_default false */
   ignore_unmapped?: boolean
   inner_hits?: InnerHits
-  parent_type?: RelationName
-  query?: QueryContainer
+  parent_type: RelationName
+  query: QueryContainer
+  /** @server_default false */
   score?: boolean
 }
 
 export class NestedQuery extends QueryBase {
+  /** @server_default false */
   ignore_unmapped?: boolean
   inner_hits?: InnerHits
-  path?: Field
-  query?: QueryContainer
+  path: Field
+  query: QueryContainer
+  /** @server_default 'avg' */
   score_mode?: NestedScoreMode
 }
 
@@ -66,6 +72,7 @@ export enum NestedScoreMode {
 
 export class ParentIdQuery extends QueryBase {
   id?: Id
+  /** @server_default false */
   ignore_unmapped?: boolean
   type?: RelationName
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
+// Note: corresponding server enum is uppercase, but parsing is case-insensitive. Tests only use lower-case identifiers
+// so we only keep those.
 export enum Operator {
   and = 0,
-  or = 1,
-  AND = 2,
-  OR = 3
+  or = 1
 }

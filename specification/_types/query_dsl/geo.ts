@@ -17,28 +17,44 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
+import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import {
   Distance,
   GeoDistanceType,
+  GeoShape,
   GeoShapeRelation,
   LatLon
 } from '@_types/Geo'
 import { double } from '@_types/Numeric'
 import { FieldLookup, QueryBase } from './abstractions'
+import { Field } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
+/**
+ * A geo bounding box. The various coordinates can be mixed. When set, `wkt` takes precedence over all other fields.
+ */
 export class BoundingBox {
   bottom_right?: GeoLocation
   top_left?: GeoLocation
+
+  top_right?: GeoLocation
+  bottom_left?: GeoLocation
+
+  top?: double
+  left?: double
+  right?: double
+  bottom?: double
+
   wkt?: string
 }
 
-export class GeoBoundingBoxQuery extends QueryBase {
-  bounding_box?: BoundingBox
+export class GeoBoundingBoxQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, BoundingBox> {
+  /** @obsolete 7.14.0 */
   type?: GeoExecution
+  /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
-  top_left?: LatLon
-  bottom_right?: LatLon
 }
 
 export enum GeoExecution {
@@ -48,14 +64,23 @@ export enum GeoExecution {
 
 export class GeoDistanceQuery
   extends QueryBase
-  implements AdditionalProperties<string, GeoLocation> {
+  implements AdditionalProperty<Field, GeoLocation> {
   distance?: Distance
+  /** @server_default 'arc' */
   distance_type?: GeoDistanceType
+  /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
 }
 
-export class GeoPolygonQuery extends QueryBase {
-  points?: GeoLocation[]
+export class GeoPolygonPoints {
+  points: GeoLocation[]
+}
+
+/** @obsolete 7.12.0 Use geo-shape instead. */
+export class GeoPolygonQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, GeoPolygonPoints> {
+  /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
 }
 
@@ -64,15 +89,18 @@ export enum GeoFormat {
   WellKnownText = 1
 }
 
-export class GeoShape {
-  type?: string
-}
-
-export class GeoShapeQuery extends QueryBase {
-  ignore_unmapped?: boolean
+export class GeoShapeFieldQuery {
+  shape?: GeoShape
   indexed_shape?: FieldLookup
   relation?: GeoShapeRelation
-  shape?: GeoShape
+}
+
+// GeoShape query doesn't follow the common pattern of having a single field-name property
+// holding also the query base fields (boost and _name)
+export class GeoShapeQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, GeoShapeFieldQuery> {
+  ignore_unmapped?: boolean
 }
 
 export enum CharacterType {

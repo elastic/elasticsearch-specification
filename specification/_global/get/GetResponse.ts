@@ -38,7 +38,7 @@ export class Response<TDocument> {
     _routing?: string
     _seq_no?: SequenceNumber
     _source?: TDocument
-    /** deprecated since 7.0.0 */
+    /** @obsolete 7.0.0 */
     _type?: Type
     _version?: VersionNumber
   }

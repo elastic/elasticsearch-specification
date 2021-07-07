@@ -19,6 +19,4 @@
 
 import { QueryBase } from './abstractions'
 
-export class MatchAllQuery extends QueryBase {
-  norm_field?: string
-}
+export class MatchAllQuery extends QueryBase {}

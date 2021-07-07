@@ -28,7 +28,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    /** Deprecated with 7.0.0 */
+    /** @obsolete 7.0.0 */
     scroll_id?: Id
   }
   query_parameters?: {
@@ -38,7 +38,7 @@ export interface Request extends RequestBase {
      * @server_default 1d
      */
     scroll?: Time
-    /** Deprecated with 7.0.0 */
+    /** @obsolete 7.0.0 */
     scroll_id?: ScrollId
     /**
      * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.

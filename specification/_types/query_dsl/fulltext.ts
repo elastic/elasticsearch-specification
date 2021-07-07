@@ -28,14 +28,18 @@ import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { QueryBase } from './abstractions'
 import { Operator } from './Operator'
+import { DateMath, TimeZone } from '@_types/Time'
 
+/**
+ * @shortcut_property query
+ */
 export class CommonTermsQuery extends QueryBase {
   analyzer?: string
   cutoff_frequency?: double
   high_freq_operator?: Operator
   low_freq_operator?: Operator
   minimum_should_match?: MinimumShouldMatch
-  query?: string
+  query: string
 }
 
 export class Intervals {
@@ -43,20 +47,20 @@ export class Intervals {
 }
 
 export class IntervalsAllOf {
-  intervals?: IntervalsContainer[]
+  intervals: IntervalsContainer[]
+  /** @server_default -1 */
   max_gaps?: integer
+  /** @server_default false */
   ordered?: boolean
   filter?: IntervalsFilter
 }
 
 export class IntervalsAnyOf {
-  intervals?: IntervalsContainer[]
+  intervals: IntervalsContainer[]
   filter?: IntervalsFilter
 }
 
-/**
- * @variants container
- */
+/** @variants container */
 export class IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf
@@ -66,6 +70,8 @@ export class IntervalsContainer {
   wildcard?: IntervalsWildcard
 }
 
+/** @variants container */
+// Note: doc says filters are queries, but they're actually intervals
 export class IntervalsFilter {
   after?: IntervalsContainer
   before?: IntervalsContainer
@@ -81,27 +87,33 @@ export class IntervalsFilter {
 export class IntervalsFuzzy {
   analyzer?: string
   fuzziness?: Fuzziness
+  /** @server_default 0 */
   prefix_length?: integer
-  term?: string
+  term: string
+  /** @server_default true */
   transpositions?: boolean
   use_field?: Field
 }
 
 export class IntervalsMatch {
   analyzer?: string
+  /** @server_default -1 */
   max_gaps?: integer
+  /** @server_default false */
   ordered?: boolean
-  query?: string
+  query: string
   use_field?: Field
   filter?: IntervalsFilter
 }
 
 export class IntervalsPrefix {
   analyzer?: string
-  prefix?: string
+  prefix: string
   use_field?: Field
 }
 
+/** @variants container */
+// Note: similar to IntervalsContainer, but has to be duplicated because of the QueryBase parent class
 export class IntervalsQuery extends QueryBase {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf
@@ -113,26 +125,38 @@ export class IntervalsQuery extends QueryBase {
 
 export class IntervalsWildcard {
   analyzer?: string
-  pattern?: string
+  pattern: string
   use_field?: Field
 }
 
+/** @shortcut_property query */
 export class MatchQuery extends QueryBase {
   analyzer?: string
+  /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
+  /** @obsolete 7.3.0 */
   cutoff_frequency?: double
   fuzziness?: Fuzziness
   fuzzy_rewrite?: MultiTermQueryRewrite
+  /** @server_default true */
   fuzzy_transpositions?: boolean
+  /** @server_default false */
   lenient?: boolean
+  /** @server_default 50 */
   max_expansions?: integer
   minimum_should_match?: MinimumShouldMatch
+  /** @server_default 'or' */
   operator?: Operator
+  /** @server_default 0 */
   prefix_length?: integer
-  query?: string | float | boolean
+  // FIXME: docs states "date" as a possible format. Add DateMath, or DateMathTime?
+  //        Should also be consisitent with MultiMatchQuery.query
+  query: string | float | boolean
+  /** @server_default 'none' */
   zero_terms_query?: ZeroTermsQuery
 }
 
+/** @shortcut_property query */
 export class MatchBoolPrefixQuery extends QueryBase {
   analyzer?: string
   fuzziness?: Fuzziness
@@ -142,41 +166,52 @@ export class MatchBoolPrefixQuery extends QueryBase {
   minimum_should_match?: MinimumShouldMatch
   operator?: Operator
   prefix_length?: integer
-  query?: string
+  query: string
 }
 
+/** @shortcut_property query */
 export class MatchPhraseQuery extends QueryBase {
   analyzer?: string
-  query?: string
+  query: string
+  /** @server_default 0 */
   slop?: integer
+  zero_terms_query?: ZeroTermsQuery
 }
 
+/** @shortcut_property query */
 export class MatchPhrasePrefixQuery extends QueryBase {
   analyzer?: string
   max_expansions?: integer
-  query?: string
+  query: string
   slop?: integer
   zero_terms_query?: ZeroTermsQuery
 }
 
 export class MultiMatchQuery extends QueryBase {
   analyzer?: string
+  /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
+  /** @obsolete 7.3.0 */
   cutoff_frequency?: double
   fields?: Fields
   fuzziness?: Fuzziness
   fuzzy_rewrite?: MultiTermQueryRewrite
+  /** @server_default true */
   fuzzy_transpositions?: boolean
+  /** @server_default false */
   lenient?: boolean
+  /** @server_default 50 */
   max_expansions?: integer
   minimum_should_match?: MinimumShouldMatch
+  /** @server_default 'or' */
   operator?: Operator
+  /** @server_default 0 */
   prefix_length?: integer
-  query?: string
+  query: string
   slop?: integer
   tie_breaker?: double
+  /** @server_default 'best_fields' */
   type?: TextQueryType
-  use_dis_max?: boolean
   zero_terms_query?: ZeroTermsQuery
 }
 
@@ -195,30 +230,40 @@ export enum ZeroTermsQuery {
 }
 
 export class QueryStringQuery extends QueryBase {
+  /** @server_default true */
   allow_leading_wildcard?: boolean
   analyzer?: string
+  /** @server_default false */
   analyze_wildcard?: boolean
+  /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
   default_field?: Field
+  /** @server_default 'or' */
   default_operator?: Operator
+  /** @server_default true */
   enable_position_increments?: boolean
+  /** @server_default false */
   escape?: boolean
-  fields?: Fields
+  fields?: Field[]
   fuzziness?: Fuzziness
+  /** @server_default 50 */
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_rewrite?: MultiTermQueryRewrite
   fuzzy_transpositions?: boolean
+  /** @server_default false */
   lenient?: boolean
+  /** @server_default 10000 */
   max_determinized_states?: integer
   minimum_should_match?: MinimumShouldMatch
   phrase_slop?: double
-  query?: string
+  query: string
   quote_analyzer?: string
   quote_field_suffix?: string
   rewrite?: MultiTermQueryRewrite
   tie_breaker?: double
-  time_zone?: string
+  time_zone?: TimeZone
+  /** @server_default 'best_fields' */
   type?: TextQueryType
 }
 
@@ -240,16 +285,20 @@ export enum SimpleQueryStringFlags {
 
 export class SimpleQueryStringQuery extends QueryBase {
   analyzer?: string
+  /** @server_default false */
   analyze_wildcard?: boolean
+  /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
+  /** @server_default 'or' */
   default_operator?: Operator
-  fields?: Fields
+  fields?: Field[]
   flags?: SimpleQueryStringFlags | string
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean
+  /** @server_default false */
   lenient?: boolean
   minimum_should_match?: MinimumShouldMatch
-  query?: string
+  query: string
   quote_field_suffix?: string
 }

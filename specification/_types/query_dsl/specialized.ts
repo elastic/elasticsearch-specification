@@ -32,48 +32,74 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { Distance } from '@_types/Geo'
-import { double, integer, long } from '@_types/Numeric'
+import { Distance, GeoShape } from '@_types/Geo'
+import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Time } from '@_types/Time'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
-import { GeoCoordinate, GeoShape } from './geo'
+import { GeoCoordinate } from './geo'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 
-export class DistanceFeatureQuery extends QueryBase {
-  origin?: Array<number> | GeoCoordinate | DateMath
-  pivot?: Distance | Time
-  field?: Field
+export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
+  origin: TOrigin
+  pivot: TDistance
+  field: Field
 }
+
+export class GeoDistanceFeatureQuery extends DistanceFeatureQueryBase<
+  GeoCoordinate,
+  Distance
+> {}
+
+export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
+  DateMath,
+  Time
+> {}
+
+export type DistanceFeatureQuery =
+  | GeoDistanceFeatureQuery
+  | DateDistanceFeatureQuery
 
 export class MoreLikeThisQuery extends QueryBase {
   analyzer?: string
   boost_terms?: double
-  fields?: Fields
+  /** @server_default true */
+  fail_on_unsupported_field?: boolean
+  fields?: Field[]
+  /** @server_default false */
   include?: boolean
-  like?: Like | Like[]
+  like: Like | Like[]
   max_doc_freq?: integer
+  /** @server_default 25 */
   max_query_terms?: integer
   max_word_length?: integer
+  /** @server_default 5 */
   min_doc_freq?: integer
   minimum_should_match?: MinimumShouldMatch
+  /** @server_default 2 */
   min_term_freq?: integer
+  /** @server_default 0 */
   min_word_length?: integer
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
   stop_words?: StopWords
   unlike?: Like | Like[]
   version?: VersionNumber
+  /** @server_default 'internal' */
   version_type?: VersionType
 }
 
 export class LikeDocument {
   doc?: UserDefinedValue
-  fields?: Fields
-  _id?: Id | number
+  fields?: Field[]
+  _id?: Id
   _type?: Type
   _index?: IndexName
   per_field_analyzer?: Dictionary<Field, string>
   routing?: Routing
+  version?: VersionNumber
+  /** @server_default 'internal' */
+  version_type?: VersionType
 }
 
 /**
@@ -86,35 +112,64 @@ export type Like = string | LikeDocument
 export class PercolateQuery extends QueryBase {
   document?: UserDefinedValue
   documents?: UserDefinedValue[]
-  field?: Field
+  field: Field
   id?: Id
   index?: IndexName
+  name?: string
   preference?: string
   routing?: Routing
   version?: VersionNumber
 }
 
 export class PinnedQuery extends QueryBase {
-  ids?: Id[] | long[]
-  organic?: QueryContainer
+  ids: Id[]
+  organic: QueryContainer
 }
 
 export class RankFeatureFunction {}
 
+export class RankFeatureFunctionLinear extends RankFeatureFunction {}
+
+export class RankFeatureFunctionLogarithm extends RankFeatureFunction {
+  scaling_factor: float
+}
+
+export class RankFeatureFunctionSaturation extends RankFeatureFunction {
+  pivot?: float
+}
+
+export class RankFeatureFunctionSigmoid extends RankFeatureFunction {
+  pivot: float
+  exponent: float
+}
+
 export class RankFeatureQuery extends QueryBase {
-  function?: RankFeatureFunction
+  field: Field
+
+  // This is actually an inline optional container: at most one of these fields can exist
+  saturation?: RankFeatureFunctionSaturation
+  log?: RankFeatureFunctionLogarithm
+  linear?: RankFeatureFunctionLinear
+  sigmoid?: RankFeatureFunctionSigmoid
 }
 
 export class ScriptQuery extends QueryBase {
-  script?: Script
+  script: Script
 }
 
 export class ScriptScoreQuery extends QueryBase {
-  query?: QueryContainer
-  script?: Script
+  min_score?: float
+  query: QueryContainer
+  script: Script
 }
 
-export class ShapeQuery extends QueryBase {
+// Shape query doesn't follow the common pattern of having a single field-name property
+// holding also the query base fields (boost and _name)
+export class ShapeQuery
+  extends QueryBase
+  implements AdditionalProperty<Field, ShapeFieldQuery> {}
+
+export class ShapeFieldQuery {
   ignore_unmapped?: boolean
   indexed_shape?: FieldLookup
   relation?: ShapeRelation
