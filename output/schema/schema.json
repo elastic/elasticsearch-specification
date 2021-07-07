@@ -9092,7 +9092,7 @@
         "application/json"
       ],
       "description": "Rollup an index",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-api.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-rollup.html",
       "name": "rollup.rollup",
       "request": {
         "name": "Request",
