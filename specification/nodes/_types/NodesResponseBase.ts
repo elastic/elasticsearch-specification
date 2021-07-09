@@ -23,6 +23,7 @@ export class NodesResponseBase {
   /**
    * Contains statistics about the number of nodes selected by the request’s node filters.
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes
+   * @identifier node_stats
    */
   _nodes: NodeStatistics
 }
