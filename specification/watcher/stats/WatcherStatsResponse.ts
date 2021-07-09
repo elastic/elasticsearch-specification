@@ -23,9 +23,10 @@ import { WatcherNodeStats } from './types'
 
 export class Response {
   body: {
+    /** @identifier node_stats */
+    _nodes: NodeStatistics
     cluster_name: Name
     manually_stopped: boolean
     stats: WatcherNodeStats[]
-    _nodes: NodeStatistics
   }
 }

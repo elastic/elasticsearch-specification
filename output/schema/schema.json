@@ -116461,6 +116461,7 @@
         {
           "description": "Contains statistics about the number of nodes selected by the request’s node filters.",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes",
+          "identifier": "node_stats",
           "name": "_nodes",
           "required": true,
           "type": {
@@ -123198,6 +123199,7 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -123287,6 +123289,7 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -123391,6 +123394,18 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
+            "name": "_nodes",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "cluster_name",
             "required": true,
             "type": {
@@ -123420,17 +123435,6 @@
                   "name": "ClusterNode",
                   "namespace": "security._types"
                 }
-              }
-            }
-          },
-          {
-            "name": "_nodes",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStatistics",
-                "namespace": "_types"
               }
             }
           }
@@ -123480,6 +123484,7 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -123591,6 +123596,7 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -139682,6 +139688,18 @@
         "kind": "properties",
         "properties": [
           {
+            "identifier": "node_stats",
+            "name": "_nodes",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "cluster_name",
             "required": true,
             "type": {
@@ -139714,17 +139732,6 @@
                   "name": "WatcherNodeStats",
                   "namespace": "watcher.stats"
                 }
-              }
-            }
-          },
-          {
-            "name": "_nodes",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeStatistics",
-                "namespace": "_types"
               }
             }
           }
