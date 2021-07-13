@@ -11544,6 +11544,69 @@
       "accept": [
         "application/json"
       ],
+      "description": "Deletes an async SQL search or a stored synchronous SQL search. If the search is still running, the API cancels it.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-async-sql-search-api.html",
+      "name": "sql.delete_async",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_sql/async/delete/{id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Returns the current status and available results for an async SQL search or stored synchronous SQL search",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-api.html",
+      "name": "sql.get_async",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_sql/async/{id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Returns the current status of an async SQL search or a stored synchronous SQL search",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-sql-search-status-api.html",
+      "name": "sql.get_async_status",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_sql/async/status/{id}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "contentType": [
         "application/json"
       ],
