@@ -1726,6 +1726,24 @@
       ],
       "response": []
     },
+    "sql.delete_async": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "sql.get_async": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "sql.get_async_status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ssl.certificates": {
       "request": [
         "Endpoint has \"@stability: TODO"
