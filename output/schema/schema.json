@@ -4039,6 +4039,27 @@
       "accept": [
         "application/json"
       ],
+      "description": "Analyzes the disk usage of each field of an index or data stream",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-disk-usage.html",
+      "name": "indices.disk_usage",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/_disk_usage"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns information about whether a particular index exists.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-exists.html",
       "name": "indices.exists",

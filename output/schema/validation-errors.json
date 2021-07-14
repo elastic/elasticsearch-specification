@@ -660,6 +660,12 @@
       ],
       "response": []
     },
+    "indices.disk_usage": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.exists": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1171,6 +1177,12 @@
       "response": []
     },
     "ml.put_calendar_job": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.put_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
