@@ -696,6 +696,12 @@
       ],
       "response": []
     },
+    "indices.field_usage_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.flush": {
       "request": [
         "Endpoint has \"@stability: TODO"
