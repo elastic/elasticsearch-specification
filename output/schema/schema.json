@@ -4206,6 +4206,27 @@
       "accept": [
         "application/json"
       ],
+      "description": "Returns the field usage stats for each field of an index",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-field-usage-stats.html",
+      "name": "indices.field_usage_stats",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/{index}/_field_usage_stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Performs the flush operation on one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-flush.html",
       "name": "indices.flush",
