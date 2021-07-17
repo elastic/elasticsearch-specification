@@ -4207,7 +4207,7 @@
         "application/json"
       ],
       "description": "Returns the field usage stats for each field of an index",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-field-usage-stats.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/field-usage-stats.html",
       "name": "indices.field_usage_stats",
       "request": null,
       "requestBodyRequired": false,
@@ -8456,6 +8456,48 @@
             "POST"
           ],
           "path": "/{index}/{type}/_mtermvectors"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Removes the archived repositories metering information present in the cluster.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-repositories-metering-archive-api.html",
+      "name": "nodes.clear_metering_archive",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_nodes/{node_id}/_repositories_metering/{max_archive_version}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Returns cluster repositories metering information.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-repositories-metering-api.html",
+      "name": "nodes.get_metering_info",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_nodes/{node_id}/_repositories_metering"
         }
       ],
       "visibility": "public"
