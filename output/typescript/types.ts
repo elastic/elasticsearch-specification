@@ -2366,7 +2366,6 @@ export interface WriteResponseBase {
   _type?: Type
   _version: VersionNumber
   forced_refresh?: boolean
-  error?: ErrorCause
 }
 
 export type double = number

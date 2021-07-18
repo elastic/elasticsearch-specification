@@ -44,7 +44,6 @@ export class WriteResponseBase {
   _type?: Type
   _version: VersionNumber
   forced_refresh?: boolean
-  error?: ErrorCause
 }
 
 export class AcknowledgedResponseBase {

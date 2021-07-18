@@ -34728,17 +34728,6 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "error",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
         }
       ]
     },
