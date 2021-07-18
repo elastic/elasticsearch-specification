@@ -39,6 +39,8 @@ export class ResponseBase {
   status?: integer
 }
 
+export class ErrorResponseBase extends ResponseBase {}
+
 export class WriteResponseBase extends ResponseBase {
   _id: Id
   _index: IndexName

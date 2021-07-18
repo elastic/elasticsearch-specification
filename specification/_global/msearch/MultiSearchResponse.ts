@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ResponseBase } from '@_types/Base'
+import { ErrorResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 import { SearchResult } from './types'
 
 export class Response<TDocument> {
   body: {
     took: long
-    responses: Array<SearchResult<TDocument> | ResponseBase>
+    responses: Array<SearchResult<TDocument> | ErrorResponseBase>
   }
 }

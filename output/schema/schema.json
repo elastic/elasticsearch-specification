@@ -29313,6 +29313,12 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "AcknowledgedResponseBase",
@@ -29862,6 +29868,12 @@
           "namespace": "_types"
         }
       ],
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "DictionaryResponseBase",
@@ -30440,47 +30452,18 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "ErrorResponseBase",
         "namespace": "_types"
       },
-      "properties": [
-        {
-          "name": "error",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "MainError",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "kind": "enum",
@@ -32956,6 +32939,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ResponseBase",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -33887,6 +33901,12 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "ShardsOperationResponseBase",
@@ -34624,6 +34644,12 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "ResponseBase",
+          "namespace": "_types"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "WriteResponseBase",
@@ -34726,17 +34752,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "error",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
             }
           }
         }

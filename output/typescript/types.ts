@@ -1762,7 +1762,7 @@ export interface SpecUtilsBaseNode {
   transport_address: TransportAddress
 }
 
-export interface AcknowledgedResponseBase {
+export interface AcknowledgedResponseBase extends ResponseBase {
   acknowledged: boolean
 }
 
@@ -1891,9 +1891,7 @@ export interface ErrorCause {
   position?: ScriptsPainlessExecutePainlessExecutionPosition
 }
 
-export interface ErrorResponseBase {
-  error: MainError | string
-  status: integer
+export interface ErrorResponseBase extends ResponseBase {
 }
 
 export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'
@@ -2164,6 +2162,11 @@ export interface RequestCacheStats {
   miss_count: long
 }
 
+export interface ResponseBase {
+  error?: ErrorCause
+  status?: integer
+}
+
 export type Result = 'Error' | 'created' | 'updated' | 'deleted' | 'not_found' | 'noop'
 
 export interface Retries {
@@ -2266,7 +2269,7 @@ export interface ShardStatistics {
   skipped?: uint
 }
 
-export interface ShardsOperationResponseBase {
+export interface ShardsOperationResponseBase extends ResponseBase {
   _shards: ShardStatistics
 }
 
@@ -2356,7 +2359,7 @@ export interface WarmerStats {
   total_time_in_millis: long
 }
 
-export interface WriteResponseBase {
+export interface WriteResponseBase extends ResponseBase {
   _id: Id
   _index: IndexName
   _primary_term: long
@@ -2366,7 +2369,6 @@ export interface WriteResponseBase {
   _type?: Type
   _version: VersionNumber
   forced_refresh?: boolean
-  error?: ErrorCause
 }
 
 export type double = number
