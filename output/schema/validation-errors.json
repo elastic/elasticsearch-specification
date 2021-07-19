@@ -1282,6 +1282,18 @@
       ],
       "response": []
     },
+    "nodes.clear_metering_archive": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "nodes.get_metering_info": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "nodes.hot_threads": {
       "request": [
         "Endpoint has \"@stability: TODO"
