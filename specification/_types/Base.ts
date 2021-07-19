@@ -34,7 +34,12 @@ import { DateString } from './Time'
 
 export class RequestBase implements CommonQueryParameters {}
 
-export class WriteResponseBase {
+export class ResponseBase {
+  error?: ErrorCause
+  status?: integer
+}
+
+export class WriteResponseBase extends ResponseBase {
   _id: Id
   _index: IndexName
   _primary_term: long
@@ -43,18 +48,17 @@ export class WriteResponseBase {
   _shards: ShardStatistics
   _type?: Type
   _version: VersionNumber
-  forced_refresh?: boolean
-  error?: ErrorCause
+  forced_refresh?: boolean  
 }
 
-export class AcknowledgedResponseBase {
+export class AcknowledgedResponseBase extends ResponseBase {
   /** For a successful response, this value is always true. On failure, an exception is returned instead. */
   acknowledged: boolean
 }
 
-export class DictionaryResponseBase<TKey, TValue> {}
+export class DictionaryResponseBase<TKey, TValue> extends ResponseBase {}
 
-export class DynamicResponseBase {}
+export class DynamicResponseBase extends ResponseBase {}
 
 export class ElasticsearchVersionInfo {
   build_date: DateString
@@ -68,17 +72,12 @@ export class ElasticsearchVersionInfo {
   number: string
 }
 
-export class ErrorResponseBase {
-  error: MainError | string
-  status: integer
-}
-
 export class IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
 
-export class ShardsOperationResponseBase {
+export class ShardsOperationResponseBase extends ResponseBase {
   _shards: ShardStatistics
 }
 
-export class CustomResponseBuilderBase {}
+export class CustomResponseBuilderBase extends ResponseBase {}
