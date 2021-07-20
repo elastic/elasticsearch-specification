@@ -148,7 +148,6 @@ export class DataDescription {
   format?: string
   /**
    * The name of the field that contains the timestamp.
-   * @server_default time.
    */
   time_field: Field
   /**

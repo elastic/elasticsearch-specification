@@ -34,7 +34,7 @@ export class FilterRef {
    * If set to `include`, the rule applies for values in the filter. If set to `exclude`, the rule applies for values not in the filter.
    * @server_default include
    */
-  filter_type: FilterType
+  filter_type?: FilterType
 }
 
 export enum FilterType {

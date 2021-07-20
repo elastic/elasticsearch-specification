@@ -25,7 +25,6 @@ import { FilterRef } from './Filter'
 export class DetectionRule {
    /**
    * The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.
-   * @server_default skip_result
    */
   actions?: RuleAction[]
   /**
@@ -40,7 +39,7 @@ export class DetectionRule {
 
 export enum RuleAction {
    /**
-   * The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.
+   * The result will not be created. This is the default value. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.
    */
   skip_result = 0,
   /**
