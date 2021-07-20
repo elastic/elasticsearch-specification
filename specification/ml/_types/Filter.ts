@@ -26,7 +26,14 @@ export class Filter {
 }
 
 export class FilterRef {
+  /**
+   * The identifier for the filter.
+   */
   filter_id: Id
+  /**
+   * If set to `include`, the rule applies for values in the filter. If set to `exclude`, the rule applies for values not in the filter.
+   * @server_default include
+   */
   filter_type: FilterType
 }
 
