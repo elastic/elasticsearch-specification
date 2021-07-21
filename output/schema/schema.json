@@ -101709,6 +101709,230 @@
     {
       "kind": "interface",
       "name": {
+        "name": "DatafeedConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "aggregations",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "aggs",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationContainer",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "chunking_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChunkingConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "datafeed_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "delayed_data_check_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DelayedDataCheckConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "frequency",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Timestamp",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indexes",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "indices_options",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedIndicesOptions",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_empty_searches",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "query_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Timestamp",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "runtime_mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "name": "script_fields",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScriptField",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "scroll_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "DatafeedIndicesOptions",
         "namespace": "ml._types"
       },
@@ -104655,7 +104879,7 @@
       "properties": [
         {
           "name": "allow_lazy_open",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104709,6 +104933,28 @@
           }
         },
         {
+          "name": "custom_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomSettings",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "data_description",
           "required": true,
           "type": {
@@ -104720,8 +104966,30 @@
           }
         },
         {
-          "name": "description",
+          "name": "datafeed_config",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Datafeed",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "deleting",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104732,12 +105000,26 @@
         },
         {
           "name": "finished_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -104764,8 +105046,30 @@
           }
         },
         {
-          "name": "model_snapshot_id",
+          "name": "job_version",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "model_plot_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_id",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104787,7 +105091,206 @@
         },
         {
           "name": "renormalization_window_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_index_name",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "results_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "JobConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "allow_lazy_open",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "analysis_config",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "analysis_limits",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AnalysisLimits",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "background_persist_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "custom_settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomSettings",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "daily_model_snapshot_retention_after_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "data_description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataDescription",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "datafeed_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "job_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "model_plot_config",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ModelPlotConfig",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "model_snapshot_retention_days",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "renormalization_window_days",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104809,75 +105312,6 @@
         },
         {
           "name": "results_retention_days",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "groups",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "model_plot_config",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ModelPlotConfig",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "custom_settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CustomSettings",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "job_version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "deleting",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "daily_model_snapshot_retention_after_days",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -112126,7 +112560,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Job",
+                "name": "JobConfig",
                 "namespace": "ml._types"
               }
             }
@@ -112137,7 +112571,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Datafeed",
+                "name": "DatafeedConfig",
                 "namespace": "ml._types"
               }
             }
@@ -113288,7 +113722,7 @@
           },
           {
             "name": "data_description",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113303,7 +113737,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Datafeed",
+                "name": "DatafeedConfig",
                 "namespace": "ml._types"
               }
             }

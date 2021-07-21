@@ -10243,6 +10243,25 @@ export interface MlDatafeed {
   indices_options?: MlDatafeedIndicesOptions
 }
 
+export interface MlDatafeedConfig {
+  aggregations?: Record<string, AggregationsAggregationContainer>
+  aggs?: Record<string, AggregationsAggregationContainer>
+  chunking_config?: MlChunkingConfig
+  datafeed_id?: Id
+  delayed_data_check_config?: MlDelayedDataCheckConfig
+  frequency?: Timestamp
+  indexes?: string[]
+  indices: string[]
+  indices_options?: MlDatafeedIndicesOptions
+  job_id?: Id
+  max_empty_searches?: integer
+  query: QueryDslQueryContainer
+  query_delay?: Timestamp
+  runtime_mappings?: MappingRuntimeFields
+  script_fields?: Record<string, ScriptField>
+  scroll_size?: integer
+}
+
 export interface MlDatafeedIndicesOptions {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -10591,27 +10610,48 @@ export interface MlInfluence {
 }
 
 export interface MlJob {
-  allow_lazy_open?: boolean
+  allow_lazy_open: boolean
   analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
   background_persist_interval: Time
   create_time: integer
+  custom_settings?: MlCustomSettings
+  daily_model_snapshot_retention_after_days?: long
   data_description: MlDataDescription
-  description: string
-  finished_time: integer
+  datafeed_config: MlDatafeed
+  deleting?: boolean
+  description?: string
+  finished_time?: integer
+  groups?: string[]
   job_id: Id
   job_type: string
-  model_snapshot_id: Id
+  job_version: VersionString
+  model_plot_config?: MlModelPlotConfig
+  model_snapshot_id?: Id
   model_snapshot_retention_days: long
-  renormalization_window_days: long
+  renormalization_window_days?: long
+  results_index_name: IndexName
+  results_retention_days?: long
+}
+
+export interface MlJobConfig {
+  allow_lazy_open?: boolean
+  analysis_config: MlAnalysisConfig
+  analysis_limits?: MlAnalysisLimits
+  background_persist_interval?: Time
+  custom_settings?: MlCustomSettings
+  daily_model_snapshot_retention_after_days?: long
+  data_description: MlDataDescription
+  datafeed_config?: MlDatafeedConfig
+  description?: string
+  groups?: string[]
+  job_id?: Id
+  job_type?: string
+  model_plot_config?: MlModelPlotConfig
+  model_snapshot_retention_days?: long
+  renormalization_window_days?: long
   results_index_name?: IndexName
   results_retention_days?: long
-  groups?: string[]
-  model_plot_config?: MlModelPlotConfig
-  custom_settings?: MlCustomSettings
-  job_version?: VersionString
-  deleting?: boolean
-  daily_model_snapshot_retention_after_days?: long
 }
 
 export interface MlJobForecastStatistics {
@@ -11479,8 +11519,8 @@ export interface MlPreviewDataFrameAnalyticsResponse {
 export interface MlPreviewDatafeedRequest extends RequestBase {
   datafeed_id?: Id
   body?: {
-    job_config?: MlJob
-    datafeed_config?: MlDatafeed
+    job_config?: MlJobConfig
+    datafeed_config?: MlDatafeedConfig
   }
 }
 
@@ -11604,8 +11644,8 @@ export interface MlPutJobRequest extends RequestBase {
     background_persist_interval: Time
     custom_settings?: MlCustomSettings
     daily_model_snapshot_retention_after_days?: long
-    data_description?: MlDataDescription
-    datafeed_config?: MlDatafeed
+    data_description: MlDataDescription
+    datafeed_config?: MlDatafeedConfig
     description?: string
     groups?: string[]
     model_plot_config?: MlModelPlotConfig

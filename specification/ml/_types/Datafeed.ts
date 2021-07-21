@@ -45,6 +45,24 @@ export class Datafeed {
   runtime_mappings?: RuntimeFields
   indices_options?: DatafeedIndicesOptions
 }
+export class DatafeedConfig {
+  aggregations?: Dictionary<string, AggregationContainer>
+  aggs?: Dictionary<string, AggregationContainer>
+  chunking_config?: ChunkingConfig
+  datafeed_id?: Id
+  delayed_data_check_config?: DelayedDataCheckConfig
+  frequency?: Timestamp
+  indexes?: string[]
+  indices: string[]
+  indices_options?: DatafeedIndicesOptions
+  job_id?: Id
+  max_empty_searches?: integer
+  query: QueryContainer
+  query_delay?: Timestamp
+  runtime_mappings?: RuntimeFields
+  script_fields?: Dictionary<string, ScriptField>
+  scroll_size?: integer
+}
 
 export class DelayedDataCheckConfig {
   check_window?: Time // default: null
