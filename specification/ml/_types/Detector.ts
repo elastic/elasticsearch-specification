@@ -32,7 +32,7 @@ export class Detector {
   custom_rules?: DetectionRule[]
   /**
    * A description of the detector.
-   */ 
+   */
   detector_description?: string
   /**
    * A unique identifier for the detector. This identifier is based on the order of the detectors in the `analysis_config`, starting at zero. If you specify a value for this property, it is ignored.
@@ -44,7 +44,7 @@ export class Detector {
   exclude_frequent?: ExcludeFrequent
   /**
    * The field that the detector uses in the function. If you use an event rate function such as count or rare, do not specify this field. The `field_name` cannot contain double quotes or backslashes.
-   */ 
+   */
   field_name?: Field
   /**
    * The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`. 
@@ -61,7 +61,7 @@ export class Detector {
   /**
    * Defines whether a new series is used as the null series when there is no value for the by or partition fields.
    * @server_default false
-   */  
+   */
   use_null?: boolean
 }
 

@@ -23,9 +23,9 @@ import { double } from '@_types/Numeric'
 import { FilterRef } from './Filter'
 
 export class DetectionRule {
-   /**
-   * The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.
-   */
+  /**
+  * The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.
+  */
   actions?: RuleAction[]
   /**
    * An array of numeric conditions when the rule applies. A rule must either have a non-empty scope or at least one condition. Multiple conditions are combined together with a logical AND.
@@ -38,9 +38,9 @@ export class DetectionRule {
 }
 
 export enum RuleAction {
-   /**
-   * The result will not be created. This is the default value. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.
-   */
+  /**
+  * The result will not be created. This is the default value. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.
+  */
   skip_result = 0,
   /**
    * The value for that series will not be used to update the model. Unless you also specify `skip_result`, the results will be created as usual. This action is suitable when certain values are expected to be consistently anomalous and they affect the model in a way that negatively impacts the rest of the results.
