@@ -11603,12 +11603,14 @@ export interface MlPutJobRequest extends RequestBase {
     analysis_limits?: MlAnalysisLimits
     background_persist_interval: Time
     custom_settings?: MlCustomSettings
-    data_description?: MlDataDescription
     daily_model_snapshot_retention_after_days?: long
-    groups?: string[]
+    data_description?: MlDataDescription
+    datafeed_config?: MlDatafeed
     description?: string
+    groups?: string[]
     model_plot_config?: MlModelPlotConfig
     model_snapshot_retention_days?: long
+    renormalization_window_days?: long
     results_index_name?: IndexName
     results_retention_days?: long
   }
@@ -11617,20 +11619,22 @@ export interface MlPutJobRequest extends RequestBase {
 export interface MlPutJobResponse {
   allow_lazy_open: boolean
   analysis_config: MlAnalysisConfig
-  analysis_limits?: MlAnalysisLimits
-  background_persist_interval: Time
+  analysis_limits: MlAnalysisLimits
+  background_persist_interval?: Time
   create_time: DateString
   custom_settings?: MlCustomSettings
+  daily_model_snapshot_retention_after_days: long
   data_description: MlDataDescription
-  daily_model_snapshot_retention_after_days?: long
+  datafeed_config?: MlDatafeed
+  description?: string
   groups?: string[]
-  description: string
   job_id: Id
   job_type: string
+  job_version: string
   model_plot_config?: MlModelPlotConfig
-  model_snapshot_id: Id
+  model_snapshot_id?: Id
   model_snapshot_retention_days: long
-  renormalization_window_days: long
+  renormalization_window_days?: long
   results_index_name: string
   results_retention_days?: long
 }

@@ -113276,6 +113276,17 @@
             }
           },
           {
+            "name": "daily_model_snapshot_retention_after_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "data_description",
             "required": false,
             "type": {
@@ -113287,13 +113298,24 @@
             }
           },
           {
-            "name": "daily_model_snapshot_retention_after_days",
+            "name": "datafeed_config",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "long",
-                "namespace": "_types"
+                "name": "Datafeed",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -113312,17 +113334,6 @@
             }
           },
           {
-            "name": "description",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "model_plot_config",
             "required": false,
             "type": {
@@ -113335,6 +113346,17 @@
           },
           {
             "name": "model_snapshot_retention_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "renormalization_window_days",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -113422,7 +113444,7 @@
           },
           {
             "name": "analysis_limits",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113433,7 +113455,7 @@
           },
           {
             "name": "background_persist_interval",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113465,6 +113487,17 @@
             }
           },
           {
+            "name": "daily_model_snapshot_retention_after_days",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "data_description",
             "required": true,
             "type": {
@@ -113476,13 +113509,24 @@
             }
           },
           {
-            "name": "daily_model_snapshot_retention_after_days",
+            "name": "datafeed_config",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "long",
-                "namespace": "_types"
+                "name": "Datafeed",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
             }
           },
@@ -113497,17 +113541,6 @@
                   "name": "string",
                   "namespace": "internal"
                 }
-              }
-            }
-          },
-          {
-            "name": "description",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
               }
             }
           },
@@ -113534,6 +113567,17 @@
             }
           },
           {
+            "name": "job_version",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
             "name": "model_plot_config",
             "required": false,
             "type": {
@@ -113546,7 +113590,7 @@
           },
           {
             "name": "model_snapshot_id",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113568,7 +113612,7 @@
           },
           {
             "name": "renormalization_window_days",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
