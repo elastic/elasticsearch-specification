@@ -52,7 +52,7 @@ export class Job {
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: DataDescription
-  datafeed_config: Datafeed
+  datafeed_config?: Datafeed
   deleting?: boolean
   description?: string
   finished_time?: integer
