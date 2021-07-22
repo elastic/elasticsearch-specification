@@ -11601,7 +11601,7 @@
         "application/json"
       ],
       "description": "Clears the SQL cursor",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-pagination.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-sql-cursor-api.html",
       "name": "sql.clear_cursor",
       "request": {
         "name": "Request",
@@ -11695,7 +11695,7 @@
         "application/json"
       ],
       "description": "Executes a SQL request",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-overview.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-search-api.html",
       "name": "sql.query",
       "request": {
         "name": "Request",
@@ -11727,7 +11727,7 @@
         "application/json"
       ],
       "description": "Translates SQL into Elasticsearch queries",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-translate-api.html",
       "name": "sql.translate",
       "request": {
         "name": "Request",
