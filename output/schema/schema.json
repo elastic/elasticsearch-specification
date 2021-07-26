@@ -16426,7 +16426,9 @@
             }
           },
           {
-            "description": "deprecated since 7.0.0",
+            "deprecation": {
+              "version": "7.0.0"
+            },
             "name": "_type",
             "required": false,
             "type": {
@@ -21120,7 +21122,9 @@
       },
       "path": [
         {
-          "description": "Deprecated with 7.0.0",
+          "deprecation": {
+            "version": "7.0.0"
+          },
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -21148,7 +21152,9 @@
           }
         },
         {
-          "description": "Deprecated with 7.0.0",
+          "deprecation": {
+            "version": "7.0.0"
+          },
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -23284,6 +23290,49 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FieldAndFormat",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "shortcutProperty": "field"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldCollapse",
         "namespace": "_global.search._types"
       },
@@ -23412,8 +23461,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -24474,10 +24523,13 @@
           "name": "docvalue_fields",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldAndFormat",
+                "namespace": "_global.search._types"
+              }
             }
           }
         },
@@ -24521,8 +24573,8 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -24590,6 +24642,29 @@
               }
             ],
             "kind": "union_of"
+          }
+        },
+        {
+          "name": "stored_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "track_scores",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
           }
         },
         {
@@ -25881,8 +25956,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -29795,6 +29870,21 @@
       ]
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html",
+      "kind": "type_alias",
+      "name": {
+        "name": "DateFormat",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "DateMath",
@@ -30823,6 +30913,17 @@
           "name": "number",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoShape",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "user_defined_value"
       }
     },
     {
@@ -31939,6 +32040,7 @@
       }
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-term-rewrite.html",
       "kind": "type_alias",
       "name": {
         "name": "MultiTermQueryRewrite",
@@ -33020,23 +33122,11 @@
         "namespace": "_types"
       },
       "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "number",
-              "namespace": "internal"
-            }
-          }
-        ],
-        "kind": "union_of"
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
       }
     },
     {
@@ -33125,6 +33215,17 @@
             "type": {
               "name": "Script",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_failure",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -34190,6 +34291,20 @@
       "kind": "type_alias",
       "name": {
         "name": "TimeSpan",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TimeZone",
         "namespace": "_types"
       },
       "type": {
@@ -45069,26 +45184,14 @@
         "namespace": "_types.analysis"
       },
       "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "internal"
           }
-        ],
-        "kind": "union_of"
+        }
       }
     },
     {
@@ -50133,7 +50236,7 @@
       "properties": [
         {
           "name": "negative_boost",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50144,7 +50247,7 @@
         },
         {
           "name": "negative",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50155,7 +50258,7 @@
         },
         {
           "name": "positive",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50167,6 +50270,7 @@
       ]
     },
     {
+      "description": "A geo bounding box. The various coordinates can be mixed. When set, `wkt` takes precedence over all other fields.",
       "kind": "interface",
       "name": {
         "name": "BoundingBox",
@@ -50192,6 +50296,72 @@
             "type": {
               "name": "GeoLocation",
               "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "top_right",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "bottom_left",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "top",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "left",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "right",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bottom",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
             }
           }
         },
@@ -50233,23 +50403,33 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "or"
+        },
+        {
+          "name": "and"
+        }
+      ],
+      "name": {
+        "name": "CombinedFieldsOperator",
+        "namespace": "_types.query_dsl"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
       "kind": "interface",
       "name": {
         "name": "CombinedFieldsQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
-        {
-          "name": "query",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "fields",
           "required": true,
@@ -50265,8 +50445,8 @@
           }
         },
         {
-          "name": "operator",
-          "required": false,
+          "name": "query",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50274,8 +50454,70 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "auto_generate_synonyms_phrase_query",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "operator",
+          "required": false,
+          "serverDefault": "or",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CombinedFieldsOperator",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "mimimum_should_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MinimumShouldMatch",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "zero_terms_query",
+          "required": false,
+          "serverDefault": "none",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CombinedFieldsZeroTerms",
+              "namespace": "_types.query_dsl"
+            }
+          }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "none"
+        },
+        {
+          "name": "all"
+        }
+      ],
+      "name": {
+        "name": "CombinedFieldsZeroTerms",
+        "namespace": "_types.query_dsl"
+      }
     },
     {
       "inherits": {
@@ -50347,7 +50589,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50356,7 +50598,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "query"
     },
     {
       "inherits": {
@@ -50373,7 +50616,7 @@
       "properties": [
         {
           "name": "filter",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50386,7 +50629,7 @@
     },
     {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -50394,8 +50637,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -50423,7 +50666,7 @@
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
@@ -50440,6 +50683,118 @@
         "namespace": "_types.query_dsl"
       },
       "properties": []
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "type": {
+          "name": "DistanceFeatureQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateDistanceFeatureQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RangeQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateRangeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "gt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "gte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "lt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "lte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateFormat",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeZone",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "variantName": "date"
     },
     {
       "kind": "type_alias",
@@ -50578,7 +50933,7 @@
       "properties": [
         {
           "name": "queries",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -50593,6 +50948,7 @@
         {
           "name": "tie_breaker",
           "required": false,
+          "serverDefault": "0.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50604,6 +50960,42 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "DistanceFeatureQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceFeatureQuery",
+              "namespace": "_types.query_dsl"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateDistanceFeatureQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "generics": [
+        {
+          "name": "TOrigin",
+          "namespace": "_types.query_dsl"
+        },
+        {
+          "name": "TDistance",
+          "namespace": "_types.query_dsl"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -50612,69 +51004,35 @@
       },
       "kind": "interface",
       "name": {
-        "name": "DistanceFeatureQuery",
+        "name": "DistanceFeatureQueryBase",
         "namespace": "_types.query_dsl"
       },
       "properties": [
         {
           "name": "origin",
-          "required": false,
+          "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "number",
-                    "namespace": "internal"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GeoCoordinate",
-                  "namespace": "_types.query_dsl"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TOrigin",
+              "namespace": "_types.query_dsl"
+            }
           }
         },
         {
           "name": "pivot",
-          "required": false,
+          "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Distance",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Time",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TDistance",
+              "namespace": "_types.query_dsl"
+            }
           }
         },
         {
           "name": "field",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50700,7 +51058,7 @@
       "properties": [
         {
           "name": "field",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50720,7 +51078,7 @@
       "properties": [
         {
           "name": "id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50963,6 +51321,7 @@
           }
         },
         {
+          "containerProperty": true,
           "name": "filter",
           "required": false,
           "type": {
@@ -50974,6 +51333,7 @@
           }
         },
         {
+          "containerProperty": true,
           "name": "weight",
           "required": false,
           "type": {
@@ -50984,7 +51344,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "enum",
@@ -51169,12 +51532,44 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "BoundingBox",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -51188,17 +51583,9 @@
       },
       "properties": [
         {
-          "name": "bounding_box",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BoundingBox",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
+          "deprecation": {
+            "version": "7.14.0"
+          },
           "name": "type",
           "required": false,
           "type": {
@@ -51212,33 +51599,12 @@
         {
           "name": "validation_method",
           "required": false,
+          "serverDefault": "'strict'",
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "GeoValidationMethod",
               "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "top_left",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LatLon",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "bottom_right",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LatLon",
-              "namespace": "_types"
             }
           }
         }
@@ -51283,7 +51649,7 @@
     },
     {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -51291,8 +51657,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -51320,7 +51686,7 @@
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
@@ -51339,8 +51705,38 @@
       "properties": []
     },
     {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoCoordinate",
+              "namespace": "_types.query_dsl"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Distance",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "type": {
+          "name": "DistanceFeatureQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoDistanceFeatureQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
+    },
+    {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -51348,8 +51744,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -51361,7 +51757,7 @@
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
@@ -51392,6 +51788,7 @@
         {
           "name": "distance_type",
           "required": false,
+          "serverDefault": "'arc'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51403,6 +51800,7 @@
         {
           "name": "validation_method",
           "required": false,
+          "serverDefault": "'strict'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51466,6 +51864,59 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "GeoPolygonPoints",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "points",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoLocation",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoPolygonPoints",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "deprecation": {
+        "version": "7.12.0 Use geo-shape instead."
+      },
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -51479,22 +51930,9 @@
       },
       "properties": [
         {
-          "name": "points",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "GeoLocation",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          }
-        },
-        {
           "name": "validation_method",
           "required": false,
+          "serverDefault": "'strict'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51508,44 +51946,18 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GeoShape",
+        "name": "GeoShapeFieldQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
         {
-          "name": "type",
+          "name": "shape",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "GeoShapeQuery",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "ignore_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "GeoShape",
+              "namespace": "_types"
             }
           }
         },
@@ -51570,15 +51982,57 @@
               "namespace": "_types"
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
         {
-          "name": "shape",
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoShapeFieldQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoShapeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "ignore_unmapped",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "GeoShape",
-              "namespace": "_types.query_dsl"
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -51618,6 +52072,7 @@
         {
           "name": "ignore_unmapped",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51661,7 +52116,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51673,6 +52128,7 @@
         {
           "name": "score_mode",
           "required": false,
+          "serverDefault": "'none'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51683,7 +52139,7 @@
         },
         {
           "name": "type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51710,6 +52166,7 @@
         {
           "name": "ignore_unmapped",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51731,7 +52188,7 @@
         },
         {
           "name": "parent_type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51742,7 +52199,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51754,6 +52211,7 @@
         {
           "name": "score",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51781,29 +52239,11 @@
           "name": "values",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Id",
-                    "namespace": "_types"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "long",
-                    "namespace": "_types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Ids",
+              "namespace": "_types"
+            }
           }
         }
       ]
@@ -51817,7 +52257,7 @@
       "properties": [
         {
           "name": "intervals",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -51832,6 +52272,7 @@
         {
           "name": "max_gaps",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51843,6 +52284,7 @@
         {
           "name": "ordered",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -51873,7 +52315,7 @@
       "properties": [
         {
           "name": "intervals",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -52082,7 +52524,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -52116,6 +52561,7 @@
         {
           "name": "prefix_length",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52126,7 +52572,7 @@
         },
         {
           "name": "term",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52138,6 +52584,7 @@
         {
           "name": "transpositions",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52180,6 +52627,7 @@
         {
           "name": "max_gaps",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52191,6 +52639,7 @@
         {
           "name": "ordered",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52201,7 +52650,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52254,7 +52703,7 @@
         },
         {
           "name": "prefix",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52355,7 +52804,10 @@
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -52377,7 +52829,7 @@
         },
         {
           "name": "pattern",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52445,10 +52897,13 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -52456,23 +52911,11 @@
           "name": "_id",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Id",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "number",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -52529,6 +52972,29 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "version_type",
+          "required": false,
+          "serverDefault": "'internal'",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionType",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -52544,19 +53010,7 @@
         "name": "MatchAllQuery",
         "namespace": "_types.query_dsl"
       },
-      "properties": [
-        {
-          "name": "norm_field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": {
@@ -52661,7 +53115,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52670,7 +53124,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "query"
     },
     {
       "inherits": {
@@ -52723,7 +53178,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52754,7 +53209,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "query"
     },
     {
       "inherits": {
@@ -52782,7 +53238,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52794,6 +53250,7 @@
         {
           "name": "slop",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52801,8 +53258,20 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "zero_terms_query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ZeroTermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
         }
-      ]
+      ],
+      "shortcutProperty": "query"
     },
     {
       "inherits": {
@@ -52831,6 +53300,7 @@
         {
           "name": "auto_generate_synonyms_phrase_query",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52840,6 +53310,9 @@
           }
         },
         {
+          "deprecation": {
+            "version": "7.3.0"
+          },
           "name": "cutoff_frequency",
           "required": false,
           "type": {
@@ -52875,6 +53348,7 @@
         {
           "name": "fuzzy_transpositions",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52886,6 +53360,7 @@
         {
           "name": "lenient",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52897,6 +53372,7 @@
         {
           "name": "max_expansions",
           "required": false,
+          "serverDefault": "50",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52919,6 +53395,7 @@
         {
           "name": "operator",
           "required": false,
+          "serverDefault": "'or'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52930,6 +53407,7 @@
         {
           "name": "prefix_length",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52940,7 +53418,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "items": [
               {
@@ -52971,6 +53449,7 @@
         {
           "name": "zero_terms_query",
           "required": false,
+          "serverDefault": "'none'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52979,7 +53458,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "query"
     },
     {
       "inherits": {
@@ -53017,19 +53497,35 @@
           }
         },
         {
-          "name": "fields",
+          "name": "fail_on_unsupported_field",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Fields",
-              "namespace": "_types"
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
             }
           }
         },
         {
           "name": "include",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53040,7 +53536,7 @@
         },
         {
           "name": "like",
-          "required": false,
+          "required": true,
           "type": {
             "items": [
               {
@@ -53078,6 +53574,7 @@
         {
           "name": "max_query_terms",
           "required": false,
+          "serverDefault": "25",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53100,6 +53597,7 @@
         {
           "name": "min_doc_freq",
           "required": false,
+          "serverDefault": "5",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53122,6 +53620,7 @@
         {
           "name": "min_term_freq",
           "required": false,
+          "serverDefault": "2",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53133,6 +53632,7 @@
         {
           "name": "min_word_length",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53225,6 +53725,7 @@
         {
           "name": "version_type",
           "required": false,
+          "serverDefault": "'internal'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53262,6 +53763,7 @@
         {
           "name": "auto_generate_synonyms_phrase_query",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53271,6 +53773,9 @@
           }
         },
         {
+          "deprecation": {
+            "version": "7.3.0"
+          },
           "name": "cutoff_frequency",
           "required": false,
           "type": {
@@ -53317,6 +53822,7 @@
         {
           "name": "fuzzy_transpositions",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53328,6 +53834,7 @@
         {
           "name": "lenient",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53339,6 +53846,7 @@
         {
           "name": "max_expansions",
           "required": false,
+          "serverDefault": "50",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53361,6 +53869,7 @@
         {
           "name": "operator",
           "required": false,
+          "serverDefault": "'or'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53372,6 +53881,7 @@
         {
           "name": "prefix_length",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53382,7 +53892,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53416,22 +53926,12 @@
         {
           "name": "type",
           "required": false,
+          "serverDefault": "'best_fields'",
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "TextQueryType",
               "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "use_dis_max",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         },
@@ -53470,82 +53970,6 @@
       }
     },
     {
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "TQuery",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "description": "Queries can either be in the form of\n{ type: { field: { ...query_details...including_boost_and_name } } }\n||\n{ type: { boost: _, _name: _, field: { ...query_details... } } }",
-      "generics": [
-        {
-          "name": "TQuery",
-          "namespace": "_types.query_dsl"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "NamedQuery",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "ignore_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -53561,6 +53985,7 @@
         {
           "name": "ignore_unmapped",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53582,7 +54007,7 @@
         },
         {
           "name": "path",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53593,7 +54018,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53605,6 +54030,7 @@
         {
           "name": "score_mode",
           "required": false,
+          "serverDefault": "'avg'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53640,8 +54066,68 @@
       }
     },
     {
+      "inherits": {
+        "type": {
+          "name": "RangeQueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "NumberRangeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "gt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "gte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "lt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "lte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "variantName": "number"
+    },
+    {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -53649,8 +54135,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             {
@@ -53678,7 +54164,7 @@
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
@@ -53704,12 +54190,6 @@
         },
         {
           "name": "or"
-        },
-        {
-          "name": "AND"
-        },
-        {
-          "name": "OR"
         }
       ],
       "name": {
@@ -53744,6 +54224,7 @@
         {
           "name": "ignore_unmapped",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53797,7 +54278,7 @@
         },
         {
           "name": "field",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53825,6 +54306,17 @@
             "type": {
               "name": "IndexName",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -53878,36 +54370,21 @@
       "properties": [
         {
           "name": "ids",
-          "required": false,
+          "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Id",
-                    "namespace": "_types"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "long",
-                    "namespace": "_types"
-                  }
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
               }
-            ],
-            "kind": "union_of"
+            }
           }
         },
         {
           "name": "organic",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53952,8 +54429,22 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "case_insensitive",
+          "required": false,
+          "serverDefault": false,
+          "since": "7.10.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
       "kind": "interface",
@@ -53974,6 +54465,7 @@
           }
         },
         {
+          "identifier": "query_name",
           "name": "_name",
           "required": false,
           "type": {
@@ -54016,6 +54508,9 @@
           }
         },
         {
+          "deprecation": {
+            "version": "7.3.0"
+          },
           "name": "common",
           "required": false,
           "type": {
@@ -54029,23 +54524,11 @@
             "kind": "dictionary_of",
             "singleKey": true,
             "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "CommonTermsQuery",
-                    "namespace": "_types.query_dsl"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "CommonTermsQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54087,46 +54570,11 @@
           "name": "distance_feature",
           "required": false,
           "type": {
-            "items": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Field",
-                    "namespace": "_types"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": true,
-                "value": {
-                  "items": [
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "DistanceFeatureQuery",
-                        "namespace": "_types.query_dsl"
-                      }
-                    },
-                    {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
-                  ],
-                  "kind": "union_of"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DistanceFeatureQuery",
-                  "namespace": "_types.query_dsl"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "DistanceFeatureQuery",
+              "namespace": "_types.query_dsl"
+            }
           }
         },
         {
@@ -54165,23 +54613,11 @@
             "kind": "dictionary_of",
             "singleKey": true,
             "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "FuzzyQuery",
-                    "namespace": "_types.query_dsl"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "FuzzyQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54189,30 +54625,9 @@
           "name": "geo_bounding_box",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "GeoBoundingBoxQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "GeoBoundingBoxQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -54232,30 +54647,9 @@
           "name": "geo_polygon",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "GeoPolygonQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "GeoPolygonQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -54264,30 +54658,9 @@
           "name": "geo_shape",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "GeoShapeQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "GeoShapeQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -54329,31 +54702,21 @@
           "name": "intervals",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "IntervalsQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IntervalsQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54361,45 +54724,21 @@
           "name": "match",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "MatchQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "float",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "boolean",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54418,31 +54757,21 @@
           "name": "match_bool_prefix",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "MatchBoolPrefixQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchBoolPrefixQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54461,31 +54790,21 @@
           "name": "match_phrase",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "MatchPhraseQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchPhraseQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54493,31 +54812,21 @@
           "name": "match_phrase_prefix",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "MatchPhrasePrefixQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchPhrasePrefixQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54591,31 +54900,21 @@
           "name": "prefix",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "PrefixQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PrefixQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54634,19 +54933,21 @@
           "name": "range",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RangeQuery",
-                  "namespace": "_types.query_dsl"
-                }
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RangeQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54654,30 +54955,9 @@
           "name": "rank_feature",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "RankFeatureQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "RankFeatureQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -54686,31 +54966,21 @@
           "name": "regexp",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "RegexpQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RegexpQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54740,30 +55010,9 @@
           "name": "shape",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "ShapeQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "ShapeQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -54860,31 +55109,21 @@
           "name": "span_term",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanTermQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SpanTermQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54900,59 +55139,24 @@
           }
         },
         {
-          "name": "template",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryTemplate",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
           "name": "term",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TermQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "float",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "boolean",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -54960,43 +55164,9 @@
           "name": "terms",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TermsQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "string",
-                        "namespace": "internal"
-                      }
-                    }
-                  },
-                  {
-                    "kind": "array_of",
-                    "value": {
-                      "kind": "instance_of",
-                      "type": {
-                        "name": "long",
-                        "namespace": "_types"
-                      }
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "TermsQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -55005,31 +55175,21 @@
           "name": "terms_set",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TermsSetQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermsSetQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -55037,31 +55197,21 @@
           "name": "wildcard",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "WildcardQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "WildcardQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -55101,6 +55251,7 @@
         {
           "name": "allow_leading_wildcard",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55123,6 +55274,7 @@
         {
           "name": "analyze_wildcard",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55134,6 +55286,7 @@
         {
           "name": "auto_generate_synonyms_phrase_query",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55156,6 +55309,7 @@
         {
           "name": "default_operator",
           "required": false,
+          "serverDefault": "'or'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55167,6 +55321,7 @@
         {
           "name": "enable_position_increments",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55178,6 +55333,7 @@
         {
           "name": "escape",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55190,10 +55346,13 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -55211,6 +55370,7 @@
         {
           "name": "fuzzy_max_expansions",
           "required": false,
+          "serverDefault": "50",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55255,6 +55415,7 @@
         {
           "name": "lenient",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55266,6 +55427,7 @@
         {
           "name": "max_determinized_states",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55298,7 +55460,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55357,39 +55519,20 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "TimeZone",
+              "namespace": "_types"
             }
           }
         },
         {
           "name": "type",
           "required": false,
+          "serverDefault": "'best_fields'",
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "TextQueryType",
               "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "QueryTemplate",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -55445,6 +55588,32 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "RangeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateRangeQuery",
+              "namespace": "_types.query_dsl"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NumberRangeQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -55453,102 +55622,10 @@
       },
       "kind": "interface",
       "name": {
-        "name": "RangeQuery",
+        "name": "RangeQueryBase",
         "namespace": "_types.query_dsl"
       },
       "properties": [
-        {
-          "name": "gt",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "gte",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "lt",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "lte",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
         {
           "name": "relation",
           "required": false,
@@ -55558,63 +55635,6 @@
               "name": "RangeRelation",
               "namespace": "_types.query_dsl"
             }
-          }
-        },
-        {
-          "name": "time_zone",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "to",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "double",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
           }
         }
       ]
@@ -55648,6 +55668,109 @@
     {
       "inherits": {
         "type": {
+          "name": "RankFeatureFunction",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RankFeatureFunctionLinear",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RankFeatureFunction",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RankFeatureFunctionLogarithm",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "scaling_factor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RankFeatureFunction",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RankFeatureFunctionSaturation",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "pivot",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RankFeatureFunction",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RankFeatureFunctionSigmoid",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "pivot",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "exponent",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "QueryBase",
           "namespace": "_types.query_dsl"
         }
@@ -55659,12 +55782,56 @@
       },
       "properties": [
         {
-          "name": "function",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "saturation",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RankFeatureFunction",
+              "name": "RankFeatureFunctionSaturation",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "log",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankFeatureFunctionLogarithm",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "linear",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankFeatureFunctionLinear",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "sigmoid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RankFeatureFunctionSigmoid",
               "namespace": "_types.query_dsl"
             }
           }
@@ -55685,6 +55852,19 @@
       },
       "properties": [
         {
+          "name": "case_insensitive",
+          "required": false,
+          "serverDefault": false,
+          "since": "7.10.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "flags",
           "required": false,
           "type": {
@@ -55698,6 +55878,7 @@
         {
           "name": "max_determinized_states",
           "required": false,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55707,8 +55888,19 @@
           }
         },
         {
-          "name": "value",
+          "name": "rewrite",
           "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiTermQueryRewrite",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55717,7 +55909,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
       "kind": "interface",
@@ -55765,7 +55958,7 @@
       "properties": [
         {
           "name": "script",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55816,8 +56009,19 @@
       },
       "properties": [
         {
-          "name": "query",
+          "name": "min_score",
           "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55828,7 +56032,7 @@
         },
         {
           "name": "script",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55840,15 +56044,9 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "ShapeQuery",
+        "name": "ShapeFieldQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
@@ -55892,11 +56090,52 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoShape",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShapeFieldQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ShapeQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
     },
     {
       "kind": "enum",
@@ -55973,6 +56212,7 @@
         {
           "name": "analyze_wildcard",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55984,6 +56224,7 @@
         {
           "name": "auto_generate_synonyms_phrase_query",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55995,6 +56236,7 @@
         {
           "name": "default_operator",
           "required": false,
+          "serverDefault": "'or'",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56007,10 +56249,13 @@
           "name": "fields",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -56073,6 +56318,7 @@
         {
           "name": "lenient",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56094,7 +56340,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56131,7 +56377,7 @@
       "properties": [
         {
           "name": "big",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56142,7 +56388,7 @@
         },
         {
           "name": "little",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56168,7 +56414,7 @@
       "properties": [
         {
           "name": "field",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56179,7 +56425,7 @@
         },
         {
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56205,7 +56451,7 @@
       "properties": [
         {
           "name": "end",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56216,7 +56462,7 @@
         },
         {
           "name": "match",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56236,50 +56482,14 @@
       },
       "kind": "interface",
       "name": {
-        "name": "SpanGapQuery",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "width",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "SpanMultiTermQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
         {
+          "description": "Should be a multi term query (one of wildcard, fuzzy, prefix, range or regexp query)",
           "name": "match",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56305,7 +56515,7 @@
       "properties": [
         {
           "name": "clauses",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -56367,7 +56577,7 @@
         },
         {
           "name": "exclude",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56378,7 +56588,7 @@
         },
         {
           "name": "include",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56390,6 +56600,7 @@
         {
           "name": "post",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56401,6 +56612,7 @@
         {
           "name": "pre",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56426,7 +56638,7 @@
       "properties": [
         {
           "name": "clauses",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -56441,12 +56653,6 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
         "name": "SpanQuery",
@@ -56457,30 +56663,9 @@
           "name": "span_containing",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanContainingQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanContainingQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -56489,30 +56674,9 @@
           "name": "field_masking_span",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanFieldMaskingQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanFieldMaskingQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -56521,63 +56685,33 @@
           "name": "span_first",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanFirstQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanFirstQuery",
               "namespace": "_types.query_dsl"
             }
           }
         },
         {
+          "description": "Can only be used as a clause in a span_near query",
           "name": "span_gap",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanGapQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "integer",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
             }
           }
         },
@@ -56596,30 +56730,9 @@
           "name": "span_near",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanNearQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanNearQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -56628,30 +56741,9 @@
           "name": "span_not",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanNotQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanNotQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -56660,30 +56752,9 @@
           "name": "span_or",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanOrQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanOrQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -56692,31 +56763,21 @@
           "name": "span_term",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanTermQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
               }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "NamedQuery",
-              "namespace": "_types.query_dsl"
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SpanTermQuery",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         },
@@ -56724,35 +56785,17 @@
           "name": "span_within",
           "required": false,
           "type": {
-            "generics": [
-              {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SpanWithinQuery",
-                      "namespace": "_types.query_dsl"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "NamedQuery",
+              "name": "SpanWithinQuery",
               "namespace": "_types.query_dsl"
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": {
@@ -56778,7 +56821,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
       "inherits": {
@@ -56795,7 +56839,7 @@
       "properties": [
         {
           "name": "big",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56806,7 +56850,7 @@
         },
         {
           "name": "little",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56832,7 +56876,7 @@
       "properties": [
         {
           "name": "value",
-          "required": false,
+          "required": true,
           "type": {
             "items": [
               {
@@ -56859,39 +56903,32 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "name": "case_insensitive",
+          "required": false,
+          "since": "7.10.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "TermsQuery",
+        "name": "TermsLookup",
         "namespace": "_types.query_dsl"
       },
       "properties": [
         {
-          "name": "terms",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
           "name": "index",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56902,7 +56939,7 @@
         },
         {
           "name": "id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56913,12 +56950,12 @@
         },
         {
           "name": "path",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Field",
+              "namespace": "_types"
             }
           }
         },
@@ -56936,6 +56973,58 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "items": [
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "string",
+                      "namespace": "internal"
+                    }
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "long",
+                      "namespace": "_types"
+                    }
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TermsLookup",
+                    "namespace": "_types.query_dsl"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -56944,7 +57033,15 @@
       },
       "kind": "interface",
       "name": {
-        "name": "TermsSetQuery",
+        "name": "TermsQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermsSetFieldQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
@@ -56972,7 +57069,7 @@
         },
         {
           "name": "terms",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -56985,6 +57082,47 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperty"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermsSetFieldQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperty",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TermsSetQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": []
     },
     {
       "kind": "enum",
@@ -57126,6 +57264,18 @@
       },
       "properties": [
         {
+          "name": "case_insensitive",
+          "required": false,
+          "since": "7.10.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "rewrite",
           "required": false,
           "type": {
@@ -57147,7 +57297,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "value"
     },
     {
       "kind": "enum",
@@ -144044,6 +144195,25 @@
           }
         }
       ]
+    },
+    {
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
+      "generics": [
+        {
+          "name": "TKey",
+          "namespace": "_spec_utils"
+        },
+        {
+          "name": "TValue",
+          "namespace": "_spec_utils"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AdditionalProperty",
+        "namespace": "_spec_utils"
+      },
+      "properties": []
     },
     {
       "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",

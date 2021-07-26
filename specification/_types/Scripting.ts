@@ -47,8 +47,10 @@ export class IndexedScript extends ScriptBase {
   id: Id
 }
 
+// 'string' is a shortcut for InlineScript.source
 export type Script = InlineScript | IndexedScript | string
 
 export class ScriptField {
   script: Script
+  ignore_failure?: boolean
 }

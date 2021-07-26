@@ -37,6 +37,17 @@ import { Time } from '@_types/Time'
 export interface AdditionalProperties<TKey, TValue> {}
 
 /**
+ * In some places in the specification an object consists of a static set of properties and a single additional property
+ * with an arbitrary name but a statically defined type. This is typically used for configurations associated
+ * to a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose
+ * a set of known keys. And possibly the object might already be part of an object graph and have a parent class.
+ * This puts it into a bind that needs a client specific solution.
+ * We therefore document the requirement to accept a single unknown property with this interface.
+ * @behavior Defines a trait that a single unknown property for the class should be typed to TValue
+ */
+export interface AdditionalProperty<TKey, TValue> {}
+
+/**
  * Implements a set of common query parameters all API's support.
  * Since these can break the request structure these are listed explicitly as a behavior.
  * Its up to individual clients to define support although `error_trace` and `pretty` are

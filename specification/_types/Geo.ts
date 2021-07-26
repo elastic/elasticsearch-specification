@@ -18,6 +18,7 @@
  */
 
 import { double } from './Numeric'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class DistanceParsed {
   precision: double
@@ -42,6 +43,9 @@ export enum GeoDistanceType {
   arc = 0,
   plane = 1
 }
+
+/** A GeoJson shape, that can also use Elasticsearch's `envelope` extension. */
+export type GeoShape = UserDefinedValue
 
 export enum GeoShapeRelation {
   intersects = 0,

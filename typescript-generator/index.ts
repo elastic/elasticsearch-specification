@@ -30,7 +30,7 @@ const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', '
 // behaviors because we ue them for sharing common query parameters
 // among most requests.
 const skipBehaviors = [
-  'AdditionalProperties'
+  'AdditionalProperties', 'AdditionalProperty'
 ]
 
 let definitions = `/*
@@ -79,21 +79,49 @@ function buildType (type: M.TypeDefinition): string {
   }
 }
 
-// This function always returns a string, unless we are visitin
+// This function always returns a string, unless we are visiting
 // a literal_value, which can also be a number or boolean.
-function buildValue (type: M.ValueOf, openGenerics?: string[]): string | number | boolean {
+// The 'origin' parameter is used to control recursion when generating shortcut property unions.
+function buildValue (type: M.ValueOf, openGenerics?: string[], origin?: M.TypeName): string | number | boolean {
+  function equalTypeNames (t1: M.TypeName, t2?: M.TypeName): boolean {
+    return t2 != null && (t1.name === t2.name && t1.namespace === t2.namespace)
+  }
+
+  function getShortcutType (value: M.ValueOf): M.ValueOf | undefined {
+    if (value.kind === 'instance_of') {
+      const def = model.types.find(t => equalTypeNames(t.name, value.type))
+      if (def?.kind === 'interface' && def.shortcutProperty != null) {
+        const shortcutProp = def.properties.find(p => p.name === def.shortcutProperty)
+        return shortcutProp?.type
+      }
+    }
+  }
+
   switch (type.kind) {
     case 'instance_of':
       if (Array.isArray(openGenerics) && openGenerics.includes(type.type.name)) {
         return type.type.name
       }
+
+      if (!equalTypeNames(type.type, origin)) {
+        // If this type has a shortcut property, generate it as a union of [type, property's type]
+        const shortcutType = getShortcutType(type)
+        if (shortcutType != null) {
+          const union: M.UnionOf = {
+            kind: 'union_of',
+            items: [type, shortcutType]
+          }
+          return buildValue(union, openGenerics, type.type)
+        }
+      }
+
       return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
     case 'array_of':
-      return type.value.kind === 'union_of'
+      return type.value.kind === 'union_of' || getShortcutType(type.value) != null
         ? `(${buildValue(type.value, openGenerics)})[]`
         : `${buildValue(type.value, openGenerics)}[]`
     case 'union_of':
-      return type.items.map(t => buildValue(t, openGenerics)).join(' | ')
+      return type.items.map(t => buildValue(t, openGenerics, origin)).join(' | ')
     case 'dictionary_of':
       return `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
     case 'user_defined_value':
@@ -175,7 +203,7 @@ function implementsBehavior (type: M.Interface): boolean {
 
 function buildBehaviorInterface (type: M.Interface): string {
   if (Array.isArray(type.attachedBehaviors)) {
-    if (type.attachedBehaviors.includes('AdditionalProperties')) {
+    if (type.attachedBehaviors.includes('AdditionalProperties') || type.attachedBehaviors.includes('AdditionalProperty')) {
       return serializeAdditionalPropertiesType(type)
     }
   }
@@ -191,7 +219,7 @@ function buildBehaviorInterface (type: M.Interface): string {
 }
 
 function serializeAdditionalPropertiesType (type: M.Interface): string {
-  const dictionaryOf = lookupBehavior(type, 'AdditionalProperties')
+  const dictionaryOf = lookupBehavior(type, 'AdditionalProperties') ?? lookupBehavior(type, 'AdditionalProperty')
   if (dictionaryOf == null) throw new Error(`Unknown implements ${type.name.name}`)
   let code = `export interface ${createName(type.name)}Keys${buildGenerics(type.generics)}${buildInherits(type)} {\n`
 

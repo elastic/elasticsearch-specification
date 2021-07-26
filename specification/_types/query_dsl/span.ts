@@ -19,70 +19,77 @@
 
 import { Field } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { NamedQuery, QueryBase, QueryContainer } from './abstractions'
+import { QueryBase, QueryContainer } from './abstractions'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class SpanContainingQuery extends QueryBase {
-  big?: SpanQuery
-  little?: SpanQuery
+  big: SpanQuery
+  little: SpanQuery
 }
 
 export class SpanFieldMaskingQuery extends QueryBase {
-  field?: Field
-  query?: SpanQuery
+  field: Field
+  query: SpanQuery
 }
 
 export class SpanFirstQuery extends QueryBase {
-  end?: integer
-  match?: SpanQuery
+  end: integer
+  match: SpanQuery
 }
 
 export class SpanGapQuery extends QueryBase {
-  field?: Field
+  field: Field
   width?: integer
 }
 
 export class SpanMultiTermQuery extends QueryBase {
-  match?: QueryContainer
+  /** Should be a multi term query (one of wildcard, fuzzy, prefix, range or regexp query) */
+  match: QueryContainer
 }
 
 export class SpanNearQuery extends QueryBase {
-  clauses?: SpanQuery[]
+  clauses: SpanQuery[]
   in_order?: boolean
   slop?: integer
 }
 
 export class SpanNotQuery extends QueryBase {
   dist?: integer
-  exclude?: SpanQuery
-  include?: SpanQuery
+  exclude: SpanQuery
+  include: SpanQuery
+  /** @server_default 0 */
   post?: integer
+  /** @server_default 0 */
   pre?: integer
 }
 
 export class SpanOrQuery extends QueryBase {
-  clauses?: SpanQuery[]
+  clauses: SpanQuery[]
 }
 
+/** @shortcut_property value */
 export class SpanTermQuery extends QueryBase {
   value: string
 }
 
 export class SpanWithinQuery extends QueryBase {
-  big?: SpanQuery
-  little?: SpanQuery
+  big: SpanQuery
+  little: SpanQuery
 }
 
-export class SpanQuery extends QueryBase {
-  span_containing?: NamedQuery<SpanContainingQuery | string>
-  field_masking_span?: NamedQuery<SpanFieldMaskingQuery | string>
-  span_first?: NamedQuery<SpanFirstQuery | string>
-  span_gap?: NamedQuery<SpanGapQuery | integer>
+/** @variants container */
+export class SpanQuery {
+  span_containing?: SpanContainingQuery
+  field_masking_span?: SpanFieldMaskingQuery
+  span_first?: SpanFirstQuery
+  /** Can only be used as a clause in a span_near query */
+  span_gap?: SingleKeyDictionary<Field, integer>
   span_multi?: SpanMultiTermQuery
-  span_near?: NamedQuery<SpanNearQuery | string>
-  span_not?: NamedQuery<SpanNotQuery | string>
-  span_or?: NamedQuery<SpanOrQuery | string>
-  span_term?: NamedQuery<SpanTermQuery | string>
-  span_within?: NamedQuery<SpanWithinQuery | string>
+  span_near?: SpanNearQuery
+  span_not?: SpanNotQuery
+  span_or?: SpanOrQuery
+  span_term?: SingleKeyDictionary<Field, SpanTermQuery>
+  span_within?: SpanWithinQuery
 }
 
 export class SpanSubQuery extends QueryBase {}

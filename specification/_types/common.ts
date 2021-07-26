@@ -50,7 +50,7 @@ export type IndexPatterns = IndexPattern[]
 export type Type = string
 export type Types = Type | Type[]
 
-export type Routing = string | number
+export type Routing = string
 export type LongId = string
 //TODO encode metrics as API specific enums
 export type IndexMetrics = string
@@ -98,6 +98,7 @@ export type PropertyName = string
 export type RelationName = string
 export type TaskId = string | integer
 export type Fuzziness = string | integer
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-term-rewrite.html */
 export type MultiTermQueryRewrite = string
 
 /** Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.  */

@@ -40,6 +40,11 @@ export type DateMath = string
 export type DateMathExpression = string
 export type DateMathTime = string
 
+export type TimeZone = string
+
+/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html */
+export type DateFormat = string
+
 export enum DateMathOperation {
   '+' = 0,
   '-' = 1

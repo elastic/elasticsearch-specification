@@ -317,6 +317,25 @@ class AggregationContainer {
   avg?: AverageAggregation
   ...
 ```
+
+### Shortcut properties
+
+In many places Elasticsearch accepts a property value to be either a complete data structure or a single value, that value being a shortcut for a property in the data structure.
+
+A typical example can be found in queries such as term query: `{"term": {"some_field": {"value": "some_text"}}}` can also be written as `{"term": {"some_field": "some_text"}}`.
+
+This could be modelled as a union of `SomeClass | string`, but this notation doesn't capture the relation between the string variant and the corresponding field (`value` in the above example).
+
+To capture this information and also simplify the spec by avoiding the union, we use the `@shortcut_property` JSDoc tag:
+
+```ts
+/** @shortcut_property value */
+export class TermQuery extends QueryBase {
+  value: string | float | boolean
+  case_insensitive?: boolean
+}
+```
+
 ### Additional information
 
 If needed, you can specify additional information on each type with the approariate JSDoc tag.

@@ -114,14 +114,24 @@ export class InnerHits {
   size?: integer
   from?: integer
   collapse?: FieldCollapse
-  docvalue_fields?: Fields
+  docvalue_fields?: FieldAndFormat[]
   explain?: boolean
   highlight?: Highlight
   ignore_unmapped?: boolean
-  script_fields?: Dictionary<string, ScriptField>
+  script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
   fields?: Fields
   sort?: Sort
   _source?: boolean | SourceFilter
+  stored_field?: Fields
+  /** @server_default false */
+  track_scores?: boolean
   version?: boolean
+}
+
+/** @shortcut_property field */
+export class FieldAndFormat {
+  field: Field
+  format?: string
+  include_unmapped?: boolean
 }

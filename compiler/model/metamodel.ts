@@ -207,6 +207,11 @@ export class Interface extends BaseType {
    */
   attachedBehaviors?: string[]
   properties: Property[]
+  /**
+   * The property that can be used as a shortcut for the entire data structure in the JSON.
+   */
+  shortcutProperty?: string
+
   /** Identify containers */
   variants?: Container
 }

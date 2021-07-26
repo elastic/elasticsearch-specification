@@ -19,7 +19,13 @@
 
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { Field, Id, IndexName, Routing } from '@_types/common'
+import {
+  Field,
+  Id,
+  IndexName,
+  MinimumShouldMatch,
+  Routing
+} from '@_types/common'
 import { float, long } from '@_types/Numeric'
 import {
   BoolQuery,
@@ -94,47 +100,44 @@ import {
 export class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
-  common?: SingleKeyDictionary<Field, CommonTermsQuery | string>
+  /** @obsolete 7.3.0 */
+  common?: SingleKeyDictionary<Field, CommonTermsQuery>
   /** @since 7.13.0 */
   combined_fields?: CombinedFieldsQuery
   constant_score?: ConstantScoreQuery
   dis_max?: DisMaxQuery
-  // TODO?: can be both { __field__ ?: { options } } and { field?: "" ...options }
-  // very lenient parser on the server, never documented as such but used in yamltests as such
-  distance_feature?:
-    | SingleKeyDictionary<Field, DistanceFeatureQuery | string>
-    | DistanceFeatureQuery
+  distance_feature?: DistanceFeatureQuery
   exists?: ExistsQuery
   function_score?: FunctionScoreQuery
-  fuzzy?: SingleKeyDictionary<Field, FuzzyQuery | string>
-  geo_bounding_box?: NamedQuery<GeoBoundingBoxQuery | string>
+  fuzzy?: SingleKeyDictionary<Field, FuzzyQuery>
+  geo_bounding_box?: GeoBoundingBoxQuery
   geo_distance?: GeoDistanceQuery
-  geo_polygon?: NamedQuery<GeoPolygonQuery | string>
-  geo_shape?: NamedQuery<GeoShapeQuery | string>
+  geo_polygon?: GeoPolygonQuery
+  geo_shape?: GeoShapeQuery
   has_child?: HasChildQuery
   has_parent?: HasParentQuery
   ids?: IdsQuery
-  intervals?: NamedQuery<IntervalsQuery | string>
-  match?: NamedQuery<MatchQuery | string | float | boolean>
+  intervals?: SingleKeyDictionary<Field, IntervalsQuery>
+  match?: SingleKeyDictionary<Field, MatchQuery>
   match_all?: MatchAllQuery
-  match_bool_prefix?: NamedQuery<MatchBoolPrefixQuery | string>
+  match_bool_prefix?: SingleKeyDictionary<Field, MatchBoolPrefixQuery>
   match_none?: MatchNoneQuery
-  match_phrase?: NamedQuery<MatchPhraseQuery | string>
-  match_phrase_prefix?: NamedQuery<MatchPhrasePrefixQuery | string>
+  match_phrase?: SingleKeyDictionary<Field, MatchPhraseQuery>
+  match_phrase_prefix?: SingleKeyDictionary<Field, MatchPhrasePrefixQuery>
   more_like_this?: MoreLikeThisQuery
   multi_match?: MultiMatchQuery
   nested?: NestedQuery
   parent_id?: ParentIdQuery
   percolate?: PercolateQuery
   pinned?: PinnedQuery
-  prefix?: NamedQuery<PrefixQuery | string>
+  prefix?: SingleKeyDictionary<Field, PrefixQuery>
   query_string?: QueryStringQuery
-  range?: NamedQuery<RangeQuery>
-  rank_feature?: NamedQuery<RankFeatureQuery | string>
-  regexp?: NamedQuery<RegexpQuery | string>
+  range?: SingleKeyDictionary<Field, RangeQuery>
+  rank_feature?: RankFeatureQuery
+  regexp?: SingleKeyDictionary<Field, RegexpQuery>
   script?: ScriptQuery
   script_score?: ScriptScoreQuery
-  shape?: NamedQuery<ShapeQuery | string>
+  shape?: ShapeQuery
   simple_query_string?: SimpleQueryStringQuery
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
@@ -143,13 +146,12 @@ export class QueryContainer {
   span_near?: SpanNearQuery
   span_not?: SpanNotQuery
   span_or?: SpanOrQuery
-  span_term?: NamedQuery<SpanTermQuery | string>
+  span_term?: SingleKeyDictionary<Field, SpanTermQuery>
   span_within?: SpanWithinQuery
-  template?: QueryTemplate
-  term?: NamedQuery<TermQuery | string | float | boolean>
-  terms?: NamedQuery<TermsQuery | string[] | long[]>
-  terms_set?: NamedQuery<TermsSetQuery | string>
-  wildcard?: NamedQuery<WildcardQuery | string>
+  term?: SingleKeyDictionary<Field, TermQuery>
+  terms?: TermsQuery
+  terms_set?: SingleKeyDictionary<Field, TermsSetQuery>
+  wildcard?: SingleKeyDictionary<Field, WildcardQuery>
 
   /**
    * @obsolete 7.0.0
@@ -158,12 +160,8 @@ export class QueryContainer {
   type?: TypeQuery
 }
 
-export class QueryTemplate {
-  source: string
-}
-
 export class FieldLookup {
-  id?: Id
+  id: Id
   index?: IndexName
   path?: Field
   routing?: Routing
@@ -175,25 +173,32 @@ export class FieldNameQuery {
 
 export class QueryBase {
   boost?: float
+  /** @identifier query_name */
   _name?: string
 }
 
-/**
- * Queries can either be in the form of
- * { type: { field: { ...query_details...including_boost_and_name } } }
- * ||
- * { type: { boost: _, _name: _, field: { ...query_details... } } }
- */
-
-export class NamedQuery<TQuery>
-  implements AdditionalProperties<string, TQuery> {
-  boost?: float
-  _name?: string
-  ignore_unmapped?: boolean
-}
-
-export class CombinedFieldsQuery {
-  query: string
+export class CombinedFieldsQuery extends QueryBase {
   fields: Field[]
-  operator?: string
+  query: string
+
+  /** @server_default true */
+  auto_generate_synonyms_phrase_query?: boolean
+
+  /** @server_default or */
+  operator?: CombinedFieldsOperator
+
+  mimimum_should_match?: MinimumShouldMatch
+
+  /** @server_default none */
+  zero_terms_query?: CombinedFieldsZeroTerms
+}
+
+export enum CombinedFieldsOperator {
+  or,
+  and
+}
+
+export enum CombinedFieldsZeroTerms {
+  none,
+  all
 }

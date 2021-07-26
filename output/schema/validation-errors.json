@@ -1259,9 +1259,7 @@
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'AND'",
-        "enum definition _types.query_dsl:Operator - Duplicate enum member identifier 'OR'"
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
       "response": [
         "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",

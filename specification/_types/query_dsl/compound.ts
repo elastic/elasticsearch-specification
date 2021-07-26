@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
+import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Field, MinimumShouldMatch } from '@_types/common'
 import { Distance } from '@_types/Geo'
 import { double, float, long } from '@_types/Numeric'
@@ -35,17 +35,18 @@ export class BoolQuery extends QueryBase {
 }
 
 export class BoostingQuery extends QueryBase {
-  negative_boost?: double
-  negative?: QueryContainer
-  positive?: QueryContainer
+  negative_boost: double
+  negative: QueryContainer
+  positive: QueryContainer
 }
 
 export class ConstantScoreQuery extends QueryBase {
-  filter?: QueryContainer
+  filter: QueryContainer
 }
 
 export class DisMaxQuery extends QueryBase {
-  queries?: QueryContainer[]
+  queries: QueryContainer[]
+  /** @server_default 0.0 */
   tie_breaker?: double
 }
 
@@ -94,22 +95,26 @@ export class DecayFunctionBase extends ScoreFunctionBase {
 
 export class NumericDecayFunction
   extends DecayFunctionBase
-  implements AdditionalProperties<string, DecayPlacement<double, double>> {}
+  implements AdditionalProperty<Field, DecayPlacement<double, double>> {}
 
 export class DateDecayFunction
   extends DecayFunctionBase
-  implements AdditionalProperties<string, DecayPlacement<DateMath, Time>> {}
+  implements AdditionalProperty<Field, DecayPlacement<DateMath, Time>> {}
 
 export class GeoDecayFunction
   extends DecayFunctionBase
-  implements
-    AdditionalProperties<string, DecayPlacement<GeoLocation, Distance>> {}
+  implements AdditionalProperty<Field, DecayPlacement<GeoLocation, Distance>> {}
 
 export type DecayFunction =
   | DateDecayFunction
   | NumericDecayFunction
   | GeoDecayFunction
 
+/** @variants container */
+// This container is valid without a variant. Also, despite being documented as a function, 'weight' is actually a
+// container property that can be combined with a function. From SearchModule#registerScoreFunctions in ES:
+// Weight doesn't have its own parser, so every function supports it out of the box. Can be a single function too when
+// not associated to any other function, which is why it needs to be registered manually here.
 export class FunctionScoreContainer {
   exp?: DecayFunction
   gauss?: DecayFunction
@@ -117,7 +122,10 @@ export class FunctionScoreContainer {
   field_value_factor?: FieldValueFactorScoreFunction
   random_score?: RandomScoreFunction
   script_score?: ScriptScoreFunction
+
+  /** @variant container_property */
   filter?: QueryContainer
+  /** @variant container_property */
   weight?: double
 }
 
