@@ -10618,7 +10618,7 @@ export interface MlJob {
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: MlDataDescription
-  datafeed_config: MlDatafeed
+  datafeed_config?: MlDatafeed
   deleting?: boolean
   description?: string
   finished_time?: integer
