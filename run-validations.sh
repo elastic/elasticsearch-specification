@@ -15,11 +15,20 @@ if [[ ! -f "${recorderScript}" ]]; then
   exit
 fi
 
+function require_stack_version() {
+  if [[ -z $STACK_VERSION ]]; then
+    echo -e "\033[31;1mERROR:\033[0m Required environment variable [STACK_VERSION] not set\033[0m"
+    exit 1
+  fi
+}
+
+require_stack_version
+
 # assumes the flight recorder is checked out next to generator
 pushd "${recorderFolder}"
 function finish { popd; }
 trap finish EXIT
-./run-validations.sh $@
+STACK_VERSION=${STACK_VERSION} ./run-validations.sh $@
 
 
 

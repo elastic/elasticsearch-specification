@@ -191,28 +191,28 @@ git clone https://github.com/elastic/elasticsearch-specification.git
 git clone https://github.com/elastic/clients-flight-recorder.git
 
 cd elasticsearch-specification
-./run-validations.sh
+STACK_VERSION=... ./run-validations.sh
 ```
 
 The last command above will install all the dependencies and run, download
 the test recordings and finally validate the specification.
-If you need to download the recordings again, run `PULL_LATEST=true ./run-validations.sh`.
+If you need to download the recordings again, run `STACK_VERSION=... PULL_LATEST=true ./run-validations.sh`.
 
 You can validate a specific API with the `--api` option, same goes for `--request` and `--response`.
 For example, the following command validates the index request api:
 
 ```js
-./run-validations.sh --api index --request
+STACK_VERSION=... ./run-validations.sh --api index --request
 ```
 The following command validates the index response api:
 
 ```js
-./run-validations.sh --api index --response
+STACK_VERSION=... ./run-validations.sh --api index --response
 ```
 The following command validates the index request and response api:
 
 ```js
-./run-validations.sh --api index --request --response
+STACK_VERSION=... ./run-validations.sh --api index --request --response
 ```
 
 Once you see the errors, you can fix the original definition in `/specification`
@@ -222,7 +222,7 @@ Finally open a pull request with your changes.
 Namespaced APIs can be validated in the same way, for example:
 
 ```js
-./run-validations.sh --api cat.health --request
+STACK_VERSION=... ./run-validations.sh --api cat.health --request
 ```
 
 ## FAQ
@@ -263,7 +263,7 @@ Very likely the recordings on your machine are stale, you can download
 the latest version with:
 
 ```sh
-PULL_LATEST=true ./run-validations.sh
+STACK_VERSION=... PULL_LATEST=true ./run-validations.sh
 ```
 
 You should pull the latest change from the `client-flight-recorder` as well.
