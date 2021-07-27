@@ -25,6 +25,7 @@ import { RequestBase } from '@_types/Base'
 import { Id, IndexName } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { DatafeedConfig } from '@ml/_types/Datafeed'
 
 /**
  * @rest_spec_name ml.put_job
@@ -41,12 +42,14 @@ export interface Request extends RequestBase {
     analysis_limits?: AnalysisLimits
     background_persist_interval: Time
     custom_settings?: CustomSettings
-    data_description?: DataDescription
     daily_model_snapshot_retention_after_days?: long
-    groups?: string[]
+    data_description: DataDescription
+    datafeed_config?: DatafeedConfig
     description?: string
+    groups?: string[]
     model_plot_config?: ModelPlotConfig
     model_snapshot_retention_days?: long
+    renormalization_window_days?: long
     results_index_name?: IndexName
     results_retention_days?: long
   }
