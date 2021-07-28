@@ -8556,7 +8556,6 @@ export interface IndicesDataStreamsStatsDataStreamsStatsItem {
 export interface IndicesDataStreamsStatsRequest extends RequestBase {
   name?: IndexName
   expand_wildcards?: ExpandWildcards
-  human?: boolean
 }
 
 export interface IndicesDataStreamsStatsResponse {

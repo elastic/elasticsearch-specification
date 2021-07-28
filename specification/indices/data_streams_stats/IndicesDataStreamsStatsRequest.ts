@@ -31,7 +31,6 @@ export interface Request extends RequestBase {
   }
   query_parameters?: {
     expand_wildcards?: ExpandWildcards // default: open
-    human?: boolean // default: false
   }
   body?: {}
 }
