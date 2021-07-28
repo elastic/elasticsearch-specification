@@ -100009,7 +100009,7 @@
           }
         },
         {
-          "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`. ",
+          "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
           "name": "categorization_field_name",
           "required": false,
           "type": {
@@ -101877,7 +101877,7 @@
       },
       "properties": [
         {
-          "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data. ",
+          "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -102046,7 +102046,7 @@
           }
         },
         {
-          "description": "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node. ",
+          "description": "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.",
           "name": "query_delay",
           "required": false,
           "type": {
@@ -102070,7 +102070,7 @@
           }
         },
         {
-          "description": "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields. ",
+          "description": "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields.",
           "name": "script_fields",
           "required": false,
           "type": {
@@ -104496,7 +104496,7 @@
           }
         },
         {
-          "description": "Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules. ",
+          "description": "Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules.",
           "name": "custom_rules",
           "required": false,
           "type": {
@@ -104559,7 +104559,7 @@
           }
         },
         {
-          "description": "The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`. ",
+          "description": "The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`.",
           "name": "function",
           "required": true,
           "type": {
@@ -104571,7 +104571,7 @@
           }
         },
         {
-          "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits. ",
+          "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.",
           "name": "over_field_name",
           "required": false,
           "type": {
