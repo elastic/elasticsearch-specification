@@ -13280,7 +13280,7 @@ export interface SecurityGetUserPrivilegesResponse {
   run_as: string[]
 }
 
-export interface SecurityGrantApiKeyApiKey {
+export interface SecurityGrantApiKeyApiKeyGrant {
   name: Name
   expiration?: Time
   role_descriptors?: Record<string, any>[]
@@ -13290,7 +13290,7 @@ export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
 
 export interface SecurityGrantApiKeyRequest extends RequestBase {
   body?: {
-    api_key: SecurityGrantApiKeyApiKey
+    api_key: SecurityGrantApiKeyApiKeyGrant
     grant_type: SecurityGrantApiKeyApiKeyGrantType
     access_token?: string
     username?: Username

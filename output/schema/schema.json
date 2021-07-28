@@ -126948,7 +126948,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ApiKey",
+        "name": "ApiKeyGrant",
         "namespace": "security.grant_api_key"
       },
       "properties": [
@@ -127025,7 +127025,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "ApiKey",
+                "name": "ApiKeyGrant",
                 "namespace": "security.grant_api_key"
               }
             }
