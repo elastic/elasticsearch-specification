@@ -86061,17 +86061,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "human",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
