@@ -108386,7 +108386,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ConfusionMatrixTreshold",
+        "name": "ConfusionMatrixThreshold",
         "namespace": "ml.evaluate_data_frame"
       },
       "properties": [
@@ -108839,7 +108839,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ConfusionMatrixTreshold",
+                "name": "ConfusionMatrixThreshold",
                 "namespace": "ml.evaluate_data_frame"
               }
             }

@@ -11078,7 +11078,7 @@ export interface MlEvaluateDataFrameConfusionMatrixPrediction {
   count: integer
 }
 
-export interface MlEvaluateDataFrameConfusionMatrixTreshold {
+export interface MlEvaluateDataFrameConfusionMatrixThreshold {
   tp: integer
   fp: integer
   tn: integer
@@ -11135,7 +11135,7 @@ export interface MlEvaluateDataFrameDataframeOutlierDetectionSummary {
   auc_roc?: MlEvaluateDataFrameDataframeEvaluationSummaryAucRoc
   precision?: Record<string, double>
   recall?: Record<string, double>
-  confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixTreshold>
+  confusion_matrix?: Record<string, MlEvaluateDataFrameConfusionMatrixThreshold>
 }
 
 export interface MlEvaluateDataFrameDataframeRegressionSummary {
