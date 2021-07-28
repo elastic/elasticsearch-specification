@@ -25,7 +25,7 @@ export class DataframeOutlierDetectionSummary {
   auc_roc?: DataframeEvaluationSummaryAucRoc
   precision?: Dictionary<string, double>
   recall?: Dictionary<string, double>
-  confusion_matrix?: Dictionary<string, ConfusionMatrixTreshold>
+  confusion_matrix?: Dictionary<string, ConfusionMatrixThreshold>
 }
 
 export class DataframeClassificationSummary {
@@ -93,7 +93,7 @@ export class ConfusionMatrixPrediction {
   count: integer
 }
 
-export class ConfusionMatrixTreshold {
+export class ConfusionMatrixThreshold {
   /**
    * True Positive
    * @identifier true_positive
