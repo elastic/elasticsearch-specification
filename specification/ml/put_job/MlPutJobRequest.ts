@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
      * @server_default 1
      */
     daily_model_snapshot_retention_after_days?: long
-     /**
+    /**
      * Defines the format of the input data when you send data to the job by using the post data API. Note that when configure a datafeed, these properties are automatically set. When data is received via the post data API, it is not stored in Elasticsearch. Only the results for anomaly detection are retained.
      */
     data_description: DataDescription
@@ -74,7 +74,7 @@ export interface Request extends RequestBase {
      * Defines a datafeed for the anomaly detection job.
      */
     datafeed_config?: DatafeedConfig
-     /**
+    /**
      *  A description of the job.
      */
     description?: string

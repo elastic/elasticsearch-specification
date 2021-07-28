@@ -27,7 +27,7 @@ export class Detector {
    */
   by_field_name?: Field
   /**
-   * Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules. 
+   * Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules.
    */
   custom_rules?: DetectionRule[]
   /**
@@ -47,11 +47,11 @@ export class Detector {
    */
   field_name?: Field
   /**
-   * The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`. 
+   * The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`.
    */
   function: string
   /**
-   * The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits. 
+   * The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.
    */
   over_field_name?: Field
   /**

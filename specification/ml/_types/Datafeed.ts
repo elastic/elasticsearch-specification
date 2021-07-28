@@ -47,7 +47,7 @@ export class Datafeed {
 }
 export class DatafeedConfig {
   /**
-   * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data. 
+   * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.
    */
   aggregations?: Dictionary<string, AggregationContainer>
   aggs?: Dictionary<string, AggregationContainer>
@@ -56,7 +56,7 @@ export class DatafeedConfig {
    */
   chunking_config?: ChunkingConfig
   /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
-  */
+   */
   datafeed_id?: Id
   /**
    * Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally search over indices that have already been read in an effort to determine whether any data has subsequently been added to the index. If missing data is found, it is a good indication that the `query_delay` option is set too low and the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time datafeeds.
@@ -85,7 +85,7 @@ export class DatafeedConfig {
    */
   query: QueryContainer
   /**
-   * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node. 
+   * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.
    */
   query_delay?: Timestamp
   /**
@@ -93,13 +93,13 @@ export class DatafeedConfig {
    */
   runtime_mappings?: RuntimeFields
   /**
-   * Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields. 
+   * Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields.
    */
   script_fields?: Dictionary<string, ScriptField>
   /**
    * The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.
    * @server_default 1000
-  */
+   */
   scroll_size?: integer
 }
 

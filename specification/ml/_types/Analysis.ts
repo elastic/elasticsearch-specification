@@ -36,7 +36,7 @@ export class AnalysisConfig {
    */
   categorization_analyzer?: CategorizationAnalyzer | string
   /**
-   * If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`. 
+   * If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.
    */
   categorization_field_name?: Field
   /**
