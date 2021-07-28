@@ -99973,6 +99973,7 @@
       },
       "properties": [
         {
+          "description": " The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -99984,103 +99985,7 @@
           }
         },
         {
-          "name": "categorization_field_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "categorization_filters",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "detectors",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Detector",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        },
-        {
-          "name": "influencers",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "name": "latency",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "multivariate_by_fields",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "per_partition_categorization",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PerPartitionCategorization",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "name": "summary_count_field_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
+          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string it must refer to a built-in analyzer or one added by another plugin.",
           "name": "categorization_analyzer",
           "required": false,
           "type": {
@@ -100102,6 +100007,112 @@
             ],
             "kind": "union_of"
           }
+        },
+        {
+          "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
+          "name": "categorization_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `categorization_field_name` is specified, you can also define optional filters. This property expects an array of regular expressions. The expressions are used to filter out matching sequences from the categorization field values. You can use this functionality to fine tune the categorization by excluding sequences from consideration when categories are defined. For example, you can exclude SQL statements that appear in your log files. This property cannot be used at the same time as `categorization_analyzer`. If you only want to define simple regular expression filters that are applied prior to tokenization, setting this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering, use the `categorization_analyzer` property instead and include the filters as pattern_replace character filters. The effect is exactly the same.",
+          "name": "categorization_filters",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "Detector configuration objects specify which data fields a job analyzes. They also specify which analytical functions are used. You can specify multiple detectors for a job. If the detectors array does not contain at least one detector, no analysis can occur and an error is returned.",
+          "name": "detectors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Detector",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
+          "name": "influencers",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.",
+          "name": "latency",
+          "required": false,
+          "serverDefault": "0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to true, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
+          "name": "multivariate_by_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Settings related to how categorization interacts with partition fields.",
+          "name": "per_partition_categorization",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PerPartitionCategorization",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": " If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
+          "name": "summary_count_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -100113,8 +100124,10 @@
       },
       "properties": [
         {
+          "description": "The maximum number of examples stored per category in memory and in the results data store. If you increase this value, more examples are available, however it requires that you have more storage available. If you set this value to 0, no examples are stored. NOTE: The `categorization_examples_limit` applies only to analysis that uses categorization.",
           "name": "categorization_examples_limit",
           "required": false,
+          "serverDefault": "4",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100124,8 +100137,10 @@
           }
         },
         {
+          "description": "The approximate maximum amount of memory resources that are required for analytical processing. Once this limit is approached, data pruning becomes more aggressive. Upon exceeding this limit, new entities are not modeled. If the `xpack.ml.max_model_memory_limit` setting has a value greater than 0 and less than 1024mb, that value is used instead of the default. The default value is relatively small to ensure that high resource usage is a conscious decision. If you have jobs that are expected to analyze high cardinality fields, you will likely need to use a higher value. If you specify a number instead of a string, the units are assumed to be MiB. Specifying a string is recommended for clarity. If you specify a byte size unit of `b` or `kb` and the number does not equate to a discrete number of megabytes, it is rounded down to the closest MiB. The minimum valid value is 1 MiB. If you specify a value less than 1 MiB, an error occurs. If you specify a value for the `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create jobs that have `model_memory_limit` values greater than that setting value.",
           "name": "model_memory_limit",
-          "required": true,
+          "required": false,
+          "serverDefault": "1024mb",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100964,6 +100979,33 @@
       },
       "properties": [
         {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "CharFilter",
+                    "namespace": "_types.analysis"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        },
+        {
+          "description": "One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.",
           "name": "filter",
           "required": false,
           "type": {
@@ -100990,6 +101032,7 @@
           }
         },
         {
+          "description": "One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.",
           "name": "tokenizer",
           "required": false,
           "type": {
@@ -101010,32 +101053,6 @@
               }
             ],
             "kind": "union_of"
-          }
-        },
-        {
-          "name": "char_filter",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "CharFilter",
-                    "namespace": "_types.analysis"
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
           }
         }
       ]
@@ -101243,6 +101260,7 @@
       },
       "properties": [
         {
+          "description": "If the mode is `auto`, the chunk size is dynamically calculated; this is the recommended value when the datafeed does not use aggregations. If the mode is `manual`, chunking is applied according to the specified `time_span`; use this mode when the datafeed uses aggregations. If the mode is `off`, no chunking is applied.",
           "name": "mode",
           "required": true,
           "type": {
@@ -101254,6 +101272,7 @@
           }
         },
         {
+          "description": "The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.",
           "name": "time_span",
           "required": false,
           "serverDefault": "3h",
@@ -101577,6 +101596,7 @@
       },
       "properties": [
         {
+          "description": "Only JSON format is supported at this time.",
           "name": "format",
           "required": false,
           "type": {
@@ -101588,6 +101608,7 @@
           }
         },
         {
+          "description": "The name of the field that contains the timestamp.",
           "name": "time_field",
           "required": true,
           "type": {
@@ -101599,8 +101620,10 @@
           }
         },
         {
+          "description": "The time format, which can be `epoch`, `epoch_ms`, or a custom pattern. The value `epoch` refers to UNIX or Epoch time (the number of seconds since 1 Jan 1970). The value `epoch_ms` indicates that time is measured in milliseconds since the epoch. The `epoch` and `epoch_ms` time formats accept either integer or real values. Custom patterns must conform to the Java DateTimeFormatter class. When you use date-time formatting patterns, it is recommended that you provide the full date, time and time zone. For example: yyyy-MM-dd'T'HH:mm:ssX. If the pattern that you specify is not sufficient to produce a complete timestamp, job creation fails.",
           "name": "time_format",
           "required": false,
+          "serverDefault": "epoch",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101854,6 +101877,7 @@
       },
       "properties": [
         {
+          "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.",
           "name": "aggregations",
           "required": false,
           "type": {
@@ -101898,6 +101922,7 @@
           }
         },
         {
+          "description": "Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.",
           "name": "chunking_config",
           "required": false,
           "type": {
@@ -101909,6 +101934,7 @@
           }
         },
         {
+          "description": "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -101920,6 +101946,7 @@
           }
         },
         {
+          "description": "Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally search over indices that have already been read in an effort to determine whether any data has subsequently been added to the index. If missing data is found, it is a good indication that the `query_delay` option is set too low and the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time datafeeds.",
           "name": "delayed_data_check_config",
           "required": false,
           "type": {
@@ -101931,6 +101958,7 @@
           }
         },
         {
+          "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When frequency is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.",
           "name": "frequency",
           "required": false,
           "type": {
@@ -101956,6 +101984,7 @@
           }
         },
         {
+          "description": "An array of index names. Wildcards are supported.",
           "name": "indices",
           "required": true,
           "type": {
@@ -101970,6 +101999,7 @@
           }
         },
         {
+          "description": "Specifies index expansion options that are used during search.",
           "name": "indices_options",
           "required": false,
           "type": {
@@ -101992,6 +102022,7 @@
           }
         },
         {
+          "description": "If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.",
           "name": "max_empty_searches",
           "required": false,
           "type": {
@@ -102003,6 +102034,7 @@
           }
         },
         {
+          "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.",
           "name": "query",
           "required": true,
           "type": {
@@ -102014,6 +102046,7 @@
           }
         },
         {
+          "description": "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default value is randomly selected between `60s` and `120s`. This randomness improves the query performance when there are multiple jobs running on the same node.",
           "name": "query_delay",
           "required": false,
           "type": {
@@ -102025,6 +102058,7 @@
           }
         },
         {
+          "description": "Specifies runtime fields for the datafeed search.",
           "name": "runtime_mappings",
           "required": false,
           "type": {
@@ -102036,6 +102070,7 @@
           }
         },
         {
+          "description": "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed. The detector configuration objects in a job can contain functions that use these script fields.",
           "name": "script_fields",
           "required": false,
           "type": {
@@ -102058,8 +102093,10 @@
           }
         },
         {
+          "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.",
           "name": "scroll_size",
           "required": false,
+          "serverDefault": "1000",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104352,6 +104389,7 @@
       },
       "properties": [
         {
+          "description": "The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate check_window to be calculated when the real-time datafeed runs. In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.",
           "name": "check_window",
           "required": false,
           "type": {
@@ -104363,6 +104401,7 @@
           }
         },
         {
+          "description": "Specifies whether the datafeed periodically checks for delayed data.",
           "name": "enabled",
           "required": true,
           "type": {
@@ -104383,6 +104422,7 @@
       },
       "properties": [
         {
+          "description": "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.",
           "name": "actions",
           "required": false,
           "type": {
@@ -104397,6 +104437,7 @@
           }
         },
         {
+          "description": "An array of numeric conditions when the rule applies. A rule must either have a non-empty scope or at least one condition. Multiple conditions are combined together with a logical AND.",
           "name": "conditions",
           "required": false,
           "type": {
@@ -104411,6 +104452,7 @@
           }
         },
         {
+          "description": "A scope of series where the rule applies. A rule must either have a non-empty scope or at least one condition. By default, the scope includes all series. Scoping is allowed for any of the fields that are also specified in `by_field_name`, `over_field_name`, or `partition_field_name`.",
           "name": "scope",
           "required": false,
           "type": {
@@ -104442,6 +104484,7 @@
       },
       "properties": [
         {
+          "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split.",
           "name": "by_field_name",
           "required": false,
           "type": {
@@ -104453,6 +104496,7 @@
           }
         },
         {
+          "description": "Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules.",
           "name": "custom_rules",
           "required": false,
           "type": {
@@ -104467,6 +104511,7 @@
           }
         },
         {
+          "description": "A description of the detector.",
           "name": "detector_description",
           "required": false,
           "type": {
@@ -104478,6 +104523,7 @@
           }
         },
         {
+          "description": "A unique identifier for the detector. This identifier is based on the order of the detectors in the `analysis_config`, starting at zero. If you specify a value for this property, it is ignored.",
           "name": "detector_index",
           "required": false,
           "type": {
@@ -104489,6 +104535,7 @@
           }
         },
         {
+          "description": "If set, frequent entities are excluded from influencing the anomaly results. Entities can be considered frequent over time or frequent in a population. If you are working with both over and by fields, you can set `exclude_frequent` to `all` for both fields, or to `by` or `over` for those specific fields.",
           "name": "exclude_frequent",
           "required": false,
           "type": {
@@ -104500,6 +104547,7 @@
           }
         },
         {
+          "description": "The field that the detector uses in the function. If you use an event rate function such as count or rare, do not specify this field. The `field_name` cannot contain double quotes or backslashes.",
           "name": "field_name",
           "required": false,
           "type": {
@@ -104511,6 +104559,7 @@
           }
         },
         {
+          "description": "The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`.",
           "name": "function",
           "required": true,
           "type": {
@@ -104522,17 +104571,7 @@
           }
         },
         {
-          "name": "use_null",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.",
           "name": "over_field_name",
           "required": false,
           "type": {
@@ -104544,6 +104583,7 @@
           }
         },
         {
+          "description": "The field used to segment the analysis. When you use this property, you have completely independent baselines for each value of this field.",
           "name": "partition_field_name",
           "required": false,
           "type": {
@@ -104551,6 +104591,19 @@
             "type": {
               "name": "Field",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines whether a new series is used as the null series when there is no value for the by or partition fields.",
+          "name": "use_null",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -104705,6 +104758,7 @@
       },
       "properties": [
         {
+          "description": "The identifier for the filter.",
           "name": "filter_id",
           "required": true,
           "type": {
@@ -104716,8 +104770,10 @@
           }
         },
         {
+          "description": "If set to `include`, the rule applies for values in the filter. If set to `exclude`, the rule applies for values not in the filter.",
           "name": "filter_type",
-          "required": true,
+          "required": false,
+          "serverDefault": "include",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105868,6 +105924,33 @@
       },
       "properties": [
         {
+          "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
+          "name": "annotations_enabled",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, enables calculation and storage of the model bounds for each entity that is being analyzed.",
+          "name": "enabled",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
           "name": "terms",
           "required": false,
           "type": {
@@ -105875,28 +105958,6 @@
             "type": {
               "name": "Field",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "enabled",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "annotations_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }
@@ -106564,7 +106625,7 @@
       },
       "properties": [
         {
-          "description": "To enable this setting, you must also set the partition_field_name property to the same value in every detector that uses the keyword mlcategory. Otherwise, job creation fails.",
+          "description": "To enable this setting, you must also set the `partition_field_name` property to the same value in every detector that uses the keyword `mlcategory`. Otherwise, job creation fails.",
           "name": "enabled",
           "required": false,
           "type": {
@@ -106593,9 +106654,11 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The result will not be created. This is the default value. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.",
           "name": "skip_result"
         },
         {
+          "description": "The value for that series will not be used to update the model. Unless you also specify `skip_result`, the results will be created as usual. This action is suitable when certain values are expected to be consistently anomalous and they affect the model in a way that negatively impacts the rest of the results.",
           "name": "skip_model_update"
         }
       ],
@@ -106612,6 +106675,7 @@
       },
       "properties": [
         {
+          "description": "Specifies the result property to which the condition applies. If your detector uses lat_long, metric, rare, or freq_rare functions, you can only specify conditions that apply to time.",
           "name": "applies_to",
           "required": true,
           "type": {
@@ -106623,6 +106687,7 @@
           }
         },
         {
+          "description": "Specifies the condition operator. The available options are greater than, greater than or equals, less than, and less than or equals.",
           "name": "operator",
           "required": true,
           "type": {
@@ -106634,6 +106699,7 @@
           }
         },
         {
+          "description": "The value that is compared against the `applies_to` field using the operator.",
           "name": "value",
           "required": true,
           "type": {
@@ -113795,8 +113861,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Advanced configuration option. Specifies whether this job can open when there is insufficient machine learning node capacity for it to be immediately assigned to a node. By default, if a machine learning node with capacity to run the job cannot immediately be found, the open anomaly detection jobs API returns an error. However, this is also subject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this option is set to true, the open anomaly detection jobs API does not return an error and the job waits in the opening state until sufficient machine learning node capacity is available.",
             "name": "allow_lazy_open",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113806,6 +113874,7 @@
             }
           },
           {
+            "description": "Specifies how to analyze the data. After you create a job, you cannot change the analysis configuration; all the properties are informational.",
             "name": "analysis_config",
             "required": true,
             "type": {
@@ -113817,6 +113886,7 @@
             }
           },
           {
+            "description": "Limits can be applied for the resources required to hold the mathematical models in memory. These limits are approximate and can be set per job. They do not control the memory used by other processes, for example the Elasticsearch Java processes.",
             "name": "analysis_limits",
             "required": false,
             "type": {
@@ -113828,6 +113898,7 @@
             }
           },
           {
+            "description": "Advanced configuration option. The time between each periodic persistence of the model. The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour. For very large models (several GB), persistence could take 10-20 minutes, so do not set the `background_persist_interval` value too low.",
             "name": "background_persist_interval",
             "required": true,
             "type": {
@@ -113839,6 +113910,7 @@
             }
           },
           {
+            "description": " Advanced configuration option. Contains custom meta data about the job.",
             "name": "custom_settings",
             "required": false,
             "type": {
@@ -113850,8 +113922,10 @@
             }
           },
           {
+            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies a period of time (in days) after which only the first snapshot per day is retained. This period is relative to the timestamp of the most recent snapshot for this job. Valid values range from 0 to `model_snapshot_retention_days`.",
             "name": "daily_model_snapshot_retention_after_days",
             "required": false,
+            "serverDefault": "1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113861,6 +113935,7 @@
             }
           },
           {
+            "description": "Defines the format of the input data when you send data to the job by using the post data API. Note that when configure a datafeed, these properties are automatically set. When data is received via the post data API, it is not stored in Elasticsearch. Only the results for anomaly detection are retained.",
             "name": "data_description",
             "required": true,
             "type": {
@@ -113872,6 +113947,7 @@
             }
           },
           {
+            "description": "Defines a datafeed for the anomaly detection job.",
             "name": "datafeed_config",
             "required": false,
             "type": {
@@ -113883,6 +113959,7 @@
             }
           },
           {
+            "description": " A description of the job.",
             "name": "description",
             "required": false,
             "type": {
@@ -113894,6 +113971,7 @@
             }
           },
           {
+            "description": "A list of job groups. A job can belong to no groups or many.",
             "name": "groups",
             "required": false,
             "type": {
@@ -113908,6 +113986,7 @@
             }
           },
           {
+            "description": "This advanced configuration option stores model information along with the results. It provides a more detailed view into anomaly detection. If you enable model plot it can add considerable overhead to the performance of the system; it is not feasible for jobs with many entities. Model plot provides a simplified and indicative view of the model and its bounds. It does not display complex features such as multivariate correlations or multimodal data. As such, anomalies may occasionally be reported which cannot be seen in the model plot. Model plot config can be configured when the job is created or updated later. It must be disabled if performance issues are experienced.",
             "name": "model_plot_config",
             "required": false,
             "type": {
@@ -113919,8 +113998,10 @@
             }
           },
           {
+            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job. By default, snapshots ten days older than the newest snapshot are deleted.",
             "name": "model_snapshot_retention_days",
             "required": false,
+            "serverDefault": "10",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113930,6 +114011,7 @@
             }
           },
           {
+            "description": "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen. The default value is the longer of 30 days or 100 bucket spans.",
             "name": "renormalization_window_days",
             "required": false,
             "type": {
@@ -113941,8 +114023,10 @@
             }
           },
           {
+            "description": "A text string that affects the name of the machine learning results index. By default, the job generates an index named .ml-anomalies-shared.",
             "name": "results_index_name",
             "required": false,
+            "serverDefault": "shared",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113952,6 +114036,7 @@
             }
           },
           {
+            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
             "name": "results_retention_days",
             "required": false,
             "type": {
@@ -113977,6 +114062,7 @@
       },
       "path": [
         {
+          "description": "The identifier for the anomaly detection job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
           "name": "job_id",
           "required": true,
           "type": {

@@ -20,9 +20,20 @@
 import { Field } from '@_types/common'
 
 export class ModelPlotConfig {
-  terms?: Field
-  enabled: boolean
+  /**
+   * If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.
+   * @server_default true
+   */
   annotations_enabled?: boolean
+  /**
+   * If true, enables calculation and storage of the model bounds for each entity that is being analyzed.
+   * @server_default false
+   */
+  enabled?: boolean
+  /**
+   * Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.
+   */
+  terms?: Field
 }
 
 /**
