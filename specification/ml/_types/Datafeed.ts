@@ -122,11 +122,12 @@ export enum DatafeedState {
 }
 
 export class DatafeedStats {
-  assignment_explanation: string
+  assignment_explanation?: string
   datafeed_id: Id
-  node: DiscoveryNode
+  node?: DiscoveryNode
   state: DatafeedState
   timing_stats: DatafeedTimingStats
+  running_state?: DatafeedRunningState
 }
 
 export class DatafeedTimingStats {
@@ -135,7 +136,12 @@ export class DatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
-  average_search_time_per_bucket_ms: number
+  average_search_time_per_bucket_ms?: number
+}
+
+export class DatafeedRunningState {
+  real_time_configured: boolean
+  real_time_running: boolean
 }
 
 export enum ChunkingMode {
