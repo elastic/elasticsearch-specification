@@ -7434,7 +7434,7 @@
         "namespace": "ml.open_job"
       },
       "since": "5.4.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -112255,6 +112255,17 @@
               "type": {
                 "name": "boolean",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "node",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
               }
             }
           }
