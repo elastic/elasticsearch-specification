@@ -50,7 +50,7 @@ export class AnalysisConfig {
   /**
    * A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.
    */
-  influencers: Field[]
+  influencers?: Field[]
   /**
    * The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.
    * @server_default 0
