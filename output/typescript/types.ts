@@ -10688,8 +10688,8 @@ export interface MlJob {
   allow_lazy_open: boolean
   analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
-  background_persist_interval: Time
-  create_time: integer
+  background_persist_interval?: Time
+  create_time?: integer
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: MlDataDescription
@@ -10699,8 +10699,8 @@ export interface MlJob {
   finished_time?: integer
   groups?: string[]
   job_id: Id
-  job_type: string
-  job_version: VersionString
+  job_type?: string
+  job_version?: VersionString
   model_plot_config?: MlModelPlotConfig
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
