@@ -2036,7 +2036,6 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
 export interface MainError extends ErrorCause {
   headers?: Record<string, string>
-  root_cause: ErrorCause[]
 }
 
 export interface MergesStats {

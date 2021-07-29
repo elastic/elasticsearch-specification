@@ -31759,20 +31759,6 @@
               }
             }
           }
-        },
-        {
-          "name": "root_cause",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ErrorCause",
-                "namespace": "_types"
-              }
-            }
-          }
         }
       ]
     },
