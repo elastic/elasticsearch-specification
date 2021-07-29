@@ -7603,7 +7603,7 @@
         "namespace": "ml.put_calendar"
       },
       "since": "6.2.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -112836,6 +112836,17 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "job_ids",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Ids",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "description",
             "required": false,
             "type": {
@@ -112891,7 +112902,7 @@
           },
           {
             "name": "description",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
