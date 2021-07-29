@@ -66,6 +66,7 @@ export class Job {
   renormalization_window_days?: long
   results_index_name: IndexName
   results_retention_days?: long
+  system_annotations_retention_days?: long
 }
 
 export class JobConfig {
@@ -86,6 +87,7 @@ export class JobConfig {
   renormalization_window_days?: long
   results_index_name?: IndexName
   results_retention_days?: long
+  system_annotations_retention_days?: long
 }
 export class JobStats {
   assignment_explanation: string
