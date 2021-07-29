@@ -7869,7 +7869,7 @@
         "namespace": "ml.revert_model_snapshot"
       },
       "since": "5.4.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -106013,7 +106013,7 @@
         },
         {
           "name": "model_bytes_exceeded",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106024,7 +106024,7 @@
         },
         {
           "name": "model_bytes_memory_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106035,7 +106035,7 @@
         },
         {
           "name": "peak_model_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114510,7 +114510,19 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "name": "delete_intervening_results",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

@@ -23,12 +23,15 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name ml.revert_model_snapshot
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
     snapshot_id: Id
+  }
+  query_parameters?: {
+    delete_intervening_results?: boolean
   }
   body?: {
     delete_intervening_results?: boolean
