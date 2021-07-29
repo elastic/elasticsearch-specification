@@ -35,7 +35,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.put_datafeed
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -48,12 +48,13 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
   }
   body?: {
+    aggs?: Dictionary<string, AggregationContainer>
     aggregations?: Dictionary<string, AggregationContainer>
     chunking_config?: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig
     frequency?: Time
-    indices?: string[]
-    indexes?: string[]
+    indices?: Indices
+    indexes?: Indices
     indices_options?: DatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
