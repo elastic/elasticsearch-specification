@@ -7489,15 +7489,15 @@
       "name": "ml.post_data",
       "request": {
         "name": "Request",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "since": "5.4.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -112344,23 +112344,59 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Input",
+        "namespace": "ml.post_data"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "user_defined_value"
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultipleInputs",
+              "namespace": "ml.post_data"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MultipleInputs",
+        "namespace": "ml.post_data"
+      },
+      "properties": [
+        {
+          "name": "data",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "data",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Input",
+            "namespace": "ml.post_data"
           }
-        ]
+        }
       },
       "inherits": {
         "type": {
@@ -112371,7 +112407,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "path": [
         {
@@ -112428,7 +112464,7 @@
           },
           {
             "name": "earliest_record_timestamp",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -112516,7 +112552,7 @@
           },
           {
             "name": "latest_record_timestamp",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -112585,7 +112621,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       }
     },
     {
