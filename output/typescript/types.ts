@@ -10946,6 +10946,7 @@ export interface MlCloseJobRequest extends RequestBase {
 
 export interface MlCloseJobResponse {
   closed: boolean
+  error?: ErrorCause
 }
 
 export interface MlDeleteCalendarRequest extends RequestBase {

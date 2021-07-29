@@ -17,6 +17,11 @@
  * under the License.
  */
 
+import { ErrorCause } from '@_types/Errors'
+
 export class Response {
-  body: { closed: boolean }
+  body: {
+    closed: boolean
+    error?: ErrorCause
+  }
 }

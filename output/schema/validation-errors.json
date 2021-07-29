@@ -992,7 +992,7 @@
     },
     "ml.close_job": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'allow_no_match'"
       ],
       "response": []
     },
