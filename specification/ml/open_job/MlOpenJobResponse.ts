@@ -17,6 +17,11 @@
  * under the License.
  */
 
+import { Id } from '@_types/common'
+
 export class Response {
-  body: { opened: boolean }
+  body: {
+    opened: boolean
+    node: Id
+  }
 }
