@@ -104659,6 +104659,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },

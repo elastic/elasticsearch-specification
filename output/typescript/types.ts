@@ -10637,6 +10637,7 @@ export interface MlDetector {
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
+  description?: string
 }
 
 export interface MlDiscoveryNode {

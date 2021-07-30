@@ -63,6 +63,7 @@ export class Detector {
    * @server_default false
    */
   use_null?: boolean
+  description?: string
 }
 
 export enum ExcludeFrequent {
