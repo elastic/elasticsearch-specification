@@ -2182,7 +2182,7 @@ export interface Retries {
   search: long
 }
 
-export type Routing = string
+export type Routing = string | integer
 
 export type Script = InlineScript | IndexedScript | string
 
