@@ -11664,12 +11664,13 @@ export interface MlPutDatafeedRequest extends RequestBase {
   ignore_throttled?: boolean
   ignore_unavailable?: boolean
   body?: {
+    aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
     chunking_config?: MlChunkingConfig
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
-    indices?: string[]
-    indexes?: string[]
+    indices?: Indices
+    indexes?: Indices
     indices_options?: MlDatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -11682,15 +11683,15 @@ export interface MlPutDatafeedRequest extends RequestBase {
 }
 
 export interface MlPutDatafeedResponse {
-  aggregations: Record<string, AggregationsAggregationContainer>
+  aggregations?: Record<string, AggregationsAggregationContainer>
   chunking_config: MlChunkingConfig
   delayed_data_check_config?: MlDelayedDataCheckConfig
   datafeed_id: Id
-  frequency: Time
+  frequency?: Time
   indices: string[]
   job_id: Id
   indices_options?: MlDatafeedIndicesOptions
-  max_empty_searches: integer
+  max_empty_searches?: integer
   query: QueryDslQueryContainer
   query_delay: Time
   runtime_mappings?: MappingRuntimeFields
