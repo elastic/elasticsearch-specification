@@ -11780,6 +11780,7 @@ export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase
 export interface MlRevertModelSnapshotRequest extends RequestBase {
   job_id: Id
   snapshot_id: Id
+  delete_intervening_results?: boolean
   body?: {
     delete_intervening_results?: boolean
   }
