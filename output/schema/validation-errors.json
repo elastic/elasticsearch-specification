@@ -1142,9 +1142,11 @@
     },
     "ml.get_jobs": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "type_alias definition xpack.usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:BaseUrlConfig'"
+      ]
     },
     "ml.get_overall_buckets": {
       "request": [
