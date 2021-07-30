@@ -7167,7 +7167,7 @@
         "namespace": "ml.get_job_stats"
       },
       "since": "5.5.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -101387,7 +101387,7 @@
         },
         {
           "name": "earliest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101464,7 +101464,7 @@
         },
         {
           "name": "last_data_time",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101475,7 +101475,7 @@
         },
         {
           "name": "latest_empty_bucket_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101486,7 +101486,7 @@
         },
         {
           "name": "latest_record_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101497,7 +101497,7 @@
         },
         {
           "name": "latest_sparse_bucket_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -101508,7 +101508,7 @@
         },
         {
           "name": "latest_bucket_timestamp",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105699,7 +105699,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105754,7 +105754,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105818,7 +105818,7 @@
       "properties": [
         {
           "name": "average_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105840,7 +105840,7 @@
         },
         {
           "name": "exponential_average_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105884,7 +105884,7 @@
         },
         {
           "name": "maximum_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105895,7 +105895,7 @@
         },
         {
           "name": "minimum_bucket_processing_time_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
