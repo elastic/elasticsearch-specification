@@ -33,7 +33,7 @@ export default async function addInfo (model: model.Model, jsonSpec: Map<string,
   const branch = execSync('git branch --show-current').toString().trim()
   const isBaseBranch = branch === 'main' || branch.startsWith('7.')
 
-  if (isBaseBranch) {
+  if (isBaseBranch && process.env.SKIP_VERSION_UPDATE !== 'true') {
     model._info = {
       version: branch,
       hash: execSync('git rev-parse --short HEAD').toString().trim(),

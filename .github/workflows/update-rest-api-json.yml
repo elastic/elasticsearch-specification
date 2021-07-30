@@ -29,7 +29,7 @@ jobs:
 
       - name: Generate output
         run: |
-          make contrib
+          SKIP_VERSION_UPDATE=true make contrib
 
       - name: Debug git status
         run: |
