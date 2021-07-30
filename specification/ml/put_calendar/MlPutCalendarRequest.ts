@@ -18,18 +18,19 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Ids } from '@_types/common'
 
 /**
  * @rest_spec_name ml.put_calendar
  * @since 6.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     calendar_id: Id
   }
   body?: {
+    job_ids?: Ids
     description?: string
   }
 }
