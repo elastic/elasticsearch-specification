@@ -7836,9 +7836,16 @@
       "description": "Resets an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "ml.reset_job"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.reset_job"
+      },
+      "since": "7.14.0",
       "stability": "stable",
       "urls": [
         {
@@ -105148,6 +105155,17 @@
           }
         },
         {
+          "name": "blocked",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobBlocked",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
           "name": "create_time",
           "required": false,
           "type": {
@@ -105360,6 +105378,55 @@
           }
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "JobBlocked",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobBlockedReason",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "task_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TaskId",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "delete"
+        },
+        {
+          "name": "reset"
+        },
+        {
+          "name": "revert"
+        }
+      ],
+      "name": {
+        "name": "JobBlockedReason",
+        "namespace": "ml._types"
+      }
     },
     {
       "kind": "interface",
@@ -114616,6 +114683,71 @@
       "name": {
         "name": "Response",
         "namespace": "ml.put_trained_model_alias"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.reset_job"
+      },
+      "path": [
+        {
+          "description": "The ID of the job to reset.",
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Should this request wait until the operation has completed before returning.",
+          "name": "wait_for_completion",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.reset_job"
       }
     },
     {
