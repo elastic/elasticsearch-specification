@@ -20425,6 +20425,7 @@
           }
         },
         {
+          "identifier": "source_fields",
           "name": "_source",
           "required": false,
           "type": {
