@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+
+function require_stack_version() {
+  if [[ -z $STACK_VERSION ]]; then
+    echo -e "\033[31;1mERROR:\033[0m Required environment variable [STACK_VERSION] not set\033[0m"
+    exit 1
+  fi
+}
+
+require_stack_version
+
 set -euo pipefail
 
 npm install --prefix compiler
@@ -19,7 +29,7 @@ fi
 pushd "${recorderFolder}"
 function finish { popd; }
 trap finish EXIT
-./run-validations.sh $@
+STACK_VERSION=${STACK_VERSION} ./run-validations.sh $@
 
 
 

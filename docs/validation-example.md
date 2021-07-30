@@ -16,7 +16,7 @@ The example assumes that you have already performed the necessary steps to run a
 if not, take a look at the [README](./README.md).
 
 ```sh
-./run-validations --api index --request
+STACK_VERSION=... ./run-validations --api index --request
 ```
 
 You will see an output like the following:
@@ -82,7 +82,7 @@ open it with your favourite editor and perform the fix
 Finally run the validation again:
 
 ```sh
-./run-validations --api index --request
+STACK_VERSION=... ./run-validations --api index --request
 ```
 
 If there are no more errors, open a pr with the fix.
