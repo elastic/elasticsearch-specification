@@ -7033,7 +7033,7 @@
         "namespace": "ml.get_datafeed_stats"
       },
       "since": "5.5.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -102147,6 +102147,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "DatafeedRunningState",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "name": "real_time_configured",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "real_time_running",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -102176,7 +102207,7 @@
       "properties": [
         {
           "name": "assignment_explanation",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102198,7 +102229,7 @@
         },
         {
           "name": "node",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102225,6 +102256,17 @@
             "kind": "instance_of",
             "type": {
               "name": "DatafeedTimingStats",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "running_state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedRunningState",
               "namespace": "ml._types"
             }
           }
@@ -102295,7 +102337,7 @@
         },
         {
           "name": "average_search_time_per_bucket_ms",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
