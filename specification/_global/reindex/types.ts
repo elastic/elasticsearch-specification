@@ -49,6 +49,7 @@ export class Source {
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
+  /** @identifier source_fields */
   _source?: Fields
 }
 
