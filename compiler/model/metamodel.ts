@@ -376,6 +376,7 @@ export class UrlTemplate {
 export class Model {
   _info?: {
     version: string
+    hash: string
     title: string
     license: {
       name: string

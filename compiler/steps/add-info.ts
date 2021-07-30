@@ -19,18 +19,44 @@
 
 import * as model from '../model/metamodel'
 import { JsonSpec } from '../model/json-spec'
+import { execSync } from 'child_process'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
 /**
- * Adds the `_info` field to the JSON model
+ * Adds the `_info` field to the JSON model.
+ * If this code is being run in the base branch, it will update the version and hash
+ * fields with the value read from git, otherwise it will reuse the values
+ * currently stored in the output schema.
  */
 export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
-  model._info = {
-    version: '7.13.0',
-    title: 'Elasticsearch Request & Response Specification',
-    license: {
-      name: 'Apache 2.0',
-      url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
+  const branch = execSync('git branch --show-current').toString().trim()
+  const isBaseBranch = branch === 'main' || branch.startsWith('7.')
+
+  if (isBaseBranch) {
+    model._info = {
+      version: branch,
+      hash: execSync('git rev-parse --short HEAD').toString().trim(),
+      title: 'Elasticsearch Request & Response Specification',
+      license: {
+        name: 'Apache 2.0',
+        url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
+      }
+    }
+  } else {
+    const current: model.Model = JSON.parse(
+      readFileSync(join(__dirname, '..', '..', 'output', 'schema', 'schema.json'), 'utf8')
+    )
+    model._info = {
+      version: current._info!.version, // eslint-disable-line
+      hash: current._info!.hash, // eslint-disable-line
+      title: 'Elasticsearch Request & Response Specification',
+      license: {
+        name: 'Apache 2.0',
+        url: 'https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE'
+      }
     }
   }
+
   return model
 }
