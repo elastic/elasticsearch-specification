@@ -384,12 +384,14 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
+    const inheritedProps = inheritedProperties(typeDef)
+
     context.push('path')
-    validateProperties(typeDef.path, openGenerics)
+    validateProperties(typeDef.path, openGenerics, inheritedProps)
     context.pop()
 
     context.push('query')
-    validateProperties(typeDef.query, openGenerics)
+    validateProperties(typeDef.query, openGenerics, inheritedProps)
     context.pop()
 
     context.push('body')
@@ -400,7 +402,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
     switch (typeDef.body.kind) {
       case 'properties':
-        validateProperties(typeDef.body.properties, openGenerics)
+        validateProperties(typeDef.body.properties, openGenerics, inheritedProps)
         break
       case 'value':
         validateValueOf(typeDef.body.value, openGenerics)
@@ -435,7 +437,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     }
     switch (typeDef.body.kind) {
       case 'properties':
-        validateProperties(typeDef.body.properties, openGenerics)
+        validateProperties(typeDef.body.properties, openGenerics, inheritedProperties(typeDef))
         break
       case 'value':
         validateValueOf(typeDef.body.value, openGenerics)
@@ -451,13 +453,65 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     context.pop()
   }
 
+  /** Collects the name of inherited properties. Names are normalized to lower case (see also validateProperties) */
+  function inheritedProperties (typeDef: model.Interface | model.Request | model.Response, accum?: Set<string>): Set<string> {
+    const result = accum ?? new Set<string>()
+
+    function addProperties (props: model.Property[]): void {
+      props.forEach(prop => result.add((prop.identifier ?? prop.name).toLowerCase()))
+    }
+
+    function addInherits (inherits?: model.Inherits): void {
+      if (inherits == null) {
+        return
+      }
+
+      const typeDef = getTypeDef(inherits.type)
+      if (typeDef == null) {
+        modelError(`No type definition for parent '${fqn(inherits.type)}'`)
+        return
+      }
+
+      switch (typeDef?.kind) {
+        case 'request':
+          inheritedProperties(typeDef, result)
+          addProperties(typeDef.path)
+          addProperties(typeDef.query)
+          if (typeDef.body.kind === 'properties') {
+            addProperties(typeDef.body.properties)
+          }
+          break
+
+        case 'response':
+          inheritedProperties(typeDef, result)
+          if (typeDef.body.kind === 'properties') {
+            addProperties(typeDef.body.properties)
+          }
+          break
+
+        case 'interface':
+          inheritedProperties(typeDef, result)
+          addProperties(typeDef.properties)
+          break
+      }
+    }
+
+    if (typeDef.inherits != null) {
+      addInherits(typeDef.inherits)
+    }
+    typeDef.implements?.forEach(addInherits)
+    typeDef.behaviors?.forEach(addInherits)
+
+    return result
+  }
+
   function validateInterface (typeDef: model.Interface): void {
     const openGenerics = openGenericSet(typeDef)
 
     validateImplements(typeDef.implements, openGenerics)
     validateInherits(typeDef.inherits, openGenerics)
     validateBehaviors(typeDef, openGenerics)
-    validateProperties(typeDef.properties, openGenerics)
+    validateProperties(typeDef.properties, openGenerics, inheritedProperties(typeDef))
 
     if (typeDef.variants?.kind === 'container') {
       const variants = typeDef.properties.filter(prop => !(prop.containerProperty ?? false))
@@ -639,7 +693,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     return false
   }
 
-  function validateProperties (props: model.Property[], openGenerics: Set<string>): void {
+  function validateProperties (props: model.Property[], openGenerics: Set<string>, inheritedProperties: Set<string>): void {
     const allIdentifiers = new Set<string>()
     const allNames = new Set<string>()
 
@@ -650,6 +704,10 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
         modelError(`Duplicate property identifier: '${prop.name}'`)
       }
       allIdentifiers.add(identifier)
+
+      if (inheritedProperties.has(identifier)) {
+        modelError(`Property '${prop.name}' is already defined in an ancestor class`)
+      }
 
       // Names and aliases must be unique among all items (case sensitive)
       const names = [prop.name].concat(prop.aliases ?? [])
