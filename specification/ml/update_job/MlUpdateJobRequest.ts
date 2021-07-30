@@ -89,5 +89,9 @@ export interface Request extends RequestBase {
      * Settings related to how categorization interacts with partition fields.
      */
     per_partition_categorization?: PerPartitionCategorization
+    /**
+     * Advanced configuration option. The period of time (in days) that automatically created annotations are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), annotations that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all annotations are retained. User created annotations are never deleted automatically.
+     */
+    system_annotations_retention_days?: long
   }
 }
