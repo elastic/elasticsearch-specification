@@ -10719,7 +10719,7 @@ export interface MlJob {
 
 export interface MlJobBlocked {
   reason: MlJobBlockedReason
-  task_id: TaskId
+  task_id?: TaskId
 }
 
 export type MlJobBlockedReason = 'delete' | 'reset' | 'revert'

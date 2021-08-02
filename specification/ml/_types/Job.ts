@@ -163,7 +163,7 @@ export class DataDescription {
 
 export class JobBlocked {
   reason: JobBlockedReason
-  task_id: TaskId
+  task_id?: TaskId
 }
 
 export enum JobBlockedReason {
