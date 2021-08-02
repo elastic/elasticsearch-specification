@@ -21,7 +21,7 @@ import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { CustomSettings } from '@ml/_types/Settings'
-import { Field, Id, IndexName, VersionString } from '@_types/common'
+import { Field, Id, TaskId, IndexName, VersionString } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
@@ -48,6 +48,7 @@ export class Job {
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
   background_persist_interval?: Time
+  blocked?: JobBlocked
   create_time?: integer
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
@@ -158,4 +159,15 @@ export class DataDescription {
    */
   time_format?: string
   field_delimiter?: string
+}
+
+export class JobBlocked {
+  reason: JobBlockedReason
+  task_id?: TaskId
+}
+
+export enum JobBlockedReason {
+  delete = 0,
+  reset = 1,
+  revert = 2
 }

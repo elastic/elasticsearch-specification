@@ -10698,6 +10698,7 @@ export interface MlJob {
   analysis_config: MlAnalysisConfig
   analysis_limits?: MlAnalysisLimits
   background_persist_interval?: Time
+  blocked?: MlJobBlocked
   create_time?: integer
   custom_settings?: MlCustomSettings
   daily_model_snapshot_retention_after_days?: long
@@ -10718,6 +10719,13 @@ export interface MlJob {
   results_retention_days?: long
   system_annotations_retention_days?: long
 }
+
+export interface MlJobBlocked {
+  reason: MlJobBlockedReason
+  task_id?: TaskId
+}
+
+export type MlJobBlockedReason = 'delete' | 'reset' | 'revert'
 
 export interface MlJobConfig {
   allow_lazy_open?: boolean
@@ -11790,6 +11798,14 @@ export interface MlPutTrainedModelAliasRequest extends RequestBase {
 }
 
 export interface MlPutTrainedModelAliasResponse extends AcknowledgedResponseBase {
+}
+
+export interface MlResetJobRequest extends RequestBase {
+  job_id: Id
+  wait_for_completion?: boolean
+}
+
+export interface MlResetJobResponse extends AcknowledgedResponseBase {
 }
 
 export interface MlRevertModelSnapshotRequest extends RequestBase {
