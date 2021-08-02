@@ -18,7 +18,5 @@
  */
 
 export class Response<TDocument> {
-  body: {
-    data: TDocument[]
-  }
+  body: Array<TDocument>
 }
