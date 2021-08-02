@@ -9,8 +9,15 @@ jobs:
   update-rest-api:
     name: Update rest-api-spec
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: [main, 7.x, 7.14]
+
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.branch }}
 
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
@@ -25,7 +32,7 @@ jobs:
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --version 8.0.0-SNAPSHOT
+          node .github/download-artifacts/index.js --branch ${{ matrix.branch }}
 
       - name: Generate output
         run: |
