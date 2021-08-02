@@ -25,7 +25,7 @@ jobs:
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --version 7.x-SNAPSHOT
+          node .github/download-artifacts/index.js --version 7.14-SNAPSHOT
 
       - name: Generate output
         run: |
