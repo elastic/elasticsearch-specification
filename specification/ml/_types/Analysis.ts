@@ -55,7 +55,7 @@ export class AnalysisConfig {
    * Advanced configuration option, which affects the pruning of models that have not been updated for the given time duration. The value of this option must be at least two whole multiples of `bucket_span`. If not set, a default value is not supplied.
    */
   model_prune_window?: Time
-   /**
+  /**
    * The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.
    * @server_default 0
    */
