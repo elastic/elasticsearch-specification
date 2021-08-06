@@ -48,6 +48,5 @@ export class Response {
     renormalization_window_days?: long
     results_index_name: string
     results_retention_days?: long
-    system_annotations_retention_days?: long
   }
 }

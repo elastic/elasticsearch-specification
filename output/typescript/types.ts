@@ -10717,7 +10717,6 @@ export interface MlJob {
   renormalization_window_days?: long
   results_index_name: IndexName
   results_retention_days?: long
-  system_annotations_retention_days?: long
 }
 
 export interface MlJobBlocked {
@@ -10745,7 +10744,6 @@ export interface MlJobConfig {
   renormalization_window_days?: long
   results_index_name?: IndexName
   results_retention_days?: long
-  system_annotations_retention_days?: long
 }
 
 export interface MlJobForecastStatistics {
@@ -11752,7 +11750,6 @@ export interface MlPutJobRequest extends RequestBase {
     renormalization_window_days?: long
     results_index_name?: IndexName
     results_retention_days?: long
-    system_annotations_retention_days?: long
   }
 }
 
@@ -11777,7 +11774,6 @@ export interface MlPutJobResponse {
   renormalization_window_days?: long
   results_index_name: string
   results_retention_days?: long
-  system_annotations_retention_days?: long
 }
 
 export interface MlPutTrainedModelRequest extends RequestBase {
@@ -11934,7 +11930,6 @@ export interface MlUpdateJobRequest extends RequestBase {
     groups?: string[]
     detectors?: MlDetector[]
     per_partition_categorization?: MlPerPartitionCategorization
-    system_annotations_retention_days?: long
   }
 }
 
