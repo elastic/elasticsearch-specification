@@ -21,7 +21,7 @@ import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
 import { Rescore } from '@global/search/_types/rescoring'
-import { Sort } from '@global/search/_types/sort'
+import { Sort, SortResults } from '@global/search/_types/sort'
 import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { SuggestContainer } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -92,7 +92,7 @@ export interface Request extends RequestBase {
     rescore?: Rescore[]
     routing?: Routing
     script_fields?: Dictionary<string, ScriptField>
-    search_after?: UserDefinedValue[]
+    search_after?: SortResults
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer

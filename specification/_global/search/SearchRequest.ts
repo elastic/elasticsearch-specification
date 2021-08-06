@@ -43,7 +43,7 @@ import { FieldCollapse } from './_types/FieldCollapse'
 import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
 import { Rescore } from './_types/rescoring'
-import { Sort } from './_types/sort'
+import { Sort, SortResults } from './_types/sort'
 import { DocValueField, SourceFilter } from './_types/SourceFilter'
 import { SuggestContainer } from './_types/suggester'
 
@@ -118,7 +118,7 @@ export interface Request extends RequestBase {
     query?: QueryContainer
     rescore?: Rescore | Rescore[]
     script_fields?: Dictionary<string, ScriptField>
-    search_after?: Array<integer | string>
+    search_after?: SortResults
     size?: integer
     slice?: SlicedScroll
     sort?: Sort
