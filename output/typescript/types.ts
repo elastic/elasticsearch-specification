@@ -1014,7 +1014,7 @@ export interface SearchRequest extends RequestBase {
     query?: QueryDslQueryContainer
     rescore?: SearchRescore | SearchRescore[]
     script_fields?: Record<string, ScriptField>
-    search_after?: (integer | string)[]
+    search_after?: SearchSortResults
     size?: integer
     slice?: SlicedScroll
     sort?: SearchSort
@@ -4884,7 +4884,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     rescore?: SearchRescore[]
     routing?: Routing
     script_fields?: Record<string, ScriptField>
-    search_after?: any[]
+    search_after?: SearchSortResults
     search_type?: SearchType
     sequence_number_primary_term?: boolean
     size?: integer
