@@ -38,28 +38,30 @@ export interface Request extends RequestBase {
     id: Id
   }
   body?: {
-    /** The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified. */
-    source?: DataframeAnalyticsSource
-    /** The destination configuration, consisting of index and optionally results_field (ml by default). */
-    dest: DataframeAnalyticsDestination
-    /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
-    analysis: DataframeAnalysisContainer
-    /** A description of the job. */
-    description?: string
     /**
-     * The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html
-     */
-    model_memory_limit?: string
-    /** The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself. */
-    max_num_threads?: integer
-    /** Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis. */
-    analyzed_fields?: DataframeAnalysisAnalyzedFields
-    /**
-     * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.
+     * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node. If set to false and a machine learning node with capacity to run the job cannot be immediately found, the API returns an error.  If set to true, the API does not return an error; the job waits in the `starting` state until sufficient machine learning node capacity is available. This behavior is also affected by the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting.
      * @server_default false
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
      */
     allow_lazy_start?: boolean
+    /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
+    analysis: DataframeAnalysisContainer
+    /** Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection.*/
+    analyzed_fields?: DataframeAnalysisAnalyzedFields
+    /** A description of the job. */
+    description?: string
+    /** The destination configuration. */
+    dest: DataframeAnalyticsDestination
+    /** The maximum number of threads to be used by the analysis. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.
+     * @server_default 1
+     */
+    max_num_threads?: integer
+    /**
+     * The approximate maximum amount of memory resources that are permitted for analytical processing. If your `elasticsearch.yml` file contains an `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create data frame analytics jobs that have `model_memory_limit` values greater than that setting.
+     * @server_defautl 1gb
+     */
+    model_memory_limit?: string
+    /** The configuration of how to source the analysis data. */
+    source: DataframeAnalyticsSource
   }
 }
