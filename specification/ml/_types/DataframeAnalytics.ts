@@ -178,9 +178,9 @@ export class DataframeAnalysis {
    * Advanced configuration option. A multiplier responsible for determining the maximum number of hyperparameter optimization steps in the Bayesian optimization procedure. The maximum number of steps is determined based on the number of undefined hyperparameters times the maximum optimization rounds per hyperparameter. By default, this value is calculated during hyperparameter optimization.
    */
   max_optimization_rounds_per_hyperparameter?: integer
-  /** @aliases maximum_number_trees */
   /**
    * Advanced configuration option. Defines the maximum number of decision trees in the forest. The maximum value is 2000. By default, this value is calculated during hyperparameter optimization.
+   * @aliases maximum_number_trees
    */
   max_trees?: integer
   /**
@@ -214,7 +214,7 @@ export class DataframeAnalysis {
 export class DataframeAnalysisRegression extends DataframeAnalysis {
   /**
    * The loss function used during regression. Available options are `mse` (mean squared error), `msle` (mean squared logarithmic error), `huber` (Pseudo-Huber loss).
-   * @server_default mse 
+   * @server_default mse
    */
   loss_function?: string
   /**
@@ -225,7 +225,7 @@ export class DataframeAnalysisRegression extends DataframeAnalysis {
 
 export class DataframeAnalysisClassification extends DataframeAnalysis {
   /*
-  * Defines the objective to optimize when assigning class labels: `maximize_accuracy` or `maximize_minimum_recall`. When maximizing accuracy, class labels are chosen to maximize the number of correct predictions. When maximizing minimum recall, labels are chosen to maximize the minimum recall for any class. Defaults to `maximize_minimum_recall`.*/
+   * Defines the objective to optimize when assigning class labels: `maximize_accuracy` or `maximize_minimum_recall`. When maximizing accuracy, class labels are chosen to maximize the number of correct predictions. When maximizing minimum recall, labels are chosen to maximize the minimum recall for any class. Defaults to `maximize_minimum_recall`.*/
   class_assignment_objective?: string
   /**
    * Defines the number of categories for which the predicted probabilities are reported. It must be non-negative or -1. If it is -1 or greater than the total number of categories, probabilities are reported for all categories; if you have a large number of categories, there could be a significant effect on the size of your destination index. NOTE: To use the AUC ROC evaluation method, `num_top_classes` must be set to -1 or a value greater than or equal to the total number of categories.
