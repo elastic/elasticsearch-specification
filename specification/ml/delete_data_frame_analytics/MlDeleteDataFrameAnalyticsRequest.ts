@@ -36,12 +36,12 @@ export interface Request extends RequestBase {
   query_parameters?: {
     /**
      * If `true`, it deletes a job that is not stopped; this method is quicker than stopping and deleting the job.
-     * @server_default false 
+     * @server_default false
      */
     force?: boolean
     /**
      * The time to wait for the job to be deleted.
-     * @server_default 1m 
+     * @server_default 1m
      */
     timeout?: Time
   }
