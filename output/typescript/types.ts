@@ -11541,7 +11541,6 @@ export interface MlOpenJobRequest extends RequestBase {
 
 export interface MlOpenJobResponse {
   opened: boolean
-  node: Id
 }
 
 export interface MlPostCalendarEventsRequest extends RequestBase {

@@ -1178,7 +1178,7 @@
     },
     "ml.open_job": {
       "request": [
-        "Request: should not have a body"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
