@@ -11616,14 +11616,13 @@ export interface MlPreviewDatafeedResponse<TDocument = unknown> {
 export interface MlPutCalendarRequest extends RequestBase {
   calendar_id: Id
   body?: {
-    job_ids?: Ids
     description?: string
   }
 }
 
 export interface MlPutCalendarResponse {
   calendar_id: Id
-  description?: string
+  description: string
   job_ids: Ids
 }
 
