@@ -7725,7 +7725,7 @@
         "namespace": "ml.put_filter"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -113902,7 +113902,7 @@
         "properties": [
           {
             "name": "description",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {

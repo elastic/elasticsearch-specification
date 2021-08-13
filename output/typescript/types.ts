@@ -11717,7 +11717,7 @@ export interface MlPutFilterRequest extends RequestBase {
 }
 
 export interface MlPutFilterResponse {
-  description?: string
+  description: string
   filter_id: Id
   items: string[]
 }
