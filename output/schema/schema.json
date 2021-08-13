@@ -6629,7 +6629,7 @@
         "namespace": "ml.estimate_model_memory"
       },
       "since": "7.7.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -100034,7 +100034,7 @@
         {
           "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
           "name": "influencers",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
