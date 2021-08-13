@@ -10266,13 +10266,11 @@ export type MlChunkingMode = 'auto' | 'manual' | 'off'
 
 export type MlConditionOperator = 'gt' | 'gte' | 'lt' | 'lte'
 
-export interface MlCustomSettingsKeys {
+export interface MlCustomSettings {
   custom_urls?: XpackUsageUrlConfig[]
   created_by?: string
   job_tags?: Record<string, string>
 }
-export type MlCustomSettings = MlCustomSettingsKeys |
-    { [property: string]: any }
 
 export interface MlDataCounts {
   bucket_count: long
@@ -10634,11 +10632,10 @@ export interface MlDetector {
   detector_index?: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
-  function?: string
+  function: string
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
-  description?: string
 }
 
 export interface MlDiscoveryNode {
@@ -11937,27 +11934,7 @@ export interface MlUpdateJobRequest extends RequestBase {
 }
 
 export interface MlUpdateJobResponse {
-  allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
-  analysis_limits: MlAnalysisLimits
-  background_persist_interval?: Time
-  create_time: Time
-  custom_settings?: MlCustomSettings
-  daily_model_snapshot_retention_after_days: long
-  data_description: MlDataDescription
-  datafeed_config?: MlDatafeed
-  description?: string
-  groups?: string[]
-  job_id: Id
-  job_type: string
-  job_version: string
-  finished_time?: Time
-  model_plot_config?: MlModelPlotConfig
-  model_snapshot_id?: Id
-  model_snapshot_retention_days: long
-  renormalization_window_days?: long
-  results_index_name: string
-  results_retention_days?: long
+  stub: boolean
 }
 
 export interface MlUpdateModelSnapshotRequest extends RequestBase {
