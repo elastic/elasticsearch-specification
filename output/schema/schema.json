@@ -7694,7 +7694,7 @@
         "namespace": "ml.put_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -113375,28 +113375,6 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            }
-          },
-          {
             "name": "aggregations",
             "required": false,
             "type": {
@@ -113455,10 +113433,13 @@
             "name": "indices",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -113466,10 +113447,13 @@
             "name": "indexes",
             "required": false,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Indices",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           },
@@ -113651,7 +113635,7 @@
         "properties": [
           {
             "name": "aggregations",
-            "required": false,
+            "required": true,
             "type": {
               "key": {
                 "kind": "instance_of",
@@ -113706,7 +113690,7 @@
           },
           {
             "name": "frequency",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -113753,7 +113737,7 @@
           },
           {
             "name": "max_empty_searches",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
