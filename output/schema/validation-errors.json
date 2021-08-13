@@ -1136,8 +1136,7 @@
     },
     "ml.get_job_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
-        "Request: should not have a body"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
