@@ -7877,7 +7877,7 @@
         "namespace": "ml.revert_model_snapshot"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -114680,19 +114680,7 @@
           }
         }
       ],
-      "query": [
-        {
-          "name": "delete_intervening_results",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {

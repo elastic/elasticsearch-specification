@@ -1212,6 +1212,12 @@
       ],
       "response": []
     },
+    "ml.revert_model_snapshot": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ml.set_upgrade_mode": {
       "request": [
         "Endpoint has \"@stability: TODO"
