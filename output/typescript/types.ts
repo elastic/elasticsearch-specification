@@ -10345,20 +10345,14 @@ export interface MlDatafeedIndicesOptions {
   ignore_throttled?: boolean
 }
 
-export interface MlDatafeedRunningState {
-  real_time_configured: boolean
-  real_time_running: boolean
-}
-
 export type MlDatafeedState = 'started' | 'stopped' | 'starting' | 'stopping'
 
 export interface MlDatafeedStats {
-  assignment_explanation?: string
+  assignment_explanation: string
   datafeed_id: Id
-  node?: MlDiscoveryNode
+  node: MlDiscoveryNode
   state: MlDatafeedState
   timing_stats: MlDatafeedTimingStats
-  running_state?: MlDatafeedRunningState
 }
 
 export interface MlDatafeedTimingStats {
@@ -10367,7 +10361,7 @@ export interface MlDatafeedTimingStats {
   job_id: Id
   search_count: long
   total_search_time_ms: double
-  average_search_time_per_bucket_ms?: number
+  average_search_time_per_bucket_ms: number
 }
 
 export interface MlDataframeAnalysis {
