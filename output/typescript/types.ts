@@ -10794,9 +10794,9 @@ export interface MlModelSizeStats {
   log_time: Time
   memory_status: MlMemoryStatus
   model_bytes: long
-  model_bytes_exceeded?: long
-  model_bytes_memory_limit?: long
-  peak_model_bytes?: long
+  model_bytes_exceeded: long
+  model_bytes_memory_limit: long
+  peak_model_bytes: long
   assignment_memory_basis?: string
   result_type: string
   total_by_field_count: long
@@ -10815,10 +10815,10 @@ export interface MlModelSizeStats {
 export interface MlModelSnapshot {
   description?: string
   job_id: Id
-  latest_record_time_stamp?: integer
-  latest_result_time_stamp?: integer
+  latest_record_time_stamp: integer
+  latest_result_time_stamp: integer
   min_version: VersionString
-  model_size_stats?: MlModelSizeStats
+  model_size_stats: MlModelSizeStats
   retain: boolean
   snapshot_doc_count: long
   snapshot_id: Id

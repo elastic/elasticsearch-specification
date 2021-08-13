@@ -7239,7 +7239,7 @@
         "namespace": "ml.get_model_snapshots"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -106080,7 +106080,7 @@
         },
         {
           "name": "model_bytes_exceeded",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106091,7 +106091,7 @@
         },
         {
           "name": "model_bytes_memory_limit",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106102,7 +106102,7 @@
         },
         {
           "name": "peak_model_bytes",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106290,7 +106290,7 @@
         {
           "description": "The timestamp of the latest processed record.",
           "name": "latest_record_time_stamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106302,7 +106302,7 @@
         {
           "description": "The timestamp of the latest bucket result.",
           "name": "latest_result_time_stamp",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106326,7 +106326,7 @@
         {
           "description": "Summary information describing the model.",
           "name": "model_size_stats",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
