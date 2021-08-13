@@ -7202,7 +7202,7 @@
         "namespace": "ml.get_jobs"
       },
       "since": "5.5.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -105101,7 +105101,7 @@
         },
         {
           "name": "background_persist_interval",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105123,7 +105123,7 @@
         },
         {
           "name": "create_time",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105236,7 +105236,7 @@
         },
         {
           "name": "job_type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105247,7 +105247,7 @@
         },
         {
           "name": "job_version",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {

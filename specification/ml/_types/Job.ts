@@ -47,9 +47,9 @@ export class Job {
   allow_lazy_open: boolean
   analysis_config: AnalysisConfig
   analysis_limits?: AnalysisLimits
-  background_persist_interval?: Time
+  background_persist_interval: Time
   blocked?: JobBlocked
-  create_time?: integer
+  create_time: integer
   custom_settings?: CustomSettings
   daily_model_snapshot_retention_after_days?: long
   data_description: DataDescription
@@ -59,8 +59,8 @@ export class Job {
   finished_time?: integer
   groups?: string[]
   job_id: Id
-  job_type?: string
-  job_version?: VersionString
+  job_type: string
+  job_version: VersionString
   model_plot_config?: ModelPlotConfig
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
