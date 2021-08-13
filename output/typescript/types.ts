@@ -10328,12 +10328,12 @@ export interface MlDatafeedConfig {
   datafeed_id?: Id
   delayed_data_check_config?: MlDelayedDataCheckConfig
   frequency?: Timestamp
-  indexes?: Indices
-  indices?: Indices
+  indexes?: string[]
+  indices: string[]
   indices_options?: MlDatafeedIndicesOptions
   job_id?: Id
   max_empty_searches?: integer
-  query?: QueryDslQueryContainer
+  query: QueryDslQueryContainer
   query_delay?: Timestamp
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
@@ -11622,7 +11622,9 @@ export interface MlPreviewDatafeedRequest extends RequestBase {
   }
 }
 
-export type MlPreviewDatafeedResponse<TDocument = unknown> = TDocument[]
+export interface MlPreviewDatafeedResponse<TDocument = unknown> {
+  data: TDocument[]
+}
 
 export interface MlPutCalendarRequest extends RequestBase {
   calendar_id: Id

@@ -7565,7 +7565,7 @@
         "namespace": "ml.preview_datafeed"
       },
       "since": "5.4.0",
-      "stability": "stable",
+      "stability": "TODO",
       "urls": [
         {
           "methods": [
@@ -101989,22 +101989,28 @@
           "name": "indexes",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
         {
           "description": "An array of index names. Wildcards are supported.",
           "name": "indices",
-          "required": false,
+          "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         },
@@ -102046,7 +102052,7 @@
         {
           "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.",
           "name": "query",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112982,17 +112988,23 @@
     },
     {
       "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "data",
+            "required": true,
             "type": {
-              "name": "TDocument",
-              "namespace": "ml.preview_datafeed"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TDocument",
+                  "namespace": "ml.preview_datafeed"
+                }
+              }
             }
           }
-        }
+        ]
       },
       "generics": [
         {
