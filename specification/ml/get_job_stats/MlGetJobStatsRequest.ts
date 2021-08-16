@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name ml.get_job_stats
  * @since 5.5.0
- * @stability stable
+ * @stability TODO
  */
 export interface Request extends RequestBase {
   path_parts?: {

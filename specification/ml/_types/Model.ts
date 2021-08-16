@@ -27,13 +27,13 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the job that the snapshot was created for. */
   job_id: Id
   /** The timestamp of the latest processed record. */
-  latest_record_time_stamp?: integer
+  latest_record_time_stamp: integer
   /** The timestamp of the latest bucket result. */
-  latest_result_time_stamp?: integer
+  latest_result_time_stamp: integer
   /** The minimum version required to be able to restore the model snapshot. */
   min_version: VersionString
   /** Summary information describing the model. */
-  model_size_stats?: ModelSizeStats
+  model_size_stats: ModelSizeStats
   /**  If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false. */
   retain: boolean
   /** For internal use only. */
@@ -50,9 +50,9 @@ export class ModelSizeStats {
   log_time: Time
   memory_status: MemoryStatus
   model_bytes: long
-  model_bytes_exceeded?: long
-  model_bytes_memory_limit?: long
-  peak_model_bytes?: long
+  model_bytes_exceeded: long
+  model_bytes_memory_limit: long
+  peak_model_bytes: long
   assignment_memory_basis?: string
   result_type: string
   total_by_field_count: long
