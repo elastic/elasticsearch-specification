@@ -50,7 +50,7 @@ export class AnalysisConfig {
   /**
    * A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.
    */
-  influencers?: Field[]
+  influencers: Field[]
   /**
    * Advanced configuration option, which affects the pruning of models that have not been updated for the given time duration. The value of this option must be at least two whole multiples of `bucket_span`. If not set, a default value is not supplied.
    */
