@@ -62,7 +62,10 @@ export interface Request extends RequestBase {
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing
      */
     routing?: Routing
-    source_enabled?: boolean
+    /**
+     * True or false to return the _source field or not, or a list of fields to return.
+     */
+    _source?: boolean | Fields
     /**
      * A comma-separated list of source fields to exclude in the response.
      */
@@ -80,9 +83,5 @@ export interface Request extends RequestBase {
      * Specific version type: internal, external, external_gte.
      */
     version_type?: VersionType
-    /**
-     * True or false to return the _source field or not, or a list of fields to return.
-     */
-    _source?: boolean | Fields
   }
 }
