@@ -564,12 +564,6 @@
       ],
       "response": []
     },
-    "ilm.put_lifecycle": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ilm.remove_policy": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1021,12 +1015,6 @@
       "response": []
     },
     "ml.delete_datafeed": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.delete_expired_data": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

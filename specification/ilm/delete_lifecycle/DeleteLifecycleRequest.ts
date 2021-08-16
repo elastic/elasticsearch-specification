@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name ilm.delete_lifecycle
@@ -28,6 +28,5 @@ import { Id, Name } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts?: {
     policy?: Name
-    policy_id: Id
   }
 }

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id } from '@_types/common'
 import { float } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
@@ -29,7 +29,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    name?: Name
+    job_id?: Id
   }
   query_parameters?: {
     requests_per_second?: float
