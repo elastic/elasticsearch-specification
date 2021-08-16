@@ -17,19 +17,10 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-/**
- * @rest_spec_name ml.get_job_stats
- * @since 5.5.0
- * @stability stable
- */
-export interface Request extends RequestBase {
-  path_parts?: {
-    job_id?: Id
-  }
-  query_parameters?: {
-    allow_no_jobs?: boolean
-  }
+export class MultipleInputs {
+  data: UserDefinedValue[]
 }
+
+export type Input = UserDefinedValue | MultipleInputs

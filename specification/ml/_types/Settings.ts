@@ -19,8 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UrlConfig } from '@xpack/usage/types'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class CustomSettings {
+export class CustomSettings
+  implements AdditionalProperties<string, UserDefinedValue> {
   custom_urls?: UrlConfig[]
   created_by?: string
   job_tags?: Dictionary<string, string>
