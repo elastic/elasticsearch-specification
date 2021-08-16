@@ -185,10 +185,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
   // differently from normal classes
   if (name === 'Request' || name === 'Response') {
     let type: model.Request | model.Response
+    const namespace = getNameSpace(declaration)
     if (name === 'Request') {
       type = {
         kind: 'request',
-        name: { name, namespace: getNameSpace(declaration) },
+        name: { name, namespace },
         path: new Array<model.Property>(),
         query: new Array<model.Property>(),
         body: { kind: 'no_body' }
@@ -201,6 +202,18 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
 
       hoistRequestAnnotations(type, declaration.getJsDocs(), mappings, response)
 
+      const mapping = mappings[namespace.includes('_global') ? namespace.slice(8) : namespace]
+      if (mapping == null) {
+        throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
+      }
+      // list of unique dynamic parameters
+      const urlTemplateParams = [...new Set(
+        mapping.urls.flatMap(url => url.path.split('/')
+          .filter(part => part.includes('{'))
+          .map(part => part.slice(1, -1))
+        )
+      )]
+
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`
         assert(
@@ -210,6 +223,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
         const property = visitRequestOrResponseProperty(member)
         if (property.name === 'path_parts') {
+          for (const part of property.properties) {
+            if (part.name.includes('stub')) continue
+            assert(
+              member,
+              urlTemplateParams.includes(part.name),
+              `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
+            )
+          }
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
           type.query = property.properties

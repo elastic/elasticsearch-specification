@@ -17,6 +17,6 @@
  * under the License.
  */
 
-import { Response as ListTasksResponse } from '@task/list/ListTasksResponse'
+import { Response as ListTasksResponse } from '@tasks/list/ListTasksResponse'
 
 export class Response extends ListTasksResponse {}

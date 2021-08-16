@@ -139,12 +139,12 @@
       "name": "autoscaling.delete_autoscaling_policy",
       "request": {
         "name": "Request",
-        "namespace": "autoscaling.policy_delete"
+        "namespace": "autoscaling.delete_autoscaling_policy"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "autoscaling.policy_delete"
+        "namespace": "autoscaling.delete_autoscaling_policy"
       },
       "since": "7.11.0",
       "stability": "TODO",
@@ -167,12 +167,12 @@
       "name": "autoscaling.get_autoscaling_capacity",
       "request": {
         "name": "Request",
-        "namespace": "autoscaling.capacity_get"
+        "namespace": "autoscaling.get_autoscaling_capacity"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "autoscaling.capacity_get"
+        "namespace": "autoscaling.get_autoscaling_capacity"
       },
       "since": "7.11.0",
       "stability": "TODO",
@@ -195,12 +195,12 @@
       "name": "autoscaling.get_autoscaling_policy",
       "request": {
         "name": "Request",
-        "namespace": "autoscaling.policy_get"
+        "namespace": "autoscaling.get_autoscaling_policy"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "autoscaling.policy_get"
+        "namespace": "autoscaling.get_autoscaling_policy"
       },
       "since": "7.11.0",
       "stability": "TODO",
@@ -226,12 +226,12 @@
       "name": "autoscaling.put_autoscaling_policy",
       "request": {
         "name": "Request",
-        "namespace": "autoscaling.policy_put"
+        "namespace": "autoscaling.put_autoscaling_policy"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "autoscaling.policy_put"
+        "namespace": "autoscaling.put_autoscaling_policy"
       },
       "since": "7.11.0",
       "stability": "TODO",
@@ -562,12 +562,12 @@
       "name": "cat.ml_data_frame_analytics",
       "request": {
         "name": "Request",
-        "namespace": "cat.data_frame_analytics"
+        "namespace": "cat.ml_data_frame_analytics"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.data_frame_analytics"
+        "namespace": "cat.ml_data_frame_analytics"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -597,12 +597,12 @@
       "name": "cat.ml_datafeeds",
       "request": {
         "name": "Request",
-        "namespace": "cat.datafeeds"
+        "namespace": "cat.ml_datafeeds"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.datafeeds"
+        "namespace": "cat.ml_datafeeds"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -632,12 +632,12 @@
       "name": "cat.ml_jobs",
       "request": {
         "name": "Request",
-        "namespace": "cat.jobs"
+        "namespace": "cat.ml_jobs"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.jobs"
+        "namespace": "cat.ml_jobs"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -667,12 +667,12 @@
       "name": "cat.ml_trained_models",
       "request": {
         "name": "Request",
-        "namespace": "cat.trained_models"
+        "namespace": "cat.ml_trained_models"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.trained_models"
+        "namespace": "cat.ml_trained_models"
       },
       "since": "7.7.0",
       "stability": "TODO",
@@ -702,12 +702,12 @@
       "name": "cat.nodeattrs",
       "request": {
         "name": "Request",
-        "namespace": "cat.node_attributes"
+        "namespace": "cat.nodeattrs"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cat.node_attributes"
+        "namespace": "cat.nodeattrs"
       },
       "since": "0.0.0",
       "stability": "TODO",
@@ -1151,12 +1151,12 @@
       "name": "ccr.follow",
       "request": {
         "name": "Request",
-        "namespace": "ccr.create_follow_index"
+        "namespace": "ccr.follow"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ccr.create_follow_index"
+        "namespace": "ccr.follow"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -1207,12 +1207,12 @@
       "name": "ccr.follow_stats",
       "request": {
         "name": "Request",
-        "namespace": "ccr.follow_index_stats"
+        "namespace": "ccr.follow_stats"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ccr.follow_index_stats"
+        "namespace": "ccr.follow_stats"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -1238,12 +1238,12 @@
       "name": "ccr.forget_follower",
       "request": {
         "name": "Request",
-        "namespace": "ccr.forget_follower_index"
+        "namespace": "ccr.forget_follower"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ccr.forget_follower_index"
+        "namespace": "ccr.forget_follower"
       },
       "since": "6.7.0",
       "stability": "TODO",
@@ -1328,12 +1328,12 @@
       "name": "ccr.pause_follow",
       "request": {
         "name": "Request",
-        "namespace": "ccr.pause_follow_index"
+        "namespace": "ccr.pause_follow"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ccr.pause_follow_index"
+        "namespace": "ccr.pause_follow"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -1418,12 +1418,12 @@
       "name": "ccr.resume_follow",
       "request": {
         "name": "Request",
-        "namespace": "ccr.resume_follow_index"
+        "namespace": "ccr.resume_follow"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ccr.resume_follow_index"
+        "namespace": "ccr.resume_follow"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -1474,12 +1474,12 @@
       "name": "ccr.unfollow",
       "request": {
         "name": "Request",
-        "namespace": "ccr.unfollow_index"
+        "namespace": "ccr.unfollow"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ccr.unfollow_index"
+        "namespace": "ccr.unfollow"
       },
       "since": "6.5.0",
       "stability": "TODO",
@@ -1812,12 +1812,12 @@
       "name": "cluster.post_voting_config_exclusions",
       "request": {
         "name": "Request",
-        "namespace": "cluster.put_voting_config_exclusions"
+        "namespace": "cluster.post_voting_config_exclusions"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "cluster.put_voting_config_exclusions"
+        "namespace": "cluster.post_voting_config_exclusions"
       },
       "since": "7.0.0",
       "stability": "TODO",
@@ -2129,12 +2129,12 @@
       "name": "dangling_indices.delete_dangling_index",
       "request": {
         "name": "Request",
-        "namespace": "dangling_indices.index_delete"
+        "namespace": "dangling_indices.delete_dangling_index"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "dangling_indices.index_delete"
+        "namespace": "dangling_indices.delete_dangling_index"
       },
       "since": "7.9.0",
       "stability": "TODO",
@@ -2157,12 +2157,12 @@
       "name": "dangling_indices.import_dangling_index",
       "request": {
         "name": "Request",
-        "namespace": "dangling_indices.index_import"
+        "namespace": "dangling_indices.import_dangling_index"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "dangling_indices.index_import"
+        "namespace": "dangling_indices.import_dangling_index"
       },
       "since": "7.9.0",
       "stability": "TODO",
@@ -2185,12 +2185,12 @@
       "name": "dangling_indices.list_dangling_indices",
       "request": {
         "name": "Request",
-        "namespace": "dangling_indices.indices_list"
+        "namespace": "dangling_indices.list_dangling_indices"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "dangling_indices.indices_list"
+        "namespace": "dangling_indices.list_dangling_indices"
       },
       "since": "7.9.0",
       "stability": "TODO",
@@ -5829,12 +5829,12 @@
       "name": "ingest.simulate",
       "request": {
         "name": "Request",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -6065,12 +6065,12 @@
       "name": "logstash.delete_pipeline",
       "request": {
         "name": "Request",
-        "namespace": "logstash.pipeline_delete"
+        "namespace": "logstash.delete_pipeline"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "logstash.pipeline_delete"
+        "namespace": "logstash.delete_pipeline"
       },
       "since": "7.12.0",
       "stability": "TODO",
@@ -6093,12 +6093,12 @@
       "name": "logstash.get_pipeline",
       "request": {
         "name": "Request",
-        "namespace": "logstash.pipeline_get"
+        "namespace": "logstash.get_pipeline"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "logstash.pipeline_get"
+        "namespace": "logstash.get_pipeline"
       },
       "since": "7.12.0",
       "stability": "TODO",
@@ -6124,12 +6124,12 @@
       "name": "logstash.put_pipeline",
       "request": {
         "name": "Request",
-        "namespace": "logstash.pipeline_put"
+        "namespace": "logstash.put_pipeline"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "logstash.pipeline_put"
+        "namespace": "logstash.put_pipeline"
       },
       "since": "7.12.0",
       "stability": "TODO",
@@ -6202,12 +6202,12 @@
       "name": "migration.deprecations",
       "request": {
         "name": "Request",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -6785,12 +6785,12 @@
       "name": "ml.forecast",
       "request": {
         "name": "Request",
-        "namespace": "ml.forecast_job"
+        "namespace": "ml.forecast"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ml.forecast_job"
+        "namespace": "ml.forecast"
       },
       "since": "6.1.0",
       "stability": "TODO",
@@ -7302,12 +7302,12 @@
       "name": "ml.get_records",
       "request": {
         "name": "Request",
-        "namespace": "ml.get_anomaly_records"
+        "namespace": "ml.get_records"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ml.get_anomaly_records"
+        "namespace": "ml.get_records"
       },
       "since": "5.4.0",
       "stability": "TODO",
@@ -7490,12 +7490,12 @@
       "name": "ml.post_data",
       "request": {
         "name": "Request",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "since": "5.4.0",
       "stability": "TODO",
@@ -8225,12 +8225,12 @@
       "name": "ml.validate",
       "request": {
         "name": "Request",
-        "namespace": "ml.validate_job"
+        "namespace": "ml.validate"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "ml.validate_job"
+        "namespace": "ml.validate"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9038,12 +9038,12 @@
       "name": "rollup.delete_job",
       "request": {
         "name": "Request",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9066,12 +9066,12 @@
       "name": "rollup.get_jobs",
       "request": {
         "name": "Request",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9100,12 +9100,12 @@
       "name": "rollup.get_rollup_caps",
       "request": {
         "name": "Request",
-        "namespace": "rollup.get_rollup_capabilities"
+        "namespace": "rollup.get_rollup_caps"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.get_rollup_capabilities"
+        "namespace": "rollup.get_rollup_caps"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9134,12 +9134,12 @@
       "name": "rollup.get_rollup_index_caps",
       "request": {
         "name": "Request",
-        "namespace": "rollup.get_rollup_index_capabilities"
+        "namespace": "rollup.get_rollup_index_caps"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.get_rollup_index_capabilities"
+        "namespace": "rollup.get_rollup_index_caps"
       },
       "since": "6.4.0",
       "stability": "TODO",
@@ -9165,12 +9165,12 @@
       "name": "rollup.put_job",
       "request": {
         "name": "Request",
-        "namespace": "rollup.create_rollup_job"
+        "namespace": "rollup.put_job"
       },
       "requestBodyRequired": true,
       "response": {
         "name": "Response",
-        "namespace": "rollup.create_rollup_job"
+        "namespace": "rollup.put_job"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9267,12 +9267,12 @@
       "name": "rollup.start_job",
       "request": {
         "name": "Request",
-        "namespace": "rollup.start_rollup_job"
+        "namespace": "rollup.start_job"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.start_rollup_job"
+        "namespace": "rollup.start_job"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -9295,12 +9295,12 @@
       "name": "rollup.stop_job",
       "request": {
         "name": "Request",
-        "namespace": "rollup.stop_rollup_job"
+        "namespace": "rollup.stop_job"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "rollup.stop_rollup_job"
+        "namespace": "rollup.stop_job"
       },
       "since": "6.3.0",
       "stability": "TODO",
@@ -11768,12 +11768,12 @@
       "name": "ssl.certificates",
       "request": {
         "name": "Request",
-        "namespace": "ssl.get_certificates"
+        "namespace": "ssl.certificates"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "ssl.get_certificates"
+        "namespace": "ssl.certificates"
       },
       "since": "6.2.0",
       "stability": "TODO",
@@ -11796,12 +11796,12 @@
       "name": "tasks.cancel",
       "request": {
         "name": "Request",
-        "namespace": "task.cancel"
+        "namespace": "tasks.cancel"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.cancel"
+        "namespace": "tasks.cancel"
       },
       "since": "2.3.0",
       "stability": "TODO",
@@ -11830,12 +11830,12 @@
       "name": "tasks.get",
       "request": {
         "name": "Request",
-        "namespace": "task.get"
+        "namespace": "tasks.get"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.get"
+        "namespace": "tasks.get"
       },
       "since": "5.0.0",
       "stability": "TODO",
@@ -11858,12 +11858,12 @@
       "name": "tasks.list",
       "request": {
         "name": "Request",
-        "namespace": "task.list"
+        "namespace": "tasks.list"
       },
       "requestBodyRequired": false,
       "response": {
         "name": "Response",
-        "namespace": "task.list"
+        "namespace": "tasks.list"
       },
       "since": "2.3.0",
       "stability": "TODO",
@@ -14887,7 +14887,7 @@
       "inherits": {
         "type": {
           "name": "Response",
-          "namespace": "task.list"
+          "namespace": "tasks.list"
         }
       },
       "kind": "response",
@@ -29288,7 +29288,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Info",
-                "namespace": "task._types"
+                "namespace": "tasks._types"
               }
             }
           }
@@ -58651,7 +58651,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "autoscaling.capacity_get"
+        "namespace": "autoscaling.delete_autoscaling_policy"
       },
       "path": [
         {
@@ -58700,7 +58700,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "autoscaling.capacity_get"
+        "namespace": "autoscaling.delete_autoscaling_policy"
       }
     },
     {
@@ -58732,7 +58732,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "autoscaling.policy_delete"
+        "namespace": "autoscaling.get_autoscaling_capacity"
       },
       "path": [
         {
@@ -58781,7 +58781,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "autoscaling.policy_delete"
+        "namespace": "autoscaling.get_autoscaling_capacity"
       }
     },
     {
@@ -58813,7 +58813,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "autoscaling.policy_get"
+        "namespace": "autoscaling.get_autoscaling_policy"
       },
       "path": [
         {
@@ -58862,7 +58862,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "autoscaling.policy_get"
+        "namespace": "autoscaling.get_autoscaling_policy"
       }
     },
     {
@@ -58894,7 +58894,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "autoscaling.policy_put"
+        "namespace": "autoscaling.put_autoscaling_policy"
       },
       "path": [
         {
@@ -58943,7 +58943,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "autoscaling.policy_put"
+        "namespace": "autoscaling.put_autoscaling_policy"
       }
     },
     {
@@ -59465,600 +59465,6 @@
       "name": {
         "name": "Response",
         "namespace": "cat.count"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "DataFrameAnalyticsRecord",
-        "namespace": "cat.data_frame_analytics"
-      },
-      "properties": [
-        {
-          "description": "the id",
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "t"
-          ],
-          "description": "analysis type",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ct",
-            "createTime"
-          ],
-          "description": "job creation time",
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "v"
-          ],
-          "description": "the version of Elasticsearch when the analytics was created",
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "si",
-            "sourceIndex"
-          ],
-          "description": "source index",
-          "name": "source_index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "di",
-            "destIndex"
-          ],
-          "description": "destination index",
-          "name": "dest_index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "d"
-          ],
-          "description": "description",
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "mml",
-            "modelMemoryLimit"
-          ],
-          "description": "model memory limit",
-          "name": "model_memory_limit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "s"
-          ],
-          "description": "job state",
-          "name": "state",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "fr",
-            "failureReason"
-          ],
-          "description": "failure reason",
-          "name": "failure_reason",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "p"
-          ],
-          "description": "progress",
-          "name": "progress",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ae",
-            "assignmentExplanation"
-          ],
-          "description": "why the job is or is not assigned to a node",
-          "name": "assignment_explanation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ni",
-            "nodeId"
-          ],
-          "description": "id of the assigned node",
-          "name": "node.id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "nn",
-            "nodeName"
-          ],
-          "description": "name of the assigned node",
-          "name": "node.name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ne",
-            "nodeEphemeralId"
-          ],
-          "description": "ephemeral id of the assigned node",
-          "name": "node.ephemeral_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "na",
-            "nodeAddress"
-          ],
-          "description": "network address of the assigned node",
-          "name": "node.address",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonCatQueryParameters",
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "CatRequestBase",
-          "namespace": "cat._types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "cat.data_frame_analytics"
-      },
-      "path": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "allow_no_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Bytes",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataFrameAnalyticsRecord",
-              "namespace": "cat.data_frame_analytics"
-            }
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "cat.data_frame_analytics"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "DatafeedsRecord",
-        "namespace": "cat.datafeeds"
-      },
-      "properties": [
-        {
-          "description": "the datafeed_id",
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "s"
-          ],
-          "description": "the datafeed state",
-          "name": "state",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DatafeedState",
-              "namespace": "ml._types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ae"
-          ],
-          "description": "why the datafeed is or is not assigned to a node",
-          "name": "assignment_explanation",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "bc",
-            "bucketsCount"
-          ],
-          "description": "bucket count",
-          "name": "buckets.count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "sc",
-            "searchCount"
-          ],
-          "description": "number of searches ran by the datafeed",
-          "name": "search.count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "st",
-            "searchTime"
-          ],
-          "description": "the total search time",
-          "name": "search.time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "sba",
-            "searchBucketAvg"
-          ],
-          "description": "the average search time per bucket (millisecond)",
-          "name": "search.bucket_avg",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "seah",
-            "searchExpAvgHour"
-          ],
-          "description": "the exponential average search time per hour (millisecond)",
-          "name": "search.exp_avg_hour",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ni",
-            "nodeId"
-          ],
-          "description": "id of the assigned node",
-          "name": "node.id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "nn",
-            "nodeName"
-          ],
-          "description": "name of the assigned node",
-          "name": "node.name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ne",
-            "nodeEphemeralId"
-          ],
-          "description": "ephemeral id of the assigned node",
-          "name": "node.ephemeral_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "na",
-            "nodeAddress"
-          ],
-          "description": "network address of the assigned node",
-          "name": "node.address",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonCatQueryParameters",
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "CatRequestBase",
-          "namespace": "cat._types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "cat.datafeeds"
-      },
-      "path": [
-        {
-          "name": "datafeed_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "allow_no_datafeeds",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DatafeedsRecord",
-              "namespace": "cat.datafeeds"
-            }
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "cat.datafeeds"
       }
     },
     {
@@ -62693,8 +62099,707 @@
     {
       "kind": "interface",
       "name": {
+        "name": "MasterRecord",
+        "namespace": "cat.master"
+      },
+      "properties": [
+        {
+          "description": "node id",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "h"
+          ],
+          "description": "host name",
+          "name": "host",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "ip address",
+          "name": "ip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "n"
+          ],
+          "description": "node name",
+          "name": "node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "CatRequestBase",
+          "namespace": "cat._types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cat.master"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MasterRecord",
+              "namespace": "cat.master"
+            }
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "cat.master"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DataFrameAnalyticsRecord",
+        "namespace": "cat.ml_data_frame_analytics"
+      },
+      "properties": [
+        {
+          "description": "the id",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "t"
+          ],
+          "description": "analysis type",
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Type",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ct",
+            "createTime"
+          ],
+          "description": "job creation time",
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "v"
+          ],
+          "description": "the version of Elasticsearch when the analytics was created",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "si",
+            "sourceIndex"
+          ],
+          "description": "source index",
+          "name": "source_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "di",
+            "destIndex"
+          ],
+          "description": "destination index",
+          "name": "dest_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "d"
+          ],
+          "description": "description",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "mml",
+            "modelMemoryLimit"
+          ],
+          "description": "model memory limit",
+          "name": "model_memory_limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "s"
+          ],
+          "description": "job state",
+          "name": "state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "fr",
+            "failureReason"
+          ],
+          "description": "failure reason",
+          "name": "failure_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "p"
+          ],
+          "description": "progress",
+          "name": "progress",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ae",
+            "assignmentExplanation"
+          ],
+          "description": "why the job is or is not assigned to a node",
+          "name": "assignment_explanation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ni",
+            "nodeId"
+          ],
+          "description": "id of the assigned node",
+          "name": "node.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "nn",
+            "nodeName"
+          ],
+          "description": "name of the assigned node",
+          "name": "node.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ne",
+            "nodeEphemeralId"
+          ],
+          "description": "ephemeral id of the assigned node",
+          "name": "node.ephemeral_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "na",
+            "nodeAddress"
+          ],
+          "description": "network address of the assigned node",
+          "name": "node.address",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "CatRequestBase",
+          "namespace": "cat._types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cat.ml_data_frame_analytics"
+      },
+      "path": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Bytes",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataFrameAnalyticsRecord",
+              "namespace": "cat.ml_data_frame_analytics"
+            }
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "cat.ml_data_frame_analytics"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DatafeedsRecord",
+        "namespace": "cat.ml_datafeeds"
+      },
+      "properties": [
+        {
+          "description": "the datafeed_id",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "s"
+          ],
+          "description": "the datafeed state",
+          "name": "state",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedState",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ae"
+          ],
+          "description": "why the datafeed is or is not assigned to a node",
+          "name": "assignment_explanation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "bc",
+            "bucketsCount"
+          ],
+          "description": "bucket count",
+          "name": "buckets.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "sc",
+            "searchCount"
+          ],
+          "description": "number of searches ran by the datafeed",
+          "name": "search.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "st",
+            "searchTime"
+          ],
+          "description": "the total search time",
+          "name": "search.time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "sba",
+            "searchBucketAvg"
+          ],
+          "description": "the average search time per bucket (millisecond)",
+          "name": "search.bucket_avg",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "seah",
+            "searchExpAvgHour"
+          ],
+          "description": "the exponential average search time per hour (millisecond)",
+          "name": "search.exp_avg_hour",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ni",
+            "nodeId"
+          ],
+          "description": "id of the assigned node",
+          "name": "node.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "nn",
+            "nodeName"
+          ],
+          "description": "name of the assigned node",
+          "name": "node.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ne",
+            "nodeEphemeralId"
+          ],
+          "description": "ephemeral id of the assigned node",
+          "name": "node.ephemeral_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "na",
+            "nodeAddress"
+          ],
+          "description": "network address of the assigned node",
+          "name": "node.address",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonCatQueryParameters",
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "CatRequestBase",
+          "namespace": "cat._types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cat.ml_datafeeds"
+      },
+      "path": [
+        {
+          "name": "datafeed_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatafeedsRecord",
+              "namespace": "cat.ml_datafeeds"
+            }
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "cat.ml_datafeeds"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "JobsRecord",
-        "namespace": "cat.jobs"
+        "namespace": "cat.ml_jobs"
       },
       "properties": [
         {
@@ -63668,7 +63773,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.jobs"
+        "namespace": "cat.ml_jobs"
       },
       "path": [
         {
@@ -63717,7 +63822,7 @@
             "kind": "instance_of",
             "type": {
               "name": "JobsRecord",
-              "namespace": "cat.jobs"
+              "namespace": "cat.ml_jobs"
             }
           }
         }
@@ -63725,71 +63830,8 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.jobs"
+        "namespace": "cat.ml_jobs"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "MasterRecord",
-        "namespace": "cat.master"
-      },
-      "properties": [
-        {
-          "description": "node id",
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "h"
-          ],
-          "description": "host name",
-          "name": "host",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "ip address",
-          "name": "ip",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "n"
-          ],
-          "description": "node name",
-          "name": "node",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "attachedBehaviors": [
@@ -63808,10 +63850,67 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.master"
+        "namespace": "cat.ml_trained_models"
       },
-      "path": [],
-      "query": []
+      "path": [
+        {
+          "name": "model_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "allow_no_match",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Bytes",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -63821,8 +63920,8 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "MasterRecord",
-              "namespace": "cat.master"
+              "name": "TrainedModelsRecord",
+              "namespace": "cat.ml_trained_models"
             }
           }
         }
@@ -63830,14 +63929,287 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.master"
+        "namespace": "cat.ml_trained_models"
       }
     },
     {
       "kind": "interface",
       "name": {
+        "name": "TrainedModelsRecord",
+        "namespace": "cat.ml_trained_models"
+      },
+      "properties": [
+        {
+          "description": "the trained model id",
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "c",
+            "createdBy"
+          ],
+          "description": "who created the model",
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "hs",
+            "modelHeapSize"
+          ],
+          "description": "the estimated heap size to keep the model in memory",
+          "name": "heap_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "o",
+            "modelOperations"
+          ],
+          "description": "the estimated number of operations to use the model",
+          "name": "operations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "l"
+          ],
+          "description": "The license level of the model",
+          "name": "license",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ct"
+          ],
+          "description": "The time the model was created",
+          "name": "create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "v"
+          ],
+          "description": "The version of Elasticsearch when the model was created",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "d"
+          ],
+          "description": "The model description",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ip",
+            "ingestPipelines"
+          ],
+          "description": "The number of pipelines referencing the model",
+          "name": "ingest.pipelines",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "ic",
+            "ingestCount"
+          ],
+          "description": "The total number of docs processed by the model",
+          "name": "ingest.count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "it",
+            "ingestTime"
+          ],
+          "description": "The total time spent processing docs with this model",
+          "name": "ingest.time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "icurr",
+            "ingestCurrent"
+          ],
+          "description": "The total documents currently being handled by the model",
+          "name": "ingest.current",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "if",
+            "ingestFailed"
+          ],
+          "description": "The total count of failed ingest attempts with this model",
+          "name": "ingest.failed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dfid",
+            "dataFrameAnalytics"
+          ],
+          "description": "The data frame analytics config id that created the model (if still available)",
+          "name": "data_frame.id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dft",
+            "dataFrameAnalyticsTime"
+          ],
+          "description": "The time the data frame analytics config was created",
+          "name": "data_frame.create_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dfsi",
+            "dataFrameAnalyticsSrcIndex"
+          ],
+          "description": "The source index used to train in the data frame analysis",
+          "name": "data_frame.source_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "dfa",
+            "dataFrameAnalyticsAnalysis"
+          ],
+          "description": "The analysis used by the data frame to build the model",
+          "name": "data_frame.analysis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeAttributesRecord",
-        "namespace": "cat.node_attributes"
+        "namespace": "cat.nodeattrs"
       },
       "properties": [
         {
@@ -63961,7 +64333,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.node_attributes"
+        "namespace": "cat.nodeattrs"
       },
       "path": [],
       "query": []
@@ -63975,7 +64347,7 @@
             "kind": "instance_of",
             "type": {
               "name": "NodeAttributesRecord",
-              "namespace": "cat.node_attributes"
+              "namespace": "cat.nodeattrs"
             }
           }
         }
@@ -63983,7 +64355,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "cat.node_attributes"
+        "namespace": "cat.nodeattrs"
       }
     },
     {
@@ -69122,378 +69494,6 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "cat.trained_models"
-      },
-      "path": [
-        {
-          "name": "model_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "allow_no_match",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "bytes",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Bytes",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "array_of",
-          "value": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TrainedModelsRecord",
-              "namespace": "cat.trained_models"
-            }
-          }
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "cat.trained_models"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TrainedModelsRecord",
-        "namespace": "cat.trained_models"
-      },
-      "properties": [
-        {
-          "description": "the trained model id",
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "c",
-            "createdBy"
-          ],
-          "description": "who created the model",
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "hs",
-            "modelHeapSize"
-          ],
-          "description": "the estimated heap size to keep the model in memory",
-          "name": "heap_size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ByteSize",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "o",
-            "modelOperations"
-          ],
-          "description": "the estimated number of operations to use the model",
-          "name": "operations",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "l"
-          ],
-          "description": "The license level of the model",
-          "name": "license",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ct"
-          ],
-          "description": "The time the model was created",
-          "name": "create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "v"
-          ],
-          "description": "The version of Elasticsearch when the model was created",
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "d"
-          ],
-          "description": "The model description",
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ip",
-            "ingestPipelines"
-          ],
-          "description": "The number of pipelines referencing the model",
-          "name": "ingest.pipelines",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "ic",
-            "ingestCount"
-          ],
-          "description": "The total number of docs processed by the model",
-          "name": "ingest.count",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "it",
-            "ingestTime"
-          ],
-          "description": "The total time spent processing docs with this model",
-          "name": "ingest.time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "icurr",
-            "ingestCurrent"
-          ],
-          "description": "The total documents currently being handled by the model",
-          "name": "ingest.current",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "if",
-            "ingestFailed"
-          ],
-          "description": "The total count of failed ingest attempts with this model",
-          "name": "ingest.failed",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "dfid",
-            "dataFrameAnalytics"
-          ],
-          "description": "The data frame analytics config id that created the model (if still available)",
-          "name": "data_frame.id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "dft",
-            "dataFrameAnalyticsTime"
-          ],
-          "description": "The time the data frame analytics config was created",
-          "name": "data_frame.create_time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "dfsi",
-            "dataFrameAnalyticsSrcIndex"
-          ],
-          "description": "The source index used to train in the data frame analysis",
-          "name": "data_frame.source_index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "dfa",
-            "dataFrameAnalyticsAnalysis"
-          ],
-          "description": "The analysis used by the data frame to build the model",
-          "name": "data_frame.analysis",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonCatQueryParameters",
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "CatRequestBase",
-          "namespace": "cat._types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
         "namespace": "cat.transforms"
       },
       "path": [
@@ -70485,6 +70485,56 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ccr.delete_auto_follow_pattern"
+      },
+      "path": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ccr.delete_auto_follow_pattern"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "properties",
         "properties": [
           {
@@ -70630,7 +70680,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ccr.create_follow_index"
+        "namespace": "ccr.follow"
       },
       "path": [
         {
@@ -70701,116 +70751,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ccr.create_follow_index"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ccr.delete_auto_follow_pattern"
-      },
-      "path": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ccr.delete_auto_follow_pattern"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ccr.follow_index_stats"
-      },
-      "path": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "indices",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "FollowIndexStats",
-                  "namespace": "ccr._types"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ccr.follow_index_stats"
+        "namespace": "ccr.follow"
       }
     },
     {
@@ -71075,6 +71016,65 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ccr.follow_stats"
+      },
+      "path": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "indices",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FollowIndexStats",
+                  "namespace": "ccr._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ccr.follow_stats"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "properties",
         "properties": [
           {
@@ -71132,7 +71132,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ccr.forget_follower_index"
+        "namespace": "ccr.forget_follower"
       },
       "path": [
         {
@@ -71169,7 +71169,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ccr.forget_follower_index"
+        "namespace": "ccr.forget_follower"
       }
     },
     {
@@ -71393,7 +71393,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ccr.pause_follow_index"
+        "namespace": "ccr.pause_follow"
       },
       "path": [
         {
@@ -71424,7 +71424,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ccr.pause_follow_index"
+        "namespace": "ccr.pause_follow"
       }
     },
     {
@@ -71828,7 +71828,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ccr.resume_follow_index"
+        "namespace": "ccr.resume_follow"
       },
       "path": [
         {
@@ -71859,7 +71859,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ccr.resume_follow_index"
+        "namespace": "ccr.resume_follow"
       }
     },
     {
@@ -72068,7 +72068,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ccr.unfollow_index"
+        "namespace": "ccr.unfollow"
       },
       "path": [
         {
@@ -72099,7 +72099,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ccr.unfollow_index"
+        "namespace": "ccr.unfollow"
       }
     },
     {
@@ -75557,6 +75557,97 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "cluster.post_voting_config_exclusions"
+      },
+      "path": [],
+      "query": [
+        {
+          "name": "node_names",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node_ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ids",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "wait_for_removal",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "stub",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "cluster.post_voting_config_exclusions"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "properties",
         "properties": [
           {
@@ -75859,97 +75950,6 @@
       "name": {
         "name": "Response",
         "namespace": "cluster.put_settings"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "cluster.put_voting_config_exclusions"
-      },
-      "path": [],
-      "query": [
-        {
-          "name": "node_names",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Names",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "node_ids",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ids",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timeout",
-          "required": false,
-          "serverDefault": "30s",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "wait_for_removal",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "cluster.put_voting_config_exclusions"
       }
     },
     {
@@ -79163,7 +79163,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "dangling_indices.index_delete"
+        "namespace": "dangling_indices.delete_dangling_index"
       },
       "path": [
         {
@@ -79212,7 +79212,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "dangling_indices.index_delete"
+        "namespace": "dangling_indices.delete_dangling_index"
       }
     },
     {
@@ -79244,7 +79244,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "dangling_indices.index_import"
+        "namespace": "dangling_indices.import_dangling_index"
       },
       "path": [
         {
@@ -79293,7 +79293,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "dangling_indices.index_import"
+        "namespace": "dangling_indices.import_dangling_index"
       }
     },
     {
@@ -79325,7 +79325,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "dangling_indices.indices_list"
+        "namespace": "dangling_indices.list_dangling_indices"
       },
       "path": [
         {
@@ -79374,7 +79374,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "dangling_indices.indices_list"
+        "namespace": "dangling_indices.list_dangling_indices"
       }
     },
     {
@@ -79884,7 +79884,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Info",
-              "namespace": "task._types"
+              "namespace": "tasks._types"
             }
           }
         }
@@ -81778,17 +81778,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "policy_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": []
@@ -82268,17 +82257,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "policy_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": []
@@ -82515,17 +82493,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "policy_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -98325,7 +98292,7 @@
       "kind": "interface",
       "name": {
         "name": "Document",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "properties": [
         {
@@ -98363,7 +98330,7 @@
       "kind": "interface",
       "name": {
         "name": "DocumentSimulation",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "properties": [
         {
@@ -98395,7 +98362,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Ingest",
-              "namespace": "ingest.simulate_pipeline"
+              "namespace": "ingest.simulate"
             }
           }
         },
@@ -98456,7 +98423,7 @@
       "kind": "interface",
       "name": {
         "name": "Ingest",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "properties": [
         {
@@ -98487,7 +98454,7 @@
       "kind": "interface",
       "name": {
         "name": "PipelineSimulation",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "properties": [
         {
@@ -98497,7 +98464,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DocumentSimulation",
-              "namespace": "ingest.simulate_pipeline"
+              "namespace": "ingest.simulate"
             }
           }
         },
@@ -98510,7 +98477,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "PipelineSimulation",
-                "namespace": "ingest.simulate_pipeline"
+                "namespace": "ingest.simulate"
               }
             }
           }
@@ -98566,7 +98533,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Document",
-                  "namespace": "ingest.simulate_pipeline"
+                  "namespace": "ingest.simulate"
                 }
               }
             }
@@ -98593,7 +98560,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       },
       "path": [
         {
@@ -98635,7 +98602,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "PipelineSimulation",
-                  "namespace": "ingest.simulate_pipeline"
+                  "namespace": "ingest.simulate"
                 }
               }
             }
@@ -98645,7 +98612,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ingest.simulate_pipeline"
+        "namespace": "ingest.simulate"
       }
     },
     {
@@ -99542,7 +99509,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "logstash.pipeline_delete"
+        "namespace": "logstash.delete_pipeline"
       },
       "path": [
         {
@@ -99591,7 +99558,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "logstash.pipeline_delete"
+        "namespace": "logstash.delete_pipeline"
       }
     },
     {
@@ -99623,7 +99590,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "logstash.pipeline_get"
+        "namespace": "logstash.get_pipeline"
       },
       "path": [
         {
@@ -99672,7 +99639,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "logstash.pipeline_get"
+        "namespace": "logstash.get_pipeline"
       }
     },
     {
@@ -99704,7 +99671,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "logstash.pipeline_put"
+        "namespace": "logstash.put_pipeline"
       },
       "path": [
         {
@@ -99753,14 +99720,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "logstash.pipeline_put"
+        "namespace": "logstash.put_pipeline"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "Deprecation",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       },
       "properties": [
         {
@@ -99782,7 +99749,7 @@
             "kind": "instance_of",
             "type": {
               "name": "DeprecationLevel",
-              "namespace": "migration.deprecation_info"
+              "namespace": "migration.deprecations"
             }
           }
         },
@@ -99830,7 +99797,7 @@
       ],
       "name": {
         "name": "DeprecationLevel",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       }
     },
     {
@@ -99849,7 +99816,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       },
       "path": [
         {
@@ -99880,7 +99847,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Deprecation",
-                  "namespace": "migration.deprecation_info"
+                  "namespace": "migration.deprecations"
                 }
               }
             }
@@ -99904,7 +99871,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "Deprecation",
-                    "namespace": "migration.deprecation_info"
+                    "namespace": "migration.deprecations"
                   }
                 }
               }
@@ -99919,7 +99886,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Deprecation",
-                  "namespace": "migration.deprecation_info"
+                  "namespace": "migration.deprecations"
                 }
               }
             }
@@ -99933,7 +99900,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "Deprecation",
-                  "namespace": "migration.deprecation_info"
+                  "namespace": "migration.deprecations"
                 }
               }
             }
@@ -99943,7 +99910,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "migration.deprecation_info"
+        "namespace": "migration.deprecations"
       }
     },
     {
@@ -107852,12 +107819,12 @@
       },
       "path": [
         {
-          "name": "name",
+          "name": "job_id",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Name",
+              "name": "Id",
               "namespace": "_types"
             }
           }
@@ -109497,7 +109464,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ml.forecast_job"
+        "namespace": "ml.forecast"
       },
       "path": [
         {
@@ -109540,215 +109507,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ml.forecast_job"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "desc",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "exclude_interim",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "page",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Page",
-                "namespace": "ml._types"
-              }
-            }
-          },
-          {
-            "name": "record_score",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "sort",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ml.get_anomaly_records"
-      },
-      "path": [
-        {
-          "name": "job_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "exclude_interim",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "from",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "size",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "start",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "end",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "count",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "records",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Anomaly",
-                  "namespace": "ml._types"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ml.get_anomaly_records"
+        "namespace": "ml.forecast"
       }
     },
     {
@@ -111719,6 +111478,214 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "desc",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "exclude_interim",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Page",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "record_score",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "start",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "end",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.get_records"
+      },
+      "path": [
+        {
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "name": "exclude_interim",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "count",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "records",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Anomaly",
+                  "namespace": "ml._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.get_records"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "no_body"
       },
       "inherits": {
@@ -112426,7 +112393,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       },
       "path": [
         {
@@ -112640,7 +112607,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ml.post_job_data"
+        "namespace": "ml.post_data"
       }
     },
     {
@@ -115907,51 +115874,6 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "value",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "Detector",
-            "namespace": "ml._types"
-          }
-        }
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ml.validate_detector"
-      },
-      "path": [],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ml.validate_detector"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
         "kind": "properties",
         "properties": [
           {
@@ -116053,7 +115975,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ml.validate_job"
+        "namespace": "ml.validate"
       },
       "path": [],
       "query": []
@@ -116072,7 +115994,52 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ml.validate_job"
+        "namespace": "ml.validate"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Detector",
+            "namespace": "ml._types"
+          }
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.validate_detector"
+      },
+      "path": [],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.validate_detector"
       }
     },
     {
@@ -121490,127 +121457,6 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "cron",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "groups",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Groupings",
-                "namespace": "rollup._types"
-              }
-            }
-          },
-          {
-            "name": "index_pattern",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "metrics",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "FieldMetric",
-                  "namespace": "rollup._types"
-                }
-              }
-            }
-          },
-          {
-            "name": "page_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "rollup_index",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "rollup.create_rollup_job"
-      },
-      "path": [
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "rollup.create_rollup_job"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
         "kind": "no_body"
       },
       "inherits": {
@@ -121622,7 +121468,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       },
       "path": [
         {
@@ -121652,7 +121498,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TaskFailure",
-                  "namespace": "rollup.delete_rollup_job"
+                  "namespace": "rollup.delete_job"
                 }
               }
             }
@@ -121668,14 +121514,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "TaskFailure",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       },
       "properties": [
         {
@@ -121718,7 +121564,7 @@
             "kind": "instance_of",
             "type": {
               "name": "TaskFailureReason",
-              "namespace": "rollup.delete_rollup_job"
+              "namespace": "rollup.delete_job"
             }
           }
         }
@@ -121728,7 +121574,7 @@
       "kind": "interface",
       "name": {
         "name": "TaskFailureReason",
-        "namespace": "rollup.delete_rollup_job"
+        "namespace": "rollup.delete_job"
       },
       "properties": [
         {
@@ -121756,364 +121602,6 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "rollup.get_rollup_capabilities"
-      },
-      "path": [
-        {
-          "name": "id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "RollupCapabilities",
-              "namespace": "rollup.get_rollup_capabilities"
-            }
-          }
-        ],
-        "type": {
-          "name": "DictionaryResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "rollup.get_rollup_capabilities"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupCapabilities",
-        "namespace": "rollup.get_rollup_capabilities"
-      },
-      "properties": [
-        {
-          "name": "rollup_jobs",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RollupCapabilitySummary",
-                "namespace": "rollup.get_rollup_capabilities"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupCapabilitySummary",
-        "namespace": "rollup.get_rollup_capabilities"
-      },
-      "properties": [
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        },
-        {
-          "name": "index_pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "rollup_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexCapabilities",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      },
-      "properties": [
-        {
-          "name": "rollup_jobs",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RollupJobSummary",
-                "namespace": "rollup.get_rollup_index_capabilities"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      },
-      "path": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexCapabilities",
-              "namespace": "rollup.get_rollup_index_capabilities"
-            }
-          }
-        ],
-        "type": {
-          "name": "DictionaryResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupJobSummary",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      },
-      "properties": [
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "RollupJobSummaryField",
-                  "namespace": "rollup.get_rollup_index_capabilities"
-                }
-              }
-            }
-          }
-        },
-        {
-          "name": "index_pattern",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "job_id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "rollup_index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RollupJobSummaryField",
-        "namespace": "rollup.get_rollup_index_capabilities"
-      },
-      "properties": [
-        {
-          "name": "agg",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "time_zone",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "calendar_interval",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -122134,7 +121622,7 @@
       ],
       "name": {
         "name": "IndexingJobState",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       }
     },
     {
@@ -122153,7 +121641,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "path": [
         {
@@ -122183,7 +121671,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "RollupJob",
-                  "namespace": "rollup.get_rollup_job"
+                  "namespace": "rollup.get_jobs"
                 }
               }
             }
@@ -122193,14 +121681,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "RollupJob",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "properties": [
         {
@@ -122210,7 +121698,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RollupJobConfiguration",
-              "namespace": "rollup.get_rollup_job"
+              "namespace": "rollup.get_jobs"
             }
           }
         },
@@ -122221,7 +121709,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RollupJobStats",
-              "namespace": "rollup.get_rollup_job"
+              "namespace": "rollup.get_jobs"
             }
           }
         },
@@ -122232,7 +121720,7 @@
             "kind": "instance_of",
             "type": {
               "name": "RollupJobStatus",
-              "namespace": "rollup.get_rollup_job"
+              "namespace": "rollup.get_jobs"
             }
           }
         }
@@ -122242,7 +121730,7 @@
       "kind": "interface",
       "name": {
         "name": "RollupJobConfiguration",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "properties": [
         {
@@ -122342,7 +121830,7 @@
       "kind": "interface",
       "name": {
         "name": "RollupJobStats",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "properties": [
         {
@@ -122483,7 +121971,7 @@
       "kind": "interface",
       "name": {
         "name": "RollupJobStatus",
-        "namespace": "rollup.get_rollup_job"
+        "namespace": "rollup.get_jobs"
       },
       "properties": [
         {
@@ -122511,7 +121999,7 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexingJobState",
-              "namespace": "rollup.get_rollup_job"
+              "namespace": "rollup.get_jobs"
             }
           }
         },
@@ -122527,6 +122015,485 @@
           }
         }
       ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "rollup.get_rollup_caps"
+      },
+      "path": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RollupCapabilities",
+              "namespace": "rollup.get_rollup_caps"
+            }
+          }
+        ],
+        "type": {
+          "name": "DictionaryResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "rollup.get_rollup_caps"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupCapabilities",
+        "namespace": "rollup.get_rollup_caps"
+      },
+      "properties": [
+        {
+          "name": "rollup_jobs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RollupCapabilitySummary",
+                "namespace": "rollup.get_rollup_caps"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupCapabilitySummary",
+        "namespace": "rollup.get_rollup_caps"
+      },
+      "properties": [
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        },
+        {
+          "name": "index_pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "rollup_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndexCapabilities",
+        "namespace": "rollup.get_rollup_index_caps"
+      },
+      "properties": [
+        {
+          "name": "rollup_jobs",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RollupJobSummary",
+                "namespace": "rollup.get_rollup_index_caps"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "rollup.get_rollup_index_caps"
+      },
+      "path": [
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexCapabilities",
+              "namespace": "rollup.get_rollup_index_caps"
+            }
+          }
+        ],
+        "type": {
+          "name": "DictionaryResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "rollup.get_rollup_index_caps"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobSummary",
+        "namespace": "rollup.get_rollup_index_caps"
+      },
+      "properties": [
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RollupJobSummaryField",
+                  "namespace": "rollup.get_rollup_index_caps"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "index_pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "rollup_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RollupJobSummaryField",
+        "namespace": "rollup.get_rollup_index_caps"
+      },
+      "properties": [
+        {
+          "name": "agg",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "calendar_interval",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "cron",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "groups",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Groupings",
+                "namespace": "rollup._types"
+              }
+            }
+          },
+          {
+            "name": "index_pattern",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "metrics",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldMetric",
+                  "namespace": "rollup._types"
+                }
+              }
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "rollup_index",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "rollup.put_job"
+      },
+      "path": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "rollup.put_job"
+      }
     },
     {
       "attachedBehaviors": [
@@ -122842,7 +122809,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "rollup.start_rollup_job"
+        "namespace": "rollup.start_job"
       },
       "path": [
         {
@@ -122879,7 +122846,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "rollup.start_rollup_job"
+        "namespace": "rollup.start_job"
       }
     },
     {
@@ -122898,7 +122865,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "rollup.stop_rollup_job"
+        "namespace": "rollup.stop_job"
       },
       "path": [
         {
@@ -122958,7 +122925,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "rollup.stop_rollup_job"
+        "namespace": "rollup.stop_job"
       }
     },
     {
@@ -132685,7 +132652,7 @@
       "kind": "interface",
       "name": {
         "name": "CertificateInformation",
-        "namespace": "ssl.get_certificates"
+        "namespace": "ssl.certificates"
       },
       "properties": [
         {
@@ -132783,7 +132750,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "ssl.get_certificates"
+        "namespace": "ssl.certificates"
       },
       "path": [],
       "query": []
@@ -132797,7 +132764,7 @@
             "kind": "instance_of",
             "type": {
               "name": "CertificateInformation",
-              "namespace": "ssl.get_certificates"
+              "namespace": "ssl.certificates"
             }
           }
         }
@@ -132805,14 +132772,14 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "ssl.get_certificates"
+        "namespace": "ssl.certificates"
       }
     },
     {
       "kind": "interface",
       "name": {
         "name": "Info",
-        "namespace": "task._types"
+        "namespace": "tasks._types"
       },
       "properties": [
         {
@@ -132846,7 +132813,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Info",
-                "namespace": "task._types"
+                "namespace": "tasks._types"
               }
             }
           }
@@ -132924,7 +132891,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Status",
-              "namespace": "task._types"
+              "namespace": "tasks._types"
             }
           }
         },
@@ -132956,7 +132923,7 @@
       "kind": "interface",
       "name": {
         "name": "State",
-        "namespace": "task._types"
+        "namespace": "tasks._types"
       },
       "properties": [
         {
@@ -133065,7 +133032,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Status",
-              "namespace": "task._types"
+              "namespace": "tasks._types"
             }
           }
         },
@@ -133086,7 +133053,7 @@
       "kind": "interface",
       "name": {
         "name": "Status",
-        "namespace": "task._types"
+        "namespace": "tasks._types"
       },
       "properties": [
         {
@@ -133291,7 +133258,7 @@
       "kind": "interface",
       "name": {
         "name": "TaskExecutingNode",
-        "namespace": "task._types"
+        "namespace": "tasks._types"
       },
       "properties": [
         {
@@ -133311,7 +133278,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "State",
-                "namespace": "task._types"
+                "namespace": "tasks._types"
               }
             }
           }
@@ -133334,7 +133301,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.cancel"
+        "namespace": "tasks.cancel"
       },
       "path": [
         {
@@ -133449,7 +133416,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TaskExecutingNode",
-                  "namespace": "task._types"
+                  "namespace": "tasks._types"
                 }
               }
             }
@@ -133459,7 +133426,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.cancel"
+        "namespace": "tasks.cancel"
       }
     },
     {
@@ -133478,7 +133445,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.get"
+        "namespace": "tasks.get"
       },
       "path": [
         {
@@ -133540,7 +133507,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Info",
-                "namespace": "task._types"
+                "namespace": "tasks._types"
               }
             }
           },
@@ -133551,7 +133518,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Status",
-                "namespace": "task._types"
+                "namespace": "tasks._types"
               }
             }
           },
@@ -133571,7 +133538,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.get"
+        "namespace": "tasks.get"
       }
     },
     {
@@ -133590,7 +133557,7 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "task.list"
+        "namespace": "tasks.list"
       },
       "path": [],
       "query": [
@@ -133726,7 +133693,7 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "TaskExecutingNode",
-                  "namespace": "task._types"
+                  "namespace": "tasks._types"
                 }
               }
             }
@@ -133750,7 +133717,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "Info",
-                      "namespace": "task._types"
+                      "namespace": "tasks._types"
                     }
                   }
                 },
@@ -133760,7 +133727,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "Info",
-                      "namespace": "task._types"
+                      "namespace": "tasks._types"
                     }
                   }
                 }
@@ -133773,7 +133740,7 @@
       "kind": "response",
       "name": {
         "name": "Response",
-        "namespace": "task.list"
+        "namespace": "tasks.list"
       }
     },
     {
