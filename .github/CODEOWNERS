@@ -1,1 +1,1 @@
-/specification/ml @elastic/ml-core & @elastic/ml-ui
+/specification/ml/** @elastic/ml-core & @elastic/ml-ui
