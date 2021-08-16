@@ -13813,6 +13813,7 @@ export interface SnapshotCreateRequest extends RequestBase {
     ignore_unavailable?: boolean
     include_global_state?: boolean
     indices?: Indices
+    feature_states?: string[]
     metadata?: Metadata
     partial?: boolean
   }
