@@ -123850,6 +123850,7 @@
       },
       "properties": [
         {
+          "description": "The name of the application to which this entry applies.",
           "name": "application",
           "required": true,
           "type": {
@@ -123861,6 +123862,7 @@
           }
         },
         {
+          "description": "A list of strings, where each element is the name of an application privilege or action.",
           "name": "privileges",
           "required": true,
           "type": {
@@ -123875,6 +123877,7 @@
           }
         },
         {
+          "description": "A list resources to which the privileges are applied.",
           "name": "resources",
           "required": true,
           "type": {
