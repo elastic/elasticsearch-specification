@@ -206,10 +206,13 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       if (mapping == null) {
         throw new Error(`Cannot find url template for ${namespace}, very likely the specification folder does not follow the rest-api-spec`)
       }
-      // list of dynamic parameters
-      const urlTemplateParams = [...new Set(mapping.urls.flatMap(url => {
-        return url.path.split('/').filter(part => part.includes('{'))
-      }))].map(t => t.slice(1, -1))
+      // list of unique dynamic parameters
+      const urlTemplateParams = [...new Set(
+        mapping.urls.flatMap(url => url.path.split('/')
+          .filter(part => part.includes('{'))
+          .map(part => part.slice(1, -1))
+        )
+      )]
 
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`
