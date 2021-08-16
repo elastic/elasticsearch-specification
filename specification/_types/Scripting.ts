@@ -26,16 +26,16 @@ export enum ScriptLanguage {
   painless = 0,
   expression = 1,
   mustache = 2,
-  java = 0
+  java = 3
 }
 
 export class StoredScript {
-  lang?: ScriptLanguage
+  lang?: ScriptLanguage | string
   source: string
 }
 
 export class ScriptBase {
-  lang?: ScriptLanguage
+  lang?: ScriptLanguage | string
   params?: Dictionary<string, UserDefinedValue>
 }
 

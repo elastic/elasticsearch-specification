@@ -33153,11 +33153,23 @@
           "name": "lang",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptLanguage",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ScriptLanguage",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -34142,11 +34154,23 @@
           "name": "lang",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptLanguage",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ScriptLanguage",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
