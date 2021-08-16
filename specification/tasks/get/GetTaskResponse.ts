@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Status } from '@task/_types/TaskStatus'
+import { Status } from '@tasks/_types/TaskStatus'
 import { ErrorCause } from '@_types/Errors'
 import { Info } from '../_types/TaskInfo'
 

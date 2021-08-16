@@ -47,7 +47,7 @@
       "@snapshot/*": ["snapshot/*"],
       "@sql/*": ["sql/*"],
       "@ssl/*": ["ssl/*"],
-      "@task/*": ["task/*"],
+      "@tasks/*": ["tasks/*"],
       "@text_structure/*": ["text_structure/*"],
       "@transform/*": ["transform/*"],
       "@watcher/*": ["watcher/*"],

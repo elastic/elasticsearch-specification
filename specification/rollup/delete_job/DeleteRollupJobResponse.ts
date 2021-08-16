@@ -17,15 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Info } from '@task/_types/TaskInfo'
-import { ErrorCause } from '@_types/Errors'
-import { TaskExecutingNode } from '../_types/TaskExecutingNode'
+import { TaskFailure } from './types'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response {
+export class Response extends AcknowledgedResponseBase {
   body: {
-    node_failures?: ErrorCause[]
-    nodes?: Dictionary<string, TaskExecutingNode>
-    tasks?: Dictionary<string, Info> | Array<Info>
+    task_failures?: TaskFailure[]
   }
 }

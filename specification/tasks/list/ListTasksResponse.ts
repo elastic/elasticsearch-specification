@@ -17,11 +17,15 @@
  * under the License.
  */
 
-import { TaskFailure } from '@rollup/delete_rollup_job/types'
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { Info } from '@tasks/_types/TaskInfo'
+import { ErrorCause } from '@_types/Errors'
+import { TaskExecutingNode } from '../_types/TaskExecutingNode'
 
-export class Response extends AcknowledgedResponseBase {
+export class Response {
   body: {
-    task_failures?: TaskFailure[]
+    node_failures?: ErrorCause[]
+    nodes?: Dictionary<string, TaskExecutingNode>
+    tasks?: Dictionary<string, Info> | Array<Info>
   }
 }

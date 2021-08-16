@@ -19,7 +19,7 @@
 
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Info } from '@task/_types/TaskInfo'
+import { Info } from '@tasks/_types/TaskInfo'
 import { TaskId } from '@_types/common'
 
 export class UpdateByQueryRethrottleNode extends BaseNode {

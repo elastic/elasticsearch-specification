@@ -17,13 +17,21 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { TaskExecutingNode } from '@task/_types/TaskExecutingNode'
-import { ErrorCause } from '@_types/Errors'
+import { Status } from '@tasks/_types/TaskStatus'
+import { HttpHeaders, Id } from '@_types/common'
+import { long } from '@_types/Numeric'
 
-export class Response {
-  body: {
-    node_failures?: ErrorCause[]
-    nodes: Dictionary<string, TaskExecutingNode>
-  }
+export class Info {
+  action: string
+  cancellable: boolean
+  children?: Info[]
+  description?: string
+  headers: HttpHeaders
+  id: long
+  node: string
+  running_time_in_nanos: long
+  start_time_in_millis: long
+  status?: Status
+  type: string
+  parent_task_id?: Id
 }

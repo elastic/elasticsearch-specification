@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Info } from '@task/_types/TaskInfo'
+import { Info } from '@tasks/_types/TaskInfo'
 import { Id, Name } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 
