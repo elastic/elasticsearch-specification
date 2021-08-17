@@ -271,9 +271,9 @@ export interface ExistsRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  source_enabled?: boolean
-  source_excludes?: Fields
-  source_includes?: Fields
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
   stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
@@ -289,9 +289,9 @@ export interface ExistsSourceRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  source_enabled?: boolean
-  source_excludes?: Fields
-  source_includes?: Fields
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
   version?: VersionNumber
   version_type?: VersionType
 }
@@ -401,13 +401,12 @@ export interface GetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  source_enabled?: boolean
+  _source?: boolean | Fields
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
   version?: VersionNumber
   version_type?: VersionType
-  _source?: boolean | Fields
 }
 
 export interface GetResponse<TDocument = unknown> {
@@ -1712,9 +1711,9 @@ export interface UpdateByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: string[]
-  source_enabled?: boolean
-  source_excludes?: Fields
-  source_includes?: Fields
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
   stats?: string[]
   terminate_after?: long
   timeout?: Time

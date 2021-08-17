@@ -15070,18 +15070,30 @@
           }
         },
         {
-          "name": "source_enabled",
+          "name": "_source",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
-          "name": "source_excludes",
+          "name": "_source_excludes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -15092,7 +15104,7 @@
           }
         },
         {
-          "name": "source_includes",
+          "name": "_source_includes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -15246,18 +15258,30 @@
           }
         },
         {
-          "name": "source_enabled",
+          "name": "_source",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
-          "name": "source_excludes",
+          "name": "_source_excludes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -15268,7 +15292,7 @@
           }
         },
         {
-          "name": "source_includes",
+          "name": "_source_includes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -16241,14 +16265,27 @@
           }
         },
         {
-          "name": "source_enabled",
+          "description": "True or false to return the _source field or not, or a list of fields to return.",
+          "name": "_source",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -16308,30 +16345,6 @@
               "name": "VersionType",
               "namespace": "_types"
             }
-          }
-        },
-        {
-          "description": "True or false to return the _source field or not, or a list of fields to return.",
-          "name": "_source",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
           }
         }
       ]
@@ -28929,18 +28942,30 @@
           }
         },
         {
-          "name": "source_enabled",
+          "name": "_source",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
-          "name": "source_excludes",
+          "name": "_source_excludes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -28951,7 +28976,7 @@
           }
         },
         {
-          "name": "source_includes",
+          "name": "_source_includes",
           "required": false,
           "type": {
             "kind": "instance_of",
