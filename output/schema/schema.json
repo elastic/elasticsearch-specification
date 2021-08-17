@@ -123670,6 +123670,8 @@
       },
       "properties": [
         {
+          "description": "The document fields that the owners of the role have read access to. ",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html",
           "name": "field_security",
           "required": false,
           "type": {
@@ -123681,6 +123683,7 @@
           }
         },
         {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
           "name": "names",
           "required": true,
           "type": {
@@ -123692,6 +123695,7 @@
           }
         },
         {
+          "description": "The index level privileges that owners of the role have on the specified indices.",
           "name": "privileges",
           "required": true,
           "type": {
@@ -123706,6 +123710,7 @@
           }
         },
         {
+          "description": "A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
           "name": "query",
           "required": false,
           "type": {
@@ -123729,8 +123734,10 @@
           }
         },
         {
+          "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
           "name": "allow_restricted_indices",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
