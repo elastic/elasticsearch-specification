@@ -107706,6 +107706,7 @@
       },
       "path": [
         {
+          "description": "Identifier for the data frame analytics job.",
           "name": "id",
           "required": true,
           "type": {
@@ -107719,6 +107720,7 @@
       ],
       "query": [
         {
+          "description": "If `true`, it deletes a job that is not stopped; this method is quicker than stopping and deleting the job.",
           "name": "force",
           "required": false,
           "serverDefault": false,
@@ -107731,6 +107733,7 @@
           }
         },
         {
+          "description": "The time to wait for the job to be deleted.",
           "name": "timeout",
           "required": false,
           "serverDefault": "1m",
