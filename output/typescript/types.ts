@@ -10363,24 +10363,24 @@ export interface MlDatafeedTimingStats {
 }
 
 export interface MlDataframeAnalysis {
-  dependent_variable: string
-  prediction_field_name?: Field
   alpha?: double
-  lambda?: double
-  gamma?: double
+  dependent_variable: string
+  downsample_factor?: double
+  early_stopping_enabled?: boolean
   eta?: double
   eta_growth_rate_per_tree?: double
   feature_bag_fraction?: double
+  feature_processors?: MlDataframeAnalysisFeatureProcessor[]
+  gamma?: double
+  lambda?: double
+  max_optimization_rounds_per_hyperparameter?: integer
   max_trees?: integer
   maximum_number_trees?: integer
+  num_top_feature_importance_values?: integer
+  prediction_field_name?: Field
+  randomize_seed?: double
   soft_tree_depth_limit?: integer
   soft_tree_depth_tolerance?: double
-  downsample_factor?: double
-  max_optimization_rounds_per_hyperparameter?: integer
-  early_stopping_enabled?: boolean
-  num_top_feature_importance_values?: integer
-  feature_processors?: MlDataframeAnalysisFeatureProcessor[]
-  randomize_seed?: double
   training_percent?: Percentage
 }
 
@@ -10397,9 +10397,9 @@ export interface MlDataframeAnalysisClassification extends MlDataframeAnalysis {
 }
 
 export interface MlDataframeAnalysisContainer {
+  classification?: MlDataframeAnalysisClassification
   outlier_detection?: MlDataframeAnalysisOutlierDetection
   regression?: MlDataframeAnalysisRegression
-  classification?: MlDataframeAnalysisClassification
 }
 
 export interface MlDataframeAnalysisFeatureProcessor {
@@ -10442,10 +10442,10 @@ export interface MlDataframeAnalysisFeatureProcessorTargetMeanEncoding {
 }
 
 export interface MlDataframeAnalysisOutlierDetection {
-  n_neighbors?: integer
-  method?: string
-  feature_influence_threshold?: double
   compute_feature_influence?: boolean
+  feature_influence_threshold?: double
+  method?: string
+  n_neighbors?: integer
   outlier_fraction?: double
   standardization_enabled?: boolean
 }
@@ -10488,8 +10488,8 @@ export interface MlDataframeAnalyticsMemoryEstimation {
 export interface MlDataframeAnalyticsSource {
   index: Indices
   query?: QueryDslQueryContainer
-  _source?: MlDataframeAnalysisAnalyzedFields
   runtime_mappings?: MappingRuntimeFields
+  _source?: MlDataframeAnalysisAnalyzedFields
 }
 
 export interface MlDataframeAnalyticsStatsContainer {
@@ -11637,14 +11637,14 @@ export interface MlPutCalendarJobResponse {
 export interface MlPutDataFrameAnalyticsRequest extends RequestBase {
   id: Id
   body?: {
-    source?: MlDataframeAnalyticsSource
-    dest: MlDataframeAnalyticsDestination
-    analysis: MlDataframeAnalysisContainer
-    description?: string
-    model_memory_limit?: string
-    max_num_threads?: integer
-    analyzed_fields?: MlDataframeAnalysisAnalyzedFields
     allow_lazy_start?: boolean
+    analysis: MlDataframeAnalysisContainer
+    analyzed_fields?: MlDataframeAnalysisAnalyzedFields
+    description?: string
+    dest: MlDataframeAnalyticsDestination
+    max_num_threads?: integer
+    model_memory_limit?: string
+    source: MlDataframeAnalyticsSource
   }
 }
 

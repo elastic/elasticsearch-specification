@@ -36,16 +36,19 @@ import { DateString } from '@_types/Time'
 import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
-  /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. */
+  /** Index or indices on which to perform the analysis. It can be a single index or index pattern as well as an array of indices or patterns. NOTE: If your source indices contain documents with the same IDs, only the document that is indexed last appears in the destination index.*/
   index: Indices
   /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch. By default, this property has the following value: {"match_all": {}}.
    * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html
    */
   query?: QueryContainer
-  /** Specify includes and/or excludes patterns to select which fields will be present in the destination. Fields that are excluded cannot be included in the analysis. */
-  _source?: DataframeAnalysisAnalyzedFields
+  /**
+   * Definitions of runtime fields that will become part of the mapping of the destination index.
+   */
   runtime_mappings?: RuntimeFields
+  /** Specify `includes` and/or `excludes patterns to select which fields will be present in the destination. Fields that are excluded cannot be included in the analysis. */
+  _source?: DataframeAnalysisAnalyzedFields
 }
 
 export class DataframeAnalyticsFieldSelection {
@@ -73,67 +76,161 @@ export class DataframeAnalyticsMemoryEstimation {
 export class DataframeAnalyticsDestination {
   /** Defines the destination index to store the results of the data frame analytics job. */
   index: IndexName
-  /** Defines the name of the field in which to store the results of the analysis. Defaults to ml. */
+  /** Defines the name of the field in which to store the results of the analysis. Defaults to `ml`. */
   results_field?: Field
 }
 
 /** @variants container */
 export class DataframeAnalysisContainer {
   /**
-   * The configuration information necessary to perform outlier detection
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
-   */
-  outlier_detection?: DataframeAnalysisOutlierDetection
-  /**
-   * The configuration information necessary to perform regression.
-   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html
-   */
-  regression?: DataframeAnalysisRegression
-  /**
    * The configuration information necessary to perform classification.
    * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
    */
   classification?: DataframeAnalysisClassification
+  /**
+   * The configuration information necessary to perform outlier detection. NOTE: Advanced parameters are for fine-tuning classification analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-classification.html
+   */
+  outlier_detection?: DataframeAnalysisOutlierDetection
+  /**
+   * The configuration information necessary to perform regression. NOTE: Advanced parameters are for fine-tuning regression analysis. They are set automatically by hyperparameter optimization to give the minimum validation error. It is highly recommended to use the default values unless you fully understand the function of these parameters.
+   * @doc_url https://www.elastic.co/guide/en/machine-learning/current/dfa-regression.html
+   */
+  regression?: DataframeAnalysisRegression
 }
 
 export class DataframeAnalysisOutlierDetection {
-  n_neighbors?: integer
-  method?: string
-  feature_influence_threshold?: double
+  /**
+   * Specifies whether the feature influence calculation is enabled.
+   * @server_default true
+   */
   compute_feature_influence?: boolean
+  /**
+   * The minimum outlier score that a document needs to have in order to calculate its feature influence score. Value range: 0-1.
+   * @server_default 0.1
+   */
+  feature_influence_threshold?: double
+  /**
+   * The method that outlier detection uses. Available methods are `lof`, `ldof`, `distance_kth_nn`, `distance_knn`, and `ensemble`. The default value is ensemble, which means that outlier detection uses an ensemble of different methods and normalises and combines their individual outlier scores to obtain the overall outlier score.
+   * @server_default ensemble
+   */
+  method?: string
+  /**
+   * Defines the value for how many nearest neighbors each method of outlier detection uses to calculate its outlier score. When the value is not set, different values are used for different ensemble members. This default behavior helps improve the diversity in the ensemble; only override it if you are confident that the value you choose is appropriate for the data set.
+   */
+  n_neighbors?: integer
+  /**
+   * The proportion of the data set that is assumed to be outlying prior to outlier detection. For example, 0.05 means it is assumed that 5% of values are real outliers and 95% are inliers.
+   */
   outlier_fraction?: double
+  /**
+   * If true, the following operation is performed on the columns before computing outlier scores: `(x_i - mean(x_i)) / sd(x_i)`.
+   * @server_default true
+   */
   standardization_enabled?: boolean
 }
 
 export class DataframeAnalysis {
-  dependent_variable: string
-  prediction_field_name?: Field
+  /**
+   * Advanced configuration option. Machine learning uses loss guided tree growing, which means that the decision trees grow where the regularized loss decreases most quickly. This parameter affects loss calculations by acting as a multiplier of the tree depth. Higher alpha values result in shallower trees and faster training times. By default, this value is calculated during hyperparameter optimization. It must be greater than or equal to zero.
+   */
   alpha?: double
-  lambda?: double
-  gamma?: double
-  eta?: double
-  eta_growth_rate_per_tree?: double
-  feature_bag_fraction?: double
-  /** @aliases maximum_number_trees */
-  max_trees?: integer
-  soft_tree_depth_limit?: integer
-  soft_tree_depth_tolerance?: double
+  /**
+   * Defines which field of the document is to be predicted. It must match one of the fields in the index being used to train. If this field is missing from a document, then that document will not be used for training, but a prediction with the trained model will be generated for it. It is also known as continuous target variable.
+   * For classification analysis, the data type of the field must be numeric (`integer`, `short`, `long`, `byte`), categorical (`ip` or `keyword`), or `boolean`. There must be no more than 30 different values in this field.
+   * For regression analysis, the data type of the field must be numeric.
+   */
+  dependent_variable: string
+  /**
+   * Advanced configuration option. Controls the fraction of data that is used to compute the derivatives of the loss function for tree training. A small value results in the use of a small fraction of the data. If this value is set to be less than 1, accuracy typically improves. However, too small a value may result in poor convergence for the ensemble and so require more trees. By default, this value is calculated during hyperparameter optimization. It must be greater than zero and less than or equal to 1.
+   */
   downsample_factor?: double
-  max_optimization_rounds_per_hyperparameter?: integer
+  /**
+   * Advanced configuration option. Specifies whether the training process should finish if it is not finding any better performing models. If disabled, the training process can take significantly longer and the chance of finding a better performing model is unremarkable.
+   * @server_default true
+   */
   early_stopping_enabled?: boolean
-  num_top_feature_importance_values?: integer
+  /**
+   * Advanced configuration option. The shrinkage applied to the weights. Smaller values result in larger forests which have a better generalization error. However, larger forests cause slower training. By default, this value is calculated during hyperparameter optimization. It must be a value between 0.001 and 1.
+   */
+  eta?: double
+  /**
+   * Advanced configuration option. Specifies the rate at which `eta` increases for each new tree that is added to the forest. For example, a rate of 1.05 increases `eta` by 5% for each extra tree. By default, this value is calculated during hyperparameter optimization. It must be between 0.5 and 2.
+   */
+  eta_growth_rate_per_tree?: double
+  /**
+   * Advanced configuration option. Defines the fraction of features that will be used when selecting a random bag for each candidate split. By default, this value is calculated during hyperparameter optimization.
+   */
+  feature_bag_fraction?: double
+  /**
+   * Advanced configuration option. A collection of feature preprocessors that modify one or more included fields. The analysis uses the resulting one or more features instead of the original document field. However, these features are ephemeral; they are not stored in the destination index. Multiple `feature_processors` entries can refer to the same document fields. Automatic categorical feature encoding still occurs for the fields that are unprocessed by a custom processor or that have categorical values. Use this property only if you want to override the automatic feature encoding of the specified fields.
+   */
   feature_processors?: DataframeAnalysisFeatureProcessor[]
+  /**
+   * Advanced configuration option. Regularization parameter to prevent overfitting on the training data set. Multiplies a linear penalty associated with the size of individual trees in the forest. A high gamma value causes training to prefer small trees. A small gamma value results in larger individual trees and slower training. By default, this value is calculated during hyperparameter optimization. It must be a nonnegative value.
+   */
+  gamma?: double
+  /**
+   * Advanced configuration option. Regularization parameter to prevent overfitting on the training data set. Multiplies an L2 regularization term which applies to leaf weights of the individual trees in the forest. A high lambda value causes training to favor small leaf weights. This behavior makes the prediction function smoother at the expense of potentially not being able to capture relevant relationships between the features and the dependent variable. A small lambda value results in large individual trees and slower training. By default, this value is calculated during hyperparameter optimization. It must be a nonnegative value.
+   */
+  lambda?: double
+  /**
+   * Advanced configuration option. A multiplier responsible for determining the maximum number of hyperparameter optimization steps in the Bayesian optimization procedure. The maximum number of steps is determined based on the number of undefined hyperparameters times the maximum optimization rounds per hyperparameter. By default, this value is calculated during hyperparameter optimization.
+   */
+  max_optimization_rounds_per_hyperparameter?: integer
+  /**
+   * Advanced configuration option. Defines the maximum number of decision trees in the forest. The maximum value is 2000. By default, this value is calculated during hyperparameter optimization.
+   * @aliases maximum_number_trees
+   */
+  max_trees?: integer
+  /**
+   * Advanced configuration option. Specifies the maximum number of feature importance values per document to return. By default, no feature importance calculation occurs.
+   * @server_default 0
+   */
+  num_top_feature_importance_values?: integer
+  /**
+   * Defines the name of the prediction field in the results. Defaults to `<dependent_variable>_prediction`.
+   */
+  prediction_field_name?: Field
+  /**
+   * Defines the seed for the random generator that is used to pick training data. By default, it is randomly generated. Set it to a specific value to use the same training data each time you start a job (assuming other related parameters such as `source` and `analyzed_fields` are the same).
+   */
   randomize_seed?: double
+  /**
+   * Advanced configuration option. Machine learning uses loss guided tree growing, which means that the decision trees grow where the regularized loss decreases most quickly. This soft limit combines with the `soft_tree_depth_tolerance` to penalize trees that exceed the specified depth; the regularized loss increases quickly beyond this depth. By default, this value is calculated during hyperparameter optimization. It must be greater than or equal to 0.
+   */
+  soft_tree_depth_limit?: integer
+  /**
+   * Advanced configuration option. This option controls how quickly the regularized loss increases when the tree depth exceeds `soft_tree_depth_limit`. By default, this value is calculated during hyperparameter optimization. It must be greater than or equal to 0.01.
+   */
+  soft_tree_depth_tolerance?: double
+  /**
+   * Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won’t be included in the calculation for used percentage.
+   * @server_default 100
+   */
   training_percent?: Percentage
 }
 
 export class DataframeAnalysisRegression extends DataframeAnalysis {
+  /**
+   * The loss function used during regression. Available options are `mse` (mean squared error), `msle` (mean squared logarithmic error), `huber` (Pseudo-Huber loss).
+   * @server_default mse
+   */
   loss_function?: string
+  /**
+   * A positive number that is used as a parameter to the `loss_function`.
+   */
   loss_function_parameter?: double
 }
 
 export class DataframeAnalysisClassification extends DataframeAnalysis {
+  /*
+   * Defines the objective to optimize when assigning class labels: `maximize_accuracy` or `maximize_minimum_recall`. When maximizing accuracy, class labels are chosen to maximize the number of correct predictions. When maximizing minimum recall, labels are chosen to maximize the minimum recall for any class. Defaults to `maximize_minimum_recall`.*/
   class_assignment_objective?: string
+  /**
+   * Defines the number of categories for which the predicted probabilities are reported. It must be non-negative or -1. If it is -1 or greater than the total number of categories, probabilities are reported for all categories; if you have a large number of categories, there could be a significant effect on the size of your destination index. NOTE: To use the AUC ROC evaluation method, `num_top_classes` must be set to -1 or a value greater than or equal to the total number of categories.
+   * @server_default 2
+   */
   num_top_classes?: integer
 }
 
