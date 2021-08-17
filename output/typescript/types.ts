@@ -10132,6 +10132,7 @@ export interface MlAnalysisConfig {
   categorization_filters?: string[]
   detectors: MlDetector[]
   influencers: Field[]
+  model_prune_window?: Time
   latency?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
