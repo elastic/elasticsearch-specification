@@ -10,8 +10,8 @@ generator:typescript:
 compiler:
   - 'compiler/**/*'
 
-backport-7.x:
-  # Add 'backport-7.x` label to any change to compiler/ts-generator files
+'backport 7.x':
+  # Add 'backport 7.x` label to any change to compiler/ts-generator files
   # as long as the 'specification' hasn't changed
   - any: ['compiler/**/*', 'typescript-generator/**/*']
     all: ['!specification/**/*']
