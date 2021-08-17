@@ -128187,7 +128187,7 @@
             }
           },
           {
-            "description": "A list of cluster privileges. These privileges define the cluster-level\nactions for users with this role.",
+            "description": "A list of cluster privileges. These privileges define the cluster-level actions for users with this role.",
             "name": "cluster",
             "required": false,
             "type": {
@@ -128202,7 +128202,7 @@
             }
           },
           {
-            "description": "An object defining global privileges. A global privilege is a form of\ncluster privilege that is request-aware. Support for global privileges\nis currently limited to the management of application privileges.",
+            "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "name": "global",
             "required": false,
             "type": {
@@ -128236,7 +128236,7 @@
             }
           },
           {
-            "description": "Optional metadata. Within the metadata object, keys that begin with an\nunderscore (`_`) are reserved for system use.",
+            "description": "Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.",
             "name": "metadata",
             "required": false,
             "type": {
@@ -128264,7 +128264,7 @@
             }
           },
           {
-            "description": "Indicates roles that might be incompatible with the current cluster\nlicense, specifically roles with document and field level security. When\nthe cluster license doesn’t allow certain features for a given role,\nthis parameter is updated dynamically to list the incompatible features.\nIf `enabled` is `false`, the role is ignored, but is still listed in the\nresponse from the authenticate API.",
+            "description": "Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.",
             "name": "transient_metadata",
             "required": false,
             "type": {

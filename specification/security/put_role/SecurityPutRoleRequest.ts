@@ -43,14 +43,11 @@ export interface Request extends RequestBase {
      */
     applications?: ApplicationPrivileges[]
     /**
-     * A list of cluster privileges. These privileges define the cluster-level
-     * actions for users with this role.
+     * A list of cluster privileges. These privileges define the cluster-level actions for users with this role.
      */
     cluster?: string[]
     /**
-     * An object defining global privileges. A global privilege is a form of
-     * cluster privilege that is request-aware. Support for global privileges
-     * is currently limited to the management of application privileges.
+     * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
      */
     global?: Dictionary<string, UserDefinedValue>
     /**
@@ -58,8 +55,7 @@ export interface Request extends RequestBase {
      */
     indices?: IndicesPrivileges[]
     /**
-     * Optional metadata. Within the metadata object, keys that begin with an
-     * underscore (`_`) are reserved for system use.
+     * Optional metadata. Within the metadata object, keys that begin with an underscore (`_`) are reserved for system use.
      */
     metadata?: Metadata
     /**
@@ -68,13 +64,7 @@ export interface Request extends RequestBase {
      */
     run_as?: string[]
     /**
-     * Indicates roles that might be incompatible with the current cluster
-     * license, specifically roles with document and field level security. When
-     * the cluster license doesn’t allow certain features for a given role,
-     * this parameter is updated dynamically to list the incompatible features.
-     *
-     * If `enabled` is `false`, the role is ignored, but is still listed in the
-     * response from the authenticate API.
+     * Indicates roles that might be incompatible with the current cluster license, specifically roles with document and field level security. When the cluster license doesn’t allow certain features for a given role, this parameter is updated dynamically to list the incompatible features. If `enabled` is `false`, the role is ignored, but is still listed in the response from the authenticate API.
      */
     transient_metadata?: TransientMetadata
   }
