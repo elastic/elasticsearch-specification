@@ -28,12 +28,21 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts?: {
+    /**
+     * Identifier for the data frame analytics job.
+     */
     id: Id
   }
   query_parameters?: {
-    /** @server_default false */
+    /**
+     * If `true`, it deletes a job that is not stopped; this method is quicker than stopping and deleting the job.
+     * @server_default false
+     */
     force?: boolean
-    /** @server_default 1m */
+    /**
+     * The time to wait for the job to be deleted.
+     * @server_default 1m
+     */
     timeout?: Time
   }
 }
