@@ -2186,7 +2186,7 @@ export type Routing = string
 export type Script = InlineScript | IndexedScript | string
 
 export interface ScriptBase {
-  lang?: ScriptLanguage
+  lang?: ScriptLanguage | string
   params?: Record<string, any>
 }
 
@@ -2299,7 +2299,7 @@ export interface StoreStats {
 }
 
 export interface StoredScript {
-  lang?: ScriptLanguage
+  lang?: ScriptLanguage | string
   source: string
 }
 
