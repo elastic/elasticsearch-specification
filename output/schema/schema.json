@@ -123670,7 +123670,7 @@
       },
       "properties": [
         {
-          "description": "The document fields that the owners of the role have read access to. ",
+          "description": "The document fields that the owners of the role have read access to.",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/field-and-document-access-control.html",
           "name": "field_security",
           "required": false,
