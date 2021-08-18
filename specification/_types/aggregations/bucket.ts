@@ -102,6 +102,7 @@ export class DateHistogramAggregation extends BucketAggregationBase {
   params?: Dictionary<string, UserDefinedValue>
   script?: Script
   time_zone?: string
+  keyed?: boolean
 }
 
 export enum DateInterval {
@@ -121,6 +122,7 @@ export class DateRangeAggregation extends BucketAggregationBase {
   missing?: Missing
   ranges?: DateRangeExpression[]
   time_zone?: string
+  keyed?: boolean
 }
 
 export class DateRangeExpression {
@@ -150,6 +152,7 @@ export class FiltersAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer> | QueryContainer[]
   other_bucket?: boolean
   other_bucket_key?: string
+  keyed?: boolean
 }
 
 export class GeoDistanceAggregation extends BucketAggregationBase {
@@ -194,6 +197,7 @@ export class HistogramAggregation extends BucketAggregationBase {
   order?: HistogramOrder
   script?: Script
   format?: string
+  keyed?: boolean
 }
 
 export class HistogramOrder {
@@ -237,6 +241,7 @@ export class RangeAggregation extends BucketAggregationBase {
   field?: Field
   ranges?: AggregationRange[]
   script?: Script
+  keyed?: boolean
 }
 
 export class AggregationRange {
