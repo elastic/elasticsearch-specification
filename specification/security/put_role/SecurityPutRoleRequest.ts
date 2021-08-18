@@ -60,7 +60,7 @@ export interface Request extends RequestBase {
     metadata?: Metadata
     /**
      * A list of users that the owners of this role can impersonate.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html[Submit requests on behalf of other users]
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/run-as-privilege.html
      */
     run_as?: string[]
     /**
