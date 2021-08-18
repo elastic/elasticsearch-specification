@@ -1036,7 +1036,7 @@ export function verifyUniqueness (project: Project): void {
 
 export function isValidUrl (str: string): boolean {
   try {
-    new URL(str)
+    new URL(str) // eslint-disable-line
     return true
   } catch (err) {
     return false
