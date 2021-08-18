@@ -21295,8 +21295,10 @@
             }
           },
           {
+            "description": "If true, returns detailed information about score computation as part of a hit.",
             "name": "explain",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21306,8 +21308,10 @@
             }
           },
           {
+            "description": "Starting document offset. By default, you cannot page through more than 10,000\nhits using the from and size parameters. To page through more hits, use the\nsearch_after parameter.",
             "name": "from",
             "required": false,
+            "serverDefault": "0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21328,6 +21332,7 @@
             }
           },
           {
+            "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
             "name": "track_total_hits",
             "required": false,
             "type": {
@@ -21351,6 +21356,7 @@
             }
           },
           {
+            "description": "Boosts the _score of documents from specified indices.",
             "name": "indices_boost",
             "required": false,
             "type": {
@@ -21376,6 +21382,7 @@
             }
           },
           {
+            "description": "Array of wildcard (*) patterns. The request returns doc values for field\nnames matching these patterns in the hits.fields property of the response.",
             "name": "docvalue_fields",
             "required": false,
             "type": {
@@ -21414,6 +21421,7 @@
             }
           },
           {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are\nnot included in the search results.",
             "name": "min_score",
             "required": false,
             "type": {
@@ -21447,6 +21455,7 @@
             }
           },
           {
+            "description": "Defines the search definition using the Query DSL.",
             "name": "query",
             "required": false,
             "type": {
@@ -21484,6 +21493,7 @@
             }
           },
           {
+            "description": "Retrieve a script evaluation (based on different fields) for each hit.",
             "name": "script_fields",
             "required": false,
             "type": {
@@ -21517,8 +21527,10 @@
             }
           },
           {
+            "description": "The number of hits to return. By default, you cannot page through more\nthan 10,000 hits using the from and size parameters. To page through more\nhits, use the search_after parameter.",
             "name": "size",
             "required": false,
+            "serverDefault": "10",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21550,6 +21562,7 @@
             }
           },
           {
+            "description": "Indicates which source fields are returned for matching documents. These\nfields are returned in the hits._source property of the search response.",
             "name": "_source",
             "required": false,
             "type": {
@@ -21580,6 +21593,7 @@
             }
           },
           {
+            "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
             "name": "fields",
             "required": false,
             "type": {
@@ -21640,8 +21654,10 @@
             }
           },
           {
+            "description": "Maximum number of documents to collect for each shard. If a query reaches this\nlimit, Elasticsearch terminates the query early. Elasticsearch collects documents\nbefore sorting. Defaults to 0, which does not terminate query execution early.",
             "name": "terminate_after",
             "required": false,
+            "serverDefault": "0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21651,6 +21667,7 @@
             }
           },
           {
+            "description": "Specifies the period of time to wait for a response from each shard. If no response\nis received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
             "name": "timeout",
             "required": false,
             "type": {
@@ -21662,8 +21679,10 @@
             }
           },
           {
+            "description": "If true, calculate and return document scores, even if the scores are not used for sorting.",
             "name": "track_scores",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21673,8 +21692,10 @@
             }
           },
           {
+            "description": "If true, returns document version as part of a hit.",
             "name": "version",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21684,6 +21705,7 @@
             }
           },
           {
+            "description": "If true, returns sequence number and primary term of the last modification\nof each hit. See Optimistic concurrency control.",
             "name": "seq_no_primary_term",
             "required": false,
             "type": {
@@ -21695,6 +21717,7 @@
             }
           },
           {
+            "description": "List of stored fields to return as part of a hit. If no fields are specified,\nno stored fields are included in the response. If this field is specified, the _source\nparameter defaults to false. You can pass _source: true to return both source fields\nand stored fields in the search response.",
             "name": "stored_fields",
             "required": false,
             "type": {
@@ -21706,6 +21729,7 @@
             }
           },
           {
+            "description": "Limits the search to a point in time (PIT). If you provide a PIT, you\ncannot specify an <index> in the request path.",
             "name": "pit",
             "required": false,
             "type": {
@@ -21717,6 +21741,7 @@
             }
           },
           {
+            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
             "name": "runtime_mappings",
             "required": false,
             "type": {
@@ -21728,6 +21753,7 @@
             }
           },
           {
+            "description": "Stats groups to associate with the search. Each group maintains a statistics\naggregation for its associated searches. You can retrieve these stats using\nthe indices stats API.",
             "name": "stats",
             "required": false,
             "type": {
@@ -22047,6 +22073,7 @@
           }
         },
         {
+          "description": "Specifies which field to use for suggestions.",
           "name": "suggest_field",
           "required": false,
           "type": {
@@ -22080,6 +22107,7 @@
           }
         },
         {
+          "description": "The source text for which the suggestions should be returned.",
           "name": "suggest_text",
           "required": false,
           "type": {
