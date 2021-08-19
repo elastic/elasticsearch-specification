@@ -19716,7 +19716,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use _all or *.",
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.",
           "name": "index",
           "required": true,
           "type": {
@@ -29456,7 +29456,7 @@
       ]
     },
     {
-      "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
+      "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back in the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "AggregateName",
@@ -34258,7 +34258,7 @@
       }
     },
     {
-      "description": "The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
+      "description": "The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back in the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "SuggestionName",
@@ -45234,7 +45234,7 @@
       ]
     },
     {
-      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
+      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.",
       "kind": "type_alias",
       "name": {
         "name": "StopWords",
@@ -99998,7 +99998,7 @@
       },
       "properties": [
         {
-          "description": " The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
+          "description": " The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation. * @server_default 5m",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -102377,7 +102377,7 @@
           }
         },
         {
-          "description": "Defines which field of the document is to be predicted. It must match one of the fields in the index being used to train. If this field is missing from a document, then that document will not be used for training, but a prediction with the trained model will be generated for it. It is also known as continuous target variable.\nFor classification analysis, the data type of the field must be numeric (`integer`, `short`, `long`, `byte`), categorical (`ip` or `keyword`), or `boolean`. There must be no more than 30 different values in this field.\nFor regression analysis, the data type of the field must be numeric.",
+          "description": "Defines which field of the document is to be predicted. It must match one of the fields in the index being used to train. If this field is missing from a document, then that document will not be used for training, but a prediction with the trained model will be generated for it. It is also known as continuous target variable. For classification analysis, the data type of the field must be numeric (`integer`, `short`, `long`, `byte`), categorical (`ip` or `keyword`), or `boolean`. There must be no more than 30 different values in this field. For regression analysis, the data type of the field must be numeric.",
           "name": "dependent_variable",
           "required": true,
           "type": {
@@ -111844,7 +111844,7 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request: - Contains wildcard expressions and there are no models that match. - Contains the _all string or no identifiers and there are no matches. - Contains wildcard expressions and there are only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "type": {
@@ -112005,7 +112005,7 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request: - Contains wildcard expressions and there are no models that match. - Contains the _all string or no identifiers and there are no matches. - Contains wildcard expressions and there are only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "type": {
@@ -113195,7 +113195,7 @@
             }
           },
           {
-            "description": "Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection.\nThe supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score.\nRegression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis.\nClassification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
+            "description": "Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection. The supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score. Regression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis. Classification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
             "name": "analyzed_fields",
             "required": false,
             "type": {
@@ -144894,7 +144894,7 @@
       ]
     },
     {
-      "description": "In some places in the specification an object consists of the union of a set of known properties\nand a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose\na set of known keys and possibly. The object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
+      "description": "In some places in the specification an object consists of the union of a set of known properties and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose a set of known keys and possibly. The object might already be part of an object graph and have a parent class. This puts it into a bind that needs a client specific solution. We therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
       "generics": [
         {
           "name": "TKey",
@@ -144913,7 +144913,7 @@
       "properties": []
     },
     {
-      "description": "Implements a set of common query parameters all API's support.\nSince these can break the request structure these are listed explicitly as a behavior.\nIts up to individual clients to define support although `error_trace` and `pretty` are\nrecommended as a minimum.",
+      "description": "Implements a set of common query parameters all API's support. Since these can break the request structure these are listed explicitly as a behavior. Its up to individual clients to define support although `error_trace` and `pretty` are recommended as a minimum.",
       "kind": "interface",
       "name": {
         "name": "CommonQueryParameters",
@@ -144993,7 +144993,7 @@
       ]
     },
     {
-      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property with an arbitrary name but a statically defined type. This is typically used for configurations associated to a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose a set of known keys. And possibly the object might already be part of an object graph and have a parent class. This puts it into a bind that needs a client specific solution. We therefore document the requirement to accept a single unknown property with this interface.",
       "generics": [
         {
           "name": "TKey",
@@ -145012,7 +145012,7 @@
       "properties": []
     },
     {
-      "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",
+      "description": "Implements a set of common query parameters all Cat API's support. Since these can break the request structure these are listed explicitly as a behavior.",
       "kind": "interface",
       "name": {
         "name": "CommonCatQueryParameters",
