@@ -555,7 +555,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) type.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) type.description = description.split(EOL).filter(Boolean).join(' ')
   }
 
   setTags(jsDocs, type, tags, validTags, (tags, tag, value) => {
@@ -570,6 +570,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
     } else if (tag === 'variants') {
     } else if (tag === 'variant') {
     } else if (tag === 'doc_url') {
+      assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       type.docUrl = value
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
@@ -588,7 +589,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) property.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) property.description = description.split(EOL).filter(Boolean).join(' ')
   }
 
   setTags(jsDocs, property, tags, validTags, (tags, tag, value) => {
@@ -598,6 +599,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'identifier') {
       property.identifier = value
     } else if (tag === 'doc_url') {
+      assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       property.docUrl = value
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
@@ -636,7 +638,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
-    if (description.length > 0) member.description = description.split(EOL).filter(Boolean).join(EOL)
+    if (description.length > 0) member.description = description.split(EOL).filter(Boolean).join(' ')
   }
 
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
@@ -1029,5 +1031,14 @@ export function verifyUniqueness (project: Project): void {
     }
 
     types.set(path, names)
+  }
+}
+
+export function isValidUrl (str: string): boolean {
+  try {
+    new URL(str) // eslint-disable-line
+    return true
+  } catch (err) {
+    return false
   }
 }
