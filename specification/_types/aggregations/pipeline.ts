@@ -158,6 +158,7 @@ export class MovingFunctionAggregation extends PipelineAggregationBase {
 export class MovingPercentilesAggregation extends PipelineAggregationBase {
   window?: integer
   shift?: integer
+  keyed?: boolean
 }
 
 export class NormalizeAggregation extends PipelineAggregationBase {

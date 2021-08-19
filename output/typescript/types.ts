@@ -2623,6 +2623,7 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
   params?: Record<string, any>
   script?: Script
   time_zone?: string
+  keyed?: boolean
 }
 
 export interface AggregationsDateHistogramBucketKeys {
@@ -2638,6 +2639,7 @@ export interface AggregationsDateRangeAggregation extends AggregationsBucketAggr
   missing?: AggregationsMissing
   ranges?: AggregationsDateRangeExpression[]
   time_zone?: string
+  keyed?: boolean
 }
 
 export interface AggregationsDateRangeExpression {
@@ -2696,6 +2698,7 @@ export interface AggregationsFiltersAggregation extends AggregationsBucketAggreg
   filters?: Record<string, QueryDslQueryContainer> | QueryDslQueryContainer[]
   other_bucket?: boolean
   other_bucket_key?: string
+  keyed?: boolean
 }
 
 export interface AggregationsFiltersBucketItemKeys {
@@ -2819,6 +2822,7 @@ export interface AggregationsHistogramAggregation extends AggregationsBucketAggr
   order?: AggregationsHistogramOrder
   script?: Script
   format?: string
+  keyed?: boolean
 }
 
 export interface AggregationsHistogramOrder {
@@ -2960,6 +2964,7 @@ export interface AggregationsMovingFunctionAggregation extends AggregationsPipel
 export interface AggregationsMovingPercentilesAggregation extends AggregationsPipelineAggregationBase {
   window?: integer
   shift?: integer
+  keyed?: boolean
 }
 
 export interface AggregationsMultiBucketAggregate<TBucket = unknown> extends AggregationsAggregateBase {
@@ -3033,6 +3038,7 @@ export interface AggregationsRangeAggregation extends AggregationsBucketAggregat
   field?: Field
   ranges?: AggregationsAggregationRange[]
   script?: Script
+  keyed?: boolean
 }
 
 export interface AggregationsRangeBucketKeys {
