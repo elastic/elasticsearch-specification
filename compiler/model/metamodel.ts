@@ -265,6 +265,7 @@ export type Body = ValueBody | PropertiesBody | NoBody
 export class ValueBody {
   kind: 'value'
   value: ValueOf
+  identifier?: string
 }
 
 export class PropertiesBody {

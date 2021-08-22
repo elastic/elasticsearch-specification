@@ -50,7 +50,8 @@ import {
   modelTypeAlias,
   parseVariantNameTag,
   parseVariantsTag,
-  verifyUniqueness
+  verifyUniqueness,
+  parseJsDocTags
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specification')
@@ -242,6 +243,10 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               type.body = { kind: 'no_body' }
             } else {
               type.body = { kind: 'value', value: property.valueOf }
+              const tags = parseJsDocTags(member.getJsDocs())
+              if (tags.identifier != null) {
+                type.body.identifier = tags.identifier
+              }
             }
           } else if (property.properties.length > 0) {
             type.body = { kind: 'properties', properties: property.properties }
