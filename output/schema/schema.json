@@ -123763,7 +123763,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GlobalPrivileges",
+        "name": "GlobalPrivilege",
         "namespace": "security._types"
       },
       "properties": [
@@ -126565,14 +126565,26 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "GlobalPrivileges",
-                "namespace": "security._types"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GlobalPrivilege",
+                    "namespace": "security._types"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GlobalPrivilege",
+                  "namespace": "security._types"
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -127275,7 +127287,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "GlobalPrivileges",
+                  "name": "GlobalPrivilege",
                   "namespace": "security._types"
                 }
               }

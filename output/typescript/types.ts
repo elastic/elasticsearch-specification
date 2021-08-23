@@ -12877,7 +12877,7 @@ export interface SecurityFieldSecurity {
   grant: Fields
 }
 
-export interface SecurityGlobalPrivileges {
+export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
@@ -13217,7 +13217,7 @@ export interface SecurityGetServiceAccountsResponse extends DictionaryResponseBa
 export interface SecurityGetServiceAccountsRoleDescriptor {
   cluster: string[]
   indices: SecurityIndicesPrivileges[]
-  global?: SecurityGlobalPrivileges[]
+  global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
@@ -13296,7 +13296,7 @@ export interface SecurityGetUserPrivilegesRequest extends RequestBase {
 export interface SecurityGetUserPrivilegesResponse {
   applications: SecurityApplicationPrivileges[]
   cluster: string[]
-  global: SecurityGlobalPrivileges[]
+  global: SecurityGlobalPrivilege[]
   indices: SecurityIndicesPrivileges[]
   run_as: string[]
 }

@@ -18,14 +18,14 @@
  */
 
 import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
-import { GlobalPrivileges } from '@security/_types/GlobalPrivileges'
+import { GlobalPrivilege } from '@security/_types/GlobalPrivilege'
 import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
 
 export class Response {
   body: {
     applications: ApplicationPrivileges[]
     cluster: string[]
-    global: GlobalPrivileges[]
+    global: GlobalPrivilege[]
     indices: IndicesPrivileges[]
     run_as: string[]
   }
