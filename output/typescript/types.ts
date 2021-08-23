@@ -8044,6 +8044,7 @@ export interface IlmPolicy {
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
   policy?: Name
+  policy_id: Id
 }
 
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {

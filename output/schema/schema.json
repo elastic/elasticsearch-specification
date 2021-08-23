@@ -81910,7 +81910,20 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "name": "policy_id",
+          "required": true,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

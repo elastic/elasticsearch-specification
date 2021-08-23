@@ -18,7 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { Id, Name } from '@_types/common'
+import { Time, TimeUnit } from '@_types/Time'
 
 /**
  * @rest_spec_name ilm.delete_lifecycle
@@ -27,6 +28,20 @@ import { Name } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    policy?: Name
+    /**
+     * Identifier for the policy.
+     * @since 7.14.0
+     */
+    policy_id: Id
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Time
   }
 }
