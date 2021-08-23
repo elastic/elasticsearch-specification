@@ -215,6 +215,14 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
       )]
 
+      const pathAndQueryProperties = (declaration.getMembers() as any[]).flatMap(member => {
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'path_parts' || property.name === 'query_parameters') {
+          return property.properties.map(property => property.name)
+        } else if (property.name === 'body') {
+          return undefined
+        }
+      })
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`
         assert(
@@ -245,6 +253,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               type.body = { kind: 'value', value: property.valueOf }
               const tags = parseJsDocTags(member.getJsDocs())
               if (tags.identifier != null) {
+                assert(
+                  member.getJsDocs(),
+                  !pathAndQueryProperties.includes(tags.identifier),
+                  `The identifier '${tags.identifier}' already exists as a property in the path or query.`
+                )
                 type.body.identifier = tags.identifier
               }
             }
