@@ -13714,6 +13714,7 @@ export interface SnapshotSnapshotInfo {
   version?: VersionString
   version_id?: VersionNumber
   feature_states?: SnapshotInfoFeatureState[]
+  repository?: Name
 }
 
 export interface SnapshotSnapshotShardFailure {
@@ -13837,11 +13838,19 @@ export interface SnapshotGetRequest extends RequestBase {
   verbose?: boolean
   index_details?: boolean
   human?: boolean
+  include_repository?: boolean
+  sort?: string
+  size?: integer
+  order?: string
+  after?: string
 }
 
 export interface SnapshotGetResponse {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+  next?: string
+  total?: integer
+  remaining?: integer
 }
 
 export interface SnapshotGetSnapshotResponseItem {

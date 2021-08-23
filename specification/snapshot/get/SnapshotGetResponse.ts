@@ -20,11 +20,27 @@
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
     responses?: SnapshotResponseItem[]
     snapshots?: SnapshotInfo[]
+    /**
+     * If the request contained a size limit and there might be more results, a next field will be added to the response and can be used as the after query parameter to fetch additional results.
+     * @since 7.14.0
+     */
+    next?: string
+    /**
+     * The total number of snapshots that match the request when ignoring size limit or after query parameter.
+     * @since 7.15.0
+     */
+    total?: integer
+    /**
+     * The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.
+     * @since 7.15.0
+     */
+    remaining?: integer
   }
 }
 

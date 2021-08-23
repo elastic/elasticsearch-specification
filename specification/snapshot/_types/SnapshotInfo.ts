@@ -33,25 +33,34 @@ import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'
 
 export class SnapshotInfo {
+  /** List of data streams included in the snapshot. */
   data_streams: Array<string>
   duration?: Time
   duration_in_millis?: EpochMillis
   end_time?: Time
   end_time_in_millis?: EpochMillis
+  /** Lists any failures that occurred when creating the snapshot. */
   failures?: SnapshotShardFailure[]
   include_global_state?: boolean
+  /** List of indices included in the snapshot. */
   indices: IndexName[]
   /** @since 7.13.0 */
   index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
   reason?: string
+  /** Name of the snapshot. */
   snapshot: Name
   shards?: ShardStatistics
   start_time?: Time
   start_time_in_millis?: EpochMillis
   state?: string
+  /** Universally unique identifier (UUID) of the snapshot. */
   uuid: Uuid
+  /** Elasticsearch version used to create the snapshot. */
   version?: VersionString
+  /** Build ID of the Elasticsearch version used to create the snapshot. */
   version_id?: VersionNumber
   feature_states?: InfoFeatureState[]
+  /** @since 7.14.0 */
+  repository?: Name
 }
