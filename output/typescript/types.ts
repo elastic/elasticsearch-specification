@@ -5781,6 +5781,7 @@ export interface CatMlTrainedModelsTrainedModelsRecord {
   'data_frame.analysis'?: string
   dfa?: string
   dataFrameAnalyticsAnalysis?: string
+  type?: string
 }
 
 export interface CatNodeattrsNodeAttributesRecord {
