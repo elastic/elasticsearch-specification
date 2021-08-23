@@ -106,4 +106,6 @@ export class TrainedModelsRecord {
    * @aliases dfa, dataFrameAnalyticsAnalysis
    */
   'data_frame.analysis'?: string
+  /** @since 8.0.0 */
+  type?: string
 }
