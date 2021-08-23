@@ -74403,6 +74403,18 @@
                 "namespace": "cluster.allocation_explain"
               }
             }
+          },
+          {
+            "name": "note",
+            "required": false,
+            "since": "7.14.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
           }
         ]
       },
