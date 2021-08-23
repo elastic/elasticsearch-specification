@@ -18,13 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { EmptyObject, NodeName } from '@_types/common'
+import { EmptyObject, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class Response {
   body: {
     service_account: string
-    node_name: NodeName
+    node_name: Name
     count: integer
     tokens: Dictionary<string, EmptyObject>
     file_tokens: Dictionary<string, EmptyObject>
