@@ -17,17 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { EmptyObject, Name } from '@_types/common'
-import { integer } from '@_types/Numeric'
-import { NodesCredentials } from './types'
+import { Dictionary } from "@spec_utils/Dictionary";
+import { EmptyObject } from "@_types/common";
+import { NodeStatistics } from "@_types/Node";
 
-export class Response {
-  body: {
-    service_account: string
-    node_name: Name
-    count: integer
-    tokens: Dictionary<string, EmptyObject>
-    nodes_credentials: NodesCredentials
-  }
+export class NodesCredentials {
+    _nodes: NodeStatistics
+    file_tokens: Dictionary<string, EmptyObject>
 }
