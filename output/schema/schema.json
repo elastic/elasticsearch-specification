@@ -71373,6 +71373,18 @@
           }
         },
         {
+          "name": "leader_index_exclusion_patterns",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPatterns",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "max_outstanding_read_requests",
           "required": true,
           "type": {

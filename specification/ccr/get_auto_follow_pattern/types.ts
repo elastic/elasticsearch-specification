@@ -30,5 +30,7 @@ export class AutoFollowPatternSummary {
   remote_cluster: string
   follow_index_pattern?: IndexPattern
   leader_index_patterns: IndexPatterns
+  /** @since 7.14.0 */
+  leader_index_exclusion_patterns?: IndexPatterns
   max_outstanding_read_requests: integer
 }

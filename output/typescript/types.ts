@@ -6839,6 +6839,7 @@ export interface CcrGetAutoFollowPatternAutoFollowPatternSummary {
   remote_cluster: string
   follow_index_pattern?: IndexPattern
   leader_index_patterns: IndexPatterns
+  leader_index_exclusion_patterns?: IndexPatterns
   max_outstanding_read_requests: integer
 }
 
