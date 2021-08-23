@@ -64324,7 +64324,7 @@
         {
           "name": "type",
           "required": false,
-          "since": "7.15.0",
+          "since": "8.0.0",
           "type": {
             "kind": "instance_of",
             "type": {
