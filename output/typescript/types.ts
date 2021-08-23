@@ -7180,6 +7180,7 @@ export interface ClusterAllocationExplainResponse {
   remaining_delay_in_millis?: long
   shard: integer
   unassigned_info?: ClusterAllocationExplainUnassignedInformation
+  note?: string
 }
 
 export interface ClusterAllocationExplainUnassignedInformation {

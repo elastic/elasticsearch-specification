@@ -54,5 +54,7 @@ export class Response {
     remaining_delay_in_millis?: long
     shard: integer
     unassigned_info?: UnassignedInformation
+    /** @since 7.14.0 */
+    note?: string
   }
 }
