@@ -18,15 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {NodeId} from "@_types/common";
 
 /**
  * @rest_spec_name shutdown.get_node
  * @since 7.13.0
- * @stability experimental
+ * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts: {
-    node_id: NodeId[]
+  body: {
+    stub: string
   }
 }

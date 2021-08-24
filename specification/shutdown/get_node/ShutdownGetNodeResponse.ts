@@ -17,46 +17,6 @@
  * under the License.
  */
 
-import {NodeId} from "@_types/common";
-import {EpochMillis, Timestamp} from "@_types/Time";
-
 export class Response {
-  body: {
-    nodes: NodeShutdownStatus[]
-  }
-}
-
-export class NodeShutdownStatus {
-  node_id: NodeId
-  type: ShutdownType
-  reason: string
-  shutdown_startedmillis: EpochMillis
-  status: ShutdownStatus
-  shard_migration: ShardMigrationStatus
-  persistent_tasks: PersistentTaskStatus
-  plugins: PluginsStatus
-}
-
-export enum ShutdownType {
-  remove,
-  restart
-}
-
-export enum ShutdownStatus {
-  not_started,
-  in_progress,
-  stalled,
-  complete
-}
-
-export class ShardMigrationStatus {
-  status: ShutdownStatus
-}
-
-export class PersistentTaskStatus {
-  status: ShutdownStatus
-}
-
-export class PluginsStatus {
-  status: ShutdownStatus
+  body: { stub: boolean }
 }

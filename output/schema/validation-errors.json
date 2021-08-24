@@ -1618,13 +1618,19 @@
     },
     "shutdown.delete_node": {
       "request": [
-        "Request: should not have a body"
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
     "shutdown.get_node": {
       "request": [
-        "Request: should not have a body"
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "shutdown.put_node": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
