@@ -8879,7 +8879,6 @@ export interface IndicesGetTemplateResponse extends DictionaryResponseBase<strin
 }
 
 export interface IndicesGetUpgradeRequest extends RequestBase {
-  stub: string
 }
 
 export interface IndicesGetUpgradeResponse {
@@ -9337,7 +9336,6 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
 }
 
 export interface IndicesSimulateTemplateResponse {
-  stub: string
 }
 
 export interface IndicesSplitRequest extends RequestBase {
@@ -9519,15 +9517,9 @@ export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesUpgradeRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
 }
 
 export interface IndicesUpgradeResponse {
-  stub: integer
 }
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
@@ -10080,39 +10072,21 @@ export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase 
 }
 
 export interface LogstashDeletePipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface LogstashDeletePipelineResponse {
-  stub: integer
 }
 
 export interface LogstashGetPipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface LogstashGetPipelineResponse {
-  stub: integer
 }
 
 export interface LogstashPutPipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface LogstashPutPipelineResponse {
-  stub: integer
 }
 
 export interface MigrationDeprecationsDeprecation {
@@ -11192,11 +11166,9 @@ export interface MlExplainDataFrameAnalyticsResponse {
 }
 
 export interface MlFindFileStructureRequest extends RequestBase {
-  stub: string
 }
 
 export interface MlFindFileStructureResponse {
-  stub: string
 }
 
 export interface MlFlushJobRequest extends RequestBase {
@@ -11770,14 +11742,9 @@ export interface MlPutJobResponse {
 }
 
 export interface MlPutTrainedModelRequest extends RequestBase {
-  stub: string
-  body?: {
-    stub?: string
-  }
 }
 
 export interface MlPutTrainedModelResponse {
-  stub: boolean
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {
@@ -11978,15 +11945,9 @@ export interface MlValidateDetectorResponse extends AcknowledgedResponseBase {
 }
 
 export interface MonitoringBulkRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface MonitoringBulkResponse {
-  stub: integer
 }
 
 export interface NodesAdaptiveSelection {
@@ -12743,15 +12704,9 @@ export interface RollupPutJobResponse extends AcknowledgedResponseBase {
 }
 
 export interface RollupRollupRequest extends RequestBase {
-  stubb: integer
-  stuba: integer
-  body?: {
-    stub: integer
-  }
 }
 
 export interface RollupRollupResponse {
-  stub: integer
 }
 
 export interface RollupRollupSearchRequest extends RequestBase {
