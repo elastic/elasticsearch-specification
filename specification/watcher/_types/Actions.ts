@@ -18,7 +18,14 @@
  */
 // PageDuty ----------------------------- //
 
-import { HttpHeaders, Id, IndexName, Type, VersionNumber } from '@_types/common'
+import {
+  HttpHeaders,
+  Id,
+  IndexName,
+  Refresh,
+  Type,
+  VersionNumber
+} from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Result } from '@_types/Result'
 import { DateString } from '@_types/Time'
@@ -158,6 +165,7 @@ export class Email {
 export class Index {
   index: IndexName
   doc_id?: Id
+  refresh?: Refresh
 }
 
 export class IndexResult {
@@ -176,9 +184,9 @@ export class IndexResultSummary {
 // Logging ------------------------------ //
 
 export class Logging {
-  level: string
+  level?: string
   text: string
-  logging?: Logging
+  category?: string
 }
 
 export class LoggingResult {

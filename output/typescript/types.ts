@@ -14345,6 +14345,7 @@ export interface WatcherAction {
   transform?: TransformContainer
   index?: WatcherIndex
   logging?: WatcherLogging
+  webhook?: WatcherActionWebhook
 }
 
 export type WatcherActionExecutionMode = 'simulate' | 'force_simulate' | 'execute' | 'force_execute' | 'skip'
@@ -14359,6 +14360,11 @@ export interface WatcherActionStatus {
 export type WatcherActionStatusOptions = 'success' | 'failure' | 'simulated' | 'throttled'
 
 export type WatcherActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
+
+export interface WatcherActionWebhook {
+  host: Host
+  port: integer
+}
 
 export type WatcherActions = Record<IndexName, WatcherActionStatus>
 
@@ -14533,6 +14539,7 @@ export interface WatcherHttpInputResponseResult {
 export interface WatcherIndex {
   index: IndexName
   doc_id?: Id
+  refresh?: Refresh
 }
 
 export interface WatcherIndexResult {
@@ -14549,9 +14556,9 @@ export interface WatcherIndexResultSummary {
 }
 
 export interface WatcherIndicesOptions {
-  allow_no_indices: boolean
-  expand_wildcards: ExpandWildcards
-  ignore_unavailable: boolean
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
   ignore_throttled?: boolean
 }
 
@@ -14565,8 +14572,9 @@ export interface WatcherInputContainer {
 export type WatcherInputType = 'http' | 'search' | 'simple'
 
 export interface WatcherLogging {
-  level: string
+  level?: string
   text: string
+  category?: string
 }
 
 export interface WatcherLoggingResult {
