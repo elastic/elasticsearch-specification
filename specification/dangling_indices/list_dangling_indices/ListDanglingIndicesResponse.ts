@@ -17,8 +17,18 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { Ids } from '@_types/common'
+import { EpochMillis } from '@_types/Time'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    dangling_indices: DanglingIndex[]
+  }
+}
+
+export class DanglingIndex {
+  index_name: string
+  index_uuid: string
+  creation_date_millis: EpochMillis
+  node_ids: Ids
 }

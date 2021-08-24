@@ -338,13 +338,13 @@
     },
     "dangling_indices.delete_dangling_index": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "dangling_indices.import_dangling_index": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
