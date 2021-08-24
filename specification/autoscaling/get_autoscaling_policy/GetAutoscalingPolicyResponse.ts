@@ -17,8 +17,13 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import {UserDefinedValue} from "@spec_utils/UserDefinedValue";
+import {Dictionary} from "@spec_utils/Dictionary";
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    roles: string[]
+    /** Decider settings */
+    deciders: Dictionary<string, UserDefinedValue>
+  }
 }

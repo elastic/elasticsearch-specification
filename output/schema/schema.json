@@ -147,7 +147,7 @@
         "namespace": "autoscaling.delete_autoscaling_policy"
       },
       "since": "7.11.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -175,7 +175,7 @@
         "namespace": "autoscaling.get_autoscaling_capacity"
       },
       "since": "7.11.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -203,7 +203,7 @@
         "namespace": "autoscaling.get_autoscaling_policy"
       },
       "since": "7.11.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -58745,20 +58745,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -58773,7 +58760,7 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -58784,32 +58771,20 @@
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "acknowledged",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
-                "namespace": "_types"
+                "name": "boolean",
+                "namespace": "internal"
               }
             }
           }
@@ -58822,24 +58797,198 @@
       }
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingCapacity",
+        "namespace": "autoscaling.get_autoscaling_capacity"
+      },
+      "properties": [
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
             "type": {
+              "name": "AutoscalingResources",
+              "namespace": "autoscaling.get_autoscaling_capacity"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AutoscalingResources",
+              "namespace": "autoscaling.get_autoscaling_capacity"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingDecider",
+        "namespace": "autoscaling.get_autoscaling_capacity"
+      },
+      "properties": [
+        {
+          "name": "required_capacity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AutoscalingCapacity",
+              "namespace": "autoscaling.get_autoscaling_capacity"
+            }
+          }
+        },
+        {
+          "name": "reason_summary",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "reason_details",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingDeciders",
+        "namespace": "autoscaling.get_autoscaling_capacity"
+      },
+      "properties": [
+        {
+          "name": "required_capacity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AutoscalingCapacity",
+              "namespace": "autoscaling.get_autoscaling_capacity"
+            }
+          }
+        },
+        {
+          "name": "current_capacity",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AutoscalingCapacity",
+              "namespace": "autoscaling.get_autoscaling_capacity"
+            }
+          }
+        },
+        {
+          "name": "current_nodes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AutoscalingNode",
+                "namespace": "autoscaling.get_autoscaling_capacity"
+              }
+            }
+          }
+        },
+        {
+          "name": "deciders",
+          "required": true,
+          "type": {
+            "key": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AutoscalingDecider",
+                "namespace": "autoscaling.get_autoscaling_capacity"
+              }
             }
           }
-        ]
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingNode",
+        "namespace": "autoscaling.get_autoscaling_capacity"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingResources",
+        "namespace": "autoscaling.get_autoscaling_capacity"
+      },
+      "properties": [
+        {
+          "name": "storage",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "memory",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -58852,45 +59001,32 @@
         "name": "Request",
         "namespace": "autoscaling.get_autoscaling_capacity"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "policies",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AutoscalingDeciders",
+                  "namespace": "autoscaling.get_autoscaling_capacity"
+                }
               }
             }
           }
@@ -58907,20 +59043,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -58935,7 +59058,7 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -58946,32 +59069,42 @@
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "roles",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "description": "Decider settings",
+            "name": "deciders",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
               }
             }
           }
