@@ -7221,16 +7221,12 @@ export interface ClusterDeleteVotingConfigExclusionsResponse {
 }
 
 export interface ClusterExistsComponentTemplateRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name: Names
+  master_timeout?: Time
+  local?: boolean
 }
 
-export interface ClusterExistsComponentTemplateResponse {
-  stub: integer
-}
+export type ClusterExistsComponentTemplateResponse = boolean
 
 export interface ClusterGetComponentTemplateRequest extends RequestBase {
   name?: Name
