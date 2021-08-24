@@ -20,8 +20,8 @@
 import { Phases } from '@ilm/_types/Phase'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
-import { Job, JobStatistics } from '@ml/_types/Job'
+import { ByteSize, EmptyObject, Field, Metadata, Name } from '@_types/common'
+import { Job, JobForecastStatistics, JobStatistics } from '@ml/_types/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
 
 export class Base {
@@ -327,10 +327,18 @@ export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
   // TODO: xPack marks the entire Job definition as optional
   //       while the MlJob has many required properties.
-  jobs: Dictionary<string, Job>
+  jobs: Dictionary<string, MachineLearningUsageJob>
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
   inference: MlInference
+}
+
+export class MachineLearningUsageJob {
+  count: long
+  detectors: JobStatistics
+  created_by: Metadata
+  model_size: JobStatistics
+  forecasts: JobForecastStatistics
 }
 
 export class Monitoring extends Base {
