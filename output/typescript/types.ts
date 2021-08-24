@@ -14990,7 +14990,7 @@ export interface XpackInfoFeatures {
   spatial: XpackInfoFeature
   sql: XpackInfoFeature
   transform: XpackInfoFeature
-  vectors: XpackInfoFeature
+  vectors?: XpackInfoFeature
   voting_only: XpackInfoFeature
   watcher: XpackInfoFeature
 }
