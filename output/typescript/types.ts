@@ -9036,6 +9036,8 @@ export interface IndicesRecoveryRecoveryBytes {
   percent: Percentage
   recovered?: ByteSize
   recovered_in_bytes: ByteSize
+  recovered_from_snapshot?: ByteSize
+  recovered_from_snapshot_in_bytes?: ByteSize
   reused?: ByteSize
   reused_in_bytes: ByteSize
   total?: ByteSize
