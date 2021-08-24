@@ -90460,6 +90460,28 @@
           }
         },
         {
+          "name": "recovered_from_snapshot",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "recovered_from_snapshot_in_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "reused",
           "required": false,
           "type": {
