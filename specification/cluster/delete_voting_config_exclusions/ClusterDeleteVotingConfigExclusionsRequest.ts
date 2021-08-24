@@ -22,10 +22,19 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name cluster.delete_voting_config_exclusions
  * @since 7.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
-    stub: string
+  query_parameters?: {
+    /**
+     * Specifies whether to wait for all excluded nodes to be removed from the
+     * cluster before clearing the voting configuration exclusions list.
+     * Defaults to true, meaning that all excluded nodes must be removed from
+     * the cluster before this API takes any action. If set to false then the
+     * voting configuration exclusions list is cleared even if some excluded
+     * nodes are still in the cluster.
+     * @server_default true
+     */
+    wait_for_removal?: boolean
   }
 }

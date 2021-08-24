@@ -7206,14 +7206,10 @@ export interface ClusterDeleteComponentTemplateResponse extends AcknowledgedResp
 }
 
 export interface ClusterDeleteVotingConfigExclusionsRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
+  wait_for_removal?: boolean
 }
 
-export interface ClusterDeleteVotingConfigExclusionsResponse {
-  stub: integer
-}
+export type ClusterDeleteVotingConfigExclusionsResponse = boolean
 
 export interface ClusterExistsComponentTemplateRequest extends RequestBase {
   stub_a: string
