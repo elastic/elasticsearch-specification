@@ -296,7 +296,7 @@
     },
     "cluster.post_voting_config_exclusions": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },

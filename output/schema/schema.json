@@ -1820,7 +1820,7 @@
         "namespace": "cluster.post_voting_config_exclusions"
       },
       "since": "7.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -75715,6 +75715,7 @@
       "path": [],
       "query": [
         {
+          "description": "A comma-separated list of the names of the nodes to exclude from the voting configuration. If specified, you may not also specify node_ids.",
           "name": "node_names",
           "required": false,
           "type": {
@@ -75726,6 +75727,7 @@
           }
         },
         {
+          "description": "A comma-separated list of the persistent ids of the nodes to exclude from the voting configuration. If specified, you may not also specify node_names.",
           "name": "node_ids",
           "required": false,
           "type": {
@@ -75737,6 +75739,7 @@
           }
         },
         {
+          "description": "When adding a voting configuration exclusion, the API waits for the specified nodes to be excluded from the voting configuration before returning. If the timeout expires before the appropriate condition is satisfied, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
           "serverDefault": "30s",
@@ -75747,37 +75750,12 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "wait_for_removal",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "kind": "response",
       "name": {
