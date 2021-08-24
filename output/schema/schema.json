@@ -123933,7 +123933,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GlobalPrivileges",
+        "name": "GlobalPrivilege",
         "namespace": "security._types"
       },
       "properties": [
@@ -126747,14 +126747,26 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "GlobalPrivileges",
-                "namespace": "security._types"
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "GlobalPrivilege",
+                    "namespace": "security._types"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GlobalPrivilege",
+                  "namespace": "security._types"
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -126837,6 +126849,73 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NodesCredentials",
+        "namespace": "security.get_service_credentials"
+      },
+      "properties": [
+        {
+          "description": "General status showing how nodes respond to the above collection request",
+          "name": "_nodes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeStatistics",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "File-backed tokens collected from all nodes",
+          "name": "file_tokens",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodesCredentialsFileToken",
+                "namespace": "security.get_service_credentials"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodesCredentialsFileToken",
+        "namespace": "security.get_service_credentials"
+      },
+      "properties": [
+        {
+          "name": "nodes",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -126856,6 +126935,7 @@
       },
       "path": [
         {
+          "description": "Name of the namespace.",
           "name": "namespace",
           "required": true,
           "type": {
@@ -126867,12 +126947,13 @@
           }
         },
         {
+          "description": "Name of the service name.",
           "name": "service",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Service",
+              "name": "Name",
               "namespace": "_types"
             }
           }
@@ -126892,17 +126973,6 @@
               "type": {
                 "name": "string",
                 "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "node_name",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeName",
-                "namespace": "_types"
               }
             }
           },
@@ -126933,31 +127003,21 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "EmptyObject",
+                  "name": "Metadata",
                   "namespace": "_types"
                 }
               }
             }
           },
           {
-            "name": "file_tokens",
+            "description": "Contains service account credentials collected from all nodes of the cluster",
+            "name": "nodes_credentials",
             "required": true,
             "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "EmptyObject",
-                  "namespace": "_types"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "NodesCredentials",
+                "namespace": "security.get_service_credentials"
               }
             }
           }
@@ -127457,7 +127517,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "GlobalPrivileges",
+                  "name": "GlobalPrivilege",
                   "namespace": "security._types"
                 }
               }

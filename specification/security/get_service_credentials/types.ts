@@ -17,6 +17,16 @@
  * under the License.
  */
 
-export class ManageUserPrivileges {
-  applications: string[]
+import { Dictionary } from '@spec_utils/Dictionary'
+import { NodeStatistics } from '@_types/Node'
+
+export class NodesCredentials {
+  /** General status showing how nodes respond to the above collection request */
+  _nodes: NodeStatistics
+  /** File-backed tokens collected from all nodes */
+  file_tokens: Dictionary<string, NodesCredentialsFileToken>
+}
+
+export class NodesCredentialsFileToken {
+  nodes: string[]
 }
