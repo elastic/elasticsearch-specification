@@ -18,14 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import {NodeId} from "@_types/common";
 
 /**
  * @rest_spec_name shutdown.delete_node
  * @since 7.13.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  body: {
-    stub: string
+  path_parts: {
+    node_id: NodeId
   }
 }
