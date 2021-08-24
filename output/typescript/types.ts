@@ -12877,7 +12877,7 @@ export interface SecurityFieldSecurity {
   grant: Fields
 }
 
-export interface SecurityGlobalPrivileges {
+export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
@@ -13217,7 +13217,7 @@ export interface SecurityGetServiceAccountsResponse extends DictionaryResponseBa
 export interface SecurityGetServiceAccountsRoleDescriptor {
   cluster: string[]
   indices: SecurityIndicesPrivileges[]
-  global?: SecurityGlobalPrivileges[]
+  global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
@@ -13228,17 +13228,25 @@ export interface SecurityGetServiceAccountsRoleDescriptorWrapper {
   role_descriptor: SecurityGetServiceAccountsRoleDescriptor
 }
 
+export interface SecurityGetServiceCredentialsNodesCredentials {
+  _nodes: NodeStatistics
+  file_tokens: Record<string, SecurityGetServiceCredentialsNodesCredentialsFileToken>
+}
+
+export interface SecurityGetServiceCredentialsNodesCredentialsFileToken {
+  nodes: string[]
+}
+
 export interface SecurityGetServiceCredentialsRequest extends RequestBase {
   namespace: Namespace
-  service: Service
+  service: Name
 }
 
 export interface SecurityGetServiceCredentialsResponse {
   service_account: string
-  node_name: NodeName
   count: integer
-  tokens: Record<string, EmptyObject>
-  file_tokens: Record<string, EmptyObject>
+  tokens: Record<string, Metadata>
+  nodes_credentials: SecurityGetServiceCredentialsNodesCredentials
 }
 
 export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
@@ -13296,7 +13304,7 @@ export interface SecurityGetUserPrivilegesRequest extends RequestBase {
 export interface SecurityGetUserPrivilegesResponse {
   applications: SecurityApplicationPrivileges[]
   cluster: string[]
-  global: SecurityGlobalPrivileges[]
+  global: SecurityGlobalPrivilege[]
   indices: SecurityIndicesPrivileges[]
   run_as: string[]
 }

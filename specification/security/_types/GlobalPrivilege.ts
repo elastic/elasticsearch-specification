@@ -17,8 +17,14 @@
  * under the License.
  */
 
-import { ManageUserPrivileges } from './ManageUserPrivileges'
+export class GlobalPrivilege {
+  application: ApplicationGlobalUserPrivileges
+}
 
 export class ApplicationGlobalUserPrivileges {
   manage: ManageUserPrivileges
+}
+
+export class ManageUserPrivileges {
+  applications: string[]
 }

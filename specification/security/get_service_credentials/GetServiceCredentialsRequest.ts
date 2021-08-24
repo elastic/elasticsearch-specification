@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Namespace, Service } from '@_types/common'
+import { Name, Namespace } from '@_types/common'
 
 /**
  * @rest_spec_name security.get_service_credentials
@@ -27,7 +27,13 @@ import { Namespace, Service } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Name of the namespace.
+     */
     namespace: Namespace
-    service: Service
+    /**
+     * Name of the service name.
+     */
+    service: Name
   }
 }

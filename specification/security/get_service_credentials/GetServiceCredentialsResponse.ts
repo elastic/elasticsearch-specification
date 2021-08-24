@@ -18,15 +18,16 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { EmptyObject, NodeName } from '@_types/common'
+import { EmptyObject, Metadata, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { NodesCredentials } from './types'
 
 export class Response {
   body: {
     service_account: string
-    node_name: NodeName
     count: integer
-    tokens: Dictionary<string, EmptyObject>
-    file_tokens: Dictionary<string, EmptyObject>
+    tokens: Dictionary<string, Metadata>
+    /** Contains service account credentials collected from all nodes of the cluster */
+    nodes_credentials: NodesCredentials
   }
 }
