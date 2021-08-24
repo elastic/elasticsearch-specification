@@ -251,8 +251,15 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               type.body = { kind: 'no_body' }
             } else {
               type.body = { kind: 'value', value: property.valueOf }
-              const tags = parseJsDocTags(member.getJsDocs())
-              if (tags.identifier != null) {
+              const openGenerics = declaration.getTypeParameters().map(modelGenerics)
+              if ((property.valueOf.kind === 'instance_of' && openGenerics.includes(property.valueOf.type.name)) ||
+                   property.valueOf.kind === 'array_of') {
+                const tags = parseJsDocTags(member.getJsDocs())
+                assert(
+                  member,
+                  tags.identifier != null,
+                  'You should configure a body @identifier'
+                )
                 assert(
                   member.getJsDocs(),
                   !pathAndQueryProperties.includes(tags.identifier),
