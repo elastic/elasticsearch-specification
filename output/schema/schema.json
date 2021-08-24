@@ -2959,7 +2959,7 @@
         "namespace": "features.get_features"
       },
       "since": "7.12.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -81042,39 +81042,14 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
+      "kind": "interface",
       "name": {
-        "name": "Request",
-        "namespace": "features.get_features"
+        "name": "Feature",
+        "namespace": "features._types"
       },
-      "path": [
+      "properties": [
         {
-          "name": "stub_a",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -81083,11 +81058,9 @@
               "namespace": "internal"
             }
           }
-        }
-      ],
-      "query": [
+        },
         {
-          "name": "stub_b",
+          "name": "description",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -81100,17 +81073,41 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "features.get_features"
+      },
+      "path": [],
+      "query": []
+    },
+    {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "features",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Feature",
+                  "namespace": "features._types"
+                }
               }
             }
           }
@@ -81127,20 +81124,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -81153,45 +81137,24 @@
         "name": "Request",
         "namespace": "features.reset_features"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "features",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Feature",
+                  "namespace": "features._types"
+                }
               }
             }
           }
