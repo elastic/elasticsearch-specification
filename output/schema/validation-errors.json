@@ -266,7 +266,7 @@
     },
     "cluster.exists_component_template": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
