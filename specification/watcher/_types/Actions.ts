@@ -178,6 +178,7 @@ export class IndexResultSummary {
 export class Logging {
   level: string
   text: string
+  logging?: Logging
 }
 
 export class LoggingResult {
