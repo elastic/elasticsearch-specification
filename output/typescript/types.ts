@@ -7726,39 +7726,37 @@ export interface ClusterStatsRuntimeFieldTypes {
 }
 
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  index_uuid: string
+  accept_data_loss: boolean
+  master_timeout?: Time
+  timeout?: Time
 }
 
-export interface DanglingIndicesDeleteDanglingIndexResponse {
-  stub: integer
+export interface DanglingIndicesDeleteDanglingIndexResponse extends AcknowledgedResponseBase {
 }
 
 export interface DanglingIndicesImportDanglingIndexRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  index_uuid: string
+  accept_data_loss: boolean
+  master_timeout?: Time
+  timeout?: Time
 }
 
-export interface DanglingIndicesImportDanglingIndexResponse {
-  stub: integer
+export interface DanglingIndicesImportDanglingIndexResponse extends AcknowledgedResponseBase {
+}
+
+export interface DanglingIndicesListDanglingIndicesDanglingIndex {
+  index_name: string
+  index_uuid: string
+  creation_date_millis: EpochMillis
+  node_ids: Ids
 }
 
 export interface DanglingIndicesListDanglingIndicesRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface DanglingIndicesListDanglingIndicesResponse {
-  stub: integer
+  dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
 export interface EnrichConfiguration {
