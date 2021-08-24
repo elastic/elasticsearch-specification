@@ -81804,6 +81804,112 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "configurations",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PhaseConfiguration",
+              "namespace": "ilm._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PhaseConfiguration",
+        "namespace": "ilm._types"
+      },
+      "properties": [
+        {
+          "name": "rollover",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PhaseConfigurationRollover",
+              "namespace": "ilm._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PhaseConfigurationRollover",
+        "namespace": "ilm._types"
+      },
+      "properties": [
+        {
+          "name": "max_age",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_age_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_primary_shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_primary_shard_size_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_size_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -142901,8 +143007,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "Job",
-                "namespace": "ml._types"
+                "name": "MachineLearningUsageJob",
+                "namespace": "xpack.usage"
               }
             }
           }
@@ -142937,6 +143043,70 @@
             "type": {
               "name": "MlInference",
               "namespace": "xpack.usage"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MachineLearningUsageJob",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "detectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "created_by",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "model_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobStatistics",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "name": "forecasts",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "JobForecastStatistics",
+              "namespace": "ml._types"
             }
           }
         }
@@ -143860,7 +144030,7 @@
           },
           {
             "name": "vectors",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {

@@ -18,11 +18,15 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Time } from '@_types/Time'
+import { ByteSize } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { EpochMillis, Time } from '@_types/Time'
 
 export class Phase {
   actions: Dictionary<string, Action> | string[]
   min_age?: Time
+  /** @since 7.14.0 */
+  configurations?: PhaseConfiguration
 }
 
 export class Phases {
@@ -33,3 +37,16 @@ export class Phases {
 }
 
 export class Action {}
+
+export class PhaseConfiguration {
+  rollover?: PhaseConfigurationRollover
+}
+
+export class PhaseConfigurationRollover {
+  max_age?: Time
+  max_age_millis?: EpochMillis
+  max_primary_shard_size?: ByteSize
+  max_primary_shard_size_bytes?: long
+  max_size?: ByteSize
+  max_size_bytes?: long
+}

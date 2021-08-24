@@ -8029,6 +8029,20 @@ export interface IlmAction {
 export interface IlmPhase {
   actions: Record<string, IlmAction> | string[]
   min_age?: Time
+  configurations?: IlmPhaseConfiguration
+}
+
+export interface IlmPhaseConfiguration {
+  rollover?: IlmPhaseConfigurationRollover
+}
+
+export interface IlmPhaseConfigurationRollover {
+  max_age?: Time
+  max_age_millis?: EpochMillis
+  max_primary_shard_size?: ByteSize
+  max_primary_shard_size_bytes?: long
+  max_size?: ByteSize
+  max_size_bytes?: long
 }
 
 export interface IlmPhases {
@@ -15153,10 +15167,18 @@ export interface XpackUsageKibanaUrlConfig extends XpackUsageBaseUrlConfig {
 
 export interface XpackUsageMachineLearning extends XpackUsageBase {
   datafeeds: Record<string, XpackUsageDatafeed>
-  jobs: Record<string, MlJob>
+  jobs: Record<string, XpackUsageMachineLearningUsageJob>
   node_count: integer
   data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
   inference: XpackUsageMlInference
+}
+
+export interface XpackUsageMachineLearningUsageJob {
+  count: long
+  detectors: MlJobStatistics
+  created_by: Metadata
+  model_size: MlJobStatistics
+  forecasts: MlJobForecastStatistics
 }
 
 export interface XpackUsageMlCounter {
@@ -15267,7 +15289,7 @@ export interface XpackUsageResponse {
   slm: XpackUsageSlm
   sql: XpackUsageSql
   transform: XpackUsageBase
-  vectors: XpackUsageVector
+  vectors?: XpackUsageVector
   voting_only: XpackUsageBase
 }
 
