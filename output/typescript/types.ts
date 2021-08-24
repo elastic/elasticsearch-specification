@@ -13468,33 +13468,54 @@ export interface SecurityPutUserResponse {
 }
 
 export interface ShutdownDeleteNodeRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
+  node_id: NodeId
 }
 
 export interface ShutdownDeleteNodeResponse {
-  stub: boolean
+  acknowledged: boolean
+}
+
+export interface ShutdownGetNodeNodeShutdownStatus {
+  node_id: NodeId
+  type: ShutdownGetNodeShutdownType
+  reason: string
+  shutdown_startedmillis: EpochMillis
+  status: ShutdownGetNodeShutdownStatus
+  shard_migration: ShutdownGetNodeShardMigrationStatus
+  persistent_tasks: ShutdownGetNodePersistentTaskStatus
+  plugins: ShutdownGetNodePluginsStatus
+}
+
+export interface ShutdownGetNodePersistentTaskStatus {
+  status: ShutdownGetNodeShutdownStatus
+}
+
+export interface ShutdownGetNodePluginsStatus {
+  status: ShutdownGetNodeShutdownStatus
 }
 
 export interface ShutdownGetNodeRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
+  node_id: NodeId[]
 }
 
 export interface ShutdownGetNodeResponse {
-  stub: boolean
+  nodes: ShutdownGetNodeNodeShutdownStatus[]
 }
 
+export interface ShutdownGetNodeShardMigrationStatus {
+  status: ShutdownGetNodeShutdownStatus
+}
+
+export type ShutdownGetNodeShutdownStatus = 'not_started' | 'in_progress' | 'stalled' | 'complete'
+
+export type ShutdownGetNodeShutdownType = 'remove' | 'restart'
+
 export interface ShutdownPutNodeRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
+  node_id: NodeId
 }
 
 export interface ShutdownPutNodeResponse {
-  stub: boolean
+  acknowledged: boolean
 }
 
 export interface SlmConfiguration {

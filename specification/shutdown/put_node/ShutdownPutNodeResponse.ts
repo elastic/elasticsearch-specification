@@ -18,5 +18,7 @@
  */
 
 export class Response {
-  body: { stub: boolean }
+  body: {
+    acknowledged: boolean
+  }
 }
