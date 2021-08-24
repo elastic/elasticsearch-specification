@@ -21,4 +21,6 @@ import { Name } from '@_types/common'
 
 export class Token {
   name: Name
+  /** @since 7.14.0 */
+  type?: string
 }
