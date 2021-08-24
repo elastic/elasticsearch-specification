@@ -27,10 +27,20 @@ import { WatcherMetric } from './types'
  */
 export interface Request extends RequestBase {
   path_parts?: {
+    /**
+     * Defines which additional metrics are included in the response.
+     */
     metric?: WatcherMetric | WatcherMetric[]
   }
   query_parameters?: {
+    /**
+     * Defines whether stack traces are generated for each watch that is running.
+     * @server_default false
+     */
     emit_stacktraces?: boolean
+    /**
+     * Defines which additional metrics are included in the response.
+     */
     metric?: WatcherMetric | WatcherMetric[]
   }
 }

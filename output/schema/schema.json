@@ -136361,6 +136361,18 @@
               "namespace": "watcher._types"
             }
           }
+        },
+        {
+          "name": "webhook",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ActionWebhook",
+              "namespace": "watcher._types"
+            }
+          }
         }
       ]
     },
@@ -136488,6 +136500,37 @@
         "name": "ActionType",
         "namespace": "watcher._types"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ActionWebhook",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "host",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Host",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "port",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "type_alias",
@@ -137857,6 +137900,17 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "refresh",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -137964,7 +138018,7 @@
       "properties": [
         {
           "name": "allow_no_indices",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -137975,7 +138029,7 @@
         },
         {
           "name": "expand_wildcards",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -137986,7 +138040,7 @@
         },
         {
           "name": "ignore_unavailable",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -138098,7 +138152,7 @@
       "properties": [
         {
           "name": "level",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -138110,6 +138164,17 @@
         {
           "name": "text",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "category",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -140791,6 +140856,7 @@
       },
       "path": [
         {
+          "description": "Defines which additional metrics are included in the response.",
           "name": "metric",
           "required": false,
           "type": {
@@ -140819,8 +140885,10 @@
       ],
       "query": [
         {
+          "description": "Defines whether stack traces are generated for each watch that is running.",
           "name": "emit_stacktraces",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -140830,6 +140898,7 @@
           }
         },
         {
+          "description": "Defines which additional metrics are included in the response.",
           "name": "metric",
           "required": false,
           "type": {
