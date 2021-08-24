@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name rollup.rollup
@@ -26,13 +25,7 @@ import { integer } from '@_types/Numeric'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stubb: integer
-  }
-  query_parameters?: {
-    stuba: integer
-  }
-  body?: {
-    stub: integer
-  }
+  path_parts?: {}
+  query_parameters?: {}
+  body?: {}
 }

@@ -25,13 +25,7 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
+  path_parts?: {}
+  query_parameters?: {}
+  body?: {}
 }

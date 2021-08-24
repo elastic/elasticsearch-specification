@@ -18,7 +18,6 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
 
 /**
  * @rest_spec_name indices.upgrade
@@ -26,13 +25,7 @@ import { integer } from '@_types/Numeric'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_b: integer
-  }
-  query_parameters?: {
-    stub_a: integer
-  }
-  body?: {
-    stub_c: integer
-  }
+  path_parts?: {}
+  query_parameters?: {}
+  body?: {}
 }
