@@ -18,20 +18,20 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name dangling_indices.delete_dangling_index
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    index_uuid: string
   }
   query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
+    accept_data_loss: boolean
+    master_timeout?: Time
+    timeout?: Time
   }
 }
