@@ -19870,8 +19870,9 @@
       },
       "properties": [
         {
+          "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform.",
           "name": "index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19892,6 +19893,7 @@
           }
         },
         {
+          "description": "The unique identifier for an ingest pipeline.",
           "name": "pipeline",
           "required": false,
           "type": {
@@ -20441,6 +20443,61 @@
             "type": {
               "name": "Fields",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.",
+          "name": "runtime_mappings",
+          "required": false,
+          "since": "7.12.0",
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SourceRuntimeMapping",
+                "namespace": "_global.reindex"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SourceRuntimeMapping",
+        "namespace": "_global.reindex"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
