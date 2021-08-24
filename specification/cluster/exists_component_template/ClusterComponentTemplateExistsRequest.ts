@@ -18,20 +18,36 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Names } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name cluster.exists_component_template
  * @since 7.8.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    stub_a: string
+    /**
+     * Comma-separated list of component template names used to limit the request.
+     * Wildcard (*) expressions are supported.
+     */
+    name: Names
   }
   query_parameters?: {
-    stub_b: string
+    /**
+     * Period to wait for a connection to the master node. If no response is
+     * received before the timeout expires, the request fails and returns an
+     * error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * If true, the request retrieves information from the local node only.
+     * Defaults to false, which means information is retrieved from the master node.
+     * @server_default false
+     */
+    local?: boolean
   }
-  body?: {
-    stub_c: string
-  }
+  body?: {}
 }
