@@ -797,7 +797,7 @@ export interface RankEvalUnratedDocument {
 }
 
 export interface ReindexDestination {
-  index: IndexName
+  index?: IndexName
   op_type?: OpType
   pipeline?: string
   routing?: Routing
@@ -858,6 +858,12 @@ export interface ReindexSource {
   slice?: SlicedScroll
   sort?: SearchSort
   _source?: Fields
+  runtime_mappings?: Record<string, ReindexSourceRuntimeMapping>
+}
+
+export interface ReindexSourceRuntimeMapping {
+  type: string
+  script?: string
 }
 
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {

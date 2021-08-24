@@ -18,6 +18,7 @@
  */
 
 import { Sort } from '@global/search/_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   IndexName,
@@ -35,8 +36,10 @@ import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
 
 export class Destination {
-  index: IndexName
+  /** The destination index for the transform. The mappings of the destination index are deduced based on the source fields when possible. If alternate mappings are required, use the Create index API prior to starting the transform. */
+  index?: IndexName
   op_type?: OpType
+  /** The unique identifier for an ingest pipeline. */
   pipeline?: string
   routing?: Routing
   version_type?: VersionType
@@ -51,6 +54,11 @@ export class Source {
   sort?: Sort
   /** @identifier source_fields */
   _source?: Fields
+  /**
+   * Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.
+   * @since 7.12.0
+   */
+  runtime_mappings?: Dictionary<string, SourceRuntimeMapping>
 }
 
 export class RemoteSource {
@@ -59,4 +67,9 @@ export class RemoteSource {
   username: Username
   password: Password
   socket_timeout: Time
+}
+
+export class SourceRuntimeMapping {
+  type: string
+  script?: string
 }
