@@ -19,6 +19,7 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
+import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { DateString, EpochMillis, Time } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
@@ -36,6 +37,13 @@ export class Action {
   transform?: TransformContainer
   index?: Index
   logging?: Logging
+  /** @since 7.14.0 */
+  webhook?: ActionWebhook
+}
+
+export class ActionWebhook {
+  host: Host
+  port: integer
 }
 
 export type Actions = Dictionary<IndexName, ActionStatus>
