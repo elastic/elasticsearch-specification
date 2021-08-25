@@ -4923,39 +4923,54 @@ export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSea
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name: string
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyResponse {
-  stub: integer
+  acknowledged: boolean
+}
+
+export interface AutoscalingGetAutoscalingCapacityAutoscalingCapacity {
+  node: AutoscalingGetAutoscalingCapacityAutoscalingResources
+  total: AutoscalingGetAutoscalingCapacityAutoscalingResources
+}
+
+export interface AutoscalingGetAutoscalingCapacityAutoscalingDecider {
+  required_capacity: AutoscalingGetAutoscalingCapacityAutoscalingCapacity
+  reason_summary?: string
+  reason_details?: any
+}
+
+export interface AutoscalingGetAutoscalingCapacityAutoscalingDeciders {
+  required_capacity: AutoscalingGetAutoscalingCapacityAutoscalingCapacity
+  current_capacity: AutoscalingGetAutoscalingCapacityAutoscalingCapacity
+  current_nodes: AutoscalingGetAutoscalingCapacityAutoscalingNode[]
+  deciders: Record<string, AutoscalingGetAutoscalingCapacityAutoscalingDecider>
+}
+
+export interface AutoscalingGetAutoscalingCapacityAutoscalingNode {
+  name: NodeName
+}
+
+export interface AutoscalingGetAutoscalingCapacityAutoscalingResources {
+  storage: integer
+  memory: integer
 }
 
 export interface AutoscalingGetAutoscalingCapacityRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface AutoscalingGetAutoscalingCapacityResponse {
-  stub: integer
+  policies: Record<string, AutoscalingGetAutoscalingCapacityAutoscalingDeciders>
 }
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name: string
 }
 
 export interface AutoscalingGetAutoscalingPolicyResponse {
-  stub: integer
+  roles: string[]
+  deciders: Record<string, any>
 }
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {

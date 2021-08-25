@@ -22,16 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name autoscaling.get_autoscaling_capacity
  * @since 7.11.0
- * @stability TODO
+ * @stability stable
  */
-export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
-}
+export interface Request extends RequestBase {}
