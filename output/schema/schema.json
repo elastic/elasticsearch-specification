@@ -140838,7 +140838,71 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The offset from the first result to fetch. Needs to be non-negative.",
+            "name": "from",
+            "required": false,
+            "serverDefault": "0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of hits to return. Needs to be non-negative.",
+            "name": "size",
+            "required": false,
+            "serverDefault": "10",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Optional, query filter watches to be returned.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "Optional sort definition.",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_global.search._types"
+              }
+            }
+          },
+          {
+            "description": "Optional search After to do pagination using last hit’s sort values.",
+            "name": "search_after",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortResults",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        ]
       },
       "inherits": {
         "type": {
@@ -140852,85 +140916,7 @@
         "namespace": "watcher.query_watches"
       },
       "path": [],
-      "query": [
-        {
-          "description": "The offset from the first result to fetch. Needs to be non-negative.",
-          "name": "from",
-          "required": false,
-          "serverDefault": "0",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The number of hits to return. Needs to be non-negative.",
-          "name": "size",
-          "required": false,
-          "serverDefault": "10",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Optional, query filter watches to be returned.",
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Optional sort definition.",
-          "name": "sort",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "Optional search After to do pagination using last hit’s sort values.",
-          "name": "search_after",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortResults",
-              "namespace": "_global.search._types"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {

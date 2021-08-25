@@ -14885,11 +14885,13 @@ export interface WatcherPutWatchResponse {
 }
 
 export interface WatcherQueryWatchesRequest extends RequestBase {
-  from?: integer
-  size?: integer
-  query?: string
-  sort?: string | string[]
-  search_after?: SearchSortResults
+  body?: {
+    from?: integer
+    size?: integer
+    query?: QueryDslQueryContainer
+    sort?: SearchSort
+    search_after?: SearchSortResults
+  }
 }
 
 export interface WatcherQueryWatchesResponse {

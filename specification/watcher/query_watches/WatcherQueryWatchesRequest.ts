@@ -17,9 +17,10 @@
  * under the License.
  */
 
-import { SortResults } from '@global/search/_types/sort'
+import { Sort, SortResults } from '@global/search/_types/sort'
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name watcher.query_watches
@@ -27,7 +28,7 @@ import { integer } from '@_types/Numeric'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  body?: {
     /**
      * The offset from the first result to fetch. Needs to be non-negative.
      * @server_default 0
@@ -39,9 +40,9 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /** Optional, query filter watches to be returned. */
-    query?: string
+    query?: QueryContainer
     /** Optional sort definition. */
-    sort?: string | string[]
+    sort?: Sort
     /** Optional search After to do pagination using last hit’s sort values. */
     search_after?: SortResults
   }
