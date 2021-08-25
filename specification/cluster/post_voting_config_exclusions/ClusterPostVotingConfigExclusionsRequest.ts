@@ -24,15 +24,27 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name cluster.post_voting_config_exclusions
  * @since 7.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {
+    /**
+     * A comma-separated list of the names of the nodes to exclude from the
+     * voting configuration. If specified, you may not also specify node_ids.
+     */
     node_names?: Names
+    /**
+     * A comma-separated list of the persistent ids of the nodes to exclude
+     * from the voting configuration. If specified, you may not also specify node_names.
+     */
     node_ids?: Ids
-    /** @server_default 30s */
+    /**
+     * When adding a voting configuration exclusion, the API waits for the
+     * specified nodes to be excluded from the voting configuration before
+     * returning. If the timeout expires before the appropriate condition
+     * is satisfied, the request fails and returns an error.
+     * @server_default 30s
+     */
     timeout?: Time
-    /** @server_default false */
-    wait_for_removal?: boolean
   }
 }

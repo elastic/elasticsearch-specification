@@ -7323,12 +7323,9 @@ export interface ClusterPostVotingConfigExclusionsRequest extends RequestBase {
   node_names?: Names
   node_ids?: Ids
   timeout?: Time
-  wait_for_removal?: boolean
 }
 
-export interface ClusterPostVotingConfigExclusionsResponse {
-  stub: integer
-}
+export type ClusterPostVotingConfigExclusionsResponse = boolean
 
 export interface ClusterPutComponentTemplateRequest extends RequestBase {
   name: Name
