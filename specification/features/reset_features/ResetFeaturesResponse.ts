@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { Feature } from '../_types/Feature'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    features: Feature[]
+  }
 }
