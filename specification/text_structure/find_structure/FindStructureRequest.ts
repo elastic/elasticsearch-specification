@@ -68,5 +68,6 @@ export interface Request<TJsonDocument> {
     /** The Java time format of the timestamp field in the text. */
     timestamp_format?: string
   }
+  /** @identifier text_files */
   body: Array<TJsonDocument>
 }

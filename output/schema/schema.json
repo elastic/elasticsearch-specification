@@ -12971,6 +12971,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "operations",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -13885,6 +13886,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "document",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -16865,6 +16867,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "document",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -17913,6 +17916,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "searches",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -18224,6 +18228,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "search_templates",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -134185,6 +134190,7 @@
     },
     {
       "body": {
+        "identifier": "text_files",
         "kind": "value",
         "value": {
           "kind": "array_of",
