@@ -44,9 +44,9 @@ export interface Request extends RequestBase {
     realtime?: boolean
     refresh?: boolean
     routing?: Routing
-    source_enabled?: boolean
-    source_excludes?: Fields
-    source_includes?: Fields
+    _source?: boolean | Fields
+    _source_excludes?: Fields
+    _source_includes?: Fields
     stored_fields?: Fields
     version?: VersionNumber
     version_type?: VersionType
