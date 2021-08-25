@@ -579,13 +579,17 @@
     },
     "ilm.start": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
     "ilm.stop": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },

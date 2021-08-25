@@ -8145,18 +8145,16 @@ export interface IlmRetryResponse extends AcknowledgedResponseBase {
 }
 
 export interface IlmStartRequest extends RequestBase {
-  body?: {
-    stub: boolean
-  }
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmStartResponse extends AcknowledgedResponseBase {
 }
 
 export interface IlmStopRequest extends RequestBase {
-  body?: {
-    stub: boolean
-  }
+  master_timeout?: Time
+  timeout?: Time
 }
 
 export interface IlmStopResponse extends AcknowledgedResponseBase {

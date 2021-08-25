@@ -18,15 +18,16 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name ilm.start
  * @since 6.6.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {}
-  body?: {
-    stub: boolean
+  query_parameters?: {
+    master_timeout?: Time
+    timeout?: Time
   }
 }
