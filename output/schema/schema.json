@@ -18058,7 +18058,7 @@
           "description": "Maximum number of concurrent shard requests that each sub-search request executes per node.",
           "name": "max_concurrent_shard_requests",
           "required": false,
-          "serverDefault": "5",
+          "serverDefault": 5,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19306,7 +19306,7 @@
           "description": "Sets the maximum number of documents retrieved per query. This value will act in place of the usual size parameter in the query.",
           "name": "k",
           "required": false,
-          "serverDefault": "10",
+          "serverDefault": 10,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -19521,7 +19521,7 @@
           "description": "Sets the rating threshold above which documents are considered to be \"relevant\".",
           "name": "relevant_rating_threshold",
           "required": false,
-          "serverDefault": "1",
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21316,7 +21316,7 @@
             "description": "Starting document offset. By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the search_after parameter.",
             "name": "from",
             "required": false,
-            "serverDefault": "0",
+            "serverDefault": 0,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21535,7 +21535,7 @@
             "description": "The number of hits to return. By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the search_after parameter.",
             "name": "size",
             "required": false,
-            "serverDefault": "10",
+            "serverDefault": 10,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -21662,7 +21662,7 @@
             "description": "Maximum number of documents to collect for each shard. If a query reaches this limit, Elasticsearch terminates the query early. Elasticsearch collects documents before sorting. Defaults to 0, which does not terminate query execution early.",
             "name": "terminate_after",
             "required": false,
-            "serverDefault": "0",
+            "serverDefault": 0,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -27438,7 +27438,7 @@
             "description": "How many matching terms to return.",
             "name": "size",
             "required": false,
-            "serverDefault": "10",
+            "serverDefault": 10,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -51051,7 +51051,7 @@
         {
           "name": "tie_breaker",
           "required": false,
-          "serverDefault": "0.0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52375,7 +52375,7 @@
         {
           "name": "max_gaps",
           "required": false,
-          "serverDefault": "-1",
+          "serverDefault": -1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52664,7 +52664,7 @@
         {
           "name": "prefix_length",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -52730,7 +52730,7 @@
         {
           "name": "max_gaps",
           "required": false,
-          "serverDefault": "-1",
+          "serverDefault": -1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53353,7 +53353,7 @@
         {
           "name": "slop",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53475,7 +53475,7 @@
         {
           "name": "max_expansions",
           "required": false,
-          "serverDefault": "50",
+          "serverDefault": 50,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53510,7 +53510,7 @@
         {
           "name": "prefix_length",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53677,7 +53677,7 @@
         {
           "name": "max_query_terms",
           "required": false,
-          "serverDefault": "25",
+          "serverDefault": 25,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53700,7 +53700,7 @@
         {
           "name": "min_doc_freq",
           "required": false,
-          "serverDefault": "5",
+          "serverDefault": 5,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53723,7 +53723,7 @@
         {
           "name": "min_term_freq",
           "required": false,
-          "serverDefault": "2",
+          "serverDefault": 2,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53735,7 +53735,7 @@
         {
           "name": "min_word_length",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53949,7 +53949,7 @@
         {
           "name": "max_expansions",
           "required": false,
-          "serverDefault": "50",
+          "serverDefault": 50,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -53984,7 +53984,7 @@
         {
           "name": "prefix_length",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55473,7 +55473,7 @@
         {
           "name": "fuzzy_max_expansions",
           "required": false,
-          "serverDefault": "50",
+          "serverDefault": 50,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55530,7 +55530,7 @@
         {
           "name": "max_determinized_states",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -55981,7 +55981,7 @@
         {
           "name": "max_determinized_states",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56703,7 +56703,7 @@
         {
           "name": "post",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56715,7 +56715,7 @@
         {
           "name": "pre",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -71605,7 +71605,7 @@
           {
             "name": "max_outstanding_read_requests",
             "required": false,
-            "serverDefault": "12",
+            "serverDefault": 12,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71635,7 +71635,7 @@
           {
             "name": "max_outstanding_write_requests",
             "required": false,
-            "serverDefault": "9",
+            "serverDefault": 9,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71659,7 +71659,7 @@
           {
             "name": "max_read_request_operation_count",
             "required": false,
-            "serverDefault": "5120",
+            "serverDefault": 5120,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71695,7 +71695,7 @@
           {
             "name": "max_write_buffer_count",
             "required": false,
-            "serverDefault": "2147483647",
+            "serverDefault": 2147483647,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -71719,7 +71719,7 @@
           {
             "name": "max_write_request_operation_count",
             "required": false,
-            "serverDefault": "5120",
+            "serverDefault": 5120,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -80708,7 +80708,7 @@
             "description": "Maximum number of events to search at a time for sequence queries.",
             "name": "fetch_size",
             "required": false,
-            "serverDefault": "1000",
+            "serverDefault": 1000,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -83414,9 +83414,9 @@
           "aliases": [
             "index.number_of_shards"
           ],
-          "description": "server_default 1",
           "name": "number_of_shards",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "items": [
               {
@@ -83441,9 +83441,9 @@
           "aliases": [
             "index.number_of_replicas"
           ],
-          "description": "server_default 0",
           "name": "number_of_replicas",
           "required": false,
+          "serverDefault": "0",
           "type": {
             "items": [
               {
@@ -83512,9 +83512,9 @@
           "aliases": [
             "index.routing_partition_size"
           ],
-          "description": "server_default 1",
           "name": "routing_partition_size",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "items": [
               {
@@ -83569,9 +83569,9 @@
           "aliases": [
             "index.hidden"
           ],
-          "description": "server_default false",
           "name": "hidden",
           "required": false,
+          "serverDefault": "false",
           "type": {
             "items": [
               {
@@ -83643,7 +83643,7 @@
           ],
           "name": "max_result_window",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83658,7 +83658,7 @@
           ],
           "name": "max_inner_result_window",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83673,7 +83673,7 @@
           ],
           "name": "max_rescore_window",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83688,7 +83688,7 @@
           ],
           "name": "max_docvalue_fields_search",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83703,7 +83703,7 @@
           ],
           "name": "max_script_fields",
           "required": false,
-          "serverDefault": "32",
+          "serverDefault": 32,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83718,7 +83718,7 @@
           ],
           "name": "max_ngram_diff",
           "required": false,
-          "serverDefault": "1",
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83733,7 +83733,7 @@
           ],
           "name": "max_shingle_diff",
           "required": false,
-          "serverDefault": "3",
+          "serverDefault": 3,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83776,7 +83776,7 @@
           ],
           "name": "analyze.max_token_count",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83791,7 +83791,7 @@
           ],
           "name": "highlight.max_analyzed_offset",
           "required": false,
-          "serverDefault": "1000000",
+          "serverDefault": 1000000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83806,7 +83806,7 @@
           ],
           "name": "max_terms_count",
           "required": false,
-          "serverDefault": "65536",
+          "serverDefault": 65536,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -83821,7 +83821,7 @@
           ],
           "name": "max_regex_length",
           "required": false,
-          "serverDefault": "1000",
+          "serverDefault": 1000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -100239,7 +100239,7 @@
           "description": "The maximum number of examples stored per category in memory and in the results data store. If you increase this value, more examples are available, however it requires that you have more storage available. If you set this value to 0, no examples are stored. NOTE: The `categorization_examples_limit` applies only to analysis that uses categorization.",
           "name": "categorization_examples_limit",
           "required": false,
-          "serverDefault": "4",
+          "serverDefault": 4,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102208,7 +102208,7 @@
           "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations. The maximum value is the value of `index.max_result_window`, which is 10,000 by default.",
           "name": "scroll_size",
           "required": false,
-          "serverDefault": "1000",
+          "serverDefault": 1000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102594,7 +102594,7 @@
           "description": "Advanced configuration option. Specifies the maximum number of feature importance values per document to return. By default, no feature importance calculation occurs.",
           "name": "num_top_feature_importance_values",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102655,7 +102655,7 @@
           "description": "Defines what percentage of the eligible documents that will be used for training. Documents that are ignored by the analysis (for example those that contain arrays with more than one value) won’t be included in the calculation for used percentage.",
           "name": "training_percent",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102762,7 +102762,7 @@
           "description": "Defines the number of categories for which the predicted probabilities are reported. It must be non-negative or -1. If it is -1 or greater than the total number of categories, probabilities are reported for all categories; if you have a large number of categories, there could be a significant effect on the size of your destination index. NOTE: To use the AUC ROC evaluation method, `num_top_classes` must be set to -1 or a value greater than or equal to the total number of categories.",
           "name": "num_top_classes",
           "required": false,
-          "serverDefault": "2",
+          "serverDefault": 2,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103179,7 +103179,7 @@
           "description": "The minimum outlier score that a document needs to have in order to calculate its feature influence score. Value range: 0-1.",
           "name": "feature_influence_threshold",
           "required": false,
-          "serverDefault": "0.1",
+          "serverDefault": 0.1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110476,7 +110476,7 @@
           "description": "Skips the specified number of data frame analytics jobs.",
           "name": "from",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110489,7 +110489,7 @@
           "description": "Specifies the maximum number of data frame analytics jobs to obtain.",
           "name": "size",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110600,7 +110600,7 @@
           "description": "Skips the specified number of data frame analytics jobs.",
           "name": "from",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110613,7 +110613,7 @@
           "description": "Specifies the maximum number of data frame analytics jobs to obtain.",
           "name": "size",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111581,7 +111581,7 @@
           "description": "The number of top anomaly detection job bucket scores to be used in the overall_score calculation.",
           "name": "top_n",
           "required": false,
-          "serverDefault": "1",
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111960,7 +111960,7 @@
           "description": "Skips the specified number of models.",
           "name": "from",
           "required": false,
-          "serverDefault": "false",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111985,7 +111985,7 @@
           "description": "Specifies the maximum number of models to obtain.",
           "name": "size",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112095,7 +112095,7 @@
           "description": "Skips the specified number of models.",
           "name": "from",
           "required": false,
-          "serverDefault": "false",
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112108,7 +112108,7 @@
           "description": "Specifies the maximum number of models to obtain.",
           "name": "size",
           "required": false,
-          "serverDefault": "100",
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113309,7 +113309,7 @@
             "description": "The maximum number of threads to be used by the analysis. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
             "name": "max_num_threads",
             "required": false,
-            "serverDefault": "1",
+            "serverDefault": 1,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114138,7 +114138,7 @@
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies a period of time (in days) after which only the first snapshot per day is retained. This period is relative to the timestamp of the most recent snapshot for this job. Valid values range from 0 to `model_snapshot_retention_days`.",
             "name": "daily_model_snapshot_retention_after_days",
             "required": false,
-            "serverDefault": "1",
+            "serverDefault": 1,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114214,7 +114214,7 @@
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job. By default, snapshots ten days older than the newest snapshot are deleted.",
             "name": "model_snapshot_retention_days",
             "required": false,
-            "serverDefault": "10",
+            "serverDefault": 10,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115728,7 +115728,7 @@
           {
             "name": "daily_model_snapshot_retention_after_days",
             "required": false,
-            "serverDefault": "1",
+            "serverDefault": 1,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115741,7 +115741,7 @@
             "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job.",
             "name": "model_snapshot_retention_days",
             "required": false,
-            "serverDefault": "10",
+            "serverDefault": 10,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -132595,7 +132595,7 @@
             "description": "The maximum number of rows (or entries) to return in one response",
             "name": "fetch_size",
             "required": false,
-            "serverDefault": "1000",
+            "serverDefault": 1000,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -134254,7 +134254,7 @@
           "description": "The maximum number of characters in a message when lines are merged to form messages while analyzing semi-structured text. If you have extremely long messages you may need to increase this, but be aware that this may lead to very long processing times if the way to group lines into messages is misdetected.",
           "name": "line_merge_size_limit",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134267,7 +134267,7 @@
           "description": "The number of lines to include in the structural analysis, starting from the beginning of the text. The minimum is 2; If the value of this parameter is greater than the number of lines in the text, the analysis proceeds (as long as there are at least two lines in the text) for all of the lines.",
           "name": "lines_to_sample",
           "required": false,
-          "serverDefault": "1000",
+          "serverDefault": 1000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -134895,7 +134895,7 @@
           "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is 10 and the maximum is 10,000.",
           "name": "max_page_search_size",
           "required": false,
-          "serverDefault": "500",
+          "serverDefault": 500,
           "type": {
             "kind": "instance_of",
             "type": {
