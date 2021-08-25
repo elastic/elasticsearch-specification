@@ -17,10 +17,7 @@
  * under the License.
  */
 
-import { Feature } from '../_types/Feature'
-
-export class Response {
-  body: {
-    features: Feature[]
-  }
+export class Feature {
+  name: string
+  description: string
 }

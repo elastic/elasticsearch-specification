@@ -7924,28 +7924,23 @@ export interface EqlSearchSearchFieldFormatted {
   format?: string
 }
 
+export interface FeaturesFeature {
+  name: string
+  description: string
+}
+
 export interface FeaturesGetFeaturesRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface FeaturesGetFeaturesResponse {
-  stub: integer
+  features: FeaturesFeature[]
 }
 
 export interface FeaturesResetFeaturesRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
 }
 
 export interface FeaturesResetFeaturesResponse {
-  stub: integer
+  features: FeaturesFeature[]
 }
 
 export interface GraphConnection {
