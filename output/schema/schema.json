@@ -10900,7 +10900,7 @@
         "namespace": "shutdown.delete_node"
       },
       "since": "7.13.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -10931,7 +10931,7 @@
         "namespace": "shutdown.get_node"
       },
       "since": "7.13.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -10968,7 +10968,7 @@
         "namespace": "shutdown.put_node"
       },
       "since": "7.13.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -128994,20 +128994,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -129020,25 +129007,31 @@
         "name": "Request",
         "namespace": "shutdown.delete_node"
       },
-      "path": [],
+      "path": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
       "query": []
     },
     {
       "body": {
         "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
@@ -129047,24 +129040,148 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NodeShutdownStatus",
+        "namespace": "shutdown.get_node"
+      },
+      "properties": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShutdownType",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        },
+        {
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "shutdown_startedmillis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShutdownStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        },
+        {
+          "name": "shard_migration",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardMigrationStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        },
+        {
+          "name": "persistent_tasks",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PersistentTaskStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        },
+        {
+          "name": "plugins",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PluginsStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PersistentTaskStatus",
+        "namespace": "shutdown.get_node"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShutdownStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PluginsStatus",
+        "namespace": "shutdown.get_node"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShutdownStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -129077,7 +129194,22 @@
         "name": "Request",
         "namespace": "shutdown.get_node"
       },
-      "path": [],
+      "path": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeId",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
       "query": []
     },
     {
@@ -129085,13 +129217,16 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "nodes",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeShutdownStatus",
+                  "namespace": "shutdown.get_node"
+                }
               }
             }
           }
@@ -129104,24 +129239,67 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "ShardMigrationStatus",
+        "namespace": "shutdown.get_node"
+      },
+      "properties": [
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShutdownStatus",
+              "namespace": "shutdown.get_node"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "not_started"
+        },
+        {
+          "name": "in_progress"
+        },
+        {
+          "name": "stalled"
+        },
+        {
+          "name": "complete"
+        }
+      ],
+      "name": {
+        "name": "ShutdownStatus",
+        "namespace": "shutdown.get_node"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "remove"
+        },
+        {
+          "name": "restart"
+        }
+      ],
+      "name": {
+        "name": "ShutdownType",
+        "namespace": "shutdown.get_node"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -129134,25 +129312,31 @@
         "name": "Request",
         "namespace": "shutdown.put_node"
       },
-      "path": [],
+      "path": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
       "query": []
     },
     {
       "body": {
         "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
