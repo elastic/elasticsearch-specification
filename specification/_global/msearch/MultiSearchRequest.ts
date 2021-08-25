@@ -87,5 +87,6 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
+  /** @identifier searches */
   body?: Array<Header | Body>
 }

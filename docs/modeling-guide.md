@@ -398,3 +398,40 @@ class Foo {
   faz: string
 }
 ```
+
+#### `@identifier`
+
+A custom name that can be used to display the property. Useful in Enums an
+for request bodies where the document is the entire body.
+
+```ts
+export class ConfusionMatrixThreshold {
+  /**
+   * True Positive
+   * @identifier true_positive
+   */
+  tp: integer
+  /**
+   * False Positive
+   * @identifier false_positive
+   */
+  fp: integer
+  /**
+   * True Negative
+   * @identifier true_negative
+   */
+  tn: integer
+  /**
+   * False Negative
+   * @identifier false_negative
+   */
+  fn: integer
+}
+
+export interface Request<TDocument> extends RequestBase {
+  path_parts?: {}
+  query_parameters?: {}
+  /** @identifier document */
+  body?: TDocument
+}
+```
