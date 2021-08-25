@@ -13471,8 +13471,7 @@ export interface ShutdownDeleteNodeRequest extends RequestBase {
   node_id: NodeId
 }
 
-export interface ShutdownDeleteNodeResponse {
-  acknowledged: boolean
+export interface ShutdownDeleteNodeResponse extends AcknowledgedResponseBase {
 }
 
 export interface ShutdownGetNodeNodeShutdownStatus {
@@ -13514,8 +13513,7 @@ export interface ShutdownPutNodeRequest extends RequestBase {
   node_id: NodeId
 }
 
-export interface ShutdownPutNodeResponse {
-  acknowledged: boolean
+export interface ShutdownPutNodeResponse extends AcknowledgedResponseBase {
 }
 
 export interface SlmConfiguration {
