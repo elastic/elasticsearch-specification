@@ -234,7 +234,7 @@
         "namespace": "autoscaling.put_autoscaling_policy"
       },
       "since": "7.11.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -58746,6 +58746,48 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "AutoscalingPolicy",
+        "namespace": "autoscaling._types"
+      },
+      "properties": [
+        {
+          "name": "roles",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "Decider settings",
+          "name": "deciders",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -58781,19 +58823,13 @@
     {
       "body": {
         "kind": "properties",
-        "properties": [
-          {
-            "name": "acknowledged",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
@@ -59078,42 +59114,14 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "roles",
-            "required": true,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "description": "Decider settings",
-            "name": "deciders",
-            "required": true,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AutoscalingPolicy",
+            "namespace": "autoscaling._types"
           }
-        ]
+        }
       },
       "kind": "response",
       "name": {
@@ -59126,20 +59134,14 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AutoscalingPolicy",
+            "namespace": "autoscaling._types"
           }
-        ]
+        }
       },
       "inherits": {
         "type": {
@@ -59154,7 +59156,7 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -59165,36 +59167,18 @@
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
