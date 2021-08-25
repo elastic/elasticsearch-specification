@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { AcknowledgedResponseBase } from '@_types/Base'
 
-export class Response {
-  body: { stub: integer }
-}
+export class Response extends AcknowledgedResponseBase {}

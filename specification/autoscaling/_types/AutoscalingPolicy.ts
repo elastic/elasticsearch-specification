@@ -17,6 +17,11 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class Response extends AcknowledgedResponseBase {}
+export class AutoscalingPolicy {
+  roles: string[]
+  /** Decider settings */
+  deciders: Dictionary<string, UserDefinedValue>
+}
