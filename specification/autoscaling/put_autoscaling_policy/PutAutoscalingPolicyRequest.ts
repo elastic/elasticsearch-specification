@@ -18,20 +18,16 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
 /**
  * @rest_spec_name autoscaling.put_autoscaling_policy
  * @since 7.11.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    name: string
   }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
+  body: AutoscalingPolicy
 }

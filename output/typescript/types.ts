@@ -4922,12 +4922,16 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
 export interface AsyncSearchSubmitResponse<TDocument = unknown> extends AsyncSearchAsyncSearchDocumentResponseBase<TDocument> {
 }
 
+export interface AutoscalingAutoscalingPolicy {
+  roles: string[]
+  deciders: Record<string, any>
+}
+
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
   name: string
 }
 
-export interface AutoscalingDeleteAutoscalingPolicyResponse {
-  acknowledged: boolean
+export interface AutoscalingDeleteAutoscalingPolicyResponse extends AcknowledgedResponseBase {
 }
 
 export interface AutoscalingGetAutoscalingCapacityAutoscalingCapacity {
@@ -4968,21 +4972,14 @@ export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
   name: string
 }
 
-export interface AutoscalingGetAutoscalingPolicyResponse {
-  roles: string[]
-  deciders: Record<string, any>
-}
+export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  name: string
+  body?: AutoscalingAutoscalingPolicy
 }
 
-export interface AutoscalingPutAutoscalingPolicyResponse {
-  stub: integer
+export interface AutoscalingPutAutoscalingPolicyResponse extends AcknowledgedResponseBase {
 }
 
 export interface CatCatRequestBase extends RequestBase, SpecUtilsCommonCatQueryParameters {

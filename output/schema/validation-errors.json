@@ -42,12 +42,6 @@
       ],
       "response": []
     },
-    "autoscaling.put_autoscaling_policy": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "cat.aliases": {
       "request": [
         "Endpoint has \"@stability: TODO"
