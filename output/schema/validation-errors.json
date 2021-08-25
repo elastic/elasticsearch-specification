@@ -1879,12 +1879,6 @@
       ],
       "response": []
     },
-    "watcher.execute_watch": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "watcher.get_watch": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1899,9 +1893,16 @@
     },
     "watcher.query_watches": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: query parameter 'from' does not exist in the json spec",
+        "Request: query parameter 'size' does not exist in the json spec",
+        "Request: query parameter 'query' does not exist in the json spec",
+        "Request: query parameter 'sort' does not exist in the json spec",
+        "Request: query parameter 'search_after' does not exist in the json spec"
       ],
-      "response": []
+      "response": [
+        "interface definition watcher._types:SearchInputRequestDefinition / Property 'template' / instance_of - '_global.search_template:Request' is a request and must only be used in endpoints",
+        "interface definition watcher._types:HttpInput / Property 'request' / instance_of - Non-leaf type cannot be used here: 'watcher._types:HttpInputRequestDefinition'"
+      ]
     },
     "watcher.start": {
       "request": [
