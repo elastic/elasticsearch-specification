@@ -1640,7 +1640,7 @@
         "namespace": "cluster.delete_voting_config_exclusions"
       },
       "since": "7.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -74706,20 +74706,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -74733,24 +74720,25 @@
         "namespace": "cluster.delete_voting_config_exclusions"
       },
       "path": [],
-      "query": []
+      "query": [
+        {
+          "description": "Specifies whether to wait for all excluded nodes to be removed from the cluster before clearing the voting configuration exclusions list. Defaults to true, meaning that all excluded nodes must be removed from the cluster before this API takes any action. If set to false then the voting configuration exclusions list is cleared even if some excluded nodes are still in the cluster.",
+          "name": "wait_for_removal",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "kind": "response",
       "name": {
