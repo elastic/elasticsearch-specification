@@ -17,6 +17,6 @@
  * under the License.
  */
 
-export class Response {
-  body: { stub: boolean }
-}
+import { AcknowledgedResponseBase } from '@_types/Base'
+
+export class Response extends AcknowledgedResponseBase {}
