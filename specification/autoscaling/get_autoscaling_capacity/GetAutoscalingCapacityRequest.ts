@@ -24,5 +24,4 @@ import { RequestBase } from '@_types/Base'
  * @since 7.11.0
  * @stability stable
  */
-export interface Request extends RequestBase {
-}
+export interface Request extends RequestBase {}

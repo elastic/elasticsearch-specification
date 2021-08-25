@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {UserDefinedValue} from "@spec_utils/UserDefinedValue";
-import {Dictionary} from "@spec_utils/Dictionary";
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {
