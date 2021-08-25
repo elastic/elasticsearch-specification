@@ -18,7 +18,39 @@
  */
 
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { NodeName } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    policies: Dictionary<string, AutoscalingDeciders>
+  }
+}
+
+export class AutoscalingDeciders {
+  required_capacity: AutoscalingCapacity
+  current_capacity: AutoscalingCapacity
+  current_nodes: AutoscalingNode[]
+  deciders: Dictionary<string, AutoscalingDecider>
+}
+
+export class AutoscalingCapacity {
+  node: AutoscalingResources
+  total: AutoscalingResources
+}
+
+export class AutoscalingResources {
+  storage: integer
+  memory: integer
+}
+
+export class AutoscalingNode {
+  name: NodeName
+}
+
+export class AutoscalingDecider {
+  required_capacity: AutoscalingCapacity
+  reason_summary?: string
+  reason_details?: UserDefinedValue
 }
