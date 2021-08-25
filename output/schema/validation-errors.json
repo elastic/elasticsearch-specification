@@ -488,13 +488,14 @@
     },
     "features.get_features": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: should not have a body"
       ],
       "response": []
     },
     "features.reset_features": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
