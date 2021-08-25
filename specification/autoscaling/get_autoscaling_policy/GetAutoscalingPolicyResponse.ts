@@ -17,13 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
 
 export class Response {
-  body: {
-    roles: string[]
-    /** Decider settings */
-    deciders: Dictionary<string, UserDefinedValue>
-  }
+  body: AutoscalingPolicy
 }
