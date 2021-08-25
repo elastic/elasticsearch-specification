@@ -26,19 +26,19 @@
     },
     "autoscaling.delete_autoscaling_policy": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "autoscaling.get_autoscaling_capacity": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "autoscaling.get_autoscaling_policy": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
