@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import {NodeId} from "@_types/common";
-import {EpochMillis, Timestamp} from "@_types/Time";
+import { NodeId } from '@_types/common'
+import { EpochMillis, Timestamp } from '@_types/Time'
 
 export class Response {
   body: {

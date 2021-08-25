@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {NodeId} from "@_types/common";
+import { NodeId } from '@_types/common'
 
 /**
  * @rest_spec_name shutdown.put_node
