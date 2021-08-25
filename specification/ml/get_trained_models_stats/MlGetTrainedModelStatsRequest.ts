@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
     allow_no_match?: boolean
     /**
      * Skips the specified number of models.
-     * @server_default false
+     * @server_default 0
      */
     from?: integer
     /**
