@@ -29,12 +29,12 @@ import { DateString, Time } from '@_types/Time'
  */
 export class IndexSettings {
   /**
-   * server_default 1
+   * @server_default 1
    * @aliases index.number_of_shards
    */
   number_of_shards?: integer | string // TODO: should be only int
   /**
-   * server_default 0
+   * @server_default 0
    * @aliases index.number_of_replicas
    */
   number_of_replicas?: integer | string // TODO: should be only int
@@ -53,7 +53,7 @@ export class IndexSettings {
    */
   codec?: string
   /**
-   * server_default 1
+   * @server_default 1
    * @aliases index.routing_partition_size
    */
   routing_partition_size?: integer | string // TODO: should be int only
@@ -68,7 +68,7 @@ export class IndexSettings {
    */
   load_fixed_bitset_filters_eagerly?: boolean
   /**
-   * server_default false
+   * @server_default false
    * @aliases index.hidden
    */
   hidden?: boolean | string // TODO should be bool only
