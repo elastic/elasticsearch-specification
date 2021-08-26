@@ -157,6 +157,23 @@ function buildInherits (type: M.Interface | M.Request | M.Response, openGenerics
   const interfaces = (type.implements ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const behaviors = (type.behaviors ?? []).filter(type => !skipBehaviors.includes(type.type.name))
   const extendAll = inherits.concat(interfaces).concat(behaviors)
+    // do not extend from empty interfaces
+    .filter(inherit => {
+      for (const type of model.types) {
+        if (inherit.type.name === type.name.name && inherit.type.namespace === type.name.namespace) {
+          switch (type.kind) {
+            case 'interface':
+              return type.properties.length > 0 || type.inherits != null || type.implements != null || type.behaviors != null || type.generics != null
+            case 'request':
+            case 'response':
+              return true
+            default:
+              return false
+          }
+        }
+      }
+      return true
+    })
   if (extendAll.length === 0) return ''
   return ` extends ${extendAll.map(buildInheritType).join(', ')}`
 
@@ -171,8 +188,9 @@ function buildInterface (type: M.Interface): string {
   }
 
   const openGenerics = type.generics?.map(t => t.name) ?? []
-  let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
-  if (type.properties.length === 0 && type.inherits == null && type.attachedBehaviors == null) {
+  const inherits = buildInherits(type, openGenerics)
+  let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${inherits} {\n`
+  if (type.properties.length === 0 && type.attachedBehaviors == null &&  inherits.length === 0) {
     code += '  [key: string]: never\n'
   } else {
     for (const property of type.properties) {
