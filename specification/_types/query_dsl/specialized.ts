@@ -126,19 +126,17 @@ export class PinnedQuery extends QueryBase {
   organic: QueryContainer
 }
 
-export class RankFeatureFunction {}
+export class RankFeatureFunctionLinear {}
 
-export class RankFeatureFunctionLinear extends RankFeatureFunction {}
-
-export class RankFeatureFunctionLogarithm extends RankFeatureFunction {
+export class RankFeatureFunctionLogarithm {
   scaling_factor: float
 }
 
-export class RankFeatureFunctionSaturation extends RankFeatureFunction {
+export class RankFeatureFunctionSaturation {
   pivot?: float
 }
 
-export class RankFeatureFunctionSigmoid extends RankFeatureFunction {
+export class RankFeatureFunctionSigmoid {
   pivot: float
   exponent: float
 }
