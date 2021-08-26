@@ -18,8 +18,14 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName, Metadata, VersionNumber } from '@_types/common'
-import { long } from '@_types/Numeric'
+import {
+  Id,
+  IndexName,
+  Metadata,
+  SequenceNumber,
+  VersionNumber
+} from '@_types/common'
+import { integer, long } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
 import { Action, Actions } from './Action'
@@ -47,4 +53,12 @@ export class WatchStatus {
   state: ActivationState
   version: VersionNumber
   execution_state?: string // TODO find execution states in export enum  in server codebase
+}
+
+export class QueryWatch {
+  _id: Id
+  status?: WatchStatus
+  watch?: Watch
+  _primary_term?: integer
+  _seq_no?: SequenceNumber
 }
