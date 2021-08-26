@@ -605,19 +605,48 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
       property.since = value
     } else if (tag === 'server_default') {
-      assert(jsDocs, property.type.kind === 'instance_of', `Default values can only be configured for instance_of types, you are using ${property.type.kind}`)
+      assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
-      switch (property.type.type.name) {
-        case 'boolean':
-          assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
-          property.serverDefault = value === 'true'
-          break
-        case 'number':
-          assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
-          property.serverDefault = Number(value)
-          break
-        default:
-          property.serverDefault = value
+      if (property.type.kind === 'union_of') {
+        let valueType = ''
+        if (value === 'true' || value === 'false') {
+          valueType = 'boolean'
+        } else if (!isNaN(Number(value))) {
+          valueType = 'number'
+        } else {
+          valueType = 'string'
+        }
+        const unionTypes = property.type.items.map(item => {
+          assert(jsDocs, item.kind === 'instance_of', `Default values in unions can only be configured for instance_of types, you are using ${property.type.kind}`)
+          if (['short', 'byte', 'integer', 'uint', 'long', 'ulong', 'float', 'double', 'Percentage'].includes(item.type.name)) {
+            return 'number'
+          }
+          return item.type.name
+        })
+        assert(jsDocs, unionTypes.includes(valueType), `The configured server_default value is not present in the union value: ${unionTypes.join(' | ')}`)
+        property.serverDefault = value
+      } else {
+        switch (property.type.type.name) {
+          case 'boolean':
+            assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
+            property.serverDefault = value === 'true'
+            break
+          case 'number':
+          case 'short':
+          case 'byte':
+          case 'integer':
+          case 'uint':
+          case 'long':
+          case 'ulong':
+          case 'float':
+          case 'double':
+          case 'Percentage':
+            assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
+            property.serverDefault = Number(value)
+            break
+          default:
+            property.serverDefault = value
+        }
       }
     } else if (tag === 'variant') {
       assert(jsDocs, value === 'container_property', `Unknown 'variant' value '${value}' on property ${property.name}`)
