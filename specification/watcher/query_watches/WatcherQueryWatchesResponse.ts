@@ -17,8 +17,12 @@
  * under the License.
  */
 
+import { QueryWatch } from '../_types/Watch'
 import { integer } from '@_types/Numeric'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    count: integer
+    watches: QueryWatch[]
+  }
 }

@@ -14641,6 +14641,14 @@ export interface WatcherPagerDutyResult {
 
 export type WatcherQuantifier = 'some' | 'all'
 
+export interface WatcherQueryWatch {
+  _id: Id
+  status?: WatcherWatchStatus
+  watch?: WatcherWatch
+  _primary_term?: integer
+  _seq_no?: SequenceNumber
+}
+
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface WatcherScheduleBase {
@@ -14909,15 +14917,18 @@ export interface WatcherPutWatchResponse {
 }
 
 export interface WatcherQueryWatchesRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
   body?: {
-    stub_c: string
+    from?: integer
+    size?: integer
+    query?: QueryDslQueryContainer
+    sort?: SearchSort
+    search_after?: SearchSortResults
   }
 }
 
 export interface WatcherQueryWatchesResponse {
-  stub: integer
+  count: integer
+  watches: WatcherQueryWatch[]
 }
 
 export interface WatcherStartRequest extends RequestBase {
