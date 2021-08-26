@@ -1075,6 +1075,7 @@ export interface SearchAggregationProfile {
 }
 
 export interface SearchAggregationProfileDebug {
+  [key: string]: never
 }
 
 export type SearchBoundaryScanner = 'chars' | 'sentence' | 'word'
@@ -1863,6 +1864,7 @@ export interface ElasticsearchVersionInfo {
 }
 
 export interface EmptyObject {
+  [key: string]: never
 }
 
 export type EpochMillis = string | long
@@ -2320,6 +2322,7 @@ export type TimeZone = string
 export type Timestamp = string
 
 export interface Transform {
+  [key: string]: never
 }
 
 export interface TransformContainer {
@@ -2556,6 +2559,7 @@ export interface AggregationsBucketSortAggregation extends AggregationsAggregati
 }
 
 export interface AggregationsBucketsPath {
+  [key: string]: never
 }
 
 export interface AggregationsCardinalityAggregation extends AggregationsMetricAggregationBase {
@@ -2999,6 +3003,7 @@ export interface AggregationsParentAggregation extends AggregationsBucketAggrega
 }
 
 export interface AggregationsPercentageScoreHeuristic {
+  [key: string]: never
 }
 
 export interface AggregationsPercentileItem {
@@ -3748,6 +3753,7 @@ export interface MappingFieldAliasProperty extends MappingPropertyBase {
 }
 
 export interface MappingFieldMapping {
+  [key: string]: never
 }
 
 export interface MappingFieldNamesField {
@@ -4600,6 +4606,7 @@ export interface QueryDslRangeQueryBase extends QueryDslQueryBase {
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
 
 export interface QueryDslRankFeatureFunction {
+  [key: string]: never
 }
 
 export interface QueryDslRankFeatureFunctionLinear extends QueryDslRankFeatureFunction {
@@ -7040,6 +7047,7 @@ export interface ClusterClusterStateMetadataIndexGraveyard {
 }
 
 export interface ClusterClusterStateMetadataTemplate {
+  [key: string]: never
 }
 
 export interface ClusterClusterStateRoutingNodes {
@@ -8017,6 +8025,7 @@ export interface GraphExploreResponse {
 }
 
 export interface IlmAction {
+  [key: string]: never
 }
 
 export interface IlmPhase {
@@ -9498,6 +9507,7 @@ export interface IndicesUnfreezeResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesUpdateAliasesIndicesUpdateAliasBulk {
+  [key: string]: never
 }
 
 export interface IndicesUpdateAliasesRequest extends RequestBase {
@@ -12899,6 +12909,7 @@ export interface SecurityRoleMapping {
 }
 
 export interface SecurityRoleMappingRuleBase {
+  [key: string]: never
 }
 
 export interface SecurityUser {
@@ -14400,6 +14411,7 @@ export interface WatcherActivationStatus {
 }
 
 export interface WatcherAlwaysCondition {
+  [key: string]: never
 }
 
 export interface WatcherArrayCompareCondition {
@@ -14604,6 +14616,7 @@ export interface WatcherLoggingResult {
 export type WatcherMonth = 'january' | 'february' | 'march' | 'april' | 'may' | 'june' | 'july' | 'august' | 'september' | 'october' | 'november' | 'december'
 
 export interface WatcherNeverCondition {
+  [key: string]: never
 }
 
 export interface WatcherPagerDutyActionEventResult {
@@ -14643,6 +14656,7 @@ export type WatcherQuantifier = 'some' | 'all'
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
 
 export interface WatcherScheduleBase {
+  [key: string]: never
 }
 
 export interface WatcherScheduleContainer {
@@ -15430,6 +15444,7 @@ export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter
 }
 
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {
+  [key: string]: never
 }
 
 export interface SpecUtilsCommonQueryParameters {
@@ -15441,6 +15456,7 @@ export interface SpecUtilsCommonQueryParameters {
 }
 
 export interface SpecUtilsAdditionalProperty<TKey = unknown, TValue = unknown> {
+  [key: string]: never
 }
 
 export interface SpecUtilsCommonCatQueryParameters {
