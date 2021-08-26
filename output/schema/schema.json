@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "1bac181",
+    "hash": "d4a05e5",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -141090,7 +141090,7 @@
             "description": "The offset from the first result to fetch. Needs to be non-negative.",
             "name": "from",
             "required": false,
-            "serverDefault": "0",
+            "serverDefault": 0,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -141103,7 +141103,7 @@
             "description": "The number of hits to return. Needs to be non-negative.",
             "name": "size",
             "required": false,
-            "serverDefault": "10",
+            "serverDefault": 10,
             "type": {
               "kind": "instance_of",
               "type": {
