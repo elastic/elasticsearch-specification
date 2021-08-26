@@ -9624,17 +9624,10 @@
       "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.repository_stats",
-      "request": {
-        "name": "Request",
-        "namespace": "searchable_snapshots.repository_stats"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "searchable_snapshots.repository_stats"
-      },
-      "since": "7.10.0",
-      "stability": "TODO",
+      "response": null,
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -9662,7 +9655,7 @@
         "namespace": "searchable_snapshots.stats"
       },
       "since": "7.10.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -123314,6 +123307,24 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "cluster"
+        },
+        {
+          "name": "indices"
+        },
+        {
+          "name": "shards"
+        }
+      ],
+      "name": {
+        "name": "StatsLevel",
+        "namespace": "searchable_snapshots._types"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -123632,101 +123643,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "searchable_snapshots.repository_stats"
-      },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "searchable_snapshots.repository_stats"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -123741,12 +123658,12 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "name": "index",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "Indices",
               "namespace": "_types"
             }
           }
@@ -123754,13 +123671,13 @@
       ],
       "query": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "level",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "StatsLevel",
+              "namespace": "searchable_snapshots._types"
             }
           }
         }
@@ -123771,14 +123688,17 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "stats",
             "required": true,
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
+              "kind": "user_defined_value"
+            }
+          },
+          {
+            "name": "total",
+            "required": true,
+            "type": {
+              "kind": "user_defined_value"
             }
           }
         ]

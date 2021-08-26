@@ -1425,13 +1425,13 @@
     },
     "searchable_snapshots.repository_stats": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Missing request & response"
       ],
       "response": []
     },
     "searchable_snapshots.stats": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
