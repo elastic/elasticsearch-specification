@@ -12797,6 +12797,8 @@ export interface RollupStopJobResponse {
   stopped: boolean
 }
 
+export type SearchableSnapshotsStatsLevel = 'cluster' | 'indices' | 'shards'
+
 export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
   index?: Indices
   expand_wildcards?: ExpandWildcards
@@ -12834,28 +12836,14 @@ export interface SearchableSnapshotsMountResponse {
   snapshot: SearchableSnapshotsMountMountedSnapshot
 }
 
-export interface SearchableSnapshotsRepositoryStatsRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
-}
-
-export interface SearchableSnapshotsRepositoryStatsResponse {
-  stub: integer
-}
-
 export interface SearchableSnapshotsStatsRequest extends RequestBase {
-  stub_a: integer
-  stub_b: integer
-  body?: {
-    stub_c: integer
-  }
+  index?: Indices
+  level?: SearchableSnapshotsStatsLevel
 }
 
 export interface SearchableSnapshotsStatsResponse {
-  stub: integer
+  stats: any
+  total: any
 }
 
 export interface SecurityApplicationGlobalUserPrivileges {
