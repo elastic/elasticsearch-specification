@@ -17,21 +17,33 @@
  * under the License.
  */
 
+import { Sort, SortResults } from '@global/search/_types/sort'
 import { RequestBase } from '@_types/Base'
+import { integer } from '@_types/Numeric'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name watcher.query_watches
  * @since 7.11.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
-  }
-  query_parameters?: {
-    stub_b: string
-  }
   body?: {
-    stub_c: string
+    /**
+     * The offset from the first result to fetch. Needs to be non-negative.
+     * @server_default 0
+     */
+    from?: integer
+    /**
+     * The number of hits to return. Needs to be non-negative.
+     * @server_default 10
+     */
+    size?: integer
+    /** Optional, query filter watches to be returned. */
+    query?: QueryContainer
+    /** Optional sort definition. */
+    sort?: Sort
+    /** Optional search After to do pagination using last hit’s sort values. */
+    search_after?: SortResults
   }
 }

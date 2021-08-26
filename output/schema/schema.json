@@ -12584,7 +12584,7 @@
         "namespace": "watcher.query_watches"
       },
       "since": "7.11.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -138820,6 +138820,70 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "QueryWatch",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WatchStatus",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "watch",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Watch",
+              "namespace": "watcher._types"
+            }
+          }
+        },
+        {
+          "name": "_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -141023,13 +141087,64 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub_c",
-            "required": true,
+            "description": "The offset from the first result to fetch. Needs to be non-negative.",
+            "name": "from",
+            "required": false,
+            "serverDefault": "0",
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of hits to return. Needs to be non-negative.",
+            "name": "size",
+            "required": false,
+            "serverDefault": "10",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Optional, query filter watches to be returned.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "Optional sort definition.",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_global.search._types"
+              }
+            }
+          },
+          {
+            "description": "Optional search After to do pagination using last hit’s sort values.",
+            "name": "search_after",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortResults",
+                "namespace": "_global.search._types"
               }
             }
           }
@@ -141046,45 +141161,35 @@
         "name": "Request",
         "namespace": "watcher.query_watches"
       },
-      "path": [
-        {
-          "name": "stub_a",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "path": [],
+      "query": []
     },
     {
       "body": {
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "count",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "integer",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "watches",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryWatch",
+                  "namespace": "watcher._types"
+                }
               }
             }
           }
