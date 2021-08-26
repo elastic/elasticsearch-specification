@@ -17,8 +17,11 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { UserDefinedValue } from "@spec_utils/UserDefinedValue";
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    stats: UserDefinedValue // TODO: complete this definition
+    total: UserDefinedValue // TODO: complete this definition
+  }
 }

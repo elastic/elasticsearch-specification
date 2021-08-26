@@ -17,22 +17,20 @@
  * under the License.
  */
 
+import { StatsLevel } from '../_types/stats'
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { Indices } from '@_types/common'
 
 /**
  * @rest_spec_name searchable_snapshots.stats
  * @since 7.10.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    stub_a: integer
+    index?: Indices
   }
   query_parameters?: {
-    stub_b: integer
-  }
-  body?: {
-    stub_c: integer
+    level?: StatsLevel
   }
 }
