@@ -4605,22 +4605,19 @@ export interface QueryDslRangeQueryBase extends QueryDslQueryBase {
 
 export type QueryDslRangeRelation = 'within' | 'contains' | 'intersects'
 
-export interface QueryDslRankFeatureFunction {
+export interface QueryDslRankFeatureFunctionLinear {
   [key: string]: never
 }
 
-export interface QueryDslRankFeatureFunctionLinear extends QueryDslRankFeatureFunction {
-}
-
-export interface QueryDslRankFeatureFunctionLogarithm extends QueryDslRankFeatureFunction {
+export interface QueryDslRankFeatureFunctionLogarithm {
   scaling_factor: float
 }
 
-export interface QueryDslRankFeatureFunctionSaturation extends QueryDslRankFeatureFunction {
+export interface QueryDslRankFeatureFunctionSaturation {
   pivot?: float
 }
 
-export interface QueryDslRankFeatureFunctionSigmoid extends QueryDslRankFeatureFunction {
+export interface QueryDslRankFeatureFunctionSigmoid {
   pivot: float
   exponent: float
 }

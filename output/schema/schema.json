@@ -55788,32 +55788,12 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RankFeatureFunction",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "RankFeatureFunction",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
         "name": "RankFeatureFunctionLinear",
         "namespace": "_types.query_dsl"
       },
       "properties": []
     },
     {
-      "inherits": {
-        "type": {
-          "name": "RankFeatureFunction",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
         "name": "RankFeatureFunctionLogarithm",
@@ -55834,12 +55814,6 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "RankFeatureFunction",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
         "name": "RankFeatureFunctionSaturation",
@@ -55860,12 +55834,6 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "RankFeatureFunction",
-          "namespace": "_types.query_dsl"
-        }
-      },
       "kind": "interface",
       "name": {
         "name": "RankFeatureFunctionSigmoid",
