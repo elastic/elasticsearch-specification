@@ -1825,12 +1825,6 @@
       ],
       "response": []
     },
-    "update": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "update_by_query": {
       "request": [
         "Endpoint has \"@stability: TODO"
