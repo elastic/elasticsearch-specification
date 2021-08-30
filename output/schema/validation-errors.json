@@ -1339,12 +1339,6 @@
       ],
       "response": []
     },
-    "render_search_template": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "rollup.delete_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
