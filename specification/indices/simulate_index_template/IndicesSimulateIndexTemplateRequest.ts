@@ -25,12 +25,12 @@ import { IndexName, Name } from '@_types/common'
 /**
  * @rest_spec_name indices.simulate_index_template
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {
     /** Index or template name to simulate */
-    name?: Name
+    name: Name
   }
   body?: {
     index_patterns?: IndexName[]
