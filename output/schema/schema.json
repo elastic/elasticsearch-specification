@@ -12253,7 +12253,7 @@
         "namespace": "_global.update"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -28288,8 +28288,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Set to false to disable setting 'result' in the response to 'noop' if no change to the document occurred.",
             "name": "detect_noop",
             "required": false,
+            "serverDefault": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -28299,6 +28301,7 @@
             }
           },
           {
+            "description": "A partial update to an existing document.",
             "name": "doc",
             "required": false,
             "type": {
@@ -28310,8 +28313,10 @@
             }
           },
           {
+            "description": "Set to true to use the contents of 'doc' as the value of 'upsert'",
             "name": "doc_as_upsert",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -28321,6 +28326,7 @@
             }
           },
           {
+            "description": "Script to execute to update the document.",
             "name": "script",
             "required": false,
             "type": {
@@ -28332,8 +28338,10 @@
             }
           },
           {
+            "description": "Set to true to execute the script whether or not the document exists.",
             "name": "scripted_upsert",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -28343,8 +28351,10 @@
             }
           },
           {
+            "description": "Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.",
             "name": "_source",
             "required": false,
+            "serverDefault": "true",
             "type": {
               "items": [
                 {
@@ -28366,6 +28376,7 @@
             }
           },
           {
+            "description": "If the document does not already exist, the contents of 'upsert' are inserted as a new document. If the document exists, the 'script' is executed.",
             "name": "upsert",
             "required": false,
             "type": {
@@ -28436,6 +28447,7 @@
       ],
       "query": [
         {
+          "description": "Only perform the operation if the document has this primary term.",
           "name": "if_primary_term",
           "required": false,
           "type": {
@@ -28447,6 +28459,7 @@
           }
         },
         {
+          "description": "Only perform the operation if the document has this sequence number.",
           "name": "if_seq_no",
           "required": false,
           "type": {
@@ -28458,8 +28471,10 @@
           }
         },
         {
+          "description": "The script language.",
           "name": "lang",
           "required": false,
+          "serverDefault": "painless",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28469,8 +28484,10 @@
           }
         },
         {
+          "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation visible to search, if 'wait_for' then wait for a refresh to make this operation visible to search, if 'false' do nothing with refreshes.",
           "name": "refresh",
           "required": false,
+          "serverDefault": "false",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28480,8 +28497,10 @@
           }
         },
         {
+          "description": "If true, the destination must be an index alias.",
           "name": "require_alias",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28491,8 +28510,10 @@
           }
         },
         {
+          "description": "Specify how many times should the operation be retried when a conflict occurs.",
           "name": "retry_on_conflict",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28502,6 +28523,7 @@
           }
         },
         {
+          "description": "Custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
           "type": {
@@ -28513,19 +28535,10 @@
           }
         },
         {
-          "name": "source_enabled",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "Period to wait for dynamic mapping updates and active shards. This guarantees Elasticsearch waits for at least the timeout before failing. The actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "1m",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28535,8 +28548,10 @@
           }
         },
         {
+          "description": "The number of shard copies that must be active before proceeding with the operations. Set to 'all' or any positive integer up to the total number of shards in the index (number_of_replicas+1). Defaults to 1 meaning the primary shard.",
           "name": "wait_for_active_shards",
           "required": false,
+          "serverDefault": "1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -28546,8 +28561,10 @@
           }
         },
         {
+          "description": "Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.",
           "name": "_source",
           "required": false,
+          "serverDefault": "true",
           "type": {
             "items": [
               {
@@ -28569,6 +28586,7 @@
           }
         },
         {
+          "description": "Specify the source fields you want to exclude.",
           "name": "_source_excludes",
           "required": false,
           "type": {
@@ -28580,6 +28598,7 @@
           }
         },
         {
+          "description": "Specify the source fields you want to retrieve.",
           "name": "_source_includes",
           "required": false,
           "type": {
