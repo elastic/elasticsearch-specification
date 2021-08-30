@@ -44,7 +44,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    index?: Indices
+    index: Indices
     type?: Type
   }
   query_parameters?: {

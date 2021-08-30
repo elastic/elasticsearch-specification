@@ -20939,7 +20939,19 @@
         "name": "Request",
         "namespace": "_global.render_search_template"
       },
-      "path": [],
+      "path": [
+        {
+          "name": "id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
       "query": []
     },
     {
@@ -82053,7 +82065,7 @@
       "path": [
         {
           "name": "policy",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -82771,7 +82783,7 @@
       "path": [
         {
           "name": "policy",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -90062,7 +90074,7 @@
       "path": [
         {
           "name": "index",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -112704,7 +112716,7 @@
         {
           "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124422,7 +124434,7 @@
       "path": [
         {
           "name": "ids",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
