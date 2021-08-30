@@ -901,6 +901,7 @@ export interface ReindexRethrottleResponse {
 }
 
 export interface RenderSearchTemplateRequest extends RequestBase {
+  id?: Id
   body?: {
     file?: string
     params?: Record<string, any>
@@ -8047,7 +8048,7 @@ export interface IlmPolicy {
 }
 
 export interface IlmDeleteLifecycleRequest extends RequestBase {
-  policy?: Name
+  policy: Name
 }
 
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
@@ -8135,7 +8136,7 @@ export interface IlmMoveToStepStepKey {
 }
 
 export interface IlmPutLifecycleRequest extends RequestBase {
-  policy?: Name
+  policy: Name
   body?: {
     policy?: IlmPolicy
   }
@@ -8957,7 +8958,7 @@ export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBas
 }
 
 export interface IndicesPutMappingRequest extends RequestBase {
-  index?: Indices
+  index: Indices
   type?: Type
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
@@ -11554,7 +11555,7 @@ export interface MlOpenJobResponse {
 }
 
 export interface MlPostCalendarEventsRequest extends RequestBase {
-  calendar_id?: Id
+  calendar_id: Id
   body?: {
     events: MlCalendarEvent[]
   }
@@ -12942,7 +12943,7 @@ export interface SecurityChangePasswordResponse {
 }
 
 export interface SecurityClearApiKeyCacheRequest extends RequestBase {
-  ids?: Ids
+  ids: Ids
 }
 
 export interface SecurityClearApiKeyCacheResponse {
