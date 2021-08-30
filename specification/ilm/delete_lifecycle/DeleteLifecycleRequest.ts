@@ -27,6 +27,6 @@ import { Name } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    policy?: Name
+    policy: Name
   }
 }

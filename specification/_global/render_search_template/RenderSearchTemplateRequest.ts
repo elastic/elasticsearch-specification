@@ -20,6 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 
 /**
  * @rest_spec_name render_search_template
@@ -27,6 +28,9 @@ import { RequestBase } from '@_types/Base'
  * @stability TODO
  */
 export interface Request extends RequestBase {
+  path_parts?: {
+    id?: Id
+  }
   query_parameters?: {}
   body?: {
     file?: string
