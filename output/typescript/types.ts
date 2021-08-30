@@ -1665,7 +1665,6 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   require_alias?: boolean
   retry_on_conflict?: long
   routing?: Routing
-  source_enabled?: boolean
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
   _source?: boolean | Fields
