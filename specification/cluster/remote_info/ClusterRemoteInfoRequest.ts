@@ -28,5 +28,4 @@ import { Void } from '@spec_utils/VoidValue'
  * @since 6.1.0
  * @stability stable
  */
-export interface Request extends RequestBase {
-}
+export interface Request extends RequestBase {}

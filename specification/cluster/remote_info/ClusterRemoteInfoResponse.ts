@@ -42,11 +42,10 @@ export class ClusterRemoteSniffInfo {
 export class ClusterRemoteProxyInfo {
   mode: 'proxy'
   connected: boolean
-  num_nodes_connected: long
   initial_connect_timeout: Time
   skip_unavailable: boolean
   proxy_address: string
   server_name: string
-  max_proxy_sockets_connected: integer
+  num_proxy_sockets_connected: integer
   max_proxy_socket_connections: integer
 }

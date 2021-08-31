@@ -76278,17 +76278,6 @@
           }
         },
         {
-          "name": "num_nodes_connected",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "name": "initial_connect_timeout",
           "required": true,
           "type": {
@@ -76333,7 +76322,7 @@
           }
         },
         {
-          "name": "max_proxy_sockets_connected",
+          "name": "num_proxy_sockets_connected",
           "required": true,
           "type": {
             "kind": "instance_of",
