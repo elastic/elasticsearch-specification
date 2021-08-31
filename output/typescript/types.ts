@@ -8880,7 +8880,7 @@ export interface IndicesGetTemplateResponse extends DictionaryResponseBase<strin
 }
 
 export interface IndicesGetUpgradeRequest extends RequestBase {
-  stub: string
+  index?: IndexName
 }
 
 export interface IndicesGetUpgradeResponse {
@@ -9332,6 +9332,11 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
 export interface IndicesSimulateIndexTemplateResponse {
 }
 
+export interface IndicesSimulateTemplateOverlapping {
+  name: Name
+  index_patterns: string[]
+}
+
 export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
@@ -9340,7 +9345,14 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
 }
 
 export interface IndicesSimulateTemplateResponse {
-  stub: string
+  template: IndicesSimulateTemplateTemplate
+}
+
+export interface IndicesSimulateTemplateTemplate {
+  aliases: Record<IndexName, IndicesAlias>
+  mappings: MappingTypeMapping
+  settings: Record<string, any>
+  overlapping: IndicesSimulateTemplateOverlapping[]
 }
 
 export interface IndicesSplitRequest extends RequestBase {
@@ -9523,15 +9535,15 @@ export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesUpgradeRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
+  index?: IndexName
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  wait_for_completion?: boolean
+  only_ancient_segments?: boolean
 }
 
-export interface IndicesUpgradeResponse {
-  stub: integer
+export interface IndicesUpgradeResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
