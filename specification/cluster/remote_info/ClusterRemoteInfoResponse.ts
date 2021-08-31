@@ -26,11 +26,27 @@ export class Response extends DictionaryResponseBase<
   ClusterRemoteInfo
 > {}
 
-export class ClusterRemoteInfo {
+/** @variants internal tag='mode' */
+export type ClusterRemoteInfo = ClusterRemoteSniffInfo | ClusterRemoteProxyInfo
+
+export class ClusterRemoteSniffInfo {
+  mode: 'sniff'
   connected: boolean
-  initial_connect_timeout: Time
   max_connections_per_cluster: integer
   num_nodes_connected: long
-  seeds: string[]
+  initial_connect_timeout: Time
   skip_unavailable: boolean
+  seeds: string[]
+}
+
+export class ClusterRemoteProxyInfo {
+  mode: 'proxy'
+  connected: boolean
+  num_nodes_connected: long
+  initial_connect_timeout: Time
+  skip_unavailable: boolean
+  proxy_address: string
+  server_name: string
+  max_proxy_sockets_connected: integer
+  max_proxy_socket_connections: integer
 }
