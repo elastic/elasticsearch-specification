@@ -11988,16 +11988,19 @@ export interface MlValidateDetectorRequest extends RequestBase {
 export interface MlValidateDetectorResponse extends AcknowledgedResponseBase {
 }
 
-export interface MonitoringBulkRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+export interface MonitoringBulkRequest<TSource = unknown> extends RequestBase {
+  type?: string
+  system_id: string
+  system_api_version: string
+  interval: TimeSpan
+  body?: (BulkOperationContainer | TSource)[]
 }
 
 export interface MonitoringBulkResponse {
-  stub: integer
+  error?: ErrorCause
+  errors: boolean
+  ignored: boolean
+  took: long
 }
 
 export interface NodesAdaptiveSelection {
