@@ -29,5 +29,4 @@ import { Void } from '@spec_utils/VoidValue'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body: Void
 }
