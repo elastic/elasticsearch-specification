@@ -17,10 +17,28 @@
  * under the License.
  */
 
-import { Pipeline } from '@logstash/_types/Pipeline'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { Id } from '@_types/common'
+import { integer } from '@_types/Numeric'
+import { Timestamp } from '@_types/Time'
 
-export class Response {
-  body: Dictionary<Id, Pipeline>
+export class PipelineMetadata {
+  type: string
+  version: string
+}
+
+export class PipelineSettings {
+  'pipeline.workers': integer
+  'pipeline.batch.size': integer
+  'pipeline.batch.delay': integer
+  'queue.type': string
+  'queue.max_bytes.number': integer
+  'queue.max_bytes.units': string
+  'queue.checkpoint.writes': integer
+}
+export class Pipeline {
+  description: string
+  last_modified: Timestamp
+  pipeline_metadata: PipelineMetadata
+  username: string
+  pipeline: string
+  pipeline_settings: PipelineSettings
 }

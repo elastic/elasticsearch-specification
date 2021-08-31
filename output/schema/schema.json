@@ -6073,7 +6073,7 @@
         "namespace": "logstash.delete_pipeline"
       },
       "since": "7.12.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6101,7 +6101,7 @@
         "namespace": "logstash.get_pipeline"
       },
       "since": "7.12.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6132,7 +6132,7 @@
         "namespace": "logstash.put_pipeline"
       },
       "since": "7.12.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -99837,24 +99837,203 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "Pipeline",
+        "namespace": "logstash._types"
+      },
+      "properties": [
+        {
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "last_modified",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Timestamp",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pipeline_metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineMetadata",
+              "namespace": "logstash._types"
+            }
+          }
+        },
+        {
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pipeline_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PipelineSettings",
+              "namespace": "logstash._types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineMetadata",
+        "namespace": "logstash._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "PipelineSettings",
+        "namespace": "logstash._types"
+      },
+      "properties": [
+        {
+          "name": "pipeline.workers",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pipeline.batch.size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pipeline.batch.delay",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "queue.type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "queue.max_bytes.number",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "queue.max_bytes.units",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "queue.checkpoint.writes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -99869,47 +100048,22 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "kind": "response",
       "name": {
@@ -99922,20 +100076,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -99950,47 +100091,40 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Ids",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
+        "kind": "value",
+        "value": {
+          "key": {
+            "kind": "instance_of",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
+              "name": "Id",
+              "namespace": "_types"
+            }
+          },
+          "kind": "dictionary_of",
+          "singleKey": false,
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Pipeline",
+              "namespace": "logstash._types"
             }
           }
-        ]
+        }
       },
       "kind": "response",
       "name": {
@@ -100003,20 +100137,14 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Pipeline",
+            "namespace": "logstash._types"
           }
-        ]
+        }
       },
       "inherits": {
         "type": {
@@ -100031,47 +100159,22 @@
       },
       "path": [
         {
-          "name": "stub_a",
+          "name": "id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stub_b",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "kind": "response",
       "name": {
