@@ -1229,12 +1229,6 @@
       ],
       "response": []
     },
-    "monitoring.bulk": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "msearch": {
       "request": [
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",

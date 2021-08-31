@@ -17,8 +17,16 @@
  * under the License.
  */
 
-import { integer } from '@_types/Numeric'
+import { long } from '@_types/Numeric'
+import { ErrorCause } from '@_types/Errors'
 
 export class Response {
-  body: { stub: integer }
+  body: {
+    error?: ErrorCause
+    /** True if there is was an error */
+    errors: boolean
+    /** Was collection disabled? */
+    ignored: boolean
+    took: long
+  }
 }

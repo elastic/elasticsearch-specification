@@ -18,20 +18,40 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { TimeSpan } from '@_types/Time'
+import { OperationContainer } from '@global/bulk/types'
 
 /**
  * @rest_spec_name monitoring.bulk
  * @since 6.3.0
- * @stability TODO
+ * @stability experimental
  */
-export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
+export interface Request<TSource> extends RequestBase {
+  path_parts: {
+    /**
+     * @obsolete 7.0.0
+     */
+    type?: string
   }
-  query_parameters?: {
-    stub_b: string
+
+  query_parameters: {
+    /**
+     * Identifier of the monitored system
+     */
+    system_id: string
+
+    /**
+     *
+     */
+    system_api_version: string
+
+    /**
+     * Collection interval (e.g., '10s' or '10000ms') of the payload
+     */
+    interval: TimeSpan
   }
-  body?: {
-    stub_c: string
-  }
+
+  /** @identifier operations */
+  // MonitoringBulkRequest accepts a body request that has the same format as the BulkRequest
+  body?: Array<OperationContainer | TSource>
 }
