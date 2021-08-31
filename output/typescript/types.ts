@@ -10083,41 +10083,48 @@ export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase 
   type: LicenseLicenseType
 }
 
-export interface LogstashDeletePipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+export interface LogstashPipeline {
+  description: string
+  last_modified: Timestamp
+  pipeline_metadata: LogstashPipelineMetadata
+  username: string
+  pipeline: string
+  pipeline_settings: LogstashPipelineSettings
 }
 
-export interface LogstashDeletePipelineResponse {
-  stub: integer
+export interface LogstashPipelineMetadata {
+  type: string
+  version: string
 }
+
+export interface LogstashPipelineSettings {
+  'pipeline.workers': integer
+  'pipeline.batch.size': integer
+  'pipeline.batch.delay': integer
+  'queue.type': string
+  'queue.max_bytes.number': integer
+  'queue.max_bytes.units': string
+  'queue.checkpoint.writes': integer
+}
+
+export interface LogstashDeletePipelineRequest extends RequestBase {
+  id: Id
+}
+
+export type LogstashDeletePipelineResponse = boolean
 
 export interface LogstashGetPipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Ids
 }
 
-export interface LogstashGetPipelineResponse {
-  stub: integer
-}
+export type LogstashGetPipelineResponse = Record<Id, LogstashPipeline>
 
 export interface LogstashPutPipelineRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+  id: Id
+  body?: LogstashPipeline
 }
 
-export interface LogstashPutPipelineResponse {
-  stub: integer
-}
+export type LogstashPutPipelineResponse = boolean
 
 export interface MigrationDeprecationsDeprecation {
   details: string

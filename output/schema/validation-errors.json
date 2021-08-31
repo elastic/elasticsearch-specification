@@ -961,19 +961,13 @@
     },
     "logstash.delete_pipeline": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
     "logstash.get_pipeline": {
       "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "logstash.put_pipeline": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },

@@ -18,20 +18,17 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Pipeline } from '@logstash/_types/Pipeline'
 
 /**
  * @rest_spec_name logstash.put_pipeline
  * @since 7.12.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_a: string
+  path_parts: {
+    id: Id
   }
-  query_parameters?: {
-    stub_b: string
-  }
-  body?: {
-    stub_c: string
-  }
+  body: Pipeline
 }
