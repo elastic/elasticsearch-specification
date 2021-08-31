@@ -18,14 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Void } from '@spec_utils/VoidValue'
 
 /**
+ * The cluster remote info API allows you to retrieve all of the configured
+ * remote cluster information. It returns connection and endpoint information
+ * keyed by the configured remote cluster alias.
  * @rest_spec_name cluster.remote_info
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
-export interface Request extends RequestBase {
-  body?: {
-    stub: string
-  }
-}
+export interface Request extends RequestBase {}

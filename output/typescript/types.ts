@@ -7376,19 +7376,30 @@ export interface ClusterPutSettingsResponse {
   transient: Record<string, any>
 }
 
-export interface ClusterRemoteInfoClusterRemoteInfo {
+export type ClusterRemoteInfoClusterRemoteInfo = ClusterRemoteInfoClusterRemoteSniffInfo | ClusterRemoteInfoClusterRemoteProxyInfo
+
+export interface ClusterRemoteInfoClusterRemoteProxyInfo {
+  mode: 'proxy'
   connected: boolean
   initial_connect_timeout: Time
+  skip_unavailable: boolean
+  proxy_address: string
+  server_name: string
+  num_proxy_sockets_connected: integer
+  max_proxy_socket_connections: integer
+}
+
+export interface ClusterRemoteInfoClusterRemoteSniffInfo {
+  mode: 'sniff'
+  connected: boolean
   max_connections_per_cluster: integer
   num_nodes_connected: long
-  seeds: string[]
+  initial_connect_timeout: Time
   skip_unavailable: boolean
+  seeds: string[]
 }
 
 export interface ClusterRemoteInfoRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
 }
 
 export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfoClusterRemoteInfo> {
