@@ -3074,7 +3074,7 @@ export interface AggregationsRateAggregation extends AggregationsFormatMetricAgg
 export type AggregationsRateMode = 'sum' | 'value_count'
 
 export interface AggregationsRegressionInferenceOptions {
-  results_field: Field
+  results_field?: Field
   num_top_feature_importance_values?: integer
 }
 
@@ -10921,7 +10921,7 @@ export interface MlTrainedModelConfig {
   created_by?: string
   create_time?: Time
   default_field_map?: Record<string, string>
-  description: string
+  description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
   inference_config: AggregationsInferenceConfigContainer
@@ -11200,14 +11200,6 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 export interface MlExplainDataFrameAnalyticsResponse {
   field_selection: MlDataframeAnalyticsFieldSelection[]
   memory_estimation: MlDataframeAnalyticsMemoryEstimation
-}
-
-export interface MlFindFileStructureRequest extends RequestBase {
-  stub: string
-}
-
-export interface MlFindFileStructureResponse {
-  stub: string
 }
 
 export interface MlFlushJobRequest extends RequestBase {
@@ -11780,15 +11772,96 @@ export interface MlPutJobResponse {
   results_retention_days?: long
 }
 
+export interface MlPutTrainedModelAggregateOutput {
+  logistic_regression?: MlPutTrainedModelWeights
+  weighted_sum?: MlPutTrainedModelWeights
+  weighted_mode?: MlPutTrainedModelWeights
+  exponent?: MlPutTrainedModelWeights
+}
+
+export interface MlPutTrainedModelDefinition {
+  preprocessors?: MlPutTrainedModelPreprocessor[]
+  trained_model: MlPutTrainedModelTrainedModel
+}
+
+export interface MlPutTrainedModelEnsemble {
+  aggregate_output?: MlPutTrainedModelAggregateOutput
+  classification_labels?: string[]
+  feature_names?: string[]
+  target_type?: string
+  trained_models: MlPutTrainedModelTrainedModel[]
+}
+
+export interface MlPutTrainedModelFrequencyEncodingPreprocessor {
+  field: string
+  feature_name: string
+  frequency_map: Record<string, double>
+}
+
+export interface MlPutTrainedModelInput {
+  field_names: Names
+}
+
+export interface MlPutTrainedModelOneHotEncodingPreprocessor {
+  field: string
+  hot_map: Record<string, string>
+}
+
+export interface MlPutTrainedModelPreprocessor {
+  frequency_encoding?: MlPutTrainedModelFrequencyEncodingPreprocessor
+  one_hot_encoding?: MlPutTrainedModelOneHotEncodingPreprocessor
+  target_mean_encoding?: MlPutTrainedModelTargetMeanEncodingPreprocessor
+}
+
 export interface MlPutTrainedModelRequest extends RequestBase {
-  stub: string
+  model_id: Id
   body?: {
-    stub?: string
+    compressed_definition?: string
+    definition?: MlPutTrainedModelDefinition
+    description?: string
+    inference_config: AggregationsInferenceConfigContainer
+    input: MlPutTrainedModelInput
+    metadata?: any
+    tags?: string[]
   }
 }
 
-export interface MlPutTrainedModelResponse {
-  stub: boolean
+export type MlPutTrainedModelResponse = MlTrainedModelConfig
+
+export interface MlPutTrainedModelTargetMeanEncodingPreprocessor {
+  field: string
+  feature_name: string
+  target_map: Record<string, double>
+  default_value: double
+}
+
+export interface MlPutTrainedModelTrainedModel {
+  tree?: MlPutTrainedModelTrainedModelTree
+  tree_node?: MlPutTrainedModelTrainedModelTreeNode
+  ensemble?: MlPutTrainedModelEnsemble
+}
+
+export interface MlPutTrainedModelTrainedModelTree {
+  classification_labels?: string[]
+  feature_names: string[]
+  target_type?: string
+  tree_structure: MlPutTrainedModelTrainedModelTreeNode[]
+}
+
+export interface MlPutTrainedModelTrainedModelTreeNode {
+  decision_type?: string
+  default_left?: boolean
+  leaf_value?: double
+  left_child?: integer
+  node_index: integer
+  right_child?: integer
+  split_feature?: integer
+  split_gain?: integer
+  threshold?: double
+}
+
+export interface MlPutTrainedModelWeights {
+  weights: double
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {

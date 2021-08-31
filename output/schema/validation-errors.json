@@ -1057,7 +1057,7 @@
     },
     "ml.find_file_structure": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1170,12 +1170,6 @@
       "response": []
     },
     "ml.put_job": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

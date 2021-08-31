@@ -69,7 +69,7 @@ export class TrainedModelConfig {
   /** Any field map described in the inference configuration takes precedence. */
   default_field_map?: Dictionary<string, string>
   /** The free-text description of the trained model. */
-  description: string
+  description?: string
   /** The estimated heap usage in bytes to keep the trained model in memory. */
   estimated_heap_memory_usage_bytes?: integer
   /** The estimated number of operations to use the trained model. */
