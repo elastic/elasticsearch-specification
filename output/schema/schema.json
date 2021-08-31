@@ -1911,7 +1911,7 @@
         "namespace": "cluster.remote_info"
       },
       "since": "6.1.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -76279,12 +76279,50 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "ClusterRemoteInfo",
         "namespace": "cluster.remote_info"
       },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRemoteSniffInfo",
+              "namespace": "cluster.remote_info"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ClusterRemoteProxyInfo",
+              "namespace": "cluster.remote_info"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "mode"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRemoteProxyInfo",
+        "namespace": "cluster.remote_info"
+      },
       "properties": [
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "proxy"
+          }
+        },
         {
           "name": "connected",
           "required": true,
@@ -76304,6 +76342,89 @@
             "type": {
               "name": "Time",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "skip_unavailable",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "proxy_address",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "server_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "num_proxy_sockets_connected",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_proxy_socket_connections",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterRemoteSniffInfo",
+        "namespace": "cluster.remote_info"
+      },
+      "properties": [
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "sniff"
+          }
+        },
+        {
+          "name": "connected",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         },
@@ -76330,16 +76451,13 @@
           }
         },
         {
-          "name": "seeds",
+          "name": "initial_connect_timeout",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
             }
           }
         },
@@ -76353,6 +76471,20 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "seeds",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
         }
       ]
     },
@@ -76361,20 +76493,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
