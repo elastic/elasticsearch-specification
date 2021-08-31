@@ -8295,7 +8295,7 @@
         "namespace": "monitoring.bulk"
       },
       "since": "6.3.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -116559,21 +116559,37 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+        "identifier": "operations",
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "OperationContainer",
+                  "namespace": "_global.bulk"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TSource",
+                  "namespace": "monitoring.bulk"
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
-        ]
+        }
       },
+      "generics": [
+        {
+          "name": "TSource",
+          "namespace": "monitoring.bulk"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116587,8 +116603,11 @@
       },
       "path": [
         {
-          "name": "stub_a",
-          "required": true,
+          "deprecation": {
+            "version": "7.0.0"
+          },
+          "name": "type",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116600,13 +116619,38 @@
       ],
       "query": [
         {
-          "name": "stub_b",
+          "description": "Identifier of the monitored system",
+          "name": "system_id",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "",
+          "name": "system_api_version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Collection interval (e.g., '10s' or '10000ms') of the payload",
+          "name": "interval",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeSpan",
+              "namespace": "_types"
             }
           }
         }
@@ -116617,12 +116661,47 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "error",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorCause",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "True if there is was an error",
+            "name": "errors",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "integer",
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Was collection disabled?",
+            "name": "ignored",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "took",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
                 "namespace": "_types"
               }
             }
