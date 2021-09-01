@@ -7746,7 +7746,7 @@ export interface ClusterStatsRuntimeFieldTypes {
 }
 
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
-  index_uuid: string
+  index_uuid: Uuid
   accept_data_loss: boolean
   master_timeout?: Time
   timeout?: Time
