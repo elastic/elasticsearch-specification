@@ -4930,7 +4930,7 @@ export interface AutoscalingAutoscalingPolicy {
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyResponse extends AcknowledgedResponseBase {
