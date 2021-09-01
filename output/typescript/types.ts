@@ -4936,7 +4936,7 @@ export interface AutoscalingAutoscalingPolicy {
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyResponse extends AcknowledgedResponseBase {
@@ -4977,13 +4977,13 @@ export interface AutoscalingGetAutoscalingCapacityResponse {
 }
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
   body?: AutoscalingAutoscalingPolicy
 }
 
