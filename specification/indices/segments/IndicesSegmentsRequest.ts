@@ -35,5 +35,4 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     verbose?: boolean
   }
-  body?: {}
 }

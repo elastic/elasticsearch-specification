@@ -51,5 +51,4 @@ export interface Request extends RequestBase {
     version?: VersionNumber
     version_type?: VersionType
   }
-  body?: {}
 }

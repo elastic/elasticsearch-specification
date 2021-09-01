@@ -36,5 +36,4 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     wait_if_ongoing?: boolean
   }
-  body?: {}
 }

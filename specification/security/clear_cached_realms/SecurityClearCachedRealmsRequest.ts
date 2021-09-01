@@ -32,5 +32,4 @@ export interface Request extends RequestBase {
   query_parameters?: {
     usernames?: string[]
   }
-  body?: {}
 }

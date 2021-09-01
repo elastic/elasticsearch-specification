@@ -30,7 +30,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     user?: Name
   }
-  query_parameters?: {}
   body?: {
     application?: ApplicationPrivilegesCheck[]
     cluster?: string[]

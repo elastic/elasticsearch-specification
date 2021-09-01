@@ -26,7 +26,6 @@ import { Id, Name, Username } from '@_types/common'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  query_parameters?: {}
   body?: {
     id?: Id
     ids?: Id[]

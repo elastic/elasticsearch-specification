@@ -37,5 +37,4 @@ export interface Request extends RequestBase {
     include_defaults?: boolean
     local?: boolean
   }
-  body?: {}
 }

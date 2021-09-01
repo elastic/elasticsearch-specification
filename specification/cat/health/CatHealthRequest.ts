@@ -29,5 +29,4 @@ export interface Request extends CatRequestBase {
     include_timestamp?: boolean
     ts?: boolean
   }
-  body?: {}
 }
