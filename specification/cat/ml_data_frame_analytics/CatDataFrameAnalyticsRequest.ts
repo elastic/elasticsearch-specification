@@ -33,5 +33,4 @@ export interface Request extends CatRequestBase {
     allow_no_match?: boolean
     bytes?: Bytes
   }
-  body?: {}
 }

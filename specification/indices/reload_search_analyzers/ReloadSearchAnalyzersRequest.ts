@@ -34,5 +34,4 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
   }
-  body?: {}
 }

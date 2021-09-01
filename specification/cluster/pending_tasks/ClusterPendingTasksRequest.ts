@@ -31,5 +31,4 @@ export interface Request extends RequestBase {
     /** @server_default 30s */
     master_timeout?: Time
   }
-  body?: {}
 }

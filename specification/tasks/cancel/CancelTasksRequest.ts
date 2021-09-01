@@ -35,5 +35,4 @@ export interface Request extends RequestBase {
     parent_task_id?: string
     wait_for_completion?: boolean
   }
-  body?: {}
 }

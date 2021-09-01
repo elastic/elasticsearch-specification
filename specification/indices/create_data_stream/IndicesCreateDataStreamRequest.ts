@@ -29,6 +29,4 @@ export interface Request extends RequestBase {
   path_parts?: {
     name: DataStreamName
   }
-  query_parameters?: {}
-  body?: {}
 }

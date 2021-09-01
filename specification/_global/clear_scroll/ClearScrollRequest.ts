@@ -29,7 +29,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     scroll_id?: Ids
   }
-  query_parameters?: {}
   body?: {
     scroll_id?: Ids
   }

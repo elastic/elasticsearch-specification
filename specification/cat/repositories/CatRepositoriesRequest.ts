@@ -24,7 +24,4 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  * @since 2.1.0
  * @stability TODO
  */
-export interface Request extends CatRequestBase {
-  query_parameters?: {}
-  body?: {}
-}
+export interface Request extends CatRequestBase {}

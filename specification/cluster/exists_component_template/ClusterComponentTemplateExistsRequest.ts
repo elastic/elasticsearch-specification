@@ -49,5 +49,4 @@ export interface Request extends RequestBase {
      */
     local?: boolean
   }
-  body?: {}
 }

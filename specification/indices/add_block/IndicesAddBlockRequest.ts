@@ -38,7 +38,6 @@ export interface Request extends RequestBase {
     master_timeout?: Time // default: 30s
     timeout?: Time // default: 30s
   }
-  body?: {}
 }
 
 export enum IndicesBlockOptions {

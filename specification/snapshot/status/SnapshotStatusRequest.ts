@@ -35,5 +35,4 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean // default: false
     master_timeout?: Time
   }
-  body?: {}
 }

@@ -28,5 +28,4 @@ export interface Request extends RequestBase {
   path_parts: {
     stub: string
   }
-  query_parameters?: {}
 }
