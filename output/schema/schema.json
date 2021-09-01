@@ -124017,6 +124017,7 @@
       },
       "path": [
         {
+          "description": "The index to roll up",
           "name": "index",
           "required": true,
           "type": {
@@ -124028,6 +124029,7 @@
           }
         },
         {
+          "description": "The name of the rollup index to create",
           "name": "rollup_index",
           "required": true,
           "type": {
