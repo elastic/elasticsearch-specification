@@ -29,7 +29,7 @@ import { JsonSpec } from '../model/json-spec'
 export default async function addDescription (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   for (const endpoint of model.endpoints) {
     if (endpoint.request == null) continue
-    const requestDefinition = getDefinition(endpoint.request.name)
+    const requestDefinition = getDefinition(endpoint.request)
     const spec = jsonSpec.get(endpoint.name)
     assert(spec, `Can't find the json spec for ${endpoint.name}`)
 
@@ -40,21 +40,32 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
       })
       if (definition?.parts != null) {
         const { description } = definition.parts[property.name]
-        property.description = description
+        if (typeof description === 'string') {
+          property.description = property.description ?? description
+        }
+      }
+    }
+
+    if (spec.params != null) {
+      for (const property of requestDefinition.query) {
+        const param = spec.params[property.name]
+        if (param != null && typeof param.description === 'string') {
+          property.description = property.description ?? param.description
+        }
       }
     }
   }
 
   return model
 
-  function getDefinition (name: string): model.Request {
+  function getDefinition (request: model.TypeName): model.Request {
     for (const type of model.types) {
       if (type.kind === 'request') {
-        if (type.name.name === name) {
+        if (type.name.name === request.name && type.name.namespace === request.namespace) {
           return type
         }
       }
     }
-    throw new Error(`Can't find the request definiton for ${name}`)
+    throw new Error(`Can't find the request definiton for ${request.namespace}.${request.name}`)
   }
 }
