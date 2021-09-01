@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "9d071ab",
+    "hash": "d13d488",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -99410,6 +99410,7 @@
       },
       "path": [
         {
+          "description": "Pipeline ID",
           "name": "id",
           "required": true,
           "type": {
@@ -99423,6 +99424,7 @@
       ],
       "query": [
         {
+          "description": "Explicit operation timeout for connection to master node",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -99435,6 +99437,7 @@
           }
         },
         {
+          "description": "Explicit operation timeout",
           "name": "timeout",
           "required": false,
           "serverDefault": "30s",
@@ -127978,6 +127981,7 @@
       },
       "path": [
         {
+          "description": "An identifier for the namespace",
           "name": "namespace",
           "required": true,
           "type": {
@@ -127989,6 +127993,7 @@
           }
         },
         {
+          "description": "An identifier for the service name",
           "name": "service",
           "required": true,
           "type": {
