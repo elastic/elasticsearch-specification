@@ -9204,7 +9204,7 @@
         "namespace": "rollup.rollup"
       },
       "since": "7.13.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -123999,20 +123999,10 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "inherits": {
         "type": {
@@ -124027,47 +124017,36 @@
       },
       "path": [
         {
-          "name": "stubb",
+          "name": "index",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "rollup_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
               "namespace": "_types"
             }
           }
         }
       ],
-      "query": [
-        {
-          "name": "stuba",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "query": []
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "kind": "response",
       "name": {
