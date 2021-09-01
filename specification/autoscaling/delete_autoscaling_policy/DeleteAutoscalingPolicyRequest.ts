@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name autoscaling.delete_autoscaling_policy
@@ -26,6 +27,6 @@ import { RequestBase } from '@_types/Base'
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    name: string
+    name: Name
   }
 }
