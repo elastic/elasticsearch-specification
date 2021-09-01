@@ -32,5 +32,4 @@ export interface Request extends RequestBase {
   query_parameters?: {
     wait_for_completion?: boolean
   }
-  body?: {}
 }

@@ -33,5 +33,4 @@ export interface Request extends CatRequestBase {
     allow_no_jobs?: boolean
     bytes?: Bytes
   }
-  body?: {}
 }

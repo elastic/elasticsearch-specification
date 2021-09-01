@@ -32,5 +32,4 @@ export interface Request extends CatRequestBase {
     node_id?: string[]
     parent_task?: long
   }
-  body?: {}
 }

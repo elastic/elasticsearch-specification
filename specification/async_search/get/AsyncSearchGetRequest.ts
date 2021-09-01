@@ -35,5 +35,4 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
     wait_for_completion_timeout?: Time
   }
-  body?: {}
 }

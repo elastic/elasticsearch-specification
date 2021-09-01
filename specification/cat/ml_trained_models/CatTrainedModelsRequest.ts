@@ -36,5 +36,4 @@ export interface Request extends CatRequestBase {
     from?: integer
     size?: integer
   }
-  body?: {}
 }

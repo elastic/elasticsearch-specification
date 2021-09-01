@@ -30,5 +30,4 @@ export interface Request extends CatRequestBase {
     bytes?: Bytes
     full_id?: boolean | string
   }
-  body?: {}
 }

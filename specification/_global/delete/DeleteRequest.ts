@@ -53,5 +53,4 @@ export interface Request extends RequestBase {
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards
   }
-  body?: {}
 }

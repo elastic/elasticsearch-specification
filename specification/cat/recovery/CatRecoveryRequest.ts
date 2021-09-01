@@ -34,5 +34,4 @@ export interface Request extends CatRequestBase {
     bytes?: Bytes
     detailed?: boolean
   }
-  body?: {}
 }

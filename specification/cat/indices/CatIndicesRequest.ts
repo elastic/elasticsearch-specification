@@ -36,5 +36,4 @@ export interface Request extends CatRequestBase {
     include_unloaded_segments?: boolean
     pri?: boolean
   }
-  body?: {}
 }
