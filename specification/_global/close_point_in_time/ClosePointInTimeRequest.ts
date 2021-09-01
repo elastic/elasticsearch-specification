@@ -26,8 +26,6 @@ import { Id } from '@_types/common'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {}
-  query_parameters?: {}
   body?: {
     id: Id
   }

@@ -49,5 +49,4 @@ export interface Request extends RequestBase {
     level?: Level
     types?: Types
   }
-  body?: {}
 }

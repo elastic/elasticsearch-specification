@@ -28,7 +28,6 @@ import { AccessTokenGrantType } from './types'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  query_parameters?: {}
   body?: {
     grant_type?: AccessTokenGrantType
     scope?: string

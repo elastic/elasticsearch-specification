@@ -27,7 +27,6 @@ import { PainlessContextSetup } from './types'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  query_parameters?: {}
   body?: {
     context?: string
     context_setup?: PainlessContextSetup

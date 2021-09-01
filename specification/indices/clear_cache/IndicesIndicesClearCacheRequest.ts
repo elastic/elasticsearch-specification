@@ -38,5 +38,4 @@ export interface Request extends RequestBase {
     query?: boolean
     request?: boolean
   }
-  body?: {}
 }

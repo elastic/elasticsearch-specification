@@ -38,5 +38,4 @@ export interface Request extends RequestBase {
     timeout?: Time
     wait_for_active_shards?: string
   }
-  body?: {}
 }
