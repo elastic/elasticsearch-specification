@@ -4971,13 +4971,13 @@ export interface AutoscalingGetAutoscalingCapacityResponse {
 }
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
   body?: AutoscalingAutoscalingPolicy
 }
 
