@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeId } from '@_types/common'
+import { NodeIds } from '@_types/common'
 
 /**
  * @rest_spec_name shutdown.get_node
@@ -27,6 +27,6 @@ import { NodeId } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    node_id: NodeId[]
+    node_id: NodeIds
   }
 }
