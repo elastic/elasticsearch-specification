@@ -40,7 +40,7 @@ export type ActionIds = string // TODO: check if this should be an array of Acti
 export type Id = string
 export type Ids = Id | Id[]
 export type NodeId = string
-export type NodeIds = string | string[]
+export type NodeIds = NodeId | NodeId[]
 
 export type IndexName = string
 export type Indices = string | string[]

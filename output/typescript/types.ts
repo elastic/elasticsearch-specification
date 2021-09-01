@@ -2083,7 +2083,7 @@ export interface NodeAttributes {
 
 export type NodeId = string
 
-export type NodeIds = string | string[]
+export type NodeIds = NodeId | NodeId[]
 
 export type NodeName = string
 

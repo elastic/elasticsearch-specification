@@ -32608,8 +32608,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "NodeId",
+              "namespace": "_types"
             }
           },
           {
@@ -32617,8 +32617,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "NodeId",
+                "namespace": "_types"
               }
             }
           }
