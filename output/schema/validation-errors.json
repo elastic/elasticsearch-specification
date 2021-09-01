@@ -1351,12 +1351,6 @@
       ],
       "response": []
     },
-    "rollup.rollup": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "rollup.start_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
