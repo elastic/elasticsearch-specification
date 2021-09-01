@@ -17,22 +17,19 @@
  * under the License.
  */
 
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name rollup.rollup
  * @since 7.13.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts?: {
-    stubb: integer
+    index: IndexName
+    rollup_index: IndexName
   }
-  query_parameters?: {
-    stuba: integer
-  }
-  body?: {
-    stub: integer
-  }
+  body?: UserDefinedValue // TODO: This API is experimental and no docs exist describing it. Requires reverse engineering if made stable
 }

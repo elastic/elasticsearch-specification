@@ -12768,16 +12768,12 @@ export interface RollupPutJobResponse extends AcknowledgedResponseBase {
 }
 
 export interface RollupRollupRequest extends RequestBase {
-  stubb: integer
-  stuba: integer
-  body?: {
-    stub: integer
-  }
+  index: IndexName
+  rollup_index: IndexName
+  body?: any
 }
 
-export interface RollupRollupResponse {
-  stub: integer
-}
+export type RollupRollupResponse = any
 
 export interface RollupRollupSearchRequest extends RequestBase {
   index: Indices
