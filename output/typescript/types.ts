@@ -11808,7 +11808,7 @@ export interface MlPutTrainedModelResponse {
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {
-  model_alias: string
+  model_alias: Name
   model_id: Id
   reassign?: boolean
 }

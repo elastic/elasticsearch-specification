@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, Name } from '@_types/common'
 
 /**
  * @rest_spec_name ml.put_trained_model_alias
@@ -28,7 +28,7 @@ import { Id } from '@_types/common'
 export interface Request extends RequestBase {
   path_parts: {
     /** The alias to create or update. This value cannot end in numbers. */
-    model_alias: string
+    model_alias: Name
     /** The identifier for the trained model that the alias refers to. */
     model_id: Id
   }
