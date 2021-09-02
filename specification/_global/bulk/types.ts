@@ -66,12 +66,12 @@ export class UpdateResponseItem extends ResponseItemBase {}
 export class DeleteResponseItem extends ResponseItemBase {}
 
 export class Operation {
-  _id: Id
-  _index: IndexName
-  retry_on_conflict: integer
-  routing: Routing
-  version: VersionNumber
-  version_type: VersionType
+  _id?: Id
+  _index?: IndexName
+  retry_on_conflict?: integer
+  routing?: Routing
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 /** @variants container */

@@ -12837,7 +12837,7 @@
       "properties": [
         {
           "name": "_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12848,7 +12848,7 @@
         },
         {
           "name": "_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12859,7 +12859,7 @@
         },
         {
           "name": "retry_on_conflict",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12870,7 +12870,7 @@
         },
         {
           "name": "routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12881,7 +12881,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -12892,7 +12892,7 @@
         },
         {
           "name": "version_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
