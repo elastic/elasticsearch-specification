@@ -769,9 +769,20 @@
     },
     "indices.get_upgrade": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'ignore_unavailable'",
+        "Request: missing json spec query parameter 'allow_no_indices'",
+        "Request: missing json spec query parameter 'expand_wildcards'",
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
+      ]
     },
     "indices.migrate_to_data_stream": {
       "request": [
@@ -868,7 +879,7 @@
     },
     "indices.simulate_template": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -892,7 +903,7 @@
     },
     "indices.upgrade": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
