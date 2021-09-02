@@ -32604,11 +32604,26 @@
         "namespace": "_types"
       },
       "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "internal"
-        }
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "NodeId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -130324,13 +130339,10 @@
           "name": "node_id",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "NodeId",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeIds",
+              "namespace": "_types"
             }
           }
         }

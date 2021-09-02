@@ -2083,7 +2083,7 @@ export interface NodeAttributes {
 
 export type NodeId = string
 
-export type NodeIds = string
+export type NodeIds = NodeId | NodeId[]
 
 export type NodeName = string
 
@@ -13508,7 +13508,7 @@ export interface ShutdownGetNodePluginsStatus {
 }
 
 export interface ShutdownGetNodeRequest extends RequestBase {
-  node_id: NodeId[]
+  node_id: NodeIds
 }
 
 export interface ShutdownGetNodeResponse {
