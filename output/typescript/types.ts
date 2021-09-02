@@ -9331,7 +9331,7 @@ export interface IndicesShrinkResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
-  name?: Name
+  name: Name
   body?: {
     index_patterns?: IndexName[]
     composed_of?: Name[]
