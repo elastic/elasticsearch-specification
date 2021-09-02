@@ -132342,6 +132342,18 @@
           }
         },
         {
+          "name": "repository",
+          "required": false,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "snapshot",
           "required": true,
           "type": {

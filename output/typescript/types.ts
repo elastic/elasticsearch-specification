@@ -13754,6 +13754,7 @@ export interface SnapshotSnapshotInfo {
   index_details?: Record<IndexName, SnapshotIndexDetails>
   metadata?: Metadata
   reason?: string
+  repository?: Name
   snapshot: Name
   shards?: ShardStatistics
   start_time?: Time
