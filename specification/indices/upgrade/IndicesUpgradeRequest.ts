@@ -18,21 +18,22 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { integer } from '@_types/Numeric'
+import { ExpandWildcards, IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.upgrade
  * @since 7.13.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
-    stub_b: integer
+  path_parts: {
+    index?: IndexName
   }
   query_parameters?: {
-    stub_a: integer
-  }
-  body?: {
-    stub_c: integer
+    allow_no_indices?: boolean
+    expand_wildcards?: ExpandWildcards
+    ignore_unavailable?: boolean
+    wait_for_completion?: boolean
+    only_ancient_segments?: boolean
   }
 }

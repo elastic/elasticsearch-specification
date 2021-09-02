@@ -18,14 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { IndexName } from '@_types/common'
 
 /**
  * @rest_spec_name indices.get_upgrade
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
-    stub: string
+    index?: IndexName
   }
 }

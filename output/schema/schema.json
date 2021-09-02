@@ -4717,7 +4717,7 @@
         "namespace": "indices.get_upgrade"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "deprecation": {
@@ -5390,7 +5390,7 @@
         "namespace": "indices.simulate_template"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5565,7 +5565,7 @@
         "namespace": "indices.upgrade"
       },
       "since": "7.13.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "deprecation": {
@@ -89952,13 +89952,13 @@
       },
       "path": [
         {
-          "name": "stub",
-          "required": true,
+          "name": "index",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           }
         }
@@ -94094,6 +94094,40 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "Overlapping",
+        "namespace": "indices.simulate_template"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_patterns",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -94166,13 +94200,13 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "template",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Template",
+                "namespace": "indices.simulate_template"
               }
             }
           }
@@ -94183,6 +94217,80 @@
         "name": "Response",
         "namespace": "indices.simulate_template"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Template",
+        "namespace": "indices.simulate_template"
+      },
+      "properties": [
+        {
+          "name": "aliases",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Alias",
+                "namespace": "indices._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "mappings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "name": "overlapping",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Overlapping",
+                "namespace": "indices.simulate_template"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -95826,20 +95934,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub_c",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "inherits": {
         "type": {
@@ -95854,12 +95949,12 @@
       },
       "path": [
         {
-          "name": "stub_b",
-          "required": true,
+          "name": "index",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "IndexName",
               "namespace": "_types"
             }
           }
@@ -95867,13 +95962,57 @@
       ],
       "query": [
         {
-          "name": "stub_a",
-          "required": true,
+          "name": "allow_no_indices",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ignore_unavailable",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "wait_for_completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "only_ancient_segments",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -95882,19 +96021,13 @@
     {
       "body": {
         "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "properties": []
+      },
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
       },
       "kind": "response",
       "name": {
