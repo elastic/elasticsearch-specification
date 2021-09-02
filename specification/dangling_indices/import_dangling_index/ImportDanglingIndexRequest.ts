@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Uuid } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -27,7 +28,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    index_uuid: string
+    index_uuid: Uuid
   }
   query_parameters?: {
     accept_data_loss: boolean
