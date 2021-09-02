@@ -132344,7 +132344,7 @@
         {
           "name": "repository",
           "required": false,
-          "since": "7.15.0",
+          "since": "7.14.0",
           "type": {
             "kind": "instance_of",
             "type": {

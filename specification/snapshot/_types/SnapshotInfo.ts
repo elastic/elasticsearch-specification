@@ -45,7 +45,7 @@ export class SnapshotInfo {
   index_details?: Dictionary<IndexName, IndexDetails>
   metadata?: Metadata
   reason?: string
-  /** @since 7.15.0 */
+  /** @since 7.14.0 */
   repository?: Name
   snapshot: Name
   shards?: ShardStatistics
