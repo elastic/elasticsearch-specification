@@ -133403,7 +133403,7 @@
       },
       "path": [
         {
-          "description": "A repository name",
+          "description": "Comma-separated list of snapshot repository names used to limit the request. Wildcard (*) expressions are supported.",
           "name": "repository",
           "required": true,
           "type": {
@@ -133415,7 +133415,7 @@
           }
         },
         {
-          "description": "A comma-separated list of snapshot names",
+          "description": "Comma-separated list of snapshot names to retrieve. Also accepts wildcards (*). - To get information about all snapshots in a registered repository, use a wildcard (*) or _all. - To get information about any snapshots that are currently running, use _current.",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -133429,9 +133429,10 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore unavailable snapshots, defaults to false which means a SnapshotMissingException is thrown",
+          "description": "If false, the request returns an error for any snapshots that are unavailable.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133441,9 +133442,10 @@
           }
         },
         {
-          "description": "Explicit operation timeout for connection to master node",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133453,9 +133455,10 @@
           }
         },
         {
-          "description": "Whether to show verbose snapshot info or only show the basic info found in the repository index blob",
+          "description": "If true, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.",
           "name": "verbose",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133465,9 +133468,10 @@
           }
         },
         {
-          "description": "Whether to include details of each index in the snapshot, if those details are available. Defaults to false.",
+          "description": "If true, returns additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index. Defaults to false, meaning that this information is omitted.",
           "name": "index_details",
           "required": false,
+          "serverDefault": false,
           "since": "7.13.0",
           "type": {
             "kind": "instance_of",
@@ -133519,6 +133523,32 @@
                   "name": "SnapshotInfo",
                   "namespace": "snapshot._types"
                 }
+              }
+            }
+          },
+          {
+            "description": "The total number of snapshots that match the request when ignoring size limit or after query parameter.",
+            "name": "total",
+            "required": true,
+            "since": "7.15.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.",
+            "name": "remaining",
+            "required": true,
+            "since": "7.15.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
