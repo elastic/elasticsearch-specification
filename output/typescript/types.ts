@@ -13889,6 +13889,8 @@ export interface SnapshotGetRequest extends RequestBase {
 export interface SnapshotGetResponse {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+  total: integer
+  remaining: integer
 }
 
 export interface SnapshotGetSnapshotResponseItem {
