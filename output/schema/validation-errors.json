@@ -535,12 +535,6 @@
       ],
       "response": []
     },
-    "graph.explore": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ilm.delete_lifecycle": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -599,13 +593,6 @@
       ],
       "response": []
     },
-    "index": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
-      ],
-      "response": []
-    },
     "indices.add_block": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -625,6 +612,12 @@
       "response": []
     },
     "indices.close": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.create": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -720,12 +713,6 @@
       ],
       "response": []
     },
-    "indices.flush_synced": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.forcemerge": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -783,12 +770,6 @@
     "indices.get_template": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.get_upgrade": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -858,6 +839,12 @@
       ],
       "response": []
     },
+    "indices.rollover": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.segments": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -865,12 +852,6 @@
       "response": []
     },
     "indices.shard_stores": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.shrink": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -897,12 +878,6 @@
       ],
       "response": []
     },
-    "indices.split": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -912,12 +887,6 @@
     "indices.unfreeze": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.upgrade": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1005,13 +974,6 @@
       ],
       "response": []
     },
-    "mget": {
-      "request": [
-        "Request: missing json spec path parameter 'type'",
-        "Url path property 'type' is missing in request definition"
-      ],
-      "response": []
-    },
     "migration.deprecations": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1096,12 +1058,6 @@
       ],
       "response": []
     },
-    "ml.find_file_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.flush_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1180,6 +1136,12 @@
       ],
       "response": []
     },
+    "ml.get_trained_model_deployment_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_trained_models": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1189,6 +1151,12 @@
     "ml.get_trained_models_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.infer_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1252,9 +1220,21 @@
       ],
       "response": []
     },
+    "ml.start_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.stop_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1272,12 +1252,10 @@
     },
     "msearch": {
       "request": [
-        "Request: missing json spec path parameter 'type'",
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
-        "Url path property 'type' is missing in request definition"
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
       "response": [
         "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",
@@ -1418,6 +1396,12 @@
       ],
       "response": []
     },
+    "search_mvt": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "search_shards": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1439,12 +1423,6 @@
     "searchable_snapshots.clear_cache": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "searchable_snapshots.repository_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1538,6 +1516,18 @@
       ],
       "response": []
     },
+    "security.enroll_kibana": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.enroll_node": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1595,6 +1585,12 @@
     "security.grant_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1791,12 +1787,6 @@
       "response": []
     },
     "tasks.list": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "termvectors": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

@@ -32,14 +32,10 @@
         "type": "string",
         "description": "a short version of the Accept header, e.g. json, yaml"
       },
-      "size": {
+      "time": {
         "type": "enum",
-        "description": "The multiplier in which to display values",
-        "options": ["", "k", "m", "g", "t", "p"],
-        "deprecated": {
-          "version": "7.7.0",
-          "description": "Setting this value has no effect and will be removed from the specification."
-        }
+        "description": "The unit in which to display time values",
+        "options": ["d", "h", "m", "s", "ms", "micros", "nanos"]
       },
       "local": {
         "type": "boolean",
