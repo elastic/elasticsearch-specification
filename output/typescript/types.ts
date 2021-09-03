@@ -13811,6 +13811,7 @@ export interface SnapshotSnapshotInfo {
   index_details?: Record<IndexName, SnapshotIndexDetails>
   metadata?: Metadata
   reason?: string
+  repository?: Name
   snapshot: Name
   shards?: ShardStatistics
   start_time?: Time
@@ -13899,7 +13900,7 @@ export interface SnapshotCreateRequest extends RequestBase {
 
 export interface SnapshotCreateResponse {
   accepted?: boolean
-  snapshot?: SnapshotSnapshotInfo
+  snapshot: SnapshotSnapshotInfo
 }
 
 export interface SnapshotCreateRepositoryRequest extends RequestBase {
