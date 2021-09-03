@@ -6365,37 +6365,6 @@
         "application/json"
       ],
       "contentType": [
-<<<<<<< HEAD
-        "application/x-ndjson"
-      ],
-      "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
-      "name": "ml.find_file_structure",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "This endpoint has changed to _text_structure/find_structure, please use that API instead",
-            "version": "7.12.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/find_file_structure"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-=======
->>>>>>> main
         "application/json"
       ],
       "description": "Forces any buffered data to be processed by the job.",

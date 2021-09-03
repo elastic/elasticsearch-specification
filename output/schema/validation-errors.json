@@ -1058,15 +1058,6 @@
       ],
       "response": []
     },
-<<<<<<< HEAD
-    "ml.find_file_structure": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-=======
->>>>>>> main
     "ml.flush_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
