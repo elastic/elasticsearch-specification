@@ -617,23 +617,24 @@ export interface MsearchTemplateTemplateItem {
 }
 
 export interface MtermvectorsOperation {
-  doc: object
-  fields: Fields
-  field_statistics: boolean
-  filter: TermvectorsFilter
   _id: Id
-  _index: IndexName
-  offsets: boolean
-  payloads: boolean
-  positions: boolean
-  routing: Routing
-  term_statistics: boolean
-  version: VersionNumber
-  version_type: VersionType
+  _index?: IndexName
+  doc?: object
+  fields?: Fields
+  field_statistics?: boolean
+  filter?: TermvectorsFilter
+  offsets?: boolean
+  payloads?: boolean
+  positions?: boolean
+  routing?: Routing
+  term_statistics?: boolean
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
+  ids?: Id[]
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
