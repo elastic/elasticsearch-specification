@@ -21,6 +21,7 @@ import { Configuration, Retention } from '@slm/_types/SnapshotLifecycle'
 import { CronExpression } from '@watcher/_types/Schedule'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name slm.put_lifecycle
@@ -28,14 +29,44 @@ import { Name } from '@_types/common'
  * @stability TODO
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
+    /**
+     * ID for the snapshot lifecycle policy you want to create or update.
+     */
     policy_id: Name
   }
+  query_parameters?: {
+    /**
+     * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+    /**
+     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    timeout?: Time
+  }
   body?: {
+    /**
+     * Configuration for each snapshot created by the policy.
+     */
     config?: Configuration
+    /**
+     * Name automatically assigned to each snapshot created by the policy. Date math is supported. To prevent conflicting snapshot names, a UUID is automatically appended to each snapshot name.
+     */
     name?: Name
+    /**
+     * Repository used to store snapshots created by this policy. This repository must exist prior to the policy’s creation. You can create a repository using the snapshot repository API.
+     */
     repository?: string
+    /**
+     * Retention rules used to retain and delete snapshots created by the policy.
+     */
     retention?: Retention
+    /**
+     * Periodic or absolute schedule at which the policy creates snapshots. SLM applies schedule changes immediately.
+     */
     schedule?: CronExpression
   }
 }
