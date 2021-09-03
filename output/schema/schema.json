@@ -6279,7 +6279,7 @@
         "namespace": "ml.estimate_model_memory"
       },
       "since": "7.7.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -100771,7 +100771,7 @@
       },
       "properties": [
         {
-          "description": " The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation. * @server_default 5m",
+          "description": "The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -100851,7 +100851,7 @@
         {
           "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
           "name": "influencers",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {

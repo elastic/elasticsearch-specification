@@ -27,8 +27,7 @@ import { TokenFilter } from '@_types/analysis/token_filters'
 
 export class AnalysisConfig {
   /**
-   *  The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.
-   * * @server_default 5m
+   * The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   bucket_span: TimeSpan
   /**
@@ -50,7 +49,7 @@ export class AnalysisConfig {
   /**
    * A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.
    */
-  influencers: Field[]
+  influencers?: Field[]
   /**
    * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.
    */

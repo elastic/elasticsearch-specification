@@ -10154,7 +10154,7 @@ export interface MlAnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: string[]
   detectors: MlDetector[]
-  influencers: Field[]
+  influencers?: Field[]
   model_prune_window?: Time
   latency?: Time
   multivariate_by_fields?: boolean
