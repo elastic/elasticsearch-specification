@@ -17,6 +17,7 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-
-export class Response extends AcknowledgedResponseBase {}
+export enum GridType {
+  grid = 0,
+  point = 1
+}

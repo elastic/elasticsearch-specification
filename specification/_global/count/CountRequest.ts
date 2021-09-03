@@ -22,8 +22,7 @@ import {
   DefaultOperator,
   ExpandWildcards,
   Indices,
-  Routing,
-  Types
+  Routing
 } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -36,7 +35,6 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

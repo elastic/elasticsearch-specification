@@ -402,6 +402,12 @@
       ],
       "response": []
     },
+    "delete_by_query": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "delete_by_query_rethrottle": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -611,6 +617,12 @@
       ],
       "response": []
     },
+    "indices.create": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.create_data_stream": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -701,12 +713,6 @@
       ],
       "response": []
     },
-    "indices.flush_synced": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.forcemerge": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -767,23 +773,6 @@
       ],
       "response": []
     },
-    "indices.get_upgrade": {
-      "request": [
-        "Request: missing json spec query parameter 'ignore_unavailable'",
-        "Request: missing json spec query parameter 'allow_no_indices'",
-        "Request: missing json spec query parameter 'expand_wildcards'",
-        "Request: should not have a body"
-      ],
-      "response": [
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
-      ]
-    },
     "indices.migrate_to_data_stream": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -803,6 +792,12 @@
       "response": []
     },
     "indices.put_index_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.put_mapping": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -844,6 +839,12 @@
       ],
       "response": []
     },
+    "indices.rollover": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.segments": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -856,29 +857,24 @@
       ],
       "response": []
     },
-    "indices.shrink": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.simulate_index_template": {
       "request": [
         "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: missing json spec query parameter 'master_timeout'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
       ],
       "response": []
     },
     "indices.simulate_template": {
       "request": [
         "Request: missing json spec query parameter 'cause'"
-      ],
-      "response": []
-    },
-    "indices.split": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
       ],
       "response": []
     },
@@ -891,12 +887,6 @@
     "indices.unfreeze": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.upgrade": {
-      "request": [
-        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1068,12 +1058,6 @@
       ],
       "response": []
     },
-    "ml.find_file_structure": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.flush_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1152,6 +1136,12 @@
       ],
       "response": []
     },
+    "ml.get_trained_model_deployment_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_trained_models": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1161,6 +1151,12 @@
     "ml.get_trained_models_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.infer_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1183,12 +1179,6 @@
       "response": []
     },
     "ml.put_job": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -1224,9 +1214,21 @@
       ],
       "response": []
     },
+    "ml.start_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.stop_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1412,12 +1414,6 @@
       ],
       "response": []
     },
-    "searchable_snapshots.repository_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "searchable_snapshots.stats": {
       "request": [
         "Request: should not have a body"
@@ -1508,6 +1504,18 @@
       ],
       "response": []
     },
+    "security.enroll_kibana": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.enroll_node": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1565,6 +1573,12 @@
     "security.grant_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1647,6 +1661,12 @@
       "response": []
     },
     "slm.get_status": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "slm.put_lifecycle": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

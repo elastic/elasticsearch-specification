@@ -126,7 +126,6 @@ export interface ClosePointInTimeResponse {
 
 export interface CountRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -188,7 +187,6 @@ export interface DeleteResponse extends WriteResponseBase {
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -266,7 +264,6 @@ export interface DeleteScriptResponse extends AcknowledgedResponseBase {
 export interface ExistsRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -313,7 +310,6 @@ export interface ExplainExplanationDetail {
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: DefaultOperator
@@ -396,7 +392,6 @@ export interface FieldCapsResponse {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -477,7 +472,6 @@ export type GetSourceResponse<TDocument = unknown> = TDocument
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
-  type?: Type
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   op_type?: OpType
@@ -535,7 +529,6 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -578,7 +571,6 @@ export interface MsearchHeader {
 
 export interface MsearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -604,7 +596,6 @@ export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
@@ -643,7 +634,6 @@ export interface MtermvectorsOperation {
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -954,7 +944,6 @@ export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDoc
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -1516,6 +1505,35 @@ export interface SearchTotalHits {
 
 export type SearchTotalHitsRelation = 'eq' | 'gte'
 
+export interface SearchMvtRequest extends RequestBase {
+  index: Indices
+  field: Field
+  zoom: integer
+  x: integer
+  y: integer
+  exact_bounds?: boolean
+  extent?: integer
+  grid_precision?: integer
+  grid_type?: SearchMvtGridType
+  size?: integer
+  body?: {
+    aggs?: Record<string, AggregationsAggregationContainer>
+    exact_bounds?: boolean
+    extent?: integer
+    fields?: Fields
+    grid_precision?: integer
+    grid_type?: SearchMvtGridType
+    query?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
+    size?: integer
+    sort?: SearchSort
+  }
+}
+
+export type SearchMvtResponse = any
+
+export type SearchMvtGridType = 'grid' | 'point'
+
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -1539,7 +1557,6 @@ export interface SearchShardsShardStoreIndex {
 
 export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -1605,7 +1622,6 @@ export interface TermvectorsFilter {
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -1687,7 +1703,6 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -2005,7 +2020,7 @@ export interface IndexingStats {
   types?: Record<string, IndexingStats>
 }
 
-export type Indices = string | string[]
+export type Indices = IndexName | IndexName[]
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
@@ -2068,7 +2083,7 @@ export type MultiTermQueryRewrite = string
 
 export type Name = string
 
-export type Names = string | string[]
+export type Names = Name | Name[]
 
 export type Namespace = string
 
@@ -3074,7 +3089,7 @@ export interface AggregationsRateAggregation extends AggregationsFormatMetricAgg
 export type AggregationsRateMode = 'sum' | 'value_count'
 
 export interface AggregationsRegressionInferenceOptions {
-  results_field: Field
+  results_field?: Field
   num_top_feature_importance_values?: integer
 }
 
@@ -8017,7 +8032,6 @@ export interface GraphVertexInclude {
 
 export interface GraphExploreRequest extends RequestBase {
   index: Indices
-  type?: Types
   routing?: Routing
   timeout?: Time
   body?: {
@@ -8690,17 +8704,6 @@ export interface IndicesFlushRequest extends RequestBase {
 export interface IndicesFlushResponse extends ShardsOperationResponseBase {
 }
 
-export interface IndicesFlushSyncedRequest extends RequestBase {
-  index?: Indices
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-}
-
-export interface IndicesFlushSyncedResponse extends DictionaryResponseBase<IndexName, ShardStatistics> {
-  _shards: ShardStatistics
-}
-
 export interface IndicesForcemergeRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -8793,7 +8796,6 @@ export interface IndicesGetDataStreamResponse {
 export interface IndicesGetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8852,7 +8854,6 @@ export interface IndicesGetMappingIndexMappingRecord {
 
 export interface IndicesGetMappingRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8888,15 +8889,6 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {
-}
-
-export interface IndicesGetUpgradeRequest extends RequestBase {
-  index?: IndexName
-}
-
-export interface IndicesGetUpgradeResponse {
-  overlapping?: IndicesOverlappingIndexTemplate[]
-  template?: IndicesTemplateMapping
 }
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
@@ -8969,7 +8961,6 @@ export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBas
 
 export interface IndicesPutMappingRequest extends RequestBase {
   index: Indices
-  type?: Type
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -9543,18 +9534,6 @@ export interface IndicesUpdateAliasesRequest extends RequestBase {
 }
 
 export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
-}
-
-export interface IndicesUpgradeRequest extends RequestBase {
-  index?: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  wait_for_completion?: boolean
-  only_ancient_segments?: boolean
-}
-
-export interface IndicesUpgradeResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
@@ -10944,7 +10923,7 @@ export interface MlTrainedModelConfig {
   created_by?: string
   create_time?: Time
   default_field_map?: Record<string, string>
-  description: string
+  description?: string
   estimated_heap_memory_usage_bytes?: integer
   estimated_operations?: integer
   inference_config: AggregationsInferenceConfigContainer
@@ -11223,14 +11202,6 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 export interface MlExplainDataFrameAnalyticsResponse {
   field_selection: MlDataframeAnalyticsFieldSelection[]
   memory_estimation: MlDataframeAnalyticsMemoryEstimation
-}
-
-export interface MlFindFileStructureRequest extends RequestBase {
-  stub: string
-}
-
-export interface MlFindFileStructureResponse {
-  stub: string
 }
 
 export interface MlFlushJobRequest extends RequestBase {
@@ -11803,15 +11774,96 @@ export interface MlPutJobResponse {
   results_retention_days?: long
 }
 
+export interface MlPutTrainedModelAggregateOutput {
+  logistic_regression?: MlPutTrainedModelWeights
+  weighted_sum?: MlPutTrainedModelWeights
+  weighted_mode?: MlPutTrainedModelWeights
+  exponent?: MlPutTrainedModelWeights
+}
+
+export interface MlPutTrainedModelDefinition {
+  preprocessors?: MlPutTrainedModelPreprocessor[]
+  trained_model: MlPutTrainedModelTrainedModel
+}
+
+export interface MlPutTrainedModelEnsemble {
+  aggregate_output?: MlPutTrainedModelAggregateOutput
+  classification_labels?: string[]
+  feature_names?: string[]
+  target_type?: string
+  trained_models: MlPutTrainedModelTrainedModel[]
+}
+
+export interface MlPutTrainedModelFrequencyEncodingPreprocessor {
+  field: string
+  feature_name: string
+  frequency_map: Record<string, double>
+}
+
+export interface MlPutTrainedModelInput {
+  field_names: Names
+}
+
+export interface MlPutTrainedModelOneHotEncodingPreprocessor {
+  field: string
+  hot_map: Record<string, string>
+}
+
+export interface MlPutTrainedModelPreprocessor {
+  frequency_encoding?: MlPutTrainedModelFrequencyEncodingPreprocessor
+  one_hot_encoding?: MlPutTrainedModelOneHotEncodingPreprocessor
+  target_mean_encoding?: MlPutTrainedModelTargetMeanEncodingPreprocessor
+}
+
 export interface MlPutTrainedModelRequest extends RequestBase {
-  stub: string
+  model_id: Id
   body?: {
-    stub?: string
+    compressed_definition?: string
+    definition?: MlPutTrainedModelDefinition
+    description?: string
+    inference_config: AggregationsInferenceConfigContainer
+    input: MlPutTrainedModelInput
+    metadata?: any
+    tags?: string[]
   }
 }
 
-export interface MlPutTrainedModelResponse {
-  stub: boolean
+export type MlPutTrainedModelResponse = MlTrainedModelConfig
+
+export interface MlPutTrainedModelTargetMeanEncodingPreprocessor {
+  field: string
+  feature_name: string
+  target_map: Record<string, double>
+  default_value: double
+}
+
+export interface MlPutTrainedModelTrainedModel {
+  tree?: MlPutTrainedModelTrainedModelTree
+  tree_node?: MlPutTrainedModelTrainedModelTreeNode
+  ensemble?: MlPutTrainedModelEnsemble
+}
+
+export interface MlPutTrainedModelTrainedModelTree {
+  classification_labels?: string[]
+  feature_names: string[]
+  target_type?: string
+  tree_structure: MlPutTrainedModelTrainedModelTreeNode[]
+}
+
+export interface MlPutTrainedModelTrainedModelTreeNode {
+  decision_type?: string
+  default_left?: boolean
+  leaf_value?: double
+  left_child?: integer
+  node_index: integer
+  right_child?: integer
+  split_feature?: integer
+  split_gain?: integer
+  threshold?: double
+}
+
+export interface MlPutTrainedModelWeights {
+  weights: double
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {
@@ -13544,8 +13596,11 @@ export interface ShutdownPutNodeResponse extends AcknowledgedResponseBase {
 
 export interface SlmConfiguration {
   ignore_unavailable?: boolean
-  include_global_state?: boolean
   indices: Indices
+  include_global_state?: boolean
+  feature_states?: string[]
+  metadata?: Metadata
+  partial?: boolean
 }
 
 export interface SlmInProgress {
@@ -13657,6 +13712,8 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
+  master_timeout?: Time
+  timeout?: Time
   body?: {
     config?: SlmConfiguration
     name?: Name
@@ -13892,6 +13949,8 @@ export interface SnapshotGetRequest extends RequestBase {
 export interface SnapshotGetResponse {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+  total: integer
+  remaining: integer
 }
 
 export interface SnapshotGetSnapshotResponseItem {
@@ -14473,9 +14532,7 @@ export type WatcherConditionType = 'always' | 'never' | 'script' | 'compare' | '
 
 export type WatcherConnectionScheme = 'http' | 'https'
 
-export interface WatcherCronExpression {
-  [key: string]: never
-}
+export type WatcherCronExpression = string
 
 export interface WatcherDailySchedule {
   at: string[] | WatcherTimeOfDay
@@ -14682,10 +14739,6 @@ export interface WatcherQueryWatch {
 }
 
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
-
-export interface WatcherScheduleBase {
-  [key: string]: never
-}
 
 export interface WatcherScheduleContainer {
   cron?: WatcherCronExpression

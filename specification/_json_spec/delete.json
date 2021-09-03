@@ -82,7 +82,7 @@
       },
       "version_type": {
         "type": "enum",
-        "options": ["internal", "external", "external_gte", "force"],
+        "options": ["internal", "external", "external_gte"],
         "description": "Specific version type"
       }
     }

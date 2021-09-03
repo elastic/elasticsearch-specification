@@ -17,14 +17,8 @@
  * under the License.
  */
 
-import { OverlappingIndexTemplate } from '@indices/_types/OverlappingIndexTemplate'
-import { TemplateMapping } from '@indices/_types/TemplateMapping'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: {
-    /** Any templates that were superseded by the specified template. */
-    overlapping?: OverlappingIndexTemplate[]
-    /** The settings, mappings, and aliases that would be applied to matching indices. */
-    template?: TemplateMapping
-  }
+  body: UserDefinedValue
 }

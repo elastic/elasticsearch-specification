@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "abff9f3",
+    "hash": "4a3ab56",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -2062,17 +2062,6 @@
             "GET"
           ],
           "path": "/{index}/_count"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/{index}/{type}/_count"
         }
       ],
       "visibility": "public"
@@ -2488,16 +2477,6 @@
             "POST"
           ],
           "path": "/{index}/_delete_by_query"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}/_delete_by_query"
         }
       ],
       "visibility": "public"
@@ -2643,7 +2622,7 @@
           "methods": [
             "GET"
           ],
-          "path": "/_enrich/policy/"
+          "path": "/_enrich/policy"
         }
       ],
       "visibility": "public"
@@ -2847,16 +2826,6 @@
             "HEAD"
           ],
           "path": "/{index}/_doc/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "HEAD"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -2927,17 +2896,6 @@
             "POST"
           ],
           "path": "/{index}/_explain/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}/_explain"
         }
       ],
       "visibility": "public"
@@ -3082,16 +3040,6 @@
             "GET"
           ],
           "path": "/{index}/_doc/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -3204,16 +3152,6 @@
             "GET"
           ],
           "path": "/{index}/_source/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/{type}/{id}/_source"
         }
       ],
       "visibility": "public"
@@ -3246,17 +3184,6 @@
             "POST"
           ],
           "path": "/{index}/_graph/explore"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_graph/explore"
         }
       ],
       "visibility": "public"
@@ -3611,27 +3538,6 @@
             "POST"
           ],
           "path": "/{index}/_doc"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -4264,50 +4170,6 @@
       "accept": [
         "application/json"
       ],
-      "description": "Performs a synced flush operation on one or more indices. Synced flush is deprecated and will be removed in 8.0. Use flush instead",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush-api.html",
-      "name": "indices.flush_synced",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.flush_synced"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.flush_synced"
-      },
-      "since": "0.0.0",
-      "stability": "TODO",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "Synced flush is deprecated and will be removed in 8.0. Use flush instead.",
-            "version": "7.6.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/_flush/synced"
-        },
-        {
-          "deprecation": {
-            "description": "Synced flush is deprecated and will be removed in 8.0. Use flush instead.",
-            "version": "7.6.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/{index}/_flush/synced"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Performs the force merge operation on one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html",
       "name": "indices.forcemerge",
@@ -4508,26 +4370,6 @@
             "GET"
           ],
           "path": "/{index}/_mapping/field/{fields}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_mapping/{type}/field/{fields}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_mapping/{type}/field/{fields}"
         }
       ],
       "visibility": "public"
@@ -4596,26 +4438,6 @@
             "GET"
           ],
           "path": "/{index}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_mapping/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_mapping/{type}"
         }
       ],
       "visibility": "public"
@@ -4696,48 +4518,6 @@
             "GET"
           ],
           "path": "/_template/{name}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "DEPRECATED Returns a progress status of current upgrade.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.get_upgrade",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.get_upgrade"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.get_upgrade"
-      },
-      "since": "0.0.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_upgrade"
         }
       ],
       "visibility": "public"
@@ -4925,83 +4705,6 @@
             "POST"
           ],
           "path": "/{index}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mapping/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mappings"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mappings/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_mappings/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "The plural mappings is accepted but only /_mapping is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mappings"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_mapping/{type}"
         }
       ],
       "visibility": "public"
@@ -5544,48 +5247,6 @@
             "POST"
           ],
           "path": "/_aliases"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "DEPRECATED Upgrades to the current version of Lucene.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.upgrade",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.upgrade"
-      },
-      "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.upgrade"
-      },
-      "since": "7.13.0",
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_upgrade"
         }
       ],
       "visibility": "public"
@@ -6178,17 +5839,6 @@
             "POST"
           ],
           "path": "/{index}/_mget"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mget"
         }
       ],
       "visibility": "public"
@@ -6706,41 +6356,6 @@
             "POST"
           ],
           "path": "/_ml/data_frame/analytics/{id}/_explain"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-        "application/x-ndjson"
-      ],
-      "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
-      "name": "ml.find_file_structure",
-      "request": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
-      "requestBodyRequired": true,
-      "response": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
-      },
-      "since": "5.4.0",
-      "stability": "TODO",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "This endpoint has changed to _text_structure/find_structure, please use that API instead",
-            "version": "7.12.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/find_file_structure"
         }
       ],
       "visibility": "public"
@@ -7326,6 +6941,30 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Get information about trained model deployments.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html",
+      "name": "ml.get_trained_model_deployment_stats",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
@@ -7386,6 +7025,30 @@
             "GET"
           ],
           "path": "/_ml/trained_models/_stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Evaluate a trained model.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model-deployment.html",
+      "name": "ml.infer_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_infer"
         }
       ],
       "visibility": "public"
@@ -7787,7 +7450,7 @@
         "namespace": "ml.put_trained_model"
       },
       "since": "7.10.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -7985,6 +7648,30 @@
       "contentType": [
         "application/json"
       ],
+      "description": "Start a trained model deployment.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
+      "name": "ml.start_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_start"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
@@ -8033,6 +7720,30 @@
             "POST"
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Stop a trained model deployment.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
+      "name": "ml.stop_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_stop"
         }
       ],
       "visibility": "public"
@@ -8353,17 +8064,6 @@
             "POST"
           ],
           "path": "/{index}/_msearch"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_msearch"
         }
       ],
       "visibility": "public"
@@ -8403,17 +8103,6 @@
             "POST"
           ],
           "path": "/{index}/_msearch/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_msearch/template"
         }
       ],
       "visibility": "public"
@@ -8453,17 +8142,6 @@
             "POST"
           ],
           "path": "/{index}/_mtermvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mtermvectors"
         }
       ],
       "visibility": "public"
@@ -8540,66 +8218,6 @@
             "GET"
           ],
           "path": "/_nodes/{node_id}/hot_threads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/{node_id}/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_nodes/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_nodes/{node_id}/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot accepts /_cluster/nodes as prefix for backwards compatibility reasons",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/hot_threads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot accepts /_cluster/nodes as prefix for backwards compatibility reasons",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/{node_id}/hot_threads"
         }
       ],
       "visibility": "public"
@@ -9424,17 +9042,38 @@
             "POST"
           ],
           "path": "/{index}/_search"
-        },
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/vnd.mapbox-vector-tile"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
+      "name": "search_mvt",
+      "request": {
+        "name": "Request",
+        "namespace": "_global.search_mvt"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "_global.search_mvt"
+      },
+      "since": "7.15.0",
+      "stability": "experimental",
+      "urls": [
         {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
           "methods": [
             "GET",
             "POST"
           ],
-          "path": "/{index}/{type}/_search"
+          "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
         }
       ],
       "visibility": "public"
@@ -9510,17 +9149,6 @@
             "POST"
           ],
           "path": "/{index}/_search/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_search/template"
         }
       ],
       "visibility": "public"
@@ -9557,7 +9185,7 @@
         "application/json"
       ],
       "description": "Clear the cache of searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
       "request": {
         "name": "Request",
@@ -9594,7 +9222,7 @@
         "application/json"
       ],
       "description": "Mount a snapshot as a searchable index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
       "request": {
         "name": "Request",
@@ -9621,29 +9249,8 @@
       "accept": [
         "application/json"
       ],
-      "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "name": "searchable_snapshots.repository_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_snapshot/{repository}/_stats"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Retrieve shard-level statistics about searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
       "request": {
         "name": "Request",
@@ -10140,6 +9747,54 @@
             "POST"
           ],
           "path": "/_security/user/{username}/_enable"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Allows a kibana instance to configure itself to communicate with a secured elasticsearch cluster.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-kibana-enrollment.html",
+      "name": "security.enroll_kibana",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/enroll/kibana"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Allows a new node to enroll to an existing cluster with security enabled.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-node-enrollment.html",
+      "name": "security.enroll_node",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/enroll/node"
         }
       ],
       "visibility": "public"
@@ -10725,6 +10380,31 @@
             "POST"
           ],
           "path": "/_security/user/{username}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Retrieves information for API keys using a subset of query DSL",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
+      "name": "security.query_api_keys",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_security/_query/api_key"
         }
       ],
       "visibility": "public"
@@ -11360,7 +11040,7 @@
       "accept": [
         "application/json"
       ],
-      "description": "Deletes a snapshot.",
+      "description": "Deletes one or more snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.delete",
       "request": {
@@ -11937,28 +11617,6 @@
             "POST"
           ],
           "path": "/{index}/_termvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}/_termvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_termvectors"
         }
       ],
       "visibility": "public"
@@ -12098,7 +11756,7 @@
         "name": "Request",
         "namespace": "transform.preview_transform"
       },
-      "requestBodyRequired": true,
+      "requestBodyRequired": false,
       "response": {
         "name": "Response",
         "namespace": "transform.preview_transform"
@@ -12108,6 +11766,14 @@
       "urls": [
         {
           "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_transform/{transform_id}/_preview"
+        },
+        {
+          "methods": [
+            "GET",
             "POST"
           ],
           "path": "/_transform/_preview"
@@ -12301,16 +11967,6 @@
             "POST"
           ],
           "path": "/{index}/_update_by_query"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}/_update_by_query"
         }
       ],
       "visibility": "public"
@@ -13671,18 +13327,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of types to restrict the results",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -14312,18 +13956,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -14472,7 +14104,7 @@
           }
         },
         {
-          "description": "Should the effected indexes be refreshed?",
+          "description": "Should the affected indexes be refreshed?",
           "name": "refresh",
           "required": false,
           "type": {
@@ -14580,7 +14212,6 @@
           }
         },
         {
-          "description": "Deprecated, please use `max_docs` instead",
           "name": "size",
           "required": false,
           "type": {
@@ -15094,18 +14725,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -15584,18 +15203,6 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -16325,18 +15932,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -17061,18 +16656,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -17660,18 +17243,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -18131,18 +17702,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to use as default",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -18429,18 +17988,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to use as default",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -18830,18 +18377,6 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document.",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -22017,18 +21552,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -22396,7 +21919,7 @@
           }
         },
         {
-          "description": "Indicate if the number of documents that match the query should be tracked",
+          "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
           "name": "track_total_hits",
           "required": false,
           "type": {
@@ -27165,6 +26688,320 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Sub-aggregations for the geotile_grid. Supports the following aggregation types: - avg - cardinality - max - min - sum",
+            "name": "aggs",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AggregationContainer",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            }
+          },
+          {
+            "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+            "name": "exact_bounds",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+            "name": "extent",
+            "required": false,
+            "serverDefault": 4096,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`). This parameter does not support fields with array values. Fields with array values may return inconsistent results.",
+            "name": "fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+            "name": "grid_precision",
+            "required": false,
+            "serverDefault": 8,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+            "name": "grid_type",
+            "required": false,
+            "serverDefault": "grid",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GridType",
+                "namespace": "_global.search_mvt._types"
+              }
+            }
+          },
+          {
+            "description": "Query DSL used to filter documents for the search.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "Defines one or more runtime fields in the search request. These fields take precedence over mapped fields with the same name.",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
+            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+            "name": "size",
+            "required": false,
+            "serverDefault": 10000,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Sorts features in the hits layer. By default, the API calculates a bounding box for each feature. It sorts features based on this box’s diagonal length, from longest to shortest.",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.search_mvt"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of data streams, indices, or aliases to search",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing geospatial data to return",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Zoom level for the vector tile to search",
+          "name": "zoom",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "X coordinate for the vector tile to search",
+          "name": "x",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Y coordinate for the vector tile to search",
+          "name": "y",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+          "name": "exact_bounds",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+          "name": "extent",
+          "required": false,
+          "serverDefault": 4096,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+          "name": "grid_precision",
+          "required": false,
+          "serverDefault": 8,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+          "name": "grid_type",
+          "required": false,
+          "serverDefault": "grid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GridType",
+              "namespace": "_global.search_mvt._types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 10000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.search_mvt"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "grid"
+        },
+        {
+          "name": "point"
+        }
+      ],
+      "name": {
+        "name": "GridType",
+        "namespace": "_global.search_mvt._types"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "no_body"
       },
       "inherits": {
@@ -27443,18 +27280,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -28088,18 +27913,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document.",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -28967,18 +28780,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -29234,7 +29035,6 @@
           }
         },
         {
-          "description": "Deprecated, please use `max_docs` instead",
           "name": "size",
           "required": false,
           "type": {
@@ -31881,8 +31681,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "IndexName",
+              "namespace": "_types"
             }
           },
           {
@@ -31890,8 +31690,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           }
@@ -32460,8 +32260,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Name",
+              "namespace": "_types"
             }
           },
           {
@@ -32469,8 +32269,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Name",
+                "namespace": "_types"
               }
             }
           }
@@ -41489,7 +41289,7 @@
         {
           "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
           "name": "results_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -69816,7 +69616,6 @@
       ],
       "query": [
         {
-          "description": "The multiplier in which to display values",
           "name": "size",
           "required": false,
           "type": {
@@ -82315,18 +82114,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -86484,7 +86271,7 @@
           }
         },
         {
-          "description": "Sets the number of active shards to wait for before the operation returns. Set to `index-setting` to wait according to the index setting `index.write.wait_for_active_shards`, or `all` to wait for all shards, or an integer. Defaults to `0`.",
+          "description": "Sets the number of active shards to wait for before the operation returns.",
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
@@ -86658,7 +86445,6 @@
       ],
       "query": [
         {
-          "description": "Whether a type should be expected in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -87961,122 +87747,6 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "indices.flush_synced"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string for all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "_shards",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ShardStatistics",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardStatistics",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "type": {
-          "name": "DictionaryResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.flush_synced"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
         "namespace": "indices.forcemerge"
       },
       "path": [
@@ -88942,18 +88612,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -89006,7 +88664,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -89473,18 +89130,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -89525,7 +89170,6 @@
           }
         },
         {
-          "description": "Whether to add the type name to the response (default: false)",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -89805,7 +89449,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -89873,79 +89516,6 @@
       "name": {
         "name": "Response",
         "namespace": "indices.get_template"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.get_upgrade"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "Any templates that were superseded by the specified template.",
-            "name": "overlapping",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "OverlappingIndexTemplate",
-                  "namespace": "indices._types"
-                }
-              }
-            }
-          },
-          {
-            "description": "The settings, mappings, and aliases that would be applied to matching indices.",
-            "name": "template",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TemplateMapping",
-                "namespace": "indices._types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.get_upgrade"
       }
     },
     {
@@ -90780,18 +90350,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The name of the document type",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -90832,7 +90390,6 @@
           }
         },
         {
-          "description": "Whether a type should be expected in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -91225,7 +90782,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -92825,7 +92381,6 @@
           }
         },
         {
-          "description": "Whether a type should be included in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -94726,7 +94281,7 @@
       ],
       "query": [
         {
-          "description": "A comma-separated list of fields for `fielddata` and `suggest` index metric (supports wildcards)",
+          "description": "A comma-separated list of fields for the `completion` index metric (supports wildcards)",
           "name": "completion_fields",
           "required": false,
           "type": {
@@ -94750,7 +94305,7 @@
           }
         },
         {
-          "description": "A comma-separated list of fields for `fielddata` index metric (supports wildcards)",
+          "description": "A comma-separated list of fields for the `fielddata` index metric (supports wildcards)",
           "name": "fielddata_fields",
           "required": false,
           "type": {
@@ -95871,118 +95426,6 @@
       "name": {
         "name": "Response",
         "namespace": "indices.update_aliases"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.upgrade"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specify whether the request should block until the all segments are upgraded (default: false)",
-          "name": "wait_for_completion",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "If true, only ancient (an older Lucene major release) segments will be upgraded",
-          "name": "only_ancient_segments",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.upgrade"
       }
     },
     {
@@ -100287,7 +99730,7 @@
       "path": [],
       "query": [
         {
-          "description": "If the active license is an enterprise license, return type as 'enterprise' (default: false)",
+          "description": "Supported for backwards compatibility with 7.x. If this param is used it must be set to true",
           "name": "accept_enterprise",
           "required": false,
           "type": {
@@ -108448,7 +107891,7 @@
         {
           "description": "The free-text description of the trained model.",
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110727,62 +110170,6 @@
       "name": {
         "name": "Response",
         "namespace": "ml.explain_data_frame_analytics"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
-      "path": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
       }
     },
     {
@@ -115862,6 +115249,328 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "AggregateOutput",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "logistic_regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "weighted_sum",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "weighted_mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "exponent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Definition",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "description": "Collection of preprocessors",
+          "name": "preprocessors",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Preprocessor",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
+        },
+        {
+          "description": "The definition of the trained model.",
+          "name": "trained_model",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModel",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Ensemble",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "aggregate_output",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregateOutput",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "classification_labels",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "feature_names",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "trained_models",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModel",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FrequencyEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "frequency_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Input",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field_names",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OneHotEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "hot_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Preprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "frequency_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FrequencyEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "one_hot_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OneHotEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "target_mean_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TargetMeanEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -115869,13 +115578,85 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "description": "The compressed (GZipped and Base64 encoded) inference definition of the model. If compressed_definition is specified, then definition cannot be specified.",
+            "name": "compressed_definition",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The inference definition for the model. If definition is specified, then compressed_definition cannot be specified.",
+            "name": "definition",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Definition",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          },
+          {
+            "description": "A human-readable description of the inference trained model.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
+            "name": "inference_config",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceConfigContainer",
+                "namespace": "_types.aggregations"
+              }
+            }
+          },
+          {
+            "description": "The input field names for the model definition.",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Input",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          },
+          {
+            "description": "An object map that contains metadata about the model.",
+            "name": "metadata",
+            "required": false,
+            "type": {
+              "kind": "user_defined_value"
+            }
+          },
+          {
+            "description": "An array of tags to organize the model.",
+            "name": "tags",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           }
@@ -115894,7 +115675,46 @@
       },
       "path": [
         {
-          "name": "stub",
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "TrainedModelConfig",
+            "namespace": "ml._types"
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TargetMeanEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -115903,11 +115723,135 @@
               "namespace": "internal"
             }
           }
-        }
-      ],
-      "query": [
+        },
         {
-          "name": "stub",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "default_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModel",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "description": "The definition for a binary decision tree.",
+          "name": "tree",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelTree",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "description": "The definition of a node in a tree. There are two major types of nodes: leaf nodes and not-leaf nodes. - Leaf nodes only need node_index and leaf_value defined. - All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
+          "name": "tree_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelTreeNode",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "description": "The definition for an ensemble model",
+          "name": "ensemble",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ensemble",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelTree",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "classification_labels",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "feature_names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -115916,31 +115860,150 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "tree_structure",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelTreeNode",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
         }
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelTreeNode",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "decision_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
+              "name": "string",
+              "namespace": "internal"
             }
           }
-        ]
-      },
-      "kind": "response",
+        },
+        {
+          "name": "default_left",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "leaf_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "left_child",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "right_child",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "split_feature",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "split_gain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "threshold",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
       "name": {
-        "name": "Response",
+        "name": "Weights",
         "namespace": "ml.put_trained_model"
-      }
+      },
+      "properties": [
+        {
+          "name": "weights",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -130630,8 +130693,10 @@
       },
       "properties": [
         {
+          "description": "If false, the snapshot fails if any data stream or index in indices is missing or closed. If true, the snapshot ignores missing or closed data streams and indices.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -130641,17 +130706,7 @@
           }
         },
         {
-          "name": "include_global_state",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported. By default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.",
           "name": "indices",
           "required": true,
           "type": {
@@ -130659,6 +130714,59 @@
             "type": {
               "name": "Indices",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the current global state is included in the snapshot.",
+          "name": "include_global_state",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A list of feature states to be included in this snapshot. A list of features available for inclusion in the snapshot and their descriptions be can be retrieved using the get features API. Each feature state includes one or more system indices containing data necessary for the function of that feature. Providing an empty array will include no feature states in the snapshot, regardless of the value of include_global_state. By default, all available feature states will be included in the snapshot if include_global_state is true, or no feature states if include_global_state is false.",
+          "name": "feature_states",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "Attaches arbitrary metadata to the snapshot, such as a record of who took the snapshot, why it was taken, or any other useful data. Metadata must be less than 1024 bytes.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If false, the entire snapshot will fail if one or more indices included in the snapshot do not have all primary shards available.",
+          "name": "partial",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -130820,6 +130928,7 @@
       },
       "properties": [
         {
+          "description": "Time period after which a snapshot is considered expired and eligible for deletion. SLM deletes expired snapshots based on the slm.retention_schedule.",
           "name": "expire_after",
           "required": true,
           "type": {
@@ -130831,6 +130940,7 @@
           }
         },
         {
+          "description": "Maximum number of snapshots to retain, even if the snapshots have not yet expired. If the number of snapshots in the repository exceeds this limit, the policy retains the most recent snapshots and deletes older snapshots.",
           "name": "max_count",
           "required": true,
           "type": {
@@ -130842,6 +130952,7 @@
           }
         },
         {
+          "description": "Minimum number of snapshots to retain, even if the snapshots have expired.",
           "name": "min_count",
           "required": true,
           "type": {
@@ -131515,6 +131626,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Configuration for each snapshot created by the policy.",
             "name": "config",
             "required": false,
             "type": {
@@ -131526,6 +131638,7 @@
             }
           },
           {
+            "description": "Name automatically assigned to each snapshot created by the policy. Date math is supported. To prevent conflicting snapshot names, a UUID is automatically appended to each snapshot name.",
             "name": "name",
             "required": false,
             "type": {
@@ -131537,6 +131650,7 @@
             }
           },
           {
+            "description": "Repository used to store snapshots created by this policy. This repository must exist prior to the policy’s creation. You can create a repository using the snapshot repository API.",
             "name": "repository",
             "required": false,
             "type": {
@@ -131548,6 +131662,7 @@
             }
           },
           {
+            "description": "Retention rules used to retain and delete snapshots created by the policy.",
             "name": "retention",
             "required": false,
             "type": {
@@ -131559,6 +131674,7 @@
             }
           },
           {
+            "description": "Periodic or absolute schedule at which the policy creates snapshots. SLM applies schedule changes immediately.",
             "name": "schedule",
             "required": false,
             "type": {
@@ -131584,7 +131700,7 @@
       },
       "path": [
         {
-          "description": "The id of the snapshot lifecycle policy",
+          "description": "ID for the snapshot lifecycle policy you want to create or update.",
           "name": "policy_id",
           "required": true,
           "type": {
@@ -131596,7 +131712,34 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -133280,7 +133423,7 @@
           }
         },
         {
-          "description": "A snapshot name",
+          "description": "A comma-separated list of snapshot names",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -133420,7 +133563,7 @@
       },
       "path": [
         {
-          "description": "A repository name",
+          "description": "Comma-separated list of snapshot repository names used to limit the request. Wildcard (*) expressions are supported.",
           "name": "repository",
           "required": true,
           "type": {
@@ -133432,7 +133575,7 @@
           }
         },
         {
-          "description": "A comma-separated list of snapshot names",
+          "description": "Comma-separated list of snapshot names to retrieve. Also accepts wildcards (*). - To get information about all snapshots in a registered repository, use a wildcard (*) or _all. - To get information about any snapshots that are currently running, use _current.",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -133446,9 +133589,10 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore unavailable snapshots, defaults to false which means a SnapshotMissingException is thrown",
+          "description": "If false, the request returns an error for any snapshots that are unavailable.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133458,9 +133602,10 @@
           }
         },
         {
-          "description": "Explicit operation timeout for connection to master node",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133470,9 +133615,10 @@
           }
         },
         {
-          "description": "Whether to show verbose snapshot info or only show the basic info found in the repository index blob",
+          "description": "If true, returns additional information about each snapshot such as the version of Elasticsearch which took the snapshot, the start and end times of the snapshot, and the number of shards snapshotted.",
           "name": "verbose",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -133482,9 +133628,10 @@
           }
         },
         {
-          "description": "Whether to include details of each index in the snapshot, if those details are available. Defaults to false.",
+          "description": "If true, returns additional information about each index in the snapshot comprising the number of shards in the index, the total size of the index in bytes, and the maximum number of segments per shard in the index. Defaults to false, meaning that this information is omitted.",
           "name": "index_details",
           "required": false,
+          "serverDefault": false,
           "since": "7.13.0",
           "type": {
             "kind": "instance_of",
@@ -133536,6 +133683,32 @@
                   "name": "SnapshotInfo",
                   "namespace": "snapshot._types"
                 }
+              }
+            }
+          },
+          {
+            "description": "The total number of snapshots that match the request when ignoring size limit or after query parameter.",
+            "name": "total",
+            "required": true,
+            "since": "7.15.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of remaining snapshots that were not returned due to size limits and that can be fetched by additional requests using the next field value.",
+            "name": "remaining",
+            "required": true,
+            "since": "7.15.0",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
               }
             }
           }
@@ -138683,18 +138856,19 @@
       }
     },
     {
-      "inherits": {
-        "type": {
-          "name": "ScheduleBase",
-          "namespace": "watcher._types"
-        }
-      },
-      "kind": "interface",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cron-expressions.html",
+      "kind": "type_alias",
       "name": {
         "name": "CronExpression",
         "namespace": "watcher._types"
       },
-      "properties": []
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -140353,14 +140527,6 @@
         "name": "ResponseContentType",
         "namespace": "watcher._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScheduleBase",
-        "namespace": "watcher._types"
-      },
-      "properties": []
     },
     {
       "kind": "interface",

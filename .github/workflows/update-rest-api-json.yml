@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        branch: [main, 7.x, 7.14]
+        branch: ['main', '7.x', '7.14', '7.15']
 
     steps:
       - uses: actions/checkout@v2
@@ -45,8 +45,20 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: 'Update rest-api-spec'
+          title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
+          labels: specification
           delete-branch: true
           team-reviewers: elastic/clients-team
+          branch: automated/rest-api-spec-update-${{ matrix.branch }}
+
+      - name: Open an issue if the action fails
+        if: ${{ failure() }}
+        uses: nashmaniac/create-issue-action@v1.1
+        with:
+          title: rest-api-spec update failed
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: bug
+          body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).
+
