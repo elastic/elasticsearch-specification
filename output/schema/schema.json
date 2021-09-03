@@ -9056,9 +9056,16 @@
       "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "_global.search_mvt"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "_global.search_mvt"
+      },
+      "since": "7.15.0",
       "stability": "experimental",
       "urls": [
         {
@@ -26674,6 +26681,320 @@
       "name": {
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Sub-aggregations for the geotile_grid. Supports the following aggregation types: - avg - cardinality - max - min - sum",
+            "name": "aggs",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AggregationContainer",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            }
+          },
+          {
+            "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+            "name": "exact_bounds",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+            "name": "extent",
+            "required": false,
+            "serverDefault": 4096,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`). This parameter does not support fields with array values. Fields with array values may return inconsistent results.",
+            "name": "fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+            "name": "grid_precision",
+            "required": false,
+            "serverDefault": 8,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+            "name": "grid_type",
+            "required": false,
+            "serverDefault": "grid",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GridType",
+                "namespace": "_global.search_mvt._types"
+              }
+            }
+          },
+          {
+            "description": "Query DSL used to filter documents for the search.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "Defines one or more runtime fields in the search request. These fields take precedence over mapped fields with the same name.",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
+            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+            "name": "size",
+            "required": false,
+            "serverDefault": 10000,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Sorts features in the hits layer. By default, the API calculates a bounding box for each feature. It sorts features based on this box’s diagonal length, from longest to shortest.",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        ]
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.search_mvt"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of data streams, indices, or aliases to search",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Field containing geospatial data to return",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Zoom level for the vector tile to search",
+          "name": "zoom",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "X coordinate for the vector tile to search",
+          "name": "x",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Y coordinate for the vector tile to search",
+          "name": "y",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+          "name": "exact_bounds",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+          "name": "extent",
+          "required": false,
+          "serverDefault": 4096,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+          "name": "grid_precision",
+          "required": false,
+          "serverDefault": 8,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+          "name": "grid_type",
+          "required": false,
+          "serverDefault": "grid",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GridType",
+              "namespace": "_global.search_mvt._types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 10000,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.search_mvt"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "grid"
+        },
+        {
+          "name": "point"
+        }
+      ],
+      "name": {
+        "name": "GridType",
+        "namespace": "_global.search_mvt._types"
       }
     },
     {
