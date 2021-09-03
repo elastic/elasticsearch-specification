@@ -35,50 +35,6 @@
               "description": "The index in which the document resides."
             }
           }
-        },
-        {
-          "path": "/{index}/{type}/{id}/_termvectors",
-          "methods": ["GET", "POST"],
-          "parts": {
-            "index": {
-              "type": "string",
-              "description": "The index in which the document resides.",
-              "required": true
-            },
-            "type": {
-              "type": "string",
-              "description": "The type of the document.",
-              "required": false
-            },
-            "id": {
-              "type": "string",
-              "description": "The id of the document, when not specified a doc param should be supplied."
-            }
-          },
-          "deprecated": {
-            "version": "7.0.0",
-            "description": "Specifying types in urls has been deprecated"
-          }
-        },
-        {
-          "path": "/{index}/{type}/_termvectors",
-          "methods": ["GET", "POST"],
-          "parts": {
-            "index": {
-              "type": "string",
-              "description": "The index in which the document resides.",
-              "required": true
-            },
-            "type": {
-              "type": "string",
-              "description": "The type of the document.",
-              "required": false
-            }
-          },
-          "deprecated": {
-            "version": "7.0.0",
-            "description": "Specifying types in urls has been deprecated"
-          }
         }
       ]
     },
@@ -130,7 +86,7 @@
       },
       "version_type": {
         "type": "enum",
-        "options": ["internal", "external", "external_gte", "force"],
+        "options": ["internal", "external", "external_gte"],
         "description": "Specific version type"
       }
     },

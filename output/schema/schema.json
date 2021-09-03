@@ -2062,17 +2062,6 @@
             "GET"
           ],
           "path": "/{index}/_count"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/{index}/{type}/_count"
         }
       ],
       "visibility": "public"
@@ -2488,16 +2477,6 @@
             "POST"
           ],
           "path": "/{index}/_delete_by_query"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}/_delete_by_query"
         }
       ],
       "visibility": "public"
@@ -2643,7 +2622,7 @@
           "methods": [
             "GET"
           ],
-          "path": "/_enrich/policy/"
+          "path": "/_enrich/policy"
         }
       ],
       "visibility": "public"
@@ -2847,16 +2826,6 @@
             "HEAD"
           ],
           "path": "/{index}/_doc/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "HEAD"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -2927,17 +2896,6 @@
             "POST"
           ],
           "path": "/{index}/_explain/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}/_explain"
         }
       ],
       "visibility": "public"
@@ -3082,16 +3040,6 @@
             "GET"
           ],
           "path": "/{index}/_doc/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -3204,16 +3152,6 @@
             "GET"
           ],
           "path": "/{index}/_source/{id}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/{type}/{id}/_source"
         }
       ],
       "visibility": "public"
@@ -3246,17 +3184,6 @@
             "POST"
           ],
           "path": "/{index}/_graph/explore"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_graph/explore"
         }
       ],
       "visibility": "public"
@@ -3611,27 +3538,6 @@
             "POST"
           ],
           "path": "/{index}/_doc"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}"
         }
       ],
       "visibility": "public"
@@ -4264,43 +4170,6 @@
       "accept": [
         "application/json"
       ],
-      "description": "Performs a synced flush operation on one or more indices. Synced flush is deprecated and will be removed in 8.0. Use flush instead",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush-api.html",
-      "name": "indices.flush_synced",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "Synced flush is deprecated and will be removed in 8.0. Use flush instead.",
-            "version": "7.6.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/_flush/synced"
-        },
-        {
-          "deprecation": {
-            "description": "Synced flush is deprecated and will be removed in 8.0. Use flush instead.",
-            "version": "7.6.0"
-          },
-          "methods": [
-            "POST",
-            "GET"
-          ],
-          "path": "/{index}/_flush/synced"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Performs the force merge operation on one or more indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html",
       "name": "indices.forcemerge",
@@ -4501,26 +4370,6 @@
             "GET"
           ],
           "path": "/{index}/_mapping/field/{fields}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_mapping/{type}/field/{fields}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_mapping/{type}/field/{fields}"
         }
       ],
       "visibility": "public"
@@ -4589,26 +4438,6 @@
             "GET"
           ],
           "path": "/{index}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_mapping/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_mapping/{type}"
         }
       ],
       "visibility": "public"
@@ -4689,41 +4518,6 @@
             "GET"
           ],
           "path": "/_template/{name}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "DEPRECATED Returns a progress status of current upgrade.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.get_upgrade",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/{index}/_upgrade"
         }
       ],
       "visibility": "public"
@@ -4911,83 +4705,6 @@
             "POST"
           ],
           "path": "/{index}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mapping"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mapping/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mappings"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mappings/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_mappings/{type}"
-        },
-        {
-          "deprecation": {
-            "description": "The plural mappings is accepted but only /_mapping is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/{index}/_mappings"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "PUT",
-            "POST"
-          ],
-          "path": "/_mapping/{type}"
         }
       ],
       "visibility": "public"
@@ -5530,41 +5247,6 @@
             "POST"
           ],
           "path": "/_aliases"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "DEPRECATED Upgrades to the current version of Lucene.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
-      "name": "indices.upgrade",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_upgrade"
-        },
-        {
-          "deprecation": {
-            "description": "The _upgrade API is no longer useful and will be removed. Instead, see _reindex API.",
-            "version": "8.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/_upgrade"
         }
       ],
       "visibility": "public"
@@ -6157,17 +5839,6 @@
             "POST"
           ],
           "path": "/{index}/_mget"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mget"
         }
       ],
       "visibility": "public"
@@ -6685,34 +6356,6 @@
             "POST"
           ],
           "path": "/_ml/data_frame/analytics/{id}/_explain"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-        "application/x-ndjson"
-      ],
-      "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
-      "name": "ml.find_file_structure",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "This endpoint has changed to _text_structure/find_structure, please use that API instead",
-            "version": "7.12.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_ml/find_file_structure"
         }
       ],
       "visibility": "public"
@@ -7298,6 +6941,30 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Get information about trained model deployments.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html",
+      "name": "ml.get_trained_model_deployment_stats",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
@@ -7358,6 +7025,30 @@
             "GET"
           ],
           "path": "/_ml/trained_models/_stats"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Evaluate a trained model.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/infer-trained-model-deployment.html",
+      "name": "ml.infer_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_infer"
         }
       ],
       "visibility": "public"
@@ -7957,6 +7648,30 @@
       "contentType": [
         "application/json"
       ],
+      "description": "Start a trained model deployment.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trained-model-deployment.html",
+      "name": "ml.start_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_start"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
@@ -8005,6 +7720,30 @@
             "POST"
           ],
           "path": "/_ml/datafeeds/{datafeed_id}/_stop"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Stop a trained model deployment.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-trained-model-deployment.html",
+      "name": "ml.stop_trained_model_deployment",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_ml/trained_models/{model_id}/deployment/_stop"
         }
       ],
       "visibility": "public"
@@ -8325,17 +8064,6 @@
             "POST"
           ],
           "path": "/{index}/_msearch"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_msearch"
         }
       ],
       "visibility": "public"
@@ -8375,17 +8103,6 @@
             "POST"
           ],
           "path": "/{index}/_msearch/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_msearch/template"
         }
       ],
       "visibility": "public"
@@ -8425,17 +8142,6 @@
             "POST"
           ],
           "path": "/{index}/_mtermvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_mtermvectors"
         }
       ],
       "visibility": "public"
@@ -8512,66 +8218,6 @@
             "GET"
           ],
           "path": "/_nodes/{node_id}/hot_threads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/{node_id}/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_nodes/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot threads API accepts `hotthreads` but only `hot_threads` is documented",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_nodes/{node_id}/hotthreads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot accepts /_cluster/nodes as prefix for backwards compatibility reasons",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/hot_threads"
-        },
-        {
-          "deprecation": {
-            "description": "The hot accepts /_cluster/nodes as prefix for backwards compatibility reasons",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_cluster/nodes/{node_id}/hot_threads"
         }
       ],
       "visibility": "public"
@@ -9396,17 +9042,31 @@
             "POST"
           ],
           "path": "/{index}/_search"
-        },
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/vnd.mapbox-vector-tile"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
+      "name": "search_mvt",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
         {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
           "methods": [
             "GET",
             "POST"
           ],
-          "path": "/{index}/{type}/_search"
+          "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
         }
       ],
       "visibility": "public"
@@ -9482,17 +9142,6 @@
             "POST"
           ],
           "path": "/{index}/_search/template"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_search/template"
         }
       ],
       "visibility": "public"
@@ -9529,7 +9178,7 @@
         "application/json"
       ],
       "description": "Clear the cache of searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.clear_cache",
       "request": {
         "name": "Request",
@@ -9566,7 +9215,7 @@
         "application/json"
       ],
       "description": "Mount a snapshot as a searchable index.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-api-mount-snapshot.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-api-mount-snapshot.html",
       "name": "searchable_snapshots.mount",
       "request": {
         "name": "Request",
@@ -9593,29 +9242,8 @@
       "accept": [
         "application/json"
       ],
-      "description": "DEPRECATED: This API is replaced by the Repositories Metering API.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
-      "name": "searchable_snapshots.repository_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_snapshot/{repository}/_stats"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Retrieve shard-level statistics about searchable snapshots.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/searchable-snapshots-apis.html",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/searchable-snapshots-apis.html",
       "name": "searchable_snapshots.stats",
       "request": {
         "name": "Request",
@@ -10112,6 +9740,54 @@
             "POST"
           ],
           "path": "/_security/user/{username}/_enable"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Allows a kibana instance to configure itself to communicate with a secured elasticsearch cluster.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-kibana-enrollment.html",
+      "name": "security.enroll_kibana",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/enroll/kibana"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Allows a new node to enroll to an existing cluster with security enabled.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-node-enrollment.html",
+      "name": "security.enroll_node",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_security/enroll/node"
         }
       ],
       "visibility": "public"
@@ -10697,6 +10373,31 @@
             "POST"
           ],
           "path": "/_security/user/{username}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Retrieves information for API keys using a subset of query DSL",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
+      "name": "security.query_api_keys",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_security/_query/api_key"
         }
       ],
       "visibility": "public"
@@ -11332,7 +11033,7 @@
       "accept": [
         "application/json"
       ],
-      "description": "Deletes a snapshot.",
+      "description": "Deletes one or more snapshots.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
       "name": "snapshot.delete",
       "request": {
@@ -11909,28 +11610,6 @@
             "POST"
           ],
           "path": "/{index}/_termvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/{id}/_termvectors"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/{type}/_termvectors"
         }
       ],
       "visibility": "public"
@@ -12070,7 +11749,7 @@
         "name": "Request",
         "namespace": "transform.preview_transform"
       },
-      "requestBodyRequired": true,
+      "requestBodyRequired": false,
       "response": {
         "name": "Response",
         "namespace": "transform.preview_transform"
@@ -12080,6 +11759,14 @@
       "urls": [
         {
           "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_transform/{transform_id}/_preview"
+        },
+        {
+          "methods": [
+            "GET",
             "POST"
           ],
           "path": "/_transform/_preview"
@@ -12273,16 +11960,6 @@
             "POST"
           ],
           "path": "/{index}/_update_by_query"
-        },
-        {
-          "deprecation": {
-            "description": "Specifying types in urls has been deprecated",
-            "version": "7.0.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/{index}/{type}/_update_by_query"
         }
       ],
       "visibility": "public"
@@ -14420,7 +14097,7 @@
           }
         },
         {
-          "description": "Should the effected indexes be refreshed?",
+          "description": "Should the affected indexes be refreshed?",
           "name": "refresh",
           "required": false,
           "type": {
@@ -14528,7 +14205,6 @@
           }
         },
         {
-          "description": "Deprecated, please use `max_docs` instead",
           "name": "size",
           "required": false,
           "type": {
@@ -22236,7 +21912,7 @@
           }
         },
         {
-          "description": "Indicate if the number of documents that match the query should be tracked",
+          "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
           "name": "track_total_hits",
           "required": false,
           "type": {
@@ -29038,7 +28714,6 @@
           }
         },
         {
-          "description": "Deprecated, please use `max_docs` instead",
           "name": "size",
           "required": false,
           "type": {
@@ -69620,7 +69295,6 @@
       ],
       "query": [
         {
-          "description": "The multiplier in which to display values",
           "name": "size",
           "required": false,
           "type": {
@@ -86276,7 +85950,7 @@
           }
         },
         {
-          "description": "Sets the number of active shards to wait for before the operation returns. Set to `index-setting` to wait according to the index setting `index.write.wait_for_active_shards`, or `all` to wait for all shards, or an integer. Defaults to `0`.",
+          "description": "Sets the number of active shards to wait for before the operation returns.",
           "name": "wait_for_active_shards",
           "required": false,
           "type": {
@@ -86450,7 +86124,6 @@
       ],
       "query": [
         {
-          "description": "Whether a type should be expected in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -88670,7 +88343,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -89177,7 +88849,6 @@
           }
         },
         {
-          "description": "Whether to add the type name to the response (default: false)",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -89457,7 +89128,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -90399,7 +90069,6 @@
           }
         },
         {
-          "description": "Whether a type should be expected in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -90792,7 +90461,6 @@
           }
         },
         {
-          "description": "Whether a type should be returned in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -92392,7 +92060,6 @@
           }
         },
         {
-          "description": "Whether a type should be included in the body of the mappings.",
           "name": "include_type_name",
           "required": false,
           "type": {
@@ -94293,7 +93960,7 @@
       ],
       "query": [
         {
-          "description": "A comma-separated list of fields for `fielddata` and `suggest` index metric (supports wildcards)",
+          "description": "A comma-separated list of fields for the `completion` index metric (supports wildcards)",
           "name": "completion_fields",
           "required": false,
           "type": {
@@ -94317,7 +93984,7 @@
           }
         },
         {
-          "description": "A comma-separated list of fields for `fielddata` index metric (supports wildcards)",
+          "description": "A comma-separated list of fields for the `fielddata` index metric (supports wildcards)",
           "name": "fielddata_fields",
           "required": false,
           "type": {
@@ -99742,7 +99409,7 @@
       "path": [],
       "query": [
         {
-          "description": "If the active license is an enterprise license, return type as 'enterprise' (default: false)",
+          "description": "Supported for backwards compatibility with 7.x. If this param is used it must be set to true",
           "name": "accept_enterprise",
           "required": false,
           "type": {
@@ -132667,7 +132334,7 @@
           }
         },
         {
-          "description": "A snapshot name",
+          "description": "A comma-separated list of snapshot names",
           "name": "snapshot",
           "required": true,
           "type": {
