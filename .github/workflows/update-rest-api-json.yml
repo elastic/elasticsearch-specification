@@ -9,8 +9,15 @@ jobs:
   update-rest-api:
     name: Update rest-api-spec
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        branch: ['main', '7.x', '7.14', '7.15']
+
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ matrix.branch }}
 
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
@@ -22,19 +29,15 @@ jobs:
           npm install --prefix .github/download-artifacts
           npm install --prefix compiler
           npm install --prefix typescript-generator
-
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --version 7.x-SNAPSHOT
-
+          node .github/download-artifacts/index.js --branch ${{ matrix.branch }}
       - name: Generate output
         run: |
           SKIP_VERSION_UPDATE=true make contrib
-
       - name: Debug git status
         run: |
           git status --porcelain
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -43,3 +46,12 @@ jobs:
           commit-message: 'Update rest-api-spec'
           delete-branch: true
           team-reviewers: elastic/clients-team
+
+      - name: Open an issue if the action fails
+        if: ${{ failure() }}
+        uses: nashmaniac/create-issue-action@v1.1
+        with:
+          title: rest-api-spec update failed
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: bug
+          body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).
