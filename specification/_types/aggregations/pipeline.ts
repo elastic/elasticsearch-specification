@@ -77,7 +77,7 @@ export class InferenceConfigContainer {
 
 export class RegressionInferenceOptions {
   /** The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value. */
-  results_field: Field
+  results_field?: Field
   /**
    * Specifies the maximum number of feature importance values per document. By default, it is zero and no feature importance calculation occurs.
    * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-feature-importance.html

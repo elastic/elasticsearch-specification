@@ -1184,12 +1184,6 @@
       ],
       "response": []
     },
-    "ml.put_trained_model": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.put_trained_model_alias": {
       "request": [
         "Endpoint has \"@stability: TODO"

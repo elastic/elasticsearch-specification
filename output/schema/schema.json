@@ -7450,7 +7450,7 @@
         "namespace": "ml.put_trained_model"
       },
       "since": "7.10.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -41289,7 +41289,7 @@
         {
           "description": "The field that is added to incoming documents to contain the inference prediction. Defaults to predicted_value.",
           "name": "results_field",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107891,7 +107891,7 @@
         {
           "description": "The free-text description of the trained model.",
           "name": "description",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115249,6 +115249,328 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "AggregateOutput",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "logistic_regression",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "weighted_sum",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "weighted_mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "exponent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Weights",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Definition",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "description": "Collection of preprocessors",
+          "name": "preprocessors",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Preprocessor",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
+        },
+        {
+          "description": "The definition of the trained model.",
+          "name": "trained_model",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModel",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Ensemble",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "aggregate_output",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregateOutput",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "classification_labels",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "feature_names",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "trained_models",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModel",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FrequencyEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "frequency_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Input",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field_names",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OneHotEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "hot_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Preprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "frequency_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FrequencyEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "one_hot_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OneHotEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "name": "target_mean_encoding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TargetMeanEncodingPreprocessor",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -115256,13 +115578,85 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "description": "The compressed (GZipped and Base64 encoded) inference definition of the model. If compressed_definition is specified, then definition cannot be specified.",
+            "name": "compressed_definition",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The inference definition for the model. If definition is specified, then compressed_definition cannot be specified.",
+            "name": "definition",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Definition",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          },
+          {
+            "description": "A human-readable description of the inference trained model.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
+            "name": "inference_config",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceConfigContainer",
+                "namespace": "_types.aggregations"
+              }
+            }
+          },
+          {
+            "description": "The input field names for the model definition.",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Input",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          },
+          {
+            "description": "An object map that contains metadata about the model.",
+            "name": "metadata",
+            "required": false,
+            "type": {
+              "kind": "user_defined_value"
+            }
+          },
+          {
+            "description": "An array of tags to organize the model.",
+            "name": "tags",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
               }
             }
           }
@@ -115281,7 +115675,46 @@
       },
       "path": [
         {
-          "name": "stub",
+          "description": "The unique identifier of the trained model.",
+          "name": "model_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": []
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "TrainedModelConfig",
+            "namespace": "ml._types"
+          }
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.put_trained_model"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TargetMeanEncodingPreprocessor",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "field",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -115290,11 +115723,135 @@
               "namespace": "internal"
             }
           }
-        }
-      ],
-      "query": [
+        },
         {
-          "name": "stub",
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "target_map",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "default_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModel",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "description": "The definition for a binary decision tree.",
+          "name": "tree",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelTree",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "description": "The definition of a node in a tree. There are two major types of nodes: leaf nodes and not-leaf nodes. - Leaf nodes only need node_index and leaf_value defined. - All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
+          "name": "tree_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TrainedModelTreeNode",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        },
+        {
+          "description": "The definition for an ensemble model",
+          "name": "ensemble",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Ensemble",
+              "namespace": "ml.put_trained_model"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelTree",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "classification_labels",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "feature_names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "target_type",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -115303,31 +115860,150 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "tree_structure",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TrainedModelTreeNode",
+                "namespace": "ml.put_trained_model"
+              }
+            }
+          }
         }
       ]
     },
     {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
+      "kind": "interface",
+      "name": {
+        "name": "TrainedModelTreeNode",
+        "namespace": "ml.put_trained_model"
+      },
+      "properties": [
+        {
+          "name": "decision_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
             "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
+              "name": "string",
+              "namespace": "internal"
             }
           }
-        ]
-      },
-      "kind": "response",
+        },
+        {
+          "name": "default_left",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "leaf_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "left_child",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "right_child",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "split_feature",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "split_gain",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "threshold",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
       "name": {
-        "name": "Response",
+        "name": "Weights",
         "namespace": "ml.put_trained_model"
-      }
+      },
+      "properties": [
+        {
+          "name": "weights",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
