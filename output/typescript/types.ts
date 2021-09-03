@@ -1522,6 +1522,35 @@ export interface SearchTotalHits {
 
 export type SearchTotalHitsRelation = 'eq' | 'gte'
 
+export interface SearchMvtRequest extends RequestBase {
+  index: Indices
+  field: Field
+  zoom: integer
+  x: integer
+  y: integer
+  exact_bounds?: boolean
+  extent?: integer
+  grid_precision?: integer
+  grid_type?: SearchMvtGridType
+  size?: integer
+  body?: {
+    aggs?: Record<string, AggregationsAggregationContainer>
+    exact_bounds?: boolean
+    extent?: integer
+    fields?: Fields
+    grid_precision?: integer
+    grid_type?: SearchMvtGridType
+    query?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
+    size?: integer
+    sort?: SearchSort
+  }
+}
+
+export type SearchMvtResponse = any
+
+export type SearchMvtGridType = 'grid' | 'point'
+
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
