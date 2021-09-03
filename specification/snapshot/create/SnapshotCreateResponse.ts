@@ -20,5 +20,9 @@
 import { SnapshotInfo } from '@snapshot/_types/SnapshotInfo'
 
 export class Response {
-  body: { accepted?: boolean; snapshot?: SnapshotInfo }
+  body: {
+    /** @since 7.15.0 */
+    accepted?: boolean
+    snapshot: SnapshotInfo
+  }
 }
