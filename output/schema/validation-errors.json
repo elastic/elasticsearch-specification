@@ -660,12 +660,6 @@
       ],
       "response": []
     },
-    "indices.disk_usage": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.exists": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -693,12 +687,6 @@
     "indices.exists_type": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.field_usage_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1192,12 +1180,6 @@
       ],
       "response": []
     },
-    "ml.put_job": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "ml.put_trained_model": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1275,18 +1257,6 @@
     "mtermvectors": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "nodes.clear_metering_archive": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "nodes.get_metering_info": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
