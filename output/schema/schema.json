@@ -9441,6 +9441,31 @@
     },
     {
       "accept": [
+        "application/vnd.mapbox-vector-tile"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
+      "name": "search_mvt",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
         "application/json"
       ],
       "description": "Returns information about the indices and shards that a search request would be executed against.",
@@ -10725,6 +10750,31 @@
             "POST"
           ],
           "path": "/_security/user/{username}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Retrieves information for API keys using a subset of query DSL",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-query-api-key.html",
+      "name": "security.query_api_keys",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_security/_query/api_key"
         }
       ],
       "visibility": "public"
