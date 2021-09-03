@@ -133241,6 +133241,7 @@
           {
             "name": "accepted",
             "required": false,
+            "since": "7.15.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -133251,7 +133252,7 @@
           },
           {
             "name": "snapshot",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
