@@ -1664,6 +1664,12 @@
       ],
       "response": []
     },
+    "slm.put_lifecycle": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "slm.start": {
       "request": [
         "Endpoint has \"@stability: TODO"

@@ -20,11 +20,15 @@
 import { integer, long } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
 
-export class Schedule {}
+// TODO remove
+// export class Schedule {}
+// export class ScheduleBase {}
 
-export class ScheduleBase {}
-
-export class CronExpression extends ScheduleBase {}
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cron-expressions.html
+ */
+export type CronExpression = string
+//export class CronExpression extends ScheduleBase {}
 
 export class DailySchedule {
   at: string[] | TimeOfDay
@@ -44,7 +48,8 @@ export class HourlySchedule {
   minute: integer[]
 }
 
-export class Interval extends ScheduleBase {
+export class Interval {
+  // extends ScheduleBase {
   factor: long
   unit: IntervalUnit
 }

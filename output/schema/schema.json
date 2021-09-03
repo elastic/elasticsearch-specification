@@ -130683,8 +130683,10 @@
       },
       "properties": [
         {
+          "description": "If false, the snapshot fails if any data stream or index in indices is missing or closed. If true, the snapshot ignores missing or closed data streams and indices.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -130694,17 +130696,7 @@
           }
         },
         {
-          "name": "include_global_state",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
+          "description": "A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported. By default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.",
           "name": "indices",
           "required": true,
           "type": {
@@ -130712,6 +130704,59 @@
             "type": {
               "name": "Indices",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the current global state is included in the snapshot.",
+          "name": "include_global_state",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A list of feature states to be included in this snapshot. A list of features available for inclusion in the snapshot and their descriptions be can be retrieved using the get features API. Each feature state includes one or more system indices containing data necessary for the function of that feature. Providing an empty array will include no feature states in the snapshot, regardless of the value of include_global_state. By default, all available feature states will be included in the snapshot if include_global_state is true, or no feature states if include_global_state is false.",
+          "name": "feature_states",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "Attaches arbitrary metadata to the snapshot, such as a record of who took the snapshot, why it was taken, or any other useful data. Metadata must be less than 1024 bytes.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If false, the entire snapshot will fail if one or more indices included in the snapshot do not have all primary shards available.",
+          "name": "partial",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -130873,6 +130918,7 @@
       },
       "properties": [
         {
+          "description": "Time period after which a snapshot is considered expired and eligible for deletion. SLM deletes expired snapshots based on the slm.retention_schedule.",
           "name": "expire_after",
           "required": true,
           "type": {
@@ -130884,6 +130930,7 @@
           }
         },
         {
+          "description": "Maximum number of snapshots to retain, even if the snapshots have not yet expired. If the number of snapshots in the repository exceeds this limit, the policy retains the most recent snapshots and deletes older snapshots.",
           "name": "max_count",
           "required": true,
           "type": {
@@ -130895,6 +130942,7 @@
           }
         },
         {
+          "description": "Minimum number of snapshots to retain, even if the snapshots have expired.",
           "name": "min_count",
           "required": true,
           "type": {
@@ -131568,6 +131616,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Configuration for each snapshot created by the policy.",
             "name": "config",
             "required": false,
             "type": {
@@ -131579,6 +131628,7 @@
             }
           },
           {
+            "description": "Name automatically assigned to each snapshot created by the policy. Date math is supported. To prevent conflicting snapshot names, a UUID is automatically appended to each snapshot name.",
             "name": "name",
             "required": false,
             "type": {
@@ -131590,6 +131640,7 @@
             }
           },
           {
+            "description": "Repository used to store snapshots created by this policy. This repository must exist prior to the policy’s creation. You can create a repository using the snapshot repository API.",
             "name": "repository",
             "required": false,
             "type": {
@@ -131601,6 +131652,7 @@
             }
           },
           {
+            "description": "Retention rules used to retain and delete snapshots created by the policy.",
             "name": "retention",
             "required": false,
             "type": {
@@ -131612,6 +131664,7 @@
             }
           },
           {
+            "description": "Periodic or absolute schedule at which the policy creates snapshots. SLM applies schedule changes immediately.",
             "name": "schedule",
             "required": false,
             "type": {
@@ -131637,7 +131690,7 @@
       },
       "path": [
         {
-          "description": "The id of the snapshot lifecycle policy",
+          "description": "ID for the snapshot lifecycle policy you want to create or update.",
           "name": "policy_id",
           "required": true,
           "type": {
@@ -131649,7 +131702,34 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -138754,18 +138834,19 @@
       }
     },
     {
-      "inherits": {
-        "type": {
-          "name": "ScheduleBase",
-          "namespace": "watcher._types"
-        }
-      },
-      "kind": "interface",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cron-expressions.html",
+      "kind": "type_alias",
       "name": {
         "name": "CronExpression",
         "namespace": "watcher._types"
       },
-      "properties": []
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "interface",
@@ -140424,14 +140505,6 @@
         "name": "ResponseContentType",
         "namespace": "watcher._types"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ScheduleBase",
-        "namespace": "watcher._types"
-      },
-      "properties": []
     },
     {
       "kind": "interface",
