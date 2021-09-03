@@ -133472,6 +133472,18 @@
           }
         },
         {
+          "name": "repository",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "snapshot",
           "required": true,
           "type": {
@@ -134216,6 +134228,7 @@
           {
             "name": "accepted",
             "required": false,
+            "since": "7.15.0",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -134226,7 +134239,7 @@
           },
           {
             "name": "snapshot",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
