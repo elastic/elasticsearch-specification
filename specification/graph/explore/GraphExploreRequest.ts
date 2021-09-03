@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, Routing, Types } from '@_types/common'
+import { Indices, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
 import { ExploreControls } from '../_types/ExploreControls'
@@ -33,7 +33,6 @@ import { VertexDefinition } from '@graph/_types/Vertex'
 export interface Request extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: Types
   }
   query_parameters?: {
     routing?: Routing

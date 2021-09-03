@@ -23,7 +23,6 @@ import {
   Id,
   IndexName,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -37,7 +36,6 @@ import { Operation } from './types'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: Type
   }
   query_parameters?: {
     fields?: Fields

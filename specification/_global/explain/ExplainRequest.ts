@@ -18,14 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  DefaultOperator,
-  Fields,
-  Id,
-  IndexName,
-  Routing,
-  Type
-} from '@_types/common'
+import { DefaultOperator, Fields, Id, IndexName, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
@@ -37,7 +30,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters?: {
     analyzer?: string

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, SearchType, Types } from '@_types/common'
+import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Body, Header } from './types'
 
@@ -33,7 +33,6 @@ export interface Request extends RequestBase {
      * Comma-separated list of data streams, indices, and index aliases to search.
      */
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     /**
