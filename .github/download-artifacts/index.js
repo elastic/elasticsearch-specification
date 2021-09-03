@@ -40,8 +40,8 @@ const downloadedSpec = join(esFolder, 'rest-api-spec', 'api')
 const specFolder = join(__dirname, '..', '..', 'specification', '_json_spec')
 
 async function downloadArtifacts (opts) {
-  if (typeof opts.version !== 'string') {
-    throw new Error('Missing version')
+  if (typeof opts.version !== 'string' && typeof opts.branch !== 'string') {
+    throw new Error('Missing version or branch')
   }
 
   core.info('Checking out spec and test')
@@ -49,13 +49,14 @@ async function downloadArtifacts (opts) {
   core.info('Resolving versions')
   let resolved
   try {
-    resolved = await resolve(opts.version, opts.hash)
+    resolved = await resolve(opts.version || fromBranch(opts.branch), opts.hash)
   } catch (err) {
     core.error(err.message)
     process.exit(1)
   }
 
   opts.version = resolved.version
+  core.info(`Resolved version ${opts.version}`)
 
   core.info('Cleanup')
   await rm(esFolder)
@@ -136,12 +137,24 @@ async function resolve (version, hash) {
   }
 }
 
+function fromBranch (branch) {
+  if (branch === 'main') {
+    return '8.0.0-SNAPSHOT'
+  } else if (branch === '7.x') {
+    return '7.x-SNAPSHOT'
+  } else if (branch.startsWith('7.') && !isNaN(Number(branch.split('.')[1]))) {
+    return `${branch}-SNAPSHOT`
+  } else {
+    throw new Error(`Cannot derive version from branch '${branch}'`)
+  }
+}
+
 async function main (options) {
   await downloadArtifacts(options)
 }
 
 const options = minimist(process.argv.slice(2), {
-  string: ['id', 'version', 'hash']
+  string: ['id', 'version', 'hash', 'branch']
 })
 main(options).catch(t => {
   core.error(t)
