@@ -402,6 +402,12 @@
       ],
       "response": []
     },
+    "delete_by_query": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "delete_by_query_rethrottle": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -529,6 +535,12 @@
       ],
       "response": []
     },
+    "graph.explore": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "ilm.delete_lifecycle": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -584,6 +596,13 @@
         "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "index": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -703,7 +722,7 @@
     },
     "indices.flush_synced": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -769,20 +788,9 @@
     },
     "indices.get_upgrade": {
       "request": [
-        "Request: missing json spec query parameter 'ignore_unavailable'",
-        "Request: missing json spec query parameter 'allow_no_indices'",
-        "Request: missing json spec query parameter 'expand_wildcards'",
-        "Request: should not have a body"
+        "Missing request & response"
       ],
-      "response": [
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
-      ]
+      "response": []
     },
     "indices.migrate_to_data_stream": {
       "request": [
@@ -803,6 +811,12 @@
       "response": []
     },
     "indices.put_index_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.put_mapping": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -866,7 +880,14 @@
       "request": [
         "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: missing json spec query parameter 'master_timeout'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
       ],
       "response": []
     },
@@ -896,7 +917,7 @@
     },
     "indices.upgrade": {
       "request": [
-        "Request: should not have a body"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -981,6 +1002,13 @@
     "logstash.get_pipeline": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "mget": {
+      "request": [
+        "Request: missing json spec path parameter 'type'",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": []
     },
@@ -1070,7 +1098,7 @@
     },
     "ml.find_file_structure": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1244,10 +1272,12 @@
     },
     "msearch": {
       "request": [
+        "Request: missing json spec path parameter 'type'",
         "Request: query parameter 'allow_no_indices' does not exist in the json spec",
         "Request: query parameter 'expand_wildcards' does not exist in the json spec",
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
-        "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Url path property 'type' is missing in request definition"
       ],
       "response": [
         "type_alias definition _types.aggregations:Aggregate / union_of / instance_of - Non-leaf type cannot be used here: '_types.aggregations:MultiBucketAggregate'",
@@ -1761,6 +1791,12 @@
       "response": []
     },
     "tasks.list": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "termvectors": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],

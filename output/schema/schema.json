@@ -4267,17 +4267,10 @@
       "description": "Performs a synced flush operation on one or more indices. Synced flush is deprecated and will be removed in 8.0. Use flush instead",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush-api.html",
       "name": "indices.flush_synced",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.flush_synced"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.flush_synced"
-      },
-      "since": "0.0.0",
-      "stability": "TODO",
+      "response": null,
+      "stability": "stable",
       "urls": [
         {
           "deprecation": {
@@ -4707,16 +4700,9 @@
       "description": "DEPRECATED Returns a progress status of current upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.get_upgrade",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.get_upgrade"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.get_upgrade"
-      },
-      "since": "0.0.0",
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -5555,16 +5541,9 @@
       "description": "DEPRECATED Upgrades to the current version of Lucene.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
       "name": "indices.upgrade",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.upgrade"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.upgrade"
-      },
-      "since": "7.13.0",
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -6720,17 +6699,10 @@
       "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
       "name": "ml.find_file_structure",
-      "request": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
+      "request": null,
       "requestBodyRequired": true,
-      "response": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
-      },
-      "since": "5.4.0",
-      "stability": "TODO",
+      "response": null,
+      "stability": "experimental",
       "urls": [
         {
           "deprecation": {
@@ -13671,18 +13643,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of types to restrict the results",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -14309,18 +14269,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -15094,18 +15042,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -15584,18 +15520,6 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -16325,18 +16249,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document (use `_all` to fetch the first document matching the ID across all types)",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -17061,18 +16973,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -17660,18 +17560,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "The type of the document",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -18131,18 +18019,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to use as default",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -18429,18 +18305,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to use as default",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -18830,18 +18694,6 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document.",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -22014,18 +21866,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -27446,18 +27286,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -28088,18 +27916,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The type of the document.",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -28964,18 +28780,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
               "namespace": "_types"
             }
           }
@@ -82315,18 +82119,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types to search; leave empty to perform the operation on all types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -87961,122 +87753,6 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "indices.flush_synced"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string for all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "_shards",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ShardStatistics",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ShardStatistics",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "type": {
-          "name": "DictionaryResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.flush_synced"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
         "namespace": "indices.forcemerge"
       },
       "path": [
@@ -88942,18 +88618,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -89473,18 +89137,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "description": "A comma-separated list of document types",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Types",
-              "namespace": "_types"
-            }
-          }
         }
       ],
       "query": [
@@ -89873,79 +89525,6 @@
       "name": {
         "name": "Response",
         "namespace": "indices.get_template"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.get_upgrade"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "Any templates that were superseded by the specified template.",
-            "name": "overlapping",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "OverlappingIndexTemplate",
-                  "namespace": "indices._types"
-                }
-              }
-            }
-          },
-          {
-            "description": "The settings, mappings, and aliases that would be applied to matching indices.",
-            "name": "template",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TemplateMapping",
-                "namespace": "indices._types"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.get_upgrade"
       }
     },
     {
@@ -90777,18 +90356,6 @@
             "kind": "instance_of",
             "type": {
               "name": "Indices",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The name of the document type",
-          "name": "type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Type",
               "namespace": "_types"
             }
           }
@@ -95871,118 +95438,6 @@
       "name": {
         "name": "Response",
         "namespace": "indices.update_aliases"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.upgrade"
-      },
-      "path": [
-        {
-          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specify whether the request should block until the all segments are upgraded (default: false)",
-          "name": "wait_for_completion",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "If true, only ancient (an older Lucene major release) segments will be upgraded",
-          "name": "only_ancient_segments",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": []
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.upgrade"
       }
     },
     {
@@ -110727,62 +110182,6 @@
       "name": {
         "name": "Response",
         "namespace": "ml.explain_data_frame_analytics"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
-      "path": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
       }
     },
     {

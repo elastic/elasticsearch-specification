@@ -126,7 +126,6 @@ export interface ClosePointInTimeResponse {
 
 export interface CountRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -188,7 +187,6 @@ export interface DeleteResponse extends WriteResponseBase {
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -266,7 +264,6 @@ export interface DeleteScriptResponse extends AcknowledgedResponseBase {
 export interface ExistsRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -313,7 +310,6 @@ export interface ExplainExplanationDetail {
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: DefaultOperator
@@ -396,7 +392,6 @@ export interface FieldCapsResponse {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -477,7 +472,6 @@ export type GetSourceResponse<TDocument = unknown> = TDocument
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
-  type?: Type
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   op_type?: OpType
@@ -535,7 +529,6 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -578,7 +571,6 @@ export interface MsearchHeader {
 
 export interface MsearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -604,7 +596,6 @@ export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
@@ -643,7 +634,6 @@ export interface MtermvectorsOperation {
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -954,7 +944,6 @@ export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDoc
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -1539,7 +1528,6 @@ export interface SearchShardsShardStoreIndex {
 
 export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -1605,7 +1593,6 @@ export interface TermvectorsFilter {
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -1687,7 +1674,6 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -8017,7 +8003,6 @@ export interface GraphVertexInclude {
 
 export interface GraphExploreRequest extends RequestBase {
   index: Indices
-  type?: Types
   routing?: Routing
   timeout?: Time
   body?: {
@@ -8690,17 +8675,6 @@ export interface IndicesFlushRequest extends RequestBase {
 export interface IndicesFlushResponse extends ShardsOperationResponseBase {
 }
 
-export interface IndicesFlushSyncedRequest extends RequestBase {
-  index?: Indices
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-}
-
-export interface IndicesFlushSyncedResponse extends DictionaryResponseBase<IndexName, ShardStatistics> {
-  _shards: ShardStatistics
-}
-
 export interface IndicesForcemergeRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -8793,7 +8767,6 @@ export interface IndicesGetDataStreamResponse {
 export interface IndicesGetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8852,7 +8825,6 @@ export interface IndicesGetMappingIndexMappingRecord {
 
 export interface IndicesGetMappingRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8888,15 +8860,6 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {
-}
-
-export interface IndicesGetUpgradeRequest extends RequestBase {
-  index?: IndexName
-}
-
-export interface IndicesGetUpgradeResponse {
-  overlapping?: IndicesOverlappingIndexTemplate[]
-  template?: IndicesTemplateMapping
 }
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
@@ -8969,7 +8932,6 @@ export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBas
 
 export interface IndicesPutMappingRequest extends RequestBase {
   index: Indices
-  type?: Type
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -9543,18 +9505,6 @@ export interface IndicesUpdateAliasesRequest extends RequestBase {
 }
 
 export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
-}
-
-export interface IndicesUpgradeRequest extends RequestBase {
-  index?: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  wait_for_completion?: boolean
-  only_ancient_segments?: boolean
-}
-
-export interface IndicesUpgradeResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
@@ -11223,14 +11173,6 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
 export interface MlExplainDataFrameAnalyticsResponse {
   field_selection: MlDataframeAnalyticsFieldSelection[]
   memory_estimation: MlDataframeAnalyticsMemoryEstimation
-}
-
-export interface MlFindFileStructureRequest extends RequestBase {
-  stub: string
-}
-
-export interface MlFindFileStructureResponse {
-  stub: string
 }
 
 export interface MlFlushJobRequest extends RequestBase {
