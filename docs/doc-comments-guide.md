@@ -1,6 +1,6 @@
 # Documenting the API specification
 
-A specification is not only about formalizing data structures, it's also about explaining what these structures and their properties mean are used for.
+A specification is not only about formalizing data structures, it's also about explaining what these structures and their properties are used for.
 
 Documentation of the TypeScript specification is made using [JSDoc](https://jsdoc.app/) comments, i.e. multiline comments starting with `/**` above a type or field declaration.
 
