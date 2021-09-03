@@ -43,7 +43,7 @@ export type NodeId = string
 export type NodeIds = NodeId | NodeId[]
 
 export type IndexName = string
-export type Indices = string | string[]
+export type Indices = IndexName | IndexName[]
 export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
@@ -58,7 +58,7 @@ export type IndexMetrics = string
 export type Metrics = string | string[]
 
 export type Name = string
-export type Names = string | string[]
+export type Names = Name | Name[]
 
 export type Namespace = string
 export type Service = string

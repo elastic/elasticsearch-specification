@@ -1991,7 +1991,7 @@ export interface IndexingStats {
   types?: Record<string, IndexingStats>
 }
 
-export type Indices = string | string[]
+export type Indices = IndexName | IndexName[]
 
 export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
@@ -2054,7 +2054,7 @@ export type MultiTermQueryRewrite = string
 
 export type Name = string
 
-export type Names = string | string[]
+export type Names = Name | Name[]
 
 export type Namespace = string
 
