@@ -28,6 +28,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { long } from '@_types/Numeric'
 
 export class Operation {
@@ -47,10 +48,11 @@ export class Operation {
 }
 
 export class TermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Dictionary<Field, TermVector>
-  took: long
-  version: VersionNumber
+  _id: Id
+  _index: IndexName
+  _version?: VersionNumber
+  took?: long
+  found?: boolean
+  term_vectors?: Dictionary<Field, TermVector>
+  error?: ErrorCause
 }

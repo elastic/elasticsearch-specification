@@ -656,12 +656,13 @@ export interface MtermvectorsResponse {
 }
 
 export interface MtermvectorsTermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Record<Field, TermvectorsTermVector>
-  took: long
-  version: VersionNumber
+  _id: Id
+  _index: IndexName
+  _version?: VersionNumber
+  took?: long
+  found?: boolean
+  term_vectors?: Record<Field, TermvectorsTermVector>
+  error?: ErrorCause
 }
 
 export interface OpenPointInTimeRequest extends RequestBase {

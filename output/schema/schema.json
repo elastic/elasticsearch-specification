@@ -18551,18 +18551,7 @@
       },
       "properties": [
         {
-          "name": "found",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
+          "name": "_id",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18573,7 +18562,7 @@
           }
         },
         {
-          "name": "index",
+          "name": "_index",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18584,8 +18573,41 @@
           }
         },
         {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "term_vectors",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -18606,23 +18628,12 @@
           }
         },
         {
-          "name": "took",
-          "required": true,
+          "name": "error",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
+              "name": "ErrorCause",
               "namespace": "_types"
             }
           }
