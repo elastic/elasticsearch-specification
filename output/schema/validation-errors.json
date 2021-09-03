@@ -1396,12 +1396,6 @@
       ],
       "response": []
     },
-    "search_mvt": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "search_shards": {
       "request": [
         "Endpoint has \"@stability: TODO"

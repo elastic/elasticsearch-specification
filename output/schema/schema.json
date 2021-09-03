@@ -9056,31 +9056,6 @@
       "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
       "name": "search_mvt",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "experimental",
-      "urls": [
-        {
-          "methods": [
-            "GET",
-            "POST"
-          ],
-          "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/vnd.mapbox-vector-tile"
-      ],
-      "contentType": [
-        "application/json"
-      ],
-      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html",
-      "name": "search_mvt",
       "request": {
         "name": "Request",
         "namespace": "_global.search_mvt"
@@ -26996,8 +26971,10 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": []
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "kind": "response",
       "name": {

@@ -1530,8 +1530,7 @@ export interface SearchMvtRequest extends RequestBase {
   }
 }
 
-export interface SearchMvtResponse {
-}
+export type SearchMvtResponse = any
 
 export type SearchMvtGridType = 'grid' | 'point'
 
