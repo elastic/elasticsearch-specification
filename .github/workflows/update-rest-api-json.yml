@@ -41,9 +41,10 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          title: 'Update rest-api-spec'
+          title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
+          labels: specification
           delete-branch: true
           team-reviewers: elastic/clients-team
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
