@@ -50,6 +50,7 @@ jobs:
           commit-message: 'Update rest-api-spec'
           delete-branch: true
           team-reviewers: elastic/clients-team
+          branch: automated/rest-api-spec-update-${{ matrix.branch }}
 
       - name: Open an issue if the action fails
         if: ${{ failure() }}
