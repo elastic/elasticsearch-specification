@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, PropertyName, Type } from '@_types/common'
+import { ExpandWildcards, Indices, PropertyName } from '@_types/common'
 import {
   DynamicMapping,
   DynamicTemplate
@@ -45,7 +45,6 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts?: {
     index: Indices
-    type?: Type
   }
   query_parameters?: {
     allow_no_indices?: boolean

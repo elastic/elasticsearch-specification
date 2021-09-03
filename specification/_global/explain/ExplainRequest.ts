@@ -23,8 +23,7 @@ import {
   Fields,
   Id,
   IndexName,
-  Routing,
-  Type
+  Routing
 } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 
@@ -37,7 +36,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     id: Id
     index: IndexName
-    type?: Type
   }
   query_parameters?: {
     analyzer?: string

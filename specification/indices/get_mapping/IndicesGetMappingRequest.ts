@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Types } from '@_types/common'
+import { ExpandWildcards, Indices } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -29,7 +29,6 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean
