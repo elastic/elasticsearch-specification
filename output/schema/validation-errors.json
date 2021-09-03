@@ -1388,6 +1388,12 @@
       ],
       "response": []
     },
+    "search_mvt": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "search_shards": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1565,6 +1571,12 @@
     "security.grant_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
