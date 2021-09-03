@@ -32,5 +32,4 @@ export interface Request extends CatRequestBase {
   query_parameters?: {
     expand_wildcards?: ExpandWildcards
   }
-  body?: {}
 }

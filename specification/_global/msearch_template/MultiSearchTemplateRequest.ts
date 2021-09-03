@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, SearchType, Types } from '@_types/common'
+import { Indices, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { TemplateItem } from './types'
 
@@ -31,7 +31,6 @@ import { TemplateItem } from './types'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     ccs_minimize_roundtrips?: boolean

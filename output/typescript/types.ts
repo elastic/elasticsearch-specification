@@ -36,12 +36,12 @@ export interface BulkIndexResponseItem extends BulkResponseItemBase {
 }
 
 export interface BulkOperation {
-  _id: Id
-  _index: IndexName
-  retry_on_conflict: integer
-  routing: Routing
-  version: VersionNumber
-  version_type: VersionType
+  _id?: Id
+  _index?: IndexName
+  retry_on_conflict?: integer
+  routing?: Routing
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 export interface BulkOperationContainer {
@@ -126,7 +126,6 @@ export interface ClosePointInTimeResponse {
 
 export interface CountRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -188,7 +187,6 @@ export interface DeleteResponse extends WriteResponseBase {
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -266,7 +264,6 @@ export interface DeleteScriptResponse extends AcknowledgedResponseBase {
 export interface ExistsRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -313,7 +310,6 @@ export interface ExplainExplanationDetail {
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: DefaultOperator
@@ -396,7 +392,6 @@ export interface FieldCapsResponse {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -477,7 +472,6 @@ export type GetSourceResponse<TDocument = unknown> = TDocument
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
-  type?: Type
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   op_type?: OpType
@@ -535,7 +529,6 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -578,7 +571,6 @@ export interface MsearchHeader {
 
 export interface MsearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -604,7 +596,6 @@ export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   ccs_minimize_roundtrips?: boolean
   max_concurrent_searches?: long
   search_type?: SearchType
@@ -643,7 +634,6 @@ export interface MtermvectorsOperation {
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -954,7 +944,6 @@ export interface ScrollResponse<TDocument = unknown> extends SearchResponse<TDoc
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -1539,7 +1528,6 @@ export interface SearchShardsShardStoreIndex {
 
 export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -1605,7 +1593,6 @@ export interface TermvectorsFilter {
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
-  type?: Type
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -1687,7 +1674,6 @@ export interface UpdateResponse<TDocument = unknown> extends WriteResponseBase {
 
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
-  type?: Types
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -2083,7 +2069,7 @@ export interface NodeAttributes {
 
 export type NodeId = string
 
-export type NodeIds = string
+export type NodeIds = NodeId | NodeId[]
 
 export type NodeName = string
 
@@ -4930,7 +4916,7 @@ export interface AutoscalingAutoscalingPolicy {
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export interface AutoscalingDeleteAutoscalingPolicyResponse extends AcknowledgedResponseBase {
@@ -4971,13 +4957,13 @@ export interface AutoscalingGetAutoscalingCapacityResponse {
 }
 
 export interface AutoscalingGetAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
 }
 
 export type AutoscalingGetAutoscalingPolicyResponse = AutoscalingAutoscalingPolicy
 
 export interface AutoscalingPutAutoscalingPolicyRequest extends RequestBase {
-  name: string
+  name: Name
   body?: AutoscalingAutoscalingPolicy
 }
 
@@ -7376,19 +7362,30 @@ export interface ClusterPutSettingsResponse {
   transient: Record<string, any>
 }
 
-export interface ClusterRemoteInfoClusterRemoteInfo {
+export type ClusterRemoteInfoClusterRemoteInfo = ClusterRemoteInfoClusterRemoteSniffInfo | ClusterRemoteInfoClusterRemoteProxyInfo
+
+export interface ClusterRemoteInfoClusterRemoteProxyInfo {
+  mode: 'proxy'
   connected: boolean
   initial_connect_timeout: Time
+  skip_unavailable: boolean
+  proxy_address: string
+  server_name: string
+  num_proxy_sockets_connected: integer
+  max_proxy_socket_connections: integer
+}
+
+export interface ClusterRemoteInfoClusterRemoteSniffInfo {
+  mode: 'sniff'
+  connected: boolean
   max_connections_per_cluster: integer
   num_nodes_connected: long
-  seeds: string[]
+  initial_connect_timeout: Time
   skip_unavailable: boolean
+  seeds: string[]
 }
 
 export interface ClusterRemoteInfoRequest extends RequestBase {
-  body?: {
-    stub: string
-  }
 }
 
 export interface ClusterRemoteInfoResponse extends DictionaryResponseBase<string, ClusterRemoteInfoClusterRemoteInfo> {
@@ -7735,7 +7732,7 @@ export interface ClusterStatsRuntimeFieldTypes {
 }
 
 export interface DanglingIndicesDeleteDanglingIndexRequest extends RequestBase {
-  index_uuid: string
+  index_uuid: Uuid
   accept_data_loss: boolean
   master_timeout?: Time
   timeout?: Time
@@ -7745,7 +7742,7 @@ export interface DanglingIndicesDeleteDanglingIndexResponse extends Acknowledged
 }
 
 export interface DanglingIndicesImportDanglingIndexRequest extends RequestBase {
-  index_uuid: string
+  index_uuid: Uuid
   accept_data_loss: boolean
   master_timeout?: Time
   timeout?: Time
@@ -8006,7 +8003,6 @@ export interface GraphVertexInclude {
 
 export interface GraphExploreRequest extends RequestBase {
   index: Indices
-  type?: Types
   routing?: Routing
   timeout?: Time
   body?: {
@@ -8679,17 +8675,6 @@ export interface IndicesFlushRequest extends RequestBase {
 export interface IndicesFlushResponse extends ShardsOperationResponseBase {
 }
 
-export interface IndicesFlushSyncedRequest extends RequestBase {
-  index?: Indices
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-}
-
-export interface IndicesFlushSyncedResponse extends DictionaryResponseBase<IndexName, ShardStatistics> {
-  _shards: ShardStatistics
-}
-
 export interface IndicesForcemergeRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -8782,7 +8767,6 @@ export interface IndicesGetDataStreamResponse {
 export interface IndicesGetFieldMappingRequest extends RequestBase {
   fields: Fields
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8841,7 +8825,6 @@ export interface IndicesGetMappingIndexMappingRecord {
 
 export interface IndicesGetMappingRequest extends RequestBase {
   index?: Indices
-  type?: Types
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -8877,15 +8860,6 @@ export interface IndicesGetTemplateRequest extends RequestBase {
 }
 
 export interface IndicesGetTemplateResponse extends DictionaryResponseBase<string, IndicesTemplateMapping> {
-}
-
-export interface IndicesGetUpgradeRequest extends RequestBase {
-  stub: string
-}
-
-export interface IndicesGetUpgradeResponse {
-  overlapping?: IndicesOverlappingIndexTemplate[]
-  template?: IndicesTemplateMapping
 }
 
 export interface IndicesMigrateToDataStreamRequest extends RequestBase {
@@ -8958,7 +8932,6 @@ export interface IndicesPutIndexTemplateResponse extends AcknowledgedResponseBas
 
 export interface IndicesPutMappingRequest extends RequestBase {
   index: Indices
-  type?: Type
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -9320,7 +9293,7 @@ export interface IndicesShrinkResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
-  name?: Name
+  name: Name
   body?: {
     index_patterns?: IndexName[]
     composed_of?: Name[]
@@ -9332,6 +9305,11 @@ export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
 export interface IndicesSimulateIndexTemplateResponse {
 }
 
+export interface IndicesSimulateTemplateOverlapping {
+  name: Name
+  index_patterns: string[]
+}
+
 export interface IndicesSimulateTemplateRequest extends RequestBase {
   name?: Name
   create?: boolean
@@ -9340,7 +9318,14 @@ export interface IndicesSimulateTemplateRequest extends RequestBase {
 }
 
 export interface IndicesSimulateTemplateResponse {
-  stub: string
+  template: IndicesSimulateTemplateTemplate
+}
+
+export interface IndicesSimulateTemplateTemplate {
+  aliases: Record<IndexName, IndicesAlias>
+  mappings: MappingTypeMapping
+  settings: Record<string, any>
+  overlapping: IndicesSimulateTemplateOverlapping[]
 }
 
 export interface IndicesSplitRequest extends RequestBase {
@@ -9520,18 +9505,6 @@ export interface IndicesUpdateAliasesRequest extends RequestBase {
 }
 
 export interface IndicesUpdateAliasesResponse extends AcknowledgedResponseBase {
-}
-
-export interface IndicesUpgradeRequest extends RequestBase {
-  stub_b: integer
-  stub_a: integer
-  body?: {
-    stub_c: integer
-  }
-}
-
-export interface IndicesUpgradeResponse {
-  stub: integer
 }
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
@@ -11865,7 +11838,7 @@ export interface MlPutTrainedModelWeights {
 }
 
 export interface MlPutTrainedModelAliasRequest extends RequestBase {
-  model_alias: string
+  model_alias: Name
   model_id: Id
   reassign?: boolean
 }
@@ -12061,16 +12034,19 @@ export interface MlValidateDetectorRequest extends RequestBase {
 export interface MlValidateDetectorResponse extends AcknowledgedResponseBase {
 }
 
-export interface MonitoringBulkRequest extends RequestBase {
-  stub_a: string
-  stub_b: string
-  body?: {
-    stub_c: string
-  }
+export interface MonitoringBulkRequest<TSource = unknown> extends RequestBase {
+  type?: string
+  system_id: string
+  system_api_version: string
+  interval: TimeSpan
+  body?: (BulkOperationContainer | TSource)[]
 }
 
 export interface MonitoringBulkResponse {
-  stub: integer
+  error?: ErrorCause
+  errors: boolean
+  ignored: boolean
+  took: long
 }
 
 export interface NodesAdaptiveSelection {
@@ -12827,16 +12803,12 @@ export interface RollupPutJobResponse extends AcknowledgedResponseBase {
 }
 
 export interface RollupRollupRequest extends RequestBase {
-  stubb: integer
-  stuba: integer
-  body?: {
-    stub: integer
-  }
+  index: IndexName
+  rollup_index: IndexName
+  body?: any
 }
 
-export interface RollupRollupResponse {
-  stub: integer
-}
+export type RollupRollupResponse = any
 
 export interface RollupRollupSearchRequest extends RequestBase {
   index: Indices
@@ -13571,7 +13543,7 @@ export interface ShutdownGetNodePluginsStatus {
 }
 
 export interface ShutdownGetNodeRequest extends RequestBase {
-  node_id: NodeId[]
+  node_id: NodeIds
 }
 
 export interface ShutdownGetNodeResponse {
@@ -13942,6 +13914,8 @@ export interface SnapshotGetRequest extends RequestBase {
 export interface SnapshotGetResponse {
   responses?: SnapshotGetSnapshotResponseItem[]
   snapshots?: SnapshotSnapshotInfo[]
+  total: integer
+  remaining: integer
 }
 
 export interface SnapshotGetSnapshotResponseItem {

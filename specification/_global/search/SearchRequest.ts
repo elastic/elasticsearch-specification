@@ -30,7 +30,6 @@ import {
   Routing,
   SearchType,
   SuggestMode,
-  Types,
   VersionString
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -55,7 +54,6 @@ import { SuggestContainer } from './_types/suggester'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean

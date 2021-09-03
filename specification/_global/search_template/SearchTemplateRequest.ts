@@ -25,8 +25,7 @@ import {
   Id,
   Indices,
   Routing,
-  SearchType,
-  Types
+  SearchType
 } from '@_types/common'
 import { Time } from '@_types/Time'
 
@@ -38,7 +37,6 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: Indices
-    type?: Types // deprecated: 7.0
   }
   query_parameters?: {
     /** @server_default true */

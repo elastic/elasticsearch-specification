@@ -33,5 +33,4 @@ export interface Request extends RequestBase {
     active_only?: boolean
     detailed?: boolean
   }
-  body?: {}
 }

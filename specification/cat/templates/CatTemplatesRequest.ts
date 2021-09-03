@@ -29,6 +29,4 @@ export interface Request extends CatRequestBase {
   path_parts?: {
     name?: Name
   }
-  query_parameters?: {}
-  body?: {}
 }

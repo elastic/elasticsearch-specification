@@ -32,5 +32,4 @@ export interface Request extends CatRequestBase {
   query_parameters?: {
     allow_no_datafeeds?: boolean
   }
-  body?: {}
 }

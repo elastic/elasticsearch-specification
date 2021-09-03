@@ -180,8 +180,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     )
   }
 
-  let bodyWasSet = false
-
   // Request and Response definitions needs to be handled
   // differently from normal classes
   if (name === 'Request' || name === 'Response') {
@@ -240,15 +238,16 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
             )
           }
+          assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
+          assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
           type.query = property.properties
         } else if (property.name === 'body') {
-          bodyWasSet = true
           // the body can either be a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-              type.body = { kind: 'no_body' }
+              assert(member, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
             } else {
               type.body = { kind: 'value', value: property.valueOf }
               const openGenerics = declaration.getTypeParameters().map(modelGenerics)
@@ -268,7 +267,8 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
                 type.body.identifier = tags.identifier
               }
             }
-          } else if (property.properties.length > 0) {
+          } else if (Array.isArray(property.properties)) {
+            assert(member, property.properties.length > 0, 'There is no need to declare an empty object body, just remove the body declaration.')
             type.body = { kind: 'properties', properties: property.properties }
           }
         } else {
@@ -291,7 +291,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
         const property = visitRequestOrResponseProperty(member)
         if (property.name === 'body') {
-          bodyWasSet = true
           // the body can either by a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
@@ -341,10 +340,15 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
     }
 
     // If the body wasn't set and we have a parent class, then it's a property body with no additional properties
-    if (!bodyWasSet && type.inherits != null) {
+    if (type.body.kind === 'no_body' && type.inherits != null) {
       const parent = type.inherits.type
       // RequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
-      if (!(parent.name === 'RequestBase' && parent.namespace === '_types')) {
+      if (parent.name === 'RequestBase' && parent.namespace === '_types') {
+        // nothing to do
+      // CatRequestBase is special as it's a "marker" base class that doesn't imply a property body type. We should get rid of it.
+      } else if (parent.name === 'CatRequestBase' && parent.namespace === 'cat._types') {
+        // nothing to do
+      } else {
         type.body = { kind: 'properties', properties: new Array<model.Property>() }
       }
     }

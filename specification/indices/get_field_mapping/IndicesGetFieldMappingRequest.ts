@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Fields, Indices, Types } from '@_types/common'
+import { ExpandWildcards, Fields, Indices } from '@_types/common'
 
 /**
  * @rest_spec_name indices.get_field_mapping
@@ -29,7 +29,6 @@ export interface Request extends RequestBase {
   path_parts?: {
     fields: Fields
     index?: Indices
-    type?: Types
   }
   query_parameters?: {
     allow_no_indices?: boolean
@@ -39,5 +38,4 @@ export interface Request extends RequestBase {
     include_type_name?: boolean
     local?: boolean
   }
-  body?: {}
 }

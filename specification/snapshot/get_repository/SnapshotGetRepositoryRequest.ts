@@ -34,5 +34,4 @@ export interface Request extends RequestBase {
     local?: boolean
     master_timeout?: Time
   }
-  body?: {}
 }

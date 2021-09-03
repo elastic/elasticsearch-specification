@@ -23,7 +23,6 @@ import {
   Id,
   IndexName,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -39,7 +38,6 @@ export interface Request extends RequestBase {
     id: Id
     /** Name of the index that contains the document. */
     index: IndexName
-    type?: Type
   }
   query_parameters?: {
     /**

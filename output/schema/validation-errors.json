@@ -302,7 +302,7 @@
     },
     "cluster.remote_info": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -397,6 +397,12 @@
       "response": []
     },
     "delete": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "delete_by_query": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -611,6 +617,12 @@
       ],
       "response": []
     },
+    "indices.create": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.create_data_stream": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -701,12 +713,6 @@
       ],
       "response": []
     },
-    "indices.flush_synced": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.forcemerge": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -767,12 +773,6 @@
       ],
       "response": []
     },
-    "indices.get_upgrade": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.migrate_to_data_stream": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -792,6 +792,12 @@
       "response": []
     },
     "indices.put_index_template": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "indices.put_mapping": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -833,6 +839,12 @@
       ],
       "response": []
     },
+    "indices.rollover": {
+      "request": [
+        "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
     "indices.segments": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -845,27 +857,24 @@
       ],
       "response": []
     },
-    "indices.shrink": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "indices.simulate_index_template": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'create'",
+        "Request: missing json spec query parameter 'cause'",
+        "Request: missing json spec query parameter 'master_timeout'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
       ],
       "response": []
     },
     "indices.simulate_template": {
       "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.split": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -876,12 +885,6 @@
       "response": []
     },
     "indices.unfreeze": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "indices.upgrade": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -1055,12 +1058,15 @@
       ],
       "response": []
     },
+<<<<<<< HEAD
     "ml.find_file_structure": {
       "request": [
         "Missing request & response"
       ],
       "response": []
     },
+=======
+>>>>>>> main
     "ml.flush_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1139,6 +1145,12 @@
       ],
       "response": []
     },
+    "ml.get_trained_model_deployment_stats": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.get_trained_models": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1148,6 +1160,12 @@
     "ml.get_trained_models_stats": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.infer_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1205,9 +1223,21 @@
       ],
       "response": []
     },
+    "ml.start_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.stop_datafeed": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "ml.stop_trained_model_deployment": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1218,12 +1248,6 @@
       "response": []
     },
     "ml.upgrade_job_snapshot": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "monitoring.bulk": {
       "request": [
         "Endpoint has \"@stability: TODO"
       ],
@@ -1351,12 +1375,6 @@
       ],
       "response": []
     },
-    "rollup.rollup": {
-      "request": [
-        "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
     "rollup.start_job": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1381,6 +1399,12 @@
       ],
       "response": []
     },
+    "search_mvt": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "search_shards": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1402,12 +1426,6 @@
     "searchable_snapshots.clear_cache": {
       "request": [
         "Endpoint has \"@stability: TODO"
-      ],
-      "response": []
-    },
-    "searchable_snapshots.repository_stats": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -1501,6 +1519,18 @@
       ],
       "response": []
     },
+    "security.enroll_kibana": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "security.enroll_node": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "security.get_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
@@ -1558,6 +1588,12 @@
     "security.grant_api_key": {
       "request": [
         "Endpoint has \"@stability: TODO"
+      ],
+      "response": []
+    },
+    "security.query_api_keys": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },

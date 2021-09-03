@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, IndexName, Routing, Type } from '@_types/common'
+import { Fields, IndexName, Routing } from '@_types/common'
 import { MultiGetId, Operation } from './types'
 
 /**
@@ -30,7 +30,6 @@ import { MultiGetId, Operation } from './types'
 export interface Request extends RequestBase {
   path_parts?: {
     index?: IndexName
-    type?: Type
   }
   query_parameters?: {
     preference?: string

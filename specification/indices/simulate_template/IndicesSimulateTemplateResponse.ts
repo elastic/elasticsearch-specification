@@ -17,8 +17,26 @@
  * under the License.
  */
 
+import { Alias } from '@indices/_types/Alias'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { IndexName, Name } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+
 export class Response {
   body: {
-    stub: string
+    template: Template
   }
+}
+
+export class Template {
+  aliases: Dictionary<IndexName, Alias>
+  mappings: TypeMapping
+  settings: Dictionary<string, UserDefinedValue>
+  overlapping: Overlapping[]
+}
+
+export class Overlapping {
+  name: Name
+  index_patterns: string[]
 }

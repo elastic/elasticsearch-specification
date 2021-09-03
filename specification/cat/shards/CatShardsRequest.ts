@@ -32,5 +32,4 @@ export interface Request extends CatRequestBase {
   query_parameters?: {
     bytes?: Bytes
   }
-  body?: {}
 }

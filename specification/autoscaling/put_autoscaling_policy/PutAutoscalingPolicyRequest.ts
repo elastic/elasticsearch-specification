@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
+import { Name } from '@_types/common'
 
 /**
  * @rest_spec_name autoscaling.put_autoscaling_policy
@@ -27,7 +28,7 @@ import { AutoscalingPolicy } from '@autoscaling/_types/AutoscalingPolicy'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    name: string
+    name: Name
   }
   body: AutoscalingPolicy
 }

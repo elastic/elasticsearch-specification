@@ -25,7 +25,6 @@ import {
   Id,
   IndexName,
   Routing,
-  Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -40,7 +39,6 @@ export interface Request<TDocument> extends RequestBase {
   path_parts?: {
     index: IndexName
     id?: Id
-    type?: Type
   }
   query_parameters?: {
     fields?: Fields

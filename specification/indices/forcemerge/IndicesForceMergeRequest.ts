@@ -38,5 +38,4 @@ export interface Request extends RequestBase {
     max_num_segments?: long
     only_expunge_deletes?: boolean
   }
-  body?: {}
 }
