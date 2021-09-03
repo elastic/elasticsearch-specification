@@ -26691,7 +26691,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Sub-aggregations for the geotile_grid. Supports the following aggregation types: - avg - cardinality - max - min - sum",
+            "description": "Sub-aggregations for the geotile_grid.\n\nSupports the following aggregation types:\n- avg\n- cardinality\n- max\n- min\n- sum",
             "name": "aggs",
             "required": false,
             "type": {
@@ -26714,7 +26714,7 @@
             }
           },
           {
-            "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+            "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
             "name": "exact_bounds",
             "required": false,
             "serverDefault": false,
@@ -26740,7 +26740,7 @@
             }
           },
           {
-            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`). This parameter does not support fields with array values. Fields with array values may return inconsistent results.",
+            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`).\nThis parameter does not support fields with array values. Fields with array\nvalues may return inconsistent results.",
             "name": "fields",
             "required": false,
             "type": {
@@ -26752,7 +26752,7 @@
             }
           },
           {
-            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
             "name": "grid_precision",
             "required": false,
             "serverDefault": 8,
@@ -26765,7 +26765,7 @@
             }
           },
           {
-            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer,\neach feature represents a geotile_grid cell. If 'grid' each feature is a Polygon\nof the cells bounding box. If 'point' each feature is a Point that is the centroid\nof the cell.",
             "name": "grid_type",
             "required": false,
             "serverDefault": "grid",
@@ -26790,7 +26790,7 @@
             }
           },
           {
-            "description": "Defines one or more runtime fields in the search request. These fields take precedence over mapped fields with the same name.",
+            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
             "name": "runtime_mappings",
             "required": false,
             "type": {
@@ -26802,7 +26802,7 @@
             }
           },
           {
-            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
             "name": "size",
             "required": false,
             "serverDefault": 10000,
@@ -26815,7 +26815,7 @@
             }
           },
           {
-            "description": "Sorts features in the hits layer. By default, the API calculates a bounding box for each feature. It sorts features based on this box’s diagonal length, from longest to shortest.",
+            "description": "Sorts features in the hits layer. By default, the API calculates a bounding\nbox for each feature. It sorts features based on this box’s diagonal length,\nfrom longest to shortest.",
             "name": "sort",
             "required": false,
             "type": {
@@ -26903,7 +26903,7 @@
       ],
       "query": [
         {
-          "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+          "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
           "name": "exact_bounds",
           "required": false,
           "serverDefault": false,
@@ -26929,7 +26929,7 @@
           }
         },
         {
-          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
           "name": "grid_precision",
           "required": false,
           "serverDefault": 8,
@@ -26942,7 +26942,7 @@
           }
         },
         {
-          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer,\neach feature represents a geotile_grid cell. If 'grid' each feature is a Polygon\nof the cells bounding box. If 'point' each feature is a Point that is the centroid\nof the cell.",
           "name": "grid_type",
           "required": false,
           "serverDefault": "grid",
@@ -26955,7 +26955,7 @@
           }
         },
         {
-          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
           "name": "size",
           "required": false,
           "serverDefault": 10000,
@@ -115790,7 +115790,7 @@
           }
         },
         {
-          "description": "The definition of a node in a tree. There are two major types of nodes: leaf nodes and not-leaf nodes. - Leaf nodes only need node_index and leaf_value defined. - All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
+          "description": "The definition of a node in a tree.\nThere are two major types of nodes: leaf nodes and not-leaf nodes.\n- Leaf nodes only need node_index and leaf_value defined.\n- All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
           "name": "tree_node",
           "required": false,
           "type": {
