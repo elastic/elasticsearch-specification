@@ -13542,8 +13542,11 @@ export interface ShutdownPutNodeResponse extends AcknowledgedResponseBase {
 
 export interface SlmConfiguration {
   ignore_unavailable?: boolean
-  include_global_state?: boolean
   indices: Indices
+  include_global_state?: boolean
+  feature_states?: string[]
+  metadata?: Metadata
+  partial?: boolean
 }
 
 export interface SlmInProgress {
@@ -13655,6 +13658,8 @@ export interface SlmGetStatusResponse {
 
 export interface SlmPutLifecycleRequest extends RequestBase {
   policy_id: Name
+  master_timeout?: Time
+  timeout?: Time
   body?: {
     config?: SlmConfiguration
     name?: Name
@@ -14472,9 +14477,7 @@ export type WatcherConditionType = 'always' | 'never' | 'script' | 'compare' | '
 
 export type WatcherConnectionScheme = 'http' | 'https'
 
-export interface WatcherCronExpression {
-  [key: string]: never
-}
+export type WatcherCronExpression = string
 
 export interface WatcherDailySchedule {
   at: string[] | WatcherTimeOfDay
@@ -14681,10 +14684,6 @@ export interface WatcherQueryWatch {
 }
 
 export type WatcherResponseContentType = 'json' | 'yaml' | 'text'
-
-export interface WatcherScheduleBase {
-  [key: string]: never
-}
 
 export interface WatcherScheduleContainer {
   cron?: WatcherCronExpression
