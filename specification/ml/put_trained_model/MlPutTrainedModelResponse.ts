@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { TrainedModelConfig } from '@ml/_types/TrainedModel'
+
 export class Response {
-  body: { stub: boolean }
+  body: TrainedModelConfig
 }
