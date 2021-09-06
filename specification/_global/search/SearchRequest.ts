@@ -50,7 +50,7 @@ import { SuggestContainer } from './_types/suggester'
 /**
  * @rest_spec_name search
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

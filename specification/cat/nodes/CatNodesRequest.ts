@@ -23,7 +23,7 @@ import { Bytes } from '@_types/common'
 /**
  * @rest_spec_name cat.nodes
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {
   query_parameters?: {

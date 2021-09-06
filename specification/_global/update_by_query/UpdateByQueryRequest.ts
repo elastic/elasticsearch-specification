@@ -38,7 +38,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name update_by_query
  * @since 2.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

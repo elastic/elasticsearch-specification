@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
  * @rest_spec_name ml.validate_detector
  * @since 5.4.0
  *
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   body?: Detector

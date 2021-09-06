@@ -24,7 +24,7 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name reindex_rethrottle
  * @since 2.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

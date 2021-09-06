@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ilm.get_status
  * @since 6.6.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {}

@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ml.info
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {}

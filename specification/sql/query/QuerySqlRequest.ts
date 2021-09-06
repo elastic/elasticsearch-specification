@@ -25,7 +25,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name sql.query
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {

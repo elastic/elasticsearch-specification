@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name searchable_snapshots.mount
  * @since 7.10.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts?: {

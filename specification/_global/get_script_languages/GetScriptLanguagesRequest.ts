@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name get_script_languages
  * @since 0.0.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {}

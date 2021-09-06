@@ -24,7 +24,7 @@ import { RankEvalMetric, RankEvalRequestItem } from './types'
 /**
  * @rest_spec_name rank_eval
  * @since 6.2.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

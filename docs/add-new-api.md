@@ -62,7 +62,7 @@ Following you can find a template valid for any request definition.
  /*
  * @rest_spec_name endpoint.name
  * @since 1.2.3
- * @stability TODO
+ * @stability stable | beta | experimental
  */
 interface Request extends RequestBase {
   path_parts?: {
@@ -82,7 +82,7 @@ In some cases, the request could take one or more generics, in such case the def
  /*
  * @rest_spec_name endpoint.name
  * @since 1.2.3
- * @stability TODO
+ * @stability stable | beta | experimental
  */
 interface Request<Generic> extends RequestBase {
   path_parts?: {

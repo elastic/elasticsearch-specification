@@ -25,7 +25,7 @@ import { Command } from './types'
 /**
  * @rest_spec_name cluster.reroute
  * @since 5.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {

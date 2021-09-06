@@ -31,7 +31,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name transform.preview_transform
  * @since 7.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   body?: {

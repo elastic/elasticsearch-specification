@@ -60,7 +60,7 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name get
  * @since 0.0.0
- * @stability TODO
+ * @stability stable | beta | experimental
  */
 export interface Request extends RequestBase {
   path_parts: {}
@@ -75,7 +75,7 @@ import { Request as GetRequest } from '_global/get/GetRequest'
 /**
  * @rest_spec_name get_source
  * @since 0.0.0
- * @stability TODO
+ * @stability stable | beta | experimental
  */
 export interface Request extends GetRequest {}
 ```

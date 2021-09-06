@@ -35,7 +35,7 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name indices.put_index_template
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

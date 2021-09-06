@@ -23,7 +23,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.set_upgrade_mode
  * @since 6.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {

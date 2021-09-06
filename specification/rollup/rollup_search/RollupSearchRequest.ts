@@ -27,7 +27,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 /**
  * @rest_spec_name rollup.rollup_search
  * @since 6.3.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts?: {

@@ -24,7 +24,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name text_structure.find_structure
  * @since 7.13.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request<TJsonDocument> {
   query_parameters?: {
