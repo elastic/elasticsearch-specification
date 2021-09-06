@@ -1430,7 +1430,12 @@
     },
     "searchable_snapshots.clear_cache": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: query parameter 'pretty' does not exist in the json spec",
+        "Request: query parameter 'human' does not exist in the json spec",
+        "Request: missing json spec query parameter 'index'",
+        "Request: should not have a body",
+        "request definition searchable_snapshots.clear_cache:Request / query - Property 'pretty' is already defined in an ancestor class",
+        "request definition searchable_snapshots.clear_cache:Request / query - Property 'human' is already defined in an ancestor class"
       ],
       "response": []
     },
