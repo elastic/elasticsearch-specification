@@ -16418,7 +16418,7 @@
           }
         },
         {
-          "description": " Boolean) If true, the request is real-time as opposed to near-real-time.",
+          "description": "Boolean) If true, the request is real-time as opposed to near-real-time.",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime",
           "name": "realtime",
           "required": false,
@@ -16432,7 +16432,7 @@
           }
         },
         {
-          "description": " If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
+          "description": "If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
           "name": "refresh",
           "required": false,
           "serverDefault": false,
@@ -19967,7 +19967,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.",
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use _all or *.",
           "name": "index",
           "required": true,
           "type": {
@@ -21655,7 +21655,7 @@
             }
           },
           {
-            "description": "Starting document offset. By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the search_after parameter.",
+            "description": "Starting document offset. By default, you cannot page through more than 10,000\nhits using the from and size parameters. To page through more hits, use the\nsearch_after parameter.",
             "name": "from",
             "required": false,
             "serverDefault": 0,
@@ -21679,7 +21679,7 @@
             }
           },
           {
-            "description": "Number of hits matching the query to count accurately. If true, the exact number of hits is returned at the cost of some performance. If false, the response does not include the total number of hits matching the query. Defaults to 10,000 hits.",
+            "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
             "name": "track_total_hits",
             "required": false,
             "type": {
@@ -21729,7 +21729,7 @@
             }
           },
           {
-            "description": "Array of wildcard (*) patterns. The request returns doc values for field names matching these patterns in the hits.fields property of the response.",
+            "description": "Array of wildcard (*) patterns. The request returns doc values for field\nnames matching these patterns in the hits.fields property of the response.",
             "name": "docvalue_fields",
             "required": false,
             "type": {
@@ -21768,7 +21768,7 @@
             }
           },
           {
-            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the search results.",
+            "description": "Minimum _score for matching documents. Documents with a lower _score are\nnot included in the search results.",
             "name": "min_score",
             "required": false,
             "type": {
@@ -21874,7 +21874,7 @@
             }
           },
           {
-            "description": "The number of hits to return. By default, you cannot page through more than 10,000 hits using the from and size parameters. To page through more hits, use the search_after parameter.",
+            "description": "The number of hits to return. By default, you cannot page through more\nthan 10,000 hits using the from and size parameters. To page through more\nhits, use the search_after parameter.",
             "name": "size",
             "required": false,
             "serverDefault": 10,
@@ -21909,7 +21909,7 @@
             }
           },
           {
-            "description": "Indicates which source fields are returned for matching documents. These fields are returned in the hits._source property of the search response.",
+            "description": "Indicates which source fields are returned for matching documents. These\nfields are returned in the hits._source property of the search response.",
             "name": "_source",
             "required": false,
             "type": {
@@ -21940,7 +21940,7 @@
             }
           },
           {
-            "description": "Array of wildcard (*) patterns. The request returns values for field names matching these patterns in the hits.fields property of the response.",
+            "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
             "name": "fields",
             "required": false,
             "type": {
@@ -22001,7 +22001,7 @@
             }
           },
           {
-            "description": "Maximum number of documents to collect for each shard. If a query reaches this limit, Elasticsearch terminates the query early. Elasticsearch collects documents before sorting. Defaults to 0, which does not terminate query execution early.",
+            "description": "Maximum number of documents to collect for each shard. If a query reaches this\nlimit, Elasticsearch terminates the query early. Elasticsearch collects documents\nbefore sorting. Defaults to 0, which does not terminate query execution early.",
             "name": "terminate_after",
             "required": false,
             "serverDefault": 0,
@@ -22014,7 +22014,7 @@
             }
           },
           {
-            "description": "Specifies the period of time to wait for a response from each shard. If no response is received before the timeout expires, the request fails and returns an error. Defaults to no timeout.",
+            "description": "Specifies the period of time to wait for a response from each shard. If no response\nis received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
             "name": "timeout",
             "required": false,
             "type": {
@@ -22052,7 +22052,7 @@
             }
           },
           {
-            "description": "If true, returns sequence number and primary term of the last modification of each hit. See Optimistic concurrency control.",
+            "description": "If true, returns sequence number and primary term of the last modification\nof each hit. See Optimistic concurrency control.",
             "name": "seq_no_primary_term",
             "required": false,
             "type": {
@@ -22064,7 +22064,7 @@
             }
           },
           {
-            "description": "List of stored fields to return as part of a hit. If no fields are specified, no stored fields are included in the response. If this field is specified, the _source parameter defaults to false. You can pass _source: true to return both source fields and stored fields in the search response.",
+            "description": "List of stored fields to return as part of a hit. If no fields are specified,\nno stored fields are included in the response. If this field is specified, the _source\nparameter defaults to false. You can pass _source: true to return both source fields\nand stored fields in the search response.",
             "name": "stored_fields",
             "required": false,
             "type": {
@@ -22076,7 +22076,7 @@
             }
           },
           {
-            "description": "Limits the search to a point in time (PIT). If you provide a PIT, you cannot specify an <index> in the request path.",
+            "description": "Limits the search to a point in time (PIT). If you provide a PIT, you\ncannot specify an <index> in the request path.",
             "name": "pit",
             "required": false,
             "type": {
@@ -22088,7 +22088,7 @@
             }
           },
           {
-            "description": "Defines one or more runtime fields in the search request. These fields take precedence over mapped fields with the same name.",
+            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
             "name": "runtime_mappings",
             "required": false,
             "type": {
@@ -22100,7 +22100,7 @@
             }
           },
           {
-            "description": "Stats groups to associate with the search. Each group maintains a statistics aggregation for its associated searches. You can retrieve these stats using the indices stats API.",
+            "description": "Stats groups to associate with the search. Each group maintains a statistics\naggregation for its associated searches. You can retrieve these stats using\nthe indices stats API.",
             "name": "stats",
             "required": false,
             "type": {
@@ -27290,7 +27290,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Sub-aggregations for the geotile_grid. Supports the following aggregation types: - avg - cardinality - max - min - sum",
+            "description": "Sub-aggregations for the geotile_grid.\n\nSupports the following aggregation types:\n- avg\n- cardinality\n- max\n- min\n- sum",
             "name": "aggs",
             "required": false,
             "type": {
@@ -27313,7 +27313,7 @@
             }
           },
           {
-            "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+            "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
             "name": "exact_bounds",
             "required": false,
             "serverDefault": false,
@@ -27339,7 +27339,7 @@
             }
           },
           {
-            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`). This parameter does not support fields with array values. Fields with array values may return inconsistent results.",
+            "description": "Fields to return in the `hits` layer. Supports wildcards (`*`).\nThis parameter does not support fields with array values. Fields with array\nvalues may return inconsistent results.",
             "name": "fields",
             "required": false,
             "type": {
@@ -27351,7 +27351,7 @@
             }
           },
           {
-            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+            "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
             "name": "grid_precision",
             "required": false,
             "serverDefault": 8,
@@ -27364,7 +27364,7 @@
             }
           },
           {
-            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+            "description": "Determines the geometry type for features in the aggs layer. In the aggs layer,\neach feature represents a geotile_grid cell. If 'grid' each feature is a Polygon\nof the cells bounding box. If 'point' each feature is a Point that is the centroid\nof the cell.",
             "name": "grid_type",
             "required": false,
             "serverDefault": "grid",
@@ -27389,7 +27389,7 @@
             }
           },
           {
-            "description": "Defines one or more runtime fields in the search request. These fields take precedence over mapped fields with the same name.",
+            "description": "Defines one or more runtime fields in the search request. These fields take\nprecedence over mapped fields with the same name.",
             "name": "runtime_mappings",
             "required": false,
             "type": {
@@ -27401,7 +27401,7 @@
             }
           },
           {
-            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+            "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
             "name": "size",
             "required": false,
             "serverDefault": 10000,
@@ -27414,7 +27414,7 @@
             }
           },
           {
-            "description": "Sorts features in the hits layer. By default, the API calculates a bounding box for each feature. It sorts features based on this box’s diagonal length, from longest to shortest.",
+            "description": "Sorts features in the hits layer. By default, the API calculates a bounding\nbox for each feature. It sorts features based on this box’s diagonal length,\nfrom longest to shortest.",
             "name": "sort",
             "required": false,
             "type": {
@@ -27502,7 +27502,7 @@
       ],
       "query": [
         {
-          "description": "If false, the meta layer’s feature is the bounding box of the tile. If true, the meta layer’s feature is a bounding box resulting from a geo_bounds aggregation. The aggregation runs on <field> values that intersect the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding box may be larger than the vector tile.",
+          "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
           "name": "exact_bounds",
           "required": false,
           "serverDefault": false,
@@ -27528,7 +27528,7 @@
           }
         },
         {
-          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results don’t include the aggs layer.",
+          "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
           "name": "grid_precision",
           "required": false,
           "serverDefault": 8,
@@ -27541,7 +27541,7 @@
           }
         },
         {
-          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer, each feature represents a geotile_grid cell. If 'grid' each feature is a Polygon of the cells bounding box. If 'point' each feature is a Point that is the centroid of the cell.",
+          "description": "Determines the geometry type for features in the aggs layer. In the aggs layer,\neach feature represents a geotile_grid cell. If 'grid' each feature is a Polygon\nof the cells bounding box. If 'point' each feature is a Point that is the centroid\nof the cell.",
           "name": "grid_type",
           "required": false,
           "serverDefault": "grid",
@@ -27554,7 +27554,7 @@
           }
         },
         {
-          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000. If 0, results don’t include the hits layer.",
+          "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
           "name": "size",
           "required": false,
           "serverDefault": 10000,
@@ -28946,7 +28946,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Set to false to disable setting 'result' in the response to 'noop' if no change to the document occurred.",
+            "description": "Set to false to disable setting 'result' in the response\nto 'noop' if no change to the document occurred.",
             "name": "detect_noop",
             "required": false,
             "serverDefault": true,
@@ -29009,7 +29009,7 @@
             }
           },
           {
-            "description": "Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.",
+            "description": "Set to false to disable source retrieval. You can also specify a comma-separated\nlist of the fields you want to retrieve.",
             "name": "_source",
             "required": false,
             "serverDefault": "true",
@@ -29034,7 +29034,7 @@
             }
           },
           {
-            "description": "If the document does not already exist, the contents of 'upsert' are inserted as a new document. If the document exists, the 'script' is executed.",
+            "description": "If the document does not already exist, the contents of 'upsert' are inserted as a\nnew document. If the document exists, the 'script' is executed.",
             "name": "upsert",
             "required": false,
             "type": {
@@ -29145,7 +29145,7 @@
           }
         },
         {
-          "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation visible to search, if 'wait_for' then wait for a refresh to make this operation visible to search, if 'false' do nothing with refreshes.",
+          "description": "If 'true', Elasticsearch refreshes the affected shards to make this operation\nvisible to search, if 'wait_for' then wait for a refresh to make this operation\nvisible to search, if 'false' do nothing with refreshes.",
           "name": "refresh",
           "required": false,
           "serverDefault": "false",
@@ -29196,7 +29196,7 @@
           }
         },
         {
-          "description": "Period to wait for dynamic mapping updates and active shards. This guarantees Elasticsearch waits for at least the timeout before failing. The actual wait time could be longer, particularly when multiple waits occur.",
+          "description": "Period to wait for dynamic mapping updates and active shards.\nThis guarantees Elasticsearch waits for at least the timeout before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
           "serverDefault": "1m",
@@ -29209,7 +29209,7 @@
           }
         },
         {
-          "description": "The number of shard copies that must be active before proceeding with the operations. Set to 'all' or any positive integer up to the total number of shards in the index (number_of_replicas+1). Defaults to 1 meaning the primary shard.",
+          "description": "The number of shard copies that must be active before proceeding with the operations.\nSet to 'all' or any positive integer up to the total number of shards in the index\n(number_of_replicas+1). Defaults to 1 meaning the primary shard.",
           "name": "wait_for_active_shards",
           "required": false,
           "serverDefault": "1",
@@ -29222,7 +29222,7 @@
           }
         },
         {
-          "description": "Set to false to disable source retrieval. You can also specify a comma-separated list of the fields you want to retrieve.",
+          "description": "Set to false to disable source retrieval. You can also specify a comma-separated\nlist of the fields you want to retrieve.",
           "name": "_source",
           "required": false,
           "serverDefault": "true",
@@ -30240,7 +30240,7 @@
       ]
     },
     {
-      "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back in the form of `name#type` instead of simply `name`",
+      "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "AggregateName",
@@ -35086,7 +35086,7 @@
       }
     },
     {
-      "description": "The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back in the form of `name#type` instead of simply `name`",
+      "description": "The suggestion name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
       "kind": "type_alias",
       "name": {
         "name": "SuggestionName",
@@ -46128,7 +46128,7 @@
       ]
     },
     {
-      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_. Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words. Also accepts an array of stop words.",
+      "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
       "kind": "type_alias",
       "name": {
         "name": "StopWords",
@@ -75693,7 +75693,7 @@
       "path": [],
       "query": [
         {
-          "description": "Specifies whether to wait for all excluded nodes to be removed from the cluster before clearing the voting configuration exclusions list. Defaults to true, meaning that all excluded nodes must be removed from the cluster before this API takes any action. If set to false then the voting configuration exclusions list is cleared even if some excluded nodes are still in the cluster.",
+          "description": "Specifies whether to wait for all excluded nodes to be removed from the\ncluster before clearing the voting configuration exclusions list.\nDefaults to true, meaning that all excluded nodes must be removed from\nthe cluster before this API takes any action. If set to false then the\nvoting configuration exclusions list is cleared even if some excluded\nnodes are still in the cluster.",
           "name": "wait_for_removal",
           "required": false,
           "serverDefault": true,
@@ -75737,7 +75737,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of component template names used to limit the request. Wildcard (*) expressions are supported.",
+          "description": "Comma-separated list of component template names used to limit the request.\nWildcard (*) expressions are supported.",
           "name": "name",
           "required": true,
           "type": {
@@ -75751,7 +75751,7 @@
       ],
       "query": [
         {
-          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "Period to wait for a connection to the master node. If no response is\nreceived before the timeout expires, the request fails and returns an\nerror.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -75764,7 +75764,7 @@
           }
         },
         {
-          "description": "If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.",
+          "description": "If true, the request retrieves information from the local node only.\nDefaults to false, which means information is retrieved from the master node.",
           "name": "local",
           "required": false,
           "serverDefault": false,
@@ -76761,7 +76761,7 @@
       "path": [],
       "query": [
         {
-          "description": "A comma-separated list of the names of the nodes to exclude from the voting configuration. If specified, you may not also specify node_ids.",
+          "description": "A comma-separated list of the names of the nodes to exclude from the\nvoting configuration. If specified, you may not also specify node_ids.",
           "name": "node_names",
           "required": false,
           "type": {
@@ -76773,7 +76773,7 @@
           }
         },
         {
-          "description": "A comma-separated list of the persistent ids of the nodes to exclude from the voting configuration. If specified, you may not also specify node_names.",
+          "description": "A comma-separated list of the persistent ids of the nodes to exclude\nfrom the voting configuration. If specified, you may not also specify node_names.",
           "name": "node_ids",
           "required": false,
           "type": {
@@ -76785,7 +76785,7 @@
           }
         },
         {
-          "description": "When adding a voting configuration exclusion, the API waits for the specified nodes to be excluded from the voting configuration before returning. If the timeout expires before the appropriate condition is satisfied, the request fails and returns an error.",
+          "description": "When adding a voting configuration exclusion, the API waits for the\nspecified nodes to be excluded from the voting configuration before\nreturning. If the timeout expires before the appropriate condition\nis satisfied, the request fails and returns an error.",
           "name": "timeout",
           "required": false,
           "serverDefault": "30s",
@@ -81382,7 +81382,7 @@
       },
       "properties": [
         {
-          "description": " Identifier for the search.",
+          "description": "Identifier for the search.",
           "name": "id",
           "required": false,
           "type": {
@@ -101789,7 +101789,7 @@
       },
       "properties": [
         {
-          "description": " The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation. * @server_default 5m",
+          "description": "The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -101931,7 +101931,7 @@
           }
         },
         {
-          "description": " If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
+          "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
           "name": "summary_count_field_name",
           "required": false,
           "type": {
@@ -104168,7 +104168,7 @@
           }
         },
         {
-          "description": "Defines which field of the document is to be predicted. It must match one of the fields in the index being used to train. If this field is missing from a document, then that document will not be used for training, but a prediction with the trained model will be generated for it. It is also known as continuous target variable. For classification analysis, the data type of the field must be numeric (`integer`, `short`, `long`, `byte`), categorical (`ip` or `keyword`), or `boolean`. There must be no more than 30 different values in this field. For regression analysis, the data type of the field must be numeric.",
+          "description": "Defines which field of the document is to be predicted. It must match one of the fields in the index being used to train. If this field is missing from a document, then that document will not be used for training, but a prediction with the trained model will be generated for it. It is also known as continuous target variable.\nFor classification analysis, the data type of the field must be numeric (`integer`, `short`, `long`, `byte`), categorical (`ip` or `keyword`), or `boolean`. There must be no more than 30 different values in this field.\nFor regression analysis, the data type of the field must be numeric.",
           "name": "dependent_variable",
           "required": true,
           "type": {
@@ -108208,7 +108208,7 @@
           }
         },
         {
-          "description": " If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false.",
+          "description": "If true, this snapshot will not be deleted during automatic cleanup of snapshots older than model_snapshot_retention_days. However, this snapshot will be deleted when the job is deleted. The default value is false.",
           "name": "retain",
           "required": true,
           "type": {
@@ -113307,7 +113307,7 @@
       },
       "path": [
         {
-          "description": " Identifier for the anomaly detection job. It can be a job identifier, a group name, a comma-separated list of jobs or groups, or a wildcard expression.",
+          "description": "Identifier for the anomaly detection job. It can be a job identifier, a group name, a comma-separated list of jobs or groups, or a wildcard expression.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -113394,7 +113394,7 @@
           }
         },
         {
-          "description": " If true, the output excludes interim results. By default, interim results are included.",
+          "description": "If true, the output excludes interim results. By default, interim results are included.",
           "name": "exclude_interim",
           "required": false,
           "type": {
@@ -113705,7 +113705,7 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request: - Contains wildcard expressions and there are no models that match. - Contains the _all string or no identifiers and there are no matches. - Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "type": {
@@ -113866,7 +113866,7 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request: - Contains wildcard expressions and there are no models that match. - Contains the _all string or no identifiers and there are no matches. - Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "type": {
@@ -115062,7 +115062,7 @@
             }
           },
           {
-            "description": "Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection. The supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score. Regression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis. Classification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
+            "description": "Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection.\nThe supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score.\nRegression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis.\nClassification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
             "name": "analyzed_fields",
             "required": false,
             "type": {
@@ -115921,7 +115921,7 @@
             }
           },
           {
-            "description": " Advanced configuration option. Contains custom meta data about the job.",
+            "description": "Advanced configuration option. Contains custom meta data about the job.",
             "name": "custom_settings",
             "required": false,
             "type": {
@@ -115970,7 +115970,7 @@
             }
           },
           {
-            "description": " A description of the job.",
+            "description": "A description of the job.",
             "name": "description",
             "required": false,
             "type": {
@@ -116864,7 +116864,7 @@
           }
         },
         {
-          "description": "The definition of a node in a tree. There are two major types of nodes: leaf nodes and not-leaf nodes. - Leaf nodes only need node_index and leaf_value defined. - All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
+          "description": "The definition of a node in a tree.\nThere are two major types of nodes: leaf nodes and not-leaf nodes.\n- Leaf nodes only need node_index and leaf_value defined.\n- All other nodes need split_feature, left_child, right_child, threshold, decision_type, and default_left defined.",
           "name": "tree_node",
           "required": false,
           "type": {
@@ -127377,7 +127377,7 @@
             }
           },
           {
-            "description": " An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
+            "description": "An array of role descriptors for this API key. This parameter is optional. When it is not specified or is an empty array, then the API key will have a point in time snapshot of permissions of the authenticated user. If you supply role descriptors then the resultant permissions would be an intersection of API keys permissions and authenticated user’s permissions thereby limiting the access scope for API keys. The structure of role descriptor is the same as the request for create role API. For more details, see create or update roles API.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-put-role.html",
             "name": "role_descriptors",
             "required": false,
@@ -131734,7 +131734,7 @@
           }
         },
         {
-          "description": "A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported. By default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.",
+          "description": "A comma-separated list of data streams and indices to include in the snapshot. Multi-index syntax is supported.\nBy default, a snapshot includes all data streams and indices in the cluster. If this argument is provided, the snapshot only includes the specified data streams and clusters.",
           "name": "indices",
           "required": true,
           "type": {
@@ -131759,7 +131759,7 @@
           }
         },
         {
-          "description": "A list of feature states to be included in this snapshot. A list of features available for inclusion in the snapshot and their descriptions be can be retrieved using the get features API. Each feature state includes one or more system indices containing data necessary for the function of that feature. Providing an empty array will include no feature states in the snapshot, regardless of the value of include_global_state. By default, all available feature states will be included in the snapshot if include_global_state is true, or no feature states if include_global_state is false.",
+          "description": "A list of feature states to be included in this snapshot. A list of features available for inclusion in the snapshot and their descriptions be can be retrieved using the get features API.\nEach feature state includes one or more system indices containing data necessary for the function of that feature. Providing an empty array will include no feature states in the snapshot, regardless of the value of include_global_state. By default, all available feature states will be included in the snapshot if include_global_state is true, or no feature states if include_global_state is false.",
           "name": "feature_states",
           "required": false,
           "type": {
@@ -134248,7 +134248,7 @@
           }
         },
         {
-          "description": " If `true`, the request returns a response when the snapshot is complete. If `false`, the request returns a response when the snapshot initializes.",
+          "description": "If `true`, the request returns a response when the snapshot is complete. If `false`, the request returns a response when the snapshot initializes.",
           "name": "wait_for_completion",
           "required": false,
           "serverDefault": false,
@@ -134604,7 +134604,7 @@
           }
         },
         {
-          "description": "Comma-separated list of snapshot names to retrieve. Also accepts wildcards (*). - To get information about all snapshots in a registered repository, use a wildcard (*) or _all. - To get information about any snapshots that are currently running, use _current.",
+          "description": "Comma-separated list of snapshot names to retrieve. Also accepts wildcards (*).\n- To get information about all snapshots in a registered repository, use a wildcard (*) or _all.\n- To get information about any snapshots that are currently running, use _current.",
           "name": "snapshot",
           "required": true,
           "type": {
@@ -138670,7 +138670,7 @@
             }
           },
           {
-            "description": " Defines the properties transforms require to run continuously.",
+            "description": "Defines the properties transforms require to run continuously.",
             "name": "sync",
             "required": false,
             "type": {
@@ -138694,7 +138694,7 @@
             }
           },
           {
-            "description": " The latest method transforms the data by finding the latest document for each unique key.",
+            "description": "The latest method transforms the data by finding the latest document for each unique key.",
             "name": "latest",
             "required": false,
             "type": {
@@ -148119,7 +148119,7 @@
       ]
     },
     {
-      "description": "In some places in the specification an object consists of the union of a set of known properties and a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose a set of known keys and possibly. The object might already be part of an object graph and have a parent class. This puts it into a bind that needs a client specific solution. We therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
+      "description": "In some places in the specification an object consists of the union of a set of known properties\nand a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose\na set of known keys and possibly. The object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
       "generics": [
         {
           "name": "TKey",
@@ -148138,7 +148138,7 @@
       "properties": []
     },
     {
-      "description": "Implements a set of common query parameters all API's support. Since these can break the request structure these are listed explicitly as a behavior. Its up to individual clients to define support although `error_trace` and `pretty` are recommended as a minimum.",
+      "description": "Implements a set of common query parameters all API's support.\nSince these can break the request structure these are listed explicitly as a behavior.\nIts up to individual clients to define support although `error_trace` and `pretty` are\nrecommended as a minimum.",
       "kind": "interface",
       "name": {
         "name": "CommonQueryParameters",
@@ -148218,7 +148218,7 @@
       ]
     },
     {
-      "description": "In some places in the specification an object consists of a static set of properties and a single additional property with an arbitrary name but a statically defined type. This is typically used for configurations associated to a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose a set of known keys. And possibly the object might already be part of an object graph and have a parent class. This puts it into a bind that needs a client specific solution. We therefore document the requirement to accept a single unknown property with this interface.",
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
       "generics": [
         {
           "name": "TKey",
@@ -148237,7 +148237,7 @@
       "properties": []
     },
     {
-      "description": "Implements a set of common query parameters all Cat API's support. Since these can break the request structure these are listed explicitly as a behavior.",
+      "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",
       "kind": "interface",
       "name": {
         "name": "CommonCatQueryParameters",
