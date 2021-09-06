@@ -25,7 +25,7 @@ import { RequestBase } from '@_types/Base'
  *
  * @rest_spec_name ml.find_file_structure
  * @since 5.4.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts: {

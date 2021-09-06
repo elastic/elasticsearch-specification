@@ -995,7 +995,7 @@
         "namespace": "cat.tasks"
       },
       "since": "5.0.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4277,7 +4277,7 @@
         "namespace": "indices.flush_synced"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "deprecation": {
@@ -6730,7 +6730,7 @@
         "namespace": "ml.find_file_structure"
       },
       "since": "5.4.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "deprecation": {
