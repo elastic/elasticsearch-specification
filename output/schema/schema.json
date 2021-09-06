@@ -117425,8 +117425,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "VersionString",
+                "namespace": "_types"
               }
             }
           },
@@ -117480,8 +117480,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexName",
+                "namespace": "_types"
               }
             }
           },

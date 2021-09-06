@@ -12024,12 +12024,12 @@ export interface MlUpdateJobResponse {
   groups?: string[]
   job_id: Id
   job_type: string
-  job_version: string
+  job_version: VersionString
   model_plot_config?: MlModelPlotConfig
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
   renormalization_window_days?: long
-  results_index_name: string
+  results_index_name: IndexName
   results_retention_days?: long
 }
 

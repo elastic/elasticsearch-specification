@@ -22,7 +22,7 @@ import { Datafeed } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Id } from '@_types/common'
+import { Id, IndexName, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time, EpochMillis } from '@_types/Time'
 
@@ -42,12 +42,12 @@ export class Response {
     groups?: string[]
     job_id: Id
     job_type: string
-    job_version: string
+    job_version: VersionString
     model_plot_config?: ModelPlotConfig
     model_snapshot_id?: Id
     model_snapshot_retention_days: long
     renormalization_window_days?: long
-    results_index_name: string
+    results_index_name: IndexName
     results_retention_days?: long
   }
 }
