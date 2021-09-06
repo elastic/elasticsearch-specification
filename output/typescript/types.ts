@@ -13011,6 +13011,7 @@ export interface SecurityAuthenticateResponse {
 
 export interface SecurityAuthenticateToken {
   name: Name
+  type?: string
 }
 
 export interface SecurityChangePasswordRequest extends RequestBase {
