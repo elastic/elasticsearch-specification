@@ -370,6 +370,7 @@ export interface FieldCapsFieldCapability {
   non_searchable_indices?: Indices
   searchable: boolean
   type: string
+  metadata_field?: boolean
 }
 
 export interface FieldCapsRequest extends RequestBase {
@@ -4219,6 +4220,7 @@ export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
 export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
   type?: QueryDslGeoExecution
   validation_method?: QueryDslGeoValidationMethod
+  ignore_unmapped?: boolean
 }
 export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys |
     { [property: string]: QueryDslBoundingBox }
@@ -4251,6 +4253,7 @@ export interface QueryDslGeoPolygonPoints {
 
 export interface QueryDslGeoPolygonQueryKeys extends QueryDslQueryBase {
   validation_method?: QueryDslGeoValidationMethod
+  ignore_unmapped?: boolean
 }
 export type QueryDslGeoPolygonQuery = QueryDslGeoPolygonQueryKeys |
     { [property: string]: QueryDslGeoPolygonPoints }
@@ -4938,6 +4941,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     version?: boolean
     wait_for_completion_timeout?: Time
     fields?: (Field | DateField)[]
+    runtime_mappings?: MappingRuntimeFields
   }
 }
 
@@ -12979,6 +12983,7 @@ export interface SecurityRoleMapping {
   metadata: Metadata
   roles: string[]
   rules: SecurityRoleMappingRuleBase
+  role_templates?: SecurityGetRoleRoleTemplate[]
 }
 
 export interface SecurityRoleMappingRuleBase {
@@ -14257,7 +14262,7 @@ export interface TransformLatest {
 export interface TransformPivot {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
-  group_by: Record<string, TransformPivotGroupByContainer>
+  group_by?: Record<string, TransformPivotGroupByContainer>
   max_page_search_size?: integer
 }
 

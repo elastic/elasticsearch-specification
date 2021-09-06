@@ -15723,6 +15723,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "metadata_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -51959,6 +51970,17 @@
               "namespace": "_types.query_dsl"
             }
           }
+        },
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -52290,6 +52312,17 @@
             "type": {
               "name": "GeoValidationMethod",
               "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -58892,6 +58925,17 @@
                   }
                 ],
                 "kind": "union_of"
+              }
+            }
+          },
+          {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
               }
             }
           }
@@ -125470,6 +125514,20 @@
               "namespace": "security._types"
             }
           }
+        },
+        {
+          "name": "role_templates",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleTemplate",
+                "namespace": "security.get_role"
+              }
+            }
+          }
         }
       ]
     },
@@ -136645,7 +136703,7 @@
         },
         {
           "name": "group_by",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
