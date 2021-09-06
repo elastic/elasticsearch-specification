@@ -64,9 +64,6 @@ export default class Compiler {
       'utf8'
     )
 
-    this.errors.cleanup(
-      this.model.endpoints.filter(e => e.stability === Stability.TODO).map(e => e.name)
-    )
     this.errors.log()
 
     await writeFile(

@@ -174,7 +174,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
   // -----  Alright, let's go!
 
   function readyForValidation (ep: model.Endpoint): boolean {
-    return ep.stability !== model.Stability.TODO && ep.request != null && ep.response != null
+    return ep.request != null && ep.response != null
   }
 
   // Validate all endpoints. We start by those that are ready for validation so that transitive validation of common
