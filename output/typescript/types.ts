@@ -8916,9 +8916,7 @@ export interface IndicesPromoteDataStreamRequest extends RequestBase {
   name: IndexName
 }
 
-export interface IndicesPromoteDataStreamResponse {
-  stub: integer
-}
+export type IndicesPromoteDataStreamResponse = any
 
 export interface IndicesPutAliasRequest extends RequestBase {
   index: Indices
@@ -12012,7 +12010,27 @@ export interface MlUpdateJobRequest extends RequestBase {
 }
 
 export interface MlUpdateJobResponse {
-  stub: boolean
+  allow_lazy_open: boolean
+  analysis_config: MlAnalysisConfig
+  analysis_limits: MlAnalysisLimits
+  background_persist_interval?: Time
+  create_time: EpochMillis
+  finished_time?: EpochMillis
+  custom_settings?: Record<string, string>
+  daily_model_snapshot_retention_after_days: long
+  data_description: MlDataDescription
+  datafeed_config?: MlDatafeed
+  description?: string
+  groups?: string[]
+  job_id: Id
+  job_type: string
+  job_version: string
+  model_plot_config?: MlModelPlotConfig
+  model_snapshot_id?: Id
+  model_snapshot_retention_days: long
+  renormalization_window_days?: long
+  results_index_name: string
+  results_retention_days?: long
 }
 
 export interface MlUpdateModelSnapshotRequest extends RequestBase {
@@ -12889,9 +12907,7 @@ export interface SearchableSnapshotsClearCacheRequest extends RequestBase {
   human?: boolean
 }
 
-export interface SearchableSnapshotsClearCacheResponse {
-  stub: integer
-}
+export type SearchableSnapshotsClearCacheResponse = any
 
 export interface SearchableSnapshotsMountMountedSnapshot {
   snapshot: Name
