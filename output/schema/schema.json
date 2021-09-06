@@ -9197,7 +9197,7 @@
         "namespace": "searchable_snapshots.clear_cache"
       },
       "since": "7.10.0",
-      "stability": "TODO",
+      "stability": "experimental",
       "urls": [
         {
           "methods": [
@@ -89821,20 +89821,10 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "kind": "response",
       "name": {
@@ -117329,13 +117319,247 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "stub",
+            "name": "allow_lazy_open",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
                 "name": "boolean",
                 "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "analysis_config",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AnalysisConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "analysis_limits",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AnalysisLimits",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "background_persist_interval",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "create_time",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EpochMillis",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "finished_time",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EpochMillis",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "custom_settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "name": "daily_model_snapshot_retention_after_days",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "data_description",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataDescription",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "datafeed_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Datafeed",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "groups",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "name": "job_id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "job_type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "name": "job_version",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VersionString",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "model_plot_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ModelPlotConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "model_snapshot_id",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "model_snapshot_retention_days",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "renormalization_window_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "results_index_name",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "results_retention_days",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
               }
             }
           }
@@ -124814,20 +125038,10 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
       },
       "kind": "response",
       "name": {
