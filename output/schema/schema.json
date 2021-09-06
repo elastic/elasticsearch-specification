@@ -90925,6 +90925,18 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Order in which Elasticsearch applies this template if index\nmatches multiple templates.\n\nTemplates with lower 'order' values are merged first. Templates with higher\n'order' values are merged later, overriding templates with lower values.",
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },

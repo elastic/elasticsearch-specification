@@ -50,6 +50,14 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Time
     timeout?: Time
+    /**
+     * Order in which Elasticsearch applies this template if index
+     * matches multiple templates.
+     *
+     * Templates with lower 'order' values are merged first. Templates with higher
+     * 'order' values are merged later, overriding templates with lower values.
+     */
+    order?: integer
   }
   body?: {
     /**

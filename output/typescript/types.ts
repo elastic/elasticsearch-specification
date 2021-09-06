@@ -9022,6 +9022,7 @@ export interface IndicesPutTemplateRequest extends RequestBase {
   include_type_name?: boolean
   master_timeout?: Time
   timeout?: Time
+  order?: integer
   body?: {
     aliases?: Record<IndexName, IndicesAlias>
     index_patterns?: string | string[]
