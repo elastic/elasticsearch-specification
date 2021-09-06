@@ -617,23 +617,24 @@ export interface MsearchTemplateTemplateItem {
 }
 
 export interface MtermvectorsOperation {
-  doc: object
-  fields: Fields
-  field_statistics: boolean
-  filter: TermvectorsFilter
   _id: Id
-  _index: IndexName
-  offsets: boolean
-  payloads: boolean
-  positions: boolean
-  routing: Routing
-  term_statistics: boolean
-  version: VersionNumber
-  version_type: VersionType
+  _index?: IndexName
+  doc?: object
+  fields?: Fields
+  field_statistics?: boolean
+  filter?: TermvectorsFilter
+  offsets?: boolean
+  payloads?: boolean
+  positions?: boolean
+  routing?: Routing
+  term_statistics?: boolean
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
+  ids?: Id[]
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -656,12 +657,13 @@ export interface MtermvectorsResponse {
 }
 
 export interface MtermvectorsTermVectorsResult {
-  found: boolean
-  id: Id
-  index: IndexName
-  term_vectors: Record<Field, TermvectorsTermVector>
-  took: long
-  version: VersionNumber
+  _id: Id
+  _index: IndexName
+  _version?: VersionNumber
+  took?: long
+  found?: boolean
+  term_vectors?: Record<Field, TermvectorsTermVector>
+  error?: ErrorCause
 }
 
 export interface OpenPointInTimeRequest extends RequestBase {

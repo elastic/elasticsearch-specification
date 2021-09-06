@@ -18176,50 +18176,6 @@
       },
       "properties": [
         {
-          "name": "doc",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "object",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "fields",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "field_statistics",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "filter",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Filter",
-              "namespace": "_global.termvectors"
-            }
-          }
-        },
-        {
           "name": "_id",
           "required": true,
           "type": {
@@ -18232,7 +18188,7 @@
         },
         {
           "name": "_index",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18242,8 +18198,52 @@
           }
         },
         {
+          "name": "doc",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "object",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "field_statistics",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Filter",
+              "namespace": "_global.termvectors"
+            }
+          }
+        },
+        {
           "name": "offsets",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18254,7 +18254,7 @@
         },
         {
           "name": "payloads",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18265,7 +18265,7 @@
         },
         {
           "name": "positions",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18276,7 +18276,7 @@
         },
         {
           "name": "routing",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18287,7 +18287,7 @@
         },
         {
           "name": "term_statistics",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18298,7 +18298,7 @@
         },
         {
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18309,7 +18309,7 @@
         },
         {
           "name": "version_type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -18383,6 +18383,21 @@
         }
       ],
       "query": [
+        {
+          "description": "A comma-separated list of documents ids. You must define ids as parameter or set \"ids\" or \"docs\" in the request body",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
         {
           "description": "A comma-separated list of fields to return. Applies to all returned documents unless otherwise specified in body \"params\" or \"docs\".",
           "name": "fields",
@@ -18551,18 +18566,7 @@
       },
       "properties": [
         {
-          "name": "found",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "id",
+          "name": "_id",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18573,7 +18577,7 @@
           }
         },
         {
-          "name": "index",
+          "name": "_index",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -18584,8 +18588,41 @@
           }
         },
         {
+          "name": "_version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "took",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "found",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "term_vectors",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -18606,23 +18643,12 @@
           }
         },
         {
-          "name": "took",
-          "required": true,
+          "name": "error",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
+              "name": "ErrorCause",
               "namespace": "_types"
             }
           }
