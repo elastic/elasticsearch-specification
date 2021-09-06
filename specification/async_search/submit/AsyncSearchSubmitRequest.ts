@@ -25,7 +25,6 @@ import { Sort, SortResults } from '@global/search/_types/sort'
 import { SourceFilter } from '@global/search/_types/SourceFilter'
 import { SuggestContainer } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
 import {
@@ -39,6 +38,7 @@ import {
   SearchType,
   SuggestMode
 } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
@@ -113,5 +113,6 @@ export interface Request extends RequestBase {
     version?: boolean
     wait_for_completion_timeout?: Time
     fields?: Array<Field | DateField>
+    runtime_mappings?: RuntimeFields
   }
 }

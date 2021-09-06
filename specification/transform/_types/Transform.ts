@@ -51,7 +51,7 @@ export class Latest {
 export class Pivot {
   /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  group_by: Dictionary<string, PivotGroupByContainer>
+  group_by?: Dictionary<string, PivotGroupByContainer>
   max_page_search_size?: integer
 }
 

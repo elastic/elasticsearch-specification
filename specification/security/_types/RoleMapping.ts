@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { RoleTemplate } from '@security/get_role/types'
 import { Metadata } from '@_types/common'
 import { RoleMappingRuleBase } from './RoleMappingRuleBase'
 
@@ -25,4 +26,5 @@ export class RoleMapping {
   metadata: Metadata
   roles: string[]
   rules: RoleMappingRuleBase
+  role_templates?: RoleTemplate[]
 }
