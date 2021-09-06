@@ -3932,7 +3932,6 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: boolean | MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
-  index?: boolean
 }
 
 export type MappingRangeProperty = MappingLongRangeProperty | MappingIpRangeProperty | MappingIntegerRangeProperty | MappingFloatRangeProperty | MappingDoubleRangeProperty | MappingDateRangeProperty
