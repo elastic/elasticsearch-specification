@@ -30,7 +30,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 /**
  * @rest_spec_name count
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

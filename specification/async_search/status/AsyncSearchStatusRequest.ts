@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name async_search.status
  * @since 7.11.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

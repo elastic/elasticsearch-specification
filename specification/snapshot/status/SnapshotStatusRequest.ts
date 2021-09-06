@@ -24,7 +24,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name snapshot.status
  * @since 7.8.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

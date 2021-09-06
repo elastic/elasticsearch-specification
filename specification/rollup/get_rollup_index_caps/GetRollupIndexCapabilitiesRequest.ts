@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name rollup.get_rollup_index_caps
  * @since 6.4.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
   path_parts?: {

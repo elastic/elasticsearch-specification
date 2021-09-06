@@ -23,7 +23,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name eql.get_status
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

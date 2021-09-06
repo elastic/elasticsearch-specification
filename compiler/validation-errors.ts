@@ -49,26 +49,12 @@ export class ValidationErrors {
     this.generalErrors.push(message)
   }
 
-  /** Replace multiple errors for endpoints in the "TODO" state by a single one, to avoid clogging up the report */
-  cleanup (todoEndpoints: string[]): void {
-    const names = new Set<string>(todoEndpoints)
-
-    for (const name of Object.keys(this.endpointErrors)) {
-      if (names.has(name)) {
-        this.endpointErrors[name] = {
-          request: ['Endpoint has "@stability: TODO'],
-          response: []
-        }
-      }
-    }
-  }
-
   /** Output this error log to the console */
   log (): void {
     let count = 0
     const logArray = function (errs: string[], prefix = ''): void {
       for (const err of errs) {
-        if (err !== 'Endpoint has "@stability: TODO' && err !== 'Missing request & response') {
+        if (err !== 'Missing request & response') {
           console.error(`${prefix}${err}`)
           count++
         }

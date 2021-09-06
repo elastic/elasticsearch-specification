@@ -23,7 +23,7 @@ import { ExpandWildcards, Indices, Routing } from '@_types/common'
 /**
  * @rest_spec_name search_shards
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

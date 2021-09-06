@@ -24,7 +24,7 @@ import { CalendarEvent } from '../_types/CalendarEvent'
 /**
  * @rest_spec_name ml.post_calendar_events
  * @since 6.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

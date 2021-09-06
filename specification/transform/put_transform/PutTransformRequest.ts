@@ -22,7 +22,7 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name transform.put_transform
  * @since 7.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends PreviewTransformRequest {
   path_parts: {

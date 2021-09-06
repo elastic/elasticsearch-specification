@@ -23,7 +23,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.update_aliases
  * @since 1.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {

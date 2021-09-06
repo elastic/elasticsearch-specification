@@ -24,7 +24,7 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.get_trained_models_stats
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

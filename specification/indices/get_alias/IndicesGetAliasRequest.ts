@@ -23,7 +23,7 @@ import { ExpandWildcards, Indices, Names } from '@_types/common'
 /**
  * @rest_spec_name indices.get_alias
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

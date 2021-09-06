@@ -23,7 +23,7 @@ import { Name, Namespace, Refresh, Service } from '@_types/common'
 /**
  * @rest_spec_name security.delete_service_token
  * @since 5.5.0
- * @stability TODO
+ * @stability beta
  */
 export interface Request extends RequestBase {
   path_parts?: {

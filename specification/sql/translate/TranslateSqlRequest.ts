@@ -24,7 +24,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 /**
  * @rest_spec_name sql.translate
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   body?: {

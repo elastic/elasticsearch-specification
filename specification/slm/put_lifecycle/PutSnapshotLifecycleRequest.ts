@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name slm.put_lifecycle
  * @since 7.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -23,7 +23,7 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name cat.tasks
  * @since 5.0.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends CatRequestBase {
   query_parameters?: {

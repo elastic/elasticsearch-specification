@@ -33,7 +33,7 @@ import { Filter } from './types'
 /**
  * @rest_spec_name termvectors
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request<TDocument> extends RequestBase {
   path_parts?: {

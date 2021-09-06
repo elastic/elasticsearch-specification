@@ -23,7 +23,7 @@ import { Name, Names } from '@_types/common'
 /**
  * @rest_spec_name watcher.ack_watch
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

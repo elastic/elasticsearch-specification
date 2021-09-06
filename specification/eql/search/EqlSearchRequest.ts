@@ -27,7 +27,7 @@ import { ResultPosition, SearchFieldFormatted } from './types'
 /**
  * @rest_spec_name eql.search
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
