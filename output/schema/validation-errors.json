@@ -611,11 +611,8 @@
       ],
       "response": []
     },
-<<<<<<< HEAD
-=======
     "indices.create": {
       "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "interface definition _types.mapping:FlattenedProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:SearchAsYouTypeProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:TextProperty - Property 'index' is already defined in an ancestor class",
@@ -638,7 +635,6 @@
       ],
       "response": []
     },
->>>>>>> 3be8ea194... Fixes and descriptions for basic indices APIs (#648)
     "indices.create_data_stream": {
       "request": [
         "Request: should not have a body"
@@ -806,15 +802,7 @@
         "Request: missing json spec query parameter 'expand_wildcards'",
         "Request: should not have a body"
       ],
-      "response": [
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
-      ]
+      "response": []
     },
     "indices.migrate_to_data_stream": {
       "request": [
@@ -840,15 +828,6 @@
       ],
       "response": []
     },
-<<<<<<< HEAD
-=======
-    "indices.put_mapping": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
->>>>>>> 3be8ea194... Fixes and descriptions for basic indices APIs (#648)
     "indices.put_settings": {
       "request": [
         "interface definition indices.put_settings:IndexSettingsBody / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
@@ -858,7 +837,6 @@
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'order'"
       ],
