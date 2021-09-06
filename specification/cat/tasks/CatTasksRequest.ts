@@ -26,7 +26,7 @@ import { long } from '@_types/Numeric'
  * @stability experimental
  */
 export interface Request extends CatRequestBase {
-  query_parameters?: {
+  query_parameters: {
     actions?: string[]
     detailed?: boolean
     node_id?: string[]

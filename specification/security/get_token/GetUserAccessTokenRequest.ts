@@ -28,7 +28,7 @@ import { AccessTokenGrantType } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     grant_type?: AccessTokenGrantType
     scope?: string
     password?: Password

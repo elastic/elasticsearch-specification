@@ -34,7 +34,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     /** The destination for the transform. */
     dest?: Destination
     /** Free text description of the transform. */

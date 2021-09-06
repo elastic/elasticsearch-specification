@@ -27,14 +27,14 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /**
      * Comma-separated list of component template names used to limit the request.
      * Wildcard (*) expressions are supported.
      */
     name: Names
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is
      * received before the timeout expires, the request fails and returns an

@@ -26,10 +26,10 @@ import { TaskId } from '@_types/common'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     task_id?: TaskId
   }
-  query_parameters?: {
+  query_parameters: {
     actions?: string | string[]
     nodes?: string[]
     parent_task_id?: string

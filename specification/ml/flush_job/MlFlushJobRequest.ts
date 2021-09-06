@@ -30,10 +30,10 @@ export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     skip_time?: string
   }
-  body?: {
+  body: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString

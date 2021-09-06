@@ -28,13 +28,13 @@ import { Document } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     verbose?: boolean
   }
-  body?: {
+  body: {
     docs?: Document[]
     pipeline?: Pipeline
   }

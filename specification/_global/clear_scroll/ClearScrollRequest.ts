@@ -26,10 +26,10 @@ import { Ids } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     scroll_id?: Ids
   }
-  body?: {
+  body: {
     scroll_id?: Ids
   }
 }

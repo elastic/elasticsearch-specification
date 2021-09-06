@@ -28,15 +28,15 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     job_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     requests_per_second?: float
     /** @server_default 8h */
     timeout?: Time
   }
-  body?: {
+  body: {
     requests_per_second?: float
     /** @server_default 8h */
     timeout?: Time

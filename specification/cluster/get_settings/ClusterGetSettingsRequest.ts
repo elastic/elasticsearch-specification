@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     flat_settings?: boolean
     include_defaults?: boolean
     master_timeout?: Time

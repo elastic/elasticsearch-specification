@@ -28,10 +28,10 @@ import { Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  body?: {
+  body: {
     file?: string
     params?: Dictionary<string, UserDefinedValue>
     source?: string

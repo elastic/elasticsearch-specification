@@ -36,11 +36,11 @@ import { Filter } from './types'
  * @stability stable
  */
 export interface Request<TDocument> extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     fields?: Fields
     field_statistics?: boolean
     offsets?: boolean
@@ -53,7 +53,7 @@ export interface Request<TDocument> extends RequestBase {
     version?: VersionNumber
     version_type?: VersionType
   }
-  body?: {
+  body: {
     doc?: TDocument
     filter?: Filter
     per_field_analyzer?: Dictionary<Field, string>

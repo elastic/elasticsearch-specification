@@ -37,12 +37,12 @@ import { Time } from '@_types/Time'
  *
  */
 export interface Request<TDocument> extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing

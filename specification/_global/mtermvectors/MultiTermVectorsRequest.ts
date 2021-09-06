@@ -34,10 +34,10 @@ import { Operation } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     ids?: Id[]
     fields?: Fields
     field_statistics?: boolean
@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
     version?: VersionNumber
     version_type?: VersionType
   }
-  body?: {
+  body: {
     docs?: Operation[]
     ids?: Id[]
   }

@@ -29,10 +29,10 @@ export interface Request extends RequestBase {
   path_parts: {
     username: Username
   }
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
-  body?: {
+  body: {
     username?: Username
     email?: string | null
     full_name?: string | null

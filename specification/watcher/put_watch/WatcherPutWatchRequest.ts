@@ -33,16 +33,16 @@ import { TransformContainer } from '@_types/Transform'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     active?: boolean
     if_primary_term?: long
     if_sequence_number?: long
     version?: VersionNumber
   }
-  body?: {
+  body: {
     actions?: Dictionary<string, Action>
     condition?: ConditionContainer
     input?: InputContainer

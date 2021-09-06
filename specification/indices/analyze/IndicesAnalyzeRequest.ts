@@ -30,10 +30,10 @@ import { TextToAnalyze } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: IndexName
   }
-  body?: {
+  body: {
     analyzer?: string
     attributes?: string[]
     char_filter?: Array<string | CharFilter>

@@ -26,10 +26,10 @@ import { ExpandWildcards, Names } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     name?: Names
   }
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards
   }
 }

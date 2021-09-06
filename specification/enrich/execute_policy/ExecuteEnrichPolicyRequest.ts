@@ -26,10 +26,10 @@ import { Name } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     wait_for_completion?: boolean
   }
 }

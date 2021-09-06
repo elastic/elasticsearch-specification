@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
   path_parts: {
     index_uuid: Uuid
   }
-  query_parameters?: {
+  query_parameters: {
     accept_data_loss: boolean
     master_timeout?: Time
     timeout?: Time

@@ -28,14 +28,14 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     flat_settings?: boolean
     /** @server_default 30s */
     master_timeout?: Time
     /** @server_default 30s */
     timeout?: Time
   }
-  body?: {
+  body: {
     persistent?: Dictionary<string, UserDefinedValue>
     transient?: Dictionary<string, UserDefinedValue>
   }

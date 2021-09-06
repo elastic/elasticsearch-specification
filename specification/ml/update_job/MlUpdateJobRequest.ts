@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     /** Identifier for the job */
     job_id: Id
   }
-  body?: {
+  body: {
     allow_lazy_open?: boolean
     analysis_limits?: AnalysisMemoryLimit
     /**

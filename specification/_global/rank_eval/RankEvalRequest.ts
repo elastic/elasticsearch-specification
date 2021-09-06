@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.
      * @server_default true

@@ -26,10 +26,10 @@ import { Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     datafeed_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_datafeeds?: boolean
   }
 }

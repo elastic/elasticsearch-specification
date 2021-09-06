@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
     job_id: Id
     forecast_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_forecasts?: boolean
     timeout?: Time
   }

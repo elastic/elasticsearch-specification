@@ -27,13 +27,13 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     datafeed_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     start?: Time // default ""
   }
-  body?: {
+  body: {
     end?: Time // default ""
     start?: Time // default ""
     /** @server_default 20s */

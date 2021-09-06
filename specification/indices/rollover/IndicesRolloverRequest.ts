@@ -32,18 +32,18 @@ import { RolloverConditions } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     alias: IndexAlias
     new_index?: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     dry_run?: boolean
     include_type_name?: boolean
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
   }
-  body?: {
+  body: {
     aliases?: Dictionary<IndexName, Alias>
     conditions?: RolloverConditions
     mappings?: Dictionary<string, TypeMapping> | TypeMapping

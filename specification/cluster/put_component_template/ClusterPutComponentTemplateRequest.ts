@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default false */
     create?: boolean
     /** @server_default 30s */
