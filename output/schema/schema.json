@@ -9070,8 +9070,8 @@
       "urls": [
         {
           "methods": [
-            "GET",
-            "POST"
+            "POST",
+            "GET"
           ],
           "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}"
         }
