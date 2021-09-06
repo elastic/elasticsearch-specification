@@ -30,7 +30,7 @@ import { Destination, Source } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     refresh?: boolean
     requests_per_second?: long
     scroll?: Time
@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     wait_for_completion?: boolean
     require_alias?: boolean
   }
-  body?: {
+  body: {
     conflicts?: Conflicts
     dest?: Destination
     max_docs?: long

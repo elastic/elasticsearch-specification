@@ -26,10 +26,10 @@ import { Bytes, Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_match?: boolean
     bytes?: Bytes
   }

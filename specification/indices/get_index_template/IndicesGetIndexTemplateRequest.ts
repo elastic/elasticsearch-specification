@@ -27,18 +27,18 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Comma-separated list of index template names used to limit the request. Wildcard (*) expressions are supported. */
     name?: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, the request retrieves information from the local node only. Defaults to false, which means information is retrieved from the master node.
      * @server_default false
      */
     local?: boolean
   }
-  body?: {
+  body: {
     /**
      * If true, returns settings in flat format.
      * @server_default false

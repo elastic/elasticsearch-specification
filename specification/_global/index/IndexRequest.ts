@@ -38,11 +38,11 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request<TDocument> extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     if_primary_term?: long
     if_seq_no?: SequenceNumber
     op_type?: OpType

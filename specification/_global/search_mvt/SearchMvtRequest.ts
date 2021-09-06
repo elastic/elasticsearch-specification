@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
     /* Y coordinate for the vector tile to search */
     y: integer
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If false, the meta layer’s feature is the bounding box of the tile.
      * If true, the meta layer’s feature is a bounding box resulting from a
@@ -82,7 +82,7 @@ export interface Request extends RequestBase {
      */
     size?: integer
   }
-  body?: {
+  body: {
     /**
      * Sub-aggregations for the geotile_grid.
      *

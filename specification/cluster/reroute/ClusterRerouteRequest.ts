@@ -28,7 +28,7 @@ import { Command } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, then the request simulates the operation only and returns the resulting state.
      * @server_default false

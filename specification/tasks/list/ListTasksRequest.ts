@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     actions?: string | string[]
     detailed?: boolean
     group_by?: GroupBy

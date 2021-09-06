@@ -36,11 +36,11 @@ import { OperationContainer } from './types'
  *
  */
 export interface Request<TSource> extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing

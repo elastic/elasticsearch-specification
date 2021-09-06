@@ -56,13 +56,13 @@ open it with your favourite editor and perform the fix
  @rest_spec_name("index")
  @class_serializer("IndexRequestFormatter`1")
  class IndexRequest<TDocument> extends RequestBase {
-   path_parts?: {
+   path_parts: {
 -     id?: string;
 +     id?: string | number;
      index: string;
      type?: string;
    }
-   query_parameters?: {
+   query_parameters: {
      if_primary_term?: long;
      if_seq_no?: long;
      op_type?: OpType;

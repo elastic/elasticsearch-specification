@@ -29,7 +29,7 @@ export interface Request extends PreviewTransformRequest {
     /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     transform_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created. */
     defer_validation?: boolean
   }

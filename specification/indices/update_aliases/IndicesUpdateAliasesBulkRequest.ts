@@ -26,11 +26,11 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }
-  body?: {
+  body: {
     actions?: IndicesUpdateAliasBulk[]
   }
 }

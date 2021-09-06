@@ -26,7 +26,7 @@ import { Name, Username } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     token?: string
     refresh_token?: string
     realm_name?: Name

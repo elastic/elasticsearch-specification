@@ -39,10 +39,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
     wait_for_active_shards?: WaitForActiveShards
     wait_for_completion?: boolean
   }
-  body?: {
+  body: {
     max_docs?: long
     query?: QueryContainer
     slice?: SlicedScroll

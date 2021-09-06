@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
     /** A numerical character string that uniquely identifies the model snapshot. */
     snapshot_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * When true, the API won’t respond until the upgrade is complete. Otherwise, it responds as soon as the upgrade task is assigned to a node.
      * @server_default false

@@ -27,11 +27,11 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** @obsolete 7.0.0 */
     scroll_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Period to retain the search context for scrolling.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results

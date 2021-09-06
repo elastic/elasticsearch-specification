@@ -27,11 +27,11 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. */
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_indices?: boolean
     /**

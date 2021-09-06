@@ -26,7 +26,7 @@ import { Namespace, Service } from '@_types/common'
  * @stability beta
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     namespace?: Namespace
     service?: Service
   }

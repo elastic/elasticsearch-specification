@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
     job_id: Id
     snapshot_id: Id
   }
-  body?: {
+  body: {
     delete_intervening_results?: boolean
   }
 }

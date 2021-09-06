@@ -34,7 +34,7 @@ export interface Request extends RequestBase {
     /** A numerical character string that uniquely identifies the model snapshot. */
     snapshot_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** If true, the results are sorted in descending order. */
     desc?: boolean
     /** Returns snapshots with timestamps earlier than this time. */
@@ -48,7 +48,7 @@ export interface Request extends RequestBase {
     /** Returns snapshots with timestamps after this time. */
     start?: Time
   }
-  body?: {
+  body: {
     start?: Time
     end?: Time
   }

@@ -27,10 +27,10 @@ import { StepKey } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  body?: {
+  body: {
     current_step?: StepKey
     next_step?: StepKey
   }

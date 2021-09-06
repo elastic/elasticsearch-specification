@@ -27,10 +27,10 @@ import { Time } from '@_types/Time'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     timeout?: Time
     wait_for_completion?: boolean
   }

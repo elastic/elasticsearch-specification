@@ -26,10 +26,10 @@ import { Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     filter_id: Id
   }
-  body?: {
+  body: {
     description?: string
     items?: string[]
   }

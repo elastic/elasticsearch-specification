@@ -65,13 +65,13 @@ Following you can find a template valid for any request definition.
  * @stability stable | beta | experimental
  */
 interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
 
   };
-  query_parameters?: {
+  query_parameters: {
 
   };
-  body?: {
+  body: {
 
   };
 }
@@ -85,13 +85,13 @@ In some cases, the request could take one or more generics, in such case the def
  * @stability stable | beta | experimental
  */
 interface Request<Generic> extends RequestBase {
-  path_parts?: {
+  path_parts: {
 
   };
-  query_parameters?: {
+  query_parameters: {
 
   };
-  body?: {
+  body: {
 
   };
 }

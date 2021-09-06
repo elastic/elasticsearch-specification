@@ -27,7 +27,7 @@ import { CalendarEvent } from '../_types/CalendarEvent'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** A string that uniquely identifies a calendar. */
     calendar_id: Id
   }

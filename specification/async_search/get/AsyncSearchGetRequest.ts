@@ -27,10 +27,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     keep_alive?: Time
     typed_keys?: boolean
     wait_for_completion_timeout?: Time

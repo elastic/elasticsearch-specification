@@ -25,7 +25,7 @@ import { RequestBase } from '@_types/Base'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     /**
      * Specifies whether to wait for all excluded nodes to be removed from the
      * cluster before clearing the voting configuration exclusions list.

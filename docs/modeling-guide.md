@@ -429,8 +429,8 @@ export class ConfusionMatrixThreshold {
 }
 
 export interface Request<TDocument> extends RequestBase {
-  path_parts?: {}
-  query_parameters?: {}
+  path_parts: {}
+  query_parameters: {}
   /** @identifier document */
   body?: TDocument
 }

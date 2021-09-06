@@ -32,11 +32,11 @@ export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     reset_end?: DateString
     reset_start?: DateString
   }
-  body?: {
+  body: {
     data?: UserDefinedValue[]
   }
 }

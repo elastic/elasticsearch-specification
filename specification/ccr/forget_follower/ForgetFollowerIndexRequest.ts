@@ -26,10 +26,10 @@ import { IndexName, Uuid } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  body?: {
+  body: {
     follower_cluster?: string
     follower_index?: IndexName
     follower_index_uuid?: Uuid

@@ -27,7 +27,7 @@ import { PainlessContextSetup } from './types'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     context?: string
     context_setup?: PainlessContextSetup
     script?: InlineScript

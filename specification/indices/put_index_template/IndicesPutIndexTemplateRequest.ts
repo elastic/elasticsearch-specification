@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
     /** Index or template name */
     name: Name
   }
-  body?: {
+  body: {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndexTemplateMapping

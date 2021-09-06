@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /**
      * Repository for the snapshot.
      */
@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
@@ -49,7 +49,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body?: {
+  body: {
     /**
      * If `true`, the request ignores data streams and indices in `indices` that are missing or closed. If `false`, the request returns an error for any data stream or index that is missing or closed.
      * @server_default false

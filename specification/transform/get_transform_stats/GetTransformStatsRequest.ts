@@ -27,10 +27,10 @@ import { long } from '@_types/Numeric'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     transform_id: Name
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_match?: boolean
     from?: long
     size?: long

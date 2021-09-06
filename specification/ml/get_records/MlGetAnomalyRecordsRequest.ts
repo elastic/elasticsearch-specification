@@ -29,10 +29,10 @@ import { DateString } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default false */
     exclude_interim?: boolean
     from?: integer
@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
     start?: DateString
     end?: DateString
   }
-  body?: {
+  body: {
     /** @server_default false */
     desc?: boolean
     /** @server_default false */

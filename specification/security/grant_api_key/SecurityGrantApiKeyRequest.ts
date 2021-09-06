@@ -27,7 +27,7 @@ import { ApiKey, ApiKeyGrantType } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
     access_token?: string

@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     id: Id
   }
 }

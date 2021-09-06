@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
     /** Identifier for the anomaly detection job. */
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, the results are sorted in descending order.
      * @server_default false
@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /** Returns influencers with timestamps after this time. */
     start?: DateString
   }
-  body?: {
+  body: {
     page?: Page
   }
 }

@@ -31,14 +31,14 @@ import { VertexDefinition } from '@graph/_types/Vertex'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     routing?: Routing
     timeout?: Time
   }
-  body?: {
+  body: {
     connections?: Hop
     controls?: ExploreControls
     query?: QueryContainer
