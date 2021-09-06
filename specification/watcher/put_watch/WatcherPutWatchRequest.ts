@@ -30,7 +30,7 @@ import { TransformContainer } from '@_types/Transform'
 /**
  * @rest_spec_name watcher.put_watch
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

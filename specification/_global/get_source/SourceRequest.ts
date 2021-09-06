@@ -22,6 +22,6 @@ import { Request as GetRequest } from '_global/get/GetRequest'
 /**
  * @rest_spec_name get_source
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends GetRequest {}

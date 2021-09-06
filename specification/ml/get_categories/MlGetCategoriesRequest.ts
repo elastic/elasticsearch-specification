@@ -25,7 +25,7 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.get_categories
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

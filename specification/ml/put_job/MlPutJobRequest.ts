@@ -30,7 +30,7 @@ import { DatafeedConfig } from '@ml/_types/Datafeed'
 /**
  * @rest_spec_name ml.put_job
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

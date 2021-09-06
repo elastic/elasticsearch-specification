@@ -24,7 +24,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name eql.get
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

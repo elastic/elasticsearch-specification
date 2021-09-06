@@ -31,7 +31,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name cluster.health
  * @since 1.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-path-params */

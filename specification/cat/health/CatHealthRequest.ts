@@ -22,7 +22,7 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 /**
  * @rest_spec_name cat.health
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {
   query_parameters?: {

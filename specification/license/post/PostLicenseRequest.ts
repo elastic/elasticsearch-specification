@@ -23,7 +23,7 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name license.post
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   query_parameters?: {

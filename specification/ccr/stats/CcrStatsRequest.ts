@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ccr.stats
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {}

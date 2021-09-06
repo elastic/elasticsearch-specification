@@ -47,7 +47,7 @@ import { DateField, Time } from '@_types/Time'
 /**
  * @rest_spec_name async_search.submit
  * @since 7.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

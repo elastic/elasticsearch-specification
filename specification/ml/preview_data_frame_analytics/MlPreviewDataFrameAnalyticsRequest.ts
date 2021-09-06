@@ -24,7 +24,7 @@ import { DataframePreviewConfig } from './types'
 /**
  * @rest_spec_name ml.preview_data_frame_analytics
  * @since 7.13.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

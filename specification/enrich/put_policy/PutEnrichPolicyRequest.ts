@@ -24,7 +24,7 @@ import { Name } from '@_types/common'
 /**
  * @rest_spec_name enrich.put_policy
  * @since 7.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {

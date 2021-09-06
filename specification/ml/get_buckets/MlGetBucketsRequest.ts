@@ -26,7 +26,7 @@ import { DateString, Timestamp } from '@_types/Time'
 /**
  * @rest_spec_name ml.get_buckets
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
