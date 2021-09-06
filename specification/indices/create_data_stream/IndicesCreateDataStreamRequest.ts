@@ -26,7 +26,7 @@ import { DataStreamName } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: DataStreamName
   }
 }

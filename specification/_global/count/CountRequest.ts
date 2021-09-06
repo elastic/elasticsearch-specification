@@ -34,11 +34,11 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
     type?: Types
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
     terminate_after?: long
     q?: string
   }
-  body?: {
+  body: {
     query?: QueryContainer
   }
 }

@@ -29,10 +29,10 @@ import { long } from '@_types/Numeric'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  body?: {
+  body: {
     cron?: string
     groups?: Groupings
     index_pattern?: string

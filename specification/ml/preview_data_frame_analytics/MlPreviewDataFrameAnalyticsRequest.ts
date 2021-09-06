@@ -27,11 +27,11 @@ import { DataframePreviewConfig } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Identifier for the data frame analytics job. */
     id?: Id
   }
-  body?: {
+  body: {
     /**
      * A data frame analytics config as described in Create data frame analytics jobs. Note that id and dest don’t need to be provided in the context of this API.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html

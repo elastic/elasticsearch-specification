@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     /**
      * A comma-separated list of the names of the nodes to exclude from the
      * voting configuration. If specified, you may not also specify node_ids.

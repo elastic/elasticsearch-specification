@@ -28,11 +28,11 @@ import { MultiGetId, Operation } from './types'
  *
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     preference?: string
     realtime?: boolean // default: true
     refresh?: boolean // default: false
@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
     _source_includes?: Fields
     stored_fields?: Fields
   }
-  body?: {
+  body: {
     docs?: Operation[]
     ids?: MultiGetId[]
   }

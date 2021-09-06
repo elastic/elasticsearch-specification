@@ -26,7 +26,7 @@ import { Bytes } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  query_parameters?: {
+  query_parameters: {
     bytes?: Bytes
     full_id?: boolean | string
   }

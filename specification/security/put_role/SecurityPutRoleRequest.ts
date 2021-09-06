@@ -34,10 +34,10 @@ export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
-  body?: {
+  body: {
     /**
      * A list of application privilege entries.
      */

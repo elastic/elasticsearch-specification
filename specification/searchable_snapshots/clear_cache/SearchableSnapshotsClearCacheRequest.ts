@@ -26,10 +26,10 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards
     allow_no_indices?: boolean
     ignore_unavailable?: boolean

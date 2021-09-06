@@ -26,10 +26,10 @@ import { ExpandWildcards, DataStreamNames } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: DataStreamNames
   }
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards
   }
 }

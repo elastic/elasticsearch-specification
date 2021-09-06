@@ -27,7 +27,7 @@ import { IndexName } from '@_types/common'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
     rollup_index: IndexName
   }

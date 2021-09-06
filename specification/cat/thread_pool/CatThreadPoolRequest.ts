@@ -26,10 +26,10 @@ import { Names, Size } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     thread_pool_patterns?: Names
   }
-  query_parameters?: {
+  query_parameters: {
     size?: Size | boolean
   }
 }

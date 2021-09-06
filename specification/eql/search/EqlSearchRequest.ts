@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
   path_parts: {
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * @server_default true
      */
@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion_timeout?: Time
   }
-  body?: {
+  body: {
     /**
      * EQL query you wish to run.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html

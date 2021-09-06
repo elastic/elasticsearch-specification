@@ -64,7 +64,7 @@ import { RequestBase } from '@_types/Base'
  */
 export interface Request extends RequestBase {
   path_parts: {}
-  query_parameters?: {}
+  query_parameters: {}
 }
 ```
 ```ts

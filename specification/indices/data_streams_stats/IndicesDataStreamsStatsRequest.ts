@@ -26,10 +26,10 @@ import { ExpandWildcards, IndexName } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name?: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards // default: open
   }
 }

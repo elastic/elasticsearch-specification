@@ -28,15 +28,15 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }
-  body?: {
+  body: {
     filter?: QueryContainer
     index_routing?: Routing
     is_write_index?: boolean

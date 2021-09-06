@@ -29,7 +29,7 @@ export interface Request extends RequestBase {
   path_parts: {
     filter_id: Id
   }
-  body?: {
+  body: {
     add_items?: string[]
     description?: string
     remove_items?: string[]

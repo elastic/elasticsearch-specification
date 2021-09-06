@@ -50,16 +50,16 @@ import { DateField, Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     batched_reduce_size?: long
     wait_for_completion_timeout?: Time
     keep_on_completion?: boolean
     typed_keys?: boolean
   }
-  body?: {
+  body: {
     aggs?: Dictionary<string, AggregationContainer>
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean

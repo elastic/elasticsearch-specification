@@ -26,10 +26,10 @@ import { RequestBase } from '@_types/Base'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     acknowledge?: boolean
   }
-  body?: {
+  body: {
     license?: License
     licenses?: Array<License>
   }

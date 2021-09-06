@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Names
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If false, the request returns an error for any snapshots that are unavailable.
      * @server_default false

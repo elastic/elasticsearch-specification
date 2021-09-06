@@ -30,10 +30,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: Name // param name in docs: auto_follow_pattern_name
   }
-  body?: {
+  body: {
     remote_cluster: string
     follow_index_pattern?: IndexPattern
     leader_index_patterns?: IndexPatterns

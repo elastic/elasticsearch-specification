@@ -26,10 +26,10 @@ import { Bytes, Indices } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     active_only?: boolean
     bytes?: Bytes
     detailed?: boolean

@@ -27,11 +27,11 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     repository?: Name
     snapshot?: Names
   }
-  query_parameters?: {
+  query_parameters: {
     ignore_unavailable?: boolean // default: false
     master_timeout?: Time
   }

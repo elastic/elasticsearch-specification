@@ -39,12 +39,12 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.
      */
@@ -108,7 +108,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     _source_includes?: Fields
   }
-  body?: {
+  body: {
     /**
      * Set to false to disable setting 'result' in the response
      * to 'noop' if no change to the document occurred.

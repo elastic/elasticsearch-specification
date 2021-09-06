@@ -30,7 +30,7 @@ import { long } from '@_types/Numeric'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     job_id?: Id
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits

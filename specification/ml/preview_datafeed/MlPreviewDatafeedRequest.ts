@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
   path_parts: {
     datafeed_id?: Id
   }
-  body?: {
+  body: {
     job_config?: JobConfig
     datafeed_config?: DatafeedConfig
   }

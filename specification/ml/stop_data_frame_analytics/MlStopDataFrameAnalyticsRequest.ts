@@ -31,7 +31,7 @@ export interface Request extends RequestBase {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_match?: boolean
     /**

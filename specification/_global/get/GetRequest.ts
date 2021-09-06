@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
     index: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Specifies the node or shard the operation should be performed on. Random by default.
      */

@@ -30,16 +30,16 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
     target: Name
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
   }
-  body?: {
+  body: {
     aliases?: Dictionary<IndexName, Alias>
     settings?: Dictionary<string, UserDefinedValue>
   }

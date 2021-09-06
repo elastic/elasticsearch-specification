@@ -26,10 +26,10 @@ import { Bytes, NodeIds } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     node_id?: NodeIds
   }
-  query_parameters?: {
+  query_parameters: {
     bytes?: Bytes
   }
 }

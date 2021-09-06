@@ -27,10 +27,10 @@ import { integer } from '@_types/Numeric'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     filter_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     from?: integer
     size?: integer
   }

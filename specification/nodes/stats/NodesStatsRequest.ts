@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /*+ Limits the information returned to the specific metrics. */
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
     /** Limit the information returned for indices metric to the specific index metrics. It can be used only if indices (or all) metric is specified.*/
     index_metric?: Metrics
   }
-  query_parameters?: {
+  query_parameters: {
     /** Comma-separated list or wildcard expressions of fields to include in fielddata and suggest statistics. */
     completion_fields?: Fields
     /** Comma-separated list or wildcard expressions of fields to include in fielddata statistics. */

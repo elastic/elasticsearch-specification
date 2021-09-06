@@ -26,7 +26,7 @@ import { Id } from '@_types/common'
  * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
 }

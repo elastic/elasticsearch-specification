@@ -29,7 +29,7 @@ import { Actions } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
   body?: Dictionary<string, Dictionary<string, Actions>>

@@ -27,7 +27,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     fetch_size?: integer
     filter?: QueryContainer
     query: string

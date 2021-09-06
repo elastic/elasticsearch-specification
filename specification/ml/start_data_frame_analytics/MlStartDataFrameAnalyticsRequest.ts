@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
   path_parts: {
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Controls the amount of time to wait until the data frame analytics job starts.
      * @server_default 20s

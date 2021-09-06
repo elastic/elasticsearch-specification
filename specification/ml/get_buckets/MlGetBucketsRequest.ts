@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
     job_id: Id
     timestamp?: Timestamp
   }
-  query_parameters?: {
+  query_parameters: {
     from?: integer
     size?: integer
     /** @server_default false */
@@ -44,7 +44,7 @@ export interface Request extends RequestBase {
     start?: DateString
     end?: DateString
   }
-  body?: {
+  body: {
     anomaly_score?: double
     /** @server_default false */
     desc?: boolean

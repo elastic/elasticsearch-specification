@@ -644,6 +644,7 @@ export interface MtermvectorsOperation {
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
   type?: Type
+  ids?: Id[]
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -9985,6 +9986,7 @@ export interface IngestPutPipelineRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body?: {
+    _meta?: Metadata
     description?: string
     on_failure?: IngestProcessorContainer[]
     processors?: IngestProcessorContainer[]

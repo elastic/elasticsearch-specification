@@ -29,10 +29,10 @@ import { RoleDescriptor } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
-  body?: {
+  body: {
     /** Expiration time for the API key. By default, API keys never expire. */
     expiration?: Time
     /** Specifies the name for this API key. */

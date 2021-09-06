@@ -34,12 +34,12 @@ import {
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     preference?: string
     realtime?: boolean
     refresh?: boolean

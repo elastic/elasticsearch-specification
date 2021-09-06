@@ -35,14 +35,14 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-path-params */
-  path_parts?: {
+  path_parts: {
     /**
      * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard expressions (*) are supported. To target all data streams and indices in a cluster, omit this parameter or use _all or *.
      */
     index?: Indices
   }
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-query-params */
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards
     /**
      * Can be one of cluster, indices or shards. Controls the details level of the health information returned.

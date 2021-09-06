@@ -29,11 +29,11 @@ import { TemplateItem } from './types'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
     type?: Types
   }
-  query_parameters?: {
+  query_parameters: {
     ccs_minimize_roundtrips?: boolean
     max_concurrent_searches?: long
     search_type?: SearchType

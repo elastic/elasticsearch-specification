@@ -53,11 +53,11 @@ import { SuggestContainer } from './_types/suggester'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
     type?: Types
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
@@ -108,7 +108,7 @@ export interface Request extends RequestBase {
     from?: integer
     sort?: string | string[]
   }
-  body?: {
+  body: {
     aggs?: Dictionary<string, AggregationContainer>
     aggregations?: Dictionary<string, AggregationContainer>
     collapse?: FieldCollapse

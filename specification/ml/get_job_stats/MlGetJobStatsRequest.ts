@@ -26,10 +26,10 @@ import { Id } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     job_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_jobs?: boolean
   }
 }

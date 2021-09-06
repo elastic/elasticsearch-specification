@@ -26,10 +26,10 @@ import { Names } from '@_types/common'
  * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     repository?: Names
   }
-  query_parameters?: {
+  query_parameters: {
     ignore_unavailable?: boolean
   }
 }

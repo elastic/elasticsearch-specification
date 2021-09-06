@@ -27,7 +27,7 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request<TJsonDocument> {
-  query_parameters?: {
+  query_parameters: {
     /** The text’s character set. It must be a character set that is supported by the JVM that Elasticsearch uses. For example, UTF-8, UTF-16LE, windows-1252, or EUC-JP. If this parameter is not specified, the structure finder chooses an appropriate character set. */
     charset?: string
     /** If you have set format to delimited, you can specify the column names in a comma-separated list. If this parameter is not specified, the structure finder uses the column names from the header row of the text. If the text does not have a header role, columns are named "column1", "column2", "column3", etc. */

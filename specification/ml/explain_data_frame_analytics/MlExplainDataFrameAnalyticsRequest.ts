@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     id?: Id
   }
-  body?: {
+  body: {
     /** The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified. */
     source?: DataframeAnalyticsSource
     /** The destination configuration, consisting of index and optionally results_field (ml by default). */

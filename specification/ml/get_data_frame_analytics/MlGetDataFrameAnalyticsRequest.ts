@@ -27,11 +27,11 @@ import { integer } from '@_types/Numeric'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Identifier for the data frame analytics job. If you do not specify this option, the API returns information for the first hundred data frame analytics jobs. */
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * @server_default true
      */

@@ -26,7 +26,7 @@ import { Id, Name, Username } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     id?: Id
     name?: Name
     owner?: boolean

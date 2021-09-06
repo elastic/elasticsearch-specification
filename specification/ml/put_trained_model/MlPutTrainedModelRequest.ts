@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
     /** The unique identifier of the trained model. */
     model_id: Id
   }
-  body?: {
+  body: {
     /** The compressed (GZipped and Base64 encoded) inference definition of the model. If compressed_definition is specified, then definition cannot be specified. */
     compressed_definition?: string
     /** The inference definition for the model. If definition is specified, then compressed_definition cannot be specified. */
