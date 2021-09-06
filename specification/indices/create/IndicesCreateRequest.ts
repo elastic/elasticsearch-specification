@@ -28,7 +28,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.create
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {
@@ -41,8 +41,16 @@ export interface Request extends RequestBase {
     wait_for_active_shards?: WaitForActiveShards
   }
   body?: {
+    /* Aliases for the index. */
     aliases?: Dictionary<IndexName, Alias>
+    /**
+     * Mapping for fields in the index. If specified, this mapping can include:
+     * - Field names
+     * - Field data types
+     * - Mapping parameters
+     */
     mappings?: Dictionary<string, TypeMapping> | TypeMapping
+    /* Configuration options for the index. */
     settings?: Dictionary<string, UserDefinedValue>
   }
 }
