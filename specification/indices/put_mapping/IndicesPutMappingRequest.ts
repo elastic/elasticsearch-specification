@@ -40,7 +40,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.put_mapping
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts?: {
@@ -57,21 +57,60 @@ export interface Request extends RequestBase {
     write_index_only?: boolean
   }
   body?: {
-    all_field?: AllField
+    /**
+     * Controls whether dynamic date detection is enabled.
+     */
     date_detection?: boolean
+    /**
+     * Controls whether new fields are added dynamically.
+     */
     dynamic?: boolean | DynamicMapping
+    /**
+     * If date detection is enabled then new string fields are checked
+     * against 'dynamic_date_formats' and if the value matches then
+     * a new date field is added instead of string.
+     */
     dynamic_date_formats?: string[]
+    /**
+     * Specify dynamic templates for the mapping.
+     */
     dynamic_templates?:
       | Dictionary<string, DynamicTemplate>
       | Dictionary<string, DynamicTemplate>[]
-    field_names_field?: FieldNamesField
-    index_field?: IndexField
-    meta?: Dictionary<string, UserDefinedValue>
+    /**
+     * Control whether field names are enabled for the index.
+     */
+    _field_names?: FieldNamesField
+    /**
+     * A mapping type can have custom meta data associated with it. These are
+     * not used at all by Elasticsearch, but can be used to store
+     * application-specific metadata.
+     */
+    _meta?: Dictionary<string, UserDefinedValue>
+    /**
+     * Automatically map strings into numeric data types for all fields.
+     * @server_default false
+     */
     numeric_detection?: boolean
+    /**
+     * Mapping for a field. For new fields, this mapping can include:
+     *
+     * - Field name
+     * - Field data type
+     * - Mapping parameters
+     */
     properties?: Dictionary<PropertyName, Property>
-    routing_field?: RoutingField
-    size_field?: SizeField
-    source_field?: SourceField
+    /**
+     * Enable making a routing value required on indexed documents.
+     */
+    _routing?: RoutingField
+    /**
+     * Control whether the _source field is enabled on the index.
+     */
+    _source?: SourceField
+    /**
+     * Mapping of runtime fields for the index.
+     */
     runtime?: RuntimeFields
   }
 }

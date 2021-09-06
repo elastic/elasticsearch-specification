@@ -1857,6 +1857,8 @@ export type Conflicts = 'abort' | 'proceed'
 
 export type DataStreamName = string
 
+export type DataStreamNames = DataStreamName | DataStreamName[]
+
 export interface DateField {
   field: Field
   format?: string
@@ -3948,6 +3950,7 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: boolean | MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
+  index?: boolean
 }
 
 export type MappingRangeProperty = MappingLongRangeProperty | MappingIpRangeProperty | MappingIntegerRangeProperty | MappingFloatRangeProperty | MappingDoubleRangeProperty | MappingDateRangeProperty
@@ -8641,7 +8644,8 @@ export interface IndicesDeleteAliasResponse extends AcknowledgedResponseBase {
 }
 
 export interface IndicesDeleteDataStreamRequest extends RequestBase {
-  name: DataStreamName
+  name: DataStreamNames
+  expand_wildcards?: ExpandWildcards
 }
 
 export interface IndicesDeleteDataStreamResponse extends AcknowledgedResponseBase {
@@ -8817,7 +8821,7 @@ export interface IndicesGetDataStreamIndicesGetDataStreamItemTimestampField {
 }
 
 export interface IndicesGetDataStreamRequest extends RequestBase {
-  name?: IndexName
+  name?: DataStreamNames
   expand_wildcards?: ExpandWildcards
 }
 
@@ -9013,19 +9017,16 @@ export interface IndicesPutMappingRequest extends RequestBase {
   timeout?: Time
   write_index_only?: boolean
   body?: {
-    all_field?: MappingAllField
     date_detection?: boolean
     dynamic?: boolean | MappingDynamicMapping
     dynamic_date_formats?: string[]
     dynamic_templates?: Record<string, MappingDynamicTemplate> | Record<string, MappingDynamicTemplate>[]
-    field_names_field?: MappingFieldNamesField
-    index_field?: MappingIndexField
-    meta?: Record<string, any>
+    _field_names?: MappingFieldNamesField
+    _meta?: Record<string, any>
     numeric_detection?: boolean
     properties?: Record<PropertyName, MappingProperty>
-    routing_field?: MappingRoutingField
-    size_field?: MappingSizeField
-    source_field?: MappingSourceField
+    _routing?: MappingRoutingField
+    _source?: MappingSourceField
     runtime?: MappingRuntimeFields
   }
 }

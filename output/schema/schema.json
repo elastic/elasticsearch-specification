@@ -3817,7 +3817,7 @@
         "namespace": "indices.create"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3845,7 +3845,7 @@
         "namespace": "indices.create_data_stream"
       },
       "since": "7.9.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3969,7 +3969,7 @@
         "namespace": "indices.delete_data_stream"
       },
       "since": "7.9.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4461,7 +4461,7 @@
         "namespace": "indices.get_data_stream"
       },
       "since": "7.9.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4917,7 +4917,7 @@
         "namespace": "indices.put_mapping"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5026,7 +5026,7 @@
         "namespace": "indices.put_settings"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -5063,7 +5063,7 @@
         "namespace": "indices.put_template"
       },
       "since": "0.0.0",
-      "stability": "TODO",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -30658,6 +30658,35 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "DataStreamNames",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataStreamName",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataStreamName",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "description": "A reference to a date field with formatting instructions on how to return the date",
       "kind": "interface",
       "name": {
@@ -49787,6 +49816,17 @@
                 "name": "Property",
                 "namespace": "_types.mapping"
               }
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -87014,6 +87054,7 @@
             }
           },
           {
+            "description": "Mapping for fields in the index. If specified, this mapping can include: - Field names - Field data types - Mapping parameters",
             "name": "mappings",
             "required": false,
             "type": {
@@ -87651,13 +87692,26 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DataStreamName",
+              "name": "DataStreamNames",
               "namespace": "_types"
             }
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -89289,7 +89343,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "IndexName",
+              "name": "DataStreamNames",
               "namespace": "_types"
             }
           }
@@ -90968,17 +91022,7 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "all_field",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AllField",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
+            "description": "Controls whether dynamic date detection is enabled.",
             "name": "date_detection",
             "required": false,
             "type": {
@@ -90990,6 +91034,7 @@
             }
           },
           {
+            "description": "Controls whether new fields are added dynamically.",
             "name": "dynamic",
             "required": false,
             "type": {
@@ -91013,6 +91058,7 @@
             }
           },
           {
+            "description": "If date detection is enabled then new string fields are checked against 'dynamic_date_formats' and if the value matches then a new date field is added instead of string.",
             "name": "dynamic_date_formats",
             "required": false,
             "type": {
@@ -91027,6 +91073,7 @@
             }
           },
           {
+            "description": "Specify dynamic templates for the mapping.",
             "name": "dynamic_templates",
             "required": false,
             "type": {
@@ -91075,7 +91122,8 @@
             }
           },
           {
-            "name": "field_names_field",
+            "description": "Control whether field names are enabled for the index.",
+            "name": "_field_names",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -91086,18 +91134,8 @@
             }
           },
           {
-            "name": "index_field",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexField",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
-            "name": "meta",
+            "description": "A mapping type can have custom meta data associated with it. These are not used at all by Elasticsearch, but can be used to store application-specific metadata.",
+            "name": "_meta",
             "required": false,
             "type": {
               "key": {
@@ -91115,8 +91153,10 @@
             }
           },
           {
+            "description": "Automatically map strings into numeric data types for all fields.",
             "name": "numeric_detection",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -91126,6 +91166,7 @@
             }
           },
           {
+            "description": "Mapping for a field. For new fields, this mapping can include: - Field name - Field data type - Mapping parameters",
             "name": "properties",
             "required": false,
             "type": {
@@ -91148,7 +91189,8 @@
             }
           },
           {
-            "name": "routing_field",
+            "description": "Enable making a routing value required on indexed documents.",
+            "name": "_routing",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -91159,18 +91201,8 @@
             }
           },
           {
-            "name": "size_field",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SizeField",
-                "namespace": "_types.mapping"
-              }
-            }
-          },
-          {
-            "name": "source_field",
+            "description": "Control whether the _source field is enabled on the index.",
+            "name": "_source",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -91181,6 +91213,7 @@
             }
           },
           {
+            "description": "Mapping of runtime fields for the index.",
             "name": "runtime",
             "required": false,
             "type": {
@@ -91511,6 +91544,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Aliases for the index.",
             "name": "aliases",
             "required": false,
             "type": {
@@ -91533,6 +91567,7 @@
             }
           },
           {
+            "description": "Array of wildcard expressions used to match the names of indices during creation.",
             "name": "index_patterns",
             "required": false,
             "type": {
@@ -91559,6 +91594,7 @@
             }
           },
           {
+            "description": "Mapping for fields in the index.",
             "name": "mappings",
             "required": false,
             "type": {
@@ -91570,6 +91606,7 @@
             }
           },
           {
+            "description": "Order in which Elasticsearch applies this template if index matches multiple templates. Templates with lower 'order' values are merged first. Templates with higher 'order' values are merged later, overriding templates with lower values.",
             "name": "order",
             "required": false,
             "type": {
@@ -91581,6 +91618,7 @@
             }
           },
           {
+            "description": "Configuration options for the index.",
             "name": "settings",
             "required": false,
             "type": {
@@ -91599,6 +91637,7 @@
             }
           },
           {
+            "description": "Version number used to manage index templates externally. This number is not automatically generated by Elasticsearch.",
             "name": "version",
             "required": false,
             "type": {
@@ -91638,9 +91677,10 @@
       ],
       "query": [
         {
-          "description": "Whether the index template should only be added if new or can also replace an existing one",
+          "description": "If true, this request cannot replace or update existing index templates.",
           "name": "create",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91673,9 +91713,10 @@
           }
         },
         {
-          "description": "Specify timeout for connection to master",
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {

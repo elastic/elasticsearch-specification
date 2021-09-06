@@ -611,9 +611,37 @@
       ],
       "response": []
     },
+<<<<<<< HEAD
+=======
+    "indices.create": {
+      "request": [
+        "Request: query parameter 'include_type_name' does not exist in the json spec",
+        "interface definition _types.mapping:FlattenedProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:SearchAsYouTypeProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:TextProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:BooleanProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:DateProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:DateNanosProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:KeywordProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:NumberProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:RangePropertyBase - Property 'index' is already defined in an ancestor class",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
+        "interface definition _types.mapping:GenericProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:IpProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:TokenCountProperty - Property 'index' is already defined in an ancestor class",
+        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
+      ],
+      "response": []
+    },
+>>>>>>> 3be8ea194... Fixes and descriptions for basic indices APIs (#648)
     "indices.create_data_stream": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -637,7 +665,7 @@
     },
     "indices.delete_data_stream": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -733,9 +761,13 @@
     },
     "indices.get_data_stream": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'green'",
+        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'yellow'",
+        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'red'"
+      ]
     },
     "indices.get_field_mapping": {
       "request": [
@@ -808,15 +840,27 @@
       ],
       "response": []
     },
+<<<<<<< HEAD
+=======
+    "indices.put_mapping": {
+      "request": [
+        "Request: query parameter 'include_type_name' does not exist in the json spec"
+      ],
+      "response": []
+    },
+>>>>>>> 3be8ea194... Fixes and descriptions for basic indices APIs (#648)
     "indices.put_settings": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "interface definition indices.put_settings:IndexSettingsBody / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
       ],
       "response": []
     },
     "indices.put_template": {
       "request": [
-        "Endpoint has \"@stability: TODO"
+        "Request: query parameter 'flat_settings' does not exist in the json spec",
+        "Request: query parameter 'include_type_name' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: missing json spec query parameter 'order'"
       ],
       "response": []
     },

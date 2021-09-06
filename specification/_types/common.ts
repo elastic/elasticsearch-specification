@@ -71,6 +71,8 @@ export type NodeName = string
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params */
 export type DataStreamName = string
 
+export type DataStreamNames = DataStreamName | DataStreamName[]
+
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units */
 export type ByteSize = long | string
 
