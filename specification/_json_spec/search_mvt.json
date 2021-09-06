@@ -14,7 +14,7 @@
       "paths": [
         {
           "path": "/{index}/_mvt/{field}/{zoom}/{x}/{y}",
-          "methods": ["GET", "POST"],
+          "methods": ["POST", "GET"],
           "parts": {
             "index": {
               "type": "list",
