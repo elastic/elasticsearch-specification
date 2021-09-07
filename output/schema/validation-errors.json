@@ -947,7 +947,10 @@
     },
     "indices.disk_usage": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
