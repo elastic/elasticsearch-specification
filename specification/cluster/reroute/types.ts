@@ -31,7 +31,7 @@ import {
   Uuid,
   VersionNumber
 } from '@_types/common'
-import { NodeAttributes } from '@_types/Node'
+import { NodeAttributes, NodeShard } from '@_types/Node'
 import { integer } from '@_types/Numeric'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
@@ -127,10 +127,18 @@ export class RerouteState {
   version?: VersionNumber
   blocks?: EmptyObject // TODO: this is likely wrong too
   nodes?: Dictionary<NodeName, NodeAttributes>
-  routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
+  routing_table?: RoutingTable
   routing_nodes?: ClusterStateRoutingNodes
   security_tokens?: Dictionary<string, string>
   snapshots?: ClusterStateSnapshots
   snapshot_deletions?: ClusterStateDeletedSnapshots
   metadata?: ClusterStateMetadata
+}
+
+export class RoutingTable {
+  indices: Dictionary<IndexName, RoutingTableIndex>
+}
+
+export class RoutingTableIndex {
+  shards: Dictionary<string, NodeShard[]>
 }

@@ -7504,7 +7504,7 @@ export interface ClusterRerouteRerouteState {
   version?: VersionNumber
   blocks?: EmptyObject
   nodes?: Record<NodeName, NodeAttributes>
-  routing_table?: Record<string, EmptyObject>
+  routing_table?: ClusterRerouteRoutingTable
   routing_nodes?: ClusterClusterStateRoutingNodes
   security_tokens?: Record<string, string>
   snapshots?: ClusterClusterStateSnapshots
@@ -7515,6 +7515,14 @@ export interface ClusterRerouteRerouteState {
 export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
   explanations?: ClusterRerouteRerouteExplanation[]
   state: ClusterRerouteRerouteState
+}
+
+export interface ClusterRerouteRoutingTable {
+  indices: Record<IndexName, ClusterRerouteRoutingTableIndex>
+}
+
+export interface ClusterRerouteRoutingTableIndex {
+  shards: Record<string, NodeShard[]>
 }
 
 export interface ClusterStateClusterStateBlocks {
