@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { DateString } from '@_types/Time'
@@ -25,10 +24,9 @@ import { DateString } from '@_types/Time'
 /**
  * @rest_spec_name ml.post_data
  * @since 5.4.0
- *
  * @stability stable
  */
-export interface Request extends RequestBase {
+export interface Request<TData> extends RequestBase {
   path_parts: {
     job_id: Id
   }
@@ -36,7 +34,6 @@ export interface Request extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
-  body: {
-    data?: UserDefinedValue[]
-  }
+  /** @identifier data */
+  body: Array<TData>
 }
