@@ -16181,6 +16181,17 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "name": "metadata_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -52584,6 +52595,17 @@
               "namespace": "_types.query_dsl"
             }
           }
+        },
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },
@@ -52915,6 +52937,17 @@
             "type": {
               "name": "GeoValidationMethod",
               "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -59517,6 +59550,17 @@
                   }
                 ],
                 "kind": "union_of"
+              }
+            }
+          },
+          {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
               }
             }
           }
@@ -91740,6 +91784,18 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "Order in which Elasticsearch applies this template if index\nmatches multiple templates.\n\nTemplates with lower 'order' values are merged first. Templates with higher\n'order' values are merged later, overriding templates with lower values.",
+          "name": "order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
         }
       ]
     },
@@ -114379,20 +114435,25 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "data",
-            "required": false,
+        "identifier": "data",
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
+              "name": "TData",
+              "namespace": "ml.post_data"
             }
           }
-        ]
+        }
       },
+      "generics": [
+        {
+          "name": "TData",
+          "namespace": "ml.post_data"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126719,6 +126780,20 @@
               "namespace": "security._types"
             }
           }
+        },
+        {
+          "name": "role_templates",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleTemplate",
+                "namespace": "security.get_role"
+              }
+            }
+          }
         }
       ]
     },
@@ -137836,7 +137911,7 @@
         },
         {
           "name": "group_by",
-          "required": true,
+          "required": false,
           "type": {
             "key": {
               "kind": "instance_of",
@@ -138960,7 +139035,20 @@
         "name": "Request",
         "namespace": "transform.preview_transform"
       },
-      "path": [],
+      "path": [
+        {
+          "description": "The id of the transform to preview.",
+          "name": "transform_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
       "query": []
     },
     {

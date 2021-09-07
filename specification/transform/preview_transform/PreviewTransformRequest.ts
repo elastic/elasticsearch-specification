@@ -26,6 +26,7 @@ import {
   SyncContainer
 } from '@transform/_types/Transform'
 import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -34,6 +35,9 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
+  path_parts: {
+    transform_id?: Id
+  }
   body: {
     /** The destination for the transform. */
     dest?: Destination
