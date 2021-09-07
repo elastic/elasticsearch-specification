@@ -45,3 +45,14 @@ export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
   type?: 'object'
 }
+
+export class DenseVectorProperty extends PropertyBase {
+  type: 'dense_vector'
+  dims: integer
+}
+
+export class AggregateMetricDoubleProperty extends PropertyBase {
+  type: 'aggregate_metric_double'
+  default_metric: string
+  metrics: string[]
+}

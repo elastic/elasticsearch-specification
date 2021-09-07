@@ -46679,6 +46679,54 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AggregateMetricDoubleProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "aggregate_metric_double"
+          }
+        },
+        {
+          "name": "default_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metrics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "AllField",
@@ -47284,6 +47332,17 @@
           }
         },
         {
+          "name": "store",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "type",
           "required": true,
           "type": {
@@ -47323,6 +47382,40 @@
           "type": {
             "kind": "literal_value",
             "value": "date_range"
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DenseVectorProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "dense_vector"
+          }
+        },
+        {
+          "name": "dims",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
           }
         }
       ]
@@ -47802,6 +47895,12 @@
         },
         {
           "name": "constant_keyword"
+        },
+        {
+          "name": "aggregate_metric_double"
+        },
+        {
+          "name": "dense_vector"
         }
       ],
       "name": {
@@ -49073,6 +49172,20 @@
             "kind": "instance_of",
             "type": {
               "name": "HistogramProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregateMetricDoubleProperty",
               "namespace": "_types.mapping"
             }
           },
