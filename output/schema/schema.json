@@ -49219,17 +49219,6 @@
               }
             }
           }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
