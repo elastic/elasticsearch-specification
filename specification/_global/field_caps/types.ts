@@ -28,4 +28,5 @@ export class FieldCapability {
   non_searchable_indices?: Indices
   searchable: boolean
   type: string
+  metadata_field?: boolean
 }

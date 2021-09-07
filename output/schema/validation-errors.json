@@ -1108,8 +1108,7 @@
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
         "Request: query parameter 'include_type_name' does not exist in the json spec",
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'order'"
+        "Request: query parameter 'timeout' does not exist in the json spec"
       ],
       "response": []
     },
@@ -2154,15 +2153,14 @@
     },
     "transform.preview_transform": {
       "request": [
-        "Request: missing json spec path parameter 'transform_id'",
-        "Non-leaf type cannot be used here: 'transform.preview_transform:Request'",
-        "Url path property 'transform_id' is missing in request definition"
+        "Non-leaf type cannot be used here: 'transform.preview_transform:Request'"
       ],
       "response": []
     },
     "transform.put_transform": {
       "request": [
         "request definition transform.put_transform:Request / Inherits - 'transform.preview_transform:Request' is a request and must only be used in endpoints",
+        "request definition transform.put_transform:Request / path - Property 'transform_id' is already defined in an ancestor class",
         "Non-leaf type cannot be used here: 'transform.put_transform:Request'"
       ],
       "response": []

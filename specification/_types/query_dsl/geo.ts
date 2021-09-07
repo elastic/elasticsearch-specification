@@ -55,6 +55,7 @@ export class GeoBoundingBoxQuery
   type?: GeoExecution
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
+  ignore_unmapped?: boolean
 }
 
 export enum GeoExecution {
@@ -82,6 +83,7 @@ export class GeoPolygonQuery
   implements AdditionalProperty<Field, GeoPolygonPoints> {
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
+  ignore_unmapped?: boolean
 }
 
 export enum GeoFormat {
