@@ -1103,13 +1103,7 @@
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
-<<<<<<< HEAD
-        "Request: query parameter 'timeout' does not exist in the json spec",
-        "Request: missing json spec query parameter 'order'"
-=======
-        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: query parameter 'timeout' does not exist in the json spec"
->>>>>>> 39a01d335... Minor type fixes (#690)
       ],
       "response": []
     },
