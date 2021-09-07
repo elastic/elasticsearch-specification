@@ -71834,6 +71834,7 @@
           }
         },
         {
+          "description": "The remote cluster containing the leader indices to match against.",
           "name": "remote_cluster",
           "required": true,
           "type": {
@@ -71845,6 +71846,7 @@
           }
         },
         {
+          "description": "The name of follower index.",
           "name": "follow_index_pattern",
           "required": false,
           "type": {
@@ -71856,6 +71858,7 @@
           }
         },
         {
+          "description": "An array of simple index patterns to match against indices in the remote cluster specified by the remote_cluster field.",
           "name": "leader_index_patterns",
           "required": true,
           "type": {
@@ -71867,6 +71870,20 @@
           }
         },
         {
+          "description": "An array of simple index patterns that can be used to exclude indices from being auto-followed.",
+          "name": "leader_index_exclusion_patterns",
+          "required": true,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPatterns",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of outstanding reads requests from the remote cluster.",
           "name": "max_outstanding_read_requests",
           "required": true,
           "type": {
@@ -72049,6 +72066,8 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The remote cluster containing the leader indices to match against.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html",
             "name": "remote_cluster",
             "required": true,
             "type": {
@@ -72060,6 +72079,7 @@
             }
           },
           {
+            "description": "The name of follower index. The template {{leader_index}} can be used to derive the name of the follower index from the name of the leader index. When following a data stream, use {{leader_index}}; CCR does not support changes to the names of a follower data stream’s backing indices.",
             "name": "follow_index_pattern",
             "required": false,
             "type": {
@@ -72071,6 +72091,7 @@
             }
           },
           {
+            "description": "An array of simple index patterns to match against indices in the remote cluster specified by the remote_cluster field.",
             "name": "leader_index_patterns",
             "required": false,
             "type": {
@@ -72082,6 +72103,19 @@
             }
           },
           {
+            "description": "An array of simple index patterns that can be used to exclude indices from being auto-followed. Indices in the remote cluster whose names are matching one or more leader_index_patterns and one or more leader_index_exclusion_patterns won’t be followed.",
+            "name": "leader_index_exclusion_patterns",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexPatterns",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
             "name": "max_outstanding_read_requests",
             "required": false,
             "serverDefault": 12,
@@ -72094,6 +72128,7 @@
             }
           },
           {
+            "description": "Settings to override from the leader index. Note that certain settings can not be overrode (e.g., index.number_of_shards).",
             "name": "settings",
             "required": false,
             "type": {
@@ -72112,6 +72147,7 @@
             }
           },
           {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
             "name": "max_outstanding_write_requests",
             "required": false,
             "serverDefault": 9,
@@ -72124,6 +72160,7 @@
             }
           },
           {
+            "description": "The maximum time to wait for new operations on the remote cluster when the follower index is synchronized with the leader index. When the timeout has elapsed, the poll for operations will return to the follower so that it can update some statistics. Then the follower will immediately attempt to read from the leader again.",
             "name": "read_poll_timeout",
             "required": false,
             "serverDefault": "1m",
@@ -72136,6 +72173,7 @@
             }
           },
           {
+            "description": "The maximum number of operations to pull per read from the remote cluster.",
             "name": "max_read_request_operation_count",
             "required": false,
             "serverDefault": 5120,
@@ -72148,6 +72186,7 @@
             }
           },
           {
+            "description": "The maximum size in bytes of per read of a batch of operations pulled from the remote cluster.",
             "name": "max_read_request_size",
             "required": false,
             "serverDefault": "32mb",
@@ -72160,6 +72199,7 @@
             }
           },
           {
+            "description": "The maximum time to wait before retrying an operation that failed exceptionally. An exponential backoff strategy is employed when retrying.",
             "name": "max_retry_delay",
             "required": false,
             "serverDefault": "500ms",
@@ -72172,6 +72212,7 @@
             }
           },
           {
+            "description": "The maximum number of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be deferred until the number of queued operations goes below the limit.",
             "name": "max_write_buffer_count",
             "required": false,
             "serverDefault": 2147483647,
@@ -72184,6 +72225,7 @@
             }
           },
           {
+            "description": "The maximum total bytes of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be deferred until the total bytes of queued operations goes below the limit.",
             "name": "max_write_buffer_size",
             "required": false,
             "serverDefault": "512mb",
@@ -72196,6 +72238,7 @@
             }
           },
           {
+            "description": "The maximum number of operations per bulk write request executed on the follower.",
             "name": "max_write_request_operation_count",
             "required": false,
             "serverDefault": 5120,
@@ -72208,6 +72251,7 @@
             }
           },
           {
+            "description": "The maximum total bytes of operations per bulk write request executed on the follower.",
             "name": "max_write_request_size",
             "required": false,
             "serverDefault": "9223372036854775807b",
@@ -72234,7 +72278,7 @@
       },
       "path": [
         {
-          "description": "The name of the auto follow pattern.",
+          "description": "The name of the collection of auto-follow patterns.",
           "name": "name",
           "required": true,
           "type": {
