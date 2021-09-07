@@ -24,13 +24,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ingest.delete_pipeline
  * @since 5.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }

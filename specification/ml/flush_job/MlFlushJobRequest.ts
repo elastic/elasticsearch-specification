@@ -24,16 +24,16 @@ import { DateString } from '@_types/Time'
 /**
  * @rest_spec_name ml.flush_job
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     skip_time?: string
   }
-  body?: {
+  body: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString

@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
     /** The ID of the job to reset. */
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Should this request wait until the operation has completed before returning.
      * @server_default true

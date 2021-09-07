@@ -25,13 +25,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ccr.resume_follow
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  body?: {
+  body: {
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long
     max_read_request_operation_count?: long

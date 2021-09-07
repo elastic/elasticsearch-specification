@@ -25,16 +25,16 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name sql.query
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     /**
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sql-rest-format.html#sql-rest-format
      */
     format?: string
   }
-  body?: {
+  body: {
     columnar?: boolean
     cursor?: string
     /**

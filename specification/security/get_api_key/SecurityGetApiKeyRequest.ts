@@ -23,10 +23,10 @@ import { Id, Name, Username } from '@_types/common'
 /**
  * @rest_spec_name security.get_api_key
  * @since 6.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     id?: Id
     name?: Name
     owner?: boolean

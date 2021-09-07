@@ -23,7 +23,7 @@ import { Id, Name } from '@_types/common'
 /**
  * @rest_spec_name ml.put_trained_model_alias
  * @since 7.13.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -32,7 +32,7 @@ export interface Request extends RequestBase {
     /** The identifier for the trained model that the alias refers to. */
     model_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model. If the alias is already assigned and this parameter is false, the API returns an error.
      * @server_default false

@@ -30,14 +30,14 @@ import {
 /**
  * @rest_spec_name indices.stats
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     metric?: Metrics
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     completion_fields?: Fields
     expand_wildcards?: ExpandWildcards
     fielddata_fields?: Fields

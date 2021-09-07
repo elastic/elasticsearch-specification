@@ -32,10 +32,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, this request cannot replace or update existing index templates.
      * @server_default false
@@ -59,7 +59,7 @@ export interface Request extends RequestBase {
      */
     order?: integer
   }
-  body?: {
+  body: {
     /**
      * Aliases for the index.
      */

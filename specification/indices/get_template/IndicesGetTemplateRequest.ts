@@ -24,13 +24,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.get_template
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name?: Names
   }
-  query_parameters?: {
+  query_parameters: {
     flat_settings?: boolean
     include_type_name?: boolean
     local?: boolean

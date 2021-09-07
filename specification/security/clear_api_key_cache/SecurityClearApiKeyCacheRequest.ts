@@ -23,10 +23,10 @@ import { Ids } from '@_types/common'
 /**
  * @rest_spec_name security.clear_api_key_cache
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     ids: Ids
   }
 }

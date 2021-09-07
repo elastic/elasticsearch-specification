@@ -22,6 +22,6 @@ import { Request as PutTransformRequest } from '@transform/put_transform/PutTran
 /**
  * @rest_spec_name transform.update_transform
  * @since 7.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends PutTransformRequest {}

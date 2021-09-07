@@ -28,16 +28,16 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name watcher.execute_watch
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     debug?: boolean
   }
-  body?: {
+  body: {
     action_modes?: Dictionary<string, ActionExecutionMode>
     alternative_input?: Dictionary<string, UserDefinedValue>
     ignore_condition?: boolean

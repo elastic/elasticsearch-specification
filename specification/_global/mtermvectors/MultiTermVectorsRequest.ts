@@ -31,13 +31,13 @@ import { Operation } from './types'
 /**
  * @rest_spec_name mtermvectors
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     ids?: Id[]
     fields?: Fields
     field_statistics?: boolean
@@ -51,7 +51,7 @@ export interface Request extends RequestBase {
     version?: VersionNumber
     version_type?: VersionType
   }
-  body?: {
+  body: {
     docs?: Operation[]
     ids?: Id[]
   }

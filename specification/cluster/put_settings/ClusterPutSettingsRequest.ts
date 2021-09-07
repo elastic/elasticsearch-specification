@@ -25,17 +25,17 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name cluster.put_settings
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     flat_settings?: boolean
     /** @server_default 30s */
     master_timeout?: Time
     /** @server_default 30s */
     timeout?: Time
   }
-  body?: {
+  body: {
     persistent?: Dictionary<string, UserDefinedValue>
     transient?: Dictionary<string, UserDefinedValue>
   }

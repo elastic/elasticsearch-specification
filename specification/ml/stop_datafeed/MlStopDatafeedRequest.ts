@@ -24,19 +24,19 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.stop_datafeed
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     datafeed_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_match?: boolean
     /** @server_default false */
     force?: boolean
   }
-  body?: {
+  body: {
     /** @server_default false */
     force?: boolean
     /** @server_default 20s */

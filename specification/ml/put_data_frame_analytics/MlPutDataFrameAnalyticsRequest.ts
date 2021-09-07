@@ -30,14 +30,14 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.put_data_frame_analytics
  * @since 7.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     id: Id
   }
-  body?: {
+  body: {
     /**
      * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node. If set to false and a machine learning node with capacity to run the job cannot be immediately found, the API returns an error.  If set to true, the API does not return an error; the job waits in the `starting` state until sufficient machine learning node capacity is available. This behavior is also affected by the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting.
      * @server_default false

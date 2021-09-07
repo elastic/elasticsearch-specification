@@ -23,13 +23,13 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name ml.put_filter
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     filter_id: Id
   }
-  body?: {
+  body: {
     description?: string
     items?: string[]
   }

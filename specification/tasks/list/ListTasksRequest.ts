@@ -24,10 +24,10 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name tasks.list
  * @since 2.3.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     actions?: string | string[]
     detailed?: boolean
     group_by?: GroupBy

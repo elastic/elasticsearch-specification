@@ -24,13 +24,13 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name transform.get_transform
  * @since 7.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     transform_id?: Name
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_match?: boolean
     from?: integer
     size?: integer

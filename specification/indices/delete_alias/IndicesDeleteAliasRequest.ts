@@ -24,14 +24,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.delete_alias
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
     name: Names
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }

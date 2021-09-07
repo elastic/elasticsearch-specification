@@ -24,13 +24,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name cluster.delete_component_template
  * @since 7.8.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default 30s */
     master_timeout?: Time
     /** @server_default 30s */

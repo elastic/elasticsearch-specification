@@ -23,10 +23,10 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name close_point_in_time
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     id: Id
   }
 }

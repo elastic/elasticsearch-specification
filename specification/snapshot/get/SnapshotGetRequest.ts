@@ -24,7 +24,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name snapshot.get
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
      */
     snapshot: Names
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If false, the request returns an error for any snapshots that are unavailable.
      * @server_default false

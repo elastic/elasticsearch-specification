@@ -22,6 +22,6 @@ import { CatRequestBase } from '@cat/_types/CatBase'
 /**
  * @rest_spec_name cat.help
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {}

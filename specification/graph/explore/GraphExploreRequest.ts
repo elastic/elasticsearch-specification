@@ -28,17 +28,17 @@ import { VertexDefinition } from '@graph/_types/Vertex'
 /**
  * @rest_spec_name graph.explore
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     routing?: Routing
     timeout?: Time
   }
-  body?: {
+  body: {
     connections?: Hop
     controls?: ExploreControls
     query?: QueryContainer

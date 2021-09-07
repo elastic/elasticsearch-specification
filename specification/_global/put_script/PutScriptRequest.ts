@@ -25,18 +25,18 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name put_script
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     context?: Name
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }
-  body?: {
+  body: {
     script?: StoredScript
   }
 }

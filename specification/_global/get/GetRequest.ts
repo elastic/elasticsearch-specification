@@ -30,7 +30,7 @@ import {
 /**
  * @rest_spec_name get
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
     /** Name of the index that contains the document. */
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Specifies the node or shard the operation should be performed on. Random by default.
      */

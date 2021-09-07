@@ -32,13 +32,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name search_template
  * @since 2.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_indices?: boolean
     /** @server_default false */
@@ -65,7 +65,7 @@ export interface Request extends RequestBase {
     /** @server_default false */
     typed_keys?: boolean
   }
-  body?: {
+  body: {
     id?: Id
     params?: Dictionary<string, UserDefinedValue>
     source?: string

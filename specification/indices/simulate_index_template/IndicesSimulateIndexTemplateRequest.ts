@@ -28,11 +28,11 @@ import { IndexName, Name } from '@_types/common'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Index or template name to simulate */
     name: Name
   }
-  body?: {
+  body: {
     index_patterns?: IndexName[]
     composed_of?: Name[]
     /** Any overlapping templates that would have matched, but have lower priority */

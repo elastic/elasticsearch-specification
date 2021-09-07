@@ -23,10 +23,10 @@ import { Name } from '@_types/common'
 /**
  * @rest_spec_name ccr.get_auto_follow_pattern
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Specifies the auto-follow pattern collection that you want to retrieve. If you do not specify a name, the API returns information for all collections. */
     name?: Name
   }

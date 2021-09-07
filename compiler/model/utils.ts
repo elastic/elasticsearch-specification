@@ -530,10 +530,8 @@ export function hoistRequestAnnotations (
       }
       endpoint.visibility = model.Visibility[value]
     } else if (tag === 'stability') {
-      if (value !== 'TODO' && endpoint.stability !== null && endpoint.stability !== undefined) {
-        assert(jsDocs, endpoint.stability === value,
-          `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
-      }
+      assert(jsDocs, endpoint.stability === value,
+        `Request ${request.name.name} stability on annotation ${value} does not match spec: ${endpoint.stability ?? ''}`)
       endpoint.stability = model.Stability[value]
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)

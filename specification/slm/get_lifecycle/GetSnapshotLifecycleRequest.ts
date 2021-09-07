@@ -23,10 +23,10 @@ import { Names } from '@_types/common'
 /**
  * @rest_spec_name slm.get_lifecycle
  * @since 7.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     policy_id?: Names
   }
 }

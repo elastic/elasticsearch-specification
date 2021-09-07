@@ -35,19 +35,19 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.put_datafeed
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     datafeed_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
   }
-  body?: {
+  body: {
     aggregations?: Dictionary<string, AggregationContainer>
     chunking_config?: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig

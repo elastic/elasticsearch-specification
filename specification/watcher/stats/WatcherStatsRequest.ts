@@ -23,16 +23,16 @@ import { WatcherMetric } from './types'
 /**
  * @rest_spec_name watcher.stats
  * @since 5.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /**
      * Defines which additional metrics are included in the response.
      */
     metric?: WatcherMetric | WatcherMetric[]
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Defines whether stack traces are generated for each watch that is running.
      * @server_default false

@@ -24,16 +24,16 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name nodes.info
  * @since 1.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /** Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest. */
     metric?: Metrics
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, returns settings in flat format.
      * @server_default false

@@ -35,15 +35,15 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name delete
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     if_primary_term?: long
     if_seq_no?: SequenceNumber
     refresh?: Refresh

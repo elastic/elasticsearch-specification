@@ -23,13 +23,13 @@ import { Bytes, ExpandWildcards, Health, Indices } from '@_types/common'
 /**
  * @rest_spec_name cat.indices
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     bytes?: Bytes
     expand_wildcards?: ExpandWildcards
     health?: Health

@@ -30,14 +30,14 @@ import {
 /**
  * @rest_spec_name exists
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     preference?: string
     realtime?: boolean
     refresh?: boolean

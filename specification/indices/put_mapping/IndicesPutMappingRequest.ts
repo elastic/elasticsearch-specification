@@ -43,10 +43,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean
@@ -55,7 +55,7 @@ export interface Request extends RequestBase {
     timeout?: Time
     write_index_only?: boolean
   }
-  body?: {
+  body: {
     /**
      * Controls whether dynamic date detection is enabled.
      */

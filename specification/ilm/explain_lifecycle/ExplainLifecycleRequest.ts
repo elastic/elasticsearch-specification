@@ -23,13 +23,13 @@ import { IndexName } from '@_types/common'
 /**
  * @rest_spec_name ilm.explain_lifecycle
  * @since 6.6.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     only_errors?: boolean
     only_managed?: boolean
   }

@@ -24,14 +24,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.delete_forecast
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
     forecast_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_forecasts?: boolean
     timeout?: Time
   }

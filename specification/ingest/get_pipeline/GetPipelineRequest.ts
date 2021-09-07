@@ -27,10 +27,10 @@ import { Time } from '@_types/Time'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default 30s */
     master_timeout?: Time
     /** @server_default false */

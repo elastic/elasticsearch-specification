@@ -25,13 +25,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name nodes.hot_threads
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     node_id?: NodeIds
   }
-  query_parameters?: {
+  query_parameters: {
     ignore_idle_threads?: boolean
     interval?: Time
     snapshots?: long

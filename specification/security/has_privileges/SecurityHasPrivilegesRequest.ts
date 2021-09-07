@@ -24,13 +24,13 @@ import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
 /**
  * @rest_spec_name security.has_privileges
  * @since 6.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     user?: Name
   }
-  body?: {
+  body: {
     application?: ApplicationPrivilegesCheck[]
     cluster?: string[]
     index?: IndexPrivilegesCheck[]

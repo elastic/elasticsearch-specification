@@ -23,13 +23,13 @@ import { ExpandWildcards, Names } from '@_types/common'
 /**
  * @rest_spec_name indices.resolve_index
  * @since 7.9.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: Names
   }
-  query_parameters?: {
+  query_parameters: {
     expand_wildcards?: ExpandWildcards
   }
 }

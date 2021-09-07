@@ -22,10 +22,10 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name license.post_start_trial
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     acknowledge?: boolean
     type_query_string?: string
   }

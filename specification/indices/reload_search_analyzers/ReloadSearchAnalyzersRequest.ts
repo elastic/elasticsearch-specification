@@ -23,13 +23,13 @@ import { ExpandWildcards, Indices } from '@_types/common'
 /**
  * @rest_spec_name indices.reload_search_analyzers
  * @since 7.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     ignore_unavailable?: boolean

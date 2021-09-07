@@ -24,13 +24,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name open_point_in_time
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     keep_alive?: Time
   }
 }

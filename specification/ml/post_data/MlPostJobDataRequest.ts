@@ -26,17 +26,17 @@ import { DateString } from '@_types/Time'
  * @rest_spec_name ml.post_data
  * @since 5.4.0
  *
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     reset_end?: DateString
     reset_start?: DateString
   }
-  body?: {
+  body: {
     data?: UserDefinedValue[]
   }
 }

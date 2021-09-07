@@ -25,16 +25,16 @@ import { Document } from './types'
 /**
  * @rest_spec_name ingest.simulate
  * @since 5.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     verbose?: boolean
   }
-  body?: {
+  body: {
     docs?: Document[]
     pipeline?: Pipeline
   }

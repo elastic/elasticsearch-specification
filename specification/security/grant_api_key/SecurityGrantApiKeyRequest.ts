@@ -24,10 +24,10 @@ import { ApiKey, ApiKeyGrantType } from './types'
 /**
  * @rest_spec_name security.grant_api_key
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     api_key: ApiKey
     grant_type: ApiKeyGrantType
     access_token?: string

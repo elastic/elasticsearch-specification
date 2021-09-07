@@ -24,14 +24,14 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.get_trained_models_stats
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** The unique identifier of the trained model. */
     model_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Specifies what to do when the request:
      * - Contains wildcard expressions and there are no models that match.

@@ -26,13 +26,13 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name rollup.put_job
  * @since 6.3.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     id: Id
   }
-  body?: {
+  body: {
     cron?: string
     groups?: Groupings
     index_pattern?: string

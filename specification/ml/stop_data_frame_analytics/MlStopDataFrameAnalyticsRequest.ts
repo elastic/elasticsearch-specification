@@ -24,14 +24,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.stop_data_frame_analytics
  * @since 7.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_match?: boolean
     /**

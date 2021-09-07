@@ -23,10 +23,10 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name cluster.pending_tasks
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     local?: boolean
     /** @server_default 30s */
     master_timeout?: Time

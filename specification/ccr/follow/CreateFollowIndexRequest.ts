@@ -25,16 +25,16 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ccr.follow
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     wait_for_active_shards?: WaitForActiveShards
   }
-  body?: {
+  body: {
     leader_index?: IndexName
     max_outstanding_read_requests?: long
     max_outstanding_write_requests?: long

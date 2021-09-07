@@ -24,14 +24,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.add_block
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
     block: IndicesBlockOptions
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean // default: true
     expand_wildcards?: ExpandWildcards // default: open
     ignore_unavailable?: boolean // default: false

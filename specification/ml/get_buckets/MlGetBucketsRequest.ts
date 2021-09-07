@@ -26,14 +26,14 @@ import { DateString, Timestamp } from '@_types/Time'
 /**
  * @rest_spec_name ml.get_buckets
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
     timestamp?: Timestamp
   }
-  query_parameters?: {
+  query_parameters: {
     from?: integer
     size?: integer
     /** @server_default false */
@@ -44,7 +44,7 @@ export interface Request extends RequestBase {
     start?: DateString
     end?: DateString
   }
-  body?: {
+  body: {
     anomaly_score?: double
     /** @server_default false */
     desc?: boolean

@@ -22,10 +22,10 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name license.get
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     accept_enterprise?: boolean
     local?: boolean
   }

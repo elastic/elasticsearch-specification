@@ -28,16 +28,16 @@ import { Metadata, Name, Refresh } from '@_types/common'
 /**
  * @rest_spec_name security.put_role
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
-  body?: {
+  body: {
     /**
      * A list of application privilege entries.
      */

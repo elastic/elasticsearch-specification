@@ -24,13 +24,13 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name cat.transforms
  * @since 7.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     transform_id?: Id
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_match?: boolean
     from?: integer
     size?: integer

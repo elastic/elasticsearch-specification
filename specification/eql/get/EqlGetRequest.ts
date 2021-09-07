@@ -24,7 +24,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name eql.get
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -33,7 +33,7 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Period for which the search and its results are stored on the cluster. Defaults to the keep_alive value set by the search’s EQL search API request.
      */

@@ -26,13 +26,13 @@ import { TemplateItem } from './types'
  * @rest_spec_name msearch_template
  * @since 5.0.0
  *
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     ccs_minimize_roundtrips?: boolean
     max_concurrent_searches?: long
     search_type?: SearchType

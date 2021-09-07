@@ -22,7 +22,7 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name sql.clear_cursor
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   body: {

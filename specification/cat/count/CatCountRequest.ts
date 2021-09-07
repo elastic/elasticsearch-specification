@@ -23,10 +23,10 @@ import { Indices } from '@_types/common'
 /**
  * @rest_spec_name cat.count
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends CatRequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
 }

@@ -24,13 +24,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.forecast
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     job_id: Id
   }
-  body?: {
+  body: {
     duration?: Time
     expires_in?: Time
   }

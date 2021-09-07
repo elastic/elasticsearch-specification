@@ -25,18 +25,18 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name snapshot.restore
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     repository: Name
     snapshot: Name
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     wait_for_completion?: boolean
   }
-  body?: {
+  body: {
     ignore_index_settings?: string[]
     ignore_unavailable?: boolean
     include_aliases?: boolean

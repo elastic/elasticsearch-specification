@@ -27,10 +27,10 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.validate
  * @since 6.3.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     job_id?: Id
     analysis_config?: AnalysisConfig
     analysis_limits?: AnalysisLimits

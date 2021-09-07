@@ -28,7 +28,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     /**
      * The offset from the first result to fetch. Needs to be non-negative.
      * @server_default 0

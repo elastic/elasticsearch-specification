@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name slm.put_lifecycle
  * @since 7.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -35,7 +35,7 @@ export interface Request extends RequestBase {
      */
     policy_id: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
@@ -47,7 +47,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Time
   }
-  body?: {
+  body: {
     /**
      * Configuration for each snapshot created by the policy.
      */

@@ -27,18 +27,18 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 /**
  * @rest_spec_name rollup.rollup_search
  * @since 6.3.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
     type?: Type
   }
-  query_parameters?: {
+  query_parameters: {
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
-  body?: {
+  body: {
     aggs?: Dictionary<string, AggregationContainer>
     query?: QueryContainer
     size?: integer

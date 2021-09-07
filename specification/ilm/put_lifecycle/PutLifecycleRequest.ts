@@ -24,13 +24,13 @@ import { Name } from '@_types/common'
 /**
  * @rest_spec_name ilm.put_lifecycle
  * @since 6.6.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     policy: Name
   }
-  body?: {
+  body: {
     policy?: Policy
   }
 }

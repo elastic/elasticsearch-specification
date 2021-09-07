@@ -26,14 +26,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name searchable_snapshots.mount
  * @since 7.10.0
- * @stability TODO
+ * @stability experimental
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     repository: Name
     snapshot: Name
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default 30s */
     master_timeout?: Time
     /** @server_default false */
@@ -41,7 +41,7 @@ export interface Request extends RequestBase {
     /** @server_default full_copy */
     storage?: string
   }
-  body?: {
+  body: {
     index: IndexName
     renamed_index?: IndexName
     index_settings?: Dictionary<string, UserDefinedValue>

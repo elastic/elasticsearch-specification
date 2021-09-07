@@ -27,19 +27,19 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name indices.split
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
     target: IndexName
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
     wait_for_active_shards?: WaitForActiveShards
   }
-  body?: {
+  body: {
     aliases?: Dictionary<IndexName, Alias>
     settings?: Dictionary<string, UserDefinedValue>
   }

@@ -23,13 +23,13 @@ import { Ids } from '@_types/common'
 /**
  * @rest_spec_name ml.get_jobs
  * @since 5.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     job_id?: Ids
   }
-  query_parameters?: {
+  query_parameters: {
     /** @server_default true */
     allow_no_match?: boolean
     /** @server_default true */

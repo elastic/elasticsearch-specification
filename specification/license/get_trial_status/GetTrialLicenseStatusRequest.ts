@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name license.get_trial_status
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {}

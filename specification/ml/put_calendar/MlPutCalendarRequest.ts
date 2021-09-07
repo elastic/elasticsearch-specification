@@ -23,13 +23,13 @@ import { Id } from '@_types/common'
 /**
  * @rest_spec_name ml.put_calendar
  * @since 6.2.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     calendar_id: Id
   }
-  body?: {
+  body: {
     description?: string
   }
 }

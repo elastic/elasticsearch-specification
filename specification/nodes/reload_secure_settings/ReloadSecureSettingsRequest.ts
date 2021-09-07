@@ -24,16 +24,16 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name nodes.reload_secure_settings
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     node_id?: NodeIds
   }
-  query_parameters?: {
+  query_parameters: {
     timeout?: Time
   }
-  body?: {
+  body: {
     secure_settings_password?: Password
   }
 }

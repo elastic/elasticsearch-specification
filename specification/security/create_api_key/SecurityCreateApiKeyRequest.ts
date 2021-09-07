@@ -26,13 +26,13 @@ import { RoleDescriptor } from './types'
 /**
  * @rest_spec_name security.create_api_key
  * @since 6.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     refresh?: Refresh
   }
-  body?: {
+  body: {
     /** Expiration time for the API key. By default, API keys never expire. */
     expiration?: Time
     /** Specifies the name for this API key. */

@@ -26,10 +26,10 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.estimate_model_memory
  * @since 7.7.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     analysis_config?: AnalysisConfig
     max_bucket_cardinality?: Dictionary<Field, long>
     overall_cardinality?: Dictionary<Field, long>

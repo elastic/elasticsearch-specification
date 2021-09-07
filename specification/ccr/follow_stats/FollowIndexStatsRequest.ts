@@ -23,10 +23,10 @@ import { Indices } from '@_types/common'
 /**
  * @rest_spec_name ccr.follow_stats
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: Indices
   }
 }

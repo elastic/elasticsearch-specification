@@ -23,10 +23,10 @@ import { Name } from '@_types/common'
 /**
  * @rest_spec_name security.get_privileges
  * @since 6.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     application?: Name
     name?: Name
   }

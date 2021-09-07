@@ -25,14 +25,14 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ml.get_overall_buckets
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**  Identifier for the anomaly detection job. It can be a job identifier, a group name, a comma-separated list of jobs or groups, or a wildcard expression. */
     job_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     /** The span of the overall buckets. Must be greater or equal to the largest bucket span of the specified anomaly detection jobs, which is the default value. */
     bucket_span?: Time
     /** Returns overall buckets with overall scores greater than or equal to this value. */
@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
     exclude_interim?: boolean
     allow_no_match?: boolean
   }
-  body?: {
+  body: {
     allow_no_jobs?: boolean
   }
 }

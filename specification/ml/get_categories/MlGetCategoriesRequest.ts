@@ -25,7 +25,7 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name ml.get_categories
  * @since 5.4.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -34,13 +34,13 @@ export interface Request extends RequestBase {
     /** Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition. */
     category_id?: CategoryId
   }
-  query_parameters?: {
+  query_parameters: {
     from?: integer
     size?: integer
     /** Only return categories for the specified partition. */
     partition_field_value?: string
   }
-  body?: {
+  body: {
     page?: Page
   }
 }

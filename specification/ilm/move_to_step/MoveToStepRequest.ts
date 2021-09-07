@@ -24,13 +24,13 @@ import { StepKey } from './types'
 /**
  * @rest_spec_name ilm.move_to_step
  * @since 6.6.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index: IndexName
   }
-  body?: {
+  body: {
     current_step?: StepKey
     next_step?: StepKey
   }

@@ -27,13 +27,13 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name ccr.put_auto_follow_pattern
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     name: Name // param name in docs: auto_follow_pattern_name
   }
-  body?: {
+  body: {
     remote_cluster: string
     follow_index_pattern?: IndexPattern
     leader_index_patterns?: IndexPatterns

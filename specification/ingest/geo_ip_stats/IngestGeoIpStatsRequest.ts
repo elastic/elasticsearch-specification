@@ -22,6 +22,6 @@ import { RequestBase } from '@_types/Base'
 /**
  * @rest_spec_name ingest.geo_ip_stats
  * @since 7.13.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {}

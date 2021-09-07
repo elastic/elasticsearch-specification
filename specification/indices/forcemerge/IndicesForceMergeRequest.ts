@@ -24,13 +24,13 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name indices.forcemerge
  * @since 2.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     index?: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     allow_no_indices?: boolean
     expand_wildcards?: ExpandWildcards
     flush?: boolean

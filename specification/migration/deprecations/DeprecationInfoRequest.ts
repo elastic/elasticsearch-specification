@@ -23,10 +23,10 @@ import { IndexName } from '@_types/common'
 /**
  * @rest_spec_name migration.deprecations
  * @since 6.1.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** Comma-separate list of data streams or indices to check. Wildcard (*) expressions are supported. */
     index?: IndexName
   }

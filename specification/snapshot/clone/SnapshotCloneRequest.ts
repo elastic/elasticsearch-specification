@@ -24,19 +24,19 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name snapshot.clone
  * @since 7.10.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     repository: Name
     snapshot: Name
     target_snapshot: Name
   }
-  query_parameters?: {
+  query_parameters: {
     master_timeout?: Time
     timeout?: Time
   }
-  body?: {
+  body: {
     indices: string
   }
 }

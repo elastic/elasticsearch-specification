@@ -23,10 +23,10 @@ import { Name, Username } from '@_types/common'
 /**
  * @rest_spec_name security.invalidate_token
  * @since 5.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  body?: {
+  body: {
     token?: string
     refresh_token?: string
     realm_name?: Name

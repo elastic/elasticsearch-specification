@@ -23,10 +23,10 @@ import { Username } from '@_types/common'
 /**
  * @rest_spec_name security.get_user
  * @since 0.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
     username?: Username | Username[]
   }

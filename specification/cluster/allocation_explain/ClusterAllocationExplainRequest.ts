@@ -24,10 +24,10 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name cluster.allocation_explain
  * @since 5.0.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  query_parameters?: {
+  query_parameters: {
     /**
      * If true, returns information about disk usage and shard sizes.
      * @server_default false
@@ -39,7 +39,7 @@ export interface Request extends RequestBase {
      */
     include_yes_decisions?: boolean
   }
-  body?: {
+  body: {
     /**
      * Specifies the node ID or the name of the node to only explain a shard that is currently located on the specified node.
      */

@@ -24,13 +24,13 @@ import { long } from '@_types/Numeric'
 /**
  * @rest_spec_name delete_by_query_rethrottle
  * @since 6.5.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
-  path_parts?: {
+  path_parts: {
     task_id: Id
   }
-  query_parameters?: {
+  query_parameters: {
     requests_per_second?: long
   }
 }

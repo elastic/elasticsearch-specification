@@ -35,14 +35,14 @@ import { integer } from '@_types/Numeric'
 /**
  * @rest_spec_name indices.put_index_template
  * @since 7.9.0
- * @stability TODO
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
     /** Index or template name */
     name: Name
   }
-  body?: {
+  body: {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndexTemplateMapping
