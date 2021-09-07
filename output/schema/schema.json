@@ -50451,6 +50451,18 @@
             "kind": "literal_value",
             "value": "wildcard"
           }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },

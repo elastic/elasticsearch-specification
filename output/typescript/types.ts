@@ -4065,6 +4065,7 @@ export interface MappingVersionProperty extends MappingDocValuesPropertyBase {
 
 export interface MappingWildcardProperty extends MappingDocValuesPropertyBase {
   type: 'wildcard'
+  null_value?: string
 }
 
 export interface QueryDslBoolQuery extends QueryDslQueryBase {
