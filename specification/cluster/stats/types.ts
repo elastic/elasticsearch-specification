@@ -227,13 +227,18 @@ export class ClusterOperatingSystem {
   available_processors: integer
   mem: OperatingSystemMemoryInfo
   names: ClusterOperatingSystemName[]
-  pretty_names: ClusterOperatingSystemName[]
+  pretty_names: ClusterOperatingSystemPrettyName[]
   architectures?: ClusterOperatingSystemArchitecture[]
 }
 
 export class ClusterOperatingSystemName {
   count: integer
   name: Name
+}
+
+export class ClusterOperatingSystemPrettyName {
+  count: integer
+  pretty_name: Name
 }
 
 export class ClusterProcess {
