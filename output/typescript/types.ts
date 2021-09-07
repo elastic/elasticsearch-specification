@@ -3743,7 +3743,6 @@ export interface MappingDateProperty extends MappingDocValuesPropertyBase {
   index?: boolean
   null_value?: DateString
   precision_step?: integer
-  store?: boolean
   type: 'date'
 }
 
@@ -4008,7 +4007,7 @@ export interface MappingSizeField {
 export interface MappingSourceField {
   compress?: boolean
   compress_threshold?: string
-  enabled: boolean
+  enabled?: boolean
   excludes?: string[]
   includes?: string[]
 }

@@ -511,7 +511,6 @@
         "interface definition _types.mapping:TextProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:BooleanProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:DateProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:DateProperty - Property 'store' is already defined in an ancestor class",
         "interface definition _types.mapping:DateNanosProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:KeywordProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:NumberProperty - Property 'index' is already defined in an ancestor class",

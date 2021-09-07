@@ -51,7 +51,7 @@ export class SizeField {
 export class SourceField {
   compress?: boolean
   compress_threshold?: string
-  enabled: boolean
+  enabled?: boolean
   excludes?: string[]
   includes?: string[]
 }

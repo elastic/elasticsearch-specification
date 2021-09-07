@@ -47332,17 +47332,6 @@
           }
         },
         {
-          "name": "store",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "type",
           "required": true,
           "type": {
@@ -49878,7 +49867,7 @@
         },
         {
           "name": "enabled",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
