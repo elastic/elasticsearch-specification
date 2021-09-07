@@ -39,7 +39,7 @@ export class SuggestContext {
   name: Name
   path?: Field
   type: string
-  precision?: integer
+  precision?: integer | string
 }
 
 export class ConstantKeywordProperty extends PropertyBase {

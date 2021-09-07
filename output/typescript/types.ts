@@ -4005,7 +4005,7 @@ export interface MappingSuggestContext {
   name: Name
   path?: Field
   type: string
-  precision?: integer
+  precision?: integer | string
 }
 
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads'
