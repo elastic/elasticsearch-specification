@@ -18,7 +18,6 @@
  */
 
 import { AcknowledgedResponseBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response extends AcknowledgedResponseBase {

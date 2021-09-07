@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { RequestBase } from "@_types/Base";
-import { ExpandWildcards, IndexName, Indices } from "@_types/common";
-import { TimeUnit } from "@_types/Time";
+import { RequestBase } from '@_types/Base'
+import { ExpandWildcards, IndexName, Indices } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * @rest_spec_name indices.disk_usage
@@ -43,7 +43,7 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.
      * @server_default open
      */
-    expand_wildcards? : ExpandWildcards
+    expand_wildcards?: ExpandWildcards
     /**
      * If true, the API performs a flush before analysis. If false, the response may not include uncommitted data.
      * @server_default true
