@@ -11571,13 +11571,11 @@ export interface MlPostCalendarEventsResponse {
   events: MlCalendarEvent[]
 }
 
-export interface MlPostDataRequest extends RequestBase {
+export interface MlPostDataRequest<TData = unknown> extends RequestBase {
   job_id: Id
   reset_end?: DateString
   reset_start?: DateString
-  body?: {
-    data?: any[]
-  }
+  body?: TData[]
 }
 
 export interface MlPostDataResponse {
@@ -14400,6 +14398,7 @@ export interface TransformGetTransformStatsTransformStats {
 }
 
 export interface TransformPreviewTransformRequest extends RequestBase {
+  transform_id?: Id
   body?: {
     dest?: ReindexDestination
     description?: string

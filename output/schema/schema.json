@@ -113400,20 +113400,25 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "data",
-            "required": false,
+        "identifier": "data",
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "user_defined_value"
-              }
+              "name": "TData",
+              "namespace": "ml.post_data"
             }
           }
-        ]
+        }
       },
+      "generics": [
+        {
+          "name": "TData",
+          "namespace": "ml.post_data"
+        }
+      ],
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -138053,7 +138058,20 @@
         "name": "Request",
         "namespace": "transform.preview_transform"
       },
-      "path": [],
+      "path": [
+        {
+          "description": "The id of the transform to preview.",
+          "name": "transform_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
       "query": []
     },
     {
