@@ -17,12 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { PropertyName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
-import { DynamicMapping } from './dynamic-template'
-import { Property, PropertyBase } from './Property'
+import { PropertyBase } from './Property'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double
