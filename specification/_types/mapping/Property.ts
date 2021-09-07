@@ -20,7 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, PropertyName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { AggregateMetricDoubleProperty, DenseVectorProperty, FlattenedProperty } from './complex'
+import {
+  AggregateMetricDoubleProperty,
+  DenseVectorProperty,
+  FlattenedProperty
+} from './complex'
 import {
   CoreProperty,
   JoinProperty,
