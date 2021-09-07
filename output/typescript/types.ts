@@ -3769,7 +3769,7 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
 export type MappingDynamicMapping = 'strict' | 'runtime' | 'true' | 'false'
 
 export interface MappingDynamicTemplate {
-  mapping?: MappingPropertyBase
+  mapping?: MappingProperty
   match?: string
   match_mapping_type?: string
   match_pattern?: MappingMatchType

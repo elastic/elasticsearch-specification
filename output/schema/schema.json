@@ -47630,7 +47630,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "PropertyBase",
+              "name": "Property",
               "namespace": "_types.mapping"
             }
           }

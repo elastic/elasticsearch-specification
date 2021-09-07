@@ -523,8 +523,7 @@
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
         "interface definition _types.mapping:GenericProperty - Property 'index' is already defined in an ancestor class",
         "interface definition _types.mapping:IpProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:TokenCountProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
+        "interface definition _types.mapping:TokenCountProperty - Property 'index' is already defined in an ancestor class"
       ]
     },
     "cluster.get_settings": {
