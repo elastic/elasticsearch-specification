@@ -6916,11 +6916,7 @@ export interface CcrGetAutoFollowPatternAutoFollowPatternSummary {
   remote_cluster: string
   follow_index_pattern?: IndexPattern
   leader_index_patterns: IndexPatterns
-<<<<<<< HEAD
-  leader_index_exclusion_patterns?: IndexPatterns
-=======
   leader_index_exclusion_patterns: IndexPatterns
->>>>>>> 46e1c1329... Fix ccr.get_auto_follow_pattern response (#695)
   max_outstanding_read_requests: integer
 }
 

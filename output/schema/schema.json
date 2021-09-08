@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "cf5baca",
+    "hash": "a85ad913d",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -72627,14 +72627,9 @@
           }
         },
         {
-<<<<<<< HEAD
-          "name": "leader_index_exclusion_patterns",
-          "required": false,
-=======
           "description": "An array of simple index patterns that can be used to exclude indices from being auto-followed.",
           "name": "leader_index_exclusion_patterns",
           "required": true,
->>>>>>> 46e1c1329... Fix ccr.get_auto_follow_pattern response (#695)
           "since": "7.14.0",
           "type": {
             "kind": "instance_of",
@@ -72645,10 +72640,7 @@
           }
         },
         {
-<<<<<<< HEAD
-=======
           "description": "The maximum number of outstanding reads requests from the remote cluster.",
->>>>>>> 46e1c1329... Fix ccr.get_auto_follow_pattern response (#695)
           "name": "max_outstanding_read_requests",
           "required": true,
           "type": {
