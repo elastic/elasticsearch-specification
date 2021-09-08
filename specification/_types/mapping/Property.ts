@@ -47,7 +47,6 @@ export class PropertyBase {
   ignore_above?: integer
   dynamic?: boolean | DynamicMapping
   fields?: Dictionary<PropertyName, Property>
-  index?: boolean
 }
 
 /** @variants internal tag='type' */

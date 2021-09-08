@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "39a01d3",
+    "hash": "efef1cf",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -26908,8 +26908,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "ZoomLevel",
+              "namespace": "_global.search_mvt._types"
             }
           }
         },
@@ -26920,8 +26920,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Coordinate",
+              "namespace": "_global.search_mvt._types"
             }
           }
         },
@@ -26932,8 +26932,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Coordinate",
+              "namespace": "_global.search_mvt._types"
             }
           }
         }
@@ -27020,6 +27020,20 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Coordinate",
+        "namespace": "_global.search_mvt._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "integer",
+          "namespace": "_types"
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -27032,6 +27046,20 @@
       "name": {
         "name": "GridType",
         "namespace": "_global.search_mvt._types"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "ZoomLevel",
+        "namespace": "_global.search_mvt._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "integer",
+          "namespace": "_types"
+        }
       }
     },
     {
@@ -49319,17 +49347,6 @@
                 "name": "Property",
                 "namespace": "_types.mapping"
               }
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }

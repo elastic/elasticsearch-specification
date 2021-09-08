@@ -1511,9 +1511,9 @@ export type SearchTotalHitsRelation = 'eq' | 'gte'
 export interface SearchMvtRequest extends RequestBase {
   index: Indices
   field: Field
-  zoom: integer
-  x: integer
-  y: integer
+  zoom: SearchMvtZoomLevel
+  x: SearchMvtCoordinate
+  y: SearchMvtCoordinate
   exact_bounds?: boolean
   extent?: integer
   grid_precision?: integer
@@ -1535,7 +1535,11 @@ export interface SearchMvtRequest extends RequestBase {
 
 export type SearchMvtResponse = any
 
+export type SearchMvtCoordinate = integer
+
 export type SearchMvtGridType = 'grid' | 'point'
+
+export type SearchMvtZoomLevel = integer
 
 export interface SearchShardsRequest extends RequestBase {
   index?: Indices
@@ -3944,7 +3948,6 @@ export interface MappingPropertyBase {
   ignore_above?: integer
   dynamic?: boolean | MappingDynamicMapping
   fields?: Record<PropertyName, MappingProperty>
-  index?: boolean
 }
 
 export type MappingRangeProperty = MappingLongRangeProperty | MappingIpRangeProperty | MappingIntegerRangeProperty | MappingFloatRangeProperty | MappingDoubleRangeProperty | MappingDateRangeProperty
