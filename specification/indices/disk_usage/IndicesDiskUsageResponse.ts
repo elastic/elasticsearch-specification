@@ -17,11 +17,8 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-import { ShardStatistics } from '@_types/Stats'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    _shards: ShardStatistics
-  }
+export class Response {
+  body: UserDefinedValue
 }

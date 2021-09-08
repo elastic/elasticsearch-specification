@@ -8666,9 +8666,7 @@ export interface IndicesDiskUsageRequest extends RequestBase {
   wait_for_active_shards?: string
 }
 
-export interface IndicesDiskUsageResponse extends AcknowledgedResponseBase {
-  _shards: ShardStatistics
-}
+export type IndicesDiskUsageResponse = any
 
 export interface IndicesExistsRequest extends RequestBase {
   index: Indices
