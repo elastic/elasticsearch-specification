@@ -511,8 +511,7 @@
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'"
       ]
     },
     "cluster.get_settings": {
