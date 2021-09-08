@@ -17,8 +17,5 @@
  * under the License.
  */
 
-// Arbitrary binary data
-export class Binary {}
-
 // Vector tile response
-export type MapboxVectorTiles = Binary
+export type MapboxVectorTiles = ArrayBuffer

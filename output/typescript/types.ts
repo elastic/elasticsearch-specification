@@ -1794,8 +1794,6 @@ export interface AcknowledgedResponseBase {
 
 export type AggregateName = string
 
-export type Binary = ArrayBuffer
-
 export interface BulkIndexByScrollFailure {
   cause: MainError
   id: Id
@@ -2061,7 +2059,7 @@ export interface MainError extends ErrorCause {
   headers?: Record<string, string>
 }
 
-export type MapboxVectorTiles = Binary
+export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
   current: long

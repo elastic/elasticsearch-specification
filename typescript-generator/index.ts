@@ -115,6 +115,10 @@ function buildValue (type: M.ValueOf, openGenerics?: string[], origin?: M.TypeNa
         }
       }
 
+      if (type.type.name === 'binary' && type.type.namespace === 'internal') {
+        return 'ArrayBuffer'
+      }
+
       return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
     case 'array_of':
       return type.value.kind === 'union_of' || getShortcutType(type.value) != null
@@ -185,10 +189,6 @@ function buildInherits (type: M.Interface | M.Request | M.Response, openGenerics
 function buildInterface (type: M.Interface): string {
   if (implementsBehavior(type)) {
     return buildBehaviorInterface(type)
-  }
-
-  if (type.name.name === 'Binary' && type.name.namespace === '_types') {
-    return 'export type Binary = ArrayBuffer\n'
   }
 
   const openGenerics = type.generics?.map(t => t.name) ?? []

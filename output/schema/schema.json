@@ -29662,14 +29662,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "Binary",
-        "namespace": "_types"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "BulkIndexByScrollFailure",
         "namespace": "_types"
       },
@@ -32044,8 +32036,8 @@
       "type": {
         "kind": "instance_of",
         "type": {
-          "name": "Binary",
-          "namespace": "_types"
+          "name": "binary",
+          "namespace": "internal"
         }
       }
     },
