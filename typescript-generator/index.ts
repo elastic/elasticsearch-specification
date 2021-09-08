@@ -187,6 +187,10 @@ function buildInterface (type: M.Interface): string {
     return buildBehaviorInterface(type)
   }
 
+  if (type.name.name === 'Binary' && type.name.namespace === '_types') {
+    return 'export type Binary = ArrayBuffer\n'
+  }
+
   const openGenerics = type.generics?.map(t => t.name) ?? []
   const inherits = buildInherits(type, openGenerics)
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${inherits} {\n`

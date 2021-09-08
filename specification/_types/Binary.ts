@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { MapboxVectorTiles } from '@_types/Binary'
+// Arbitrary binary data
+export class Binary {}
 
-export class Response {
-  body: MapboxVectorTiles
-}
+// Vector tile response
+export type MapboxVectorTiles = Binary
