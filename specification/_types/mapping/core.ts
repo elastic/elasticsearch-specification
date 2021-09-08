@@ -208,4 +208,6 @@ export class VersionProperty extends DocValuesPropertyBase {
 
 export class WildcardProperty extends DocValuesPropertyBase {
   type: 'wildcard'
+  /** @since 7.15.0  */
+  null_value?: string
 }
