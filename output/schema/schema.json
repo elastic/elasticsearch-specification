@@ -79798,7 +79798,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterOperatingSystemName",
+                "name": "ClusterOperatingSystemPrettyName",
                 "namespace": "cluster.stats"
               }
             }
@@ -79871,6 +79871,37 @@
         },
         {
           "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterOperatingSystemPrettyName",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pretty_name",
           "required": true,
           "type": {
             "kind": "instance_of",
