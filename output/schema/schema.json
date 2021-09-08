@@ -77606,21 +77606,10 @@
           "name": "routing_table",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "EmptyObject",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "RoutingTable",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -77734,6 +77723,71 @@
         "name": "Response",
         "namespace": "cluster.reroute"
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoutingTable",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoutingTableIndex",
+                "namespace": "cluster.reroute"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoutingTableIndex",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeShard",
+                  "namespace": "_types"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
