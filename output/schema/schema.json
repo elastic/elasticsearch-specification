@@ -147863,6 +147863,7 @@
       ]
     },
     {
+      "description": "A class that implements `ReadOf` should have the exact same properties with the same types.\nIt can change if a property is required or not. There is no need to port the descriptions\nand js doc tags, the compiler will do that for you.",
       "generics": [
         {
           "name": "TDefinition",

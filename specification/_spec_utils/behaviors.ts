@@ -83,4 +83,4 @@ export interface CommonCatQueryParameters {
  * and js doc tags, the compiler will do that for you.
  * @behavior Defines a class that is the "read" version of a definition used when writing a property.
  */
- export interface ReadOf<TDefinition> {}
+export interface ReadOf<TDefinition> {}
