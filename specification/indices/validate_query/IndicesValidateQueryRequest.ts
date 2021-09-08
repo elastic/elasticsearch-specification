@@ -47,7 +47,6 @@ export interface Request extends RequestBase {
     explain?: boolean
     ignore_unavailable?: boolean
     lenient?: boolean
-    query_on_query_string?: string
     rewrite?: boolean
     q?: string
   }

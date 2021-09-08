@@ -13470,17 +13470,6 @@
           }
         },
         {
-          "name": "query_on_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "A comma-separated list of specific routing values",
           "name": "routing",
           "required": false,
@@ -15279,17 +15268,6 @@
         {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -28994,17 +28972,6 @@
         {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -58782,17 +58749,6 @@
               "type": {
                 "name": "QueryContainer",
                 "namespace": "_types.query_dsl"
-              }
-            }
-          },
-          {
-            "name": "query_on_query_string",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
               }
             }
           },
@@ -96246,17 +96202,6 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
               "namespace": "internal"
             }
           }
