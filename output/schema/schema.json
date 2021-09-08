@@ -47332,6 +47332,54 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AggregateMetricDoubleProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "aggregate_metric_double"
+          }
+        },
+        {
+          "name": "default_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metrics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "AllField",
@@ -47981,6 +48029,40 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DenseVectorProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "dense_vector"
+          }
+        },
+        {
+          "name": "dims",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "DocValuesProperty",
@@ -48201,7 +48283,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "PropertyBase",
+              "name": "Property",
               "namespace": "_types.mapping"
             }
           }
@@ -48455,6 +48537,12 @@
         },
         {
           "name": "constant_keyword"
+        },
+        {
+          "name": "aggregate_metric_double"
+        },
+        {
+          "name": "dense_vector"
         }
       ],
       "name": {
@@ -49732,6 +49820,20 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "DenseVectorProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregateMetricDoubleProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "CoreProperty",
               "namespace": "_types.mapping"
             }
@@ -50407,7 +50509,7 @@
         },
         {
           "name": "enabled",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50490,11 +50592,23 @@
           "name": "precision",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -51092,6 +51206,18 @@
           "type": {
             "kind": "literal_value",
             "value": "wildcard"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
       ]
