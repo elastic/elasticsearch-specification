@@ -166,6 +166,7 @@ In the output schema.json `MapboxVectorTiles` will be defined as:
     "type": {
       "name": "binary",
       "namespace": "internal"
+    }
   }
 }
 ```
