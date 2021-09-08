@@ -1713,6 +1713,12 @@
         "Non-leaf type cannot be used here: '_global.search:Response'"
       ]
     },
+    "search_mvt": {
+      "request": [],
+      "response": [
+        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for 'internal:binary'"
+      ]
+    },
     "search_shards": {
       "request": [
         "Request: should not have a body"

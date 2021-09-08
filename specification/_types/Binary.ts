@@ -17,8 +17,5 @@
  * under the License.
  */
 
-import { MapboxVectorTiles } from '@_types/Binary'
-
-export class Response {
-  body: MapboxVectorTiles
-}
+// Vector tile response
+export type MapboxVectorTiles = ArrayBuffer

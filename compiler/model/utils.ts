@@ -216,6 +216,17 @@ export function modelType (node: Node): model.ValueOf {
           return type
         }
 
+        case 'ArrayBuffer': {
+          const type: model.InstanceOf = {
+            kind: 'instance_of',
+            type: {
+              name: 'binary',
+              namespace: 'internal'
+            }
+          }
+          return type
+        }
+
         case 'Dictionary':
         case 'AdditionalProperties': {
           assert(node, node.getTypeArguments().length === 2, 'A Dictionary must have two arguments')

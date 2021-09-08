@@ -139,6 +139,38 @@ type TimeSpan = string
 type DateString = string
 ```
 
+### Binary
+
+Some APIs return a Binary stream of data instead of JSON.
+Create an alias of the `ArrayBuffer` type for the appropriate name.
+
+```ts
+export type MapboxVectorTiles = ArrayBuffer
+
+export class Response {
+  body: MapboxVectorTiles
+}
+```
+
+In the output schema.json `MapboxVectorTiles` will be defined as:
+
+```json
+{
+  "kind": "type_alias",
+  "name": {
+    "name": "MapboxVectorTiles",
+    "namespace": "_types"
+  },
+  "type": {
+    "kind": "instance_of",
+    "type": {
+      "name": "binary",
+      "namespace": "internal"
+    }
+  }
+}
+```
+
 ### Literal values
 
 The compiler supports literal values as well. This can be useful if a
