@@ -7677,7 +7677,7 @@ export interface ClusterStatsClusterOperatingSystem {
   available_processors: integer
   mem: ClusterStatsOperatingSystemMemoryInfo
   names: ClusterStatsClusterOperatingSystemName[]
-  pretty_names: ClusterStatsClusterOperatingSystemName[]
+  pretty_names: ClusterStatsClusterOperatingSystemPrettyName[]
   architectures?: ClusterStatsClusterOperatingSystemArchitecture[]
 }
 
@@ -7689,6 +7689,11 @@ export interface ClusterStatsClusterOperatingSystemArchitecture {
 export interface ClusterStatsClusterOperatingSystemName {
   count: integer
   name: Name
+}
+
+export interface ClusterStatsClusterOperatingSystemPrettyName {
+  count: integer
+  pretty_name: Name
 }
 
 export interface ClusterStatsClusterProcess {
