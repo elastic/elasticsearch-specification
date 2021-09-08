@@ -10160,6 +10160,20 @@ export interface MlAnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: string[]
   detectors: MlDetector[]
+  influencers?: Field[]
+  model_prune_window?: Time
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: MlPerPartitionCategorization
+  summary_count_field_name?: Field
+}
+
+export interface MlAnalysisConfigRead {
+  bucket_span: TimeSpan
+  categorization_analyzer?: MlCategorizationAnalyzer | string
+  categorization_field_name?: Field
+  categorization_filters?: string[]
+  detectors: MlDetector[]
   influencers: Field[]
   model_prune_window?: Time
   latency?: Time
@@ -11757,7 +11771,7 @@ export interface MlPutJobRequest extends RequestBase {
 
 export interface MlPutJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: DateString
@@ -12017,7 +12031,7 @@ export interface MlUpdateJobRequest extends RequestBase {
 
 export interface MlUpdateJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: EpochMillis
@@ -15576,5 +15590,9 @@ export interface SpecUtilsCommonCatQueryParameters {
   master_timeout?: Time
   s?: string[]
   v?: boolean
+}
+
+export interface SpecUtilsReadOf<TDefinition = unknown> {
+  [key: string]: never
 }
 
