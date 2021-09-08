@@ -24,6 +24,7 @@ import { Detector } from './Detector'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
+import { ReadOf } from '@spec_utils/behaviors'
 
 export class AnalysisConfig {
   /**
@@ -50,7 +51,7 @@ export class AnalysisConfig {
   /**
    * A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.
    */
-  influencers: Field[]
+  influencers?: Field[]
   /**
    * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.
    */
@@ -71,6 +72,20 @@ export class AnalysisConfig {
   /**
    *  If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.
    */
+  summary_count_field_name?: Field
+}
+
+export class AnalysisConfigRead implements ReadOf<AnalysisConfig> {
+  bucket_span: TimeSpan
+  categorization_analyzer?: CategorizationAnalyzer | string
+  categorization_field_name?: Field
+  categorization_filters?: string[]
+  detectors: Detector[]
+  influencers: Field[]
+  model_prune_window?: Time
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: PerPartitionCategorization
   summary_count_field_name?: Field
 }
 
