@@ -27010,7 +27010,11 @@
       "body": {
         "kind": "value",
         "value": {
-          "kind": "user_defined_value"
+          "kind": "instance_of",
+          "type": {
+            "name": "MapboxVectorTiles",
+            "namespace": "_types"
+          }
         }
       },
       "kind": "response",
@@ -32050,6 +32054,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "MapboxVectorTiles",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "binary",
+          "namespace": "internal"
+        }
+      }
     },
     {
       "kind": "interface",

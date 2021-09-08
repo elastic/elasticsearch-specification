@@ -1533,7 +1533,7 @@ export interface SearchMvtRequest extends RequestBase {
   }
 }
 
-export type SearchMvtResponse = any
+export type SearchMvtResponse = MapboxVectorTiles
 
 export type SearchMvtCoordinate = integer
 
@@ -2062,6 +2062,8 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 export interface MainError extends ErrorCause {
   headers?: Record<string, string>
 }
+
+export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
   current: long
