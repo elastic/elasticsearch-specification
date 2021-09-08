@@ -932,11 +932,9 @@ export interface ScrollRequest extends RequestBase {
   scroll_id?: Id
   scroll?: Time
   rest_total_hits_as_int?: boolean
-  total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
     scroll_id: ScrollId
-    rest_total_hits_as_int?: boolean
   }
 }
 
@@ -1573,11 +1571,13 @@ export interface SearchTemplateRequest extends RequestBase {
   routing?: Routing
   scroll?: Time
   search_type?: SearchType
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body?: {
+    explain?: boolean
     id?: Id
     params?: Record<string, any>
+    profile?: boolean
     source?: string
   }
 }

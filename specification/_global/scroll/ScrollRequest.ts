@@ -45,7 +45,6 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     rest_total_hits_as_int?: boolean
-    total_hits_as_integer?: boolean
   }
   body: {
     /**
@@ -56,10 +55,5 @@ export interface Request extends RequestBase {
     scroll?: Time
     /** Scroll ID of the search. */
     scroll_id: ScrollId
-    /**
-     * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.
-     * @server_default false
-     */
-    rest_total_hits_as_int?: boolean
   }
 }

@@ -1682,12 +1682,6 @@
       ],
       "response": []
     },
-    "scroll": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "search": {
       "request": [],
       "response": [
@@ -1703,13 +1697,6 @@
     "search_shards": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "search_template": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "Request: missing json spec query parameter 'rest_total_hits_as_int'"
       ],
       "response": []
     },

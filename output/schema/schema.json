@@ -20882,19 +20882,6 @@
                 "namespace": "_types"
               }
             }
-          },
-          {
-            "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
-            "name": "rest_total_hits_as_int",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
           }
         ]
       },
@@ -20961,17 +20948,6 @@
           "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "total_hits_as_integer",
-          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27273,6 +27249,19 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "explain",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "ID of the search template to use. If no source is specified,\nthis parameter is required.",
             "name": "id",
             "required": false,
             "type": {
@@ -27302,6 +27291,19 @@
             }
           },
           {
+            "name": "profile",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
             "name": "source",
             "required": false,
             "type": {
@@ -27327,7 +27329,7 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
+          "description": "Comma-separated list of data streams, indices,\nand aliases to search. Supports wildcards (*).",
           "name": "index",
           "required": false,
           "type": {
@@ -27379,9 +27381,10 @@
           }
         },
         {
-          "description": "server_default false",
+          "description": "Specify whether to return detailed information about score computation as part of a hit",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27442,7 +27445,7 @@
           }
         },
         {
-          "description": "A comma-separated list of specific routing values",
+          "description": "Custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
           "type": {
@@ -27454,7 +27457,7 @@
           }
         },
         {
-          "description": "Specify how long a consistent view of the index should be maintained for scrolled search",
+          "description": "Specifies how long a consistent view of the index\nshould be maintained for scrolled search.",
           "name": "scroll",
           "required": false,
           "type": {
@@ -27466,7 +27469,7 @@
           }
         },
         {
-          "description": "Search operation type",
+          "description": "The type of the search operation.",
           "name": "search_type",
           "required": false,
           "type": {
@@ -27479,7 +27482,7 @@
         },
         {
           "description": "If true, hits.total are rendered as an integer in the response.",
-          "name": "total_hits_as_integer",
+          "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
           "since": "7.0.0",

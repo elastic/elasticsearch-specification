@@ -36,6 +36,10 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Comma-separated list of data streams, indices,
+     * and aliases to search. Supports wildcards (*).
+     */
     index?: Indices
   }
   query_parameters: {
@@ -44,7 +48,7 @@ export interface Request extends RequestBase {
     /** @server_default false */
     ccs_minimize_roundtrips?: boolean
     expand_wildcards?: ExpandWildcards
-    /** server_default false */
+    /** @server_default false */
     explain?: boolean
     /** @server_default true */
     ignore_throttled?: boolean
@@ -53,21 +57,40 @@ export interface Request extends RequestBase {
     preference?: string
     /** @server_default false */
     profile?: boolean
+    /** Custom value used to route operations to a specific shard. */
     routing?: Routing
+    /**
+     * Specifies how long a consistent view of the index
+     * should be maintained for scrolled search.
+     */
     scroll?: Time
+    /** The type of the search operation. */
     search_type?: SearchType
     /**
      * If true, hits.total are rendered as an integer in the response.
      * @since 7.0.0
      * @server_default false
      */
-    total_hits_as_integer?: boolean
+    rest_total_hits_as_int?: boolean
     /** @server_default false */
     typed_keys?: boolean
   }
   body: {
+    /** @server_default false */
+    explain?: boolean
+    /**
+     * ID of the search template to use. If no source is specified,
+     * this parameter is required.
+     */
     id?: Id
     params?: Dictionary<string, UserDefinedValue>
+    /** @server_default false */
+    profile?: boolean
+    /**
+     * An inline search template. Supports the same parameters as the search API's
+     * request body. Also supports Mustache variables. If no id is specified, this
+     * parameter is required.
+     */
     source?: string
   }
 }
