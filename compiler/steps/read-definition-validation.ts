@@ -57,10 +57,6 @@ export default async function readDefinitionValidation (model: model.Model, json
           // we have the same properties, so let's copy the metadata
           for (const key in property) {
             if (key === 'required') continue
-            if (!readProperties.includes(property.name)) {
-              console.log(chalk.red`The property '${property.name}' is present in ${parent.name.namespace}.${parent.name.name} but not in ${type.name.namespace}.${type.name.name}`)
-              process.exit(1)
-            }
             readProperty[key] = property[key]
           }
         }
