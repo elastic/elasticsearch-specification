@@ -2362,6 +2362,8 @@ export type Time = string | integer
 
 export type TimeSpan = string
 
+export type TimeUnit = 'nanos' | 'micros' | 'ms' | 's' | 'm' | 'h' | 'd'
+
 export type TimeZone = string
 
 export type Timestamp = string
@@ -8702,6 +8704,20 @@ export interface IndicesDeleteTemplateRequest extends RequestBase {
 
 export interface IndicesDeleteTemplateResponse extends AcknowledgedResponseBase {
 }
+
+export interface IndicesDiskUsageRequest extends RequestBase {
+  index: IndexName
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  flush?: boolean
+  ignore_unavailable?: boolean
+  master_timeout?: TimeUnit
+  timeout?: TimeUnit
+  run_expensive_tasks?: boolean
+  wait_for_active_shards?: string
+}
+
+export type IndicesDiskUsageResponse = any
 
 export interface IndicesExistsRequest extends RequestBase {
   index: Indices

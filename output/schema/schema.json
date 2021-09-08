@@ -4043,9 +4043,16 @@
       "description": "Analyzes the disk usage of each field of an index or data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-disk-usage.html",
       "name": "indices.disk_usage",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.disk_usage"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "indices.disk_usage"
+      },
+      "since": "7.15.0",
       "stability": "experimental",
       "urls": [
         {
@@ -35256,6 +35263,36 @@
           "name": "string",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nanos"
+        },
+        {
+          "name": "micros"
+        },
+        {
+          "name": "ms"
+        },
+        {
+          "name": "s"
+        },
+        {
+          "name": "m"
+        },
+        {
+          "name": "h"
+        },
+        {
+          "name": "d"
+        }
+      ],
+      "name": {
+        "name": "TimeUnit",
+        "namespace": "_types"
       }
     },
     {
@@ -88192,6 +88229,157 @@
       "name": {
         "name": "Response",
         "namespace": "indices.delete_template"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.disk_usage"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of data streams, indices, and aliases used to limit the request. It’s recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the API performs a flush before analysis. If false, the response may not include uncommitted data.",
+          "name": "flush",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Analyzing field disk usage is resource-intensive. To use the API, this parameter must be set to true.",
+          "name": "run_expensive_tasks",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The number of shard copies that must be active before proceeding with the operation. Set to all or any positive integer up to the total number of shards in the index (number_of_replicas+1). Default: 1, the primary shard.",
+          "name": "wait_for_active_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.disk_usage"
       }
     },
     {
