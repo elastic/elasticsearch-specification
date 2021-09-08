@@ -27010,7 +27010,11 @@
       "body": {
         "kind": "value",
         "value": {
-          "kind": "user_defined_value"
+          "kind": "instance_of",
+          "type": {
+            "name": "MapboxVectorTiles",
+            "namespace": "_types"
+          }
         }
       },
       "kind": "response",
@@ -29658,6 +29662,14 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Binary",
+        "namespace": "_types"
+      },
+      "properties": []
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BulkIndexByScrollFailure",
         "namespace": "_types"
       },
@@ -32022,6 +32034,20 @@
           }
         }
       ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "MapboxVectorTiles",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "Binary",
+          "namespace": "_types"
+        }
+      }
     },
     {
       "kind": "interface",

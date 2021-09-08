@@ -1533,7 +1533,7 @@ export interface SearchMvtRequest extends RequestBase {
   }
 }
 
-export type SearchMvtResponse = any
+export type SearchMvtResponse = MapboxVectorTiles
 
 export type SearchMvtGridType = 'grid' | 'point'
 
@@ -1793,6 +1793,8 @@ export interface AcknowledgedResponseBase {
 }
 
 export type AggregateName = string
+
+export type Binary = ArrayBuffer
 
 export interface BulkIndexByScrollFailure {
   cause: MainError
@@ -2058,6 +2060,8 @@ export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 export interface MainError extends ErrorCause {
   headers?: Record<string, string>
 }
+
+export type MapboxVectorTiles = Binary
 
 export interface MergesStats {
   current: long
