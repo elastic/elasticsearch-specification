@@ -571,12 +571,6 @@
       ],
       "response": []
     },
-    "count": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "dangling_indices.delete_dangling_index": {
       "request": [
         "Request: should not have a body"
@@ -726,12 +720,6 @@
     "exists_source": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "explain": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1167,12 +1155,6 @@
     "indices.unfreeze": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.validate_query": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1700,12 +1682,6 @@
       ],
       "response": []
     },
-    "scroll": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "search": {
       "request": [],
       "response": [
@@ -1721,13 +1697,6 @@
     "search_shards": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "search_template": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "Request: missing json spec query parameter 'rest_total_hits_as_int'"
       ],
       "response": []
     },
@@ -2184,7 +2153,6 @@
     },
     "update_by_query": {
       "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec",
         "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'q'",
         "Request: missing json spec query parameter 'max_docs'"

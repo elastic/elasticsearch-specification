@@ -48,7 +48,6 @@ export interface Request extends RequestBase {
     lenient?: boolean
     min_score?: double
     preference?: string
-    query_on_query_string?: string
     routing?: Routing
     terminate_after?: long
     q?: string

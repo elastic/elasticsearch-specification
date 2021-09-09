@@ -87,7 +87,6 @@ export interface Request extends RequestBase {
     profile?: boolean
     pit?: PointInTimeReference
     query?: QueryContainer
-    query_on_query_string?: string
     request_cache?: boolean
     rescore?: Rescore[]
     routing?: Routing

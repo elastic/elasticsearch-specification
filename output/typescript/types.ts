@@ -137,7 +137,6 @@ export interface CountRequest extends RequestBase {
   lenient?: boolean
   min_score?: double
   preference?: string
-  query_on_query_string?: string
   routing?: Routing
   terminate_after?: long
   q?: string
@@ -316,7 +315,6 @@ export interface ExplainRequest extends RequestBase {
   df?: string
   lenient?: boolean
   preference?: string
-  query_on_query_string?: string
   routing?: Routing
   _source?: boolean | Fields
   _source_excludes?: Fields
@@ -934,11 +932,9 @@ export interface ScrollRequest extends RequestBase {
   scroll_id?: Id
   scroll?: Time
   rest_total_hits_as_int?: boolean
-  total_hits_as_integer?: boolean
   body?: {
     scroll?: Time
     scroll_id: ScrollId
-    rest_total_hits_as_int?: boolean
   }
 }
 
@@ -1575,11 +1571,13 @@ export interface SearchTemplateRequest extends RequestBase {
   routing?: Routing
   scroll?: Time
   search_type?: SearchType
-  total_hits_as_integer?: boolean
+  rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body?: {
+    explain?: boolean
     id?: Id
     params?: Record<string, any>
+    profile?: boolean
     source?: string
   }
 }
@@ -1722,7 +1720,6 @@ export interface UpdateByQueryRequest extends RequestBase {
   lenient?: boolean
   pipeline?: string
   preference?: string
-  query_on_query_string?: string
   refresh?: boolean
   request_cache?: boolean
   requests_per_second?: long
@@ -4934,7 +4931,6 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     profile?: boolean
     pit?: SearchPointInTimeReference
     query?: QueryDslQueryContainer
-    query_on_query_string?: string
     request_cache?: boolean
     rescore?: SearchRescore[]
     routing?: Routing
@@ -9610,7 +9606,6 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   explain?: boolean
   ignore_unavailable?: boolean
   lenient?: boolean
-  query_on_query_string?: string
   rewrite?: boolean
   q?: string
   body?: {
