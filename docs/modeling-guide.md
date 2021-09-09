@@ -9,6 +9,8 @@ the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.
 while in [behaviors](./behaviors.md) you can find the list of special interfaces used
 for describing APIs that can't be represented in the specification.
 
+Refer to the [documentation guide](doc-comments-guide.md) to add documentation to types and fields.
+
 ### Dictionary
 
 Represents a dynamic key value map:
@@ -393,7 +395,7 @@ class FooRequest {
 
 #### description
 
-You can add a description for each property, in this case there is no need to use a JSDoc tag.
+You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
 
 ```ts
 class Foo {
