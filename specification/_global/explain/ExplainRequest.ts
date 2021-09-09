@@ -46,7 +46,6 @@ export interface Request extends RequestBase {
     df?: string
     lenient?: boolean
     preference?: string
-    query_on_query_string?: string
     routing?: Routing
     _source?: boolean | Fields
     _source_excludes?: Fields

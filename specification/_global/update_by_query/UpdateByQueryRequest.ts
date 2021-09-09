@@ -58,7 +58,6 @@ export interface Request extends RequestBase {
     lenient?: boolean
     pipeline?: string
     preference?: string
-    query_on_query_string?: string
     refresh?: boolean
     request_cache?: boolean
     requests_per_second?: long
