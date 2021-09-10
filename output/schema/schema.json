@@ -43787,6 +43787,106 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Analyzer",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FingerprintAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeywordAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LanguageAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PatternAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StandardAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WhitespaceAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -43799,6 +43899,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "asciifolding"
+          }
+        },
         {
           "name": "preserve_original",
           "required": true,
@@ -43843,6 +43951,10 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -43852,17 +43964,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -43889,6 +43990,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "char_group"
+          }
+        },
         {
           "name": "tokenize_on_chars",
           "required": true,
@@ -43918,6 +44027,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "common_grams"
+          }
+        },
         {
           "name": "common_words",
           "required": true,
@@ -44076,6 +44193,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "condition"
+          }
+        },
+        {
           "name": "filter",
           "required": true,
           "type": {
@@ -44097,6 +44222,129 @@
             "type": {
               "name": "Script",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CustomAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "position_increment_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "position_offset_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "tokenizer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CustomNormalizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -44133,6 +44381,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "delimited_payload"
+          }
+        },
         {
           "name": "delimiter",
           "required": true,
@@ -44186,6 +44442,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "edge_ngram"
+          }
+        },
+        {
           "name": "max_gram",
           "required": true,
           "type": {
@@ -44233,6 +44497,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "edge_ngram"
+          }
+        },
         {
           "name": "custom_token_chars",
           "required": true,
@@ -44296,6 +44568,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "elision"
+          }
+        },
+        {
           "name": "articles",
           "required": true,
           "type": {
@@ -44323,6 +44603,89 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "FingerprintAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "fingerprint"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_output_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "preserve_original",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -44335,6 +44698,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "fingerprint"
+          }
+        },
         {
           "name": "max_output_size",
           "required": true,
@@ -44371,7 +44742,16 @@
         "name": "HtmlStripCharFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "html_strip"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44386,6 +44766,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hunspell"
+          }
+        },
         {
           "name": "dedup",
           "required": true,
@@ -44444,7 +44832,88 @@
         "name": "HyphenationDecompounderTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hyphenation_decompounder"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IcuAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "icu_analyzer"
+          }
+        },
+        {
+          "name": "method",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationType",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "decompose"
+        },
+        {
+          "name": "compose"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationMode",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nfc"
+        },
+        {
+          "name": "nfkc"
+        },
+        {
+          "name": "nfkc_cf"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationType",
+        "namespace": "_types.analysis"
+      }
     },
     {
       "inherits": {
@@ -44458,7 +44927,16 @@
         "name": "KStemTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kstem"
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -44488,6 +44966,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keep_types"
+          }
+        },
         {
           "name": "mode",
           "required": true,
@@ -44529,6 +45015,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keep"
+          }
+        },
+        {
           "name": "keep_words",
           "required": true,
           "type": {
@@ -44567,6 +45061,34 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "KeywordAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -44579,6 +45101,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword_marker"
+          }
+        },
         {
           "name": "ignore_case",
           "required": true,
@@ -44642,6 +45172,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
+          }
+        },
+        {
           "name": "buffer_size",
           "required": true,
           "type": {
@@ -44649,6 +45187,446 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji"
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiPartOfSpeechTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_part_of_speech"
+          }
+        },
+        {
+          "name": "stoptags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiReadingFormTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_readingform"
+          }
+        },
+        {
+          "name": "use_romaji",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiStemmerTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_stemmer"
+          }
+        },
+        {
+          "name": "minimum_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "normal"
+        },
+        {
+          "name": "search"
+        },
+        {
+          "name": "extended"
+        }
+      ],
+      "name": {
+        "name": "KuromojiTokenizationMode",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_tokenizer"
+          }
+        },
+        {
+          "name": "discard_punctuation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "nbest_cost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nbest_examples",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary_rules",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Arabic"
+        },
+        {
+          "name": "Armenian"
+        },
+        {
+          "name": "Basque"
+        },
+        {
+          "name": "Brazilian"
+        },
+        {
+          "name": "Bulgarian"
+        },
+        {
+          "name": "Catalan"
+        },
+        {
+          "name": "Chinese"
+        },
+        {
+          "name": "Cjk"
+        },
+        {
+          "name": "Czech"
+        },
+        {
+          "name": "Danish"
+        },
+        {
+          "name": "Dutch"
+        },
+        {
+          "name": "English"
+        },
+        {
+          "name": "Estonian"
+        },
+        {
+          "name": "Finnish"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "Galician"
+        },
+        {
+          "name": "German"
+        },
+        {
+          "name": "Greek"
+        },
+        {
+          "name": "Hindi"
+        },
+        {
+          "name": "Hungarian"
+        },
+        {
+          "name": "Indonesian"
+        },
+        {
+          "name": "Irish"
+        },
+        {
+          "name": "Italian"
+        },
+        {
+          "name": "Latvian"
+        },
+        {
+          "name": "Norwegian"
+        },
+        {
+          "name": "Persian"
+        },
+        {
+          "name": "Portuguese"
+        },
+        {
+          "name": "Romanian"
+        },
+        {
+          "name": "Russian"
+        },
+        {
+          "name": "Sorani"
+        },
+        {
+          "name": "Spanish"
+        },
+        {
+          "name": "Swedish"
+        },
+        {
+          "name": "Turkish"
+        },
+        {
+          "name": "Thai"
+        }
+      ],
+      "name": {
+        "name": "Language",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LanguageAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "language"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Language",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -44667,6 +45645,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "length"
+          }
+        },
         {
           "name": "max",
           "required": true,
@@ -44703,7 +45689,16 @@
         "name": "LetterTokenizer",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "letter"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44718,6 +45713,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "limit"
+          }
+        },
         {
           "name": "consume_all_tokens",
           "required": true,
@@ -44756,6 +45759,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lowercase"
+          }
+        },
+        {
           "name": "language",
           "required": true,
           "type": {
@@ -44780,7 +45791,16 @@
         "name": "LowercaseTokenizer",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lowercase"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44795,6 +45815,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "mapping"
+          }
+        },
         {
           "name": "mappings",
           "required": true,
@@ -44836,6 +45864,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "multiplexer"
+          }
+        },
+        {
           "name": "filters",
           "required": true,
           "type": {
@@ -44876,6 +45912,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ngram"
+          }
+        },
+        {
           "name": "max_gram",
           "required": true,
           "type": {
@@ -44912,6 +45956,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ngram"
+          }
+        },
         {
           "name": "custom_token_chars",
           "required": true,
@@ -44962,6 +46014,70 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NoriAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "decompound_mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriDecompoundMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stoptags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -44993,6 +46109,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori_part_of_speech"
+          }
+        },
+        {
           "name": "stoptags",
           "required": true,
           "type": {
@@ -45021,6 +46145,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori_tokenizer"
+          }
+        },
         {
           "name": "decompound_mode",
           "required": true,
@@ -45084,6 +46216,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "path_hierarchy"
+          }
+        },
+        {
           "name": "buffer_size",
           "required": true,
           "type": {
@@ -45141,6 +46281,78 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PatternAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "flags",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lowercase",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -45153,6 +46365,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern_capture"
+          }
+        },
         {
           "name": "patterns",
           "required": true,
@@ -45193,6 +46413,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern_replace"
+          }
+        },
         {
           "name": "flags",
           "required": true,
@@ -45240,7 +46468,16 @@
         "name": "PorterStemTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "porter_stem"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45255,6 +46492,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate_token_filter"
+          }
+        },
         {
           "name": "script",
           "required": true,
@@ -45280,7 +46525,16 @@
         "name": "RemoveDuplicatesTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "remove_duplicates"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45294,7 +46548,16 @@
         "name": "ReverseTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "reverse"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45309,6 +46572,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "shingle"
+          }
+        },
         {
           "name": "filler_token",
           "required": true,
@@ -45372,6 +46643,34 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SimpleAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
             }
           }
         }
@@ -45466,12 +46765,59 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "snowball"
+          }
+        },
+        {
           "name": "language",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "SnowballLanguage",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StandardAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "standard"
+          }
+        },
+        {
+          "name": "max_token_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
               "namespace": "_types.analysis"
             }
           }
@@ -45491,6 +46837,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "standard"
+          }
+        },
         {
           "name": "max_token_length",
           "required": true,
@@ -45517,6 +46871,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stemmer_override"
+          }
+        },
         {
           "name": "rules",
           "required": true,
@@ -45558,7 +46920,65 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stemmer"
+          }
+        },
+        {
           "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StopAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stop"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -45583,6 +47003,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stop"
+          }
+        },
         {
           "name": "ignore_case",
           "required": false,
@@ -45637,14 +47065,26 @@
         "namespace": "_types.analysis"
       },
       "type": {
-        "kind": "array_of",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "string",
-            "namespace": "internal"
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
           }
-        }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -45675,6 +47115,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "synonym_graph"
+          }
+        },
         {
           "name": "expand",
           "required": true,
@@ -45770,6 +47218,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "synonym"
+          }
+        },
         {
           "name": "expand",
           "required": true,
@@ -46152,9 +47608,34 @@
               "name": "WordDelimiterTokenFilter",
               "namespace": "_types.analysis"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiStemmerTokenFilter",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiReadingFormTokenFilter",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiPartOfSpeechTokenFilter",
+              "namespace": "_types.analysis"
+            }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -46164,17 +47645,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -46272,9 +47742,20 @@
               "name": "WhitespaceTokenizer",
               "namespace": "_types.analysis"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizer",
+              "namespace": "_types.analysis"
+            }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -46284,17 +47765,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -46320,7 +47790,16 @@
         "name": "TrimTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "trim"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -46335,6 +47814,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "truncate"
+          }
+        },
         {
           "name": "length",
           "required": true,
@@ -46362,6 +47849,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "uax_url_email"
+          }
+        },
+        {
           "name": "max_token_length",
           "required": true,
           "type": {
@@ -46388,6 +47883,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "unique"
+          }
+        },
+        {
           "name": "only_on_same_position",
           "required": true,
           "type": {
@@ -46412,7 +47915,44 @@
         "name": "UppercaseTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "uppercase"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WhitespaceAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "whitespace"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -46427,6 +47967,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "whitespace"
+          }
+        },
         {
           "name": "max_token_length",
           "required": true,
@@ -46453,6 +48001,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "word_delimiter_graph"
+          }
+        },
         {
           "name": "adjust_offsets",
           "required": true,
@@ -46628,6 +48184,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "word_delimiter"
+          }
+        },
         {
           "name": "catenate_all",
           "required": true,
@@ -85104,6 +86668,28 @@
       },
       "properties": [
         {
+          "name": "analyzer",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Analyzer",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
           "name": "char_filter",
           "required": false,
           "type": {
@@ -85120,6 +86706,50 @@
               "kind": "instance_of",
               "type": {
                 "name": "CharFilter",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TokenFilter",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
+          "name": "normalizer",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CustomNormalizer",
                 "namespace": "_types.analysis"
               }
             }
@@ -85208,6 +86838,17 @@
               }
             ],
             "kind": "union_of"
+          }
+        },
+        {
+          "name": "data_stream",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataStreamName",
+              "namespace": "_types"
+            }
           }
         }
       ]
