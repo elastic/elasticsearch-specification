@@ -4214,16 +4214,9 @@
       "description": "Freezes an index. A frozen index has almost no overhead on the cluster (except for maintaining its metadata in memory) and is read-only.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/freeze-index-api.html",
       "name": "indices.freeze",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.freeze"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.freeze"
-      },
-      "since": "6.6.0",
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -5202,16 +5195,9 @@
       "description": "Unfreezes an index. When a frozen index is unfrozen, the index goes through the normal recovery process and becomes writeable again.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/unfreeze-index-api.html",
       "name": "indices.unfreeze",
-      "request": {
-        "name": "Request",
-        "namespace": "indices.unfreeze"
-      },
+      "request": null,
       "requestBodyRequired": false,
-      "response": {
-        "name": "Response",
-        "namespace": "indices.unfreeze"
-      },
-      "since": "6.6.0",
+      "response": null,
       "stability": "stable",
       "urls": [
         {
@@ -88480,142 +88466,6 @@
       "kind": "request",
       "name": {
         "name": "Request",
-        "namespace": "indices.freeze"
-      },
-      "path": [
-        {
-          "description": "The name of the index to freeze",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specify timeout for connection to master",
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Explicit operation timeout",
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Sets the number of active shards to wait for before the operation returns.",
-          "name": "wait_for_active_shards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "WaitForActiveShards",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "shards_acknowledged",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.freeze"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
         "namespace": "indices.get"
       },
       "path": [
@@ -95802,142 +95652,6 @@
           }
         }
       ]
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "indices.unfreeze"
-      },
-      "path": [
-        {
-          "description": "The name of the index to unfreeze",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "query": [
-        {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
-          "name": "allow_no_indices",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
-          "name": "expand_wildcards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExpandWildcards",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
-          "name": "ignore_unavailable",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specify timeout for connection to master",
-          "name": "master_timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Explicit operation timeout",
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Sets the number of active shards to wait for before the operation returns.",
-          "name": "wait_for_active_shards",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "shards_acknowledged",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "indices.unfreeze"
-      }
     },
     {
       "kind": "interface",

@@ -8771,20 +8771,6 @@ export interface IndicesForcemergeRequest extends RequestBase {
 export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {
 }
 
-export interface IndicesFreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Time
-  timeout?: Time
-  wait_for_active_shards?: WaitForActiveShards
-}
-
-export interface IndicesFreezeResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
-}
-
 export interface IndicesGetRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -9555,20 +9541,6 @@ export interface IndicesStatsShardStats {
   translog: TranslogStats
   warmer: WarmerStats
   bulk?: BulkStats
-}
-
-export interface IndicesUnfreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Time
-  timeout?: Time
-  wait_for_active_shards?: string
-}
-
-export interface IndicesUnfreezeResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
 }
 
 export interface IndicesUpdateAliasesIndicesUpdateAliasBulk {

@@ -981,7 +981,7 @@
     },
     "indices.freeze": {
       "request": [
-        "Request: should not have a body"
+        "Missing request & response"
       ],
       "response": []
     },
@@ -1154,7 +1154,7 @@
     },
     "indices.unfreeze": {
       "request": [
-        "Request: should not have a body"
+        "Missing request & response"
       ],
       "response": []
     },
