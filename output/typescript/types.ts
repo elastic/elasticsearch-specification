@@ -9543,6 +9543,20 @@ export interface IndicesStatsShardStats {
   bulk?: BulkStats
 }
 
+export interface IndicesUnfreezeRequest extends RequestBase {
+  index: IndexName
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_unavailable?: boolean
+  master_timeout?: Time
+  timeout?: Time
+  wait_for_active_shards?: string
+}
+
+export interface IndicesUnfreezeResponse extends AcknowledgedResponseBase {
+  shards_acknowledged: boolean
+}
+
 export interface IndicesUpdateAliasesIndicesUpdateAliasBulk {
   [key: string]: never
 }
