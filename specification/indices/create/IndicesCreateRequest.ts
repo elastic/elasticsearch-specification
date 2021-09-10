@@ -29,6 +29,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name indices.create
  * @since 0.0.0
  * @stability stable
+ * @security_prerequisites_index create_index manage
  */
 export interface Request extends RequestBase {
   path_parts: {

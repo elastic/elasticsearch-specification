@@ -516,7 +516,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
+    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'security_prerequisites_index', 'security_prerequisites_cluster'
   ]
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
@@ -547,6 +547,31 @@ export function hoistRequestAnnotations (
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
       endpoint.since = value
+    } else if (tag === 'security_prerequisites_index') {
+      const privileges = [
+        'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'delete', 'delete_index', 'index',
+        'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
+        'read', 'read_cross_cluster', 'view_index_metadata', 'write'
+      ]
+      const values = value.split(' ')
+      for (const v of values) {
+        assert(jsDocs, privileges.includes(v), `The index privilege '${v}' does not exists.`)
+      }
+      endpoint.securityPrerequisitesIndex = values
+    } else if (tag === 'security_prerequisites_cluster') {
+      const privileges = [
+        'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
+        'manage_ilm', 'manage_index_templates', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
+        'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml',
+        'manage_security', 'manage_service_account', 'manage_slm', 'manage_token', 'manage_transform',
+        'manage_watcher', 'monitor', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
+        'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_slm', 'transport_client'
+      ]
+      const values = value.split(' ')
+      for (const v of values) {
+        assert(jsDocs, privileges.includes(v), `The cluster privilege '${v}' does not exists.`)
+      }
+      endpoint.securityPrerequisitesCluster = values
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }

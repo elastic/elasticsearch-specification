@@ -1969,6 +1969,10 @@
         "name": "Response",
         "namespace": "cluster.state"
       },
+      "securityPrerequisitesCluster": [
+        "monitor",
+        "manage"
+      ],
       "since": "1.3.0",
       "stability": "stable",
       "urls": [
@@ -3722,6 +3726,10 @@
         "name": "Response",
         "namespace": "indices.create"
       },
+      "securityPrerequisitesIndex": [
+        "create_index",
+        "manage"
+      ],
       "since": "0.0.0",
       "stability": "stable",
       "urls": [
