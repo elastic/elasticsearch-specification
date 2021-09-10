@@ -553,7 +553,7 @@ export function hoistRequestAnnotations (
         'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
         'read', 'read_cross_cluster', 'view_index_metadata', 'write'
       ]
-      const values = value.split(' ')
+      const values = value.split(',').map(v => v.trim())
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The index privilege '${v}' does not exists.`)
       }
@@ -567,7 +567,7 @@ export function hoistRequestAnnotations (
         'manage_watcher', 'monitor', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
         'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_slm', 'transport_client'
       ]
-      const values = value.split(' ')
+      const values = value.split(',').map(v => v.trim())
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The cluster privilege '${v}' does not exists.`)
       }
