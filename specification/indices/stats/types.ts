@@ -74,6 +74,8 @@ export class IndexStats {
   /** Contains statistics about index warming operations for the node. */
   warmer?: WarmerStats
   bulk?: BulkStats
+  /** @since 7.15.0 */
+  shards?: ShardsTotalCount
 }
 
 export class IndicesStats {
@@ -176,4 +178,10 @@ export class ShardStats {
   translog: TranslogStats
   warmer: WarmerStats
   bulk?: BulkStats
+  /** @since 7.15.0 */
+  shards?: ShardsTotalCount
+}
+
+export class ShardsTotalCount {
+  total_count: integer
 }
