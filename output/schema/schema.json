@@ -125940,6 +125940,120 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "cancel_task"
+        },
+        {
+          "name": "create_snapshot"
+        },
+        {
+          "name": "grant_api_key"
+        },
+        {
+          "name": "manage"
+        },
+        {
+          "name": "manage_api_key"
+        },
+        {
+          "name": "manage_ccr"
+        },
+        {
+          "name": "manage_ilm"
+        },
+        {
+          "name": "manage_index_templates"
+        },
+        {
+          "name": "manage_ingest_pipelines"
+        },
+        {
+          "name": "manage_logstash_pipelines"
+        },
+        {
+          "name": "manage_ml"
+        },
+        {
+          "name": "manage_oidc"
+        },
+        {
+          "name": "manage_own_api_key"
+        },
+        {
+          "name": "manage_pipeline"
+        },
+        {
+          "name": "manage_rollup"
+        },
+        {
+          "name": "manage_saml"
+        },
+        {
+          "name": "manage_security"
+        },
+        {
+          "name": "manage_service_account"
+        },
+        {
+          "name": "manage_slm"
+        },
+        {
+          "name": "manage_token"
+        },
+        {
+          "name": "manage_transform"
+        },
+        {
+          "name": "manage_watcher"
+        },
+        {
+          "name": "monitor"
+        },
+        {
+          "name": "monitor_ml"
+        },
+        {
+          "name": "monitor_rollup"
+        },
+        {
+          "name": "monitor_snapshot"
+        },
+        {
+          "name": "monitor_text_structure"
+        },
+        {
+          "name": "monitor_transform"
+        },
+        {
+          "name": "monitor_watcher"
+        },
+        {
+          "name": "read_ccr"
+        },
+        {
+          "name": "read_ilm"
+        },
+        {
+          "name": "read_pipeline"
+        },
+        {
+          "name": "read_slm"
+        },
+        {
+          "name": "transport_client"
+        }
+      ],
+      "name": {
+        "name": "ClusterPrivilege",
+        "namespace": "security._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "CreatedStatus",
@@ -126011,6 +126125,69 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "auto_configure"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "create_doc"
+        },
+        {
+          "name": "create_index"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "delete_index"
+        },
+        {
+          "name": "index"
+        },
+        {
+          "name": "maintenance"
+        },
+        {
+          "name": "manage"
+        },
+        {
+          "name": "manage_follow_index"
+        },
+        {
+          "name": "manage_ilm"
+        },
+        {
+          "name": "manage_leader_index"
+        },
+        {
+          "name": "monitor"
+        },
+        {
+          "name": "read"
+        },
+        {
+          "name": "read_cross_cluster"
+        },
+        {
+          "name": "view_index_metadata"
+        },
+        {
+          "name": "write"
+        }
+      ],
+      "name": {
+        "name": "IndexPrivilege",
+        "namespace": "security._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IndicesPrivileges",
@@ -126051,8 +126228,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -127077,8 +127254,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -129960,13 +130137,10 @@
           "name": "names",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
             }
           }
         },
@@ -129978,8 +130152,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -130040,8 +130214,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -130680,8 +130854,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
                 }
               }
             }

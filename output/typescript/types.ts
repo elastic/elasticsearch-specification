@@ -13006,6 +13006,8 @@ export interface SecurityClusterNode {
   name: Name
 }
 
+export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot' | 'grant_api_key' | 'manage' | 'manage_api_key' | 'manage_ccr' | 'manage_ilm' | 'manage_index_templates' | 'manage_ingest_pipelines' | 'manage_logstash_pipelines' | 'manage_ml' | 'manage_oidc' | 'manage_own_api_key' | 'manage_pipeline' | 'manage_rollup' | 'manage_saml' | 'manage_security' | 'manage_service_account' | 'manage_slm' | 'manage_token' | 'manage_transform' | 'manage_watcher' | 'monitor' | 'monitor_ml' | 'monitor_rollup' | 'monitor_snapshot' | 'monitor_text_structure' | 'monitor_transform' | 'monitor_watcher' | 'read_ccr' | 'read_ilm' | 'read_pipeline' | 'read_slm' | 'transport_client'
+
 export interface SecurityCreatedStatus {
   created: boolean
 }
@@ -13019,10 +13021,12 @@ export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
 }
 
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'
+
 export interface SecurityIndicesPrivileges {
   field_security?: SecurityFieldSecurity
   names: Indices
-  privileges: string[]
+  privileges: SecurityIndexPrivilege[]
   query?: string | QueryDslQueryContainer
   allow_restricted_indices?: boolean
 }
@@ -13144,7 +13148,7 @@ export interface SecurityClearCachedServiceTokensResponse {
 
 export interface SecurityCreateApiKeyIndexPrivileges {
   names: Indices
-  privileges: string[]
+  privileges: SecurityIndexPrivilege[]
 }
 
 export interface SecurityCreateApiKeyRequest extends RequestBase {
@@ -13484,8 +13488,8 @@ export interface SecurityHasPrivilegesApplicationPrivilegesCheck {
 export type SecurityHasPrivilegesApplicationsPrivileges = Record<Name, SecurityHasPrivilegesResourcePrivileges>
 
 export interface SecurityHasPrivilegesIndexPrivilegesCheck {
-  names: string[]
-  privileges: string[]
+  names: Indices
+  privileges: SecurityIndexPrivilege[]
 }
 
 export type SecurityHasPrivilegesPrivileges = Record<string, boolean>
@@ -13494,7 +13498,7 @@ export interface SecurityHasPrivilegesRequest extends RequestBase {
   user?: Name
   body?: {
     application?: SecurityHasPrivilegesApplicationPrivilegesCheck[]
-    cluster?: string[]
+    cluster?: SecurityClusterPrivilege[]
     index?: SecurityHasPrivilegesIndexPrivilegesCheck[]
   }
 }
@@ -13563,7 +13567,7 @@ export interface SecurityPutRoleRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     applications?: SecurityApplicationPrivileges[]
-    cluster?: string[]
+    cluster?: SecurityClusterPrivilege[]
     global?: Record<string, any>
     indices?: SecurityIndicesPrivileges[]
     metadata?: Metadata
