@@ -7503,6 +7503,30 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Creates part of a trained model definition",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
+      "name": "ml.put_trained_model_definition_part",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_ml/trained_models/{model_id}/definition/{part}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Resets an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
