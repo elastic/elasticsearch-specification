@@ -13488,7 +13488,7 @@ export interface SecurityHasPrivilegesApplicationPrivilegesCheck {
 export type SecurityHasPrivilegesApplicationsPrivileges = Record<Name, SecurityHasPrivilegesResourcePrivileges>
 
 export interface SecurityHasPrivilegesIndexPrivilegesCheck {
-  names: Indices[]
+  names: Indices
   privileges: SecurityIndexPrivilege[]
 }
 

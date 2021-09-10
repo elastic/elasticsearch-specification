@@ -28,7 +28,7 @@ export class ApplicationPrivilegesCheck {
 }
 
 export class IndexPrivilegesCheck {
-  names: Indices[]
+  names: Indices
   privileges: IndexPrivilege[]
 }
 
