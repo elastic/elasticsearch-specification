@@ -557,7 +557,8 @@ export function hoistRequestAnnotations (
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The index privilege '${v}' does not exists.`)
       }
-      endpoint.securityPrerequisitesIndex = values
+      endpoint.securityPrerequisites = endpoint.securityPrerequisites ?? {}
+      endpoint.securityPrerequisites.index = values
     } else if (tag === 'security_prerequisites_cluster') {
       const privileges = [
         'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
@@ -571,7 +572,8 @@ export function hoistRequestAnnotations (
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The cluster privilege '${v}' does not exists.`)
       }
-      endpoint.securityPrerequisitesCluster = values
+      endpoint.securityPrerequisites = endpoint.securityPrerequisites ?? {}
+      endpoint.securityPrerequisites.cluster = values
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }
