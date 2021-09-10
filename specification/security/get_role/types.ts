@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
-import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
+import { IndicesPrivileges, ApplicationPrivileges } from '@security/_types/Privileges'
 import { Metadata } from '@_types/common'
 
 export class Role {

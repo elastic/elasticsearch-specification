@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
-import { IndexPrivilege } from '@security/_types/IndicesPrivileges'
+import { IndexPrivilege, ApplicationPrivileges } from '@security/_types/Privileges'
 import { Indices } from '@_types/common'
 
 export class RoleDescriptor {

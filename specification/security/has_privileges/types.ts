@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexPrivilege } from '@security/_types/IndicesPrivileges'
+import { IndexPrivilege } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Indices, Name } from '@_types/common'
 
