@@ -1564,13 +1564,13 @@
       ],
       "response": []
     },
-    "nodes.clear_metering_archive": {
+    "nodes.clear_repositories_metering_archive": {
       "request": [
         "Missing request & response"
       ],
       "response": []
     },
-    "nodes.get_metering_info": {
+    "nodes.get_repositories_metering_info": {
       "request": [
         "Missing request & response"
       ],

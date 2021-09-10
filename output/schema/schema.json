@@ -8481,7 +8481,7 @@
       ],
       "description": "Removes the archived repositories metering information present in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-repositories-metering-archive-api.html",
-      "name": "nodes.clear_metering_archive",
+      "name": "nodes.clear_repositories_metering_archive",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
@@ -8502,7 +8502,7 @@
       ],
       "description": "Returns cluster repositories metering information.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-repositories-metering-api.html",
-      "name": "nodes.get_metering_info",
+      "name": "nodes.get_repositories_metering_info",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
@@ -87845,7 +87845,7 @@
           }
         },
         {
-          "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
+          "description": "Whether wildcard expressions should get expanded to open, closed, or hidden indices",
           "name": "expand_wildcards",
           "required": false,
           "type": {
