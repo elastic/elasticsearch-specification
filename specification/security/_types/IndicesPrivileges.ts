@@ -34,7 +34,7 @@ export class IndicesPrivileges {
   /**
    * The index level privileges that owners of the role have on the specified indices.
    */
-  privileges: string[]
+  privileges: IndexPrivilege[]
   /**
    * A search query that defines the documents the owners of the role have read access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
    */
@@ -44,4 +44,25 @@ export class IndicesPrivileges {
    * @server_default false
    */
   allow_restricted_indices?: boolean
+}
+
+export enum IndexPrivilege {
+  all,
+  auto_configure,
+  create,
+  create_doc,
+  create_index,
+  delete,
+  delete_index,
+  index,
+  maintenance,
+  manage,
+  manage_follow_index,
+  manage_ilm,
+  manage_leader_index,
+  monitor,
+  read,
+  read_cross_cluster,
+  view_index_metadata,
+  write
 }

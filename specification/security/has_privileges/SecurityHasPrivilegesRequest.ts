@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { ClusterPrivilege } from '@security/_types/ClusterPrivileges'
 import { RequestBase } from '@_types/Base'
 import { Name } from '@_types/common'
 import { ApplicationPrivilegesCheck, IndexPrivilegesCheck } from './types'
@@ -32,7 +33,7 @@ export interface Request extends RequestBase {
   }
   body: {
     application?: ApplicationPrivilegesCheck[]
-    cluster?: string[]
+    cluster?: ClusterPrivilege[]
     index?: IndexPrivilegesCheck[]
   }
 }

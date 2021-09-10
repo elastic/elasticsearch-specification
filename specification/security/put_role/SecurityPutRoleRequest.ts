@@ -19,6 +19,7 @@
 
 import { TransientMetadata } from '@security/get_role/types'
 import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { ClusterPrivilege } from '@security/_types/ClusterPrivileges'
 import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -45,7 +46,7 @@ export interface Request extends RequestBase {
     /**
      * A list of cluster privileges. These privileges define the cluster-level actions for users with this role.
      */
-    cluster?: string[]
+    cluster?: ClusterPrivilege[]
     /**
      * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
      */

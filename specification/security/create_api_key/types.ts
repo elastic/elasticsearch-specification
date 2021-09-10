@@ -18,6 +18,7 @@
  */
 
 import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
+import { IndexPrivilege } from '@security/_types/IndicesPrivileges'
 import { Indices } from '@_types/common'
 
 export class RoleDescriptor {
@@ -28,5 +29,5 @@ export class RoleDescriptor {
 
 export class IndexPrivileges {
   names: Indices
-  privileges: string[]
+  privileges: IndexPrivilege[]
 }
