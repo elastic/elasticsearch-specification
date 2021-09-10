@@ -4580,7 +4580,7 @@ export interface QueryDslQueryContainer {
   pinned?: QueryDslPinnedQuery
   prefix?: Record<Field, QueryDslPrefixQuery | string>
   query_string?: QueryDslQueryStringQuery
-  range?: Record<Field, QueryDslRangeQuery>
+  range?: Record<Field, QueryDslRangeQuery | QueryDslRangeQuery[]>
   rank_feature?: QueryDslRankFeatureQuery
   regexp?: Record<Field, QueryDslRegexpQuery | string>
   script?: QueryDslScriptQuery

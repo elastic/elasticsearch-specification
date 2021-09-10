@@ -132,7 +132,7 @@ export class QueryContainer {
   pinned?: PinnedQuery
   prefix?: SingleKeyDictionary<Field, PrefixQuery>
   query_string?: QueryStringQuery
-  range?: SingleKeyDictionary<Field, RangeQuery>
+  range?: SingleKeyDictionary<Field, RangeQuery | RangeQuery[]>
   rank_feature?: RankFeatureQuery
   regexp?: SingleKeyDictionary<Field, RegexpQuery>
   script?: ScriptQuery

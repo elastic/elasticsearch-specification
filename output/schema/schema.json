@@ -55544,11 +55544,26 @@
             "kind": "dictionary_of",
             "singleKey": true,
             "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RangeQuery",
-                "namespace": "_types.query_dsl"
-              }
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "RangeQuery",
+                    "namespace": "_types.query_dsl"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "RangeQuery",
+                      "namespace": "_types.query_dsl"
+                    }
+                  }
+                }
+              ],
+              "kind": "union_of"
             }
           }
         },
