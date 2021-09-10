@@ -17,8 +17,9 @@
  * under the License.
  */
 
+import { IndexPrivilege } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
+import { Indices, Name } from '@_types/common'
 
 export class ApplicationPrivilegesCheck {
   application: string
@@ -27,8 +28,8 @@ export class ApplicationPrivilegesCheck {
 }
 
 export class IndexPrivilegesCheck {
-  names: string[]
-  privileges: string[]
+  names: Indices
+  privileges: IndexPrivilege[]
 }
 
 export type ApplicationsPrivileges = Dictionary<Name, ResourcePrivileges>

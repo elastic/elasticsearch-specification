@@ -17,15 +17,17 @@
  * under the License.
  */
 
-import { ApplicationPrivileges } from '@security/_types/ApplicationPrivileges'
-import { GlobalPrivileges } from '@security/_types/GlobalPrivileges'
-import { IndicesPrivileges } from '@security/_types/IndicesPrivileges'
+import {
+  IndicesPrivileges,
+  GlobalPrivilege,
+  ApplicationPrivileges
+} from '@security/_types/Privileges'
 
 export class Response {
   body: {
     applications: ApplicationPrivileges[]
     cluster: string[]
-    global: GlobalPrivileges[]
+    global: GlobalPrivilege[]
     indices: IndicesPrivileges[]
     run_as: string[]
   }
