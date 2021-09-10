@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Indices } from "@_types/common"
-import { QueryContainer } from "@_types/query_dsl/abstractions"
-import { FieldSecurity } from "./FieldSecurity"
+import { Indices } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { FieldSecurity } from './FieldSecurity'
 
 export class ApplicationPrivileges {
   /**
@@ -73,7 +73,6 @@ export enum ClusterPrivilege {
   read_slm,
   transport_client
 }
-
 
 export class IndicesPrivileges {
   /**

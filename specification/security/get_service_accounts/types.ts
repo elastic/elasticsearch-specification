@@ -17,7 +17,11 @@
  * under the License.
  */
 
-import { IndicesPrivileges, GlobalPrivilege, ApplicationPrivileges } from '@security/_types/Privileges'
+import {
+  IndicesPrivileges,
+  GlobalPrivilege,
+  ApplicationPrivileges
+} from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Metadata } from '@_types/common'

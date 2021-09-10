@@ -17,7 +17,11 @@
  * under the License.
  */
 
-import { IndicesPrivileges, GlobalPrivilege, ApplicationPrivileges } from '@security/_types/Privileges'
+import {
+  IndicesPrivileges,
+  GlobalPrivilege,
+  ApplicationPrivileges
+} from '@security/_types/Privileges'
 
 export class Response {
   body: {

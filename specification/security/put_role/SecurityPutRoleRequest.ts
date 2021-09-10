@@ -18,7 +18,11 @@
  */
 
 import { TransientMetadata } from '@security/get_role/types'
-import { IndicesPrivileges, ClusterPrivilege, ApplicationPrivileges } from '@security/_types/Privileges'
+import {
+  IndicesPrivileges,
+  ClusterPrivilege,
+  ApplicationPrivileges
+} from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
