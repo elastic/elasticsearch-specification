@@ -54,6 +54,10 @@ export default async function addDescription (model: model.Model, jsonSpec: Map<
         }
       }
     }
+
+    if (spec.documentation.description != null) {
+      requestDefinition.description = requestDefinition.description ?? spec.documentation.description
+    }
   }
 
   return model
