@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "c435920",
+    "hash": "b184e2ea9",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -124248,6 +124248,46 @@
     {
       "kind": "interface",
       "name": {
+        "name": "NodeInfoIngestDownloader",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoIngestInfo",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "downloader",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestDownloader",
+              "namespace": "nodes.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeInfoIngestProcessor",
         "namespace": "nodes.info"
       },
@@ -124915,6 +124955,17 @@
               "namespace": "nodes.info"
             }
           }
+        },
+        {
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsIngest",
+              "namespace": "nodes.info"
+            }
+          }
         }
       ]
     },
@@ -125095,6 +125146,389 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsIngest",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "attachment",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "append",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "csv",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "convert",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "date_index_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "dot_expander",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "enrich",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "fail",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "foreach",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "json",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "user_agent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "kv",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "geoip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "grok",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "gsub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "join",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "lowercase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "remove",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "rename",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "set",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "split",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "trim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "uppercase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "urldecode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "dissect",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "set_security_user",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "drop",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "circle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
             }
           }
         }
