@@ -22,21 +22,21 @@ import { integer } from '@_types/Numeric'
 import { Language, SnowballLanguage } from './languages'
 import { StopWords } from './StopWords'
 import { NoriDecompoundMode } from './tokenizers'
+import { IcuAnalyzer } from './icu-plugin'
+import { KuromojiAnalyzer } from './kuromoji-plugin'
 
-export class AnalyzerBase {
-  type: string
-  version: VersionString
-}
-
-export class CustomAnalyzer extends AnalyzerBase {
-  char_filter: string[]
-  filter: string[]
-  position_increment_gap: integer
-  position_offset_gap: integer
+export class CustomAnalyzer {
+  type: 'custom'
+  char_filter?: string[]
+  filter?: string[]
+  position_increment_gap?: integer
+  position_offset_gap?: integer
   tokenizer: string
 }
 
-export class FingerprintAnalyzer extends AnalyzerBase {
+export class FingerprintAnalyzer {
+  type: 'fingerprint'
+  version: VersionString
   max_output_size: integer
   preserve_original: boolean
   separator: string
@@ -44,44 +44,78 @@ export class FingerprintAnalyzer extends AnalyzerBase {
   stopwords_path: string
 }
 
-export class KeywordAnalyzer extends AnalyzerBase {}
+export class KeywordAnalyzer {
+  type: 'keyword'
+  version: VersionString
+}
 
-export class LanguageAnalyzer extends AnalyzerBase {
+export class LanguageAnalyzer {
+  type: 'language'
+  version: VersionString
   language: Language
   stem_exclusion: string[]
   stopwords: StopWords
   stopwords_path: string
-  type: string
 }
 
-export class NoriAnalyzer extends AnalyzerBase {
+export class NoriAnalyzer {
+  type: 'nori'
+  version: VersionString
   decompound_mode: NoriDecompoundMode
   stoptags: string[]
   user_dictionary: string
 }
 
-export class PatternAnalyzer extends AnalyzerBase {
+export class PatternAnalyzer {
+  type: 'pattern'
+  version: VersionString
   flags: string
   lowercase: boolean
   pattern: string
   stopwords: StopWords
 }
 
-export class SimpleAnalyzer extends AnalyzerBase {}
+export class SimpleAnalyzer {
+  type: 'simple'
+  version: VersionString
+}
 
-export class SnowballAnalyzer extends AnalyzerBase {
+export class SnowballAnalyzer {
+  type: 'snowball'
+  version: VersionString
   language: SnowballLanguage
   stopwords: StopWords
 }
 
-export class StandardAnalyzer extends AnalyzerBase {
+export class StandardAnalyzer {
+  type: 'standard'
   max_token_length: integer
   stopwords: StopWords
 }
 
-export class StopAnalyzer extends AnalyzerBase {
+export class StopAnalyzer {
+  type: 'stop'
+  version: VersionString
   stopwords: StopWords
   stopwords_path: string
 }
 
-export class WhitespaceAnalyzer extends AnalyzerBase {}
+export class WhitespaceAnalyzer {
+  type: 'whitespace'
+  version: VersionString
+}
+
+/** @variants internal tag='type' */
+export type Analyzer =
+  | CustomAnalyzer
+  | FingerprintAnalyzer
+  | KeywordAnalyzer
+  | LanguageAnalyzer
+  | NoriAnalyzer
+  | PatternAnalyzer
+  | SimpleAnalyzer
+  | StandardAnalyzer
+  | StopAnalyzer
+  | WhitespaceAnalyzer
+  | IcuAnalyzer
+  | KuromojiAnalyzer
