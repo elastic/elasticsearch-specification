@@ -178,6 +178,33 @@ export function modelType (node: Node): model.ValueOf {
       return type
     }
 
+    case ts.SyntaxKind.TrueKeyword: {
+      assert(node, Node.isTrueLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TrueKeyword]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: true
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.FalseKeyword: {
+      assert(node, Node.isFalseLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.FalseKeyword]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: false
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.NumericLiteral: {
+      assert(node, Node.isNumericLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.NumericLiteral]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: Number(node.getText())
+      }
+      return type
+    }
+
     case ts.SyntaxKind.TypeParameter: {
       assert(node, Node.isTypeParameterDeclaration(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
       const name = node.compilerNode.getText()
