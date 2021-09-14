@@ -37,7 +37,7 @@ export enum PhoneticEncoder {
 
 export enum PhoneticLanguage {
   any = 0,
-  comomon = 1,
+  common = 1,
   cyrillic = 2,
   english = 3,
   french = 4,
@@ -62,6 +62,7 @@ export enum PhoneticRuleType {
 }
 
 export class PhoneticTokenFilter extends TokenFilterBase {
+  type: 'phonetic'
   encoder: PhoneticEncoder
   languageset: PhoneticLanguage[]
   max_code_len: integer

@@ -518,6 +518,15 @@ export function hoistRequestAnnotations (
   const knownRequestAnnotations = [
     'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer'
   ]
+  // in most of the cases the jsDocs comes in a single block,
+  // but it can happen that the user defines multiple single line jsDoc.
+  // We want to enforce a single jsDoc block.
+  assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
+
+  if (jsDocs.length === 1) {
+    const description = jsDocs[0].getDescription()
+    if (description.length > 0) request.description = description.trim()
+  }
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
   // TODO (@typescript-eslint/strict-boolean-expressions) is no fun
