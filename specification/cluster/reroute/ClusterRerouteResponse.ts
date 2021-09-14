@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-import { RerouteExplanation, RerouteState } from './types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    explanations?: RerouteExplanation[]
-    state: RerouteState
-  }
+export class Response {
+  /**
+   * There aren't any guarantees on the output/structure of the raw cluster state.
+   * Here you will find the internal representation of the cluster, which can
+   * differ from the external representation.
+   */
+  body: UserDefinedValue
 }

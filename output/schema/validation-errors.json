@@ -543,6 +543,7 @@
         "Request: missing json spec query parameter 'timeout'",
         "interface definition indices._types:IndexState / Property 'settings' / union_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
         "interface definition indices._types:IndexStatePrefixedSettings / Property 'index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
+        "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'",
         "request definition cluster.put_component_template:Request / body / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
       ],
       "response": []
@@ -552,12 +553,6 @@
         "Request: should not have a body"
       ],
       "response": []
-    },
-    "cluster.reroute": {
-      "request": [],
-      "response": [
-        "interface definition cluster._types:ClusterStateBlockIndex / Property 'settings' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
-      ]
     },
     "cluster.state": {
       "request": [
@@ -990,7 +985,9 @@
         "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.get:Response / Inherits / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "indices.get_alias": {
       "request": [
@@ -1034,7 +1031,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.get_settings:Response / Inherits / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "indices.get_template": {
       "request": [
@@ -2132,7 +2131,9 @@
       "request": [
         "Non-leaf type cannot be used here: 'transform.preview_transform:Request'"
       ],
-      "response": []
+      "response": [
+        "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "transform.put_transform": {
       "request": [

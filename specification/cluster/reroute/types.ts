@@ -17,21 +17,7 @@
  * under the License.
  */
 
-import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
-import {
-  ClusterStateSnapshots,
-  ClusterStateDeletedSnapshots
-} from '@cluster/_types/ClusterStateSnapshots'
-import { Dictionary } from '@spec_utils/Dictionary'
-import {
-  EmptyObject,
-  IndexName,
-  NodeName,
-  Uuid,
-  VersionNumber
-} from '@_types/common'
-import { NodeAttributes, NodeShard } from '@_types/Node'
+import { IndexName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
@@ -97,48 +83,4 @@ export class CommandAllocatePrimaryAction {
   node: string
   /** If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true */
   accept_data_loss: boolean
-}
-
-export class RerouteDecision {
-  decider: string
-  decision: string
-  explanation: string
-}
-
-export class RerouteExplanation {
-  command: string
-  decisions: RerouteDecision[]
-  parameters: RerouteParameters
-}
-
-export class RerouteParameters {
-  allow_primary: boolean
-  index: IndexName
-  node: NodeName
-  shard: integer
-  from_node?: NodeName
-  to_node?: NodeName
-}
-
-export class RerouteState {
-  cluster_uuid: Uuid
-  state_uuid?: Uuid
-  master_node?: string
-  version?: VersionNumber
-  blocks?: EmptyObject // TODO: this is likely wrong too
-  nodes?: Dictionary<NodeName, NodeAttributes>
-  routing_table?: RoutingTable
-  routing_nodes?: ClusterStateRoutingNodes
-  security_tokens?: Dictionary<string, string>
-  snapshots?: ClusterStateSnapshots
-  snapshot_deletions?: ClusterStateDeletedSnapshots
-  metadata?: ClusterStateMetadata
-}
-
-export class RoutingTable {
-  indices: Dictionary<IndexName, RoutingTableIndex>
-}
-
-export class RoutingTableIndex {
-  shards: Dictionary<string, NodeShard[]>
 }
