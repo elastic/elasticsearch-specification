@@ -21,23 +21,27 @@ import { VersionString } from '@_types/common'
 import { PatternReplaceTokenFilter } from './token_filters'
 
 export class CharFilterBase {
-  type: string
   version?: VersionString
 }
 
+/** @variants internal tag='type' */
 export type CharFilter =
   | HtmlStripCharFilter
   | MappingCharFilter
   | PatternReplaceTokenFilter
 
-export class HtmlStripCharFilter extends CharFilterBase {}
+export class HtmlStripCharFilter extends CharFilterBase {
+  type: 'html_strip'
+}
 
 export class MappingCharFilter extends CharFilterBase {
+  type: 'mapping'
   mappings: string[]
   mappings_path: string
 }
 
 export class PatternReplaceCharFilter extends CharFilterBase {
+  type: 'pattern_replace'
   flags: string
   pattern: string
   replacement: string
