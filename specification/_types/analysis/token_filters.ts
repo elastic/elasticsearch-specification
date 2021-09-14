@@ -22,9 +22,13 @@ import { integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { SnowballLanguage } from './languages'
 import { StopWords } from './StopWords'
+import {
+  KuromojiStemmerTokenFilter,
+  KuromojiReadingFormTokenFilter,
+  KuromojiPartOfSpeechTokenFilter
+} from './kuromoji-plugin'
 
 export class TokenFilterBase {
-  type: string
   version?: VersionString
 }
 
@@ -38,9 +42,13 @@ export class CompoundWordTokenFilterBase extends TokenFilterBase {
   word_list_path: string
 }
 
-export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {}
+export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {
+  type: 'dictionary_decompounder'
+}
 
-export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {}
+export class HyphenationDecompounderTokenFilter extends CompoundWordTokenFilterBase {
+  type: 'hyphenation_decompounder'
+}
 
 export enum DelimitedPayloadEncoding {
   int = 0,
@@ -49,6 +57,7 @@ export enum DelimitedPayloadEncoding {
 }
 
 export class DelimitedPayloadTokenFilter extends TokenFilterBase {
+  type: 'delimited_payload'
   delimiter: string
   encoding: DelimitedPayloadEncoding
 }
@@ -59,12 +68,14 @@ export enum EdgeNGramSide {
 }
 
 export class EdgeNGramTokenFilter extends TokenFilterBase {
+  type: 'edge_ngram'
   max_gram: integer
   min_gram: integer
   side: EdgeNGramSide
 }
 
 export class ShingleTokenFilter extends TokenFilterBase {
+  type: 'shingle'
   filler_token: string
   max_shingle_size: integer
   min_shingle_size: integer
@@ -74,6 +85,7 @@ export class ShingleTokenFilter extends TokenFilterBase {
 }
 
 export class StopTokenFilter extends TokenFilterBase {
+  type: 'stop'
   ignore_case?: boolean
   remove_trailing?: boolean
   stopwords: StopWords
@@ -86,6 +98,7 @@ export enum SynonymFormat {
 }
 
 export class SynonymGraphTokenFilter extends TokenFilterBase {
+  type: 'synonym_graph'
   expand: boolean
   format: SynonymFormat
   lenient: boolean
@@ -96,6 +109,7 @@ export class SynonymGraphTokenFilter extends TokenFilterBase {
 }
 
 export class SynonymTokenFilter extends TokenFilterBase {
+  type: 'synonym'
   expand: boolean
   format: SynonymFormat
   lenient: boolean
@@ -106,6 +120,7 @@ export class SynonymTokenFilter extends TokenFilterBase {
 }
 
 export class WordDelimiterTokenFilter extends TokenFilterBase {
+  type: 'word_delimiter'
   catenate_all: boolean
   catenate_numbers: boolean
   catenate_words: boolean
@@ -122,6 +137,7 @@ export class WordDelimiterTokenFilter extends TokenFilterBase {
 }
 
 export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
+  type: 'word_delimiter_graph'
   adjust_offsets: boolean
   catenate_all: boolean
   catenate_numbers: boolean
@@ -139,10 +155,12 @@ export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
 }
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
+  type: 'asciifolding'
   preserve_original: boolean
 }
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
+  type: 'common_grams'
   common_words: string[]
   common_words_path: string
   ignore_case: boolean
@@ -150,25 +168,34 @@ export class CommonGramsTokenFilter extends TokenFilterBase {
 }
 
 export class ConditionTokenFilter extends TokenFilterBase {
+  type: 'condition'
   filter: string[]
   script: Script
 }
 
 export class ElisionTokenFilter extends TokenFilterBase {
+  type: 'elision'
   articles: string[]
   articles_case: boolean
 }
 
 export class FingerprintTokenFilter extends TokenFilterBase {
+  type: 'fingerprint'
   max_output_size: integer
   separator: string
 }
 
 export class HunspellTokenFilter extends TokenFilterBase {
+  type: 'hunspell'
   dedup: boolean
   dictionary: string
   locale: string
   longest_only: boolean
+}
+
+export class JaStopTokenFilter extends TokenFilterBase {
+  type: 'ja_stop'
+  stopwords: StopWords
 }
 
 export enum KeepTypesMode {
@@ -177,99 +204,129 @@ export enum KeepTypesMode {
 }
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
+  type: 'keep_types'
   mode: KeepTypesMode
   types: string[]
 }
 
 export class KeepWordsTokenFilter extends TokenFilterBase {
+  type: 'keep'
   keep_words: string[]
   keep_words_case: boolean
   keep_words_path: string
 }
 
 export class KeywordMarkerTokenFilter extends TokenFilterBase {
+  type: 'keyword_marker'
   ignore_case: boolean
   keywords: string[]
   keywords_path: string
   keywords_pattern: string
 }
 
-export class KStemTokenFilter extends TokenFilterBase {}
+export class KStemTokenFilter extends TokenFilterBase {
+  type: 'kstem'
+}
 
 export class LengthTokenFilter extends TokenFilterBase {
+  type: 'length'
   max: integer
   min: integer
 }
 
 export class LimitTokenCountTokenFilter extends TokenFilterBase {
+  type: 'limit'
   consume_all_tokens: boolean
   max_token_count: integer
 }
 
 export class LowercaseTokenFilter extends TokenFilterBase {
+  type: 'lowercase'
   language: string
 }
 
 export class MultiplexerTokenFilter extends TokenFilterBase {
+  type: 'multiplexer'
   filters: string[]
   preserve_original: boolean
 }
 
 export class NGramTokenFilter extends TokenFilterBase {
+  type: 'ngram'
   max_gram: integer
   min_gram: integer
 }
 
 export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
+  type: 'nori_part_of_speech'
   stoptags: string[]
 }
 
 export class PatternCaptureTokenFilter extends TokenFilterBase {
+  type: 'pattern_capture'
   patterns: string[]
   preserve_original: boolean
 }
 
 export class PatternReplaceTokenFilter extends TokenFilterBase {
+  type: 'pattern_replace'
   flags: string
   pattern: string
   replacement: string
 }
 
-export class PorterStemTokenFilter extends TokenFilterBase {}
+export class PorterStemTokenFilter extends TokenFilterBase {
+  type: 'porter_stem'
+}
 
 export class PredicateTokenFilter extends TokenFilterBase {
+  type: 'predicate_token_filter'
   script: Script
 }
 
-export class RemoveDuplicatesTokenFilter extends TokenFilterBase {}
+export class RemoveDuplicatesTokenFilter extends TokenFilterBase {
+  type: 'remove_duplicates'
+}
 
-export class ReverseTokenFilter extends TokenFilterBase {}
+export class ReverseTokenFilter extends TokenFilterBase {
+  type: 'reverse'
+}
 
 export class SnowballTokenFilter extends TokenFilterBase {
+  type: 'snowball'
   language: SnowballLanguage
 }
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {
+  type: 'stemmer_override'
   rules: string[]
   rules_path: string
 }
 
 export class StemmerTokenFilter extends TokenFilterBase {
+  type: 'stemmer'
   language: string
 }
 
-export class TrimTokenFilter extends TokenFilterBase {}
+export class TrimTokenFilter extends TokenFilterBase {
+  type: 'trim'
+}
 
 export class TruncateTokenFilter extends TokenFilterBase {
+  type: 'truncate'
   length: integer
 }
 
 export class UniqueTokenFilter extends TokenFilterBase {
+  type: 'unique'
   only_on_same_position: boolean
 }
 
-export class UppercaseTokenFilter extends TokenFilterBase {}
+export class UppercaseTokenFilter extends TokenFilterBase {
+  type: 'uppercase'
+}
 
+/** @variants internal tag='type' */
 export type TokenFilter =
   | AsciiFoldingTokenFilter
   | CommonGramsTokenFilter
@@ -310,3 +367,6 @@ export type TokenFilter =
   | UppercaseTokenFilter
   | WordDelimiterGraphTokenFilter
   | WordDelimiterTokenFilter
+  | KuromojiStemmerTokenFilter
+  | KuromojiReadingFormTokenFilter
+  | KuromojiPartOfSpeechTokenFilter
