@@ -8814,12 +8814,6 @@
           "methods": [
             "POST"
           ],
-          "path": "/_pit"
-        },
-        {
-          "methods": [
-            "POST"
-          ],
           "path": "/{index}/_pit"
         }
       ],
@@ -87142,7 +87136,7 @@
           }
         },
         {
-          "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
+          "description": "Whether wildcard expressions should get expanded to open, closed, or hidden indices",
           "name": "expand_wildcards",
           "required": false,
           "type": {
