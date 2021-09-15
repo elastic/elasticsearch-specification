@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { CustomSettings } from '@ml/_types/Settings'
@@ -29,7 +29,7 @@ import { Datafeed } from '@ml/_types/Datafeed'
 export class Response {
   body: {
     allow_lazy_open: boolean
-    analysis_config: AnalysisConfig
+    analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
     background_persist_interval?: Time
     create_time: DateString
