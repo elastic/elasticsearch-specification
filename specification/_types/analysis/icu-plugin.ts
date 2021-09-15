@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { AnalyzerBase } from './analyzers'
 import { CharFilterBase } from './char_filters'
 import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
@@ -41,10 +40,12 @@ export class IcuNormalizationCharFilter extends CharFilterBase {
 }
 
 export class IcuFoldingTokenFilter extends TokenFilterBase {
+  type: 'icu_folding'
   unicode_set_filter: string
 }
 
 export class IcuCollationTokenFilter extends TokenFilterBase {
+  type: 'icu_collation'
   alternate: IcuCollationAlternate
   caseFirst: IcuCollationCaseFirst
   caseLevel: boolean
@@ -58,7 +59,8 @@ export class IcuCollationTokenFilter extends TokenFilterBase {
   variant: string
 }
 
-export class IcuAnalyzer extends AnalyzerBase {
+export class IcuAnalyzer {
+  type: 'icu_analyzer'
   method: IcuNormalizationType
   mode: IcuNormalizationMode
 }

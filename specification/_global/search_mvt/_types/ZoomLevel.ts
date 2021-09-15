@@ -17,14 +17,6 @@
  * under the License.
  */
 
-export class GlobalPrivilege {
-  application: ApplicationGlobalUserPrivileges
-}
+import { integer } from '@_types/Numeric'
 
-export class ApplicationGlobalUserPrivileges {
-  manage: ManageUserPrivileges
-}
-
-export class ManageUserPrivileges {
-  applications: string[]
-}
+export type ZoomLevel = integer

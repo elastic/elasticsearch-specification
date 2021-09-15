@@ -506,25 +506,12 @@
       ],
       "response": [
         "interface definition cluster._types:ComponentTemplateSummary / Property 'settings' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
-        "interface definition _types.mapping:FlattenedProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:SearchAsYouTypeProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:TextProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:BooleanProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:DateProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:DateNanosProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:KeywordProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:NumberProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:RangePropertyBase - Property 'index' is already defined in an ancestor class",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
-        "interface definition _types.mapping:GenericProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:IpProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:TokenCountProperty - Property 'index' is already defined in an ancestor class",
-        "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
+        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'"
       ]
     },
     "cluster.get_settings": {
@@ -581,12 +568,6 @@
     "cluster.stats": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "count": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
       ],
       "response": []
     },
@@ -739,12 +720,6 @@
     "exists_source": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "explain": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
       ],
       "response": []
     },
@@ -947,7 +922,10 @@
     },
     "indices.disk_usage": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
+        "Request: query parameter 'timeout' does not exist in the json spec",
+        "Request: query parameter 'wait_for_active_shards' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -1177,12 +1155,6 @@
     "indices.unfreeze": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "indices.validate_query": {
-      "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec"
       ],
       "response": []
     },
@@ -1511,6 +1483,18 @@
       ],
       "response": []
     },
+    "ml.put_trained_model_definition_part": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "ml.put_trained_model_vocabulary": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.reset_job": {
       "request": [
         "Request: should not have a body"
@@ -1588,13 +1572,13 @@
       ],
       "response": []
     },
-    "nodes.clear_metering_archive": {
+    "nodes.clear_repositories_metering_archive": {
       "request": [
         "Missing request & response"
       ],
       "response": []
     },
-    "nodes.get_metering_info": {
+    "nodes.get_repositories_metering_info": {
       "request": [
         "Missing request & response"
       ],
@@ -1710,28 +1694,21 @@
       ],
       "response": []
     },
-    "scroll": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec"
-      ],
-      "response": []
-    },
     "search": {
       "request": [],
       "response": [
         "Non-leaf type cannot be used here: '_global.search:Response'"
       ]
     },
+    "search_mvt": {
+      "request": [],
+      "response": [
+        "type_alias definition _types:MapboxVectorTiles / instance_of - No type definition for 'internal:binary'"
+      ]
+    },
     "search_shards": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "search_template": {
-      "request": [
-        "Request: query parameter 'total_hits_as_integer' does not exist in the json spec",
-        "Request: missing json spec query parameter 'rest_total_hits_as_int'"
       ],
       "response": []
     },
@@ -2188,7 +2165,6 @@
     },
     "update_by_query": {
       "request": [
-        "Request: query parameter 'query_on_query_string' does not exist in the json spec",
         "Request: query parameter 'size' does not exist in the json spec",
         "Request: missing json spec query parameter 'q'",
         "Request: missing json spec query parameter 'max_docs'"

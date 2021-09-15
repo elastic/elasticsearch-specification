@@ -18,30 +18,34 @@
  */
 
 import { integer } from '@_types/Numeric'
-import { AnalyzerBase } from './analyzers'
 import { CharFilterBase } from './char_filters'
 import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
 
-export class KuromojiAnalyzer extends AnalyzerBase {
+export class KuromojiAnalyzer {
+  type: 'kuromoji'
   mode: KuromojiTokenizationMode
   user_dictionary: string
 }
 
 export class KuromojiIterationMarkCharFilter extends CharFilterBase {
+  type: 'kuromoji_iteration_mark'
   normalize_kana: boolean
   normalize_kanji: boolean
 }
 
 export class KuromojiPartOfSpeechTokenFilter extends TokenFilterBase {
+  type: 'kuromoji_part_of_speech'
   stoptags: string[]
 }
 
 export class KuromojiReadingFormTokenFilter extends TokenFilterBase {
+  type: 'kuromoji_readingform'
   use_romaji: boolean
 }
 
 export class KuromojiStemmerTokenFilter extends TokenFilterBase {
+  type: 'kuromoji_stemmer'
   minimum_length: integer
 }
 
@@ -52,6 +56,7 @@ export enum KuromojiTokenizationMode {
 }
 
 export class KuromojiTokenizer extends TokenizerBase {
+  type: 'kuromoji_tokenizer'
   discard_punctuation: boolean
   mode: KuromojiTokenizationMode
   nbest_cost: integer

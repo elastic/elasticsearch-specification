@@ -23,7 +23,7 @@ import { IndexName, Name, VersionNumber } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { EpochMillis, Time } from '@_types/Time'
 
-export class LifecycleExplain {
+export class LifecycleExplainManaged {
   action: Name
   action_time_millis: EpochMillis
   age: Time
@@ -32,7 +32,7 @@ export class LifecycleExplain {
   index: IndexName
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
-  managed: boolean
+  managed: true
   phase: Name
   phase_time_millis: EpochMillis
   policy: Name
@@ -42,17 +42,18 @@ export class LifecycleExplain {
   phase_execution: LifecycleExplainPhaseExecution
 }
 
+export class LifecycleExplainUnmanaged {
+  index: IndexName
+  managed: false
+}
+
+/** @variants internal tag='managed' */
+export type LifecycleExplain =
+  | LifecycleExplainManaged
+  | LifecycleExplainUnmanaged
+
 export class LifecycleExplainPhaseExecution {
   policy: Name
   version: VersionNumber
   modified_date_in_millis: EpochMillis
-}
-
-export class LifecycleExplainProject {
-  project: LifecycleExplainProjectSummary
-}
-
-export class LifecycleExplainProjectSummary {
-  index: IndexName
-  managed: boolean
 }

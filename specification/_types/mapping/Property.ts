@@ -20,7 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Metadata, PropertyName } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { FlattenedProperty } from './complex'
+import {
+  AggregateMetricDoubleProperty,
+  DenseVectorProperty,
+  FlattenedProperty
+} from './complex'
 import {
   CoreProperty,
   JoinProperty,
@@ -43,7 +47,6 @@ export class PropertyBase {
   ignore_above?: integer
   dynamic?: boolean | DynamicMapping
   fields?: Dictionary<PropertyName, Property>
-  index?: boolean
 }
 
 /** @variants internal tag='type' */
@@ -56,6 +59,8 @@ export type Property =
   | ConstantKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
+  | DenseVectorProperty
+  | AggregateMetricDoubleProperty
   | CoreProperty
 
 export enum FieldType {
@@ -97,7 +102,9 @@ export enum FieldType {
   flattened = 35,
   shape = 36,
   histogram = 37,
-  constant_keyword = 38
+  constant_keyword = 38,
+  aggregate_metric_double = 39,
+  dense_vector = 40
 }
 
 export class PropertyWithClrOrigin {}

@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "39a01d3",
+    "hash": "def19aa",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -3949,9 +3949,16 @@
       "description": "Analyzes the disk usage of each field of an index or data stream",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-disk-usage.html",
       "name": "indices.disk_usage",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "indices.disk_usage"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "indices.disk_usage"
+      },
+      "since": "7.15.0",
       "stability": "experimental",
       "urls": [
         {
@@ -7496,6 +7503,54 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Creates part of a trained model definition",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-definition-part.html",
+      "name": "ml.put_trained_model_definition_part",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_ml/trained_models/{model_id}/definition/{part}"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Creates a trained model vocabulary",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-model-vocabulary.html",
+      "name": "ml.put_trained_model_vocabulary",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_ml/trained_models/{model_id}/vocabulary"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Resets an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
@@ -8152,7 +8207,7 @@
       ],
       "description": "Removes the archived repositories metering information present in the cluster.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/clear-repositories-metering-archive-api.html",
-      "name": "nodes.clear_metering_archive",
+      "name": "nodes.clear_repositories_metering_archive",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
@@ -8173,7 +8228,7 @@
       ],
       "description": "Returns cluster repositories metering information.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-repositories-metering-api.html",
-      "name": "nodes.get_metering_info",
+      "name": "nodes.get_repositories_metering_info",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
@@ -8428,12 +8483,6 @@
       "since": "7.10.0",
       "stability": "stable",
       "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_pit"
-        },
         {
           "methods": [
             "POST"
@@ -12645,6 +12694,7 @@
           }
         }
       },
+      "description": "Allows to perform multiple index/update/delete operations in a single request.",
       "generics": [
         {
           "name": "TSource",
@@ -13155,6 +13205,7 @@
           }
         ]
       },
+      "description": "Explicitly clears the search context for a scroll.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13236,6 +13287,7 @@
           }
         ]
       },
+      "description": "Close a point in time",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13304,6 +13356,7 @@
           }
         ]
       },
+      "description": "Returns number of documents matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13463,17 +13516,6 @@
           }
         },
         {
-          "name": "query_on_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "A comma-separated list of specific routing values",
           "name": "routing",
           "required": false,
@@ -13560,6 +13602,7 @@
           }
         }
       },
+      "description": "Creates a new document in the index.\n\nReturns a 409 response when a document with a same ID already exists in the index.",
       "generics": [
         {
           "name": "TDocument",
@@ -13726,6 +13769,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes a document from the index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -13933,6 +13977,7 @@
           }
         ]
       },
+      "description": "Deletes documents matching the provided query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14550,6 +14595,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Changes the number of requests per second for a particular Delete By Query operation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14614,6 +14660,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a script.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14690,6 +14737,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a document exists in an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -14879,6 +14927,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a document source exists in an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15171,6 +15220,7 @@
           }
         ]
       },
+      "description": "Returns information about why a specific matches (or doesn't match) a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15272,17 +15322,6 @@
         {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -15757,6 +15796,7 @@
           }
         ]
       },
+      "description": "Returns the information about the capabilities of fields among multiple indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -15908,6 +15948,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a document.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16229,6 +16270,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a script.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16431,6 +16473,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns all script contexts.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16512,6 +16555,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns available script types, languages and contexts",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -16574,6 +16618,7 @@
         "kind": "properties",
         "properties": []
       },
+      "description": "Returns the source of a document.",
       "inherits": {
         "type": {
           "name": "Request",
@@ -16626,6 +16671,7 @@
           }
         }
       },
+      "description": "Creates or updates a document in an index.",
       "generics": [
         {
           "name": "TDocument",
@@ -16828,6 +16874,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns basic information about the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17231,6 +17278,7 @@
           }
         ]
       },
+      "description": "Allows to get multiple documents in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17690,6 +17738,7 @@
           }
         }
       },
+      "description": "Allows to execute several search operations in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -17979,6 +18028,7 @@
           }
         }
       },
+      "description": "Allows to execute several search template operations in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18368,6 +18418,7 @@
           }
         ]
       },
+      "description": "Returns multiple termvectors in one request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18673,6 +18724,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Open a point in time that can be used in subsequent searches",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18743,6 +18795,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns whether the cluster is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -18787,6 +18840,7 @@
           }
         ]
       },
+      "description": "Creates or updates a script.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19461,6 +19515,7 @@
           }
         ]
       },
+      "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19838,6 +19893,7 @@
           }
         ]
       },
+      "description": "Allows to copy documents from one index to another, optionally filtering the source\ndocuments by a query, changing the destination index settings, or fetching the\ndocuments from a remote cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20519,6 +20575,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Changes the number of requests per second for a particular Reindex operation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20642,6 +20699,7 @@
           }
         ]
       },
+      "description": "Allows to use the Mustache language to pre-render a search definition.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20822,6 +20880,7 @@
           }
         ]
       },
+      "description": "Allows an arbitrary script to be executed and a result to be returned",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20897,22 +20956,10 @@
                 "namespace": "_types"
               }
             }
-          },
-          {
-            "description": "If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.",
-            "name": "rest_total_hits_as_int",
-            "required": false,
-            "serverDefault": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
           }
         ]
       },
+      "description": "Allows to retrieve a large numbers of results from a single search request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -20976,17 +21023,6 @@
           "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "total_hits_as_integer",
-          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -21566,6 +21602,7 @@
           }
         ]
       },
+      "description": "Returns results matching a query.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26865,6 +26902,7 @@
           }
         ]
       },
+      "description": "Searches a vector tile for geospatial values. Returns results as a binary Mapbox vector tile.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -26908,8 +26946,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "ZoomLevel",
+              "namespace": "_global.search_mvt._types"
             }
           }
         },
@@ -26920,8 +26958,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Coordinate",
+              "namespace": "_global.search_mvt._types"
             }
           }
         },
@@ -26932,8 +26970,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Coordinate",
+              "namespace": "_global.search_mvt._types"
             }
           }
         }
@@ -27010,13 +27048,31 @@
       "body": {
         "kind": "value",
         "value": {
-          "kind": "user_defined_value"
+          "kind": "instance_of",
+          "type": {
+            "name": "MapboxVectorTiles",
+            "namespace": "_types"
+          }
         }
       },
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "_global.search_mvt"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Coordinate",
+        "namespace": "_global.search_mvt._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "integer",
+          "namespace": "_types"
+        }
       }
     },
     {
@@ -27035,12 +27091,27 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "ZoomLevel",
+        "namespace": "_global.search_mvt._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "integer",
+          "namespace": "_types"
+        }
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about the indices and shards that a search request would be executed against.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27256,6 +27327,19 @@
         "kind": "properties",
         "properties": [
           {
+            "name": "explain",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "ID of the search template to use. If no source is specified,\nthis parameter is required.",
             "name": "id",
             "required": false,
             "type": {
@@ -27285,6 +27369,19 @@
             }
           },
           {
+            "name": "profile",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "An inline search template. Supports the same parameters as the search API's\nrequest body. Also supports Mustache variables. If no id is specified, this\nparameter is required.",
             "name": "source",
             "required": false,
             "type": {
@@ -27297,6 +27394,7 @@
           }
         ]
       },
+      "description": "Allows to use the Mustache language to pre-render a search definition.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27310,7 +27408,7 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names to search; use `_all` or empty string to perform the operation on all indices",
+          "description": "Comma-separated list of data streams, indices,\nand aliases to search. Supports wildcards (*).",
           "name": "index",
           "required": false,
           "type": {
@@ -27362,9 +27460,10 @@
           }
         },
         {
-          "description": "server_default false",
+          "description": "Specify whether to return detailed information about score computation as part of a hit",
           "name": "explain",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -27425,7 +27524,7 @@
           }
         },
         {
-          "description": "A comma-separated list of specific routing values",
+          "description": "Custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
           "type": {
@@ -27437,7 +27536,7 @@
           }
         },
         {
-          "description": "Specify how long a consistent view of the index should be maintained for scrolled search",
+          "description": "Specifies how long a consistent view of the index\nshould be maintained for scrolled search.",
           "name": "scroll",
           "required": false,
           "type": {
@@ -27449,7 +27548,7 @@
           }
         },
         {
-          "description": "Search operation type",
+          "description": "The type of the search operation.",
           "name": "search_type",
           "required": false,
           "type": {
@@ -27462,7 +27561,7 @@
         },
         {
           "description": "If true, hits.total are rendered as an integer in the response.",
-          "name": "total_hits_as_integer",
+          "name": "rest_total_hits_as_int",
           "required": false,
           "serverDefault": false,
           "since": "7.0.0",
@@ -27656,6 +27755,7 @@
           }
         ]
       },
+      "description": "The terms enum API  can be used to discover terms in the index that begin with the provided string. It is designed for low-latency look-ups used in auto-complete scenarios.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -27912,6 +28012,7 @@
           }
         ]
       },
+      "description": "Returns information and statistics about terms in the fields of a particular document.",
       "generics": [
         {
           "name": "TDocument",
@@ -28461,6 +28562,7 @@
           }
         ]
       },
+      "description": "Updates a document with a script or partial document.",
       "generics": [
         {
           "name": "TDocument",
@@ -28794,6 +28896,7 @@
           }
         ]
       },
+      "description": "Performs an update on every document in the index without changing the source,\nfor example to pick up a mapping change.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -28955,17 +29058,6 @@
         {
           "description": "Specify the node or shard the operation should be performed on (default: random)",
           "name": "preference",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -29422,6 +29514,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Changes the number of requests per second for a particular Update By Query operation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -32024,6 +32117,20 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "MapboxVectorTiles",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "binary",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "MergesStats",
@@ -34585,6 +34692,36 @@
           "name": "string",
           "namespace": "internal"
         }
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nanos"
+        },
+        {
+          "name": "micros"
+        },
+        {
+          "name": "ms"
+        },
+        {
+          "name": "s"
+        },
+        {
+          "name": "m"
+        },
+        {
+          "name": "h"
+        },
+        {
+          "name": "d"
+        }
+      ],
+      "name": {
+        "name": "TimeUnit",
+        "namespace": "_types"
       }
     },
     {
@@ -43686,6 +43823,106 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "Analyzer",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FingerprintAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeywordAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LanguageAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PatternAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StandardAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WhitespaceAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiAnalyzer",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -43698,6 +43935,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "asciifolding"
+          }
+        },
         {
           "name": "preserve_original",
           "required": true,
@@ -43742,6 +43987,10 @@
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -43751,17 +44000,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -43788,6 +44026,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "char_group"
+          }
+        },
         {
           "name": "tokenize_on_chars",
           "required": true,
@@ -43817,6 +44063,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "common_grams"
+          }
+        },
         {
           "name": "common_words",
           "required": true,
@@ -43975,6 +44229,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "condition"
+          }
+        },
+        {
           "name": "filter",
           "required": true,
           "type": {
@@ -43996,6 +44258,129 @@
             "type": {
               "name": "Script",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CustomAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "position_increment_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "position_offset_gap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "tokenizer",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CustomNormalizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "custom"
+          }
+        },
+        {
+          "name": "char_filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -44032,6 +44417,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "delimited_payload"
+          }
+        },
         {
           "name": "delimiter",
           "required": true,
@@ -44085,6 +44478,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "edge_ngram"
+          }
+        },
+        {
           "name": "max_gram",
           "required": true,
           "type": {
@@ -44132,6 +44533,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "edge_ngram"
+          }
+        },
         {
           "name": "custom_token_chars",
           "required": true,
@@ -44195,6 +44604,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "elision"
+          }
+        },
+        {
           "name": "articles",
           "required": true,
           "type": {
@@ -44222,6 +44639,89 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "FingerprintAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "fingerprint"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max_output_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "preserve_original",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "separator",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -44234,6 +44734,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "fingerprint"
+          }
+        },
         {
           "name": "max_output_size",
           "required": true,
@@ -44270,7 +44778,16 @@
         "name": "HtmlStripCharFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "html_strip"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44285,6 +44802,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hunspell"
+          }
+        },
         {
           "name": "dedup",
           "required": true,
@@ -44343,7 +44868,88 @@
         "name": "HyphenationDecompounderTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "hyphenation_decompounder"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IcuAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "icu_analyzer"
+          }
+        },
+        {
+          "name": "method",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationType",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IcuNormalizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "decompose"
+        },
+        {
+          "name": "compose"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationMode",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nfc"
+        },
+        {
+          "name": "nfkc"
+        },
+        {
+          "name": "nfkc_cf"
+        }
+      ],
+      "name": {
+        "name": "IcuNormalizationType",
+        "namespace": "_types.analysis"
+      }
     },
     {
       "inherits": {
@@ -44357,7 +44963,16 @@
         "name": "KStemTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kstem"
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -44387,6 +45002,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keep_types"
+          }
+        },
         {
           "name": "mode",
           "required": true,
@@ -44428,6 +45051,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keep"
+          }
+        },
+        {
           "name": "keep_words",
           "required": true,
           "type": {
@@ -44466,6 +45097,34 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "KeywordAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -44478,6 +45137,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword_marker"
+          }
+        },
         {
           "name": "ignore_case",
           "required": true,
@@ -44541,6 +45208,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "keyword"
+          }
+        },
+        {
           "name": "buffer_size",
           "required": true,
           "type": {
@@ -44548,6 +45223,446 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji"
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiPartOfSpeechTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_part_of_speech"
+          }
+        },
+        {
+          "name": "stoptags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiReadingFormTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_readingform"
+          }
+        },
+        {
+          "name": "use_romaji",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenFilterBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiStemmerTokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_stemmer"
+          }
+        },
+        {
+          "name": "minimum_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "normal"
+        },
+        {
+          "name": "search"
+        },
+        {
+          "name": "extended"
+        }
+      ],
+      "name": {
+        "name": "KuromojiTokenizationMode",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "TokenizerBase",
+          "namespace": "_types.analysis"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KuromojiTokenizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "kuromoji_tokenizer"
+          }
+        },
+        {
+          "name": "discard_punctuation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizationMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "nbest_cost",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nbest_examples",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "user_dictionary_rules",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "Arabic"
+        },
+        {
+          "name": "Armenian"
+        },
+        {
+          "name": "Basque"
+        },
+        {
+          "name": "Brazilian"
+        },
+        {
+          "name": "Bulgarian"
+        },
+        {
+          "name": "Catalan"
+        },
+        {
+          "name": "Chinese"
+        },
+        {
+          "name": "Cjk"
+        },
+        {
+          "name": "Czech"
+        },
+        {
+          "name": "Danish"
+        },
+        {
+          "name": "Dutch"
+        },
+        {
+          "name": "English"
+        },
+        {
+          "name": "Estonian"
+        },
+        {
+          "name": "Finnish"
+        },
+        {
+          "name": "French"
+        },
+        {
+          "name": "Galician"
+        },
+        {
+          "name": "German"
+        },
+        {
+          "name": "Greek"
+        },
+        {
+          "name": "Hindi"
+        },
+        {
+          "name": "Hungarian"
+        },
+        {
+          "name": "Indonesian"
+        },
+        {
+          "name": "Irish"
+        },
+        {
+          "name": "Italian"
+        },
+        {
+          "name": "Latvian"
+        },
+        {
+          "name": "Norwegian"
+        },
+        {
+          "name": "Persian"
+        },
+        {
+          "name": "Portuguese"
+        },
+        {
+          "name": "Romanian"
+        },
+        {
+          "name": "Russian"
+        },
+        {
+          "name": "Sorani"
+        },
+        {
+          "name": "Spanish"
+        },
+        {
+          "name": "Swedish"
+        },
+        {
+          "name": "Turkish"
+        },
+        {
+          "name": "Thai"
+        }
+      ],
+      "name": {
+        "name": "Language",
+        "namespace": "_types.analysis"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LanguageAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "language"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Language",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stem_exclusion",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -44566,6 +45681,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "length"
+          }
+        },
         {
           "name": "max",
           "required": true,
@@ -44602,7 +45725,16 @@
         "name": "LetterTokenizer",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "letter"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44617,6 +45749,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "limit"
+          }
+        },
         {
           "name": "consume_all_tokens",
           "required": true,
@@ -44655,6 +45795,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lowercase"
+          }
+        },
+        {
           "name": "language",
           "required": true,
           "type": {
@@ -44679,7 +45827,16 @@
         "name": "LowercaseTokenizer",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lowercase"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -44694,6 +45851,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "mapping"
+          }
+        },
         {
           "name": "mappings",
           "required": true,
@@ -44735,6 +45900,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "multiplexer"
+          }
+        },
+        {
           "name": "filters",
           "required": true,
           "type": {
@@ -44775,6 +45948,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ngram"
+          }
+        },
+        {
           "name": "max_gram",
           "required": true,
           "type": {
@@ -44811,6 +45992,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ngram"
+          }
+        },
         {
           "name": "custom_token_chars",
           "required": true,
@@ -44861,6 +46050,70 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "NoriAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "decompound_mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NoriDecompoundMode",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stoptags",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "user_dictionary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -44892,6 +46145,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori_part_of_speech"
+          }
+        },
+        {
           "name": "stoptags",
           "required": true,
           "type": {
@@ -44920,6 +46181,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "nori_tokenizer"
+          }
+        },
         {
           "name": "decompound_mode",
           "required": true,
@@ -44983,6 +46252,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "path_hierarchy"
+          }
+        },
+        {
           "name": "buffer_size",
           "required": true,
           "type": {
@@ -45040,6 +46317,78 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PatternAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "flags",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lowercase",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "pattern",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -45052,6 +46401,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern_capture"
+          }
+        },
         {
           "name": "patterns",
           "required": true,
@@ -45092,6 +46449,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "pattern_replace"
+          }
+        },
         {
           "name": "flags",
           "required": true,
@@ -45139,7 +46504,16 @@
         "name": "PorterStemTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "porter_stem"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45154,6 +46528,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate_token_filter"
+          }
+        },
         {
           "name": "script",
           "required": true,
@@ -45179,7 +46561,16 @@
         "name": "RemoveDuplicatesTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "remove_duplicates"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45193,7 +46584,16 @@
         "name": "ReverseTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "reverse"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -45208,6 +46608,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "shingle"
+          }
+        },
         {
           "name": "filler_token",
           "required": true,
@@ -45271,6 +46679,34 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SimpleAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
             }
           }
         }
@@ -45365,12 +46801,59 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "snowball"
+          }
+        },
+        {
           "name": "language",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "SnowballLanguage",
+              "namespace": "_types.analysis"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StandardAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "standard"
+          }
+        },
+        {
+          "name": "max_token_length",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
               "namespace": "_types.analysis"
             }
           }
@@ -45390,6 +46873,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "standard"
+          }
+        },
         {
           "name": "max_token_length",
           "required": true,
@@ -45416,6 +46907,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stemmer_override"
+          }
+        },
         {
           "name": "rules",
           "required": true,
@@ -45457,7 +46956,65 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stemmer"
+          }
+        },
+        {
           "name": "language",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StopAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stop"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stopwords",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "StopWords",
+              "namespace": "_types.analysis"
+            }
+          }
+        },
+        {
+          "name": "stopwords_path",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -45482,6 +47039,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "stop"
+          }
+        },
         {
           "name": "ignore_case",
           "required": false,
@@ -45536,14 +47101,26 @@
         "namespace": "_types.analysis"
       },
       "type": {
-        "kind": "array_of",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "string",
-            "namespace": "internal"
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
           }
-        }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -45574,6 +47151,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "synonym_graph"
+          }
+        },
         {
           "name": "expand",
           "required": true,
@@ -45669,6 +47254,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "synonym"
+          }
+        },
         {
           "name": "expand",
           "required": true,
@@ -46051,9 +47644,34 @@
               "name": "WordDelimiterTokenFilter",
               "namespace": "_types.analysis"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiStemmerTokenFilter",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiReadingFormTokenFilter",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiPartOfSpeechTokenFilter",
+              "namespace": "_types.analysis"
+            }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -46063,17 +47681,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -46171,9 +47778,20 @@
               "name": "WhitespaceTokenizer",
               "namespace": "_types.analysis"
             }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KuromojiTokenizer",
+              "namespace": "_types.analysis"
+            }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
       }
     },
     {
@@ -46183,17 +47801,6 @@
         "namespace": "_types.analysis"
       },
       "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
         {
           "name": "version",
           "required": false,
@@ -46219,7 +47826,16 @@
         "name": "TrimTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "trim"
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -46234,6 +47850,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "truncate"
+          }
+        },
         {
           "name": "length",
           "required": true,
@@ -46261,6 +47885,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "uax_url_email"
+          }
+        },
+        {
           "name": "max_token_length",
           "required": true,
           "type": {
@@ -46287,6 +47919,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "unique"
+          }
+        },
+        {
           "name": "only_on_same_position",
           "required": true,
           "type": {
@@ -46311,7 +47951,44 @@
         "name": "UppercaseTokenFilter",
         "namespace": "_types.analysis"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "uppercase"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WhitespaceAnalyzer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "whitespace"
+          }
+        },
+        {
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -46326,6 +48003,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "whitespace"
+          }
+        },
         {
           "name": "max_token_length",
           "required": true,
@@ -46352,6 +48037,14 @@
         "namespace": "_types.analysis"
       },
       "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "word_delimiter_graph"
+          }
+        },
         {
           "name": "adjust_offsets",
           "required": true,
@@ -46528,6 +48221,14 @@
       },
       "properties": [
         {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "word_delimiter"
+          }
+        },
+        {
           "name": "catenate_all",
           "required": true,
           "type": {
@@ -46673,6 +48374,54 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AggregateMetricDoubleProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "aggregate_metric_double"
+          }
+        },
+        {
+          "name": "default_metric",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "metrics",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
             }
           }
         }
@@ -47328,6 +49077,40 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "PropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DenseVectorProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "dense_vector"
+          }
+        },
+        {
+          "name": "dims",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "DocValuesProperty",
@@ -47548,7 +49331,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "PropertyBase",
+              "name": "Property",
               "namespace": "_types.mapping"
             }
           }
@@ -47802,6 +49585,12 @@
         },
         {
           "name": "constant_keyword"
+        },
+        {
+          "name": "aggregate_metric_double"
+        },
+        {
+          "name": "dense_vector"
         }
       ],
       "name": {
@@ -49079,6 +50868,20 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "DenseVectorProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregateMetricDoubleProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "CoreProperty",
               "namespace": "_types.mapping"
             }
@@ -49217,17 +51020,6 @@
                 "name": "Property",
                 "namespace": "_types.mapping"
               }
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
             }
           }
         }
@@ -49765,7 +51557,7 @@
         },
         {
           "name": "enabled",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -49848,11 +51640,23 @@
           "name": "precision",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -50450,6 +52254,18 @@
           "type": {
             "kind": "literal_value",
             "value": "wildcard"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
       ]
@@ -58031,6 +59847,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an async search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -58082,6 +59899,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the results of a previously submitted async search request given its ID.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -58185,6 +60003,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the status of a previously submitted async search request given its ID.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -58588,17 +60407,6 @@
             }
           },
           {
-            "name": "query_on_query_string",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "request_cache",
             "required": false,
             "type": {
@@ -58941,6 +60749,7 @@
           }
         ]
       },
+      "description": "Executes a search request asynchronously.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -59098,6 +60907,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -59336,6 +61146,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets the current autoscaling capacity based on the configured autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -59391,6 +61202,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves an autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -59449,6 +61261,7 @@
           }
         }
       },
+      "description": "Creates a new autoscaling policy. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -59631,6 +61444,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Shows information about currently configured aliases to indices including filter and routing infos.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -59845,6 +61659,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides a snapshot of how many shards are allocated to each data node and how much disk space they are using.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -59972,6 +61787,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides quick access to the document count of the entire cluster, or individual indices.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -60117,6 +61933,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Shows how much heap memory is currently being used by fielddata on every data node in the cluster.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -60422,6 +62239,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a concise representation of the cluster health.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -60508,6 +62326,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns help for the Cat APIs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -62549,6 +64368,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about indices: number of primaries and replicas, document counts, disk size, ...",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -62728,6 +64548,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about the master node.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -63026,6 +64847,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configuration and usage information about data frame analytics jobs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -63301,6 +65123,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configuration and usage information about datafeeds.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -64330,6 +66153,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configuration and usage information about anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -64410,6 +66234,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configuration and usage information about inference trained models.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -64910,6 +66735,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about custom node attributes.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -66466,6 +68292,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns basic statistics about performance of cluster nodes.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -66614,6 +68441,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a concise representation of the cluster pending tasks.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -66752,6 +68580,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about installed plugins across nodes node.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -67196,6 +69025,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about index shard recoveries, both on-going completed.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -67327,6 +69157,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about snapshot repositories registered in the cluster.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -67369,6 +69200,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides low-level information about the segments in the shards of an index.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -67676,6 +69508,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides a detailed view of shard allocation on nodes.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -68942,6 +70775,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns all snapshots in a specific repository.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -69219,6 +71053,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about the tasks currently executing on one or more nodes in the cluster.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -69559,6 +71394,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about existing templates.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -69699,6 +71535,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns cluster-wide thread pool statistics per node.\nBy default the active, queue and rejected statistics are returned for all thread pools.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -70087,6 +71924,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configuration and usage information about transforms.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -71093,6 +72931,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes auto-follow patterns.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71278,6 +73117,7 @@
           }
         ]
       },
+      "description": "Creates a new follower index configured to follow the referenced leader index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71568,6 +73408,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about all follower indices, including parameters and status for each follower index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71628,6 +73469,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves follower stats. return shard-level stats about the following tasks associated with each shard for the specified indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71734,6 +73576,7 @@
           }
         ]
       },
+      "description": "Removes the follower retention leases from the leader.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71834,6 +73677,7 @@
           }
         },
         {
+          "description": "The remote cluster containing the leader indices to match against.",
           "name": "remote_cluster",
           "required": true,
           "type": {
@@ -71845,6 +73689,7 @@
           }
         },
         {
+          "description": "The name of follower index.",
           "name": "follow_index_pattern",
           "required": false,
           "type": {
@@ -71856,6 +73701,7 @@
           }
         },
         {
+          "description": "An array of simple index patterns to match against indices in the remote cluster specified by the remote_cluster field.",
           "name": "leader_index_patterns",
           "required": true,
           "type": {
@@ -71867,6 +73713,20 @@
           }
         },
         {
+          "description": "An array of simple index patterns that can be used to exclude indices from being auto-followed.",
+          "name": "leader_index_exclusion_patterns",
+          "required": true,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexPatterns",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of outstanding reads requests from the remote cluster.",
           "name": "max_outstanding_read_requests",
           "required": true,
           "type": {
@@ -71886,6 +73746,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets configured auto-follow patterns. Returns the specified auto-follow pattern collection.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71946,6 +73807,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Pauses an auto-follow pattern",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -71997,6 +73859,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Pauses a follower index. The follower index will not fetch any additional operations from the leader index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -72049,6 +73912,8 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The remote cluster containing the leader indices to match against.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-remote-clusters.html",
             "name": "remote_cluster",
             "required": true,
             "type": {
@@ -72060,6 +73925,7 @@
             }
           },
           {
+            "description": "The name of follower index. The template {{leader_index}} can be used to derive the name of the follower index from the name of the leader index. When following a data stream, use {{leader_index}}; CCR does not support changes to the names of a follower data stream’s backing indices.",
             "name": "follow_index_pattern",
             "required": false,
             "type": {
@@ -72071,6 +73937,7 @@
             }
           },
           {
+            "description": "An array of simple index patterns to match against indices in the remote cluster specified by the remote_cluster field.",
             "name": "leader_index_patterns",
             "required": false,
             "type": {
@@ -72082,6 +73949,19 @@
             }
           },
           {
+            "description": "An array of simple index patterns that can be used to exclude indices from being auto-followed. Indices in the remote cluster whose names are matching one or more leader_index_patterns and one or more leader_index_exclusion_patterns won’t be followed.",
+            "name": "leader_index_exclusion_patterns",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexPatterns",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
             "name": "max_outstanding_read_requests",
             "required": false,
             "serverDefault": 12,
@@ -72094,6 +73974,7 @@
             }
           },
           {
+            "description": "Settings to override from the leader index. Note that certain settings can not be overrode (e.g., index.number_of_shards).",
             "name": "settings",
             "required": false,
             "type": {
@@ -72112,6 +73993,7 @@
             }
           },
           {
+            "description": "The maximum number of outstanding reads requests from the remote cluster.",
             "name": "max_outstanding_write_requests",
             "required": false,
             "serverDefault": 9,
@@ -72124,6 +74006,7 @@
             }
           },
           {
+            "description": "The maximum time to wait for new operations on the remote cluster when the follower index is synchronized with the leader index. When the timeout has elapsed, the poll for operations will return to the follower so that it can update some statistics. Then the follower will immediately attempt to read from the leader again.",
             "name": "read_poll_timeout",
             "required": false,
             "serverDefault": "1m",
@@ -72136,6 +74019,7 @@
             }
           },
           {
+            "description": "The maximum number of operations to pull per read from the remote cluster.",
             "name": "max_read_request_operation_count",
             "required": false,
             "serverDefault": 5120,
@@ -72148,6 +74032,7 @@
             }
           },
           {
+            "description": "The maximum size in bytes of per read of a batch of operations pulled from the remote cluster.",
             "name": "max_read_request_size",
             "required": false,
             "serverDefault": "32mb",
@@ -72160,6 +74045,7 @@
             }
           },
           {
+            "description": "The maximum time to wait before retrying an operation that failed exceptionally. An exponential backoff strategy is employed when retrying.",
             "name": "max_retry_delay",
             "required": false,
             "serverDefault": "500ms",
@@ -72172,6 +74058,7 @@
             }
           },
           {
+            "description": "The maximum number of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be deferred until the number of queued operations goes below the limit.",
             "name": "max_write_buffer_count",
             "required": false,
             "serverDefault": 2147483647,
@@ -72184,6 +74071,7 @@
             }
           },
           {
+            "description": "The maximum total bytes of operations that can be queued for writing. When this limit is reached, reads from the remote cluster will be deferred until the total bytes of queued operations goes below the limit.",
             "name": "max_write_buffer_size",
             "required": false,
             "serverDefault": "512mb",
@@ -72196,6 +74084,7 @@
             }
           },
           {
+            "description": "The maximum number of operations per bulk write request executed on the follower.",
             "name": "max_write_request_operation_count",
             "required": false,
             "serverDefault": 5120,
@@ -72208,6 +74097,7 @@
             }
           },
           {
+            "description": "The maximum total bytes of operations per bulk write request executed on the follower.",
             "name": "max_write_request_size",
             "required": false,
             "serverDefault": "9223372036854775807b",
@@ -72221,6 +74111,7 @@
           }
         ]
       },
+      "description": "Creates a new named collection of auto-follow patterns against a specified remote cluster. Newly created indices on the remote cluster matching any of the specified patterns will be automatically configured as follower indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -72234,7 +74125,7 @@
       },
       "path": [
         {
-          "description": "The name of the auto follow pattern.",
+          "description": "The name of the collection of auto-follow patterns.",
           "name": "name",
           "required": true,
           "type": {
@@ -72272,6 +74163,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Resumes an auto-follow pattern that has been paused",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -72435,6 +74327,7 @@
           }
         ]
       },
+      "description": "Resumes a follower index that has been paused",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -72621,6 +74514,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets all stats related to cross-cluster replication.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -72676,6 +74570,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -74493,6 +76388,7 @@
           }
         ]
       },
+      "description": "Provides explanations for shard allocations in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75034,6 +76930,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a component template",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75112,6 +77009,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Clears cluster voting config exclusions.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75157,6 +77055,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular component template exist",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75228,6 +77127,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns one or more component templates",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75327,6 +77227,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns cluster settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -75582,6 +77483,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns basic information about the health of the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -76107,6 +78009,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a list of any cluster-level changes (e.g. create index, update mapping,\nallocate or fail shard) which have not yet been executed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -76180,6 +78083,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Updates the cluster voting config exclusions by node ids or node names.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -76329,6 +78233,7 @@
           }
         ]
       },
+      "description": "Creates or updates a component template",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -76445,6 +78350,7 @@
           }
         ]
       },
+      "description": "Updates the cluster settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -76774,6 +78680,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "The cluster remote info API allows you to retrieve all of the configured\nremote cluster information. It returns connection and endpoint information\nkeyed by the configured remote cluster alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -77120,6 +79027,7 @@
           }
         ]
       },
+      "description": "Allows to manually change the allocation of individual shards in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -77463,21 +79371,10 @@
           "name": "routing_table",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "EmptyObject",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "RoutingTable",
+              "namespace": "cluster.reroute"
             }
           }
         },
@@ -77595,6 +79492,71 @@
     {
       "kind": "interface",
       "name": {
+        "name": "RoutingTable",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoutingTableIndex",
+                "namespace": "cluster.reroute"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoutingTableIndex",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "shards",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeShard",
+                  "namespace": "_types"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ClusterStateBlocks",
         "namespace": "cluster.state"
       },
@@ -77641,6 +79603,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a comprehensive information about the state of the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -79029,7 +80992,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ClusterOperatingSystemName",
+                "name": "ClusterOperatingSystemPrettyName",
                 "namespace": "cluster.stats"
               }
             }
@@ -79102,6 +81065,37 @@
         },
         {
           "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ClusterOperatingSystemPrettyName",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "pretty_name",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -79558,6 +81552,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns high-level overview of cluster statistics.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -79876,6 +81871,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes the specified dangling index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -79964,6 +81960,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Imports the specified dangling index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80105,6 +82102,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns all dangling indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80267,6 +82265,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing enrich policy and its enrich index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80359,6 +82358,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Creates the enrich index for an existing enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80440,6 +82440,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets information about an enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80524,6 +82525,7 @@
           }
         ]
       },
+      "description": "Creates a new enrich policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -80670,6 +82672,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets enrich coordinator statistics and information about enrich policies that are currently executing.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81027,6 +83030,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an async EQL search by ID. If the search is still running, the search request will be cancelled. Otherwise, the saved search results are deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81078,6 +83082,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns async results from previously executed Event Query Language (EQL) search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81169,6 +83174,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the status of a previously submitted async or stored Event Query Language (EQL) search",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81488,6 +83494,7 @@
           }
         ]
       },
+      "description": "Returns results matching a query expressed in Event Query Language (EQL)",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81711,6 +83718,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Gets a list of features which can be included in snapshots using the feature_states field when creating a snapshot",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -81758,6 +83766,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Resets the internal state of features, usually by deleting system indices",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -82201,6 +84210,7 @@
           }
         ]
       },
+      "description": "Explore extracted and summarized information about the documents and terms in an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -82485,6 +84495,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes the specified lifecycle policy definition. A currently used policy cannot be deleted.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -82530,9 +84541,39 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "LifecycleExplain",
+        "namespace": "ilm.explain_lifecycle"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainManaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainUnmanaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "managed"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainManaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -82628,11 +84669,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": true
           }
         },
         {
@@ -82766,27 +84804,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LifecycleExplainProject",
-        "namespace": "ilm.explain_lifecycle"
-      },
-      "properties": [
-        {
-          "name": "project",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LifecycleExplainProjectSummary",
-              "namespace": "ilm.explain_lifecycle"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LifecycleExplainProjectSummary",
+        "name": "LifecycleExplainUnmanaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -82805,11 +84823,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": false
           }
         }
       ]
@@ -82821,6 +84836,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about the index's current lifecycle state, such as the currently executing phase, action, and step.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -82881,34 +84897,22 @@
             "name": "indices",
             "required": true,
             "type": {
-              "items": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "IndexName",
-                      "namespace": "_types"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "LifecycleExplain",
-                      "namespace": "ilm.explain_lifecycle"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "LifecycleExplainProject",
-                    "namespace": "ilm.explain_lifecycle"
-                  }
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
                 }
-              ],
-              "kind": "union_of"
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "LifecycleExplain",
+                  "namespace": "ilm.explain_lifecycle"
+                }
+              }
             }
           }
         ]
@@ -82968,6 +84972,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the specified policy definition. Includes the policy version and last modified date.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83035,6 +85040,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the current index lifecycle management (ILM) status.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83103,6 +85109,7 @@
           }
         ]
       },
+      "description": "Manually moves an index into the specified step and executes that step.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83209,6 +85216,7 @@
           }
         ]
       },
+      "description": "Creates a lifecycle policy",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83260,6 +85268,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes the assigned lifecycle policy and stops managing the specified index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83331,6 +85340,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retries executing the policy for an index that is in the ERROR step.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83382,6 +85392,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Start the index lifecycle management (ILM) plugin.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -83443,6 +85454,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Halts all lifecycle management operations and stops the index lifecycle management (ILM) plugin",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -84770,6 +86782,28 @@
       },
       "properties": [
         {
+          "name": "analyzer",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Analyzer",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
           "name": "char_filter",
           "required": false,
           "type": {
@@ -84786,6 +86820,50 @@
               "kind": "instance_of",
               "type": {
                 "name": "CharFilter",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TokenFilter",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
+          "name": "normalizer",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "CustomNormalizer",
                 "namespace": "_types.analysis"
               }
             }
@@ -84874,6 +86952,17 @@
               }
             ],
             "kind": "union_of"
+          }
+        },
+        {
+          "name": "data_stream",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DataStreamName",
+              "namespace": "_types"
+            }
           }
         }
       ]
@@ -85177,6 +87266,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Adds a block to an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -85794,6 +87884,7 @@
           }
         ]
       },
+      "description": "Performs the analysis process on a text and return the tokens breakdown of the text.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -85928,6 +88019,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Clears all or specific caches for one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86106,6 +88198,7 @@
           }
         ]
       },
+      "description": "Clones an index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86294,6 +88387,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Closes an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86529,6 +88623,7 @@
           }
         ]
       },
+      "description": "Creates an index with optional settings and mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86651,6 +88746,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Creates a data stream",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86766,6 +88862,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides statistics on operations happening in a data stream.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86893,6 +88990,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -86932,7 +89030,7 @@
           }
         },
         {
-          "description": "Whether wildcard expressions should get expanded to open or closed indices (default: open)",
+          "description": "Whether wildcard expressions should get expanded to open, closed, or hidden indices",
           "name": "expand_wildcards",
           "required": false,
           "type": {
@@ -87005,6 +89103,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87093,6 +89192,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a data stream.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87157,6 +89257,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87208,6 +89309,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87284,6 +89386,159 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Analyzes the disk usage of each field of an index or data stream",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "indices.disk_usage"
+      },
+      "path": [
+        {
+          "description": "Comma-separated list of data streams, indices, and aliases used to limit the request. It’s recommended to execute this API with a single index (or the latest backing index of a data stream) as the API consumes resources significantly.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams. Supports comma-separated values, such as open,hidden.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, the API performs a flush before analysis. If false, the response may not include uncommitted data.",
+          "name": "flush",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Analyzing field disk usage is resource-intensive. To use the API, this parameter must be set to true.",
+          "name": "run_expensive_tasks",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The number of shard copies that must be active before proceeding with the operation. Set to all or any positive integer up to the total number of shards in the index (number_of_replicas+1). Default: 1, the primary shard.",
+          "name": "wait_for_active_shards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "value",
+        "value": {
+          "kind": "user_defined_value"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "indices.disk_usage"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Returns information about whether a particular index exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87401,6 +89656,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular alias exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87506,6 +89762,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular index template exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87564,6 +89821,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular index template exists.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87645,6 +89903,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about whether a particular document type exists. (DEPRECATED)",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87750,6 +90009,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Performs the flush operation on one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87862,6 +90122,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Performs the force merge operation on one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -87986,6 +90247,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Freezes an index. A frozen index has almost no overhead on the cluster (except for maintaining its metadata in memory) and is read-only.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -88122,6 +90384,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -88325,6 +90588,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -88628,6 +90892,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns data streams.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -88701,6 +90966,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns mapping for one or more fields.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89126,6 +91392,7 @@
           }
         ]
       },
+      "description": "Returns an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89231,6 +91498,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns mappings for one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89370,6 +91638,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns settings for one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89534,6 +91803,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89649,6 +91919,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Migrates an alias to a data stream",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89700,6 +91971,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Opens an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89836,6 +92108,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Promotes a data stream from a replicated data stream managed by CCR to a regular data stream",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -89940,6 +92213,7 @@
           }
         ]
       },
+      "description": "Creates or updates an alias.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -90164,6 +92438,7 @@
           }
         ]
       },
+      "description": "Creates or updates an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -90420,6 +92695,7 @@
           }
         ]
       },
+      "description": "Updates the index mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -90588,6 +92864,7 @@
           }
         }
       },
+      "description": "Updates the index settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -90831,6 +93108,7 @@
           }
         ]
       },
+      "description": "Creates or updates an index template.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -91474,6 +93752,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about ongoing index shard recoveries.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -91879,6 +94158,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Performs the refresh operation in one or more indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -92015,6 +94295,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Reloads an index's search analyzers and their resources.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -92123,6 +94404,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about any matching indices, aliases, and data streams",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -92443,6 +94725,7 @@
           }
         ]
       },
+      "description": "Updates an alias to point to a new index when the existing index\nis considered to be too large or too old.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -92743,6 +95026,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides low-level information about segments in a Lucene index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93138,6 +95422,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides store information for shard copies of indices.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93488,6 +95773,7 @@
           }
         ]
       },
+      "description": "Allow to shrink an existing index into a new index with fewer primary shards.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93667,6 +95953,7 @@
           }
         ]
       },
+      "description": "Simulate matching the given index name against the index templates in the system",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93753,6 +96040,7 @@
           }
         }
       },
+      "description": "Simulate resolving the given template name or body",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -93953,6 +96241,7 @@
           }
         ]
       },
+      "description": "Allows you to split an existing index into a new index with more primary shards.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -94355,6 +96644,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Provides statistics on operations happening in an index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -95325,6 +97615,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Unfreezes an index. When a frozen index is unfrozen, the index goes through the normal recovery process and becomes writeable again.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -95485,6 +97776,7 @@
           }
         ]
       },
+      "description": "Updates index aliases.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -95614,6 +97906,7 @@
           }
         ]
       },
+      "description": "Allows a user to validate a potentially expensive query without executing it.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -95768,17 +98061,6 @@
             "kind": "instance_of",
             "type": {
               "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "query_on_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
               "namespace": "internal"
             }
           }
@@ -98576,6 +100858,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -98782,6 +101065,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns statistical information about geoip databases",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -98850,6 +101134,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -98944,6 +101229,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a list of the built-in patterns.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99067,6 +101353,7 @@
           }
         ]
       },
+      "description": "Creates or updates a pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99401,6 +101688,7 @@
           }
         ]
       },
+      "description": "Allows to simulate a pipeline with example documents.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99650,6 +101938,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes licensing information for the cluster",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99829,6 +102118,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves licensing information for the cluster",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99898,6 +102188,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about the status of the basic license.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -99942,6 +102233,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about the status of the trial license.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100047,6 +102339,7 @@
           }
         ]
       },
+      "description": "Updates the license for the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100126,6 +102419,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts an indefinite basic license.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100237,6 +102531,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "starts a limited time trial license.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100536,6 +102831,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes Logstash Pipelines used by Central Management",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100580,6 +102876,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves Logstash Pipelines used by Central Management",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100649,6 +102946,7 @@
           }
         }
       },
+      "description": "Adds and updates Logstash Pipelines used for Central Management",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -100770,6 +103068,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108548,6 +110847,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108643,6 +110943,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108694,6 +110995,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes scheduled events from a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108757,6 +111059,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes anomaly detection jobs from a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108848,6 +111151,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -108926,6 +111230,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing datafeed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109015,6 +111320,7 @@
           }
         ]
       },
+      "description": "Deletes expired and unused machine learning data.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109098,6 +111404,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a filter.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109149,6 +111456,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes forecasts from a machine learning job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109237,6 +111545,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109313,6 +111622,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing model snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109376,6 +111686,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109427,6 +111738,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a model alias that refers to the trained model",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109547,6 +111859,7 @@
           }
         ]
       },
+      "description": "Estimates the model memory",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110235,6 +112548,7 @@
           }
         ]
       },
+      "description": "Evaluates the data frame analytics for an annotated index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110402,6 +112716,7 @@
           }
         ]
       },
+      "description": "Explains a data frame analytics config.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110521,6 +112836,7 @@
           }
         ]
       },
+      "description": "Forces any buffered data to be processed by the job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110626,6 +112942,7 @@
           }
         ]
       },
+      "description": "Predicts the future behavior of a time series by using its historical behavior.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110782,6 +113099,7 @@
           }
         ]
       },
+      "description": "Retrieves anomaly detection job results for one or more buckets.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110998,6 +113316,7 @@
           }
         ]
       },
+      "description": "Retrieves information about the scheduled events in calendars.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111190,6 +113509,7 @@
           }
         ]
       },
+      "description": "Retrieves configuration information for calendars.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111299,6 +113619,7 @@
           }
         ]
       },
+      "description": "Retrieves anomaly detection job results for one or more categories.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111419,6 +113740,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves configuration information for data frame analytics jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111544,6 +113866,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information for data frame analytics jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111669,6 +113992,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information for datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111753,6 +114077,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves configuration information for datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111849,6 +114174,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves filters.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111958,6 +114284,7 @@
           }
         ]
       },
+      "description": "Retrieves anomaly detection job results for one or more influencers.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112128,6 +114455,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information for anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112212,6 +114540,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves configuration information for anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112347,6 +114676,7 @@
           }
         ]
       },
+      "description": "Retrieves information about model snapshots.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112516,6 +114846,7 @@
           }
         ]
       },
+      "description": "Retrieves overall bucket results that summarize the bucket results of multiple anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112767,6 +115098,7 @@
           }
         ]
       },
+      "description": "Retrieves anomaly records for an anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112900,6 +115232,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves configuration information for a trained inference model.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113061,6 +115394,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information for trained inference models.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113361,6 +115695,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns defaults and limits used by machine learning.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113451,6 +115786,7 @@
           }
         ]
       },
+      "description": "Opens one or more anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113525,6 +115861,7 @@
           }
         ]
       },
+      "description": "Posts scheduled events in a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113596,6 +115933,7 @@
           }
         }
       },
+      "description": "Sends data to an anomaly detection job for analysis.",
       "generics": [
         {
           "name": "TData",
@@ -113917,6 +116255,7 @@
           }
         ]
       },
+      "description": "Previews that will be analyzed given a data frame analytics config.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114013,6 +116352,7 @@
           }
         ]
       },
+      "description": "Previews a datafeed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114092,6 +116432,7 @@
           }
         ]
       },
+      "description": "Instantiates a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114171,6 +116512,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Adds an anomaly detection job to a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114364,6 +116706,7 @@
           }
         ]
       },
+      "description": "Instantiates a data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114715,6 +117058,7 @@
           }
         ]
       },
+      "description": "Instantiates a datafeed.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115016,6 +117360,7 @@
           }
         ]
       },
+      "description": "Instantiates a filter.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115287,6 +117632,7 @@
           }
         ]
       },
+      "description": "Instantiates an anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115963,6 +118309,7 @@
           }
         ]
       },
+      "description": "Creates an inference trained model.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116313,6 +118660,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116390,6 +118738,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Resets an existing anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116468,6 +118817,7 @@
           }
         ]
       },
+      "description": "Reverts to a specific snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116537,6 +118887,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Sets a cluster wide upgrade_mode setting that prepares machine learning indices for an upgrade.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116600,6 +118951,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts a data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116714,6 +119066,7 @@
           }
         ]
       },
+      "description": "Starts one or more datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116795,6 +119148,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Stops one or more data frame analytics jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116918,6 +119272,7 @@
           }
         ]
       },
+      "description": "Stops one or more datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117055,6 +119410,7 @@
           }
         ]
       },
+      "description": "Updates certain properties of a data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117263,6 +119619,7 @@
           }
         ]
       },
+      "description": "Updates the description of a filter, adds items, or removes items.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117531,6 +119888,7 @@
           }
         ]
       },
+      "description": "Updates certain properties of an anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117846,6 +120204,7 @@
           }
         ]
       },
+      "description": "Updates certain properties of a snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117921,6 +120280,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Upgrades a given job snapshot to the current major version.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -118120,6 +120480,7 @@
           }
         ]
       },
+      "description": "Validates an anomaly detection job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -118165,6 +120526,7 @@
           }
         }
       },
+      "description": "Validates an anomaly detection detector.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -118226,6 +120588,7 @@
           }
         }
       },
+      "description": "Used by the monitoring features to send monitoring data.",
       "generics": [
         {
           "name": "TSource",
@@ -120262,6 +122625,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about hot threads on each node in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -122719,6 +125083,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about nodes in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -122942,6 +125307,7 @@
           }
         ]
       },
+      "description": "Reloads secure settings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -123052,6 +125418,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns statistical information about nodes in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -123359,6 +125726,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns low-level information about REST actions usage on nodes.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -123706,6 +126074,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing rollup job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -123880,6 +126249,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the configuration, stats, and status of rollup jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124272,6 +126642,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124456,6 +126827,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns the rollup capabilities of all jobs inside of a rollup index (e.g. the index where rollup data is stored).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124703,6 +127075,7 @@
           }
         ]
       },
+      "description": "Creates a rollup job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124757,6 +127130,7 @@
           "kind": "user_defined_value"
         }
       },
+      "description": "Rollup an index",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -124862,6 +127236,7 @@
           }
         ]
       },
+      "description": "Enables searching rolled-up data using the standard query DSL.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125037,6 +127412,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts an existing, stopped rollup job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125094,6 +127470,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Stops an existing, started rollup job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125194,6 +127571,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Clear the cache of searchable snapshots.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125398,6 +127776,7 @@
           }
         ]
       },
+      "description": "Mount a snapshot as a searchable index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125507,6 +127886,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieve shard-level statistics about searchable snapshots.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -125665,6 +128045,120 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "cancel_task"
+        },
+        {
+          "name": "create_snapshot"
+        },
+        {
+          "name": "grant_api_key"
+        },
+        {
+          "name": "manage"
+        },
+        {
+          "name": "manage_api_key"
+        },
+        {
+          "name": "manage_ccr"
+        },
+        {
+          "name": "manage_ilm"
+        },
+        {
+          "name": "manage_index_templates"
+        },
+        {
+          "name": "manage_ingest_pipelines"
+        },
+        {
+          "name": "manage_logstash_pipelines"
+        },
+        {
+          "name": "manage_ml"
+        },
+        {
+          "name": "manage_oidc"
+        },
+        {
+          "name": "manage_own_api_key"
+        },
+        {
+          "name": "manage_pipeline"
+        },
+        {
+          "name": "manage_rollup"
+        },
+        {
+          "name": "manage_saml"
+        },
+        {
+          "name": "manage_security"
+        },
+        {
+          "name": "manage_service_account"
+        },
+        {
+          "name": "manage_slm"
+        },
+        {
+          "name": "manage_token"
+        },
+        {
+          "name": "manage_transform"
+        },
+        {
+          "name": "manage_watcher"
+        },
+        {
+          "name": "monitor"
+        },
+        {
+          "name": "monitor_ml"
+        },
+        {
+          "name": "monitor_rollup"
+        },
+        {
+          "name": "monitor_snapshot"
+        },
+        {
+          "name": "monitor_text_structure"
+        },
+        {
+          "name": "monitor_transform"
+        },
+        {
+          "name": "monitor_watcher"
+        },
+        {
+          "name": "read_ccr"
+        },
+        {
+          "name": "read_ilm"
+        },
+        {
+          "name": "read_pipeline"
+        },
+        {
+          "name": "read_slm"
+        },
+        {
+          "name": "transport_client"
+        }
+      ],
+      "name": {
+        "name": "ClusterPrivilege",
+        "namespace": "security._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "CreatedStatus",
@@ -125736,6 +128230,69 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "all"
+        },
+        {
+          "name": "auto_configure"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "create_doc"
+        },
+        {
+          "name": "create_index"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "delete_index"
+        },
+        {
+          "name": "index"
+        },
+        {
+          "name": "maintenance"
+        },
+        {
+          "name": "manage"
+        },
+        {
+          "name": "manage_follow_index"
+        },
+        {
+          "name": "manage_ilm"
+        },
+        {
+          "name": "manage_leader_index"
+        },
+        {
+          "name": "monitor"
+        },
+        {
+          "name": "read"
+        },
+        {
+          "name": "read_cross_cluster"
+        },
+        {
+          "name": "view_index_metadata"
+        },
+        {
+          "name": "write"
+        }
+      ],
+      "name": {
+        "name": "IndexPrivilege",
+        "namespace": "security._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "IndicesPrivileges",
@@ -125776,8 +128333,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -126038,6 +128595,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Enables you to submit a request with a basic auth header to authenticate a user and retrieve information about the authenticated user.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126230,6 +128788,7 @@
           }
         ]
       },
+      "description": "Changes the passwords of users in the native realm and built-in users.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126288,6 +128847,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Clear a subset or all entries from the API key cache.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126379,6 +128939,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Evicts application privileges from the native application privileges cache.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126470,6 +129031,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Evicts users from the user cache. Can completely clear the cache or evict specific users.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126577,6 +129139,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Evicts roles from the native role cache.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126668,6 +129231,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Evicts tokens from the service account token caches.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -126802,8 +129366,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -126880,6 +129444,7 @@
           }
         ]
       },
+      "description": "Creates an API key for access without requiring basic authentication.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127021,6 +129586,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Creates a service account token for access without requiring basic authentication.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127164,6 +129730,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes application privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127267,6 +129834,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127337,6 +129905,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes role mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127407,6 +129976,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a service account token.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127501,6 +130071,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes users from the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127571,6 +130142,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Disables users in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127629,6 +130201,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Enables users in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127785,6 +130358,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information for one or more API keys.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127893,6 +130467,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the list of cluster privileges and index privileges that are available in this version of Elasticsearch.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -127951,6 +130526,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves application privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -128123,6 +130699,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -128410,6 +130987,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves role mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -128477,6 +131055,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about service accounts.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -128763,6 +131342,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information of all service credentials for a service account.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -129056,6 +131636,7 @@
           }
         ]
       },
+      "description": "Creates a bearer token for access without requiring basic authentication.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -129197,6 +131778,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about users in the native realm and built-in users.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -129279,6 +131861,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves security privileges for the logged in user.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -129531,6 +132114,7 @@
           }
         ]
       },
+      "description": "Creates an API key on behalf of another user.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -129685,13 +132269,10 @@
           "name": "names",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
             }
           }
         },
@@ -129703,8 +132284,8 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
               }
             }
           }
@@ -129765,8 +132346,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -129787,6 +132368,7 @@
           }
         ]
       },
+      "description": "Determines whether the specified user has a specified list of privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130006,6 +132588,7 @@
           }
         ]
       },
+      "description": "Invalidates one or more API keys.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130138,6 +132721,7 @@
           }
         ]
       },
+      "description": "Invalidates one or more access tokens or refresh tokens.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130303,6 +132887,7 @@
           }
         }
       },
+      "description": "Adds or updates application privileges.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130405,8 +132990,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "ClusterPrivilege",
+                  "namespace": "security._types"
                 }
               }
             }
@@ -130487,6 +133072,7 @@
           }
         ]
       },
+      "description": "Adds and updates roles in the native realm.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130620,6 +133206,7 @@
           }
         ]
       },
+      "description": "Creates and updates role mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130818,6 +133405,7 @@
           }
         ]
       },
+      "description": "Adds and updates users in the native realm. These users are commonly referred to as native users.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -130888,6 +133476,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes a node from the shutdown list",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131076,6 +133665,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieve status of a node or nodes that are currently marked as shutting down",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131192,6 +133782,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Adds a node to be shut down",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131773,6 +134364,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing snapshot lifecycle policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131824,6 +134416,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Immediately creates a snapshot according to the lifecycle policy, without waiting for the scheduled time.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131881,6 +134474,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes any snapshots that are expired according to the policy's retention rules.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131919,6 +134513,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -131986,6 +134581,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns global and policy-level statistics about actions taken by snapshot lifecycle management.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -132132,6 +134728,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the status of snapshot lifecycle management (SLM).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -132238,6 +134835,7 @@
           }
         ]
       },
+      "description": "Creates or updates a snapshot lifecycle policy.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -132316,6 +134914,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Turns on snapshot lifecycle management (SLM).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -132354,6 +134953,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Turns off snapshot lifecycle management (SLM).",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133445,6 +136045,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes stale data from repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133540,6 +136141,7 @@
           }
         ]
       },
+      "description": "Clones indices from one snapshot into another snapshot in the same repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133719,6 +136321,7 @@
           }
         ]
       },
+      "description": "Creates a snapshot in a repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133862,6 +136465,7 @@
           }
         ]
       },
+      "description": "Creates a repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133950,6 +136554,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes one or more snapshots.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134026,6 +136631,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes a repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134102,6 +136708,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about a snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134324,6 +136931,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about a repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134520,6 +137128,7 @@
           }
         ]
       },
+      "description": "Restores a snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134659,6 +137268,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about the status of a snapshot.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134776,6 +137386,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Verifies a repository.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -134882,6 +137493,7 @@
           }
         ]
       },
+      "description": "Clears the SQL cursor",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -135072,6 +137684,7 @@
           }
         ]
       },
+      "description": "Executes a SQL request",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -135217,6 +137830,7 @@
           }
         ]
       },
+      "description": "Translates SQL into Elasticsearch queries",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -135413,6 +138027,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about the X.509 certificates used to encrypt communications in the cluster.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -135964,6 +138579,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Cancels a task, if it can be cancelled through an API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -136113,6 +138729,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns information about a task.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -136228,6 +138845,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Returns a list of tasks.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -136556,6 +139174,7 @@
           }
         }
       },
+      "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "generics": [
         {
           "name": "TJsonDocument",
@@ -137375,6 +139994,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deletes an existing transform.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -137439,6 +140059,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves configuration information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -137698,6 +140319,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information for transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -138230,6 +140852,7 @@
           }
         ]
       },
+      "description": "Previews a transform.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -138308,6 +140931,7 @@
         "kind": "properties",
         "properties": []
       },
+      "description": "Instantiates a transform.",
       "inherits": {
         "type": {
           "name": "Request",
@@ -138372,6 +140996,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts one or more transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -138436,6 +141061,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Stops one or more transforms.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -138549,6 +141175,7 @@
         "kind": "properties",
         "properties": []
       },
+      "description": "Updates certain properties of a transform.",
       "inherits": {
         "type": {
           "name": "Request",
@@ -142358,6 +144985,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Acknowledges a watch, manually throttling the execution of the watch's actions.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -142427,6 +145055,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Activates a currently inactive watch.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -142484,6 +145113,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Deactivates a currently active watch.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -142541,6 +145171,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Removes a watch from Watcher.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -142717,6 +145348,7 @@
           }
         ]
       },
+      "description": "Forces the execution of a stored watch.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -142920,6 +145552,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves a watch by its ID.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -143133,6 +145766,7 @@
           }
         ]
       },
+      "description": "Creates a new watch, or updates an existing one.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -143346,6 +145980,7 @@
           }
         ]
       },
+      "description": "Retrieves stored watches.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -143404,6 +146039,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Starts Watcher if it is not already running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -143442,6 +146078,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves the current Watcher metrics.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -143808,6 +146445,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Stops Watcher if it is running.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -144331,6 +146969,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves information about the installed X-Pack features.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -146222,6 +148861,7 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Retrieves usage information about the installed X-Pack features.",
       "inherits": {
         "type": {
           "name": "RequestBase",

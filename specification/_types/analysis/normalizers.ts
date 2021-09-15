@@ -17,17 +17,8 @@
  * under the License.
  */
 
-export class ApplicationPrivileges {
-  /**
-   * The name of the application to which this entry applies.
-   */
-  application: string
-  /**
-   * A list of strings, where each element is the name of an application privilege or action.
-   */
-  privileges: string[]
-  /**
-   * A list resources to which the privileges are applied.
-   */
-  resources: string[]
+export class CustomNormalizer {
+  type: 'custom'
+  char_filter?: string[]
+  filter?: string[]
 }

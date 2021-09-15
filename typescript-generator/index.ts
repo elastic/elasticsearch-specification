@@ -115,6 +115,10 @@ function buildValue (type: M.ValueOf, openGenerics?: string[], origin?: M.TypeNa
         }
       }
 
+      if (type.type.name === 'binary' && type.type.namespace === 'internal') {
+        return 'ArrayBuffer'
+      }
+
       return `${createName(type.type)}${buildGenerics(type.generics, openGenerics)}`
     case 'array_of':
       return type.value.kind === 'union_of' || getShortcutType(type.value) != null

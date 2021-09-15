@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { PropertyBase } from './Property'
+import { Property } from './Property'
 
 export class DynamicTemplate {
-  mapping?: PropertyBase
+  mapping?: Property
   match?: string
   match_mapping_type?: string
   match_pattern?: MatchType

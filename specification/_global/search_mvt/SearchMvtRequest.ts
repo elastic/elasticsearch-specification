@@ -22,10 +22,12 @@ import { RequestBase } from '@_types/Base'
 import { Field, Fields, Indices } from '@_types/common'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { GridType } from './_types/GridType'
+import { Coordinate } from './_types/Coordinate'
 import { Sort } from '@global/search/_types/sort'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
+import { ZoomLevel } from './_types/ZoomLevel'
 
 /**
  * @rest_spec_name search_mvt
@@ -39,11 +41,11 @@ export interface Request extends RequestBase {
     /* Field containing geospatial data to return */
     field: Field
     /* Zoom level of the vector tile to search */
-    zoom: integer
+    zoom: ZoomLevel
     /* X coordinate for the vector tile to search */
-    x: integer
+    x: Coordinate
     /* Y coordinate for the vector tile to search */
-    y: integer
+    y: Coordinate
   }
   query_parameters: {
     /**

@@ -9,6 +9,8 @@ the basic types [here](https://www.typescriptlang.org/docs/handbook/basic-types.
 while in [behaviors](./behaviors.md) you can find the list of special interfaces used
 for describing APIs that can't be represented in the specification.
 
+Refer to the [documentation guide](doc-comments-guide.md) to add documentation to types and fields.
+
 ### Dictionary
 
 Represents a dynamic key value map:
@@ -137,6 +139,38 @@ since Elasticsearch needs a string or a numeric value, there are aliases also fo
 type Timestamp = string
 type TimeSpan = string
 type DateString = string
+```
+
+### Binary
+
+Some APIs return a Binary stream of data instead of JSON.
+Create an alias of the `ArrayBuffer` type for the appropriate name.
+
+```ts
+export type MapboxVectorTiles = ArrayBuffer
+
+export class Response {
+  body: MapboxVectorTiles
+}
+```
+
+In the output schema.json `MapboxVectorTiles` will be defined as:
+
+```json
+{
+  "kind": "type_alias",
+  "name": {
+    "name": "MapboxVectorTiles",
+    "namespace": "_types"
+  },
+  "type": {
+    "kind": "instance_of",
+    "type": {
+      "name": "binary",
+      "namespace": "internal"
+    }
+  }
+}
 ```
 
 ### Literal values
@@ -361,7 +395,7 @@ class FooRequest {
 
 #### description
 
-You can add a description for each property, in this case there is no need to use a JSDoc tag.
+You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
 
 ```ts
 class Foo {
@@ -396,6 +430,21 @@ class Foo {
   /** @doc_url http://localhost:9200 */
   baz?: string
   faz: string
+}
+```
+
+#### `@doc_id`
+
+The documentation id that can be used for generating the doc url.
+See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+
+```ts
+/**
+ * @rest_spec_name api
+ * @doc_id foobar
+ */
+class Request {
+  ...
 }
 ```
 

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { MapboxVectorTiles } from '@_types/Binary'
 
 export class Response {
-  body: UserDefinedValue
+  body: MapboxVectorTiles
 }
