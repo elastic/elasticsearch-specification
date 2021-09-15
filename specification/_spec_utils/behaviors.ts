@@ -78,9 +78,9 @@ export interface CommonCatQueryParameters {
 }
 
 /**
- * A class that implements `ReadOf` should have the exact same properties with the same types.
+ * A class that implements `OverloadOf` should have the exact same properties with the same types.
  * It can change if a property is required or not. There is no need to port the descriptions
  * and js doc tags, the compiler will do that for you.
  * @behavior Defines a class that is the "read" version of a definition used when writing a property.
  */
-export interface ReadOf<TDefinition> {}
+export interface OverloadOf<TDefinition> {}

@@ -24,7 +24,7 @@ import { Detector } from './Detector'
 import { CharFilter } from '@_types/analysis/char_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
-import { ReadOf } from '@spec_utils/behaviors'
+import { OverloadOf } from '@spec_utils/behaviors'
 
 export class AnalysisConfig {
   /**
@@ -75,7 +75,7 @@ export class AnalysisConfig {
   summary_count_field_name?: Field
 }
 
-export class AnalysisConfigRead implements ReadOf<AnalysisConfig> {
+export class AnalysisConfigRead implements OverloadOf<AnalysisConfig> {
   bucket_span: TimeSpan
   categorization_analyzer?: CategorizationAnalyzer | string
   categorization_field_name?: Field

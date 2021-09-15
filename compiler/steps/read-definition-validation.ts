@@ -30,7 +30,7 @@ import chalk from 'chalk'
 export default async function readDefinitionValidation (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
   for (const type of model.types) {
     if (type.kind !== 'interface') continue
-    const readBehavior = type.behaviors?.find(behavior => behavior.type.name === 'ReadOf')
+    const readBehavior = type.behaviors?.find(behavior => behavior.type.name === 'OverloadOf')
     if (readBehavior == null) continue
     assert(Array.isArray(readBehavior.generics))
     assert(readBehavior.generics[0].kind === 'instance_of')

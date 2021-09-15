@@ -15815,7 +15815,7 @@ export interface SpecUtilsCommonCatQueryParameters {
   v?: boolean
 }
 
-export interface SpecUtilsReadOf<TDefinition = unknown> {
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
   [key: string]: never
 }
 

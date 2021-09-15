@@ -30,7 +30,7 @@ const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', '
 // behaviors because we ue them for sharing common query parameters
 // among most requests.
 const skipBehaviors = [
-  'AdditionalProperties', 'AdditionalProperty', 'ReadOf'
+  'AdditionalProperties', 'AdditionalProperty', 'OverloadOf'
 ]
 
 let definitions = `/*
@@ -222,7 +222,7 @@ function implementsBehavior (type: M.Interface): boolean {
     if (type.name.name.endsWith('Base')) {
       return false
     }
-    if (type.attachedBehaviors.includes('ReadOf')) {
+    if (type.attachedBehaviors.includes('OverloadOf')) {
       return false
     }
     return type.attachedBehaviors.length > 0

@@ -103340,7 +103340,7 @@
     },
     {
       "attachedBehaviors": [
-        "ReadOf"
+        "OverloadOf"
       ],
       "behaviors": [
         {
@@ -103354,7 +103354,7 @@
             }
           ],
           "type": {
-            "name": "ReadOf",
+            "name": "OverloadOf",
             "namespace": "_spec_utils"
           }
         }
@@ -150503,7 +150503,7 @@
       ]
     },
     {
-      "description": "A class that implements `ReadOf` should have the exact same properties with the same types.\nIt can change if a property is required or not. There is no need to port the descriptions\nand js doc tags, the compiler will do that for you.",
+      "description": "A class that implements `OverloadOf` should have the exact same properties with the same types.\nIt can change if a property is required or not. There is no need to port the descriptions\nand js doc tags, the compiler will do that for you.",
       "generics": [
         {
           "name": "TDefinition",
@@ -150512,7 +150512,7 @@
       ],
       "kind": "interface",
       "name": {
-        "name": "ReadOf",
+        "name": "OverloadOf",
         "namespace": "_spec_utils"
       },
       "properties": []
