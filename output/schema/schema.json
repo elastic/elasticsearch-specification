@@ -128181,6 +128181,69 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FieldRule",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "username",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "dn",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "realm",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Realm",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldSecurity",
         "namespace": "security._types"
       },
@@ -128404,6 +128467,26 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Realm",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "RealmInfo",
         "namespace": "security._types"
       },
@@ -128481,7 +128564,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleMappingRuleBase",
+              "name": "RoleMappingRule",
               "namespace": "security._types"
             }
           }
@@ -128505,10 +128588,64 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RoleMappingRuleBase",
+        "name": "RoleMappingRule",
         "namespace": "security._types"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "any",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleMappingRule",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "all",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleMappingRule",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldRule",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "name": "except",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleMappingRule",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -133185,7 +133322,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RoleMappingRuleBase",
+                "name": "RoleMappingRule",
                 "namespace": "security._types"
               }
             }
