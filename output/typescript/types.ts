@@ -13190,6 +13190,14 @@ export interface SecurityCreatedStatus {
   created: boolean
 }
 
+export interface SecurityFieldRule {
+  username?: Name
+  dn?: Names
+  groups?: Names
+  metadata?: any
+  realm?: SecurityRealm
+}
+
 export interface SecurityFieldSecurity {
   except?: Fields
   grant: Fields
@@ -13213,6 +13221,10 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
+export interface SecurityRealm {
+  name: Name
+}
+
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -13222,12 +13234,15 @@ export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
   roles: string[]
-  rules: SecurityRoleMappingRuleBase
+  rules: SecurityRoleMappingRule
   role_templates?: SecurityGetRoleRoleTemplate[]
 }
 
-export interface SecurityRoleMappingRuleBase {
-  [key: string]: never
+export interface SecurityRoleMappingRule {
+  any?: SecurityRoleMappingRule[]
+  all?: SecurityRoleMappingRule[]
+  field?: SecurityFieldRule
+  except?: SecurityRoleMappingRule
 }
 
 export interface SecurityUser {
@@ -13765,7 +13780,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
-    rules?: SecurityRoleMappingRuleBase
+    rules?: SecurityRoleMappingRule
     run_as?: string[]
   }
 }
