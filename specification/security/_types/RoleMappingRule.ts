@@ -17,4 +17,30 @@
  * under the License.
  */
 
-export class RoleMappingRuleBase {}
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Name, Names } from '@_types/common'
+
+/**
+ * @variants container
+ */
+export class RoleMappingRule {
+  any?: RoleMappingRule[]
+  all?: RoleMappingRule[]
+  field?: FieldRule
+  except?: RoleMappingRule
+}
+
+/**
+ * @variants container
+ */
+export class FieldRule {
+  username?: Name
+  dn?: Names
+  groups?: Names
+  metadata?: UserDefinedValue
+  realm?: Realm
+}
+
+export class Realm {
+  name: Name
+}
