@@ -84547,9 +84547,39 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "LifecycleExplain",
+        "namespace": "ilm.explain_lifecycle"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainManaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainUnmanaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "managed"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainManaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -84645,11 +84675,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": true
           }
         },
         {
@@ -84783,27 +84810,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LifecycleExplainProject",
-        "namespace": "ilm.explain_lifecycle"
-      },
-      "properties": [
-        {
-          "name": "project",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LifecycleExplainProjectSummary",
-              "namespace": "ilm.explain_lifecycle"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LifecycleExplainProjectSummary",
+        "name": "LifecycleExplainUnmanaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -84822,11 +84829,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": false
           }
         }
       ]
@@ -84899,34 +84903,22 @@
             "name": "indices",
             "required": true,
             "type": {
-              "items": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "IndexName",
-                      "namespace": "_types"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "LifecycleExplain",
-                      "namespace": "ilm.explain_lifecycle"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "LifecycleExplainProject",
-                    "namespace": "ilm.explain_lifecycle"
-                  }
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
                 }
-              ],
-              "kind": "union_of"
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "LifecycleExplain",
+                  "namespace": "ilm.explain_lifecycle"
+                }
+              }
             }
           }
         ]
