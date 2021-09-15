@@ -8310,7 +8310,9 @@ export interface IlmDeleteLifecycleRequest extends RequestBase {
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface IlmExplainLifecycleLifecycleExplain {
+export type IlmExplainLifecycleLifecycleExplain = IlmExplainLifecycleLifecycleExplainManaged | IlmExplainLifecycleLifecycleExplainUnmanaged
+
+export interface IlmExplainLifecycleLifecycleExplainManaged {
   action: Name
   action_time_millis: EpochMillis
   age: Time
@@ -8319,7 +8321,7 @@ export interface IlmExplainLifecycleLifecycleExplain {
   index: IndexName
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
-  managed: boolean
+  managed: true
   phase: Name
   phase_time_millis: EpochMillis
   policy: Name
@@ -8335,13 +8337,9 @@ export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
   modified_date_in_millis: EpochMillis
 }
 
-export interface IlmExplainLifecycleLifecycleExplainProject {
-  project: IlmExplainLifecycleLifecycleExplainProjectSummary
-}
-
-export interface IlmExplainLifecycleLifecycleExplainProjectSummary {
+export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
   index: IndexName
-  managed: boolean
+  managed: false
 }
 
 export interface IlmExplainLifecycleRequest extends RequestBase {
@@ -8351,7 +8349,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
 }
 
 export interface IlmExplainLifecycleResponse {
-  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain> | IlmExplainLifecycleLifecycleExplainProject
+  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain>
 }
 
 export interface IlmGetLifecycleLifecycle {
