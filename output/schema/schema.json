@@ -8487,12 +8487,6 @@
           "methods": [
             "POST"
           ],
-          "path": "/_pit"
-        },
-        {
-          "methods": [
-            "POST"
-          ],
           "path": "/{index}/_pit"
         }
       ],
