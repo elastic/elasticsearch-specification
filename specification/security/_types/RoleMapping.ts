@@ -19,12 +19,12 @@
 
 import { RoleTemplate } from '@security/get_role/types'
 import { Metadata } from '@_types/common'
-import { RoleMappingRuleBase } from './RoleMappingRuleBase'
+import { RoleMappingRule } from './RoleMappingRule'
 
 export class RoleMapping {
   enabled: boolean
   metadata: Metadata
   roles: string[]
-  rules: RoleMappingRuleBase
+  rules: RoleMappingRule
   role_templates?: RoleTemplate[]
 }

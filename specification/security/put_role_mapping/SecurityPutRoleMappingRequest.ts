@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RoleMappingRuleBase } from '@security/_types/RoleMappingRuleBase'
+import { RoleMappingRule } from '@security/_types/RoleMappingRule'
 import { RequestBase } from '@_types/Base'
 import { Metadata, Name, Refresh } from '@_types/common'
 
@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
-    rules?: RoleMappingRuleBase
+    rules?: RoleMappingRule
     run_as?: string[]
   }
 }
