@@ -47,7 +47,8 @@ export const knownBehaviors = [
   'AdditionalProperties',
   'AdditionalProperty',
   'CommonQueryParameters',
-  'CommonCatQueryParameters'
+  'CommonCatQueryParameters',
+  'OverloadOf'
 ]
 
 /**
