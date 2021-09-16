@@ -12687,6 +12687,14 @@ export interface NodesInfoNodeInfoIngest {
   processors: NodesInfoNodeInfoIngestProcessor[]
 }
 
+export interface NodesInfoNodeInfoIngestDownloader {
+  enabled: string
+}
+
+export interface NodesInfoNodeInfoIngestInfo {
+  downloader: NodesInfoNodeInfoIngestDownloader
+}
+
 export interface NodesInfoNodeInfoIngestProcessor {
   type: string
 }
@@ -12774,6 +12782,7 @@ export interface NodesInfoNodeInfoSettings {
   xpack?: NodesInfoNodeInfoXpack
   script?: NodesInfoNodeInfoScript
   search?: NodesInfoNodeInfoSearch
+  ingest?: NodesInfoNodeInfoSettingsIngest
 }
 
 export interface NodesInfoNodeInfoSettingsCluster {
@@ -12796,6 +12805,43 @@ export interface NodesInfoNodeInfoSettingsHttp {
 
 export interface NodesInfoNodeInfoSettingsHttpType {
   default: string
+}
+
+export interface NodesInfoNodeInfoSettingsIngest {
+  attachment?: NodesInfoNodeInfoIngestInfo
+  append?: NodesInfoNodeInfoIngestInfo
+  csv?: NodesInfoNodeInfoIngestInfo
+  convert?: NodesInfoNodeInfoIngestInfo
+  date?: NodesInfoNodeInfoIngestInfo
+  date_index_name?: NodesInfoNodeInfoIngestInfo
+  dot_expander?: NodesInfoNodeInfoIngestInfo
+  enrich?: NodesInfoNodeInfoIngestInfo
+  fail?: NodesInfoNodeInfoIngestInfo
+  foreach?: NodesInfoNodeInfoIngestInfo
+  json?: NodesInfoNodeInfoIngestInfo
+  user_agent?: NodesInfoNodeInfoIngestInfo
+  kv?: NodesInfoNodeInfoIngestInfo
+  geoip?: NodesInfoNodeInfoIngestInfo
+  grok?: NodesInfoNodeInfoIngestInfo
+  gsub?: NodesInfoNodeInfoIngestInfo
+  join?: NodesInfoNodeInfoIngestInfo
+  lowercase?: NodesInfoNodeInfoIngestInfo
+  remove?: NodesInfoNodeInfoIngestInfo
+  rename?: NodesInfoNodeInfoIngestInfo
+  script?: NodesInfoNodeInfoIngestInfo
+  set?: NodesInfoNodeInfoIngestInfo
+  sort?: NodesInfoNodeInfoIngestInfo
+  split?: NodesInfoNodeInfoIngestInfo
+  trim?: NodesInfoNodeInfoIngestInfo
+  uppercase?: NodesInfoNodeInfoIngestInfo
+  urldecode?: NodesInfoNodeInfoIngestInfo
+  bytes?: NodesInfoNodeInfoIngestInfo
+  dissect?: NodesInfoNodeInfoIngestInfo
+  set_security_user?: NodesInfoNodeInfoIngestInfo
+  pipeline?: NodesInfoNodeInfoIngestInfo
+  drop?: NodesInfoNodeInfoIngestInfo
+  circle?: NodesInfoNodeInfoIngestInfo
+  inference?: NodesInfoNodeInfoIngestInfo
 }
 
 export interface NodesInfoNodeInfoSettingsNetwork {
