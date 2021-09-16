@@ -366,6 +366,10 @@ export class Endpoint {
   visibility?: Visibility
   accept?: string[]
   contentType?: string[]
+  securityPrerequisites?: {
+    index?: string[]
+    cluster?: string[]
+  }
 }
 
 export class UrlTemplate {
