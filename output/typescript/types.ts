@@ -1817,7 +1817,7 @@ export interface BulkStats {
 
 export type ByteSize = long | string
 
-export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p' | 'pb'
+export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
@@ -3021,7 +3021,7 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
   method?: AggregationsNormalizeMethod
 }
 
-export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
+export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
 export interface AggregationsParentAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -8429,7 +8429,7 @@ export interface IndicesAliasDefinition {
   search_routing?: string
 }
 
-export type IndicesDataStreamHealthStatus = 'GREEN' | 'green' | 'YELLOW' | 'yellow' | 'RED' | 'red'
+export type IndicesDataStreamHealthStatus = 'green' | 'yellow' | 'red'
 
 export interface IndicesFielddataFrequencyFilter {
   max: double

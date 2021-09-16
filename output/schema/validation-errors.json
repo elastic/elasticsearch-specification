@@ -1002,11 +1002,7 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": [
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'green'",
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'yellow'",
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'red'"
-      ]
+      "response": []
     },
     "indices.get_field_mapping": {
       "request": [

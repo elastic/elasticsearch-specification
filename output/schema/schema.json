@@ -29963,36 +29963,27 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "bytes",
           "name": "b"
         },
         {
-          "name": "k"
-        },
-        {
+          "identifier": "kilo_bytes",
           "name": "kb"
         },
         {
-          "name": "m"
-        },
-        {
+          "identifier": "mega_bytes",
           "name": "mb"
         },
         {
-          "name": "g"
-        },
-        {
+          "identifier": "giga_bytes",
           "name": "gb"
         },
         {
-          "name": "t"
-        },
-        {
+          "identifier": "tera_bytes",
           "name": "tb"
         },
         {
-          "name": "p"
-        },
-        {
+          "identifier": "peta_bytes",
           "name": "pb"
         }
       ],
@@ -30343,30 +30334,39 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "inches",
           "name": "in"
         },
         {
+          "identifier": "feet",
           "name": "ft"
         },
         {
+          "identifier": "yards",
           "name": "yd"
         },
         {
+          "identifier": "miles",
           "name": "mi"
         },
         {
+          "identifier": "nautic_miles",
           "name": "nmi"
         },
         {
+          "identifier": "kilometers",
           "name": "km"
         },
         {
+          "identifier": "meters",
           "name": "m"
         },
         {
+          "identifier": "centimeters",
           "name": "cm"
         },
         {
+          "identifier": "millimeters",
           "name": "mm"
         }
       ],
@@ -33457,6 +33457,7 @@
           "name": "not_found"
         },
         {
+          "identifier": "no_op",
           "name": "noop"
         }
       ],
@@ -34710,24 +34711,31 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "nano_seconds",
           "name": "nanos"
         },
         {
+          "identifier": "micro_seconds",
           "name": "micros"
         },
         {
+          "identifier": "milli_seconds",
           "name": "ms"
         },
         {
+          "identifier": "seconds",
           "name": "s"
         },
         {
+          "identifier": "minutes",
           "name": "m"
         },
         {
+          "identifier": "hours",
           "name": "h"
         },
         {
+          "identifier": "days",
           "name": "d"
         }
       ],
@@ -40869,7 +40877,8 @@
           "name": "mean"
         },
         {
-          "name": "zscore"
+          "identifier": "z_score",
+          "name": "z-score"
         },
         {
           "name": "softmax"
@@ -85665,23 +85674,11 @@
       "members": [
         {
           "description": "All shards are assigned.",
-          "name": "GREEN"
-        },
-        {
-          "description": "All shards are assigned.",
           "name": "green"
         },
         {
           "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
-          "name": "YELLOW"
-        },
-        {
-          "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
           "name": "yellow"
-        },
-        {
-          "description": "One or more primary shards are unassigned, so some data is unavailable.",
-          "name": "RED"
         },
         {
           "description": "One or more primary shards are unassigned, so some data is unavailable.",
