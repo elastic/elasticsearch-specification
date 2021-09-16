@@ -7557,7 +7557,31 @@ export interface ClusterRerouteRequest extends RequestBase {
   }
 }
 
-export type ClusterRerouteResponse = any
+export interface ClusterRerouteRerouteDecision {
+  decider: string
+  decision: string
+  explanation: string
+}
+
+export interface ClusterRerouteRerouteExplanation {
+  command: string
+  decisions: ClusterRerouteRerouteDecision[]
+  parameters: ClusterRerouteRerouteParameters
+}
+
+export interface ClusterRerouteRerouteParameters {
+  allow_primary: boolean
+  index: IndexName
+  node: NodeName
+  shard: integer
+  from_node?: NodeName
+  to_node?: NodeName
+}
+
+export interface ClusterRerouteResponse {
+  explanations?: ClusterRerouteRerouteExplanation[]
+  state: any
+}
 
 export interface ClusterStateRequest extends RequestBase {
   metric?: Metrics

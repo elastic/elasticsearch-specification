@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName } from '@_types/common'
+import { IndexName, NodeName } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-reroute.html#cluster-reroute-api-request-body */
@@ -83,4 +83,25 @@ export class CommandAllocatePrimaryAction {
   node: string
   /** If a node which has a copy of the data rejoins the cluster later on, that data will be deleted. To ensure that these implications are well-understood, this command requires the flag accept_data_loss to be explicitly set to true */
   accept_data_loss: boolean
+}
+
+export class RerouteDecision {
+  decider: string
+  decision: string
+  explanation: string
+}
+
+export class RerouteExplanation {
+  command: string
+  decisions: RerouteDecision[]
+  parameters: RerouteParameters
+}
+
+export class RerouteParameters {
+  allow_primary: boolean
+  index: IndexName
+  node: NodeName
+  shard: integer
+  from_node?: NodeName
+  to_node?: NodeName
 }

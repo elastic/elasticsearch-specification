@@ -78179,11 +78179,194 @@
       ]
     },
     {
-      "body": {
-        "kind": "value",
-        "value": {
-          "kind": "user_defined_value"
+      "kind": "interface",
+      "name": {
+        "name": "RerouteDecision",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "decider",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "decision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "explanation",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RerouteExplanation",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "command",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "decisions",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RerouteDecision",
+                "namespace": "cluster.reroute"
+              }
+            }
+          }
+        },
+        {
+          "name": "parameters",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RerouteParameters",
+              "namespace": "cluster.reroute"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RerouteParameters",
+        "namespace": "cluster.reroute"
+      },
+      "properties": [
+        {
+          "name": "allow_primary",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "node",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shard",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "from_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "explanations",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RerouteExplanation",
+                  "namespace": "cluster.reroute"
+                }
+              }
+            }
+          },
+          {
+            "description": "There aren't any guarantees on the output/structure of the raw cluster state.\nHere you will find the internal representation of the cluster, which can\ndiffer from the external representation.",
+            "name": "state",
+            "required": true,
+            "type": {
+              "kind": "user_defined_value"
+            }
+          }
+        ]
       },
       "kind": "response",
       "name": {
