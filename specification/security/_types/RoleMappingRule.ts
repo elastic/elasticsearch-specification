@@ -17,27 +17,30 @@
  * under the License.
  */
 
-import { RoleMappingRule } from '@security/_types/RoleMappingRule'
-import { RequestBase } from '@_types/Base'
-import { Metadata, Name, Refresh } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Name, Names } from '@_types/common'
 
 /**
- * @rest_spec_name security.put_role_mapping
- * @since 5.5.0
- * @stability stable
+ * @variants container
  */
-export interface Request extends RequestBase {
-  path_parts: {
-    name: Name
-  }
-  query_parameters: {
-    refresh?: Refresh
-  }
-  body: {
-    enabled?: boolean
-    metadata?: Metadata
-    roles?: string[]
-    rules?: RoleMappingRule
-    run_as?: string[]
-  }
+export class RoleMappingRule {
+  any?: RoleMappingRule[]
+  all?: RoleMappingRule[]
+  field?: FieldRule
+  except?: RoleMappingRule
+}
+
+/**
+ * @variants container
+ */
+export class FieldRule {
+  username?: Name
+  dn?: Names
+  groups?: Names
+  metadata?: UserDefinedValue
+  realm?: Realm
+}
+
+export class Realm {
+  name: Name
 }

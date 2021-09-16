@@ -339,6 +339,7 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
+  docId?: string
   deprecation?: Deprecation
 
   /**

@@ -44,3 +44,20 @@ Since these can break the request structure these are listed explicitly as a beh
 ```ts
 class CatRequestBase extends RequestBase implements CommonCatQueryParameters {}
 ```
+
+## OverloadOf
+
+Defines a class that is the "overload" version of a definition used when writing a property.
+A class that implements `OverloadOf` should have the exact same properties with the same types.
+It can change if a property is required or not. There is no need to port the descriptions
+and js doc tags, the compiler will do that for you.
+
+```ts
+export class Foo {
+  bar?: string
+}
+
+export class FooRead implements OverloadOf<Foo> {
+  bar: string
+}
+```

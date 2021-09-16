@@ -19,13 +19,14 @@
 
 import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { KuromojiTokenizer } from './kuromoji-plugin'
 
 export class TokenizerBase {
-  type: string
   version?: VersionString
 }
 
 export class EdgeNGramTokenizer extends TokenizerBase {
+  type: 'edge_ngram'
   custom_token_chars: string
   max_gram: integer
   min_gram: integer
@@ -33,6 +34,7 @@ export class EdgeNGramTokenizer extends TokenizerBase {
 }
 
 export class NGramTokenizer extends TokenizerBase {
+  type: 'ngram'
   custom_token_chars: string
   max_gram: integer
   min_gram: integer
@@ -49,16 +51,22 @@ export enum TokenChar {
 }
 
 export class CharGroupTokenizer extends TokenizerBase {
+  type: 'char_group'
   tokenize_on_chars: string[]
 }
 
 export class KeywordTokenizer extends TokenizerBase {
+  type: 'keyword'
   buffer_size: integer
 }
 
-export class LetterTokenizer extends TokenizerBase {}
+export class LetterTokenizer extends TokenizerBase {
+  type: 'letter'
+}
 
-export class LowercaseTokenizer extends TokenizerBase {}
+export class LowercaseTokenizer extends TokenizerBase {
+  type: 'lowercase'
+}
 
 export enum NoriDecompoundMode {
   discard = 0,
@@ -67,6 +75,7 @@ export enum NoriDecompoundMode {
 }
 
 export class NoriTokenizer extends TokenizerBase {
+  type: 'nori_tokenizer'
   decompound_mode: NoriDecompoundMode
   discard_punctuation: boolean
   user_dictionary: string
@@ -74,6 +83,7 @@ export class NoriTokenizer extends TokenizerBase {
 }
 
 export class PathHierarchyTokenizer extends TokenizerBase {
+  type: 'path_hierarchy'
   buffer_size: integer
   delimiter: string
   replacement: string
@@ -82,23 +92,28 @@ export class PathHierarchyTokenizer extends TokenizerBase {
 }
 
 export class PatternTokenizer extends TokenizerBase {
+  type: 'pattern'
   flags: string
   group: integer
   pattern: string
 }
 
 export class StandardTokenizer extends TokenizerBase {
+  type: 'standard'
   max_token_length: integer
 }
 
 export class UaxEmailUrlTokenizer extends TokenizerBase {
+  type: 'uax_url_email'
   max_token_length: integer
 }
 
 export class WhitespaceTokenizer extends TokenizerBase {
+  type: 'whitespace'
   max_token_length: integer
 }
 
+/** @variants internal tag='type' */
 export type Tokenizer =
   | CharGroupTokenizer
   | EdgeNGramTokenizer
@@ -111,3 +126,4 @@ export type Tokenizer =
   | StandardTokenizer
   | UaxEmailUrlTokenizer
   | WhitespaceTokenizer
+  | KuromojiTokenizer

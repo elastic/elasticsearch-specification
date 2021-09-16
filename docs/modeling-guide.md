@@ -433,6 +433,21 @@ class Foo {
 }
 ```
 
+#### `@doc_id`
+
+The documentation id that can be used for generating the doc url.
+See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+
+```ts
+/**
+ * @rest_spec_name api
+ * @doc_id foobar
+ */
+class Request {
+  ...
+}
+```
+
 #### `@identifier`
 
 A custom name that can be used to display the property. Useful in Enums an

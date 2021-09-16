@@ -17,4 +17,8 @@
  * under the License.
  */
 
-export class RoleMappingRuleBase {}
+export class CustomNormalizer {
+  type: 'custom'
+  char_filter?: string[]
+  filter?: string[]
+}

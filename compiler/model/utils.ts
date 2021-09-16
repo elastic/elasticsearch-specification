@@ -47,7 +47,8 @@ export const knownBehaviors = [
   'AdditionalProperties',
   'AdditionalProperty',
   'CommonQueryParameters',
-  'CommonCatQueryParameters'
+  'CommonCatQueryParameters',
+  'OverloadOf'
 ]
 
 /**
@@ -174,6 +175,33 @@ export function modelType (node: Node): model.ValueOf {
       const type: model.LiteralValue = {
         kind: 'literal_value',
         value: node.getText().replace(/'/g, '')
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.TrueKeyword: {
+      assert(node, Node.isTrueLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TrueKeyword]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: true
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.FalseKeyword: {
+      assert(node, Node.isFalseLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.FalseKeyword]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: false
+      }
+      return type
+    }
+
+    case ts.SyntaxKind.NumericLiteral: {
+      assert(node, Node.isNumericLiteral(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.NumericLiteral]} but ${ts.SyntaxKind[node.getKind()]} instead`)
+      const type: model.LiteralValue = {
+        kind: 'literal_value',
+        value: Number(node.getText())
       }
       return type
     }
@@ -516,8 +544,17 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'security_prerequisites_index', 'security_prerequisites_cluster'
+    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'security_prerequisites_index', 'security_prerequisites_cluster', 'doc_id'
   ]
+  // in most of the cases the jsDocs comes in a single block,
+  // but it can happen that the user defines multiple single line jsDoc.
+  // We want to enforce a single jsDoc block.
+  assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
+
+  if (jsDocs.length === 1) {
+    const description = jsDocs[0].getDescription()
+    if (description.length > 0) request.description = description.trim()
+  }
   const tags = parseJsDocTags(jsDocs)
   const apiName = tags.rest_spec_name
   // TODO (@typescript-eslint/strict-boolean-expressions) is no fun
@@ -574,6 +611,9 @@ export function hoistRequestAnnotations (
       }
       endpoint.securityPrerequisites = endpoint.securityPrerequisites ?? {}
       endpoint.securityPrerequisites.cluster = values
+    } else if (tag === 'doc_id') {
+      assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_id is cannot be empty`)
+      endpoint.docId = value
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on request ${request.name.name}`)
     }

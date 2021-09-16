@@ -3350,22 +3350,26 @@ export interface AggregationsWeightedAverageValue {
   script?: Script
 }
 
+export type AnalysisAnalyzer = AnalysisCustomAnalyzer | AnalysisFingerprintAnalyzer | AnalysisKeywordAnalyzer | AnalysisLanguageAnalyzer | AnalysisNoriAnalyzer | AnalysisPatternAnalyzer | AnalysisSimpleAnalyzer | AnalysisStandardAnalyzer | AnalysisStopAnalyzer | AnalysisWhitespaceAnalyzer | AnalysisIcuAnalyzer | AnalysisKuromojiAnalyzer
+
 export interface AnalysisAsciiFoldingTokenFilter extends AnalysisTokenFilterBase {
+  type: 'asciifolding'
   preserve_original: boolean
 }
 
 export type AnalysisCharFilter = AnalysisHtmlStripCharFilter | AnalysisMappingCharFilter | AnalysisPatternReplaceTokenFilter
 
 export interface AnalysisCharFilterBase {
-  type: string
   version?: VersionString
 }
 
 export interface AnalysisCharGroupTokenizer extends AnalysisTokenizerBase {
+  type: 'char_group'
   tokenize_on_chars: string[]
 }
 
 export interface AnalysisCommonGramsTokenFilter extends AnalysisTokenFilterBase {
+  type: 'common_grams'
   common_words: string[]
   common_words_path: string
   ignore_case: boolean
@@ -3383,13 +3387,30 @@ export interface AnalysisCompoundWordTokenFilterBase extends AnalysisTokenFilter
 }
 
 export interface AnalysisConditionTokenFilter extends AnalysisTokenFilterBase {
+  type: 'condition'
   filter: string[]
   script: Script
+}
+
+export interface AnalysisCustomAnalyzer {
+  type: 'custom'
+  char_filter?: string[]
+  filter?: string[]
+  position_increment_gap?: integer
+  position_offset_gap?: integer
+  tokenizer: string
+}
+
+export interface AnalysisCustomNormalizer {
+  type: 'custom'
+  char_filter?: string[]
+  filter?: string[]
 }
 
 export type AnalysisDelimitedPayloadEncoding = 'int' | 'float' | 'identity'
 
 export interface AnalysisDelimitedPayloadTokenFilter extends AnalysisTokenFilterBase {
+  type: 'delimited_payload'
   delimiter: string
   encoding: AnalysisDelimitedPayloadEncoding
 }
@@ -3397,12 +3418,14 @@ export interface AnalysisDelimitedPayloadTokenFilter extends AnalysisTokenFilter
 export type AnalysisEdgeNGramSide = 'front' | 'back'
 
 export interface AnalysisEdgeNGramTokenFilter extends AnalysisTokenFilterBase {
+  type: 'edge_ngram'
   max_gram: integer
   min_gram: integer
   side: AnalysisEdgeNGramSide
 }
 
 export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
+  type: 'edge_ngram'
   custom_token_chars: string
   max_gram: integer
   min_gram: integer
@@ -3410,19 +3433,33 @@ export interface AnalysisEdgeNGramTokenizer extends AnalysisTokenizerBase {
 }
 
 export interface AnalysisElisionTokenFilter extends AnalysisTokenFilterBase {
+  type: 'elision'
   articles: string[]
   articles_case: boolean
 }
 
+export interface AnalysisFingerprintAnalyzer {
+  type: 'fingerprint'
+  version: VersionString
+  max_output_size: integer
+  preserve_original: boolean
+  separator: string
+  stopwords: AnalysisStopWords
+  stopwords_path: string
+}
+
 export interface AnalysisFingerprintTokenFilter extends AnalysisTokenFilterBase {
+  type: 'fingerprint'
   max_output_size: integer
   separator: string
 }
 
 export interface AnalysisHtmlStripCharFilter extends AnalysisCharFilterBase {
+  type: 'html_strip'
 }
 
 export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
+  type: 'hunspell'
   dedup: boolean
   dictionary: string
   locale: string
@@ -3430,25 +3467,45 @@ export interface AnalysisHunspellTokenFilter extends AnalysisTokenFilterBase {
 }
 
 export interface AnalysisHyphenationDecompounderTokenFilter extends AnalysisCompoundWordTokenFilterBase {
+  type: 'hyphenation_decompounder'
 }
 
+export interface AnalysisIcuAnalyzer {
+  type: 'icu_analyzer'
+  method: AnalysisIcuNormalizationType
+  mode: AnalysisIcuNormalizationMode
+}
+
+export type AnalysisIcuNormalizationMode = 'decompose' | 'compose'
+
+export type AnalysisIcuNormalizationType = 'nfc' | 'nfkc' | 'nfkc_cf'
+
 export interface AnalysisKStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'kstem'
 }
 
 export type AnalysisKeepTypesMode = 'include' | 'exclude'
 
 export interface AnalysisKeepTypesTokenFilter extends AnalysisTokenFilterBase {
+  type: 'keep_types'
   mode: AnalysisKeepTypesMode
   types: string[]
 }
 
 export interface AnalysisKeepWordsTokenFilter extends AnalysisTokenFilterBase {
+  type: 'keep'
   keep_words: string[]
   keep_words_case: boolean
   keep_words_path: string
 }
 
+export interface AnalysisKeywordAnalyzer {
+  type: 'keyword'
+  version: VersionString
+}
+
 export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBase {
+  type: 'keyword_marker'
   ignore_case: boolean
   keywords: string[]
   keywords_path: string
@@ -3456,58 +3513,122 @@ export interface AnalysisKeywordMarkerTokenFilter extends AnalysisTokenFilterBas
 }
 
 export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
+  type: 'keyword'
   buffer_size: integer
 }
 
+export interface AnalysisKuromojiAnalyzer {
+  type: 'kuromoji'
+  mode: AnalysisKuromojiTokenizationMode
+  user_dictionary: string
+}
+
+export interface AnalysisKuromojiPartOfSpeechTokenFilter extends AnalysisTokenFilterBase {
+  type: 'kuromoji_part_of_speech'
+  stoptags: string[]
+}
+
+export interface AnalysisKuromojiReadingFormTokenFilter extends AnalysisTokenFilterBase {
+  type: 'kuromoji_readingform'
+  use_romaji: boolean
+}
+
+export interface AnalysisKuromojiStemmerTokenFilter extends AnalysisTokenFilterBase {
+  type: 'kuromoji_stemmer'
+  minimum_length: integer
+}
+
+export type AnalysisKuromojiTokenizationMode = 'normal' | 'search' | 'extended'
+
+export interface AnalysisKuromojiTokenizer extends AnalysisTokenizerBase {
+  type: 'kuromoji_tokenizer'
+  discard_punctuation: boolean
+  mode: AnalysisKuromojiTokenizationMode
+  nbest_cost: integer
+  nbest_examples: string
+  user_dictionary: string
+  user_dictionary_rules: string[]
+}
+
+export type AnalysisLanguage = 'Arabic' | 'Armenian' | 'Basque' | 'Brazilian' | 'Bulgarian' | 'Catalan' | 'Chinese' | 'Cjk' | 'Czech' | 'Danish' | 'Dutch' | 'English' | 'Estonian' | 'Finnish' | 'French' | 'Galician' | 'German' | 'Greek' | 'Hindi' | 'Hungarian' | 'Indonesian' | 'Irish' | 'Italian' | 'Latvian' | 'Norwegian' | 'Persian' | 'Portuguese' | 'Romanian' | 'Russian' | 'Sorani' | 'Spanish' | 'Swedish' | 'Turkish' | 'Thai'
+
+export interface AnalysisLanguageAnalyzer {
+  type: 'language'
+  version: VersionString
+  language: AnalysisLanguage
+  stem_exclusion: string[]
+  stopwords: AnalysisStopWords
+  stopwords_path: string
+}
+
 export interface AnalysisLengthTokenFilter extends AnalysisTokenFilterBase {
+  type: 'length'
   max: integer
   min: integer
 }
 
 export interface AnalysisLetterTokenizer extends AnalysisTokenizerBase {
+  type: 'letter'
 }
 
 export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterBase {
+  type: 'limit'
   consume_all_tokens: boolean
   max_token_count: integer
 }
 
 export interface AnalysisLowercaseTokenFilter extends AnalysisTokenFilterBase {
+  type: 'lowercase'
   language: string
 }
 
 export interface AnalysisLowercaseTokenizer extends AnalysisTokenizerBase {
+  type: 'lowercase'
 }
 
 export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
+  type: 'mapping'
   mappings: string[]
   mappings_path: string
 }
 
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
+  type: 'multiplexer'
   filters: string[]
   preserve_original: boolean
 }
 
 export interface AnalysisNGramTokenFilter extends AnalysisTokenFilterBase {
+  type: 'ngram'
   max_gram: integer
   min_gram: integer
 }
 
 export interface AnalysisNGramTokenizer extends AnalysisTokenizerBase {
+  type: 'ngram'
   custom_token_chars: string
   max_gram: integer
   min_gram: integer
   token_chars: AnalysisTokenChar[]
 }
 
+export interface AnalysisNoriAnalyzer {
+  type: 'nori'
+  version: VersionString
+  decompound_mode: AnalysisNoriDecompoundMode
+  stoptags: string[]
+  user_dictionary: string
+}
+
 export type AnalysisNoriDecompoundMode = 'discard' | 'none' | 'mixed'
 
 export interface AnalysisNoriPartOfSpeechTokenFilter extends AnalysisTokenFilterBase {
+  type: 'nori_part_of_speech'
   stoptags: string[]
 }
 
 export interface AnalysisNoriTokenizer extends AnalysisTokenizerBase {
+  type: 'nori_tokenizer'
   decompound_mode: AnalysisNoriDecompoundMode
   discard_punctuation: boolean
   user_dictionary: string
@@ -3515,6 +3636,7 @@ export interface AnalysisNoriTokenizer extends AnalysisTokenizerBase {
 }
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
+  type: 'path_hierarchy'
   buffer_size: integer
   delimiter: string
   replacement: string
@@ -3522,31 +3644,47 @@ export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   skip: integer
 }
 
+export interface AnalysisPatternAnalyzer {
+  type: 'pattern'
+  version: VersionString
+  flags: string
+  lowercase: boolean
+  pattern: string
+  stopwords: AnalysisStopWords
+}
+
 export interface AnalysisPatternCaptureTokenFilter extends AnalysisTokenFilterBase {
+  type: 'pattern_capture'
   patterns: string[]
   preserve_original: boolean
 }
 
 export interface AnalysisPatternReplaceTokenFilter extends AnalysisTokenFilterBase {
+  type: 'pattern_replace'
   flags: string
   pattern: string
   replacement: string
 }
 
 export interface AnalysisPorterStemTokenFilter extends AnalysisTokenFilterBase {
+  type: 'porter_stem'
 }
 
 export interface AnalysisPredicateTokenFilter extends AnalysisTokenFilterBase {
+  type: 'predicate_token_filter'
   script: Script
 }
 
 export interface AnalysisRemoveDuplicatesTokenFilter extends AnalysisTokenFilterBase {
+  type: 'remove_duplicates'
 }
 
 export interface AnalysisReverseTokenFilter extends AnalysisTokenFilterBase {
+  type: 'reverse'
 }
 
 export interface AnalysisShingleTokenFilter extends AnalysisTokenFilterBase {
+  type: 'shingle'
   filler_token: string
   max_shingle_size: integer
   min_shingle_size: integer
@@ -3555,37 +3693,61 @@ export interface AnalysisShingleTokenFilter extends AnalysisTokenFilterBase {
   token_separator: string
 }
 
+export interface AnalysisSimpleAnalyzer {
+  type: 'simple'
+  version: VersionString
+}
+
 export type AnalysisSnowballLanguage = 'Armenian' | 'Basque' | 'Catalan' | 'Danish' | 'Dutch' | 'English' | 'Finnish' | 'French' | 'German' | 'German2' | 'Hungarian' | 'Italian' | 'Kp' | 'Lovins' | 'Norwegian' | 'Porter' | 'Portuguese' | 'Romanian' | 'Russian' | 'Spanish' | 'Swedish' | 'Turkish'
 
 export interface AnalysisSnowballTokenFilter extends AnalysisTokenFilterBase {
+  type: 'snowball'
   language: AnalysisSnowballLanguage
 }
 
+export interface AnalysisStandardAnalyzer {
+  type: 'standard'
+  max_token_length: integer
+  stopwords: AnalysisStopWords
+}
+
 export interface AnalysisStandardTokenizer extends AnalysisTokenizerBase {
+  type: 'standard'
   max_token_length: integer
 }
 
 export interface AnalysisStemmerOverrideTokenFilter extends AnalysisTokenFilterBase {
+  type: 'stemmer_override'
   rules: string[]
   rules_path: string
 }
 
 export interface AnalysisStemmerTokenFilter extends AnalysisTokenFilterBase {
+  type: 'stemmer'
   language: string
 }
 
+export interface AnalysisStopAnalyzer {
+  type: 'stop'
+  version: VersionString
+  stopwords: AnalysisStopWords
+  stopwords_path: string
+}
+
 export interface AnalysisStopTokenFilter extends AnalysisTokenFilterBase {
+  type: 'stop'
   ignore_case?: boolean
   remove_trailing?: boolean
   stopwords: AnalysisStopWords
   stopwords_path?: string
 }
 
-export type AnalysisStopWords = string[]
+export type AnalysisStopWords = string | string[]
 
 export type AnalysisSynonymFormat = 'solr' | 'wordnet'
 
 export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase {
+  type: 'synonym_graph'
   expand: boolean
   format: AnalysisSynonymFormat
   lenient: boolean
@@ -3596,6 +3758,7 @@ export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase
 }
 
 export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
+  type: 'synonym'
   expand: boolean
   format: AnalysisSynonymFormat
   lenient: boolean
@@ -3607,43 +3770,53 @@ export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
 
 export type AnalysisTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
 
-export type AnalysisTokenFilter = AnalysisAsciiFoldingTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter
+export type AnalysisTokenFilter = AnalysisAsciiFoldingTokenFilter | AnalysisCommonGramsTokenFilter | AnalysisConditionTokenFilter | AnalysisDelimitedPayloadTokenFilter | AnalysisEdgeNGramTokenFilter | AnalysisElisionTokenFilter | AnalysisFingerprintTokenFilter | AnalysisHunspellTokenFilter | AnalysisHyphenationDecompounderTokenFilter | AnalysisKeepTypesTokenFilter | AnalysisKeepWordsTokenFilter | AnalysisKeywordMarkerTokenFilter | AnalysisKStemTokenFilter | AnalysisLengthTokenFilter | AnalysisLimitTokenCountTokenFilter | AnalysisLowercaseTokenFilter | AnalysisMultiplexerTokenFilter | AnalysisNGramTokenFilter | AnalysisNoriPartOfSpeechTokenFilter | AnalysisPatternCaptureTokenFilter | AnalysisPatternReplaceTokenFilter | AnalysisPorterStemTokenFilter | AnalysisPredicateTokenFilter | AnalysisRemoveDuplicatesTokenFilter | AnalysisReverseTokenFilter | AnalysisShingleTokenFilter | AnalysisSnowballTokenFilter | AnalysisStemmerOverrideTokenFilter | AnalysisStemmerTokenFilter | AnalysisStopTokenFilter | AnalysisSynonymGraphTokenFilter | AnalysisSynonymTokenFilter | AnalysisTrimTokenFilter | AnalysisTruncateTokenFilter | AnalysisUniqueTokenFilter | AnalysisUppercaseTokenFilter | AnalysisWordDelimiterGraphTokenFilter | AnalysisWordDelimiterTokenFilter | AnalysisKuromojiStemmerTokenFilter | AnalysisKuromojiReadingFormTokenFilter | AnalysisKuromojiPartOfSpeechTokenFilter
 
 export interface AnalysisTokenFilterBase {
-  type: string
   version?: VersionString
 }
 
-export type AnalysisTokenizer = AnalysisCharGroupTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisNoriTokenizer | AnalysisPathHierarchyTokenizer | AnalysisStandardTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer
+export type AnalysisTokenizer = AnalysisCharGroupTokenizer | AnalysisEdgeNGramTokenizer | AnalysisKeywordTokenizer | AnalysisLetterTokenizer | AnalysisLowercaseTokenizer | AnalysisNGramTokenizer | AnalysisNoriTokenizer | AnalysisPathHierarchyTokenizer | AnalysisStandardTokenizer | AnalysisUaxEmailUrlTokenizer | AnalysisWhitespaceTokenizer | AnalysisKuromojiTokenizer
 
 export interface AnalysisTokenizerBase {
-  type: string
   version?: VersionString
 }
 
 export interface AnalysisTrimTokenFilter extends AnalysisTokenFilterBase {
+  type: 'trim'
 }
 
 export interface AnalysisTruncateTokenFilter extends AnalysisTokenFilterBase {
+  type: 'truncate'
   length: integer
 }
 
 export interface AnalysisUaxEmailUrlTokenizer extends AnalysisTokenizerBase {
+  type: 'uax_url_email'
   max_token_length: integer
 }
 
 export interface AnalysisUniqueTokenFilter extends AnalysisTokenFilterBase {
+  type: 'unique'
   only_on_same_position: boolean
 }
 
 export interface AnalysisUppercaseTokenFilter extends AnalysisTokenFilterBase {
+  type: 'uppercase'
+}
+
+export interface AnalysisWhitespaceAnalyzer {
+  type: 'whitespace'
+  version: VersionString
 }
 
 export interface AnalysisWhitespaceTokenizer extends AnalysisTokenizerBase {
+  type: 'whitespace'
   max_token_length: integer
 }
 
 export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilterBase {
+  type: 'word_delimiter_graph'
   adjust_offsets: boolean
   catenate_all: boolean
   catenate_numbers: boolean
@@ -3661,6 +3834,7 @@ export interface AnalysisWordDelimiterGraphTokenFilter extends AnalysisTokenFilt
 }
 
 export interface AnalysisWordDelimiterTokenFilter extends AnalysisTokenFilterBase {
+  type: 'word_delimiter'
   catenate_all: boolean
   catenate_numbers: boolean
   catenate_words: boolean
@@ -8117,7 +8291,9 @@ export interface IlmDeleteLifecycleRequest extends RequestBase {
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface IlmExplainLifecycleLifecycleExplain {
+export type IlmExplainLifecycleLifecycleExplain = IlmExplainLifecycleLifecycleExplainManaged | IlmExplainLifecycleLifecycleExplainUnmanaged
+
+export interface IlmExplainLifecycleLifecycleExplainManaged {
   action: Name
   action_time_millis: EpochMillis
   age: Time
@@ -8126,7 +8302,7 @@ export interface IlmExplainLifecycleLifecycleExplain {
   index: IndexName
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
-  managed: boolean
+  managed: true
   phase: Name
   phase_time_millis: EpochMillis
   policy: Name
@@ -8142,13 +8318,9 @@ export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
   modified_date_in_millis: EpochMillis
 }
 
-export interface IlmExplainLifecycleLifecycleExplainProject {
-  project: IlmExplainLifecycleLifecycleExplainProjectSummary
-}
-
-export interface IlmExplainLifecycleLifecycleExplainProjectSummary {
+export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
   index: IndexName
-  managed: boolean
+  managed: false
 }
 
 export interface IlmExplainLifecycleRequest extends RequestBase {
@@ -8158,7 +8330,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
 }
 
 export interface IlmExplainLifecycleResponse {
-  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain> | IlmExplainLifecycleLifecycleExplainProject
+  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain>
 }
 
 export interface IlmGetLifecycleLifecycle {
@@ -8399,7 +8571,10 @@ export interface IndicesIndexSettings {
 }
 
 export interface IndicesIndexSettingsAnalysis {
+  analyzer?: Record<string, AnalysisAnalyzer>
   char_filter?: Record<string, AnalysisCharFilter>
+  filter?: Record<string, AnalysisTokenFilter>
+  normalizer?: Record<string, AnalysisCustomNormalizer>
 }
 
 export interface IndicesIndexSettingsLifecycle {
@@ -8410,6 +8585,7 @@ export interface IndicesIndexState {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings: IndicesIndexSettings | IndicesIndexStatePrefixedSettings
+  data_stream?: DataStreamName
 }
 
 export interface IndicesIndexStatePrefixedSettings {
@@ -10203,6 +10379,20 @@ export interface MlAnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: string[]
   detectors: MlDetector[]
+  influencers?: Field[]
+  model_prune_window?: Time
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: MlPerPartitionCategorization
+  summary_count_field_name?: Field
+}
+
+export interface MlAnalysisConfigRead {
+  bucket_span: TimeSpan
+  categorization_analyzer?: MlCategorizationAnalyzer | string
+  categorization_field_name?: Field
+  categorization_filters?: string[]
+  detectors: MlDetector[]
   influencers: Field[]
   model_prune_window?: Time
   latency?: Time
@@ -11800,7 +11990,7 @@ export interface MlPutJobRequest extends RequestBase {
 
 export interface MlPutJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: DateString
@@ -12060,7 +12250,7 @@ export interface MlUpdateJobRequest extends RequestBase {
 
 export interface MlUpdateJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: EpochMillis
@@ -13012,6 +13202,14 @@ export interface SecurityCreatedStatus {
   created: boolean
 }
 
+export interface SecurityFieldRule {
+  username?: Name
+  dn?: Names
+  groups?: Names
+  metadata?: any
+  realm?: SecurityRealm
+}
+
 export interface SecurityFieldSecurity {
   except?: Fields
   grant: Fields
@@ -13035,6 +13233,10 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
+export interface SecurityRealm {
+  name: Name
+}
+
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -13044,12 +13246,15 @@ export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
   roles: string[]
-  rules: SecurityRoleMappingRuleBase
+  rules: SecurityRoleMappingRule
   role_templates?: SecurityGetRoleRoleTemplate[]
 }
 
-export interface SecurityRoleMappingRuleBase {
-  [key: string]: never
+export interface SecurityRoleMappingRule {
+  any?: SecurityRoleMappingRule[]
+  all?: SecurityRoleMappingRule[]
+  field?: SecurityFieldRule
+  except?: SecurityRoleMappingRule
 }
 
 export interface SecurityUser {
@@ -13587,7 +13792,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
-    rules?: SecurityRoleMappingRuleBase
+    rules?: SecurityRoleMappingRule
     run_as?: string[]
   }
 }
@@ -15623,5 +15828,9 @@ export interface SpecUtilsCommonCatQueryParameters {
   master_timeout?: Time
   s?: string[]
   v?: boolean
+}
+
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
 }
 

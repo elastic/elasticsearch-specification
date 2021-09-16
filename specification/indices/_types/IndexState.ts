@@ -18,7 +18,7 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName } from '@_types/common'
+import { DataStreamName, IndexName } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Alias } from './Alias'
 import { IndexSettings } from './IndexSettings'
@@ -27,6 +27,7 @@ export class IndexState {
   aliases?: Dictionary<IndexName, Alias>
   mappings?: TypeMapping
   settings: IndexSettings | IndexStatePrefixedSettings
+  data_stream?: DataStreamName
 }
 
 export class IndexStatePrefixedSettings {
