@@ -249,22 +249,21 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
               assert(member, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
             } else {
-              type.body = { kind: 'value', value: property.valueOf }
-              const openGenerics = declaration.getTypeParameters().map(modelGenerics)
-              if ((property.valueOf.kind === 'instance_of' && openGenerics.includes(property.valueOf.type.name)) ||
-                   property.valueOf.kind === 'array_of') {
-                const tags = parseJsDocTags(member.getJsDocs())
-                assert(
-                  member,
-                  tags.identifier != null,
-                  'You should configure a body @identifier'
-                )
-                assert(
-                  member.getJsDocs(),
-                  !pathAndQueryProperties.includes(tags.identifier),
-                  `The identifier '${tags.identifier}' already exists as a property in the path or query.`
-                )
-                type.body.identifier = tags.identifier
+              const tags = parseJsDocTags(member.getJsDocs())
+              assert(
+                member,
+                tags.identifier != null,
+                'You should configure a body @identifier'
+              )
+              assert(
+                member.getJsDocs(),
+                !pathAndQueryProperties.includes(tags.identifier),
+                `The identifier '${tags.identifier}' already exists as a property in the path or query.`
+              )
+              type.body = {
+                kind: 'value',
+                value: property.valueOf,
+                identifier: tags.identifier
               }
             }
           } else if (Array.isArray(property.properties)) {
