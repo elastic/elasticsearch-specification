@@ -125,6 +125,7 @@ export class Property {
   required: boolean
   description?: string
   docUrl?: string
+  docId?: string
   since?: string
   serverDefault?: boolean | string | number
   deprecation?: Deprecation
