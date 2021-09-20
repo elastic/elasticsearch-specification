@@ -1057,18 +1057,6 @@
       ],
       "response": []
     },
-<<<<<<< HEAD
-    "indices.put_settings": {
-      "request": [
-        "interface definition indices.put_settings:IndexSettingsBody / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
-=======
-    "indices.put_mapping": {
-      "request": [
-        "Request: query parameter 'include_type_name' does not exist in the json spec"
->>>>>>> 92760d4e9... Expand body identifier use (#756)
-      ],
-      "response": []
-    },
     "indices.put_template": {
       "request": [
         "Request: query parameter 'flat_settings' does not exist in the json spec",
