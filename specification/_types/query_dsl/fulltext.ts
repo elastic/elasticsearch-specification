@@ -61,6 +61,7 @@ export class IntervalsAnyOf {
 }
 
 /** @variants container */
+// Note: similar to IntervalsQuery - see comment there
 export class IntervalsContainer {
   all_of?: IntervalsAllOf
   any_of?: IntervalsAnyOf

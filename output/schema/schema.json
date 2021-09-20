@@ -58696,6 +58696,32 @@
       ]
     },
     {
+      "description": "Can only be used as a clause in a span_near query.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SpanGapQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Field",
+            "namespace": "_types"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": true,
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "integer",
+            "namespace": "_types"
+          }
+        }
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -58915,25 +58941,13 @@
           }
         },
         {
-          "description": "Can only be used as a clause in a span_near query",
           "name": "span_gap",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": true,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "SpanGapQuery",
+              "namespace": "_types.query_dsl"
             }
           }
         },
