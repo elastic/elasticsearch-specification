@@ -43,11 +43,12 @@ export interface Request extends RequestBase {
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no jobs that match; contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and there are only partial matches. By default, it returns an empty jobs array when there are no matches and the subset of results when there are partial matches.
      * If `false`, the request returns a 404 status code when there are no matches or only partial matches.
-     * @server_default true 
+     * @server_default true
      */
     allow_no_match?: boolean
     /**
-     * @deprecation 7.10.0, Use `allow_no_match` instead.
+     * @obsolete 7.10.0
+     * @obsolete_description Use `allow_no_match` instead.
      */
     allow_no_jobs?: boolean
     /**
@@ -56,9 +57,9 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     force?: boolean
-    /** 
-     * Controls the time to wait until a job has closed. 
-     * @server_default 30s */
+    /**
+     * Controls the time to wait until a job has closed.
+     * @server_default 30m */
     timeout?: Time
   }
 }
