@@ -4938,6 +4938,8 @@ export interface QueryDslSpanFirstQuery extends QueryDslQueryBase {
   match: QueryDslSpanQuery
 }
 
+export type QueryDslSpanGapQuery = Record<Field, integer>
+
 export interface QueryDslSpanMultiTermQuery extends QueryDslQueryBase {
   match: QueryDslQueryContainer
 }
@@ -4964,7 +4966,7 @@ export interface QueryDslSpanQuery {
   span_containing?: QueryDslSpanContainingQuery
   field_masking_span?: QueryDslSpanFieldMaskingQuery
   span_first?: QueryDslSpanFirstQuery
-  span_gap?: Record<Field, integer>
+  span_gap?: QueryDslSpanGapQuery
   span_multi?: QueryDslSpanMultiTermQuery
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
