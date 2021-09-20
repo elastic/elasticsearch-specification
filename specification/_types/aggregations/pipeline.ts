@@ -170,7 +170,8 @@ export enum NormalizeMethod {
   rescale_0_100,
   percent_of_sum,
   mean,
-  zscore,
+  /** @identifier z_score */
+  'z-score',
   softmax
 }
 

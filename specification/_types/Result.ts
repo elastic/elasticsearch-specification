@@ -23,5 +23,6 @@ export enum Result {
   updated = 2,
   deleted = 3,
   not_found = 4,
+  /** @identifier no_op */
   noop = 5
 }
