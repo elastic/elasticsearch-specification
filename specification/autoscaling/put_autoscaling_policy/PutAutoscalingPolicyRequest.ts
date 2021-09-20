@@ -30,5 +30,6 @@ export interface Request extends RequestBase {
   path_parts: {
     name: Name
   }
+  /** @identifier policy */
   body: AutoscalingPolicy
 }
