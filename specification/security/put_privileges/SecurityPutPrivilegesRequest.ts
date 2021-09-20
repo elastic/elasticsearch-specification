@@ -32,5 +32,6 @@ export interface Request extends RequestBase {
   query_parameters: {
     refresh?: Refresh
   }
+  /** @identifier privileges */
   body?: Dictionary<string, Dictionary<string, Actions>>
 }

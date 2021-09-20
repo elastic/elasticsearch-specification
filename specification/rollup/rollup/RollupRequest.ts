@@ -31,5 +31,6 @@ export interface Request extends RequestBase {
     index: IndexName
     rollup_index: IndexName
   }
+  /** @identifier rollup */
   body?: UserDefinedValue // TODO: This API is experimental and no docs exist describing it. Requires reverse engineering if made stable
 }
