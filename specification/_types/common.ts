@@ -139,26 +139,25 @@ export enum ShapeRelation {
   within = 2
 }
 
-export enum Bytes {
-  b = 0,
-  k = 1,
-  kb = 2,
-  m = 3,
-  mb = 4,
-  g = 5,
-  gb = 6,
-  t = 7,
-  tb = 8,
-  p = 9,
-  pb = 10
-}
-
 /**
- * Whenever the byte size of data needs to be specified, e.g. when setting a buffer size parameter, the value must specify the unit, like 10kb for 10 kilobytes. Note that these units use powers of 1024, so 1kb means 1024 bytes.
+ * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
+ *
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
  */
-//type ByteSize = long | string
-// TODO -- move here
+export enum Bytes {
+  /** @identifier bytes */
+  b,
+  /** @identifier kilo_bytes */
+  kb,
+  /** @identifier mega_bytes */
+  mb,
+  /** @identifier giga_bytes */
+  gb,
+  /** @identifier tera_bytes */
+  tb,
+  /** @identifier peta_bytes */
+  pb
+}
 
 export enum Conflicts {
   abort = 0,
