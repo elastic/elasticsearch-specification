@@ -28,9 +28,13 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Instantiates a data frame analytics job.
+ * This API creates a data frame analytics job that performs an analysis on the source indices and stores the outcome in a destination index. You must have `read` and `view_index_metadata` security privileges for the source indices. You must have `read`, `create_index`, `manage` and `index` security privileges for the destination index.
  * @rest_spec_name ml.put_data_frame_analytics
  * @since 7.3.0
  * @stability stable
+ * @security_prerequisites_cluster manage_ml
+ * @security_prerequisites_index create_index, index, manage, read, view_index_metadata  
  */
 export interface Request extends RequestBase {
   path_parts: {
