@@ -22,18 +22,43 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Closes one or more anomaly detection jobs.
+ * A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.
+ * When you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.
+ * If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.
+ * When a datafeed that has a specified end date stops, it automatically closes its associated job.
  * @rest_spec_name ml.close_job
  * @since 5.4.0
  * @stability stable
+ * @security_prerequisites_cluster manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job. It can be a job identifier, a group name, or a wildcard expression. You can close multiple anomaly detection jobs in a single API request by using a group name, a comma-separated list of jobs, or a wildcard expression. You can close all jobs by using `_all` or by specifying `*` as the job identifier.
+     */
     job_id: Id
   }
   query_parameters: {
+    /**
+     * Specifies what to do when the request: contains wildcard expressions and there are no jobs that match; contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and there are only partial matches. By default, it returns an empty jobs array when there are no matches and the subset of results when there are partial matches.
+     * If `false`, the request returns a 404 status code when there are no matches or only partial matches.
+     * @server_default true 
+     */
+    allow_no_match?: boolean
+    /**
+     * @deprecation 7.10.0, Use `allow_no_match` instead.
+     */
     allow_no_jobs?: boolean
+    /**
+     * Use to close a failed job, or to forcefully close a job which has not responded to its initial close request; the request returns without performing the associated actions such as flushing buffers and persisting the model snapshots.
+     * If you want the job to be in a consistent state after the close job API returns, do not set to `true`. This parameter should be used only in situations where the job has already failed or where you are not interested in results the job might have recently produced or might produce in the future.
+     * @server_default false
+     */
     force?: boolean
-    /** @server_default 30s */
+    /** 
+     * Controls the time to wait until a job has closed. 
+     * @server_default 30s */
     timeout?: Time
   }
 }
