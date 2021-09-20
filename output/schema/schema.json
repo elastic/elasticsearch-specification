@@ -92849,32 +92849,6 @@
       }
     },
     {
-      "inherits": {
-        "type": {
-          "name": "IndexSettings",
-          "namespace": "indices._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingsBody",
-        "namespace": "indices.put_settings"
-      },
-      "properties": [
-        {
-          "name": "settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettings",
-              "namespace": "indices._types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -92884,8 +92858,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndexSettingsBody",
-            "namespace": "indices.put_settings"
+            "name": "IndexSettings",
+            "namespace": "indices._types"
           }
         }
       },
@@ -127576,7 +127550,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "rollup",
+        "identifier": "config",
         "kind": "value",
         "value": {
           "kind": "user_defined_value"

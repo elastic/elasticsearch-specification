@@ -41,9 +41,5 @@ export interface Request extends RequestBase {
     timeout?: Time
   }
   /** @identifier settings */
-  body: IndexSettingsBody
-}
-
-export class IndexSettingsBody extends IndexSettings {
-  settings?: IndexSettings
+  body: IndexSettings
 }
