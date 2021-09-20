@@ -61287,6 +61287,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "policy",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -92878,6 +92879,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "settings",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -96054,6 +96056,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "template",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -102960,6 +102963,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "pipeline",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -120529,6 +120533,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "detector",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -127571,6 +127576,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "rollup",
         "kind": "value",
         "value": {
           "kind": "user_defined_value"
@@ -133439,6 +133445,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "privileges",
         "kind": "value",
         "value": {
           "key": {
