@@ -52,8 +52,8 @@ export interface Request extends RequestBase {
     chunking_config?: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig
     frequency?: Time
+    /** @aliases indexes */
     indices?: string[]
-    indexes?: string[]
     indices_options?: DatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
