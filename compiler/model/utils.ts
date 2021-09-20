@@ -681,7 +681,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       assert(jsDocs, semver.valid(value), `${property.name}'s @since is not valid semver: ${value}`)
       property.since = value
     } else if (tag === 'doc_id') {
-      assert(jsDocs, value.trim() !== '', `Request ${property.name}'s @doc_id is cannot be empty`)
+      assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
     } else if (tag === 'server_default') {
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
