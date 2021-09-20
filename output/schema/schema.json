@@ -7344,6 +7344,18 @@
         "name": "Response",
         "namespace": "ml.put_data_frame_analytics"
       },
+      "securityPrerequisites": {
+        "cluster": [
+          "manage_ml"
+        ],
+        "index": [
+          "create_index",
+          "index",
+          "manage",
+          "read",
+          "view_index_metadata"
+        ]
+      },
       "since": "7.3.0",
       "stability": "stable",
       "urls": [
@@ -116707,7 +116719,7 @@
           }
         ]
       },
-      "description": "Instantiates a data frame analytics job.",
+      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the source indices and stores the outcome in a destination index. You must have `read` and `view_index_metadata` security privileges for the source indices. You must have `read`, `create_index`, `manage` and `index` security privileges for the destination index.",
       "inherits": {
         "type": {
           "name": "RequestBase",

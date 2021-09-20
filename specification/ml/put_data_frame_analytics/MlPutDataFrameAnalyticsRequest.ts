@@ -34,7 +34,7 @@ import { integer } from '@_types/Numeric'
  * @since 7.3.0
  * @stability stable
  * @security_prerequisites_cluster manage_ml
- * @security_prerequisites_index create_index, index, manage, read, view_index_metadata  
+ * @security_prerequisites_index create_index, index, manage, read, view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {
