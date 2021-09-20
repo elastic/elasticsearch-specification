@@ -27,5 +27,6 @@ import { RequestBase } from '@_types/Base'
  * @stability stable
  */
 export interface Request extends RequestBase {
+  /** @identifier detector */
   body?: Detector
 }

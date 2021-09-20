@@ -9258,10 +9258,6 @@ export interface IndicesPutMappingRequest extends RequestBase {
 export interface IndicesPutMappingResponse extends IndicesResponseBase {
 }
 
-export interface IndicesPutSettingsIndexSettingsBody extends IndicesIndexSettings {
-  settings?: IndicesIndexSettings
-}
-
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -9271,7 +9267,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   preserve_existing?: boolean
   timeout?: Time
-  body?: IndicesPutSettingsIndexSettingsBody
+  body?: IndicesIndexSettings
 }
 
 export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {

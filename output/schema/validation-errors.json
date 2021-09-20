@@ -506,7 +506,6 @@
         "Request: should not have a body"
       ],
       "response": [
-        "interface definition cluster._types:ComponentTemplateSummary / Property 'settings' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
@@ -541,10 +540,7 @@
     },
     "cluster.put_component_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'",
-        "interface definition indices._types:IndexState / Property 'settings' / union_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
-        "interface definition indices._types:IndexStatePrefixedSettings / Property 'index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
-        "request definition cluster.put_component_template:Request / body / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
+        "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
     },
@@ -553,12 +549,6 @@
         "Request: should not have a body"
       ],
       "response": []
-    },
-    "cluster.reroute": {
-      "request": [],
-      "response": [
-        "interface definition cluster._types:ClusterStateBlockIndex / Property 'settings' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
-      ]
     },
     "cluster.state": {
       "request": [
@@ -1063,14 +1053,19 @@
       "request": [
         "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'",
-        "interface definition indices.put_index_template:IndexTemplateMapping / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
+        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },
+<<<<<<< HEAD
     "indices.put_settings": {
       "request": [
         "interface definition indices.put_settings:IndexSettingsBody / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
+=======
+    "indices.put_mapping": {
+      "request": [
+        "Request: query parameter 'include_type_name' does not exist in the json spec"
+>>>>>>> 92760d4e9... Expand body identifier use (#756)
       ],
       "response": []
     },

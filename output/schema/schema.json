@@ -61864,6 +61864,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "policy",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -93658,42 +93659,17 @@
       }
     },
     {
-      "inherits": {
-        "type": {
-          "name": "IndexSettings",
-          "namespace": "indices._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingsBody",
-        "namespace": "indices.put_settings"
-      },
-      "properties": [
-        {
-          "name": "settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettings",
-              "namespace": "indices._types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "settings",
         "kind": "value",
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndexSettingsBody",
-            "namespace": "indices.put_settings"
+            "name": "IndexSettings",
+            "namespace": "indices._types"
           }
         }
       },
@@ -96866,6 +96842,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "template",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -103882,6 +103859,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "pipeline",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -121508,6 +121486,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "detector",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -128550,6 +128529,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "config",
         "kind": "value",
         "value": {
           "kind": "user_defined_value"
@@ -134360,6 +134340,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "privileges",
         "kind": "value",
         "value": {
           "key": {
