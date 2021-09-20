@@ -37,10 +37,9 @@ export class SpanFirstQuery extends QueryBase {
   match: SpanQuery
 }
 
-export class SpanGapQuery extends QueryBase {
-  field: Field
-  width?: integer
-}
+/** Can only be used as a clause in a span_near query. */
+// The integer value is the span width
+export type SpanGapQuery = SingleKeyDictionary<Field, integer>
 
 export class SpanMultiTermQuery extends QueryBase {
   /** Should be a multi term query (one of wildcard, fuzzy, prefix, range or regexp query) */
@@ -82,8 +81,7 @@ export class SpanQuery {
   span_containing?: SpanContainingQuery
   field_masking_span?: SpanFieldMaskingQuery
   span_first?: SpanFirstQuery
-  /** Can only be used as a clause in a span_near query */
-  span_gap?: SingleKeyDictionary<Field, integer>
+  span_gap?: SpanGapQuery
   span_multi?: SpanMultiTermQuery
   span_near?: SpanNearQuery
   span_not?: SpanNotQuery
