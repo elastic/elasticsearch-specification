@@ -45,7 +45,7 @@ export interface Request extends RequestBase {
     analysis_limits?: AnalysisMemoryLimit
     /**
      * Advanced configuration option. The time between each periodic persistence of the model.
-     * The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour. 
+     * The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour.
      * For very large models (several GB), persistence could take 10-20 minutes, so do not set the value too low.
      * If the job is open when you make the update, you must stop the datafeed, close the job, then reopen the job and restart the datafeed for the changes to take effect.
      */
