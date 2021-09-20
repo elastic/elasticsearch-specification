@@ -117932,21 +117932,10 @@
             }
           },
           {
+            "aliases": [
+              "indexes"
+            ],
             "name": "indices",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "name": "indexes",
             "required": false,
             "type": {
               "kind": "array_of",
