@@ -135,7 +135,7 @@ export class MatchQuery extends QueryBase {
   analyzer?: string
   /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
-  /** @obsolete 7.3.0 */
+  /** @deprecated 7.3.0 */
   cutoff_frequency?: double
   fuzziness?: Fuzziness
   fuzzy_rewrite?: MultiTermQueryRewrite
@@ -192,7 +192,7 @@ export class MultiMatchQuery extends QueryBase {
   analyzer?: string
   /** @server_default true */
   auto_generate_synonyms_phrase_query?: boolean
-  /** @obsolete 7.3.0 */
+  /** @deprecated 7.3.0 */
   cutoff_frequency?: double
   fields?: Fields
   fuzziness?: Fuzziness

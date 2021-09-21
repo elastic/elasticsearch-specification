@@ -29,7 +29,7 @@ import { OperationContainer } from '@global/bulk/types'
 export interface Request<TSource> extends RequestBase {
   path_parts: {
     /**
-     * @obsolete 7.0.0
+     * @deprecated 7.0.0
      */
     type?: string
   }

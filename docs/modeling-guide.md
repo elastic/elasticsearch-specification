@@ -516,3 +516,29 @@ export interface Request extends RequestBase {
  ...
 }
 ```
+
+#### `@deprecated`
+
+Use if an endpoint or property is deprecated, you should add the version as well.
+
+```ts
+class Foo {
+  bar: string
+  /** @deprecated 7.0.0 */
+  baz?: string
+  faz: string
+}
+```
+
+#### `@deprecated_description`
+
+Use if an endpoint or property is deprecated and you need to add a description.
+
+```ts
+class Foo {
+  bar: string
+  /** @deprecated_description 7.0.0 */
+  baz?: string
+  faz: string
+}
+```
