@@ -11256,6 +11256,7 @@ export interface MlValidationLoss {
 
 export interface MlCloseJobRequest extends RequestBase {
   job_id: Id
+  allow_no_match?: boolean
   allow_no_jobs?: boolean
   force?: boolean
   timeout?: Time
