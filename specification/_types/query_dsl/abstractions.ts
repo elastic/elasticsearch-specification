@@ -154,8 +154,7 @@ export class QueryContainer {
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
 
   /**
-   * @deprecated 7.0.0
-   * @deprecated_description https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
+   * @deprecated 7.0.0 https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
    */
   type?: TypeQuery
 }

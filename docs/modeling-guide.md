@@ -530,14 +530,12 @@ class Foo {
 }
 ```
 
-#### `@deprecated_description`
-
-Use if an endpoint or property is deprecated and you need to add a description.
+You can also add an optional description:
 
 ```ts
 class Foo {
   bar: string
-  /** @deprecated_description 7.0.0 */
+  /** @deprecated 7.0.0 'baz' has been deprecated, use 'bar' instead */
   baz?: string
   faz: string
 }

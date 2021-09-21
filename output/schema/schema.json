@@ -16270,6 +16270,7 @@
           },
           {
             "deprecation": {
+              "description": "",
               "version": "7.0.0"
             },
             "name": "_type",
@@ -21018,6 +21019,7 @@
       "path": [
         {
           "deprecation": {
+            "description": "",
             "version": "7.0.0"
           },
           "description": "The scroll ID",
@@ -21049,6 +21051,7 @@
         },
         {
           "deprecation": {
+            "description": "",
             "version": "7.0.0"
           },
           "description": "The scroll ID for scrolled search",
@@ -53816,6 +53819,7 @@
       "properties": [
         {
           "deprecation": {
+            "description": "",
             "version": "7.14.0"
           },
           "name": "type",
@@ -54158,7 +54162,8 @@
         }
       ],
       "deprecation": {
-        "version": "7.12.0 Use geo-shape instead."
+        "description": "Use geo-shape instead.",
+        "version": "7.12.0"
       },
       "inherits": {
         "type": {
@@ -55565,6 +55570,7 @@
         },
         {
           "deprecation": {
+            "description": "",
             "version": "7.3.0"
           },
           "name": "cutoff_frequency",
@@ -56028,6 +56034,7 @@
         },
         {
           "deprecation": {
+            "description": "",
             "version": "7.3.0"
           },
           "name": "cutoff_frequency",
@@ -56763,6 +56770,7 @@
         },
         {
           "deprecation": {
+            "description": "",
             "version": "7.3.0"
           },
           "name": "common",
@@ -119253,6 +119261,7 @@
       "path": [
         {
           "deprecation": {
+            "description": "",
             "version": "7.0.0"
           },
           "description": "Default document type for items which don't provide one",
