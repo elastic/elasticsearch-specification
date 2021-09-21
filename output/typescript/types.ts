@@ -335,31 +335,6 @@ export interface ExplainResponse<TDocument = unknown> {
   get?: InlineGet<TDocument>
 }
 
-export interface FieldCapsFieldCapabilitiesBodyIndexFilter {
-  range?: FieldCapsFieldCapabilitiesBodyIndexFilterRange
-  match_none?: EmptyObject
-  term?: FieldCapsFieldCapabilitiesBodyIndexFilterTerm
-}
-
-export interface FieldCapsFieldCapabilitiesBodyIndexFilterRange {
-  timestamp: FieldCapsFieldCapabilitiesBodyIndexFilterRangeTimestamp
-}
-
-export interface FieldCapsFieldCapabilitiesBodyIndexFilterRangeTimestamp {
-  gte?: integer
-  gt?: integer
-  lte?: integer
-  lt?: integer
-}
-
-export interface FieldCapsFieldCapabilitiesBodyIndexFilterTerm {
-  versionControl: FieldCapsFieldCapabilitiesBodyIndexFilterTermVersionControl
-}
-
-export interface FieldCapsFieldCapabilitiesBodyIndexFilterTermVersionControl {
-  value: string
-}
-
 export interface FieldCapsFieldCapability {
   aggregatable: boolean
   indices?: Indices
@@ -379,7 +354,8 @@ export interface FieldCapsRequest extends RequestBase {
   ignore_unavailable?: boolean
   include_unmapped?: boolean
   body?: {
-    index_filter?: FieldCapsFieldCapabilitiesBodyIndexFilter
+    index_filter?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
   }
 }
 
