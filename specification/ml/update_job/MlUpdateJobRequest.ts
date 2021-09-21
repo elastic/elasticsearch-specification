@@ -44,19 +44,20 @@ export interface Request extends RequestBase {
     allow_lazy_open?: boolean
     analysis_limits?: AnalysisMemoryLimit
     /**
-     * Advanced configuration option. The time between each periodic persistence of the model. See Job resources.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html
+     * Advanced configuration option. The time between each periodic persistence of the model.
+     * The default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour.
+     * For very large models (several GB), persistence could take 10-20 minutes, so do not set the value too low.
+     * If the job is open when you make the update, you must stop the datafeed, close the job, then reopen the job and restart the datafeed for the changes to take effect.
      */
     background_persist_interval?: Time
     /**
      * Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.
-     * @doc_url https://www.elastic.co/guide/en/machine-learning/7.12/ml-configuring-url.html
+     * @doc_id ml.customUrls
      */
     custom_settings?: Dictionary<string, UserDefinedValue>
     categorization_filters?: string[]
     /**
-     * A description of the job. See Job resources.
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html
+     * A description of the job.
      */
     description?: string
     model_plot_config?: ModelPlotConfig
