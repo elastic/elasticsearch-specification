@@ -37147,14 +37147,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "BucketsPath",
-        "namespace": "_types.aggregations"
-      },
-      "properties": []
-    },
-    {
       "inherits": {
         "type": {
           "name": "MetricAggregationBase",
@@ -39229,7 +39221,7 @@
       "properties": [
         {
           "name": "background_is_superset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40504,6 +40496,24 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "first"
+        },
+        {
+          "name": "last"
+        },
+        {
+          "name": "default"
+        }
+      ],
+      "name": {
+        "name": "MissingOrder",
+        "namespace": "_types.aggregations"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "PipelineAggregationBase",
@@ -40819,7 +40829,7 @@
       "properties": [
         {
           "name": "background_is_superset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40830,7 +40840,7 @@
         },
         {
           "name": "include_negatives",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41185,11 +41195,34 @@
           "name": "buckets_path",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BucketsPath",
-              "namespace": "_types.aggregations"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -41236,6 +41269,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -42967,6 +43011,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Missing",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
+          "name": "missing_order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MissingOrder",
               "namespace": "_types.aggregations"
             }
           }
@@ -53004,6 +53059,28 @@
           }
         },
         {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "format",
           "required": false,
           "type": {
@@ -53025,8 +53102,7 @@
             }
           }
         }
-      ],
-      "variantName": "date"
+      ]
     },
     {
       "kind": "type_alias",
@@ -53764,11 +53840,30 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -56375,9 +56470,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
         }
-      ],
-      "variantName": "number"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -56610,6 +56726,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PinnedDocs",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -56624,7 +56771,7 @@
       "properties": [
         {
           "name": "ids",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -56633,6 +56780,17 @@
                 "name": "Id",
                 "namespace": "_types"
               }
+            }
+          }
+        },
+        {
+          "name": "docs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PinnedDocs",
+              "namespace": "_types.query_dsl"
             }
           }
         },

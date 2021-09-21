@@ -2583,10 +2583,6 @@ export interface AggregationsBucketSortAggregation extends AggregationsAggregati
   sort?: SearchSort
 }
 
-export interface AggregationsBucketsPath {
-  [key: string]: never
-}
-
 export interface AggregationsCardinalityAggregation extends AggregationsMetricAggregationBase {
   precision_threshold?: integer
   rehash?: boolean
@@ -2824,7 +2820,7 @@ export interface AggregationsGlobalAggregation extends AggregationsBucketAggrega
 }
 
 export interface AggregationsGoogleNormalizedDistanceHeuristic {
-  background_is_superset: boolean
+  background_is_superset?: boolean
 }
 
 export interface AggregationsHdrMethod {
@@ -2972,6 +2968,8 @@ export interface AggregationsMissingAggregation extends AggregationsBucketAggreg
   missing?: AggregationsMissing
 }
 
+export type AggregationsMissingOrder = 'first' | 'last' | 'default'
+
 export interface AggregationsMovingAverageAggregation extends AggregationsPipelineAggregationBase {
   minimize?: boolean
   model?: AggregationsMovingAverageModel
@@ -3009,8 +3007,8 @@ export interface AggregationsMultiTermsAggregation extends AggregationsBucketAgg
 }
 
 export interface AggregationsMutualInformationHeuristic {
-  background_is_superset: boolean
-  include_negatives: boolean
+  background_is_superset?: boolean
+  include_negatives?: boolean
 }
 
 export interface AggregationsNestedAggregation extends AggregationsBucketAggregationBase {
@@ -3059,13 +3057,14 @@ export interface AggregationsPercentilesBucketAggregation extends AggregationsPi
 }
 
 export interface AggregationsPipelineAggregationBase extends AggregationsAggregation {
-  buckets_path?: AggregationsBucketsPath
+  buckets_path?: string | Record<string, string>
   format?: string
   gap_policy?: AggregationsGapPolicy
 }
 
 export interface AggregationsRangeAggregation extends AggregationsBucketAggregationBase {
   field?: Field
+  missing?: integer
   ranges?: AggregationsAggregationRange[]
   script?: Script
   keyed?: boolean
@@ -3256,6 +3255,7 @@ export interface AggregationsTermsAggregation extends AggregationsBucketAggregat
   include?: string | string[] | AggregationsTermsInclude
   min_doc_count?: integer
   missing?: AggregationsMissing
+  missing_order?: AggregationsMissingOrder
   missing_bucket?: boolean
   value_type?: string
   order?: AggregationsTermsAggregationOrder
@@ -4324,6 +4324,8 @@ export interface QueryDslDateRangeQuery extends QueryDslRangeQueryBase {
   gte?: DateMath
   lt?: DateMath
   lte?: DateMath
+  from?: DateMath
+  to?: DateMath
   format?: DateFormat
   time_zone?: TimeZone
 }
@@ -4404,7 +4406,7 @@ export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
   rewrite?: MultiTermQueryRewrite
   transpositions?: boolean
   fuzziness?: Fuzziness
-  value: string
+  value: string | double | boolean
 }
 
 export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
@@ -4678,6 +4680,8 @@ export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
   gte?: double
   lt?: double
   lte?: double
+  from?: double
+  to?: double
 }
 
 export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
@@ -4705,8 +4709,14 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
   version?: VersionNumber
 }
 
+export interface QueryDslPinnedDocs {
+  _id: Id
+  _index: IndexName
+}
+
 export interface QueryDslPinnedQuery extends QueryDslQueryBase {
-  ids: Id[]
+  ids?: Id[]
+  docs?: QueryDslPinnedDocs
   organic: QueryDslQueryContainer
 }
 
@@ -4731,7 +4741,7 @@ export interface QueryDslQueryContainer {
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
   function_score?: QueryDslFunctionScoreQuery
-  fuzzy?: Record<Field, QueryDslFuzzyQuery | string>
+  fuzzy?: Record<Field, QueryDslFuzzyQuery | string | double | boolean>
   geo_bounding_box?: QueryDslGeoBoundingBoxQuery
   geo_distance?: QueryDslGeoDistanceQuery
   geo_polygon?: QueryDslGeoPolygonQuery

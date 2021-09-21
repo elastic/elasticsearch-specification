@@ -179,3 +179,8 @@ export class AggregationContainer {
 }
 
 export type Missing = string | integer | double | boolean
+export enum MissingOrder {
+  first,
+  last,
+  default
+}

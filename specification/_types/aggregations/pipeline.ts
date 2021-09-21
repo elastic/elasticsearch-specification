@@ -18,13 +18,14 @@
  */
 
 import { Sort } from '@global/search/_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Name, Field } from '@_types/common'
 import { integer, double, float } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 
 export class PipelineAggregationBase extends Aggregation {
-  buckets_path?: BucketsPath
+  buckets_path?: string | Dictionary<string, string>
   format?: string
   gap_policy?: GapPolicy
 }
@@ -33,8 +34,6 @@ export enum GapPolicy {
   skip = 0,
   insert_zeros = 1
 }
-
-export class BucketsPath {}
 
 export class AverageBucketAggregation extends PipelineAggregationBase {}
 
