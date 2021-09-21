@@ -539,15 +539,8 @@
     },
     "cluster.put_component_template": {
       "request": [
-<<<<<<< HEAD
         "Request: missing json spec query parameter 'timeout'",
-        "interface definition indices._types:IndexState / Property 'settings' / union_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
-        "interface definition indices._types:IndexStatePrefixedSettings / Property 'index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
-        "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'",
-        "request definition cluster.put_component_template:Request / body / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
-=======
-        "Request: missing json spec query parameter 'timeout'"
->>>>>>> main
+        "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ],
       "response": []
     },
