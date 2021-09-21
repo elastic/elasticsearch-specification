@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "6038f51",
+    "hash": "e2ce9ee",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -1539,6 +1539,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Close a point in time",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "close_point_in_time",
@@ -1968,6 +1971,12 @@
       "response": {
         "name": "Response",
         "namespace": "cluster.state"
+      },
+      "securityPrerequisites": {
+        "cluster": [
+          "monitor",
+          "manage"
+        ]
       },
       "since": "1.3.0",
       "stability": "stable",
@@ -2960,6 +2969,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Returns the information about the capabilities of fields among multiple indices.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
       "name": "field_caps",
@@ -3721,6 +3733,12 @@
       "response": {
         "name": "Response",
         "namespace": "indices.create"
+      },
+      "securityPrerequisites": {
+        "index": [
+          "create_index",
+          "manage"
+        ]
       },
       "since": "0.0.0",
       "stability": "stable",
@@ -5903,6 +5921,11 @@
         "name": "Response",
         "namespace": "ml.close_job"
       },
+      "securityPrerequisites": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "since": "5.4.0",
       "stability": "stable",
       "urls": [
@@ -6057,6 +6080,9 @@
     },
     {
       "accept": [
+        "application/json"
+      ],
+      "contentType": [
         "application/json"
       ],
       "description": "Deletes expired and unused machine learning data.",
@@ -7222,6 +7248,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Previews a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
@@ -7331,6 +7360,18 @@
       "response": {
         "name": "Response",
         "namespace": "ml.put_data_frame_analytics"
+      },
+      "securityPrerequisites": {
+        "cluster": [
+          "manage_ml"
+        ],
+        "index": [
+          "create_index",
+          "index",
+          "manage",
+          "read",
+          "view_index_metadata"
+        ]
       },
       "since": "7.3.0",
       "stability": "stable",
@@ -7753,6 +7794,9 @@
     },
     {
       "accept": [
+        "application/json"
+      ],
+      "contentType": [
         "application/json"
       ],
       "description": "Stops one or more datafeeds.",
@@ -8483,12 +8527,6 @@
       "since": "7.10.0",
       "stability": "stable",
       "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_pit"
-        },
         {
           "methods": [
             "POST"
@@ -29957,36 +29995,27 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "bytes",
           "name": "b"
         },
         {
-          "name": "k"
-        },
-        {
+          "identifier": "kilo_bytes",
           "name": "kb"
         },
         {
-          "name": "m"
-        },
-        {
+          "identifier": "mega_bytes",
           "name": "mb"
         },
         {
-          "name": "g"
-        },
-        {
+          "identifier": "giga_bytes",
           "name": "gb"
         },
         {
-          "name": "t"
-        },
-        {
+          "identifier": "tera_bytes",
           "name": "tb"
         },
         {
-          "name": "p"
-        },
-        {
+          "identifier": "peta_bytes",
           "name": "pb"
         }
       ],
@@ -30337,30 +30366,39 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "inches",
           "name": "in"
         },
         {
+          "identifier": "feet",
           "name": "ft"
         },
         {
+          "identifier": "yards",
           "name": "yd"
         },
         {
+          "identifier": "miles",
           "name": "mi"
         },
         {
+          "identifier": "nautic_miles",
           "name": "nmi"
         },
         {
+          "identifier": "kilometers",
           "name": "km"
         },
         {
+          "identifier": "meters",
           "name": "m"
         },
         {
+          "identifier": "centimeters",
           "name": "cm"
         },
         {
+          "identifier": "millimeters",
           "name": "mm"
         }
       ],
@@ -33451,6 +33489,7 @@
           "name": "not_found"
         },
         {
+          "identifier": "no_op",
           "name": "noop"
         }
       ],
@@ -34704,24 +34743,31 @@
       "kind": "enum",
       "members": [
         {
+          "identifier": "nano_seconds",
           "name": "nanos"
         },
         {
+          "identifier": "micro_seconds",
           "name": "micros"
         },
         {
+          "identifier": "milli_seconds",
           "name": "ms"
         },
         {
+          "identifier": "seconds",
           "name": "s"
         },
         {
+          "identifier": "minutes",
           "name": "m"
         },
         {
+          "identifier": "hours",
           "name": "h"
         },
         {
+          "identifier": "days",
           "name": "d"
         }
       ],
@@ -40863,7 +40909,8 @@
           "name": "mean"
         },
         {
-          "name": "zscore"
+          "identifier": "z_score",
+          "name": "z-score"
         },
         {
           "name": "softmax"
@@ -58681,6 +58728,32 @@
       ]
     },
     {
+      "description": "Can only be used as a clause in a span_near query.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SpanGapQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Field",
+            "namespace": "_types"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": true,
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "integer",
+            "namespace": "_types"
+          }
+        }
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -58900,25 +58973,13 @@
           }
         },
         {
-          "description": "Can only be used as a clause in a span_near query",
           "name": "span_gap",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": true,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "SpanGapQuery",
+              "namespace": "_types.query_dsl"
             }
           }
         },
@@ -61258,6 +61319,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "policy",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -83152,9 +83214,39 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
         "name": "LifecycleExplain",
+        "namespace": "ilm.explain_lifecycle"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainManaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LifecycleExplainUnmanaged",
+              "namespace": "ilm.explain_lifecycle"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "managed"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LifecycleExplainManaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -83250,11 +83342,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": true
           }
         },
         {
@@ -83388,27 +83477,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LifecycleExplainProject",
-        "namespace": "ilm.explain_lifecycle"
-      },
-      "properties": [
-        {
-          "name": "project",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LifecycleExplainProjectSummary",
-              "namespace": "ilm.explain_lifecycle"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LifecycleExplainProjectSummary",
+        "name": "LifecycleExplainUnmanaged",
         "namespace": "ilm.explain_lifecycle"
       },
       "properties": [
@@ -83427,11 +83496,8 @@
           "name": "managed",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": false
           }
         }
       ]
@@ -83504,34 +83570,22 @@
             "name": "indices",
             "required": true,
             "type": {
-              "items": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "IndexName",
-                      "namespace": "_types"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "LifecycleExplain",
-                      "namespace": "ilm.explain_lifecycle"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "LifecycleExplainProject",
-                    "namespace": "ilm.explain_lifecycle"
-                  }
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
                 }
-              ],
-              "kind": "union_of"
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "LifecycleExplain",
+                  "namespace": "ilm.explain_lifecycle"
+                }
+              }
             }
           }
         ]
@@ -84272,23 +84326,11 @@
       "members": [
         {
           "description": "All shards are assigned.",
-          "name": "GREEN"
-        },
-        {
-          "description": "All shards are assigned.",
           "name": "green"
         },
         {
           "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
-          "name": "YELLOW"
-        },
-        {
-          "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
           "name": "yellow"
-        },
-        {
-          "description": "One or more primary shards are unassigned, so some data is unavailable.",
-          "name": "RED"
         },
         {
           "description": "One or more primary shards are unassigned, so some data is unavailable.",
@@ -91444,42 +91486,17 @@
       }
     },
     {
-      "inherits": {
-        "type": {
-          "name": "IndexSettings",
-          "namespace": "indices._types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndexSettingsBody",
-        "namespace": "indices.put_settings"
-      },
-      "properties": [
-        {
-          "name": "settings",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettings",
-              "namespace": "indices._types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "settings",
         "kind": "value",
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndexSettingsBody",
-            "namespace": "indices.put_settings"
+            "name": "IndexSettings",
+            "namespace": "indices._types"
           }
         }
       },
@@ -94650,6 +94667,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "template",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -101556,6 +101574,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "pipeline",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -101798,6 +101817,189 @@
       "kind": "interface",
       "name": {
         "name": "AnalysisConfig",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
+          "name": "bucket_span",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeSpan",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string it must refer to a built-in analyzer or one added by another plugin.",
+          "name": "categorization_analyzer",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "CategorizationAnalyzer",
+                  "namespace": "ml._types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
+          "name": "categorization_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `categorization_field_name` is specified, you can also define optional filters. This property expects an array of regular expressions. The expressions are used to filter out matching sequences from the categorization field values. You can use this functionality to fine tune the categorization by excluding sequences from consideration when categories are defined. For example, you can exclude SQL statements that appear in your log files. This property cannot be used at the same time as `categorization_analyzer`. If you only want to define simple regular expression filters that are applied prior to tokenization, setting this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering, use the `categorization_analyzer` property instead and include the filters as pattern_replace character filters. The effect is exactly the same.",
+          "name": "categorization_filters",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "description": "Detector configuration objects specify which data fields a job analyzes. They also specify which analytical functions are used. You can specify multiple detectors for a job. If the detectors array does not contain at least one detector, no analysis can occur and an error is returned.",
+          "name": "detectors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Detector",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
+          "name": "influencers",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.",
+          "name": "model_prune_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.",
+          "name": "latency",
+          "required": false,
+          "serverDefault": "0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to true, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
+          "name": "multivariate_by_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Settings related to how categorization interacts with partition fields.",
+          "name": "per_partition_categorization",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PerPartitionCategorization",
+              "namespace": "ml._types"
+            }
+          }
+        },
+        {
+          "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
+          "name": "summary_count_field_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "OverloadOf"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "AnalysisConfig",
+                "namespace": "ml._types"
+              }
+            }
+          ],
+          "type": {
+            "name": "OverloadOf",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AnalysisConfigRead",
         "namespace": "ml._types"
       },
       "properties": [
@@ -109283,7 +109485,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Closes one or more anomaly detection jobs. A job can be opened and closed multiple times throughout its lifecycle.",
+      "description": "Closes one or more anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -109297,7 +109499,7 @@
       },
       "path": [
         {
-          "description": "The name of the job to close",
+          "description": "Identifier for the anomaly detection job. It can be a job identifier, a group name, or a wildcard expression. You can close multiple anomaly detection jobs in a single API request by using a group name, a comma-separated list of jobs, or a wildcard expression. You can close all jobs by using `_all` or by specifying `*` as the job identifier.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -109311,6 +109513,23 @@
       ],
       "query": [
         {
+          "description": "Specifies what to do when the request: contains wildcard expressions and there are no jobs that match; contains the  `_all` string or no identifiers and there are no matches; or contains wildcard expressions and there are only partial matches. By default, it returns an empty jobs array when there are no matches and the subset of results when there are partial matches.\nIf `false`, the request returns a 404 status code when there are no matches or only partial matches.",
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
           "name": "allow_no_jobs",
           "required": false,
@@ -109323,9 +109542,10 @@
           }
         },
         {
-          "description": "True if the job should be forcefully closed",
+          "description": "Use to close a failed job, or to forcefully close a job which has not responded to its initial close request; the request returns without performing the associated actions such as flushing buffers and persisting the model snapshots.\nIf you want the job to be in a consistent state after the close job API returns, do not set to `true`. This parameter should be used only in situations where the job has already failed or where you are not interested in results the job might have recently produced or might produce in the future.",
           "name": "force",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -109335,10 +109555,10 @@
           }
         },
         {
-          "description": "Controls the time to wait until a job has closed. Default to 30 minutes",
+          "description": "Controls the time to wait until a job has closed.",
           "name": "timeout",
           "required": false,
-          "serverDefault": "30s",
+          "serverDefault": "30m",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115142,7 +115362,7 @@
           }
         ]
       },
-      "description": "Instantiates a data frame analytics job.",
+      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the source indices and stores the outcome in a destination index. You must have `read` and `view_index_metadata` security privileges for the source indices. You must have `read`, `create_index`, `manage` and `index` security privileges for the destination index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115366,21 +115586,10 @@
             }
           },
           {
+            "aliases": [
+              "indexes"
+            ],
             "name": "indices",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            }
-          },
-          {
-            "name": "indexes",
             "required": false,
             "type": {
               "kind": "array_of",
@@ -116117,7 +116326,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "AnalysisConfig",
+                "name": "AnalysisConfigRead",
                 "namespace": "ml._types"
               }
             }
@@ -118161,8 +118370,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. The time between each periodic persistence of the model. See Job resources.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
+            "description": "Advanced configuration option. The time between each periodic persistence of the model.\nThe default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour.\nFor very large models (several GB), persistence could take 10-20 minutes, so do not set the value too low.\nIf the job is open when you make the update, you must stop the datafeed, close the job, then reopen the job and restart the datafeed for the changes to take effect.",
             "name": "background_persist_interval",
             "required": false,
             "type": {
@@ -118175,7 +118383,7 @@
           },
           {
             "description": "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.",
-            "docUrl": "https://www.elastic.co/guide/en/machine-learning/7.12/ml-configuring-url.html",
+            "docId": "ml.customUrls",
             "name": "custom_settings",
             "required": false,
             "type": {
@@ -118208,8 +118416,7 @@
             }
           },
           {
-            "description": "A description of the job. See Job resources.",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html",
+            "description": "A description of the job.",
             "name": "description",
             "required": false,
             "type": {
@@ -118373,7 +118580,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "AnalysisConfig",
+                "name": "AnalysisConfigRead",
                 "namespace": "ml._types"
               }
             }
@@ -118953,6 +119160,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "detector",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -121693,6 +121901,46 @@
     {
       "kind": "interface",
       "name": {
+        "name": "NodeInfoIngestDownloader",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoIngestInfo",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "downloader",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestDownloader",
+              "namespace": "nodes.info"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "NodeInfoIngestProcessor",
         "namespace": "nodes.info"
       },
@@ -122360,6 +122608,17 @@
               "namespace": "nodes.info"
             }
           }
+        },
+        {
+          "name": "ingest",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsIngest",
+              "namespace": "nodes.info"
+            }
+          }
         }
       ]
     },
@@ -122540,6 +122799,389 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "NodeInfoSettingsIngest",
+        "namespace": "nodes.info"
+      },
+      "properties": [
+        {
+          "name": "attachment",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "append",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "csv",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "convert",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "date_index_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "dot_expander",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "enrich",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "fail",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "foreach",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "json",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "user_agent",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "kv",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "geoip",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "grok",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "gsub",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "join",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "lowercase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "remove",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "rename",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "set",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "split",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "trim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "uppercase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "urldecode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "dissect",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "set_security_user",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "drop",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "circle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
+            }
+          }
+        },
+        {
+          "name": "inference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoIngestInfo",
+              "namespace": "nodes.info"
             }
           }
         }
@@ -125561,6 +126203,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "config",
         "kind": "value",
         "value": {
           "kind": "user_defined_value"
@@ -126617,6 +127260,69 @@
     {
       "kind": "interface",
       "name": {
+        "name": "FieldRule",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "username",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "dn",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "groups",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "user_defined_value"
+          }
+        },
+        {
+          "name": "realm",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Realm",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FieldSecurity",
         "namespace": "security._types"
       },
@@ -126840,6 +127546,26 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Realm",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "RealmInfo",
         "namespace": "security._types"
       },
@@ -126917,7 +127643,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleMappingRuleBase",
+              "name": "RoleMappingRule",
               "namespace": "security._types"
             }
           }
@@ -126941,10 +127667,64 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RoleMappingRuleBase",
+        "name": "RoleMappingRule",
         "namespace": "security._types"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "any",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleMappingRule",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "all",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleMappingRule",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldRule",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "name": "except",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleMappingRule",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -131292,6 +132072,7 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "identifier": "privileges",
         "kind": "value",
         "value": {
           "key": {
@@ -131621,7 +132402,7 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RoleMappingRuleBase",
+                "name": "RoleMappingRule",
                 "namespace": "security._types"
               }
             }
@@ -148937,6 +149718,21 @@
           }
         }
       ]
+    },
+    {
+      "description": "A class that implements `OverloadOf` should have the exact same properties with the same types.\nIt can change if a property is required or not. There is no need to port the descriptions\nand js doc tags, the compiler will do that for you.",
+      "generics": [
+        {
+          "name": "TDefinition",
+          "namespace": "_spec_utils"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "OverloadOf",
+        "namespace": "_spec_utils"
+      },
+      "properties": []
     }
   ]
 }

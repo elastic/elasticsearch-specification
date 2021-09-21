@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
+import { AnalysisConfigRead, AnalysisLimits } from '@ml/_types/Analysis'
 import { Datafeed } from '@ml/_types/Datafeed'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
@@ -29,7 +29,7 @@ import { Time, EpochMillis } from '@_types/Time'
 export class Response {
   body: {
     allow_lazy_open: boolean
-    analysis_config: AnalysisConfig
+    analysis_config: AnalysisConfigRead
     analysis_limits: AnalysisLimits
     background_persist_interval?: Time
     create_time: EpochMillis

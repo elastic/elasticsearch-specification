@@ -125,6 +125,7 @@ export class Property {
   required: boolean
   description?: string
   docUrl?: string
+  docId?: string
   since?: string
   serverDefault?: boolean | string | number
   deprecation?: Deprecation
@@ -339,6 +340,7 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
+  docId?: string
   deprecation?: Deprecation
 
   /**
@@ -365,6 +367,10 @@ export class Endpoint {
   visibility?: Visibility
   accept?: string[]
   contentType?: string[]
+  securityPrerequisites?: {
+    index?: string[]
+    cluster?: string[]
+  }
 }
 
 export class UrlTemplate {

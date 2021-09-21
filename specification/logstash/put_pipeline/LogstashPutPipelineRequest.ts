@@ -30,5 +30,6 @@ export interface Request extends RequestBase {
   path_parts: {
     id: Id
   }
+  /** @identifier pipeline */
   body: Pipeline
 }

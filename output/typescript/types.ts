@@ -1817,7 +1817,7 @@ export interface BulkStats {
 
 export type ByteSize = long | string
 
-export type Bytes = 'b' | 'k' | 'kb' | 'm' | 'mb' | 'g' | 'gb' | 't' | 'tb' | 'p' | 'pb'
+export type Bytes = 'b' | 'kb' | 'mb' | 'gb' | 'tb' | 'pb'
 
 export type CategoryId = string
 
@@ -3021,7 +3021,7 @@ export interface AggregationsNormalizeAggregation extends AggregationsPipelineAg
   method?: AggregationsNormalizeMethod
 }
 
-export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'zscore' | 'softmax'
+export type AggregationsNormalizeMethod = 'rescale_0_1' | 'rescale_0_100' | 'percent_of_sum' | 'mean' | 'z-score' | 'softmax'
 
 export interface AggregationsParentAggregation extends AggregationsBucketAggregationBase {
   type?: RelationName
@@ -4919,6 +4919,8 @@ export interface QueryDslSpanFirstQuery extends QueryDslQueryBase {
   match: QueryDslSpanQuery
 }
 
+export type QueryDslSpanGapQuery = Record<Field, integer>
+
 export interface QueryDslSpanMultiTermQuery extends QueryDslQueryBase {
   match: QueryDslQueryContainer
 }
@@ -4945,7 +4947,7 @@ export interface QueryDslSpanQuery {
   span_containing?: QueryDslSpanContainingQuery
   field_masking_span?: QueryDslSpanFieldMaskingQuery
   span_first?: QueryDslSpanFirstQuery
-  span_gap?: Record<Field, integer>
+  span_gap?: QueryDslSpanGapQuery
   span_multi?: QueryDslSpanMultiTermQuery
   span_near?: QueryDslSpanNearQuery
   span_not?: QueryDslSpanNotQuery
@@ -8140,7 +8142,9 @@ export interface IlmDeleteLifecycleRequest extends RequestBase {
 export interface IlmDeleteLifecycleResponse extends AcknowledgedResponseBase {
 }
 
-export interface IlmExplainLifecycleLifecycleExplain {
+export type IlmExplainLifecycleLifecycleExplain = IlmExplainLifecycleLifecycleExplainManaged | IlmExplainLifecycleLifecycleExplainUnmanaged
+
+export interface IlmExplainLifecycleLifecycleExplainManaged {
   action: Name
   action_time_millis: EpochMillis
   age: Time
@@ -8149,7 +8153,7 @@ export interface IlmExplainLifecycleLifecycleExplain {
   index: IndexName
   is_auto_retryable_error?: boolean
   lifecycle_date_millis: EpochMillis
-  managed: boolean
+  managed: true
   phase: Name
   phase_time_millis: EpochMillis
   policy: Name
@@ -8165,13 +8169,9 @@ export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
   modified_date_in_millis: EpochMillis
 }
 
-export interface IlmExplainLifecycleLifecycleExplainProject {
-  project: IlmExplainLifecycleLifecycleExplainProjectSummary
-}
-
-export interface IlmExplainLifecycleLifecycleExplainProjectSummary {
+export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
   index: IndexName
-  managed: boolean
+  managed: false
 }
 
 export interface IlmExplainLifecycleRequest extends RequestBase {
@@ -8181,7 +8181,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
 }
 
 export interface IlmExplainLifecycleResponse {
-  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain> | IlmExplainLifecycleLifecycleExplainProject
+  indices: Record<IndexName, IlmExplainLifecycleLifecycleExplain>
 }
 
 export interface IlmGetLifecycleLifecycle {
@@ -8280,7 +8280,7 @@ export interface IndicesAliasDefinition {
   search_routing?: string
 }
 
-export type IndicesDataStreamHealthStatus = 'GREEN' | 'green' | 'YELLOW' | 'yellow' | 'RED' | 'red'
+export type IndicesDataStreamHealthStatus = 'green' | 'yellow' | 'red'
 
 export interface IndicesFielddataFrequencyFilter {
   max: double
@@ -9065,10 +9065,6 @@ export interface IndicesPutMappingRequest extends RequestBase {
 export interface IndicesPutMappingResponse extends IndicesResponseBase {
 }
 
-export interface IndicesPutSettingsIndexSettingsBody extends IndicesIndexSettings {
-  settings?: IndicesIndexSettings
-}
-
 export interface IndicesPutSettingsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -9078,7 +9074,7 @@ export interface IndicesPutSettingsRequest extends RequestBase {
   master_timeout?: Time
   preserve_existing?: boolean
   timeout?: Time
-  body?: IndicesPutSettingsIndexSettingsBody
+  body?: IndicesIndexSettings
 }
 
 export interface IndicesPutSettingsResponse extends AcknowledgedResponseBase {
@@ -10230,6 +10226,20 @@ export interface MlAnalysisConfig {
   categorization_field_name?: Field
   categorization_filters?: string[]
   detectors: MlDetector[]
+  influencers?: Field[]
+  model_prune_window?: Time
+  latency?: Time
+  multivariate_by_fields?: boolean
+  per_partition_categorization?: MlPerPartitionCategorization
+  summary_count_field_name?: Field
+}
+
+export interface MlAnalysisConfigRead {
+  bucket_span: TimeSpan
+  categorization_analyzer?: MlCategorizationAnalyzer | string
+  categorization_field_name?: Field
+  categorization_filters?: string[]
+  detectors: MlDetector[]
   influencers: Field[]
   model_prune_window?: Time
   latency?: Time
@@ -11041,6 +11051,7 @@ export interface MlValidationLoss {
 
 export interface MlCloseJobRequest extends RequestBase {
   job_id: Id
+  allow_no_match?: boolean
   allow_no_jobs?: boolean
   force?: boolean
   timeout?: Time
@@ -11761,7 +11772,6 @@ export interface MlPutDatafeedRequest extends RequestBase {
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
     indices?: string[]
-    indexes?: string[]
     indices_options?: MlDatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -11827,7 +11837,7 @@ export interface MlPutJobRequest extends RequestBase {
 
 export interface MlPutJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: DateString
@@ -12087,7 +12097,7 @@ export interface MlUpdateJobRequest extends RequestBase {
 
 export interface MlUpdateJobResponse {
   allow_lazy_open: boolean
-  analysis_config: MlAnalysisConfig
+  analysis_config: MlAnalysisConfigRead
   analysis_limits: MlAnalysisLimits
   background_persist_interval?: Time
   create_time: EpochMillis
@@ -12462,6 +12472,14 @@ export interface NodesInfoNodeInfoIngest {
   processors: NodesInfoNodeInfoIngestProcessor[]
 }
 
+export interface NodesInfoNodeInfoIngestDownloader {
+  enabled: string
+}
+
+export interface NodesInfoNodeInfoIngestInfo {
+  downloader: NodesInfoNodeInfoIngestDownloader
+}
+
 export interface NodesInfoNodeInfoIngestProcessor {
   type: string
 }
@@ -12549,6 +12567,7 @@ export interface NodesInfoNodeInfoSettings {
   xpack?: NodesInfoNodeInfoXpack
   script?: NodesInfoNodeInfoScript
   search?: NodesInfoNodeInfoSearch
+  ingest?: NodesInfoNodeInfoSettingsIngest
 }
 
 export interface NodesInfoNodeInfoSettingsCluster {
@@ -12571,6 +12590,43 @@ export interface NodesInfoNodeInfoSettingsHttp {
 
 export interface NodesInfoNodeInfoSettingsHttpType {
   default: string
+}
+
+export interface NodesInfoNodeInfoSettingsIngest {
+  attachment?: NodesInfoNodeInfoIngestInfo
+  append?: NodesInfoNodeInfoIngestInfo
+  csv?: NodesInfoNodeInfoIngestInfo
+  convert?: NodesInfoNodeInfoIngestInfo
+  date?: NodesInfoNodeInfoIngestInfo
+  date_index_name?: NodesInfoNodeInfoIngestInfo
+  dot_expander?: NodesInfoNodeInfoIngestInfo
+  enrich?: NodesInfoNodeInfoIngestInfo
+  fail?: NodesInfoNodeInfoIngestInfo
+  foreach?: NodesInfoNodeInfoIngestInfo
+  json?: NodesInfoNodeInfoIngestInfo
+  user_agent?: NodesInfoNodeInfoIngestInfo
+  kv?: NodesInfoNodeInfoIngestInfo
+  geoip?: NodesInfoNodeInfoIngestInfo
+  grok?: NodesInfoNodeInfoIngestInfo
+  gsub?: NodesInfoNodeInfoIngestInfo
+  join?: NodesInfoNodeInfoIngestInfo
+  lowercase?: NodesInfoNodeInfoIngestInfo
+  remove?: NodesInfoNodeInfoIngestInfo
+  rename?: NodesInfoNodeInfoIngestInfo
+  script?: NodesInfoNodeInfoIngestInfo
+  set?: NodesInfoNodeInfoIngestInfo
+  sort?: NodesInfoNodeInfoIngestInfo
+  split?: NodesInfoNodeInfoIngestInfo
+  trim?: NodesInfoNodeInfoIngestInfo
+  uppercase?: NodesInfoNodeInfoIngestInfo
+  urldecode?: NodesInfoNodeInfoIngestInfo
+  bytes?: NodesInfoNodeInfoIngestInfo
+  dissect?: NodesInfoNodeInfoIngestInfo
+  set_security_user?: NodesInfoNodeInfoIngestInfo
+  pipeline?: NodesInfoNodeInfoIngestInfo
+  drop?: NodesInfoNodeInfoIngestInfo
+  circle?: NodesInfoNodeInfoIngestInfo
+  inference?: NodesInfoNodeInfoIngestInfo
 }
 
 export interface NodesInfoNodeInfoSettingsNetwork {
@@ -13039,6 +13095,14 @@ export interface SecurityCreatedStatus {
   created: boolean
 }
 
+export interface SecurityFieldRule {
+  username?: Name
+  dn?: Names
+  groups?: Names
+  metadata?: any
+  realm?: SecurityRealm
+}
+
 export interface SecurityFieldSecurity {
   except?: Fields
   grant: Fields
@@ -13062,6 +13126,10 @@ export interface SecurityManageUserPrivileges {
   applications: string[]
 }
 
+export interface SecurityRealm {
+  name: Name
+}
+
 export interface SecurityRealmInfo {
   name: Name
   type: string
@@ -13071,12 +13139,15 @@ export interface SecurityRoleMapping {
   enabled: boolean
   metadata: Metadata
   roles: string[]
-  rules: SecurityRoleMappingRuleBase
+  rules: SecurityRoleMappingRule
   role_templates?: SecurityGetRoleRoleTemplate[]
 }
 
-export interface SecurityRoleMappingRuleBase {
-  [key: string]: never
+export interface SecurityRoleMappingRule {
+  any?: SecurityRoleMappingRule[]
+  all?: SecurityRoleMappingRule[]
+  field?: SecurityFieldRule
+  except?: SecurityRoleMappingRule
 }
 
 export interface SecurityUser {
@@ -13614,7 +13685,7 @@ export interface SecurityPutRoleMappingRequest extends RequestBase {
     enabled?: boolean
     metadata?: Metadata
     roles?: string[]
-    rules?: SecurityRoleMappingRuleBase
+    rules?: SecurityRoleMappingRule
     run_as?: string[]
   }
 }
@@ -15650,5 +15721,9 @@ export interface SpecUtilsCommonCatQueryParameters {
   master_timeout?: Time
   s?: string[]
   v?: boolean
+}
+
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
 }
 

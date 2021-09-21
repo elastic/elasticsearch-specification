@@ -79,6 +79,52 @@ export class NodeInfoSettings {
   xpack?: NodeInfoXpack
   script?: NodeInfoScript
   search?: NodeInfoSearch
+  ingest?: NodeInfoSettingsIngest
+}
+
+export class NodeInfoSettingsIngest {
+  attachment?: NodeInfoIngestInfo
+  append?: NodeInfoIngestInfo
+  csv?: NodeInfoIngestInfo
+  convert?: NodeInfoIngestInfo
+  date?: NodeInfoIngestInfo
+  date_index_name?: NodeInfoIngestInfo
+  dot_expander?: NodeInfoIngestInfo
+  enrich?: NodeInfoIngestInfo
+  fail?: NodeInfoIngestInfo
+  foreach?: NodeInfoIngestInfo
+  json?: NodeInfoIngestInfo
+  user_agent?: NodeInfoIngestInfo
+  kv?: NodeInfoIngestInfo
+  geoip?: NodeInfoIngestInfo
+  grok?: NodeInfoIngestInfo
+  gsub?: NodeInfoIngestInfo
+  join?: NodeInfoIngestInfo
+  lowercase?: NodeInfoIngestInfo
+  remove?: NodeInfoIngestInfo
+  rename?: NodeInfoIngestInfo
+  script?: NodeInfoIngestInfo
+  set?: NodeInfoIngestInfo
+  sort?: NodeInfoIngestInfo
+  split?: NodeInfoIngestInfo
+  trim?: NodeInfoIngestInfo
+  uppercase?: NodeInfoIngestInfo
+  urldecode?: NodeInfoIngestInfo
+  bytes?: NodeInfoIngestInfo
+  dissect?: NodeInfoIngestInfo
+  set_security_user?: NodeInfoIngestInfo
+  pipeline?: NodeInfoIngestInfo
+  drop?: NodeInfoIngestInfo
+  circle?: NodeInfoIngestInfo
+  inference?: NodeInfoIngestInfo
+}
+
+export class NodeInfoIngestInfo {
+  downloader: NodeInfoIngestDownloader
+}
+
+export class NodeInfoIngestDownloader {
+  enabled: string
 }
 
 export class NodeInfoSettingsCluster {

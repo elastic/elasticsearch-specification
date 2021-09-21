@@ -433,6 +433,21 @@ class Foo {
 }
 ```
 
+#### `@doc_id`
+
+The documentation id that can be used for generating the doc url.
+See [#714](https://github.com/elastic/elasticsearch-specification/issues/714) for context.
+
+```ts
+/**
+ * @rest_spec_name api
+ * @doc_id foobar
+ */
+class Request {
+  ...
+}
+```
+
 #### `@identifier`
 
 A custom name that can be used to display the property. Useful in Enums an
@@ -467,5 +482,37 @@ export interface Request<TDocument> extends RequestBase {
   query_parameters: {}
   /** @identifier document */
   body?: TDocument
+}
+```
+
+#### `@security_prerequisites_index`
+
+If an endpoint has some index security prerequisites to satisfy, you can specify them here with a comma separated list.
+
+```ts
+/**
+ * @rest_spec_name indices.create
+ * @since 0.0.0
+ * @stability stable
+ * @security_prerequisites_index create_index, manage
+ */
+export interface Request extends RequestBase {
+ ...
+}
+```
+
+#### `@security_prerequisites_cluster`
+
+If an endpoint has some cluster security prerequisites to satisfy, you can specify them here with a comma separated list.
+
+```ts
+/**
+ * @rest_spec_name cluster.state
+ * @since 1.3.0
+ * @stability stable
+ * @security_prerequisites_cluster monitor, manage
+ */
+export interface Request extends RequestBase {
+ ...
 }
 ```

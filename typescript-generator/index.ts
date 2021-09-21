@@ -30,7 +30,7 @@ const model: M.Model = JSON.parse(readFileSync(join(__dirname, '..', 'output', '
 // behaviors because we ue them for sharing common query parameters
 // among most requests.
 const skipBehaviors = [
-  'AdditionalProperties', 'AdditionalProperty'
+  'AdditionalProperties', 'AdditionalProperty', 'OverloadOf'
 ]
 
 let definitions = `/*
@@ -220,6 +220,9 @@ function implementsBehavior (type: M.Interface): boolean {
     // assume types ending with Base are abstract
     // and are not the ones doing the implements
     if (type.name.name.endsWith('Base')) {
+      return false
+    }
+    if (type.attachedBehaviors.includes('OverloadOf')) {
       return false
     }
     return type.attachedBehaviors.length > 0

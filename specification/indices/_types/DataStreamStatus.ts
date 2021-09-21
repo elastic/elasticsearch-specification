@@ -22,15 +22,9 @@
  */
 export enum DataStreamHealthStatus {
   /** All shards are assigned. */
-  GREEN = 0,
-  /** All shards are assigned. */
-  green = 1,
+  green,
   /** All primary shards are assigned, but one or more replica shards are unassigned. */
-  YELLOW = 2,
-  /** All primary shards are assigned, but one or more replica shards are unassigned. */
-  yellow = 3,
+  yellow,
   /** One or more primary shards are unassigned, so some data is unavailable. */
-  RED = 4,
-  /** One or more primary shards are unassigned, so some data is unavailable. */
-  red = 5
+  red
 }

@@ -505,7 +505,6 @@
         "Request: should not have a body"
       ],
       "response": [
-        "interface definition cluster._types:ComponentTemplateSummary / Property 'settings' / dictionary_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
         "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
@@ -540,11 +539,15 @@
     },
     "cluster.put_component_template": {
       "request": [
+<<<<<<< HEAD
         "Request: missing json spec query parameter 'timeout'",
         "interface definition indices._types:IndexState / Property 'settings' / union_of / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
         "interface definition indices._types:IndexStatePrefixedSettings / Property 'index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'",
         "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'",
         "request definition cluster.put_component_template:Request / body / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
+=======
+        "Request: missing json spec query parameter 'timeout'"
+>>>>>>> main
       ],
       "response": []
     },
@@ -999,11 +1002,7 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": [
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'green'",
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'yellow'",
-        "enum definition indices._types:DataStreamHealthStatus - Duplicate enum member identifier 'red'"
-      ]
+      "response": []
     },
     "indices.get_field_mapping": {
       "request": [
@@ -1064,20 +1063,13 @@
       "request": [
         "Request: missing json spec query parameter 'create'",
         "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'",
-        "interface definition indices.put_index_template:IndexTemplateMapping / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
+        "Request: missing json spec query parameter 'master_timeout'"
       ],
       "response": []
     },
     "indices.put_mapping": {
       "request": [
         "Request: query parameter 'include_type_name' does not exist in the json spec"
-      ],
-      "response": []
-    },
-    "indices.put_settings": {
-      "request": [
-        "interface definition indices.put_settings:IndexSettingsBody / Property 'settings' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexSettings'"
       ],
       "response": []
     },
@@ -1242,12 +1234,6 @@
     "migration.deprecations": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "ml.close_job": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_match'"
       ],
       "response": []
     },
