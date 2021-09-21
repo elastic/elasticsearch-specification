@@ -30,7 +30,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name ml.close_job
  * @since 5.4.0
  * @stability stable
- * @security_prerequisites_cluster manage_ml
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {

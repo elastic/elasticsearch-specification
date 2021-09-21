@@ -33,8 +33,8 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name ml.put_data_frame_analytics
  * @since 7.3.0
  * @stability stable
- * @security_prerequisites_cluster manage_ml
- * @security_prerequisites_index create_index, index, manage, read, view_index_metadata
+ * @cluster_privileges manage_ml
+ * @index_privileges create_index, index, manage, read, view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {

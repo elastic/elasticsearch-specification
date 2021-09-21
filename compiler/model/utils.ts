@@ -544,7 +544,7 @@ export function hoistRequestAnnotations (
   request: model.Request, jsDocs: JSDoc[], mappings: Record<string, model.Endpoint>, response: model.TypeName | null
 ): void {
   const knownRequestAnnotations = [
-    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'security_prerequisites_index', 'security_prerequisites_cluster', 'doc_id'
+    'since', 'rest_spec_name', 'stability', 'visibility', 'behavior', 'class_serializer', 'index_privileges', 'cluster_privileges', 'doc_id'
   ]
   // in most of the cases the jsDocs comes in a single block,
   // but it can happen that the user defines multiple single line jsDoc.
@@ -584,7 +584,7 @@ export function hoistRequestAnnotations (
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `Request ${request.name.name}'s @since is not valid semver: ${value}`)
       endpoint.since = value
-    } else if (tag === 'security_prerequisites_index') {
+    } else if (tag === 'index_privileges') {
       const privileges = [
         'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'delete', 'delete_index', 'index',
         'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
@@ -594,9 +594,9 @@ export function hoistRequestAnnotations (
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The index privilege '${v}' does not exists.`)
       }
-      endpoint.securityPrerequisites = endpoint.securityPrerequisites ?? {}
-      endpoint.securityPrerequisites.index = values
-    } else if (tag === 'security_prerequisites_cluster') {
+      endpoint.privileges = endpoint.privileges ?? {}
+      endpoint.privileges.index = values
+    } else if (tag === 'cluster_privileges') {
       const privileges = [
         'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
         'manage_ilm', 'manage_index_templates', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
@@ -609,8 +609,8 @@ export function hoistRequestAnnotations (
       for (const v of values) {
         assert(jsDocs, privileges.includes(v), `The cluster privilege '${v}' does not exists.`)
       }
-      endpoint.securityPrerequisites = endpoint.securityPrerequisites ?? {}
-      endpoint.securityPrerequisites.cluster = values
+      endpoint.privileges = endpoint.privileges ?? {}
+      endpoint.privileges.cluster = values
     } else if (tag === 'doc_id') {
       assert(jsDocs, value.trim() !== '', `Request ${request.name.name}'s @doc_id is cannot be empty`)
       endpoint.docId = value
