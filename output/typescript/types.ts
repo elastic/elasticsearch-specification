@@ -7201,100 +7201,6 @@ export interface CcrUnfollowRequest extends RequestBase {
 export interface CcrUnfollowResponse extends AcknowledgedResponseBase {
 }
 
-export interface ClusterClusterStateBlockIndex {
-  description?: string
-  retryable?: boolean
-  levels?: string[]
-  aliases?: IndexAlias[]
-  aliases_version?: VersionNumber
-  version?: VersionNumber
-  mapping_version?: VersionNumber
-  settings_version?: VersionNumber
-  routing_num_shards?: VersionNumber
-  state?: string
-  settings?: Record<IndexName, IndicesIndexSettings>
-  in_sync_allocations?: Record<string, string[]>
-  primary_terms?: Record<string, integer>
-  mappings?: Record<string, MappingTypeMapping>
-  rollover_info?: Record<string, IndicesRolloverRolloverConditions>
-  timestamp_range?: Record<string, any>
-  system?: boolean
-}
-
-export interface ClusterClusterStateDeletedSnapshots {
-  snapshot_deletions: string[]
-}
-
-export interface ClusterClusterStateIndexLifecycle {
-  policies: Record<IndexName, ClusterClusterStateIndexLifecycleSummary>
-  operation_mode: LifecycleOperationMode
-}
-
-export interface ClusterClusterStateIndexLifecyclePolicy {
-  phases: IlmPhases
-}
-
-export interface ClusterClusterStateIndexLifecycleSummary {
-  policy: ClusterClusterStateIndexLifecyclePolicy
-  headers: HttpHeaders
-  version: VersionNumber
-  modified_date: long
-  modified_date_string: DateString
-}
-
-export interface ClusterClusterStateIngest {
-  pipeline: ClusterClusterStateIngestPipeline[]
-}
-
-export interface ClusterClusterStateIngestPipeline {
-  id: Id
-  config: ClusterClusterStateIngestPipelineConfig
-}
-
-export interface ClusterClusterStateIngestPipelineConfig {
-  description?: string
-  version?: VersionNumber
-  processors: IngestProcessorContainer[]
-}
-
-export interface ClusterClusterStateMetadata {
-  cluster_uuid: Uuid
-  cluster_uuid_committed: boolean
-  templates: ClusterClusterStateMetadataTemplate
-  indices?: Record<IndexName, ClusterClusterStateBlockIndex>
-  'index-graveyard': ClusterClusterStateMetadataIndexGraveyard
-  cluster_coordination: ClusterClusterStateMetadataClusterCoordination
-  ingest?: ClusterClusterStateIngest
-  repositories?: Record<string, string>
-  component_template?: Record<string, any>
-  index_template?: Record<string, any>
-  index_lifecycle?: ClusterClusterStateIndexLifecycle
-}
-
-export interface ClusterClusterStateMetadataClusterCoordination {
-  term: integer
-  last_committed_config: string[]
-  last_accepted_config: string[]
-  voting_config_exclusions: ClusterVotingConfigExclusionsItem[]
-}
-
-export interface ClusterClusterStateMetadataIndexGraveyard {
-  tombstones: ClusterTombstone[]
-}
-
-export interface ClusterClusterStateMetadataTemplate {
-  [key: string]: never
-}
-
-export interface ClusterClusterStateRoutingNodes {
-  unassigned: NodeShard[]
-  nodes: Record<string, NodeShard[]>
-}
-
-export interface ClusterClusterStateSnapshots {
-  snapshots: SnapshotStatus[]
-}
-
 export type ClusterClusterStatus = 'green' | 'yellow' | 'red'
 
 export interface ClusterComponentTemplate {
@@ -7314,22 +7220,6 @@ export interface ClusterComponentTemplateSummary {
   settings: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
-}
-
-export interface ClusterTombstone {
-  index: ClusterTombstoneIndex
-  delete_date?: DateString
-  delete_date_in_millis: long
-}
-
-export interface ClusterTombstoneIndex {
-  index_name: Name
-  index_uuid: Uuid
-}
-
-export interface ClusterVotingConfigExclusionsItem {
-  node_id: Id
-  node_name: Name
 }
 
 export interface ClusterAllocationExplainAllocationDecision {
@@ -7708,36 +7598,9 @@ export interface ClusterRerouteRerouteParameters {
   to_node?: NodeName
 }
 
-export interface ClusterRerouteRerouteState {
-  cluster_uuid: Uuid
-  state_uuid?: Uuid
-  master_node?: string
-  version?: VersionNumber
-  blocks?: EmptyObject
-  nodes?: Record<NodeName, NodeAttributes>
-  routing_table?: ClusterRerouteRoutingTable
-  routing_nodes?: ClusterClusterStateRoutingNodes
-  security_tokens?: Record<string, string>
-  snapshots?: ClusterClusterStateSnapshots
-  snapshot_deletions?: ClusterClusterStateDeletedSnapshots
-  metadata?: ClusterClusterStateMetadata
-}
-
-export interface ClusterRerouteResponse extends AcknowledgedResponseBase {
+export interface ClusterRerouteResponse {
   explanations?: ClusterRerouteRerouteExplanation[]
-  state: ClusterRerouteRerouteState
-}
-
-export interface ClusterRerouteRoutingTable {
-  indices: Record<IndexName, ClusterRerouteRoutingTableIndex>
-}
-
-export interface ClusterRerouteRoutingTableIndex {
-  shards: Record<string, NodeShard[]>
-}
-
-export interface ClusterStateClusterStateBlocks {
-  indices?: Record<IndexName, Record<string, ClusterClusterStateBlockIndex>>
+  state: any
 }
 
 export interface ClusterStateRequest extends RequestBase {
@@ -7753,21 +7616,7 @@ export interface ClusterStateRequest extends RequestBase {
   wait_for_timeout?: Time
 }
 
-export interface ClusterStateResponse {
-  cluster_name: Name
-  cluster_uuid: Uuid
-  master_node?: string
-  state?: string[]
-  state_uuid?: Uuid
-  version?: VersionNumber
-  blocks?: ClusterStateClusterStateBlocks
-  metadata?: ClusterClusterStateMetadata
-  nodes?: Record<NodeName, NodeAttributes>
-  routing_table?: Record<string, EmptyObject>
-  routing_nodes?: ClusterClusterStateRoutingNodes
-  snapshots?: ClusterClusterStateSnapshots
-  snapshot_deletions?: ClusterClusterStateDeletedSnapshots
-}
+export type ClusterStateResponse = any
 
 export interface ClusterStatsCharFilterTypes {
   char_filter_types: ClusterStatsFieldTypes[]
@@ -8605,7 +8454,7 @@ export interface IndicesIndexSettingsLifecycle {
 export interface IndicesIndexState {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
-  settings: IndicesIndexSettings | IndicesIndexStatePrefixedSettings
+  settings?: IndicesIndexSettings | IndicesIndexStatePrefixedSettings
   data_stream?: DataStreamName
 }
 

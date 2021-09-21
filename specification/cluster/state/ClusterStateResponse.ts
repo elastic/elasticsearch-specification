@@ -17,42 +17,13 @@
  * under the License.
  */
 
-import { ClusterStateBlockIndex } from '@cluster/_types/ClusterStateBlocksIndex'
-import { ClusterStateMetadata } from '@cluster/_types/ClusterStateMetadata'
-import { ClusterStateRoutingNodes } from '@cluster/_types/ClusterStateRoutingNodes'
-import {
-  ClusterStateDeletedSnapshots,
-  ClusterStateSnapshots
-} from '@cluster/_types/ClusterStateSnapshots'
-import { Dictionary } from '@spec_utils/Dictionary'
-import {
-  EmptyObject,
-  IndexName,
-  Name,
-  NodeName,
-  Uuid,
-  VersionNumber
-} from '@_types/common'
-import { NodeAttributes } from '@_types/Node'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
-  body: {
-    cluster_name: Name
-    cluster_uuid: Uuid
-    master_node?: string
-    state?: string[]
-    state_uuid?: Uuid
-    version?: VersionNumber
-    blocks?: ClusterStateBlocks
-    metadata?: ClusterStateMetadata
-    nodes?: Dictionary<NodeName, NodeAttributes>
-    routing_table?: Dictionary<string, EmptyObject> // TODO: this is wrong, but the tests are not exhaustive enough
-    routing_nodes?: ClusterStateRoutingNodes
-    snapshots?: ClusterStateSnapshots
-    snapshot_deletions?: ClusterStateDeletedSnapshots
-  }
-}
-
-export class ClusterStateBlocks {
-  indices?: Dictionary<IndexName, Dictionary<string, ClusterStateBlockIndex>>
+  /**
+   * There aren't any guarantees on the output/structure of the raw cluster state.
+   * Here you will find the internal representation of the cluster, which can
+   * differ from the external representation.
+   */
+  body: UserDefinedValue
 }
