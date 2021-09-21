@@ -1539,6 +1539,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Close a point in time",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html",
       "name": "close_point_in_time",
@@ -3000,6 +3003,9 @@
     },
     {
       "accept": [
+        "application/json"
+      ],
+      "contentType": [
         "application/json"
       ],
       "description": "Returns the information about the capabilities of fields among multiple indices.",
@@ -6402,6 +6408,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Deletes expired and unused machine learning data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-expired-data.html",
       "name": "ml.delete_expired_data",
@@ -7552,6 +7561,9 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
       "description": "Previews a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-preview-datafeed.html",
       "name": "ml.preview_datafeed",
@@ -8011,6 +8023,9 @@
     },
     {
       "accept": [
+        "application/json"
+      ],
+      "contentType": [
         "application/json"
       ],
       "description": "Stops one or more datafeeds.",
