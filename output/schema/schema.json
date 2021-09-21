@@ -95204,6 +95204,18 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "shards",
+          "required": false,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardsTotalStats",
+              "namespace": "indices.stats"
+            }
+          }
         }
       ]
     },
@@ -96239,6 +96251,38 @@
             "kind": "instance_of",
             "type": {
               "name": "BulkStats",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "shards",
+          "required": true,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardsTotalStats",
+              "namespace": "indices.stats"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ShardsTotalStats",
+        "namespace": "indices.stats"
+      },
+      "properties": [
+        {
+          "name": "total_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
               "namespace": "_types"
             }
           }
