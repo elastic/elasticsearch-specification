@@ -604,7 +604,7 @@ export interface MsearchTemplateRequest extends RequestBase {
 }
 
 export interface MsearchTemplateResponse<TDocument = unknown> {
-  responses: SearchResponse<TDocument>[]
+  responses: (SearchResponse<TDocument> | ErrorResponseBase)[]
   took: long
 }
 
@@ -1925,7 +1925,7 @@ export interface ErrorCause {
 
 export interface ErrorResponseBase {
   error: MainError | string
-  status: integer
+  status?: integer
 }
 
 export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'

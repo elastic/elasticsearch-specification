@@ -69,7 +69,7 @@ export class ElasticsearchVersionInfo {
 
 export class ErrorResponseBase {
   error: MainError | string
-  status: integer
+  status?: integer
 }
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {
