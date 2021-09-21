@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { IndexState } from '@indices/_types/IndexState'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, Name, Uuid } from '@_types/common'
@@ -29,7 +30,7 @@ import { ClusterStateIngest } from './ClusterStateIngest'
 export class ClusterStateMetadata {
   cluster_uuid: Uuid
   cluster_uuid_committed: boolean
-  templates: ClusterStateMetadataTemplate
+  templates: Dictionary<Name, ClusterStateMetadataTemplate>
   indices?: Dictionary<IndexName, ClusterStateBlockIndex>
   'index-graveyard': ClusterStateMetadataIndexGraveyard
   cluster_coordination: ClusterStateMetadataClusterCoordination
@@ -55,8 +56,9 @@ export class TombstoneIndex {
   index_uuid: Uuid
 }
 
-export class ClusterStateMetadataTemplate {
-  // TODO: check server code for validation
+export class ClusterStateMetadataTemplate extends IndexState {
+  order: integer
+  version: integer
 }
 
 export class ClusterStateMetadataClusterCoordination {

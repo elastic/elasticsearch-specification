@@ -539,7 +539,8 @@
     },
     "cluster.put_component_template": {
       "request": [
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'timeout'",
+        "request definition cluster.put_component_template:Request / body / Property 'template' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ],
       "response": []
     },
@@ -980,7 +981,9 @@
         "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.get:Response / Inherits / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "indices.get_alias": {
       "request": [
@@ -1020,7 +1023,9 @@
       "request": [
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "response definition indices.get_settings:Response / Inherits / Generics / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "indices.get_template": {
       "request": [
@@ -2105,7 +2110,9 @@
       "request": [
         "Non-leaf type cannot be used here: 'transform.preview_transform:Request'"
       ],
-      "response": []
+      "response": [
+        "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
+      ]
     },
     "transform.put_transform": {
       "request": [
