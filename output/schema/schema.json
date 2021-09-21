@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "f9245cb",
+    "hash": "17a63dead",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -127527,11 +127527,26 @@
           "name": "field_security",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSecurity",
-              "namespace": "security._types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldSecurity",
+                  "namespace": "security._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "FieldSecurity",
+                    "namespace": "security._types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -127572,6 +127587,16 @@
                 "type": {
                   "name": "string",
                   "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
                 }
               },
               {
