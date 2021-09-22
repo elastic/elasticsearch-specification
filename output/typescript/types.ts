@@ -9465,6 +9465,7 @@ export interface IndicesStatsIndexStats {
   translog?: TranslogStats
   warmer?: WarmerStats
   bulk?: BulkStats
+  shards?: IndicesStatsShardsTotalStats
 }
 
 export interface IndicesStatsIndicesStats {
@@ -9578,6 +9579,11 @@ export interface IndicesStatsShardStats {
   translog: TranslogStats
   warmer: WarmerStats
   bulk?: BulkStats
+  shards: IndicesStatsShardsTotalStats
+}
+
+export interface IndicesStatsShardsTotalStats {
+  total_count: long
 }
 
 export interface IndicesUnfreezeRequest extends RequestBase {
