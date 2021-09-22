@@ -51,7 +51,7 @@ export class BoundingBox {
 export class GeoBoundingBoxQuery
   extends QueryBase
   implements AdditionalProperty<Field, BoundingBox> {
-  /** @obsolete 7.14.0 */
+  /** @deprecated 7.14.0 */
   type?: GeoExecution
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
@@ -77,7 +77,7 @@ export class GeoPolygonPoints {
   points: GeoLocation[]
 }
 
-/** @obsolete 7.12.0 Use geo-shape instead. */
+/** @deprecated 7.12.0 Use geo-shape instead. */
 export class GeoPolygonQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoPolygonPoints> {
