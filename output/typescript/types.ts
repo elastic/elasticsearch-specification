@@ -9348,12 +9348,14 @@ export interface IndicesShardStoresRequest extends RequestBase {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
-  status?: string | string[]
+  status?: IndicesShardStoresShardStatus | IndicesShardStoresShardStatus[]
 }
 
 export interface IndicesShardStoresResponse {
   indices: Record<IndexName, IndicesShardStoresIndicesShardStores>
 }
+
+export type IndicesShardStoresShardStatus = 'green' | 'yellow' | 'red' | 'all'
 
 export interface IndicesShardStoresShardStore {
   allocation: IndicesShardStoresShardStoreAllocation

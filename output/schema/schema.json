@@ -94080,7 +94080,7 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices",
+          "description": "List of data streams, indices, and aliases used to limit the request.",
           "name": "index",
           "required": false,
           "type": {
@@ -94094,7 +94094,7 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices. (This includes `_all` string or when no indices have been specified)",
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all\nvalue targets only missing or closed indices. This behavior applies even if the request\ntargets other open indices.",
           "name": "allow_no_indices",
           "required": false,
           "type": {
@@ -94106,9 +94106,10 @@
           }
         },
         {
-          "description": "Whether to expand wildcard expression to concrete indices that are open, closed or both.",
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams,\nthis argument determines whether wildcard expressions match hidden data streams.",
           "name": "expand_wildcards",
           "required": false,
+          "serverDefault": "open",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94118,9 +94119,10 @@
           }
         },
         {
-          "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
+          "description": "If true, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -94130,7 +94132,7 @@
           }
         },
         {
-          "description": "A comma-separated list of statuses used to filter on shards to get store information for",
+          "description": "List of shard health statuses used to limit the request.",
           "name": "status",
           "required": false,
           "type": {
@@ -94138,8 +94140,8 @@
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "ShardStatus",
+                  "namespace": "indices.shard_stores"
                 }
               },
               {
@@ -94147,8 +94149,8 @@
                 "value": {
                   "kind": "instance_of",
                   "type": {
-                    "name": "string",
-                    "namespace": "internal"
+                    "name": "ShardStatus",
+                    "namespace": "indices.shard_stores"
                   }
                 }
               }
@@ -94189,6 +94191,31 @@
       "kind": "response",
       "name": {
         "name": "Response",
+        "namespace": "indices.shard_stores"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The primary shard and all replica shards are assigned.",
+          "name": "green"
+        },
+        {
+          "description": "One or more replica shards are unassigned.",
+          "name": "yellow"
+        },
+        {
+          "description": "The primary shard is unassigned.",
+          "name": "red"
+        },
+        {
+          "description": "Return all shards, regardless of health status.",
+          "name": "all"
+        }
+      ],
+      "name": {
+        "name": "ShardStatus",
         "namespace": "indices.shard_stores"
       }
     },
