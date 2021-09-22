@@ -367,7 +367,7 @@ export class Endpoint {
   visibility?: Visibility
   accept?: string[]
   contentType?: string[]
-  securityPrerequisites?: {
+  privileges?: {
     index?: string[]
     cluster?: string[]
   }
