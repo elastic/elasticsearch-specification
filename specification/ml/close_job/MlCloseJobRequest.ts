@@ -47,8 +47,7 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
-     * @obsolete 7.10.0
-     * @obsolete_description Use `allow_no_match` instead.
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
      */
     allow_no_jobs?: boolean
     /**
