@@ -51,3 +51,14 @@ export class ShardStoreException {
 export class ShardStoreWrapper {
   stores: ShardStore[]
 }
+
+export enum ShardStatus {
+  /** The primary shard and all replica shards are assigned. */
+  green = 0,
+  /** One or more replica shards are unassigned. */
+  yellow = 1,
+  /** The primary shard is unassigned. */
+  red = 2,
+  /** Return all shards, regardless of health status.  */
+  all = 3
+}
