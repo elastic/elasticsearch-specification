@@ -100,7 +100,7 @@ import {
 export class QueryContainer {
   bool?: BoolQuery
   boosting?: BoostingQuery
-  /** @obsolete 7.3.0 */
+  /** @deprecated 7.3.0 */
   common?: SingleKeyDictionary<Field, CommonTermsQuery>
   /** @since 7.13.0 */
   combined_fields?: CombinedFieldsQuery
@@ -154,8 +154,7 @@ export class QueryContainer {
   wildcard?: SingleKeyDictionary<Field, WildcardQuery>
 
   /**
-   * @obsolete 7.0.0
-   * @obsolete_description https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
+   * @deprecated 7.0.0 https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html
    */
   type?: TypeQuery
 }

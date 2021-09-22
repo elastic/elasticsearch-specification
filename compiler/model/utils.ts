@@ -491,16 +491,15 @@ export function modelProperty (declaration: PropertySignature | PropertyDeclarat
 }
 
 /**
- * Pulls @obsolete and @obsolete_description from types and properties
+ * Pulls @deprecated from types and properties
  */
-function setObsolete (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>): void {
-  const obsolete = tags.obsolete
-  const description = tags.obsolete_description
-  if (obsolete !== undefined) {
-    type.deprecation = { version: obsolete, description: description }
+function setDeprecated (type: model.BaseType | model.Property | model.EnumMember, tags: Record<string, string>, jsDocs: JSDoc[]): void {
+  if (tags.deprecated !== undefined) {
+    const [version, ...description] = tags.deprecated.split(' ')
+    assert(jsDocs, semver.valid(version), 'Invalid semver value')
+    type.deprecation = { version, description: description.join(' ') }
   }
-  delete tags.obsolete
-  delete tags.obsolete_description
+  delete tags.deprecated
 }
 
 /**
@@ -515,7 +514,7 @@ function setTags<TType extends model.BaseType | model.Property | model.EnumMembe
 ): void {
   if (Object.keys(tags).length === 0) return
 
-  setObsolete(type, tags)
+  setDeprecated(type, tags, jsDocs)
   const badTags = Object.keys(tags).filter(tag => !validTags.includes(tag))
   assert(
     jsDocs,
