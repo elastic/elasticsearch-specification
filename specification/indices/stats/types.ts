@@ -74,6 +74,8 @@ export class IndexStats {
   /** Contains statistics about index warming operations for the node. */
   warmer?: WarmerStats
   bulk?: BulkStats
+  /** @since 7.15.0 */
+  shards?: ShardsTotalStats
 }
 
 export class IndicesStats {
@@ -153,6 +155,10 @@ export class ShardSequenceNumber {
   max_seq_no: SequenceNumber
 }
 
+export class ShardsTotalStats {
+  total_count: long
+}
+
 export class ShardStats {
   commit: ShardCommit
   completion: CompletionStats
@@ -176,4 +182,6 @@ export class ShardStats {
   translog: TranslogStats
   warmer: WarmerStats
   bulk?: BulkStats
+  /** @since 7.15.0 */
+  shards: ShardsTotalStats
 }
