@@ -483,7 +483,7 @@ export interface Request<TDocument> extends RequestBase {
 }
 ```
 
-#### `@security_prerequisites_index`
+#### `@index_privileges`
 
 If an endpoint has some index security prerequisites to satisfy, you can specify them here with a comma separated list.
 
@@ -492,14 +492,14 @@ If an endpoint has some index security prerequisites to satisfy, you can specify
  * @rest_spec_name indices.create
  * @since 0.0.0
  * @stability stable
- * @security_prerequisites_index create_index, manage
+ * @index_privileges create_index, manage
  */
 export interface Request extends RequestBase {
  ...
 }
 ```
 
-#### `@security_prerequisites_cluster`
+#### `@cluster_privileges`
 
 If an endpoint has some cluster security prerequisites to satisfy, you can specify them here with a comma separated list.
 
@@ -508,7 +508,7 @@ If an endpoint has some cluster security prerequisites to satisfy, you can speci
  * @rest_spec_name cluster.state
  * @since 1.3.0
  * @stability stable
- * @security_prerequisites_cluster monitor, manage
+ * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
  ...
