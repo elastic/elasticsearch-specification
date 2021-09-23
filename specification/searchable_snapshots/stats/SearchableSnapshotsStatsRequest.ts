@@ -24,7 +24,7 @@ import { Indices } from '@_types/common'
 /**
  * @rest_spec_name searchable_snapshots.stats
  * @since 7.10.0
- * @stability experimental
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

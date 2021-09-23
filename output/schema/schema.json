@@ -156,7 +156,7 @@
           "path": "/_autoscaling/policy/{name}"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -184,7 +184,7 @@
           "path": "/_autoscaling/capacity"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -212,7 +212,7 @@
           "path": "/_autoscaling/policy/{name}"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -243,7 +243,7 @@
           "path": "/_autoscaling/policy/{name}"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -3012,12 +3012,12 @@
         "application/json"
       ],
       "description": "Returns the current global checkpoints for an index. This API is design for internal use by the fleet server project.",
-      "docUrl": null,
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-global-checkpoints.html",
       "name": "fleet.global_checkpoints",
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3101,7 +3101,7 @@
         "namespace": "_global.get_script_context"
       },
       "since": "0.0.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -3129,7 +3129,7 @@
         "namespace": "_global.get_script_languages"
       },
       "since": "0.0.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -4919,7 +4919,7 @@
         "namespace": "indices.resolve_index"
       },
       "since": "7.9.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -6983,7 +6983,7 @@
       "request": null,
       "requestBodyRequired": false,
       "response": null,
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8105,7 +8105,7 @@
         "namespace": "monitoring.bulk"
       },
       "since": "6.3.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -8126,7 +8126,7 @@
           "path": "/_monitoring/{type}/bulk"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -8623,7 +8623,7 @@
         "namespace": "_global.rank_eval"
       },
       "since": "6.2.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9327,7 +9327,7 @@
         "namespace": "searchable_snapshots.mount"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9355,7 +9355,7 @@
         "namespace": "searchable_snapshots.stats"
       },
       "since": "7.10.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9568,7 +9568,7 @@
         "namespace": "security.clear_cached_service_tokens"
       },
       "since": "0.0.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9628,7 +9628,7 @@
         "namespace": "security.create_service_token"
       },
       "since": "0.0.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -9747,7 +9747,7 @@
         "namespace": "security.delete_service_token"
       },
       "since": "5.5.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10073,7 +10073,7 @@
         "namespace": "security.get_service_accounts"
       },
       "since": "7.13.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10113,7 +10113,7 @@
         "namespace": "security.get_service_credentials"
       },
       "since": "7.13.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10653,7 +10653,7 @@
       "contentType": [
         "application/json"
       ],
-      "description": "Removes a node from the shutdown list",
+      "description": "Removes a node from the shutdown list. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.delete_node",
       "request": {
@@ -10666,7 +10666,7 @@
         "namespace": "shutdown.delete_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10675,7 +10675,7 @@
           "path": "/_nodes/{node_id}/shutdown"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -10684,7 +10684,7 @@
       "contentType": [
         "application/json"
       ],
-      "description": "Retrieve status of a node or nodes that are currently marked as shutting down",
+      "description": "Retrieve status of a node or nodes that are currently marked as shutting down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.get_node",
       "request": {
@@ -10697,7 +10697,7 @@
         "namespace": "shutdown.get_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10712,7 +10712,7 @@
           "path": "/_nodes/{node_id}/shutdown"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -10721,7 +10721,7 @@
       "contentType": [
         "application/json"
       ],
-      "description": "Adds a node to be shut down",
+      "description": "Adds a node to be shut down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current",
       "name": "shutdown.put_node",
       "request": {
@@ -10734,7 +10734,7 @@
         "namespace": "shutdown.put_node"
       },
       "since": "7.13.0",
-      "stability": "experimental",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -10743,7 +10743,7 @@
           "path": "/_nodes/{node_id}/shutdown"
         }
       ],
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "accept": [
@@ -11663,7 +11663,7 @@
         "namespace": "_global.terms_enum"
       },
       "since": "7.14.0",
-      "stability": "beta",
+      "stability": "stable",
       "urls": [
         {
           "methods": [
@@ -132798,7 +132798,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Removes a node from the shutdown list",
+      "description": "Removes a node from the shutdown list. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -132987,7 +132987,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieve status of a node or nodes that are currently marked as shutting down",
+      "description": "Retrieve status of a node or nodes that are currently marked as shutting down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -133104,7 +133104,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Adds a node to be shut down",
+      "description": "Adds a node to be shut down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.",
       "inherits": {
         "type": {
           "name": "RequestBase",
