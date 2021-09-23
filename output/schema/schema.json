@@ -8613,6 +8613,11 @@
       "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html",
       "name": "rank_eval",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.rank_eval"
@@ -19531,7 +19536,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "A set of typical search requests, together with their provided ratings",
+            "description": "A set of typical search requests, together with their provided ratings.",
             "name": "requests",
             "required": true,
             "type": {
@@ -19546,8 +19551,7 @@
             }
           },
           {
-            "description": "Definition of the evaluation metric to calculate",
-            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_available_evaluation_metrics",
+            "description": "Definition of the evaluation metric to calculate.",
             "name": "metric",
             "required": false,
             "type": {
@@ -19560,7 +19564,7 @@
           }
         ]
       },
-      "description": "Allows to evaluate the quality of ranked search results over a set of typical search queries",
+      "description": "Enables you to evaluate the quality of ranked search results over a set of typical search queries.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -19574,7 +19578,7 @@
       },
       "path": [
         {
-          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (*) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use _all or *.",
+          "description": "Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.\nTo target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.",
           "name": "index",
           "required": true,
           "type": {
@@ -19588,7 +19592,7 @@
       ],
       "query": [
         {
-          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
           "name": "allow_no_indices",
           "required": false,
           "serverDefault": true,
@@ -19613,7 +19617,7 @@
           }
         },
         {
-          "description": "If true, missing or closed indices are not included in the response.",
+          "description": "If `true`, missing or closed indices are not included in the response.",
           "name": "ignore_unavailable",
           "required": false,
           "serverDefault": false,
