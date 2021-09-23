@@ -23,7 +23,7 @@ import { NodeId } from '@_types/common'
 /**
  * @rest_spec_name shutdown.put_node
  * @since 7.13.0
- * @stability experimental
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
