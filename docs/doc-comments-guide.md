@@ -52,7 +52,7 @@ export interface Request extends RequestBase {
 ([original source code](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/rank_eval/RankEvalRequest.ts))
 
 For more information about the tags in this example (and other common tags such
-as @deprecated and @doc_id), refer to the [Modeling Guide](https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#additional-information).
+as `@deprecated` and `@doc_id`), refer to the [Modeling Guide](https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#additional-information).
 
 ## Markup language
 
