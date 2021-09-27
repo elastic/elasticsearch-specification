@@ -27,6 +27,6 @@ import { NodeIds } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    node_id: NodeIds
+    node_id?: NodeIds
   }
 }
