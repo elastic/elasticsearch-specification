@@ -133899,7 +133899,7 @@
         {
           "description": "Which node for which to retrieve the shutdown status",
           "name": "node_id",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
