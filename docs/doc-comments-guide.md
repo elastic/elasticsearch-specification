@@ -13,49 +13,36 @@ Additional lines start with a `*` followed by a space. Long lines are allowed bu
  * Enables you to evaluate the quality of ranked search results over a set of typical search queries.
  * @rest_spec_name rank_eval
  * @since 6.2.0
+ * @stability stable
  * @index_privileges read
  */
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * List of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.
-     * 
+     * Comma-separated list of data streams, indices, and index aliases used to limit the request. Wildcard (`*`) expressions are supported.
      * To target all data streams and indices in a cluster, omit this parameter or use `_all` or `*`.
      */
     index: Indices
   }
-  query_parameters?: {
+  query_parameters: {
     /**
-     * Accept no matching indices?
-     * 
-     * If `false`, the request returns an error if any wildcard expression, index alias, or _all value targets only
-     * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
-     * a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
-     * 
+     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
      * @server_default true
      */
     allow_no_indices?: boolean
-    
     expand_wildcards?: ExpandWildcards
-    
     /**
      * If `true`, missing or closed indices are not included in the response.
      * @server_default false
      */
     ignore_unavailable?: boolean
-    
     search_type?: string
   }
   body: {
-    /**
-     * A set of typical search requests, together with their provided ratings.
-     */
+    /** A set of typical search requests, together with their provided ratings. */
     requests: RankEvalRequestItem[]
-    
     /**
      * Definition of the evaluation metric to calculate.
-     * 
-     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html#_available_evaluation_metrics
      */
     metric?: RankEvalMetric
   }
@@ -64,6 +51,8 @@ export interface Request extends RequestBase {
 
 ([original source code](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/rank_eval/RankEvalRequest.ts))
 
+For more information about the tags in this example (and other common tags such
+as `@deprecated` and `@doc_id`), refer to the [Modeling Guide](https://github.com/elastic/elasticsearch-specification/blob/main/docs/modeling-guide.md#additional-information).
 
 ## Markup language
 
