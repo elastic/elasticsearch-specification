@@ -65,7 +65,6 @@ export interface Request extends RequestBase {
     allow_partial_search_results?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
-    batched_reduce_size?: long
     collapse?: FieldCollapse
     default_operator?: DefaultOperator
     df?: string
@@ -78,7 +77,6 @@ export interface Request extends RequestBase {
     ignore_unavailable?: boolean
     indices_boost?: Dictionary<IndexName, double>[]
     keep_alive?: Time
-    keep_on_completion?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: long
     min_score?: double
@@ -108,9 +106,7 @@ export interface Request extends RequestBase {
     timeout?: string
     track_scores?: boolean
     track_total_hits?: boolean
-    typed_keys?: boolean
     version?: boolean
-    wait_for_completion_timeout?: Time
     fields?: Array<Field | DateField>
     runtime_mappings?: RuntimeFields
   }
