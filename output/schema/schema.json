@@ -136976,6 +136976,18 @@
               "namespace": "internal"
             }
           }
+        },
+        {
+          "description": "Whether to include the repository name in the snapshot info. Defaults to true.",
+          "name": "include_repository",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
         }
       ]
     },

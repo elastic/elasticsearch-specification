@@ -14160,6 +14160,7 @@ export interface SnapshotGetRequest extends RequestBase {
   verbose?: boolean
   index_details?: boolean
   human?: boolean
+  include_repository?: boolean
 }
 
 export interface SnapshotGetResponse {
