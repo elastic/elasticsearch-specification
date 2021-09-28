@@ -18,11 +18,12 @@
  */
 
 import { Response as SearchResponse } from '@global/search/SearchResponse'
+import { ErrorResponseBase } from '@_types/Base'
 import { long } from '@_types/Numeric'
 
 export class Response<TDocument> {
   body: {
-    responses: SearchResponse<TDocument>[]
+    responses: Array<SearchResponse<TDocument> | ErrorResponseBase>
     took: long
   }
 }
