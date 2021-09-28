@@ -18499,20 +18499,32 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "generics": [
+                "items": [
+                  {
+                    "generics": [
+                      {
+                        "kind": "instance_of",
+                        "type": {
+                          "name": "TDocument",
+                          "namespace": "_global.msearch_template"
+                        }
+                      }
+                    ],
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "Response",
+                      "namespace": "_global.search"
+                    }
+                  },
                   {
                     "kind": "instance_of",
                     "type": {
-                      "name": "TDocument",
-                      "namespace": "_global.msearch_template"
+                      "name": "ErrorResponseBase",
+                      "namespace": "_types"
                     }
                   }
                 ],
-                "kind": "instance_of",
-                "type": {
-                  "name": "Response",
-                  "namespace": "_global.search"
-                }
+                "kind": "union_of"
               }
             }
           },
@@ -31396,7 +31408,7 @@
         },
         {
           "name": "status",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
