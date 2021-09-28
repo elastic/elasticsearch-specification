@@ -33,3 +33,11 @@ export class CoordinatorStats {
   remote_requests_current: integer
   remote_requests_total: long
 }
+
+export class CacheStats {
+  node_id: Id
+  count: integer
+  hits: integer
+  misses: integer
+  evictions: integer
+}
