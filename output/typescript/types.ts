@@ -7911,6 +7911,14 @@ export interface EnrichPutPolicyRequest extends RequestBase {
 export interface EnrichPutPolicyResponse extends AcknowledgedResponseBase {
 }
 
+export interface EnrichStatsCacheStats {
+  node_id: Id
+  count: integer
+  hits: integer
+  misses: integer
+  evictions: integer
+}
+
 export interface EnrichStatsCoordinatorStats {
   executed_searches_total: long
   node_id: Id
@@ -7930,6 +7938,7 @@ export interface EnrichStatsRequest extends RequestBase {
 export interface EnrichStatsResponse {
   coordinator_stats: EnrichStatsCoordinatorStats[]
   executing_policies: EnrichStatsExecutingPolicy[]
+  cache_stats?: EnrichStatsCacheStats[]
 }
 
 export interface EqlEqlHits<TEvent = unknown> {
