@@ -62,5 +62,6 @@ export interface Request extends RequestBase {
      */
     index_details?: boolean
     human?: boolean
+    include_repository?: boolean
   }
 }
