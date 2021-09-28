@@ -81459,6 +81459,7 @@
           {
             "name": "cache_stats",
             "required": false,
+            "since": "7.16.0",
             "type": {
               "kind": "array_of",
               "value": {
