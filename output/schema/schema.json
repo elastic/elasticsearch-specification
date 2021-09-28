@@ -60099,17 +60099,6 @@
             }
           },
           {
-            "name": "batched_reduce_size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "name": "collapse",
             "required": false,
             "type": {
@@ -60252,17 +60241,6 @@
               "type": {
                 "name": "Time",
                 "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "keep_on_completion",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
               }
             }
           },
@@ -60626,17 +60604,6 @@
             }
           },
           {
-            "name": "typed_keys",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "version",
             "required": false,
             "type": {
@@ -60644,17 +60611,6 @@
               "type": {
                 "name": "boolean",
                 "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "wait_for_completion_timeout",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Time",
-                "namespace": "_types"
               }
             }
           },
