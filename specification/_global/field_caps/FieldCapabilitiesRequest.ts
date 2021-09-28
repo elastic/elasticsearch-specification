@@ -18,8 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { EmptyObject, ExpandWildcards, Fields, Indices } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { ExpandWildcards, Fields, Indices } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * @rest_spec_name field_caps
@@ -38,30 +39,8 @@ export interface Request extends RequestBase {
     include_unmapped?: boolean
   }
   body: {
-    index_filter?: FieldCapabilitiesBodyIndexFilter
+    index_filter?: QueryContainer
+    /** @since 7.12.0 */
+    runtime_mappings?: RuntimeFields
   }
-}
-export class FieldCapabilitiesBodyIndexFilter {
-  range?: FieldCapabilitiesBodyIndexFilterRange
-  match_none?: EmptyObject
-  term?: FieldCapabilitiesBodyIndexFilterTerm
-}
-
-export class FieldCapabilitiesBodyIndexFilterRange {
-  timestamp: FieldCapabilitiesBodyIndexFilterRangeTimestamp
-}
-
-export class FieldCapabilitiesBodyIndexFilterRangeTimestamp {
-  gte?: integer
-  gt?: integer
-  lte?: integer
-  lt?: integer
-}
-
-export class FieldCapabilitiesBodyIndexFilterTerm {
-  versionControl: FieldCapabilitiesBodyIndexFilterTermVersionControl
-}
-
-export class FieldCapabilitiesBodyIndexFilterTermVersionControl {
-  value: string
 }
