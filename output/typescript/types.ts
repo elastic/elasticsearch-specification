@@ -13689,7 +13689,7 @@ export interface SecurityPutRoleMappingResponse {
 }
 
 export interface SecurityPutUserRequest extends RequestBase {
-  username: Username
+  username?: Username
   refresh?: Refresh
   body?: {
     username?: Username

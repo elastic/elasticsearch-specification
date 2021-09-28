@@ -27,7 +27,10 @@ import { Metadata, Password, Refresh, Username } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    username: Username
+    // this should be required, but since it's present in the body
+    // as well, it could cause issues with code generators,
+    // thus let's mark it as optional.
+    username?: Username
   }
   query_parameters: {
     refresh?: Refresh
