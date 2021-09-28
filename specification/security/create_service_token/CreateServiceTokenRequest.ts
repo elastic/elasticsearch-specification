@@ -23,7 +23,7 @@ import { Name, Namespace, Service } from '@_types/common'
 /**
  * @rest_spec_name security.create_service_token
  * @since 0.0.0
- * @stability beta
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {

@@ -24,7 +24,7 @@ import { OperationContainer } from '@global/bulk/types'
 /**
  * @rest_spec_name monitoring.bulk
  * @since 6.3.0
- * @stability experimental
+ * @stability stable
  */
 export interface Request<TSource> extends RequestBase {
   path_parts: {

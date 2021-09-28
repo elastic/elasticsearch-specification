@@ -26,7 +26,7 @@ import { Time } from '@_types/Time'
 /**
  * @rest_spec_name terms_enum
  * @since 7.14.0
- * @stability beta
+ * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
