@@ -80778,6 +80778,70 @@
     {
       "kind": "interface",
       "name": {
+        "name": "CacheStats",
+        "namespace": "enrich.stats"
+      },
+      "properties": [
+        {
+          "name": "node_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "hits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "misses",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "evictions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "CoordinatorStats",
         "namespace": "enrich.stats"
       },
@@ -80918,6 +80982,21 @@
                 "kind": "instance_of",
                 "type": {
                   "name": "ExecutingPolicy",
+                  "namespace": "enrich.stats"
+                }
+              }
+            }
+          },
+          {
+            "name": "cache_stats",
+            "required": false,
+            "since": "7.16.0",
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "CacheStats",
                   "namespace": "enrich.stats"
                 }
               }
