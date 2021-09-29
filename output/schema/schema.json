@@ -111911,53 +111911,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "end",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "from",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "name": "start",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "name": "size",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "description": "Retrieves information about the scheduled events in calendars.",
       "inherits": {

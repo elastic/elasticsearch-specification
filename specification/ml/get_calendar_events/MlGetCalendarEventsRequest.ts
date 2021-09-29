@@ -40,10 +40,10 @@ export interface Request extends RequestBase {
     start?: string
     size?: integer
   }
-  body: {
-    end?: DateString
-    from?: integer
-    start?: string
-    size?: integer
-  }
+  // body: {
+  //   end?: DateString
+  //   from?: integer
+  //   start?: string
+  //   size?: integer
+  // }
 }

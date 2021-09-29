@@ -11342,12 +11342,6 @@ export interface MlGetCalendarEventsRequest extends RequestBase {
   from?: integer
   start?: string
   size?: integer
-  body?: {
-    end?: DateString
-    from?: integer
-    start?: string
-    size?: integer
-  }
 }
 
 export interface MlGetCalendarEventsResponse {
