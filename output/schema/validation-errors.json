@@ -1006,8 +1006,7 @@
     },
     "indices.get_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'flat_settings'",
-        "Request: missing json spec query parameter 'master_timeout'",
+        "Request: query parameter 'include_type_name' does not exist in the json spec",
         "Request: should not have a body"
       ],
       "response": []

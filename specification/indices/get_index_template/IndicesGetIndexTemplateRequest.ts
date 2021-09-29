@@ -37,8 +37,6 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     local?: boolean
-  }
-  body: {
     /**
      * If true, returns settings in flat format.
      * @server_default false
