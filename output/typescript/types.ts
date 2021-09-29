@@ -8929,11 +8929,9 @@ export interface IndicesGetIndexTemplateIndexTemplateSummary {
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
   name?: Name
   local?: boolean
-  body?: {
-    flat_settings?: boolean
-    include_type_name?: boolean
-    master_timeout?: Time
-  }
+  flat_settings?: boolean
+  include_type_name?: boolean
+  master_timeout?: Time
 }
 
 export interface IndicesGetIndexTemplateResponse {
@@ -11404,12 +11402,6 @@ export interface MlGetCalendarEventsRequest extends RequestBase {
   from?: integer
   start?: string
   size?: integer
-  body?: {
-    end?: DateString
-    from?: integer
-    start?: string
-    size?: integer
-  }
 }
 
 export interface MlGetCalendarEventsResponse {
