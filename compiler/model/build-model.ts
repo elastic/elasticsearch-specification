@@ -212,6 +212,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           .map(part => part.slice(1, -1))
         )
       )]
+      const methods = [...new Set(mapping.urls.flatMap(url => url.methods))]
 
       const pathAndQueryProperties = (declaration.getMembers() as any[]).flatMap(member => {
         const property = visitRequestOrResponseProperty(member)
@@ -244,6 +245,11 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
           type.query = property.properties
         } else if (property.name === 'body') {
+          assert(
+            member,
+            methods.some(method => ['POST', 'PUT', 'DELETE'].includes(method)),
+            `${namespace}.${name} can't have a body, allowed methods: ${methods.join(', ')}`
+          )
           // the body can either be a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
             if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
