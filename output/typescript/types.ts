@@ -4709,15 +4709,15 @@ export interface QueryDslPercolateQuery extends QueryDslQueryBase {
   version?: VersionNumber
 }
 
-export interface QueryDslPinnedDocs {
+export interface QueryDslPinnedDoc {
   _id: Id
   _index: IndexName
 }
 
 export interface QueryDslPinnedQuery extends QueryDslQueryBase {
-  ids?: Id[]
-  docs?: QueryDslPinnedDocs
   organic: QueryDslQueryContainer
+  ids?: Id[]
+  docs?: QueryDslPinnedDoc[]
 }
 
 export interface QueryDslPrefixQuery extends QueryDslQueryBase {

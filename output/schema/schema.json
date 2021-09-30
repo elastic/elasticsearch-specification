@@ -56728,7 +56728,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "PinnedDocs",
+        "name": "PinnedDoc",
         "namespace": "_types.query_dsl"
       },
       "properties": [
@@ -56770,6 +56770,18 @@
       },
       "properties": [
         {
+          "containerProperty": true,
+          "name": "organic",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "name": "ids",
           "required": false,
           "type": {
@@ -56787,25 +56799,20 @@
           "name": "docs",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PinnedDocs",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "organic",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PinnedDoc",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": {

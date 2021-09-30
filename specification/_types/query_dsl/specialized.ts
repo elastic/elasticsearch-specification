@@ -121,13 +121,17 @@ export class PercolateQuery extends QueryBase {
   version?: VersionNumber
 }
 
+/**
+ * @variants container
+ */
 export class PinnedQuery extends QueryBase {
-  ids?: Id[]
-  docs?: PinnedDocs
+  /** @variant container_property */
   organic: QueryContainer
+  ids?: Id[]
+  docs?: PinnedDoc[]
 }
 
-export class PinnedDocs {
+export class PinnedDoc {
   _id: Id
   _index: IndexName
 }
