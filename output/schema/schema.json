@@ -21428,6 +21428,7 @@
             }
           },
           {
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html",
             "name": "sort",
             "required": false,
             "type": {
