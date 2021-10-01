@@ -17,7 +17,13 @@
  * under the License.
  */
 
-export class FieldMapping {}
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Property } from './Property'
+
+export class FieldMapping {
+  full_name: string
+  mapping: SingleKeyDictionary<string, Property>
+}
 
 export class AllField {
   analyzer: string

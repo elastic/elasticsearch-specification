@@ -26,11 +26,8 @@ import {
   DynamicTemplate
 } from '@_types/mapping/dynamic-template'
 import {
-  AllField,
   FieldNamesField,
-  IndexField,
   RoutingField,
-  SizeField,
   SourceField
 } from '@_types/mapping/meta-fields'
 import { Property } from '@_types/mapping/Property'

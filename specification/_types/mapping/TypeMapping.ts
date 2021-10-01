@@ -49,4 +49,5 @@ export class TypeMapping {
   _size?: SizeField
   _source?: SourceField
   runtime?: Dictionary<string, RuntimeField>
+  enabled?: boolean
 }

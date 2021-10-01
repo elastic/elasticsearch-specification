@@ -129,6 +129,16 @@ export class IndexSettings {
    * @aliases index.blocks
    */
   blocks?: IndexSettingBlocks
+  /** @aliases index.blocks.read_only */
+  'blocks.read_only'?: boolean
+  /** @aliases index.blocks.read_only_allow_delete */
+  'blocks.read_only_allow_delete'?: boolean
+  /** @aliases index.blocks.read */
+  'blocks.read'?: boolean
+  /** @aliases index.blocks.write */
+  'blocks.write'?: boolean | string // TODO: should be bool only
+  /** @aliases index.blocks.metadata */
+  'blocks.metadata'?: boolean
   /**
    * @aliases index.max_refresh_listeners
    */
@@ -177,6 +187,10 @@ export class IndexSettings {
    */
   lifecycle?: IndexSettingsLifecycle
   /**
+   * @aliases index.lifecycle.name
+   */
+  'lifecycle.name'?: string
+  /**
    * @aliases index.provided_name
    */
   provided_name?: Name
@@ -220,18 +234,14 @@ export class IndexSettings {
   top_metrics_max_size?: integer
 
   analysis?: IndexSettingsAnalysis
+  settings?: IndexSettings
 }
 
 export class IndexSettingBlocks {
-  /** @aliases index.blocks.read_only */
   read_only?: boolean
-  /** @aliases index.blocks.read_only_allow_delete */
   read_only_allow_delete?: boolean
-  /** @aliases index.blocks.read */
   read?: boolean
-  /** @aliases index.blocks.write */
   write?: boolean | string // TODO: should be bool only
-  /** @aliases index.blocks.metadata */
   metadata?: boolean
 }
 
