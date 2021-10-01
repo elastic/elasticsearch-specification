@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fuzziness,
@@ -47,7 +46,7 @@ export class FuzzyQuery extends QueryBase {
   // ES is lenient and accepts any primitive type, but ultimately converts it to a string.
   // Changing this field definition from UserDefinedValue to string breaks a recording produced from Nest tests,
   // but Nest is probably also overly flexible here and exposes an option that should not exist.
-  value: string
+  value: string | double | boolean
 }
 
 export class IdsQuery extends QueryBase {
@@ -69,23 +68,24 @@ export class RangeQueryBase extends QueryBase {
   relation?: RangeRelation
 }
 
-/** @variant name=date */
 export class DateRangeQuery extends RangeQueryBase {
   gt?: DateMath
   gte?: DateMath
   lt?: DateMath
   lte?: DateMath
-
+  from?: DateMath
+  to?: DateMath
   format?: DateFormat
   time_zone?: TimeZone
 }
 
-/** @variant name=number */
 export class NumberRangeQuery extends RangeQueryBase {
   gt?: double
   gte?: double
   lt?: double
   lte?: double
+  from?: double
+  to?: double
 }
 
 export type RangeQuery = DateRangeQuery | NumberRangeQuery
