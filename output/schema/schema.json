@@ -6256,6 +6256,48 @@
       "accept": [
         "application/json"
       ],
+      "description": "Find out whether system features need to be upgraded or not",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/migration-api-feature-upgrade.html",
+      "name": "migration.get_feature_upgrade_status",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_migration/system_features"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "description": "Begin upgrades for system features",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/migration-api-feature-upgrade.html",
+      "name": "migration.post_feature_upgrade",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_migration/system_features"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "contentType": [
         "application/json"
       ],

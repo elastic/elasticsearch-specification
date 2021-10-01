@@ -1236,6 +1236,18 @@
       ],
       "response": []
     },
+    "migration.get_feature_upgrade_status": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "migration.post_feature_upgrade": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "ml.delete_calendar": {
       "request": [
         "Request: should not have a body"
