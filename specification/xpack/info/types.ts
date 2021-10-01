@@ -64,7 +64,7 @@ export class Features {
   spatial: Feature
   sql: Feature
   transform: Feature
-  vectors: Feature
+  vectors?: Feature
   voting_only: Feature
   watcher: Feature
 }
