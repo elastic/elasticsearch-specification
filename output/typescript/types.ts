@@ -3496,7 +3496,7 @@ export interface AnalysisKeywordTokenizer extends AnalysisTokenizerBase {
 export interface AnalysisKuromojiAnalyzer {
   type: 'kuromoji'
   mode: AnalysisKuromojiTokenizationMode
-  user_dictionary: string
+  user_dictionary?: string
 }
 
 export interface AnalysisKuromojiPartOfSpeechTokenFilter extends AnalysisTokenFilterBase {
@@ -3565,7 +3565,7 @@ export interface AnalysisLowercaseTokenizer extends AnalysisTokenizerBase {
 export interface AnalysisMappingCharFilter extends AnalysisCharFilterBase {
   type: 'mapping'
   mappings: string[]
-  mappings_path: string
+  mappings_path?: string
 }
 
 export interface AnalysisMultiplexerTokenFilter extends AnalysisTokenFilterBase {
@@ -3735,13 +3735,13 @@ export interface AnalysisSynonymGraphTokenFilter extends AnalysisTokenFilterBase
 
 export interface AnalysisSynonymTokenFilter extends AnalysisTokenFilterBase {
   type: 'synonym'
-  expand: boolean
-  format: AnalysisSynonymFormat
-  lenient: boolean
+  expand?: boolean
+  format?: AnalysisSynonymFormat
+  lenient?: boolean
   synonyms: string[]
-  synonyms_path: string
-  tokenizer: string
-  updateable: boolean
+  synonyms_path?: string
+  tokenizer?: string
+  updateable?: boolean
 }
 
 export type AnalysisTokenChar = 'letter' | 'digit' | 'whitespace' | 'punctuation' | 'symbol' | 'custom'
@@ -3939,7 +3939,8 @@ export interface MappingFieldAliasProperty extends MappingPropertyBase {
 }
 
 export interface MappingFieldMapping {
-  [key: string]: never
+  full_name: string
+  mapping: Record<string, MappingProperty>
 }
 
 export interface MappingFieldNamesField {
@@ -4019,6 +4020,7 @@ export interface MappingIpProperty extends MappingDocValuesPropertyBase {
   boost?: double
   index?: boolean
   null_value?: string
+  ignore_malformed?: boolean
   type: 'ip'
 }
 
@@ -4222,6 +4224,7 @@ export interface MappingTypeMapping {
   _size?: MappingSizeField
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
+  enabled?: boolean
 }
 
 export interface MappingVersionProperty extends MappingDocValuesPropertyBase {
@@ -8261,6 +8264,10 @@ export interface IndicesAliasDefinition {
   search_routing?: string
 }
 
+export interface IndicesDataStream {
+  hidden?: boolean
+}
+
 export type IndicesDataStreamHealthStatus = 'green' | 'yellow' | 'red'
 
 export interface IndicesFielddataFrequencyFilter {
@@ -8306,15 +8313,10 @@ export type IndicesIndexRoutingRebalanceOptions = 'all' | 'primaries' | 'replica
 
 export interface IndicesIndexSettingBlocks {
   read_only?: boolean
-  'index.blocks.read_only'?: boolean
   read_only_allow_delete?: boolean
-  'index.blocks.read_only_allow_delete'?: boolean
   read?: boolean
-  'index.blocks.read'?: boolean
   write?: boolean | string
-  'index.blocks.write'?: boolean | string
   metadata?: boolean
-  'index.blocks.metadata'?: boolean
 }
 
 export interface IndicesIndexSettings {
@@ -8358,6 +8360,16 @@ export interface IndicesIndexSettings {
   'index.max_shingle_diff'?: integer
   blocks?: IndicesIndexSettingBlocks
   'index.blocks'?: IndicesIndexSettingBlocks
+  'blocks.read_only'?: boolean
+  'index.blocks.read_only'?: boolean
+  'blocks.read_only_allow_delete'?: boolean
+  'index.blocks.read_only_allow_delete'?: boolean
+  'blocks.read'?: boolean
+  'index.blocks.read'?: boolean
+  'blocks.write'?: boolean | string
+  'index.blocks.write'?: boolean | string
+  'blocks.metadata'?: boolean
+  'index.blocks.metadata'?: boolean
   max_refresh_listeners?: integer
   'index.max_refresh_listeners'?: integer
   'analyze.max_token_count'?: integer
@@ -8378,6 +8390,8 @@ export interface IndicesIndexSettings {
   'index.final_pipeline'?: PipelineName
   lifecycle?: IndicesIndexSettingsLifecycle
   'index.lifecycle'?: IndicesIndexSettingsLifecycle
+  'lifecycle.name'?: string
+  'index.lifecycle.name'?: string
   provided_name?: Name
   'index.provided_name'?: Name
   creation_date?: DateString
@@ -8400,6 +8414,7 @@ export interface IndicesIndexSettings {
   'index.priority'?: integer | string
   top_metrics_max_size?: integer
   analysis?: IndicesIndexSettingsAnalysis
+  settings?: IndicesIndexSettings
 }
 
 export interface IndicesIndexSettingsAnalysis {
@@ -8610,9 +8625,10 @@ export interface IndicesCreateRequest extends RequestBase {
   }
 }
 
-export interface IndicesCreateResponse extends AcknowledgedResponseBase {
+export interface IndicesCreateResponse {
   index: IndexName
   shards_acknowledged: boolean
+  acknowledged?: boolean
 }
 
 export interface IndicesCreateDataStreamRequest extends RequestBase {
@@ -8876,7 +8892,7 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
 export interface IndicesGetIndexTemplateIndexTemplate {
   index_patterns: Name[]
   composed_of: Name[]
-  template: IndicesGetIndexTemplateIndexTemplateSummary
+  template?: IndicesGetIndexTemplateIndexTemplateSummary
   version?: VersionNumber
   priority?: long
   _meta?: Metadata
@@ -9007,7 +9023,7 @@ export interface IndicesPutIndexTemplateRequest extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndicesPutIndexTemplateIndexTemplateMapping
-    data_stream?: EmptyObject
+    data_stream?: IndicesDataStream
     priority?: integer
     version?: VersionNumber
     _meta?: Metadata
