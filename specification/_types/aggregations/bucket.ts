@@ -34,7 +34,11 @@ import { Script } from '@_types/Scripting'
 import { DateString, Time, DateMath } from '@_types/Time'
 import { GeoBounds } from './Aggregate'
 import { Aggregation } from './Aggregation'
-import { AggregationContainer, Missing } from './AggregationContainer'
+import {
+  AggregationContainer,
+  Missing,
+  MissingOrder
+} from './AggregationContainer'
 
 export class BucketAggregationBase extends Aggregation {
   aggregations?: Dictionary<string, AggregationContainer>
@@ -239,6 +243,7 @@ export class ParentAggregation extends BucketAggregationBase {
 
 export class RangeAggregation extends BucketAggregationBase {
   field?: Field
+  missing?: integer
   ranges?: AggregationRange[]
   script?: Script
   keyed?: boolean
@@ -274,12 +279,12 @@ export class ChiSquareHeuristic {
 }
 
 export class GoogleNormalizedDistanceHeuristic {
-  background_is_superset: boolean
+  background_is_superset?: boolean
 }
 
 export class MutualInformationHeuristic {
-  background_is_superset: boolean
-  include_negatives: boolean
+  background_is_superset?: boolean
+  include_negatives?: boolean
 }
 
 export class PercentageScoreHeuristic {}
@@ -332,6 +337,7 @@ export class TermsAggregation extends BucketAggregationBase {
   include?: string | string[] | TermsInclude
   min_doc_count?: integer
   missing?: Missing
+  missing_order?: MissingOrder
   missing_bucket?: boolean
   value_type?: string
   order?: TermsAggregationOrder
