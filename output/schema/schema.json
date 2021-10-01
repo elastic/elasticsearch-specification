@@ -27557,6 +27557,10 @@
         },
         {
           "name": "point"
+        },
+        {
+          "name": "centroid",
+          "since": "v7.16.0"
         }
       ],
       "name": {
