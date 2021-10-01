@@ -10885,7 +10885,7 @@ export interface MlJob {
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
   renormalization_window_days?: long
-  results_index_name: IndexName
+  results_index_name?: IndexName
   results_retention_days?: long
 }
 
@@ -15631,7 +15631,7 @@ export interface XpackUsageResponse {
   slm: XpackUsageSlm
   sql: XpackUsageSql
   transform: XpackUsageBase
-  vectors: XpackUsageVector
+  vectors?: XpackUsageVector
   voting_only: XpackUsageBase
 }
 

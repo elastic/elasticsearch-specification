@@ -65,7 +65,7 @@ export class Response {
     slm: Slm
     sql: Sql
     transform: Base
-    vectors: Vector
+    vectors?: Vector
     voting_only: Base
   }
 }
