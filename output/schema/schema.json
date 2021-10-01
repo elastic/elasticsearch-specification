@@ -21304,6 +21304,7 @@
             }
           },
           {
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html",
             "name": "sort",
             "required": false,
             "type": {
@@ -22556,7 +22557,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "AggregationProfileDebug",
+                "name": "AggregationProfile",
                 "namespace": "_global.search._types"
               }
             }
@@ -22570,7 +22571,362 @@
         "name": "AggregationProfileDebug",
         "namespace": "_global.search._types"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "segments_with_multi_valued_ords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "collection_strategy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "segments_with_single_valued_ords",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "total_buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "built_buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "result_strategy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "has_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "delegate",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "delegate_debug",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AggregationProfileDelegateDebug",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "chars_fetched",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "extract_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "extract_ns",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "values_fetched",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "collect_analyzed_ns",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "collect_analyzed_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "surviving_buckets",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ordinals_collectors_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "ordinals_collectors_overhead_too_high",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "string_hashing_collectors_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "numeric_collectors_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "empty_collectors_used",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "deferred_aggregators",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AggregationProfileDelegateDebug",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "segments_with_doc_count_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "segments_with_deleted_docs",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "filters",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AggregationProfileDelegateDebugFilter",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        },
+        {
+          "name": "segments_counted",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "segments_collected",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AggregationProfileDelegateDebugFilter",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "results_from_metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "specialized_for",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -23089,6 +23445,193 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "debug",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfileDebug",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "children",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FetchProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "load_stored_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "load_stored_fields_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_reader",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "next_reader_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "process_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "process",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FetchProfileDebug",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "stored_fields",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "fast_path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }
@@ -25641,6 +26184,17 @@
                 "name": "SearchProfile",
                 "namespace": "_global.search._types"
               }
+            }
+          }
+        },
+        {
+          "name": "fetch",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FetchProfile",
+              "namespace": "_global.search._types"
             }
           }
         }
@@ -30798,6 +31352,20 @@
             "type": {
               "name": "PainlessExecutionPosition",
               "namespace": "_global.scripts_painless_execute"
+            }
+          }
+        },
+        {
+          "name": "suppressed",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorCause",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -37023,14 +37591,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "BucketsPath",
-        "namespace": "_types.aggregations"
-      },
-      "properties": []
-    },
-    {
       "inherits": {
         "type": {
           "name": "MetricAggregationBase",
@@ -39105,7 +39665,7 @@
       "properties": [
         {
           "name": "background_is_superset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40380,6 +40940,24 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "first"
+        },
+        {
+          "name": "last"
+        },
+        {
+          "name": "default"
+        }
+      ],
+      "name": {
+        "name": "MissingOrder",
+        "namespace": "_types.aggregations"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "PipelineAggregationBase",
@@ -40695,7 +41273,7 @@
       "properties": [
         {
           "name": "background_is_superset",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -40706,7 +41284,7 @@
         },
         {
           "name": "include_negatives",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41061,11 +41639,44 @@
           "name": "buckets_path",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "BucketsPath",
-              "namespace": "_types.aggregations"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              },
+              {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -41112,6 +41723,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -42843,6 +43465,17 @@
             "kind": "instance_of",
             "type": {
               "name": "Missing",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
+          "name": "missing_order",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MissingOrder",
               "namespace": "_types.aggregations"
             }
           }
@@ -52880,6 +53513,28 @@
           }
         },
         {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "format",
           "required": false,
           "type": {
@@ -52901,8 +53556,7 @@
             }
           }
         }
-      ],
-      "variantName": "date"
+      ]
     },
     {
       "kind": "type_alias",
@@ -53640,11 +54294,30 @@
           "name": "value",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
@@ -56255,9 +56928,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
         }
-      ],
-      "variantName": "number"
+      ]
     },
     {
       "attachedBehaviors": [
@@ -56490,6 +57184,37 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "PinnedDoc",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "name": "_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "_index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "QueryBase",
@@ -56503,8 +57228,20 @@
       },
       "properties": [
         {
-          "name": "ids",
+          "containerProperty": true,
+          "name": "organic",
           "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "ids",
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -56517,17 +57254,23 @@
           }
         },
         {
-          "name": "organic",
-          "required": true,
+          "name": "docs",
+          "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryContainer",
-              "namespace": "_types.query_dsl"
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PinnedDoc",
+                "namespace": "_types.query_dsl"
+              }
             }
           }
         }
-      ]
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "inherits": {
