@@ -28135,6 +28135,10 @@
         },
         {
           "name": "point"
+        },
+        {
+          "name": "centroid",
+          "since": "7.16.0"
         }
       ],
       "name": {

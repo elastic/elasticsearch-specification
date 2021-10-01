@@ -1584,7 +1584,7 @@ export type SearchMvtResponse = MapboxVectorTiles
 
 export type SearchMvtCoordinate = integer
 
-export type SearchMvtGridType = 'grid' | 'point'
+export type SearchMvtGridType = 'grid' | 'point' | 'centroid'
 
 export type SearchMvtZoomLevel = integer
 
