@@ -45818,7 +45818,7 @@
         },
         {
           "name": "user_dictionary",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -46437,7 +46437,7 @@
         },
         {
           "name": "mappings_path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47826,7 +47826,7 @@
         },
         {
           "name": "expand",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47837,7 +47837,7 @@
         },
         {
           "name": "format",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47848,7 +47848,7 @@
         },
         {
           "name": "lenient",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47873,7 +47873,7 @@
         },
         {
           "name": "synonyms_path",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47884,7 +47884,7 @@
         },
         {
           "name": "tokenizer",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -47895,7 +47895,7 @@
         },
         {
           "name": "updateable",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -50006,7 +50006,41 @@
         "name": "FieldMapping",
         "namespace": "_types.mapping"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "full_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "mapping",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Property",
+                "namespace": "_types.mapping"
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -50786,6 +50820,17 @@
             "kind": "instance_of",
             "type": {
               "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "ignore_malformed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
               "namespace": "internal"
             }
           }
@@ -52769,6 +52814,17 @@
                 "name": "RuntimeField",
                 "namespace": "_types.mapping"
               }
+            }
+          }
+        },
+        {
+          "name": "enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         }
@@ -84981,6 +85037,26 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "DataStream",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "hidden",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -85298,9 +85374,6 @@
       },
       "properties": [
         {
-          "aliases": [
-            "index.blocks.read_only"
-          ],
           "name": "read_only",
           "required": false,
           "type": {
@@ -85312,9 +85385,6 @@
           }
         },
         {
-          "aliases": [
-            "index.blocks.read_only_allow_delete"
-          ],
           "name": "read_only_allow_delete",
           "required": false,
           "type": {
@@ -85326,9 +85396,6 @@
           }
         },
         {
-          "aliases": [
-            "index.blocks.read"
-          ],
           "name": "read",
           "required": false,
           "type": {
@@ -85340,9 +85407,6 @@
           }
         },
         {
-          "aliases": [
-            "index.blocks.write"
-          ],
           "name": "write",
           "required": false,
           "type": {
@@ -85366,9 +85430,6 @@
           }
         },
         {
-          "aliases": [
-            "index.blocks.metadata"
-          ],
           "name": "metadata",
           "required": false,
           "type": {
@@ -85737,6 +85798,88 @@
         },
         {
           "aliases": [
+            "index.blocks.read_only"
+          ],
+          "name": "blocks.read_only",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.read_only_allow_delete"
+          ],
+          "name": "blocks.read_only_allow_delete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.read"
+          ],
+          "name": "blocks.read",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.write"
+          ],
+          "name": "blocks.write",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "aliases": [
+            "index.blocks.metadata"
+          ],
+          "name": "blocks.metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "aliases": [
             "index.max_refresh_listeners"
           ],
           "name": "max_refresh_listeners",
@@ -85879,6 +86022,20 @@
             "type": {
               "name": "IndexSettingsLifecycle",
               "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index.lifecycle.name"
+          ],
+          "name": "lifecycle.name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
@@ -86088,6 +86245,17 @@
             "kind": "instance_of",
             "type": {
               "name": "IndexSettingsAnalysis",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "name": "settings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
               "namespace": "indices._types"
             }
           }
@@ -88044,14 +88212,19 @@
                 "namespace": "internal"
               }
             }
+          },
+          {
+            "name": "acknowledged",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
           }
         ]
-      },
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
       },
       "kind": "response",
       "name": {
@@ -90450,7 +90623,7 @@
               }
             },
             "kind": "dictionary_of",
-            "singleKey": false,
+            "singleKey": true,
             "value": {
               "kind": "instance_of",
               "type": {
@@ -90499,7 +90672,7 @@
         },
         {
           "name": "template",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -91715,8 +91888,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "EmptyObject",
-                "namespace": "_types"
+                "name": "DataStream",
+                "namespace": "indices._types"
               }
             }
           },

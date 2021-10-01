@@ -110,13 +110,13 @@ export class SynonymGraphTokenFilter extends TokenFilterBase {
 
 export class SynonymTokenFilter extends TokenFilterBase {
   type: 'synonym'
-  expand: boolean
-  format: SynonymFormat
-  lenient: boolean
+  expand?: boolean
+  format?: SynonymFormat
+  lenient?: boolean
   synonyms: string[]
-  synonyms_path: string
-  tokenizer: string
-  updateable: boolean
+  synonyms_path?: string
+  tokenizer?: string
+  updateable?: boolean
 }
 
 export class WordDelimiterTokenFilter extends TokenFilterBase {

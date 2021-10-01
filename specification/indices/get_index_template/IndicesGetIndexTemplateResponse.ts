@@ -38,7 +38,7 @@ export class IndexTemplateItem {
 export class IndexTemplate {
   index_patterns: Name[]
   composed_of: Name[]
-  template: IndexTemplateSummary
+  template?: IndexTemplateSummary
   version?: VersionNumber
   priority?: long
   /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
