@@ -27560,7 +27560,7 @@
         },
         {
           "name": "centroid",
-          "since": "v7.16.0"
+          "since": "7.16.0"
         }
       ],
       "name": {

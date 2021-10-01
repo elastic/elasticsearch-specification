@@ -20,6 +20,6 @@
 export enum GridType {
   grid,
   point,
-  /** @since v7.16.0 */
+  /** @since 7.16.0 */
   centroid
 }
