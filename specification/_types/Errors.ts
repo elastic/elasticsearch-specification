@@ -62,6 +62,7 @@ export class ErrorCause {
   header?: HttpHeaders
   lang?: string
   position?: PainlessExecutionPosition
+  suppressed?: ErrorCause[]
 }
 
 export class MainError extends ErrorCause {

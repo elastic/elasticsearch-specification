@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 
 export class AggregationBreakdown {
   build_aggregation: long
@@ -34,7 +34,44 @@ export class AggregationBreakdown {
   reduce_count: long
 }
 
-export class AggregationProfileDebug {}
+export class AggregationProfileDebug {
+  segments_with_multi_valued_ords?: integer
+  collection_strategy?: string
+  segments_with_single_valued_ords?: integer
+  total_buckets?: integer
+  built_buckets?: integer
+  result_strategy?: string
+  has_filter?: boolean
+  delegate?: string
+  delegate_debug?: AggregationProfileDelegateDebug
+  chars_fetched?: integer
+  extract_count?: integer
+  extract_ns?: integer
+  values_fetched?: integer
+  collect_analyzed_ns?: integer
+  collect_analyzed_count?: integer
+  surviving_buckets?: integer
+  ordinals_collectors_used?: integer
+  ordinals_collectors_overhead_too_high?: integer
+  string_hashing_collectors_used?: integer
+  numeric_collectors_used?: integer
+  empty_collectors_used?: integer
+  deferred_aggregators?: string[]
+}
+
+export class AggregationProfileDelegateDebug {
+  segments_with_doc_count_field?: integer
+  segments_with_deleted_docs?: integer
+  filters?: AggregationProfileDelegateDebugFilter[]
+  segments_counted?: integer
+  segments_collected?: integer
+}
+
+export class AggregationProfileDelegateDebugFilter {
+  results_from_metadata?: integer
+  query?: string
+  specialized_for?: string
+}
 
 export class AggregationProfile {
   breakdown: AggregationBreakdown
@@ -42,14 +79,13 @@ export class AggregationProfile {
   time_in_nanos: long
   type: string
   debug?: AggregationProfileDebug
-  children?: AggregationProfileDebug[]
+  children?: AggregationProfile[]
 }
 
 export class Collector {
   name: string
   reason: string
   time_in_nanos: long
-
   children?: Collector[]
 }
 
@@ -83,7 +119,6 @@ export class QueryProfile {
   description: string
   time_in_nanos: long
   type: string
-
   children?: QueryProfile[]
 }
 
@@ -97,4 +132,28 @@ export class ShardProfile {
   aggregations: AggregationProfile[]
   id: string
   searches: SearchProfile[]
+  fetch?: FetchProfile
+}
+
+export class FetchProfile {
+  type: string
+  description: string
+  time_in_nanos: long
+  breakdown: FetchProfileBreakdown
+  debug?: FetchProfileDebug
+  children?: FetchProfile[]
+}
+
+export class FetchProfileBreakdown {
+  load_stored_fields?: integer
+  load_stored_fields_count?: integer
+  next_reader?: integer
+  next_reader_count?: integer
+  process_count?: integer
+  process?: integer
+}
+
+export class FetchProfileDebug {
+  stored_fields?: string[]
+  fast_path?: integer
 }

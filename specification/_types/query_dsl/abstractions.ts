@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Field,
