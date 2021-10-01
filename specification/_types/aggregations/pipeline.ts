@@ -25,7 +25,10 @@ import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 
 export class PipelineAggregationBase extends Aggregation {
-  buckets_path?: string | Dictionary<string, string>
+  // TODO: `buckets_path` chanegs based on the aggregation,
+  //       this property should be moved in the aggregations
+  //       that are extending this baseclass
+  buckets_path?: string | string[] | Dictionary<string, string>
   format?: string
   gap_policy?: GapPolicy
 }

@@ -3117,7 +3117,7 @@ export interface AggregationsPercentilesBucketAggregation extends AggregationsPi
 }
 
 export interface AggregationsPipelineAggregationBase extends AggregationsAggregation {
-  buckets_path?: string | Record<string, string>
+  buckets_path?: string | string[] | Record<string, string>
   format?: string
   gap_policy?: AggregationsGapPolicy
 }
