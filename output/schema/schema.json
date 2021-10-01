@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "a16c1de",
+    "hash": "2e80edbd",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -146944,7 +146944,7 @@
         },
         {
           "name": "vectors",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
