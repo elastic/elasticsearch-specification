@@ -25,7 +25,7 @@ import { TokenFilterBase } from './token_filters'
 export class KuromojiAnalyzer {
   type: 'kuromoji'
   mode: KuromojiTokenizationMode
-  user_dictionary: string
+  user_dictionary?: string
 }
 
 export class KuromojiIterationMarkCharFilter extends CharFilterBase {

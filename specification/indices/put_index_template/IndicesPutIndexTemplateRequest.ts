@@ -18,11 +18,11 @@
  */
 
 import { Alias } from '@indices/_types/Alias'
+import { DataStream } from '@indices/_types/DataStream'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
-  EmptyObject,
   IndexName,
   Indices,
   Metadata,
@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
     index_patterns?: Indices
     composed_of?: Name[]
     template?: IndexTemplateMapping
-    data_stream?: EmptyObject
+    data_stream?: DataStream
     priority?: integer
     version?: VersionNumber
     /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */

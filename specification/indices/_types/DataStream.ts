@@ -17,10 +17,6 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
-import { Field } from '@_types/common'
-import { FieldMapping } from '@_types/mapping/meta-fields'
-
-export class TypeFieldMappings {
-  mappings: SingleKeyDictionary<Field, FieldMapping>
+export class DataStream {
+  hidden?: boolean
 }
