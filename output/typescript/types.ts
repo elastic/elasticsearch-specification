@@ -8173,8 +8173,9 @@ export interface IlmAction {
 }
 
 export interface IlmPhase {
-  actions: Record<string, IlmAction> | string[]
+  actions?: Record<string, IlmAction> | string[]
   min_age?: Time
+  configurations?: Record<string, Record<string, integer | string>>
 }
 
 export interface IlmPhases {
@@ -10885,7 +10886,7 @@ export interface MlJob {
   model_snapshot_id?: Id
   model_snapshot_retention_days: long
   renormalization_window_days?: long
-  results_index_name?: IndexName
+  results_index_name: IndexName
   results_retention_days?: long
 }
 
@@ -15369,6 +15370,14 @@ export interface XpackInfoResponse {
   tagline: string
 }
 
+export interface XpackUsageAllJobs {
+  count: integer
+  detectors: Record<string, integer>
+  created_by: Record<string, string>
+  model_size: Record<string, integer>
+  forecasts: Record<string, integer>
+}
+
 export interface XpackUsageAnalytics extends XpackUsageBase {
   stats: XpackUsageAnalyticsStatistics
 }
@@ -15517,7 +15526,7 @@ export interface XpackUsageKibanaUrlConfig extends XpackUsageBaseUrlConfig {
 
 export interface XpackUsageMachineLearning extends XpackUsageBase {
   datafeeds: Record<string, XpackUsageDatafeed>
-  jobs: Record<string, MlJob>
+  jobs: Record<string, MlJob> | Record<string, XpackUsageAllJobs>
   node_count: integer
   data_frame_analytics_jobs: XpackUsageMlDataFrameAnalyticsJobs
   inference: XpackUsageMlInference

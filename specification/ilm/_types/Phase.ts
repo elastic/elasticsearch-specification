@@ -18,11 +18,13 @@
  */
 
 import { Dictionary } from '@spec_utils/Dictionary'
+import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 export class Phase {
-  actions: Dictionary<string, Action> | string[]
+  actions?: Dictionary<string, Action> | string[]
   min_age?: Time
+  configurations?: Dictionary<string, Dictionary<string, integer | string>>
 }
 
 export class Phases {
