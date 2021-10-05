@@ -98,7 +98,6 @@ export class ClusterStateUpdate {
   notification_time_millis?: long
 }
 
-
 export class Ingest {
   pipelines: Dictionary<string, IngestTotal>
   total: IngestTotal

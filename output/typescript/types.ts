@@ -1860,7 +1860,7 @@ export type DistanceUnit = 'in' | 'ft' | 'yd' | 'mi' | 'nmi' | 'km' | 'm' | 'cm'
 
 export interface DocStats {
   count: long
-  deleted: long
+  deleted?: long
 }
 
 export interface ElasticsearchVersionInfo {
@@ -12952,9 +12952,9 @@ export interface MonitoringBulkResponse {
 
 export interface NodesAdaptiveSelection {
   avg_queue_size: long
-  avg_response_time: long
+  avg_response_time?: long
   avg_response_time_ns: long
-  avg_service_time: string
+  avg_service_time?: string
   avg_service_time_ns: long
   outgoing_searches: long
   rank: string
@@ -12969,6 +12969,69 @@ export interface NodesBreaker {
   tripped: float
 }
 
+export interface NodesCgroup {
+  cpuacct: NodesCpuAcct
+  cpu: NodesCgroupCpu
+  memory: NodesCgroupMemory
+}
+
+export interface NodesCgroupCpu {
+  control_group: string
+  cfs_period_micros: integer
+  cfs_quota_micros: integer
+  stat: NodesCgroupCpuStat
+}
+
+export interface NodesCgroupCpuStat {
+  number_of_elapsed_periods: long
+  number_of_times_throttled: long
+  time_throttled_nanos: long
+}
+
+export interface NodesCgroupMemory {
+  control_group: string
+  limit_in_bytes: string
+  usage_in_bytes: string
+}
+
+export interface NodesClient {
+  id: long
+  agent: string
+  local_address: string
+  remote_address: string
+  last_uri: string
+  opened_time_millis: long
+  closed_time_millis?: long
+  last_request_time_millis: long
+  request_count: long
+  request_size_bytes: long
+  x_opaque_id?: string
+}
+
+export interface NodesClusterStateQueue {
+  total: long
+  pending: long
+  committed: long
+}
+
+export interface NodesClusterStateUpdate {
+  count?: long
+  computation_time_millis?: long
+  publication_time_millis?: long
+  context_construction_time_millis?: long
+  commit_time_millis?: long
+  completion_time_millis?: long
+  master_apply_time_millis?: long
+  notification_time_millis?: long
+}
+
+export interface NodesContext {
+  context: string
+  compilations: long
+  cache_evictions: long
+  compilation_limit_triggered: long
+}
+
 export interface NodesCpu {
   percent: integer
   sys?: string
@@ -12980,23 +13043,34 @@ export interface NodesCpu {
   load_average?: Record<string, double>
 }
 
+export interface NodesCpuAcct {
+  control_group: string
+  usage_nanos: long
+}
+
 export interface NodesDataPathStats {
-  available: string
+  available?: string
   available_in_bytes: long
-  disk_queue: string
-  disk_reads: long
-  disk_read_size: string
-  disk_read_size_in_bytes: long
-  disk_writes: long
-  disk_write_size: string
-  disk_write_size_in_bytes: long
-  free: string
+  disk_queue?: string
+  disk_reads?: long
+  disk_read_size?: string
+  disk_read_size_in_bytes?: long
+  disk_writes?: long
+  disk_write_size?: string
+  disk_write_size_in_bytes?: long
+  free?: string
   free_in_bytes: long
   mount: string
   path: string
-  total: string
+  total?: string
   total_in_bytes: long
   type: string
+}
+
+export interface NodesDiscovery {
+  cluster_state_queue: NodesClusterStateQueue
+  published_cluster_states: NodesPublishedClusterStates
+  cluster_state_update?: Record<string, NodesClusterStateUpdate>
 }
 
 export interface NodesExtendedMemoryStats extends NodesMemoryStats {
@@ -13008,14 +13082,15 @@ export interface NodesFileSystem {
   data: NodesDataPathStats[]
   timestamp: long
   total: NodesFileSystemTotal
+  io_stats: NodesIoStats
 }
 
 export interface NodesFileSystemTotal {
-  available: string
+  available?: string
   available_in_bytes: long
-  free: string
+  free?: string
   free_in_bytes: long
-  total: string
+  total?: string
   total_in_bytes: long
 }
 
@@ -13025,13 +13100,24 @@ export interface NodesGarbageCollector {
 
 export interface NodesGarbageCollectorTotal {
   collection_count: long
-  collection_time: string
+  collection_time?: string
   collection_time_in_millis: long
 }
 
 export interface NodesHttp {
   current_open: integer
   total_opened: long
+  clients?: NodesClient[]
+}
+
+export interface NodesIndexingPressure {
+  memory: NodesIndexingPressureMemory
+}
+
+export interface NodesIndexingPressureMemory {
+  limit_in_bytes: long
+  current: NodesPressureMemory
+  total: NodesPressureMemory
 }
 
 export interface NodesIngest {
@@ -13043,18 +13129,32 @@ export interface NodesIngestTotal {
   count: long
   current: long
   failed: long
-  processors: NodesKeyedProcessor[]
+  processors?: NodesKeyedProcessor[]
   time_in_millis: long
+}
+
+export interface NodesIoStatDevice {
+  device_name?: string
+  operations: long
+  read_kilobytes: long
+  read_operations: long
+  write_kilobytes: long
+  write_operations: long
+}
+
+export interface NodesIoStats {
+  devices?: NodesIoStatDevice[]
+  total?: NodesIoStatDevice
 }
 
 export interface NodesJvm {
   buffer_pools: Record<string, NodesNodeBufferPool>
   classes: NodesJvmClasses
   gc: NodesGarbageCollector
-  mem: NodesMemoryStats
+  mem: NodesJvmMemoryStats
   threads: NodesJvmThreads
   timestamp: long
-  uptime: string
+  uptime?: string
   uptime_in_millis: long
 }
 
@@ -13062,6 +13162,16 @@ export interface NodesJvmClasses {
   current_loaded_count: long
   total_loaded_count: long
   total_unloaded_count: long
+}
+
+export interface NodesJvmMemoryStats {
+  heap_used_in_bytes: long
+  heap_used_percent: long
+  heap_committed_in_bytes: long
+  heap_max_in_bytes: long
+  non_heap_used_in_bytes: long
+  non_heap_committed_in_bytes: long
+  pools: Record<string, NodesPool>
 }
 
 export interface NodesJvmThreads {
@@ -13081,16 +13191,16 @@ export interface NodesMemoryStats {
   share_in_bytes?: long
   total_virtual?: string
   total_virtual_in_bytes?: long
-  total_in_bytes: long
-  free_in_bytes: long
-  used_in_bytes: long
+  total_in_bytes?: long
+  free_in_bytes?: long
+  used_in_bytes?: long
 }
 
 export interface NodesNodeBufferPool {
   count: long
-  total_capacity: string
+  total_capacity?: string
   total_capacity_in_bytes: long
-  used: string
+  used?: string
   used_in_bytes: long
 }
 
@@ -13102,41 +13212,71 @@ export interface NodesOperatingSystem {
   cpu: NodesCpu
   mem: NodesExtendedMemoryStats
   swap: NodesMemoryStats
+  cgroup: NodesCgroup
   timestamp: long
+}
+
+export interface NodesPool {
+  used_in_bytes: long
+  max_in_bytes: long
+  peak_used_in_bytes: long
+  peak_max_in_bytes: long
+}
+
+export interface NodesPressureMemory {
+  combined_coordinating_and_primary_in_bytes?: long
+  coordinating_in_bytes?: long
+  primary_in_bytes?: long
+  replica_in_bytes?: long
+  all_in_bytes?: long
+  coordinating_rejections?: long
+  primary_rejections?: long
+  replica_rejections?: long
 }
 
 export interface NodesProcess {
   cpu: NodesCpu
   mem: NodesMemoryStats
   open_file_descriptors: integer
+  max_file_descriptors: integer
   timestamp: long
+}
+
+export interface NodesPublishedClusterStates {
+  full_states: long
+  incompatible_diffs: long
+  compatible_diffs: long
 }
 
 export interface NodesScripting {
   cache_evictions: long
   compilations: long
+  compilation_limit_triggered: long
+  contexts: NodesContext[]
 }
 
 export interface NodesStats {
-  adaptive_selection: Record<string, NodesAdaptiveSelection>
-  breakers: Record<string, NodesBreaker>
-  fs: NodesFileSystem
-  host: Host
-  http: NodesHttp
-  indices: IndicesStatsIndexStats
-  ingest: NodesIngest
-  ip: Ip | Ip[]
-  jvm: NodesJvm
+  adaptive_selection?: Record<string, NodesAdaptiveSelection>
+  breakers?: Record<string, NodesBreaker>
+  fs?: NodesFileSystem
+  host?: Host
+  http?: NodesHttp
+  indices?: IndicesStatsIndexStats
+  ingest?: NodesIngest
+  ip?: Ip | Ip[]
+  jvm?: NodesJvm
   name: Name
-  os: NodesOperatingSystem
-  process: NodesProcess
-  roles: NodeRoles
-  script: NodesScripting
-  thread_pool: Record<string, NodesThreadCount>
-  timestamp: long
-  transport: NodesTransport
-  transport_address: TransportAddress
-  attributes: Record<Field, string>
+  os?: NodesOperatingSystem
+  process?: NodesProcess
+  roles?: NodeRoles
+  script?: NodesScripting
+  thread_pool?: Record<string, NodesThreadCount>
+  timestamp?: long
+  transport?: NodesTransport
+  transport_address?: TransportAddress
+  attributes?: Record<Field, string>
+  discovery?: NodesDiscovery
+  indexing_pressure?: NodesIndexingPressure
 }
 
 export interface NodesThreadCount {
@@ -13150,12 +13290,13 @@ export interface NodesThreadCount {
 
 export interface NodesTransport {
   rx_count: long
-  rx_size: string
+  rx_size?: string
   rx_size_in_bytes: long
   server_open: integer
   tx_count: long
-  tx_size: string
+  tx_size?: string
   tx_size_in_bytes: long
+  total_outbound_connections: long
 }
 
 export interface NodesHotThreadsHotThread {
