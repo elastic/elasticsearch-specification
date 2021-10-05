@@ -45,12 +45,34 @@ export class Stats {
   transport_address: TransportAddress
   attributes: Dictionary<Field, string>
   discovery: Discovery
+  indexing_pressure: IndexingPressure
+}
+
+export class IndexingPressure {
+  memory: IndexingPressureMemory
+}
+
+export class IndexingPressureMemory {
+  limit_in_bytes: long
+  current: PressureMemory
+  total: PressureMemory
+}
+
+export interface PressureMemory {
+  combined_coordinating_and_primary_in_bytes?: long
+  coordinating_in_bytes?: long
+  primary_in_bytes?: long
+  replica_in_bytes?: long
+  all_in_bytes?: long
+  coordinating_rejections?: long
+  primary_rejections?: long
+  replica_rejections?: long
 }
 
 export class Discovery {
   cluster_state_queue: ClusterStateQueue
   published_cluster_states: PublishedClusterStates
-  cluster_state_update: Dictionary<string, ClusterStateUpdate> 
+  cluster_state_update: Dictionary<string, ClusterStateUpdate>
 }
 
 export class ClusterStateQueue {
