@@ -275,6 +275,14 @@ export class Scripting {
   cache_evictions: long
   compilations: long
   compilation_limit_triggered: long
+  contexts: Context[]
+}
+
+export class Context {
+  context: string
+  compilations: long
+  cache_evictions: long
+  compilation_limit_triggered: long
 }
 
 export class ThreadCount {
