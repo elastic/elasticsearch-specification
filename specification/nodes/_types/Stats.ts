@@ -83,6 +83,36 @@ export class Breaker {
   tripped: float
 }
 
+export class Cgroup {
+  cpuacct: CpuAcct
+  cpu: CgroupCpu
+  memory: CgroupMemory
+}
+
+export class CpuAcct {
+  control_group: string
+  usage_nanos: long
+}
+
+export class CgroupCpu {
+  control_group: string
+  cfs_period_micros: integer
+  cfs_quota_micros: integer
+  stat: CgroupCpuStat
+}
+
+export class CgroupCpuStat {
+  number_of_elapsed_periods: long
+  number_of_times_throttled: long
+  time_throttled_nanos: long
+}
+
+export class CgroupMemory {
+  control_group: string
+  limit_in_bytes: string
+  usage_in_bytes: string
+}
+
 export class Cpu {
   percent: integer
   sys?: string
@@ -120,9 +150,9 @@ export class MemoryStats {
   share_in_bytes?: long
   total_virtual?: string
   total_virtual_in_bytes?: long
-  total_in_bytes: long
-  free_in_bytes: long
-  used_in_bytes: long
+  total_in_bytes?: long
+  free_in_bytes?: long
+  used_in_bytes?: long
 }
 
 export class ExtendedMemoryStats extends MemoryStats {
@@ -194,6 +224,7 @@ export class OperatingSystem {
   cpu: Cpu
   mem: ExtendedMemoryStats
   swap: MemoryStats
+  cgroup: Cgroup
   timestamp: long
 }
 
@@ -201,6 +232,7 @@ export class Process {
   cpu: Cpu
   mem: MemoryStats
   open_file_descriptors: integer
+  max_file_descriptors: integer
   timestamp: long
 }
 
