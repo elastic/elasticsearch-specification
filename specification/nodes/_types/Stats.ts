@@ -192,11 +192,34 @@ export class Jvm {
   buffer_pools: Dictionary<string, NodeBufferPool>
   classes: JvmClasses
   gc: GarbageCollector
-  mem: MemoryStats
+  mem: JvmMemoryStats
   threads: JvmThreads
   timestamp: long
   uptime: string
   uptime_in_millis: long
+}
+
+export class JvmMemoryStats {
+  heap_used_in_bytes: long
+  heap_used_percent: long
+  heap_committed_in_bytes: long
+  heap_max_in_bytes: long
+  non_heap_used_in_bytes: long
+  non_heap_committed_in_bytes: long
+  pools: Pools;
+}
+
+export class Pools {
+  young: Pool
+  old: Pool
+  survivor: Pool
+}
+
+export class Pool {
+  used_in_bytes: long
+  max_in_bytes: long
+  peak_used_in_bytes: long
+  peak_max_in_bytes: long
 }
 
 export class JvmThreads {
