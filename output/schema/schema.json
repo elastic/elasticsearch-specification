@@ -96385,10 +96385,293 @@
     {
       "kind": "interface",
       "name": {
-        "name": "IndicesUpdateAliasBulk",
+        "name": "Action",
         "namespace": "indices.update_aliases"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "add",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AddAction",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "name": "remove",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RemoveAction",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "name": "remove_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RemoveIndexAction",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AddAction",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "name": "alias",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexAlias",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexAlias",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexAlias",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryContainer",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "is_hidden",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "is_write_index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "search_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RemoveAction",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "name": "alias",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexAlias",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexAlias",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexAlias",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "must_exist",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RemoveIndexAction",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -96405,7 +96688,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "IndicesUpdateAliasBulk",
+                  "name": "Action",
                   "namespace": "indices.update_aliases"
                 }
               }

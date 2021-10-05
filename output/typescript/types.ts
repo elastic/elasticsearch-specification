@@ -9594,15 +9594,43 @@ export interface IndicesUnfreezeResponse extends AcknowledgedResponseBase {
   shards_acknowledged: boolean
 }
 
-export interface IndicesUpdateAliasesIndicesUpdateAliasBulk {
-  [key: string]: never
+export interface IndicesUpdateAliasesAction {
+  add?: IndicesUpdateAliasesAddAction
+  remove?: IndicesUpdateAliasesRemoveAction
+  remove_index?: IndicesUpdateAliasesRemoveIndexAction
+}
+
+export interface IndicesUpdateAliasesAddAction {
+  alias?: IndexAlias
+  aliases?: IndexAlias | IndexAlias[]
+  filter?: QueryDslQueryContainer
+  index?: IndexName
+  indices?: Indices
+  index_routing?: Routing
+  is_hidden?: boolean
+  is_write_index?: boolean
+  routing?: Routing
+  search_routing?: Routing
+}
+
+export interface IndicesUpdateAliasesRemoveAction {
+  alias?: IndexAlias
+  aliases?: IndexAlias | IndexAlias[]
+  index?: IndexName
+  indices?: Indices
+  must_exist?: boolean
+}
+
+export interface IndicesUpdateAliasesRemoveIndexAction {
+  index?: IndexName
+  indices?: Indices
 }
 
 export interface IndicesUpdateAliasesRequest extends RequestBase {
   master_timeout?: Time
   timeout?: Time
   body?: {
-    actions?: IndicesUpdateAliasesIndicesUpdateAliasBulk[]
+    actions?: IndicesUpdateAliasesAction[]
   }
 }
 

@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { Time } from '@_types/Time'
+import { Action } from './types'
 
 /**
  * @rest_spec_name indices.update_aliases
@@ -31,8 +32,6 @@ export interface Request extends RequestBase {
     timeout?: Time
   }
   body: {
-    actions?: IndicesUpdateAliasBulk[]
+    actions?: Action[]
   }
 }
-
-export class IndicesUpdateAliasBulk {}
