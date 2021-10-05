@@ -125,20 +125,20 @@ export class Cpu {
 }
 
 export class DataPathStats {
-  available: string
+  available?: string
   available_in_bytes: long
-  disk_queue: string
-  disk_reads: long
-  disk_read_size: string
-  disk_read_size_in_bytes: long
-  disk_writes: long
-  disk_write_size: string
-  disk_write_size_in_bytes: long
-  free: string
+  disk_queue?: string
+  disk_reads?: long
+  disk_read_size?: string
+  disk_read_size_in_bytes?: long
+  disk_writes?: long
+  disk_write_size?: string
+  disk_write_size_in_bytes?: long
+  free?: string
   free_in_bytes: long
   mount: string
   path: string
-  total: string
+  total?: string
   total_in_bytes: long
   type: string
 }
@@ -169,22 +169,25 @@ export class FileSystem {
   data: DataPathStats[]
   timestamp: long
   total: FileSystemTotal
+  io_stats: IoStats
 }
 
+export class IoStats {}
+
 export class FileSystemTotal {
-  available: string
+  available?: string
   available_in_bytes: long
-  free: string
+  free?: string
   free_in_bytes: long
-  total: string
+  total?: string
   total_in_bytes: long
 }
 
 export class NodeBufferPool {
   count: long
-  total_capacity: string
+  total_capacity?: string
   total_capacity_in_bytes: long
-  used: string
+  used?: string
   used_in_bytes: long
 }
 
@@ -195,7 +198,7 @@ export class Jvm {
   mem: JvmMemoryStats
   threads: JvmThreads
   timestamp: long
-  uptime: string
+  uptime?: string
   uptime_in_millis: long
 }
 
