@@ -163,6 +163,21 @@ export class ExtendedMemoryStats extends MemoryStats {
 export class Http {
   current_open: integer
   total_opened: long
+  clients: Client[]
+}
+
+export class Client {
+  id: long
+  agent: string
+  local_address: string
+  remote_address: string
+  last_uri: string
+  opened_time_millis: long
+  closed_time_millis?: long
+  last_request_time_millis: long
+  request_count: long
+  request_size_bytes: long
+  x_opaque_id?: string
 }
 
 export class FileSystem {
@@ -172,7 +187,7 @@ export class FileSystem {
   io_stats: IoStats
 }
 
-export class IoStats {}
+export class IoStats { }
 
 export class FileSystemTotal {
   available?: string
@@ -259,6 +274,7 @@ export class Process {
 export class Scripting {
   cache_evictions: long
   compilations: long
+  compilation_limit_triggered: long
 }
 
 export class ThreadCount {
@@ -272,10 +288,11 @@ export class ThreadCount {
 
 export class Transport {
   rx_count: long
-  rx_size: string
+  rx_size?: string
   rx_size_in_bytes: long
   server_open: integer
   tx_count: long
-  tx_size: string
+  tx_size?: string
   tx_size_in_bytes: long
+  total_outbound_connections: long
 }
