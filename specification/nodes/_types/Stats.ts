@@ -206,13 +206,7 @@ export class JvmMemoryStats {
   heap_max_in_bytes: long
   non_heap_used_in_bytes: long
   non_heap_committed_in_bytes: long
-  pools: Pools;
-}
-
-export class Pools {
-  young: Pool
-  old: Pool
-  survivor: Pool
+  pools: Dictionary<string, Pool>
 }
 
 export class Pool {
@@ -239,7 +233,7 @@ export class GarbageCollector {
 
 export class GarbageCollectorTotal {
   collection_count: long
-  collection_time: string
+  collection_time?: string
   collection_time_in_millis: long
 }
 
