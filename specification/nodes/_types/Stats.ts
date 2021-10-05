@@ -44,7 +44,38 @@ export class Stats {
   transport: Transport
   transport_address: TransportAddress
   attributes: Dictionary<Field, string>
+  discovery: Discovery
 }
+
+export class Discovery {
+  cluster_state_queue: ClusterStateQueue
+  published_cluster_states: PublishedClusterStates
+  cluster_state_update: Dictionary<string, ClusterStateUpdate> 
+}
+
+export class ClusterStateQueue {
+  total: long
+  pending: long
+  committed: long
+}
+
+export class PublishedClusterStates {
+  full_states: long
+  incompatible_diffs: long
+  compatible_diffs: long
+}
+
+export class ClusterStateUpdate {
+  count?: long
+  computation_time_millis?: long
+  publication_time_millis?: long
+  context_construction_time_millis?: long
+  commit_time_millis?: long
+  completion_time_millis?: long
+  master_apply_time_millis?: long
+  notification_time_millis?: long
+}
+
 
 export class Ingest {
   pipelines: Dictionary<string, IngestTotal>
@@ -55,7 +86,7 @@ export class IngestTotal {
   count: long
   current: long
   failed: long
-  processors: KeyedProcessor[]
+  processors?: KeyedProcessor[]
   time_in_millis: long
 }
 
@@ -66,9 +97,9 @@ export class KeyedProcessor {
 
 export class AdaptiveSelection {
   avg_queue_size: long
-  avg_response_time: long
+  avg_response_time?: long
   avg_response_time_ns: long
-  avg_service_time: string
+  avg_service_time?: string
   avg_service_time_ns: long
   outgoing_searches: long
   rank: string
