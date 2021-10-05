@@ -25,27 +25,27 @@ import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 
 export class Stats {
-  adaptive_selection: Dictionary<string, AdaptiveSelection>
-  breakers: Dictionary<string, Breaker>
-  fs: FileSystem
-  host: Host
-  http: Http
-  indices: IndexStats
-  ingest: Ingest
-  ip: Ip | Ip[]
-  jvm: Jvm
+  adaptive_selection?: Dictionary<string, AdaptiveSelection>
+  breakers?: Dictionary<string, Breaker>
+  fs?: FileSystem
+  host?: Host
+  http?: Http
+  indices?: IndexStats
+  ingest?: Ingest
+  ip?: Ip | Ip[]
+  jvm?: Jvm
   name: Name
-  os: OperatingSystem
-  process: Process
-  roles: NodeRoles
-  script: Scripting
-  thread_pool: Dictionary<string, ThreadCount>
-  timestamp: long
-  transport: Transport
-  transport_address: TransportAddress
-  attributes: Dictionary<Field, string>
-  discovery: Discovery
-  indexing_pressure: IndexingPressure
+  os?: OperatingSystem
+  process?: Process
+  roles?: NodeRoles
+  script?: Scripting
+  thread_pool?: Dictionary<string, ThreadCount>
+  timestamp?: long
+  transport?: Transport
+  transport_address?: TransportAddress
+  attributes?: Dictionary<Field, string>
+  discovery?: Discovery
+  indexing_pressure?: IndexingPressure
 }
 
 export class IndexingPressure {
@@ -72,7 +72,7 @@ export interface PressureMemory {
 export class Discovery {
   cluster_state_queue: ClusterStateQueue
   published_cluster_states: PublishedClusterStates
-  cluster_state_update: Dictionary<string, ClusterStateUpdate>
+  cluster_state_update?: Dictionary<string, ClusterStateUpdate>
 }
 
 export class ClusterStateQueue {
@@ -216,7 +216,7 @@ export class ExtendedMemoryStats extends MemoryStats {
 export class Http {
   current_open: integer
   total_opened: long
-  clients: Client[]
+  clients?: Client[]
 }
 
 export class Client {
@@ -240,7 +240,19 @@ export class FileSystem {
   io_stats: IoStats
 }
 
-export class IoStats { }
+export class IoStats {
+  devices?: IoStatDevice[]
+  total?: IoStatDevice
+}
+
+export class IoStatDevice {
+  device_name?: string
+  operations: long
+  read_kilobytes: long
+  read_operations: long
+  write_kilobytes: long
+  write_operations: long
+}
 
 export class FileSystemTotal {
   available?: string
