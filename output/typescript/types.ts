@@ -12951,13 +12951,13 @@ export interface MonitoringBulkResponse {
 }
 
 export interface NodesAdaptiveSelection {
-  avg_queue_size?: long
+  avg_queue_size: long
   avg_response_time?: long
   avg_response_time_ns: long
   avg_service_time?: string
-  avg_service_time_ns?: long
-  outgoing_searches?: long
-  rank?: string
+  avg_service_time_ns: long
+  outgoing_searches: long
+  rank: string
 }
 
 export interface NodesBreaker {
@@ -13036,6 +13036,69 @@ export interface NodesContext {
   compilation_limit_triggered: long
 }
 
+export interface NodesCgroup {
+  cpuacct: NodesCpuAcct
+  cpu: NodesCgroupCpu
+  memory: NodesCgroupMemory
+}
+
+export interface NodesCgroupCpu {
+  control_group: string
+  cfs_period_micros: integer
+  cfs_quota_micros: integer
+  stat: NodesCgroupCpuStat
+}
+
+export interface NodesCgroupCpuStat {
+  number_of_elapsed_periods: long
+  number_of_times_throttled: long
+  time_throttled_nanos: long
+}
+
+export interface NodesCgroupMemory {
+  control_group: string
+  limit_in_bytes: string
+  usage_in_bytes: string
+}
+
+export interface NodesClient {
+  id: long
+  agent: string
+  local_address: string
+  remote_address: string
+  last_uri: string
+  opened_time_millis: long
+  closed_time_millis?: long
+  last_request_time_millis: long
+  request_count: long
+  request_size_bytes: long
+  x_opaque_id?: string
+}
+
+export interface NodesClusterStateQueue {
+  total: long
+  pending: long
+  committed: long
+}
+
+export interface NodesClusterStateUpdate {
+  count?: long
+  computation_time_millis?: long
+  publication_time_millis?: long
+  context_construction_time_millis?: long
+  commit_time_millis?: long
+  completion_time_millis?: long
+  master_apply_time_millis?: long
+  notification_time_millis?: long
+}
+
+export interface NodesContext {
+  context: string
+  compilations: long
+  cache_evictions: long
+  compilation_limit_triggered: long
+}
+
 export interface NodesCpu {
   percent: integer
   sys?: string
@@ -13072,11 +13135,9 @@ export interface NodesDataPathStats {
 }
 
 export interface NodesDiscovery {
-  cluster_state_queue?: NodesClusterStateQueue
-  published_cluster_states?: NodesPublishedClusterStates
+  cluster_state_queue: NodesClusterStateQueue
+  published_cluster_states: NodesPublishedClusterStates
   cluster_state_update?: Record<string, NodesClusterStateUpdate>
-  serialized_cluster_states?: NodesSerializedClusterState
-  cluster_applier_stats?: NodesClusterAppliedStats
 }
 
 export interface NodesExtendedMemoryStats extends NodesMemoryStats {
@@ -13085,10 +13146,10 @@ export interface NodesExtendedMemoryStats extends NodesMemoryStats {
 }
 
 export interface NodesFileSystem {
-  data?: NodesDataPathStats[]
-  timestamp?: long
-  total?: NodesFileSystemTotal
-  io_stats?: NodesIoStats
+  data: NodesDataPathStats[]
+  timestamp: long
+  total: NodesFileSystemTotal
+  io_stats: NodesIoStats
 }
 
 export interface NodesFileSystemTotal {
@@ -13111,19 +13172,19 @@ export interface NodesGarbageCollectorTotal {
 }
 
 export interface NodesHttp {
-  current_open?: integer
-  total_opened?: long
+  current_open: integer
+  total_opened: long
   clients?: NodesClient[]
 }
 
 export interface NodesIndexingPressure {
-  memory?: NodesIndexingPressureMemory
+  memory: NodesIndexingPressureMemory
 }
 
 export interface NodesIndexingPressureMemory {
-  limit_in_bytes?: long
-  current?: NodesPressureMemory
-  total?: NodesPressureMemory
+  limit_in_bytes: long
+  current: NodesPressureMemory
+  total: NodesPressureMemory
 }
 
 export interface NodesIngest {
@@ -13154,14 +13215,14 @@ export interface NodesIoStats {
 }
 
 export interface NodesJvm {
-  buffer_pools?: Record<string, NodesNodeBufferPool>
-  classes?: NodesJvmClasses
-  gc?: NodesGarbageCollector
-  mem?: NodesJvmMemoryStats
-  threads?: NodesJvmThreads
-  timestamp?: long
+  buffer_pools: Record<string, NodesNodeBufferPool>
+  classes: NodesJvmClasses
+  gc: NodesGarbageCollector
+  mem: NodesJvmMemoryStats
+  threads: NodesJvmThreads
+  timestamp: long
   uptime?: string
-  uptime_in_millis?: long
+  uptime_in_millis: long
 }
 
 export interface NodesJvmClasses {
@@ -13216,11 +13277,11 @@ export interface NodesNodesResponseBase {
 }
 
 export interface NodesOperatingSystem {
-  cpu?: NodesCpu
-  mem?: NodesExtendedMemoryStats
-  swap?: NodesMemoryStats
-  cgroup?: NodesCgroup
-  timestamp?: long
+  cpu: NodesCpu
+  mem: NodesExtendedMemoryStats
+  swap: NodesMemoryStats
+  cgroup: NodesCgroup
+  timestamp: long
 }
 
 export interface NodesPool {
@@ -13242,11 +13303,11 @@ export interface NodesPressureMemory {
 }
 
 export interface NodesProcess {
-  cpu?: NodesCpu
-  mem?: NodesMemoryStats
-  open_file_descriptors?: integer
-  max_file_descriptors?: integer
-  timestamp?: long
+  cpu: NodesCpu
+  mem: NodesMemoryStats
+  open_file_descriptors: integer
+  max_file_descriptors: integer
+  timestamp: long
 }
 
 export interface NodesPublishedClusterStates {
@@ -13255,28 +13316,11 @@ export interface NodesPublishedClusterStates {
   compatible_diffs: long
 }
 
-export interface NodesRecording {
-  name?: string
-  cumulative_execution_count?: long
-  cumulative_execution_time_millis?: long
-}
-
 export interface NodesScripting {
-  cache_evictions?: long
-  compilations?: long
-  compilation_limit_triggered?: long
-  contexts?: NodesContext[]
-}
-
-export interface NodesSerializedClusterState {
-  full_states?: NodesSerializedClusterStateDetail
-  diffs?: NodesSerializedClusterStateDetail
-}
-
-export interface NodesSerializedClusterStateDetail {
-  count?: long
-  uncompressed_size_in_bytes?: long
-  compressed_size_in_bytes?: long
+  cache_evictions: long
+  compilations: long
+  compilation_limit_triggered: long
+  contexts: NodesContext[]
 }
 
 export interface NodesStats {
@@ -13289,7 +13333,7 @@ export interface NodesStats {
   ingest?: NodesIngest
   ip?: Ip | Ip[]
   jvm?: NodesJvm
-  name?: Name
+  name: Name
   os?: NodesOperatingSystem
   process?: NodesProcess
   roles?: NodeRoles
@@ -13313,14 +13357,14 @@ export interface NodesThreadCount {
 }
 
 export interface NodesTransport {
-  rx_count?: long
+  rx_count: long
   rx_size?: string
-  rx_size_in_bytes?: long
-  server_open?: integer
-  tx_count?: long
+  rx_size_in_bytes: long
+  server_open: integer
+  tx_count: long
   tx_size?: string
-  tx_size_in_bytes?: long
-  total_outbound_connections?: long
+  tx_size_in_bytes: long
+  total_outbound_connections: long
 }
 
 export interface NodesHotThreadsHotThread {
