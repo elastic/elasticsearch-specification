@@ -7321,6 +7321,11 @@
       "description": "Adds an anomaly detection job to a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar-job.html",
       "name": "ml.put_calendar_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.put_calendar_job"
@@ -116117,6 +116122,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A string that uniquely identifies a calendar.",
             "name": "calendar_id",
             "required": true,
             "type": {
@@ -116128,6 +116134,7 @@
             }
           },
           {
+            "description": "A description of the calendar.",
             "name": "description",
             "required": false,
             "type": {
@@ -116139,6 +116146,7 @@
             }
           },
           {
+            "description": "A list of anomaly detection job identifiers or group names.",
             "name": "job_ids",
             "required": true,
             "type": {
