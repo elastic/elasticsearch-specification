@@ -7293,6 +7293,11 @@
       "description": "Instantiates a calendar.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-calendar.html",
       "name": "ml.put_calendar",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.put_calendar"
@@ -115980,6 +115985,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A description of the calendar.",
             "name": "description",
             "required": false,
             "type": {
@@ -115992,7 +115998,7 @@
           }
         ]
       },
-      "description": "Instantiates a calendar.",
+      "description": "Creates a calendar.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116006,7 +116012,7 @@
       },
       "path": [
         {
-          "description": "The ID of the calendar to create",
+          "description": "A string that uniquely identifies a calendar.",
           "name": "calendar_id",
           "required": true,
           "type": {
@@ -116025,6 +116031,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A string that uniquely identifies a calendar.",
             "name": "calendar_id",
             "required": true,
             "type": {
@@ -116036,6 +116043,7 @@
             }
           },
           {
+            "description": "A description of the calendar.",
             "name": "description",
             "required": true,
             "type": {
@@ -116047,6 +116055,7 @@
             }
           },
           {
+            "description": "A list of anomaly detection job identifiers or group names.",
             "name": "job_ids",
             "required": true,
             "type": {
