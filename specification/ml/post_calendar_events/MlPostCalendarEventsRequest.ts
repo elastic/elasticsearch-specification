@@ -22,9 +22,11 @@ import { Id } from '@_types/common'
 import { CalendarEvent } from '../_types/CalendarEvent'
 
 /**
+ * Adds scheduled events to a calendar.
  * @rest_spec_name ml.post_calendar_events
  * @since 6.2.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
@@ -32,7 +34,7 @@ export interface Request extends RequestBase {
     calendar_id: Id
   }
   body: {
-    /** A list of one of more scheduled events. The event’s start and end times may be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
+    /** A list of one of more scheduled events. The event’s start and end times can be specified as integer milliseconds since the epoch or as a string in ISO 8601 format. */
     events: CalendarEvent[]
   }
 }
