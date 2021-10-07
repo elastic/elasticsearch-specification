@@ -32,6 +32,5 @@ jobs:
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Update model info
-        push_options: --force-with-lease
         file_pattern: output/schema/schema.json
 
