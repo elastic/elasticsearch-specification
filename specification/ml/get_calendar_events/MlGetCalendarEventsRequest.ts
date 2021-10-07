@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
