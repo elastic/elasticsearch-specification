@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 import { EpochMillis } from '@_types/Time'
 
 export class CalendarEvent {
+  /** A string that uniquely identifies a calendar. */
   calendar_id?: Id
   event_id?: Id
   /** A description of the scheduled event. */
