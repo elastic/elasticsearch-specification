@@ -21,13 +21,17 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes anomaly detection jobs from a calendar.
  * @rest_spec_name ml.delete_calendar_job
  * @since 6.2.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** A string that uniquely identifies a calendar. */
     calendar_id: Id
+    /** An identifier for the anomaly detection jobs. It can be a job identifier, a group name, or a comma-separated list of jobs or groups. */
     job_id: Id
   }
 }
