@@ -21,15 +21,19 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Creates a calendar.
  * @rest_spec_name ml.put_calendar
  * @since 6.2.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** A string that uniquely identifies a calendar. */
     calendar_id: Id
   }
   body: {
+    /** A description of the calendar. */
     description?: string
   }
 }
