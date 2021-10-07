@@ -23,21 +23,40 @@ import { integer } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 
 /**
+ * Retrieves information about the scheduled events in calendars.
  * @rest_spec_name ml.get_calendar_events
  * @since 6.2.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** A string that uniquely identifies a calendar. You can get information for multiple calendars by using a comma-separated list of ids or a wildcard expression. You can get information for all calendars by using `_all` or `*` or by omitting the calendar identifier.*/
     calendar_id: Id
   }
   query_parameters: {
-    job_id?: Id // undocumented
-    // these params below should all be in the request body, but the tests are failing
-    // https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-calendar-event.html#ml-get-calendar-event-request-body
+    /** Specifies to get events with timestamps earlier than this time. */
     end?: DateString
+    /** Skips the specified number of events.
+     * @server_default 0
+     */
     from?: integer
-    start?: string
+    /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
+    job_id?: Id 
+    /** Specifies the maximum number of events to obtain.
+     * @server_default 100
+     */
     size?: integer
+    /** Specifies to get events with timestamps after this time. */
+    start?: string
+  }
+  body: {
+    /** Specifies to get events with timestamps earlier than this time. */
+    end?: DateString
+    /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
+    job_id: Id,
+    page?: Page,
+    /** Specifies to get events with timestamps after this time. */
+    start?: DateString
   }
 }
