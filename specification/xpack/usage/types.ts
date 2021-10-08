@@ -19,7 +19,7 @@
 
 import { Phases } from '@ilm/_types/Phase'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
@@ -323,11 +323,24 @@ export class FrozenIndices extends Base {
   indices_count: long
 }
 
+export class AllJobs {
+  count: integer
+  detectors: Dictionary<string, integer>
+  created_by: Dictionary<string, string>
+  model_size: Dictionary<string, integer>
+  forecasts: Dictionary<string, integer>
+}
+
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
   // TODO: xPack marks the entire Job definition as optional
   //       while the MlJob has many required properties.
-  jobs: Dictionary<string, Job>
+
+  // Assumption: the 'jobs' entry can either contain a dictionary of
+  // individual jobs or a single summary entry under the key '_all'.
+  // The layout of the summary varies from that of the individual job,
+  // and is specified in the 'AllJobs' class (defined above).
+  jobs: Dictionary<string, Job> | SingleKeyDictionary<string, AllJobs>
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
   inference: MlInference
