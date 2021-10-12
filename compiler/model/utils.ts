@@ -741,7 +741,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['obsolete', 'obsolete_description', 'identifier', 'since']
+  const validTags = ['obsolete', 'obsolete_description', 'identifier', 'since', 'aliases']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -751,6 +751,8 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
     if (tag === 'identifier') {
       member.identifier = value
+    } else if (tag === 'aliases') {
+      member.aliases = value.split(',').map(v => v.trim())
     } else if (tag === 'since') {
       assert(jsDocs, semver.valid(value), `${member.name}'s @since is not valid semver: ${value}`)
       member.since = value

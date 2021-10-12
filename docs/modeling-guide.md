@@ -87,6 +87,17 @@ enum MyEnum {
 property: MyEnum
 ```
 
+Some enumerations accept alternate values for some of their members. The `@aliases` jsdoc tac can be used to capture these values:
+
+```ts
+enum Orientation {
+  /** @aliases counterclockwise, ccw */
+  right,
+  /** @aliases clockwise, cw */
+  left
+}
+```
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.

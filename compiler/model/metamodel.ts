@@ -288,6 +288,8 @@ export class NoBody {
 export class EnumMember {
   /** The identifier to use for this enum */
   name: string
+  /** An optional set of aliases for `name` */
+  aliases?: string[]
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
