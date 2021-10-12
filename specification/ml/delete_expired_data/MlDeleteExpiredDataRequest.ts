@@ -35,6 +35,7 @@ import { Time } from '@_types/Time'
  * @rest_spec_name ml.delete_expired_data
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {

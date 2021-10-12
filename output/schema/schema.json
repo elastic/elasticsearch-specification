@@ -6098,6 +6098,11 @@
       "description": "Deletes expired and unused machine learning data.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-expired-data.html",
       "name": "ml.delete_expired_data",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_expired_data"
