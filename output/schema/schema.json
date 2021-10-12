@@ -6067,6 +6067,11 @@
       "description": "Deletes an existing datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_datafeed"

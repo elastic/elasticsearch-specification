@@ -25,6 +25,7 @@ import { Id } from '@_types/common'
  * @rest_spec_name ml.delete_datafeed
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
