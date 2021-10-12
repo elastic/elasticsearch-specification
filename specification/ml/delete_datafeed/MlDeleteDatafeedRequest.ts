@@ -37,7 +37,7 @@ export interface Request extends RequestBase {
     datafeed_id: Id
   }
   query_parameters: {
-    /** 
+    /**
      * Use to forcefully delete a started datafeed; this method is quicker than
      * stopping and deleting the datafeed.
      */

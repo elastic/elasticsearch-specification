@@ -110879,7 +110879,7 @@
       },
       "path": [
         {
-          "description": "A numerical character string that uniquely identifies the datafeed. This \nidentifier can contain lowercase alphanumeric characters (a-z and 0-9), \nhyphens, and underscores. It must start and end with alphanumeric \ncharacters.",
+          "description": "A numerical character string that uniquely identifies the datafeed. This\nidentifier can contain lowercase alphanumeric characters (a-z and 0-9),\nhyphens, and underscores. It must start and end with alphanumeric\ncharacters.",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -110893,7 +110893,7 @@
       ],
       "query": [
         {
-          "description": "Use to forcefully delete a started datafeed; this method is quicker than \nstopping and deleting the datafeed.",
+          "description": "Use to forcefully delete a started datafeed; this method is quicker than\nstopping and deleting the datafeed.",
           "name": "force",
           "required": false,
           "type": {
