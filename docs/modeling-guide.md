@@ -85,6 +85,17 @@ enum MyEnum {
 property: MyEnum
 ```
 
+Some enumerations accept alternate values for some of their members. The `@aliases` jsdoc tac can be used to capture these values:
+
+```ts
+enum Orientation {
+  /** @aliases counterclockwise, ccw */
+  right,
+  /** @aliases clockwise, cw */
+  left
+}
+```
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.
@@ -433,5 +444,61 @@ export interface Request<TDocument> extends RequestBase {
   query_parameters?: {}
   /** @identifier document */
   body?: TDocument
+}
+```
+
+#### `@index_privileges`
+
+If an endpoint has some index security prerequisites to satisfy, you can specify them here with a comma separated list.
+
+```ts
+/**
+ * @rest_spec_name indices.create
+ * @since 0.0.0
+ * @stability stable
+ * @index_privileges create_index, manage
+ */
+export interface Request extends RequestBase {
+ ...
+}
+```
+
+#### `@cluster_privileges`
+
+If an endpoint has some cluster security prerequisites to satisfy, you can specify them here with a comma separated list.
+
+```ts
+/**
+ * @rest_spec_name cluster.state
+ * @since 1.3.0
+ * @stability stable
+ * @cluster_privileges monitor, manage
+ */
+export interface Request extends RequestBase {
+ ...
+}
+```
+
+#### `@deprecated`
+
+Use if an endpoint or property is deprecated, you should add the version as well.
+
+```ts
+class Foo {
+  bar: string
+  /** @deprecated 7.0.0 */
+  baz?: string
+  faz: string
+}
+```
+
+You can also add an optional description:
+
+```ts
+class Foo {
+  bar: string
+  /** @deprecated 7.0.0 'baz' has been deprecated, use 'bar' instead */
+  baz?: string
+  faz: string
 }
 ```
