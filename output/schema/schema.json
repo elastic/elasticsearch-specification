@@ -110957,7 +110957,7 @@
           }
         ]
       },
-      "description": "Deletes expired and unused machine learning data.\nDeletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the \n<job_id>.",
+      "description": "Deletes expired and unused machine learning data.\nDeletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the\n<job_id>.",
       "inherits": {
         "type": {
           "name": "RequestBase",
