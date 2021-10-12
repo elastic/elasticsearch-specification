@@ -28,20 +28,18 @@ export class GeoPointProperty extends DocValuesPropertyBase {
 }
 
 export enum GeoOrientation {
-  right = 0,
-  RIGHT = 1,
-  counterclockwise = 2,
-  COUNTERCLOCKWISE = 3,
-  ccw = 4,
-  CCW = 5,
-  left = 6,
-  LEFT = 7,
-  clockwise = 8,
-  CLOCKWISE = 9,
-  cw = 10,
-  CW = 11
+  /** @aliases counterclockwise, ccw */
+  right,
+  /** @aliases clockwise, cw */
+  left
 }
 
+/**
+ * The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles
+ * and polygons.
+ *
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html
+ */
 export class GeoShapeProperty extends DocValuesPropertyBase {
   coerce?: boolean
   ignore_malformed?: boolean
@@ -66,4 +64,18 @@ export class PointProperty extends DocValuesPropertyBase {
   ignore_z_value?: boolean
   null_value?: string
   type: 'point'
+}
+
+/**
+ * The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as
+ * rectangles and polygons.
+ *
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html
+ */
+export class ShapeProperty extends DocValuesPropertyBase {
+  coerce?: boolean
+  ignore_malformed?: boolean
+  ignore_z_value?: boolean
+  orientation?: GeoOrientation
+  type: 'shape'
 }
