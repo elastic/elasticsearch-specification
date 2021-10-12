@@ -349,7 +349,17 @@ function buildResponse (type: M.Response): string {
 }
 
 function buildEnum (type: M.Enum): string {
-  return `export type ${createName(type.name)} = ${type.members.map(m => `'${m.name}'`).join(' | ')}\n`
+  // Flatten all items names and aliases
+  const names = type.members.reduce((accum, item) => {
+    accum.push(item.name)
+    if (item.aliases == null) {
+      return accum
+    } else {
+      return accum.concat(item.aliases)
+    }
+  }, new Array<string>())
+
+  return `export type ${createName(type.name)} = ${names.map(m => `'${m}'`).join(' | ')}\n`
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {
