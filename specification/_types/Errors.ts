@@ -17,56 +17,35 @@
  * under the License.
  */
 
-import { PainlessExecutionPosition } from '@global/scripts_painless_execute/types'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { HttpHeaders, Id, Ids, IndexName, Uuid } from './common'
+import { Id, IndexName } from './common'
 import { integer, long } from './Numeric'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
-export class ErrorCause {
-  type: string
+/**
+ * Cause and details about a request failure. This class defines the properties common to all error types.
+ * Additional details are also provided, that depend on the error type.
+ *
+ * @shortcut_property reason
+ */
+export class ErrorCause
+  implements AdditionalProperties<string, UserDefinedValue> {
+  /**
+   * The type of error
+   */
+  type?: string
+  /**
+   * A human-readable explanation of the error, in english
+   */
   reason: string
-
-  caused_by?: ErrorCause
-  shard?: integer | string
+  /**
+   * The server stack trace. Present only f the `error_trace=true` parameter was sent with the request.
+   */
   stack_trace?: string
 
-  root_cause?: ErrorCause[]
-
-  bytes_limit?: long
-  bytes_wanted?: long
-  column?: integer
-  col?: integer
-  failed_shards?: ShardFailure[]
-  grouped?: boolean
-  index?: IndexName
-  index_uuid?: Uuid
-  language?: string
-  licensed_expired_feature?: string
-  line?: integer
-  max_buckets?: integer
-  phase?: string
-  property_name?: string
-  processor_type?: string
-  /**
-   * resource id
-   * @aliases resource.id
-   */
-  resource_id?: Ids
-  /**
-   * resource type
-   * @aliases resource.type
-   */
-  resource_type?: string
-  script?: string
-  script_stack?: string[]
-  header?: HttpHeaders
-  lang?: string
-  position?: PainlessExecutionPosition
+  caused_by?: ErrorCause
+  root_cause: ErrorCause[]
   suppressed?: ErrorCause[]
-}
-
-export class MainError extends ErrorCause {
-  headers?: Dictionary<string, string>
 }
 
 export class ShardFailure {
@@ -78,7 +57,7 @@ export class ShardFailure {
 }
 
 export class BulkIndexByScrollFailure {
-  cause: MainError
+  cause: ErrorCause
   id: Id
   index: IndexName
   status: integer
