@@ -110931,6 +110931,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The desired requests per second for the deletion processes. The default\nbehavior is no throttling.",
             "name": "requests_per_second",
             "required": false,
             "type": {
@@ -110942,6 +110943,7 @@
             }
           },
           {
+            "description": "How long can the underlying delete processes run until they are canceled.",
             "name": "timeout",
             "required": false,
             "serverDefault": "8h",
@@ -110955,7 +110957,7 @@
           }
         ]
       },
-      "description": "Deletes expired and unused machine learning data.",
+      "description": "Deletes expired and unused machine learning data.\nDeletes all job results, model snapshots and forecast data that have exceeded\ntheir retention days period. Machine learning state documents that are not\nassociated with any job are also deleted.\nYou can limit the request to a single or set of anomaly detection jobs by\nusing a job identifier, a group name, a comma-separated list of jobs, or a\nwildcard expression. You can delete expired data for all anomaly detection\njobs by using _all, by specifying * as the <job_id>, or by omitting the \n<job_id>.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110969,7 +110971,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job(s) to perform expired data hygiene for",
+          "description": "Identifier for an anomaly detection job. It can be a job identifier, a\ngroup name, or a wildcard expression.",
           "name": "job_id",
           "required": false,
           "type": {
@@ -110983,7 +110985,7 @@
       ],
       "query": [
         {
-          "description": "The desired requests per second for the deletion processes.",
+          "description": "The desired requests per second for the deletion processes. The default\nbehavior is no throttling.",
           "name": "requests_per_second",
           "required": false,
           "type": {
@@ -110995,7 +110997,7 @@
           }
         },
         {
-          "description": "How long can the underlying delete processes run until they are canceled",
+          "description": "How long can the underlying delete processes run until they are canceled.",
           "name": "timeout",
           "required": false,
           "serverDefault": "8h",

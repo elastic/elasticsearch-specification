@@ -23,22 +23,49 @@ import { float } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 /**
+ * Deletes expired and unused machine learning data.
+ * Deletes all job results, model snapshots and forecast data that have exceeded
+ * their retention days period. Machine learning state documents that are not
+ * associated with any job are also deleted.
+ * You can limit the request to a single or set of anomaly detection jobs by
+ * using a job identifier, a group name, a comma-separated list of jobs, or a
+ * wildcard expression. You can delete expired data for all anomaly detection
+ * jobs by using _all, by specifying * as the <job_id>, or by omitting the
+ * <job_id>.
  * @rest_spec_name ml.delete_expired_data
  * @since 5.4.0
  * @stability stable
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for an anomaly detection job. It can be a job identifier, a
+     * group name, or a wildcard expression.
+     */
     job_id?: Id
   }
   query_parameters: {
+    /**
+     * The desired requests per second for the deletion processes. The default
+     * behavior is no throttling.
+     */
     requests_per_second?: float
-    /** @server_default 8h */
+    /**
+     * How long can the underlying delete processes run until they are canceled.
+     * @server_default 8h
+     */
     timeout?: Time
   }
   body: {
+    /**
+     * The desired requests per second for the deletion processes. The default
+     * behavior is no throttling.
+     */
     requests_per_second?: float
-    /** @server_default 8h */
+    /**
+     * How long can the underlying delete processes run until they are canceled.
+     * @server_default 8h
+     */
     timeout?: Time
   }
 }
