@@ -21,12 +21,19 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes a filter.
+ * If an anomaly detection job references the filter, you cannot delete the
+ * filter. You must update or delete the job before you can delete the filter.
  * @rest_spec_name ml.delete_filter
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A string that uniquely identifies a filter.
+     */
     filter_id: Id
   }
 }

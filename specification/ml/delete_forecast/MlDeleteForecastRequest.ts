@@ -22,17 +22,44 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Deletes forecasts from a machine learning job.
+ * By default, forecasts are retained for 14 days. You can specify a
+ * different retention period with the `expires_in` parameter in the forecast
+ * jobs API. The delete forecast API enables you to delete one or more
+ * forecasts before they expire.
  * @rest_spec_name ml.delete_forecast
  * @since 6.5.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
+    /**
+     * A comma-separated list of forecast identifiers. If you do not specify
+     * this optional parameter or if you specify `_all` or `*` the API deletes
+     * all forecasts from the job.
+     */
     forecast_id?: Id
   }
   query_parameters: {
+    /**
+     * Specifies whether an error occurs when there are no forecasts. In
+     * particular, if this parameter is set to `false` and there are no
+     * forecasts associated with the job, attempts to delete all forecasts
+     * return an error.
+     * @server_default true
+     */
     allow_no_forecasts?: boolean
+    /**
+     * Specifies the period of time to wait for the completion of the delete
+     * operation. When this period of time elapses, the API fails and returns an
+     * error.
+     * @server_default 30s
+     */
     timeout?: Time
   }
 }
