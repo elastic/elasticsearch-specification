@@ -51134,40 +51134,20 @@
       "kind": "enum",
       "members": [
         {
+          "aliases": [
+            "RIGHT",
+            "counterclockwise",
+            "ccw"
+          ],
           "name": "right"
         },
         {
-          "name": "RIGHT"
-        },
-        {
-          "name": "counterclockwise"
-        },
-        {
-          "name": "COUNTERCLOCKWISE"
-        },
-        {
-          "name": "ccw"
-        },
-        {
-          "name": "CCW"
-        },
-        {
+          "aliases": [
+            "LEFT",
+            "clockwise",
+            "cw"
+          ],
           "name": "left"
-        },
-        {
-          "name": "LEFT"
-        },
-        {
-          "name": "clockwise"
-        },
-        {
-          "name": "CLOCKWISE"
-        },
-        {
-          "name": "cw"
-        },
-        {
-          "name": "CW"
         }
       ],
       "name": {
@@ -51232,6 +51212,8 @@
       ]
     },
     {
+      "description": "The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles\nand polygons.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html",
       "inherits": {
         "type": {
           "name": "DocValuesPropertyBase",
@@ -52664,33 +52646,8 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "right"
-        },
-        {
-          "name": "counterclockwise"
-        },
-        {
-          "name": "ccw"
-        },
-        {
-          "name": "left"
-        },
-        {
-          "name": "clockwise"
-        },
-        {
-          "name": "cw"
-        }
-      ],
-      "name": {
-        "name": "ShapeOrientation",
-        "namespace": "_types.mapping"
-      }
-    },
-    {
+      "description": "The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as\nrectangles and polygons.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html",
       "inherits": {
         "type": {
           "name": "DocValuesPropertyBase",
@@ -52742,7 +52699,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShapeOrientation",
+              "name": "GeoOrientation",
               "namespace": "_types.mapping"
             }
           }
