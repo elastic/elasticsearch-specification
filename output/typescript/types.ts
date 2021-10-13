@@ -77,7 +77,7 @@ export interface BulkResponseItemBase {
   _id?: string | null
   _index: string
   status: integer
-  error?: ErrorCause
+  error?: ErrorCause | string
   _primary_term?: long
   result?: string
   _seq_no?: SequenceNumber
@@ -482,7 +482,7 @@ export interface InfoResponse {
 }
 
 export interface MgetHit<TDocument = unknown> {
-  error?: MainError
+  error?: ErrorCause | string
   fields?: Record<string, any>
   found?: boolean
   _id: Id
@@ -899,12 +899,6 @@ export interface ScriptsPainlessExecutePainlessContextSetup {
   document: any
   index: IndexName
   query: QueryDslQueryContainer
-}
-
-export interface ScriptsPainlessExecutePainlessExecutionPosition {
-  offset: integer
-  start: integer
-  end: integer
 }
 
 export interface ScriptsPainlessExecuteRequest extends RequestBase {
@@ -1850,7 +1844,7 @@ export interface AcknowledgedResponseBase {
 export type AggregateName = string
 
 export interface BulkIndexByScrollFailure {
-  cause: MainError
+  cause: ErrorCause | string
   id: Id
   index: IndexName
   status: integer
@@ -1944,43 +1938,20 @@ export interface EmptyObject {
 
 export type EpochMillis = string | long
 
-export interface ErrorCause {
-  type: string
+export interface ErrorCauseKeys {
+  type?: string
   reason: string
-  caused_by?: ErrorCause
-  shard?: integer | string
   stack_trace?: string
-  root_cause?: ErrorCause[]
-  bytes_limit?: long
-  bytes_wanted?: long
-  column?: integer
-  col?: integer
-  failed_shards?: ShardFailure[]
-  grouped?: boolean
-  index?: IndexName
-  index_uuid?: Uuid
-  language?: string
-  licensed_expired_feature?: string
-  line?: integer
-  max_buckets?: integer
-  phase?: string
-  property_name?: string
-  processor_type?: string
-  resource_id?: Ids
-  'resource.id'?: Ids
-  resource_type?: string
-  'resource.type'?: string
-  script?: string
-  script_stack?: string[]
-  header?: HttpHeaders
-  lang?: string
-  position?: ScriptsPainlessExecutePainlessExecutionPosition
-  suppressed?: ErrorCause[]
+  caused_by?: ErrorCause | string
+  root_cause: (ErrorCause | string)[]
+  suppressed?: (ErrorCause | string)[]
 }
+export type ErrorCause = ErrorCauseKeys |
+    { [property: string]: any }
 
 export interface ErrorResponseBase {
-  error: MainError | string
-  status?: integer
+  error: ErrorCause | string
+  status: integer
 }
 
 export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'
@@ -2111,10 +2082,6 @@ export type Level = 'cluster' | 'indices' | 'shards'
 
 export type LifecycleOperationMode = 'RUNNING' | 'STOPPING' | 'STOPPED'
 
-export interface MainError extends ErrorCause {
-  headers?: Record<string, string>
-}
-
 export type MapboxVectorTiles = ArrayBuffer
 
 export interface MergesStats {
@@ -2181,7 +2148,7 @@ export interface NodeShard {
 }
 
 export interface NodeStatistics {
-  failures?: ErrorCause[]
+  failures?: (ErrorCause | string)[]
   total: integer
   successful: integer
   failed: integer
@@ -2344,7 +2311,7 @@ export type ShapeRelation = 'intersects' | 'disjoint' | 'within'
 export interface ShardFailure {
   index?: IndexName
   node?: string
-  reason: ErrorCause
+  reason: ErrorCause | string
   shard: integer
   status?: string
 }
@@ -7003,7 +6970,7 @@ export interface CcrFollowIndexStats {
 }
 
 export interface CcrReadException {
-  exception: ErrorCause
+  exception: ErrorCause | string
   from_seq_no: SequenceNumber
   retries: integer
 }
@@ -7012,7 +6979,7 @@ export interface CcrShardStats {
   bytes_read: long
   failed_read_requests: long
   failed_write_requests: long
-  fatal_exception?: ErrorCause
+  fatal_exception?: ErrorCause | string
   follower_aliases_version: VersionNumber
   follower_global_checkpoint: long
   follower_index: string
@@ -7216,7 +7183,7 @@ export interface CcrStatsAutoFollowStats {
   number_of_failed_follow_indices: long
   number_of_failed_remote_cluster_state_requests: long
   number_of_successful_follow_indices: long
-  recent_auto_follow_errors: ErrorCause[]
+  recent_auto_follow_errors: (ErrorCause | string)[]
 }
 
 export interface CcrStatsAutoFollowedCluster {
@@ -12304,7 +12271,7 @@ export interface MonitoringBulkRequest<TSource = unknown> extends RequestBase {
 }
 
 export interface MonitoringBulkResponse {
-  error?: ErrorCause
+  error?: ErrorCause | string
   errors: boolean
   ignored: boolean
   took: long
@@ -13744,7 +13711,7 @@ export interface SecurityInvalidateApiKeyRequest extends RequestBase {
 
 export interface SecurityInvalidateApiKeyResponse {
   error_count: integer
-  error_details?: ErrorCause[]
+  error_details?: (ErrorCause | string)[]
   invalidated_api_keys: string[]
   previously_invalidated_api_keys: string[]
 }
@@ -13760,7 +13727,7 @@ export interface SecurityInvalidateTokenRequest extends RequestBase {
 
 export interface SecurityInvalidateTokenResponse {
   error_count: long
-  error_details?: ErrorCause[]
+  error_details?: (ErrorCause | string)[]
   invalidated_tokens: long
   previously_invalidated_tokens: long
 }
@@ -14246,7 +14213,7 @@ export interface SnapshotGetResponse {
 export interface SnapshotGetSnapshotResponseItem {
   repository: Name
   snapshots?: SnapshotSnapshotInfo[]
-  error?: ErrorCause
+  error?: ErrorCause | string
 }
 
 export interface SnapshotGetRepositoryRequest extends RequestBase {
@@ -14442,7 +14409,7 @@ export interface TasksCancelRequest extends RequestBase {
 }
 
 export interface TasksCancelResponse {
-  node_failures?: ErrorCause[]
+  node_failures?: (ErrorCause | string)[]
   nodes: Record<string, TasksTaskExecutingNode>
 }
 
@@ -14456,7 +14423,7 @@ export interface TasksGetResponse {
   completed: boolean
   task: TasksInfo
   response?: TasksStatus
-  error?: ErrorCause
+  error?: ErrorCause | string
 }
 
 export interface TasksListRequest extends RequestBase {
@@ -14470,7 +14437,7 @@ export interface TasksListRequest extends RequestBase {
 }
 
 export interface TasksListResponse {
-  node_failures?: ErrorCause[]
+  node_failures?: (ErrorCause | string)[]
   nodes?: Record<string, TasksTaskExecutingNode>
   tasks?: Record<string, TasksInfo> | TasksInfo[]
 }
