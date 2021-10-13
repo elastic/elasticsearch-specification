@@ -39,7 +39,7 @@ export class ErrorCause
    */
   reason: string
   /**
-   * The server stack trace. Present only f the `error_trace=true` parameter was sent with the request.
+   * The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.
    */
   stack_trace?: string
 

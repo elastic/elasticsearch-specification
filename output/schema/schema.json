@@ -31053,7 +31053,7 @@
           }
         },
         {
-          "description": "The server stack trace. Present only f the `error_trace=true` parameter was sent with the request.",
+          "description": "The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.",
           "name": "stack_trace",
           "required": false,
           "type": {
