@@ -46646,6 +46646,23 @@
       ]
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "LowercaseNormalizer",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "lowercase"
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "TokenFilterBase",
@@ -47101,6 +47118,37 @@
           }
         }
       ]
+    },
+    {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-normalizers.html",
+      "kind": "type_alias",
+      "name": {
+        "name": "Normalizer",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LowercaseNormalizer",
+              "namespace": "_types.analysis"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CustomNormalizer",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
     },
     {
       "inherits": {
@@ -86656,7 +86704,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "CustomNormalizer",
+                "name": "Normalizer",
                 "namespace": "_types.analysis"
               }
             }
