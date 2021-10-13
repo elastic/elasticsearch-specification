@@ -22,7 +22,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { Analyzer } from '@_types/analysis/analyzers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { CharFilter } from '@_types/analysis/char_filters'
-import { CustomNormalizer } from '@_types/analysis/normalizers'
+import { Normalizer } from '@_types/analysis/normalizers'
 import { Name, PipelineName, Uuid, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
@@ -263,5 +263,5 @@ export class IndexSettingsAnalysis {
   analyzer?: Dictionary<string, Analyzer>
   char_filter?: Dictionary<string, CharFilter>
   filter?: Dictionary<string, TokenFilter>
-  normalizer?: Dictionary<string, CustomNormalizer>
+  normalizer?: Dictionary<string, Normalizer>
 }

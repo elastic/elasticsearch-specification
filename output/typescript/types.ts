@@ -3580,6 +3580,10 @@ export interface AnalysisLimitTokenCountTokenFilter extends AnalysisTokenFilterB
   max_token_count: integer
 }
 
+export interface AnalysisLowercaseNormalizer {
+  type: 'lowercase'
+}
+
 export interface AnalysisLowercaseTokenFilter extends AnalysisTokenFilterBase {
   type: 'lowercase'
   language: string
@@ -3637,6 +3641,8 @@ export interface AnalysisNoriTokenizer extends AnalysisTokenizerBase {
   user_dictionary: string
   user_dictionary_rules: string[]
 }
+
+export type AnalysisNormalizer = AnalysisLowercaseNormalizer | AnalysisCustomNormalizer
 
 export interface AnalysisPathHierarchyTokenizer extends AnalysisTokenizerBase {
   type: 'path_hierarchy'
@@ -8457,7 +8463,7 @@ export interface IndicesIndexSettingsAnalysis {
   analyzer?: Record<string, AnalysisAnalyzer>
   char_filter?: Record<string, AnalysisCharFilter>
   filter?: Record<string, AnalysisTokenFilter>
-  normalizer?: Record<string, AnalysisCustomNormalizer>
+  normalizer?: Record<string, AnalysisNormalizer>
 }
 
 export interface IndicesIndexSettingsLifecycle {
