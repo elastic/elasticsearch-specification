@@ -111478,7 +111478,7 @@
             }
           },
           {
-            "description": "Estimates of the cardinality that is observed for fields over the whole\ntime period that the job analyzes data. To produce a good answer, values\nmust be provided for fields referenced in the `by_field_name`, \n`over_field_name` and `partition_field_name` of any detectors. Providing\nvalues for other fields has no effect on the estimation. It can be\nomitted from the request if no detectors have a `by_field_name`, \n`over_field_name` or `partition_field_name`.",
+            "description": "Estimates of the cardinality that is observed for fields over the whole\ntime period that the job analyzes data. To produce a good answer, values\nmust be provided for fields referenced in the `by_field_name`,\n`over_field_name` and `partition_field_name` of any detectors. Providing\nvalues for other fields has no effect on the estimation. It can be\nomitted from the request if no detectors have a `by_field_name`,\n`over_field_name` or `partition_field_name`.",
             "name": "overall_cardinality",
             "required": false,
             "type": {
