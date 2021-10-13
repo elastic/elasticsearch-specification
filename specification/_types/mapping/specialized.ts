@@ -84,23 +84,6 @@ export class Murmur3HashProperty extends DocValuesPropertyBase {
   type: 'murmur3'
 }
 
-export enum ShapeOrientation {
-  right = 0,
-  counterclockwise = 1,
-  ccw = 2,
-  left = 3,
-  clockwise = 4,
-  cw = 5
-}
-
-export class ShapeProperty extends DocValuesPropertyBase {
-  coerce?: boolean
-  ignore_malformed?: boolean
-  ignore_z_value?: boolean
-  orientation?: ShapeOrientation
-  type: 'shape'
-}
-
 export class TokenCountProperty extends DocValuesPropertyBase {
   analyzer?: string
   boost?: double

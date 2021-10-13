@@ -505,14 +505,7 @@
         "Request: query parameter 'flat_settings' does not exist in the json spec",
         "Request: should not have a body"
       ],
-      "response": [
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'"
-      ]
+      "response": []
     },
     "cluster.get_settings": {
       "request": [
