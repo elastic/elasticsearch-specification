@@ -24,7 +24,12 @@ import { Fields, RelationName } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { NestedProperty, ObjectProperty } from './complex'
-import { GeoPointProperty, GeoShapeProperty, PointProperty } from './geo'
+import {
+  GeoPointProperty,
+  GeoShapeProperty,
+  PointProperty,
+  ShapeProperty
+} from './geo'
 import { PropertyBase } from './Property'
 import { RangeProperty } from './range'
 import {
@@ -32,7 +37,6 @@ import {
   GenericProperty,
   IpProperty,
   Murmur3HashProperty,
-  ShapeProperty,
   TokenCountProperty
 } from './specialized'
 import { TermVectorOption } from './TermVectorOption'
