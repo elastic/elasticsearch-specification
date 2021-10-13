@@ -6343,6 +6343,11 @@
       "description": "Evaluates the data frame analytics for an annotated index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/evaluate-dfanalytics.html",
       "name": "ml.evaluate_data_frame",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.evaluate_data_frame"
@@ -6374,6 +6379,11 @@
       "description": "Explains a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/explain-dfanalytics.html",
       "name": "ml.explain_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.explain_data_frame_analytics"
@@ -112183,7 +112193,7 @@
           }
         ]
       },
-      "description": "Evaluates the data frame analytics for an annotated index.",
+      "description": "Evaluates the data frame analytics for an annotated index.\nThe API packages together commonly used evaluation metrics for various types\nof machine learning features. This has been designed for use on indexes\ncreated by data frame analytics. Evaluation requires both a ground truth\nfield and an analytics result field to be present.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112251,7 +112261,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified.",
+            "description": "The configuration of how to source the analysis data. It requires an\nindex. Optionally, query and _source may be specified.",
             "name": "source",
             "required": false,
             "type": {
@@ -112263,7 +112273,7 @@
             }
           },
           {
-            "description": "The destination configuration, consisting of index and optionally results_field (ml by default).",
+            "description": "The destination configuration, consisting of index and optionally\nresults_field (ml by default).",
             "name": "dest",
             "required": false,
             "type": {
@@ -112275,7 +112285,7 @@
             }
           },
           {
-            "description": "The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression.",
+            "description": "The analysis configuration, which contains the information necessary to\nperform one of the following types of analysis: classification, outlier\ndetection, or regression.",
             "name": "analysis",
             "required": true,
             "type": {
@@ -112299,7 +112309,7 @@
             }
           },
           {
-            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.",
+            "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. The default value for data frame analytics jobs is\n1gb. If your elasticsearch.yml file contains an\nxpack.ml.max_model_memory_limit setting, an error occurs when you try to\ncreate data frame analytics jobs that have model_memory_limit values\ngreater than that setting.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html",
             "name": "model_memory_limit",
             "required": false,
@@ -112312,7 +112322,7 @@
             }
           },
           {
-            "description": "The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "description": "The maximum number of threads to be used by the analysis. The default\nvalue is 1. Using more threads may decrease the time necessary to\ncomplete the analysis at the cost of using more CPU. Note that the\nprocess may use additional threads for operational functionality other\nthan the analysis itself.",
             "name": "max_num_threads",
             "required": false,
             "type": {
@@ -112324,7 +112334,7 @@
             }
           },
           {
-            "description": "Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis.",
+            "description": "Specify includes and/or excludes patterns to select which fields will be\nincluded in the analysis. The patterns specified in excludes are applied\nlast, therefore excludes takes precedence. In other words, if the same\nfield is specified in both includes and excludes, then the field will not\nbe included in the analysis.",
             "name": "analyzed_fields",
             "required": false,
             "type": {
@@ -112336,7 +112346,7 @@
             }
           },
           {
-            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
             "name": "allow_lazy_start",
             "required": false,
@@ -112351,7 +112361,7 @@
           }
         ]
       },
-      "description": "Explains a data frame analytics config.",
+      "description": "Explains a data frame analytics config.\nThis API provides explanations for a data frame analytics config that either\nexists already or one that has not been created yet. The following\nexplanations are provided:\n* which fields are included or not in the analysis and why,\n* how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.\nIf you have object fields or fields that are excluded via source filtering, they are not included in the explanation.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112365,7 +112375,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "Identifier for the data frame analytics job. This identifier can contain\nlowercase alphanumeric characters (a-z and 0-9), hyphens, and\nunderscores. It must start and end with alphanumeric characters.",
           "name": "id",
           "required": false,
           "type": {
