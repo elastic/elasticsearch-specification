@@ -30,7 +30,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { MainError } from '@_types/Errors'
+import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 
 export class Operation {
@@ -47,7 +47,7 @@ export class Operation {
 export type MultiGetId = string | integer
 
 export class Hit<TDocument> {
-  error?: MainError
+  error?: ErrorCause
   fields?: Dictionary<string, UserDefinedValue>
   found?: boolean
   _id: Id

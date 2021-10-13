@@ -26,7 +26,7 @@ import {
   VersionNumber,
   VersionString
 } from './common'
-import { ErrorCause, MainError } from './Errors'
+import { ErrorCause } from './Errors'
 import { integer, long } from './Numeric'
 import { Result } from './Result'
 import { ShardStatistics } from './Stats'
@@ -67,9 +67,12 @@ export class ElasticsearchVersionInfo {
   number: string
 }
 
+/**
+ * The response returned by Elasticsearch when request execution did not succeed.
+ */
 export class ErrorResponseBase {
-  error: MainError | string
-  status?: integer
+  error: ErrorCause
+  status: integer
 }
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {
