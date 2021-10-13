@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { AdditionalProperties } from '@spec_utils/behaviors'
+import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'
 import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
@@ -56,7 +56,7 @@ export class ScoreSort {
   order?: SortOrder
 }
 export class GeoDistanceSort
-  implements AdditionalProperties<Field, GeoLocation | GeoLocation[]> {
+  implements AdditionalProperty<Field, GeoLocation | GeoLocation[]> {
   mode?: SortMode
   distance_type?: GeoDistanceType
   order?: SortOrder

@@ -23785,7 +23785,7 @@
     },
     {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -23821,7 +23821,7 @@
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
@@ -59631,9 +59631,15 @@
       "properties": []
     },
     {
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "TermsSetFieldQuery",
+        "name": "TermsSetQuery",
         "namespace": "_types.query_dsl"
       },
       "properties": [
@@ -59674,47 +59680,6 @@
           }
         }
       ]
-    },
-    {
-      "attachedBehaviors": [
-        "AdditionalProperty"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Field",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "TermsSetFieldQuery",
-                "namespace": "_types.query_dsl"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperty",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "inherits": {
-        "type": {
-          "name": "QueryBase",
-          "namespace": "_types.query_dsl"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "TermsSetQuery",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": []
     },
     {
       "kind": "enum",
@@ -150236,6 +150201,25 @@
       ]
     },
     {
+      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
+      "generics": [
+        {
+          "name": "TKey",
+          "namespace": "_spec_utils"
+        },
+        {
+          "name": "TValue",
+          "namespace": "_spec_utils"
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "AdditionalProperty",
+        "namespace": "_spec_utils"
+      },
+      "properties": []
+    },
+    {
       "description": "In some places in the specification an object consists of the union of a set of known properties\nand a set of runtime injected properties. Meaning that object should theoretically extend Dictionary but expose\na set of known keys and possibly. The object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to behave like a dictionary for unknown properties with this interface.",
       "generics": [
         {
@@ -150333,25 +150317,6 @@
           }
         }
       ]
-    },
-    {
-      "description": "In some places in the specification an object consists of a static set of properties and a single additional property\nwith an arbitrary name but a statically defined type. This is typically used for configurations associated\nto a single field. Meaning that object should theoretically extend SingleKeyDictionary but expose\na set of known keys. And possibly the object might already be part of an object graph and have a parent class.\nThis puts it into a bind that needs a client specific solution.\nWe therefore document the requirement to accept a single unknown property with this interface.",
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_spec_utils"
-        },
-        {
-          "name": "TValue",
-          "namespace": "_spec_utils"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "AdditionalProperty",
-        "namespace": "_spec_utils"
-      },
-      "properties": []
     },
     {
       "description": "Implements a set of common query parameters all Cat API's support.\nSince these can break the request structure these are listed explicitly as a behavior.",
