@@ -775,12 +775,6 @@
         "Request: should not have a body"
       ],
       "response": [
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'RIGHT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'COUNTERCLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CCW'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'LEFT'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CLOCKWISE'",
-        "enum definition _types.mapping:GeoOrientation - Duplicate enum member identifier 'CW'",
         "interface definition _types.mapping:DynamicTemplate / Property 'mapping' / instance_of - Non-leaf type cannot be used here: '_types.mapping:PropertyBase'"
       ]
     },

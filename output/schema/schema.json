@@ -1,12 +1,12 @@
 {
   "_info": {
-    "hash": "2193772",
+    "hash": "ff82ba1",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
     },
     "title": "Elasticsearch Request & Response Specification",
-    "version": "7.15"
+    "version": "main"
   },
   "endpoints": [
     {
@@ -17393,7 +17393,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MainError",
+              "name": "ErrorCause",
               "namespace": "_types"
             }
           }
@@ -21276,49 +21276,6 @@
             "type": {
               "name": "QueryContainer",
               "namespace": "_types.query_dsl"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "description": "If a painless script fails to execute this is returned on the serialized exception",
-      "kind": "interface",
-      "name": {
-        "name": "PainlessExecutionPosition",
-        "namespace": "_global.scripts_painless_execute"
-      },
-      "properties": [
-        {
-          "name": "offset",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "start",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "end",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
             }
           }
         }
@@ -30501,7 +30458,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "MainError",
+              "name": "ErrorCause",
               "namespace": "_types"
             }
           }
@@ -31249,6 +31206,30 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "description": "Cause and details about a request failure. This class defines the properties common to all error types. Additional details are also provided, that depend on the error type.",
       "kind": "interface",
       "name": {
         "name": "ErrorCause",
@@ -31256,7 +31237,20 @@
       },
       "properties": [
         {
+          "description": "The type of error",
           "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A human-readable explanation of the error, in english",
+          "name": "reason",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -31267,8 +31261,9 @@
           }
         },
         {
-          "name": "reason",
-          "required": true,
+          "description": "The server stack trace. Present only if the `error_trace=true` parameter was sent with the request.",
+          "name": "stack_trace",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -31289,42 +31284,8 @@
           }
         },
         {
-          "name": "shard",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "stack_trace",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "root_cause",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "array_of",
             "value": {
@@ -31333,262 +31294,6 @@
                 "name": "ErrorCause",
                 "namespace": "_types"
               }
-            }
-          }
-        },
-        {
-          "name": "bytes_limit",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "bytes_wanted",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "column",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "col",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "failed_shards",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ShardFailure",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "name": "grouped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index_uuid",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Uuid",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "language",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "licensed_expired_feature",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "line",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "max_buckets",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "phase",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "property_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "processor_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "resource.id"
-          ],
-          "description": "resource id",
-          "name": "resource_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Ids",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "aliases": [
-            "resource.type"
-          ],
-          "description": "resource type",
-          "name": "resource_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "script_stack",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        },
-        {
-          "name": "header",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "HttpHeaders",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "lang",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "position",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PainlessExecutionPosition",
-              "namespace": "_global.scripts_painless_execute"
             }
           }
         },
@@ -31606,9 +31311,11 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "reason"
     },
     {
+      "description": "The response returned by Elasticsearch when request execution did not succeed.",
       "kind": "interface",
       "name": {
         "name": "ErrorResponseBase",
@@ -31619,23 +31326,11 @@
           "name": "error",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "MainError",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -32803,43 +32498,6 @@
         "name": "LifecycleOperationMode",
         "namespace": "_types"
       }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ErrorCause",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "MainError",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "headers",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
