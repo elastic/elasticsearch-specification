@@ -31127,7 +31127,7 @@
         },
         {
           "name": "status",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {

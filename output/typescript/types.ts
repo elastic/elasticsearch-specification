@@ -1932,7 +1932,7 @@ export type ErrorCause = ErrorCauseKeys |
 
 export interface ErrorResponseBase {
   error: ErrorCause | string
-  status?: integer
+  status: integer
 }
 
 export type ExpandWildcardOptions = 'all' | 'open' | 'closed' | 'hidden' | 'none'

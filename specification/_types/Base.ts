@@ -72,7 +72,7 @@ export class ElasticsearchVersionInfo {
  */
 export class ErrorResponseBase {
   error: ErrorCause
-  status?: integer
+  status: integer
 }
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {
