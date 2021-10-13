@@ -50520,6 +50520,7 @@
       "members": [
         {
           "aliases": [
+            "RIGHT",
             "counterclockwise",
             "ccw"
           ],
@@ -50527,6 +50528,7 @@
         },
         {
           "aliases": [
+            "LEFT",
             "clockwise",
             "cw"
           ],

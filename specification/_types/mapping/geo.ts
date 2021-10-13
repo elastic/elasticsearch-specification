@@ -28,9 +28,9 @@ export class GeoPointProperty extends DocValuesPropertyBase {
 }
 
 export enum GeoOrientation {
-  /** @aliases counterclockwise, ccw */
+  /** @aliases RIGHT, counterclockwise, ccw */
   right,
-  /** @aliases clockwise, cw */
+  /** @aliases LEFT, clockwise, cw */
   left
 }
 
