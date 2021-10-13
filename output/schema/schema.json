@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "deb7d67",
+    "hash": "2193772",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -49066,7 +49066,7 @@
       ]
     },
     {
-      "description": "The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles\nand polygons.",
+      "description": "The `geo_shape` data type facilitates the indexing of and searching with arbitrary geo shapes such as rectangles and polygons.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html",
       "inherits": {
         "type": {
@@ -50475,7 +50475,7 @@
       ]
     },
     {
-      "description": "The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as\nrectangles and polygons.",
+      "description": "The `shape` data type facilitates the indexing of and searching with arbitrary `x, y` cartesian shapes such as rectangles and polygons.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/shape.html",
       "inherits": {
         "type": {
