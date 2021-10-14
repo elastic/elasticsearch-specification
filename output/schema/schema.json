@@ -12657,7 +12657,7 @@
     {
       "inherits": {
         "type": {
-          "name": "Operation",
+          "name": "WriteOperation",
           "namespace": "_global.bulk"
         }
       },
@@ -12671,21 +12671,7 @@
     {
       "inherits": {
         "type": {
-          "name": "ResponseItemBase",
-          "namespace": "_global.bulk"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "CreateResponseItem",
-        "namespace": "_global.bulk"
-      },
-      "properties": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "Operation",
+          "name": "OperationBase",
           "namespace": "_global.bulk"
         }
       },
@@ -12699,21 +12685,7 @@
     {
       "inherits": {
         "type": {
-          "name": "ResponseItemBase",
-          "namespace": "_global.bulk"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "DeleteResponseItem",
-        "namespace": "_global.bulk"
-      },
-      "properties": []
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "Operation",
+          "name": "WriteOperation",
           "namespace": "_global.bulk"
         }
       },
@@ -12725,23 +12697,9 @@
       "properties": []
     },
     {
-      "inherits": {
-        "type": {
-          "name": "ResponseItemBase",
-          "namespace": "_global.bulk"
-        }
-      },
       "kind": "interface",
       "name": {
-        "name": "IndexResponseItem",
-        "namespace": "_global.bulk"
-      },
-      "properties": []
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Operation",
+        "name": "OperationBase",
         "namespace": "_global.bulk"
       },
       "properties": [
@@ -12768,23 +12726,34 @@
           }
         },
         {
-          "name": "retry_on_conflict",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "if_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "if_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
               "namespace": "_types"
             }
           }
@@ -12867,6 +12836,27 @@
       ],
       "variants": {
         "kind": "container"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "index"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        }
+      ],
+      "name": {
+        "name": "OperationType",
+        "namespace": "_global.bulk"
       }
     },
     {
@@ -13099,10 +13089,21 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ResponseItemContainer",
-                  "namespace": "_global.bulk"
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "OperationType",
+                    "namespace": "_global.bulk"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": true,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "ResponseItem",
+                    "namespace": "_global.bulk"
+                  }
                 }
               }
             }
@@ -13140,7 +13141,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "ResponseItemBase",
+        "name": "ResponseItem",
         "namespace": "_global.bulk"
       },
       "properties": [
@@ -13307,65 +13308,9 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "ResponseItemContainer",
-        "namespace": "_global.bulk"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "create",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CreateResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "update",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "UpdateResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        },
-        {
-          "name": "delete",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DeleteResponseItem",
-              "namespace": "_global.bulk"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
       "inherits": {
         "type": {
-          "name": "Operation",
+          "name": "OperationBase",
           "namespace": "_global.bulk"
         }
       },
@@ -13374,21 +13319,89 @@
         "name": "UpdateOperation",
         "namespace": "_global.bulk"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "require_alias",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "retry_on_conflict",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
         "type": {
-          "name": "ResponseItemBase",
+          "name": "OperationBase",
           "namespace": "_global.bulk"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "UpdateResponseItem",
+        "name": "WriteOperation",
         "namespace": "_global.bulk"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "dynamic_templates",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "require_alias",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "attachedBehaviors": [
@@ -29281,7 +29294,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "integer",
               "namespace": "_types"
             }
           }
@@ -32224,6 +32237,29 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
       "generics": [
         {
           "name": "TDocument",
@@ -32267,7 +32303,7 @@
         },
         {
           "name": "_seq_no",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -32278,7 +32314,7 @@
         },
         {
           "name": "_primary_term",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -34503,7 +34539,7 @@
       "type": {
         "kind": "instance_of",
         "type": {
-          "name": "integer",
+          "name": "long",
           "namespace": "_types"
         }
       }

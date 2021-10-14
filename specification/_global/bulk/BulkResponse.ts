@@ -18,12 +18,13 @@
  */
 
 import { long } from '@_types/Numeric'
-import { ResponseItemContainer } from './types'
+import { OperationType, ResponseItem } from './types'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {
     errors: boolean
-    items: ResponseItemContainer[]
+    items: SingleKeyDictionary<OperationType, ResponseItem>[]
     took: long
     ingest_took?: long
   }
