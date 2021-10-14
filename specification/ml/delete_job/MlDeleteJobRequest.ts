@@ -21,16 +21,36 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes an existing anomaly detection job.
+ * All job configuration, model state and results are deleted.
+ * It is not currently possible to delete multiple jobs using wildcards or a
+ * comma separated list. If you delete a job that has a datafeed, the request
+ * first tries to delete the datafeed. This behavior is equivalent to calling
+ * the delete datafeed API with the same timeout and force parameters as the
+ * delete job request.
  * @rest_spec_name ml.delete_job
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
   }
   query_parameters: {
+    /**
+     * Use to forcefully delete an opened job; this method is quicker than
+     * closing and deleting the job.
+     */
     force?: boolean
+    /**
+     * Specifies whether the request should return immediately or wait until the
+     * job deletion completes.
+     * @server_default true
+     */
     wait_for_completion?: boolean
   }
 }

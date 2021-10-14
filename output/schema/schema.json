@@ -6132,6 +6132,11 @@
       "description": "Deletes a filter.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-filter.html",
       "name": "ml.delete_filter",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_filter"
@@ -6160,6 +6165,11 @@
       "description": "Deletes forecasts from a machine learning job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-forecast.html",
       "name": "ml.delete_forecast",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_forecast"
@@ -6194,6 +6204,11 @@
       "description": "Deletes an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-job.html",
       "name": "ml.delete_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_job"
@@ -6222,6 +6237,11 @@
       "description": "Deletes an existing model snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-snapshot.html",
       "name": "ml.delete_model_snapshot",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_model_snapshot"
@@ -110737,7 +110757,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a filter.",
+      "description": "Deletes a filter.\nIf an anomaly detection job references the filter, you cannot delete the\nfilter. You must update or delete the job before you can delete the filter.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110751,7 +110771,7 @@
       },
       "path": [
         {
-          "description": "The ID of the filter to delete",
+          "description": "A string that uniquely identifies a filter.",
           "name": "filter_id",
           "required": true,
           "type": {
@@ -110789,7 +110809,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes forecasts from a machine learning job.",
+      "description": "Deletes forecasts from a machine learning job.\nBy default, forecasts are retained for 14 days. You can specify a\ndifferent retention period with the `expires_in` parameter in the forecast\njobs API. The delete forecast API enables you to delete one or more\nforecasts before they expire.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110803,7 +110823,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job from which to delete forecasts",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -110815,7 +110835,7 @@
           }
         },
         {
-          "description": "The ID of the forecast to delete, can be comma delimited list. Leaving blank implies `_all`",
+          "description": "A comma-separated list of forecast identifiers. If you do not specify\nthis optional parameter or if you specify `_all` or `*` the API deletes\nall forecasts from the job.",
           "name": "forecast_id",
           "required": false,
           "type": {
@@ -110829,9 +110849,10 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if `_all` matches no forecasts",
+          "description": "Specifies whether an error occurs when there are no forecasts. In\nparticular, if this parameter is set to `false` and there are no\nforecasts associated with the job, attempts to delete all forecasts\nreturn an error.",
           "name": "allow_no_forecasts",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110841,9 +110862,10 @@
           }
         },
         {
-          "description": "Controls the time to wait until the forecast(s) are deleted. Default to 30 seconds",
+          "description": "Specifies the period of time to wait for the completion of the delete\noperation. When this period of time elapses, the API fails and returns an\nerror.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110878,7 +110900,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing anomaly detection job.",
+      "description": "Deletes an existing anomaly detection job.\nAll job configuration, model state and results are deleted.\nIt is not currently possible to delete multiple jobs using wildcards or a\ncomma separated list. If you delete a job that has a datafeed, the request\nfirst tries to delete the datafeed. This behavior is equivalent to calling\nthe delete datafeed API with the same timeout and force parameters as the\ndelete job request.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110892,7 +110914,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to delete",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -110906,7 +110928,7 @@
       ],
       "query": [
         {
-          "description": "True if the job should be forcefully deleted",
+          "description": "Use to forcefully delete an opened job; this method is quicker than\nclosing and deleting the job.",
           "name": "force",
           "required": false,
           "type": {
@@ -110918,9 +110940,10 @@
           }
         },
         {
-          "description": "Should this request wait until the operation has completed before returning",
+          "description": "Specifies whether the request should return immediately or wait until the\njob deletion completes.",
           "name": "wait_for_completion",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110955,7 +110978,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing model snapshot.",
+      "description": "Deletes an existing model snapshot.\nYou cannot delete the active model snapshot. To delete that snapshot, first\nrevert to a different one. To identify the active model snapshot, refer to\nthe `model_snapshot_id` in the results from the get jobs API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -110969,7 +110992,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to fetch",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -110981,7 +111004,7 @@
           }
         },
         {
-          "description": "The ID of the snapshot to delete",
+          "description": "Identifier for the model snapshot.",
           "name": "snapshot_id",
           "required": true,
           "type": {
