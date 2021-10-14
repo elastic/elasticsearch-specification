@@ -6459,6 +6459,11 @@
       "description": "Deletes an existing datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-delete-datafeed.html",
       "name": "ml.delete_datafeed",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_datafeed"
@@ -111537,7 +111542,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeed to delete",
+          "description": "A numerical character string that uniquely identifies the datafeed. This\nidentifier can contain lowercase alphanumeric characters (a-z and 0-9),\nhyphens, and underscores. It must start and end with alphanumeric\ncharacters.",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -111551,7 +111556,7 @@
       ],
       "query": [
         {
-          "description": "True if the datafeed should be forcefully deleted",
+          "description": "Use to forcefully delete a started datafeed; this method is quicker than\nstopping and deleting the datafeed.",
           "name": "force",
           "required": false,
           "type": {
