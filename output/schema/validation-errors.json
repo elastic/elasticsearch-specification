@@ -1536,12 +1536,6 @@
         "response definition _global.msearch_template:Response / body / Property 'responses' / array_of / union_of / instance_of - Non-leaf type cannot be used here: '_global.search:Response'"
       ]
     },
-    "mtermvectors": {
-      "request": [
-        "interface definition _global.mtermvectors:Operation / Property 'doc' / instance_of - No type definition for 'internal:object'"
-      ],
-      "response": []
-    },
     "nodes.clear_repositories_metering_archive": {
       "request": [
         "Missing request & response"

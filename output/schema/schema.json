@@ -18241,11 +18241,7 @@
           "name": "doc",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "object",
-              "namespace": "internal"
-            }
+            "kind": "user_defined_value"
           }
         },
         {

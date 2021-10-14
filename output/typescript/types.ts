@@ -594,7 +594,7 @@ export interface MsearchTemplateTemplateItem {
 export interface MtermvectorsOperation {
   _id: Id
   _index?: IndexName
-  doc?: object
+  doc?: any
   fields?: Fields
   field_statistics?: boolean
   filter?: TermvectorsFilter
