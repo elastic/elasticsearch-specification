@@ -6413,6 +6413,11 @@
       "description": "Forces any buffered data to be processed by the job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-flush-job.html",
       "name": "ml.flush_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.flush_job"
@@ -6441,6 +6446,11 @@
       "description": "Predicts the future behavior of a time series by using its historical behavior.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-forecast.html",
       "name": "ml.forecast",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.forecast"
@@ -112089,6 +112099,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Specifies to advance to a particular time value. Results are generated\nand the model is updated for data from the specified time interval.",
             "name": "advance_time",
             "required": false,
             "type": {
@@ -112100,6 +112111,7 @@
             }
           },
           {
+            "description": "If true, calculates the interim results for the most recent bucket or all\nbuckets within the latency period.",
             "name": "calc_interim",
             "required": false,
             "type": {
@@ -112111,6 +112123,7 @@
             }
           },
           {
+            "description": "When used in conjunction with `calc_interim`, specifies the range of\nbuckets on which to calculate interim results.",
             "name": "end",
             "required": false,
             "type": {
@@ -112122,6 +112135,7 @@
             }
           },
           {
+            "description": "When used in conjunction with calc_interim, specifies the range of\nbuckets on which to calculate interim results.",
             "name": "start",
             "required": false,
             "type": {
@@ -112134,7 +112148,7 @@
           }
         ]
       },
-      "description": "Forces any buffered data to be processed by the job.",
+      "description": "Forces any buffered data to be processed by the job.\nThe flush jobs API is only applicable when sending data for analysis using\nthe post data API. Depending on the content of the buffer, then it might\nadditionally calculate new results. Both flush and close operations are\nsimilar, however the flush is more efficient if you are expecting to send\nmore data for analysis. When flushing, the job remains open and is available\nto continue analyzing data. A close operation additionally prunes and\npersists the model state to disk and the job must be opened again before\nanalyzing further data.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112148,7 +112162,7 @@
       },
       "path": [
         {
-          "description": "The name of the job to flush",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -112162,7 +112176,7 @@
       ],
       "query": [
         {
-          "description": "Skips time to the given value without generating results or updating the model for the skipped interval",
+          "description": "Specifies to skip to a particular time value. Results are not generated\nand the model is not updated for data from the specified time interval.",
           "name": "skip_time",
           "required": false,
           "type": {
@@ -112217,8 +112231,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A period of time that indicates how far into the future to forecast. For\nexample, `30d` corresponds to 30 days. The forecast starts at the last\nrecord that was processed.",
             "name": "duration",
             "required": false,
+            "serverDefault": "1d",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -112228,8 +112244,10 @@
             }
           },
           {
+            "description": "The period of time that forecast results are retained. After a forecast\nexpires, the results are deleted. If set to a value of 0, the forecast is\nnever automatically deleted.",
             "name": "expires_in",
             "required": false,
+            "serverDefault": "14d",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -112237,10 +112255,23 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "description": "The maximum memory the forecast can use. If the forecast needs to use\nmore than the provided amount, it will spool to disk. Default is 20mb,\nmaximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s\nconfigured memory limit, it is automatically reduced to below that\namount.",
+            "name": "max_model_memory",
+            "required": false,
+            "serverDefault": "20mb",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
           }
         ]
       },
-      "description": "Predicts the future behavior of a time series by using its historical behavior.",
+      "description": "Predicts the future behavior of a time series by using its historical\nbehavior.\nYou can create a forecast job based on an anomaly detection job to\nextrapolate future behavior. You can delete a forecast by using the Delete\nforecast API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112254,7 +112285,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to forecast for",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {

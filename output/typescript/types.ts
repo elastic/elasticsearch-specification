@@ -11357,6 +11357,7 @@ export interface MlForecastRequest extends RequestBase {
   body?: {
     duration?: Time
     expires_in?: Time
+    max_model_memory?: string
   }
 }
 
