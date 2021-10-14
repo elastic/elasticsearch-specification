@@ -28,35 +28,77 @@ import { ByteSize, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Explains a data frame analytics config.
+ * This API provides explanations for a data frame analytics config that either
+ * exists already or one that has not been created yet. The following
+ * explanations are provided:
+ * * which fields are included or not in the analysis and why,
+ * * how much memory is estimated to be required. The estimate can be used when deciding the appropriate value for model_memory_limit setting later on.
+ * If you have object fields or fields that are excluded via source filtering, they are not included in the explanation.
  * @rest_spec_name ml.explain_data_frame_analytics
  * @since 7.3.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    /**
+     * Identifier for the data frame analytics job. This identifier can contain
+     * lowercase alphanumeric characters (a-z and 0-9), hyphens, and
+     * underscores. It must start and end with alphanumeric characters.
+     */
     id?: Id
   }
   body: {
-    /** The configuration of how to source the analysis data. It requires an index. Optionally, query and _source may be specified. */
+    /**
+     * The configuration of how to source the analysis data. It requires an
+     * index. Optionally, query and _source may be specified.
+     */
     source?: DataframeAnalyticsSource
-    /** The destination configuration, consisting of index and optionally results_field (ml by default). */
+    /**
+     * The destination configuration, consisting of index and optionally
+     * results_field (ml by default).
+     */
     dest?: DataframeAnalyticsDestination
-    /** The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression. */
+    /**
+     * The analysis configuration, which contains the information necessary to
+     * perform one of the following types of analysis: classification, outlier
+     * detection, or regression.
+     */
     analysis: DataframeAnalysisContainer
-    /** A description of the job. */
+    /**
+     * A description of the job.
+     */
     description?: string
     /**
-     * The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.
+     * The approximate maximum amount of memory resources that are permitted for
+     * analytical processing. The default value for data frame analytics jobs is
+     * 1gb. If your elasticsearch.yml file contains an
+     * xpack.ml.max_model_memory_limit setting, an error occurs when you try to
+     * create data frame analytics jobs that have model_memory_limit values
+     * greater than that setting.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html
      */
     model_memory_limit?: string
-    /** The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself. */
+    /**
+     * The maximum number of threads to be used by the analysis. The default
+     * value is 1. Using more threads may decrease the time necessary to
+     * complete the analysis at the cost of using more CPU. Note that the
+     * process may use additional threads for operational functionality other
+     * than the analysis itself.
+     */
     max_num_threads?: integer
-    /** Specify includes and/or excludes patterns to select which fields will be included in the analysis. The patterns specified in excludes are applied last, therefore excludes takes precedence. In other words, if the same field is specified in both includes and excludes, then the field will not be included in the analysis. */
+    /**
+     * Specify includes and/or excludes patterns to select which fields will be
+     * included in the analysis. The patterns specified in excludes are applied
+     * last, therefore excludes takes precedence. In other words, if the same
+     * field is specified in both includes and excludes, then the field will not
+     * be included in the analysis.
+     */
     analyzed_fields?: DataframeAnalysisAnalyzedFields
     /**
-     * Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.
+     * Specifies whether this job can start when there is insufficient machine
+     * learning node capacity for it to be immediately assigned to a node.
      * @server_default false
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings
      */
