@@ -22,21 +22,54 @@ import { Id } from '@_types/common'
 import { DateString } from '@_types/Time'
 
 /**
+ * Forces any buffered data to be processed by the job.
+ * The flush jobs API is only applicable when sending data for analysis using
+ * the post data API. Depending on the content of the buffer, then it might
+ * additionally calculate new results. Both flush and close operations are
+ * similar, however the flush is more efficient if you are expecting to send
+ * more data for analysis. When flushing, the job remains open and is available
+ * to continue analyzing data. A close operation additionally prunes and
+ * persists the model state to disk and the job must be opened again before
+ * analyzing further data.
  * @rest_spec_name ml.flush_job
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
   }
   query_parameters: {
+    /**
+     * Specifies to skip to a particular time value. Results are not generated
+     * and the model is not updated for data from the specified time interval.
+     */
     skip_time?: string
   }
   body: {
+    /**
+     * Specifies to advance to a particular time value. Results are generated
+     * and the model is updated for data from the specified time interval.
+     */
     advance_time?: DateString
+    /**
+     * If true, calculates the interim results for the most recent bucket or all
+     * buckets within the latency period.
+     */
     calc_interim?: boolean
+    /**
+     * When used in conjunction with `calc_interim`, specifies the range of
+     * buckets on which to calculate interim results.
+     */
     end?: DateString
+    /**
+     * When used in conjunction with calc_interim, specifies the range of
+     * buckets on which to calculate interim results.
+     */
     start?: DateString
   }
 }
