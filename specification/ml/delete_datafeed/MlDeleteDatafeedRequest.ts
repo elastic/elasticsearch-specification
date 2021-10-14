@@ -21,15 +21,27 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes an existing datafeed.
  * @rest_spec_name ml.delete_datafeed
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A numerical character string that uniquely identifies the datafeed. This
+     * identifier can contain lowercase alphanumeric characters (a-z and 0-9),
+     * hyphens, and underscores. It must start and end with alphanumeric
+     * characters.
+     */
     datafeed_id: Id
   }
   query_parameters: {
+    /**
+     * Use to forcefully delete a started datafeed; this method is quicker than
+     * stopping and deleting the datafeed.
+     */
     force?: boolean
   }
 }
