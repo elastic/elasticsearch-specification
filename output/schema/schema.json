@@ -6312,6 +6312,11 @@
       "description": "Estimates the model memory",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-apis.html",
       "name": "ml.estimate_model_memory",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.estimate_model_memory"
@@ -111121,6 +111126,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "For a list of the properties that you can specify in the\n`analysis_config` component of the body of this API.",
             "name": "analysis_config",
             "required": false,
             "type": {
@@ -111132,6 +111138,7 @@
             }
           },
           {
+            "description": "Estimates of the highest cardinality in a single bucket that is observed\nfor influencer fields over the time period that the job analyzes data.\nTo produce a good answer, values must be provided for all influencer\nfields. Providing values for fields that are not listed as `influencers`\nhas no effect on the estimation.",
             "name": "max_bucket_cardinality",
             "required": false,
             "type": {
@@ -111154,6 +111161,7 @@
             }
           },
           {
+            "description": "Estimates of the cardinality that is observed for fields over the whole\ntime period that the job analyzes data. To produce a good answer, values\nmust be provided for fields referenced in the `by_field_name`,\n`over_field_name` and `partition_field_name` of any detectors. Providing\nvalues for other fields has no effect on the estimation. It can be\nomitted from the request if no detectors have a `by_field_name`,\n`over_field_name` or `partition_field_name`.",
             "name": "overall_cardinality",
             "required": false,
             "type": {
@@ -111177,7 +111185,7 @@
           }
         ]
       },
-      "description": "Estimates the model memory",
+      "description": "Makes an estimation of the memory usage for an anomaly detection job model.\nIt is based on analysis configuration details for the job and cardinality\nestimates for the fields it references.",
       "inherits": {
         "type": {
           "name": "RequestBase",
