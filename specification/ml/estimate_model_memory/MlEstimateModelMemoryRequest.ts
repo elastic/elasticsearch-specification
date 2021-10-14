@@ -24,14 +24,38 @@ import { Field } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
+ * Makes an estimation of the memory usage for an anomaly detection job model.
+ * It is based on analysis configuration details for the job and cardinality
+ * estimates for the fields it references.
  * @rest_spec_name ml.estimate_model_memory
  * @since 7.7.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   body: {
+    /**
+     * For a list of the properties that you can specify in the
+     * `analysis_config` component of the body of this API.
+     */
     analysis_config?: AnalysisConfig
+    /**
+     * Estimates of the highest cardinality in a single bucket that is observed
+     * for influencer fields over the time period that the job analyzes data.
+     * To produce a good answer, values must be provided for all influencer
+     * fields. Providing values for fields that are not listed as `influencers`
+     * has no effect on the estimation.
+     */
     max_bucket_cardinality?: Dictionary<Field, long>
+    /**
+     *  Estimates of the cardinality that is observed for fields over the whole
+     * time period that the job analyzes data. To produce a good answer, values
+     * must be provided for fields referenced in the `by_field_name`,
+     * `over_field_name` and `partition_field_name` of any detectors. Providing
+     * values for other fields has no effect on the estimation. It can be
+     * omitted from the request if no detectors have a `by_field_name`,
+     * `over_field_name` or `partition_field_name`.
+     */
     overall_cardinality?: Dictionary<Field, long>
   }
 }
