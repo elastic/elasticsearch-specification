@@ -21,12 +21,18 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes an existing trained inference model that is currently not referenced
+ * by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
  * @since 7.10.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The unique identifier of the trained model.
+     */
     model_id: Id
   }
 }
