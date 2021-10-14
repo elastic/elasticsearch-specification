@@ -127,7 +127,7 @@ function buildValue (type: M.ValueOf, openGenerics?: string[], origin?: M.TypeNa
     case 'union_of':
       return type.items.map(t => buildValue(t, openGenerics, origin)).join(' | ')
     case 'dictionary_of':
-      let result = `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
+      const result = `Record<${buildValue(type.key, openGenerics)}, ${buildValue(type.value, openGenerics)}>`
       return type.singleKey ? `Partial<${result}>` : result
     case 'user_defined_value':
       return 'any'
