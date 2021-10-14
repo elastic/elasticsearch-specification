@@ -6642,6 +6642,11 @@
       "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models.html",
       "name": "ml.delete_trained_model",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_trained_model"
@@ -6673,6 +6678,11 @@
       "description": "Deletes a model alias that refers to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-trained-models-aliases.html",
       "name": "ml.delete_trained_model_alias",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_trained_model_alias"
@@ -111944,7 +111954,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes an existing trained inference model that is currently not referenced by an ingest pipeline.",
+      "description": "Deletes an existing trained inference model that is currently not referenced\nby an ingest pipeline.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -111958,7 +111968,7 @@
       },
       "path": [
         {
-          "description": "The ID of the trained model to delete",
+          "description": "The unique identifier of the trained model.",
           "name": "model_id",
           "required": true,
           "type": {
@@ -111996,7 +112006,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Deletes a model alias that refers to the trained model",
+      "description": "Deletes a trained model alias.\nThis API deletes an existing model alias that refers to a trained model. If\nthe model alias is missing or refers to a model other than the one identified\nby the `model_id`, this API returns an error.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -112010,7 +112020,7 @@
       },
       "path": [
         {
-          "description": "The trained model alias to delete",
+          "description": "The model alias to delete.",
           "name": "model_alias",
           "required": true,
           "type": {
@@ -112022,7 +112032,7 @@
           }
         },
         {
-          "description": "The trained model where the model alias is assigned",
+          "description": "The trained model ID to which the model alias refers.",
           "name": "model_id",
           "required": true,
           "type": {
