@@ -19,6 +19,7 @@
 
 import { Filter, TermVector } from '@global/termvectors/types'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Fields,
@@ -31,7 +32,7 @@ import {
 import { long } from '@_types/Numeric'
 
 export class Operation {
-  doc: any
+  doc: UserDefinedValue
   fields: Fields
   field_statistics: boolean
   filter: Filter

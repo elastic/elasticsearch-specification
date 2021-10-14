@@ -601,7 +601,7 @@ export interface MsearchTemplateTemplateItem {
 }
 
 export interface MtermvectorsOperation {
-  doc: object
+  doc: any
   fields: Fields
   field_statistics: boolean
   filter: TermvectorsFilter
