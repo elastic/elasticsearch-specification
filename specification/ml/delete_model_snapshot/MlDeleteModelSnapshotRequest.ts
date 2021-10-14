@@ -21,13 +21,24 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Deletes an existing model snapshot.
+ * You cannot delete the active model snapshot. To delete that snapshot, first
+ * revert to a different one. To identify the active model snapshot, refer to
+ * the `model_snapshot_id` in the results from the get jobs API.
  * @rest_spec_name ml.delete_model_snapshot
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
+    /**
+     * Identifier for the model snapshot.
+     */
     snapshot_id: Id
   }
 }
