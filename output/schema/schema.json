@@ -6721,6 +6721,11 @@
       "description": "Retrieves configuration information for data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-dfanalytics.html",
       "name": "ml.get_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_data_frame_analytics"
@@ -113148,7 +113153,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for data frame analytics jobs.",
+      "description": "Retrieves configuration information for data frame analytics jobs.\nYou can get information for multiple data frame analytics jobs in a single\nAPI request by using a comma-separated list of data frame analytics jobs or a\nwildcard expression.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -113162,7 +113167,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the data frame analytics job. If you do not specify this option, the API returns information for the first hundred data frame analytics jobs.",
+          "description": "Identifier for the data frame analytics job. If you do not specify this\noption, the API returns information for the first hundred data frame\nanalytics jobs.",
           "name": "id",
           "required": false,
           "type": {
@@ -113176,7 +113181,7 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no data frame analytics. (This includes `_all` string or when no data frame analytics have been specified)",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value returns an empty data_frame_analytics array when there\nare no matches and the subset of results when there are partial matches.\nIf this parameter is `false`, the request returns a 404 status code when\nthere are no matches or only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "serverDefault": true,
@@ -113215,7 +113220,7 @@
           }
         },
         {
-          "description": "Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.",
+          "description": "Indicates if certain fields should be removed from the configuration on\nretrieval. This allows the configuration to be in an acceptable format to\nbe retrieved and then added to another cluster.",
           "name": "exclude_generated",
           "required": false,
           "serverDefault": false,
