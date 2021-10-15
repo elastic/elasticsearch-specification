@@ -17,13 +17,6 @@
  * under the License.
  */
 
-import { FieldCollapse } from '@global/search/_types/FieldCollapse'
-import { Highlight } from '@global/search/_types/highlighting'
-import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { Rescore } from '@global/search/_types/rescoring'
-import { Sort, SortResults } from '@global/search/_types/sort'
-import { SourceFilter } from '@global/search/_types/SourceFilter'
-import { SuggestContainer } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
@@ -36,13 +29,22 @@ import {
   Indices,
   Routing,
   SearchType,
-  SuggestMode
+  SuggestMode,
+  VersionString
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
+import { SlicedScroll } from '@_types/SlicedScroll'
 import { DateField, Time } from '@_types/Time'
+import { FieldCollapse } from '@global/search/_types/FieldCollapse'
+import { Highlight } from '@global/search/_types/highlighting'
+import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
+import { Rescore } from '@global/search/_types/rescoring'
+import { Sort, SortResults } from '@global/search/_types/sort'
+import { DocValueField, SourceFilter } from '@global/search/_types/SourceFilter'
+import { SuggestContainer } from '@global/search/_types/suggester'
 
 /**
  * @rest_spec_name async_search.submit
@@ -54,60 +56,183 @@ export interface Request extends RequestBase {
     index?: Indices
   }
   query_parameters: {
-    batched_reduce_size?: long
+    /** @server_default 1s */
     wait_for_completion_timeout?: Time
+    /** @server_default false */
     keep_on_completion?: boolean
-    typed_keys?: boolean
-  }
-  body: {
-    aggs?: Dictionary<string, AggregationContainer>
+    /** @server_default 5d */
+    keep_alive?: Time
     allow_no_indices?: boolean
     allow_partial_search_results?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
-    collapse?: FieldCollapse
+    batched_reduce_size?: long
+    ccs_minimize_roundtrips?: boolean
     default_operator?: DefaultOperator
     df?: string
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
     explain?: boolean
-    from?: integer
-    highlight?: Highlight
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
-    indices_boost?: Dictionary<IndexName, double>[]
-    keep_alive?: Time
     lenient?: boolean
     max_concurrent_shard_requests?: long
-    min_score?: double
-    post_filter?: QueryContainer
+    min_compatible_shard_node?: VersionString
     preference?: string
-    profile?: boolean
-    pit?: PointInTimeReference
-    query?: QueryContainer
+    pre_filter_shard_size?: long
     request_cache?: boolean
-    rescore?: Rescore[]
     routing?: Routing
-    script_fields?: Dictionary<string, ScriptField>
-    search_after?: SortResults
+    scroll?: Time
     search_type?: SearchType
-    sequence_number_primary_term?: boolean
-    size?: integer
-    sort?: Sort
-    _source?: boolean | SourceFilter
     stats?: string[]
     stored_fields?: Fields
-    suggest?: Dictionary<string, SuggestContainer>
+    /**
+     * Specifies which field to use for suggestions.
+     */
     suggest_field?: Field
     suggest_mode?: SuggestMode
     suggest_size?: long
+    /**
+     * The source text for which the suggestions should be returned.
+     */
     suggest_text?: string
     terminate_after?: long
-    timeout?: string
+    timeout?: Time
+    track_total_hits?: boolean | integer
     track_scores?: boolean
-    track_total_hits?: boolean
+    typed_keys?: boolean
+    rest_total_hits_as_int?: boolean
     version?: boolean
+    _source?: boolean | Fields
+    _source_excludes?: Fields
+    _source_includes?: Fields
+    seq_no_primary_term?: boolean
+    q?: string
+    size?: integer
+    from?: integer
+    sort?: string | string[]
+  }
+  body: {
+    aggs?: Dictionary<string, AggregationContainer>
+    aggregations?: Dictionary<string, AggregationContainer>
+    collapse?: FieldCollapse
+    /**
+     * If true, returns detailed information about score computation as part of a hit.
+     * @server_default false
+     */
+    explain?: boolean
+    /**
+     * Starting document offset. By default, you cannot page through more than 10,000
+     * hits using the from and size parameters. To page through more hits, use the
+     * search_after parameter.
+     * @server_default 0
+     */
+    from?: integer
+    highlight?: Highlight
+    /**
+     * Number of hits matching the query to count accurately. If true, the exact
+     * number of hits is returned at the cost of some performance. If false, the
+     * response does not include the total number of hits matching the query.
+     * Defaults to 10,000 hits.
+     */
+    track_total_hits?: boolean | integer
+    /**
+     * Boosts the _score of documents from specified indices.
+     */
+    indices_boost?: Array<Dictionary<IndexName, double>>
+    /**
+     * Array of wildcard (*) patterns. The request returns doc values for field
+     * names matching these patterns in the hits.fields property of the response.
+     */
+    docvalue_fields?: DocValueField | Array<Field | DocValueField>
+    /**
+     * Minimum _score for matching documents. Documents with a lower _score are
+     * not included in the search results.
+     */
+    min_score?: double
+    post_filter?: QueryContainer
+    profile?: boolean
+    /**
+     * Defines the search definition using the Query DSL.
+     */
+    query?: QueryContainer
+    rescore?: Rescore | Rescore[]
+    /**
+     * Retrieve a script evaluation (based on different fields) for each hit.
+     */
+    script_fields?: Dictionary<string, ScriptField>
+    search_after?: SortResults
+    /**
+     * The number of hits to return. By default, you cannot page through more
+     * than 10,000 hits using the from and size parameters. To page through more
+     * hits, use the search_after parameter.
+     * @server_default 10
+     */
+    size?: integer
+    slice?: SlicedScroll
+    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html */
+    sort?: Sort
+    /**
+     * Indicates which source fields are returned for matching documents. These
+     * fields are returned in the hits._source property of the search response.
+     */
+    _source?: boolean | Fields | SourceFilter
+    /**
+     * Array of wildcard (*) patterns. The request returns values for field names
+     * matching these patterns in the hits.fields property of the response.
+     */
     fields?: Array<Field | DateField>
+    suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+    /**
+     * Maximum number of documents to collect for each shard. If a query reaches this
+     * limit, Elasticsearch terminates the query early. Elasticsearch collects documents
+     * before sorting. Defaults to 0, which does not terminate query execution early.
+     * @server_default 0
+     */
+    terminate_after?: long
+    /**
+     * Specifies the period of time to wait for a response from each shard. If no response
+     * is received before the timeout expires, the request fails and returns an error.
+     * Defaults to no timeout.
+     */
+    timeout?: string
+    /**
+     * If true, calculate and return document scores, even if the scores are not used for sorting.
+     * @server_default false
+     */
+    track_scores?: boolean
+    /**
+     * If true, returns document version as part of a hit.
+     * @server_default false
+     */
+    version?: boolean
+    /**
+     * If true, returns sequence number and primary term of the last modification
+     * of each hit. See Optimistic concurrency control.
+     */
+    seq_no_primary_term?: boolean
+    /**
+     * List of stored fields to return as part of a hit. If no fields are specified,
+     * no stored fields are included in the response. If this field is specified, the _source
+     * parameter defaults to false. You can pass _source: true to return both source fields
+     * and stored fields in the search response.
+     */
+    stored_fields?: Fields
+    /**
+     * Limits the search to a point in time (PIT). If you provide a PIT, you
+     * cannot specify an <index> in the request path.
+     */
+    pit?: PointInTimeReference
+    /**
+     * Defines one or more runtime fields in the search request. These fields take
+     * precedence over mapped fields with the same name.
+     */
     runtime_mappings?: RuntimeFields
+    /**
+     * Stats groups to associate with the search. Each group maintains a statistics
+     * aggregation for its associated searches. You can retrieve these stats using
+     * the indices stats API.
+     */
+    stats?: string[]
   }
 }
