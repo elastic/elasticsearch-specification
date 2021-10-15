@@ -5114,60 +5114,84 @@ export interface AsyncSearchStatusResponse<TDocument = unknown> extends AsyncSea
 
 export interface AsyncSearchSubmitRequest extends RequestBase {
   index?: Indices
-  batched_reduce_size?: long
   wait_for_completion_timeout?: Time
   keep_on_completion?: boolean
+  keep_alive?: Time
+  allow_no_indices?: boolean
+  allow_partial_search_results?: boolean
+  analyzer?: string
+  analyze_wildcard?: boolean
+  batched_reduce_size?: long
+  ccs_minimize_roundtrips?: boolean
+  default_operator?: DefaultOperator
+  df?: string
+  docvalue_fields?: Fields
+  expand_wildcards?: ExpandWildcards
+  explain?: boolean
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  lenient?: boolean
+  max_concurrent_shard_requests?: long
+  min_compatible_shard_node?: VersionString
+  preference?: string
+  pre_filter_shard_size?: long
+  request_cache?: boolean
+  routing?: Routing
+  scroll?: Time
+  search_type?: SearchType
+  stats?: string[]
+  stored_fields?: Fields
+  suggest_field?: Field
+  suggest_mode?: SuggestMode
+  suggest_size?: long
+  suggest_text?: string
+  terminate_after?: long
+  timeout?: Time
+  track_total_hits?: boolean | integer
+  track_scores?: boolean
   typed_keys?: boolean
+  rest_total_hits_as_int?: boolean
+  version?: boolean
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  seq_no_primary_term?: boolean
+  q?: string
+  size?: integer
+  from?: integer
+  sort?: string | string[]
   body?: {
     aggs?: Record<string, AggregationsAggregationContainer>
-    allow_no_indices?: boolean
-    allow_partial_search_results?: boolean
-    analyzer?: string
-    analyze_wildcard?: boolean
+    aggregations?: Record<string, AggregationsAggregationContainer>
     collapse?: SearchFieldCollapse
-    default_operator?: DefaultOperator
-    df?: string
-    docvalue_fields?: Fields
-    expand_wildcards?: ExpandWildcards
     explain?: boolean
     from?: integer
     highlight?: SearchHighlight
-    ignore_throttled?: boolean
-    ignore_unavailable?: boolean
+    track_total_hits?: boolean | integer
     indices_boost?: Record<IndexName, double>[]
-    keep_alive?: Time
-    lenient?: boolean
-    max_concurrent_shard_requests?: long
+    docvalue_fields?: SearchDocValueField | (Field | SearchDocValueField)[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
-    preference?: string
     profile?: boolean
-    pit?: SearchPointInTimeReference
     query?: QueryDslQueryContainer
-    request_cache?: boolean
-    rescore?: SearchRescore[]
-    routing?: Routing
+    rescore?: SearchRescore | SearchRescore[]
     script_fields?: Record<string, ScriptField>
     search_after?: SearchSortResults
-    search_type?: SearchType
-    sequence_number_primary_term?: boolean
     size?: integer
+    slice?: SlicedScroll
     sort?: SearchSort
-    _source?: boolean | SearchSourceFilter
-    stats?: string[]
-    stored_fields?: Fields
-    suggest?: Record<string, SearchSuggestContainer>
-    suggest_field?: Field
-    suggest_mode?: SuggestMode
-    suggest_size?: long
-    suggest_text?: string
+    _source?: boolean | Fields | SearchSourceFilter
+    fields?: (Field | DateField)[]
+    suggest?: SearchSuggestContainer | Record<string, SearchSuggestContainer>
     terminate_after?: long
     timeout?: string
     track_scores?: boolean
-    track_total_hits?: boolean
     version?: boolean
-    fields?: (Field | DateField)[]
+    seq_no_primary_term?: boolean
+    stored_fields?: Fields
+    pit?: SearchPointInTimeReference
     runtime_mappings?: MappingRuntimeFields
+    stats?: string[]
   }
 }
 
