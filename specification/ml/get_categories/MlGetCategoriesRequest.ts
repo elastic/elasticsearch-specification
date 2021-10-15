@@ -29,18 +29,33 @@ import { integer } from '@_types/Numeric'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Identifier for the anomaly detection job. */
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
-    /** Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition. */
+    /**
+     * Identifier for the category, which is unique in the job. If you specify
+     * neither the category ID nor the partition_field_value, the API returns
+     * information about all categories. If you specify only the
+     * partition_field_value, it returns information about all categories for
+     * the specified partition.
+     */
     category_id?: CategoryId
   }
   query_parameters: {
+    /**
+     * Skips the specified number of categories.
+     * @server_default 0
+     */
     from?: integer
+    /**
+     * Specifies the maximum number of categories to obtain.
+     * @server_default 100
+     */
     size?: integer
-    /** Only return categories for the specified partition. */
+    /**
+     * Only return categories for the specified partition.
+     */
     partition_field_value?: string
-  }
-  body: {
-    page?: Page
   }
 }

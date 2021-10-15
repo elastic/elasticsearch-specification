@@ -11431,9 +11431,6 @@ export interface MlGetCategoriesRequest extends RequestBase {
   from?: integer
   size?: integer
   partition_field_value?: string
-  body?: {
-    page?: MlPage
-  }
 }
 
 export interface MlGetCategoriesResponse {

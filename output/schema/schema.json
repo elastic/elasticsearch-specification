@@ -113022,20 +113022,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "page",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Page",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "description": "Retrieves anomaly detection job results for one or more categories.",
       "inherits": {
@@ -113063,7 +113050,7 @@
           }
         },
         {
-          "description": "Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition.",
+          "description": "Identifier for the category, which is unique in the job. If you specify\nneither the category ID nor the partition_field_value, the API returns\ninformation about all categories. If you specify only the \npartition_field_value, it returns information about all categories for \nthe specified partition.",
           "name": "category_id",
           "required": false,
           "type": {
@@ -113077,9 +113064,10 @@
       ],
       "query": [
         {
-          "description": "skips a number of categories",
+          "description": "Skips the specified number of categories.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -113089,9 +113077,10 @@
           }
         },
         {
-          "description": "specifies a max number of categories to get",
+          "description": "Specifies the maximum number of categories to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
