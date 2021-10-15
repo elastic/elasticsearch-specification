@@ -6690,6 +6690,11 @@
       "description": "Retrieves anomaly detection job results for one or more categories.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html",
       "name": "ml.get_categories",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_categories"
