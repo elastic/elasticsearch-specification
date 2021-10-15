@@ -5002,16 +5002,11 @@ export interface QueryDslTermsQueryKeys extends QueryDslQueryBase {
 export type QueryDslTermsQuery = QueryDslTermsQueryKeys |
     { [property: string]: string[] | long[] | QueryDslTermsLookup }
 
-export interface QueryDslTermsSetFieldQuery {
+export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
   minimum_should_match_script?: Script
   terms: string[]
 }
-
-export interface QueryDslTermsSetQueryKeys extends QueryDslQueryBase {
-}
-export type QueryDslTermsSetQuery = QueryDslTermsSetQueryKeys |
-    { [property: string]: QueryDslTermsSetFieldQuery }
 
 export type QueryDslTextQueryType = 'best_fields' | 'most_fields' | 'cross_fields' | 'phrase' | 'phrase_prefix' | 'bool_prefix'
 
@@ -15770,6 +15765,10 @@ export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter
   _all: XpackUsageCounter
 }
 
+export interface SpecUtilsAdditionalProperty<TKey = unknown, TValue = unknown> {
+  [key: string]: never
+}
+
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {
   [key: string]: never
 }
@@ -15780,10 +15779,6 @@ export interface SpecUtilsCommonQueryParameters {
   human?: boolean
   pretty?: boolean
   source_query_string?: string
-}
-
-export interface SpecUtilsAdditionalProperty<TKey = unknown, TValue = unknown> {
-  [key: string]: never
 }
 
 export interface SpecUtilsCommonCatQueryParameters {
