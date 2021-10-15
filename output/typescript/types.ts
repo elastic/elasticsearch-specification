@@ -11380,7 +11380,6 @@ export interface MlGetBucketsRequest extends RequestBase {
     desc?: boolean
     exclude_interim?: boolean
     expand?: boolean
-    page?: MlPage
     sort?: Field
     start?: DateString
     end?: DateString
