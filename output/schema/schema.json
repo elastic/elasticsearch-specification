@@ -113050,7 +113050,7 @@
           }
         },
         {
-          "description": "Identifier for the category, which is unique in the job. If you specify\nneither the category ID nor the partition_field_value, the API returns\ninformation about all categories. If you specify only the \npartition_field_value, it returns information about all categories for \nthe specified partition.",
+          "description": "Identifier for the category, which is unique in the job. If you specify\nneither the category ID nor the partition_field_value, the API returns\ninformation about all categories. If you specify only the\npartition_field_value, it returns information about all categories for\nthe specified partition.",
           "name": "category_id",
           "required": false,
           "type": {
