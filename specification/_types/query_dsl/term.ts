@@ -128,11 +128,7 @@ export class TermsLookup {
   routing?: Routing
 }
 
-export class TermsSetQuery
-  extends QueryBase
-  implements AdditionalProperty<Field, TermsSetFieldQuery> {}
-
-export class TermsSetFieldQuery {
+export class TermsSetQuery extends QueryBase {
   minimum_should_match_field?: Field
   minimum_should_match_script?: Script
   terms: string[]
