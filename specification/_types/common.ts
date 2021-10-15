@@ -20,6 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { integer, long } from './Numeric'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class UrlParameter {}
 
@@ -94,7 +95,7 @@ export enum VersionType {
 export type Uuid = string
 
 // _seq_no
-export type SequenceNumber = integer
+export type SequenceNumber = long
 
 export type PropertyName = string
 export type RelationName = string
@@ -287,11 +288,13 @@ export enum WaitForStatus {
   red = 2
 }
 
-export class InlineGet<TDocument> {
+// Additional properties are the meta fields
+export class InlineGet<TDocument>
+  implements AdditionalProperties<string, UserDefinedValue> {
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean
-  _seq_no: SequenceNumber
-  _primary_term: long
+  _seq_no?: SequenceNumber
+  _primary_term?: long
   _routing?: Routing
   _source: TDocument
 }

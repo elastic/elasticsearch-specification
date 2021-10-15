@@ -17,29 +17,21 @@
  * under the License.
  */
 
-export interface BulkCreateOperation extends BulkOperation {
+export interface BulkCreateOperation extends BulkWriteOperation {
 }
 
-export interface BulkCreateResponseItem extends BulkResponseItemBase {
+export interface BulkDeleteOperation extends BulkOperationBase {
 }
 
-export interface BulkDeleteOperation extends BulkOperation {
+export interface BulkIndexOperation extends BulkWriteOperation {
 }
 
-export interface BulkDeleteResponseItem extends BulkResponseItemBase {
-}
-
-export interface BulkIndexOperation extends BulkOperation {
-}
-
-export interface BulkIndexResponseItem extends BulkResponseItemBase {
-}
-
-export interface BulkOperation {
+export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
-  retry_on_conflict?: integer
   routing?: Routing
+  if_primary_term?: long
+  if_seq_no?: SequenceNumber
   version?: VersionNumber
   version_type?: VersionType
 }
@@ -50,6 +42,8 @@ export interface BulkOperationContainer {
   update?: BulkUpdateOperation
   delete?: BulkDeleteOperation
 }
+
+export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TSource = unknown> extends RequestBase {
   index?: IndexName
@@ -68,12 +62,12 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
 
 export interface BulkResponse {
   errors: boolean
-  items: BulkResponseItemContainer[]
+  items: Record<BulkOperationType, BulkResponseItem>[]
   took: long
   ingest_took?: long
 }
 
-export interface BulkResponseItemBase {
+export interface BulkResponseItem {
   _id?: string | null
   _index: string
   status: integer
@@ -88,17 +82,15 @@ export interface BulkResponseItemBase {
   get?: InlineGet<Record<string, any>>
 }
 
-export interface BulkResponseItemContainer {
-  index?: BulkIndexResponseItem
-  create?: BulkCreateResponseItem
-  update?: BulkUpdateResponseItem
-  delete?: BulkDeleteResponseItem
+export interface BulkUpdateOperation extends BulkOperationBase {
+  require_alias?: boolean
+  retry_on_conflict?: integer
 }
 
-export interface BulkUpdateOperation extends BulkOperation {
-}
-
-export interface BulkUpdateResponseItem extends BulkResponseItemBase {
+export interface BulkWriteOperation extends BulkOperationBase {
+  dynamic_templates?: Record<string, string>
+  pipeline?: string
+  require_alias?: boolean
 }
 
 export interface ClearScrollRequest extends RequestBase {
@@ -1731,7 +1723,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   lang?: string
   refresh?: Refresh
   require_alias?: boolean
-  retry_on_conflict?: long
+  retry_on_conflict?: integer
   routing?: Routing
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
@@ -2058,14 +2050,16 @@ export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
 
-export interface InlineGet<TDocument = unknown> {
+export interface InlineGetKeys<TDocument = unknown> {
   fields?: Record<string, any>
   found: boolean
-  _seq_no: SequenceNumber
-  _primary_term: long
+  _seq_no?: SequenceNumber
+  _primary_term?: long
   _routing?: Routing
   _source: TDocument
 }
+export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument> |
+    { [property: string]: any }
 
 export interface InlineScript extends ScriptBase {
   source: string
@@ -2302,7 +2296,7 @@ export interface SegmentsStats {
   version_map_memory_in_bytes: integer
 }
 
-export type SequenceNumber = integer
+export type SequenceNumber = long
 
 export type Service = string
 

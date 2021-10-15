@@ -29,7 +29,7 @@ import {
   Type,
   WaitForActiveShards
 } from '@_types/common'
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Time } from '@_types/Time'
 
@@ -74,7 +74,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Specify how many times should the operation be retried when a conflict occurs.
      * @server_default 0
      */
-    retry_on_conflict?: long
+    retry_on_conflict?: integer
     /**
      * Custom value used to route operations to a specific shard.
      */
