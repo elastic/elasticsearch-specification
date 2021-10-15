@@ -46,7 +46,7 @@ export interface Request extends RequestBase {
      *
      * 1. Contains wildcard expressions and there are no data frame analytics
      * jobs that match.
-     * 2. Contains the _all string or no identifiers and there are no matches.
+     * 2. Contains the `_all` string or no identifiers and there are no matches.
      * 3. Contains wildcard expressions and there are only partial matches.
      *
      * The default value returns an empty data_frame_analytics array when there
