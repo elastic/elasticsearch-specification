@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-// TODO remap this as a good bulk response item and an error response item
 
 import { InlineGet } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -33,7 +32,7 @@ import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
-export class ResponseItemBase {
+export class ResponseItem {
   _id?: string | null
   _index: string
   status: integer
@@ -49,29 +48,38 @@ export class ResponseItemBase {
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
-/** @variants container */
-export class ResponseItemContainer {
-  index?: IndexResponseItem
-  create?: CreateResponseItem
-  update?: UpdateResponseItem
-  delete?: DeleteResponseItem
+export enum OperationType {
+  index,
+  create,
+  update,
+  delete
 }
 
-export class IndexResponseItem extends ResponseItemBase {}
-
-export class CreateResponseItem extends ResponseItemBase {}
-
-export class UpdateResponseItem extends ResponseItemBase {}
-
-export class DeleteResponseItem extends ResponseItemBase {}
-
-export class Operation {
+export class OperationBase {
   _id?: Id
   _index?: IndexName
-  retry_on_conflict?: integer
   routing?: Routing
+  if_primary_term?: long
+  if_seq_no?: SequenceNumber
   version?: VersionNumber
   version_type?: VersionType
+}
+
+export class WriteOperation extends OperationBase {
+  dynamic_templates?: Dictionary<string, string>
+  pipeline?: string
+  require_alias?: boolean
+}
+
+export class CreateOperation extends WriteOperation {}
+
+export class IndexOperation extends WriteOperation {}
+
+export class DeleteOperation extends OperationBase {}
+
+export class UpdateOperation extends OperationBase {
+  require_alias?: boolean
+  retry_on_conflict?: integer
 }
 
 /** @variants container */
@@ -81,11 +89,3 @@ export class OperationContainer {
   update?: UpdateOperation
   delete?: DeleteOperation
 }
-
-export class IndexOperation extends Operation {}
-
-export class CreateOperation extends Operation {}
-
-export class UpdateOperation extends Operation {}
-
-export class DeleteOperation extends Operation {}
