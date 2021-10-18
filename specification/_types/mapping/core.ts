@@ -21,7 +21,15 @@ import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilt
 import { NumericFielddata } from '@indices/_types/NumericFielddata'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Fields, RelationName } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import {
+  byte,
+  double,
+  float,
+  integer,
+  long,
+  short,
+  ulong
+} from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 import { NestedProperty, ObjectProperty } from './complex'
 import {
@@ -40,6 +48,7 @@ import {
   TokenCountProperty
 } from './specialized'
 import { TermVectorOption } from './TermVectorOption'
+import { Script } from '@_types/Scripting'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -128,28 +137,79 @@ export class KeywordProperty extends DocValuesPropertyBase {
   type: 'keyword'
 }
 
-export class NumberProperty extends DocValuesPropertyBase {
-  boost?: double
-  coerce?: boolean
-  fielddata?: NumericFielddata
-  ignore_malformed?: boolean
+export class NumberPropertyBase extends DocValuesPropertyBase {
   index?: boolean
-  null_value?: double
-  scaling_factor?: double
-  type: NumberType
+  ignore_malformed?: boolean
 }
 
-export enum NumberType {
-  float = 0,
-  half_float = 1,
-  scaled_float = 2,
-  double = 3,
-  integer = 4,
-  long = 5,
-  short = 6,
-  byte = 7,
-  unsigned_long = 8
+export enum OnScriptError {
+  fail,
+  continue
 }
+
+export class StandardNumberProperty extends NumberPropertyBase {
+  coerce?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+}
+
+export class FloatNumberProperty extends StandardNumberProperty {
+  type: 'float'
+  null_value?: float
+}
+
+export class HalfFloatNumberProperty extends StandardNumberProperty {
+  type: 'half_float'
+  null_value?: float
+}
+
+export class DoubleNumberProperty extends StandardNumberProperty {
+  type: 'double'
+  null_value?: double
+}
+
+export class IntegerNumberProperty extends StandardNumberProperty {
+  type: 'integer'
+  null_value?: integer
+}
+
+export class LongNumberProperty extends StandardNumberProperty {
+  type: 'long'
+  null_value?: long
+}
+
+export class ShortNumberProperty extends StandardNumberProperty {
+  type: 'short'
+  null_value?: short
+}
+
+export class ByteNumberProperty extends StandardNumberProperty {
+  type: 'byte'
+  null_value?: byte
+}
+
+export class UnsignedLongNumberProperty extends NumberPropertyBase {
+  type: 'unsigned_long'
+  null_value?: ulong
+}
+
+export class ScaledFloatNumberProperty extends NumberPropertyBase {
+  type: 'scaled_float'
+  coerce?: boolean
+  null_value?: double
+  scaling_factor?: double
+}
+
+export type NumberProperty =
+  | FloatNumberProperty
+  | HalfFloatNumberProperty
+  | DoubleNumberProperty
+  | IntegerNumberProperty
+  | LongNumberProperty
+  | ShortNumberProperty
+  | ByteNumberProperty
+  | UnsignedLongNumberProperty
+  | ScaledFloatNumberProperty
 
 export class PercolatorProperty extends PropertyBase {
   type: 'percolator'
