@@ -3074,6 +3074,63 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
+      "description": "Multi Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "docUrl": null,
+      "name": "fleet.msearch",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_fleet/_msearch"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_fleet/_msearch"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "docUrl": null,
+      "name": "fleet.search",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_fleet/_search"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Returns a document.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
       "name": "get",
@@ -12471,6 +12528,30 @@
             "POST"
           ],
           "path": "/_transform/{transform_id}/_update"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Upgrades all transforms.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/upgrade-transforms.html",
+      "name": "transform.upgrade_transforms",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_transform/_upgrade"
         }
       ],
       "visibility": "public"

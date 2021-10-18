@@ -721,6 +721,18 @@
       ],
       "response": []
     },
+    "fleet.msearch": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "fleet.search": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "get": {
       "request": [
         "Request: should not have a body",
@@ -2125,6 +2137,12 @@
         "Request: missing json spec query parameter 'defer_validation'",
         "request definition transform.update_transform:Request / Inherits - 'transform.put_transform:Request' is a request and must only be used in endpoints",
         "Url path property 'transform_id' is missing in request definition"
+      ],
+      "response": []
+    },
+    "transform.upgrade_transforms": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
