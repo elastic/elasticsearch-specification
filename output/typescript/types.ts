@@ -2425,6 +2425,8 @@ export interface WriteResponseBase {
   forced_refresh?: boolean
 }
 
+export type byte = number
+
 export type double = number
 
 export type float = number
@@ -2432,6 +2434,8 @@ export type float = number
 export type integer = number
 
 export type long = number
+
+export type short = number
 
 export type uint = number
 
@@ -3903,6 +3907,11 @@ export interface MappingBooleanProperty extends MappingDocValuesPropertyBase {
   type: 'boolean'
 }
 
+export interface MappingByteNumberProperty extends MappingStandardNumberProperty {
+  type: 'byte'
+  null_value?: byte
+}
+
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
   analyzer?: string
   contexts?: MappingSuggestContext[]
@@ -3963,6 +3972,11 @@ export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
   doc_values?: boolean
 }
 
+export interface MappingDoubleNumberProperty extends MappingStandardNumberProperty {
+  type: 'double'
+  null_value?: double
+}
+
 export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
   type: 'double_range'
 }
@@ -4008,6 +4022,11 @@ export interface MappingFlattenedProperty extends MappingPropertyBase {
   type: 'flattened'
 }
 
+export interface MappingFloatNumberProperty extends MappingStandardNumberProperty {
+  type: 'float'
+  null_value?: float
+}
+
 export interface MappingFloatRangeProperty extends MappingRangePropertyBase {
   type: 'float_range'
 }
@@ -4047,6 +4066,11 @@ export interface MappingGeoShapeProperty extends MappingDocValuesPropertyBase {
 
 export type MappingGeoStrategy = 'recursive' | 'term'
 
+export interface MappingHalfFloatNumberProperty extends MappingStandardNumberProperty {
+  type: 'half_float'
+  null_value?: float
+}
+
 export interface MappingHistogramProperty extends MappingPropertyBase {
   ignore_malformed?: boolean
   type: 'histogram'
@@ -4057,6 +4081,11 @@ export interface MappingIndexField {
 }
 
 export type MappingIndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
+
+export interface MappingIntegerNumberProperty extends MappingStandardNumberProperty {
+  type: 'integer'
+  null_value?: integer
+}
 
 export interface MappingIntegerRangeProperty extends MappingRangePropertyBase {
   type: 'integer_range'
@@ -4091,6 +4120,11 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
   type: 'keyword'
 }
 
+export interface MappingLongNumberProperty extends MappingStandardNumberProperty {
+  type: 'long'
+  null_value?: long
+}
+
 export interface MappingLongRangeProperty extends MappingRangePropertyBase {
   type: 'long_range'
 }
@@ -4108,23 +4142,19 @@ export interface MappingNestedProperty extends MappingCorePropertyBase {
   type: 'nested'
 }
 
-export interface MappingNumberProperty extends MappingDocValuesPropertyBase {
-  boost?: double
-  coerce?: boolean
-  fielddata?: IndicesNumericFielddata
-  ignore_malformed?: boolean
-  index?: boolean
-  null_value?: double
-  scaling_factor?: double
-  type: MappingNumberType
-}
+export type MappingNumberProperty = MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingDoubleNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingShortNumberProperty | MappingByteNumberProperty | MappingUnsignedLongNumberProperty | MappingScaledFloatNumberProperty
 
-export type MappingNumberType = 'float' | 'half_float' | 'scaled_float' | 'double' | 'integer' | 'long' | 'short' | 'byte' | 'unsigned_long'
+export interface MappingNumberPropertyBase extends MappingDocValuesPropertyBase {
+  index?: boolean
+  ignore_malformed?: boolean
+}
 
 export interface MappingObjectProperty extends MappingCorePropertyBase {
   enabled?: boolean
   type?: 'object'
 }
+
+export type MappingOnScriptError = 'fail' | 'continue'
 
 export interface MappingPercolatorProperty extends MappingPropertyBase {
   type: 'percolator'
@@ -4180,6 +4210,13 @@ export type MappingRuntimeFieldType = 'boolean' | 'date' | 'double' | 'geo_point
 
 export type MappingRuntimeFields = Record<Field, MappingRuntimeField>
 
+export interface MappingScaledFloatNumberProperty extends MappingNumberPropertyBase {
+  type: 'scaled_float'
+  coerce?: boolean
+  null_value?: double
+  scaling_factor?: double
+}
+
 export interface MappingSearchAsYouTypeProperty extends MappingCorePropertyBase {
   analyzer?: string
   index?: boolean
@@ -4200,6 +4237,11 @@ export interface MappingShapeProperty extends MappingDocValuesPropertyBase {
   type: 'shape'
 }
 
+export interface MappingShortNumberProperty extends MappingStandardNumberProperty {
+  type: 'short'
+  null_value?: short
+}
+
 export interface MappingSizeField {
   enabled: boolean
 }
@@ -4210,6 +4252,12 @@ export interface MappingSourceField {
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
+}
+
+export interface MappingStandardNumberProperty extends MappingNumberPropertyBase {
+  coerce?: boolean
+  script?: Script
+  on_script_error?: MappingOnScriptError
 }
 
 export interface MappingSuggestContext {
@@ -4269,6 +4317,11 @@ export interface MappingTypeMapping {
   _source?: MappingSourceField
   runtime?: Record<string, MappingRuntimeField>
   enabled?: boolean
+}
+
+export interface MappingUnsignedLongNumberProperty extends MappingNumberPropertyBase {
+  type: 'unsigned_long'
+  null_value?: ulong
 }
 
 export interface MappingVersionProperty extends MappingDocValuesPropertyBase {
