@@ -35628,6 +35628,20 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "byte",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "number",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "double",
         "namespace": "_types"
       },
@@ -35671,6 +35685,20 @@
       "kind": "type_alias",
       "name": {
         "name": "long",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "number",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "short",
         "namespace": "_types"
       },
       "type": {
@@ -49109,6 +49137,40 @@
     {
       "inherits": {
         "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ByteNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "byte"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "byte",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "DocValuesPropertyBase",
           "namespace": "_types.mapping"
         }
@@ -49747,6 +49809,40 @@
     {
       "inherits": {
         "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DoubleNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "double"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "RangePropertyBase",
           "namespace": "_types.mapping"
         }
@@ -50227,6 +50323,40 @@
     {
       "inherits": {
         "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "FloatNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "float"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "RangePropertyBase",
           "namespace": "_types.mapping"
         }
@@ -50573,6 +50703,40 @@
     {
       "inherits": {
         "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HalfFloatNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "half_float"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "PropertyBase",
           "namespace": "_types.mapping"
         }
@@ -50644,6 +50808,40 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IntegerNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "integer"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -50932,6 +51130,40 @@
     {
       "inherits": {
         "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LongNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "long"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "RangePropertyBase",
           "namespace": "_types.mapping"
         }
@@ -51047,6 +51279,81 @@
       ]
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "NumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FloatNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HalfFloatNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DoubleNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IntegerNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShortNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnsignedLongNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScaledFloatNumberProperty",
+              "namespace": "_types.mapping"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "DocValuesPropertyBase",
@@ -51055,40 +51362,18 @@
       },
       "kind": "interface",
       "name": {
-        "name": "NumberProperty",
+        "name": "NumberPropertyBase",
         "namespace": "_types.mapping"
       },
       "properties": [
         {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "coerce",
+          "name": "index",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "fielddata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NumericFielddata",
-              "namespace": "indices._types"
             }
           }
         },
@@ -51102,88 +51387,8 @@
               "namespace": "internal"
             }
           }
-        },
-        {
-          "name": "index",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "null_value",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "scaling_factor",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NumberType",
-              "namespace": "_types.mapping"
-            }
-          }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "float"
-        },
-        {
-          "name": "half_float"
-        },
-        {
-          "name": "scaled_float"
-        },
-        {
-          "name": "double"
-        },
-        {
-          "name": "integer"
-        },
-        {
-          "name": "long"
-        },
-        {
-          "name": "short"
-        },
-        {
-          "name": "byte"
-        },
-        {
-          "name": "unsigned_long"
-        }
-      ],
-      "name": {
-        "name": "NumberType",
-        "namespace": "_types.mapping"
-      }
     },
     {
       "inherits": {
@@ -51218,6 +51423,21 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "fail"
+        },
+        {
+          "name": "continue"
+        }
+      ],
+      "name": {
+        "name": "OnScriptError",
+        "namespace": "_types.mapping"
+      }
     },
     {
       "inherits": {
@@ -51801,6 +52021,62 @@
     {
       "inherits": {
         "type": {
+          "name": "NumberPropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ScaledFloatNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "scaled_float"
+          }
+        },
+        {
+          "name": "coerce",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "scaling_factor",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "CorePropertyBase",
           "namespace": "_types.mapping"
         }
@@ -51979,6 +52255,40 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "StandardNumberProperty",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ShortNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "short"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "short",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "SizeField",
@@ -52063,6 +52373,54 @@
                 "name": "string",
                 "namespace": "internal"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "NumberPropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StandardNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "coerce",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "script",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "on_script_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OnScriptError",
+              "namespace": "_types.mapping"
             }
           }
         }
@@ -52690,6 +53048,40 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "NumberPropertyBase",
+          "namespace": "_types.mapping"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UnsignedLongNumberProperty",
+        "namespace": "_types.mapping"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "unsigned_long"
+          }
+        },
+        {
+          "name": "null_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ulong",
+              "namespace": "_types"
             }
           }
         }
