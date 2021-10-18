@@ -24,13 +24,20 @@ import { double, integer } from '@_types/Numeric'
 import { DateString } from '@_types/Time'
 
 /**
+ * Retrieves anomaly detection job results for one or more influencers.
+ * Influencers are the entities that have contributed to, or are to blame for,
+ * the anomalies. Influencer results are available only if an
+ * `influencer_field_name` is specified in the job configuration.
  * @rest_spec_name ml.get_influencers
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Identifier for the anomaly detection job. */
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
   }
   query_parameters: {
@@ -39,22 +46,45 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     desc?: boolean
-    /** Returns influencers with timestamps earlier than this time. */
+    /**
+     * Returns influencers with timestamps earlier than this time.
+     * The default value means it is unset and results are not limited to
+     * specific timestamps.
+     * @server_default -1
+     */
     end?: DateString
-    /** If true, the output excludes interim results. By default, interim results are included. */
+    /**
+     * If true, the output excludes interim results. By default, interim results
+     * are included.
+     * @server_default false
+     */
     exclude_interim?: boolean
-    /** Returns influencers with anomaly scores greater than or equal to this value. */
+    /**
+     * Returns influencers with anomaly scores greater than or equal to this
+     * value.
+     * @server_default 0.0
+     */
     influencer_score?: double
-    /** Skips the specified number of influencers. */
+    /**
+     * Skips the specified number of influencers.
+     * @server_default 0
+     */
     from?: integer
-    /** Specifies the maximum number of influencers to obtain. */
+    /**
+     * Specifies the maximum number of influencers to obtain.
+     * @server_default 100
+     */
     size?: integer
-    /** Specifies the sort field for the requested influencers. By default, the influencers are sorted by the influencer_score value. */
+    /**
+     * Specifies the sort field for the requested influencers. By default, the
+     * influencers are sorted by the `influencer_score` value.
+     */
     sort?: Field
-    /** Returns influencers with timestamps after this time. */
+    /**
+     * Returns influencers with timestamps after this time. The default value
+     * means it is unset and results are not limited to specific timestamps.
+     * @server_default -1
+     */
     start?: DateString
-  }
-  body: {
-    page?: Page
   }
 }
