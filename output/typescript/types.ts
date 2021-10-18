@@ -62,7 +62,7 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
 
 export interface BulkResponse {
   errors: boolean
-  items: Record<BulkOperationType, BulkResponseItem>[]
+  items: Partial<Record<BulkOperationType, BulkResponseItem>>[]
   took: long
   ingest_took?: long
 }
