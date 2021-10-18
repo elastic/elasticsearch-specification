@@ -28,12 +28,12 @@ import { OverloadOf } from '@spec_utils/behaviors'
 
 export class AnalysisConfig {
   /**
-   *  The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   *  The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.
    * * @server_default 5m
    */
   bucket_span: TimeSpan
   /**
-   * If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string it must refer to a built-in analyzer or one added by another plugin.
+   * If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.
    */
   categorization_analyzer?: CategorizationAnalyzer | string
   /**
@@ -53,16 +53,16 @@ export class AnalysisConfig {
    */
   influencers?: Field[]
   /**
-   * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.
-   */
-  model_prune_window?: Time
-  /**
-   * The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.
+   * The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.
    * @server_default 0
    */
   latency?: Time
+   /**
+   * Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.
+   */
+    model_prune_window?: Time
   /**
-   * This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to true, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.
+   * This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.
    */
   multivariate_by_fields?: boolean
   /**
@@ -121,16 +121,16 @@ export class AnalysisMemoryLimit {
 }
 
 export class CategorizationAnalyzer {
-  char_filter?: Array<string | CharFilter>
   /**
    * One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.
    */
-  filter?: Array<string | TokenFilter>
+  char_filter?: Array<string | CharFilter>
   /**
    * One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.
    */
-  tokenizer?: string | Tokenizer
-  /**
+  filter?: Array<string | TokenFilter>
+   /**
    * The name or definition of the tokenizer to use after character filters are applied. This property is compulsory if `categorization_analyzer` is specified as an object. Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English. If you want to use that tokenizer but change the character or token filters, specify "tokenizer": "ml_standard" in your `categorization_analyzer`. Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2). `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify "tokenizer": "ml_classic" in your `categorization_analyzer`.
    */
+  tokenizer?: string | Tokenizer
 }
