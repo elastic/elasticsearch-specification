@@ -696,8 +696,7 @@
     },
     "get": {
       "request": [
-        "Request: should not have a body",
-        "Non-leaf type cannot be used here: '_global.get:Request'"
+        "Request: should not have a body"
       ],
       "response": []
     },
@@ -721,21 +720,8 @@
     },
     "get_source": {
       "request": [
-        "Request: missing json spec path parameter 'id'",
-        "Request: missing json spec path parameter 'index'",
-        "Request: missing json spec query parameter 'preference'",
-        "Request: missing json spec query parameter 'realtime'",
-        "Request: missing json spec query parameter 'refresh'",
-        "Request: missing json spec query parameter 'routing'",
-        "Request: missing json spec query parameter '_source'",
-        "Request: missing json spec query parameter '_source_excludes'",
-        "Request: missing json spec query parameter '_source_includes'",
-        "Request: missing json spec query parameter 'version'",
-        "Request: missing json spec query parameter 'version_type'",
-        "Request: should not have a body",
-        "request definition _global.get_source:Request / Inherits - '_global.get:Request' is a request and must only be used in endpoints",
-        "Url path property 'index' is missing in request definition",
-        "Url path property 'id' is missing in request definition"
+        "Request: query parameter 'stored_fields' does not exist in the json spec",
+        "Request: should not have a body"
       ],
       "response": []
     },
