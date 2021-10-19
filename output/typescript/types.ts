@@ -906,7 +906,7 @@ export interface ScriptsPainlessExecuteResponse<TResult = unknown> {
 }
 
 export interface ScrollRequest extends RequestBase {
-  scroll_id?: Id
+  scroll_id?: ScrollId
   scroll?: Time
   rest_total_hits_as_int?: boolean
   body?: {

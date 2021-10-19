@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { deepStrictEqual } from 'assert'
 import {
   ts,
   ClassDeclaration,
@@ -1146,6 +1147,15 @@ export function verifyUniqueness (project: Project): void {
 export function isValidUrl (str: string): boolean {
   try {
     new URL(str) // eslint-disable-line
+    return true
+  } catch (err) {
+    return false
+  }
+}
+
+export function deepEqual (a: any, b: any): boolean {
+  try {
+    deepStrictEqual(a, b)
     return true
   } catch (err) {
     return false
