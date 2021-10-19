@@ -47,7 +47,6 @@ export interface Request extends RequestBase {
     allow_no_indices?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
-    /** @identifier conflicts_query */
     conflicts?: Conflicts
     default_operator?: DefaultOperator
     df?: string

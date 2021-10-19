@@ -53,7 +53,6 @@ export interface Request extends RequestBase {
     from?: long
     ignore_unavailable?: boolean
     lenient?: boolean
-    /** @identifier max_docs_query */
     max_docs?: long
     preference?: string
     refresh?: boolean

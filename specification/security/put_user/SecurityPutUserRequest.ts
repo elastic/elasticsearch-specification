@@ -27,7 +27,6 @@ import { Metadata, Password, Refresh, Username } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @identifier username_path */
     username: Username
   }
   query_parameters: {

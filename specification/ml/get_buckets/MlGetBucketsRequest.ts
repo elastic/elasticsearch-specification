@@ -36,21 +36,12 @@ export interface Request extends RequestBase {
   query_parameters: {
     from?: integer
     size?: integer
-    /**
-     * @server_default false
-     * @identifier exclude_interim_query
-     */
+    /** @server_default false */
     exclude_interim?: boolean
-    /** @identifier sort_query */
     sort?: Field
-    /**
-     * @server_default false
-     * @identifier desc_query
-     */
+    /** @server_default false */
     desc?: boolean
-    /** @identifier start_query */
     start?: DateString
-    /** @identifier end_query */
     end?: DateString
   }
   body: {

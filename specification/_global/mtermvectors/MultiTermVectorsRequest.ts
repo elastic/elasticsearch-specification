@@ -38,7 +38,6 @@ export interface Request extends RequestBase {
     index?: IndexName
   }
   query_parameters: {
-    /** @identifier ids_query */
     ids?: Id[]
     fields?: Fields
     field_statistics?: boolean

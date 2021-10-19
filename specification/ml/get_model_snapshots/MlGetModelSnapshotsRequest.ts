@@ -37,10 +37,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** If true, the results are sorted in descending order. */
     desc?: boolean
-    /**
-     * Returns snapshots with timestamps earlier than this time.
-     * @identifier end_query
-     */
+    /** Returns snapshots with timestamps earlier than this time. */
     end?: Time
     /** Skips the specified number of snapshots. */
     from?: integer
@@ -48,10 +45,7 @@ export interface Request extends RequestBase {
     size?: integer
     /** Specifies the sort field for the requested snapshots. By default, the snapshots are sorted by their timestamp. */
     sort?: Field
-    /**
-     * Returns snapshots with timestamps after this time.
-     * @identifier start_query
-     */
+    /** Returns snapshots with timestamps after this time. */
     start?: Time
   }
   body: {

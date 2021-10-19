@@ -50,18 +50,15 @@ export interface Request extends RequestBase {
     /**
      * Period for which the search and its results are stored on the cluster.
      * @server_default 5d
-     * @identifier keep_alive_query
      */
     keep_alive?: Time
     /**
      * If true, the search and its results are stored on the cluster.
      * @server_default false
-     * @identifier keep_on_completion_query
      */
     keep_on_completion?: boolean
     /**
      * Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.
-     * @identifier wait_for_completion_timeout_query
      */
     wait_for_completion_timeout?: Time
   }

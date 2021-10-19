@@ -97,7 +97,6 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Set to false to disable source retrieval. You can also specify a comma-separated
      * list of the fields you want to retrieve.
      * @server_default true
-     * @identifier _source_query
      */
     _source?: boolean | Fields
     /**

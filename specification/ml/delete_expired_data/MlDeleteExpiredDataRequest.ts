@@ -49,13 +49,11 @@ export interface Request extends RequestBase {
     /**
      * The desired requests per second for the deletion processes. The default
      * behavior is no throttling.
-     * @identifier requests_per_second_query
      */
     requests_per_second?: float
     /**
      * How long can the underlying delete processes run until they are canceled.
      * @server_default 8h
-     * @identifier timeout_query
      */
     timeout?: Time
   }

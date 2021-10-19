@@ -38,7 +38,6 @@ import { OperationContainer } from './types'
 export interface Request<TSource> extends RequestBase {
   path_parts: {
     index?: IndexName
-    /** @identifier type_path */
     type?: Type
   }
   query_parameters: {
@@ -49,8 +48,7 @@ export interface Request<TSource> extends RequestBase {
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time
-    /** @identifier type_query */
-    type?: string
+    type?: Type
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
