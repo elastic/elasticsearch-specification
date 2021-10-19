@@ -48,7 +48,7 @@ export interface Request<TSource> extends RequestBase {
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time
-    type?: string
+    type?: Type
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
