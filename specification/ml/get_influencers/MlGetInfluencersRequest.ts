@@ -87,4 +87,7 @@ export interface Request extends RequestBase {
      */
     start?: DateString
   }
+  body: {
+    page?: Page
+  }
 }

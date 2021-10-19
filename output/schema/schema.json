@@ -110194,8 +110194,10 @@
       },
       "properties": [
         {
+          "description": "Skips the specified number of items.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110205,8 +110207,10 @@
           }
         },
         {
+          "description": "Specifies the maximum number of items to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114438,7 +114442,20 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "page",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Page",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        ]
       },
       "description": "Retrieves anomaly detection job results for one or more influencers.\nInfluencers are the entities that have contributed to, or are to blame for,\nthe anomalies. Influencer results are available only if an\n`influencer_field_name` is specified in the job configuration.",
       "inherits": {

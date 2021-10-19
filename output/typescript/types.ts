@@ -11551,6 +11551,9 @@ export interface MlGetInfluencersRequest extends RequestBase {
   size?: integer
   sort?: Field
   start?: DateString
+  body?: {
+    page?: MlPage
+  }
 }
 
 export interface MlGetInfluencersResponse {
