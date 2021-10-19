@@ -7508,6 +7508,7 @@ export interface ClusterHealthShardHealthStats {
 }
 
 export interface ClusterPendingTasksPendingTask {
+  executing: boolean
   insert_order: integer
   priority: string
   source: string
