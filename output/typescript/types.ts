@@ -11496,14 +11496,6 @@ export interface MlExplainDataFrameAnalyticsResponse {
   memory_estimation: MlDataframeAnalyticsMemoryEstimation
 }
 
-export interface MlFindFileStructureRequest extends RequestBase {
-  stub: string
-}
-
-export interface MlFindFileStructureResponse {
-  stub: string
-}
-
 export interface MlFlushJobRequest extends RequestBase {
   job_id: Id
   skip_time?: string

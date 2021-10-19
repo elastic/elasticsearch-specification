@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "9afd3cd",
+    "hash": "debbe1edf",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -6917,16 +6917,9 @@
       "description": "Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/find-structure.html",
       "name": "ml.find_file_structure",
-      "request": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
+      "request": null,
       "requestBodyRequired": true,
-      "response": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
-      },
-      "since": "5.4.0",
+      "response": null,
       "stability": "experimental",
       "urls": [
         {
@@ -114483,63 +114476,6 @@
       "name": {
         "name": "Response",
         "namespace": "ml.explain_data_frame_analytics"
-      }
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "no_body"
-      },
-      "description": "Depreacted in 7.12\nsee: https://www.elastic.co/guide/en/elasticsearch/reference/7.12/ml-find-file-structure.html",
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "ml.find_file_structure"
-      },
-      "path": [
-        {
-          "name": "stub",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "query": []
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "name": "stub",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "ml.find_file_structure"
       }
     },
     {
