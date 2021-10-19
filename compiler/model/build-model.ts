@@ -214,14 +214,43 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       )]
       const methods = [...new Set(mapping.urls.flatMap(url => url.methods))]
 
-      const pathAndQueryProperties = (declaration.getMembers() as any[]).flatMap(member => {
+      const pathProperties = (declaration.getMembers() as any[]).flatMap(member => {
         const property = visitRequestOrResponseProperty(member)
-        if (property.name === 'path_parts' || property.name === 'query_parameters') {
-          return property.properties.map(property => property.name)
-        } else if (property.name === 'body') {
+        if (property.name === 'path_parts') {
+          return property.properties.flatMap(property => [property.name, property.identifier])
+        } else {
           return undefined
         }
       })
+
+      const queryProperties = (declaration.getMembers() as any[]).flatMap(member => {
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'query_parameters') {
+          return property.properties.flatMap(property => [property.name, property.identifier])
+        } else {
+          return undefined
+        }
+      })
+
+      const bodyProperties = (declaration.getMembers() as any[]).flatMap(member => {
+        const property = visitRequestOrResponseProperty(member)
+        if (property.name === 'body') {
+          if (property.valueOf !== null) {
+            const tags = parseJsDocTags(member.getJsDocs())
+            assert(
+              member,
+              tags.identifier != null,
+              'You should configure a body @identifier'
+            )
+            return [tags.identifier]
+          } else {
+            return property.properties.map(property => property.name)
+          }
+        } else {
+          return undefined
+        }
+      })
+
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`
         assert(
@@ -231,18 +260,35 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
         const property = visitRequestOrResponseProperty(member)
         if (property.name === 'path_parts') {
+          assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           for (const part of property.properties) {
-            if (part.name.includes('stub')) continue
             assert(
               member,
               urlTemplateParams.includes(part.name),
               `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
             )
+            if (queryProperties.includes(part.name)) {
+              assert(member, part.identifier != null, `'${part.name}' already exist in the query_parameters, you should define an @identifier.`)
+              assert(member, !queryProperties.includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in query_parameters.`)
+            }
+            if (bodyProperties.includes(part.name)) {
+              assert(member, part.identifier != null, `'${part.name}' already exist in the body, you should define an @identifier.`)
+              assert(member, !bodyProperties.includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in body.`)
+            }
           }
-          assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
+          for (const part of property.properties) {
+            if (pathProperties.includes(part.name)) {
+              assert(member, part.identifier != null, `'${part.name}' already exist in the path_parts, you should define an @identifier.`)
+              assert(member, !pathProperties.includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in path_parts.`)
+            }
+            if (bodyProperties.includes(part.name)) {
+              assert(member, part.identifier != null, `'${part.name}' already exist in the body, you should define an @identifier.`)
+              assert(member, !bodyProperties.includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in body.`)
+            }
+          }
           type.query = property.properties
         } else if (property.name === 'body') {
           assert(
@@ -263,7 +309,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
               )
               assert(
                 member.getJsDocs(),
-                !pathAndQueryProperties.includes(tags.identifier),
+                !pathProperties.concat(queryProperties).includes(tags.identifier),
                 `The identifier '${tags.identifier}' already exists as a property in the path or query.`
               )
               type.body = {
