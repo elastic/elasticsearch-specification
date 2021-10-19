@@ -31,6 +31,7 @@ export interface Request extends RequestBase {
     datafeed_id: Id
   }
   query_parameters: {
+    /** @identifier start_query */
     start?: Time // default ""
   }
   body: {

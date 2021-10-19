@@ -56,6 +56,7 @@ export interface Request extends RequestBase {
      *
      * Templates with lower 'order' values are merged first. Templates with higher
      * 'order' values are merged later, overriding templates with lower values.
+     * @identifier order_query
      */
     order?: integer
   }

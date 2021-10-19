@@ -48,14 +48,20 @@ export interface Request extends RequestBase {
     /** @server_default false */
     ccs_minimize_roundtrips?: boolean
     expand_wildcards?: ExpandWildcards
-    /** @server_default false */
+    /**
+     * @server_default false
+     * @identifier explain_query
+     */
     explain?: boolean
     /** @server_default true */
     ignore_throttled?: boolean
     /** @server_default false */
     ignore_unavailable?: boolean
     preference?: string
-    /** @server_default false */
+    /**
+     * @server_default false
+     * @identifier profile_query
+     */
     profile?: boolean
     /** Custom value used to route operations to a specific shard. */
     routing?: Routing

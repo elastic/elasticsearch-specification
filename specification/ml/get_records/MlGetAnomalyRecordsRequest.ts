@@ -33,11 +33,16 @@ export interface Request extends RequestBase {
     job_id: Id
   }
   query_parameters: {
-    /** @server_default false */
+    /**
+     * @server_default false
+     * @identifier exclude_interim_query
+     */
     exclude_interim?: boolean
     from?: integer
     size?: integer
+    /** @identifier start_query */
     start?: DateString
+    /** @identifier end_query */
     end?: DateString
   }
   body: {

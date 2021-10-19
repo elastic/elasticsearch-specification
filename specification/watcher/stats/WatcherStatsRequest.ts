@@ -29,6 +29,7 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Defines which additional metrics are included in the response.
+     * @identifier metric_path
      */
     metric?: WatcherMetric | WatcherMetric[]
   }
@@ -40,6 +41,7 @@ export interface Request extends RequestBase {
     emit_stacktraces?: boolean
     /**
      * Defines which additional metrics are included in the response.
+     * @identifier metric_query
      */
     metric?: WatcherMetric | WatcherMetric[]
   }

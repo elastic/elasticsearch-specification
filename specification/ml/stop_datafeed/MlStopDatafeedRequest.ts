@@ -33,7 +33,10 @@ export interface Request extends RequestBase {
   query_parameters: {
     /** @server_default true */
     allow_no_match?: boolean
-    /** @server_default false */
+    /**
+     * @server_default false
+     * @identifier force_query
+     */
     force?: boolean
   }
   body: {

@@ -70,8 +70,10 @@ export interface Request extends RequestBase {
     ccs_minimize_roundtrips?: boolean
     default_operator?: DefaultOperator
     df?: string
+    /** @identifier docvalue_fields_query */
     docvalue_fields?: Fields
     expand_wildcards?: ExpandWildcards
+    /** @identifier explain_query */
     explain?: boolean
     ignore_throttled?: boolean
     ignore_unavailable?: boolean
@@ -84,7 +86,9 @@ export interface Request extends RequestBase {
     routing?: Routing
     scroll?: Time
     search_type?: SearchType
+    /** @identifier stats_query */
     stats?: string[]
+    /** @identifier stored_fields_query */
     stored_fields?: Fields
     /**
      * Specifies which field to use for suggestions.
@@ -96,20 +100,30 @@ export interface Request extends RequestBase {
      * The source text for which the suggestions should be returned.
      */
     suggest_text?: string
+    /** @identifier terminate_after_query */
     terminate_after?: long
+    /** @identifier timeout_query */
     timeout?: Time
+    /** @identifier track_total_hits_query */
     track_total_hits?: boolean | integer
+    /** @identifier track_scores_query */
     track_scores?: boolean
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
+    /** @identifier version_query */
     version?: boolean
+    /** @identifier source_query */
     _source?: boolean | Fields
     _source_excludes?: Fields
     _source_includes?: Fields
+    /** @identifier seq_no_primary_term_query */
     seq_no_primary_term?: boolean
     q?: string
+    /** @identifier size_query */
     size?: integer
+    /** @identifier from_query */
     from?: integer
+    /** @identifier sort_query */
     sort?: string | string[]
   }
   body: {

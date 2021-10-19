@@ -55,11 +55,13 @@ export interface Request extends RequestBase {
      * the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting
      * bounding box may be larger than the vector tile.
      * @server_default false
+     * @identifier exact_bounds_query
      */
     exact_bounds?: boolean
     /**
      * Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.
      * @server_default 4096
+     * @identifier extent_query
      */
     extent?: integer
     /**
@@ -67,6 +69,7 @@ export interface Request extends RequestBase {
      * and grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results
      * don’t include the aggs layer.
      * @server_default 8
+     * @identifier grid_precision_query
      */
     grid_precision?: integer
     /**
@@ -75,12 +78,14 @@ export interface Request extends RequestBase {
      * of the cells bounding box. If 'point' each feature is a Point that is the centroid
      * of the cell.
      * @server_default grid
+     * @identifier grid_type_query
      */
     grid_type?: GridType
     /**
      * Maximum number of features to return in the hits layer. Accepts 0-10000.
      * If 0, results don’t include the hits layer.
      * @server_default 10000
+     * @identifier size_query
      */
     size?: integer
   }
