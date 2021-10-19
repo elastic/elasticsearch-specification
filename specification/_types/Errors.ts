@@ -44,7 +44,7 @@ export class ErrorCause
   stack_trace?: string
 
   caused_by?: ErrorCause
-  root_cause: ErrorCause[]
+  root_cause?: ErrorCause[]
   suppressed?: ErrorCause[]
 }
 

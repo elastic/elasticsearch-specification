@@ -1935,7 +1935,7 @@ export interface ErrorCauseKeys {
   reason: string
   stack_trace?: string
   caused_by?: ErrorCause | string
-  root_cause: (ErrorCause | string)[]
+  root_cause?: (ErrorCause | string)[]
   suppressed?: (ErrorCause | string)[]
 }
 export type ErrorCause = ErrorCauseKeys |
@@ -4000,7 +4000,7 @@ export interface MappingFieldAliasProperty extends MappingPropertyBase {
 
 export interface MappingFieldMapping {
   full_name: string
-  mapping: Partial<Record<string, MappingProperty>>
+  mapping: Partial<Record<Field, MappingProperty>>
 }
 
 export interface MappingFieldNamesField {
@@ -12430,9 +12430,6 @@ export interface NodesDataPathStats {
 export interface NodesExtendedMemoryStats extends NodesMemoryStats {
   free_percent: integer
   used_percent: integer
-  total_in_bytes: integer
-  free_in_bytes: integer
-  used_in_bytes: integer
 }
 
 export interface NodesFileSystem {
