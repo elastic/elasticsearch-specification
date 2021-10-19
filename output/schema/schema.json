@@ -79140,6 +79140,17 @@
       },
       "properties": [
         {
+          "name": "executing",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "insert_order",
           "required": true,
           "type": {
