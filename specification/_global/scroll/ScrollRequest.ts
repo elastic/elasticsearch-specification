@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, ScrollId } from '@_types/common'
+import { ScrollId } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
@@ -29,7 +29,7 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /** @deprecated 7.0.0 */
-    scroll_id?: Id
+    scroll_id?: ScrollId
   }
   query_parameters: {
     /**

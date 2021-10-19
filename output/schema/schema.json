@@ -13047,8 +13047,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Type",
+              "namespace": "_types"
             }
           }
         },
@@ -21033,7 +21033,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "ScrollId",
               "namespace": "_types"
             }
           }
@@ -84619,6 +84619,7 @@
       "path": [
         {
           "description": "The name of the index lifecycle policy",
+          "identifier": "name",
           "name": "policy",
           "required": true,
           "type": {
@@ -85096,6 +85097,7 @@
       "path": [
         {
           "description": "The name of the index lifecycle policy",
+          "identifier": "name",
           "name": "policy",
           "required": false,
           "type": {
@@ -85340,6 +85342,7 @@
       "path": [
         {
           "description": "The name of the index lifecycle policy",
+          "identifier": "name",
           "name": "policy",
           "required": true,
           "type": {
@@ -137589,6 +137592,7 @@
       "path": [
         {
           "description": "A repository name",
+          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {

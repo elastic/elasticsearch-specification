@@ -51,7 +51,8 @@ import {
   parseVariantNameTag,
   parseVariantsTag,
   verifyUniqueness,
-  parseJsDocTags
+  parseJsDocTags,
+  deepEqual
 } from './utils'
 
 const specsFolder = join(__dirname, '..', '..', 'specification')
@@ -214,14 +215,12 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       )]
       const methods = [...new Set(mapping.urls.flatMap(url => url.methods))]
 
-      const pathAndQueryProperties = (declaration.getMembers() as any[]).flatMap(member => {
-        const property = visitRequestOrResponseProperty(member)
-        if (property.name === 'path_parts' || property.name === 'query_parameters') {
-          return property.properties.map(property => property.name)
-        } else if (property.name === 'body') {
-          return undefined
-        }
-      })
+      let pathMember: Node | null = null
+      let bodyProperties: model.Property[] = []
+      let bodyValue: model.ValueOf | null = null
+      let bodyMember: Node | null = null
+
+      // collect path/query/body properties
       for (const member of declaration.getMembers()) {
         // we are visiting `path_parts, `query_parameters` or `body`
         assert(
@@ -231,54 +230,78 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         )
         const property = visitRequestOrResponseProperty(member)
         if (property.name === 'path_parts') {
-          for (const part of property.properties) {
-            if (part.name.includes('stub')) continue
-            assert(
-              member,
-              urlTemplateParams.includes(part.name),
-              `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
-            )
-          }
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object path_parts, just remove the path_parts declaration.')
+          pathMember = member
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
           type.query = property.properties
         } else if (property.name === 'body') {
+          bodyMember = member
           assert(
             member,
             methods.some(method => ['POST', 'PUT', 'DELETE'].includes(method)),
             `${namespace}.${name} can't have a body, allowed methods: ${methods.join(', ')}`
           )
-          // the body can either be a value (eg Array<string> or an object with properties)
           if (property.valueOf != null) {
-            if (property.valueOf.kind === 'instance_of' && property.valueOf.type.name === 'Void') {
-              assert(member, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
-            } else {
-              const tags = parseJsDocTags(member.getJsDocs())
-              assert(
-                member,
-                tags.identifier != null,
-                'You should configure a body @identifier'
-              )
-              assert(
-                member.getJsDocs(),
-                !pathAndQueryProperties.includes(tags.identifier),
-                `The identifier '${tags.identifier}' already exists as a property in the path or query.`
-              )
-              type.body = {
-                kind: 'value',
-                value: property.valueOf,
-                identifier: tags.identifier
-              }
-            }
-          } else if (Array.isArray(property.properties)) {
+            bodyValue = property.valueOf
+          } else {
             assert(member, property.properties.length > 0, 'There is no need to declare an empty object body, just remove the body declaration.')
-            type.body = { kind: 'properties', properties: property.properties }
+            bodyProperties = property.properties
           }
         } else {
-          assert(member, false, 'Unknown request property ' + property.name)
+          assert(member, false, `Unknown request property: ${property.name}`)
         }
+      }
+
+      // validate path properties
+      for (const part of type.path) {
+        assert(
+          pathMember as Node,
+          urlTemplateParams.includes(part.name),
+          `The property '${part.name}' does not exist in the rest-api-spec ${namespace} url template`
+        )
+        if (type.query.map(p => p.name).includes(part.name)) {
+          const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
+          if (!deepEqual(queryType.type, part.type)) {
+            assert(pathMember as Node, part.identifier != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @identifier.`)
+            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in query_parameters.`)
+          }
+        }
+        if (bodyProperties.map(p => p.name).includes(part.name)) {
+          const bodyType = bodyProperties.find(property => property != null && property.name === part.name) as model.Property
+          if (!deepEqual(bodyType.type, part.type)) {
+            assert(pathMember as Node, part.identifier != null, `'${part.name}' already exist in the body with a different type, you should define an @identifier.`)
+            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in body.`)
+          }
+        }
+      }
+
+      // validate body
+      // the body can either be a value (eg Array<string> or an object with properties)
+      if (bodyValue != null) {
+        if (bodyValue.kind === 'instance_of' && bodyValue.type.name === 'Void') {
+          assert(bodyMember as Node, false, 'There is no need to use Void in requets definitions, just remove the body declaration.')
+        } else {
+          const tags = parseJsDocTags((bodyMember as PropertySignature).getJsDocs())
+          assert(
+            bodyMember as Node,
+            tags.identifier != null,
+            'You should configure a body @identifier'
+          )
+          assert(
+            (bodyMember as PropertySignature).getJsDocs(),
+            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.identifier),
+            `The identifier '${tags.identifier}' already exists as a property in the path or query.`
+          )
+          type.body = {
+            kind: 'value',
+            value: bodyValue,
+            identifier: tags.identifier
+          }
+        }
+      } else if (bodyProperties.length > 0) {
+        type.body = { kind: 'properties', properties: bodyProperties }
       }
     } else {
       type = {
