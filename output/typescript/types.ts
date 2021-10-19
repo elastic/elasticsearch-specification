@@ -431,7 +431,19 @@ export interface GetScriptLanguagesResponse {
   types_allowed: string[]
 }
 
-export interface GetSourceRequest extends GetRequest {
+export interface GetSourceRequest {
+  id: Id
+  index: IndexName
+  preference?: string
+  realtime?: boolean
+  refresh?: boolean
+  routing?: Routing
+  _source?: boolean | Fields
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  stored_fields?: Fields
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 export type GetSourceResponse<TDocument = unknown> = TDocument

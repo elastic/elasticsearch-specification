@@ -17,11 +17,69 @@
  * under the License.
  */
 
-import { Request as GetRequest } from '_global/get/GetRequest'
+import { RequestBase } from '@_types/Base'
+import {
+  Fields,
+  Id,
+  IndexName,
+  Routing,
+  VersionNumber,
+  VersionType
+} from '@_types/common'
 
 /**
  * @rest_spec_name get_source
  * @since 0.0.0
  * @stability stable
  */
-export interface Request extends GetRequest {}
+export interface Request {
+  path_parts: {
+    /** Unique identifier of the document. */
+    id: Id
+    /** Name of the index that contains the document. */
+    index: IndexName
+  }
+  query_parameters: {
+    /**
+     * Specifies the node or shard the operation should be performed on. Random by default.
+     */
+    preference?: string
+    /**
+     *  Boolean) If true, the request is real-time as opposed to near-real-time.
+     * @server_default true
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime
+     */
+    realtime?: boolean
+    /**
+     *  If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.
+     * @server_default false
+     */
+    refresh?: boolean
+    /**
+     * Target the specified primary shard.
+     * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing
+     */
+    routing?: Routing
+    /**
+     * True or false to return the _source field or not, or a list of fields to return.
+     */
+    _source?: boolean | Fields
+    /**
+     * A comma-separated list of source fields to exclude in the response.
+     */
+    _source_excludes?: Fields
+    /**
+     * A comma-separated list of source fields to include in the response.
+     */
+    _source_includes?: Fields
+    stored_fields?: Fields
+    /**
+     * Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.
+     */
+    version?: VersionNumber
+    /**
+     * Specific version type: internal, external, external_gte.
+     */
+    version_type?: VersionType
+  }
+}
