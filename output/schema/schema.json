@@ -12932,6 +12932,7 @@
         },
         {
           "description": "Default document type for items which don't provide one",
+          "identifier": "type_path",
           "name": "type",
           "required": false,
           "type": {
@@ -13042,6 +13043,7 @@
         },
         {
           "description": "Default document type for items which don't provide one",
+          "identifier": "type_query",
           "name": "type",
           "required": false,
           "type": {
@@ -13448,6 +13450,7 @@
       "path": [
         {
           "description": "A comma-separated list of scroll IDs to clear",
+          "identifier": "scroll_id_path",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -14354,6 +14357,7 @@
         },
         {
           "description": "Maximum number of documents to process (default: all documents)",
+          "identifier": "max_docs_query",
           "name": "max_docs",
           "required": false,
           "type": {
@@ -18541,6 +18545,7 @@
       "query": [
         {
           "description": "A comma-separated list of documents ids. You must define ids as parameter or set \"ids\" or \"docs\" in the request body",
+          "identifier": "ids_query",
           "name": "ids",
           "required": false,
           "type": {
@@ -21028,6 +21033,7 @@
             "version": "7.0.0"
           },
           "description": "The scroll ID",
+          "identifier": "scroll_id_path",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -21043,6 +21049,7 @@
         {
           "description": "Period to retain the search context for scrolling.",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results",
+          "identifier": "scroll_query",
           "name": "scroll",
           "required": false,
           "serverDefault": "1d",
@@ -21060,6 +21067,7 @@
             "version": "7.0.0"
           },
           "description": "The scroll ID for scrolled search",
+          "identifier": "scroll_id_query",
           "name": "scroll_id",
           "required": false,
           "type": {
@@ -21780,6 +21788,7 @@
         },
         {
           "description": "A comma-separated list of fields to return as the docvalue representation of a field for each hit",
+          "identifier": "docvalue_fields_query",
           "name": "docvalue_fields",
           "required": false,
           "type": {
@@ -21804,6 +21813,7 @@
         },
         {
           "description": "Specify whether to return detailed information about score computation as part of a hit",
+          "identifier": "explain_query",
           "name": "explain",
           "required": false,
           "type": {
@@ -21948,6 +21958,7 @@
         },
         {
           "description": "Specific 'tag' of the request for logging and statistical purposes",
+          "identifier": "stats_query",
           "name": "stats",
           "required": false,
           "type": {
@@ -21963,6 +21974,7 @@
         },
         {
           "description": "A comma-separated list of stored fields to return as part of a hit",
+          "identifier": "stored_fields_query",
           "name": "stored_fields",
           "required": false,
           "type": {
@@ -22023,6 +22035,7 @@
         },
         {
           "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+          "identifier": "terminate_after_query",
           "name": "terminate_after",
           "required": false,
           "type": {
@@ -22035,6 +22048,7 @@
         },
         {
           "description": "Explicit operation timeout",
+          "identifier": "timeout_query",
           "name": "timeout",
           "required": false,
           "type": {
@@ -22047,6 +22061,7 @@
         },
         {
           "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+          "identifier": "track_total_hits_query",
           "name": "track_total_hits",
           "required": false,
           "type": {
@@ -22071,6 +22086,7 @@
         },
         {
           "description": "Whether to calculate and return scores even if they are not used for sorting",
+          "identifier": "track_scores_query",
           "name": "track_scores",
           "required": false,
           "type": {
@@ -22107,6 +22123,7 @@
         },
         {
           "description": "Specify whether to return document version as part of a hit",
+          "identifier": "version_query",
           "name": "version",
           "required": false,
           "type": {
@@ -22119,6 +22136,7 @@
         },
         {
           "description": "True or false to return the _source field or not, or a list of fields to return",
+          "identifier": "source_query",
           "name": "_source",
           "required": false,
           "type": {
@@ -22167,6 +22185,7 @@
         },
         {
           "description": "Specify whether to return sequence number and primary term of the last modification of each hit",
+          "identifier": "seq_no_primary_term_query",
           "name": "seq_no_primary_term",
           "required": false,
           "type": {
@@ -22191,6 +22210,7 @@
         },
         {
           "description": "Number of hits to return (default: 10)",
+          "identifier": "size_query",
           "name": "size",
           "required": false,
           "type": {
@@ -22203,6 +22223,7 @@
         },
         {
           "description": "Starting offset (default: 0)",
+          "identifier": "from_query",
           "name": "from",
           "required": false,
           "type": {
@@ -22215,6 +22236,7 @@
         },
         {
           "description": "A comma-separated list of <field>:<direction> pairs",
+          "identifier": "sort_query",
           "name": "sort",
           "required": false,
           "type": {
@@ -27585,6 +27607,7 @@
       "query": [
         {
           "description": "If false, the meta layer’s feature is the bounding box of the tile.\nIf true, the meta layer’s feature is a bounding box resulting from a\ngeo_bounds aggregation. The aggregation runs on <field> values that intersect\nthe <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting\nbounding box may be larger than the vector tile.",
+          "identifier": "exact_bounds_query",
           "name": "exact_bounds",
           "required": false,
           "serverDefault": false,
@@ -27598,6 +27621,7 @@
         },
         {
           "description": "Size, in pixels, of a side of the tile. Vector tiles are square with equal sides.",
+          "identifier": "extent_query",
           "name": "extent",
           "required": false,
           "serverDefault": 4096,
@@ -27611,6 +27635,7 @@
         },
         {
           "description": "Additional zoom levels available through the aggs layer. For example, if <zoom> is 7\nand grid_precision is 8, you can zoom in up to level 15. Accepts 0-8. If 0, results\ndon’t include the aggs layer.",
+          "identifier": "grid_precision_query",
           "name": "grid_precision",
           "required": false,
           "serverDefault": 8,
@@ -27624,6 +27649,7 @@
         },
         {
           "description": "Determines the geometry type for features in the aggs layer. In the aggs layer,\neach feature represents a geotile_grid cell. If 'grid' each feature is a Polygon\nof the cells bounding box. If 'point' each feature is a Point that is the centroid\nof the cell.",
+          "identifier": "grid_type_query",
           "name": "grid_type",
           "required": false,
           "serverDefault": "grid",
@@ -27637,6 +27663,7 @@
         },
         {
           "description": "Maximum number of features to return in the hits layer. Accepts 0-10000.\nIf 0, results don’t include the hits layer.",
+          "identifier": "size_query",
           "name": "size",
           "required": false,
           "serverDefault": 10000,
@@ -28071,6 +28098,7 @@
         },
         {
           "description": "Specify whether to return detailed information about score computation as part of a hit",
+          "identifier": "explain_query",
           "name": "explain",
           "required": false,
           "serverDefault": false,
@@ -28122,6 +28150,7 @@
         },
         {
           "description": "Specify whether to profile the query execution",
+          "identifier": "profile_query",
           "name": "profile",
           "required": false,
           "serverDefault": false,
@@ -29349,6 +29378,7 @@
         },
         {
           "description": "Set to false to disable source retrieval. You can also specify a comma-separated\nlist of the fields you want to retrieve.",
+          "identifier": "_source_query",
           "name": "_source",
           "required": false,
           "serverDefault": "true",
@@ -29571,6 +29601,7 @@
         },
         {
           "description": "What to do when the update by query hits version conflicts?",
+          "identifier": "conflicts_query",
           "name": "conflicts",
           "required": false,
           "type": {
@@ -61747,6 +61778,7 @@
         },
         {
           "description": "A comma-separated list of fields to return as the docvalue representation of a field for each hit",
+          "identifier": "docvalue_fields_query",
           "name": "docvalue_fields",
           "required": false,
           "type": {
@@ -61771,6 +61803,7 @@
         },
         {
           "description": "Specify whether to return detailed information about score computation as part of a hit",
+          "identifier": "explain_query",
           "name": "explain",
           "required": false,
           "type": {
@@ -61912,6 +61945,7 @@
         },
         {
           "description": "Specific 'tag' of the request for logging and statistical purposes",
+          "identifier": "stats_query",
           "name": "stats",
           "required": false,
           "type": {
@@ -61927,6 +61961,7 @@
         },
         {
           "description": "A comma-separated list of stored fields to return as part of a hit",
+          "identifier": "stored_fields_query",
           "name": "stored_fields",
           "required": false,
           "type": {
@@ -61987,6 +62022,7 @@
         },
         {
           "description": "The maximum number of documents to collect for each shard, upon reaching which the query execution will terminate early.",
+          "identifier": "terminate_after_query",
           "name": "terminate_after",
           "required": false,
           "type": {
@@ -61999,6 +62035,7 @@
         },
         {
           "description": "Explicit operation timeout",
+          "identifier": "timeout_query",
           "name": "timeout",
           "required": false,
           "type": {
@@ -62011,6 +62048,7 @@
         },
         {
           "description": "Indicate if the number of documents that match the query should be tracked. A number can also be specified, to accurately track the total hit count up to the number.",
+          "identifier": "track_total_hits_query",
           "name": "track_total_hits",
           "required": false,
           "type": {
@@ -62035,6 +62073,7 @@
         },
         {
           "description": "Whether to calculate and return scores even if they are not used for sorting",
+          "identifier": "track_scores_query",
           "name": "track_scores",
           "required": false,
           "type": {
@@ -62070,6 +62109,7 @@
         },
         {
           "description": "Specify whether to return document version as part of a hit",
+          "identifier": "version_query",
           "name": "version",
           "required": false,
           "type": {
@@ -62082,6 +62122,7 @@
         },
         {
           "description": "True or false to return the _source field or not, or a list of fields to return",
+          "identifier": "source_query",
           "name": "_source",
           "required": false,
           "type": {
@@ -62130,6 +62171,7 @@
         },
         {
           "description": "Specify whether to return sequence number and primary term of the last modification of each hit",
+          "identifier": "seq_no_primary_term_query",
           "name": "seq_no_primary_term",
           "required": false,
           "type": {
@@ -62154,6 +62196,7 @@
         },
         {
           "description": "Number of hits to return (default: 10)",
+          "identifier": "size_query",
           "name": "size",
           "required": false,
           "type": {
@@ -62166,6 +62209,7 @@
         },
         {
           "description": "Starting offset (default: 0)",
+          "identifier": "from_query",
           "name": "from",
           "required": false,
           "type": {
@@ -62178,6 +62222,7 @@
         },
         {
           "description": "A comma-separated list of <field>:<direction> pairs",
+          "identifier": "sort_query",
           "name": "sort",
           "required": false,
           "type": {
@@ -83624,6 +83669,7 @@
         },
         {
           "description": "Period for which the search and its results are stored on the cluster.",
+          "identifier": "keep_alive_query",
           "name": "keep_alive",
           "required": false,
           "serverDefault": "5d",
@@ -83637,6 +83683,7 @@
         },
         {
           "description": "If true, the search and its results are stored on the cluster.",
+          "identifier": "keep_on_completion_query",
           "name": "keep_on_completion",
           "required": false,
           "serverDefault": false,
@@ -83650,6 +83697,7 @@
         },
         {
           "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
+          "identifier": "wait_for_completion_timeout_query",
           "name": "wait_for_completion_timeout",
           "required": false,
           "type": {
@@ -85340,6 +85388,7 @@
       "path": [
         {
           "description": "The name of the index lifecycle policy",
+          "identifier": "name",
           "name": "policy",
           "required": true,
           "type": {
@@ -93383,6 +93432,7 @@
         },
         {
           "description": "Order in which Elasticsearch applies this template if index\nmatches multiple templates.\n\nTemplates with lower 'order' values are merged first. Templates with higher\n'order' values are merged later, overriding templates with lower values.",
+          "identifier": "order_query",
           "name": "order",
           "required": false,
           "type": {
@@ -111916,6 +111966,7 @@
       "query": [
         {
           "description": "The desired requests per second for the deletion processes. The default\nbehavior is no throttling.",
+          "identifier": "requests_per_second_query",
           "name": "requests_per_second",
           "required": false,
           "type": {
@@ -111928,6 +111979,7 @@
         },
         {
           "description": "How long can the underlying delete processes run until they are canceled.",
+          "identifier": "timeout_query",
           "name": "timeout",
           "required": false,
           "serverDefault": "8h",
@@ -113758,6 +113810,7 @@
         },
         {
           "description": "Exclude interim results",
+          "identifier": "exclude_interim_query",
           "name": "exclude_interim",
           "required": false,
           "serverDefault": false,
@@ -113771,6 +113824,7 @@
         },
         {
           "description": "Sort buckets by a particular field",
+          "identifier": "sort_query",
           "name": "sort",
           "required": false,
           "type": {
@@ -113783,6 +113837,7 @@
         },
         {
           "description": "Set the sort direction",
+          "identifier": "desc_query",
           "name": "desc",
           "required": false,
           "serverDefault": false,
@@ -113796,6 +113851,7 @@
         },
         {
           "description": "Start time filter for buckets",
+          "identifier": "start_query",
           "name": "start",
           "required": false,
           "type": {
@@ -113808,6 +113864,7 @@
         },
         {
           "description": "End time filter for buckets",
+          "identifier": "end_query",
           "name": "end",
           "required": false,
           "type": {
@@ -115277,6 +115334,7 @@
         },
         {
           "description": "Returns snapshots with timestamps earlier than this time.",
+          "identifier": "end_query",
           "name": "end",
           "required": false,
           "type": {
@@ -115325,6 +115383,7 @@
         },
         {
           "description": "Returns snapshots with timestamps after this time.",
+          "identifier": "start_query",
           "name": "start",
           "required": false,
           "type": {
@@ -115675,6 +115734,7 @@
       "query": [
         {
           "description": "Exclude interim results",
+          "identifier": "exclude_interim_query",
           "name": "exclude_interim",
           "required": false,
           "serverDefault": false,
@@ -115712,6 +115772,7 @@
         },
         {
           "description": "Start time filter for records",
+          "identifier": "start_query",
           "name": "start",
           "required": false,
           "type": {
@@ -115724,6 +115785,7 @@
         },
         {
           "description": "End time filter for records",
+          "identifier": "end_query",
           "name": "end",
           "required": false,
           "type": {
@@ -119639,6 +119701,7 @@
       "query": [
         {
           "description": "The start time from where the datafeed should begin",
+          "identifier": "start_query",
           "name": "start",
           "required": false,
           "type": {
@@ -119858,6 +119921,7 @@
         },
         {
           "description": "True if the datafeed should be forcefully stopped.",
+          "identifier": "force_query",
           "name": "force",
           "required": false,
           "serverDefault": false,
@@ -134562,6 +134626,7 @@
       "path": [
         {
           "description": "The username of the User",
+          "identifier": "username_path",
           "name": "username",
           "required": true,
           "type": {
@@ -137622,6 +137687,7 @@
       "path": [
         {
           "description": "A repository name",
+          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -147247,6 +147313,7 @@
       "path": [
         {
           "description": "Defines which additional metrics are included in the response.",
+          "identifier": "metric_path",
           "name": "metric",
           "required": false,
           "type": {
@@ -147289,6 +147356,7 @@
         },
         {
           "description": "Defines which additional metrics are included in the response.",
+          "identifier": "metric_query",
           "name": "metric",
           "required": false,
           "type": {
