@@ -483,6 +483,7 @@
     },
     "cluster.health": {
       "request": [
+        "Request: missing json spec query parameter 'return_200_for_cluster_health_timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1134,6 +1135,12 @@
     "ingest.processor_grok": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "ingest.put_pipeline": {
+      "request": [
+        "Request: missing json spec query parameter 'if_version'"
       ],
       "response": []
     },
