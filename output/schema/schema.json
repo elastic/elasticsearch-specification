@@ -17171,27 +17171,178 @@
       }
     },
     {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
       "body": {
-        "kind": "properties",
-        "properties": []
+        "kind": "no_body"
       },
       "description": "Returns the source of a document.",
-      "inherits": {
-        "type": {
-          "name": "Request",
-          "namespace": "_global.get"
-        }
-      },
       "kind": "request",
       "name": {
         "name": "Request",
         "namespace": "_global.get_source"
       },
-      "path": [],
-      "query": []
+      "path": [
+        {
+          "description": "Unique identifier of the document.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Name of the index that contains the document.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Specifies the node or shard the operation should be performed on. Random by default.",
+          "name": "preference",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Boolean) If true, the request is real-time as opposed to near-real-time.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#realtime",
+          "name": "realtime",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, Elasticsearch refreshes the affected shards to make this operation visible to search. If false, do nothing with refreshes.",
+          "name": "refresh",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Target the specified primary shard.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html#get-routing",
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "True or false to return the _source field or not, or a list of fields to return.",
+          "name": "_source",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Fields",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "A comma-separated list of source fields to exclude in the response.",
+          "name": "_source_excludes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of source fields to include in the response.",
+          "name": "_source_includes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "stored_fields",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Explicit version number for concurrency control. The specified version must match the current version of the document for the request to succeed.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specific version type: internal, external, external_gte.",
+          "name": "version_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionType",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
