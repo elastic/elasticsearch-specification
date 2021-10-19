@@ -216,7 +216,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
       const methods = [...new Set(mapping.urls.flatMap(url => url.methods))]
 
       let pathMember: Node | null = null
-      let queryMember: Node | null = null
       let bodyProperties: model.Property[] = []
       let bodyValue: model.ValueOf | null = null
       let bodyMember: Node | null = null
@@ -236,7 +235,6 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           type.path = property.properties
         } else if (property.name === 'query_parameters') {
           assert(member, property.properties.length > 0, 'There is no need to declare an empty object query_parameters, just remove the query_parameters declaration.')
-          queryMember = member
           type.query = property.properties
         } else if (property.name === 'body') {
           bodyMember = member
