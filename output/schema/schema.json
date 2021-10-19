@@ -137172,6 +137172,7 @@
       "path": [
         {
           "description": "A repository name",
+          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -137759,6 +137760,7 @@
       "path": [
         {
           "description": "Name of the snapshot repository to unregister. Wildcard (`*`) patterns are supported.",
+          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -138071,6 +138073,7 @@
       "path": [
         {
           "description": "A comma-separated list of repository names",
+          "identifier": "name",
           "name": "repository",
           "required": false,
           "type": {
@@ -138526,6 +138529,7 @@
       "path": [
         {
           "description": "A repository name",
+          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {

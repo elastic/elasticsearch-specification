@@ -28,6 +28,7 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** @identifier name */
     repository: Name
   }
   query_parameters: {
