@@ -20,6 +20,7 @@
 import { integer } from '@_types/Numeric'
 
 export class PendingTask {
+  executing: boolean
   insert_order: integer
   priority: string
   source: string
