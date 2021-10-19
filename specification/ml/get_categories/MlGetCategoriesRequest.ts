@@ -59,4 +59,7 @@ export interface Request extends RequestBase {
      */
     partition_field_value?: string
   }
+  body: {
+    page?: Page
+  }
 }

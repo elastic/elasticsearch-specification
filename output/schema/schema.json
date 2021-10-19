@@ -113027,7 +113027,20 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "page",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Page",
+                "namespace": "ml._types"
+              }
+            }
+          }
+        ]
       },
       "description": "Retrieves anomaly detection job results for one or more categories.",
       "inherits": {
