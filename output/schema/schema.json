@@ -31857,7 +31857,7 @@
         },
         {
           "name": "root_cause",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "array_of",
             "value": {
@@ -50659,8 +50659,8 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -122776,39 +122776,6 @@
         },
         {
           "name": "used_percent",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "total_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "free_in_bytes",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "used_in_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
