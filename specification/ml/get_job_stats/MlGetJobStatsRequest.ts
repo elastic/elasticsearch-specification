@@ -21,15 +21,39 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Retrieves usage information for anomaly detection jobs.
+ * You can get statistics for multiple anomaly detection jobs in a single API
+ * request by using a group name, a comma-separated list of jobs, or a wildcard
+ * expression. You can get statistics for all anomaly detection jobs by using
+ * `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.
  * @rest_spec_name ml.get_job_stats
  * @since 5.5.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job. It can be a job identifier, a
+     * group name, or a wildcard expression. If you do not specify one of these
+     * options, the API returns information for all anomaly detection jobs.
+     */
     job_id?: Id
   }
   query_parameters: {
+    /**
+     * Specifies what to do when the request:
+     *
+     * 1. Contains wildcard expressions and there are no jobs that match.
+     * 2. Contains the _all string or no identifiers and there are no matches.
+     * 3. Contains wildcard expressions and there are only partial matches.
+     *
+     * The default value is `true`, which returns an empty `jobs` array when
+     * there are no matches and the subset of results when there are partial
+     * matches. If this parameter is `false`, the request returns a `404` status
+     * code when there are no matches or only partial matches.
+     * @server_default true
+     */
     allow_no_jobs?: boolean
   }
 }
