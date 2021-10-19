@@ -28,7 +28,10 @@ import { Time } from '@_types/Time'
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** @deprecated 7.0.0 */
+    /**
+     * @deprecated 7.0.0
+     * @identifier scroll_id_path
+     */
     scroll_id?: Id
   }
   query_parameters: {
@@ -36,9 +39,13 @@ export interface Request extends RequestBase {
      * Period to retain the search context for scrolling.
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
      * @server_default 1d
+     * @identifier scroll_query
      */
     scroll?: Time
-    /** @deprecated 7.0.0 */
+    /**
+     * @deprecated 7.0.0
+     * @identifier scroll_id_query
+     */
     scroll_id?: ScrollId
     /**
      * If true, the API response’s hit.total property is returned as an integer. If false, the API response’s hit.total property is returned as an object.

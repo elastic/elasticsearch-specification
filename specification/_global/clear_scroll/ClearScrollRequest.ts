@@ -27,6 +27,7 @@ import { Ids } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /** @identifier scroll_id_path */
     scroll_id?: Ids
   }
   body: {
