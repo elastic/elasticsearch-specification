@@ -551,3 +551,16 @@ class Foo {
   faz: string
 }
 ```
+
+#### `@experimental`
+
+You can mark a property of a type as experimental with this tag.
+
+```ts
+class Foo {
+  bar: string
+  /** @experimental */
+  baz?: string
+  faz: string
+}
+```
