@@ -71,9 +71,16 @@ export class ElasticsearchVersionInfo {
  * The response returned by Elasticsearch when request execution did not succeed.
  */
 export class ErrorResponseBase {
-  error: ErrorCause
+  error: TopLevelError
   status: integer
 }
+
+/**
+ * @shortcut_property reason
+ */
+// Shortcut property needed to handle cases where the error is not caused by an exception. They happen only when the
+// HTTP routing layer rejects the request, and thus only at the top level. Example: "GET _cat/foo".
+export class TopLevelError extends ErrorCause {}
 
 export class IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics

@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "9c014b7",
+    "hash": "72b8c1071",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -31983,8 +31983,7 @@
             }
           }
         }
-      ],
-      "shortcutProperty": "reason"
+      ]
     },
     {
       "description": "The response returned by Elasticsearch when request execution did not succeed.",
@@ -32000,7 +31999,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ErrorCause",
+              "name": "TopLevelError",
               "namespace": "_types"
             }
           }
@@ -35837,6 +35836,24 @@
           "namespace": "internal"
         }
       }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "ErrorCause",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TopLevelError",
+        "namespace": "_types"
+      },
+      "properties": [],
+      "shortcutProperty": "reason"
     },
     {
       "kind": "interface",
