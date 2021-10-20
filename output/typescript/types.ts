@@ -829,6 +829,7 @@ export interface ReindexSource {
   slice?: SlicedScroll
   sort?: SearchSort
   _source?: Fields
+  runtime_mappings?: MappingRuntimeFields
 }
 
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
@@ -14707,9 +14708,20 @@ export interface TransformPreviewTransformResponse<TTransform = unknown> {
   preview: TTransform[]
 }
 
-export interface TransformPutTransformRequest extends TransformPreviewTransformRequest {
+export interface TransformPutTransformRequest extends RequestBase {
   transform_id: Id
   defer_validation?: boolean
+  body?: {
+    dest: ReindexDestination
+    description?: string
+    frequency?: Time
+    pivot?: TransformPivot
+    source: ReindexSource
+    settings?: TransformSettings
+    sync?: TransformSyncContainer
+    retention_policy?: TransformRetentionPolicyContainer
+    latest?: TransformLatest
+  }
 }
 
 export interface TransformPutTransformResponse extends AcknowledgedResponseBase {
@@ -14735,7 +14747,18 @@ export interface TransformStopTransformRequest extends RequestBase {
 export interface TransformStopTransformResponse extends AcknowledgedResponseBase {
 }
 
-export interface TransformUpdateTransformRequest extends TransformPutTransformRequest {
+export interface TransformUpdateTransformRequest extends RequestBase {
+  transform_id: Id
+  defer_validation?: boolean
+  body?: {
+    dest?: ReindexDestination
+    description?: string
+    frequency?: Time
+    source?: ReindexSource
+    settings?: TransformSettings
+    sync?: TransformSyncContainer
+    retention_policy?: TransformRetentionPolicyContainer
+  }
 }
 
 export interface TransformUpdateTransformResponse {

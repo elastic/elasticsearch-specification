@@ -17,11 +17,47 @@
  * under the License.
  */
 
-import { Request as PutTransformRequest } from '@transform/put_transform/PutTransformRequest'
+import { Destination, Source } from '@global/reindex/types'
+import {
+  RetentionPolicyContainer,
+  Settings,
+  SyncContainer
+} from '@transform/_types/Transform'
+import { RequestBase } from '@_types/Base'
+import { Id } from '@_types/common'
+import { Time } from '@_types/Time'
 
 /**
  * @rest_spec_name transform.update_transform
  * @since 7.2.0
  * @stability stable
  */
-export interface Request extends PutTransformRequest {}
+export interface Request extends RequestBase {
+  path_parts: {
+    /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    transform_id: Id
+  }
+  query_parameters: {
+    /** When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created. */
+    defer_validation?: boolean
+  }
+  body: {
+    /** The destination for the transform. */
+    dest?: Destination
+    /** Free text description of the transform. */
+    description?: string
+    /**
+     * The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.
+     * @server_default 1m
+     */
+    frequency?: Time
+    /** The source of the data for the transform. */
+    source?: Source
+    /** Defines optional transform settings. */
+    settings?: Settings
+    /**  Defines the properties transforms require to run continuously. */
+    sync?: SyncContainer
+    /** Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index. */
+    retention_policy?: RetentionPolicyContainer
+  }
+}

@@ -28,6 +28,7 @@ import {
   Username,
   VersionType
 } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Host } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -51,6 +52,7 @@ export class Source {
   sort?: Sort
   /** @identifier source_fields */
   _source?: Fields
+  runtime_mappings?: RuntimeFields
 }
 
 export class RemoteSource {

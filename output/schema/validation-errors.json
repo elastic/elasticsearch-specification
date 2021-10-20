@@ -2057,20 +2057,10 @@
       "response": []
     },
     "transform.preview_transform": {
-      "request": [
-        "Non-leaf type cannot be used here: 'transform.preview_transform:Request'"
-      ],
+      "request": [],
       "response": [
         "response definition transform.preview_transform:Response / body / Property 'generated_dest_index' / instance_of - Non-leaf type cannot be used here: 'indices._types:IndexState'"
       ]
-    },
-    "transform.put_transform": {
-      "request": [
-        "request definition transform.put_transform:Request / Inherits - 'transform.preview_transform:Request' is a request and must only be used in endpoints",
-        "request definition transform.put_transform:Request / path - Property 'transform_id' is already defined in an ancestor class",
-        "Non-leaf type cannot be used here: 'transform.put_transform:Request'"
-      ],
-      "response": []
     },
     "transform.start_transform": {
       "request": [
@@ -2081,15 +2071,6 @@
     "transform.stop_transform": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "transform.update_transform": {
-      "request": [
-        "Request: missing json spec path parameter 'transform_id'",
-        "Request: missing json spec query parameter 'defer_validation'",
-        "request definition transform.update_transform:Request / Inherits - 'transform.put_transform:Request' is a request and must only be used in endpoints",
-        "Url path property 'transform_id' is missing in request definition"
       ],
       "response": []
     },
