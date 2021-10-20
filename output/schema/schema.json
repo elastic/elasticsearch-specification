@@ -2206,225 +2206,6 @@
       "accept": [
         "application/json"
       ],
-      "description": "Deletes an existing transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/delete-transform.html",
-      "name": "data_frame_transform_deprecated.delete_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "DELETE"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "Retrieves configuration information for transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform.html",
-      "name": "data_frame_transform_deprecated.get_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        },
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "Retrieves usage information for transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-transform-stats.html",
-      "name": "data_frame_transform_deprecated.get_transform_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "GET"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_stats"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-        "application/json"
-      ],
-      "description": "Previews a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/preview-transform.html",
-      "name": "data_frame_transform_deprecated.preview_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/_preview"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-        "application/json"
-      ],
-      "description": "Instantiates a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-transform.html",
-      "name": "data_frame_transform_deprecated.put_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "PUT"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "Starts one or more transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-transform.html",
-      "name": "data_frame_transform_deprecated.start_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_start"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "description": "Stops one or more transforms.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-transform.html",
-      "name": "data_frame_transform_deprecated.stop_transform",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_stop"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
-      "contentType": [
-        "application/json"
-      ],
-      "description": "Updates certain properties of a transform.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-transform.html",
-      "name": "data_frame_transform_deprecated.update_transform",
-      "request": null,
-      "requestBodyRequired": true,
-      "response": null,
-      "stability": "beta",
-      "urls": [
-        {
-          "deprecation": {
-            "description": "[_data_frame/transforms/] is deprecated, use [_transform/] in the future.",
-            "version": "7.5.0"
-          },
-          "methods": [
-            "POST"
-          ],
-          "path": "/_data_frame/transforms/{transform_id}/_update"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Removes a document from the index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
       "name": "delete",
@@ -3024,6 +2805,63 @@
             "GET"
           ],
           "path": "/{index}/_fleet/global_checkpoints"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/x-ndjson"
+      ],
+      "description": "Multi Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "docUrl": null,
+      "name": "fleet.msearch",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_fleet/_msearch"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_fleet/_msearch"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "docUrl": null,
+      "name": "fleet.search",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_fleet/_search"
         }
       ],
       "visibility": "public"
@@ -4579,6 +4417,30 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Modifies a data stream",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
+      "name": "indices.modify_data_stream",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_stream/_modify"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Opens an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
       "name": "indices.open",
@@ -5538,6 +5400,31 @@
             "POST"
           ],
           "path": "/_ingest/pipeline/{id}/_simulate"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Performs a kNN search.",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
+      "name": "knn_search",
+      "request": null,
+      "requestBodyRequired": false,
+      "response": null,
+      "stability": "experimental",
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_knn_search"
         }
       ],
       "visibility": "public"

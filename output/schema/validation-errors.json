@@ -482,6 +482,7 @@
     },
     "cluster.health": {
       "request": [
+        "Request: missing json spec query parameter 'return_200_for_cluster_health_timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -538,54 +539,6 @@
     "dangling_indices.list_dangling_indices": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.delete_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.get_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.get_transform_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.preview_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.put_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.start_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.stop_transform": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
-    "data_frame_transform_deprecated.update_transform": {
-      "request": [
-        "Missing request & response"
       ],
       "response": []
     },
@@ -689,6 +642,18 @@
       "response": []
     },
     "fleet.global_checkpoints": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "fleet.msearch": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
+    "fleet.search": {
       "request": [
         "Missing request & response"
       ],
@@ -986,6 +951,12 @@
       ],
       "response": []
     },
+    "indices.modify_data_stream": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.open": {
       "request": [
         "Request: should not have a body"
@@ -1115,6 +1086,18 @@
     "ingest.processor_grok": {
       "request": [
         "Request: should not have a body"
+      ],
+      "response": []
+    },
+    "ingest.put_pipeline": {
+      "request": [
+        "Request: missing json spec query parameter 'if_version'"
+      ],
+      "response": []
+    },
+    "knn_search": {
+      "request": [
+        "Missing request & response"
       ],
       "response": []
     },
