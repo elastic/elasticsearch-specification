@@ -32,6 +32,7 @@ export class ModelPlotConfig {
   enabled?: boolean
   /**
    * Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.
+   * @experimental
    */
   terms?: Field
 }
