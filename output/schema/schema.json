@@ -31999,7 +31999,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "TopLevelError",
+              "name": "ErrorCause",
               "namespace": "_types"
             }
           }
@@ -35836,24 +35836,6 @@
           "namespace": "internal"
         }
       }
-    },
-    {
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "inherits": {
-        "type": {
-          "name": "ErrorCause",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "TopLevelError",
-        "namespace": "_types"
-      },
-      "properties": [],
-      "shortcutProperty": "reason"
     },
     {
       "kind": "interface",
