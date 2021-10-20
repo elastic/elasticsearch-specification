@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "709713f",
+    "hash": "af9c2fe22",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -21044,57 +21044,13 @@
           }
         },
         {
-          "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data nodes, including remote nodes, must be 7.12 or later.",
           "name": "runtime_mappings",
           "required": false,
-          "since": "7.12.0",
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "SourceRuntimeMapping",
-                "namespace": "_global.reindex"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SourceRuntimeMapping",
-        "namespace": "_global.reindex"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "script",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "RuntimeFields",
+              "namespace": "_types.mapping"
             }
           }
         }
@@ -143105,13 +143061,123 @@
       ],
       "body": {
         "kind": "properties",
-        "properties": []
+        "properties": [
+          {
+            "description": "The destination for the transform.",
+            "name": "dest",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Destination",
+                "namespace": "_global.reindex"
+              }
+            }
+          },
+          {
+            "description": "Free text description of the transform.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
+            "name": "frequency",
+            "required": false,
+            "serverDefault": "1m",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The pivot method transforms the data by aggregating and grouping it. These objects define the group by fields and the aggregation to reduce the data.",
+            "name": "pivot",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Pivot",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "The source of the data for the transform.",
+            "name": "source",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Source",
+                "namespace": "_global.reindex"
+              }
+            }
+          },
+          {
+            "description": "Defines optional transform settings.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Settings",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines the properties transforms require to run continuously.",
+            "name": "sync",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SyncContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
+            "name": "retention_policy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RetentionPolicyContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "The latest method transforms the data by finding the latest document for each unique key.",
+            "name": "latest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Latest",
+                "namespace": "transform._types"
+              }
+            }
+          }
+        ]
       },
       "description": "Instantiates a transform.",
       "inherits": {
         "type": {
-          "name": "Request",
-          "namespace": "transform.preview_transform"
+          "name": "RequestBase",
+          "namespace": "_types"
         }
       },
       "kind": "request",
@@ -143349,13 +143415,99 @@
       ],
       "body": {
         "kind": "properties",
-        "properties": []
+        "properties": [
+          {
+            "description": "The destination for the transform.",
+            "name": "dest",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Destination",
+                "namespace": "_global.reindex"
+              }
+            }
+          },
+          {
+            "description": "Free text description of the transform.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "The interval between checks for changes in the source indices when the transform is running continuously. Also determines the retry interval in the event of transient failures while the transform is searching or indexing. The minimum value is 1s and the maximum is 1h.",
+            "name": "frequency",
+            "required": false,
+            "serverDefault": "1m",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The source of the data for the transform.",
+            "name": "source",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Source",
+                "namespace": "_global.reindex"
+              }
+            }
+          },
+          {
+            "description": "Defines optional transform settings.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Settings",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines the properties transforms require to run continuously.",
+            "name": "sync",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SyncContainer",
+                "namespace": "transform._types"
+              }
+            }
+          },
+          {
+            "description": "Defines a retention policy for the transform. Data that meets the defined criteria is deleted from the destination index.",
+            "name": "retention_policy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RetentionPolicyContainer",
+                "namespace": "transform._types"
+              }
+            }
+          }
+        ]
       },
       "description": "Updates certain properties of a transform.",
       "inherits": {
         "type": {
-          "name": "Request",
-          "namespace": "transform.put_transform"
+          "name": "RequestBase",
+          "namespace": "_types"
         }
       },
       "kind": "request",
@@ -143363,8 +143515,34 @@
         "name": "Request",
         "namespace": "transform.update_transform"
       },
-      "path": [],
-      "query": []
+      "path": [
+        {
+          "description": "Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "name": "transform_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "When true, deferrable validations are not run. This behavior may be desired if the source index does not exist until after the transform is created.",
+          "name": "defer_validation",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
