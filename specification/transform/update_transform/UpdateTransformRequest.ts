@@ -19,8 +19,6 @@
 
 import { Destination, Source } from '@global/reindex/types'
 import {
-  Latest,
-  Pivot,
   RetentionPolicyContainer,
   Settings,
   SyncContainer
