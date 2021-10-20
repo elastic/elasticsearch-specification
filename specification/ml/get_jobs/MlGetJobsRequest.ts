@@ -55,7 +55,9 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
-    /** @server_default true */
+    /**
+     * @deprecated 7.10.0
+     */
     allow_no_jobs?: boolean
     /**
      * Indicates if certain fields should be removed from the configuration on

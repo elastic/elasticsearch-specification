@@ -22,10 +22,6 @@ import { Id } from '@_types/common'
 
 /**
  * Retrieves usage information for anomaly detection jobs.
- * You can get statistics for multiple anomaly detection jobs in a single API
- * request by using a group name, a comma-separated list of jobs, or a wildcard
- * expression. You can get statistics for all anomaly detection jobs by using
- * `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.
  * @rest_spec_name ml.get_job_stats
  * @since 5.5.0
  * @stability stable
@@ -35,8 +31,9 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * Identifier for the anomaly detection job. It can be a job identifier, a
-     * group name, or a wildcard expression. If you do not specify one of these
-     * options, the API returns information for all anomaly detection jobs.
+     * group name, a comma-separated list of jobs, or a wildcard expression. If
+     * you do not specify one of these options, the API returns information for
+     * all anomaly detection jobs.
      */
     job_id?: Id
   }

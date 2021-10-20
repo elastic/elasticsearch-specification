@@ -25,6 +25,21 @@ import { Time } from '@_types/Time'
 /**
  * Retrieves overall bucket results that summarize the bucket results of
  * multiple anomaly detection jobs.
+ *
+ * The `overall_score` is calculated by combining the scores of all the
+ * buckets within the overall bucket span. First, the maximum
+ * `anomaly_score` per anomaly detection job in the overall bucket is
+ * calculated. Then the `top_n` of those scores are averaged to result in
+ * the `overall_score`. This means that you can fine-tune the
+ * `overall_score` so that it is more or less sensitive to the number of
+ * jobs that detect an anomaly at the same time. For example, if you set
+ * `top_n` to `1`, the `overall_score` is the maximum bucket score in the
+ * overall bucket. Alternatively, if you set `top_n` to the number of jobs,
+ * the `overall_score` is high only when all jobs detect anomalies in that
+ * overall bucket. If you set the `bucket_span` parameter (to a value
+ * greater than its default), the `overall_score` is the maximum
+ * `overall_score` of the overall buckets that have a span equal to the
+ * jobs' largest bucket span.
  * @rest_spec_name ml.get_overall_buckets
  * @since 6.1.0
  * @stability stable
@@ -39,25 +54,6 @@ export interface Request extends RequestBase {
      *
      * You can summarize the bucket results for all anomaly detection jobs by
      * using `_all` or by specifying `*` as the `<job_id>`.
-     *
-     * By default, an overall bucket has a span equal to the largest bucket span
-     * of the specified anomaly detection jobs. To override that behavior, use
-     * the optional `bucket_span` parameter.
-     *
-     * The `overall_score` is calculated by combining the scores of all the
-     * buckets within the overall bucket span. First, the maximum
-     * `anomaly_score` per anomaly detection job in the overall bucket is
-     * calculated. Then the `top_n` of those scores are averaged to result in
-     * the `overall_score`. This means that you can fine-tune the
-     * `overall_score` so that it is more or less sensitive to the number of
-     * jobs that detect an anomaly at the same time. For example, if you set
-     * `top_n` to `1`, the `overall_score` is the maximum bucket score in the
-     * overall bucket. Alternatively, if you set `top_n` to the number of jobs,
-     * the `overall_score` is high only when all jobs detect anomalies in that
-     * overall bucket. If you set the `bucket_span` parameter (to a value
-     * greater than its default), the `overall_score` is the maximum
-     * `overall_score` of the overall buckets that have a span equal to the
-     * jobs' largest bucket span.
      */
     job_id: Id
   }
@@ -66,6 +62,10 @@ export interface Request extends RequestBase {
      * The span of the overall buckets. Must be greater or equal to the largest
      * bucket span of the specified anomaly detection jobs, which is the default
      * value.
+     *
+     * By default, an overall bucket has a span equal to the largest bucket span
+     * of the specified anomaly detection jobs. To override that behavior, use
+     * the optional `bucket_span` parameter.
      */
     bucket_span?: Time
     /**
@@ -88,8 +88,8 @@ export interface Request extends RequestBase {
      */
     start?: Time
     /**
-     * If true, the output excludes interim results. By default, interim results
-     * are included.
+     * If `true`, the output excludes interim results.
+     * @server_default false
      */
     exclude_interim?: boolean
     /**
@@ -99,14 +99,18 @@ export interface Request extends RequestBase {
      * 2. Contains the `_all` string or no identifiers and there are no matches.
      * 3. Contains wildcard expressions and there are only partial matches.
      *
-     * The default value is `true`, which returns an empty `jobs` array when
-     * there are no matches and the subset of results when there are partial
-     * matches. If this parameter is `false`, the request returns a `404` status
-     * code when there are no matches or only partial matches.
+     * If `true`, the request returns an empty `jobs` array when there are no
+     * matches and the subset of results when there are partial matches. If this
+     * parameter is `false`, the request returns a `404` status code when there
+     * are no matches or only partial matches.
+     * @server_default true
      */
     allow_no_match?: boolean
   }
   body: {
+    /**
+     * @deprecated 7.10.0
+     */
     allow_no_jobs?: boolean
   }
 }

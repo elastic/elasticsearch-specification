@@ -115023,7 +115023,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for anomaly detection jobs.\nYou can get statistics for multiple anomaly detection jobs in a single API\nrequest by using a group name, a comma-separated list of jobs, or a wildcard\nexpression. You can get statistics for all anomaly detection jobs by using\n`_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.",
+      "description": "Retrieves usage information for anomaly detection jobs.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115037,7 +115037,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the anomaly detection job. It can be a job identifier, a\ngroup name, or a wildcard expression. If you do not specify one of these\noptions, the API returns information for all anomaly detection jobs.",
+          "description": "Identifier for the anomaly detection job. It can be a job identifier, a\ngroup name, a comma-separated list of jobs, or a wildcard expression. If\nyou do not specify one of these options, the API returns information for\nall anomaly detection jobs.",
           "name": "job_id",
           "required": false,
           "type": {
@@ -115150,10 +115150,13 @@
           }
         },
         {
+          "deprecation": {
+            "description": "",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
           "name": "allow_no_jobs",
           "required": false,
-          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115405,6 +115408,10 @@
         "kind": "properties",
         "properties": [
           {
+            "deprecation": {
+              "description": "",
+              "version": "7.10.0"
+            },
             "name": "allow_no_jobs",
             "required": false,
             "type": {
@@ -115417,7 +115424,7 @@
           }
         ]
       },
-      "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.",
+      "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115431,7 +115438,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the anomaly detection job. It can be a job identifier, a\ngroup name, a comma-separated list of jobs or groups, or a wildcard\nexpression.\n\nYou can summarize the bucket results for all anomaly detection jobs by\nusing `_all` or by specifying `*` as the `<job_id>`.\n\nBy default, an overall bucket has a span equal to the largest bucket span\nof the specified anomaly detection jobs. To override that behavior, use\nthe optional `bucket_span` parameter.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
+          "description": "Identifier for the anomaly detection job. It can be a job identifier, a\ngroup name, a comma-separated list of jobs or groups, or a wildcard\nexpression.\n\nYou can summarize the bucket results for all anomaly detection jobs by\nusing `_all` or by specifying `*` as the `<job_id>`.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -115445,7 +115452,7 @@
       ],
       "query": [
         {
-          "description": "The span of the overall buckets. Must be greater or equal to the largest\nbucket span of the specified anomaly detection jobs, which is the default\nvalue.",
+          "description": "The span of the overall buckets. Must be greater or equal to the largest\nbucket span of the specified anomaly detection jobs, which is the default\nvalue.\n\nBy default, an overall bucket has a span equal to the largest bucket span\nof the specified anomaly detection jobs. To override that behavior, use\nthe optional `bucket_span` parameter.",
           "name": "bucket_span",
           "required": false,
           "type": {
@@ -115518,9 +115525,10 @@
           }
         },
         {
-          "description": "If true, the output excludes interim results. By default, interim results\nare included.",
+          "description": "If `true`, the output excludes interim results.",
           "name": "exclude_interim",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115530,9 +115538,10 @@
           }
         },
         {
-          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `jobs` array when\nthere are no matches and the subset of results when there are partial\nmatches. If this parameter is `false`, the request returns a `404` status\ncode when there are no matches or only partial matches.",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the request returns an empty `jobs` array when there are no\nmatches and the subset of results when there are partial matches. If this\nparameter is `false`, the request returns a `404` status code when there\nare no matches or only partial matches.",
           "name": "allow_no_match",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
