@@ -1936,7 +1936,7 @@ export type ErrorCause = ErrorCauseKeys |
     { [property: string]: any }
 
 export interface ErrorResponseBase {
-  error: TopLevelError
+  error: ErrorCause
   status: integer
 }
 
@@ -2355,11 +2355,6 @@ export type TimeUnit = 'nanos' | 'micros' | 'ms' | 's' | 'm' | 'h' | 'd'
 export type TimeZone = string
 
 export type Timestamp = string
-
-export interface TopLevelErrorKeys extends ErrorCause {
-}
-export type TopLevelError = TopLevelErrorKeys |
-    { [property: string]: any }
 
 export interface Transform {
   [key: string]: never
