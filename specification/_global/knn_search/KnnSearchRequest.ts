@@ -30,7 +30,7 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * A comma-separated list of index names to search;
-     * use `_all` or empty string to perform the operation on all indices
+     * use `_all` or to perform the operation on all indices
      */
     index: Indices
   }

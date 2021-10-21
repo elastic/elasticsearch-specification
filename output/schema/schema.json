@@ -17134,7 +17134,7 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of index names to search;\nuse `_all` or empty string to perform the operation on all indices",
+          "description": "A comma-separated list of index names to search;\nuse `_all` or to perform the operation on all indices",
           "name": "index",
           "required": true,
           "type": {
