@@ -230,10 +230,10 @@ export function modelType (node: Node): model.ValueOf {
       // possible generics (eg: Foo<T> => T will be in typeArguments).
       assert(node, Node.isTypeReferenceNode(node), `The node is not of type ${ts.SyntaxKind[ts.SyntaxKind.TypeReference]} but ${ts.SyntaxKind[node.getKind()]} instead`)
 
-      const codegen_name = node.getTypeName()
-      assert(node, Node.isIdentifier(codegen_name), 'Should be an codegen_name')
+      const identifier = node.getTypeName()
+      assert(node, Node.isIdentifier(identifier), 'Should be an identifier')
 
-      const name = codegen_name.compilerNode.escapedText as string
+      const name = identifier.compilerNode.escapedText as string
       switch (name) {
         case 'Array': {
           assert(node, node.getTypeArguments().length === 1, 'An array must have one argument')
@@ -291,10 +291,10 @@ export function modelType (node: Node): model.ValueOf {
 
         default: {
           const generics = node.getTypeArguments().map(node => modelType(node))
-          const codegen_name = node.getTypeName()
-          assert(node, Node.isIdentifier(codegen_name), 'Not an codegen_name')
+          const identifier = node.getTypeName()
+          assert(node, Node.isIdentifier(identifier), 'Not an codegen_name')
 
-          const declaration = codegen_name.getDefinitions()[0].getDeclarationNode()
+          const declaration = identifier.getDefinitions()[0].getDeclarationNode()
           // We are looking at a generic parameter
           if (declaration == null) {
             const type: model.InstanceOf = {
@@ -795,13 +795,13 @@ export function getNameSpace (node: Node): string {
   // then we can get the codegen_name and find where
   // it has been defined and compute the namespace from that.
   if (Node.isTypeReferenceNode(node)) {
-    const codegen_name = node.getTypeName()
-    if (Node.isIdentifier(codegen_name)) {
-      const name = codegen_name.compilerNode.escapedText as string
+    const identifier = node.getTypeName()
+    if (Node.isIdentifier(identifier)) {
+      const name = identifier.compilerNode.escapedText as string
       // the Array object is defined by TypeScript
       if (name === 'Array') return 'internal'
-      const definition = codegen_name.getDefinitions()[0]
-      assert(codegen_name, definition != null, 'Cannot find codegen_name')
+      const definition = identifier.getDefinitions()[0]
+      assert(identifier, definition != null, 'Cannot find codegen_name')
       return cleanPath(definition.getSourceFile().getFilePath())
     }
   }
