@@ -138034,7 +138034,7 @@
           "description": "Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.",
           "name": "sort",
           "required": false,
-          "serverDefault": "'start_time'",
+          "serverDefault": "start_time",
           "since": "7.14.0",
           "type": {
             "kind": "instance_of",
@@ -138062,7 +138062,7 @@
           "description": "Sort order. Valid values are asc for ascending and desc for descending order. Defaults to asc, meaning ascending order.",
           "name": "order",
           "required": false,
-          "serverDefault": "'asc'",
+          "serverDefault": "asc",
           "since": "7.14.0",
           "type": {
             "kind": "instance_of",
