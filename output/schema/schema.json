@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "caf0c63",
+    "hash": "83ca4500e",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -85843,14 +85843,23 @@
       "kind": "enum",
       "members": [
         {
+          "aliases": [
+            "GREEN"
+          ],
           "description": "All shards are assigned.",
           "name": "green"
         },
         {
+          "aliases": [
+            "YELLOW"
+          ],
           "description": "All primary shards are assigned, but one or more replica shards are unassigned.",
           "name": "yellow"
         },
         {
+          "aliases": [
+            "RED"
+          ],
           "description": "One or more primary shards are unassigned, so some data is unavailable.",
           "name": "red"
         }

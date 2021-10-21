@@ -21,10 +21,19 @@
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html#cluster-health-api-response-body
  */
 export enum DataStreamHealthStatus {
-  /** All shards are assigned. */
+  /**
+   * All shards are assigned.
+   * @aliases GREEN
+   */
   green,
-  /** All primary shards are assigned, but one or more replica shards are unassigned. */
+  /**
+   * All primary shards are assigned, but one or more replica shards are unassigned.
+   * @aliases YELLOW
+   */
   yellow,
-  /** One or more primary shards are unassigned, so some data is unavailable. */
+  /**
+   * One or more primary shards are unassigned, so some data is unavailable.
+   * @aliases RED
+   */
   red
 }
