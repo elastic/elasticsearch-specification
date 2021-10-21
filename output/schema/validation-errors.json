@@ -1001,6 +1001,12 @@
       ],
       "response": []
     },
+    "indices.modify_data_stream": {
+      "request": [
+        "Missing request & response"
+      ],
+      "response": []
+    },
     "indices.open": {
       "request": [
         "Request: should not have a body"

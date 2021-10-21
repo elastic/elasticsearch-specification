@@ -4856,6 +4856,30 @@
       "accept": [
         "application/json"
       ],
+      "contentType": [
+        "application/json"
+      ],
+      "description": "Modifies a data stream",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/data-streams.html",
+      "name": "indices.modify_data_stream",
+      "request": null,
+      "requestBodyRequired": true,
+      "response": null,
+      "stability": "stable",
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_stream/_modify"
+        }
+      ],
+      "visibility": "public"
+    },
+    {
+      "accept": [
+        "application/json"
+      ],
       "description": "Opens an index.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
       "name": "indices.open",
