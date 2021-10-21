@@ -479,6 +479,33 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
+export interface KnnSearchRequest extends RequestBase {
+  index: Indices
+  routing?: Routing
+  body?: {
+    fields?: Fields
+    knn: KnnSearchKnnQuery
+  }
+}
+
+export interface KnnSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: SearchHitsMetadata<TDocument>
+  fields?: Record<string, any>
+  max_score?: double
+}
+
+export interface KnnSearchKnnQuery {
+  field: Field
+  query_vector: KnnSearchKnnQueryVector
+  k: long
+  num_candidates: long
+}
+
+export type KnnSearchKnnQueryVector = double[]
+
 export interface MgetHit<TDocument = unknown> {
   error?: ErrorCause
   fields?: Record<string, any>

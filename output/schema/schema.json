@@ -5414,9 +5414,16 @@
       "description": "Performs a kNN search.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
       "name": "knn_search",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "_global.knn_search"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "_global.knn_search"
+      },
+      "since": "7.16.0",
       "stability": "experimental",
       "urls": [
         {
@@ -17078,6 +17085,256 @@
       "name": {
         "name": "Response",
         "namespace": "_global.info"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
+            "name": "fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "KNN query to execute",
+            "name": "knn",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnQuery",
+                "namespace": "_global.knn_search._types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Performs a kNN search.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.knn_search"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to search;\nuse `_all` or empty string to perform the operation on all indices",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "A comma-separated list of specific routing values",
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Milliseconds it took Elasticsearch to execute the request.",
+            "name": "took",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "If true, the request timed out before completion;\nreturned results may be partial or empty.",
+            "name": "timed_out",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Contains a count of shards used for the request.",
+            "name": "_shards",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ShardStatistics",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Contains returned documents and metadata.",
+            "name": "hits",
+            "required": true,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "TDocument",
+                    "namespace": "_global.knn_search"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "HitsMetadata",
+                "namespace": "_global.search._types"
+              }
+            }
+          },
+          {
+            "description": "Contains field values for the documents. These fields\nmust be specified in the request using the `fields` parameter.",
+            "name": "fields",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          },
+          {
+            "description": "Highest returned document score. This value is null for requests\nthat do not sort by score.",
+            "name": "max_score",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "_global.knn_search"
+        }
+      ],
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.knn_search"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnQuery",
+        "namespace": "_global.knn_search._types"
+      },
+      "properties": [
+        {
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "query_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnQueryVector",
+              "namespace": "_global.knn_search._types"
+            }
+          }
+        },
+        {
+          "name": "k",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "num_candidates",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "KnnQueryVector",
+        "namespace": "_global.knn_search._types"
+      },
+      "type": {
+        "kind": "array_of",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "double",
+            "namespace": "_types"
+          }
+        }
       }
     },
     {

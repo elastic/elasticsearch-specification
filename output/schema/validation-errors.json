@@ -1095,12 +1095,6 @@
       ],
       "response": []
     },
-    "knn_search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "license.delete": {
       "request": [
         "Request: should not have a body"
