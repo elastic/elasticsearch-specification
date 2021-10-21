@@ -14157,6 +14157,8 @@ export interface SnapshotSnapshotStats {
   total: SnapshotFileCountSnapshotStats
 }
 
+export type SnapshotSort = 'start_time' | 'duration' | 'name' | 'index_count' | 'repository' | 'shard_count' | 'failed_shard_count'
+
 export interface SnapshotStatus {
   include_global_state: boolean
   indices: Record<string, SnapshotSnapshotIndexStats>
@@ -14259,6 +14261,13 @@ export interface SnapshotGetRequest extends RequestBase {
   index_details?: boolean
   human?: boolean
   include_repository?: boolean
+  sort?: SnapshotSort
+  size?: integer
+  order?: SearchSortOrder
+  after?: string
+  offset?: integer
+  from_sort_value?: string
+  slm_policy_filter?: Name
 }
 
 export interface SnapshotGetResponse {

@@ -137071,6 +137071,39 @@
       ]
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "start_time"
+        },
+        {
+          "name": "duration"
+        },
+        {
+          "name": "name"
+        },
+        {
+          "name": "index_count"
+        },
+        {
+          "name": "repository",
+          "since": "7.16.0"
+        },
+        {
+          "name": "shard_count",
+          "since": "7.16.0"
+        },
+        {
+          "name": "failed_shard_count",
+          "since": "7.16.0"
+        }
+      ],
+      "name": {
+        "name": "Sort",
+        "namespace": "snapshot._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Status",
@@ -137994,6 +138027,101 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.",
+          "name": "sort",
+          "required": false,
+          "serverDefault": "'start_time'",
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Sort",
+              "namespace": "snapshot._types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of snapshots to return. Defaults to 0 which means return all that match the request without limit.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 0,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Sort order. Valid values are asc for ascending and desc for descending order. Defaults to asc, meaning ascending order.",
+          "name": "order",
+          "required": false,
+          "serverDefault": "'asc'",
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "description": "Offset identifier to start pagination from as returned by the next field in the response body.",
+          "name": "after",
+          "required": false,
+          "since": "7.14.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Numeric offset to start pagination from based on the snapshots matching this request. Using a non-zero value for this parameter is mutually exclusive with using the after parameter. Defaults to 0.",
+          "name": "offset",
+          "required": false,
+          "serverDefault": 0,
+          "since": "7.15.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Value of the current sort column at which to start retrieval. Can either be a string snapshot- or repository name when sorting by snapshot or repository name, a millisecond time value or a number when sorting by index- or shard count.",
+          "name": "from_sort_value",
+          "required": false,
+          "since": "7.16.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Filter snapshots by a comma-separated list of SLM policy names that snapshots belong to. Also accepts wildcards (*) and combinations of wildcards followed by exclude patterns starting with -. To include snapshots not created by an SLM policy you can use the special pattern _none that will match all snapshots without an SLM policy.",
+          "name": "slm_policy_filter",
+          "required": false,
+          "since": "7.16.0",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
             }
           }
         }
