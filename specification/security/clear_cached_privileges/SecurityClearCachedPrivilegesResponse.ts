@@ -24,7 +24,7 @@ import { NodeStatistics } from '@_types/Node'
 
 export class Response {
   body: {
-    /** @identifier node_stats */
+    /** @codegen_name node_stats */
     _nodes: NodeStatistics
     cluster_name: Name
     nodes: Dictionary<string, ClusterNode>

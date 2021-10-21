@@ -28,23 +28,23 @@ export class DistanceParsed {
 export type Distance = string
 
 export enum DistanceUnit {
-  /** @identifier inches */
+  /** @codegen_name inches */
   in = 0,
-  /** @identifier feet */
+  /** @codegen_name feet */
   ft = 1,
-  /** @identifier yards */
+  /** @codegen_name yards */
   yd = 2,
-  /** @identifier miles */
+  /** @codegen_name miles */
   mi = 3,
-  /** @identifier nautic_miles */
+  /** @codegen_name nautic_miles */
   nmi = 4,
-  /** @identifier kilometers */
+  /** @codegen_name kilometers */
   km = 5,
-  /** @identifier meters */
+  /** @codegen_name meters */
   m = 6,
-  /** @identifier centimeters */
+  /** @codegen_name centimeters */
   cm = 7,
-  /** @identifier millimeters */
+  /** @codegen_name millimeters */
   mm = 8
 }
 

@@ -12761,7 +12761,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "operations",
+        "codegen_name": "operations",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -13707,7 +13707,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "document",
+        "codegen_name": "document",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -16785,7 +16785,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "document",
+        "codegen_name": "document",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -17837,7 +17837,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "searches",
+        "codegen_name": "searches",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -18139,7 +18139,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "search_templates",
+        "codegen_name": "search_templates",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -20400,7 +20400,7 @@
           }
         },
         {
-          "identifier": "source_fields",
+          "codegen_name": "source_fields",
           "name": "_source",
           "required": false,
           "type": {
@@ -26131,7 +26131,7 @@
       },
       "properties": [
         {
-          "identifier": "Query",
+          "codegen_name": "Query",
           "name": "rescore_query",
           "required": true,
           "type": {
@@ -26614,7 +26614,7 @@
           "name": "desc"
         },
         {
-          "identifier": "Document",
+          "codegen_name": "Document",
           "name": "_doc"
         }
       ],
@@ -30610,27 +30610,27 @@
       "kind": "enum",
       "members": [
         {
-          "identifier": "bytes",
+          "codegen_name": "bytes",
           "name": "b"
         },
         {
-          "identifier": "kilo_bytes",
+          "codegen_name": "kilo_bytes",
           "name": "kb"
         },
         {
-          "identifier": "mega_bytes",
+          "codegen_name": "mega_bytes",
           "name": "mb"
         },
         {
-          "identifier": "giga_bytes",
+          "codegen_name": "giga_bytes",
           "name": "gb"
         },
         {
-          "identifier": "tera_bytes",
+          "codegen_name": "tera_bytes",
           "name": "tb"
         },
         {
-          "identifier": "peta_bytes",
+          "codegen_name": "peta_bytes",
           "name": "pb"
         }
       ],
@@ -30981,39 +30981,39 @@
       "kind": "enum",
       "members": [
         {
-          "identifier": "inches",
+          "codegen_name": "inches",
           "name": "in"
         },
         {
-          "identifier": "feet",
+          "codegen_name": "feet",
           "name": "ft"
         },
         {
-          "identifier": "yards",
+          "codegen_name": "yards",
           "name": "yd"
         },
         {
-          "identifier": "miles",
+          "codegen_name": "miles",
           "name": "mi"
         },
         {
-          "identifier": "nautic_miles",
+          "codegen_name": "nautic_miles",
           "name": "nmi"
         },
         {
-          "identifier": "kilometers",
+          "codegen_name": "kilometers",
           "name": "km"
         },
         {
-          "identifier": "meters",
+          "codegen_name": "meters",
           "name": "m"
         },
         {
-          "identifier": "centimeters",
+          "codegen_name": "centimeters",
           "name": "cm"
         },
         {
-          "identifier": "millimeters",
+          "codegen_name": "millimeters",
           "name": "mm"
         }
       ],
@@ -33841,7 +33841,7 @@
           "name": "not_found"
         },
         {
-          "identifier": "no_op",
+          "codegen_name": "no_op",
           "name": "noop"
         }
       ],
@@ -35095,31 +35095,31 @@
       "kind": "enum",
       "members": [
         {
-          "identifier": "nano_seconds",
+          "codegen_name": "nano_seconds",
           "name": "nanos"
         },
         {
-          "identifier": "micro_seconds",
+          "codegen_name": "micro_seconds",
           "name": "micros"
         },
         {
-          "identifier": "milli_seconds",
+          "codegen_name": "milli_seconds",
           "name": "ms"
         },
         {
-          "identifier": "seconds",
+          "codegen_name": "seconds",
           "name": "s"
         },
         {
-          "identifier": "minutes",
+          "codegen_name": "minutes",
           "name": "m"
         },
         {
-          "identifier": "hours",
+          "codegen_name": "hours",
           "name": "h"
         },
         {
-          "identifier": "days",
+          "codegen_name": "days",
           "name": "d"
         }
       ],
@@ -39987,11 +39987,11 @@
       "kind": "enum",
       "members": [
         {
-          "identifier": "Additive",
+          "codegen_name": "Additive",
           "name": "add"
         },
         {
-          "identifier": "Multiplicative",
+          "codegen_name": "Multiplicative",
           "name": "mult"
         }
       ],
@@ -41299,7 +41299,7 @@
           "name": "mean"
         },
         {
-          "identifier": "z_score",
+          "codegen_name": "z_score",
           "name": "z-score"
         },
         {
@@ -57703,7 +57703,7 @@
           }
         },
         {
-          "identifier": "query_name",
+          "codegen_name": "query_name",
           "name": "_name",
           "required": false,
           "type": {
@@ -62679,7 +62679,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "policy",
+        "codegen_name": "policy",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -84677,8 +84677,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "The name of the index lifecycle policy",
-          "identifier": "name",
           "name": "policy",
           "required": true,
           "type": {
@@ -85155,8 +85155,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "The name of the index lifecycle policy",
-          "identifier": "name",
           "name": "policy",
           "required": false,
           "type": {
@@ -85400,8 +85400,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "The name of the index lifecycle policy",
-          "identifier": "name",
           "name": "policy",
           "required": true,
           "type": {
@@ -93112,7 +93112,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "settings",
+        "codegen_name": "settings",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -96316,7 +96316,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "template",
+        "codegen_name": "template",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -99395,31 +99395,31 @@
       "kind": "enum",
       "members": [
         {
-          "identifier": "Second",
+          "codegen_name": "Second",
           "name": "s"
         },
         {
-          "identifier": "Minute",
+          "codegen_name": "Minute",
           "name": "m"
         },
         {
-          "identifier": "Hour",
+          "codegen_name": "Hour",
           "name": "h"
         },
         {
-          "identifier": "Day",
+          "codegen_name": "Day",
           "name": "d"
         },
         {
-          "identifier": "Week",
+          "codegen_name": "Week",
           "name": "w"
         },
         {
-          "identifier": "Month",
+          "codegen_name": "Month",
           "name": "M"
         },
         {
-          "identifier": "Year",
+          "codegen_name": "Year",
           "name": "y"
         }
       ],
@@ -103550,7 +103550,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "pipeline",
+        "codegen_name": "pipeline",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -112636,8 +112636,8 @@
       },
       "properties": [
         {
+          "codegen_name": "true_positive",
           "description": "True Positive",
-          "identifier": "true_positive",
           "name": "tp",
           "required": true,
           "type": {
@@ -112649,8 +112649,8 @@
           }
         },
         {
+          "codegen_name": "false_positive",
           "description": "False Positive",
-          "identifier": "false_positive",
           "name": "fp",
           "required": true,
           "type": {
@@ -112662,8 +112662,8 @@
           }
         },
         {
+          "codegen_name": "true_negative",
           "description": "True Negative",
-          "identifier": "true_negative",
           "name": "tn",
           "required": true,
           "type": {
@@ -112675,8 +112675,8 @@
           }
         },
         {
+          "codegen_name": "false_negative",
           "description": "False Negative",
-          "identifier": "false_negative",
           "name": "fn",
           "required": true,
           "type": {
@@ -116539,7 +116539,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "data",
+        "codegen_name": "data",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -121130,7 +121130,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "detector",
+        "codegen_name": "detector",
         "kind": "value",
         "value": {
           "kind": "instance_of",
@@ -121177,7 +121177,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "operations",
+        "codegen_name": "operations",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -122551,9 +122551,9 @@
       },
       "properties": [
         {
+          "codegen_name": "node_stats",
           "description": "Contains statistics about the number of nodes selected by the request’s node filters.",
           "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html#cluster-nodes",
-          "identifier": "node_stats",
           "name": "_nodes",
           "required": true,
           "type": {
@@ -128141,7 +128141,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "config",
+        "codegen_name": "config",
         "kind": "value",
         "value": {
           "kind": "user_defined_value"
@@ -130059,7 +130059,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -130151,7 +130151,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -130259,7 +130259,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -130351,7 +130351,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -130467,7 +130467,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {
@@ -134035,7 +134035,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "identifier": "privileges",
+        "codegen_name": "privileges",
         "kind": "value",
         "value": {
           "key": {
@@ -137239,8 +137239,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "A repository name",
-          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -137660,8 +137660,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "A repository name",
-          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -137827,8 +137827,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "Name of the snapshot repository to unregister. Wildcard (`*`) patterns are supported.",
-          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -138140,8 +138140,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "A comma-separated list of repository names",
-          "identifier": "name",
           "name": "repository",
           "required": false,
           "type": {
@@ -138596,8 +138596,8 @@
       },
       "path": [
         {
+          "codegen_name": "name",
           "description": "A repository name",
-          "identifier": "name",
           "name": "repository",
           "required": true,
           "type": {
@@ -140358,7 +140358,7 @@
     },
     {
       "body": {
-        "identifier": "text_files",
+        "codegen_name": "text_files",
         "kind": "value",
         "value": {
           "kind": "array_of",
@@ -147586,7 +147586,7 @@
         "kind": "properties",
         "properties": [
           {
-            "identifier": "node_stats",
+            "codegen_name": "node_stats",
             "name": "_nodes",
             "required": true,
             "type": {

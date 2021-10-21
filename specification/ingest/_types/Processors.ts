@@ -161,19 +161,19 @@ export class CsvProcessor extends ProcessorBase {
 }
 
 export enum DateRounding {
-  /** @identifier Second */
+  /** @codegen_name Second */
   s = 0,
-  /** @identifier Minute */
+  /** @codegen_name Minute */
   m = 1,
-  /** @identifier Hour */
+  /** @codegen_name Hour */
   h = 2,
-  /** @identifier Day */
+  /** @codegen_name Day */
   d = 3,
-  /** @identifier Week */
+  /** @codegen_name Week */
   w = 4,
-  /** @identifier Month */
+  /** @codegen_name Month */
   M = 5,
-  /** @identifier Year */
+  /** @codegen_name Year */
   y = 6
 }
 

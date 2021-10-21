@@ -380,7 +380,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateImplements(typeDef.implements, openGenerics)
     validateBehaviors(typeDef, openGenerics)
 
-    // Note: we validate identifier/name uniqueness independently in the path, query and body as there are some
+    // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
@@ -425,7 +425,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     validateImplements(typeDef.implements, openGenerics)
     validateBehaviors(typeDef, openGenerics)
 
-    // Note: we validate identifier/name uniqueness independently in the path, query and body as there are some
+    // Note: we validate codegen_name/name uniqueness independently in the path, query and body as there are some
     // valid overlaps, with some parameters that can also be represented as body properties.
     // Client generators will have to take care of this.
 
@@ -458,7 +458,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const result = accum ?? new Set<string>()
 
     function addProperties (props: model.Property[]): void {
-      props.forEach(prop => result.add((prop.identifier ?? prop.name).toLowerCase()))
+      props.forEach(prop => result.add((prop.codegen_name ?? prop.name).toLowerCase()))
     }
 
     function addInherits (inherits?: model.Inherits): void {
@@ -537,11 +537,11 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     for (const item of typeDef.members) {
       // Identifier must be unique among all items (case insensitive)
-      const identifier = (item.identifier ?? item.name).toLowerCase()
-      if (allIdentifiers.has(identifier)) {
-        modelError(`Duplicate enum member identifier '${item.name}'`)
+      const codegen_name = (item.codegen_name ?? item.name).toLowerCase()
+      if (allIdentifiers.has(codegen_name)) {
+        modelError(`Duplicate enum member codegen_name '${item.name}'`)
       }
-      allIdentifiers.add(identifier)
+      allIdentifiers.add(codegen_name)
 
       // Name must be unique among all items (case sensitive)
       if (allNames.has(item.name)) {
@@ -699,13 +699,13 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     for (const prop of props) {
       // Identifier must be unique among all items (case insensitive)
-      const identifier = (prop.identifier ?? prop.name).toLowerCase()
-      if (allIdentifiers.has(identifier)) {
-        modelError(`Duplicate property identifier: '${prop.name}'`)
+      const codegen_name = (prop.codegen_name ?? prop.name).toLowerCase()
+      if (allIdentifiers.has(codegen_name)) {
+        modelError(`Duplicate property codegen_name: '${prop.name}'`)
       }
-      allIdentifiers.add(identifier)
+      allIdentifiers.add(codegen_name)
 
-      if (inheritedProperties.has(identifier)) {
+      if (inheritedProperties.has(codegen_name)) {
         modelError(`Property '${prop.name}' is already defined in an ancestor class`)
       }
 

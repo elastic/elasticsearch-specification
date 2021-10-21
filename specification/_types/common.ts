@@ -146,17 +146,17 @@ export enum ShapeRelation {
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#byte-units
  */
 export enum Bytes {
-  /** @identifier bytes */
+  /** @codegen_name bytes */
   b,
-  /** @identifier kilo_bytes */
+  /** @codegen_name kilo_bytes */
   kb,
-  /** @identifier mega_bytes */
+  /** @codegen_name mega_bytes */
   mb,
-  /** @identifier giga_bytes */
+  /** @codegen_name giga_bytes */
   gb,
-  /** @identifier tera_bytes */
+  /** @codegen_name tera_bytes */
   tb,
-  /** @identifier peta_bytes */
+  /** @codegen_name peta_bytes */
   pb
 }
 

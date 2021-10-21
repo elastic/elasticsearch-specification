@@ -51,6 +51,6 @@ export interface Request<TDocument> extends RequestBase {
     version_type?: VersionType
     wait_for_active_shards?: WaitForActiveShards
   }
-  /** @identifier document */
+  /** @codegen_name document */
   body?: TDocument
 }

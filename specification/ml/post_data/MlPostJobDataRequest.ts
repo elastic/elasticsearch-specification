@@ -34,6 +34,6 @@ export interface Request<TData> extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
-  /** @identifier data */
+  /** @codegen_name data */
   body: Array<TData>
 }

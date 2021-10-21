@@ -459,7 +459,7 @@ class Request {
 }
 ```
 
-#### `@identifier`
+#### `@codegen_name`
 
 A custom name that can be used to display the property. Useful in Enums an
 for request bodies where the document is the entire body.
@@ -468,22 +468,22 @@ for request bodies where the document is the entire body.
 export class ConfusionMatrixThreshold {
   /**
    * True Positive
-   * @identifier true_positive
+   * @codegen_name true_positive
    */
   tp: integer
   /**
    * False Positive
-   * @identifier false_positive
+   * @codegen_name false_positive
    */
   fp: integer
   /**
    * True Negative
-   * @identifier true_negative
+   * @codegen_name true_negative
    */
   tn: integer
   /**
    * False Negative
-   * @identifier false_negative
+   * @codegen_name false_negative
    */
   fn: integer
 }
@@ -491,7 +491,7 @@ export class ConfusionMatrixThreshold {
 export interface Request<TDocument> extends RequestBase {
   path_parts: {}
   query_parameters: {}
-  /** @identifier document */
+  /** @codegen_name document */
   body?: TDocument
 }
 ```

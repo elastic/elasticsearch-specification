@@ -103,7 +103,7 @@ export enum SortMode {
 export enum SortOrder {
   asc = 0,
   desc = 1,
-  /** @identifier Document */
+  /** @codegen_name Document */
   _doc = 2
 }
 
