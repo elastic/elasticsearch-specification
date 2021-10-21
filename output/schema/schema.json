@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "8b6d9bf",
+    "hash": "4a8ecc0dc",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -17219,6 +17219,22 @@
             "type": {
               "name": "IndexName",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "",
+            "version": "7.0.0"
+          },
+          "description": "The type of the document.",
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }

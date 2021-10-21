@@ -728,10 +728,8 @@
     },
     "get_source": {
       "request": [
-        "Request: missing json spec path parameter 'type'",
         "Request: query parameter 'stored_fields' does not exist in the json spec",
-        "Request: should not have a body",
-        "Url path property 'type' is missing in request definition"
+        "Request: should not have a body"
       ],
       "response": []
     },

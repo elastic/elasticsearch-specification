@@ -439,6 +439,7 @@ export interface GetScriptLanguagesResponse {
 export interface GetSourceRequest {
   id: Id
   index: IndexName
+  type?: string
   preference?: string
   realtime?: boolean
   refresh?: boolean

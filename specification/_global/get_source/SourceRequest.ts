@@ -38,6 +38,11 @@ export interface Request {
     id: Id
     /** Name of the index that contains the document. */
     index: IndexName
+    /**
+     * The type of the document.
+     * @deprecated 7.0.0
+     */
+    type?: string
   }
   query_parameters: {
     /**
