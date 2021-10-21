@@ -20,6 +20,9 @@
 import { RequestBase } from '@_types/Base'
 import { Name, Names } from '@_types/common'
 import { Time } from '@_types/Time'
+import { Sort } from '@snapshot/_types/SnapshotInfo'
+import { integer } from '@_types/Numeric'
+import { SortOrder } from '@global/search/_types/sort'
 
 /**
  * @rest_spec_name snapshot.get
@@ -63,5 +66,44 @@ export interface Request extends RequestBase {
     index_details?: boolean
     human?: boolean
     include_repository?: boolean
+    /**
+     * Allows setting a sort order for the result. Defaults to start_time, i.e. sorting by snapshot start time stamp.
+     * @since 7.14.0
+     * @server_default start_time
+     */
+    sort?: Sort
+    /**
+     * Maximum number of snapshots to return. Defaults to 0 which means return all that match the request without limit.
+     * @since 7.14.0
+     * @server_default 0
+     */
+    size?: integer
+    /**
+     * Sort order. Valid values are asc for ascending and desc for descending order. Defaults to asc, meaning ascending order.
+     * @since 7.14.0
+     * @server_default asc
+     */
+    order?: SortOrder
+    /**
+     * Offset identifier to start pagination from as returned by the next field in the response body.
+     * @since 7.14.0
+     */
+    after?: string
+    /**
+     * Numeric offset to start pagination from based on the snapshots matching this request. Using a non-zero value for this parameter is mutually exclusive with using the after parameter. Defaults to 0.
+     * @since 7.15.0
+     * @server_default 0
+     */
+    offset?: integer
+    /**
+     * Value of the current sort column at which to start retrieval. Can either be a string snapshot- or repository name when sorting by snapshot or repository name, a millisecond time value or a number when sorting by index- or shard count.
+     * @since 7.16.0
+     */
+    from_sort_value?: string
+    /**
+     * Filter snapshots by a comma-separated list of SLM policy names that snapshots belong to. Also accepts wildcards (*) and combinations of wildcards followed by exclude patterns starting with -. To include snapshots not created by an SLM policy you can use the special pattern _none that will match all snapshots without an SLM policy.
+     * @since 7.16.0
+     */
+    slm_policy_filter?: Name
   }
 }
