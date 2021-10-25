@@ -31951,7 +31951,7 @@
         {
           "description": "The type of error",
           "name": "type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
