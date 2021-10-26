@@ -17095,7 +17095,89 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Array of wildcard (*) patterns. The request returns values for field names\nmatching these patterns in the hits.fields property of the response.",
+            "description": "Indicates which source fields are returned for matching documents. These\nfields are returned in the hits._source property of the search response.",
+            "name": "_source",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "boolean",
+                    "namespace": "internal"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Fields",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "SourceFilter",
+                    "namespace": "_global.search._types"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "description": "The request returns doc values for field names matching these patterns\nin the hits.fields property of the response. Accepts wildcard (*) patterns.",
+            "name": "docvalue_fields",
+            "required": false,
+            "type": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "DocValueField",
+                    "namespace": "_global.search._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "items": [
+                      {
+                        "kind": "instance_of",
+                        "type": {
+                          "name": "Field",
+                          "namespace": "_types"
+                        }
+                      },
+                      {
+                        "kind": "instance_of",
+                        "type": {
+                          "name": "DocValueField",
+                          "namespace": "_global.search._types"
+                        }
+                      }
+                    ],
+                    "kind": "union_of"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          },
+          {
+            "description": "List of stored fields to return as part of a hit. If no fields are specified,\nno stored fields are included in the response. If this field is specified, the _source\nparameter defaults to false. You can pass _source: true to return both source fields\nand stored fields in the search response.",
+            "name": "stored_fields",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Fields",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The request returns values for field names matching these patterns\nin the hits.fields property of the response. Accepts wildcard (*) patterns.",
             "name": "fields",
             "required": false,
             "type": {
@@ -17107,13 +17189,13 @@
             }
           },
           {
-            "description": "KNN query to execute",
+            "description": "kNN query to execute",
             "name": "knn",
             "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "KnnQuery",
+                "name": "Query",
                 "namespace": "_global.knn_search._types"
               }
             }
@@ -17270,11 +17352,12 @@
     {
       "kind": "interface",
       "name": {
-        "name": "KnnQuery",
+        "name": "Query",
         "namespace": "_global.knn_search._types"
       },
       "properties": [
         {
+          "description": "The name of the vector field to search against",
           "name": "field",
           "required": true,
           "type": {
@@ -17286,17 +17369,19 @@
           }
         },
         {
+          "description": "The query vector",
           "name": "query_vector",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "KnnQueryVector",
+              "name": "QueryVector",
               "namespace": "_global.knn_search._types"
             }
           }
         },
         {
+          "description": "The final number of nearest neighbors to return as top hits",
           "name": "k",
           "required": true,
           "type": {
@@ -17308,6 +17393,7 @@
           }
         },
         {
+          "description": "The number of nearest neighbor candidates to consider per shard",
           "name": "num_candidates",
           "required": true,
           "type": {
@@ -17323,7 +17409,7 @@
     {
       "kind": "type_alias",
       "name": {
-        "name": "KnnQueryVector",
+        "name": "QueryVector",
         "namespace": "_global.knn_search._types"
       },
       "type": {

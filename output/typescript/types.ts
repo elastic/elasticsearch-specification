@@ -483,8 +483,11 @@ export interface KnnSearchRequest extends RequestBase {
   index: Indices
   routing?: Routing
   body?: {
+    _source?: boolean | Fields | SearchSourceFilter
+    docvalue_fields?: SearchDocValueField | (Field | SearchDocValueField)[]
+    stored_fields?: Fields
     fields?: Fields
-    knn: KnnSearchKnnQuery
+    knn: KnnSearchQuery
   }
 }
 
@@ -497,14 +500,14 @@ export interface KnnSearchResponse<TDocument = unknown> {
   max_score?: double
 }
 
-export interface KnnSearchKnnQuery {
+export interface KnnSearchQuery {
   field: Field
-  query_vector: KnnSearchKnnQueryVector
+  query_vector: KnnSearchQueryVector
   k: long
   num_candidates: long
 }
 
-export type KnnSearchKnnQueryVector = double[]
+export type KnnSearchQueryVector = double[]
 
 export interface MgetHit<TDocument = unknown> {
   error?: ErrorCause

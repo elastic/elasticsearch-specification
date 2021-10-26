@@ -20,11 +20,15 @@
 import { Field } from '@_types/common'
 import { long, double } from '@_types/Numeric'
 
-export type KnnQueryVector = double[]
+export type QueryVector = double[]
 
-export interface KnnQuery {
+export interface Query {
+  /** The name of the vector field to search against */
   field: Field
-  query_vector: KnnQueryVector
+  /** The query vector */
+  query_vector: QueryVector
+  /** The final number of nearest neighbors to return as top hits */
   k: long
+  /** The number of nearest neighbor candidates to consider per shard */
   num_candidates: long
 }
