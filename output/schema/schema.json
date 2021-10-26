@@ -6992,6 +6992,11 @@
       "description": "Retrieves anomaly records for an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-record.html",
       "name": "ml.get_records",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_records"
@@ -115687,6 +115692,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "If true, the results are sorted in descending order.",
             "name": "desc",
             "required": false,
             "serverDefault": false,
@@ -115699,6 +115705,7 @@
             }
           },
           {
+            "description": "If true, the output excludes interim results.",
             "name": "exclude_interim",
             "required": false,
             "serverDefault": false,
@@ -115722,8 +115729,10 @@
             }
           },
           {
+            "description": "Returns records with anomaly scores greater or equal than this value.",
             "name": "record_score",
             "required": false,
+            "serverDefault": 0,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115733,8 +115742,10 @@
             }
           },
           {
+            "description": "Specifies the sort field for the requested records.",
             "name": "sort",
             "required": false,
+            "serverDefault": "record_score",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115744,8 +115755,10 @@
             }
           },
           {
+            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
             "name": "start",
             "required": false,
+            "serverDefault": "-1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115755,8 +115768,10 @@
             }
           },
           {
+            "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
             "name": "end",
             "required": false,
+            "serverDefault": "-1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -115767,7 +115782,7 @@
           }
         ]
       },
-      "description": "Retrieves anomaly records for an anomaly detection job.",
+      "description": "Retrieves anomaly records for an anomaly detection job.\nRecords contain the detailed analytical results. They describe the anomalous\nactivity that has been identified in the input data based on the detector\nconfiguration.\nThere can be many anomaly records depending on the characteristics and size\nof the input data. In practice, there are often too many to be able to\nmanually process them. The machine learning features therefore perform a\nsophisticated aggregation of the anomaly records into buckets.\nThe number of record results depends on the number of anomalies found in each\nbucket, which relates to the number of time series being modeled and the\nnumber of detectors.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -115781,7 +115796,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -115795,7 +115810,7 @@
       ],
       "query": [
         {
-          "description": "Exclude interim results",
+          "description": "If `true`, the output excludes interim results.",
           "name": "exclude_interim",
           "required": false,
           "serverDefault": false,
@@ -115808,9 +115823,10 @@
           }
         },
         {
-          "description": "skips a number of records",
+          "description": "Skips the specified number of records.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115820,9 +115836,10 @@
           }
         },
         {
-          "description": "specifies a max number of records to get",
+          "description": "Specifies the maximum number of records to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115832,9 +115849,10 @@
           }
         },
         {
-          "description": "Start time filter for records",
+          "description": "Returns records with timestamps after this time. The default value means\nresults are not limited to specific timestamps.",
           "name": "start",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115844,9 +115862,10 @@
           }
         },
         {
-          "description": "End time filter for records",
+          "description": "Returns records with timestamps earlier than this time. The default value\nmeans results are not limited to specific timestamps.",
           "name": "end",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
