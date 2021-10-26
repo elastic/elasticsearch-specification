@@ -20,6 +20,14 @@
 import { integer } from '@_types/Numeric'
 
 export class Page {
+  /**
+   * Skips the specified number of items.
+   * @server_default 0
+   */
   from?: integer
+  /**
+   * Specifies the maximum number of items to obtain.
+   * @server_default 10000
+   */
   size?: integer
 }
