@@ -6686,6 +6686,11 @@
       "description": "Retrieves usage information for datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed-stats.html",
       "name": "ml.get_datafeed_stats",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_datafeed_stats"
@@ -6720,6 +6725,11 @@
       "description": "Retrieves configuration information for datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-datafeed.html",
       "name": "ml.get_datafeeds",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_datafeeds"
@@ -6754,6 +6764,11 @@
       "description": "Retrieves filters.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-filter.html",
       "name": "ml.get_filters",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_filters"
@@ -6791,6 +6806,11 @@
       "description": "Retrieves anomaly detection job results for one or more influencers.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-influencer.html",
       "name": "ml.get_influencers",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_influencers"
@@ -110647,8 +110667,10 @@
       },
       "properties": [
         {
+          "description": "Skips the specified number of items.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110658,8 +110680,10 @@
           }
         },
         {
+          "description": "Specifies the maximum number of items to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114611,7 +114635,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for datafeeds.",
+      "description": "Retrieves usage information for datafeeds.\nYou can get statistics for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget statistics for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`. If the datafeed is stopped, the\nonly information you receive is the `datafeed_id` and the `state`.\nThis API returns a maximum of 10,000 datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114625,7 +114649,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeeds stats to fetch",
+          "description": "Identifier for the datafeed. It can be a datafeed identifier or a\nwildcard expression. If you do not specify one of these options, the API\nreturns information about all datafeeds.",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -114639,8 +114663,8 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
-          "name": "allow_no_datafeeds",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
+          "name": "allow_no_match",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -114696,7 +114720,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for datafeeds.",
+      "description": "Retrieves configuration information for datafeeds.\nYou can get information for multiple datafeeds in a single API request by\nusing a comma-separated list of datafeeds or a wildcard expression. You can\nget information for all datafeeds by using `_all`, by specifying `*` as the\n`<feed_id>`, or by omitting the `<feed_id>`.\nThis API returns a maximum of 10,000 datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114710,7 +114734,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeeds to fetch",
+          "description": "Identifier for the datafeed. It can be a datafeed identifier or a\nwildcard expression. If you do not specify one of these options, the API\nreturns information about all datafeeds.",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -114724,8 +114748,8 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
-          "name": "allow_no_datafeeds",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
+          "name": "allow_no_match",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -114736,9 +114760,10 @@
           }
         },
         {
-          "description": "Omits fields that are illegal to set on datafeed PUT",
+          "description": "Indicates if certain fields should be removed from the configuration on\nretrieval. This allows the configuration to be in an acceptable format to\nbe retrieved and then added to another cluster.",
           "name": "exclude_generated",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114793,7 +114818,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves filters.",
+      "description": "Retrieves filters.\nYou can get a single filter or all filters.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114807,7 +114832,7 @@
       },
       "path": [
         {
-          "description": "The ID of the filter to fetch",
+          "description": "A string that uniquely identifies a filter.",
           "name": "filter_id",
           "required": false,
           "type": {
@@ -114821,9 +114846,10 @@
       ],
       "query": [
         {
-          "description": "skips a number of filters",
+          "description": "Skips the specified number of filters.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114833,9 +114859,10 @@
           }
         },
         {
-          "description": "specifies a max number of filters to get",
+          "description": "Specifies the maximum number of filters to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114903,7 +114930,7 @@
           }
         ]
       },
-      "description": "Retrieves anomaly detection job results for one or more influencers.",
+      "description": "Retrieves anomaly detection job results for one or more influencers.\nInfluencers are the entities that have contributed to, or are to blame for,\nthe anomalies. Influencer results are available only if an\n`influencer_field_name` is specified in the job configuration.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114944,9 +114971,10 @@
           }
         },
         {
-          "description": "Returns influencers with timestamps earlier than this time.",
+          "description": "Returns influencers with timestamps earlier than this time.\nThe default value means it is unset and results are not limited to\nspecific timestamps.",
           "name": "end",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114956,9 +114984,10 @@
           }
         },
         {
-          "description": "If true, the output excludes interim results. By default, interim results are included.",
+          "description": "If true, the output excludes interim results. By default, interim results\nare included.",
           "name": "exclude_interim",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114968,9 +114997,10 @@
           }
         },
         {
-          "description": "Returns influencers with anomaly scores greater than or equal to this value.",
+          "description": "Returns influencers with anomaly scores greater than or equal to this\nvalue.",
           "name": "influencer_score",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114983,6 +115013,7 @@
           "description": "Skips the specified number of influencers.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114995,6 +115026,7 @@
           "description": "Specifies the maximum number of influencers to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115004,7 +115036,7 @@
           }
         },
         {
-          "description": "Specifies the sort field for the requested influencers. By default, the influencers are sorted by the influencer_score value.",
+          "description": "Specifies the sort field for the requested influencers. By default, the\ninfluencers are sorted by the `influencer_score` value.",
           "name": "sort",
           "required": false,
           "type": {
@@ -115016,9 +115048,10 @@
           }
         },
         {
-          "description": "Returns influencers with timestamps after this time.",
+          "description": "Returns influencers with timestamps after this time. The default value\nmeans it is unset and results are not limited to specific timestamps.",
           "name": "start",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {

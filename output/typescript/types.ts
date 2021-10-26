@@ -11578,7 +11578,7 @@ export interface MlGetDataFrameAnalyticsStatsResponse {
 
 export interface MlGetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Ids
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
 }
 
 export interface MlGetDatafeedStatsResponse {
@@ -11588,7 +11588,7 @@ export interface MlGetDatafeedStatsResponse {
 
 export interface MlGetDatafeedsRequest extends RequestBase {
   datafeed_id?: Ids
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
   exclude_generated?: boolean
 }
 

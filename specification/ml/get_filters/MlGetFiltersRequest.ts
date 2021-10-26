@@ -22,16 +22,30 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Retrieves filters.
+ * You can get a single filter or all filters.
  * @rest_spec_name ml.get_filters
  * @since 5.5.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A string that uniquely identifies a filter.
+     */
     filter_id?: Id
   }
   query_parameters: {
+    /**
+     * Skips the specified number of filters.
+     * @server_default 0
+     */
     from?: integer
+    /**
+     * Specifies the maximum number of filters to obtain.
+     * @server_default 100
+     */
     size?: integer
   }
 }
