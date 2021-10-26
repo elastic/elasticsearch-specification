@@ -7038,6 +7038,11 @@
       "description": "Retrieves anomaly detection job results for one or more buckets.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-bucket.html",
       "name": "ml.get_buckets",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_buckets"
@@ -7144,6 +7149,11 @@
       "description": "Retrieves anomaly detection job results for one or more categories.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-category.html",
       "name": "ml.get_categories",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_categories"
@@ -114729,8 +114739,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Returns buckets with anomaly scores greater or equal than this value.",
             "name": "anomaly_score",
             "required": false,
+            "serverDefault": 0,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114740,6 +114752,7 @@
             }
           },
           {
+            "description": "If `true`, the buckets are sorted in descending order.",
             "name": "desc",
             "required": false,
             "serverDefault": false,
@@ -114752,6 +114765,7 @@
             }
           },
           {
+            "description": "If `true`, the output excludes interim results.",
             "name": "exclude_interim",
             "required": false,
             "serverDefault": false,
@@ -114764,6 +114778,7 @@
             }
           },
           {
+            "description": "If true, the output includes anomaly records.",
             "name": "expand",
             "required": false,
             "serverDefault": false,
@@ -114776,19 +114791,10 @@
             }
           },
           {
-            "name": "page",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Page",
-                "namespace": "ml._types"
-              }
-            }
-          },
-          {
+            "description": "Specifies the sort field for the requested buckets.",
             "name": "sort",
             "required": false,
+            "serverDefault": "timestamp",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114798,8 +114804,10 @@
             }
           },
           {
+            "description": "Returns buckets with timestamps after this time. `-1` means it is unset\nand results are not limited to specific timestamps.",
             "name": "start",
             "required": false,
+            "serverDefault": "-1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114809,8 +114817,10 @@
             }
           },
           {
+            "description": "Returns buckets with timestamps earlier than this time. `-1` means it is\nunset and results are not limited to specific timestamps.",
             "name": "end",
             "required": false,
+            "serverDefault": "-1",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -114821,7 +114831,7 @@
           }
         ]
       },
-      "description": "Retrieves anomaly detection job results for one or more buckets.",
+      "description": "Retrieves anomaly detection job results for one or more buckets.\nThe API presents a chronological view of the records, grouped by bucket.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -114835,7 +114845,7 @@
       },
       "path": [
         {
-          "description": "ID of the job to get bucket results from",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -114847,7 +114857,7 @@
           }
         },
         {
-          "description": "The timestamp of the desired single bucket result",
+          "description": "The timestamp of a single bucket result. If you do not specify this\nparameter, the API returns information about all buckets.",
           "name": "timestamp",
           "required": false,
           "type": {
@@ -114861,9 +114871,10 @@
       ],
       "query": [
         {
-          "description": "skips a number of buckets",
+          "description": "Skips the specified number of buckets.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114873,9 +114884,10 @@
           }
         },
         {
-          "description": "specifies a max number of buckets to get",
+          "description": "Specifies the maximum number of buckets to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114885,7 +114897,7 @@
           }
         },
         {
-          "description": "Exclude interim results",
+          "description": "If `true`, the output excludes interim results.",
           "name": "exclude_interim",
           "required": false,
           "serverDefault": false,
@@ -114898,9 +114910,10 @@
           }
         },
         {
-          "description": "Sort buckets by a particular field",
+          "description": "Specifies the sort field for the requested buckets.",
           "name": "sort",
           "required": false,
+          "serverDefault": "timestamp",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114910,7 +114923,7 @@
           }
         },
         {
-          "description": "Set the sort direction",
+          "description": "If `true`, the buckets are sorted in descending order.",
           "name": "desc",
           "required": false,
           "serverDefault": false,
@@ -114923,9 +114936,10 @@
           }
         },
         {
-          "description": "Start time filter for buckets",
+          "description": "Returns buckets with timestamps after this time. `-1` means it is unset\nand results are not limited to specific timestamps.",
           "name": "start",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -114935,9 +114949,10 @@
           }
         },
         {
-          "description": "End time filter for buckets",
+          "description": "Returns buckets with timestamps earlier than this time. `-1` means it is\nunset and results are not limited to specific timestamps.",
           "name": "end",
           "required": false,
+          "serverDefault": "-1",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115321,7 +115336,7 @@
           }
         },
         {
-          "description": "Identifier for the category, which is unique in the job. If you specify neither the category ID nor the partition_field_value, the API returns information about all categories. If you specify only the partition_field_value, it returns information about all categories for the specified partition.",
+          "description": "Identifier for the category, which is unique in the job. If you specify\nneither the category ID nor the partition_field_value, the API returns\ninformation about all categories. If you specify only the\npartition_field_value, it returns information about all categories for\nthe specified partition.",
           "name": "category_id",
           "required": false,
           "type": {
@@ -115335,9 +115350,10 @@
       ],
       "query": [
         {
-          "description": "skips a number of categories",
+          "description": "Skips the specified number of categories.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115347,9 +115363,10 @@
           }
         },
         {
-          "description": "specifies a max number of categories to get",
+          "description": "Specifies the maximum number of categories to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {
