@@ -23,9 +23,15 @@ import { DatafeedConfig } from '@ml/_types/Datafeed'
 import { JobConfig } from '@ml/_types/Job'
 
 /**
- * @rest_spec_name ml.preview_datafeed
+ * Previews a datafeed.
+ * This API returns the first "page" of search results from a datafeed.
+ * You can preview an existing datafeed or provide configuration details for a datafeed
+ * and anomaly detection job in the API. The preview shows the structure of the data
+ * that will be passed to the anomaly detection engine.
  * @since 5.4.0
  * @stability stable
+ * @index_privileges read
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
