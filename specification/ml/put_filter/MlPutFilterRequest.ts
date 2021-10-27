@@ -21,16 +21,30 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Instantiates a filter.
+ * A filter contains a list of strings. It can be used by one or more anomaly detection jobs.
+ * Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.
  * @rest_spec_name ml.put_filter
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * A string that uniquely identifies a filter.
+     */
     filter_id: Id
   }
   body: {
+    /**
+     * A description of the filter.
+     */
     description?: string
+    /** 
+     * The items of the filter. A wildcard `*` can be used at the beginning or the end of an item.
+     * Up to 10000 items are allowed in each filter.
+    */
     items?: string[]
   }
 }
