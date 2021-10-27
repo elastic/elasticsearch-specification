@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
   }
   body: {
     /** If set, the datafeed performs aggregation searches.
-     * Support for aggregations is limited and should be used only with low cardinality data. 
+     * Support for aggregations is limited and should be used only with low cardinality data.
      */
     aggregations?: Dictionary<string, AggregationContainer>
     /**
@@ -77,7 +77,7 @@ export interface Request extends RequestBase {
      */
     chunking_config?: ChunkingConfig
     /**
-     * Specifies whether the datafeed checks for missing data and the size of the window. 
+     * Specifies whether the datafeed checks for missing data and the size of the window.
      * The datafeed can optionally search over indices that have already been read in an effort to determine whether
      * any data has subsequently been added to the index. If missing data is found, it is a good indication that the
      * `query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time.
@@ -94,7 +94,7 @@ export interface Request extends RequestBase {
     frequency?: Time
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
-     * learning nodes must have the `remote_cluster_client` role. 
+     * learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
     indices?: string[]
@@ -124,7 +124,7 @@ export interface Request extends RequestBase {
      * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might
      * not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
-     * when there are multiple jobs running on the same node. 
+     * when there are multiple jobs running on the same node.
      */
     query_delay?: Time
     /**
@@ -133,7 +133,7 @@ export interface Request extends RequestBase {
     runtime_mappings?: RuntimeFields
     /**
      * Specifies scripts that evaluate custom expressions and returns script fields to the datafeed.
-     * The detector configuration objects in a job can contain functions that use these script fields. 
+     * The detector configuration objects in a job can contain functions that use these script fields.
      */
     script_fields?: Dictionary<string, ScriptField>
     /**

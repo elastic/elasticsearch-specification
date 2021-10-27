@@ -112,7 +112,6 @@ export class DelayedDataCheckConfig {
   check_window?: Time // default: null
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
-   * @server_default true
    */
   enabled: boolean
 }
@@ -173,13 +172,13 @@ export class DatafeedIndicesOptions {
    * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
    * such as `open,hidden`.
    */
-  expand_wildcards?: 
+  expand_wildcards?: ExpandWildcards
   /**
    * If true, missing or closed indices are not included in the response.
    * @server_default false
    */
   ignore_unavailable?: boolean
-  /** 
+  /**
    * If true, concrete, expanded or aliased indices are ignored when frozen.
    * @server_default true
    */

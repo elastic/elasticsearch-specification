@@ -11862,8 +11862,8 @@ export interface MlPreviewDataFrameAnalyticsResponse {
 export interface MlPreviewDatafeedRequest extends RequestBase {
   datafeed_id?: Id
   body?: {
-    job_config?: MlJobConfig
     datafeed_config?: MlDatafeedConfig
+    job_config?: MlJobConfig
   }
 }
 

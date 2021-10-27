@@ -32,6 +32,7 @@ import { JobConfig } from '@ml/_types/Job'
  * called the API. However, when the datafeed starts it uses the roles of the last user that created or updated the
  * datafeed. To get a preview that accurately reflects the behavior of the datafeed, use the appropriate credentials.
  * You can also use secondary authorization headers to supply the credentials.
+ * @rest_spec_name ml.preview_datafeed
  * @since 5.4.0
  * @stability stable
  * @index_privileges read
@@ -56,7 +57,7 @@ export interface Request extends RequestBase {
      * The configuration details for the anomaly detection job that is associated with the datafeed. If the
      * `datafeed_config` object does not include a `job_id` that references an existing anomaly detection job, you must
      * supply this `job_config` object. If you include both a `job_id` and a `job_config`, the latter information is
-     * used. You cannot specify a `job_config` object unless you also supply a `datafeed_config` object. 
+     * used. You cannot specify a `job_config` object unless you also supply a `datafeed_config` object.
      */
     job_config?: JobConfig
   }
