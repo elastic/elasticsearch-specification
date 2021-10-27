@@ -117841,7 +117841,7 @@
             }
           },
           {
-            "description": "Specifies whether the datafeed checks for missing data and the size of the window. \nThe datafeed can optionally search over indices that have already been read in an effort to determine whether\nany data has subsequently been added to the index. If missing data is found, it is a good indication that the\n`query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time.\nThis check runs only on real-time datafeeds.",
+            "description": "Specifies whether the datafeed checks for missing data and the size of the window.\nThe datafeed can optionally search over indices that have already been read in an effort to determine whether\nany data has subsequently been added to the index. If missing data is found, it is a good indication that the\n`query_delay` is set too low and the data is being indexed after the datafeed has passed that moment in time.\nThis check runs only on real-time datafeeds.",
             "name": "delayed_data_check_config",
             "required": false,
             "type": {
