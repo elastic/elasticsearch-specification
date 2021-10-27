@@ -10396,8 +10396,8 @@ export interface MlAnalysisConfig {
   categorization_filters?: string[]
   detectors: MlDetector[]
   influencers?: Field[]
-  model_prune_window?: Time
   latency?: Time
+  model_prune_window?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
   summary_count_field_name?: Field
@@ -10569,7 +10569,7 @@ export interface MlDataCounts {
 
 export interface MlDataDescription {
   format?: string
-  time_field: Field
+  time_field?: Field
   time_format?: string
   field_delimiter?: string
 }

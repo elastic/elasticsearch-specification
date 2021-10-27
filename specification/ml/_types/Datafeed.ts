@@ -55,7 +55,7 @@ export class DatafeedConfig {
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
   chunking_config?: ChunkingConfig
-  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
    */
   datafeed_id?: Id
   /**
@@ -63,12 +63,12 @@ export class DatafeedConfig {
    */
   delayed_data_check_config?: DelayedDataCheckConfig
   /**
-   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When frequency is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Timestamp
   indexes?: string[]
   /**
-   * An array of index names. Wildcards are supported.
+   * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    */
   indices: string[]
   /**
@@ -111,7 +111,7 @@ export class DelayedDataCheckConfig {
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
-  enabled: boolean // default: true
+  enabled: boolean
 }
 
 export enum DatafeedState {
@@ -150,7 +150,7 @@ export class ChunkingConfig {
    */
   mode: ChunkingMode
   /**
-   * The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.
+   * The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.
    * @server_default 3h */
   time_span?: Time
 }
