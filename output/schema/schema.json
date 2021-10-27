@@ -108860,6 +108860,9 @@
           "description": "The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.",
           "name": "actions",
           "required": false,
+          "serverDefault": [
+            "skip_result"
+          ],
           "type": {
             "kind": "array_of",
             "value": {
