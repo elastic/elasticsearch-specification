@@ -7050,6 +7050,11 @@
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_trained_models"
@@ -7084,6 +7089,11 @@
       "description": "Retrieves usage information for trained inference models.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models-stats.html",
       "name": "ml.get_trained_models_stats",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.get_trained_models_stats"
@@ -7142,6 +7152,11 @@
       "description": "Returns defaults and limits used by machine learning.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-ml-info.html",
       "name": "ml.info",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.info"
@@ -7170,6 +7185,11 @@
       "description": "Opens one or more anomaly detection jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-open-job.html",
       "name": "ml.open_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.open_job"
@@ -116122,7 +116142,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves configuration information for a trained inference model.",
+      "description": "Retrieves configuration information for a trained model.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116150,9 +116170,10 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request:\n\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.\n\nIf true, it returns an empty array when there are no matches and the\nsubset of results when there are partial matches.",
           "name": "allow_no_match",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116162,7 +116183,7 @@
           }
         },
         {
-          "description": "Specifies whether the included model definition should be returned as a JSON map (true) or in a custom compressed format (false).",
+          "description": "Specifies whether the included model definition should be returned as a\nJSON map (true) or in a custom compressed format (false).",
           "name": "decompress_definition",
           "required": false,
           "serverDefault": true,
@@ -116175,7 +116196,7 @@
           }
         },
         {
-          "description": "Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.",
+          "description": "Indicates if certain fields should be removed from the configuration on\nretrieval. This allows the configuration to be in an acceptable format to\nbe retrieved and then added to another cluster.",
           "name": "exclude_generated",
           "required": false,
           "serverDefault": false,
@@ -116201,7 +116222,7 @@
           }
         },
         {
-          "description": "A comma delimited string of optional fields to include in the response body.",
+          "description": "A comma delimited string of optional fields to include in the response\nbody. Valid options are:\n- definition: Includes the model definition.\n- feature_importance_baseline: Includes the baseline for feature\nimportance values.\n- hyperparameters: Includes the information about hyperparameters used to\ntrain the model. This information consists of the value, the absolute and\nrelative importance of the hyperparameter as well as an indicator of\nwhether it was specified by the user or tuned during hyperparameter\noptimization.\n- total_feature_importance: Includes the total feature importance for the\ntraining data set. The baseline and total feature importance values are\nreturned in the metadata field in the response body.",
           "name": "include",
           "required": false,
           "type": {
@@ -116226,7 +116247,7 @@
           }
         },
         {
-          "description": "A comma delimited string of tags. A trained model can have many tags, or none. When supplied, only trained models that contain all the supplied tags are returned.",
+          "description": "A comma delimited string of tags. A trained model can have many tags, or\nnone. When supplied, only trained models that contain all the supplied\ntags are returned.",
           "name": "tags",
           "required": false,
           "type": {
@@ -116284,7 +116305,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Retrieves usage information for trained inference models.",
+      "description": "Retrieves usage information for trained models.\nYou can get usage information for multiple trained models in a single API\nrequest by using a comma-separated list of model IDs or a wildcard\nexpression.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116298,7 +116319,7 @@
       },
       "path": [
         {
-          "description": "The unique identifier of the trained model.",
+          "description": "The unique identifier of the trained model or a model alias.",
           "name": "model_id",
           "required": false,
           "type": {
@@ -116312,9 +116333,10 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request:\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.",
+          "description": "Specifies what to do when the request:\n\n- Contains wildcard expressions and there are no models that match.\n- Contains the _all string or no identifiers and there are no matches.\n- Contains wildcard expressions and there are only partial matches.\n\nIf true, it returns an empty array when there are no matches and the\nsubset of results when there are partial matches.",
           "name": "allow_no_match",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -116585,7 +116607,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Returns defaults and limits used by machine learning.",
+      "description": "Returns defaults and limits used by machine learning.\nThis endpoint is designed to be used by a user interface that needs to fully\nunderstand machine learning configurations where some options are not\nspecified, meaning that the defaults should be used. This endpoint may be\nused to find out what those defaults are. It also provides information about\nthe maximum size of machine learning jobs that could run in the current\ncluster configuration.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116664,8 +116686,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Controls the time to wait until a job has opened.",
             "name": "timeout",
             "required": false,
+            "serverDefault": "30m",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -116676,7 +116700,7 @@
           }
         ]
       },
-      "description": "Opens one or more anomaly detection jobs.",
+      "description": "Opens one or more anomaly detection jobs.\nAn anomaly detection job must be opened in order for it to be ready to\nreceive and analyze data. It can be opened and closed multiple times\nthroughout its lifecycle.\nWhen you open a new job, it starts with an empty model.\nWhen you open an existing job, the most recent model state is automatically\nloaded. The job is ready to resume its analysis from where it left off, once\nnew data is received.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -116690,7 +116714,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to open",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {

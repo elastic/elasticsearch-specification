@@ -22,30 +22,42 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Retrieves configuration information for a trained model.
  * @rest_spec_name ml.get_trained_models
  * @since 7.10.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** The unique identifier of the trained model. */
+    /**
+     * The unique identifier of the trained model.
+     */
     model_id?: Id
   }
   query_parameters: {
     /**
      * Specifies what to do when the request:
+     *
      * - Contains wildcard expressions and there are no models that match.
      * - Contains the _all string or no identifiers and there are no matches.
      * - Contains wildcard expressions and there are only partial matches.
+     *
+     * If true, it returns an empty array when there are no matches and the
+     * subset of results when there are partial matches.
+     * @server_default true
      */
     allow_no_match?: boolean
     /**
-     * Specifies whether the included model definition should be returned as a JSON map (true) or in a custom compressed format (false).
+     * Specifies whether the included model definition should be returned as a
+     * JSON map (true) or in a custom compressed format (false).
      * @server_default true
      */
     decompress_definition?: boolean
     /**
-     * Indicates if certain fields should be removed from the configuration on retrieval. This allows the configuration to be in an acceptable format to be retrieved and then added to another cluster.
+     * Indicates if certain fields should be removed from the configuration on
+     * retrieval. This allows the configuration to be in an acceptable format to
+     * be retrieved and then added to another cluster.
      * @server_default false
      */
     exclude_generated?: boolean
@@ -55,7 +67,19 @@ export interface Request extends RequestBase {
      */
     from?: integer
     /**
-     * A comma delimited string of optional fields to include in the response body.
+     * A comma delimited string of optional fields to include in the response
+     * body. Valid options are:
+     * - definition: Includes the model definition.
+     * - feature_importance_baseline: Includes the baseline for feature
+     * importance values.
+     * - hyperparameters: Includes the information about hyperparameters used to
+     * train the model. This information consists of the value, the absolute and
+     * relative importance of the hyperparameter as well as an indicator of
+     * whether it was specified by the user or tuned during hyperparameter
+     * optimization.
+     * - total_feature_importance: Includes the total feature importance for the
+     * training data set. The baseline and total feature importance values are
+     * returned in the metadata field in the response body.
      */
     include?: string
     /**
@@ -64,7 +88,9 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /**
-     * A comma delimited string of tags. A trained model can have many tags, or none. When supplied, only trained models that contain all the supplied tags are returned.
+     * A comma delimited string of tags. A trained model can have many tags, or
+     * none. When supplied, only trained models that contain all the supplied
+     * tags are returned.
      */
     tags?: string
   }
