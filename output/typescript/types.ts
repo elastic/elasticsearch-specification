@@ -5243,7 +5243,8 @@ export interface QueryDslTypeQuery extends QueryDslQueryBase {
 export interface QueryDslWildcardQuery extends QueryDslQueryBase {
   case_insensitive?: boolean
   rewrite?: MultiTermQueryRewrite
-  value: string
+  value?: string
+  wildcard?: string
 }
 
 export type QueryDslZeroTermsQuery = 'all' | 'none'
