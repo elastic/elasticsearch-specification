@@ -684,7 +684,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       assert(jsDocs, value.trim() !== '', `Property ${property.name}'s @doc_id is cannot be empty`)
       property.docId = value
     } else if (tag === 'server_default') {
-      assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
+      assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
       if (property.type.kind === 'union_of') {
         let valueType = ''
@@ -703,6 +703,14 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
           return item.type.name
         })
         assert(jsDocs, unionTypes.includes(valueType), `The configured server_default value is not present in the union value: ${unionTypes.join(' | ')}`)
+        property.serverDefault = value
+      } else if (property.type.kind === 'array_of') {
+        try {
+          value = eval(value) // eslint-disable-line
+        } catch (err) {
+          assert(jsDocs, false, 'The default value is not formatted properly')
+        }
+        assert(jsDocs, Array.isArray(value), 'The default value should be an array')
         property.serverDefault = value
       } else {
         switch (property.type.type.name) {
