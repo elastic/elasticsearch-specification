@@ -7521,6 +7521,14 @@
       "description": "Instantiates an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html",
       "name": "ml.put_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ],
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.put_job"
@@ -104031,7 +104039,7 @@
       },
       "properties": [
         {
-          "description": "The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
+          "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -104043,7 +104051,7 @@
           }
         },
         {
-          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string it must refer to a built-in analyzer or one added by another plugin.",
+          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.",
           "name": "categorization_analyzer",
           "required": false,
           "type": {
@@ -104124,19 +104132,7 @@
           }
         },
         {
-          "description": "Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.",
-          "name": "model_prune_window",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.",
+          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.",
           "name": "latency",
           "required": false,
           "serverDefault": "0",
@@ -104149,7 +104145,19 @@
           }
         },
         {
-          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to true, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
+          "description": "Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. Typically, set to `30d` or longer. If not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.",
+          "name": "model_prune_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
           "name": "multivariate_by_fields",
           "required": false,
           "type": {
@@ -104214,7 +104222,7 @@
       },
       "properties": [
         {
-          "description": "The size of the interval that the analysis is aggregated into, typically between 5m and 1h. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
+          "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. If the anomaly detection job uses a datafeed with aggregations, this value must be divisible by the interval of the date histogram aggregation.\n* @server_default 5m",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -104226,7 +104234,7 @@
           }
         },
         {
-          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string it must refer to a built-in analyzer or one added by another plugin.",
+          "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.",
           "name": "categorization_analyzer",
           "required": false,
           "type": {
@@ -104319,7 +104327,7 @@
           }
         },
         {
-          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is only applicable when you send data by using the post data API.",
+          "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.",
           "name": "latency",
           "required": false,
           "serverDefault": "0",
@@ -104332,7 +104340,7 @@
           }
         },
         {
-          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to true, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
+          "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
           "name": "multivariate_by_fields",
           "required": false,
           "type": {
@@ -105233,6 +105241,7 @@
       },
       "properties": [
         {
+          "description": "One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.",
           "name": "char_filter",
           "required": false,
           "type": {
@@ -105259,7 +105268,7 @@
           }
         },
         {
-          "description": "One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.",
+          "description": "One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.",
           "name": "filter",
           "required": false,
           "type": {
@@ -105286,7 +105295,7 @@
           }
         },
         {
-          "description": "One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.",
+          "description": "The name or definition of the tokenizer to use after character filters are applied. This property is compulsory if `categorization_analyzer` is specified as an object. Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English. If you want to use that tokenizer but change the character or token filters, specify \"tokenizer\": \"ml_standard\" in your `categorization_analyzer`. Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2). `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify \"tokenizer\": \"ml_classic\" in your `categorization_analyzer`.",
           "name": "tokenizer",
           "required": false,
           "type": {
@@ -105526,7 +105535,7 @@
           }
         },
         {
-          "description": "The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.",
+          "description": "The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.",
           "name": "time_span",
           "required": false,
           "serverDefault": "3h",
@@ -105864,7 +105873,8 @@
         {
           "description": "The name of the field that contains the timestamp.",
           "name": "time_field",
-          "required": true,
+          "required": false,
+          "serverDefault": "time",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105874,7 +105884,7 @@
           }
         },
         {
-          "description": "The time format, which can be `epoch`, `epoch_ms`, or a custom pattern. The value `epoch` refers to UNIX or Epoch time (the number of seconds since 1 Jan 1970). The value `epoch_ms` indicates that time is measured in milliseconds since the epoch. The `epoch` and `epoch_ms` time formats accept either integer or real values. Custom patterns must conform to the Java DateTimeFormatter class. When you use date-time formatting patterns, it is recommended that you provide the full date, time and time zone. For example: yyyy-MM-dd'T'HH:mm:ssX. If the pattern that you specify is not sufficient to produce a complete timestamp, job creation fails.",
+          "description": "The time format, which can be `epoch`, `epoch_ms`, or a custom pattern. The value `epoch` refers to UNIX or Epoch time (the number of seconds since 1 Jan 1970). The value `epoch_ms` indicates that time is measured in milliseconds since the epoch. The `epoch` and `epoch_ms` time formats accept either integer or real values. Custom patterns must conform to the Java DateTimeFormatter class. When you use date-time formatting patterns, it is recommended that you provide the full date, time and time zone. For example: `yyyy-MM-dd'T'HH:mm:ssX`. If the pattern that you specify is not sufficient to produce a complete timestamp, job creation fails.",
           "name": "time_format",
           "required": false,
           "serverDefault": "epoch",
@@ -106188,7 +106198,7 @@
           }
         },
         {
-          "description": "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -106212,7 +106222,7 @@
           }
         },
         {
-          "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When frequency is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.",
+          "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.",
           "name": "frequency",
           "required": false,
           "type": {
@@ -106238,7 +106248,7 @@
           }
         },
         {
-          "description": "An array of index names. Wildcards are supported.",
+          "description": "An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.",
           "name": "indices",
           "required": true,
           "type": {
@@ -111012,7 +111022,7 @@
       "kind": "enum",
       "members": [
         {
-          "description": "The result will not be created. This is the default value. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.",
+          "description": "The result will not be created. Unless you also specify `skip_model_update`, the model will be updated as usual with the corresponding series value.",
           "name": "skip_result"
         },
         {
@@ -111033,7 +111043,7 @@
       },
       "properties": [
         {
-          "description": "Specifies the result property to which the condition applies. If your detector uses lat_long, metric, rare, or freq_rare functions, you can only specify conditions that apply to time.",
+          "description": "Specifies the result property to which the condition applies. If your detector uses `lat_long`, `metric`, `rare`, or `freq_rare` functions, you can only specify conditions that apply to time.",
           "name": "applies_to",
           "required": true,
           "type": {
@@ -118416,7 +118426,7 @@
             }
           },
           {
-            "description": "Defines a datafeed for the anomaly detection job.",
+            "description": "Defines a datafeed for the anomaly detection job. If Elasticsearch security features are enabled, your datafeed remembers which roles the user who created it had at the time of creation and runs the query using those same roles. If you provide secondary authorization headers, those credentials are used instead.",
             "name": "datafeed_config",
             "required": false,
             "type": {
@@ -118492,7 +118502,7 @@
             }
           },
           {
-            "description": "A text string that affects the name of the machine learning results index. By default, the job generates an index named .ml-anomalies-shared.",
+            "description": "A text string that affects the name of the machine learning results index. By default, the job generates an index named `.ml-anomalies-shared`.",
             "name": "results_index_name",
             "required": false,
             "serverDefault": "shared",
@@ -118505,7 +118515,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
+            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained. Annotations generated by the system also count as results for retention purposes; they are deleted after the same number of days as results. Annotations added by users are retained forever.",
             "name": "results_retention_days",
             "required": false,
             "type": {
@@ -118518,7 +118528,7 @@
           }
         ]
       },
-      "description": "Instantiates an anomaly detection job.",
+      "description": "Instantiates an anomaly detection job. If you include a `datafeed_config`, you must have read index privileges on the source index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
