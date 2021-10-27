@@ -25,6 +25,7 @@ import { FilterRef } from './Filter'
 export class DetectionRule {
   /**
    * The set of actions to be triggered when the rule applies. If more than one action is specified the effects of all actions are combined.
+   * @server_default ['skip_result']
    */
   actions?: RuleAction[]
   /**

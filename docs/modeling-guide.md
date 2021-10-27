@@ -429,6 +429,17 @@ class Foo {
 }
 ```
 
+If you need to specify a server default value for an array, you must use the JavaScript array syntax:
+
+```ts
+class Foo {
+  bar: string
+  /** @server_default ['hello'] */
+  baz?: string[]
+  faz: string
+}
+```
+
 #### `@doc_url`
 
 The documentation url for the parameter.
