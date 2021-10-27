@@ -41,10 +41,10 @@ export interface Request extends RequestBase {
      * A description of the filter.
      */
     description?: string
-    /** 
+    /**
      * The items of the filter. A wildcard `*` can be used at the beginning or the end of an item.
      * Up to 10000 items are allowed in each filter.
-    */
+     */
     items?: string[]
   }
 }
