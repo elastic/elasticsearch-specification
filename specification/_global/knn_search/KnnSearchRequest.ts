@@ -24,7 +24,7 @@ import { DocValueField, SourceFilter } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name knn_search
- * @since 7.16.0
+ * @since 8.0.0
  * @stability experimental
  */
 export interface Request extends RequestBase {

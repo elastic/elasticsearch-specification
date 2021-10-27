@@ -5416,7 +5416,7 @@
         "name": "Response",
         "namespace": "_global.knn_search"
       },
-      "since": "7.16.0",
+      "since": "8.0.0",
       "stability": "experimental",
       "urls": [
         {
