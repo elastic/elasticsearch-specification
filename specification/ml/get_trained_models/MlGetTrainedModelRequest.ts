@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { Include } from '@ml/_types/Include'
 
 /**
  * Retrieves configuration information for a trained model.
@@ -68,20 +69,9 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * A comma delimited string of optional fields to include in the response
-     * body. Valid options are:
-     * - definition: Includes the model definition.
-     * - feature_importance_baseline: Includes the baseline for feature
-     * importance values.
-     * - hyperparameters: Includes the information about hyperparameters used to
-     * train the model. This information consists of the value, the absolute and
-     * relative importance of the hyperparameter as well as an indicator of
-     * whether it was specified by the user or tuned during hyperparameter
-     * optimization.
-     * - total_feature_importance: Includes the total feature importance for the
-     * training data set. The baseline and total feature importance values are
-     * returned in the metadata field in the response body.
+     * body.
      */
-    include?: string
+    include?: Include
     /**
      * Specifies the maximum number of models to obtain.
      * @server_default 100
