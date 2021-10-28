@@ -882,12 +882,6 @@
       ],
       "response": []
     },
-    "indices.freeze": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "indices.get": {
       "request": [
         "Request: query parameter 'include_type_name' does not exist in the json spec",
@@ -1221,6 +1215,7 @@
     },
     "ml.delete_trained_model": {
       "request": [
+        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1495,6 +1490,7 @@
       "request": [
         "Request: query parameter 'thread_type' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []
