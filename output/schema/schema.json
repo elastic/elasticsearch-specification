@@ -7213,6 +7213,11 @@
       "description": "Sends data to an anomaly detection job for analysis.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-post-data.html",
       "name": "ml.post_data",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.post_data"
@@ -116840,7 +116845,11 @@
           }
         }
       },
-      "description": "Sends data to an anomaly detection job for analysis.",
+      "deprecation": {
+        "description": "Posting data directly to anomaly detection jobs is deprecated, in a future major version a datafeed will be required.",
+        "version": "7.11.0"
+      },
+      "description": "Sends data to an anomaly detection job for analysis.\n\nIMPORTANT: For each job, data can be accepted from only a single connection at a time.\nIt is not currently possible to post data to multiple jobs using wildcards or a comma-separated list.",
       "generics": [
         {
           "name": "TData",
@@ -116860,7 +116869,7 @@
       },
       "path": [
         {
-          "description": "The name of the job receiving the data",
+          "description": "Identifier for the anomaly detection job. The job must have a state of open to receive and process the data.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -116874,7 +116883,7 @@
       ],
       "query": [
         {
-          "description": "Optional parameter to specify the end of the bucket resetting range",
+          "description": "Specifies the end of the bucket resetting range.",
           "name": "reset_end",
           "required": false,
           "type": {
@@ -116886,7 +116895,7 @@
           }
         },
         {
-          "description": "Optional parameter to specify the start of the bucket resetting range",
+          "description": "Specifies the start of the bucket resetting range.",
           "name": "reset_start",
           "required": false,
           "type": {
