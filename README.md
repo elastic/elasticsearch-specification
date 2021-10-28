@@ -32,11 +32,9 @@ nvm install 14
 $ git clone https://github.com/elastic/elasticsearch-specification.git
 
 # install the dependencies
-$ npm install --prefix specification
+$ make setup-env
 
 # generate the JSON representation
-$ npm run generate-schema --prefix specification
-# or via make
 $ make spec-generate
 
 # the generated output can be found in ./output/schema/schema.json
@@ -224,6 +222,18 @@ Namespaced APIs can be validated in the same way, for example:
 ```js
 STACK_VERSION=... ./run-validations.sh --api cat.health --request
 ```
+
+## Documentation
+
+- [How to add a new API](./docs/add-new-api.md)
+- [Behaviors](./docs/behaviors.md)
+- [Compiler](./docs/compiler.md)
+- [Documenting the API specification](./docs/doc-comments-guide.md)
+- [Known issues](./docs/known-issues.md)
+- [Modeling Guide](./docs/modeling-guide.md)
+- [Specification structure](./docs/specification-structure.md)
+- [Style Guide](./docs/style-guide.md)
+- [Fixing a defintion, a complete story](./docs/validation-example.md)
 
 ## FAQ
 
