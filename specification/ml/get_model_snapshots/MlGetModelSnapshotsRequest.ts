@@ -23,33 +23,60 @@ import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 /**
+ * Retrieves information about model snapshots.
  * @rest_spec_name ml.get_model_snapshots
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Identifier for the anomaly detection job. */
+    /**
+     * Identifier for the anomaly detection job.
+     */
     job_id: Id
-    /** A numerical character string that uniquely identifies the model snapshot. */
+    /**
+     * A numerical character string that uniquely identifies the model snapshot.
+     */
     snapshot_id?: Id
   }
   query_parameters: {
-    /** If true, the results are sorted in descending order. */
+    /**
+     * If true, the results are sorted in descending order.
+     */
     desc?: boolean
-    /** Returns snapshots with timestamps earlier than this time. */
+    /**
+     * Returns snapshots with timestamps earlier than this time.
+     */
     end?: Time
-    /** Skips the specified number of snapshots. */
+    /**
+     * Skips the specified number of snapshots.
+     */
     from?: integer
-    /** Specifies the maximum number of snapshots to obtain. */
+    /**
+     * Specifies the maximum number of snapshots to obtain.
+     */
     size?: integer
-    /** Specifies the sort field for the requested snapshots. By default, the snapshots are sorted by their timestamp. */
+    /**
+     * Specifies the sort field for the requested snapshots. By default, the
+     * snapshots are sorted by their timestamp.
+     */
     sort?: Field
-    /** Returns snapshots with timestamps after this time. */
+    /**
+     * Returns snapshots with timestamps after this time.
+     */
     start?: Time
   }
   body: {
+    /**
+     * Returns snapshots with timestamps after this time. Defaults to unset,
+     * which means results are not limited to specific timestamps.
+     */
     start?: Time
+    /**
+     * Returns snapshots with timestamps earlier than this time. Defaults to
+     * unset, which means results are not limited to specific timestamps.
+     */
     end?: Time
   }
 }
