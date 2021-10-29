@@ -10987,6 +10987,8 @@ export interface MlHyperparameters {
   soft_tree_depth_tolerance?: double
 }
 
+export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
+
 export interface MlInfluence {
   influencer_field_name: string
   influencer_field_values: string[]
@@ -11766,7 +11768,7 @@ export interface MlGetTrainedModelsRequest extends RequestBase {
   decompress_definition?: boolean
   exclude_generated?: boolean
   from?: integer
-  include?: string
+  include?: MlInclude
   size?: integer
   tags?: string
 }

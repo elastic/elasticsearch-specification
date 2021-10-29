@@ -17,19 +17,26 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-
-/**
- * Returns defaults and limits used by machine learning.
- * This endpoint is designed to be used by a user interface that needs to fully
- * understand machine learning configurations where some options are not
- * specified, meaning that the defaults should be used. This endpoint may be
- * used to find out what those defaults are. It also provides information about
- * the maximum size of machine learning jobs that could run in the current
- * cluster configuration.
- * @rest_spec_name ml.info
- * @since 6.3.0
- * @stability stable
- * @cluster_privileges monitor_ml
- */
-export interface Request extends RequestBase {}
+export enum Include {
+  /**
+   * Includes the model definition.
+   */
+  definition,
+  /**
+   * Includes the baseline for feature importance values.
+   */
+  feature_importance_baseline,
+  /**
+   * Includes the information about hyperparameters used to train the model.
+   * This information consists of the value, the absolute and relative
+   * importance of the hyperparameter as well as an indicator of whether it was
+   * specified by the user or tuned during hyperparameter optimization.
+   */
+  hyperparameters,
+  /**
+   * Includes the total feature importance for the training data set. The
+   * baseline and total feature importance values are returned in the metadata
+   * field in the response body.
+   */
+  total_feature_importance
+}
