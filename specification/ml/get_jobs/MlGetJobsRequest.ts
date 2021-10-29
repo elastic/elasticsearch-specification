@@ -21,20 +21,50 @@ import { RequestBase } from '@_types/Base'
 import { Ids } from '@_types/common'
 
 /**
+ * Retrieves configuration information for anomaly detection jobs.
+ * You can get information for multiple anomaly detection jobs in a single API
+ * request by using a group name, a comma-separated list of jobs, or a wildcard
+ * expression. You can get information for all anomaly detection jobs by using
+ * `_all`, by specifying `*` as the `<job_id>`, or by omitting the `<job_id>`.
  * @rest_spec_name ml.get_jobs
  * @since 5.5.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the anomaly detection job. It can be a job identifier, a
+     * group name, or a wildcard expression. If you do not specify one of these
+     * options, the API returns information for all anomaly detection jobs.
+     */
     job_id?: Ids
   }
   query_parameters: {
-    /** @server_default true */
+    /**
+     * Specifies what to do when the request:
+     *
+     * 1. Contains wildcard expressions and there are no jobs that match.
+     * 2. Contains the _all string or no identifiers and there are no matches.
+     * 3. Contains wildcard expressions and there are only partial matches.
+     *
+     * The default value is `true`, which returns an empty `jobs` array when
+     * there are no matches and the subset of results when there are partial
+     * matches. If this parameter is `false`, the request returns a `404` status
+     * code when there are no matches or only partial matches.
+     * @server_default true
+     */
     allow_no_match?: boolean
-    /** @server_default true */
+    /**
+     * @deprecated 7.10.0
+     */
     allow_no_jobs?: boolean
-    /** @server_default false */
+    /**
+     * Indicates if certain fields should be removed from the configuration on
+     * retrieval. This allows the configuration to be in an acceptable format to
+     * be retrieved and then added to another cluster.
+     * @server_default false
+     */
     exclude_generated?: boolean
   }
 }
