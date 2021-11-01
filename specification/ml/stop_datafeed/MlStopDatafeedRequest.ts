@@ -31,6 +31,10 @@ export interface Request extends RequestBase {
     datafeed_id: Id
   }
   query_parameters: {
+    /**
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
+     */
+    allow_no_datafeeds?: boolean
     /** @server_default true */
     allow_no_match?: boolean
     /** @server_default false */

@@ -43,6 +43,10 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
+     */
+    allow_no_datafeeds?: boolean
+    /**
      * Specifies what to do when the request:
      *
      * 1. Contains wildcard expressions and there are no datafeeds that match.
