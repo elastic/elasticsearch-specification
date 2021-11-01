@@ -56,10 +56,6 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
-     * @deprecated 7.10.0
-     */
-    allow_no_jobs?: boolean
-    /**
      * Indicates if certain fields should be removed from the configuration on
      * retrieval. This allows the configuration to be in an acceptable format to
      * be retrieved and then added to another cluster.
