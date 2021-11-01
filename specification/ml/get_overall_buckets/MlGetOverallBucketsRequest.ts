@@ -85,12 +85,12 @@ export interface Request extends RequestBase {
     /**
      * Returns overall buckets with timestamps earlier than this time.
      */
-     end?: Time
+    end?: Time
     /**
      * If `true`, the output excludes interim results.
      * @server_default false
      */
-     exclude_interim?: boolean
+    exclude_interim?: boolean
     /**
      * Returns overall buckets with overall scores greater than or equal to this
      * value.
@@ -99,7 +99,7 @@ export interface Request extends RequestBase {
     /**
      * Returns overall buckets with timestamps after this time.
      */
-     start?: Time
+    start?: Time
     /**
      * The number of top anomaly detection job bucket scores to be used in the
      * `overall_score` calculation.

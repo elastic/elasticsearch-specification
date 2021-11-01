@@ -111831,22 +111831,6 @@
           }
         },
         {
-          "deprecation": {
-            "description": "Use `allow_no_match` instead.",
-            "version": "7.10.0"
-          },
-          "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
-          "name": "allow_no_jobs",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "Use to close a failed job, or to forcefully close a job which has not responded to its initial close request; the request returns without performing the associated actions such as flushing buffers and persisting the model snapshots.\nIf you want the job to be in a consistent state after the close job API returns, do not set to `true`. This parameter should be used only in situations where the job has already failed or where you are not interested in results the job might have recently produced or might produce in the future.",
           "name": "force",
           "required": false,
@@ -115446,8 +115430,8 @@
       ],
       "query": [
         {
-          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `jobs` array when\nthere are no matches and the subset of results when there are partial\nmatches. If this parameter is `false`, the request returns a `404` status\ncode when there are no matches or only partial matches.",
-          "name": "allow_no_jobs",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty `jobs` array when\nthere are no matches and the subset of results when there are partial\nmatches. If `false`, the API returns a `404` status\ncode when there are no matches or only partial matches.",
+          "name": "allow_no_match",
           "required": false,
           "serverDefault": true,
           "type": {
@@ -115536,22 +115520,6 @@
           "name": "allow_no_match",
           "required": false,
           "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "deprecation": {
-            "description": "",
-            "version": "7.10.0"
-          },
-          "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
-          "name": "allow_no_jobs",
-          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115800,24 +115768,7 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "deprecation": {
-              "description": "",
-              "version": "7.10.0"
-            },
-            "name": "allow_no_jobs",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          }
-        ]
+        "kind": "no_body"
       },
       "description": "Retrieves overall bucket results that summarize the bucket results of\nmultiple anomaly detection jobs.\n\nThe `overall_score` is calculated by combining the scores of all the\nbuckets within the overall bucket span. First, the maximum\n`anomaly_score` per anomaly detection job in the overall bucket is\ncalculated. Then the `top_n` of those scores are averaged to result in\nthe `overall_score`. This means that you can fine-tune the\n`overall_score` so that it is more or less sensitive to the number of\njobs that detect an anomaly at the same time. For example, if you set\n`top_n` to `1`, the `overall_score` is the maximum bucket score in the\noverall bucket. Alternatively, if you set `top_n` to the number of jobs,\nthe `overall_score` is high only when all jobs detect anomalies in that\noverall bucket. If you set the `bucket_span` parameter (to a value\ngreater than its default), the `overall_score` is the maximum\n`overall_score` of the overall buckets that have a span equal to the\njobs' largest bucket span.",
       "inherits": {
@@ -115847,6 +115798,19 @@
       ],
       "query": [
         {
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the request returns an empty `jobs` array when there are no\nmatches and the subset of results when there are partial matches. If this\nparameter is `false`, the request returns a `404` status code when there\nare no matches or only partial matches.",
+          "name": "allow_no_match",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "description": "The span of the overall buckets. Must be greater or equal to the largest\nbucket span of the specified anomaly detection jobs, which is the default\nvalue.\n\nBy default, an overall bucket has a span equal to the largest bucket span\nof the specified anomaly detection jobs. To override that behavior, use\nthe optional `bucket_span` parameter.",
           "name": "bucket_span",
           "required": false,
@@ -115855,6 +115819,31 @@
             "type": {
               "name": "Time",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Returns overall buckets with timestamps earlier than this time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the output excludes interim results.",
+          "name": "exclude_interim",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
             }
           }
         },
@@ -115883,31 +115872,6 @@
           }
         },
         {
-          "description": "The number of top anomaly detection job bucket scores to be used in the\n`overall_score` calculation.",
-          "name": "top_n",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Returns overall buckets with timestamps earlier than this time.",
-          "name": "end",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "Returns overall buckets with timestamps after this time.",
           "name": "start",
           "required": false,
@@ -115920,28 +115884,15 @@
           }
         },
         {
-          "description": "If `true`, the output excludes interim results.",
-          "name": "exclude_interim",
+          "description": "The number of top anomaly detection job bucket scores to be used in the\n`overall_score` calculation.",
+          "name": "top_n",
           "required": false,
-          "serverDefault": false,
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the request returns an empty `jobs` array when there are no\nmatches and the subset of results when there are partial matches. If this\nparameter is `false`, the request returns a `404` status code when there\nare no matches or only partial matches.",
-          "name": "allow_no_match",
-          "required": false,
-          "serverDefault": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
+              "name": "integer",
+              "namespace": "_types"
             }
           }
         }

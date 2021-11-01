@@ -1159,6 +1159,12 @@
       ],
       "response": []
     },
+    "ml.close_job": {
+      "request": [
+        "Request: missing json spec query parameter 'allow_no_jobs'"
+      ],
+      "response": []
+    },
     "ml.delete_calendar": {
       "request": [
         "Request: should not have a body"
@@ -1300,13 +1306,14 @@
     },
     "ml.get_job_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_jobs": {
       "request": [
+        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": [
