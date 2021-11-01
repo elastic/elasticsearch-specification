@@ -5894,7 +5894,8 @@ export interface CatMlDatafeedsDatafeedsRecord {
 
 export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   datafeed_id?: Id
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
+  time?: TimeUnit
 }
 
 export type CatMlDatafeedsResponse = CatMlDatafeedsDatafeedsRecord[]
@@ -6078,8 +6079,9 @@ export interface CatMlJobsJobsRecord {
 
 export interface CatMlJobsRequest extends CatCatRequestBase {
   job_id?: Id
-  allow_no_jobs?: boolean
+  allow_no_match?: boolean
   bytes?: Bytes
+  time?: TimeUnit
 }
 
 export type CatMlJobsResponse = CatMlJobsJobsRecord[]

@@ -25,11 +25,11 @@ import { TimeUnit } from '@_types/Time'
  * Returns configuration and usage information about datafeeds.
  * This API returns a maximum of 10,000 datafeeds.
  * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
- * cluster privileges to use this API. 
+ * cluster privileges to use this API.
  * @rest_spec_name cat.ml_datafeeds
  * @since 7.7.0
  * @stability stable
- * @cluster_prvileges monitor_ml
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
   path_parts: {
@@ -43,11 +43,11 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     /**
      * Specifies what to do when the request:
-     * 
+     *
      * * Contains wildcard expressions and there are no datafeeds that match.
      * * Contains the `_all` string or no identifiers and there are no matches.
      * * Contains wildcard expressions and there are only partial matches.
-     * 
+     *
      * If `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when
      * there are partial matches. If `false`, the API returns a 404 status code when there are no matches or only
      * partial matches.
@@ -55,8 +55,8 @@ export interface Request extends CatRequestBase {
      */
     allow_no_match?: boolean
     /**
-    * The unit used to display time values.
-    */
+     * The unit used to display time values.
+     */
     time?: TimeUnit
   }
 }
