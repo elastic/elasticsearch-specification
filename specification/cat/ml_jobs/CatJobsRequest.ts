@@ -60,10 +60,5 @@ export interface Request extends CatRequestBase {
      * The unit used to display time values.
      */
     time?: TimeUnit
-    /**
-     * Verbose mode. If `true`, the response includes column headings. 
-     * @server_default false
-     */
-    v?: boolean 
   }
 }
