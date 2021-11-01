@@ -67375,6 +67375,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
           "name": "allow_no_datafeeds",
           "required": false,
@@ -68405,6 +68409,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
           "name": "allow_no_jobs",
           "required": false,
@@ -115810,6 +115818,22 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
           "name": "allow_no_match",
           "required": false,
@@ -115894,6 +115918,22 @@
         }
       ],
       "query": [
+        {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
         {
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
           "name": "allow_no_match",
@@ -116282,6 +116322,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `jobs` array when\nthere are no matches and the subset of results when there are partial\nmatches. If this parameter is `false`, the request returns a `404` status\ncode when there are no matches or only partial matches.",
           "name": "allow_no_jobs",
           "required": false,
@@ -116382,7 +116426,7 @@
         },
         {
           "deprecation": {
-            "description": "",
+            "description": "Use `allow_no_match` instead.",
             "version": "7.10.0"
           },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
@@ -121124,6 +121168,22 @@
         }
       ],
       "query": [
+        {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
         {
           "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
           "name": "allow_no_match",
