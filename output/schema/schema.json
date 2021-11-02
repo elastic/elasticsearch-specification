@@ -18013,29 +18013,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -21599,28 +21580,9 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            }
-          },
-          {
+            "aliases": [
+              "aggs"
+            ],
             "name": "aggregations",
             "required": false,
             "type": {
@@ -60978,8 +60940,8 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "AggregateName",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -61527,28 +61489,9 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            }
-          },
-          {
+            "aliases": [
+              "aggs"
+            ],
             "name": "aggregations",
             "required": false,
             "type": {
@@ -103487,17 +103430,6 @@
             }
           },
           {
-            "name": "acknowledged",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "trial_was_started",
             "required": true,
             "type": {
@@ -105963,29 +105895,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -106187,30 +106100,11 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.",
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -128612,7 +128506,10 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
+            "aliases": [
+              "aggs"
+            ],
+            "name": "aggregations",
             "required": false,
             "type": {
               "key": {
@@ -128645,6 +128542,7 @@
             }
           },
           {
+            "description": "Must be zero if set, as rollups work on pre-aggregated data",
             "name": "size",
             "required": false,
             "type": {
