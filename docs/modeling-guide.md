@@ -562,3 +562,16 @@ class Foo {
   faz: string
 }
 ```
+
+#### `@stability`
+
+You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
+
+```ts
+class Foo {
+  bar: string
+  /** @stability experimental */
+  baz?: string
+  faz: string
+}
+```

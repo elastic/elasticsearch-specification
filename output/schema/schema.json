@@ -110358,6 +110358,7 @@
       }
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
       "kind": "interface",
       "name": {
         "name": "ModelPlotConfig",
@@ -110369,6 +110370,7 @@
           "name": "annotations_enabled",
           "required": false,
           "serverDefault": true,
+          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -110394,6 +110396,8 @@
           "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
           "name": "terms",
           "required": false,
+          "since": "7.9.0",
+          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
