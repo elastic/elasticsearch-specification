@@ -34,7 +34,7 @@ export class Stats {
   ingest?: Ingest
   ip?: Ip | Ip[]
   jvm?: Jvm
-  name: Name
+  name?: Name
   os?: OperatingSystem
   process?: Process
   roles?: NodeRoles
@@ -49,13 +49,13 @@ export class Stats {
 }
 
 export class IndexingPressure {
-  memory: IndexingPressureMemory
+  memory?: IndexingPressureMemory
 }
 
 export class IndexingPressureMemory {
-  limit_in_bytes: long
-  current: PressureMemory
-  total: PressureMemory
+  limit_in_bytes?: long
+  current?: PressureMemory
+  total?: PressureMemory
 }
 
 export interface PressureMemory {
@@ -70,10 +70,34 @@ export interface PressureMemory {
 }
 
 export class Discovery {
-  cluster_state_queue: ClusterStateQueue
-  published_cluster_states: PublishedClusterStates
+  cluster_state_queue?: ClusterStateQueue
+  published_cluster_states?: PublishedClusterStates
   cluster_state_update?: Dictionary<string, ClusterStateUpdate>
+  serialized_cluster_states?: SerializedClusterState
+  cluster_applier_stats?: ClusterAppliedStats
 }
+
+export class ClusterAppliedStats {
+  recordings?: Recording[]
+} 
+
+export class Recording {
+  name?: string
+  cumulative_execution_count?: long
+  cumulative_execution_time_millis?: long
+}
+
+export class SerializedClusterState {
+  full_states?: SerializedClusterStateDetail
+  diffs?: SerializedClusterStateDetail
+}
+
+export class SerializedClusterStateDetail {
+  count?: long
+  uncompressed_size_in_bytes?: long
+  compressed_size_in_bytes?: long
+}
+
 
 export class ClusterStateQueue {
   total: long
@@ -99,8 +123,8 @@ export class ClusterStateUpdate {
 }
 
 export class Ingest {
-  pipelines: Dictionary<string, IngestTotal>
-  total: IngestTotal
+  pipelines?: Dictionary<string, IngestTotal>
+  total?: IngestTotal
 }
 
 export class IngestTotal {
@@ -117,22 +141,22 @@ export class KeyedProcessor {
 }
 
 export class AdaptiveSelection {
-  avg_queue_size: long
+  avg_queue_size?: long
   avg_response_time?: long
   avg_response_time_ns: long
   avg_service_time?: string
-  avg_service_time_ns: long
-  outgoing_searches: long
-  rank: string
+  avg_service_time_ns?: long
+  outgoing_searches?: long
+  rank?: string
 }
 
 export class Breaker {
-  estimated_size: string
-  estimated_size_in_bytes: long
-  limit_size: string
-  limit_size_in_bytes: long
-  overhead: float
-  tripped: float
+  estimated_size?: string
+  estimated_size_in_bytes?: long
+  limit_size?: string
+  limit_size_in_bytes?: long
+  overhead?: float
+  tripped?: float
 }
 
 export class Cgroup {
@@ -196,6 +220,7 @@ export class DataPathStats {
 }
 
 export class MemoryStats {
+  adjusted_total_in_bytes?: long
   resident?: string
   resident_in_bytes?: long
   share?: string
@@ -213,8 +238,8 @@ export class ExtendedMemoryStats extends MemoryStats {
 }
 
 export class Http {
-  current_open: integer
-  total_opened: long
+  current_open?: integer
+  total_opened?: long
   clients?: Client[]
 }
 
@@ -233,10 +258,10 @@ export class Client {
 }
 
 export class FileSystem {
-  data: DataPathStats[]
-  timestamp: long
-  total: FileSystemTotal
-  io_stats: IoStats
+  data?: DataPathStats[]
+  timestamp?: long
+  total?: FileSystemTotal
+  io_stats?: IoStats
 }
 
 export class IoStats {
@@ -271,14 +296,14 @@ export class NodeBufferPool {
 }
 
 export class Jvm {
-  buffer_pools: Dictionary<string, NodeBufferPool>
-  classes: JvmClasses
-  gc: GarbageCollector
-  mem: JvmMemoryStats
-  threads: JvmThreads
-  timestamp: long
+  buffer_pools?: Dictionary<string, NodeBufferPool>
+  classes?: JvmClasses
+  gc?: GarbageCollector
+  mem?: JvmMemoryStats
+  threads?: JvmThreads
+  timestamp?: long
   uptime?: string
-  uptime_in_millis: long
+  uptime_in_millis?: long
 }
 
 export class JvmMemoryStats {
@@ -320,26 +345,26 @@ export class GarbageCollectorTotal {
 }
 
 export class OperatingSystem {
-  cpu: Cpu
-  mem: ExtendedMemoryStats
-  swap: MemoryStats
-  cgroup: Cgroup
-  timestamp: long
+  cpu?: Cpu
+  mem?: ExtendedMemoryStats
+  swap?: MemoryStats
+  cgroup?: Cgroup
+  timestamp?: long
 }
 
 export class Process {
-  cpu: Cpu
-  mem: MemoryStats
-  open_file_descriptors: integer
-  max_file_descriptors: integer
-  timestamp: long
+  cpu?: Cpu
+  mem?: MemoryStats
+  open_file_descriptors?: integer
+  max_file_descriptors?: integer
+  timestamp?: long
 }
 
 export class Scripting {
-  cache_evictions: long
-  compilations: long
-  compilation_limit_triggered: long
-  contexts: Context[]
+  cache_evictions?: long
+  compilations?: long
+  compilation_limit_triggered?: long
+  contexts?: Context[]
 }
 
 export class Context {
@@ -350,21 +375,21 @@ export class Context {
 }
 
 export class ThreadCount {
-  active: long
-  completed: long
-  largest: long
-  queue: long
-  rejected: long
-  threads: long
+  active?: long
+  completed?: long
+  largest?: long
+  queue?: long
+  rejected?: long
+  threads?: long
 }
 
 export class Transport {
-  rx_count: long
+  rx_count?: long
   rx_size?: string
-  rx_size_in_bytes: long
-  server_open: integer
-  tx_count: long
+  rx_size_in_bytes?: long
+  server_open?: integer
+  tx_count?: long
   tx_size?: string
-  tx_size_in_bytes: long
-  total_outbound_connections: long
+  tx_size_in_bytes?: long
+  total_outbound_connections?: long
 }
