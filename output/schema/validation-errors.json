@@ -1342,14 +1342,12 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1468,7 +1466,6 @@
     },
     "ml.stop_datafeed": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
