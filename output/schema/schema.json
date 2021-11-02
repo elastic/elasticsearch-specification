@@ -3090,14 +3090,14 @@
             "GET",
             "POST"
           ],
-          "path": "/_fleet/_msearch"
+          "path": "/_fleet/_fleet_msearch"
         },
         {
           "methods": [
             "GET",
             "POST"
           ],
-          "path": "/{index}/_fleet/_msearch"
+          "path": "/{index}/_fleet/_fleet_msearch"
         }
       ],
       "visibility": "public"
@@ -3122,7 +3122,7 @@
             "GET",
             "POST"
           ],
-          "path": "/{index}/_fleet/_search"
+          "path": "/{index}/_fleet/_fleet_search"
         }
       ],
       "visibility": "public"
