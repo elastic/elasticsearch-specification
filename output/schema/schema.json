@@ -7289,6 +7289,11 @@
       "description": "Previews that will be analyzed given a data frame analytics config.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/preview-dfanalytics.html",
       "name": "ml.preview_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.preview_data_frame_analytics"
@@ -7601,6 +7606,11 @@
       "description": "Creates an inference trained model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models.html",
       "name": "ml.put_trained_model",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.put_trained_model"
@@ -7632,6 +7642,11 @@
       "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-trained-models-aliases.html",
       "name": "ml.put_trained_model_alias",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.put_trained_model_alias"
@@ -7708,6 +7723,11 @@
       "description": "Resets an existing anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-reset-job.html",
       "name": "ml.reset_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.reset_job"
@@ -7739,6 +7759,11 @@
       "description": "Reverts to a specific snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-revert-snapshot.html",
       "name": "ml.revert_model_snapshot",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.revert_model_snapshot"
@@ -117136,7 +117161,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "A data frame analytics config as described in Create data frame analytics jobs. Note that id and dest don’t need to be provided in the context of this API.",
+            "description": "A data frame analytics config as described in Create data frame analytics\njobs. Note that id and dest don’t need to be provided in the context of\nthis API.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/put-dfanalytics.html",
             "name": "config",
             "required": false,
@@ -117150,7 +117175,7 @@
           }
         ]
       },
-      "description": "Previews that will be analyzed given a data frame analytics config.",
+      "description": "Previews the extracted features used by a data frame analytics config.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117509,7 +117534,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node. If set to false and a machine learning node with capacity to run the job cannot be immediately found, the API returns an error.  If set to true, the API does not return an error; the job waits in the `starting` state until sufficient machine learning node capacity is available. This behavior is also affected by the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting.",
+            "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node. If\nset to false and a machine learning node with capacity to run the job\ncannot be immediately found, the API returns an error. If set to true,\nthe API does not return an error; the job waits in the `starting` state\nuntil sufficient machine learning node capacity is available. This\nbehavior is also affected by the cluster-wide\n`xpack.ml.max_lazy_ml_nodes` setting.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
             "name": "allow_lazy_start",
             "required": false,
@@ -117523,7 +117548,7 @@
             }
           },
           {
-            "description": "The analysis configuration, which contains the information necessary to perform one of the following types of analysis: classification, outlier detection, or regression.",
+            "description": "The analysis configuration, which contains the information necessary to\nperform one of the following types of analysis: classification, outlier\ndetection, or regression.",
             "name": "analysis",
             "required": true,
             "type": {
@@ -117535,7 +117560,7 @@
             }
           },
           {
-            "description": "Specifies `includes` and/or `excludes` patterns to select which fields will be included in the analysis. The patterns specified in `excludes` are applied last, therefore `excludes` takes precedence. In other words, if the same field is specified in both `includes` and `excludes`, then the field will not be included in the analysis. If `analyzed_fields` is not set, only the relevant fields will be included. For example, all the numeric fields for outlier detection.\nThe supported fields vary for each type of analysis. Outlier detection requires numeric or `boolean` data to analyze. The algorithms don’t support missing values therefore fields that have data types other than numeric or boolean are ignored. Documents where included fields contain missing values, null values, or an array are also ignored. Therefore the `dest` index may contain documents that don’t have an outlier score.\nRegression supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the regression analysis.\nClassification supports fields that are numeric, `boolean`, `text`, `keyword`, and `ip` data types. It is also tolerant of missing values. Fields that are supported are included in the analysis, other fields are ignored. Documents where included fields contain an array with two or more values are also ignored. Documents in the `dest` index that don’t contain a results field are not included in the classification analysis. Classification analysis can be improved by mapping ordinal variable values to a single number. For example, in case of age ranges, you can model the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
+            "description": "Specifies `includes` and/or `excludes` patterns to select which fields\nwill be included in the analysis. The patterns specified in `excludes`\nare applied last, therefore `excludes` takes precedence. In other words,\nif the same field is specified in both `includes` and `excludes`, then\nthe field will not be included in the analysis. If `analyzed_fields` is\nnot set, only the relevant fields will be included. For example, all the\nnumeric fields for outlier detection.\nThe supported fields vary for each type of analysis. Outlier detection\nrequires numeric or `boolean` data to analyze. The algorithms don’t\nsupport missing values therefore fields that have data types other than\nnumeric or boolean are ignored. Documents where included fields contain\nmissing values, null values, or an array are also ignored. Therefore the\n`dest` index may contain documents that don’t have an outlier score.\nRegression supports fields that are numeric, `boolean`, `text`,\n`keyword`, and `ip` data types. It is also tolerant of missing values.\nFields that are supported are included in the analysis, other fields are\nignored. Documents where included fields contain an array with two or\nmore values are also ignored. Documents in the `dest` index that don’t\ncontain a results field are not included in the regression analysis.\nClassification supports fields that are numeric, `boolean`, `text`,\n`keyword`, and `ip` data types. It is also tolerant of missing values.\nFields that are supported are included in the analysis, other fields are\nignored. Documents where included fields contain an array with two or\nmore values are also ignored. Documents in the `dest` index that don’t\ncontain a results field are not included in the classification analysis.\nClassification analysis can be improved by mapping ordinal variable\nvalues to a single number. For example, in case of age ranges, you can\nmodel the values as `0-14 = 0`, `15-24 = 1`, `25-34 = 2`, and so on.",
             "name": "analyzed_fields",
             "required": false,
             "type": {
@@ -117571,7 +117596,7 @@
             }
           },
           {
-            "description": "The maximum number of threads to be used by the analysis. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
             "name": "max_num_threads",
             "required": false,
             "serverDefault": 1,
@@ -117584,7 +117609,7 @@
             }
           },
           {
-            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. If your `elasticsearch.yml` file contains an `xpack.ml.max_model_memory_limit` setting, an error occurs when you try to create data frame analytics jobs that have `model_memory_limit` values greater than that setting.",
+            "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. If your `elasticsearch.yml` file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have `model_memory_limit` values\ngreater than that setting.",
             "name": "model_memory_limit",
             "required": false,
             "serverDefault": "1gb",
@@ -117610,7 +117635,7 @@
           }
         ]
       },
-      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the source indices and stores the outcome in a destination index. You must have `read` and `view_index_metadata` security privileges for the source indices. You must have `read`, `create_index`, `manage` and `index` security privileges for the destination index.",
+      "description": "Instantiates a data frame analytics job.\nThis API creates a data frame analytics job that performs an analysis on the\nsource indices and stores the outcome in a destination index.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117624,7 +117649,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "Identifier for the data frame analytics job. This identifier can contain\nlowercase alphanumeric characters (a-z and 0-9), hyphens, and\nunderscores. It must start and end with alphanumeric characters.",
           "name": "id",
           "required": true,
           "type": {
@@ -119135,7 +119160,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The compressed (GZipped and Base64 encoded) inference definition of the model. If compressed_definition is specified, then definition cannot be specified.",
+            "description": "The compressed (GZipped and Base64 encoded) inference definition of the\nmodel. If compressed_definition is specified, then definition cannot be\nspecified.",
             "name": "compressed_definition",
             "required": false,
             "type": {
@@ -119147,7 +119172,7 @@
             }
           },
           {
-            "description": "The inference definition for the model. If definition is specified, then compressed_definition cannot be specified.",
+            "description": "The inference definition for the model. If definition is specified, then\ncompressed_definition cannot be specified.",
             "name": "definition",
             "required": false,
             "type": {
@@ -119171,7 +119196,7 @@
             }
           },
           {
-            "description": "The default configuration for inference. This can be either a regression or classification configuration. It must match the underlying definition.trained_model's target_type.",
+            "description": "The default configuration for inference. This can be either a regression\nor classification configuration. It must match the underlying\ndefinition.trained_model's target_type.",
             "name": "inference_config",
             "required": true,
             "type": {
@@ -119219,7 +119244,7 @@
           }
         ]
       },
-      "description": "Creates an inference trained model.",
+      "description": "The create trained model API enables you to supply a trained model that is\nnot created by data frame analytics.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -119570,7 +119595,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Creates a new model alias (or reassigns an existing one) to refer to the trained model",
+      "description": "Creates or updates a trained model alias. A trained model alias is a logical\nname used to reference a single trained model.\nYou can use aliases instead of trained model identifiers to make it easier to\nreference your models. For example, you can use aliases in inference\naggregations and processors.\nAn alias must be unique and refer to only a single trained model. However,\nyou can have multiple aliases for each trained model.\nIf you use this API to update an alias such that it references a different\ntrained model ID and the model uses a different type of data frame analytics,\nan error occurs. For example, this situation occurs if you have a trained\nmodel for regression analysis and a trained model for classification\nanalysis; you cannot reassign an alias from one type of trained model to\nanother.\nIf you use this API to update an alias and there are very few input fields in\ncommon between the old and new trained models for the model alias, the API\nreturns a warning.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -119610,7 +119635,7 @@
       ],
       "query": [
         {
-          "description": "Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model. If the alias is already assigned and this parameter is false, the API returns an error.",
+          "description": "Specifies whether the alias gets reassigned to the specified trained\nmodel if it is already assigned to a different model. If the alias is\nalready assigned and this parameter is false, the API returns an error.",
           "name": "reassign",
           "required": false,
           "serverDefault": false,
@@ -119648,7 +119673,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Resets an existing anomaly detection job.",
+      "description": "Resets an existing anomaly detection job.\nAll model state and results are deleted. The job is ready to start over as if\nit had just been created.\nIt is not currently possible to reset multiple jobs using wildcards or a\ncomma separated list.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -119676,7 +119701,7 @@
       ],
       "query": [
         {
-          "description": "Should this request wait until the operation has completed before returning.",
+          "description": "Should this request wait until the operation has completed before\nreturning.",
           "name": "wait_for_completion",
           "required": false,
           "serverDefault": true,
@@ -119715,8 +119740,10 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "If true, deletes the results in the time period between the latest\nresults and the time of the reverted snapshot. It also resets the model\nto accept records for this time period. If you choose not to delete\nintervening results when reverting a snapshot, the job will not accept\ninput data that is older than the current time. If you want to resend\ndata, then delete the intervening results.",
             "name": "delete_intervening_results",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -119727,7 +119754,7 @@
           }
         ]
       },
-      "description": "Reverts to a specific snapshot.",
+      "description": "Reverts to a specific snapshot.\nThe machine learning features react quickly to anomalous input, learning new\nbehaviors in data. Highly anomalous input increases the variance in the\nmodels whilst the system learns whether this is a new step-change in behavior\nor a one-off event. In the case where this anomalous input is known to be a\none-off, then it might be appropriate to reset the model state to a time\nbefore this event. For example, you might consider reverting to a saved\nsnapshot after Black Friday or a critical system failure.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -119741,7 +119768,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to fetch",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -119753,7 +119780,7 @@
           }
         },
         {
-          "description": "The ID of the snapshot to revert to",
+          "description": "You can specify `empty` as the <snapshot_id>. Reverting to the empty\nsnapshot means the anomaly detection job starts learning a new model from\nscratch when it is started.",
           "name": "snapshot_id",
           "required": true,
           "type": {

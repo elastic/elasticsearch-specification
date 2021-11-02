@@ -21,20 +21,43 @@ import { RequestBase } from '@_types/Base'
 import { Id, Name } from '@_types/common'
 
 /**
+ * Creates or updates a trained model alias. A trained model alias is a logical
+ * name used to reference a single trained model.
+ * You can use aliases instead of trained model identifiers to make it easier to
+ * reference your models. For example, you can use aliases in inference
+ * aggregations and processors.
+ * An alias must be unique and refer to only a single trained model. However,
+ * you can have multiple aliases for each trained model.
+ * If you use this API to update an alias such that it references a different
+ * trained model ID and the model uses a different type of data frame analytics,
+ * an error occurs. For example, this situation occurs if you have a trained
+ * model for regression analysis and a trained model for classification
+ * analysis; you cannot reassign an alias from one type of trained model to
+ * another.
+ * If you use this API to update an alias and there are very few input fields in
+ * common between the old and new trained models for the model alias, the API
+ * returns a warning.
  * @rest_spec_name ml.put_trained_model_alias
  * @since 7.13.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** The alias to create or update. This value cannot end in numbers. */
+    /**
+     * The alias to create or update. This value cannot end in numbers.
+     */
     model_alias: Name
-    /** The identifier for the trained model that the alias refers to. */
+    /**
+     * The identifier for the trained model that the alias refers to.
+     */
     model_id: Id
   }
   query_parameters: {
     /**
-     * Specifies whether the alias gets reassigned to the specified trained model if it is already assigned to a different model. If the alias is already assigned and this parameter is false, the API returns an error.
+     * Specifies whether the alias gets reassigned to the specified trained
+     * model if it is already assigned to a different model. If the alias is
+     * already assigned and this parameter is false, the API returns an error.
      * @server_default false
      */
     reassign?: boolean
