@@ -1513,6 +1513,7 @@
       "request": [
         "Request: query parameter 'thread_type' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []
