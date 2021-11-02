@@ -76,7 +76,6 @@ export class IndexStats {
   bulk?: BulkStats
   /** @since 7.15.0 */
   shard_stats?: ShardsTotalStats
-
 }
 
 export class IndicesStats {

@@ -24,7 +24,6 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 
-
 // The node stats response can be filtered both by `metric` and `filter_path`,
 // every property needs to be optional to be compliant with the API behavior.
 export class Stats {
@@ -82,7 +81,7 @@ export class Discovery {
 
 export class ClusterAppliedStats {
   recordings?: Recording[]
-} 
+}
 
 export class Recording {
   name?: string
@@ -100,7 +99,6 @@ export class SerializedClusterStateDetail {
   uncompressed_size_in_bytes?: long
   compressed_size_in_bytes?: long
 }
-
 
 export class ClusterStateQueue {
   total: long
