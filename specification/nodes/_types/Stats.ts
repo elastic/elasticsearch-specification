@@ -24,6 +24,9 @@ import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 
+
+// The node stats response can be filtered both by `metric` and `filter_path`,
+// every property needs to be optional to be compliant with the API behavior.
 export class Stats {
   adaptive_selection?: Dictionary<string, AdaptiveSelection>
   breakers?: Dictionary<string, Breaker>
