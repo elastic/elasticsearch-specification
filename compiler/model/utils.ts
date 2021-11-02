@@ -939,8 +939,8 @@ export function parseVariantNameTag (jsDoc: JSDoc[]): string | undefined {
   }
 
   const [key, name] = tags.variant.split('=')
-  assert(jsDoc, key === 'name', 'The @variant key should be "name"')
-  assert(jsDoc, typeof name === 'string', 'The @variant key should be "name"')
+  assert(jsDoc, key === 'name', 'The key value should be "name"')
+  assert(jsDoc, typeof name === 'string', 'The key value should be "name"')
 
   return name.replace(/'/g, '')
 }
