@@ -1184,9 +1184,7 @@
         "Request: missing json spec query parameter 'type'",
         "Request: should not have a body"
       ],
-      "response": [
-        "response definition license.post_start_trial:Response / body - Property 'acknowledged' is already defined in an ancestor class"
-      ]
+      "response": []
     },
     "logstash.delete_pipeline": {
       "request": [

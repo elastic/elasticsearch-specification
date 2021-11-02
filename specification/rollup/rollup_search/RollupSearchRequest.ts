@@ -39,8 +39,10 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   body: {
-    aggs?: Dictionary<string, AggregationContainer>
+    /** @aliases aggs */
+    aggregations?: Dictionary<string, AggregationContainer>
     query?: QueryContainer
+    /** Must be zero if set, as rollups work on pre-aggregated data */
     size?: integer
   }
 }
