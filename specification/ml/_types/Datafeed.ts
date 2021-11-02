@@ -28,8 +28,8 @@ import { Time, Timestamp } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
+  /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   chunking_config?: ChunkingConfig
   datafeed_id: Id
   frequency?: Timestamp
@@ -45,12 +45,14 @@ export class Datafeed {
   runtime_mappings?: RuntimeFields
   indices_options?: DatafeedIndicesOptions
 }
+
 export class DatafeedConfig {
   /**
    * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.
+   *
+   * @aliases aggs
    */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   /**
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
