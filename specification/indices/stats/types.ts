@@ -75,7 +75,8 @@ export class IndexStats {
   warmer?: WarmerStats
   bulk?: BulkStats
   /** @since 7.15.0 */
-  shards?: ShardsTotalStats
+  shard_stats?: ShardsTotalStats
+
 }
 
 export class IndicesStats {
