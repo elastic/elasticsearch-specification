@@ -51,6 +51,7 @@ import { SuggestContainer } from '@global/search/_types/suggester'
  * @since 7.7.0
  * @stability stable
  */
+// NOTE: this is a SearchRequest with 3 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive
 export interface Request extends RequestBase {
   path_parts: {
     index?: Indices
@@ -113,7 +114,7 @@ export interface Request extends RequestBase {
     sort?: string | string[]
   }
   body: {
-    aggs?: Dictionary<string, AggregationContainer>
+    /** @aliases aggs */
     aggregations?: Dictionary<string, AggregationContainer>
     collapse?: FieldCollapse
     /**
