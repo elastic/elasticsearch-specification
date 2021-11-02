@@ -11224,7 +11224,6 @@ export interface MlValidationLoss {
 export interface MlCloseJobRequest extends RequestBase {
   job_id: Id
   allow_no_match?: boolean
-  allow_no_jobs?: boolean
   force?: boolean
   timeout?: Time
 }
@@ -11648,7 +11647,7 @@ export interface MlGetInfluencersResponse {
 
 export interface MlGetJobStatsRequest extends RequestBase {
   job_id?: Id
-  allow_no_jobs?: boolean
+  allow_no_match?: boolean
 }
 
 export interface MlGetJobStatsResponse {
@@ -11659,7 +11658,6 @@ export interface MlGetJobStatsResponse {
 export interface MlGetJobsRequest extends RequestBase {
   job_id?: Ids
   allow_no_match?: boolean
-  allow_no_jobs?: boolean
   exclude_generated?: boolean
 }
 
@@ -11690,16 +11688,13 @@ export interface MlGetModelSnapshotsResponse {
 
 export interface MlGetOverallBucketsRequest extends RequestBase {
   job_id: Id
-  bucket_span?: Time
-  overall_score?: double | string
-  top_n?: integer
-  end?: Time
-  start?: Time
-  exclude_interim?: boolean
   allow_no_match?: boolean
-  body?: {
-    allow_no_jobs?: boolean
-  }
+  bucket_span?: Time
+  end?: Time
+  exclude_interim?: boolean
+  overall_score?: double | string
+  start?: Time
+  top_n?: integer
 }
 
 export interface MlGetOverallBucketsResponse {

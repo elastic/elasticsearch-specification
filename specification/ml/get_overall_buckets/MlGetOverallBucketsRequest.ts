@@ -59,40 +59,6 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
-     * The span of the overall buckets. Must be greater or equal to the largest
-     * bucket span of the specified anomaly detection jobs, which is the default
-     * value.
-     *
-     * By default, an overall bucket has a span equal to the largest bucket span
-     * of the specified anomaly detection jobs. To override that behavior, use
-     * the optional `bucket_span` parameter.
-     */
-    bucket_span?: Time
-    /**
-     * Returns overall buckets with overall scores greater than or equal to this
-     * value.
-     */
-    overall_score?: double | string
-    /**
-     * The number of top anomaly detection job bucket scores to be used in the
-     * `overall_score` calculation.
-     * @server_default 1
-     */
-    top_n?: integer
-    /**
-     * Returns overall buckets with timestamps earlier than this time.
-     */
-    end?: Time
-    /**
-     * Returns overall buckets with timestamps after this time.
-     */
-    start?: Time
-    /**
-     * If `true`, the output excludes interim results.
-     * @server_default false
-     */
-    exclude_interim?: boolean
-    /**
      * Specifies what to do when the request:
      *
      * 1. Contains wildcard expressions and there are no jobs that match.
@@ -106,11 +72,39 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
-  }
-  body: {
     /**
-     * @deprecated 7.10.0
+     * The span of the overall buckets. Must be greater or equal to the largest
+     * bucket span of the specified anomaly detection jobs, which is the default
+     * value.
+     *
+     * By default, an overall bucket has a span equal to the largest bucket span
+     * of the specified anomaly detection jobs. To override that behavior, use
+     * the optional `bucket_span` parameter.
      */
-    allow_no_jobs?: boolean
+    bucket_span?: Time
+    /**
+     * Returns overall buckets with timestamps earlier than this time.
+     */
+    end?: Time
+    /**
+     * If `true`, the output excludes interim results.
+     * @server_default false
+     */
+    exclude_interim?: boolean
+    /**
+     * Returns overall buckets with overall scores greater than or equal to this
+     * value.
+     */
+    overall_score?: double | string
+    /**
+     * Returns overall buckets with timestamps after this time.
+     */
+    start?: Time
+    /**
+     * The number of top anomaly detection job bucket scores to be used in the
+     * `overall_score` calculation.
+     * @server_default 1
+     */
+    top_n?: integer
   }
 }

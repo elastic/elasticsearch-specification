@@ -45,12 +45,12 @@ export interface Request extends RequestBase {
      * 2. Contains the _all string or no identifiers and there are no matches.
      * 3. Contains wildcard expressions and there are only partial matches.
      *
-     * The default value is `true`, which returns an empty `jobs` array when
+     * If `true`, the API returns an empty `jobs` array when
      * there are no matches and the subset of results when there are partial
-     * matches. If this parameter is `false`, the request returns a `404` status
+     * matches. If `false`, the API returns a `404` status
      * code when there are no matches or only partial matches.
      * @server_default true
      */
-    allow_no_jobs?: boolean
+    allow_no_match?: boolean
   }
 }
