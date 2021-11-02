@@ -595,6 +595,11 @@
       "description": "Gets configuration and usage information about datafeeds.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/cat-datafeeds.html",
       "name": "cat.ml_datafeeds",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cat.ml_datafeeds"
@@ -630,6 +635,11 @@
       "description": "Gets configuration and usage information about anomaly detection jobs.",
       "docUrl": "http://www.elastic.co/guide/en/elasticsearch/reference/current/cat-anomaly-detectors.html",
       "name": "cat.ml_jobs",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cat.ml_jobs"
@@ -66919,7 +66929,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Gets configuration and usage information about datafeeds.",
+      "description": "Returns configuration and usage information about datafeeds.\nThis API returns a maximum of 10,000 datafeeds.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`\ncluster privileges to use this API.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -66933,7 +66943,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeeds stats to fetch",
+          "description": "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase\nalphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric\ncharacters.",
           "name": "datafeed_id",
           "required": false,
           "type": {
@@ -66947,14 +66957,27 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
-          "name": "allow_no_datafeeds",
+          "description": "Specifies what to do when the request:\n\n* Contains wildcard expressions and there are no datafeeds that match.\n* Contains the `_all` string or no identifiers and there are no matches.\n* Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when\nthere are partial matches. If `false`, the API returns a 404 status code when there are no matches or only\npartial matches.",
+          "name": "allow_no_match",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The unit used to display time values.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
+              "namespace": "_types"
             }
           }
         }
@@ -67949,7 +67972,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Gets configuration and usage information about anomaly detection jobs.",
+      "description": "Returns configuration and usage information for anomaly detection jobs.\nThis API returns a maximum of 10,000 jobs.\nIf the Elasticsearch security features are enabled, you must have `monitor_ml`,\n`monitor`, `manage_ml`, or `manage` cluster privileges to use this API.",
       "inherits": {
         "type": {
           "name": "CatRequestBase",
@@ -67963,7 +67986,7 @@
       },
       "path": [
         {
-          "description": "The ID of the jobs stats to fetch",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": false,
           "type": {
@@ -67977,9 +68000,10 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
-          "name": "allow_no_jobs",
+          "description": "Specifies what to do when the request:\n\n* Contains wildcard expressions and there are no jobs that match.\n* Contains the `_all` string or no identifiers and there are no matches.\n* Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty jobs array when there are no matches and the subset of results when there\nare partial matches. If `false`, the API returns a 404 status code when there are no matches or only partial\nmatches.",
+          "name": "allow_no_match",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -67989,13 +68013,25 @@
           }
         },
         {
-          "description": "The unit in which to display byte values",
+          "description": "The unit used to display byte values.",
           "name": "bytes",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Bytes",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The unit used to display time values.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeUnit",
               "namespace": "_types"
             }
           }
