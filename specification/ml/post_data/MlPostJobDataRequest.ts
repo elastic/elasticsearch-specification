@@ -34,6 +34,21 @@ export interface Request<TData> extends RequestBase {
     reset_end?: DateString
     reset_start?: DateString
   }
-  /** @identifier data */
+  /**
+   * A sequence of one or more JSON documents containing the data to be analyzed.
+   * Multiple JSON documents can be sent, either adjacent with no separator in between them or whitespace separated.
+   * Newline delimited JSON (NDJSON) is a possible whitespace separated format, and for this the `Content-Type header` should be set to `application/x-ndjson`.
+   *
+   * The following documents will not be processed:
+   *
+   * * Documents not in chronological order and outside the latency window
+   * * Records with an invalid timestamp
+   *
+   * Upload sizes are limited to the Elasticsearch HTTP receive buffer size (default 100 Mb).
+   * If your data is larger, split it into multiple chunks and upload each one separately in sequential time order.
+   * When running in real time, it is generally recommended that you perform many small uploads,
+   * rather than queueing data to upload larger files.
+   * @codegen_name data
+   * */
   body: Array<TData>
 }

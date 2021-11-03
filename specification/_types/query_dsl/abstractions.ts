@@ -171,7 +171,7 @@ export class FieldNameQuery {
 
 export class QueryBase {
   boost?: float
-  /** @identifier query_name */
+  /** @codegen_name query_name */
   _name?: string
 }
 

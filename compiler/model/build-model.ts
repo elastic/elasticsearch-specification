@@ -264,15 +264,15 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         if (type.query.map(p => p.name).includes(part.name)) {
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(queryType.type, part.type)) {
-            assert(pathMember as Node, part.identifier != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @identifier.`)
-            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in query_parameters.`)
+            assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @codegen_name.`)
+            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
           }
         }
         if (bodyProperties.map(p => p.name).includes(part.name)) {
           const bodyType = bodyProperties.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(bodyType.type, part.type)) {
-            assert(pathMember as Node, part.identifier != null, `'${part.name}' already exist in the body with a different type, you should define an @identifier.`)
-            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.identifier), `The identifier '${part.identifier}' already exists as parameter in body.`)
+            assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the body with a different type, you should define an @codegen_name.`)
+            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
           }
         }
       }
@@ -286,18 +286,18 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           const tags = parseJsDocTags((bodyMember as PropertySignature).getJsDocs())
           assert(
             bodyMember as Node,
-            tags.identifier != null,
-            'You should configure a body @identifier'
+            tags.codegen_name != null,
+            'You should configure a body @codegen_name'
           )
           assert(
             (bodyMember as PropertySignature).getJsDocs(),
-            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.identifier),
-            `The identifier '${tags.identifier}' already exists as a property in the path or query.`
+            !type.path.map(p => p.name).concat(type.query.map(p => p.name)).includes(tags.codegen_name),
+            `The codegen_name '${tags.codegen_name}' already exists as a property in the path or query.`
           )
           type.body = {
             kind: 'value',
             value: bodyValue,
-            identifier: tags.identifier
+            codegenName: tags.codegen_name
           }
         }
       } else if (bodyProperties.length > 0) {

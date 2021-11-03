@@ -40,6 +40,6 @@ export interface Request extends RequestBase {
     rest_total_hits_as_int?: boolean
     typed_keys?: boolean
   }
-  /** @identifier search_templates */
+  /** @codegen_name search_templates */
   body: Array<TemplateItem>
 }

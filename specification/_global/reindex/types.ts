@@ -53,7 +53,7 @@ export class Source {
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
-  /** @identifier source_fields */
+  /** @codegen_name source_fields */
   _source?: Fields
   runtime_mappings?: RuntimeFields
 }

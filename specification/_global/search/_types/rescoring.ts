@@ -26,7 +26,7 @@ export class Rescore {
 }
 
 export class RescoreQuery {
-  /** @identifier Query */
+  /** @codegen_name Query */
   rescore_query: QueryContainer
   query_weight?: double
   rescore_query_weight?: double

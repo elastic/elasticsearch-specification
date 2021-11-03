@@ -87,6 +87,6 @@ export interface Request extends RequestBase {
      */
     typed_keys?: boolean
   }
-  /** @identifier searches */
+  /** @codegen_name searches */
   body?: Array<Header | Body>
 }

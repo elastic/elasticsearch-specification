@@ -51,19 +51,19 @@ export enum DateMathOperation {
 }
 
 export enum DateMathTimeUnit {
-  /** @identifier seconds */
+  /** @codegen_name seconds */
   s = 0,
-  /** @identifier minutes */
+  /** @codegen_name minutes */
   m = 1,
-  /** @identifier hours */
+  /** @codegen_name hours */
   h = 2,
-  /** @identifier days */
+  /** @codegen_name days */
   d = 3,
-  /** @identifier weeks */
+  /** @codegen_name weeks */
   w = 4,
-  /** @identifier months */
+  /** @codegen_name months */
   M = 5,
-  /** @identifier years */
+  /** @codegen_name years */
   y = 6
 }
 
@@ -76,18 +76,18 @@ export enum DateMathTimeUnit {
 export type Time = string | integer
 
 export enum TimeUnit {
-  /** @identifier nano_seconds */
+  /** @codegen_name nano_seconds */
   nanos,
-  /** @identifier micro_seconds */
+  /** @codegen_name micro_seconds */
   micros,
-  /** @identifier milli_seconds */
+  /** @codegen_name milli_seconds */
   ms,
-  /** @identifier seconds */
+  /** @codegen_name seconds */
   s,
-  /** @identifier minutes */
+  /** @codegen_name minutes */
   m,
-  /** @identifier hours */
+  /** @codegen_name hours */
   h,
-  /** @identifier days */
+  /** @codegen_name days */
   d
 }
