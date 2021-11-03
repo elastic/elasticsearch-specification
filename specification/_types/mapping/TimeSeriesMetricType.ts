@@ -17,35 +17,9 @@
  * under the License.
  */
 
-import { VersionString } from '@_types/common'
-import { IcuNormalizationCharFilter } from './icu-plugin'
-import { KuromojiIterationMarkCharFilter } from './kuromoji-plugin'
-
-export class CharFilterBase {
-  version?: VersionString
-}
-
-/** @variants internal tag='type' */
-export type CharFilter =
-  | HtmlStripCharFilter
-  | MappingCharFilter
-  | PatternReplaceCharFilter
-  | IcuNormalizationCharFilter
-  | KuromojiIterationMarkCharFilter
-
-export class HtmlStripCharFilter extends CharFilterBase {
-  type: 'html_strip'
-}
-
-export class MappingCharFilter extends CharFilterBase {
-  type: 'mapping'
-  mappings: string[]
-  mappings_path?: string
-}
-
-export class PatternReplaceCharFilter extends CharFilterBase {
-  type: 'pattern_replace'
-  flags: string
-  pattern: string
-  replacement: string
+export enum TimeSeriesMetricType {
+  gauge,
+  counter,
+  summary,
+  histogram
 }
