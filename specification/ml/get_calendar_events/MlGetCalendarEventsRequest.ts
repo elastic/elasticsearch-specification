@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -50,14 +49,5 @@ export interface Request extends RequestBase {
     size?: integer
     /** Specifies to get events with timestamps after this time. */
     start?: string
-  }
-  body: {
-    /** Specifies to get events with timestamps earlier than this time. */
-    end?: DateString
-    /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
-    job_id: Id,
-    page?: Page,
-    /** Specifies to get events with timestamps after this time. */
-    start?: DateString
   }
 }
