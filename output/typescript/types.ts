@@ -1201,13 +1201,14 @@ export interface SearchFieldSort {
   unmapped_type?: MappingFieldType
 }
 
-export interface SearchGeoDistanceSort {
+export interface SearchGeoDistanceSortKeys {
   mode?: SearchSortMode
   distance_type?: GeoDistanceType
   order?: SearchSortOrder
   unit?: DistanceUnit
-  [property: string]: QueryDslGeoLocation | QueryDslGeoLocation[] | SearchSortMode | GeoDistanceType | SearchSortOrder | DistanceUnit
 }
+export type SearchGeoDistanceSort = SearchGeoDistanceSortKeys
+  & { [property: string]: QueryDslGeoLocation | QueryDslGeoLocation[] | SearchSortMode | GeoDistanceType | SearchSortOrder | DistanceUnit }
 
 export interface SearchHighlight {
   fields: Record<Field, SearchHighlightField>
@@ -1469,13 +1470,14 @@ export type SearchSort = SearchSortCombinations | SearchSortCombinations[]
 
 export type SearchSortCombinations = Field | SearchSortContainer | SearchSortOrder
 
-export interface SearchSortContainer {
+export interface SearchSortContainerKeys {
   _score?: SearchScoreSort
   _doc?: SearchScoreSort
   _geo_distance?: SearchGeoDistanceSort
   _script?: SearchScriptSort
-  [property: string]: SearchFieldSort | SearchSortOrder | SearchScoreSort | SearchGeoDistanceSort | SearchScriptSort
 }
+export type SearchSortContainer = SearchSortContainerKeys
+  & { [property: string]: SearchFieldSort | SearchSortOrder | SearchScoreSort | SearchGeoDistanceSort | SearchScriptSort }
 
 export type SearchSortMode = 'min' | 'max' | 'sum' | 'avg' | 'median'
 
@@ -1952,15 +1954,16 @@ export interface EmptyObject {
 
 export type EpochMillis = string | long
 
-export interface ErrorCause {
+export interface ErrorCauseKeys {
   type: string
   reason: string
   stack_trace?: string
   caused_by?: ErrorCause
   root_cause?: ErrorCause[]
   suppressed?: ErrorCause[]
-  [property: string]: any
 }
+export type ErrorCause = ErrorCauseKeys
+  & { [property: string]: any }
 
 export interface ErrorResponseBase {
   error: ErrorCause
@@ -2071,15 +2074,16 @@ export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
 
-export interface InlineGet<TDocument = unknown> {
+export interface InlineGetKeys<TDocument = unknown> {
   fields?: Record<string, any>
   found: boolean
   _seq_no?: SequenceNumber
   _primary_term?: long
   _routing?: Routing
   _source: TDocument
-  [property: string]: any
 }
+export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
+  & { [property: string]: any }
 
 export interface InlineScript extends ScriptBase {
   source: string
@@ -2658,9 +2662,10 @@ export interface AggregationsCompositeAggregationSource {
   geotile_grid?: AggregationsGeoTileGridAggregation
 }
 
-export interface AggregationsCompositeBucket {
-  [property: string]: AggregationsAggregate
+export interface AggregationsCompositeBucketKeys {
 }
+export type AggregationsCompositeBucket = AggregationsCompositeBucketKeys
+  & { [property: string]: AggregationsAggregate }
 
 export interface AggregationsCompositeBucketAggregate extends AggregationsMultiBucketAggregate<Record<string, any>> {
   after_key: Record<string, any>
@@ -2690,9 +2695,10 @@ export interface AggregationsDateHistogramAggregation extends AggregationsBucket
   keyed?: boolean
 }
 
-export interface AggregationsDateHistogramBucket {
-  [property: string]: AggregationsAggregate
+export interface AggregationsDateHistogramBucketKeys {
 }
+export type AggregationsDateHistogramBucket = AggregationsDateHistogramBucketKeys
+  & { [property: string]: AggregationsAggregate }
 
 export type AggregationsDateInterval = 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year'
 
@@ -2764,10 +2770,11 @@ export interface AggregationsFiltersAggregation extends AggregationsBucketAggreg
   keyed?: boolean
 }
 
-export interface AggregationsFiltersBucketItem {
+export interface AggregationsFiltersBucketItemKeys {
   doc_count: long
-  [property: string]: AggregationsAggregate | long
 }
+export type AggregationsFiltersBucketItem = AggregationsFiltersBucketItemKeys
+  & { [property: string]: AggregationsAggregate | long }
 
 export interface AggregationsFormatMetricAggregationBase extends AggregationsMetricAggregationBase {
   format?: string
@@ -2929,16 +2936,18 @@ export interface AggregationsIpRangeAggregationRange {
   to?: string
 }
 
-export interface AggregationsIpRangeBucket {
-  [property: string]: AggregationsAggregate
+export interface AggregationsIpRangeBucketKeys {
 }
+export type AggregationsIpRangeBucket = AggregationsIpRangeBucketKeys
+  & { [property: string]: AggregationsAggregate }
 
-export interface AggregationsKeyedBucket<TKey = unknown> {
+export interface AggregationsKeyedBucketKeys<TKey = unknown> {
   doc_count: long
   key: TKey
   key_as_string: string
-  [property: string]: AggregationsAggregate | long | TKey | string
 }
+export type AggregationsKeyedBucket<TKey = unknown> = AggregationsKeyedBucketKeys<TKey>
+  & { [property: string]: AggregationsAggregate | long | TKey | string }
 
 export interface AggregationsKeyedValueAggregate extends AggregationsValueAggregate {
   keys: string[]
@@ -3105,9 +3114,10 @@ export interface AggregationsRangeAggregation extends AggregationsBucketAggregat
   keyed?: boolean
 }
 
-export interface AggregationsRangeBucket {
-  [property: string]: AggregationsAggregate
+export interface AggregationsRangeBucketKeys {
 }
+export type AggregationsRangeBucket = AggregationsRangeBucketKeys
+  & { [property: string]: AggregationsAggregate }
 
 export interface AggregationsRareTermsAggregation extends AggregationsBucketAggregationBase {
   exclude?: string | string[]
@@ -3119,9 +3129,10 @@ export interface AggregationsRareTermsAggregation extends AggregationsBucketAggr
   value_type?: string
 }
 
-export interface AggregationsRareTermsBucket<TKey = unknown> {
-  [property: string]: AggregationsAggregate
+export interface AggregationsRareTermsBucketKeys<TKey = unknown> {
 }
+export type AggregationsRareTermsBucket<TKey = unknown> = AggregationsRareTermsBucketKeys<TKey>
+  & { [property: string]: AggregationsAggregate }
 
 export interface AggregationsRateAggregation extends AggregationsFormatMetricAggregationBase {
   unit?: AggregationsDateInterval
@@ -3187,9 +3198,10 @@ export interface AggregationsSignificantTermsAggregation extends AggregationsBuc
   size?: integer
 }
 
-export interface AggregationsSignificantTermsBucket<TKey = unknown> {
-  [property: string]: AggregationsAggregate
+export interface AggregationsSignificantTermsBucketKeys<TKey = unknown> {
 }
+export type AggregationsSignificantTermsBucket<TKey = unknown> = AggregationsSignificantTermsBucketKeys<TKey>
+  & { [property: string]: AggregationsAggregate }
 
 export interface AggregationsSignificantTextAggregation extends AggregationsBucketAggregationBase {
   background_filter?: QueryDslQueryContainer
@@ -3210,10 +3222,11 @@ export interface AggregationsSignificantTextAggregation extends AggregationsBuck
   source_fields?: Fields
 }
 
-export interface AggregationsSingleBucketAggregate extends AggregationsAggregateBase {
+export interface AggregationsSingleBucketAggregateKeys extends AggregationsAggregateBase {
   doc_count: double
-  [property: string]: AggregationsAggregate | double | Record<string, any>
 }
+export type AggregationsSingleBucketAggregate = AggregationsSingleBucketAggregateKeys
+  & { [property: string]: AggregationsAggregate | double | Record<string, any> }
 
 export interface AggregationsStandardDeviationBounds {
   lower?: double
@@ -4398,9 +4411,10 @@ export interface QueryDslConstantScoreQuery extends QueryDslQueryBase {
   filter: QueryDslQueryContainer
 }
 
-export interface QueryDslDateDecayFunction extends QueryDslDecayFunctionBase {
-  [property: string]: QueryDslDecayPlacement<DateMath, Time> | QueryDslMultiValueMode | QueryDslQueryContainer | double
+export interface QueryDslDateDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
+export type QueryDslDateDecayFunction = QueryDslDateDecayFunctionKeys
+  & { [property: string]: QueryDslDecayPlacement<DateMath, Time> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
 
 export interface QueryDslDateDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<DateMath, Time> {
 }
@@ -4495,28 +4509,31 @@ export interface QueryDslFuzzyQuery extends QueryDslQueryBase {
   value: string | double | boolean
 }
 
-export interface QueryDslGeoBoundingBoxQuery extends QueryDslQueryBase {
+export interface QueryDslGeoBoundingBoxQueryKeys extends QueryDslQueryBase {
   type?: QueryDslGeoExecution
   validation_method?: QueryDslGeoValidationMethod
   ignore_unmapped?: boolean
-  [property: string]: QueryDslBoundingBox | QueryDslGeoExecution | QueryDslGeoValidationMethod | boolean | float | string
 }
+export type QueryDslGeoBoundingBoxQuery = QueryDslGeoBoundingBoxQueryKeys
+  & { [property: string]: QueryDslBoundingBox | QueryDslGeoExecution | QueryDslGeoValidationMethod | boolean | float | string }
 
 export type QueryDslGeoCoordinate = string | double[] | QueryDslThreeDimensionalPoint
 
-export interface QueryDslGeoDecayFunction extends QueryDslDecayFunctionBase {
-  [property: string]: QueryDslDecayPlacement<QueryDslGeoLocation, Distance> | QueryDslMultiValueMode | QueryDslQueryContainer | double
+export interface QueryDslGeoDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
+export type QueryDslGeoDecayFunction = QueryDslGeoDecayFunctionKeys
+  & { [property: string]: QueryDslDecayPlacement<QueryDslGeoLocation, Distance> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
 
 export interface QueryDslGeoDistanceFeatureQuery extends QueryDslDistanceFeatureQueryBase<QueryDslGeoCoordinate, Distance> {
 }
 
-export interface QueryDslGeoDistanceQuery extends QueryDslQueryBase {
+export interface QueryDslGeoDistanceQueryKeys extends QueryDslQueryBase {
   distance?: Distance
   distance_type?: GeoDistanceType
   validation_method?: QueryDslGeoValidationMethod
-  [property: string]: QueryDslGeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | float | string
 }
+export type QueryDslGeoDistanceQuery = QueryDslGeoDistanceQueryKeys
+  & { [property: string]: QueryDslGeoLocation | Distance | GeoDistanceType | QueryDslGeoValidationMethod | float | string }
 
 export type QueryDslGeoExecution = 'memory' | 'indexed'
 
@@ -4526,11 +4543,12 @@ export interface QueryDslGeoPolygonPoints {
   points: QueryDslGeoLocation[]
 }
 
-export interface QueryDslGeoPolygonQuery extends QueryDslQueryBase {
+export interface QueryDslGeoPolygonQueryKeys extends QueryDslQueryBase {
   validation_method?: QueryDslGeoValidationMethod
   ignore_unmapped?: boolean
-  [property: string]: QueryDslGeoPolygonPoints | QueryDslGeoValidationMethod | boolean | float | string
 }
+export type QueryDslGeoPolygonQuery = QueryDslGeoPolygonQueryKeys
+  & { [property: string]: QueryDslGeoPolygonPoints | QueryDslGeoValidationMethod | boolean | float | string }
 
 export interface QueryDslGeoShapeFieldQuery {
   shape?: GeoShape
@@ -4538,10 +4556,11 @@ export interface QueryDslGeoShapeFieldQuery {
   relation?: GeoShapeRelation
 }
 
-export interface QueryDslGeoShapeQuery extends QueryDslQueryBase {
+export interface QueryDslGeoShapeQueryKeys extends QueryDslQueryBase {
   ignore_unmapped?: boolean
-  [property: string]: QueryDslGeoShapeFieldQuery | boolean | float | string
 }
+export type QueryDslGeoShapeQuery = QueryDslGeoShapeQueryKeys
+  & { [property: string]: QueryDslGeoShapeFieldQuery | boolean | float | string }
 
 export type QueryDslGeoValidationMethod = 'coerce' | 'ignore_malformed' | 'strict'
 
@@ -4765,9 +4784,10 @@ export interface QueryDslNumberRangeQuery extends QueryDslRangeQueryBase {
   to?: double
 }
 
-export interface QueryDslNumericDecayFunction extends QueryDslDecayFunctionBase {
-  [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode | QueryDslQueryContainer | double
+export interface QueryDslNumericDecayFunctionKeys extends QueryDslDecayFunctionBase {
 }
+export type QueryDslNumericDecayFunction = QueryDslNumericDecayFunctionKeys
+  & { [property: string]: QueryDslDecayPlacement<double, double> | QueryDslMultiValueMode | QueryDslQueryContainer | double }
 
 export type QueryDslOperator = 'and' | 'or'
 
@@ -4971,9 +4991,10 @@ export interface QueryDslShapeFieldQuery {
   shape?: GeoShape
 }
 
-export interface QueryDslShapeQuery extends QueryDslQueryBase {
-  [property: string]: QueryDslShapeFieldQuery | float | string
+export interface QueryDslShapeQueryKeys extends QueryDslQueryBase {
 }
+export type QueryDslShapeQuery = QueryDslShapeQueryKeys
+  & { [property: string]: QueryDslShapeFieldQuery | float | string }
 
 export type QueryDslSimpleQueryStringFlags = 'NONE' | 'AND' | 'OR' | 'NOT' | 'PREFIX' | 'PHRASE' | 'PRECEDENCE' | 'ESCAPE' | 'WHITESPACE' | 'FUZZY' | 'NEAR' | 'SLOP' | 'ALL'
 
@@ -5066,9 +5087,10 @@ export interface QueryDslTermsLookup {
   routing?: Routing
 }
 
-export interface QueryDslTermsQuery extends QueryDslQueryBase {
-  [property: string]: string[] | long[] | QueryDslTermsLookup | float | string
+export interface QueryDslTermsQueryKeys extends QueryDslQueryBase {
 }
+export type QueryDslTermsQuery = QueryDslTermsQueryKeys
+  & { [property: string]: string[] | long[] | QueryDslTermsLookup | float | string }
 
 export interface QueryDslTermsSetQuery extends QueryDslQueryBase {
   minimum_should_match_field?: Field
