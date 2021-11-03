@@ -28,8 +28,8 @@ import { Time, Timestamp } from '@_types/Time'
 import { DiscoveryNode } from './DiscoveryNode'
 
 export class Datafeed {
+  /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   chunking_config?: ChunkingConfig
   datafeed_id: Id
   frequency?: Timestamp
@@ -45,17 +45,19 @@ export class Datafeed {
   runtime_mappings?: RuntimeFields
   indices_options?: DatafeedIndicesOptions
 }
+
 export class DatafeedConfig {
   /**
    * If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.
+   *
+   * @aliases aggs
    */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   /**
    * Datafeeds might be required to search over long time periods, for several months or years. This search is split into time chunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of these time chunks are calculated and is an advanced configuration option.
    */
   chunking_config?: ChunkingConfig
-  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.
+  /** A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. The default value is the job identifier.
    */
   datafeed_id?: Id
   /**
@@ -63,12 +65,12 @@ export class DatafeedConfig {
    */
   delayed_data_check_config?: DelayedDataCheckConfig
   /**
-   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When frequency is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+   * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Timestamp
   indexes?: string[]
   /**
-   * An array of index names. Wildcards are supported.
+   * An array of index names. Wildcards are supported. If any indices are in remote clusters, the machine learning nodes must have the `remote_cluster_client` role.
    */
   indices: string[]
   /**
@@ -105,13 +107,15 @@ export class DatafeedConfig {
 
 export class DelayedDataCheckConfig {
   /**
-   * The window of time that is searched for late data. This window of time ends with the latest finalized bucket. It defaults to null, which causes an appropriate check_window to be calculated when the real-time datafeed runs. In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
+   * The window of time that is searched for late data. This window of time ends with the latest finalized bucket.
+   * It defaults to null, which causes an appropriate `check_window` to be calculated when the real-time datafeed runs.
+   * In particular, the default `check_window` span calculation is based on the maximum of `2h` or `8 * bucket_span`.
    */
   check_window?: Time // default: null
   /**
    * Specifies whether the datafeed periodically checks for delayed data.
    */
-  enabled: boolean // default: true
+  enabled: boolean
 }
 
 export enum DatafeedState {
@@ -146,18 +150,39 @@ export enum ChunkingMode {
 
 export class ChunkingConfig {
   /**
-   * If the mode is `auto`, the chunk size is dynamically calculated; this is the recommended value when the datafeed does not use aggregations. If the mode is `manual`, chunking is applied according to the specified `time_span`; use this mode when the datafeed uses aggregations. If the mode is `off`, no chunking is applied.
+   * If the mode is `auto`, the chunk size is dynamically calculated;
+   * this is the recommended value when the datafeed does not use aggregations.
+   * If the mode is `manual`, chunking is applied according to the specified `time_span`;
+   * use this mode when the datafeed uses aggregations. If the mode is `off`, no chunking is applied.
    */
   mode: ChunkingMode
   /**
-   * The time span that each search will be querying. This setting is only applicable when the `mode` is set to `manual`.
+   * The time span that each search will be querying. This setting is applicable only when the `mode` is set to `manual`.
    * @server_default 3h */
   time_span?: Time
 }
 
 export class DatafeedIndicesOptions {
+  /**
+   * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only
+   * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
+   * a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+   */
   allow_no_indices?: boolean
+  /**
+   * Type of index that wildcard patterns can match. If the request can target data streams, this argument
+   * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+   * such as `open,hidden`.
+   */
   expand_wildcards?: ExpandWildcards
+  /**
+   * If true, missing or closed indices are not included in the response.
+   * @server_default false
+   */
   ignore_unavailable?: boolean
+  /**
+   * If true, concrete, expanded or aliased indices are ignored when frozen.
+   * @server_default true
+   */
   ignore_throttled?: boolean
 }

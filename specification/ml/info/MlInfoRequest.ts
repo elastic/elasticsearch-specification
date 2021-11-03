@@ -20,8 +20,16 @@
 import { RequestBase } from '@_types/Base'
 
 /**
+ * Returns defaults and limits used by machine learning.
+ * This endpoint is designed to be used by a user interface that needs to fully
+ * understand machine learning configurations where some options are not
+ * specified, meaning that the defaults should be used. This endpoint may be
+ * used to find out what those defaults are. It also provides information about
+ * the maximum size of machine learning jobs that could run in the current
+ * cluster configuration.
  * @rest_spec_name ml.info
  * @since 6.3.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {}

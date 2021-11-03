@@ -22,21 +22,33 @@ import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
+ * Retrieves usage information for trained models.
+ * You can get usage information for multiple trained models in a single API
+ * request by using a comma-separated list of model IDs or a wildcard
+ * expression.
  * @rest_spec_name ml.get_trained_models_stats
  * @since 7.10.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** The unique identifier of the trained model. */
+    /**
+     * The unique identifier of the trained model or a model alias.
+     */
     model_id?: Id
   }
   query_parameters: {
     /**
      * Specifies what to do when the request:
+     *
      * - Contains wildcard expressions and there are no models that match.
      * - Contains the _all string or no identifiers and there are no matches.
      * - Contains wildcard expressions and there are only partial matches.
+     *
+     * If true, it returns an empty array when there are no matches and the
+     * subset of results when there are partial matches.
+     * @server_default true
      */
     allow_no_match?: boolean
     /**

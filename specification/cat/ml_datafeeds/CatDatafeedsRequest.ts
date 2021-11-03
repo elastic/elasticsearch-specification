@@ -19,17 +19,44 @@
 
 import { CatRequestBase } from '@cat/_types/CatBase'
 import { Id } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
+ * Returns configuration and usage information about datafeeds.
+ * This API returns a maximum of 10,000 datafeeds.
+ * If the Elasticsearch security features are enabled, you must have `monitor_ml`, `monitor`, `manage_ml`, or `manage`
+ * cluster privileges to use this API.
  * @rest_spec_name cat.ml_datafeeds
  * @since 7.7.0
  * @stability stable
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends CatRequestBase {
   path_parts: {
+    /**
+     * A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase
+     * alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric
+     * characters.
+     */
     datafeed_id?: Id
   }
   query_parameters: {
-    allow_no_datafeeds?: boolean
+    /**
+     * Specifies what to do when the request:
+     *
+     * * Contains wildcard expressions and there are no datafeeds that match.
+     * * Contains the `_all` string or no identifiers and there are no matches.
+     * * Contains wildcard expressions and there are only partial matches.
+     *
+     * If `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when
+     * there are partial matches. If `false`, the API returns a 404 status code when there are no matches or only
+     * partial matches.
+     * @server_default true
+     */
+    allow_no_match?: boolean
+    /**
+     * The unit used to display time values.
+     */
+    time?: TimeUnit
   }
 }

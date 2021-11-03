@@ -169,12 +169,11 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
         "request definition cat.ml_datafeeds:Request / body - A request with inherited properties must have a PropertyBody"
@@ -183,12 +182,11 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
         "Request: missing json spec query parameter 's'",
-        "Request: missing json spec query parameter 'time'",
         "Request: missing json spec query parameter 'v'",
         "Request: should not have a body",
         "request definition cat.ml_jobs:Request / body - A request with inherited properties must have a PropertyBody"
@@ -882,12 +880,6 @@
       ],
       "response": []
     },
-    "indices.freeze": {
-      "request": [
-        "Request: should not have a body"
-      ],
-      "response": []
-    },
     "indices.get": {
       "request": [
         "Request: query parameter 'include_type_name' does not exist in the json spec",
@@ -1095,12 +1087,6 @@
       ],
       "response": []
     },
-    "knn_search": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "license.delete": {
       "request": [
         "Request: should not have a body"
@@ -1137,9 +1123,7 @@
         "Request: missing json spec query parameter 'type'",
         "Request: should not have a body"
       ],
-      "response": [
-        "response definition license.post_start_trial:Response / body - Property 'acknowledged' is already defined in an ancestor class"
-      ]
+      "response": []
     },
     "logstash.delete_pipeline": {
       "request": [
@@ -1168,6 +1152,12 @@
     "migration.post_feature_upgrade": {
       "request": [
         "Missing request & response"
+      ],
+      "response": []
+    },
+    "ml.close_job": {
+      "request": [
+        "Request: missing json spec query parameter 'allow_no_jobs'"
       ],
       "response": []
     },
@@ -1227,6 +1217,7 @@
     },
     "ml.delete_trained_model": {
       "request": [
+        "Request: missing json spec query parameter 'timeout'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1291,14 +1282,14 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1311,13 +1302,14 @@
     },
     "ml.get_job_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_match'",
+        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_jobs": {
       "request": [
+        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": [
@@ -1501,6 +1493,7 @@
       "request": [
         "Request: query parameter 'thread_type' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []

@@ -127,8 +127,9 @@ export class Property {
   docUrl?: string
   docId?: string
   since?: string
-  serverDefault?: boolean | string | number
+  serverDefault?: boolean | string | number | string[] | number[]
   deprecation?: Deprecation
+  stability?: Stability
   /**
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire

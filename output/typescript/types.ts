@@ -479,6 +479,36 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
+export interface KnnSearchRequest extends RequestBase {
+  index: Indices
+  routing?: Routing
+  body?: {
+    _source?: boolean | Fields | SearchSourceFilter
+    docvalue_fields?: SearchDocValueField | (Field | SearchDocValueField)[]
+    stored_fields?: Fields
+    fields?: Fields
+    knn: KnnSearchQuery
+  }
+}
+
+export interface KnnSearchResponse<TDocument = unknown> {
+  took: long
+  timed_out: boolean
+  _shards: ShardStatistics
+  hits: SearchHitsMetadata<TDocument>
+  fields?: Record<string, any>
+  max_score?: double
+}
+
+export interface KnnSearchQuery {
+  field: Field
+  query_vector: KnnSearchQueryVector
+  k: long
+  num_candidates: long
+}
+
+export type KnnSearchQueryVector = double[]
+
 export interface MgetHit<TDocument = unknown> {
   error?: ErrorCause
   fields?: Record<string, any>
@@ -962,8 +992,8 @@ export interface SearchRequest extends RequestBase {
   from?: integer
   sort?: string | string[]
   body?: {
-    aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     collapse?: SearchFieldCollapse
     explain?: boolean
     from?: integer
@@ -1925,7 +1955,7 @@ export interface EmptyObject {
 export type EpochMillis = string | long
 
 export interface ErrorCauseKeys {
-  type?: string
+  type: string
   reason: string
   stack_trace?: string
   caused_by?: ErrorCause
@@ -5094,7 +5124,7 @@ export interface QueryDslWildcardQuery extends QueryDslQueryBase {
 export type QueryDslZeroTermsQuery = 'all' | 'none'
 
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
-  aggregations?: Record<string, AggregationsAggregate>
+  aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
   fields?: Record<string, any>
   hits: SearchHitsMetadata<TDocument>
@@ -5197,8 +5227,8 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   from?: integer
   sort?: string | string[]
   body?: {
-    aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     collapse?: SearchFieldCollapse
     explain?: boolean
     from?: integer
@@ -5864,7 +5894,8 @@ export interface CatMlDatafeedsDatafeedsRecord {
 
 export interface CatMlDatafeedsRequest extends CatCatRequestBase {
   datafeed_id?: Id
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
+  time?: TimeUnit
 }
 
 export type CatMlDatafeedsResponse = CatMlDatafeedsDatafeedsRecord[]
@@ -6048,8 +6079,9 @@ export interface CatMlJobsJobsRecord {
 
 export interface CatMlJobsRequest extends CatCatRequestBase {
   job_id?: Id
-  allow_no_jobs?: boolean
+  allow_no_match?: boolean
   bytes?: Bytes
+  time?: TimeUnit
 }
 
 export type CatMlJobsResponse = CatMlJobsJobsRecord[]
@@ -8917,20 +8949,6 @@ export interface IndicesForcemergeRequest extends RequestBase {
 export interface IndicesForcemergeResponse extends ShardsOperationResponseBase {
 }
 
-export interface IndicesFreezeRequest extends RequestBase {
-  index: IndexName
-  allow_no_indices?: boolean
-  expand_wildcards?: ExpandWildcards
-  ignore_unavailable?: boolean
-  master_timeout?: Time
-  timeout?: Time
-  wait_for_active_shards?: WaitForActiveShards
-}
-
-export interface IndicesFreezeResponse extends AcknowledgedResponseBase {
-  shards_acknowledged: boolean
-}
-
 export interface IndicesGetRequest extends RequestBase {
   index: Indices
   allow_no_indices?: boolean
@@ -10305,7 +10323,6 @@ export interface LicensePostStartTrialRequest extends RequestBase {
 
 export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase {
   error_message?: string
-  acknowledged: boolean
   trial_was_started: boolean
   type: LicenseLicenseType
 }
@@ -10380,8 +10397,8 @@ export interface MlAnalysisConfig {
   categorization_filters?: string[]
   detectors: MlDetector[]
   influencers?: Field[]
-  model_prune_window?: Time
   latency?: Time
+  model_prune_window?: Time
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
   summary_count_field_name?: Field
@@ -10553,7 +10570,7 @@ export interface MlDataCounts {
 
 export interface MlDataDescription {
   format?: string
-  time_field: Field
+  time_field?: Field
   time_format?: string
   field_delimiter?: string
 }
@@ -10938,6 +10955,8 @@ export interface MlHyperparameters {
   soft_tree_depth_tolerance?: double
 }
 
+export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperparameters' | 'total_feature_importance'
+
 export interface MlInfluence {
   influencer_field_name: string
   influencer_field_values: string[]
@@ -11205,7 +11224,6 @@ export interface MlValidationLoss {
 export interface MlCloseJobRequest extends RequestBase {
   job_id: Id
   allow_no_match?: boolean
-  allow_no_jobs?: boolean
   force?: boolean
   timeout?: Time
 }
@@ -11488,7 +11506,6 @@ export interface MlGetBucketsRequest extends RequestBase {
     desc?: boolean
     exclude_interim?: boolean
     expand?: boolean
-    page?: MlPage
     sort?: Field
     start?: DateString
     end?: DateString
@@ -11578,7 +11595,7 @@ export interface MlGetDataFrameAnalyticsStatsResponse {
 
 export interface MlGetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Ids
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
 }
 
 export interface MlGetDatafeedStatsResponse {
@@ -11588,7 +11605,7 @@ export interface MlGetDatafeedStatsResponse {
 
 export interface MlGetDatafeedsRequest extends RequestBase {
   datafeed_id?: Ids
-  allow_no_datafeeds?: boolean
+  allow_no_match?: boolean
   exclude_generated?: boolean
 }
 
@@ -11630,7 +11647,7 @@ export interface MlGetInfluencersResponse {
 
 export interface MlGetJobStatsRequest extends RequestBase {
   job_id?: Id
-  allow_no_jobs?: boolean
+  allow_no_match?: boolean
 }
 
 export interface MlGetJobStatsResponse {
@@ -11641,7 +11658,6 @@ export interface MlGetJobStatsResponse {
 export interface MlGetJobsRequest extends RequestBase {
   job_id?: Ids
   allow_no_match?: boolean
-  allow_no_jobs?: boolean
   exclude_generated?: boolean
 }
 
@@ -11672,16 +11688,13 @@ export interface MlGetModelSnapshotsResponse {
 
 export interface MlGetOverallBucketsRequest extends RequestBase {
   job_id: Id
-  bucket_span?: Time
-  overall_score?: double | string
-  top_n?: integer
-  end?: Time
-  start?: Time
-  exclude_interim?: boolean
   allow_no_match?: boolean
-  body?: {
-    allow_no_jobs?: boolean
-  }
+  bucket_span?: Time
+  end?: Time
+  exclude_interim?: boolean
+  overall_score?: double | string
+  start?: Time
+  top_n?: integer
 }
 
 export interface MlGetOverallBucketsResponse {
@@ -11718,7 +11731,7 @@ export interface MlGetTrainedModelsRequest extends RequestBase {
   decompress_definition?: boolean
   exclude_generated?: boolean
   from?: integer
-  include?: string
+  include?: MlInclude
   size?: integer
   tags?: string
 }
@@ -11847,8 +11860,8 @@ export interface MlPreviewDataFrameAnalyticsResponse {
 export interface MlPreviewDatafeedRequest extends RequestBase {
   datafeed_id?: Id
   body?: {
-    job_config?: MlJobConfig
     datafeed_config?: MlDatafeedConfig
+    job_config?: MlJobConfig
   }
 }
 
@@ -11920,6 +11933,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
     indices?: string[]
+    indexes?: string[]
     indices_options?: MlDatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -13140,6 +13154,7 @@ export interface RollupRollupSearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body?: {
+    aggregations?: Record<string, AggregationsAggregationContainer>
     aggs?: Record<string, AggregationsAggregationContainer>
     query?: QueryDslQueryContainer
     size?: integer

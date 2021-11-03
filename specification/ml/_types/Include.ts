@@ -17,10 +17,26 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
-
-export class Response extends AcknowledgedResponseBase {
-  body: {
-    shards_acknowledged: boolean
-  }
+export enum Include {
+  /**
+   * Includes the model definition.
+   */
+  definition,
+  /**
+   * Includes the baseline for feature importance values.
+   */
+  feature_importance_baseline,
+  /**
+   * Includes the information about hyperparameters used to train the model.
+   * This information consists of the value, the absolute and relative
+   * importance of the hyperparameter as well as an indicator of whether it was
+   * specified by the user or tuned during hyperparameter optimization.
+   */
+  hyperparameters,
+  /**
+   * Includes the total feature importance for the training data set. The
+   * baseline and total feature importance values are returned in the metadata
+   * field in the response body.
+   */
+  total_feature_importance
 }

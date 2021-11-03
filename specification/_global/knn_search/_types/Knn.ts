@@ -17,25 +17,18 @@
  * under the License.
  */
 
-import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, IndexName, WaitForActiveShards } from '@_types/common'
-import { Time } from '@_types/Time'
+import { Field } from '@_types/common'
+import { long, double } from '@_types/Numeric'
 
-/**
- * @rest_spec_name indices.freeze
- * @since 6.6.0
- * @stability stable
- */
-export interface Request extends RequestBase {
-  path_parts: {
-    index: IndexName
-  }
-  query_parameters: {
-    allow_no_indices?: boolean
-    expand_wildcards?: ExpandWildcards
-    ignore_unavailable?: boolean
-    master_timeout?: Time
-    timeout?: Time
-    wait_for_active_shards?: WaitForActiveShards
-  }
+export type QueryVector = double[]
+
+export interface Query {
+  /** The name of the vector field to search against */
+  field: Field
+  /** The query vector */
+  query_vector: QueryVector
+  /** The final number of nearest neighbors to return as top hits */
+  k: long
+  /** The number of nearest neighbor candidates to consider per shard */
+  num_candidates: long
 }

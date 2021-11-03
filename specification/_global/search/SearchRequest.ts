@@ -107,7 +107,7 @@ export interface Request extends RequestBase {
     sort?: string | string[]
   }
   body: {
-    aggs?: Dictionary<string, AggregationContainer>
+    /** @aliases aggs */ // ES uses "aggregations" in serialization
     aggregations?: Dictionary<string, AggregationContainer>
     collapse?: FieldCollapse
     /**

@@ -47,10 +47,6 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
-     * @deprecated 7.10.0 Use `allow_no_match` instead.
-     */
-    allow_no_jobs?: boolean
-    /**
      * Use to close a failed job, or to forcefully close a job which has not responded to its initial close request; the request returns without performing the associated actions such as flushing buffers and persisting the model snapshots.
      * If you want the job to be in a consistent state after the close job API returns, do not set to `true`. This parameter should be used only in situations where the job has already failed or where you are not interested in results the job might have recently produced or might produce in the future.
      * @server_default false

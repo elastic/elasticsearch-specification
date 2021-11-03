@@ -431,6 +431,17 @@ class Foo {
 }
 ```
 
+If you need to specify a server default value for an array, you must use the JavaScript array syntax:
+
+```ts
+class Foo {
+  bar: string
+  /** @server_default ['hello'] */
+  baz?: string[]
+  faz: string
+}
+```
+
 #### `@doc_url`
 
 The documentation url for the parameter.
@@ -547,6 +558,19 @@ You can also add an optional description:
 class Foo {
   bar: string
   /** @deprecated 7.0.0 'baz' has been deprecated, use 'bar' instead */
+  baz?: string
+  faz: string
+}
+```
+
+#### `@stability`
+
+You can mark a class or property of a type as stable/beta/experimental with this tag (the default is stable).
+
+```ts
+class Foo {
+  bar: string
+  /** @stability experimental */
   baz?: string
   faz: string
 }
