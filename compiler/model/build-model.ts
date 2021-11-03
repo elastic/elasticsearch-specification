@@ -264,15 +264,15 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
         if (type.query.map(p => p.name).includes(part.name)) {
           const queryType = type.query.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(queryType.type, part.type)) {
-            assert(pathMember as Node, part.codegen_name != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.codegen_name), `The codegen_name '${part.codegen_name}' already exists as parameter in query_parameters.`)
+            assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the query_parameters with a different type, you should define an @codegen_name.`)
+            assert(pathMember as Node, !type.query.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in query_parameters.`)
           }
         }
         if (bodyProperties.map(p => p.name).includes(part.name)) {
           const bodyType = bodyProperties.find(property => property != null && property.name === part.name) as model.Property
           if (!deepEqual(bodyType.type, part.type)) {
-            assert(pathMember as Node, part.codegen_name != null, `'${part.name}' already exist in the body with a different type, you should define an @codegen_name.`)
-            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.codegen_name), `The codegen_name '${part.codegen_name}' already exists as parameter in body.`)
+            assert(pathMember as Node, part.codegenName != null, `'${part.name}' already exist in the body with a different type, you should define an @codegen_name.`)
+            assert(pathMember as Node, !bodyProperties.map(p => p.name).includes(part.codegenName), `The codegen_name '${part.codegenName}' already exists as parameter in body.`)
           }
         }
       }
@@ -297,7 +297,7 @@ function compileClassOrInterfaceDeclaration (declaration: ClassDeclaration | Int
           type.body = {
             kind: 'value',
             value: bodyValue,
-            codegen_name: tags.codegen_name
+            codegenName: tags.codegen_name
           }
         }
       } else if (bodyProperties.length > 0) {

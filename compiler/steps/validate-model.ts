@@ -458,7 +458,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
     const result = accum ?? new Set<string>()
 
     function addProperties (props: model.Property[]): void {
-      props.forEach(prop => result.add((prop.codegen_name ?? prop.name).toLowerCase()))
+      props.forEach(prop => result.add((prop.codegenName ?? prop.name).toLowerCase()))
     }
 
     function addInherits (inherits?: model.Inherits): void {
@@ -537,7 +537,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     for (const item of typeDef.members) {
       // Identifier must be unique among all items (case insensitive)
-      const codegenName = (item.codegen_name ?? item.name).toLowerCase()
+      const codegenName = (item.codegenName ?? item.name).toLowerCase()
       if (allIdentifiers.has(codegenName)) {
         modelError(`Duplicate enum member codegen_name '${item.name}'`)
       }
@@ -699,7 +699,7 @@ export default async function validateModel (apiModel: model.Model, restSpec: Ma
 
     for (const prop of props) {
       // Identifier must be unique among all items (case insensitive)
-      const codegenName = (prop.codegen_name ?? prop.name).toLowerCase()
+      const codegenName = (prop.codegenName ?? prop.name).toLowerCase()
       if (allIdentifiers.has(codegenName)) {
         modelError(`Duplicate property codegen_name: '${prop.name}'`)
       }

@@ -292,7 +292,7 @@ export function modelType (node: Node): model.ValueOf {
         default: {
           const generics = node.getTypeArguments().map(node => modelType(node))
           const identifier = node.getTypeName()
-          assert(node, Node.isIdentifier(identifier), 'Not an codegen_name')
+          assert(node, Node.isIdentifier(identifier), 'Not an identifier')
 
           const declaration = identifier.getDefinitions()[0].getDeclarationNode()
           // We are looking at a generic parameter
@@ -673,7 +673,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     } else if (tag === 'aliases') {
       property.aliases = value.split(',').map(v => v.trim())
     } else if (tag === 'codegen_name') {
-      property.codegen_name = value
+      property.codegenName = value
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       property.docUrl = value
@@ -751,7 +751,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
 
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
     if (tag === 'codegen_name') {
-      member.codegen_name = value
+      member.codegenName = value
     } else if (tag === 'aliases') {
       member.aliases = value.split(',').map(v => v.trim())
     } else if (tag === 'since') {
