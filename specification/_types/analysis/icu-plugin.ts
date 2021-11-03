@@ -22,21 +22,25 @@ import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
+  type: 'icu_transform'
   dir: IcuTransformDirection
   id: string
 }
 
 export class IcuTokenizer extends TokenizerBase {
+  type: 'icu_tokenizer'
   rule_files: string
 }
 
 export class IcuNormalizationTokenFilter extends TokenFilterBase {
+  type: 'icu_normalizer'
   name: IcuNormalizationType
 }
 
 export class IcuNormalizationCharFilter extends CharFilterBase {
-  mode: IcuNormalizationMode
-  name: IcuNormalizationType
+  type: 'icu_normalizer'
+  mode?: IcuNormalizationMode
+  name?: IcuNormalizationType
 }
 
 export class IcuFoldingTokenFilter extends TokenFilterBase {
@@ -55,7 +59,7 @@ export class IcuCollationTokenFilter extends TokenFilterBase {
   language: string
   numeric: boolean
   strength: IcuCollationStrength
-  variableTop: string
+  variableTop?: string
   variant: string
 }
 

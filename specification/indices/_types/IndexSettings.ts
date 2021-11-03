@@ -26,11 +26,34 @@ import { Normalizer } from '@_types/analysis/normalizers'
 import { Name, PipelineName, Uuid, VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateString, Time } from '@_types/Time'
+import { Tokenizer } from '@_types/analysis/tokenizers'
+import { IndexSegmentSort } from './IndexSegmentSort'
+
+export class SoftDeletes {
+  enabled: boolean
+}
 
 /**
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.8/index-modules.html#index-modules-settings
  */
 export class IndexSettings {
+  index?: IndexSettings
+  /**
+   * @aliases index.mode
+   */
+  mode?: string
+  /**
+   * @aliases index.routing_path
+   */
+  routing_path?: string[]
+  /**
+   * @aliases index.soft_deletes
+   */
+  soft_deletes?: SoftDeletes
+  /**
+   * @aliases index.sort
+   */
+  sort?: IndexSegmentSort
   /**
    * @server_default 1
    * @aliases index.number_of_shards
@@ -59,7 +82,8 @@ export class IndexSettings {
    * @server_default 1
    * @aliases index.routing_partition_size
    */
-  routing_partition_size?: integer | string // TODO: should be int only
+  routing_partition_size?: integer
+
   /**
    * @aliases index.soft_deletes.retention_lease.period
    * @server_default 12h
@@ -80,6 +104,10 @@ export class IndexSettings {
    * @server_default false
    */
   auto_expand_replicas?: string
+  /**
+   * @aliases index.merge.scheduler.max_thread_count
+   */
+  'merge.scheduler.max_thread_count'?: integer
   /**
    * @aliases index.search.idle.after
    * @server_default 30s
@@ -223,6 +251,10 @@ export class IndexSettings {
    */
   'translog.durability'?: string
   /**
+   * @aliases index.translog.flush_threshold_size
+   */
+  'translog.flush_threshold_size'?: string
+  /**
    * @aliases index.query_string.lenient
    */
   'query_string.lenient'?: boolean | string // TODO: should be bool only
@@ -233,6 +265,9 @@ export class IndexSettings {
 
   top_metrics_max_size?: integer
 
+  /**
+   * @aliases index.analysis
+   */
   analysis?: IndexSettingsAnalysis
   settings?: IndexSettings
 }
@@ -264,4 +299,5 @@ export class IndexSettingsAnalysis {
   char_filter?: Dictionary<string, CharFilter>
   filter?: Dictionary<string, TokenFilter>
   normalizer?: Dictionary<string, Normalizer>
+  tokenizer?: Dictionary<string, Tokenizer>
 }
