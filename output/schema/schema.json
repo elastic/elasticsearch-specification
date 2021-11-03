@@ -61240,6 +61240,7 @@
       },
       "properties": [
         {
+          "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
           "name": "case_insensitive",
           "required": false,
           "since": "7.10.0",
@@ -61252,6 +61253,7 @@
           }
         },
         {
+          "description": "Method used to rewrite the query",
           "name": "rewrite",
           "required": false,
           "type": {
@@ -61263,8 +61265,21 @@
           }
         },
         {
+          "description": "Wildcard pattern for terms you wish to find in the provided field. Required, when wildcard is not set.",
           "name": "value",
-          "required": true,
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Wildcard pattern for terms you wish to find in the provided field. Required, when value is not set.",
+          "name": "wildcard",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {

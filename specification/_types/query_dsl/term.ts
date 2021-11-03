@@ -140,8 +140,15 @@ export class TypeQuery extends QueryBase {
 
 /** @shortcut_property value */
 export class WildcardQuery extends QueryBase {
-  /** @since 7.10.0 */
+  /**
+   * Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.
+   * @since 7.10.0
+   */
   case_insensitive?: boolean
+  /** Method used to rewrite the query */
   rewrite?: MultiTermQueryRewrite
-  value: string
+  /** Wildcard pattern for terms you wish to find in the provided field. Required, when wildcard is not set. */
+  value?: string
+  /** Wildcard pattern for terms you wish to find in the provided field. Required, when value is not set. */
+  wildcard?: string
 }
