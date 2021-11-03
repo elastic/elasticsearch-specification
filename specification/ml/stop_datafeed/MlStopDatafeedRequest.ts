@@ -42,18 +42,18 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Specifies what to do when the request:
-     * 
+     *
      * * Contains wildcard expressions and there are no datafeeds that match.
      * * Contains the `_all` string or no identifiers and there are no matches.
      * * Contains wildcard expressions and there are only partial matches.
-     * 
+     *
      * If `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when
      * there are partial matches. If `false`, the API returns a 404 status code when there are no matches or only
-     * partial matches. 
+     * partial matches.
      * @server_default true */
     allow_no_match?: boolean
     /**
-     * If `true`, the datafeed is stopped forcefully. 
+     * If `true`, the datafeed is stopped forcefully.
      * @server_default false */
     force?: boolean
     /**
@@ -64,18 +64,18 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Specifies what to do when the request:
-     * 
+     *
      * * Contains wildcard expressions and there are no datafeeds that match.
      * * Contains the `_all` string or no identifiers and there are no matches.
      * * Contains wildcard expressions and there are only partial matches.
-     * 
+     *
      * If `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when
      * there are partial matches. If `false`, the API returns a 404 status code when there are no matches or only
-     * partial matches. 
+     * partial matches.
      * @server_default true */
     allow_no_match?: boolean
     /**
-     * If `true`, the datafeed is stopped forcefully. 
+     * If `true`, the datafeed is stopped forcefully.
      * @server_default false */
     force?: boolean
     /**

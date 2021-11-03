@@ -7839,6 +7839,11 @@
       "description": "Starts one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.start_datafeed"
@@ -7925,6 +7930,11 @@
       "description": "Stops one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-stop-datafeed.html",
       "name": "ml.stop_datafeed",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.stop_datafeed"
@@ -121352,6 +121362,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The time that the datafeed should end, which can be specified by using one of the following formats:\n\n* ISO 8601 format with milliseconds, for example `2017-01-22T06:00:00.000Z`\n* ISO 8601 format without milliseconds, for example `2017-01-22T06:00:00+00:00`\n* Milliseconds since the epoch, for example `1485061200000`\n\nDate-time arguments using either of the ISO 8601 formats must have a time zone designator, where `Z` is accepted\nas an abbreviation for UTC time. When a URL is expected (for example, in browsers), the `+` used in time zone\ndesignators must be encoded as `%2B`.\nThe end time value is exclusive. If you do not specify an end time, the datafeed\nruns continuously.",
             "name": "end",
             "required": false,
             "type": {
@@ -121363,6 +121374,7 @@
             }
           },
           {
+            "description": "The time that the datafeed should begin, which can be specified by using the same formats as the `end` parameter.\nThis value is inclusive.\nIf you do not specify a start time and the datafeed is associated with a new anomaly detection job, the analysis\nstarts from the earliest time for which data is available.\n If restart a stopped datafeed and you specify a start value that is earlier than the timestamp of the latest\nprocessed record, the datafeed continues from 1 millisecond after the timestamp of the latest processed record.",
             "name": "start",
             "required": false,
             "type": {
@@ -121374,6 +121386,7 @@
             }
           },
           {
+            "description": "Specifies the amount of time to wait until a datafeed starts.",
             "name": "timeout",
             "required": false,
             "serverDefault": "20s",
@@ -121387,7 +121400,7 @@
           }
         ]
       },
-      "description": "Starts one or more datafeeds.",
+      "description": "Starts one or more datafeeds.\n\nA datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.\n\nBefore you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.\n\nIf you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.\nIf new data was indexed for that exact millisecond between stopping and starting, it will be ignored.\n\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or\nupdate it had at the time of creation or update and runs the query using those same roles. If you provided secondary\nauthorization headers when you created or updated the datafeed, those credentials are used instead.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121401,7 +121414,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeed to start",
+          "description": "A numerical character string that uniquely identifies the datafeed. This identifier can contain lowercase\nalphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric\ncharacters.",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -121415,9 +121428,34 @@
       ],
       "query": [
         {
-          "description": "The start time from where the datafeed should begin",
+          "description": "The time that the datafeed should end, which can be specified by using one of the following formats:\n\n* ISO 8601 format with milliseconds, for example `2017-01-22T06:00:00.000Z`\n* ISO 8601 format without milliseconds, for example `2017-01-22T06:00:00+00:00`\n* Milliseconds since the epoch, for example `1485061200000`\n\nDate-time arguments using either of the ISO 8601 formats must have a time zone designator, where `Z` is accepted\nas an abbreviation for UTC time. When a URL is expected (for example, in browsers), the `+` used in time zone\ndesignators must be encoded as `%2B`.\nThe end time value is exclusive. If you do not specify an end time, the datafeed\nruns continuously.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time that the datafeed should begin, which can be specified by using the same formats as the `end` parameter.\nThis value is inclusive.\nIf you do not specify a start time and the datafeed is associated with a new anomaly detection job, the analysis\nstarts from the earliest time for which data is available.\nIf you restart a stopped datafeed and specify a start value that is earlier than the timestamp of the latest\nprocessed record, the datafeed continues from 1 millisecond after the timestamp of the latest processed record.",
           "name": "start",
           "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the amount of time to wait until a datafeed starts.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121433,6 +121471,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The ID of the node that the datafeed was started on. If the datafeed is allowed to open lazily and has not yet\nbeen assigned to a node, this value is an empty string.",
             "name": "node",
             "required": true,
             "type": {
@@ -121444,6 +121483,7 @@
             }
           },
           {
+            "description": "For a successful response, this value is always `true`. On failure, an exception is returned instead.",
             "name": "started",
             "required": true,
             "type": {
@@ -121568,6 +121608,20 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Specifies what to do when the request:\n\n* Contains wildcard expressions and there are no datafeeds that match.\n* Contains the `_all` string or no identifiers and there are no matches.\n* Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when\nthere are partial matches. If `false`, the API returns a 404 status code when there are no matches or only\npartial matches.",
+            "name": "allow_no_match",
+            "required": false,
+            "serverDefault": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "If `true`, the datafeed is stopped forcefully.",
             "name": "force",
             "required": false,
             "serverDefault": false,
@@ -121580,6 +121634,7 @@
             }
           },
           {
+            "description": "Specifies the amount of time to wait until a datafeed stops.",
             "name": "timeout",
             "required": false,
             "serverDefault": "20s",
@@ -121593,7 +121648,7 @@
           }
         ]
       },
-      "description": "Stops one or more datafeeds.",
+      "description": "Stops one or more datafeeds.\nA datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped\nmultiple times throughout its lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121607,7 +121662,7 @@
       },
       "path": [
         {
-          "description": "The ID of the datafeed to stop",
+          "description": "Identifier for the datafeed. You can stop multiple datafeeds in a single API request by using a comma-separated\nlist of datafeeds or a wildcard expression. You can close all datafeeds by using `_all` or by specifying `*` as\nthe identifier.",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -121621,7 +121676,7 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "description": "Specifies what to do when the request:\n\n* Contains wildcard expressions and there are no datafeeds that match.\n* Contains the `_all` string or no identifiers and there are no matches.\n* Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when\nthere are partial matches. If `false`, the API returns a 404 status code when there are no matches or only\npartial matches.",
           "name": "allow_no_match",
           "required": false,
           "serverDefault": true,
@@ -121634,7 +121689,7 @@
           }
         },
         {
-          "description": "True if the datafeed should be forcefully stopped.",
+          "description": "If `true`, the datafeed is stopped forcefully.",
           "name": "force",
           "required": false,
           "serverDefault": false,
@@ -121643,6 +121698,19 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies the amount of time to wait until a datafeed stops.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "20s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
             }
           }
         }

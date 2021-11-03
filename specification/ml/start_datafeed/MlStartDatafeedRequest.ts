@@ -23,15 +23,15 @@ import { Time } from '@_types/Time'
 
 /**
  * Starts one or more datafeeds.
- * 
+ *
  * A datafeed must be started in order to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.
- * 
+ *
  * Before you can start a datafeed, the anomaly detection job must be open. Otherwise, an error occurs.
- * 
+ *
  * If you restart a stopped datafeed, it continues processing input data from the next millisecond after it was stopped.
  * If new data was indexed for that exact millisecond between stopping and starting, it will be ignored.
- * 
+ *
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the last user to create or
  * update it had at the time of creation or update and runs the query using those same roles. If you provided secondary
  * authorization headers when you created or updated the datafeed, those credentials are used instead.
@@ -52,11 +52,11 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * The time that the datafeed should end, which can be specified by using one of the following formats:
-     * 
+     *
      * * ISO 8601 format with milliseconds, for example `2017-01-22T06:00:00.000Z`
      * * ISO 8601 format without milliseconds, for example `2017-01-22T06:00:00+00:00`
      * * Milliseconds since the epoch, for example `1485061200000`
-     * 
+     *
      * Date-time arguments using either of the ISO 8601 formats must have a time zone designator, where `Z` is accepted
      * as an abbreviation for UTC time. When a URL is expected (for example, in browsers), the `+` used in time zone
      * designators must be encoded as `%2B`.
@@ -74,18 +74,18 @@ export interface Request extends RequestBase {
      */
     start?: Time // default ""
     /**
-     * Specifies the amount of time to wait until a datafeed starts. 
+     * Specifies the amount of time to wait until a datafeed starts.
      * @server_default 20s */
     timeout?: Time
   }
   body: {
     /**
      * The time that the datafeed should end, which can be specified by using one of the following formats:
-     * 
+     *
      * * ISO 8601 format with milliseconds, for example `2017-01-22T06:00:00.000Z`
      * * ISO 8601 format without milliseconds, for example `2017-01-22T06:00:00+00:00`
      * * Milliseconds since the epoch, for example `1485061200000`
-     * 
+     *
      * Date-time arguments using either of the ISO 8601 formats must have a time zone designator, where `Z` is accepted
      * as an abbreviation for UTC time. When a URL is expected (for example, in browsers), the `+` used in time zone
      * designators must be encoded as `%2B`.
@@ -103,7 +103,7 @@ export interface Request extends RequestBase {
      */
     start?: Time // default ""
     /**
-     * Specifies the amount of time to wait until a datafeed starts. 
+     * Specifies the amount of time to wait until a datafeed starts.
      * @server_default 20s */
     timeout?: Time
   }
