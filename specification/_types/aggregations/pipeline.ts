@@ -145,9 +145,9 @@ export class HoltWintersModelSettings {
   type?: HoltWintersType
 }
 export enum HoltWintersType {
-  /** @identifier Additive */
+  /** @codegen_name Additive */
   add,
-  /** @identifier Multiplicative */
+  /** @codegen_name Multiplicative */
   mult
 }
 
@@ -172,7 +172,7 @@ export enum NormalizeMethod {
   rescale_0_100,
   percent_of_sum,
   mean,
-  /** @identifier z_score */
+  /** @codegen_name z_score */
   'z-score',
   softmax
 }

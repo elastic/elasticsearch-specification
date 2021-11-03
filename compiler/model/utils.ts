@@ -661,7 +661,7 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'identifier', 'since', 'server_default', 'variant', 'doc_id']
+  const validTags = ['stability', 'prop_serializer', 'doc_url', 'aliases', 'codegen_name', 'since', 'server_default', 'variant', 'doc_id']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -672,8 +672,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
     if (tag.endsWith('_serializer')) {
     } else if (tag === 'aliases') {
       property.aliases = value.split(',').map(v => v.trim())
-    } else if (tag === 'identifier') {
-      property.identifier = value
+    } else if (tag === 'codegen_name') {
+      property.codegenName = value
     } else if (tag === 'doc_url') {
       assert(jsDocs, isValidUrl(value), '@doc_url is not a valid url')
       property.docUrl = value
@@ -753,7 +753,7 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   // We want to enforce a single jsDoc block.
   assert(jsDocs, jsDocs.length < 2, 'Use a single multiline jsDoc block instead of multiple single line blocks')
 
-  const validTags = ['obsolete', 'obsolete_description', 'identifier', 'since', 'aliases']
+  const validTags = ['obsolete', 'obsolete_description', 'codegen_name', 'since', 'aliases']
   const tags = parseJsDocTags(jsDocs)
   if (jsDocs.length === 1) {
     const description = jsDocs[0].getDescription()
@@ -761,8 +761,8 @@ function hoistEnumMemberAnnotations (member: model.EnumMember, jsDocs: JSDoc[]):
   }
 
   setTags(jsDocs, member, tags, validTags, (tags, tag, value) => {
-    if (tag === 'identifier') {
-      member.identifier = value
+    if (tag === 'codegen_name') {
+      member.codegenName = value
     } else if (tag === 'aliases') {
       member.aliases = value.split(',').map(v => v.trim())
     } else if (tag === 'since') {
@@ -803,7 +803,7 @@ export function isKnownBehavior (node: HeritageClause | ExpressionWithTypeArgume
  */
 export function getNameSpace (node: Node): string {
   // if the node we are checking is a TypeReferenceNode,
-  // then we can get the identifier and find where
+  // then we can get the codegen_name and find where
   // it has been defined and compute the namespace from that.
   if (Node.isTypeReferenceNode(node)) {
     const identifier = node.getTypeName()
@@ -812,7 +812,7 @@ export function getNameSpace (node: Node): string {
       // the Array object is defined by TypeScript
       if (name === 'Array') return 'internal'
       const definition = identifier.getDefinitions()[0]
-      assert(identifier, definition != null, 'Cannot find identifier')
+      assert(identifier, definition != null, 'Cannot find codegen_name')
       return cleanPath(definition.getSourceFile().getFilePath())
     }
   }

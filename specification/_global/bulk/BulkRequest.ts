@@ -52,6 +52,6 @@ export interface Request<TSource> extends RequestBase {
     wait_for_active_shards?: WaitForActiveShards
     require_alias?: boolean
   }
-  /** @identifier operations */
+  /** @codegen_name operations */
   body?: Array<OperationContainer | TSource>
 }

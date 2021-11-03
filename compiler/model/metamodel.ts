@@ -134,7 +134,7 @@ export class Property {
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
    */
-  identifier?: string
+  codegenName?: string
   /** An optional set of aliases for `name` */
   aliases?: string[]
   /** If the enclosing class is a variants container, is this a property of the container and not a variant? */
@@ -267,7 +267,7 @@ export type Body = ValueBody | PropertiesBody | NoBody
 export class ValueBody {
   kind: 'value'
   value: ValueOf
-  identifier?: string
+  codegenName?: string
 }
 
 export class PropertiesBody {
@@ -295,7 +295,7 @@ export class EnumMember {
    * If specified takes precedence over `name` when generating code. `name` is always the value
    * to be sent over the wire
    */
-  identifier?: string
+  codegenName?: string
   description?: string
   deprecation?: Deprecation
   since?: string

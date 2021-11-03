@@ -51,7 +51,7 @@ export interface Request<TSource> extends RequestBase {
     interval: TimeSpan
   }
 
-  /** @identifier operations */
+  /** @codegen_name operations */
   // MonitoringBulkRequest accepts a body request that has the same format as the BulkRequest
   body?: Array<OperationContainer | TSource>
 }
