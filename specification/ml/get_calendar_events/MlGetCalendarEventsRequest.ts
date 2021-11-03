@@ -42,7 +42,7 @@ export interface Request extends RequestBase {
      */
     from?: integer
     /** Specifies to get events for a specific anomaly detection job identifier or job group. It must be used with a calendar identifier of `_all` or `*`. */
-    job_id?: Id 
+    job_id?: Id
     /** Specifies the maximum number of events to obtain.
      * @server_default 100
      */
