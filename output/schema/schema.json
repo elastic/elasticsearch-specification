@@ -88181,7 +88181,7 @@
           "aliases": [
             "index.merge.scheduler.max_thread_count"
           ],
-          "name": "index.merge.scheduler.max_thread_count",
+          "name": "merge.scheduler.max_thread_count",
           "required": false,
           "type": {
             "kind": "instance_of",

@@ -107,7 +107,7 @@ export class IndexSettings {
   /**
    * @aliases index.merge.scheduler.max_thread_count
    */
-  'index.merge.scheduler.max_thread_count'?: integer
+  'merge.scheduler.max_thread_count'?: integer
   /**
    * @aliases index.search.idle.after
    * @server_default 30s
