@@ -197,7 +197,9 @@ function buildInterface (type: M.Interface): string {
   const inherits = buildInherits(type, openGenerics)
   let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${inherits} {\n`
   if (type.properties.length === 0 && type.attachedBehaviors == null && inherits.length === 0) {
-    code += '  [key: string]: never\n'
+    if (process.env.KIBANA == null) {
+      code += '  [key: string]: never\n'
+    }
   } else {
     for (const property of type.properties) {
       code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
@@ -249,36 +251,81 @@ function buildBehaviorInterface (type: M.Interface): string {
   }
 }
 
+// Handling additional properties has some caveats. There are 3 ways of defining an interface with additional dyamic properties:
+//
+// 1.
+//   interface Foo {
+//     prop: string
+//     [key: string]: string
+//   }
+//
+// 2.
+//   interface FooBase {
+//     prop: string
+//   }
+//   type Foo = FooBase & { [key: string]: string }
+//
+// 3.
+//   interface FooBase {
+//     prop: string
+//   }
+//   type Foo = FooBase | { [key: string]: number }
+//
+// 4.
+//   interface Foo {
+//     prop: string
+//     [key: string]: number | string
+//   }
+//
+// 1. and 2. are (almost) the same, the important thing is that the dynamic key can also describe every static key,
+// in other words, the type of the static keys must be a subset of the type of the dynamic keys.
+// If this is not possible, then we should use options 3.
+// The best solution for now is 2, where we create an union of all the possible types for the dynamic keys
+// (we must use an intersection because option 1 won't work with optional properties).
+// The only drawback is that we might allow some type that won't work in the dynamic keys.
+// Furthermore, we must take into account the types of the extended class properties (if present).
+// The main difference with this approaches comes when you are actually using the types. 1 and 2 are good when
+// you are reading an object of that type, while 3 is good when you are writing an object of that type.
 function serializeAdditionalPropertiesType (type: M.Interface): string {
   const dictionaryOf = lookupBehavior(type, 'AdditionalProperties') ?? lookupBehavior(type, 'AdditionalProperty')
   if (dictionaryOf == null) throw new Error(`Unknown implements ${type.name.name}`)
+  const extendedPropertyTypes = getAllExtendedPropertyTypes(type.inherits)
+  const openGenerics = type.generics?.map(t => t.name) ?? []
   let code = `export interface ${createName(type.name)}Keys${buildGenerics(type.generics)}${buildInherits(type)} {\n`
+  const types: Array<string | number | boolean> = []
+  for (const property of type.properties) {
+    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
+    types.push(buildValue(property.type, openGenerics))
+  }
+  code += '}\n'
+
+  // user_defined_value can always "contain" every other type
+  if (Array.isArray(dictionaryOf.generics) && dictionaryOf.generics[1].kind === 'user_defined_value') {
+    code += `export type ${createName(type.name)}${buildGenerics(type.generics)} = ${createName(type.name)}Keys${buildGenerics(type.generics, openGenerics, true)}\n  & { [property: string]: any }\n`
+  } else {
+    const dynamicTypes = Array.isArray(dictionaryOf.generics)
+      ? [...new Set([buildValue(dictionaryOf.generics[1], openGenerics)].concat(types).concat(extendedPropertyTypes))]
+      : [...new Set(types.concat(extendedPropertyTypes))]
+    code += `export type ${createName(type.name)}${buildGenerics(type.generics)} = ${createName(type.name)}Keys${buildGenerics(type.generics, openGenerics, true)}\n  & { [property: string]: ${dynamicTypes.join(' | ')} }\n`
+  }
+  return code
+
+  function getAllExtendedPropertyTypes (inherit?: M.Inherits): Array<string | number | boolean> {
+    if (inherit == null) return []
+    const extendedInterface = model.types.find(type => inherit.type.name === type.name.name && inherit.type.namespace === type.name.namespace)
+    assert(extendedInterface != null, `Can't find extended type for ${inherit.type.namespace}.${inherit.type.name}`)
+    assert(extendedInterface.kind === 'interface', `We should be extending from another interface, instead got: ${extendedInterface.kind}`)
+    const openGenerics = extendedInterface.generics?.map(t => t.name) ?? []
+    const types: Array<string | number | boolean> = []
+    for (const property of extendedInterface.properties) {
+      types.push(buildValue(property.type, openGenerics))
+    }
+    types.push(...getAllExtendedPropertyTypes(extendedInterface.inherits))
+    return [...new Set(types)]
+  }
 
   function required (property: M.Property): string {
     return property.required ? '' : '?'
-  }
-
-  const openGenerics = type.generics?.map(t => t.name) ?? []
-  for (const property of type.properties) {
-    code += `  ${cleanPropertyName(property.name)}${required(property)}: ${buildValue(property.type, openGenerics)}\n`
-  }
-  code += '}\n'
-  code += `export type ${createName(type.name)}${buildGenerics(type.generics, openGenerics)} = ${createName(type.name)}Keys${buildGenerics(type.generics, openGenerics, true)} |\n`
-  code += `    { ${buildIndexer(dictionaryOf, openGenerics)} }\n`
-  return code
-
-  function buildIndexer (type: M.Inherits, openGenerics: string[]): string {
-    if (!Array.isArray(type.generics)) return ''
-    assert(type.generics.length === 2)
-    return `[property: string]: ${buildGeneric(type.generics[1])}`
-
-    // generics can either be a value/instance_of or a named generics
-    function buildGeneric (type: M.ValueOf): string | number | boolean {
-      const t = typeof type === 'string' ? type : buildValue(type, openGenerics)
-      // indexers do not allow type aliases so here we translate known
-      // type aliases back to string
-      return t === 'AggregateName' ? 'string' : t
-    }
   }
 }
 
