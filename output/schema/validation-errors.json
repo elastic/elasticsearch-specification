@@ -1184,9 +1184,7 @@
         "Request: missing json spec query parameter 'type'",
         "Request: should not have a body"
       ],
-      "response": [
-        "response definition license.post_start_trial:Response / body - Property 'acknowledged' is already defined in an ancestor class"
-      ]
+      "response": []
     },
     "logstash.delete_pipeline": {
       "request": [
@@ -1344,14 +1342,12 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1470,7 +1466,6 @@
     },
     "ml.stop_datafeed": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: missing json spec query parameter 'timeout'"
       ],
       "response": []
@@ -1518,6 +1513,7 @@
       "request": [
         "Request: query parameter 'thread_type' does not exist in the json spec",
         "Request: missing json spec query parameter 'type'",
+        "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
       "response": []

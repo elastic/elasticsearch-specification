@@ -23,12 +23,12 @@ import { Suggest } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Aggregate } from '@_types/aggregations/Aggregate'
-import { Id, SuggestionName } from '@_types/common'
+import { AggregateName, Id, SuggestionName } from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class AsyncSearch<TDocument> {
-  aggregations?: Dictionary<string, Aggregate>
+  aggregations?: Dictionary<AggregateName, Aggregate>
   _clusters?: ClusterStatistics
   fields?: Dictionary<string, UserDefinedValue>
   hits: HitsMetadata<TDocument>

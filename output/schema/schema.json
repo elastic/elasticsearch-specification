@@ -1,6 +1,6 @@
 {
   "_info": {
-    "hash": "2f7bc5757",
+    "hash": "e26ea70c0",
     "license": {
       "name": "Apache 2.0",
       "url": "https://github.com/elastic/elasticsearch-specification/blob/master/LICENSE"
@@ -3090,14 +3090,14 @@
             "GET",
             "POST"
           ],
-          "path": "/_fleet/_msearch"
+          "path": "/_fleet/_fleet_msearch"
         },
         {
           "methods": [
             "GET",
             "POST"
           ],
-          "path": "/{index}/_fleet/_msearch"
+          "path": "/{index}/_fleet/_fleet_msearch"
         }
       ],
       "visibility": "public"
@@ -3122,7 +3122,7 @@
             "GET",
             "POST"
           ],
-          "path": "/{index}/_fleet/_search"
+          "path": "/{index}/_fleet/_fleet_search"
         }
       ],
       "visibility": "public"
@@ -18307,29 +18307,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -21921,28 +21902,9 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            }
-          },
-          {
+            "aliases": [
+              "aggs"
+            ],
             "name": "aggregations",
             "required": false,
             "type": {
@@ -61349,8 +61311,8 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "AggregateName",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -61898,28 +61860,9 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "AggregationContainer",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            }
-          },
-          {
+            "aliases": [
+              "aggs"
+            ],
             "name": "aggregations",
             "required": false,
             "type": {
@@ -67375,6 +67318,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
           "name": "allow_no_datafeeds",
           "required": false,
@@ -68405,6 +68352,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
           "name": "allow_no_jobs",
           "required": false,
@@ -104331,17 +104282,6 @@
             }
           },
           {
-            "name": "acknowledged",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "boolean",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
             "name": "trial_was_started",
             "required": true,
             "type": {
@@ -106805,29 +106745,10 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -107029,30 +106950,11 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only with low cardinality data.",
           "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        },
-        {
-          "name": "aggs",
           "required": false,
           "type": {
             "key": {
@@ -111194,6 +111096,7 @@
       }
     },
     {
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-job-resource.html#ml-apimodelplotconfig",
       "kind": "interface",
       "name": {
         "name": "ModelPlotConfig",
@@ -111205,6 +111108,7 @@
           "name": "annotations_enabled",
           "required": false,
           "serverDefault": true,
+          "since": "7.9.0",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -111230,6 +111134,8 @@
           "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
           "name": "terms",
           "required": false,
+          "since": "7.9.0",
+          "stability": "experimental",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -115810,6 +115716,22 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
           "name": "allow_no_match",
           "required": false,
@@ -115894,6 +115816,22 @@
         }
       ],
       "query": [
+        {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
         {
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no datafeeds that match.\n2. Contains the `_all` string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `datafeeds` array\nwhen there are no matches and the subset of results when there are\npartial matches. If this parameter is `false`, the request returns a\n`404` status code when there are no matches or only partial matches.",
           "name": "allow_no_match",
@@ -116282,6 +116220,10 @@
       ],
       "query": [
         {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
           "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no jobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is `true`, which returns an empty `jobs` array when\nthere are no matches and the subset of results when there are partial\nmatches. If this parameter is `false`, the request returns a `404` status\ncode when there are no matches or only partial matches.",
           "name": "allow_no_jobs",
           "required": false,
@@ -116382,7 +116324,7 @@
         },
         {
           "deprecation": {
-            "description": "",
+            "description": "Use `allow_no_match` instead.",
             "version": "7.10.0"
           },
           "description": "Whether to ignore if a wildcard expression matches no jobs. (This includes `_all` string or when no jobs have been specified)",
@@ -121124,6 +121066,22 @@
         }
       ],
       "query": [
+        {
+          "deprecation": {
+            "description": "Use `allow_no_match` instead.",
+            "version": "7.10.0"
+          },
+          "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
+          "name": "allow_no_datafeeds",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
         {
           "description": "Whether to ignore if a wildcard expression matches no datafeeds. (This includes `_all` string or when no datafeeds have been specified)",
           "name": "allow_no_match",
@@ -129418,7 +129376,10 @@
         "kind": "properties",
         "properties": [
           {
-            "name": "aggs",
+            "aliases": [
+              "aggs"
+            ],
+            "name": "aggregations",
             "required": false,
             "type": {
               "key": {
@@ -129451,6 +129412,7 @@
             }
           },
           {
+            "description": "Must be zero if set, as rollups work on pre-aggregated data",
             "name": "size",
             "required": false,
             "type": {

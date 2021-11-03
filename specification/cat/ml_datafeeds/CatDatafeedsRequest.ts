@@ -30,6 +30,9 @@ export interface Request extends CatRequestBase {
     datafeed_id?: Id
   }
   query_parameters: {
+    /**
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
+     */
     allow_no_datafeeds?: boolean
   }
 }

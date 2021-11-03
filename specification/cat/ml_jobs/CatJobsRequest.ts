@@ -30,6 +30,9 @@ export interface Request extends CatRequestBase {
     job_id?: Id
   }
   query_parameters: {
+    /**
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
+     */
     allow_no_jobs?: boolean
     bytes?: Bytes
   }

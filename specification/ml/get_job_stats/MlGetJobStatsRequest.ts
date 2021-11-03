@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      * matches. If this parameter is `false`, the request returns a `404` status
      * code when there are no matches or only partial matches.
      * @server_default true
+     * @deprecated 7.10.0 Use `allow_no_match` instead.
      */
     allow_no_jobs?: boolean
   }

@@ -315,6 +315,11 @@ function buildRequest (type: M.Request): string {
     code += `  body${isBodyRequired() ? '' : '?'}: {\n`
     for (const property of type.body.properties) {
       code += `    ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+      if (Array.isArray(property.aliases)) {
+        for (const alias of property.aliases) {
+          code += `    ${cleanPropertyName(alias)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+        }
+      }
     }
     code += '  }\n'
   } else if (type.body.kind === 'value') {
@@ -340,6 +345,11 @@ function buildResponse (type: M.Response): string {
     let code = `export interface ${createName(type.name)}${buildGenerics(type.generics, openGenerics)}${buildInherits(type, openGenerics)} {\n`
     for (const property of type.body.properties) {
       code += `  ${cleanPropertyName(property.name)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+      if (Array.isArray(property.aliases)) {
+        for (const alias of property.aliases) {
+          code += `    ${cleanPropertyName(alias)}${property.required ? '' : '?'}: ${buildValue(property.type, openGenerics)}\n`
+        }
+      }
     }
     code += '}\n'
     return code

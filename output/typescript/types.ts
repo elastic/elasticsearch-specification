@@ -973,8 +973,8 @@ export interface SearchRequest extends RequestBase {
   from?: integer
   sort?: string | string[]
   body?: {
-    aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     collapse?: SearchFieldCollapse
     explain?: boolean
     from?: integer
@@ -5108,7 +5108,7 @@ export interface QueryDslWildcardQuery extends QueryDslQueryBase {
 export type QueryDslZeroTermsQuery = 'all' | 'none'
 
 export interface AsyncSearchAsyncSearch<TDocument = unknown> {
-  aggregations?: Record<string, AggregationsAggregate>
+  aggregations?: Record<AggregateName, AggregationsAggregate>
   _clusters?: ClusterStatistics
   fields?: Record<string, any>
   hits: SearchHitsMetadata<TDocument>
@@ -5211,8 +5211,8 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   from?: integer
   sort?: string | string[]
   body?: {
-    aggs?: Record<string, AggregationsAggregationContainer>
     aggregations?: Record<string, AggregationsAggregationContainer>
+    aggs?: Record<string, AggregationsAggregationContainer>
     collapse?: SearchFieldCollapse
     explain?: boolean
     from?: integer
@@ -10354,7 +10354,6 @@ export interface LicensePostStartTrialRequest extends RequestBase {
 
 export interface LicensePostStartTrialResponse extends AcknowledgedResponseBase {
   error_message?: string
-  acknowledged: boolean
   trial_was_started: boolean
   type: LicenseLicenseType
 }
@@ -11628,6 +11627,7 @@ export interface MlGetDataFrameAnalyticsStatsResponse {
 
 export interface MlGetDatafeedStatsRequest extends RequestBase {
   datafeed_id?: Ids
+  allow_no_datafeeds?: boolean
   allow_no_match?: boolean
 }
 
@@ -11638,6 +11638,7 @@ export interface MlGetDatafeedStatsResponse {
 
 export interface MlGetDatafeedsRequest extends RequestBase {
   datafeed_id?: Ids
+  allow_no_datafeeds?: boolean
   allow_no_match?: boolean
   exclude_generated?: boolean
 }
@@ -11970,6 +11971,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     delayed_data_check_config?: MlDelayedDataCheckConfig
     frequency?: Time
     indices?: string[]
+    indexes?: string[]
     indices_options?: MlDatafeedIndicesOptions
     job_id?: Id
     max_empty_searches?: integer
@@ -12222,6 +12224,7 @@ export interface MlStopDataFrameAnalyticsResponse {
 
 export interface MlStopDatafeedRequest extends RequestBase {
   datafeed_id: Id
+  allow_no_datafeeds?: boolean
   allow_no_match?: boolean
   force?: boolean
   body?: {
@@ -13190,6 +13193,7 @@ export interface RollupRollupSearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
   body?: {
+    aggregations?: Record<string, AggregationsAggregationContainer>
     aggs?: Record<string, AggregationsAggregationContainer>
     query?: QueryDslQueryContainer
     size?: integer

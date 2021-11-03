@@ -41,8 +41,8 @@ export class Header {
 }
 
 export class Body {
+  /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
-  aggs?: Dictionary<string, AggregationContainer>
   query?: QueryContainer
   from?: integer
   size?: integer
