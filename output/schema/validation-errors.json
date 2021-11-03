@@ -470,7 +470,9 @@
         "Request: query parameter 'flat_settings' does not exist in the json spec",
         "Request: should not have a body"
       ],
-      "response": []
+      "response": [
+        "interface definition indices._types:IndexSettings - Duplicate property name or alias: 'index.merge.scheduler.max_thread_count'"
+      ]
     },
     "cluster.get_settings": {
       "request": [

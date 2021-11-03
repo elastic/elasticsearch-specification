@@ -49,6 +49,7 @@ import {
 } from './specialized'
 import { TermVectorOption } from './TermVectorOption'
 import { Script } from '@_types/Scripting'
+import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -107,6 +108,7 @@ export class DateProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: DateString
   precision_step?: integer
+  locale?: string
   type: 'date'
 }
 
@@ -134,12 +136,15 @@ export class KeywordProperty extends DocValuesPropertyBase {
   norms?: boolean
   null_value?: string
   split_queries_on_whitespace?: boolean
+  /** [experimental] For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false. */
+  time_series_dimension?: boolean
   type: 'keyword'
 }
 
 export class NumberPropertyBase extends DocValuesPropertyBase {
   index?: boolean
   ignore_malformed?: boolean
+  time_series_metric?: TimeSeriesMetricType
 }
 
 export enum OnScriptError {
