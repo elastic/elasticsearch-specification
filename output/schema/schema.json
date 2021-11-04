@@ -154390,8 +154390,10 @@
       },
       "properties": [
         {
+          "description": "When set to `true` Elasticsearch will include the full stack trace of errors\nwhen they occur.",
           "name": "error_trace",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154401,6 +154403,7 @@
           }
         },
         {
+          "description": "Comma-separated list of filters in dot notation which reduce the response\nreturned by Elasticsearch.",
           "name": "filter_path",
           "required": false,
           "type": {
@@ -154427,8 +154430,10 @@
           }
         },
         {
+          "description": "When set to `true` will return statistics in a format suitable for humans.\nFor example `\"exists_time\": \"1h\"` for humans and\n`\"eixsts_time_in_millis\": 3600000` for computers. When disabled the human\nreadable values will be omitted. This makes sense for responses being consumed\nonly by machines.",
           "name": "human",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154438,23 +154443,14 @@
           }
         },
         {
+          "description": "If set to `true` the returned JSON will be \"pretty-formatted\". Only use\nthis option for debugging only.",
           "name": "pretty",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "source_query_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
               "namespace": "internal"
             }
           }
@@ -154470,8 +154466,10 @@
       },
       "properties": [
         {
+          "description": "Specifies the format to return the columnar data in, can be set to\n`text`, `json`, `cbor`, `yaml`, or `smile`.",
           "name": "format",
           "required": false,
+          "serverDefault": "text",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154481,6 +154479,7 @@
           }
         },
         {
+          "description": "List of columns to appear in the response. Supports simple wildcards.",
           "name": "h",
           "required": false,
           "type": {
@@ -154492,8 +154491,10 @@
           }
         },
         {
+          "description": "When set to `true` will output available columns. This option\ncan't be combined with any other query string option.",
           "name": "help",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154503,8 +154504,10 @@
           }
         },
         {
+          "description": "If `true`, the request computes the list of selected nodes from the\nlocal cluster state. If `false` the list of selected nodes are computed\nfrom the cluster state of the master node. In both cases the coordinating\nnode will send requests for further information to each selected node.",
           "name": "local",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154514,8 +154517,10 @@
           }
         },
         {
+          "description": "Period to wait for a connection to the master node.",
           "name": "master_timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154525,6 +154530,7 @@
           }
         },
         {
+          "description": "List of columns that determine how the table should be sorted.\nSorting defaults to ascending and can be changed by setting `:asc`\nor `:desc` as a suffix to the column name.",
           "name": "s",
           "required": false,
           "type": {
@@ -154539,8 +154545,10 @@
           }
         },
         {
+          "description": "When set to `true` will enable verbose output.",
           "name": "v",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
