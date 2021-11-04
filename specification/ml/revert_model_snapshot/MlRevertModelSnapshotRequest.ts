@@ -21,16 +21,42 @@ import { RequestBase } from '@_types/Base'
 import { Id } from '@_types/common'
 
 /**
+ * Reverts to a specific snapshot.
+ * The machine learning features react quickly to anomalous input, learning new
+ * behaviors in data. Highly anomalous input increases the variance in the
+ * models whilst the system learns whether this is a new step-change in behavior
+ * or a one-off event. In the case where this anomalous input is known to be a
+ * one-off, then it might be appropriate to reset the model state to a time
+ * before this event. For example, you might consider reverting to a saved
+ * snapshot after Black Friday or a critical system failure.
  * @rest_spec_name ml.revert_model_snapshot
  * @since 5.4.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     *  Identifier for the anomaly detection job.
+     */
     job_id: Id
+    /**
+     * You can specify `empty` as the <snapshot_id>. Reverting to the empty
+     * snapshot means the anomaly detection job starts learning a new model from
+     * scratch when it is started.
+     */
     snapshot_id: Id
   }
   body: {
+    /**
+     * If true, deletes the results in the time period between the latest
+     * results and the time of the reverted snapshot. It also resets the model
+     * to accept records for this time period. If you choose not to delete
+     * intervening results when reverting a snapshot, the job will not accept
+     * input data that is older than the current time. If you want to resend
+     * data, then delete the intervening results.
+     * @server_default false
+     */
     delete_intervening_results?: boolean
   }
 }
