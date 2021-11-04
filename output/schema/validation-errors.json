@@ -169,7 +169,6 @@
     },
     "cat.ml_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -182,7 +181,6 @@
     },
     "cat.ml_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -1155,12 +1153,6 @@
       ],
       "response": []
     },
-    "ml.close_job": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'"
-      ],
-      "response": []
-    },
     "ml.delete_calendar": {
       "request": [
         "Request: should not have a body"
@@ -1282,14 +1274,12 @@
     },
     "ml.get_datafeed_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_datafeeds": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
         "Request: should not have a body"
       ],
       "response": []
@@ -1302,25 +1292,17 @@
     },
     "ml.get_job_stats": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": []
     },
     "ml.get_jobs": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'",
         "Request: should not have a body"
       ],
       "response": [
         "type_alias definition xpack.usage:UrlConfig / union_of / instance_of - Non-leaf type cannot be used here: 'xpack.usage:BaseUrlConfig'"
       ]
-    },
-    "ml.get_overall_buckets": {
-      "request": [
-        "Request: missing json spec query parameter 'allow_no_jobs'"
-      ],
-      "response": []
     },
     "ml.get_records": {
       "request": [
