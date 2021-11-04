@@ -27,7 +27,8 @@ import { AdditionalProperties } from '@spec_utils/behaviors'
  * Additional details are also provided, that depend on the error type.
  */
 export class ErrorCause
-  implements AdditionalProperties<string, UserDefinedValue> {
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   /**
    * The type of error
    */
