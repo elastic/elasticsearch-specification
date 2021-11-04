@@ -7856,11 +7856,6 @@
       "description": "Starts one or more datafeeds.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-start-datafeed.html",
       "name": "ml.start_datafeed",
-      "privileges": {
-        "cluster": [
-          "manage_ml"
-        ]
-      },
       "request": {
         "name": "Request",
         "namespace": "ml.start_datafeed"
@@ -121296,7 +121291,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The \n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
+      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121376,10 +121371,8 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The time that the datafeed should end. This value is exclusive.",
             "name": "end",
             "required": false,
-            "serverDefault": "an empty string",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -121389,10 +121382,8 @@
             }
           },
           {
-            "description": "The time that the datafeed should begin. This value is inclusive.",
             "name": "start",
             "required": false,
-            "serverDefault": "an empty string",
             "type": {
               "kind": "instance_of",
               "type": {
@@ -121402,7 +121393,6 @@
             }
           },
           {
-            "description": "Controls the amount of time to wait until a datafeed starts.",
             "name": "timeout",
             "required": false,
             "serverDefault": "20s",
@@ -121416,7 +121406,7 @@
           }
         ]
       },
-      "description": "Starts one or more datafeeds.\nA datafeed must be started in order to retrieve data from Elasticsearch. A\ndatafeed can be started and stopped multiple times throughout its lifecycle.\nWhen you start a datafeed, you can specify a start time. This enables you to\ninclude a training period, providing you have this data available in\nElasticsearch. If you want to analyze from the beginning of a dataset, you\ncan specify any date earlier than that beginning date.\nIf you do not specify a start time and the datafeed is associated with a new\nanomaly detection job, the analysis starts from the earliest time for which\ndata is available.\nWhen you start a datafeed, you can also specify an end time. If you do so,\nthe job analyzes data from the start time until the end time, at which point\nthe analysis stops. This scenario is useful for a one-off batch analysis. If\nyou do not specify an end time, the datafeed runs continuously.\nThe start and end times can be specified by using one of the following\nformats:\n* ISO 8601 format with milliseconds, for example 2017-01-22T06:00:00.000Z\n* ISO 8601 format without milliseconds, for example 2017-01-22T06:00:00+00:00\n* Milliseconds since the epoch, for example 1485061200000\nDate-time arguments using either of the ISO 8601 formats must have a time\nzone designator, where Z is accepted as an abbreviation for UTC time.\nIf the system restarts, any jobs that had datafeeds running are also\nrestarted.\nWhen a stopped datafeed is restarted, it continues processing input data from\nthe next millisecond after it was stopped. If new data was indexed for that\nexact millisecond between stopping and starting, it will be ignored. If you\nspecify a start value that is earlier than the timestamp of the latest\nprocessed record, the datafeed continues from 1 millisecond after the\ntimestamp of the latest processed record.",
+      "description": "Starts one or more datafeeds.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121430,7 +121420,7 @@
       },
       "path": [
         {
-          "description": "A numerical character string that uniquely identifies the datafeed. This\nidentifier can contain lowercase alphanumeric characters (a-z and 0-9),\nhyphens, and underscores. It must start and end with alphanumeric\ncharacters.",
+          "description": "The ID of the datafeed to start",
           "name": "datafeed_id",
           "required": true,
           "type": {
@@ -121444,10 +121434,9 @@
       ],
       "query": [
         {
-          "description": "The time that the datafeed should begin. This value is inclusive.",
+          "description": "The start time from where the datafeed should begin",
           "name": "start",
           "required": false,
-          "serverDefault": "an empty string",
           "type": {
             "kind": "instance_of",
             "type": {
