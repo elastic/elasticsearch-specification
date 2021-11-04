@@ -121362,7 +121362,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The time that the datafeed should end, which can be specified by using one of the following formats:\n\n* ISO 8601 format with milliseconds, for example `2017-01-22T06:00:00.000Z`\n* ISO 8601 format without milliseconds, for example `2017-01-22T06:00:00+00:00`\n* Milliseconds since the epoch, for example `1485061200000`\n\nDate-time arguments using either of the ISO 8601 formats must have a time zone designator, where `Z` is accepted\nas an abbreviation for UTC time. When a URL is expected (for example, in browsers), the `+` used in time zone\ndesignators must be encoded as `%2B`.\nThe end time value is exclusive. If you do not specify an end time, the datafeed\nruns continuously.",
+            "description": "Refer to the description for the `end` query parameter.",
             "name": "end",
             "required": false,
             "type": {
@@ -121374,7 +121374,7 @@
             }
           },
           {
-            "description": "The time that the datafeed should begin, which can be specified by using the same formats as the `end` parameter.\nThis value is inclusive.\nIf you do not specify a start time and the datafeed is associated with a new anomaly detection job, the analysis\nstarts from the earliest time for which data is available.\n If restart a stopped datafeed and you specify a start value that is earlier than the timestamp of the latest\nprocessed record, the datafeed continues from 1 millisecond after the timestamp of the latest processed record.",
+            "description": "Refer to the description for the `start` query parameter.",
             "name": "start",
             "required": false,
             "type": {
@@ -121386,7 +121386,7 @@
             }
           },
           {
-            "description": "Specifies the amount of time to wait until a datafeed starts.",
+            "description": "Refer to the description for the `timeout` query parameter.",
             "name": "timeout",
             "required": false,
             "serverDefault": "20s",
@@ -121608,7 +121608,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Specifies what to do when the request:\n\n* Contains wildcard expressions and there are no datafeeds that match.\n* Contains the `_all` string or no identifiers and there are no matches.\n* Contains wildcard expressions and there are only partial matches.\n\nIf `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when\nthere are partial matches. If `false`, the API returns a 404 status code when there are no matches or only\npartial matches.",
+            "description": "Refer to the description for the `allow_no_match` query parameter.",
             "name": "allow_no_match",
             "required": false,
             "serverDefault": true,
@@ -121621,7 +121621,7 @@
             }
           },
           {
-            "description": "If `true`, the datafeed is stopped forcefully.",
+            "description": "Refer to the description for the `force` query parameter.",
             "name": "force",
             "required": false,
             "serverDefault": false,
@@ -121634,7 +121634,7 @@
             }
           },
           {
-            "description": "Specifies the amount of time to wait until a datafeed stops.",
+            "description": "Refer to the description for the `timeout` query parameter.",
             "name": "timeout",
             "required": false,
             "serverDefault": "20s",
