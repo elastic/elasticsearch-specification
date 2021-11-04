@@ -39,6 +39,7 @@ export class WatcherNodeStats {
 }
 
 export enum WatcherMetric {
+  /** @aliases all */
   '_all' = 0,
   'queued_watches' = 1,
   'current_watches' = 2,

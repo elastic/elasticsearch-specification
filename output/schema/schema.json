@@ -148869,6 +148869,9 @@
       "kind": "enum",
       "members": [
         {
+          "aliases": [
+            "all"
+          ],
           "name": "_all"
         },
         {
