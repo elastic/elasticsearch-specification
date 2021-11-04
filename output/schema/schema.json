@@ -7919,6 +7919,11 @@
       "description": "Stops one or more data frame analytics jobs.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/stop-dfanalytics.html",
       "name": "ml.stop_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.stop_data_frame_analytics"
@@ -8005,6 +8010,18 @@
       "description": "Updates certain properties of a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/update-dfanalytics.html",
       "name": "ml.update_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ],
+        "index": [
+          "read",
+          "create_index",
+          "manage",
+          "index",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.update_data_frame_analytics"
@@ -8096,6 +8113,11 @@
       "description": "Updates certain properties of an anomaly detection job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-job.html",
       "name": "ml.update_job",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.update_job"
@@ -8127,6 +8149,11 @@
       "description": "Updates certain properties of a snapshot.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-snapshot.html",
       "name": "ml.update_model_snapshot",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.update_model_snapshot"
@@ -8155,6 +8182,11 @@
       "description": "Upgrades a given job snapshot to the current major version.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-upgrade-job-model-snapshot.html",
       "name": "ml.upgrade_job_snapshot",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.upgrade_job_snapshot"
@@ -121496,7 +121528,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Stops one or more data frame analytics jobs.",
+      "description": "Stops one or more data frame analytics jobs.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121510,7 +121542,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "Identifier for the data frame analytics job. This identifier can contain\nlowercase alphanumeric characters (a-z and 0-9), hyphens, and\nunderscores. It must start and end with alphanumeric characters.",
           "name": "id",
           "required": true,
           "type": {
@@ -121524,7 +121556,7 @@
       ],
       "query": [
         {
-          "description": "Whether to ignore if a wildcard expression matches no data frame analytics. (This includes `_all` string or when no data frame analytics have been specified)",
+          "description": "Specifies what to do when the request:\n\n1. Contains wildcard expressions and there are no data frame analytics\njobs that match.\n2. Contains the _all string or no identifiers and there are no matches.\n3. Contains wildcard expressions and there are only partial matches.\n\nThe default value is true, which returns an empty data_frame_analytics\narray when there are no matches and the subset of results when there are\npartial matches. If this parameter is false, the request returns a 404\nstatus code when there are no matches or only partial matches.",
           "name": "allow_no_match",
           "required": false,
           "serverDefault": true,
@@ -121550,7 +121582,7 @@
           }
         },
         {
-          "description": "Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.",
+          "description": "Controls the amount of time to wait until the data frame analytics job\nstops. Defaults to 20 seconds.",
           "name": "timeout",
           "required": false,
           "serverDefault": "20s",
@@ -121718,7 +121750,7 @@
             }
           },
           {
-            "description": "The approximate maximum amount of memory resources that are permitted for analytical processing. The default value for data frame analytics jobs is 1gb. If your elasticsearch.yml file contains an xpack.ml.max_model_memory_limit setting, an error occurs when you try to create data frame analytics jobs that have model_memory_limit values greater than that setting.",
+            "description": "The approximate maximum amount of memory resources that are permitted for\nanalytical processing. The default value for data frame analytics jobs is\n1gb. If your elasticsearch.yml file contains an\n`xpack.ml.max_model_memory_limit` setting, an error occurs when you try\nto create data frame analytics jobs that have model_memory_limit values\ngreater than that setting.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html",
             "name": "model_memory_limit",
             "required": false,
@@ -121731,9 +121763,10 @@
             }
           },
           {
-            "description": "The maximum number of threads to be used by the analysis. The default value is 1. Using more threads may decrease the time necessary to complete the analysis at the cost of using more CPU. Note that the process may use additional threads for operational functionality other than the analysis itself.",
+            "description": "The maximum number of threads to be used by the analysis. Using more\nthreads may decrease the time necessary to complete the analysis at the\ncost of using more CPU. Note that the process may use additional threads\nfor operational functionality other than the analysis itself.",
             "name": "max_num_threads",
             "required": false,
+            "serverDefault": 1,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -121743,7 +121776,7 @@
             }
           },
           {
-            "description": "Specifies whether this job can start when there is insufficient machine learning node capacity for it to be immediately assigned to a node.",
+            "description": "Specifies whether this job can start when there is insufficient machine\nlearning node capacity for it to be immediately assigned to a node.",
             "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-settings.html#advanced-ml-settings",
             "name": "allow_lazy_start",
             "required": false,
@@ -121758,7 +121791,7 @@
           }
         ]
       },
-      "description": "Updates certain properties of a data frame analytics job.",
+      "description": "Updates an existing data frame analytics job.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121772,7 +121805,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters.",
+          "description": "Identifier for the data frame analytics job. This identifier can contain\nlowercase alphanumeric characters (a-z and 0-9), hyphens, and\nunderscores. It must start and end with alphanumeric characters.",
           "name": "id",
           "required": true,
           "type": {
@@ -122054,8 +122087,11 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "Advanced configuration option. Specifies whether this job can open when\nthere is insufficient machine learning node capacity for it to be\nimmediately assigned to a node. If `false` and a machine learning node\nwith capacity to run the job cannot immediately be found, the open\nanomaly detection jobs API returns an error. However, this is also\nsubject to the cluster-wide `xpack.ml.max_lazy_ml_nodes` setting. If this\noption is set to `true`, the open anomaly detection jobs API does not\nreturn an error and the job waits in the opening state until sufficient\nmachine learning node capacity is available.",
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/ml-settings.html#advanced-ml-settings",
             "name": "allow_lazy_open",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -122076,7 +122112,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. The time between each periodic persistence of the model.\nThe default value is a randomized value between 3 to 4 hours, which avoids all jobs persisting at exactly the same time. The smallest allowed value is 1 hour.\nFor very large models (several GB), persistence could take 10-20 minutes, so do not set the value too low.\nIf the job is open when you make the update, you must stop the datafeed, close the job, then reopen the job and restart the datafeed for the changes to take effect.",
+            "description": "Advanced configuration option. The time between each periodic persistence\nof the model.\nThe default value is a randomized value between 3 to 4 hours, which\navoids all jobs persisting at exactly the same time. The smallest allowed\nvalue is 1 hour.\nFor very large models (several GB), persistence could take 10-20 minutes,\nso do not set the value too low.\nIf the job is open when you make the update, you must stop the datafeed,\nclose the job, then reopen the job and restart the datafeed for the\nchanges to take effect.",
             "name": "background_persist_interval",
             "required": false,
             "type": {
@@ -122088,7 +122124,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. Contains custom meta data about the job. For example, it can contain custom URL information as shown in Adding custom URLs to machine learning results.",
+            "description": "Advanced configuration option. Contains custom meta data about the job.\nFor example, it can contain custom URL information as shown in Adding\ncustom URLs to machine learning results.",
             "docId": "ml.customUrls",
             "name": "custom_settings",
             "required": false,
@@ -122145,6 +122181,8 @@
             }
           },
           {
+            "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies a period of time (in days)\nafter which only the first snapshot per day is retained. This period is\nrelative to the timestamp of the most recent snapshot for this job. Valid\nvalues range from 0 to `model_snapshot_retention_days`. For jobs created\nbefore version 7.8.0, the default value matches\n`model_snapshot_retention_days`.",
+            "docUrl": "https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots",
             "name": "daily_model_snapshot_retention_after_days",
             "required": false,
             "serverDefault": 1,
@@ -122157,7 +122195,8 @@
             }
           },
           {
-            "description": "Advanced configuration option, which affects the automatic removal of old model snapshots for this job. It specifies the maximum period of time (in days) that snapshots are retained. This period is relative to the timestamp of the most recent snapshot for this job.",
+            "description": "Advanced configuration option, which affects the automatic removal of old\nmodel snapshots for this job. It specifies the maximum period of time (in\ndays) that snapshots are retained. This period is relative to the\ntimestamp of the most recent snapshot for this job.",
+            "docUrl": "https://www.elastic.co/guide/en/machine-learning/master/ml-ad-finding-anomalies.html#ml-ad-model-snapshots",
             "name": "model_snapshot_retention_days",
             "required": false,
             "serverDefault": 10,
@@ -122170,7 +122209,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. The period over which adjustments to the score are applied, as new data is seen.",
+            "description": "Advanced configuration option. The period over which adjustments to the\nscore are applied, as new data is seen.",
             "name": "renormalization_window_days",
             "required": false,
             "type": {
@@ -122182,7 +122221,7 @@
             }
           },
           {
-            "description": "Advanced configuration option. The period of time (in days) that results are retained. Age is calculated relative to the timestamp of the latest bucket result. If this property has a non-null value, once per day at 00:30 (server time), results that are the specified number of days older than the latest bucket result are deleted from Elasticsearch. The default value is null, which means all results are retained.",
+            "description": "Advanced configuration option. The period of time (in days) that results\nare retained. Age is calculated relative to the timestamp of the latest\nbucket result. If this property has a non-null value, once per day at\n00:30 (server time), results that are the specified number of days older\nthan the latest bucket result are deleted from Elasticsearch. The default\nvalue is null, which means all results are retained.",
             "name": "results_retention_days",
             "required": false,
             "type": {
@@ -122251,7 +122290,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the job",
+          "description": "Identifier for the job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -122530,6 +122569,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "A description of the model snapshot.",
             "name": "description",
             "required": false,
             "type": {
@@ -122541,8 +122581,10 @@
             }
           },
           {
+            "description": "If `true`, this snapshot will not be deleted during automatic cleanup of\nsnapshots older than `model_snapshot_retention_days`. However, this\nsnapshot will be deleted when the job is deleted.",
             "name": "retain",
             "required": false,
+            "serverDefault": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -122567,7 +122609,7 @@
       },
       "path": [
         {
-          "description": "The ID of the job to fetch",
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -122579,7 +122621,7 @@
           }
         },
         {
-          "description": "The ID of the snapshot to update",
+          "description": "Identifier for the model snapshot.",
           "name": "snapshot_id",
           "required": true,
           "type": {
@@ -122629,7 +122671,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Upgrades a given job snapshot to the current major version.",
+      "description": "Upgrades an anomaly detection model snapshot to the latest major version.\nOver time, older snapshot formats are deprecated and removed. Anomaly\ndetection jobs support only snapshots that are from the current or previous\nmajor version.\nThis API provides a means to upgrade a snapshot to the current major version.\nThis aids in preparing the cluster for an upgrade to the next major version.\nOnly one snapshot per anomaly detection job can be upgraded at a time and the\nupgraded snapshot cannot be the current snapshot of the anomaly detection\njob.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -122669,7 +122711,7 @@
       ],
       "query": [
         {
-          "description": "When true, the API won’t respond until the upgrade is complete. Otherwise, it responds as soon as the upgrade task is assigned to a node.",
+          "description": "When true, the API won’t respond until the upgrade is complete.\nOtherwise, it responds as soon as the upgrade task is assigned to a node.",
           "name": "wait_for_completion",
           "required": false,
           "serverDefault": false,
@@ -122685,7 +122727,7 @@
           "description": "Controls the time to wait for the request to complete.",
           "name": "timeout",
           "required": false,
-          "serverDefault": "30s",
+          "serverDefault": "30m",
           "type": {
             "kind": "instance_of",
             "type": {
