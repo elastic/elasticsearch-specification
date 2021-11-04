@@ -69,7 +69,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * The time that the datafeed should begin. This value is inclusive.
-     * @sever_default an empty string
+     * @server_default an empty string
      */
     start?: Time
   }
@@ -80,11 +80,11 @@ export interface Request extends RequestBase {
      */
     end?: Time
     /**
-    * The time that the datafeed should begin. This value is inclusive.
-    * @sever_default an empty string
-    */
+     * The time that the datafeed should begin. This value is inclusive.
+     * @server_default an empty string
+     */
     start?: Time
-    /** 
+    /**
      * Controls the amount of time to wait until a datafeed starts.
      * @server_default 20s
      * */
