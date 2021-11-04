@@ -16059,7 +16059,6 @@ export interface SpecUtilsCommonQueryParameters {
   filter_path?: string | string[]
   human?: boolean
   pretty?: boolean
-  source_query_string?: string
 }
 
 export interface SpecUtilsCommonCatQueryParameters {
