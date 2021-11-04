@@ -11705,11 +11705,11 @@ export interface MlGetBucketsResponse {
 
 export interface MlGetCalendarEventsRequest extends RequestBase {
   calendar_id: Id
-  job_id?: Id
   end?: DateString
   from?: integer
-  start?: string
+  job_id?: Id
   size?: integer
+  start?: string
 }
 
 export interface MlGetCalendarEventsResponse {
