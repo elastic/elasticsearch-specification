@@ -8614,7 +8614,7 @@ export interface IndicesIndexSettings {
   'index.hidden'?: boolean | string
   auto_expand_replicas?: string
   'index.auto_expand_replicas'?: string
-  'index.merge.scheduler.max_thread_count'?: integer
+  'merge.scheduler.max_thread_count'?: integer
   'index.merge.scheduler.max_thread_count'?: integer
   'search.idle.after'?: Time
   'index.search.idle.after'?: Time
