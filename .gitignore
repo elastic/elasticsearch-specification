@@ -48,3 +48,4 @@ specification/lib
 .DS_Store
 
 artifacts
+.github/download-artifacts/package-lock.json
