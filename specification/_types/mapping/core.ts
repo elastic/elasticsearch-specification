@@ -107,6 +107,7 @@ export class DateProperty extends DocValuesPropertyBase {
   index?: boolean
   null_value?: DateString
   precision_step?: integer
+  locale?: string
   type: 'date'
 }
 

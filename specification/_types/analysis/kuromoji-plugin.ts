@@ -57,10 +57,11 @@ export enum KuromojiTokenizationMode {
 
 export class KuromojiTokenizer extends TokenizerBase {
   type: 'kuromoji_tokenizer'
-  discard_punctuation: boolean
+  discard_punctuation?: boolean
   mode: KuromojiTokenizationMode
-  nbest_cost: integer
-  nbest_examples: string
-  user_dictionary: string
-  user_dictionary_rules: string[]
+  nbest_cost?: integer
+  nbest_examples?: string
+  user_dictionary?: string
+  user_dictionary_rules?: string[]
+  discard_compound_token?: boolean
 }

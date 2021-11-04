@@ -19,6 +19,7 @@
 
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
+import { DenseVectorIndexOptions } from './DenseVectorIndexOptions'
 import { PropertyBase } from './Property'
 
 export class FlattenedProperty extends PropertyBase {
@@ -49,6 +50,9 @@ export class ObjectProperty extends CorePropertyBase {
 export class DenseVectorProperty extends PropertyBase {
   type: 'dense_vector'
   dims: integer
+  similarity?: string
+  index?: boolean
+  index_options?: DenseVectorIndexOptions
 }
 
 export class AggregateMetricDoubleProperty extends PropertyBase {

@@ -17,35 +17,28 @@
  * under the License.
  */
 
-import { VersionString } from '@_types/common'
-import { IcuNormalizationCharFilter } from './icu-plugin'
-import { KuromojiIterationMarkCharFilter } from './kuromoji-plugin'
+import { Fields } from '@_types/common'
 
-export class CharFilterBase {
-  version?: VersionString
+export class IndexSegmentSort {
+  field: Fields
+  order: SegmentSortOrder | SegmentSortOrder[]
+  mode?: SegmentSortMode
+  missing?: SegmentSortMissing
 }
 
-/** @variants internal tag='type' */
-export type CharFilter =
-  | HtmlStripCharFilter
-  | MappingCharFilter
-  | PatternReplaceCharFilter
-  | IcuNormalizationCharFilter
-  | KuromojiIterationMarkCharFilter
-
-export class HtmlStripCharFilter extends CharFilterBase {
-  type: 'html_strip'
+export enum SegmentSortOrder {
+  asc,
+  desc
 }
 
-export class MappingCharFilter extends CharFilterBase {
-  type: 'mapping'
-  mappings: string[]
-  mappings_path?: string
+export enum SegmentSortMode {
+  min,
+  max
 }
 
-export class PatternReplaceCharFilter extends CharFilterBase {
-  type: 'pattern_replace'
-  flags: string
-  pattern: string
-  replacement: string
+export enum SegmentSortMissing {
+  /** @codegen_name last */
+  '_last',
+  /** @codegen_name first */
+  '_first'
 }

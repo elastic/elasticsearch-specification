@@ -27,19 +27,27 @@ import {
   KuromojiReadingFormTokenFilter,
   KuromojiPartOfSpeechTokenFilter
 } from './kuromoji-plugin'
+import {
+  IcuCollationTokenFilter,
+  IcuFoldingTokenFilter,
+  IcuNormalizationTokenFilter,
+  IcuTokenizer,
+  IcuTransformTokenFilter
+} from './icu-plugin'
+import { PhoneticTokenFilter } from './phonetic-plugin'
 
 export class TokenFilterBase {
   version?: VersionString
 }
 
 export class CompoundWordTokenFilterBase extends TokenFilterBase {
-  hyphenation_patterns_path: string
-  max_subword_size: integer
-  min_subword_size: integer
-  min_word_size: integer
-  only_longest_match: boolean
-  word_list: string[]
-  word_list_path: string
+  hyphenation_patterns_path?: string
+  max_subword_size?: integer
+  min_subword_size?: integer
+  min_word_size?: integer
+  only_longest_match?: boolean
+  word_list?: string[]
+  word_list_path?: string
 }
 
 export class DictionaryDecompounderTokenFilter extends CompoundWordTokenFilterBase {
@@ -71,17 +79,18 @@ export class EdgeNGramTokenFilter extends TokenFilterBase {
   type: 'edge_ngram'
   max_gram: integer
   min_gram: integer
-  side: EdgeNGramSide
+  side?: EdgeNGramSide
+  preserve_original?: boolean
 }
 
 export class ShingleTokenFilter extends TokenFilterBase {
   type: 'shingle'
-  filler_token: string
-  max_shingle_size: integer
-  min_shingle_size: integer
-  output_unigrams: boolean
-  output_unigrams_if_no_shingles: boolean
-  token_separator: string
+  filler_token?: string
+  max_shingle_size?: integer | string // TODO: should be only int
+  min_shingle_size?: integer | string // TODO: should be only int
+  output_unigrams?: boolean
+  output_unigrams_if_no_shingles?: boolean
+  token_separator?: string
 }
 
 export class StopTokenFilter extends TokenFilterBase {
@@ -99,13 +108,13 @@ export enum SynonymFormat {
 
 export class SynonymGraphTokenFilter extends TokenFilterBase {
   type: 'synonym_graph'
-  expand: boolean
-  format: SynonymFormat
-  lenient: boolean
-  synonyms: string[]
-  synonyms_path: string
-  tokenizer: string
-  updateable: boolean
+  expand?: boolean
+  format?: SynonymFormat
+  lenient?: boolean
+  synonyms?: string[]
+  synonyms_path?: string
+  tokenizer?: string
+  updateable?: boolean
 }
 
 export class SynonymTokenFilter extends TokenFilterBase {
@@ -113,7 +122,7 @@ export class SynonymTokenFilter extends TokenFilterBase {
   expand?: boolean
   format?: SynonymFormat
   lenient?: boolean
-  synonyms: string[]
+  synonyms?: string[]
   synonyms_path?: string
   tokenizer?: string
   updateable?: boolean
@@ -121,37 +130,38 @@ export class SynonymTokenFilter extends TokenFilterBase {
 
 export class WordDelimiterTokenFilter extends TokenFilterBase {
   type: 'word_delimiter'
-  catenate_all: boolean
-  catenate_numbers: boolean
-  catenate_words: boolean
-  generate_number_parts: boolean
-  generate_word_parts: boolean
-  preserve_original: boolean
-  protected_words: string[]
-  protected_words_path: string
-  split_on_case_change: boolean
-  split_on_numerics: boolean
-  stem_english_possessive: boolean
-  type_table: string[]
-  type_table_path: string
+  catenate_all?: boolean
+  catenate_numbers?: boolean
+  catenate_words?: boolean
+  generate_number_parts?: boolean
+  generate_word_parts?: boolean
+  preserve_original?: boolean
+  protected_words?: string[]
+  protected_words_path?: string
+  split_on_case_change?: boolean
+  split_on_numerics?: boolean
+  stem_english_possessive?: boolean
+  type_table?: string[]
+  type_table_path?: string
 }
 
 export class WordDelimiterGraphTokenFilter extends TokenFilterBase {
   type: 'word_delimiter_graph'
-  adjust_offsets: boolean
-  catenate_all: boolean
-  catenate_numbers: boolean
-  catenate_words: boolean
-  generate_number_parts: boolean
-  generate_word_parts: boolean
-  preserve_original: boolean
-  protected_words: string[]
-  protected_words_path: string
-  split_on_case_change: boolean
-  split_on_numerics: boolean
-  stem_english_possessive: boolean
-  type_table: string[]
-  type_table_path: string
+  adjust_offsets?: boolean
+  catenate_all?: boolean
+  catenate_numbers?: boolean
+  catenate_words?: boolean
+  generate_number_parts?: boolean
+  generate_word_parts?: boolean
+  ignore_keywords?: boolean
+  preserve_original?: boolean
+  protected_words?: string[]
+  protected_words_path?: string
+  split_on_case_change?: boolean
+  split_on_numerics?: boolean
+  stem_english_possessive?: boolean
+  type_table?: string[]
+  type_table_path?: string
 }
 
 export class AsciiFoldingTokenFilter extends TokenFilterBase {
@@ -161,10 +171,10 @@ export class AsciiFoldingTokenFilter extends TokenFilterBase {
 
 export class CommonGramsTokenFilter extends TokenFilterBase {
   type: 'common_grams'
-  common_words: string[]
-  common_words_path: string
-  ignore_case: boolean
-  query_mode: boolean
+  common_words?: string[]
+  common_words_path?: string
+  ignore_case?: boolean
+  query_mode?: boolean
 }
 
 export class ConditionTokenFilter extends TokenFilterBase {
@@ -205,23 +215,23 @@ export enum KeepTypesMode {
 
 export class KeepTypesTokenFilter extends TokenFilterBase {
   type: 'keep_types'
-  mode: KeepTypesMode
-  types: string[]
+  mode?: KeepTypesMode
+  types?: string[]
 }
 
 export class KeepWordsTokenFilter extends TokenFilterBase {
   type: 'keep'
-  keep_words: string[]
-  keep_words_case: boolean
-  keep_words_path: string
+  keep_words?: string[]
+  keep_words_case?: boolean
+  keep_words_path?: string
 }
 
 export class KeywordMarkerTokenFilter extends TokenFilterBase {
   type: 'keyword_marker'
-  ignore_case: boolean
-  keywords: string[]
-  keywords_path: string
-  keywords_pattern: string
+  ignore_case?: boolean
+  keywords?: string[]
+  keywords_path?: string
+  keywords_pattern?: string
 }
 
 export class KStemTokenFilter extends TokenFilterBase {
@@ -242,7 +252,7 @@ export class LimitTokenCountTokenFilter extends TokenFilterBase {
 
 export class LowercaseTokenFilter extends TokenFilterBase {
   type: 'lowercase'
-  language: string
+  language?: string
 }
 
 export class MultiplexerTokenFilter extends TokenFilterBase {
@@ -253,8 +263,9 @@ export class MultiplexerTokenFilter extends TokenFilterBase {
 
 export class NGramTokenFilter extends TokenFilterBase {
   type: 'ngram'
-  max_gram: integer
-  min_gram: integer
+  max_gram?: integer
+  min_gram?: integer
+  preserve_original?: boolean
 }
 
 export class NoriPartOfSpeechTokenFilter extends TokenFilterBase {
@@ -299,8 +310,8 @@ export class SnowballTokenFilter extends TokenFilterBase {
 
 export class StemmerOverrideTokenFilter extends TokenFilterBase {
   type: 'stemmer_override'
-  rules: string[]
-  rules_path: string
+  rules?: string[]
+  rules_path?: string
 }
 
 export class StemmerTokenFilter extends TokenFilterBase {
@@ -319,7 +330,7 @@ export class TruncateTokenFilter extends TokenFilterBase {
 
 export class UniqueTokenFilter extends TokenFilterBase {
   type: 'unique'
-  only_on_same_position: boolean
+  only_on_same_position?: boolean
 }
 
 export class UppercaseTokenFilter extends TokenFilterBase {
@@ -370,3 +381,10 @@ export type TokenFilter =
   | KuromojiStemmerTokenFilter
   | KuromojiReadingFormTokenFilter
   | KuromojiPartOfSpeechTokenFilter
+  | IcuTokenizer
+  | IcuCollationTokenFilter
+  | IcuFoldingTokenFilter
+  | IcuNormalizationTokenFilter
+  | IcuTransformTokenFilter
+  | PhoneticTokenFilter
+  | DictionaryDecompounderTokenFilter
