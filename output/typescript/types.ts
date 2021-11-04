@@ -15557,7 +15557,7 @@ export interface WatcherStatsWatchRecordStats extends WatcherStatsWatchRecordQue
   watch_record_id: Id
 }
 
-export type WatcherStatsWatcherMetric = '_all' | 'queued_watches' | 'current_watches' | 'pending_watches'
+export type WatcherStatsWatcherMetric = '_all' | 'all' | 'queued_watches' | 'current_watches' | 'pending_watches'
 
 export interface WatcherStatsWatcherNodeStats {
   current_watches?: WatcherStatsWatchRecordStats[]
