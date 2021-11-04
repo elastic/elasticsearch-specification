@@ -49,7 +49,7 @@ spec-dangling-types:	## Generate the dangling types rreport
 	@npm run generate-dangling --prefix compiler
 
 setup-env:	## Install dependencies for contrib target
-	clean-dep
+	@make clean-dep
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
 
