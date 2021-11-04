@@ -111844,40 +111844,40 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
         },
         {
           "name": "model_bytes_exceeded",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
         },
         {
           "name": "model_bytes_memory_limit",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }
         },
         {
           "name": "peak_model_bytes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "ByteSize",
               "namespace": "_types"
             }
           }

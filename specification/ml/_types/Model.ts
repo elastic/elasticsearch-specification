@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id, VersionString } from '@_types/common'
+import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
@@ -49,10 +49,10 @@ export class ModelSizeStats {
   job_id: Id
   log_time: Time
   memory_status: MemoryStatus
-  model_bytes: long
-  model_bytes_exceeded: long
-  model_bytes_memory_limit: long
-  peak_model_bytes: long
+  model_bytes: ByteSize
+  model_bytes_exceeded?: ByteSize
+  model_bytes_memory_limit?: ByteSize
+  peak_model_bytes?: ByteSize
   assignment_memory_basis?: string
   result_type: string
   total_by_field_count: long
