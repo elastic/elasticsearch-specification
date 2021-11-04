@@ -290,7 +290,8 @@ export enum WaitForStatus {
 
 // Additional properties are the meta fields
 export class InlineGet<TDocument>
-  implements AdditionalProperties<string, UserDefinedValue> {
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   fields?: Dictionary<string, UserDefinedValue>
   found: boolean
   _seq_no?: SequenceNumber
