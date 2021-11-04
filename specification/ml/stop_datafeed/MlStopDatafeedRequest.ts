@@ -63,23 +63,15 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Specifies what to do when the request:
-     *
-     * * Contains wildcard expressions and there are no datafeeds that match.
-     * * Contains the `_all` string or no identifiers and there are no matches.
-     * * Contains wildcard expressions and there are only partial matches.
-     *
-     * If `true`, the API returns an empty datafeeds array when there are no matches and the subset of results when
-     * there are partial matches. If `false`, the API returns a 404 status code when there are no matches or only
-     * partial matches.
+     * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true */
     allow_no_match?: boolean
     /**
-     * If `true`, the datafeed is stopped forcefully.
+     * Refer to the description for the `force` query parameter.
      * @server_default false */
     force?: boolean
     /**
-     * Specifies the amount of time to wait until a datafeed stops.
+     * Refer to the description for the `timeout` query parameter.
      *  @server_default 20s */
     timeout?: Time
   }
