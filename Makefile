@@ -52,6 +52,12 @@ setup-env:	## Install dependencies for contrib target
 	@npm install --prefix compiler
 	@npm install --prefix typescript-generator
 
+clean-dep:	## Clean npm dependencies
+	@rm -rf compiler/node_modules
+	@rm compiler/package-lock.json
+	@rm -rf typescript-generator/node_modules
+	@rm typescript-generator/package-lock.json
+
 contrib: | spec-generate license-check spec-format-fix 	## Pre contribution target
 
 help:  ## Display help
