@@ -35937,15 +35937,15 @@
       "kind": "enum",
       "members": [
         {
-          "codegenName": "nano_seconds",
+          "codegenName": "nanoseconds",
           "name": "nanos"
         },
         {
-          "codegenName": "micro_seconds",
+          "codegenName": "microseconds",
           "name": "micros"
         },
         {
-          "codegenName": "milli_seconds",
+          "codegenName": "milliseconds",
           "name": "ms"
         },
         {
