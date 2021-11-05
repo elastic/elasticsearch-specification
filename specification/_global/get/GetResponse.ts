@@ -36,6 +36,7 @@ export class Response<TDocument> {
     _id: Id
     _primary_term?: long
     _routing?: string
+    /** @codegen_name sequence_number */
     _seq_no?: SequenceNumber
     _source?: TDocument
     /** @deprecated 7.0.0 */
