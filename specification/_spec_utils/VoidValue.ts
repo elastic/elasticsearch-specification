@@ -18,6 +18,11 @@
  */
 
 /**
- * The absence of any type. This is commonly used in APIs that returns an empty body.
+ * The absence of any type. This is commonly used in APIs that don't return a body.
+ *
+ * Although "void" is generally used for the unit type that has only one value, this is to be interpreted as
+ * the bottom type that has no value at all. Most languages have a unit type, but few have a bottom type.
+ *
+ * See https://en.m.wikipedia.org/wiki/Unit_type and https://en.m.wikipedia.org/wiki/Bottom_type
  */
 export type Void = void
