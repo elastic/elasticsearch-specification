@@ -36410,6 +36410,7 @@
           }
         },
         {
+          "codegenName": "sequence_number",
           "name": "_seq_no",
           "required": true,
           "type": {
