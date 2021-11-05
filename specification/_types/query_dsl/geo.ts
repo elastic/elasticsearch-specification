@@ -50,8 +50,7 @@ export class BoundingBox {
 
 export class GeoBoundingBoxQuery
   extends QueryBase
-  implements AdditionalProperty<Field, BoundingBox>
-{
+  implements AdditionalProperty<Field, BoundingBox> {
   /** @deprecated 7.14.0 */
   type?: GeoExecution
   /** @server_default 'strict' */
@@ -66,8 +65,7 @@ export enum GeoExecution {
 
 export class GeoDistanceQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoLocation>
-{
+  implements AdditionalProperty<Field, GeoLocation> {
   distance?: Distance
   /** @server_default 'arc' */
   distance_type?: GeoDistanceType
@@ -82,8 +80,7 @@ export class GeoPolygonPoints {
 /** @deprecated 7.12.0 Use geo-shape instead. */
 export class GeoPolygonQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoPolygonPoints>
-{
+  implements AdditionalProperty<Field, GeoPolygonPoints> {
   /** @server_default 'strict' */
   validation_method?: GeoValidationMethod
   ignore_unmapped?: boolean
@@ -104,8 +101,7 @@ export class GeoShapeFieldQuery {
 // holding also the query base fields (boost and _name)
 export class GeoShapeQuery
   extends QueryBase
-  implements AdditionalProperty<Field, GeoShapeFieldQuery>
-{
+  implements AdditionalProperty<Field, GeoShapeFieldQuery> {
   ignore_unmapped?: boolean
 }
 
