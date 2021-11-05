@@ -56,6 +56,14 @@ export enum GeoDistanceType {
 /** A GeoJson shape, that can also use Elasticsearch's `envelope` extension. */
 export type GeoShape = UserDefinedValue
 
+/** A GeoJson GeoLine. */
+export class GeoLine {
+  /** Always `"LineString"` */
+  type: string
+  /** Array of `[lon, lat]` coordinates */
+  coordinates: Array<Array<double>>
+}
+
 export enum GeoShapeRelation {
   intersects = 0,
   disjoint = 1,
@@ -65,6 +73,10 @@ export enum GeoShapeRelation {
 
 export type GeoTilePrecision = number
 export type GeoHashPrecision = number
+export type GeoHash = string
+
+/** A map tile reference, represented as `{zoom}/{x}/{y}` */
+export type GeoTile = string
 
 export class LatLon {
   lat: double

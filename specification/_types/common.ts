@@ -19,8 +19,11 @@
 
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { integer, long } from './Numeric'
+import { double, integer, long } from './Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
+
+/** A single value */
+export type ScalarValue = long | double | string | boolean
 
 export class UrlParameter {}
 

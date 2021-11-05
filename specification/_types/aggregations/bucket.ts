@@ -40,9 +40,12 @@ import {
   MissingOrder
 } from './AggregationContainer'
 
-export class BucketAggregationBase extends Aggregation {
-  aggregations?: Dictionary<string, AggregationContainer>
-}
+/**
+ * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
+ */
+// Note: since sub-aggregations exist only for bucket aggregations, this empty base class is a placeholder for client
+// code generators that would want to lift the 'AggregationContainer.aggregations' container property here.
+export class BucketAggregationBase extends Aggregation {}
 
 export class AdjacencyMatrixAggregation extends BucketAggregationBase {
   filters?: Dictionary<string, QueryContainer>
@@ -80,11 +83,6 @@ export class CompositeAggregation extends BucketAggregationBase {
 }
 
 export class CompositeAggregationSource {
-  // field: Field;
-  // missing_bucket: boolean;
-  // name: string;
-  // order: SortOrder;
-  // source_type: string;
   terms?: TermsAggregation
   histogram?: HistogramAggregation
   date_histogram?: DateHistogramAggregation

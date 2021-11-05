@@ -31214,6 +31214,21 @@
       ]
     },
     {
+      "description": "The absence of any type. This is commonly used in APIs that don't return a body.\n\nAlthough \"void\" is generally used for the unit type that has only one value, this is to be interpreted as\nthe bottom type that has no value at all. Most languages have a unit type, but few have a bottom type.\n\nSee https://en.m.wikipedia.org/wiki/Unit_type and https://en.m.wikipedia.org/wiki/Bottom_type",
+      "kind": "type_alias",
+      "name": {
+        "name": "Void",
+        "namespace": "_spec_utils"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "void",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "AcknowledgedResponseBase",
@@ -32510,6 +32525,20 @@
     {
       "kind": "type_alias",
       "name": {
+        "name": "GeoHash",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
         "name": "GeoHashPrecision",
         "namespace": "_types"
       },
@@ -32520,6 +32549,46 @@
           "namespace": "internal"
         }
       }
+    },
+    {
+      "description": "A GeoJson GeoLine.",
+      "kind": "interface",
+      "name": {
+        "name": "GeoLine",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Always `\"LineString\"`",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Array of `[lon, lat]` coordinates",
+          "name": "coordinates",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     {
       "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
@@ -32551,6 +32620,21 @@
       "name": {
         "name": "GeoShapeRelation",
         "namespace": "_types"
+      }
+    },
+    {
+      "description": "A map tile reference, represented as `{zoom}/{x}/{y}`",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoTile",
+        "namespace": "_types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "internal"
+        }
       }
     },
     {
@@ -34738,6 +34822,47 @@
       }
     },
     {
+      "description": "A single value",
+      "kind": "type_alias",
+      "name": {
+        "name": "ScalarValue",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "Script",
@@ -36630,6 +36755,30 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AdjacencyMatrixBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AdjacencyMatrixAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "adjacency_matrix"
+    },
+    {
+      "inherits": {
         "type": {
           "name": "BucketAggregationBase",
           "namespace": "_types.aggregations"
@@ -36666,6 +36815,23 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AdjacencyMatrixBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": []
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "Aggregate",
@@ -36676,7 +36842,168 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SingleBucketAggregate",
+              "name": "CardinalityAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HdrPercentilesAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HdrPercentileRanksAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDigestPercentilesAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDigestPercentileRanksAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PercentilesBucketAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MedianAbsoluteDeviationAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MinAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MaxAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SumAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "AvgAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WeightedAvgAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ValueCountAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleValueAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DerivativeAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BucketMetricValueAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StatsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StatsBucketAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExtendedStatsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExtendedStatsBucketAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoBoundsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoCentroidAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramAggregate",
               "namespace": "_types.aggregations"
             }
           },
@@ -36690,61 +37017,252 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "VariableWidthHistogramAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DoubleTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnmappedTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongRareTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringRareTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UnmappedRareTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MissingAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ReverseNestedAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FilterAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SamplerAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHashGridAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTileGridAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RangeAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateRangeAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoDistanceAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpRangeAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "FiltersAggregate",
               "namespace": "_types.aggregations"
             }
           },
           {
-            "generics": [
-              {
-                "kind": "user_defined_value"
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "SignificantTermsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "generics": [
-              {
-                "kind": "user_defined_value"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "TermsAggregate",
+              "name": "AdjacencyMatrixAggregate",
               "namespace": "_types.aggregations"
             }
           },
           {
             "kind": "instance_of",
             "type": {
-              "name": "BucketAggregate",
+              "name": "SignificantLongTermsAggregate",
               "namespace": "_types.aggregations"
             }
           },
           {
             "kind": "instance_of",
             "type": {
-              "name": "CompositeBucketAggregate",
+              "name": "SignificantStringTermsAggregate",
               "namespace": "_types.aggregations"
             }
           },
           {
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Bucket",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            ],
             "kind": "instance_of",
             "type": {
-              "name": "MultiBucketAggregate",
+              "name": "UnmappedSignificantTermsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompositeAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptedMetricAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TopHitsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringStatsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BoxPlotAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TopMetricsAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TTestAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RateAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CumulativeCardinalityAggregate",
               "namespace": "_types.aggregations"
             }
           },
@@ -36758,19 +37276,22 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "KeyedValueAggregate",
+              "name": "ChildrenAggregate",
               "namespace": "_types.aggregations"
             }
           },
           {
             "kind": "instance_of",
             "type": {
-              "name": "MetricAggregate",
+              "name": "GeoLineAggregate",
               "namespace": "_types.aggregations"
             }
           }
         ],
         "kind": "union_of"
+      },
+      "variants": {
+        "kind": "external_tag"
       }
     },
     {
@@ -36846,8 +37367,12 @@
       },
       "properties": [
         {
+          "aliases": [
+            "aggs"
+          ],
           "containerProperty": true,
-          "name": "aggs",
+          "description": "Sub-aggregations for this aggregation. Only applies to bucket aggregations.",
+          "name": "aggregations",
           "required": false,
           "type": {
             "key": {
@@ -36895,28 +37420,6 @@
             "type": {
               "name": "AdjacencyMatrixAggregation",
               "namespace": "_types.aggregations"
-            }
-          }
-        },
-        {
-          "name": "aggregations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
             }
           }
         },
@@ -37751,27 +38254,72 @@
       ]
     },
     {
-      "inherits": {
-        "generics": [
-          {
-            "generics": [
+      "kind": "interface",
+      "name": {
+        "name": "ArrayPercentilesItem",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "items": [
               {
                 "kind": "instance_of",
                 "type": {
-                  "name": "long",
+                  "name": "double",
                   "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
                 }
               }
             ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "value_as_string",
+          "required": false,
+          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "KeyedBucket",
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramBucket",
               "namespace": "_types.aggregations"
             }
           }
         ],
         "type": {
-          "name": "MultiBucketAggregate",
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
@@ -37792,7 +38340,8 @@
             }
           }
         }
-      ]
+      ],
+      "variantName": "auto_date_histogram"
     },
     {
       "inherits": {
@@ -37946,6 +38495,21 @@
     {
       "inherits": {
         "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "AvgAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "avg"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "AggregateBase",
           "namespace": "_types.aggregations"
         }
@@ -38010,8 +38574,108 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "name": "lower",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "upper",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "q1_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "q2_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "q3_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lower_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "upper_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
-      ]
+      ],
+      "variantName": "box_plot"
     },
     {
       "inherits": {
@@ -38040,188 +38704,7 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "Bucket",
-        "namespace": "_types.aggregations"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "CompositeBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateHistogramBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "FiltersBucketItem",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "IpRangeBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "RangeBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "generics": [
-              {
-                "kind": "user_defined_value"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "RareTermsBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "generics": [
-              {
-                "kind": "user_defined_value"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "SignificantTermsBucket",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "generics": [
-              {
-                "kind": "user_defined_value"
-              }
-            ],
-            "kind": "instance_of",
-            "type": {
-              "name": "KeyedBucket",
-              "namespace": "_types.aggregations"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "AggregateBase",
-          "namespace": "_types.aggregations"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "BucketAggregate",
-        "namespace": "_types.aggregations"
-      },
-      "properties": [
-        {
-          "name": "after_key",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
-          "name": "bg_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "doc_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "doc_count_error_upper_bound",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "sum_other_doc_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "interval",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateMathTime",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "items",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Bucket",
-              "namespace": "_types.aggregations"
-            }
-          }
-        }
-      ]
-    },
-    {
+      "description": "Base type for bucket aggregations. These aggregations also accept sub-aggregations.",
       "inherits": {
         "type": {
           "name": "Aggregation",
@@ -38233,30 +38716,37 @@
         "name": "BucketAggregationBase",
         "namespace": "_types.aggregations"
       },
+      "properties": []
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "BucketMetricValueAggregate",
+        "namespace": "_types.aggregations"
+      },
       "properties": [
         {
-          "name": "aggregations",
-          "required": false,
+          "name": "keys",
+          "required": true,
           "type": {
-            "key": {
+            "kind": "array_of",
+            "value": {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregationContainer",
-                "namespace": "_types.aggregations"
-              }
             }
           }
         }
-      ]
+      ],
+      "variantName": "bucket_metric_value"
     },
     {
       "inherits": {
@@ -38370,6 +38860,80 @@
       ]
     },
     {
+      "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
+      "generics": [
+        {
+          "name": "TBucket",
+          "namespace": "_types.aggregations"
+        }
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "Buckets",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TBucket",
+                "namespace": "_types.aggregations"
+              }
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TBucket",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CardinalityAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "variantName": "cardinality"
+    },
+    {
       "inherits": {
         "type": {
           "name": "MetricAggregationBase",
@@ -38436,6 +39000,47 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChildrenAggregateBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ChildrenAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "children"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ChildrenAggregateBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": []
     },
     {
       "inherits": {
@@ -38532,6 +39137,49 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompositeBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CompositeAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "after_key",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "variantName": "composite"
     },
     {
       "inherits": {
@@ -38682,68 +39330,20 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "CompositeBucket",
-        "namespace": "_types.aggregations"
-      },
-      "properties": []
-    },
-    {
       "inherits": {
-        "generics": [
-          {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        ],
         "type": {
-          "name": "MultiBucketAggregate",
+          "name": "MultiBucketBase",
           "namespace": "_types.aggregations"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "CompositeBucketAggregate",
+        "name": "CompositeBucket",
         "namespace": "_types.aggregations"
       },
       "properties": [
         {
-          "name": "after_key",
+          "name": "key",
           "required": true,
           "type": {
             "key": {
@@ -38761,6 +39361,45 @@
           }
         }
       ]
+    },
+    {
+      "description": "Result of the `cumulative_cardinality` aggregation",
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "CumulativeCardinalityAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "value_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "variantName": "simple_long_value"
     },
     {
       "inherits": {
@@ -38789,6 +39428,30 @@
         "namespace": "_types.aggregations"
       },
       "properties": []
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateHistogramBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateHistogramAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "date_histogram"
     },
     {
       "inherits": {
@@ -39059,36 +39722,41 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
         }
-      ],
+      },
       "kind": "interface",
       "name": {
         "name": "DateHistogramBucket",
         "namespace": "_types.aggregations"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EpochMillis",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -39122,6 +39790,22 @@
         "name": "DateInterval",
         "namespace": "_types.aggregations"
       }
+    },
+    {
+      "description": "Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`\nin `buckets` are milliseconds since the Epoch, represented as a floating point number.",
+      "inherits": {
+        "type": {
+          "name": "RangeAggregate",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DateRangeAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "date_range"
     },
     {
       "inherits": {
@@ -39309,6 +39993,44 @@
     {
       "inherits": {
         "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DerivativeAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "normalized_value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "normalized_value_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "variantName": "derivative"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "PipelineAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -39391,6 +40113,71 @@
       ]
     },
     {
+      "description": "Result of a `terms` aggregation when the field is some kind of decimal number like a float, double, or distance.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DoubleTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "TermsAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DoubleTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "dterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "TermsBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DoubleTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "EwmaModelSettings",
@@ -39461,8 +40248,123 @@
       },
       "properties": [
         {
-          "name": "std_deviation_bounds",
+          "name": "sum_of_squares",
           "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "variance",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "variance_population",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "variance_sampling",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "std_deviation",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "std_deviation_bounds",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39472,83 +40374,73 @@
           }
         },
         {
-          "name": "sum_of_squares",
+          "name": "sum_of_squares_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "variance",
+          "name": "variance_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "variance_population",
+          "name": "variance_population_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "variance_sampling",
+          "name": "variance_sampling_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "std_deviation",
+          "name": "std_deviation_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "std_deviation_population",
+          "name": "std_deviation_bounds_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "std_deviation_sampling",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "StandardDeviationBoundsAsString",
+              "namespace": "_types.aggregations"
             }
           }
         }
-      ]
+      ],
+      "variantName": "extended_stats"
     },
     {
       "inherits": {
@@ -39579,6 +40471,21 @@
     {
       "inherits": {
         "type": {
+          "name": "ExtendedStatsAggregate",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ExtendedStatsBucketAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "extended_stats_bucket"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "PipelineAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -39605,7 +40512,31 @@
     {
       "inherits": {
         "type": {
-          "name": "AggregateBase",
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "FilterAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "filter"
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FiltersBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
@@ -39614,45 +40545,8 @@
         "name": "FiltersAggregate",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "buckets",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "FiltersBucketItem",
-                    "namespace": "_types.aggregations"
-                  }
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "FiltersBucketItem",
-                    "namespace": "_types.aggregations"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        }
-      ]
+      "properties": [],
+      "variantName": "filters"
     },
     {
       "inherits": {
@@ -39743,48 +40637,18 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
         }
-      ],
+      },
       "kind": "interface",
       "name": {
-        "name": "FiltersBucketItem",
+        "name": "FiltersBucket",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "doc_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "properties": []
     },
     {
       "inherits": {
@@ -39908,7 +40772,8 @@
             }
           }
         }
-      ]
+      ],
+      "variantName": "geo_bounds"
     },
     {
       "inherits": {
@@ -39962,7 +40827,7 @@
         },
         {
           "name": "location",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39971,7 +40836,8 @@
             }
           }
         }
-      ]
+      ],
+      "variantName": "geo_centroid"
     },
     {
       "inherits": {
@@ -40009,6 +40875,22 @@
           }
         }
       ]
+    },
+    {
+      "description": "Result of a `geo_distance` aggregation. The unit for `from` and `to` is meters by default.",
+      "inherits": {
+        "type": {
+          "name": "RangeAggregate",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoDistanceAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "geo_distance"
     },
     {
       "inherits": {
@@ -40097,6 +40979,30 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHashGridBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoHashGridAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "geohash_grid"
+    },
+    {
+      "inherits": {
         "type": {
           "name": "BucketAggregationBase",
           "namespace": "_types.aggregations"
@@ -40166,6 +41072,35 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoHashGridBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHash",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "inherits": {
         "type": {
           "name": "AggregateBase",
@@ -40182,11 +41117,8 @@
           "name": "type",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
+            "kind": "literal_value",
+            "value": "Feature"
           }
         },
         {
@@ -40195,23 +41127,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "LineStringGeoShape",
-              "namespace": "_types.aggregations"
-            }
-          }
-        },
-        {
-          "name": "properties",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLineProperties",
-              "namespace": "_types.aggregations"
+              "name": "GeoLine",
+              "namespace": "_types"
             }
           }
         }
-      ]
+      ],
+      "variantName": "geo_line"
     },
     {
       "kind": "interface",
@@ -40300,40 +41222,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "GeoLineProperties",
-        "namespace": "_types.aggregations"
-      },
-      "properties": [
-        {
-          "name": "complete",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "sort_values",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "GeoLineSort",
         "namespace": "_types.aggregations"
       },
@@ -40350,6 +41238,30 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTileGridBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoTileGridAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "geotile_grid"
     },
     {
       "inherits": {
@@ -40422,6 +41334,50 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GeoTileGridBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoTile",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "GlobalAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "global"
+    },
+    {
       "inherits": {
         "type": {
           "name": "BucketAggregationBase",
@@ -40476,40 +41432,24 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "PercentilesAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "HdrPercentileItem",
+        "name": "HdrPercentileRanksAggregate",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "key",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
+      "properties": [],
+      "variantName": "hdr_percentile_ranks"
     },
     {
       "inherits": {
         "type": {
-          "name": "AggregateBase",
+          "name": "PercentilesAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
@@ -40518,22 +41458,32 @@
         "name": "HdrPercentilesAggregate",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "values",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "HdrPercentileItem",
-                "namespace": "_types.aggregations"
-              }
+      "properties": [],
+      "variantName": "hdr_percentiles"
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HistogramBucket",
+              "namespace": "_types.aggregations"
             }
           }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
         }
-      ]
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HistogramAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "histogram"
     },
     {
       "inherits": {
@@ -40684,6 +41634,46 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HistogramBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
             }
           }
         }
@@ -40844,6 +41834,95 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "user_defined_value"
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "InferenceAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "value",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScalarValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "feature_importance",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceFeatureImportance",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "top_classes",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceTopClassEntry",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        },
+        {
+          "name": "warning",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "variantName": "inference"
+    },
+    {
       "inherits": {
         "type": {
           "name": "PipelineAggregationBase",
@@ -40883,6 +41962,37 @@
     {
       "kind": "interface",
       "name": {
+        "name": "InferenceClassImportance",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "importance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "InferenceConfigContainer",
         "namespace": "_types.aggregations"
       },
@@ -40912,6 +42022,117 @@
           }
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceFeatureImportance",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "feature_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "importance",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "classes",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceClassImportance",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceTopClassEntry",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "class_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScalarValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "class_probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "class_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "IpRangeBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "IpRangeAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "ip_range"
     },
     {
       "inherits": {
@@ -40999,102 +42220,32 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
         }
-      ],
+      },
       "kind": "interface",
       "name": {
         "name": "IpRangeBucket",
         "namespace": "_types.aggregations"
       },
-      "properties": []
-    },
-    {
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_types.aggregations"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "KeyedBucket",
-        "namespace": "_types.aggregations"
-      },
       "properties": [
         {
-          "name": "doc_count",
-          "required": true,
+          "name": "from",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "key",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TKey",
-              "namespace": "_types.aggregations"
-            }
-          }
-        },
-        {
-          "name": "key_as_string",
-          "required": true,
+          "name": "to",
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -41106,52 +42257,174 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "ValueAggregate",
-          "namespace": "_types.aggregations"
-        }
-      },
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
-        "name": "KeyedValueAggregate",
+        "name": "KeyedPercentiles",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "keys",
-          "required": true,
+      "type": {
+        "key": {
+          "kind": "instance_of",
           "type": {
-            "kind": "array_of",
-            "value": {
+            "name": "string",
+            "namespace": "internal"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": false,
+        "value": {
+          "items": [
+            {
               "kind": "instance_of",
               "type": {
                 "name": "string",
                 "namespace": "internal"
               }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "null",
+                "namespace": "internal"
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
+    },
+    {
+      "description": "Result of the `rare_terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongRareTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LongRareTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "lrareterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LongRareTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
       ]
     },
     {
+      "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LongTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "TermsAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
       "kind": "interface",
       "name": {
-        "name": "LineStringGeoShape",
+        "name": "LongTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "lterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "TermsBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LongTermsBucket",
         "namespace": "_types.aggregations"
       },
       "properties": [
         {
-          "name": "coordinates",
+          "name": "key",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "GeoCoordinate",
-                "namespace": "_types.query_dsl"
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -41219,116 +42492,32 @@
       },
       "properties": [
         {
-          "name": "correlation",
+          "name": "doc_count",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "fields",
+          "required": true,
+          "type": {
+            "kind": "array_of",
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "double",
-                "namespace": "_types"
+                "name": "MatrixStatsFields",
+                "namespace": "_types.aggregations"
               }
-            }
-          }
-        },
-        {
-          "name": "covariance",
-          "required": true,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "name": "count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "kurtosis",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "mean",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "skewness",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "variance",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
-      ]
+      ],
+      "variantName": "matrix_stats"
     },
     {
       "inherits": {
@@ -41351,6 +42540,125 @@
             "type": {
               "name": "MatrixStatsMode",
               "namespace": "_types.aggregations"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MatrixStatsFields",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "mean",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "variance",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "skewness",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "kurtosis",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "covariance",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "correlation",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -41383,6 +42691,21 @@
     {
       "inherits": {
         "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MaxAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "max"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "FormatMetricAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -41411,6 +42734,21 @@
     {
       "inherits": {
         "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MedianAbsoluteDeviationAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "median_absolute_deviation"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "FormatMetricAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -41433,116 +42771,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "MetricAggregate",
-        "namespace": "_types.aggregations"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ValueAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "BoxPlotAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoBoundsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoCentroidAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLineAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "PercentilesAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptedMetricAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StatsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StringStatsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TopHitsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TopMetricsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ExtendedStatsAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDigestPercentilesAggregate",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "HdrPercentilesAggregate",
-              "namespace": "_types.aggregations"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
     },
     {
       "kind": "interface",
@@ -41585,6 +42813,21 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MinAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "min"
     },
     {
       "inherits": {
@@ -41680,6 +42923,21 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MissingAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "missing"
     },
     {
       "inherits": {
@@ -41974,7 +43232,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "MultiBucketAggregate",
+        "name": "MultiBucketAggregateBase",
         "namespace": "_types.aggregations"
       },
       "properties": [
@@ -41982,13 +43240,67 @@
           "name": "buckets",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "TBucket",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "Buckets",
+              "namespace": "_types.aggregations"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
               "kind": "instance_of",
               "type": {
-                "name": "TBucket",
+                "name": "AggregateName",
+                "namespace": "_types"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Aggregate",
                 "namespace": "_types.aggregations"
               }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "description": "Base type for multi-bucket aggregation results that can hold sub-aggregations results.",
+      "kind": "interface",
+      "name": {
+        "name": "MultiBucketBase",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "doc_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -42016,6 +43328,30 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "MultiTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "TermsAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "multi_terms"
+    },
+    {
+      "inherits": {
         "type": {
           "name": "BucketAggregationBase",
           "namespace": "_types.aggregations"
@@ -42038,6 +43374,79 @@
                 "name": "MultiTermLookup",
                 "namespace": "_types.aggregations"
               }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "MultiTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "long",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "double",
+                    "namespace": "_types"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "doc_count_error_upper_bound",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
             }
           }
         }
@@ -42073,6 +43482,21 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "NestedAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "nested"
     },
     {
       "inherits": {
@@ -42189,37 +43613,6 @@
       "properties": []
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "PercentileItem",
-        "namespace": "_types.aggregations"
-      },
-      "properties": [
-        {
-          "name": "percentile",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "FormatMetricAggregationBase",
@@ -42290,22 +43683,34 @@
       },
       "kind": "interface",
       "name": {
-        "name": "PercentilesAggregate",
+        "name": "PercentilesAggregateBase",
         "namespace": "_types.aggregations"
       },
       "properties": [
         {
-          "name": "items",
+          "name": "values",
           "required": true,
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PercentileItem",
-                "namespace": "_types.aggregations"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KeyedPercentiles",
+                  "namespace": "_types.aggregations"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "ArrayPercentilesItem",
+                    "namespace": "_types.aggregations"
+                  }
+                }
               }
-            }
+            ],
+            "kind": "union_of"
           }
         }
       ]
@@ -42371,6 +43776,21 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PercentilesAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PercentilesBucketAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "percentiles_bucket"
     },
     {
       "inherits": {
@@ -42484,6 +43904,30 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "RangeBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RangeAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "range"
+    },
+    {
+      "inherits": {
         "type": {
           "name": "BucketAggregationBase",
           "namespace": "_types.aggregations"
@@ -42559,36 +44003,63 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
         }
-      ],
+      },
       "kind": "interface",
       "name": {
         "name": "RangeBucket",
         "namespace": "_types.aggregations"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "from",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "to",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "from_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "to_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -42720,45 +44191,42 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "behaviors": [
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RateAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
         {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
+          "name": "value",
+          "required": true,
           "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "value_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         }
       ],
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_types.aggregations"
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "RareTermsBucket",
-        "namespace": "_types.aggregations"
-      },
-      "properties": []
+      "variantName": "rate"
     },
     {
       "inherits": {
@@ -42849,6 +44317,21 @@
     {
       "inherits": {
         "type": {
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ReverseNestedAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "reverse_nested"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "BucketAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -42871,6 +44354,21 @@
           }
         }
       ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SingleBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SamplerAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "sampler"
     },
     {
       "inherits": {
@@ -42956,7 +44454,8 @@
             "kind": "user_defined_value"
           }
         }
-      ]
+      ],
+      "variantName": "scripted_metric"
     },
     {
       "inherits": {
@@ -43062,35 +44561,47 @@
       ]
     },
     {
-      "generics": [
-        {
-          "name": "TKey",
-          "namespace": "_types.aggregations"
-        }
-      ],
       "inherits": {
         "generics": [
           {
             "kind": "instance_of",
             "type": {
-              "name": "TKey",
+              "name": "SignificantLongTermsBucket",
               "namespace": "_types.aggregations"
             }
           }
         ],
         "type": {
-          "name": "MultiBucketAggregate",
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "SignificantTermsAggregate",
+        "name": "SignificantLongTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "siglterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "SignificantTermsBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SignificantLongTermsBucket",
         "namespace": "_types.aggregations"
       },
       "properties": [
         {
-          "name": "bg_count",
+          "name": "key",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -43101,13 +44612,66 @@
           }
         },
         {
-          "name": "doc_count",
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SignificantStringTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SignificantStringTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "sigsterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "SignificantTermsBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SignificantStringTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -43316,42 +44880,41 @@
       "attachedBehaviors": [
         "AdditionalProperties"
       ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "generics": [
-        {
-          "name": "TKey",
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
           "namespace": "_types.aggregations"
         }
-      ],
+      },
       "kind": "interface",
       "name": {
-        "name": "SignificantTermsBucket",
+        "name": "SignificantTermsBucketBase",
         "namespace": "_types.aggregations"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bg_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -43575,33 +45138,21 @@
       ]
     },
     {
-      "attachedBehaviors": [
-        "AdditionalProperties"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "AggregateName",
-                "namespace": "_types"
-              }
-            },
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "Aggregate",
-                "namespace": "_types.aggregations"
-              }
-            }
-          ],
-          "type": {
-            "name": "AdditionalProperties",
-            "namespace": "_spec_utils"
-          }
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
         }
-      ],
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SimpleValueAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "simple_value"
+    },
+    {
       "inherits": {
         "type": {
           "name": "AggregateBase",
@@ -43610,7 +45161,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "SingleBucketAggregate",
+        "name": "SingleBucketAggregateBase",
         "namespace": "_types.aggregations"
       },
       "properties": [
@@ -43620,8 +45171,58 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "long",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SingleMetricAggregateBase",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The metric value. A missing value generally means that there was no data to aggregate,\nunless specified otherwise.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "value_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -43635,74 +45236,222 @@
       },
       "properties": [
         {
-          "name": "lower",
-          "required": false,
+          "name": "upper",
+          "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
-          "name": "upper",
-          "required": false,
+          "name": "lower",
+          "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "upper_population",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "lower_population",
-          "required": false,
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "upper_sampling",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "lower_sampling",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "StandardDeviationBoundsAsString",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "upper",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lower",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
           "name": "upper_population",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "lower_sampling",
-          "required": false,
+          "name": "lower_population",
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
           "name": "upper_sampling",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "lower_sampling",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
       ]
     },
     {
+      "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
       "inherits": {
         "type": {
           "name": "AggregateBase",
@@ -43721,9 +45470,78 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
+              "name": "long",
               "namespace": "_types"
             }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "avg",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
@@ -43738,39 +45556,51 @@
           }
         },
         {
-          "name": "avg",
+          "name": "min_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "max",
+          "name": "max_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
             }
           }
         },
         {
-          "name": "min",
+          "name": "avg_as_string",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "sum_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
-      ]
+      ],
+      "variantName": "stats"
     },
     {
       "inherits": {
@@ -43789,6 +45619,21 @@
     {
       "inherits": {
         "type": {
+          "name": "StatsAggregate",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StatsBucketAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "stats_bucket"
+    },
+    {
+      "inherits": {
+        "type": {
           "name": "PipelineAggregationBase",
           "namespace": "_types.aggregations"
         }
@@ -43799,6 +45644,60 @@
         "namespace": "_types.aggregations"
       },
       "properties": []
+    },
+    {
+      "description": "Result of the `rare_terms` aggregation when the field is a string.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringRareTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StringRareTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "srareterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StringRareTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "inherits": {
@@ -43828,69 +45727,152 @@
           "name": "min_length",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "max_length",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "avg_length",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "entropy",
           "required": true,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         },
         {
           "name": "distribution",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
               }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "min_length_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_length_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "avg_length_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
-      ]
+      ],
+      "variantName": "string_stats"
     },
     {
       "inherits": {
@@ -43917,6 +45899,76 @@
           }
         }
       ]
+    },
+    {
+      "description": "Result of a `terms` aggregation when the field is a string.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "StringTermsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "TermsAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StringTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "sterms"
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "TermsBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StringTermsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Sum aggregation result. `value` is always present and is zero if there were no values to process.",
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SumAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "sum"
     },
     {
       "inherits": {
@@ -43969,7 +46021,22 @@
     {
       "inherits": {
         "type": {
-          "name": "AggregateBase",
+          "name": "PercentilesAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TDigestPercentileRanksAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "tdigest_percentile_ranks"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "PercentilesAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
@@ -43978,30 +46045,58 @@
         "name": "TDigestPercentilesAggregate",
         "namespace": "_types.aggregations"
       },
+      "properties": [],
+      "variantName": "tdigest_percentiles"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TTestAggregate",
+        "namespace": "_types.aggregations"
+      },
       "properties": [
         {
-          "name": "values",
+          "name": "value",
           "required": true,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "internal"
+                }
               }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "name": "value_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
-      ]
+      ],
+      "variantName": "t_test"
     },
     {
       "inherits": {
@@ -44072,7 +46167,7 @@
     {
       "generics": [
         {
-          "name": "TKey",
+          "name": "TBucket",
           "namespace": "_types.aggregations"
         }
       ],
@@ -44081,25 +46176,25 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "TKey",
+              "name": "TBucket",
               "namespace": "_types.aggregations"
             }
           }
         ],
         "type": {
-          "name": "MultiBucketAggregate",
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "TermsAggregate",
+        "name": "TermsAggregateBase",
         "namespace": "_types.aggregations"
       },
       "properties": [
         {
           "name": "doc_count_error_upper_bound",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -44433,6 +46528,35 @@
       }
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TermsBucketBase",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "doc_count_error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TermsInclude",
@@ -44524,18 +46648,7 @@
           "type": {
             "generics": [
               {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "user_defined_value"
-                }
+                "kind": "user_defined_value"
               }
             ],
             "kind": "instance_of",
@@ -44545,7 +46658,8 @@
             }
           }
         }
-      ]
+      ],
+      "variantName": "top_hits"
     },
     {
       "inherits": {
@@ -44741,21 +46855,14 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "long",
+                    "name": "ScalarValue",
                     "namespace": "_types"
                   }
                 },
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "double",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
+                    "name": "null",
                     "namespace": "internal"
                   }
                 }
@@ -44782,21 +46889,14 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "long",
+                    "name": "ScalarValue",
                     "namespace": "_types"
                   }
                 },
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "double",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
+                    "name": "null",
                     "namespace": "internal"
                   }
                 }
@@ -44809,8 +46909,17 @@
     },
     {
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TopMetricsBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
         "type": {
-          "name": "AggregateBase",
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
@@ -44819,22 +46928,8 @@
         "name": "TopMetricsAggregate",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "top",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "TopMetrics",
-                "namespace": "_types.aggregations"
-              }
-            }
-          }
-        }
-      ]
+      "properties": [],
+      "variantName": "top_metrics"
     },
     {
       "inherits": {
@@ -44900,6 +46995,38 @@
       ]
     },
     {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "TopMetricsBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "top",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TopMetrics",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "TopMetricsValue",
@@ -44920,41 +47047,95 @@
       ]
     },
     {
+      "description": "Result of a `rare_terms` aggregation when the field is unmapped. `buckets` is always empty.",
       "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Void",
+              "namespace": "_spec_utils"
+            }
+          }
+        ],
         "type": {
-          "name": "AggregateBase",
+          "name": "MultiBucketAggregateBase",
           "namespace": "_types.aggregations"
         }
       },
       "kind": "interface",
       "name": {
-        "name": "ValueAggregate",
+        "name": "UnmappedRareTermsAggregate",
         "namespace": "_types.aggregations"
       },
-      "properties": [
-        {
-          "name": "value",
-          "required": true,
-          "type": {
+      "properties": [],
+      "variantName": "umrareterms"
+    },
+    {
+      "description": "Result of the `significant_terms` aggregation on an unmapped field. `buckets` is always empty.",
+      "inherits": {
+        "generics": [
+          {
             "kind": "instance_of",
             "type": {
-              "name": "double",
-              "namespace": "_types"
+              "name": "Void",
+              "namespace": "_spec_utils"
             }
           }
-        },
-        {
-          "name": "value_as_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
         }
-      ]
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UnmappedSignificantTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "umsigterms"
+    },
+    {
+      "description": "Result of a `terms` aggregation when the field is unmapped. `buckets` is always empty.",
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Void",
+              "namespace": "_spec_utils"
+            }
+          }
+        ],
+        "type": {
+          "name": "TermsAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "UnmappedTermsAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "umterms"
+    },
+    {
+      "description": "Value count aggregation result. `value` is always present.",
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ValueCountAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "value_count"
     },
     {
       "inherits": {
@@ -45010,6 +47191,30 @@
       }
     },
     {
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "VariableWidthHistogramBucket",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "type": {
+          "name": "MultiBucketAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "VariableWidthHistogramAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "variable_width_histogram"
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "VariableWidthHistogramAggregation",
@@ -45057,6 +47262,90 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "inherits": {
+        "type": {
+          "name": "MultiBucketBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "VariableWidthHistogramBucket",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "key",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "key_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "max_as_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -45162,6 +47451,22 @@
           }
         }
       ]
+    },
+    {
+      "description": "Weighted average aggregation result. `value` is missing if the weight was set to zero.",
+      "inherits": {
+        "type": {
+          "name": "SingleMetricAggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "WeightedAvgAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [],
+      "variantName": "weighted_avg"
     },
     {
       "kind": "type_alias",
