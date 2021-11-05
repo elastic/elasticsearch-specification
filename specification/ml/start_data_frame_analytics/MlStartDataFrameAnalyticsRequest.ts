@@ -22,17 +22,37 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Starts a data frame analytics job.
+ * A data frame analytics job can be started and stopped multiple times
+ * throughout its lifecycle.
+ * If the destination index does not exist, it is created automatically the
+ * first time you start the data frame analytics job. The
+ * `index.number_of_shards` and `index.number_of_replicas` settings for the
+ * destination index are copied from the source index. If there are multiple
+ * source indices, the destination index copies the highest setting values. The
+ * mappings for the destination index are also copied from the source indices.
+ * If there are any mapping conflicts, the job fails to start.
+ * If the destination index exists, it is used as is. You can therefore set up
+ * the destination index in advance with custom settings and mappings.
  * @rest_spec_name ml.start_data_frame_analytics
- * @since 5.4.0
+ * @since 7.3.0
  * @stability stable
+ * @cluster_privileges manage_ml
+ * @index_privileges create_index, index, manage, read, view_index_metadata
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * Identifier for the data frame analytics job. This identifier can contain
+     * lowercase alphanumeric characters (a-z and 0-9), hyphens, and
+     * underscores. It must start and end with alphanumeric characters.
+     */
     id: Id
   }
   query_parameters: {
     /**
-     * Controls the amount of time to wait until the data frame analytics job starts.
+     * Controls the amount of time to wait until the data frame analytics job
+     * starts.
      * @server_default 20s
      */
     timeout?: Time

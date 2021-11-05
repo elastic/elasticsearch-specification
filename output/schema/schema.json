@@ -7812,6 +7812,11 @@
       "description": "Sets a cluster wide upgrade_mode setting that prepares machine learning indices for an upgrade.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-set-upgrade-mode.html",
       "name": "ml.set_upgrade_mode",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.set_upgrade_mode"
@@ -7843,6 +7848,18 @@
       "description": "Starts a data frame analytics job.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/start-dfanalytics.html",
       "name": "ml.start_data_frame_analytics",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ],
+        "index": [
+          "create_index",
+          "index",
+          "manage",
+          "read",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.start_data_frame_analytics"
@@ -7852,7 +7869,7 @@
         "name": "Response",
         "namespace": "ml.start_data_frame_analytics"
       },
-      "since": "5.4.0",
+      "since": "7.3.0",
       "stability": "stable",
       "urls": [
         {
@@ -121252,7 +121269,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Sets a cluster wide upgrade_mode setting that prepares machine learning indices for an upgrade.",
+      "description": "Sets a cluster wide upgrade_mode setting that prepares machine learning\nindices for an upgrade.\nWhen upgrading your cluster, in some circumstances you must restart your\nnodes and reindex your machine learning indices. In those circumstances,\nthere must be no machine learning jobs running. You can close the machine\nlearning jobs, do the upgrade, then open all the jobs again. Alternatively,\nyou can use this API to temporarily halt tasks associated with the jobs and\ndatafeeds and prevent new jobs from opening. You can also use this API\nduring upgrades that do not require you to reindex your machine learning\nindices, though stopping jobs is not a requirement in that case.\nYou can see the current value for the upgrade_mode setting by using the get\nmachine learning info API.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121267,9 +121284,10 @@
       "path": [],
       "query": [
         {
-          "description": "Whether to enable upgrade_mode ML setting or not. Defaults to false.",
+          "description": "When `true`, it enables `upgrade_mode` which temporarily halts all job\nand datafeed tasks and prohibits new job and datafeed tasks from\nstarting.",
           "name": "enabled",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121279,9 +121297,10 @@
           }
         },
         {
-          "description": "Controls the time to wait before action times out. Defaults to 30 seconds",
+          "description": "The time to wait for the request to be completed.",
           "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -121316,7 +121335,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Starts a data frame analytics job.",
+      "description": "Starts a data frame analytics job.\nA data frame analytics job can be started and stopped multiple times\nthroughout its lifecycle.\nIf the destination index does not exist, it is created automatically the\nfirst time you start the data frame analytics job. The\n`index.number_of_shards` and `index.number_of_replicas` settings for the\ndestination index are copied from the source index. If there are multiple\nsource indices, the destination index copies the highest setting values. The\nmappings for the destination index are also copied from the source indices.\nIf there are any mapping conflicts, the job fails to start.\nIf the destination index exists, it is used as is. You can therefore set up\nthe destination index in advance with custom settings and mappings.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -121330,7 +121349,7 @@
       },
       "path": [
         {
-          "description": "The ID of the data frame analytics to start",
+          "description": "Identifier for the data frame analytics job. This identifier can contain\nlowercase alphanumeric characters (a-z and 0-9), hyphens, and\nunderscores. It must start and end with alphanumeric characters.",
           "name": "id",
           "required": true,
           "type": {
@@ -121344,7 +121363,7 @@
       ],
       "query": [
         {
-          "description": "Controls the amount of time to wait until the data frame analytics job starts.",
+          "description": "Controls the amount of time to wait until the data frame analytics job\nstarts.",
           "name": "timeout",
           "required": false,
           "serverDefault": "20s",
