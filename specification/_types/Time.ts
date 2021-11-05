@@ -76,11 +76,11 @@ export enum DateMathTimeUnit {
 export type Time = string | integer
 
 export enum TimeUnit {
-  /** @codegen_name nano_seconds */
+  /** @codegen_name nanoseconds */
   nanos,
-  /** @codegen_name micro_seconds */
+  /** @codegen_name microseconds */
   micros,
-  /** @codegen_name milli_seconds */
+  /** @codegen_name milliseconds */
   ms,
   /** @codegen_name seconds */
   s,
