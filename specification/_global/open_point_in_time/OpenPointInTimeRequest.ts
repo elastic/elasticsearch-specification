@@ -31,6 +31,6 @@ export interface Request extends RequestBase {
     index: Indices
   }
   query_parameters: {
-    keep_alive?: Time
+    keep_alive: Time
   }
 }

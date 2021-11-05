@@ -19396,7 +19396,7 @@
         {
           "description": "Specific the time to live for the point in time",
           "name": "keep_alive",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
