@@ -22,17 +22,38 @@ import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
 
 /**
+ * Stops one or more data frame analytics jobs.
+ * A data frame analytics job can be started and stopped multiple times
+ * throughout its lifecycle.
  * @rest_spec_name ml.stop_data_frame_analytics
  * @since 7.3.0
  * @stability stable
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   path_parts: {
-    /** Identifier for the data frame analytics job. This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores. It must start and end with alphanumeric characters. */
+    /**
+     * Identifier for the data frame analytics job. This identifier can contain
+     * lowercase alphanumeric characters (a-z and 0-9), hyphens, and
+     * underscores. It must start and end with alphanumeric characters.
+     */
     id: Id
   }
   query_parameters: {
-    /** @server_default true */
+    /**
+     * Specifies what to do when the request:
+     *
+     * 1. Contains wildcard expressions and there are no data frame analytics
+     * jobs that match.
+     * 2. Contains the _all string or no identifiers and there are no matches.
+     * 3. Contains wildcard expressions and there are only partial matches.
+     *
+     * The default value is true, which returns an empty data_frame_analytics
+     * array when there are no matches and the subset of results when there are
+     * partial matches. If this parameter is false, the request returns a 404
+     * status code when there are no matches or only partial matches.
+     * @server_default true
+     */
     allow_no_match?: boolean
     /**
      * If true, the data frame analytics job is stopped forcefully.
@@ -40,7 +61,8 @@ export interface Request extends RequestBase {
      */
     force?: boolean
     /**
-     * Controls the amount of time to wait until the data frame analytics job stops. Defaults to 20 seconds.
+     * Controls the amount of time to wait until the data frame analytics job
+     * stops. Defaults to 20 seconds.
      * @server_default 20s
      */
     timeout?: Time
