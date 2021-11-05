@@ -12318,7 +12318,9 @@ export interface MlStartDataFrameAnalyticsResponse extends AcknowledgedResponseB
 
 export interface MlStartDatafeedRequest extends RequestBase {
   datafeed_id: Id
+  end?: Time
   start?: Time
+  timeout?: Time
   body?: {
     end?: Time
     start?: Time
@@ -12346,7 +12348,9 @@ export interface MlStopDatafeedRequest extends RequestBase {
   datafeed_id: Id
   allow_no_match?: boolean
   force?: boolean
+  timeout?: Time
   body?: {
+    allow_no_match?: boolean
     force?: boolean
     timeout?: Time
   }

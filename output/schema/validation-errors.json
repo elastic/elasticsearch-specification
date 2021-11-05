@@ -1406,13 +1406,6 @@
       ],
       "response": []
     },
-    "ml.start_datafeed": {
-      "request": [
-        "Request: missing json spec query parameter 'end'",
-        "Request: missing json spec query parameter 'timeout'"
-      ],
-      "response": []
-    },
     "ml.start_trained_model_deployment": {
       "request": [
         "Missing request & response"
@@ -1421,8 +1414,7 @@
     },
     "ml.stop_datafeed": {
       "request": [
-        "Request: missing json spec query parameter 'allow_no_datafeeds'",
-        "Request: missing json spec query parameter 'timeout'"
+        "Request: missing json spec query parameter 'allow_no_datafeeds'"
       ],
       "response": []
     },
