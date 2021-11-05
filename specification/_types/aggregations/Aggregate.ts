@@ -42,7 +42,8 @@ export class CompositeBucket
 export class DateHistogramBucket
   implements AdditionalProperties<AggregateName, Aggregate> {}
 export class FiltersBucketItem
-  implements AdditionalProperties<AggregateName, Aggregate> {
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
   doc_count: long
 }
 export class IpRangeBucket
@@ -55,7 +56,8 @@ export class SignificantTermsBucket<TKey>
   implements AdditionalProperties<AggregateName, Aggregate> {}
 
 export class KeyedBucket<TKey>
-  implements AdditionalProperties<AggregateName, Aggregate> {
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
   doc_count: long
   key: TKey
   key_as_string: string
@@ -105,7 +107,8 @@ export class ValueAggregate extends AggregateBase {
 
 export class SingleBucketAggregate
   extends AggregateBase
-  implements AdditionalProperties<AggregateName, Aggregate> {
+  implements AdditionalProperties<AggregateName, Aggregate>
+{
   doc_count: double
 }
 export class KeyedValueAggregate extends ValueAggregate {
