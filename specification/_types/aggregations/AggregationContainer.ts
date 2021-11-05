@@ -100,13 +100,19 @@ import {
  * @variants container
  */
 export class AggregationContainer {
-  /** @variant container_property */
-  aggs?: Dictionary<string, AggregationContainer>
-  /** @variant container_property */
+  /**
+   * Sub-aggregations for this aggregation. Only applies to bucket aggregations.
+   *
+   * @variant container_property
+   * @aliases aggs
+   */
+  aggregations?: Dictionary<string, AggregationContainer>
+  /**
+   * @variant container_property
+   */
   meta?: Dictionary<string, UserDefinedValue>
 
   adjacency_matrix?: AdjacencyMatrixAggregation
-  aggregations?: Dictionary<string, AggregationContainer>
   auto_date_histogram?: AutoDateHistogramAggregation
   avg?: AverageAggregation
   avg_bucket?: AverageBucketAggregation
