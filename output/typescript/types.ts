@@ -657,7 +657,7 @@ export interface MtermvectorsTermVectorsResult {
 
 export interface OpenPointInTimeRequest extends RequestBase {
   index: Indices
-  keep_alive?: Time
+  keep_alive: Time
 }
 
 export interface OpenPointInTimeResponse {
