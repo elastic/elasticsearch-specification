@@ -11909,11 +11909,16 @@ export interface MlExplainDataFrameAnalyticsResponse {
 
 export interface MlFlushJobRequest extends RequestBase {
   job_id: Id
+  advance_time?: DateString
+  calc_interim?: boolean
+  end?: DateString
   skip_time?: string
+  start?: DateString
   body?: {
     advance_time?: DateString
     calc_interim?: boolean
     end?: DateString
+    skip_time?: string
     start?: DateString
   }
 }
