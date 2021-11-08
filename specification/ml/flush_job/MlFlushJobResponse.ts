@@ -22,6 +22,10 @@ import { integer } from '@_types/Numeric'
 export class Response {
   body: {
     flushed: boolean
+    /**
+     * Provides the timestamp (in milliseconds since the epoch) of the end of
+     * the last bucket that was processed.
+     */
     last_finalized_bucket_end?: integer
   }
 }
