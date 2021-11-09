@@ -24,9 +24,11 @@ import { Time } from '@_types/Time'
 /**
  * Predicts the future behavior of a time series by using its historical
  * behavior.
- * You can create a forecast job based on an anomaly detection job to
- * extrapolate future behavior. You can delete a forecast by using the Delete
- * forecast API.
+ * 
+ * Forecasts are not supported for jobs that perform population analysis; an
+ * error occurs if you try to create a forecast for a job that has an
+ * `over_field_name` in its configuration.
+ * 
  * @rest_spec_name ml.forecast
  * @since 6.1.0
  * @stability stable
@@ -35,11 +37,12 @@ import { Time } from '@_types/Time'
 export interface Request extends RequestBase {
   path_parts: {
     /**
-     * Identifier for the anomaly detection job.
+     * Identifier for the anomaly detection job. The job must be open when you
+     * create a forecast; otherwise, an error occurs.
      */
     job_id: Id
   }
-  body: {
+  query_parameters: {
     /**
      * A period of time that indicates how far into the future to forecast. For
      * example, `30d` corresponds to 30 days. The forecast starts at the last
@@ -60,6 +63,23 @@ export interface Request extends RequestBase {
      * maximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s
      * configured memory limit, it is automatically reduced to below that
      * amount.
+     * @server_default 20mb
+     */
+    max_model_memory?: string
+  }
+  body: {
+    /**
+     * Refer to the description for the `duration` query parameter.
+     * @server_default 1d
+     */
+    duration?: Time
+    /**
+     * Refer to the description for the `expires_in` query parameter.
+     * @server_default 14d
+     */
+    expires_in?: Time
+    /**
+     * Refer to the description for the `max_model_memory` query parameter.
      * @server_default 20mb
      */
     max_model_memory?: string
