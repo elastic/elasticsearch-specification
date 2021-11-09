@@ -1232,15 +1232,6 @@
         "interface definition ml.evaluate_data_frame:DataframeRegressionSummary / Property 'r_squared' / instance_of - Non-leaf type cannot be used here: 'ml.evaluate_data_frame:DataframeEvaluationValue'"
       ]
     },
-    "ml.flush_job": {
-      "request": [
-        "Request: missing json spec query parameter 'calc_interim'",
-        "Request: missing json spec query parameter 'start'",
-        "Request: missing json spec query parameter 'end'",
-        "Request: missing json spec query parameter 'advance_time'"
-      ],
-      "response": []
-    },
     "ml.forecast": {
       "request": [
         "Request: should not have a body"

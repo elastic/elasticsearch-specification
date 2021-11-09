@@ -117504,7 +117504,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Specifies to advance to a particular time value. Results are generated\nand the model is updated for data from the specified time interval.",
+            "description": "Refer to the description for the `advance_time` query parameter.",
             "name": "advance_time",
             "required": false,
             "type": {
@@ -117516,7 +117516,7 @@
             }
           },
           {
-            "description": "If true, calculates the interim results for the most recent bucket or all\nbuckets within the latency period.",
+            "description": "Refer to the description for the `calc_interim` query parameter.",
             "name": "calc_interim",
             "required": false,
             "type": {
@@ -117528,7 +117528,7 @@
             }
           },
           {
-            "description": "When used in conjunction with `calc_interim`, specifies the range of\nbuckets on which to calculate interim results.",
+            "description": "Refer to the description for the `end` query parameter.",
             "name": "end",
             "required": false,
             "type": {
@@ -117540,7 +117540,19 @@
             }
           },
           {
-            "description": "When used in conjunction with calc_interim, specifies the range of\nbuckets on which to calculate interim results.",
+            "description": "Refer to the description for the `skip_time` query parameter.",
+            "name": "skip_time",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `start` query parameter.",
             "name": "start",
             "required": false,
             "type": {
@@ -117581,6 +117593,42 @@
       ],
       "query": [
         {
+          "description": "Specifies to advance to a particular time value. Results are generated\nand the model is updated for data from the specified time interval.",
+          "name": "advance_time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, calculates the interim results for the most recent bucket or all\nbuckets within the latency period.",
+          "name": "calc_interim",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "When used in conjunction with `calc_interim` and `start`, specifies the\nrange of buckets on which to calculate interim results.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Specifies to skip to a particular time value. Results are not generated\nand the model is not updated for data from the specified time interval.",
           "name": "skip_time",
           "required": false,
@@ -117589,6 +117637,18 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "When used in conjunction with `calc_interim`, specifies the range of\nbuckets on which to calculate interim results.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
             }
           }
         }
@@ -117610,6 +117670,7 @@
             }
           },
           {
+            "description": "Provides the timestamp (in milliseconds since the epoch) of the end of\nthe last bucket that was processed.",
             "name": "last_finalized_bucket_end",
             "required": false,
             "type": {
