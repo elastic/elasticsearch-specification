@@ -39,7 +39,6 @@ export class WriteResponseBase {
   _index: IndexName
   _primary_term: long
   result: Result
-  /** @codegen_name sequence_number */
   _seq_no: SequenceNumber
   _shards: ShardStatistics
   _type?: Type
