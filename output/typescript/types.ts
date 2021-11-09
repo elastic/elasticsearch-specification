@@ -11925,6 +11925,9 @@ export interface MlFlushJobResponse {
 
 export interface MlForecastRequest extends RequestBase {
   job_id: Id
+  duration?: Time
+  expires_in?: Time
+  max_model_memory?: string
   body?: {
     duration?: Time
     expires_in?: Time

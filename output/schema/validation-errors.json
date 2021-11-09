@@ -1243,9 +1243,6 @@
     },
     "ml.forecast": {
       "request": [
-        "Request: missing json spec query parameter 'duration'",
-        "Request: missing json spec query parameter 'expires_in'",
-        "Request: missing json spec query parameter 'max_model_memory'",
         "Request: should not have a body"
       ],
       "response": []
