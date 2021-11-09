@@ -117637,7 +117637,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "A period of time that indicates how far into the future to forecast. For\nexample, `30d` corresponds to 30 days. The forecast starts at the last\nrecord that was processed.",
+            "description": "Refer to the description for the `duration` query parameter.",
             "name": "duration",
             "required": false,
             "serverDefault": "1d",
@@ -117650,7 +117650,7 @@
             }
           },
           {
-            "description": "The period of time that forecast results are retained. After a forecast\nexpires, the results are deleted. If set to a value of 0, the forecast is\nnever automatically deleted.",
+            "description": "Refer to the description for the `expires_in` query parameter.",
             "name": "expires_in",
             "required": false,
             "serverDefault": "14d",
@@ -117663,7 +117663,7 @@
             }
           },
           {
-            "description": "The maximum memory the forecast can use. If the forecast needs to use\nmore than the provided amount, it will spool to disk. Default is 20mb,\nmaximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s\nconfigured memory limit, it is automatically reduced to below that\namount.",
+            "description": "Refer to the description for the `max_model_memory` query parameter.",
             "name": "max_model_memory",
             "required": false,
             "serverDefault": "20mb",
@@ -117677,7 +117677,7 @@
           }
         ]
       },
-      "description": "Predicts the future behavior of a time series by using its historical\nbehavior.\nYou can create a forecast job based on an anomaly detection job to\nextrapolate future behavior. You can delete a forecast by using the Delete\nforecast API.",
+      "description": "Predicts the future behavior of a time series by using its historical\nbehavior.\n\nForecasts are not supported for jobs that perform population analysis; an\nerror occurs if you try to create a forecast for a job that has an\n`over_field_name` in its configuration.",
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -117691,7 +117691,7 @@
       },
       "path": [
         {
-          "description": "Identifier for the anomaly detection job.",
+          "description": "Identifier for the anomaly detection job. The job must be open when you\ncreate a forecast; otherwise, an error occurs.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -117703,7 +117703,47 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "A period of time that indicates how far into the future to forecast. For\nexample, `30d` corresponds to 30 days. The forecast starts at the last\nrecord that was processed.",
+          "name": "duration",
+          "required": false,
+          "serverDefault": "1d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The period of time that forecast results are retained. After a forecast\nexpires, the results are deleted. If set to a value of 0, the forecast is\nnever automatically deleted.",
+          "name": "expires_in",
+          "required": false,
+          "serverDefault": "14d",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum memory the forecast can use. If the forecast needs to use\nmore than the provided amount, it will spool to disk. Default is 20mb,\nmaximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s\nconfigured memory limit, it is automatically reduced to below that\namount.",
+          "name": "max_model_memory",
+          "required": false,
+          "serverDefault": "20mb",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

@@ -24,11 +24,11 @@ import { Time } from '@_types/Time'
 /**
  * Predicts the future behavior of a time series by using its historical
  * behavior.
- * 
+ *
  * Forecasts are not supported for jobs that perform population analysis; an
  * error occurs if you try to create a forecast for a job that has an
  * `over_field_name` in its configuration.
- * 
+ *
  * @rest_spec_name ml.forecast
  * @since 6.1.0
  * @stability stable
