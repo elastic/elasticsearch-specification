@@ -53,23 +53,23 @@ export interface Request extends RequestBase {
      * If `true`, the buckets are sorted in descending order.
      * @server_default false
      */
-     desc?: boolean
+    desc?: boolean
     /**
      * Returns buckets with timestamps earlier than this time. `-1` means it is
      * unset and results are not limited to specific timestamps.
      * @server_default -1
      */
-     end?: DateString
+    end?: DateString
     /**
      *  If `true`, the output excludes interim results.
      * @server_default false
      */
-     exclude_interim?: boolean
+    exclude_interim?: boolean
     /**
      * If true, the output includes anomaly records.
      * @server_default false
      */
-     expand?: boolean
+    expand?: boolean
     /**
      * Skips the specified number of buckets.
      * @server_default 0

@@ -1238,13 +1238,6 @@
       ],
       "response": []
     },
-    "ml.get_buckets": {
-      "request": [
-        "Request: missing json spec query parameter 'expand'",
-        "Request: missing json spec query parameter 'anomaly_score'"
-      ],
-      "response": []
-    },
     "ml.get_calendar_events": {
       "request": [
         "Request: should not have a body"

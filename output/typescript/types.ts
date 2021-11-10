@@ -10917,17 +10917,16 @@ export interface MlAnomalyCause {
 export type MlAppliesTo = 'actual' | 'typical' | 'diff_from_typical' | 'time'
 
 export interface MlBucketInfluencer {
+  anomaly_score: double
   bucket_span: long
-  influencer_score: double
   influencer_field_name: Field
-  influencer_field_value: string
-  initial_influencer_score: double
+  initial_anomaly_score: double
   is_interim: boolean
   job_id: Id
   probability: double
+  raw_anomaly_score: double
   result_type: string
   timestamp: Time
-  foo?: string
 }
 
 export interface MlBucketSummary {
@@ -11405,6 +11404,20 @@ export type MlInclude = 'definition' | 'feature_importance_baseline' | 'hyperpar
 export interface MlInfluence {
   influencer_field_name: string
   influencer_field_values: string[]
+}
+
+export interface MlInfluencer {
+  bucket_span: long
+  influencer_score: double
+  influencer_field_name: Field
+  influencer_field_value: string
+  initial_influencer_score: double
+  is_interim: boolean
+  job_id: Id
+  probability: double
+  result_type: string
+  timestamp: Time
+  foo?: string
 }
 
 export interface MlJob {
@@ -11947,21 +11960,24 @@ export interface MlForecastResponse extends AcknowledgedResponseBase {
 export interface MlGetBucketsRequest extends RequestBase {
   job_id: Id
   timestamp?: Timestamp
+  anomaly_score?: double
+  desc?: boolean
+  end?: DateString
+  exclude_interim?: boolean
+  expand?: boolean
   from?: integer
   size?: integer
-  exclude_interim?: boolean
   sort?: Field
-  desc?: boolean
   start?: DateString
-  end?: DateString
   body?: {
     anomaly_score?: double
     desc?: boolean
+    end?: DateString
     exclude_interim?: boolean
     expand?: boolean
+    page?: MlPage
     sort?: Field
     start?: DateString
-    end?: DateString
   }
 }
 
@@ -12095,7 +12111,7 @@ export interface MlGetInfluencersRequest extends RequestBase {
 
 export interface MlGetInfluencersResponse {
   count: long
-  influencers: MlBucketInfluencer[]
+  influencers: MlInfluencer[]
 }
 
 export interface MlGetJobStatsRequest extends RequestBase {
