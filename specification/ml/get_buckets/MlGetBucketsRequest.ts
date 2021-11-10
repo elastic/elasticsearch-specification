@@ -45,6 +45,32 @@ export interface Request extends RequestBase {
   }
   query_parameters: {
     /**
+     * Returns buckets with anomaly scores greater or equal than this value.
+     * @server_default 0.0
+     */
+    anomaly_score?: double
+    /**
+     * If `true`, the buckets are sorted in descending order.
+     * @server_default false
+     */
+     desc?: boolean
+    /**
+     * Returns buckets with timestamps earlier than this time. `-1` means it is
+     * unset and results are not limited to specific timestamps.
+     * @server_default -1
+     */
+     end?: DateString
+    /**
+     *  If `true`, the output excludes interim results.
+     * @server_default false
+     */
+     exclude_interim?: boolean
+    /**
+     * If true, the output includes anomaly records.
+     * @server_default false
+     */
+     expand?: boolean
+    /**
      * Skips the specified number of buckets.
      * @server_default 0
      */
@@ -55,70 +81,53 @@ export interface Request extends RequestBase {
      */
     size?: integer
     /**
-     *  If `true`, the output excludes interim results.
-     * @server_default false
-     */
-    exclude_interim?: boolean
-    /**
      * Specifies the sort field for the requested buckets.
      * @server_default timestamp
      */
     sort?: Field
-    /**
-     * If `true`, the buckets are sorted in descending order.
-     * @server_default false
-     */
-    desc?: boolean
     /**
      * Returns buckets with timestamps after this time. `-1` means it is unset
      * and results are not limited to specific timestamps.
      * @server_default -1
      */
     start?: DateString
-    /**
-     * Returns buckets with timestamps earlier than this time. `-1` means it is
-     * unset and results are not limited to specific timestamps.
-     * @server_default -1
-     */
-    end?: DateString
   }
   body: {
     /**
-     * Returns buckets with anomaly scores greater or equal than this value.
+     * Refer to the description for the `anomaly_score` query parameter.
      * @server_default 0.0
      */
     anomaly_score?: double
     /**
-     *  If `true`, the buckets are sorted in descending order.
+     * Refer to the description for the `desc` query parameter.
      * @server_default false
      */
     desc?: boolean
     /**
-     * If `true`, the output excludes interim results.
+     * Refer to the description for the `end` query parameter.
+     * @server_default -1
+     */
+    end?: DateString
+    /**
+     * Refer to the description for the `exclude_interim` query parameter.
      * @server_default false
      */
     exclude_interim?: boolean
     /**
-     * If true, the output includes anomaly records.
+     * Refer to the description for the `expand` query parameter.
      * @server_default false
      */
     expand?: boolean
+    page?: Page
     /**
-     * Specifies the sort field for the requested buckets.
+     * Refer to the desription for the `sort` query parameter.
      * @server_default timestamp
      */
     sort?: Field
     /**
-     * Returns buckets with timestamps after this time. `-1` means it is unset
-     * and results are not limited to specific timestamps.
+     * Refer to the description for the `start` query parameter.
      * @server_default -1
      */
     start?: DateString
-    /**
-     * Returns buckets with timestamps earlier than this time. `-1` means it is
-     * unset and results are not limited to specific timestamps.
-     * @server_default -1
-     */
-    end?: DateString
   }
 }

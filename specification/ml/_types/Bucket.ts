@@ -22,41 +22,94 @@ import { double, long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
 
 export class BucketSummary {
+  /**
+   * The maximum anomaly score, between 0-100, for any of the bucket influencers. This is an overall, rate-limited
+   * score for the job. All the anomaly records in the bucket contribute to this score. This value might be updated as
+   * new data is analyzed.
+   */
   anomaly_score: double
   bucket_influencers: BucketInfluencer[]
+  /**
+   * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
+   */
   bucket_span: Time
+  /**
+   * The number of input data records processed in this bucket.
+   */
   event_count: long
+  /**
+   * The maximum anomaly score for any of the bucket influencers. This is the initial value that was calculated at the
+   * time the bucket was processed.
+   */
   initial_anomaly_score: double
+  /**
+   * If true, this is an interim result. In other words, the results are calculated based on partial input data.
+   */
   is_interim: boolean
+  /**
+   * Identifier for the anomaly detection job.
+   */
   job_id: Id
   partition_scores?: PartitionScore[]
+  /**
+   * The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
+   */
   processing_time_ms: double
+  /**
+   * Internal. This value is always set to bucket.
+   */
   result_type: string
+  /**
+   * The start time of the bucket. This timestamp uniquely identifies the bucket. Events that occur exactly at the
+   * timestamp of the bucket are included in the results for the bucket.
+   */
   timestamp: Time
 }
 
 export class BucketInfluencer {
-  /** The length of the bucket in seconds. This value matches the bucket_span that is specified in the job. */
+  /**
+   * A normalized score between 0-100, which is calculated for each bucket influencer. This score might be updated as
+   * newer data is analyzed.
+   */
+  anomaly_score: double
+  /**
+   * The length of the bucket in seconds. This value matches the bucket span that is specified in the job.
+   */
   bucket_span: long
-  /** A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated across detectors. Unlike initial_influencer_score, this value will be updated by a re-normalization process as new data is analyzed. */
-  influencer_score: double
-  /** The field name of the influencer. */
+  /**
+   * The field name of the influencer.
+   */
   influencer_field_name: Field
-  /** The entity that influenced, contributed to, or was to blame for the anomaly. */
-  influencer_field_value: string
-  /** A normalized score between 0-100, which is based on the probability of the influencer aggregated across detectors. This is the initial value that was calculated at the time the bucket was processed. */
-  initial_influencer_score: double
-  /** If true, this is an interim result. In other words, the results are calculated based on partial input data. */
+  /**
+   * The score between 0-100 for each bucket influencer. This score is the initial value that was calculated at the
+   * time the bucket was processed. */
+  initial_anomaly_score: double
+  /**
+   * If true, this is an interim result. In other words, the results are calculated based on partial input data.
+   */
   is_interim: boolean
-  /** Identifier for the anomaly detection job. */
+  /**
+   * Identifier for the anomaly detection job.
+   */
   job_id: Id
-  /** The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high precision of over 300 decimal places, so the influencer_score is provided as a human-readable and friendly interpretation of this. */
+  /**
+   * The probability that the bucket has this behavior, in the range 0 to 1. This value can be held to a high precision
+   * of over 300 decimal places, so the `anomaly_score` is provided as a human-readable and friendly interpretation of
+   * this.
+   */
   probability: double
-  /** Internal. This value is always set to influencer. */
+  /**
+   * Internal.
+   */
+  raw_anomaly_score: double
+  /**
+   * Internal. This value is always set to `bucket_influencer`.
+   */
   result_type: string
-  /** The start time of the bucket for which these results were calculated. */
+  /**
+   * The start time of the bucket for which these results were calculated.
+   */
   timestamp: Time
-  foo?: string // TODO ??? - the tests carry this prop but :shrug:
 }
 
 export class OverallBucket {
