@@ -8598,6 +8598,21 @@ export interface FeaturesResetFeaturesResponse {
   features: FeaturesFeature[]
 }
 
+export type FleetCheckpoint = long
+
+export interface FleetGlobalCheckpointsRequest extends RequestBase {
+  index: IndexName | IndexAlias
+  wait_for_advance?: boolean
+  wait_for_index?: boolean
+  checkpoints?: FleetCheckpoint[]
+  timeout?: Time
+}
+
+export interface FleetGlobalCheckpointsResponse {
+  global_checkpoints: FleetCheckpoint[]
+  timed_out: boolean
+}
+
 export interface GraphConnection {
   doc_count: long
   source: long
