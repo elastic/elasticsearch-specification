@@ -647,13 +647,30 @@
     },
     "fleet.msearch": {
       "request": [
-        "Missing request & response"
+        "Request: query parameter 'allow_no_indices' does not exist in the json spec",
+        "Request: query parameter 'ccs_minimize_roundtrips' does not exist in the json spec",
+        "Request: query parameter 'expand_wildcards' does not exist in the json spec",
+        "Request: query parameter 'ignore_throttled' does not exist in the json spec",
+        "Request: query parameter 'ignore_unavailable' does not exist in the json spec",
+        "Request: query parameter 'max_concurrent_searches' does not exist in the json spec",
+        "Request: query parameter 'max_concurrent_shard_requests' does not exist in the json spec",
+        "Request: query parameter 'pre_filter_shard_size' does not exist in the json spec",
+        "Request: query parameter 'search_type' does not exist in the json spec",
+        "Request: query parameter 'rest_total_hits_as_int' does not exist in the json spec",
+        "Request: query parameter 'typed_keys' does not exist in the json spec",
+        "Request: query parameter 'allow_partial_search_results' does not exist in the json spec",
+        "Request: query parameter 'wait_for_checkpoints' does not exist in the json spec"
       ],
-      "response": []
+      "response": [
+        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
+      ]
     },
     "fleet.search": {
       "request": [
-        "Missing request & response"
+        "Request: missing json spec query parameter 'wait_for_checkpoints_timeout'",
+        "request definition fleet.search:Request / Inherits - '_global.search:Request' is a request and must only be used in endpoints",
+        "request definition fleet.search:Request / path - Property 'index' is already defined in an ancestor class",
+        "request definition fleet.search:Request / query - Property 'allow_partial_search_results' is already defined in an ancestor class"
       ],
       "response": []
     },
@@ -1402,9 +1419,7 @@
         "Request: query parameter 'ignore_throttled' does not exist in the json spec",
         "Request: query parameter 'ignore_unavailable' does not exist in the json spec"
       ],
-      "response": [
-        "type_alias definition _global.msearch:ResponseItem / union_of / instance_of / Generics / instance_of - No type definition for '_global.msearch:TDocument'"
-      ]
+      "response": []
     },
     "nodes.clear_repositories_metering_archive": {
       "request": [
@@ -1526,7 +1541,9 @@
       "response": []
     },
     "search": {
-      "request": [],
+      "request": [
+        "Non-leaf type cannot be used here: '_global.search:Request'"
+      ],
       "response": [
         "Non-leaf type cannot be used here: '_global.search:Response'"
       ]

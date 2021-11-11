@@ -2829,9 +2829,16 @@
       "description": "Multi Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
       "docUrl": null,
       "name": "fleet.msearch",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "fleet.msearch"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "fleet.msearch"
+      },
+      "since": "7.16.0",
       "stability": "experimental",
       "urls": [
         {
@@ -2861,9 +2868,16 @@
       "description": "Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
       "docUrl": null,
       "name": "fleet.search",
-      "request": null,
+      "request": {
+        "name": "Request",
+        "namespace": "fleet.search"
+      },
       "requestBodyRequired": false,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "fleet.search"
+      },
+      "since": "7.16.0",
       "stability": "experimental",
       "urls": [
         {
@@ -87594,6 +87608,388 @@
       "name": {
         "name": "Response",
         "namespace": "features.reset_features"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "Checkpoint",
+        "namespace": "fleet._types"
+      },
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "long",
+          "namespace": "_types"
+        }
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "codegenName": "searches",
+        "kind": "value",
+        "value": {
+          "kind": "array_of",
+          "value": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RequestItem",
+              "namespace": "_global.msearch"
+            }
+          }
+        }
+      },
+      "description": "Multi Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "fleet.msearch"
+      },
+      "path": [
+        {
+          "description": "A single target to search. If the target is an index alias, it must resolve to a single index.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexAlias",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+          "name": "allow_no_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, network roundtrips between the coordinating node and remote clusters are minimized for cross-cluster search requests.",
+          "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cross-cluster-search.html#ccs-network-delays",
+          "name": "ccs_minimize_roundtrips",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard expressions can match. If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.",
+          "name": "expand_wildcards",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, concrete, expanded or aliased indices are ignored when frozen.",
+          "name": "ignore_throttled",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, missing or closed indices are not included in the response.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of concurrent searches the multi search API can execute.",
+          "name": "max_concurrent_searches",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Maximum number of concurrent shard requests that each sub-search request executes per node.",
+          "name": "max_concurrent_shard_requests",
+          "required": false,
+          "serverDefault": 5,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Defines a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting if the number of shards the search request expands to exceeds the threshold. This filter roundtrip can limit the number of shards significantly if for instance a shard can not match any documents based on its rewrite method i.e., if date filters are mandatory to match but the shard bounds and the query are disjoint.",
+          "name": "pre_filter_shard_size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Indicates whether global term and document frequencies should be used when scoring returned documents.",
+          "name": "search_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SearchType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, hits.total are returned as an integer in the response. Defaults to false, which returns an object.",
+          "name": "rest_total_hits_as_int",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.",
+          "name": "typed_keys",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If `true`, returns partial results if there are shard request timeouts or shard failures. If `false`,\nreturns an error with no partial results. Defaults to the configured cluster setting\n`search.default_allow_partial_results` which is `true` by default.",
+          "name": "allow_partial_search_results",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of checkpoints. When configured, the search API will only be executed on\na shard after the relevant checkpoint has become visible for search. Defaults to an empty list\nwhich will cause Elasticsearch to immediately execute the search.",
+          "name": "wait_for_checkpoints",
+          "required": false,
+          "serverDefault": [],
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Checkpoint",
+                "namespace": "fleet._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "fleet.msearch"
+        }
+      ],
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "fleet.msearch"
+            }
+          }
+        ],
+        "type": {
+          "name": "Response",
+          "namespace": "_global.msearch"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "fleet.msearch"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "description": "Search API where the search will only be executed after specified checkpoints are available due to a refresh. This API is designed for internal use by the fleet server project.",
+      "inherits": {
+        "type": {
+          "name": "Request",
+          "namespace": "_global.search"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "fleet.search"
+      },
+      "path": [
+        {
+          "description": "A single index or index alias that resolves to a single index.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexAlias",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `true`, returns partial results if there are shard request timeouts or shard failures. If `false`,\nreturns an error with no partial results. Defaults to the configured cluster setting\n`search.default_allow_partial_results` which is `true` by default.",
+          "name": "allow_partial_search_results",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A comma separated list of checkpoints. When configured, the search API will only be executed on\na shard after the relevant checkpoint has become visible for search. Defaults to an empty list\nwhich will cause Elasticsearch to immediately execute the search.",
+          "name": "wait_for_checkpoints",
+          "required": false,
+          "serverDefault": [],
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Checkpoint",
+                "namespace": "fleet._types"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": []
+      },
+      "generics": [
+        {
+          "name": "TDocument",
+          "namespace": "fleet.search"
+        }
+      ],
+      "inherits": {
+        "generics": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TDocument",
+              "namespace": "fleet.search"
+            }
+          }
+        ],
+        "type": {
+          "name": "Response",
+          "namespace": "_global.search"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "fleet.search"
       }
     },
     {
