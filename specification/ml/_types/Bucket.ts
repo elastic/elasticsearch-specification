@@ -50,7 +50,6 @@ export class BucketSummary {
    * Identifier for the anomaly detection job.
    */
   job_id: Id
-  partition_scores?: PartitionScore[]
   /**
    * The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.
    */
@@ -131,10 +130,3 @@ export class OverallBucketJob {
   max_anomaly_score: double
 }
 
-export class PartitionScore {
-  initial_record_score: double
-  partition_field_name: Field
-  partition_field_value: string
-  probability: double
-  record_score: double
-}
