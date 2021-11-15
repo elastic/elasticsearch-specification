@@ -108949,20 +108949,6 @@
           }
         },
         {
-          "name": "partition_scores",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PartitionScore",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        },
-        {
           "description": "The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.",
           "name": "processing_time_ms",
           "required": true,
@@ -114888,70 +114874,6 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PartitionScore",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "initial_record_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "partition_field_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "partition_field_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "probability",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "record_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
               "namespace": "_types"
             }
           }

@@ -129,4 +129,3 @@ export class OverallBucketJob {
   job_id: Id
   max_anomaly_score: double
 }
-

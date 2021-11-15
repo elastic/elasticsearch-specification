@@ -10937,7 +10937,6 @@ export interface MlBucketSummary {
   initial_anomaly_score: double
   is_interim: boolean
   job_id: Id
-  partition_scores?: MlPartitionScore[]
   processing_time_ms: double
   result_type: string
   timestamp: Time
@@ -11586,14 +11585,6 @@ export interface MlOverallBucketJob {
 export interface MlPage {
   from?: integer
   size?: integer
-}
-
-export interface MlPartitionScore {
-  initial_record_score: double
-  partition_field_name: Field
-  partition_field_value: string
-  probability: double
-  record_score: double
 }
 
 export interface MlPerPartitionCategorization {
