@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { BucketInfluencer } from '@ml/_types/Bucket'
+import { Influencer } from '@ml/_types/Influencer'
 import { long } from '@_types/Numeric'
 
 export class Response {
   body: {
     count: long
     /** Array of influencer objects */
-    influencers: BucketInfluencer[]
+    influencers: Influencer[]
   }
 }
