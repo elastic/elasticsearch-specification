@@ -1296,12 +1296,6 @@
       ],
       "response": []
     },
-    "ml.get_trained_model_deployment_stats": {
-      "request": [
-        "Missing request & response"
-      ],
-      "response": []
-    },
     "ml.get_trained_models": {
       "request": [
         "Request: missing json spec query parameter 'include_model_definition'",
