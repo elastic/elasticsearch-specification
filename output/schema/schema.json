@@ -109496,25 +109496,25 @@
       },
       "properties": [
         {
-          "description": "The length of the bucket in seconds. This value matches the bucket_span that is specified in the job.",
+          "description": "A normalized score between 0-100, which is calculated for each bucket influencer. This score might be updated as\nnewer data is analyzed.",
+          "name": "anomaly_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The length of the bucket in seconds. This value matches the bucket span that is specified in the job.",
           "name": "bucket_span",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated across detectors. Unlike initial_influencer_score, this value will be updated by a re-normalization process as new data is analyzed.",
-          "name": "influencer_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
               "namespace": "_types"
             }
           }
@@ -109532,20 +109532,8 @@
           }
         },
         {
-          "description": "The entity that influenced, contributed to, or was to blame for the anomaly.",
-          "name": "influencer_field_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "description": "A normalized score between 0-100, which is based on the probability of the influencer aggregated across detectors. This is the initial value that was calculated at the time the bucket was processed.",
-          "name": "initial_influencer_score",
+          "description": "The score between 0-100 for each bucket influencer. This score is the initial value that was calculated at the\ntime the bucket was processed.",
+          "name": "initial_anomaly_score",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -109580,7 +109568,7 @@
           }
         },
         {
-          "description": "The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high precision of over 300 decimal places, so the influencer_score is provided as a human-readable and friendly interpretation of this.",
+          "description": "The probability that the bucket has this behavior, in the range 0 to 1. This value can be held to a high precision\nof over 300 decimal places, so the `anomaly_score` is provided as a human-readable and friendly interpretation of\nthis.",
           "name": "probability",
           "required": true,
           "type": {
@@ -109592,7 +109580,19 @@
           }
         },
         {
-          "description": "Internal. This value is always set to influencer.",
+          "description": "Internal.",
+          "name": "raw_anomaly_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Internal. This value is always set to `bucket_influencer`.",
           "name": "result_type",
           "required": true,
           "type": {
@@ -109614,17 +109614,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "foo",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
         }
       ]
     },
@@ -109636,6 +109625,7 @@
       },
       "properties": [
         {
+          "description": "The maximum anomaly score, between 0-100, for any of the bucket influencers. This is an overall, rate-limited\nscore for the job. All the anomaly records in the bucket contribute to this score. This value might be updated as\nnew data is analyzed.",
           "name": "anomaly_score",
           "required": true,
           "type": {
@@ -109661,6 +109651,7 @@
           }
         },
         {
+          "description": "The length of the bucket in seconds. This value matches the bucket span that is specified in the job.",
           "name": "bucket_span",
           "required": true,
           "type": {
@@ -109672,6 +109663,7 @@
           }
         },
         {
+          "description": "The number of input data records processed in this bucket.",
           "name": "event_count",
           "required": true,
           "type": {
@@ -109683,6 +109675,7 @@
           }
         },
         {
+          "description": "The maximum anomaly score for any of the bucket influencers. This is the initial value that was calculated at the\ntime the bucket was processed.",
           "name": "initial_anomaly_score",
           "required": true,
           "type": {
@@ -109694,6 +109687,7 @@
           }
         },
         {
+          "description": "If true, this is an interim result. In other words, the results are calculated based on partial input data.",
           "name": "is_interim",
           "required": true,
           "type": {
@@ -109705,6 +109699,7 @@
           }
         },
         {
+          "description": "Identifier for the anomaly detection job.",
           "name": "job_id",
           "required": true,
           "type": {
@@ -109716,20 +109711,7 @@
           }
         },
         {
-          "name": "partition_scores",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "PartitionScore",
-                "namespace": "ml._types"
-              }
-            }
-          }
-        },
-        {
+          "description": "The amount of time, in milliseconds, that it took to analyze the bucket contents and calculate results.",
           "name": "processing_time_ms",
           "required": true,
           "type": {
@@ -109741,6 +109723,7 @@
           }
         },
         {
+          "description": "Internal. This value is always set to bucket.",
           "name": "result_type",
           "required": true,
           "type": {
@@ -109752,6 +109735,7 @@
           }
         },
         {
+          "description": "The start time of the bucket. This timestamp uniquely identifies the bucket. Events that occur exactly at the\ntimestamp of the bucket are included in the results for the bucket.",
           "name": "timestamp",
           "required": true,
           "type": {
@@ -113957,6 +113941,147 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Influencer",
+        "namespace": "ml._types"
+      },
+      "properties": [
+        {
+          "description": "The length of the bucket in seconds. This value matches the bucket span that is specified in the job.",
+          "name": "bucket_span",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer in this bucket aggregated\nacross detectors. Unlike `initial_influencer_score`, this value is updated by a re-normalization process as new\ndata is analyzed.",
+          "name": "influencer_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The field name of the influencer.",
+          "name": "influencer_field_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The entity that influenced, contributed to, or was to blame for the anomaly.",
+          "name": "influencer_field_value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "A normalized score between 0-100, which is based on the probability of the influencer aggregated across detectors.\nThis is the initial value that was calculated at the time the bucket was processed.",
+          "name": "initial_influencer_score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If true, this is an interim result. In other words, the results are calculated based on partial input data.",
+          "name": "is_interim",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Identifier for the anomaly detection job.",
+          "name": "job_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The probability that the influencer has this behavior, in the range 0 to 1. This value can be held to a high\nprecision of over 300 decimal places, so the `influencer_score` is provided as a human-readable and friendly\ninterpretation of this value.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Internal. This value is always set to `influencer`.",
+          "name": "result_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "The start time of the bucket for which these results were calculated.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Additional influencer properties are added, depending on the fields being analyzed. For example, if it’s\nanalyzing `user_name` as an influencer, a field `user_name` is added to the result document. This\ninformation enables you to filter the anomaly results more easily.",
+          "name": "foo",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Job",
         "namespace": "ml._types"
       },
@@ -115503,70 +115628,6 @@
             "kind": "instance_of",
             "type": {
               "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "PartitionScore",
-        "namespace": "ml._types"
-      },
-      "properties": [
-        {
-          "name": "initial_record_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "partition_field_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "partition_field_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "probability",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "record_score",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
               "namespace": "_types"
             }
           }
@@ -118511,7 +118572,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Returns buckets with anomaly scores greater or equal than this value.",
+            "description": "Refer to the description for the `anomaly_score` query parameter.",
             "name": "anomaly_score",
             "required": false,
             "serverDefault": 0,
@@ -118524,7 +118585,7 @@
             }
           },
           {
-            "description": "If `true`, the buckets are sorted in descending order.",
+            "description": "Refer to the description for the `desc` query parameter.",
             "name": "desc",
             "required": false,
             "serverDefault": false,
@@ -118537,7 +118598,20 @@
             }
           },
           {
-            "description": "If `true`, the output excludes interim results.",
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
+            "required": false,
+            "serverDefault": "-1",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateString",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `exclude_interim` query parameter.",
             "name": "exclude_interim",
             "required": false,
             "serverDefault": false,
@@ -118550,7 +118624,7 @@
             }
           },
           {
-            "description": "If true, the output includes anomaly records.",
+            "description": "Refer to the description for the `expand` query parameter.",
             "name": "expand",
             "required": false,
             "serverDefault": false,
@@ -118563,7 +118637,18 @@
             }
           },
           {
-            "description": "Specifies the sort field for the requested buckets.",
+            "name": "page",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Page",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the desription for the `sort` query parameter.",
             "name": "sort",
             "required": false,
             "serverDefault": "timestamp",
@@ -118576,21 +118661,8 @@
             }
           },
           {
-            "description": "Returns buckets with timestamps after this time. `-1` means it is unset\nand results are not limited to specific timestamps.",
+            "description": "Refer to the description for the `start` query parameter.",
             "name": "start",
-            "required": false,
-            "serverDefault": "-1",
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DateString",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "description": "Returns buckets with timestamps earlier than this time. `-1` means it is\nunset and results are not limited to specific timestamps.",
-            "name": "end",
             "required": false,
             "serverDefault": "-1",
             "type": {
@@ -118643,6 +118715,71 @@
       ],
       "query": [
         {
+          "description": "Returns buckets with anomaly scores greater or equal than this value.",
+          "name": "anomaly_score",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the buckets are sorted in descending order.",
+          "name": "desc",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Returns buckets with timestamps earlier than this time. `-1` means it is\nunset and results are not limited to specific timestamps.",
+          "name": "end",
+          "required": false,
+          "serverDefault": "-1",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the output excludes interim results.",
+          "name": "exclude_interim",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If true, the output includes anomaly records.",
+          "name": "expand",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "description": "Skips the specified number of buckets.",
           "name": "from",
           "required": false,
@@ -118669,19 +118806,6 @@
           }
         },
         {
-          "description": "If `true`, the output excludes interim results.",
-          "name": "exclude_interim",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "Specifies the sort field for the requested buckets.",
           "name": "sort",
           "required": false,
@@ -118695,34 +118819,8 @@
           }
         },
         {
-          "description": "If `true`, the buckets are sorted in descending order.",
-          "name": "desc",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "Returns buckets with timestamps after this time. `-1` means it is unset\nand results are not limited to specific timestamps.",
           "name": "start",
-          "required": false,
-          "serverDefault": "-1",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateString",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Returns buckets with timestamps earlier than this time. `-1` means it is\nunset and results are not limited to specific timestamps.",
-          "name": "end",
           "required": false,
           "serverDefault": "-1",
           "type": {
@@ -119946,7 +120044,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BucketInfluencer",
+                  "name": "Influencer",
                   "namespace": "ml._types"
                 }
               }
