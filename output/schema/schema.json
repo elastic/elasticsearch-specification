@@ -7038,30 +7038,6 @@
       "accept": [
         "application/json"
       ],
-      "contentType": [
-        "application/json"
-      ],
-      "description": "Get information about trained model deployments.",
-      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-get-trained-model-deployment-stats.html",
-      "name": "ml.get_trained_model_deployment_stats",
-      "request": null,
-      "requestBodyRequired": false,
-      "response": null,
-      "stability": "stable",
-      "urls": [
-        {
-          "methods": [
-            "GET"
-          ],
-          "path": "/_ml/trained_models/{model_id}/deployment/_stats"
-        }
-      ],
-      "visibility": "public"
-    },
-    {
-      "accept": [
-        "application/json"
-      ],
       "description": "Retrieves configuration information for a trained inference model.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/get-trained-models.html",
       "name": "ml.get_trained_models",
