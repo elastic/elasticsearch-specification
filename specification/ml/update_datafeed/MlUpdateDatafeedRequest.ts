@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      * This identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.
      * It must start and end with alphanumeric characters.
      */
-     datafeed_id: Id
+    datafeed_id: Id
   }
   query_parameters: {
     /**
@@ -62,7 +62,7 @@ export interface Request extends RequestBase {
     /**
      * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines
      * whether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:
-     * 
+     *
      * * `all`: Match any data stream or index, including hidden ones.
      * * `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.
      * * `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.
@@ -102,7 +102,7 @@ export interface Request extends RequestBase {
      * the data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time
      * datafeeds.
      */
-     delayed_data_check_config?: DelayedDataCheckConfig
+    delayed_data_check_config?: DelayedDataCheckConfig
     /**
      * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is
      * either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket
@@ -110,24 +110,24 @@ export interface Request extends RequestBase {
      * written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value
      * must be divisible by the interval of the date histogram aggregation.
      */
-     frequency?: Time
+    frequency?: Time
     /**
      * An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine
      * learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
-     indices?: string[]
+    indices?: string[]
     /**
      * Specifies index expansion options that are used during search.
      */
-     indices_options?: DatafeedIndicesOptions
+    indices_options?: DatafeedIndicesOptions
     /**
      * If a real-time datafeed has never seen any data (including during any initial training period), it automatically
      * stops and closes the associated job after this many real-time searches return no documents. In other words,
      * it stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no
      * end time that sees no data remains started until it is explicitly stopped. By default, it is not set.
      */
-     max_empty_searches?: integer
+    max_empty_searches?: integer
     /**
      * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an
      * Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this
@@ -138,28 +138,28 @@ export interface Request extends RequestBase {
      * when you are satisfied with the results of the job.
      * @server_default {"match_all": {"boost": 1}}
      */
-     query?: QueryContainer
+    query?: QueryContainer
     /**
      * The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might
      * not be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default
      * value is randomly selected between `60s` and `120s`. This randomness improves the query performance
      * when there are multiple jobs running on the same node.
      */
-     query_delay?: Time
+    query_delay?: Time
     /**
      * Specifies runtime fields for the datafeed search.
      */
-     runtime_mappings?: RuntimeFields
+    runtime_mappings?: RuntimeFields
     /**
      * Specifies scripts that evaluate custom expressions and returns script fields to the datafeed.
      * The detector configuration objects in a job can contain functions that use these script fields.
      */
-     script_fields?: Dictionary<string, ScriptField>
+    script_fields?: Dictionary<string, ScriptField>
     /**
      * The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations.
      * The maximum value is the value of `index.max_result_window`.
      * @server_default 1000
      */
-     scroll_size?: integer
+    scroll_size?: integer
   }
 }

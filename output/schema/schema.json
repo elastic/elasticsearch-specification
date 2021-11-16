@@ -8090,9 +8090,21 @@
       "description": "Updates certain properties of a datafeed.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-update-datafeed.html",
       "name": "ml.update_datafeed",
-      "request": null,
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "ml.update_datafeed"
+      },
       "requestBodyRequired": true,
-      "response": null,
+      "response": {
+        "name": "Response",
+        "namespace": "ml.update_datafeed"
+      },
+      "since": "6.4.0",
       "stability": "stable",
       "urls": [
         {
@@ -124557,6 +124569,465 @@
       "name": {
         "name": "Response",
         "namespace": "ml.update_data_frame_analytics"
+      }
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "If set, the datafeed performs aggregation searches. Support for aggregations is limited and should be used only\nwith low cardinality data.",
+            "name": "aggregations",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AggregationContainer",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            }
+          },
+          {
+            "description": "Datafeeds might search over long time periods, for several months or years. This search is split into time\nchunks in order to ensure the load on Elasticsearch is managed. Chunking configuration controls how the size of\nthese time chunks are calculated; it is an advanced configuration option.",
+            "name": "chunking_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ChunkingConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Specifies whether the datafeed checks for missing data and the size of the window. The datafeed can optionally\nsearch over indices that have already been read in an effort to determine whether any data has subsequently been\nadded to the index. If missing data is found, it is a good indication that the `query_delay` is set too low and\nthe data is being indexed after the datafeed has passed that moment in time. This check runs only on real-time\ndatafeeds.",
+            "name": "delayed_data_check_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DelayedDataCheckConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "The interval at which scheduled queries are made while the datafeed runs in real time. The default value is\neither the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket\nspan. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are\nwritten then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value\nmust be divisible by the interval of the date histogram aggregation.",
+            "name": "frequency",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "aliases": [
+              "indexes"
+            ],
+            "description": "An array of index names. Wildcards are supported. If any of the indices are in remote clusters, the machine\nlearning nodes must have the `remote_cluster_client` role.",
+            "name": "indices",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "description": "Specifies index expansion options that are used during search.",
+            "name": "indices_options",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatafeedIndicesOptions",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "If a real-time datafeed has never seen any data (including during any initial training period), it automatically\nstops and closes the associated job after this many real-time searches return no documents. In other words,\nit stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no\nend time that sees no data remains started until it is explicitly stopped. By default, it is not set.",
+            "name": "max_empty_searches",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch. Note that if you change the query, the analyzed data is also\nchanged. Therefore, the time required to learn might be long and the understandability of the results is\nunpredictable. If you want to make significant changes to the source data, it is recommended that you\nclone the job and datafeed and make the amendments in the clone. Let both run in parallel and close one\nwhen you are satisfied with the results of the job.",
+            "name": "query",
+            "required": false,
+            "serverDefault": "{\"match_all\": {\"boost\": 1}}",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "description": "The number of seconds behind real time that data is queried. For example, if data from 10:04 a.m. might\nnot be searchable in Elasticsearch until 10:06 a.m., set this property to 120 seconds. The default\nvalue is randomly selected between `60s` and `120s`. This randomness improves the query performance\nwhen there are multiple jobs running on the same node.",
+            "name": "query_delay",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Specifies runtime fields for the datafeed search.",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
+            "description": "Specifies scripts that evaluate custom expressions and returns script fields to the datafeed.\nThe detector configuration objects in a job can contain functions that use these script fields.",
+            "name": "script_fields",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ScriptField",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations.\nThe maximum value is the value of `index.max_result_window`.",
+            "name": "scroll_size",
+            "required": false,
+            "serverDefault": 1000,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Updates the properties of a datafeed.\nYou must stop and start the datafeed for the changes to be applied.\nWhen Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at\nthe time of the update and runs the query using those same roles. If you provide secondary authorization headers,\nthose credentials are used instead.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "ml.update_datafeed"
+      },
+      "path": [
+        {
+          "description": "A numerical character string that uniquely identifies the datafeed.\nThis identifier can contain lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.\nIt must start and end with alphanumeric characters.",
+          "name": "datafeed_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Type of index that wildcard patterns can match. If the request can target data streams, this argument determines\nwhether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:\n\n* `all`: Match any data stream or index, including hidden ones.\n* `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.\n* `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.\n* `none`: Wildcard patterns are not accepted.\n* `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "deprecation": {
+            "description": "",
+            "version": "7.16.0"
+          },
+          "description": "If `true`, concrete, expanded or aliased indices are ignored when frozen.",
+          "name": "ignore_throttled",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "If `true`, unavailable indices (missing or closed) are ignored.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "name": "aggregations",
+            "required": true,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "AggregationContainer",
+                  "namespace": "_types.aggregations"
+                }
+              }
+            }
+          },
+          {
+            "name": "chunking_config",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ChunkingConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "delayed_data_check_config",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DelayedDataCheckConfig",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "datafeed_id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "frequency",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "indices",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              }
+            }
+          },
+          {
+            "name": "job_id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Id",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "indices_options",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatafeedIndicesOptions",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "name": "max_empty_searches",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "query",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryContainer",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          },
+          {
+            "name": "query_delay",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
+            "name": "script_fields",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ScriptField",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
+          {
+            "name": "scroll_size",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "ml.update_datafeed"
       }
     },
     {
