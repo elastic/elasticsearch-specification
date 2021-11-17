@@ -28,9 +28,8 @@ import {
   SuggestMode,
   Type
 } from '@_types/common'
-import { Distance } from '@_types/Geo'
+import {Distance, GeoLocation} from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
-import { GeoLocation } from '@_types/query_dsl/geo'
 
 export class Suggest<T> {
   length: integer
@@ -57,6 +56,7 @@ export class SuggesterBase {
   size?: integer
 }
 
+/** @codegen_names completion, phrase, term */
 export type SuggestOption<TDocument> =
   | CompletionSuggestOption<TDocument>
   | PhraseSuggestOption

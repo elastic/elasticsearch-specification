@@ -18,14 +18,13 @@
  */
 
 import { Name } from '@_types/common'
+import {ErrorCause} from "@_types/Errors";
+import {Stats} from "@nodes/_types/Stats";
 
-export class NodeReloadException {
+export class NodeReloadError {
   name: Name
-  reload_exception?: NodeReloadExceptionCausedBy
+  reload_exception?: ErrorCause
 }
 
-export class NodeReloadExceptionCausedBy {
-  type: string
-  reason: string
-  caused_by?: NodeReloadExceptionCausedBy
-}
+/** @codegen_names stats, error */
+export type NodeReloadResult = Stats | NodeReloadError

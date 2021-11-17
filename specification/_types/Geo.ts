@@ -82,3 +82,60 @@ export class LatLon {
   lat: double
   lon: double
 }
+
+/**
+ * A latitude/longitude as a 2 dimensional point. It can be represented in various ways:
+ * - as a `{lat, long}` object
+ * - as a geo hash value
+ * - as a `[lon, lat]` array
+ * - as a string in `"<lat>, <lon>"` or WKT point formats
+ *
+ * @codegen_names latlon, geohash, coords, text
+ */
+// ES: GeoUtils.parseGeoPoint()
+export type GeoLocation = LatLonGeoLocation | GeoHashLocation | double[] | string
+
+export class LatLonGeoLocation {
+  lat: double
+  lon: double
+}
+
+export class GeoHashLocation {
+  geohash: GeoHash
+}
+
+/**
+ * A geo bounding box. It can be represented in various ways:
+ * - as 4 top/bottom/left/right coordinates
+ * - as 2 top_left / bottom_right points
+ * - as 2 top_right / bottom_left points
+ * - as a WKT bounding box
+ *
+ * @codegen_names coords, tlbr, trbl, wkt
+ */
+export type GeoBounds =
+  | CoordsGeoBounds
+  | TopLeftBottomRightGeoBounds
+  | TopRightBottomLeftGeoBounds
+  | WktGeoBounds
+
+export class WktGeoBounds {
+  wkt: string
+}
+
+export class CoordsGeoBounds {
+  top: double
+  bottom: double
+  left: double
+  right: double
+}
+
+export class TopLeftBottomRightGeoBounds {
+  top_left: GeoLocation
+  bottom_right: GeoLocation
+}
+
+export class TopRightBottomLeftGeoBounds {
+  top_right: GeoLocation
+  bottom_left: GeoLocation
+}

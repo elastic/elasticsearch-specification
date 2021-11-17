@@ -34,16 +34,16 @@ import {
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import {FieldAndFormat, QueryContainer} from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
-import { DateField, Time } from '@_types/Time'
+import { Time } from '@_types/Time'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
 import { Rescore } from '@global/search/_types/rescoring'
 import { Sort, SortResults } from '@global/search/_types/sort'
-import { DocValueField, SourceFilter } from '@global/search/_types/SourceFilter'
+import {DocValueField, GetSourceConfig, SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
 import { SuggestContainer } from '@global/search/_types/suggester'
 
 /**
@@ -104,7 +104,7 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
     version?: boolean
-    _source?: boolean | Fields
+    _source?: GetSourceConfig
     _source_excludes?: Fields
     _source_includes?: Fields
     seq_no_primary_term?: boolean
@@ -145,7 +145,7 @@ export interface Request extends RequestBase {
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
      */
-    docvalue_fields?: DocValueField | Array<Field | DocValueField>
+    docvalue_fields?: DocValueField[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.
@@ -177,13 +177,13 @@ export interface Request extends RequestBase {
      * Indicates which source fields are returned for matching documents. These
      * fields are returned in the hits._source property of the search response.
      */
-    _source?: boolean | Fields | SourceFilter
+    _source?: SourceConfig
     /**
      * Array of wildcard (*) patterns. The request returns values for field names
      * matching these patterns in the hits.fields property of the response.
      */
-    fields?: Array<Field | DateField>
-    suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+    fields?: Array<FieldAndFormat>
+    suggest?: Dictionary<string, SuggestContainer>
     /**
      * Maximum number of documents to collect for each shard. If a query reaches this
      * limit, Elasticsearch terminates the query early. Elasticsearch collects documents

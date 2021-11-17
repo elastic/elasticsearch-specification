@@ -17,19 +17,11 @@
  * under the License.
  */
 
-import { Field } from './common'
-import { integer, long } from './Numeric'
+import {integer, long} from './Numeric'
 
 export class DateMathTimeParsed {
   factor: integer
   interval: DateMathTimeUnit
-}
-
-/** A reference to a date field with formatting instructions on how to return the date */
-export class DateField {
-  field: Field
-  format?: string
-  include_unmapped?: boolean
 }
 
 export type DateString = string
@@ -69,10 +61,9 @@ export enum DateMathTimeUnit {
 
 /**
  * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
- * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
- * https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java
- * Only support 0 and -1 but we have no way to encode these as constants at the moment
+ * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
  */
+//FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)
 export type Time = string | integer
 
 export enum TimeUnit {

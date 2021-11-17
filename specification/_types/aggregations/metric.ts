@@ -19,17 +19,17 @@
 
 import { Highlight } from '@global/search/_types/highlighting'
 import { SortOrder, Sort } from '@global/search/_types/sort'
-import { SourceFilter } from '@global/search/_types/SourceFilter'
+import {SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GeoLocation } from '@_types/query_dsl/geo'
 import { Script, ScriptField } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
-import { DateInterval } from './bucket'
+import { CalendarInterval } from './bucket'
+import {GeoLocation} from "@_types/Geo";
 
 export class MetricAggregationBase {
   field?: Field
@@ -116,7 +116,7 @@ export class TDigest {
 }
 
 export class RateAggregation extends FormatMetricAggregationBase {
-  unit?: DateInterval
+  unit?: CalendarInterval
   mode?: RateMode
 }
 
@@ -167,7 +167,7 @@ export class TopHitsAggregation extends MetricAggregationBase {
   script_fields?: Dictionary<string, ScriptField>
   size?: integer
   sort?: Sort
-  _source?: boolean | SourceFilter | Fields
+  _source?: SourceConfig
   stored_fields?: Fields
   track_scores?: boolean
   version?: boolean

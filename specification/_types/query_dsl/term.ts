@@ -88,6 +88,8 @@ export class NumberRangeQuery extends RangeQueryBase {
   to?: double
 }
 
+/** @codegen_names date, number */
+// Note: deserialization depends on value types
 export type RangeQuery = DateRangeQuery | NumberRangeQuery
 
 export enum RangeRelation {

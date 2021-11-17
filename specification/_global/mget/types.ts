@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { SourceFilter } from '@global/search/_types/SourceFilter'
+import {SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
@@ -37,7 +37,7 @@ export class Operation {
   _id: MultiGetId
   _index?: IndexName
   routing?: Routing
-  _source?: boolean | Fields | SourceFilter
+  _source?: SourceConfig
   stored_fields?: Fields
   _type?: Type
   version?: VersionNumber

@@ -22,6 +22,7 @@ import {
   ApplicationPrivileges
 } from '@security/_types/Privileges'
 import { Metadata } from '@_types/common'
+import {Script} from "@_types/Scripting";
 
 export class Role {
   cluster: string[]
@@ -42,30 +43,8 @@ export enum TemplateFormat {
   json = 1
 }
 
-export class InlineRoleTemplate {
-  template: InlineRoleTemplateSource
+// ES: TemplateRoleName
+export class RoleTemplate {
   format?: TemplateFormat
+  template: Script
 }
-
-export class InlineRoleTemplateSource {
-  source: string
-}
-
-export class StoredRoleTemplate {
-  template: StoredRoleTemplateId
-  format?: TemplateFormat
-}
-
-export class StoredRoleTemplateId {
-  id: string
-}
-
-export class InvalidRoleTemplate {
-  template: string
-  format?: TemplateFormat
-}
-
-export type RoleTemplate =
-  | InlineRoleTemplate
-  | StoredRoleTemplate
-  | InvalidRoleTemplate

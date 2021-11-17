@@ -48,7 +48,7 @@ export class Body {
   size?: integer
   pit?: PointInTimeReference
   track_total_hits?: boolean | integer
-  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+  suggest?: Dictionary<string, SuggestContainer>
 }
 
 export class SearchResult<TDocument> extends SearchResponse<TDocument> {

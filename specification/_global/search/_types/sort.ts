@@ -17,42 +17,41 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'
-import { DistanceUnit, GeoDistanceType } from '@_types/Geo'
+import {DistanceUnit, GeoDistanceType, GeoLocation} from '@_types/Geo'
 import { FieldType } from '@_types/mapping/Property'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GeoLocation } from '@_types/query_dsl/geo'
 import { Script } from '@_types/Scripting'
 
 export class NestedSortValue {
   filter?: QueryContainer
   max_children?: integer
+  nested?: NestedSortValue
   path: Field
-  // nested: NestedSortValue
 }
 
-// export type NestedSort = Dictionary<Field, NestedSortKey>
-
-export enum NumericType {
+export enum FieldSortNumericType {
   long = 0,
   double = 1,
   date = 2,
   date_nanos = 3
 }
 
+/** @shortcut_property order */
 export class FieldSort {
   missing?: Missing
   mode?: SortMode
   nested?: NestedSortValue
   order?: SortOrder
   unmapped_type?: FieldType
+  numeric_type?: FieldSortNumericType
+  format?: string
 }
 
 export class ScoreSort {
-  mode?: SortMode
   order?: SortOrder
 }
 export class GeoDistanceSort
@@ -67,11 +66,21 @@ export class GeoDistanceSort
 export class ScriptSort {
   order?: SortOrder
   script: Script
-  type?: string
+  type?: ScriptSortType
+  mode?: SortMode
+  nested?: NestedSortValue
 }
 
-export class SortContainer
-  implements AdditionalProperties<Field, FieldSort | SortOrder>
+export enum ScriptSortType {
+  string,
+  number
+}
+
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html
+ * @variants container
+ */
+export class SortOptions implements AdditionalProperty<Field, FieldSort>
 {
   _score?: ScoreSort
   _doc?: ScoreSort
@@ -79,20 +88,15 @@ export class SortContainer
   _script?: ScriptSort
 }
 
-export type SortCombinations = Field | SortContainer | SortOrder
+/**
+ * @codegen_names field, options
+ */
+// Field is a shortcut for {"<field>":{}}. Default order is asc except for "_score" where it's desc
+export type SortCombinations = Field | SortOptions
 
 export type Sort = SortCombinations | SortCombinations[]
 
 export type SortResults = Array<long | double | string | null>
-
-/*
-sort?:
-| string
-| Dictionary<Field, Sort | SortOrder | NestedSort>
-| Array<
-  SingleKeyDictionary<Sort | SortOrder | Dictionary<Field, NestedSort>>
-  >
-*/
 
 export enum SortMode {
   min = 0,
@@ -104,12 +108,6 @@ export enum SortMode {
 
 export enum SortOrder {
   asc = 0,
-  desc = 1,
-  /** @codegen_name Document */
-  _doc = 2
+  desc = 1
 }
 
-export enum SortSpecialField {
-  _score = 0,
-  _doc = 1
-}

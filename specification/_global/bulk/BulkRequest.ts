@@ -28,6 +28,7 @@ import {
 } from '@_types/common'
 import { Time } from '@_types/Time'
 import { OperationContainer } from './types'
+import {GetSourceConfig} from "@global/search/_types/SourceFilter";
 
 /**
  * @rest_spec_name bulk
@@ -44,7 +45,7 @@ export interface Request<TSource> extends RequestBase {
     pipeline?: string
     refresh?: Refresh
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: GetSourceConfig
     _source_excludes?: Fields
     _source_includes?: Fields
     timeout?: Time

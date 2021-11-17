@@ -22,9 +22,8 @@ import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { AggregateName, Field, ScalarValue } from '@_types/common'
-import { GeoHash, GeoLine, GeoTile, LatLon } from '@_types/Geo'
+import {GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile} from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
-import { GeoLocation } from '@_types/query_dsl/geo'
 import { DateMathTime, EpochMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
 
@@ -131,8 +130,11 @@ export class CardinalityAggregate extends AggregateBase {
 
 // ES: AbstractInternalHDRPercentiles, AbstractInternalTDigestPercentiles, InternalPercentilesBucket
 export class PercentilesAggregateBase extends AggregateBase {
-  values: KeyedPercentiles | Array<ArrayPercentilesItem>
+  values: Percentiles
 }
+
+/** @codegen_names keyed, array */
+type Percentiles = KeyedPercentiles | Array<ArrayPercentilesItem>
 
 // In keyed form, percentiles are represented as an object with 1 or 2 properties for each key:
 // <key_name>: double | null - always present (null means there were no values for this percentile)
@@ -287,11 +289,6 @@ export class GeoBoundsAggregate extends AggregateBase {
   bounds: GeoBounds
 }
 
-export class GeoBounds {
-  bottom_right: LatLon
-  top_left: LatLon
-}
-
 /** @variant name=geo_centroid */
 export class GeoCentroidAggregate extends AggregateBase {
   count: long
@@ -303,11 +300,13 @@ export class GeoCentroidAggregate extends AggregateBase {
 /**
  * Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for
  * the different buckets, the result is a dictionary.
+ *
+ * @codegen_names keyed, array
  */
 // Note: not all aggregations support keys in their configuration, meaning they will never return the dictionary
 // variant. However we use this union for all aggregates to future-proof the spec if some key-less aggregations finally
 // add support for keys.
-type Buckets<TBucket> = Dictionary<string, TBucket> | Array<TBucket>
+export type Buckets<TBucket> = Dictionary<string, TBucket> | Array<TBucket>
 
 export class MultiBucketAggregateBase<TBucket> extends AggregateBase {
   buckets: Buckets<TBucket>

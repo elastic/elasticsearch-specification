@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Fields, IndexName, Routing } from '@_types/common'
 import { MultiGetId, Operation } from './types'
+import {GetSourceConfig} from "@global/search/_types/SourceFilter";
 
 /**
  * @rest_spec_name mget
@@ -36,7 +37,7 @@ export interface Request extends RequestBase {
     realtime?: boolean // default: true
     refresh?: boolean // default: false
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: GetSourceConfig
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields

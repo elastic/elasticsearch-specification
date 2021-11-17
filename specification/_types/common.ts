@@ -111,6 +111,7 @@ export type MultiTermQueryRewrite = string
 export type Field = string
 export type Fields = Field | Field[]
 
+/** @codegen_names count, option */
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 /**
@@ -238,9 +239,13 @@ export enum OpType {
   create = 1
 }
 
-export type Refresh = boolean | RefreshOptions
-export enum RefreshOptions {
-  wait_for = 1
+// ES uses a string but accepts a json boolean for strings
+export type Refresh = boolean | RefreshValues
+
+export enum RefreshValues {
+  true,
+  false,
+  wait_for
 }
 
 export enum SearchType {

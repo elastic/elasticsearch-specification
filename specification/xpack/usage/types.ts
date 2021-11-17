@@ -23,6 +23,7 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
+import {AdditionalProperties} from "@spec_utils/behaviors";
 
 export class Base {
   available: boolean
@@ -37,17 +38,6 @@ export class Counter {
 export class FeatureToggle {
   enabled: boolean
 }
-
-export class BaseUrlConfig {
-  url_name: string
-  url_value: string
-}
-
-export class KibanaUrlConfig extends BaseUrlConfig {
-  time_range?: string
-}
-
-export type UrlConfig = BaseUrlConfig | KibanaUrlConfig
 
 export class AlertingExecution {
   actions: Dictionary<string, ExecutionAction>
@@ -331,16 +321,19 @@ export class AllJobs {
   forecasts: Dictionary<string, integer>
 }
 
+// The 'jobs' entry in MachineLearning can either contain a dictionary of
+// individual jobs or a single summary entry under the key '_all'.
+// The layout of the summary varies from that of the individual job,
+// and is specified in the 'AllJobs' class (defined above).
+export class Jobs implements AdditionalProperties<string, Job>{
+  _all?: AllJobs
+}
+
 export class MachineLearning extends Base {
   datafeeds: Dictionary<string, Datafeed>
   // TODO: xPack marks the entire Job definition as optional
   //       while the MlJob has many required properties.
-
-  // Assumption: the 'jobs' entry can either contain a dictionary of
-  // individual jobs or a single summary entry under the key '_all'.
-  // The layout of the summary varies from that of the individual job,
-  // and is specified in the 'AllJobs' class (defined above).
-  jobs: Dictionary<string, Job> | SingleKeyDictionary<string, AllJobs>
+  jobs: Jobs
   node_count: integer
   data_frame_analytics_jobs: MlDataFrameAnalyticsJobs
   inference: MlInference

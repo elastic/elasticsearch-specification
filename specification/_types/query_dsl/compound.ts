@@ -19,12 +19,11 @@
 
 import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Field, MinimumShouldMatch } from '@_types/common'
-import { Distance } from '@_types/Geo'
+import {Distance, GeoLocation} from '@_types/Geo'
 import { double, float, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Time } from '@_types/Time'
 import { QueryBase, QueryContainer } from './abstractions'
-import { GeoLocation } from './geo'
 
 export class BoolQuery extends QueryBase {
   filter?: QueryContainer | QueryContainer[]
@@ -105,6 +104,8 @@ export class GeoDecayFunction
   extends DecayFunctionBase
   implements AdditionalProperty<Field, DecayPlacement<GeoLocation, Distance>> {}
 
+/** @codegen_names date, numeric, geo */
+// Note: deserialization depends on value types
 export type DecayFunction =
   | DateDecayFunction
   | NumericDecayFunction

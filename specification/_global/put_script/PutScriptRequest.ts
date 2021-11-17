@@ -37,6 +37,6 @@ export interface Request extends RequestBase {
     timeout?: Time
   }
   body: {
-    script?: StoredScript
+    script: StoredScript
   }
 }

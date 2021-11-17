@@ -32,12 +32,11 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import { Distance, GeoShape } from '@_types/Geo'
+import {Distance, GeoLocation, GeoShape} from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Time } from '@_types/Time'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
-import { GeoCoordinate } from './geo'
 import { AdditionalProperty } from '@spec_utils/behaviors'
 
 export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
@@ -47,7 +46,7 @@ export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
 }
 
 export class GeoDistanceFeatureQuery extends DistanceFeatureQueryBase<
-  GeoCoordinate,
+  GeoLocation,
   Distance
 > {}
 
@@ -56,6 +55,8 @@ export class DateDistanceFeatureQuery extends DistanceFeatureQueryBase<
   Time
 > {}
 
+/** @codegen_names geo, date */
+// Note: deserialization depends on value types
 export type DistanceFeatureQuery =
   | GeoDistanceFeatureQuery
   | DateDistanceFeatureQuery
