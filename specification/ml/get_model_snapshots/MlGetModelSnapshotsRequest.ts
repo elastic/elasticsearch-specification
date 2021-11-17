@@ -36,13 +36,16 @@ export interface Request extends RequestBase {
      */
     job_id: Id
     /**
-     * A numerical character string that uniquely identifies the model snapshot.
+     * A numerical character string that uniquely identifies the model snapshot. You can get information for multiple
+     * snapshots by using a comma-separated list or a wildcard expression. You can get all snapshots by using `_all`,
+     * by specifying `*` as the snapshot ID, or by omitting the snapshot ID.
      */
     snapshot_id?: Id
   }
   query_parameters: {
     /**
      * If true, the results are sorted in descending order.
+     * @server_default false
      */
     desc?: boolean
     /**
@@ -51,10 +54,12 @@ export interface Request extends RequestBase {
     end?: Time
     /**
      * Skips the specified number of snapshots.
+     * @server_default 0
      */
     from?: integer
     /**
      * Specifies the maximum number of snapshots to obtain.
+     * @server_default 100
      */
     size?: integer
     /**
@@ -69,14 +74,22 @@ export interface Request extends RequestBase {
   }
   body: {
     /**
-     * Returns snapshots with timestamps after this time. Defaults to unset,
-     * which means results are not limited to specific timestamps.
+     * Refer to the description for the `desc` query parameter.
+     * @server_default false
      */
-    start?: Time
+     desc?: boolean
     /**
-     * Returns snapshots with timestamps earlier than this time. Defaults to
-     * unset, which means results are not limited to specific timestamps.
+     * Refer to the description for the `end` query parameter.
      */
     end?: Time
+    page?: Page
+    /**
+     * Refer to the description for the `sort` query parameter.
+     */
+    sort?: Field
+    /**
+     * Refer to the description for the `start` query parameter.
+     */
+    start?: Time
   }
 }
