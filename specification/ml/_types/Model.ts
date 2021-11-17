@@ -36,7 +36,6 @@ export class ModelSnapshot {
   model_size_stats: ModelSizeStats
   /**  If true, this snapshot will not be deleted during automatic cleanup of snapshots older than
    * `model_snapshot_retention_days`. However, this snapshot will be deleted when the job is deleted.
-   * @server_default false.
    */
   retain: boolean
   /** For internal use only. */
