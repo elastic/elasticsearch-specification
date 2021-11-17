@@ -17,10 +17,18 @@
  * under the License.
  */
 
-import { OverlappingIndexTemplate } from '@indices/_types/OverlappingIndexTemplate'
-import { TemplateMapping } from '@indices/_types/TemplateMapping'
+import { DataStream } from '@indices/_types/DataStream'
 import { RequestBase } from '@_types/Base'
-import { IndexName, Name } from '@_types/common'
+import {
+  IndexName,
+  Indices,
+  Metadata,
+  Name,
+  VersionNumber
+} from '@_types/common'
+import { Time } from '@_types/Time'
+import { integer } from '@_types/Numeric'
+import { IndexTemplateMapping } from '../put_index_template/IndicesPutIndexTemplateRequest'
 
 /**
  * @rest_spec_name indices.simulate_index_template
@@ -32,11 +40,31 @@ export interface Request extends RequestBase {
     /** Index or template name to simulate */
     name: Name
   }
+  query_parameters: {
+    /**
+     * If `true`, the template passed in the body is only used if no existing
+     * templates match the same index patterns. If `false`, the simulation uses
+     * the template with the highest priority. Note that the template is not
+     * permanently added or updated in either case; it is only used for the
+     * simulation.
+     * @server_default false
+     * */
+    create?: boolean
+    /**
+     * Period to wait for a connection to the master node. If no response is received
+     * before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
+     */
+    master_timeout?: Time
+  }
   body: {
-    index_patterns?: IndexName[]
+    index_patterns?: Indices
     composed_of?: Name[]
-    /** Any overlapping templates that would have matched, but have lower priority */
-    overlapping?: OverlappingIndexTemplate[]
-    template?: TemplateMapping
+    template?: IndexTemplateMapping
+    data_stream?: DataStream
+    priority?: integer
+    version?: VersionNumber
+    /** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html */
+    _meta?: Metadata
   }
 }

@@ -65,6 +65,11 @@ export interface Request extends RequestBase {
      */
     timeout?: Time
     /**
+     * A boolean value which controls whether to return HTTP 200 status code instead of HTTP 408 in case of a cluster health timeout from the server side.
+     * @server_default false
+     */
+    return_200_for_cluster_health_timeout?: boolean
+    /**
      * A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.
      * @server_default 0
      */

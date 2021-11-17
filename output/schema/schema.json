@@ -67655,17 +67655,6 @@
       "path": [],
       "query": [
         {
-          "name": "include_timestamp",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "description": "Set to false to disable timestamping",
           "name": "ts",
           "required": false,
@@ -82053,6 +82042,19 @@
           }
         },
         {
+          "description": "A boolean value which controls whether to return HTTP 200 status code instead of HTTP 408 in case of a cluster health timeout from the server side.",
+          "name": "return_200_for_cluster_health_timeout",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "description": "A number controlling to how many active shards to wait for, all to wait for all shards in the cluster to be active, or 0 to not wait.",
           "name": "wait_for_active_shards",
           "required": false,
@@ -91501,40 +91503,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "OverlappingIndexTemplate",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Name",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index_patterns",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexName",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -100264,13 +100232,10 @@
             "name": "index_patterns",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "Indices",
+                "namespace": "_types"
               }
             }
           },
@@ -100289,28 +100254,58 @@
             }
           },
           {
-            "description": "Any overlapping templates that would have matched, but have lower priority",
-            "name": "overlapping",
-            "required": false,
-            "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "OverlappingIndexTemplate",
-                  "namespace": "indices._types"
-                }
-              }
-            }
-          },
-          {
             "name": "template",
             "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TemplateMapping",
+                "name": "IndexTemplateMapping",
+                "namespace": "indices.put_index_template"
+              }
+            }
+          },
+          {
+            "name": "data_stream",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataStream",
                 "namespace": "indices._types"
+              }
+            }
+          },
+          {
+            "name": "priority",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "name": "version",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VersionNumber",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-meta-field.html",
+            "name": "_meta",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
               }
             }
           }
@@ -100342,7 +100337,34 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "If `true`, the template passed in the body is only used if no existing\ntemplates match the same index patterns. If `false`, the simulation uses\nthe template with the highest priority. Note that the template is not\npermanently added or updated in either case; it is only used for the\nsimulation.",
+          "name": "create",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "description": "Period to wait for a connection to the master node. If no response is received\nbefore the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {
@@ -117404,7 +117426,7 @@
           {
             "description": "The analysis configuration, which contains the information necessary to\nperform one of the following types of analysis: classification, outlier\ndetection, or regression.",
             "name": "analysis",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -121358,6 +121380,21 @@
       "body": {
         "kind": "properties",
         "properties": [
+          {
+            "description": "An array of anomaly detection job identifiers.",
+            "name": "job_ids",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Id",
+                  "namespace": "_types"
+                }
+              }
+            }
+          },
           {
             "description": "A description of the calendar.",
             "name": "description",
@@ -128092,7 +128129,7 @@
       },
       "path": [
         {
-          "description": "A comma-separated list of node IDs or names to limit the returned information; use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes",
+          "description": "List of node IDs or names used to limit returned information.",
           "name": "node_id",
           "required": false,
           "type": {
@@ -128106,9 +128143,10 @@
       ],
       "query": [
         {
-          "description": "Don't show threads that are in known-idle places, such as waiting on a socket select or pulling from an empty task queue (default: true)",
+          "description": "If true, known idle threads (e.g. waiting in a socket select, or to get\na task from an empty queue) are filtered out.",
           "name": "ignore_idle_threads",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128118,9 +128156,10 @@
           }
         },
         {
-          "description": "The interval for the second sampling of threads",
+          "description": "The interval to do the second sampling of threads.",
           "name": "interval",
           "required": false,
+          "serverDefault": "500ms",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128130,9 +128169,10 @@
           }
         },
         {
-          "description": "Number of samples of thread stacktrace (default: 10)",
+          "description": "Number of samples of thread stacktrace.",
           "name": "snapshots",
           "required": false,
+          "serverDefault": 10,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128142,9 +128182,23 @@
           }
         },
         {
-          "description": "Specify the number of threads to provide information for (default: 3)",
+          "description": "Period to wait for a connection to the master node. If no response\nis received before the timeout expires, the request fails and\nreturns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Specifies the number of hot threads to provide information for.",
           "name": "threads",
           "required": false,
+          "serverDefault": 3,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -128154,24 +128208,27 @@
           }
         },
         {
-          "name": "thread_type",
+          "description": "Period to wait for a response. If no response is received\nbefore the timeout expires, the request fails and returns an error.",
+          "name": "timeout",
           "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The type to sample.",
+          "name": "type",
+          "required": false,
+          "serverDefault": "cpu",
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "ThreadType",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Explicit operation timeout",
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Time",
               "namespace": "_types"
             }
           }
@@ -134830,6 +134887,7 @@
         "kind": "properties",
         "properties": [
           {
+            "description": "The new password value. Passwords must be at least 6 characters long.",
             "name": "password",
             "required": false,
             "type": {
@@ -134837,6 +134895,18 @@
               "type": {
                 "name": "Password",
                 "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "A hash of the new password value. This must be produced using the same\nhashing algorithm as has been configured for password storage. For more details,\nsee the explanation of the `xpack.security.authc.password_hashing.algorithm`\nsetting.",
+            "name": "password_hash",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
             }
           }
@@ -134856,7 +134926,7 @@
       },
       "path": [
         {
-          "description": "The username of the user to change the password for",
+          "description": "The user whose password you want to change. If you do not specify this\nparameter, the password is changed for the current user.",
           "name": "username",
           "required": false,
           "type": {
@@ -152112,12 +152182,13 @@
           }
         },
         {
-          "name": "if_sequence_number",
+          "description": "only update the watch if the last operation that has changed the watch has the specified sequence number",
+          "name": "if_seq_no",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
+              "name": "SequenceNumber",
               "namespace": "_types"
             }
           }
