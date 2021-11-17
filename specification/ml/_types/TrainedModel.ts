@@ -57,6 +57,8 @@ export class TrainedModelInferenceStats {
 export class TrainedModelConfig {
   /** Idetifier for the trained model. */
   model_id: Id
+  /** The model type */
+  model_type: TrainedModelType
   /** A comma delimited string of tags. A trained model can have many tags, or none. */
   tags: string[]
   /** The Elasticsearch version number in which the trained model was created. */
@@ -138,4 +140,20 @@ export class TotalFeatureImportanceStatistics {
   max: integer
   /** The minimum importance value across all the training data for this feature. */
   min: integer
+}
+
+export enum TrainedModelType {
+  /**
+   * The model definition is an ensemble model of decision trees.
+   */
+  tree_ensemble,
+  /**
+   * A special type reserved for language identification models.
+   */
+  lang_ident,
+  /**
+   * The stored definition is a PyTorch (specifically a TorchScript) model.
+   * Currently only NLP models are supported.
+   */
+  pytorch
 }

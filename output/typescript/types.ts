@@ -11624,6 +11624,7 @@ export interface MlTotalFeatureImportanceStatistics {
 
 export interface MlTrainedModelConfig {
   model_id: Id
+  model_type: MlTrainedModelType
   tags: string[]
   version?: VersionString
   compressed_definition?: string
@@ -11664,6 +11665,8 @@ export interface MlTrainedModelStats {
   inference_stats?: MlTrainedModelInferenceStats
   ingest?: Record<string, any>
 }
+
+export type MlTrainedModelType = 'tree_ensemble' | 'lang_ident' | 'pytorch'
 
 export interface MlValidationLoss {
   fold_values: string[]
@@ -12533,6 +12536,7 @@ export interface MlPutTrainedModelRequest extends RequestBase {
     inference_config: AggregationsInferenceConfigContainer
     input: MlPutTrainedModelInput
     metadata?: any
+    model_type?: MlTrainedModelType
     tags?: string[]
   }
 }
