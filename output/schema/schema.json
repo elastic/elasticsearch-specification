@@ -119526,8 +119526,21 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Returns snapshots with timestamps after this time. Defaults to unset,\nwhich means results are not limited to specific timestamps.",
-            "name": "start",
+            "description": "Refer to the description for the `desc` query parameter.",
+            "name": "desc",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `end` query parameter.",
+            "name": "end",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -119538,8 +119551,31 @@
             }
           },
           {
-            "description": "Returns snapshots with timestamps earlier than this time. Defaults to\nunset, which means results are not limited to specific timestamps.",
-            "name": "end",
+            "name": "page",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Page",
+                "namespace": "ml._types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `sort` query parameter.",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `start` query parameter.",
+            "name": "start",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -119577,7 +119613,7 @@
           }
         },
         {
-          "description": "A numerical character string that uniquely identifies the model snapshot.",
+          "description": "A numerical character string that uniquely identifies the model snapshot. You can get information for multiple\nsnapshots by using a comma-separated list or a wildcard expression. You can get all snapshots by using `_all`,\nby specifying `*` as the snapshot ID, or by omitting the snapshot ID.",
           "name": "snapshot_id",
           "required": false,
           "type": {
@@ -119594,6 +119630,7 @@
           "description": "If true, the results are sorted in descending order.",
           "name": "desc",
           "required": false,
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119618,6 +119655,7 @@
           "description": "Skips the specified number of snapshots.",
           "name": "from",
           "required": false,
+          "serverDefault": 0,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119630,6 +119668,7 @@
           "description": "Specifies the maximum number of snapshots to obtain.",
           "name": "size",
           "required": false,
+          "serverDefault": 100,
           "type": {
             "kind": "instance_of",
             "type": {

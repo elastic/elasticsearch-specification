@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
 import { Field, Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
@@ -77,7 +78,7 @@ export interface Request extends RequestBase {
      * Refer to the description for the `desc` query parameter.
      * @server_default false
      */
-     desc?: boolean
+    desc?: boolean
     /**
      * Refer to the description for the `end` query parameter.
      */
