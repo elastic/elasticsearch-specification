@@ -22,7 +22,7 @@ import {
   ApplicationPrivileges
 } from '@security/_types/Privileges'
 import { Metadata } from '@_types/common'
-import {Script} from "@_types/Scripting";
+import { Script } from '@_types/Scripting'
 
 export class Role {
   cluster: string[]

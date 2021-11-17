@@ -24,7 +24,7 @@ import { RequestBase } from '@_types/Base'
 import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Time } from '@_types/Time'
-import {IndexRolloverMapping, RolloverConditions} from './types'
+import { IndexRolloverMapping, RolloverConditions } from './types'
 
 /**
  * @rest_spec_name indices.rollover

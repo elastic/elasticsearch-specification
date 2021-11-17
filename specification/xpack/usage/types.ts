@@ -23,7 +23,7 @@ import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { ByteSize, EmptyObject, Field, Name } from '@_types/common'
 import { Job, JobStatistics } from '@ml/_types/Job'
 import { integer, long, uint, ulong } from '@_types/Numeric'
-import {AdditionalProperties} from "@spec_utils/behaviors";
+import { AdditionalProperties } from '@spec_utils/behaviors'
 
 export class Base {
   available: boolean
@@ -325,7 +325,7 @@ export class AllJobs {
 // individual jobs or a single summary entry under the key '_all'.
 // The layout of the summary varies from that of the individual job,
 // and is specified in the 'AllJobs' class (defined above).
-export class Jobs implements AdditionalProperties<string, Job>{
+export class Jobs implements AdditionalProperties<string, Job> {
   _all?: AllJobs
 }
 

@@ -19,7 +19,7 @@
 
 import { Highlight } from '@global/search/_types/highlighting'
 import { SortOrder, Sort } from '@global/search/_types/sort'
-import {SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
+import { SourceConfig, SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Field, Fields } from '@_types/common'
@@ -29,7 +29,7 @@ import { Script, ScriptField } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 import { Missing } from './AggregationContainer'
 import { CalendarInterval } from './bucket'
-import {GeoLocation} from "@_types/Geo";
+import { GeoLocation } from '@_types/Geo'
 
 export class MetricAggregationBase {
   field?: Field

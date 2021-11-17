@@ -25,8 +25,12 @@ export class CharFilterBase {
   version?: VersionString
 }
 
+/** @codegen_names name, definition */
+// ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
+export type CharFilter = string | CharFilterDefinition
+
 /** @variants internal tag='type' */
-export type CharFilter =
+export type CharFilterDefinition =
   | HtmlStripCharFilter
   | MappingCharFilter
   | PatternReplaceCharFilter

@@ -26,7 +26,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
-import {GetSourceConfig} from "@global/search/_types/SourceFilter";
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name exists

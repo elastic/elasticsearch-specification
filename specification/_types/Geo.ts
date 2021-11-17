@@ -72,7 +72,12 @@ export enum GeoShapeRelation {
 }
 
 export type GeoTilePrecision = number
-export type GeoHashPrecision = number
+
+/**
+ * A precision that can be expressed as a geohash length between 1 and 12, or a distance measure like "1km", "10m".
+ * @codegen_names geohash_length, distance
+ */
+export type GeoHashPrecision = number | string
 export type GeoHash = string
 
 /** A map tile reference, represented as `{zoom}/{x}/{y}` */
@@ -93,7 +98,11 @@ export class LatLon {
  * @codegen_names latlon, geohash, coords, text
  */
 // ES: GeoUtils.parseGeoPoint()
-export type GeoLocation = LatLonGeoLocation | GeoHashLocation | double[] | string
+export type GeoLocation =
+  | LatLonGeoLocation
+  | GeoHashLocation
+  | double[]
+  | string
 
 export class LatLonGeoLocation {
   lat: double

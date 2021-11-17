@@ -18,7 +18,7 @@
  */
 
 import { DocValuesPropertyBase } from './core'
-import {GeoLocation} from "@_types/Geo";
+import { GeoLocation } from '@_types/Geo'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean

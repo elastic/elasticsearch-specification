@@ -20,7 +20,7 @@
 import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Missing } from '@_types/aggregations/AggregationContainer'
 import { Field } from '@_types/common'
-import {DistanceUnit, GeoDistanceType, GeoLocation} from '@_types/Geo'
+import { DistanceUnit, GeoDistanceType, GeoLocation } from '@_types/Geo'
 import { FieldType } from '@_types/mapping/Property'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -59,6 +59,7 @@ export class GeoDistanceSort
 {
   mode?: SortMode
   distance_type?: GeoDistanceType
+  ignore_unmapped?: boolean
   order?: SortOrder
   unit?: DistanceUnit
 }
@@ -80,8 +81,7 @@ export enum ScriptSortType {
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html
  * @variants container
  */
-export class SortOptions implements AdditionalProperty<Field, FieldSort>
-{
+export class SortOptions implements AdditionalProperty<Field, FieldSort> {
   _score?: ScoreSort
   _doc?: ScoreSort
   _geo_distance?: GeoDistanceSort
@@ -110,4 +110,3 @@ export enum SortOrder {
   asc = 0,
   desc = 1
 }
-

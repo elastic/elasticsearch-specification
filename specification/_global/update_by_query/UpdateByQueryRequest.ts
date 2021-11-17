@@ -33,7 +33,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
-import {GetSourceConfig} from "@global/search/_types/SourceFilter";
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name update_by_query

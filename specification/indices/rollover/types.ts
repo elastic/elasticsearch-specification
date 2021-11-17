@@ -20,8 +20,8 @@
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import {TypeMapping} from "@_types/mapping/TypeMapping";
-import {Dictionary} from "@spec_utils/Dictionary";
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class RolloverConditions {
   max_age?: Time

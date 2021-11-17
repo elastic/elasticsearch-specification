@@ -25,18 +25,17 @@ import {
   GeoDistanceType,
   DistanceUnit,
   GeoHashPrecision,
-  GeoTilePrecision, GeoLocation, GeoBounds
+  GeoTilePrecision,
+  GeoLocation,
+  GeoBounds
 } from '@_types/Geo'
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Script } from '@_types/Scripting'
 import { DateString, Time, DateMath } from '@_types/Time'
-import {Buckets } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
-import {
-  Missing,
-  MissingOrder
-} from './AggregationContainer'
+import { Missing, MissingOrder } from './AggregationContainer'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -88,13 +87,13 @@ export class CompositeAggregationSource {
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
-  calendar_interval?: CalendarInterval
-  extended_bounds?: ExtendedBounds<DateMath | long>
-  hard_bounds?: ExtendedBounds<DateMath | long>
+  calendar_interval?: CalendarInterval // CalendarInterval is too restrictive here
+  extended_bounds?: ExtendedBounds<FieldDateMath>
+  hard_bounds?: ExtendedBounds<FieldDateMath>
   field?: Field
-  fixed_interval?: CalendarInterval | Time
+  fixed_interval?: Time // CalendarInterval is too restrictive here
   format?: string
-  interval?: CalendarInterval | Time
+  interval?: Time
   min_doc_count?: integer
   missing?: DateString
   offset?: Time
@@ -133,13 +132,19 @@ export class DateRangeAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
+/**
+ * A date range limit, represented either as a DateMath expression or a number expressed
+ * according to the target field's precision.
+ *
+ * @codegen_names expr, value
+ */
+// ES: DateRangeAggregationBuilder.innerBuild()
+export type FieldDateMath = DateMath | double
+
 export class DateRangeExpression {
-  from?: DateMath | float
-  from_as_string?: string
-  to_as_string?: string
+  from?: FieldDateMath
   key?: string
-  to?: DateMath | float
-  doc_count?: long
+  to?: FieldDateMath
 }
 
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
@@ -166,7 +171,7 @@ export class FiltersAggregation extends BucketAggregationBase {
 export class GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
-  origin?: GeoLocation | string
+  origin?: GeoLocation
   ranges?: AggregationRange[]
   unit?: DistanceUnit
 }

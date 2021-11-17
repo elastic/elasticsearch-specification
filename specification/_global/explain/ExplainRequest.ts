@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { DefaultOperator, Fields, Id, IndexName, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import {GetSourceConfig} from "@global/search/_types/SourceFilter";
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name explain

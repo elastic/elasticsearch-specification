@@ -25,9 +25,9 @@ import { Id } from './common'
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
  * @codegen_names builtin, custom
  */
-export type ScriptLanguage = BuiltinLanguage | string
+export type ScriptLanguage = BuiltinScriptLanguage | string
 
-export enum BuiltinLanguage {
+export enum BuiltinScriptLanguage {
   painless = 0,
   expression = 1,
   mustache = 2,

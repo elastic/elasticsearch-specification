@@ -20,7 +20,7 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
-import {UserDefinedValue} from "@spec_utils/UserDefinedValue";
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Phase {
   actions?: Actions

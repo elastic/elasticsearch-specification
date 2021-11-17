@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
+import { SourceConfig, SourceFilter } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {

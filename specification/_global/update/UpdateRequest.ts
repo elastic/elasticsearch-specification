@@ -17,7 +17,10 @@
  * under the License.
  */
 
-import {GetSourceConfig, SourceConfig} from '@global/search/_types/SourceFilter'
+import {
+  GetSourceConfig,
+  SourceConfig
+} from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,

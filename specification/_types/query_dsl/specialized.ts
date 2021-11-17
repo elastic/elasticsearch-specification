@@ -27,12 +27,11 @@ import {
   IndexName,
   MinimumShouldMatch,
   Routing,
-  ShapeRelation,
   Type,
   VersionNumber,
   VersionType
 } from '@_types/common'
-import {Distance, GeoLocation, GeoShape} from '@_types/Geo'
+import { Distance, GeoLocation, GeoShape, GeoShapeRelation } from '@_types/Geo'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Time } from '@_types/Time'
@@ -106,7 +105,7 @@ export class LikeDocument {
 /**
  * Text that we want similar documents for or a lookup to a document's field for the text.
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters
- *
+ * @codegen_names text, document
  */
 export type Like = string | LikeDocument
 
@@ -178,11 +177,13 @@ export class ScriptScoreQuery extends QueryBase {
 // holding also the query base fields (boost and _name)
 export class ShapeQuery
   extends QueryBase
-  implements AdditionalProperty<Field, ShapeFieldQuery> {}
+  implements AdditionalProperty<Field, ShapeFieldQuery>
+{
+  ignore_unmapped?: boolean
+}
 
 export class ShapeFieldQuery {
-  ignore_unmapped?: boolean
   indexed_shape?: FieldLookup
-  relation?: ShapeRelation
+  relation?: GeoShapeRelation
   shape?: GeoShape
 }

@@ -17,10 +17,22 @@
  * under the License.
  */
 
-import {SingleKeyDictionary} from '@spec_utils/Dictionary'
-import {Field, Id, IndexName, MinimumShouldMatch, Routing} from '@_types/common'
-import {float} from '@_types/Numeric'
-import {BoolQuery, BoostingQuery, ConstantScoreQuery, DisMaxQuery, FunctionScoreQuery} from './compound'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import {
+  Field,
+  Id,
+  IndexName,
+  MinimumShouldMatch,
+  Routing
+} from '@_types/common'
+import { float } from '@_types/Numeric'
+import {
+  BoolQuery,
+  BoostingQuery,
+  ConstantScoreQuery,
+  DisMaxQuery,
+  FunctionScoreQuery
+} from './compound'
 import {
   CommonTermsQuery,
   IntervalsQuery,
@@ -32,10 +44,20 @@ import {
   QueryStringQuery,
   SimpleQueryStringQuery
 } from './fulltext'
-import {GeoBoundingBoxQuery, GeoDistanceQuery, GeoPolygonQuery, GeoShapeQuery} from './geo'
-import {HasChildQuery, HasParentQuery, NestedQuery, ParentIdQuery} from './joining'
-import {MatchAllQuery} from './MatchAllQuery'
-import {MatchNoneQuery} from './MatchNoneQuery'
+import {
+  GeoBoundingBoxQuery,
+  GeoDistanceQuery,
+  GeoPolygonQuery,
+  GeoShapeQuery
+} from './geo'
+import {
+  HasChildQuery,
+  HasParentQuery,
+  NestedQuery,
+  ParentIdQuery
+} from './joining'
+import { MatchAllQuery } from './MatchAllQuery'
+import { MatchNoneQuery } from './MatchNoneQuery'
 import {
   SpanContainingQuery,
   SpanFieldMaskingQuery,
@@ -184,7 +206,13 @@ export enum CombinedFieldsZeroTerms {
  * @shortcut_property field
  */
 export class FieldAndFormat {
+  /**
+   * Wildcard pattern. The request returns values for field names matching this pattern.
+   */
   field: Field
+  /**
+   * Format in which the values are returned.
+   */
   format?: string
   include_unmapped?: boolean
 }

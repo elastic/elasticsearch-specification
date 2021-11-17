@@ -21,7 +21,7 @@ import { Stats } from '@nodes/_types/Stats'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
-import { NodeReloadResult} from './types'
+import { NodeReloadResult } from './types'
 
 export class Response extends NodesResponseBase {
   body: {

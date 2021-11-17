@@ -20,7 +20,11 @@
 import { RequestBase } from '@_types/Base'
 import { Field, Fields, Indices, Routing } from '@_types/common'
 import { Query } from './_types/Knn'
-import {DocValueField, SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
+import {
+  DocValueField,
+  SourceConfig,
+  SourceFilter
+} from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name knn_search

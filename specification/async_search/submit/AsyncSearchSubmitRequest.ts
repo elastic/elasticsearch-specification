@@ -34,7 +34,7 @@ import {
 } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { double, integer, long } from '@_types/Numeric'
-import {FieldAndFormat, QueryContainer} from '@_types/query_dsl/abstractions'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
@@ -43,8 +43,14 @@ import { Highlight } from '@global/search/_types/highlighting'
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
 import { Rescore } from '@global/search/_types/rescoring'
 import { Sort, SortResults } from '@global/search/_types/sort'
-import {DocValueField, GetSourceConfig, SourceConfig, SourceFilter} from '@global/search/_types/SourceFilter'
-import { SuggestContainer } from '@global/search/_types/suggester'
+import {
+  DocValueField,
+  GetSourceConfig,
+  SourceConfig,
+  SourceFilter
+} from '@global/search/_types/SourceFilter'
+import { Suggester } from '@global/search/_types/suggester'
+import { TrackHits } from '@global/search/_types/hits'
 
 /**
  * @rest_spec_name async_search.submit
@@ -99,7 +105,7 @@ export interface Request extends RequestBase {
     suggest_text?: string
     terminate_after?: long
     timeout?: Time
-    track_total_hits?: boolean | integer
+    track_total_hits?: TrackHits
     track_scores?: boolean
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
@@ -136,7 +142,7 @@ export interface Request extends RequestBase {
      * response does not include the total number of hits matching the query.
      * Defaults to 10,000 hits.
      */
-    track_total_hits?: boolean | integer
+    track_total_hits?: TrackHits
     /**
      * Boosts the _score of documents from specified indices.
      */
@@ -183,7 +189,7 @@ export interface Request extends RequestBase {
      * matching these patterns in the hits.fields property of the response.
      */
     fields?: Array<FieldAndFormat>
-    suggest?: Dictionary<string, SuggestContainer>
+    suggest?: Suggester
     /**
      * Maximum number of documents to collect for each shard. If a query reaches this
      * limit, Elasticsearch terminates the query early. Elasticsearch collects documents

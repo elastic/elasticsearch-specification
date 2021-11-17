@@ -21,6 +21,7 @@ import { VersionString } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
+import { TokenFilterDefinition } from '@_types/analysis/token_filters'
 
 export class TokenizerBase {
   version?: VersionString
@@ -115,8 +116,12 @@ export class WhitespaceTokenizer extends TokenizerBase {
   max_token_length?: integer
 }
 
+/** @codegen_names name, definition */
+// ES: NameOrDefinition, used everywhere charfilter, tokenfilter or tokenizer is used
+export type Tokenizer = string | TokenizerDefinition
+
 /** @variants internal tag='type' */
-export type Tokenizer =
+export type TokenizerDefinition =
   | CharGroupTokenizer
   | EdgeNGramTokenizer
   | KeywordTokenizer

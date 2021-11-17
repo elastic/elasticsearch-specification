@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Fields, IndexName, Routing } from '@_types/common'
 import { MultiGetId, Operation } from './types'
-import {GetSourceConfig} from "@global/search/_types/SourceFilter";
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name mget

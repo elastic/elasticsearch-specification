@@ -21,8 +21,8 @@ import { HitsMetadata } from '@global/search/_types/hits'
 import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { AggregateName, Field, ScalarValue } from '@_types/common'
-import {GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile} from '@_types/Geo'
+import { AggregateName, Field, FieldValue } from '@_types/common'
+import { GeoBounds, GeoHash, GeoLine, GeoLocation, GeoTile } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { DateMathTime, EpochMillis } from '@_types/Time'
 import { Void } from '@spec_utils/VoidValue'
@@ -600,14 +600,14 @@ export class InferenceAggregate
   extends AggregateBase
   implements AdditionalProperties<string, UserDefinedValue>
 {
-  value?: ScalarValue
+  value?: FieldValue
   feature_importance?: InferenceFeatureImportance[]
   top_classes?: InferenceTopClassEntry[]
   warning?: string
 }
 
 export class InferenceTopClassEntry {
-  class_name: ScalarValue
+  class_name: FieldValue
   class_probability: double
   class_score: double
 }
@@ -667,8 +667,8 @@ export class TopMetricsBucket extends MultiBucketBase {
 
 export class TopMetrics {
   // Always contains a single element since `top_metrics` only accepts a single sort field
-  sort: Array<ScalarValue | null>
-  metrics: Dictionary<string, ScalarValue | null>
+  sort: Array<FieldValue | null>
+  metrics: Dictionary<string, FieldValue | null>
 }
 
 /** @variant name=t_test */
@@ -726,6 +726,6 @@ export class ParentAggregateBucket extends MultiBucketBase {}
 
 /** @variant name=geo_line */
 export class GeoLineAggregate extends AggregateBase {
-  type: 'Feature'
+  type: string // should be "Feature"
   geometry: GeoLine
 }

@@ -35,8 +35,8 @@ import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { Sort, SortResults } from './sort'
-import {SourceConfig, SourceFilter} from './SourceFilter'
-import {FieldAndFormat} from "@_types/query_dsl/abstractions";
+import { SourceConfig, SourceFilter } from './SourceFilter'
+import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 
 export class Hit<TDocument> {
   _index: IndexName
@@ -122,3 +122,13 @@ export class InnerHits {
   track_scores?: boolean
   version?: boolean
 }
+
+/**
+ * Number of hits matching the query to count accurately. If true, the exact
+ * number of hits is returned at the cost of some performance. If false, the
+ * response does not include the total number of hits matching the query.
+ * Defaults to 10,000 hits.
+ *
+ * @codegen_names enabled, count
+ */
+export type TrackHits = boolean | integer

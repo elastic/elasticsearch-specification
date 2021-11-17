@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import {integer, long} from './Numeric'
+import { integer, long } from './Numeric'
 
 export class DateMathTimeParsed {
   factor: integer
@@ -62,6 +62,7 @@ export enum DateMathTimeUnit {
 /**
  * Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.
  * @doc_url https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java
+ * @codegen_names time, offset
  */
 //FIXME: need to distinguish durations (has to be a string), offsets (can be a string or number)
 export type Time = string | integer

@@ -19,10 +19,12 @@
 
 import { AdditionalProperty } from '@spec_utils/behaviors'
 import {
-  Distance, GeoBounds,
-  GeoDistanceType, GeoLocation,
+  Distance,
+  GeoBounds,
+  GeoDistanceType,
+  GeoLocation,
   GeoShape,
-  GeoShapeRelation,
+  GeoShapeRelation
 } from '@_types/Geo'
 import { FieldLookup, QueryBase } from './abstractions'
 import { Field } from '@_types/common'

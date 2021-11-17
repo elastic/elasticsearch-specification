@@ -24,7 +24,8 @@ import {
   Ids,
   IndexName,
   MultiTermQueryRewrite,
-  Routing
+  Routing,
+  FieldValue
 } from '@_types/common'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
@@ -114,14 +115,19 @@ export class RegexpQuery extends QueryBase {
 
 /** @shortcut_property value */
 export class TermQuery extends QueryBase {
-  value: string | float | boolean
+  value: FieldValue
   /** @since 7.10.0 */
   case_insensitive?: boolean
 }
 
 export class TermsQuery
   extends QueryBase
-  implements AdditionalProperty<Field, string[] | long[] | TermsLookup> {}
+  implements AdditionalProperty<Field, TermsQueryField> {}
+
+/**
+ * @codegen_names value, lookup
+ */
+export type TermsQueryField = FieldValue[] | TermsLookup
 
 export class TermsLookup {
   index: IndexName
