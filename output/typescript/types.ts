@@ -12159,8 +12159,11 @@ export interface MlGetModelSnapshotsRequest extends RequestBase {
   sort?: Field
   start?: Time
   body?: {
-    start?: Time
+    desc?: boolean
     end?: Time
+    page?: MlPage
+    sort?: Field
+    start?: Time
   }
 }
 
