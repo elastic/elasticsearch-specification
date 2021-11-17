@@ -12709,6 +12709,46 @@ export interface MlUpdateDataFrameAnalyticsResponse {
   analyzed_fields?: MlDataframeAnalysisAnalyzedFields
 }
 
+export interface MlUpdateDatafeedRequest extends RequestBase {
+  datafeed_id: Id
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  ignore_throttled?: boolean
+  ignore_unavailable?: boolean
+  body?: {
+    aggregations?: Record<string, AggregationsAggregationContainer>
+    chunking_config?: MlChunkingConfig
+    delayed_data_check_config?: MlDelayedDataCheckConfig
+    frequency?: Time
+    indices?: string[]
+    indexes?: string[]
+    indices_options?: MlDatafeedIndicesOptions
+    max_empty_searches?: integer
+    query?: QueryDslQueryContainer
+    query_delay?: Time
+    runtime_mappings?: MappingRuntimeFields
+    script_fields?: Record<string, ScriptField>
+    scroll_size?: integer
+  }
+}
+
+export interface MlUpdateDatafeedResponse {
+  aggregations: Record<string, AggregationsAggregationContainer>
+  chunking_config: MlChunkingConfig
+  delayed_data_check_config?: MlDelayedDataCheckConfig
+  datafeed_id: Id
+  frequency: Time
+  indices: string[]
+  job_id: Id
+  indices_options?: MlDatafeedIndicesOptions
+  max_empty_searches: integer
+  query: QueryDslQueryContainer
+  query_delay: Time
+  runtime_mappings?: MappingRuntimeFields
+  script_fields?: Record<string, ScriptField>
+  scroll_size: integer
+}
+
 export interface MlUpdateFilterRequest extends RequestBase {
   filter_id: Id
   body?: {
