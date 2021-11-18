@@ -651,7 +651,7 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
     } else if (tag === 'codegen_names') {
       type.codegenNames = value.split(',').map(v => v.trim())
       assert(jsDocs,
-        type.kind == 'type_alias' && type.type.kind == 'union_of' && type.type.items.length == type.codegenNames.length,
+        type.kind === 'type_alias' && type.type.kind === 'union_of' && type.type.items.length === type.codegenNames.length,
         '@codegen_names must have the number of items as the union definition'
         )
     } else {
