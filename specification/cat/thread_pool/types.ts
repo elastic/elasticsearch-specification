@@ -121,3 +121,11 @@ export class ThreadPoolRecord {
    */
   'keep_alive'?: string
 }
+
+export enum ThreadPoolSize {
+  k = 1,
+  m = 2,
+  g = 3,
+  t = 4,
+  p = 5
+}

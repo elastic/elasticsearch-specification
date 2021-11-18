@@ -18,8 +18,9 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { GroupBy, Id } from '@_types/common'
+import { Id } from '@_types/common'
 import { Time } from '@_types/Time'
+import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * @rest_spec_name tasks.list

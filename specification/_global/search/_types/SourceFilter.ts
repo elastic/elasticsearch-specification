@@ -20,14 +20,21 @@
 
 import { Field, Fields } from '@_types/common'
 
+/**
+ * @shortcut_property includes
+ */
 export class SourceFilter {
+  /** @aliases exclude */
   excludes?: Fields
+  /** @aliases include */
   includes?: Fields
-  exclude?: Fields
-  include?: Fields
 }
 
-export class DocValueField {
-  field: Field
-  format?: string
-}
+/**
+ * Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.
+ * @codegen_names fetch, filter
+ */
+export type SourceConfig = boolean | SourceFilter
+
+/** @codegen_names fetch, fields */
+export type GetSourceConfig = boolean | Fields

@@ -25,20 +25,17 @@ import {
   GeoDistanceType,
   DistanceUnit,
   GeoHashPrecision,
-  GeoTilePrecision
+  GeoTilePrecision,
+  GeoLocation,
+  GeoBounds
 } from '@_types/Geo'
 import { integer, float, long, double } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
-import { GeoLocation, BoundingBox } from '@_types/query_dsl/geo'
 import { Script } from '@_types/Scripting'
 import { DateString, Time, DateMath } from '@_types/Time'
-import { GeoBounds } from './Aggregate'
+import { Buckets } from './Aggregate'
 import { Aggregation } from './Aggregation'
-import {
-  AggregationContainer,
-  Missing,
-  MissingOrder
-} from './AggregationContainer'
+import { Missing, MissingOrder } from './AggregationContainer'
 
 /**
  * Base type for bucket aggregations. These aggregations also accept sub-aggregations.
@@ -90,13 +87,13 @@ export class CompositeAggregationSource {
 }
 
 export class DateHistogramAggregation extends BucketAggregationBase {
-  calendar_interval?: DateInterval | Time
-  extended_bounds?: ExtendedBounds<DateMath | long>
-  hard_bounds?: ExtendedBounds<DateMath | long>
+  calendar_interval?: CalendarInterval // CalendarInterval is too restrictive here
+  extended_bounds?: ExtendedBounds<FieldDateMath>
+  hard_bounds?: ExtendedBounds<FieldDateMath>
   field?: Field
-  fixed_interval?: DateInterval | Time
+  fixed_interval?: Time // CalendarInterval is too restrictive here
   format?: string
-  interval?: DateInterval | Time
+  interval?: Time
   min_doc_count?: integer
   missing?: DateString
   offset?: Time
@@ -107,15 +104,23 @@ export class DateHistogramAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
-export enum DateInterval {
-  second = 0,
-  minute = 1,
-  hour = 2,
-  day = 3,
-  week = 4,
-  month = 5,
-  quarter = 6,
-  year = 7
+export enum CalendarInterval {
+  /** @aliases 1s */
+  second,
+  /** @aliases 1m */
+  minute,
+  /** @aliases 1h */
+  hour,
+  /** @aliases 1d */
+  day,
+  /** @aliases 1w */
+  week,
+  /** @aliases 1M */
+  month,
+  /** @aliases 1q */
+  quarter,
+  /** @aliases 1Y */
+  year
 }
 
 export class DateRangeAggregation extends BucketAggregationBase {
@@ -127,13 +132,19 @@ export class DateRangeAggregation extends BucketAggregationBase {
   keyed?: boolean
 }
 
+/**
+ * A date range limit, represented either as a DateMath expression or a number expressed
+ * according to the target field's precision.
+ *
+ * @codegen_names expr, value
+ */
+// ES: DateRangeAggregationBuilder.innerBuild()
+export type FieldDateMath = DateMath | double
+
 export class DateRangeExpression {
-  from?: DateMath | float
-  from_as_string?: string
-  to_as_string?: string
+  from?: FieldDateMath
   key?: string
-  to?: DateMath | float
-  doc_count?: long
+  to?: FieldDateMath
 }
 
 export class DiversifiedSamplerAggregation extends BucketAggregationBase {
@@ -151,7 +162,7 @@ export enum SamplerAggregationExecutionHint {
 }
 
 export class FiltersAggregation extends BucketAggregationBase {
-  filters?: Dictionary<string, QueryContainer> | QueryContainer[]
+  filters?: Buckets<QueryContainer>
   other_bucket?: boolean
   other_bucket_key?: string
   keyed?: boolean
@@ -160,13 +171,13 @@ export class FiltersAggregation extends BucketAggregationBase {
 export class GeoDistanceAggregation extends BucketAggregationBase {
   distance_type?: GeoDistanceType
   field?: Field
-  origin?: GeoLocation | string
+  origin?: GeoLocation
   ranges?: AggregationRange[]
   unit?: DistanceUnit
 }
 
 export class GeoHashGridAggregation extends BucketAggregationBase {
-  bounds?: BoundingBox
+  bounds?: GeoBounds
   field?: Field
   precision?: GeoHashPrecision
   shard_size?: integer
@@ -254,9 +265,9 @@ export class AggregationRange {
 }
 
 export class RareTermsAggregation extends BucketAggregationBase {
-  exclude?: string | string[]
+  exclude?: TermsExclude
   field?: Field
-  include?: string | string[] | TermsInclude
+  include?: TermsInclude
   max_doc_count?: long
   missing?: Missing
   precision?: double
@@ -294,7 +305,7 @@ export class ScriptedHeuristic {
 export class SignificantTermsAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
   gnd?: GoogleNormalizedDistanceHeuristic
@@ -311,7 +322,7 @@ export class SignificantTermsAggregation extends BucketAggregationBase {
 export class SignificantTextAggregation extends BucketAggregationBase {
   background_filter?: QueryContainer
   chi_square?: ChiSquareHeuristic
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
   filter_duplicate_text?: boolean
@@ -329,10 +340,10 @@ export class SignificantTextAggregation extends BucketAggregationBase {
 
 export class TermsAggregation extends BucketAggregationBase {
   collect_mode?: TermsAggregationCollectMode
-  exclude?: string | string[]
+  exclude?: TermsExclude
   execution_hint?: TermsAggregationExecutionHint
   field?: Field
-  include?: string | string[] | TermsInclude
+  include?: TermsInclude
   min_doc_count?: integer
   missing?: Missing
   missing_order?: MissingOrder
@@ -346,9 +357,8 @@ export class TermsAggregation extends BucketAggregationBase {
 }
 
 export type TermsAggregationOrder =
-  | SortOrder
-  | Dictionary<string, SortOrder>
-  | Dictionary<string, SortOrder>[]
+  | Dictionary<Field, SortOrder>
+  | Dictionary<Field, SortOrder>[]
 
 export enum TermsAggregationCollectMode {
   depth_first = 0,
@@ -362,7 +372,13 @@ export enum TermsAggregationExecutionHint {
   global_ordinals_low_cardinality = 3
 }
 
-export class TermsInclude {
+/** @codegen_names regexp, terms, partition */
+export type TermsInclude = string | string[] | TermsPartition
+
+/** @codegen_names regexp, terms */
+export type TermsExclude = string | string[]
+
+export class TermsPartition {
   num_partitions: long
   partition: long
 }

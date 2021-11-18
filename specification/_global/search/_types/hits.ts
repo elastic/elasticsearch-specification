@@ -35,7 +35,8 @@ import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { Sort, SortResults } from './sort'
-import { SourceFilter } from './SourceFilter'
+import { SourceConfig } from './SourceFilter'
+import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 
 export class Hit<TDocument> {
   _index: IndexName
@@ -80,15 +81,8 @@ export class HitMetadata<TDocument> {
   _version: VersionNumber
 }
 
-export class InnerHitsMetadata {
-  total: TotalHits | long
-  hits: Hit<Dictionary<string, UserDefinedValue>>[]
-
-  max_score?: double
-}
-
 export class InnerHitsResult {
-  hits: InnerHitsMetadata
+  hits: HitsMetadata<UserDefinedValue>
 }
 
 export class NestedIdentity {
@@ -122,16 +116,19 @@ export class InnerHits {
   seq_no_primary_term?: boolean
   fields?: Fields
   sort?: Sort
-  _source?: boolean | SourceFilter
+  _source?: SourceConfig
   stored_field?: Fields
   /** @server_default false */
   track_scores?: boolean
   version?: boolean
 }
 
-/** @shortcut_property field */
-export class FieldAndFormat {
-  field: Field
-  format?: string
-  include_unmapped?: boolean
-}
+/**
+ * Number of hits matching the query to count accurately. If true, the exact
+ * number of hits is returned at the cost of some performance. If false, the
+ * response does not include the total number of hits matching the query.
+ * Defaults to 10,000 hits.
+ *
+ * @codegen_names enabled, count
+ */
+export type TrackHits = boolean | integer

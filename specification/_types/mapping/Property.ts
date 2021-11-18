@@ -45,7 +45,7 @@ export class PropertyBase {
   name?: PropertyName
   properties?: Dictionary<PropertyName, Property>
   ignore_above?: integer
-  dynamic?: boolean | DynamicMapping
+  dynamic?: DynamicMapping
   fields?: Dictionary<PropertyName, Property>
 }
 

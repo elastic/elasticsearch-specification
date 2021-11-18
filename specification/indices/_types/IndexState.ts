@@ -26,10 +26,6 @@ import { IndexSettings } from './IndexSettings'
 export class IndexState {
   aliases?: Dictionary<IndexName, Alias>
   mappings?: TypeMapping
-  settings?: IndexSettings | IndexStatePrefixedSettings
+  settings?: IndexSettings
   data_stream?: DataStreamName
-}
-
-export class IndexStatePrefixedSettings {
-  index: IndexSettings
 }

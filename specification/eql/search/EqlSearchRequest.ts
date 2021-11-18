@@ -20,9 +20,9 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Field, IndexName } from '@_types/common'
 import { float, uint } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { FieldAndFormat, QueryContainer } from '@_types/query_dsl/abstractions'
 import { Time } from '@_types/Time'
-import { ResultPosition, SearchFieldFormatted } from './types'
+import { ResultPosition } from './types'
 
 /**
  * @rest_spec_name eql.search
@@ -99,11 +99,11 @@ export interface Request extends RequestBase {
      * For basic queries, the maximum number of matching events to return. Defaults to 10
      * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/eql-syntax.html#eql-basic-syntax
      */
-    size?: uint | float
+    size?: uint // doc says "integer of float" but it's really an int
     /**
      * Array of wildcard (*) patterns. The response returns values for field names matching these patterns in the fields property of each hit.
      */
-    fields?: Array<Field | SearchFieldFormatted>
+    fields?: FieldAndFormat
     /**
      * @server_default tail
      */

@@ -18,7 +18,7 @@
  */
 
 import { Sort } from '@global/search/_types/sort'
-import { SourceFilter } from '@global/search/_types/SourceFilter'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, Fields } from '@_types/common'
 import { long } from '@_types/Numeric'
@@ -26,7 +26,7 @@ import { long } from '@_types/Numeric'
 export class Response {
   body: {
     size: long
-    _source: boolean | Fields | SourceFilter
+    _source: SourceConfig
     fields: Array<Dictionary<Field, string>>
     sort: Sort
   }

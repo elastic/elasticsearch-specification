@@ -22,8 +22,12 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { double, integer, long } from './Numeric'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 
-/** A single value */
-export type ScalarValue = long | double | string | boolean
+/**
+ * A field value.
+ * @codegen_names long, double, string, boolean
+ */
+// FIXME: representation of geopoints and ip addresses?
+export type FieldValue = long | double | string | boolean
 
 export class UrlParameter {}
 
@@ -111,6 +115,7 @@ export type MultiTermQueryRewrite = string
 export type Field = string
 export type Fields = Field | Field[]
 
+/** @codegen_names count, option */
 export type WaitForActiveShards = integer | WaitForActiveShardOptions
 
 /**
@@ -136,12 +141,6 @@ export class EmptyObject {}
  * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-minimum-should-match.html
  */
 export type MinimumShouldMatch = integer | string
-
-export enum ShapeRelation {
-  intersects = 0,
-  disjoint = 1,
-  within = 2
-}
 
 /**
  * Byte size units. These units use powers of 1024, so 1 kB means 1024 bytes.
@@ -183,7 +182,7 @@ export class ElasticsearchUrlFormatter {}
 /**
  * Type of index that wildcard expressions can match.
  */
-export enum ExpandWildcardOptions {
+export enum ExpandWildcard {
   /** Match any data stream or index, including hidden ones. */
   all = 0,
   /** Match open, non-hidden indices. Also matches any non-hidden data stream. */
@@ -196,16 +195,7 @@ export enum ExpandWildcardOptions {
   none = 4
 }
 
-export type ExpandWildcards =
-  | ExpandWildcardOptions
-  | Array<ExpandWildcardOptions>
-  | string
-
-export enum GroupBy {
-  nodes = 0,
-  parents = 1,
-  none = 2
-}
+export type ExpandWildcards = ExpandWildcard | ExpandWildcard[]
 
 /**
  * Health status of the cluster, based on the state of its primary and replica shards.
@@ -238,9 +228,11 @@ export enum OpType {
   create = 1
 }
 
-export type Refresh = boolean | RefreshOptions
-export enum RefreshOptions {
-  wait_for = 1
+// Note: ES also accepts plain booleans for true and false. The TS generator implements this leniency rule.
+export enum Refresh {
+  true,
+  false,
+  wait_for
 }
 
 export enum SearchType {
@@ -248,15 +240,6 @@ export enum SearchType {
   query_then_fetch = 0,
   /** Documents are scored using global term and document frequencies across all shards. This is usually slower but more accurate. */
   dfs_query_then_fetch = 1
-}
-
-export enum Size {
-  Raw = 0,
-  k = 1,
-  m = 2,
-  g = 3,
-  t = 4,
-  p = 5
 }
 
 export enum SuggestMode {

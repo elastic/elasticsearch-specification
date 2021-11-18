@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { GeoLocation } from '@_types/query_dsl/geo'
 import { DocValuesPropertyBase } from './core'
+import { GeoLocation } from '@_types/Geo'
 
 export class GeoPointProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean

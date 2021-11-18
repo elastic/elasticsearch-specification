@@ -172,12 +172,13 @@ export class NodeInfoClient {
 }
 
 export class NodeInfoSettingsHttp {
-  type: string | NodeInfoSettingsHttpType
+  type: NodeInfoSettingsHttpType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsHttpType
   compression?: boolean | string
   port?: integer | string
 }
 
+/** @shortcut_property default */
 export class NodeInfoSettingsHttpType {
   default: string
 }
@@ -187,11 +188,12 @@ export class NodeInfoBootstrap {
 }
 
 export class NodeInfoSettingsTransport {
-  type: string | NodeInfoSettingsTransportType
+  type: NodeInfoSettingsTransportType
   'type.default'?: string // TODO this clashes with NodeInfoSettingsTransportType
   features?: NodeInfoSettingsTransportFeatures
 }
 
+/** @shortcut_property default */
 export class NodeInfoSettingsTransportType {
   default: string
 }

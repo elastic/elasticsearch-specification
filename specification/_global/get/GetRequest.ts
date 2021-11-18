@@ -27,6 +27,7 @@ import {
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name get
@@ -65,7 +66,7 @@ export interface Request extends RequestBase {
     /**
      * True or false to return the _source field or not, or a list of fields to return.
      */
-    _source?: boolean | Fields
+    _source?: GetSourceConfig
     /**
      * A comma-separated list of source fields to exclude in the response.
      */

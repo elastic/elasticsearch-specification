@@ -35,8 +35,8 @@ export enum MatchType {
 }
 
 export enum DynamicMapping {
-  strict = 0,
-  runtime = 1,
-  true = 2,
-  false = 3
+  strict,
+  runtime,
+  true,
+  false
 }

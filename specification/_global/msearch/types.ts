@@ -18,13 +18,14 @@
  */
 
 import { PointInTimeReference } from '@global/search/_types/PointInTimeReference'
-import { SuggestContainer } from '@global/search/_types/suggester'
+import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Response as SearchResponse } from '@global/search/SearchResponse'
+import { TrackHits } from '@global/search/_types/hits'
 
 /**
  * Contains parameters used to limit or change the subsequent search body request.
@@ -47,8 +48,8 @@ export class Body {
   from?: integer
   size?: integer
   pit?: PointInTimeReference
-  track_total_hits?: boolean | integer
-  suggest?: SuggestContainer | Dictionary<string, SuggestContainer>
+  track_total_hits?: TrackHits
+  suggest?: Suggester
 }
 
 export class SearchResult<TDocument> extends SearchResponse<TDocument> {
