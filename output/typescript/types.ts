@@ -2239,7 +2239,7 @@ export interface RecoveryStats {
   throttle_time_in_millis: long
 }
 
-export type Refresh = boolean | RefreshValues
+export type Refresh = boolean | 'true' | 'false' | 'wait_for'
 
 export interface RefreshStats {
   external_total: long
@@ -2249,8 +2249,6 @@ export interface RefreshStats {
   total_time?: string
   total_time_in_millis: long
 }
-
-export type RefreshValues = 'true' | 'false' | 'wait_for'
 
 export type RelationName = string
 
@@ -4469,9 +4467,7 @@ export interface MappingDoubleRangeProperty extends MappingRangePropertyBase {
   type: 'double_range'
 }
 
-export type MappingDynamicMapping = boolean | MappingDynamicMappingValues
-
-export type MappingDynamicMappingValues = 'strict' | 'runtime' | 'true' | 'false'
+export type MappingDynamicMapping = boolean | 'strict' | 'runtime' | 'true' | 'false'
 
 export interface MappingDynamicTemplate {
   mapping?: MappingProperty
@@ -8878,7 +8874,7 @@ export interface IndicesFielddataFrequencyFilter {
   min_segment_size: integer
 }
 
-export type IndicesIndexCheckOnStartup = 'false' | 'checksum' | 'true'
+export type IndicesIndexCheckOnStartup = boolean | 'false' | 'checksum' | 'true'
 
 export interface IndicesIndexRouting {
   allocation?: IndicesIndexRoutingAllocation

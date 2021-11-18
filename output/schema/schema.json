@@ -34073,29 +34073,21 @@
       ]
     },
     {
-      "kind": "type_alias",
+      "kind": "enum",
+      "members": [
+        {
+          "name": "true"
+        },
+        {
+          "name": "false"
+        },
+        {
+          "name": "wait_for"
+        }
+      ],
       "name": {
         "name": "Refresh",
         "namespace": "_types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "RefreshValues",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
       }
     },
     {
@@ -34172,24 +34164,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "true"
-        },
-        {
-          "name": "false"
-        },
-        {
-          "name": "wait_for"
-        }
-      ],
-      "name": {
-        "name": "RefreshValues",
-        "namespace": "_types"
-      }
     },
     {
       "kind": "type_alias",
@@ -53871,32 +53845,6 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "DynamicMapping",
-        "namespace": "_types.mapping"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "DynamicMappingValues",
-              "namespace": "_types.mapping"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -53913,7 +53861,7 @@
         }
       ],
       "name": {
-        "name": "DynamicMappingValues",
+        "name": "DynamicMapping",
         "namespace": "_types.mapping"
       }
     },

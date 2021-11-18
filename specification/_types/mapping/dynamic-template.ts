@@ -34,10 +34,7 @@ export enum MatchType {
   regex = 1
 }
 
-// ES uses a string but accepts a json boolean for strings
-export type DynamicMapping = boolean | DynamicMappingValues
-
-export enum DynamicMappingValues {
+export enum DynamicMapping {
   strict,
   runtime,
   true,

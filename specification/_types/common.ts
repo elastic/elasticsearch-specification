@@ -228,10 +228,8 @@ export enum OpType {
   create = 1
 }
 
-// ES uses a string but accepts a json boolean for strings
-export type Refresh = boolean | RefreshValues
-
-export enum RefreshValues {
+// Note: ES also accepts plain booleans for true and false. The TS generator implements this leniency rule.
+export enum Refresh {
   true,
   false,
   wait_for
