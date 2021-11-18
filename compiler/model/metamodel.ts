@@ -160,6 +160,14 @@ export abstract class BaseType {
   kind: string
   /** Variant name for externally tagged variants */
   variantName?: string
+  /**
+   * Additional identifiers for use by code generators. Usage depends on the actual type:
+   * - on unions (modeled as alias(union_of)), these are identifiers for the union members
+   * - for additional properties, this is the name of the dict that holds these properties
+   * - for additional property, this is the name of the key and value fields that hold the
+   *   additional property
+   */
+  codegenNames?: string[]
 }
 
 export type Variants = ExternalTag | InternalTag | Container

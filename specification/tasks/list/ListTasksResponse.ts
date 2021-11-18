@@ -26,6 +26,6 @@ export class Response {
   body: {
     node_failures?: ErrorCause[]
     nodes?: Dictionary<string, TaskExecutingNode>
-    tasks?: Dictionary<string, Info> | Array<Info>
+    tasks?: Dictionary<string, Info>
   }
 }

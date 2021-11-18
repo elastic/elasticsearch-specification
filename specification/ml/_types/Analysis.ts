@@ -22,7 +22,7 @@ import { long } from '@_types/Numeric'
 import { Time, TimeSpan } from '@_types/Time'
 import { Detector } from './Detector'
 import { CharFilter } from '@_types/analysis/char_filters'
-import { Tokenizer } from '@_types/analysis/tokenizers'
+import { Tokenizer, TokenizerDefinition } from '@_types/analysis/tokenizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { OverloadOf } from '@spec_utils/behaviors'
 
@@ -35,7 +35,7 @@ export class AnalysisConfig {
   /**
    * If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.
    */
-  categorization_analyzer?: CategorizationAnalyzer | string
+  categorization_analyzer?: CategorizationAnalyzer
   /**
    * If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.
    */
@@ -77,7 +77,7 @@ export class AnalysisConfig {
 
 export class AnalysisConfigRead implements OverloadOf<AnalysisConfig> {
   bucket_span: TimeSpan
-  categorization_analyzer?: CategorizationAnalyzer | string
+  categorization_analyzer?: CategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
   detectors: Detector[]
@@ -120,17 +120,20 @@ export class AnalysisMemoryLimit {
   model_memory_limit: string
 }
 
-export class CategorizationAnalyzer {
+/** @codegen_names name, definition */
+export type CategorizationAnalyzer = string | CategorizationAnalyzerDefinition
+
+export class CategorizationAnalyzerDefinition {
   /**
    * One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.
    */
-  char_filter?: Array<string | CharFilter>
+  char_filter?: Array<CharFilter>
   /**
    * One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.
    */
-  filter?: Array<string | TokenFilter>
+  filter?: Array<TokenFilter>
   /**
    * The name or definition of the tokenizer to use after character filters are applied. This property is compulsory if `categorization_analyzer` is specified as an object. Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English. If you want to use that tokenizer but change the character or token filters, specify "tokenizer": "ml_standard" in your `categorization_analyzer`. Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2). `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify "tokenizer": "ml_classic" in your `categorization_analyzer`.
    */
-  tokenizer?: string | Tokenizer
+  tokenizer?: Tokenizer
 }

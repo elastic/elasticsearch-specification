@@ -20,6 +20,8 @@
 // Note: corresponding server enum is uppercase, but parsing is case-insensitive. Tests only use lower-case identifiers
 // so we only keep those.
 export enum Operator {
-  and = 0,
-  or = 1
+  /** @aliases AND */
+  and,
+  /** @aliases OR */
+  or
 }

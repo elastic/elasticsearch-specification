@@ -34,7 +34,7 @@ import { RuntimeField } from './RuntimeFields'
 export class TypeMapping {
   all_field?: AllField
   date_detection?: boolean
-  dynamic?: boolean | DynamicMapping
+  dynamic?: DynamicMapping
   dynamic_date_formats?: string[]
   dynamic_templates?:
     | Dictionary<string, DynamicTemplate>

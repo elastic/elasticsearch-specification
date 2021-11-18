@@ -25,7 +25,7 @@ import {
   MinimumShouldMatch,
   Routing
 } from '@_types/common'
-import { float, long } from '@_types/Numeric'
+import { float } from '@_types/Numeric'
 import {
   BoolQuery,
   BoostingQuery,
@@ -199,4 +199,20 @@ export enum CombinedFieldsOperator {
 export enum CombinedFieldsZeroTerms {
   none,
   all
+}
+
+/**
+ * A reference to a field with formatting instructions on how to return the value
+ * @shortcut_property field
+ */
+export class FieldAndFormat {
+  /**
+   * Wildcard pattern. The request returns values for field names matching this pattern.
+   */
+  field: Field
+  /**
+   * Format in which the values are returned.
+   */
+  format?: string
+  include_unmapped?: boolean
 }

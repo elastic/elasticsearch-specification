@@ -21,6 +21,7 @@ import { RoleTemplate } from '@security/get_role/types'
 import { Metadata } from '@_types/common'
 import { RoleMappingRule } from './RoleMappingRule'
 
+// ES: ExpressionRoleMapping
 export class RoleMapping {
   enabled: boolean
   metadata: Metadata

@@ -19,19 +19,24 @@
 
 import { Sort } from '@global/search/_types/sort'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name, Field } from '@_types/common'
+import { Name, Field, EmptyObject } from '@_types/common'
 import { integer, double, float } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Aggregation } from './Aggregation'
 
 export class PipelineAggregationBase extends Aggregation {
-  // TODO: `buckets_path` chanegs based on the aggregation,
-  //       this property should be moved in the aggregations
-  //       that are extending this baseclass
-  buckets_path?: string | string[] | Dictionary<string, string>
+  buckets_path?: BucketsPath
   format?: string
   gap_policy?: GapPolicy
 }
+
+/**
+ * Buckets path can be expressed in different ways, and an aggregation may accept some or all of these
+ * forms depending on its type. Please refer to each aggregation's documentation to know what buckets
+ * path forms they accept.
+ * @codegen_names single, array, dict
+ */
+export type BucketsPath = string | string[] | Dictionary<string, string>
 
 export enum GapPolicy {
   skip = 0,
@@ -107,26 +112,44 @@ export class MaxBucketAggregation extends PipelineAggregationBase {}
 
 export class MinBucketAggregation extends PipelineAggregationBase {}
 
-export class MovingAverageAggregation extends PipelineAggregationBase {
+/** @variants internal tag=model */
+export type MovingAverageAggregation =
+  | LinearMovingAverageAggregation
+  | SimpleMovingAverageAggregation
+  | EwmaMovingAverageAggregation
+  | HoltMovingAverageAggregation
+  | HoltWintersMovingAverageAggregation
+
+export class MovingAverageAggregationBase extends PipelineAggregationBase {
   minimize?: boolean
-  model?: MovingAverageModel
-  settings: MovingAverageSettings
   predict?: integer
   window?: integer
 }
 
-export enum MovingAverageModel {
-  linear,
-  simple,
-  ewma,
-  holt,
-  holt_winters
+export class LinearMovingAverageAggregation extends MovingAverageAggregationBase {
+  model: 'linear'
+  settings: EmptyObject
 }
 
-export type MovingAverageSettings =
-  | EwmaModelSettings
-  | HoltLinearModelSettings
-  | HoltWintersModelSettings
+export class SimpleMovingAverageAggregation extends MovingAverageAggregationBase {
+  model: 'simple'
+  settings: EmptyObject
+}
+
+export class EwmaMovingAverageAggregation extends MovingAverageAggregationBase {
+  model: 'ewma'
+  settings: EwmaModelSettings
+}
+
+export class HoltMovingAverageAggregation extends MovingAverageAggregationBase {
+  model: 'holt'
+  settings: HoltLinearModelSettings
+}
+
+export class HoltWintersMovingAverageAggregation extends MovingAverageAggregationBase {
+  model: 'holt_winters'
+  settings: HoltWintersModelSettings
+}
 
 export class EwmaModelSettings {
   alpha?: float
