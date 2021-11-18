@@ -31,7 +31,7 @@ export type CronExpression = string
 //export class CronExpression extends ScheduleBase {}
 
 export class DailySchedule {
-  at: string[] | TimeOfDay
+  at: TimeOfDay[]
 }
 
 export enum Day {
@@ -55,10 +55,15 @@ export class Interval {
 }
 
 export enum IntervalUnit {
+  /** @codegen_name second */
   s = 0,
+  /** @codegen_name minute */
   m = 1,
+  /** @codegen_name hour */
   h = 2,
+  /** @codegen_name day */
   d = 3,
+  /** @codegen_name week */
   w = 4
 }
 
@@ -91,11 +96,14 @@ export class ScheduleContainer {
 }
 
 export class ScheduleTriggerEvent {
-  scheduled_time: DateString | string
-  triggered_time?: DateString | string
+  scheduled_time: DateString
+  triggered_time?: DateString
 }
 
-export class TimeOfDay {
+/** @codegen_names text, hour_minute */
+export type TimeOfDay = string | HourAndMinute
+
+export class HourAndMinute {
   hour: integer[]
   minute: integer[]
 }

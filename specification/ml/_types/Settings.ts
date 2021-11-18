@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UrlConfig } from '@xpack/usage/types'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
-export class CustomSettings {
-  custom_urls?: UrlConfig[]
-  created_by?: string
-  job_tags?: Dictionary<string, string>
-}
+/**
+ * Custom metadata about the job
+ */
+// Can be anything, see https://www.elastic.co/guide/en/elasticsearch/reference/current/ml-put-job.html
+// Some settings are illustrated in https://www.elastic.co/guide/en/machine-learning/7.15/ml-configuring-url.html
+export type CustomSettings = UserDefinedValue

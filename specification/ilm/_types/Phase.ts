@@ -20,11 +20,11 @@
 import { Dictionary } from '@spec_utils/Dictionary'
 import { integer } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Phase {
-  actions?: Dictionary<string, Action> | string[]
+  actions?: Actions
   min_age?: Time
-  configurations?: Dictionary<string, Dictionary<string, integer | string>>
 }
 
 export class Phases {
@@ -34,4 +34,6 @@ export class Phases {
   warm?: Phase
 }
 
-export class Action {}
+// TODO. This is a variants container.
+// See https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-index-lifecycle.html#ilm-phase-actions
+export type Actions = UserDefinedValue

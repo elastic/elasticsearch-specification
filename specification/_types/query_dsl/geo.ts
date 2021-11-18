@@ -17,40 +17,21 @@
  * under the License.
  */
 
-import { AdditionalProperties, AdditionalProperty } from '@spec_utils/behaviors'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import {
   Distance,
+  GeoBounds,
   GeoDistanceType,
+  GeoLocation,
   GeoShape,
-  GeoShapeRelation,
-  LatLon
+  GeoShapeRelation
 } from '@_types/Geo'
-import { double } from '@_types/Numeric'
 import { FieldLookup, QueryBase } from './abstractions'
 import { Field } from '@_types/common'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-
-/**
- * A geo bounding box. The various coordinates can be mixed. When set, `wkt` takes precedence over all other fields.
- */
-export class BoundingBox {
-  bottom_right?: GeoLocation
-  top_left?: GeoLocation
-
-  top_right?: GeoLocation
-  bottom_left?: GeoLocation
-
-  top?: double
-  left?: double
-  right?: double
-  bottom?: double
-
-  wkt?: string
-}
 
 export class GeoBoundingBoxQuery
   extends QueryBase
-  implements AdditionalProperty<Field, BoundingBox>
+  implements AdditionalProperty<Field, GeoBounds>
 {
   /** @deprecated 7.14.0 */
   type?: GeoExecution
@@ -122,28 +103,6 @@ export enum TokenType {
   RParen = 3,
   Comma = 4
 }
-
-// TODO -- is duplicate with LatLon
-export class TwoDimensionalPoint {
-  lat: double
-  lon: double
-}
-
-export class ThreeDimensionalPoint {
-  lat: double
-  lon: double
-  z?: double
-}
-
-/**
- * Represents a Latitude/Longitude as a 2 dimensional point
- */
-export type GeoLocation = string | double[] | TwoDimensionalPoint
-
-/**
- * Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point
- */
-export type GeoCoordinate = string | double[] | ThreeDimensionalPoint
 
 export enum GeoValidationMethod {
   coerce = 0,

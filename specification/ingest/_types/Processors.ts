@@ -160,26 +160,14 @@ export class CsvProcessor extends ProcessorBase {
   trim: boolean
 }
 
-export enum DateRounding {
-  /** @codegen_name Second */
-  s = 0,
-  /** @codegen_name Minute */
-  m = 1,
-  /** @codegen_name Hour */
-  h = 2,
-  /** @codegen_name Day */
-  d = 3,
-  /** @codegen_name Week */
-  w = 4,
-  /** @codegen_name Month */
-  M = 5,
-  /** @codegen_name Year */
-  y = 6
-}
-
 export class DateIndexNameProcessor extends ProcessorBase {
   date_formats: string[]
-  date_rounding: string | DateRounding
+  /**
+   * How to round the date when formatting the date into the index name. Valid values are:
+   * `y` (year), `M` (month), `w` (week), `d` (day), `h` (hour), `m` (minute) and `s` (second).
+   * Supports template snippets.
+   */
+  date_rounding: string
   field: Field
   index_name_format: string
   index_name_prefix: string

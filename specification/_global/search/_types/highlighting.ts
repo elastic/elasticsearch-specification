@@ -71,8 +71,12 @@ export enum HighlighterTagsSchema {
   styled = 0
 }
 
-export enum HighlighterType {
+/** @codegen_names builtin, custom */
+export type HighlighterType = BuiltinHighlighterType | string
+
+export enum BuiltinHighlighterType {
   plain = 0,
+  /** @codegen_name fast_vector */
   fvh = 1,
   unified = 2
 }
@@ -99,5 +103,5 @@ export class HighlightField {
   pre_tags?: string[]
   require_field_match?: boolean
   tags_schema?: HighlighterTagsSchema
-  type?: HighlighterType | string
+  type?: HighlighterType
 }

@@ -61,7 +61,7 @@ export interface Request extends RequestBase {
     /**
      * Controls whether new fields are added dynamically.
      */
-    dynamic?: boolean | DynamicMapping
+    dynamic?: DynamicMapping
     /**
      * If date detection is enabled then new string fields are checked
      * against 'dynamic_date_formats' and if the value matches then

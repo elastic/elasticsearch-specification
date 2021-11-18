@@ -268,7 +268,14 @@ export class QueryStringQuery extends QueryBase {
   type?: TextQueryType
 }
 
-export enum SimpleQueryStringFlags {
+/**
+ * Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/7.15/query-dsl-simple-query-string-query.html#supported-flags
+ * @codegen_names single, multiple
+ */
+export type SimpleQueryStringFlags = SimpleQueryStringFlag | string
+
+export enum SimpleQueryStringFlag {
   NONE = 1,
   AND = 2,
   OR = 4,
@@ -293,7 +300,7 @@ export class SimpleQueryStringQuery extends QueryBase {
   /** @server_default 'or' */
   default_operator?: Operator
   fields?: Field[]
-  flags?: SimpleQueryStringFlags | string
+  flags?: SimpleQueryStringFlags
   fuzzy_max_expansions?: integer
   fuzzy_prefix_length?: integer
   fuzzy_transpositions?: boolean

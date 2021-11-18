@@ -20,6 +20,8 @@
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Time } from '@_types/Time'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class RolloverConditions {
   max_age?: Time
@@ -27,3 +29,8 @@ export class RolloverConditions {
   max_size?: string
   max_primary_shard_size?: ByteSize
 }
+
+/**
+ * @codegen_names single, by_type
+ */
+export type IndexRolloverMapping = TypeMapping | Dictionary<string, TypeMapping>

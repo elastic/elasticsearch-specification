@@ -13586,23 +13586,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -15153,23 +15141,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -15695,23 +15671,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -15897,23 +15861,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -16226,23 +16178,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -16791,23 +16731,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -17468,23 +17396,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -18096,30 +18012,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SourceFilter",
-                  "namespace": "_global.search._types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -18297,23 +18194,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -18475,57 +18360,22 @@
           "name": "track_total_hits",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TrackHits",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
           "name": "suggest",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SuggestContainer",
-                  "namespace": "_global.search._types"
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SuggestContainer",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Suggester",
+              "namespace": "_global.search._types"
+            }
           }
         }
       ]
@@ -19782,7 +19632,7 @@
         "properties": [
           {
             "name": "script",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -22075,23 +21925,11 @@
             "name": "track_total_hits",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "integer",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "TrackHits",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -22125,38 +21963,14 @@
             "name": "docvalue_fields",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DocValueField",
-                    "namespace": "_global.search._types"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "items": [
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "Field",
-                          "namespace": "_types"
-                        }
-                      },
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "DocValueField",
-                          "namespace": "_global.search._types"
-                        }
-                      }
-                    ],
-                    "kind": "union_of"
-                  }
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
                 }
-              ],
-              "kind": "union_of"
+              }
             }
           },
           {
@@ -22306,30 +22120,11 @@
             "name": "_source",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Fields",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SourceFilter",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "SourceConfig",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -22339,23 +22134,11 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Field",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "DateField",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
+                }
               }
             }
           },
@@ -22363,34 +22146,11 @@
             "name": "suggest",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SuggestContainer",
-                    "namespace": "_global.search._types"
-                  }
-                },
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SuggestContainer",
-                      "namespace": "_global.search._types"
-                    }
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "Suggester",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -22916,23 +22676,11 @@
           "name": "track_total_hits",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TrackHits",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -22988,23 +22736,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -23945,6 +23681,25 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "plain"
+        },
+        {
+          "codegenName": "fast_vector",
+          "name": "fvh"
+        },
+        {
+          "name": "unified"
+        }
+      ],
+      "name": {
+        "name": "BuiltinHighlighterType",
+        "namespace": "_global.search._types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "Collector",
@@ -23999,6 +23754,74 @@
           }
         }
       ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CompletionContext",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "boost",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "context",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Context",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "neighbours",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GeoHashPrecision",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "precision",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHashPrecision",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "shortcutProperty": "context"
     },
     {
       "generics": [
@@ -24166,8 +23989,8 @@
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -24177,8 +24000,8 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "string",
-                    "namespace": "internal"
+                    "name": "CompletionContext",
+                    "namespace": "_global.search._types"
                   }
                 },
                 {
@@ -24186,24 +24009,7 @@
                   "value": {
                     "kind": "instance_of",
                     "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GeoLocation",
-                    "namespace": "_types.query_dsl"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SuggestContextQuery",
+                      "name": "CompletionContext",
                       "namespace": "_global.search._types"
                     }
                   }
@@ -24260,7 +24066,11 @@
       ]
     },
     {
-      "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
+      "codegenNames": [
+        "category",
+        "location"
+      ],
+      "description": "Text or location that we want similar documents for or a lookup to a document's field for the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
       "name": {
@@ -24280,7 +24090,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         ],
@@ -24412,37 +24222,6 @@
             "type": {
               "name": "SuggestMode",
               "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "DocValueField",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         }
@@ -24638,49 +24417,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "FieldAndFormat",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "include_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "shortcutProperty": "field"
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "FieldCollapse",
         "namespace": "_global.search._types"
       },
@@ -24796,8 +24532,130 @@
               "namespace": "_types.mapping"
             }
           }
+        },
+        {
+          "name": "numeric_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSortNumericType",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
         }
-      ]
+      ],
+      "shortcutProperty": "order"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "long"
+        },
+        {
+          "name": "double"
+        },
+        {
+          "name": "date"
+        },
+        {
+          "name": "date_nanos"
+        }
+      ],
+      "name": {
+        "name": "FieldSortNumericType",
+        "namespace": "_global.search._types"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldSuggester",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "completion",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CompletionSuggester",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "phrase",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "PhraseSuggester",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "regex",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermSuggester",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "text",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "attachedBehaviors": [
@@ -24819,7 +24677,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "GeoLocation",
-                    "namespace": "_types.query_dsl"
+                    "namespace": "_types"
                   }
                 },
                 {
@@ -24828,7 +24686,7 @@
                     "kind": "instance_of",
                     "type": {
                       "name": "GeoLocation",
-                      "namespace": "_types.query_dsl"
+                      "namespace": "_types"
                     }
                   }
                 }
@@ -24871,6 +24729,17 @@
           }
         },
         {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
           "name": "order",
           "required": false,
           "type": {
@@ -24893,6 +24762,36 @@
           }
         }
       ]
+    },
+    {
+      "codegenNames": [
+        "fetch",
+        "fields"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "GetSourceConfig",
+        "namespace": "_global.search._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -25389,23 +25288,11 @@
           "name": "type",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "HighlighterType",
-                  "namespace": "_global.search._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "HighlighterType",
+              "namespace": "_global.search._types"
+            }
           }
         }
       ]
@@ -25465,21 +25352,33 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "plain"
-        },
-        {
-          "name": "fvh"
-        },
-        {
-          "name": "unified"
-        }
+      "codegenNames": [
+        "builtin",
+        "custom"
       ],
+      "kind": "type_alias",
       "name": {
         "name": "HighlighterType",
         "namespace": "_global.search._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BuiltinHighlighterType",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -25876,7 +25775,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "FieldAndFormat",
-                "namespace": "_global.search._types"
+                "namespace": "_types.query_dsl"
               }
             }
           }
@@ -25973,23 +25872,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SourceFilter",
-                  "namespace": "_global.search._types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -26031,79 +25918,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "InnerHitsMetadata",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "total",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TotalHits",
-                  "namespace": "_global.search._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "long",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "hits",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "generics": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "user_defined_value"
-                  }
-                }
-              ],
-              "kind": "instance_of",
-              "type": {
-                "name": "Hit",
-                "namespace": "_global.search._types"
-              }
-            }
-          }
-        },
-        {
-          "name": "max_score",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "InnerHitsResult",
         "namespace": "_global.search._types"
       },
@@ -26112,9 +25926,14 @@
           "name": "hits",
           "required": true,
           "type": {
+            "generics": [
+              {
+                "kind": "user_defined_value"
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "InnerHitsMetadata",
+              "name": "HitsMetadata",
               "namespace": "_global.search._types"
             }
           }
@@ -26251,6 +26070,17 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_global.search._types"
             }
           }
         },
@@ -27026,17 +26856,6 @@
       },
       "properties": [
         {
-          "name": "mode",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortMode",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
           "name": "order",
           "required": false,
           "type": {
@@ -27084,12 +26903,49 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "ScriptSortType",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortMode",
+              "namespace": "_global.search._types"
+            }
+          }
+        },
+        {
+          "name": "nested",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NestedSortValue",
+              "namespace": "_global.search._types"
             }
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "string"
+        },
+        {
+          "name": "number"
+        }
+      ],
+      "name": {
+        "name": "ScriptSortType",
+        "namespace": "_global.search._types"
+      }
     },
     {
       "kind": "interface",
@@ -27273,6 +27129,10 @@
       }
     },
     {
+      "codegenNames": [
+        "field",
+        "options"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "SortCombinations",
@@ -27290,14 +27150,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "SortContainer",
-              "namespace": "_global.search._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
+              "name": "SortOptions",
               "namespace": "_global.search._types"
             }
           }
@@ -27306,8 +27159,32 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "min"
+        },
+        {
+          "name": "max"
+        },
+        {
+          "name": "sum"
+        },
+        {
+          "name": "avg"
+        },
+        {
+          "name": "median"
+        }
+      ],
+      "name": {
+        "name": "SortMode",
+        "namespace": "_global.search._types"
+      }
+    },
+    {
       "attachedBehaviors": [
-        "AdditionalProperties"
+        "AdditionalProperty"
       ],
       "behaviors": [
         {
@@ -27320,34 +27197,23 @@
               }
             },
             {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "FieldSort",
-                    "namespace": "_global.search._types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SortOrder",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldSort",
+                "namespace": "_global.search._types"
+              }
             }
           ],
           "type": {
-            "name": "AdditionalProperties",
+            "name": "AdditionalProperty",
             "namespace": "_spec_utils"
           }
         }
       ],
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/sort-search-results.html",
       "kind": "interface",
       "name": {
-        "name": "SortContainer",
+        "name": "SortOptions",
         "namespace": "_global.search._types"
       },
       "properties": [
@@ -27395,30 +27261,9 @@
             }
           }
         }
-      ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "min"
-        },
-        {
-          "name": "max"
-        },
-        {
-          "name": "sum"
-        },
-        {
-          "name": "avg"
-        },
-        {
-          "name": "median"
-        }
       ],
-      "name": {
-        "name": "SortMode",
-        "namespace": "_global.search._types"
+      "variants": {
+        "kind": "container"
       }
     },
     {
@@ -27429,10 +27274,6 @@
         },
         {
           "name": "desc"
-        },
-        {
-          "codegenName": "Document",
-          "name": "_doc"
         }
       ],
       "name": {
@@ -27484,6 +27325,37 @@
       }
     },
     {
+      "codegenNames": [
+        "fetch",
+        "filter"
+      ],
+      "description": "Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SourceConfig",
+        "namespace": "_global.search._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceFilter",
+              "namespace": "_global.search._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "SourceFilter",
@@ -27491,6 +27363,9 @@
       },
       "properties": [
         {
+          "aliases": [
+            "exclude"
+          ],
           "name": "excludes",
           "required": false,
           "type": {
@@ -27502,6 +27377,9 @@
           }
         },
         {
+          "aliases": [
+            "include"
+          ],
           "name": "includes",
           "required": false,
           "type": {
@@ -27511,30 +27389,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "exclude",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "include",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
         }
-      ]
+      ],
+      "shortcutProperty": "includes"
     },
     {
       "kind": "enum",
@@ -27654,178 +27511,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "SuggestContainer",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "completion",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "CompletionSuggester",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "phrase",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "PhraseSuggester",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "prefix",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "regex",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "term",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TermSuggester",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "text",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ],
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SuggestContextQuery",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "boost",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "context",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Context",
-              "namespace": "_global.search._types"
-            }
-          }
-        },
-        {
-          "name": "neighbours",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Distance",
-                    "namespace": "_types"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "integer",
-                    "namespace": "_types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "precision",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Distance",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "prefix",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "SuggestFuzziness",
         "namespace": "_global.search._types"
       },
@@ -27888,6 +27573,11 @@
       ]
     },
     {
+      "codegenNames": [
+        "completion",
+        "phrase",
+        "term"
+      ],
       "generics": [
         {
           "name": "TDocument",
@@ -27949,6 +27639,54 @@
         "name": "SuggestSort",
         "namespace": "_global.search._types"
       }
+    },
+    {
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldSuggester",
+                "namespace": "_global.search._types"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "Suggester",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "Global suggest text, to avoid repetition when the same text is used in several suggesters",
+          "name": "text",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -28227,6 +27965,37 @@
       "name": {
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
+      }
+    },
+    {
+      "codegenNames": [
+        "enabled",
+        "count"
+      ],
+      "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
+      "kind": "type_alias",
+      "name": {
+        "name": "TrackHits",
+        "namespace": "_global.search._types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -30029,23 +29798,11 @@
             "required": false,
             "serverDefault": "true",
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SourceFilter",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "SourceConfig",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -30243,23 +30000,11 @@
           "required": false,
           "serverDefault": "true",
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -30719,23 +30464,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -31277,6 +31010,27 @@
       }
     },
     {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "painless"
+        },
+        {
+          "name": "expression"
+        },
+        {
+          "name": "mustache"
+        },
+        {
+          "name": "java"
+        }
+      ],
+      "name": {
+        "name": "BuiltinScriptLanguage",
+        "namespace": "_types"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "BulkIndexByScrollFailure",
@@ -31656,6 +31410,59 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "CoordsGeoBounds",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "top",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bottom",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "left",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "right",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-data-stream.html#indices-create-data-stream-api-path-params",
       "kind": "type_alias",
       "name": {
@@ -31698,49 +31505,6 @@
         ],
         "kind": "union_of"
       }
-    },
-    {
-      "description": "A reference to a date field with formatting instructions on how to return the date",
-      "kind": "interface",
-      "name": {
-        "name": "DateField",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "include_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.x/mapping-date-format.html",
@@ -32230,7 +31994,7 @@
         }
       ],
       "name": {
-        "name": "ExpandWildcardOptions",
+        "name": "ExpandWildcard",
         "namespace": "_types"
       }
     },
@@ -32245,7 +32009,7 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "ExpandWildcardOptions",
+              "name": "ExpandWildcard",
               "namespace": "_types"
             }
           },
@@ -32254,16 +32018,9 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "ExpandWildcardOptions",
+                "name": "ExpandWildcard",
                 "namespace": "_types"
               }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         ],
@@ -32346,6 +32103,53 @@
           }
         }
       ]
+    },
+    {
+      "codegenNames": [
+        "long",
+        "double",
+        "string",
+        "boolean"
+      ],
+      "description": "A field value.",
+      "kind": "type_alias",
+      "name": {
+        "name": "FieldValue",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -32520,6 +32324,53 @@
       }
     },
     {
+      "codegenNames": [
+        "coords",
+        "tlbr",
+        "trbl",
+        "wkt"
+      ],
+      "description": "A geo bounding box. It can be represented in various ways:\n- as 4 top/bottom/left/right coordinates\n- as 2 top_left / bottom_right points\n- as 2 top_right / bottom_left points\n- as a WKT bounding box",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoBounds",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CoordsGeoBounds",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TopLeftBottomRightGeoBounds",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TopRightBottomLeftGeoBounds",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "WktGeoBounds",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -32549,17 +32400,54 @@
       }
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "GeoHashLocation",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "geohash",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHash",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "codegenNames": [
+        "geohash_length",
+        "distance"
+      ],
+      "description": "A precision that can be expressed as a geohash length between 1 and 12, or a distance measure like \"1km\", \"10m\".",
       "kind": "type_alias",
       "name": {
         "name": "GeoHashPrecision",
         "namespace": "_types"
       },
       "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "number",
-          "namespace": "internal"
-        }
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "number",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -32601,6 +32489,56 @@
           }
         }
       ]
+    },
+    {
+      "codegenNames": [
+        "latlon",
+        "geohash",
+        "coords",
+        "text"
+      ],
+      "description": "A latitude/longitude as a 2 dimensional point. It can be represented in various ways:\n- as a `{lat, long}` object\n- as a geo hash value\n- as a `[lon, lat]` array\n- as a string in `\"<lat>, <lon>\"` or WKT point formats",
+      "kind": "type_alias",
+      "name": {
+        "name": "GeoLocation",
+        "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LatLonGeoLocation",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoHashLocation",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
@@ -32786,24 +32724,6 @@
       "kind": "enum",
       "members": [
         {
-          "name": "nodes"
-        },
-        {
-          "name": "parents"
-        },
-        {
-          "name": "none"
-        }
-      ],
-      "name": {
-        "name": "GroupBy",
-        "namespace": "_types"
-      }
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
           "description": "All shards are assigned.",
           "name": "green"
         },
@@ -32976,32 +32896,6 @@
           }
         }
       }
-    },
-    {
-      "inherits": {
-        "type": {
-          "name": "ScriptBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "interface",
-      "name": {
-        "name": "IndexedScript",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -33357,6 +33251,39 @@
       },
       "properties": [
         {
+          "name": "lang",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptLanguage",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "options",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        },
+        {
           "name": "source",
           "required": true,
           "type": {
@@ -33367,7 +33294,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "source"
     },
     {
       "kind": "type_alias",
@@ -33386,7 +33314,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "LatLon",
+        "name": "LatLonGeoLocation",
         "namespace": "_types"
       },
       "properties": [
@@ -34551,40 +34479,20 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "Refresh",
-        "namespace": "_types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "RefreshOptions",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "kind": "enum",
       "members": [
+        {
+          "name": "true"
+        },
+        {
+          "name": "false"
+        },
         {
           "name": "wait_for"
         }
       ],
       "name": {
-        "name": "RefreshOptions",
+        "name": "Refresh",
         "namespace": "_types"
       }
     },
@@ -34834,47 +34742,10 @@
       }
     },
     {
-      "description": "A single value",
-      "kind": "type_alias",
-      "name": {
-        "name": "ScalarValue",
-        "namespace": "_types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
+      "codegenNames": [
+        "inline",
+        "stored"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "Script",
@@ -34892,15 +34763,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "IndexedScript",
+              "name": "StoredScriptId",
               "namespace": "_types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
             }
           }
         ],
@@ -34914,29 +34778,6 @@
         "namespace": "_types"
       },
       "properties": [
-        {
-          "name": "lang",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ScriptLanguage",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
         {
           "name": "params",
           "required": false,
@@ -34989,24 +34830,34 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "painless"
-        },
-        {
-          "name": "expression"
-        },
-        {
-          "name": "mustache"
-        },
-        {
-          "name": "java"
-        }
+      "codegenNames": [
+        "builtin",
+        "custom"
       ],
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
+      "kind": "type_alias",
       "name": {
         "name": "ScriptLanguage",
         "namespace": "_types"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BuiltinScriptLanguage",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -35596,24 +35447,6 @@
       }
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "intersects"
-        },
-        {
-          "name": "disjoint"
-        },
-        {
-          "name": "within"
-        }
-      ],
-      "name": {
-        "name": "ShapeRelation",
-        "namespace": "_types"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "ShardFailure",
@@ -35765,33 +35598,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "Raw"
-        },
-        {
-          "name": "k"
-        },
-        {
-          "name": "m"
-        },
-        {
-          "name": "g"
-        },
-        {
-          "name": "t"
-        },
-        {
-          "name": "p"
-        }
-      ],
-      "name": {
-        "name": "Size",
-        "namespace": "_types"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "SlicedScroll",
@@ -35917,25 +35723,35 @@
       "properties": [
         {
           "name": "lang",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptLanguage",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "options",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "ScriptLanguage",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
               }
-            ],
-            "kind": "union_of"
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
           }
         },
         {
@@ -35946,6 +35762,32 @@
             "type": {
               "name": "string",
               "namespace": "internal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "ScriptBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "StoredScriptId",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
             }
           }
         }
@@ -36029,8 +35871,12 @@
       }
     },
     {
+      "codegenNames": [
+        "time",
+        "offset"
+      ],
       "description": "Whenever durations need to be specified, e.g. for a timeout parameter, the duration must specify the unit, like 2d for 2 days.",
-      "docUrl": "https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nhttps://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/common/unit/TimeValue.java\nOnly support 0 and -1 but we have no way to encode these as constants at the moment",
+      "docUrl": "https://github.com/elastic/elasticsearch/blob/master/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java",
       "kind": "type_alias",
       "name": {
         "name": "Time",
@@ -36134,6 +35980,68 @@
           "namespace": "internal"
         }
       }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TopLeftBottomRightGeoBounds",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "top_left",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bottom_right",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TopRightBottomLeftGeoBounds",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "top_right",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "bottom_left",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "interface",
@@ -36421,6 +36329,10 @@
       }
     },
     {
+      "codegenNames": [
+        "count",
+        "option"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "WaitForActiveShards",
@@ -36539,6 +36451,26 @@
             "type": {
               "name": "long",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WktGeoBounds",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "wkt",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
             }
           }
         }
@@ -38871,6 +38803,10 @@
       ]
     },
     {
+      "codegenNames": [
+        "keyed",
+        "array"
+      ],
       "description": "Aggregation buckets. By default they are returned as an array, but if the aggregation has keys configured for\nthe different buckets, the result is a dictionary.",
       "generics": [
         {
@@ -38915,6 +38851,116 @@
           }
         ],
         "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "single",
+        "array",
+        "dict"
+      ],
+      "description": "Buckets path can be expressed in different ways, and an aggregation may accept some or all of these\nforms depending on its type. Please refer to each aggregation's documentation to know what buckets\npath forms they accept.",
+      "kind": "type_alias",
+      "name": {
+        "name": "BucketsPath",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "aliases": [
+            "1s"
+          ],
+          "name": "second"
+        },
+        {
+          "aliases": [
+            "1m"
+          ],
+          "name": "minute"
+        },
+        {
+          "aliases": [
+            "1h"
+          ],
+          "name": "hour"
+        },
+        {
+          "aliases": [
+            "1d"
+          ],
+          "name": "day"
+        },
+        {
+          "aliases": [
+            "1w"
+          ],
+          "name": "week"
+        },
+        {
+          "aliases": [
+            "1M"
+          ],
+          "name": "month"
+        },
+        {
+          "aliases": [
+            "1q"
+          ],
+          "name": "quarter"
+        },
+        {
+          "aliases": [
+            "1Y"
+          ],
+          "name": "year"
+        }
+      ],
+      "name": {
+        "name": "CalendarInterval",
+        "namespace": "_types.aggregations"
       }
     },
     {
@@ -39481,23 +39527,11 @@
           "name": "calendar_interval",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateInterval",
-                  "namespace": "_types.aggregations"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Time",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "CalendarInterval",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -39506,23 +39540,11 @@
           "type": {
             "generics": [
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "DateMath",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "long",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldDateMath",
+                  "namespace": "_types.aggregations"
+                }
               }
             ],
             "kind": "instance_of",
@@ -39538,23 +39560,11 @@
           "type": {
             "generics": [
               {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "DateMath",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "long",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldDateMath",
+                  "namespace": "_types.aggregations"
+                }
               }
             ],
             "kind": "instance_of",
@@ -39579,23 +39589,11 @@
           "name": "fixed_interval",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateInterval",
-                  "namespace": "_types.aggregations"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Time",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -39613,23 +39611,11 @@
           "name": "interval",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateInterval",
-                  "namespace": "_types.aggregations"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Time",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -39770,39 +39756,6 @@
       ]
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "second"
-        },
-        {
-          "name": "minute"
-        },
-        {
-          "name": "hour"
-        },
-        {
-          "name": "day"
-        },
-        {
-          "name": "week"
-        },
-        {
-          "name": "month"
-        },
-        {
-          "name": "quarter"
-        },
-        {
-          "name": "year"
-        }
-      ],
-      "name": {
-        "name": "DateInterval",
-        "namespace": "_types.aggregations"
-      }
-    },
-    {
       "description": "Result of a `date_range` aggregation. Same format as a for a `range` aggregation: `from` and `to`\nin `buckets` are milliseconds since the Epoch, represented as a floating point number.",
       "inherits": {
         "type": {
@@ -39913,44 +39866,10 @@
           "name": "from",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "float",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "from_as_string",
-          "required": false,
-          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "to_as_string",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "FieldDateMath",
+              "namespace": "_types.aggregations"
             }
           }
         },
@@ -39969,33 +39888,10 @@
           "name": "to",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateMath",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "float",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "name": "doc_count",
-          "required": false,
-          "type": {
             "kind": "instance_of",
             "type": {
-              "name": "long",
-              "namespace": "_types"
+              "name": "FieldDateMath",
+              "namespace": "_types.aggregations"
             }
           }
         }
@@ -40203,6 +40099,40 @@
             "type": {
               "name": "float",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "MovingAverageAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "EwmaMovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "ewma"
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EwmaModelSettings",
+              "namespace": "_types.aggregations"
             }
           }
         }
@@ -40521,6 +40451,37 @@
       ]
     },
     {
+      "codegenNames": [
+        "expr",
+        "value"
+      ],
+      "description": "A date range limit, represented either as a DateMath expression or a number expressed\naccording to the target field's precision.",
+      "kind": "type_alias",
+      "name": {
+        "name": "FieldDateMath",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateMath",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "SingleBucketAggregateBase",
@@ -40576,37 +40537,20 @@
           "name": "filters",
           "required": false,
           "type": {
-            "items": [
+            "generics": [
               {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "QueryContainer",
-                    "namespace": "_types.query_dsl"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "QueryContainer",
-                    "namespace": "_types.query_dsl"
-                  }
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryContainer",
+                  "namespace": "_types.query_dsl"
                 }
               }
             ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Buckets",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -40729,37 +40673,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "GeoBounds",
-        "namespace": "_types.aggregations"
-      },
-      "properties": [
-        {
-          "name": "bottom_right",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LatLon",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "top_left",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LatLon",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "AggregateBase",
@@ -40779,7 +40692,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoBounds",
-              "namespace": "_types.aggregations"
+              "namespace": "_types"
             }
           }
         }
@@ -40843,7 +40756,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -40881,7 +40794,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         }
@@ -40942,23 +40855,11 @@
           "name": "origin",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GeoLocation",
-                  "namespace": "_types.query_dsl"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GeoLocation",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -41031,8 +40932,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "BoundingBox",
-              "namespace": "_types.query_dsl"
+              "name": "GeoBounds",
+              "namespace": "_types"
             }
           }
         },
@@ -41128,8 +41029,11 @@
           "name": "type",
           "required": true,
           "type": {
-            "kind": "literal_value",
-            "value": "Feature"
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         },
         {
@@ -41338,7 +41242,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoBounds",
-              "namespace": "_types.aggregations"
+              "namespace": "_types"
             }
           }
         }
@@ -41753,6 +41657,40 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "MovingAverageAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HoltMovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "holt"
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltLinearModelSettings",
+              "namespace": "_types.aggregations"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "HoltWintersModelSettings",
@@ -41828,6 +41766,40 @@
       ]
     },
     {
+      "inherits": {
+        "type": {
+          "name": "MovingAverageAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "HoltWintersMovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "holt_winters"
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltWintersModelSettings",
+              "namespace": "_types.aggregations"
+            }
+          }
+        }
+      ]
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -41886,7 +41858,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ScalarValue",
+              "name": "FieldValue",
               "namespace": "_types"
             }
           }
@@ -42092,7 +42064,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ScalarValue",
+              "name": "FieldValue",
               "namespace": "_types"
             }
           }
@@ -42310,6 +42282,40 @@
           "kind": "union_of"
         }
       }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "MovingAverageAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LinearMovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "linear"
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "description": "Result of the `rare_terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
@@ -43006,6 +43012,57 @@
       }
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "MovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LinearMovingAverageAggregation",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleMovingAverageAggregation",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EwmaMovingAverageAggregation",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltMovingAverageAggregation",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HoltWintersMovingAverageAggregation",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "model"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "PipelineAggregationBase",
@@ -43014,7 +43071,7 @@
       },
       "kind": "interface",
       "name": {
-        "name": "MovingAverageAggregation",
+        "name": "MovingAverageAggregationBase",
         "namespace": "_types.aggregations"
       },
       "properties": [
@@ -43026,28 +43083,6 @@
             "type": {
               "name": "boolean",
               "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "model",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MovingAverageModel",
-              "namespace": "_types.aggregations"
-            }
-          }
-        },
-        {
-          "name": "settings",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "MovingAverageSettings",
-              "namespace": "_types.aggregations"
             }
           }
         },
@@ -43074,63 +43109,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "linear"
-        },
-        {
-          "name": "simple"
-        },
-        {
-          "name": "ewma"
-        },
-        {
-          "name": "holt"
-        },
-        {
-          "name": "holt_winters"
-        }
-      ],
-      "name": {
-        "name": "MovingAverageModel",
-        "namespace": "_types.aggregations"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "MovingAverageSettings",
-        "namespace": "_types.aggregations"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "EwmaModelSettings",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "HoltLinearModelSettings",
-              "namespace": "_types.aggregations"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "HoltWintersModelSettings",
-              "namespace": "_types.aggregations"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
     },
     {
       "inherits": {
@@ -43686,6 +43664,39 @@
       ]
     },
     {
+      "codegenNames": [
+        "keyed",
+        "array"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "Percentiles",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KeyedPercentiles",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ArrayPercentilesItem",
+                "namespace": "_types.aggregations"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "inherits": {
         "type": {
           "name": "AggregateBase",
@@ -43702,26 +43713,11 @@
           "name": "values",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "KeyedPercentiles",
-                  "namespace": "_types.aggregations"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "ArrayPercentilesItem",
-                    "namespace": "_types.aggregations"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Percentiles",
+              "namespace": "_types.aggregations"
+            }
           }
         }
       ]
@@ -43849,44 +43845,11 @@
           "name": "buckets_path",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "BucketsPath",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -44089,26 +44052,11 @@
           "name": "exclude",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsExclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -44126,33 +44074,11 @@
           "name": "include",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TermsInclude",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsInclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -44258,7 +44184,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "DateInterval",
+              "name": "CalendarInterval",
               "namespace": "_types.aggregations"
             }
           }
@@ -44727,26 +44653,11 @@
           "name": "exclude",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsExclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -44966,26 +44877,11 @@
           "name": "exclude",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsExclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -45142,6 +45038,40 @@
             "kind": "instance_of",
             "type": {
               "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "MovingAverageAggregationBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "SimpleMovingAverageAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "name": "model",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "simple"
+          }
+        },
+        {
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
               "namespace": "_types"
             }
           }
@@ -46255,26 +46185,11 @@
           "name": "exclude",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsExclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -46303,33 +46218,11 @@
           "name": "include",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TermsInclude",
-                  "namespace": "_types.aggregations"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsInclude",
+              "namespace": "_types.aggregations"
+            }
           }
         },
         {
@@ -46489,18 +46382,11 @@
       "type": {
         "items": [
           {
-            "kind": "instance_of",
-            "type": {
-              "name": "SortOrder",
-              "namespace": "_global.search._types"
-            }
-          },
-          {
             "key": {
               "kind": "instance_of",
               "type": {
-                "name": "string",
-                "namespace": "internal"
+                "name": "Field",
+                "namespace": "_types"
               }
             },
             "kind": "dictionary_of",
@@ -46519,8 +46405,8 @@
               "key": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "string",
-                  "namespace": "internal"
+                  "name": "Field",
+                  "namespace": "_types"
                 }
               },
               "kind": "dictionary_of",
@@ -46568,9 +46454,83 @@
       ]
     },
     {
-      "kind": "interface",
+      "codegenNames": [
+        "regexp",
+        "terms"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "TermsExclude",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "codegenNames": [
+        "regexp",
+        "terms",
+        "partition"
+      ],
+      "kind": "type_alias",
       "name": {
         "name": "TermsInclude",
+        "namespace": "_types.aggregations"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsPartition",
+              "namespace": "_types.aggregations"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TermsPartition",
         "namespace": "_types.aggregations"
       },
       "properties": [
@@ -46777,30 +46737,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SourceFilter",
-                  "namespace": "_global.search._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -46866,7 +46807,7 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "ScalarValue",
+                    "name": "FieldValue",
                     "namespace": "_types"
                   }
                 },
@@ -46900,7 +46841,7 @@
                 {
                   "kind": "instance_of",
                   "type": {
-                    "name": "ScalarValue",
+                    "name": "FieldValue",
                     "namespace": "_types"
                   }
                 },
@@ -47628,9 +47569,59 @@
       ]
     },
     {
+      "codegenNames": [
+        "name",
+        "definition"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "CharFilter",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CharFilterDefinition",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CharFilterBase",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "CharFilterDefinition",
         "namespace": "_types.analysis"
       },
       "type": {
@@ -47677,26 +47668,6 @@
         "kind": "internal_tag",
         "tag": "type"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "CharFilterBase",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "inherits": {
@@ -52066,9 +52037,59 @@
       }
     },
     {
+      "codegenNames": [
+        "name",
+        "definition"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "TokenFilter",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TokenFilterDefinition",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TokenFilterBase",
+        "namespace": "_types.analysis"
+      },
+      "properties": [
+        {
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TokenFilterDefinition",
         "namespace": "_types.analysis"
       },
       "type": {
@@ -52418,9 +52439,39 @@
       }
     },
     {
+      "codegenNames": [
+        "name",
+        "definition"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "Tokenizer",
+        "namespace": "_types.analysis"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TokenizerDefinition",
+              "namespace": "_types.analysis"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "kind": "interface",
       "name": {
-        "name": "TokenFilterBase",
+        "name": "TokenizerBase",
         "namespace": "_types.analysis"
       },
       "properties": [
@@ -52440,7 +52491,7 @@
     {
       "kind": "type_alias",
       "name": {
-        "name": "Tokenizer",
+        "name": "TokenizerDefinition",
         "namespace": "_types.analysis"
       },
       "type": {
@@ -52550,26 +52601,6 @@
         "kind": "internal_tag",
         "tag": "type"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TokenizerBase",
-        "namespace": "_types.analysis"
-      },
-      "properties": [
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionString",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "inherits": {
@@ -54947,7 +54978,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
+              "namespace": "_types"
             }
           }
         },
@@ -56055,23 +56086,11 @@
           "name": "dynamic",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DynamicMapping",
-                  "namespace": "_types.mapping"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "DynamicMapping",
+              "namespace": "_types.mapping"
+            }
           }
         },
         {
@@ -57193,23 +57212,11 @@
           "name": "dynamic",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DynamicMapping",
-                  "namespace": "_types.mapping"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "DynamicMapping",
+              "namespace": "_types.mapping"
+            }
           }
         },
         {
@@ -57680,115 +57687,6 @@
       ]
     },
     {
-      "description": "A geo bounding box. The various coordinates can be mixed. When set, `wkt` takes precedence over all other fields.",
-      "kind": "interface",
-      "name": {
-        "name": "BoundingBox",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "bottom_right",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "top_left",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "top_right",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "bottom_left",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoLocation",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        },
-        {
-          "name": "top",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "left",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "right",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "bottom",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "wkt",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "kind": "enum",
       "members": [
         {
@@ -58228,6 +58126,11 @@
       ]
     },
     {
+      "codegenNames": [
+        "date",
+        "numeric",
+        "geo"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "DecayFunction",
@@ -58391,6 +58294,10 @@
       ]
     },
     {
+      "codegenNames": [
+        "geo",
+        "date"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "DistanceFeatureQuery",
@@ -58499,6 +58406,52 @@
           }
         }
       ]
+    },
+    {
+      "description": "A reference to a field with formatting instructions on how to return the value",
+      "kind": "interface",
+      "name": {
+        "name": "FieldAndFormat",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Format in which the values are returned.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        },
+        {
+          "name": "include_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ],
+      "shortcutProperty": "field"
     },
     {
       "kind": "interface",
@@ -59009,8 +58962,8 @@
             {
               "kind": "instance_of",
               "type": {
-                "name": "BoundingBox",
-                "namespace": "_types.query_dsl"
+                "name": "GeoBounds",
+                "namespace": "_types"
               }
             }
           ],
@@ -59073,43 +59026,6 @@
       ]
     },
     {
-      "description": "Represents a Latitude/Longitude and optional Z value as a 2 or 3 dimensional point",
-      "kind": "type_alias",
-      "name": {
-        "name": "GeoCoordinate",
-        "namespace": "_types.query_dsl"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ThreeDimensionalPoint",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "attachedBehaviors": [
         "AdditionalProperty"
       ],
@@ -59129,7 +59045,7 @@
                   "kind": "instance_of",
                   "type": {
                     "name": "GeoLocation",
-                    "namespace": "_types.query_dsl"
+                    "namespace": "_types"
                   }
                 },
                 {
@@ -59172,8 +59088,8 @@
           {
             "kind": "instance_of",
             "type": {
-              "name": "GeoCoordinate",
-              "namespace": "_types.query_dsl"
+              "name": "GeoLocation",
+              "namespace": "_types"
             }
           },
           {
@@ -59214,7 +59130,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "GeoLocation",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           ],
@@ -59289,43 +59205,6 @@
       }
     },
     {
-      "description": "Represents a Latitude/Longitude as a 2 dimensional point",
-      "kind": "type_alias",
-      "name": {
-        "name": "GeoLocation",
-        "namespace": "_types.query_dsl"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "double",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TwoDimensionalPoint",
-              "namespace": "_types.query_dsl"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
         "name": "GeoPolygonPoints",
@@ -59341,7 +59220,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "GeoLocation",
-                "namespace": "_types.query_dsl"
+                "namespace": "_types"
               }
             }
           }
@@ -60326,6 +60205,10 @@
       ]
     },
     {
+      "codegenNames": [
+        "text",
+        "document"
+      ],
       "description": "Text that we want similar documents for or a lookup to a document's field for the text.",
       "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html#_document_input_parameters",
       "kind": "type_alias",
@@ -61683,9 +61566,15 @@
       "kind": "enum",
       "members": [
         {
+          "aliases": [
+            "AND"
+          ],
           "name": "and"
         },
         {
+          "aliases": [
+            "OR"
+          ],
           "name": "or"
         }
       ],
@@ -63135,6 +63024,10 @@
       ]
     },
     {
+      "codegenNames": [
+        "date",
+        "number"
+      ],
       "kind": "type_alias",
       "name": {
         "name": "RangeQuery",
@@ -63598,17 +63491,6 @@
       },
       "properties": [
         {
-          "name": "ignore_unmapped",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
           "name": "indexed_shape",
           "required": false,
           "type": {
@@ -63625,7 +63507,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ShapeRelation",
+              "name": "GeoShapeRelation",
               "namespace": "_types"
             }
           }
@@ -63682,7 +63564,19 @@
         "name": "ShapeQuery",
         "namespace": "_types.query_dsl"
       },
-      "properties": []
+      "properties": [
+        {
+          "name": "ignore_unmapped",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "internal"
+            }
+          }
+        }
+      ]
     },
     {
       "kind": "enum",
@@ -63728,8 +63622,40 @@
         }
       ],
       "name": {
+        "name": "SimpleQueryStringFlag",
+        "namespace": "_types.query_dsl"
+      }
+    },
+    {
+      "codegenNames": [
+        "single",
+        "multiple"
+      ],
+      "description": "Query flags can be either a single flag or a combination of flags, e.g. `OR|AND|PREFIX`",
+      "docUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/7.15/query-dsl-simple-query-string-query.html#supported-flags",
+      "kind": "type_alias",
+      "name": {
         "name": "SimpleQueryStringFlags",
         "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleQueryStringFlag",
+              "namespace": "_types.query_dsl"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -63810,23 +63736,11 @@
           "name": "flags",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "SimpleQueryStringFlags",
-                  "namespace": "_types.query_dsl"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleQueryStringFlags",
+              "namespace": "_types.query_dsl"
+            }
           }
         },
         {
@@ -64439,30 +64353,11 @@
           "name": "value",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "float",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldValue",
+              "namespace": "_types"
+            }
           }
         },
         {
@@ -64548,36 +64443,11 @@
               }
             },
             {
-              "items": [
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "long",
-                      "namespace": "_types"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TermsLookup",
-                    "namespace": "_types.query_dsl"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "TermsQueryField",
+                "namespace": "_types.query_dsl"
+              }
             }
           ],
           "type": {
@@ -64598,6 +64468,39 @@
         "namespace": "_types.query_dsl"
       },
       "properties": []
+    },
+    {
+      "codegenNames": [
+        "value",
+        "lookup"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "TermsQueryField",
+        "namespace": "_types.query_dsl"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldValue",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsLookup",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "inherits": {
@@ -64676,79 +64579,6 @@
         "name": "TextQueryType",
         "namespace": "_types.query_dsl"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ThreeDimensionalPoint",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "lat",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "lon",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "z",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TwoDimensionalPoint",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "name": "lat",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "lon",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        }
-      ]
     },
     {
       "inherits": {
@@ -65502,23 +65332,11 @@
             "name": "track_total_hits",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "integer",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "TrackHits",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -65552,38 +65370,14 @@
             "name": "docvalue_fields",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DocValueField",
-                    "namespace": "_global.search._types"
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "items": [
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "Field",
-                          "namespace": "_types"
-                        }
-                      },
-                      {
-                        "kind": "instance_of",
-                        "type": {
-                          "name": "DocValueField",
-                          "namespace": "_global.search._types"
-                        }
-                      }
-                    ],
-                    "kind": "union_of"
-                  }
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
                 }
-              ],
-              "kind": "union_of"
+              }
             }
           },
           {
@@ -65733,30 +65527,11 @@
             "name": "_source",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Fields",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SourceFilter",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "SourceConfig",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -65766,23 +65541,11 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Field",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "DateField",
-                      "namespace": "_types"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "FieldAndFormat",
+                  "namespace": "_types.query_dsl"
+                }
               }
             }
           },
@@ -65790,34 +65553,11 @@
             "name": "suggest",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SuggestContainer",
-                    "namespace": "_global.search._types"
-                  }
-                },
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SuggestContainer",
-                      "namespace": "_global.search._types"
-                    }
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "Suggester",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -66366,23 +66106,11 @@
           "name": "track_total_hits",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "integer",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "TrackHits",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -66437,23 +66165,11 @@
           "name": "_source",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Fields",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "GetSourceConfig",
+              "namespace": "_global.search._types"
+            }
           }
         },
         {
@@ -77295,23 +77011,11 @@
           "name": "size",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Size",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "boolean",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "ThreadPoolSize",
+              "namespace": "cat.thread_pool"
+            }
           }
         }
       ]
@@ -77644,6 +77348,30 @@
           }
         }
       ]
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "k"
+        },
+        {
+          "name": "m"
+        },
+        {
+          "name": "g"
+        },
+        {
+          "name": "t"
+        },
+        {
+          "name": "p"
+        }
+      ],
+      "name": {
+        "name": "ThreadPoolSize",
+        "namespace": "cat.thread_pool"
+      }
     },
     {
       "attachedBehaviors": [
@@ -87858,23 +87586,11 @@
             "name": "size",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "uint",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "float",
-                    "namespace": "_types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "uint",
+                "namespace": "_types"
+              }
             }
           },
           {
@@ -87882,25 +87598,10 @@
             "name": "fields",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Field",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "SearchFieldFormatted",
-                      "namespace": "eql.search"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "FieldAndFormat",
+                "namespace": "_types.query_dsl"
               }
             }
           },
@@ -88070,39 +87771,6 @@
         "name": "ResultPosition",
         "namespace": "eql.search"
       }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "SearchFieldFormatted",
-        "namespace": "eql.search"
-      },
-      "properties": [
-        {
-          "description": "Wildcard pattern. The request returns values for field names matching this pattern.",
-          "name": "field",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Field",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Format in which the values are returned.",
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
     },
     {
       "kind": "interface",
@@ -88776,12 +88444,14 @@
       }
     },
     {
-      "kind": "interface",
+      "kind": "type_alias",
       "name": {
-        "name": "Action",
+        "name": "Actions",
         "namespace": "ilm._types"
       },
-      "properties": []
+      "type": {
+        "kind": "user_defined_value"
+      }
     },
     {
       "kind": "interface",
@@ -88794,37 +88464,11 @@
           "name": "actions",
           "required": false,
           "type": {
-            "items": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Action",
-                    "namespace": "ilm._types"
-                  }
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Actions",
+              "namespace": "ilm._types"
+            }
           }
         },
         {
@@ -88835,51 +88479,6 @@
             "type": {
               "name": "Time",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "configurations",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "integer",
-                      "namespace": "_types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  }
-                ],
-                "kind": "union_of"
-              }
             }
           }
         }
@@ -91698,23 +91297,11 @@
           "name": "settings",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexSettings",
-                  "namespace": "indices._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexStatePrefixedSettings",
-                  "namespace": "indices._types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexSettings",
+              "namespace": "indices._types"
+            }
           }
         },
         {
@@ -91725,26 +91312,6 @@
             "type": {
               "name": "DataStreamName",
               "namespace": "_types"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndexStatePrefixedSettings",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexSettings",
-              "namespace": "indices._types"
             }
           }
         }
@@ -92599,23 +92166,11 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "CharFilter",
-                      "namespace": "_types.analysis"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "CharFilter",
+                  "namespace": "_types.analysis"
+                }
               }
             }
           },
@@ -92647,23 +92202,11 @@
             "type": {
               "kind": "array_of",
               "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TokenFilter",
-                      "namespace": "_types.analysis"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "TokenFilter",
+                  "namespace": "_types.analysis"
+                }
               }
             }
           },
@@ -92693,23 +92236,11 @@
             "name": "tokenizer",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Tokenizer",
-                    "namespace": "_types.analysis"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "Tokenizer",
+                "namespace": "_types.analysis"
+              }
             }
           }
         ]
@@ -97529,23 +97060,11 @@
             "name": "dynamic",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "DynamicMapping",
-                    "namespace": "_types.mapping"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "DynamicMapping",
+                "namespace": "_types.mapping"
+              }
             }
           },
           {
@@ -99643,6 +99162,47 @@
       }
     },
     {
+      "codegenNames": [
+        "single",
+        "by_type"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexRolloverMapping",
+        "namespace": "indices.rollover"
+      },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TypeMapping",
+              "namespace": "_types.mapping"
+            }
+          },
+          {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TypeMapping",
+                "namespace": "_types.mapping"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -99686,34 +99246,11 @@
             "name": "mappings",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "TypeMapping",
-                      "namespace": "_types.mapping"
-                    }
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TypeMapping",
-                    "namespace": "_types.mapping"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexRolloverMapping",
+                "namespace": "indices.rollover"
+              }
             }
           },
           {
@@ -104106,26 +103643,15 @@
           }
         },
         {
+          "description": "How to round the date when formatting the date into the index name. Valid values are:\n`y` (year), `M` (month), `w` (week), `d` (day), `h` (hour), `m` (minute) and `s` (second).\nSupports template snippets.",
           "name": "date_rounding",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateRounding",
-                  "namespace": "ingest._types"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
           }
         },
         {
@@ -104257,43 +103783,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "codegenName": "Second",
-          "name": "s"
-        },
-        {
-          "codegenName": "Minute",
-          "name": "m"
-        },
-        {
-          "codegenName": "Hour",
-          "name": "h"
-        },
-        {
-          "codegenName": "Day",
-          "name": "d"
-        },
-        {
-          "codegenName": "Week",
-          "name": "w"
-        },
-        {
-          "codegenName": "Month",
-          "name": "M"
-        },
-        {
-          "codegenName": "Year",
-          "name": "y"
-        }
-      ],
-      "name": {
-        "name": "DateRounding",
-        "namespace": "ingest._types"
-      }
     },
     {
       "inherits": {
@@ -108666,23 +108155,11 @@
           "name": "categorization_analyzer",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "CategorizationAnalyzer",
-                  "namespace": "ml._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "CategorizationAnalyzer",
+              "namespace": "ml._types"
+            }
           }
         },
         {
@@ -108849,23 +108326,11 @@
           "name": "categorization_analyzer",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "CategorizationAnalyzer",
-                  "namespace": "ml._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "CategorizationAnalyzer",
+              "namespace": "ml._types"
+            }
           }
         },
         {
@@ -109829,87 +109294,82 @@
       ]
     },
     {
-      "kind": "interface",
+      "codegenNames": [
+        "name",
+        "definition"
+      ],
+      "kind": "type_alias",
       "name": {
         "name": "CategorizationAnalyzer",
         "namespace": "ml._types"
       },
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "CategorizationAnalyzerDefinition",
+              "namespace": "ml._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CategorizationAnalyzerDefinition",
+        "namespace": "ml._types"
+      },
       "properties": [
         {
+          "description": "One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.",
           "name": "char_filter",
           "required": false,
           "type": {
             "kind": "array_of",
             "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "CharFilter",
-                    "namespace": "_types.analysis"
-                  }
-                }
-              ],
-              "kind": "union_of"
-            }
-          }
-        },
-        {
-          "description": "One or more character filters. In addition to the built-in character filters, other plugins can provide more character filters. If this property is not specified, no character filters are applied prior to categorization. If you are customizing some other aspect of the analyzer and you need to achieve the equivalent of `categorization_filters` (which are not permitted when some other aspect of the analyzer is customized), add them here as pattern replace character filters.",
-          "name": "filter",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "TokenFilter",
-                    "namespace": "_types.analysis"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "CharFilter",
+                "namespace": "_types.analysis"
+              }
             }
           }
         },
         {
           "description": "One or more token filters. In addition to the built-in token filters, other plugins can provide more token filters. If this property is not specified, no token filters are applied prior to categorization.",
+          "name": "filter",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TokenFilter",
+                "namespace": "_types.analysis"
+              }
+            }
+          }
+        },
+        {
+          "description": "The name or definition of the tokenizer to use after character filters are applied. This property is compulsory if `categorization_analyzer` is specified as an object. Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English. If you want to use that tokenizer but change the character or token filters, specify \"tokenizer\": \"ml_standard\" in your `categorization_analyzer`. Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2). `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify \"tokenizer\": \"ml_classic\" in your `categorization_analyzer`.",
           "name": "tokenizer",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "Tokenizer",
-                  "namespace": "_types.analysis"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Tokenizer",
+              "namespace": "_types.analysis"
+            }
           }
         }
       ]
@@ -110183,60 +109643,15 @@
       }
     },
     {
-      "kind": "interface",
+      "description": "Custom metadata about the job",
+      "kind": "type_alias",
       "name": {
         "name": "CustomSettings",
         "namespace": "ml._types"
       },
-      "properties": [
-        {
-          "name": "custom_urls",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "UrlConfig",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "name": "created_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "job_tags",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          }
-        }
-      ]
+      "type": {
+        "kind": "user_defined_value"
+      }
     },
     {
       "kind": "interface",
@@ -111374,38 +110789,9 @@
       ]
     },
     {
-      "kind": "type_alias",
-      "name": {
-        "name": "DataframeAnalysisAnalyzedFields",
-        "namespace": "ml._types"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "internal"
-              }
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "DataframeAnalysisAnalyzedFieldsIncludeExclude",
-              "namespace": "ml._types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
       "kind": "interface",
       "name": {
-        "name": "DataframeAnalysisAnalyzedFieldsIncludeExclude",
+        "name": "DataframeAnalysisAnalyzedFields",
         "namespace": "ml._types"
       },
       "properties": [
@@ -111439,7 +110825,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "includes"
     },
     {
       "inherits": {
@@ -130170,23 +129557,11 @@
           "name": "type",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "NodeInfoSettingsHttpType",
-                  "namespace": "nodes.info"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsHttpType",
+              "namespace": "nodes.info"
+            }
           }
         },
         {
@@ -130266,7 +129641,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "default"
     },
     {
       "kind": "interface",
@@ -130731,23 +130107,11 @@
           "name": "type",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "NodeInfoSettingsTransportType",
-                  "namespace": "nodes.info"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeInfoSettingsTransportType",
+              "namespace": "nodes.info"
+            }
           }
         },
         {
@@ -130812,7 +130176,8 @@
             }
           }
         }
-      ]
+      ],
+      "shortcutProperty": "default"
     },
     {
       "kind": "interface",
@@ -131759,7 +131124,7 @@
     {
       "kind": "interface",
       "name": {
-        "name": "NodeReloadException",
+        "name": "NodeReloadError",
         "namespace": "nodes.reload_secure_settings"
       },
       "properties": [
@@ -131780,54 +131145,42 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "NodeReloadExceptionCausedBy",
-              "namespace": "nodes.reload_secure_settings"
+              "name": "ErrorCause",
+              "namespace": "_types"
             }
           }
         }
       ]
     },
     {
-      "kind": "interface",
+      "codegenNames": [
+        "stats",
+        "error"
+      ],
+      "kind": "type_alias",
       "name": {
-        "name": "NodeReloadExceptionCausedBy",
+        "name": "NodeReloadResult",
         "namespace": "nodes.reload_secure_settings"
       },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
+      "type": {
+        "items": [
+          {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Stats",
+              "namespace": "nodes._types"
             }
-          }
-        },
-        {
-          "name": "reason",
-          "required": true,
-          "type": {
+          },
+          {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "caused_by",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "NodeReloadExceptionCausedBy",
+              "name": "NodeReloadError",
               "namespace": "nodes.reload_secure_settings"
             }
           }
-        }
-      ]
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "attachedBehaviors": [
@@ -131919,23 +131272,11 @@
               "kind": "dictionary_of",
               "singleKey": false,
               "value": {
-                "items": [
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Stats",
-                      "namespace": "nodes._types"
-                    }
-                  },
-                  {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "NodeReloadException",
-                      "namespace": "nodes.reload_secure_settings"
-                    }
-                  }
-                ],
-                "kind": "union_of"
+                "kind": "instance_of",
+                "type": {
+                  "name": "NodeReloadResult",
+                  "namespace": "nodes.reload_secure_settings"
+                }
               }
             }
           }
@@ -134963,10 +134304,13 @@
                 }
               },
               {
-                "kind": "instance_of",
-                "type": {
-                  "name": "QueryContainer",
-                  "namespace": "_types.query_dsl"
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "internal"
+                  }
                 }
               }
             ],
@@ -137295,88 +136639,6 @@
       }
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "InlineRoleTemplate",
-        "namespace": "security.get_role"
-      },
-      "properties": [
-        {
-          "name": "template",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "InlineRoleTemplateSource",
-              "namespace": "security.get_role"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TemplateFormat",
-              "namespace": "security.get_role"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InlineRoleTemplateSource",
-        "namespace": "security.get_role"
-      },
-      "properties": [
-        {
-          "name": "source",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InvalidRoleTemplate",
-        "namespace": "security.get_role"
-      },
-      "properties": [
-        {
-          "name": "template",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "format",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TemplateFormat",
-              "namespace": "security.get_role"
-            }
-          }
-        }
-      ]
-    },
-    {
       "attachedBehaviors": [
         "CommonQueryParameters"
       ],
@@ -137546,56 +136808,12 @@
       ]
     },
     {
-      "kind": "type_alias",
+      "kind": "interface",
       "name": {
         "name": "RoleTemplate",
         "namespace": "security.get_role"
       },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InlineRoleTemplate",
-              "namespace": "security.get_role"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "StoredRoleTemplate",
-              "namespace": "security.get_role"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InvalidRoleTemplate",
-              "namespace": "security.get_role"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StoredRoleTemplate",
-        "namespace": "security.get_role"
-      },
       "properties": [
-        {
-          "name": "template",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "StoredRoleTemplateId",
-              "namespace": "security.get_role"
-            }
-          }
-        },
         {
           "name": "format",
           "required": false,
@@ -137606,24 +136824,15 @@
               "namespace": "security.get_role"
             }
           }
-        }
-      ]
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "StoredRoleTemplateId",
-        "namespace": "security.get_role"
-      },
-      "properties": [
+        },
         {
-          "name": "id",
+          "name": "template",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "Script",
+              "namespace": "_types"
             }
           }
         }
@@ -144508,30 +143717,11 @@
             "name": "_source",
             "required": true,
             "type": {
-              "items": [
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "boolean",
-                    "namespace": "internal"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Fields",
-                    "namespace": "_types"
-                  }
-                },
-                {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "SourceFilter",
-                    "namespace": "_global.search._types"
-                  }
-                }
-              ],
-              "kind": "union_of"
+              "kind": "instance_of",
+              "type": {
+                "name": "SourceConfig",
+                "namespace": "_global.search._types"
+              }
             }
           },
           {
@@ -144704,6 +143894,24 @@
       "name": {
         "name": "Response",
         "namespace": "ssl.certificates"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "nodes"
+        },
+        {
+          "name": "parents"
+        },
+        {
+          "name": "none"
+        }
+      ],
+      "name": {
+        "name": "GroupBy",
+        "namespace": "tasks._types"
       }
     },
     {
@@ -145550,7 +144758,7 @@
             "kind": "instance_of",
             "type": {
               "name": "GroupBy",
-              "namespace": "_types"
+              "namespace": "tasks._types"
             }
           }
         },
@@ -145651,37 +144859,22 @@
             "name": "tasks",
             "required": false,
             "type": {
-              "items": [
-                {
-                  "key": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "internal"
-                    }
-                  },
-                  "kind": "dictionary_of",
-                  "singleKey": false,
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Info",
-                      "namespace": "tasks._types"
-                    }
-                  }
-                },
-                {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "Info",
-                      "namespace": "tasks._types"
-                    }
-                  }
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "internal"
                 }
-              ],
-              "kind": "union_of"
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Info",
+                  "namespace": "tasks._types"
+                }
+              }
             }
           }
         ]
@@ -148939,26 +148132,14 @@
           "name": "at",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "TimeOfDay",
-                  "namespace": "watcher._types"
-                }
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TimeOfDay",
+                "namespace": "watcher._types"
               }
-            ],
-            "kind": "union_of"
+            }
           }
         }
       ]
@@ -149435,6 +148616,43 @@
             "type": {
               "name": "long",
               "namespace": "_types"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "HourAndMinute",
+        "namespace": "watcher._types"
+      },
+      "properties": [
+        {
+          "name": "hour",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "minute",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
             }
           }
         }
@@ -150695,46 +149913,22 @@
           "name": "scheduled_time",
           "required": true,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateString",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
           }
         },
         {
           "name": "triggered_time",
           "required": false,
           "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DateString",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "internal"
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "DateString",
+              "namespace": "_types"
+            }
           }
         }
       ]
@@ -151370,41 +150564,34 @@
       ]
     },
     {
-      "kind": "interface",
+      "codegenNames": [
+        "text",
+        "hour_minute"
+      ],
+      "kind": "type_alias",
       "name": {
         "name": "TimeOfDay",
         "namespace": "watcher._types"
       },
-      "properties": [
-        {
-          "name": "hour",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "internal"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "HourAndMinute",
+              "namespace": "watcher._types"
             }
           }
-        },
-        {
-          "name": "minute",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ]
+        ],
+        "kind": "union_of"
+      }
     },
     {
       "kind": "interface",
@@ -154228,37 +153415,6 @@
       ]
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "BaseUrlConfig",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "name": "url_name",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        },
-        {
-          "name": "url_value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "internal"
-            }
-          }
-        }
-      ]
-    },
-    {
       "inherits": {
         "type": {
           "name": "Base",
@@ -155110,26 +154266,47 @@
       ]
     },
     {
-      "inherits": {
-        "type": {
-          "name": "BaseUrlConfig",
-          "namespace": "xpack.usage"
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "internal"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "Job",
+                "namespace": "ml._types"
+              }
+            }
+          ],
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
         }
-      },
+      ],
       "kind": "interface",
       "name": {
-        "name": "KibanaUrlConfig",
+        "name": "Jobs",
         "namespace": "xpack.usage"
       },
       "properties": [
         {
-          "name": "time_range",
+          "name": "_all",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "internal"
+              "name": "AllJobs",
+              "namespace": "xpack.usage"
             }
           }
         }
@@ -155174,45 +154351,11 @@
           "name": "jobs",
           "required": true,
           "type": {
-            "items": [
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "Job",
-                    "namespace": "ml._types"
-                  }
-                }
-              },
-              {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "internal"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": true,
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "AllJobs",
-                    "namespace": "xpack.usage"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
+            "kind": "instance_of",
+            "type": {
+              "name": "Jobs",
+              "namespace": "xpack.usage"
+            }
           }
         },
         {
@@ -156955,32 +156098,6 @@
           }
         }
       ]
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "UrlConfig",
-        "namespace": "xpack.usage"
-      },
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "BaseUrlConfig",
-              "namespace": "xpack.usage"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "KibanaUrlConfig",
-              "namespace": "xpack.usage"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
     },
     {
       "inherits": {

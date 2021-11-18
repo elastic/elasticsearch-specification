@@ -27,6 +27,7 @@ import {
   Type
 } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { GetSourceConfig } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name explain
@@ -47,7 +48,7 @@ export interface Request extends RequestBase {
     lenient?: boolean
     preference?: string
     routing?: Routing
-    _source?: boolean | Fields
+    _source?: GetSourceConfig
     _source_excludes?: Fields
     _source_includes?: Fields
     stored_fields?: Fields

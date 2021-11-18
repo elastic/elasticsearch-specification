@@ -418,7 +418,10 @@ function buildEnum (type: M.Enum): string {
     }
   }, new Array<string>())
 
-  return `export type ${createName(type.name)} = ${names.map(m => `'${m}'`).join(' | ')}\n`
+  // Also allow plain boolean values if the enum contains 'true' and 'false'
+  const boolean = (names.includes('true') && names.includes('false')) ? 'boolean | ' : ''
+
+  return `export type ${createName(type.name)} = ${boolean}${names.map(m => `'${m}'`).join(' | ')}\n`
 }
 
 function buildTypeAlias (type: M.TypeAlias): string {

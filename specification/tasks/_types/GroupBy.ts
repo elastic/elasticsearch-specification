@@ -17,16 +17,8 @@
  * under the License.
  */
 
-/**
- * Set of matching events or sequences to return.
- */
-export enum ResultPosition {
-  /**
-   * Return the most recent matches, similar to the Unix tail command.
-   */
-  tail = 0,
-  /**
-   * Return the earliest matches, similar to the Unix head command.
-   */
-  head = 1
+export enum GroupBy {
+  nodes = 0,
+  parents = 1,
+  none = 2
 }

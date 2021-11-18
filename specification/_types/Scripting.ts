@@ -21,8 +21,13 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id } from './common'
 
-/** @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html */
-export enum ScriptLanguage {
+/**
+ * @doc_url https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html
+ * @codegen_names builtin, custom
+ */
+export type ScriptLanguage = BuiltinScriptLanguage | string
+
+export enum BuiltinScriptLanguage {
   painless = 0,
   expression = 1,
   mustache = 2,
@@ -30,25 +35,28 @@ export enum ScriptLanguage {
 }
 
 export class StoredScript {
-  lang?: ScriptLanguage | string
+  lang: ScriptLanguage
+  options?: Dictionary<string, string>
   source: string
 }
 
 export class ScriptBase {
-  lang?: ScriptLanguage | string
   params?: Dictionary<string, UserDefinedValue>
 }
 
+/** @shortcut_property source */
 export class InlineScript extends ScriptBase {
+  lang?: ScriptLanguage
+  options?: Dictionary<string, string>
   source: string
 }
 
-export class IndexedScript extends ScriptBase {
+export class StoredScriptId extends ScriptBase {
   id: Id
 }
 
-// 'string' is a shortcut for InlineScript.source
-export type Script = InlineScript | IndexedScript | string
+/** @codegen_names inline, stored */
+export type Script = InlineScript | StoredScriptId
 
 export class ScriptField {
   script: Script
