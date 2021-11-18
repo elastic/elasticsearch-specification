@@ -650,6 +650,10 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
       type.docUrl = value
     } else if (tag === 'codegen_names') {
       type.codegenNames = value.split(',').map(v => v.trim())
+      assert(jsDocs,
+        type.kind == 'type_alias' && type.type.kind == 'union_of' && type.type.items.length == type.codegenNames.length,
+        '@codegen_names must have the number of items as the union definition'
+        )
     } else {
       assert(jsDocs, false, `Unhandled tag: '${tag}' with value: '${value}' on type ${type.name.name}`)
     }
