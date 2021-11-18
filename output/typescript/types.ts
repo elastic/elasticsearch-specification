@@ -51,7 +51,7 @@ export interface BulkRequest<TSource = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   timeout?: Time
@@ -202,7 +202,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: string[]
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stats?: string[]
@@ -259,7 +259,7 @@ export interface ExistsRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
@@ -277,7 +277,7 @@ export interface ExistsSourceRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   version?: VersionNumber
@@ -308,7 +308,7 @@ export interface ExplainRequest extends RequestBase {
   lenient?: boolean
   preference?: string
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
@@ -356,22 +356,7 @@ export interface FieldCapsResponse {
   fields: Record<Field, Record<string, FieldCapsFieldCapability>>
 }
 
-export interface GetRequest extends RequestBase {
-  id: Id
-  index: IndexName
-  preference?: string
-  realtime?: boolean
-  refresh?: boolean
-  routing?: Routing
-  _source?: SearchGetSourceConfig
-  _source_excludes?: Fields
-  _source_includes?: Fields
-  stored_fields?: Fields
-  version?: VersionNumber
-  version_type?: VersionType
-}
-
-export interface GetResponse<TDocument = unknown> {
+export interface GetGetResult<TDocument = unknown> {
   _index: IndexName
   fields?: Record<string, any>
   found: boolean
@@ -382,6 +367,24 @@ export interface GetResponse<TDocument = unknown> {
   _source?: TDocument
   _type?: Type
   _version?: VersionNumber
+}
+
+export interface GetRequest extends RequestBase {
+  id: Id
+  index: IndexName
+  preference?: string
+  realtime?: boolean
+  refresh?: boolean
+  routing?: Routing
+  _source?: SearchSourceConfigParam
+  _source_excludes?: Fields
+  _source_includes?: Fields
+  stored_fields?: Fields
+  version?: VersionNumber
+  version_type?: VersionType
+}
+
+export interface GetResponse<TDocument = unknown> extends GetGetResult<TDocument> {
 }
 
 export interface GetScriptRequest extends RequestBase {
@@ -438,7 +441,7 @@ export interface GetSourceRequest {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
@@ -509,24 +512,15 @@ export interface KnnSearchQuery {
 
 export type KnnSearchQueryVector = double[]
 
-export interface MgetHit<TDocument = unknown> {
-  error?: ErrorCause
-  fields?: Record<string, any>
-  found?: boolean
+export interface MgetMultiGetError {
+  error: ErrorCause
   _id: Id
   _index: IndexName
-  _primary_term?: long
-  _routing?: Routing
-  _seq_no?: SequenceNumber
-  _source?: TDocument
   _type?: Type
-  _version?: VersionNumber
 }
 
-export type MgetMultiGetId = string | integer
-
 export interface MgetOperation {
-  _id: MgetMultiGetId
+  _id: Id
   _index?: IndexName
   routing?: Routing
   _source?: SearchSourceConfig
@@ -542,21 +536,27 @@ export interface MgetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stored_fields?: Fields
   body?: {
     docs?: MgetOperation[]
-    ids?: MgetMultiGetId[]
+    ids?: Ids
   }
 }
 
 export interface MgetResponse<TDocument = unknown> {
-  docs: MgetHit<TDocument>[]
+  docs: MgetResponseItem<TDocument>[]
 }
 
-export interface MsearchBody {
+export type MgetResponseItem<TDocument = unknown> = GetGetResult<TDocument> | MgetMultiGetError
+
+export interface MsearchMultiSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
+  status: integer
+}
+
+export interface MsearchMultisearchBody {
   aggregations?: Record<string, AggregationsAggregationContainer>
   aggs?: Record<string, AggregationsAggregationContainer>
   query?: QueryDslQueryContainer
@@ -567,7 +567,7 @@ export interface MsearchBody {
   suggest?: SearchSuggester
 }
 
-export interface MsearchHeader {
+export interface MsearchMultisearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -576,6 +576,11 @@ export interface MsearchHeader {
   request_cache?: boolean
   routing?: string
   search_type?: SearchType
+}
+
+export interface MsearchMultisearchResponseBase<TDocument = unknown> {
+  took: long
+  responses: MsearchResponseItem<TDocument>[]
 }
 
 export interface MsearchRequest extends RequestBase {
@@ -591,17 +596,15 @@ export interface MsearchRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body?: (MsearchHeader | MsearchBody)[]
+  body?: MsearchRequestItem[]
 }
 
-export interface MsearchResponse<TDocument = unknown> {
-  took: long
-  responses: (MsearchSearchResult<TDocument> | ErrorResponseBase)[]
+export type MsearchRequestItem = MsearchMultisearchHeader | MsearchMultisearchBody
+
+export interface MsearchResponse<TDocument = unknown> extends MsearchMultisearchResponseBase<TDocument> {
 }
 
-export interface MsearchSearchResult<TDocument = unknown> extends SearchResponse<TDocument> {
-  status: integer
-}
+export type MsearchResponseItem<TDocument = unknown> = MsearchMultiSearchResult<TDocument> | ErrorResponseBase
 
 export interface MsearchTemplateRequest extends RequestBase {
   index?: Indices
@@ -610,18 +613,19 @@ export interface MsearchTemplateRequest extends RequestBase {
   search_type?: SearchType
   rest_total_hits_as_int?: boolean
   typed_keys?: boolean
-  body?: MsearchTemplateTemplateItem[]
+  body?: MsearchTemplateRequestItem[]
 }
 
-export interface MsearchTemplateResponse<TDocument = unknown> {
-  responses: (SearchResponse<TDocument> | ErrorResponseBase)[]
-  took: long
+export type MsearchTemplateRequestItem = MsearchMultisearchHeader | MsearchTemplateTemplateConfig
+
+export interface MsearchTemplateResponse<TDocument = unknown> extends MsearchMultisearchResponseBase<TDocument> {
 }
 
-export interface MsearchTemplateTemplateItem {
+export interface MsearchTemplateTemplateConfig {
+  explain?: boolean
   id?: Id
-  index?: Indices
   params?: Record<string, any>
+  profile?: boolean
   source?: string
 }
 
@@ -983,7 +987,7 @@ export interface SearchRequest extends RequestBase {
   typed_keys?: boolean
   rest_total_hits_as_int?: boolean
   version?: boolean
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   seq_no_primary_term?: boolean
@@ -1222,8 +1226,6 @@ export interface SearchGeoDistanceSortKeys {
 }
 export type SearchGeoDistanceSort = SearchGeoDistanceSortKeys
   & { [property: string]: GeoLocation | GeoLocation[] | SearchSortMode | GeoDistanceType | boolean | SearchSortOrder | DistanceUnit }
-
-export type SearchGetSourceConfig = boolean | Fields
 
 export interface SearchHighlight {
   fields: Record<Field, SearchHighlightField>
@@ -1500,6 +1502,8 @@ export type SearchSortResults = (long | double | string | null)[]
 
 export type SearchSourceConfig = boolean | SearchSourceFilter | Fields
 
+export type SearchSourceConfigParam = boolean | Fields
+
 export interface SearchSourceFilter {
   excludes?: Fields
   exclude?: Fields
@@ -1758,7 +1762,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   routing?: Routing
   timeout?: Time
   wait_for_active_shards?: WaitForActiveShards
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   body?: {
@@ -1801,7 +1805,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   size?: long
   slices?: long
   sort?: string[]
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   stats?: string[]
@@ -5668,7 +5672,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
   typed_keys?: boolean
   rest_total_hits_as_int?: boolean
   version?: boolean
-  _source?: SearchGetSourceConfig
+  _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
   seq_no_primary_term?: boolean

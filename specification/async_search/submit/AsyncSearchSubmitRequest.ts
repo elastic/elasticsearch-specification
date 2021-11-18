@@ -44,7 +44,7 @@ import { PointInTimeReference } from '@global/search/_types/PointInTimeReference
 import { Rescore } from '@global/search/_types/rescoring'
 import { Sort, SortResults } from '@global/search/_types/sort'
 import {
-  GetSourceConfig,
+  SourceConfigParam,
   SourceConfig
 } from '@global/search/_types/SourceFilter'
 import { Suggester } from '@global/search/_types/suggester'
@@ -108,7 +108,7 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
     version?: boolean
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     seq_no_primary_term?: boolean

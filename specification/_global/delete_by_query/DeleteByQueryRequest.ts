@@ -32,7 +32,7 @@ import { long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Time } from '@_types/Time'
-import { GetSourceConfig } from '@global/search/_types/SourceFilter'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * @rest_spec_name delete_by_query
@@ -68,7 +68,7 @@ export interface Request extends RequestBase {
     size?: long
     slices?: long
     sort?: string[]
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     stats?: string[]

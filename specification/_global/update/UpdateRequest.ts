@@ -18,7 +18,7 @@
  */
 
 import {
-  GetSourceConfig,
+  SourceConfigParam,
   SourceConfig
 } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
@@ -101,7 +101,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * list of the fields you want to retrieve.
      * @server_default true
      */
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     /**
      * Specify the source fields you want to exclude.
      */

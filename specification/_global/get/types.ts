@@ -17,6 +17,27 @@
  * under the License.
  */
 
-import { MultisearchResponseBase } from '@global/msearch/types'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  Type,
+  VersionNumber
+} from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { long } from '@_types/Numeric'
 
-export class Response<TDocument> extends MultisearchResponseBase<TDocument> {}
+export class GetResult<TDocument> {
+  _index: IndexName
+  fields?: Dictionary<string, UserDefinedValue>
+  found: boolean
+  _id: Id
+  _primary_term?: long
+  _routing?: string
+  _seq_no?: SequenceNumber
+  _source?: TDocument
+  /** @deprecated 7.0.0 */
+  _type?: Type
+  _version?: VersionNumber
+}

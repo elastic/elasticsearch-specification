@@ -22,15 +22,21 @@ import { Suggester } from '@global/search/_types/suggester'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
-import { integer } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Response as SearchResponse } from '@global/search/SearchResponse'
 import { TrackHits } from '@global/search/_types/hits'
+import { ErrorResponseBase } from '@_types/Base'
+
+/**
+ * @codegen_names header, body
+ */
+export type RequestItem = MultisearchHeader | MultisearchBody
 
 /**
  * Contains parameters used to limit or change the subsequent search body request.
  */
-export class Header {
+export class MultisearchHeader {
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
@@ -41,7 +47,7 @@ export class Header {
   search_type?: SearchType
 }
 
-export class Body {
+export class MultisearchBody {
   /** @aliases aggs */
   aggregations?: Dictionary<string, AggregationContainer>
   query?: QueryContainer
@@ -52,6 +58,16 @@ export class Body {
   suggest?: Suggester
 }
 
-export class SearchResult<TDocument> extends SearchResponse<TDocument> {
+export class MultisearchResponseBase<TDocument> {
+  took: long
+  responses: Array<ResponseItem<TDocument>>
+}
+
+/** @codegen_names result, failure */
+export type ResponseItem<TDocument> =
+  | MultiSearchResult<TDocument>
+  | ErrorResponseBase
+
+export class MultiSearchResult<TDocument> extends SearchResponse<TDocument> {
   status: integer
 }

@@ -43,7 +43,7 @@ import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
 import { Rescore } from './_types/rescoring'
 import { Sort, SortResults } from './_types/sort'
-import { GetSourceConfig, SourceConfig } from './_types/SourceFilter'
+import { SourceConfigParam, SourceConfig } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 
@@ -98,7 +98,7 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
     rest_total_hits_as_int?: boolean
     version?: boolean
-    _source?: GetSourceConfig
+    _source?: SourceConfigParam
     _source_excludes?: Fields
     _source_includes?: Fields
     seq_no_primary_term?: boolean

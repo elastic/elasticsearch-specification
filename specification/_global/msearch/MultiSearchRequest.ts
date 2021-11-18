@@ -20,7 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, SearchType } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Body, Header } from './types'
+import { MultisearchBody, MultisearchHeader, RequestItem } from './types'
 
 /**
  * @rest_spec_name msearch
@@ -87,5 +87,5 @@ export interface Request extends RequestBase {
     typed_keys?: boolean
   }
   /** @codegen_name searches */
-  body?: Array<Header | Body>
+  body?: Array<RequestItem>
 }
