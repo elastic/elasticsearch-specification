@@ -38,9 +38,3 @@ export type SourceConfig = boolean | SourceFilter
 
 /** @codegen_names fetch, fields */
 export type GetSourceConfig = boolean | Fields
-
-/** @shortcut_property field */
-export class DocValueField {
-  field: Field
-  format?: string
-}

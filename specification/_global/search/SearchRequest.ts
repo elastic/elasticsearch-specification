@@ -43,12 +43,7 @@ import { Highlight } from './_types/highlighting'
 import { PointInTimeReference } from './_types/PointInTimeReference'
 import { Rescore } from './_types/rescoring'
 import { Sort, SortResults } from './_types/sort'
-import {
-  DocValueField,
-  GetSourceConfig,
-  SourceConfig,
-  SourceFilter
-} from './_types/SourceFilter'
+import { GetSourceConfig, SourceConfig } from './_types/SourceFilter'
 import { Suggester } from './_types/suggester'
 import { TrackHits } from '@global/search/_types/hits'
 
@@ -144,7 +139,7 @@ export interface Request extends RequestBase {
      * Array of wildcard (*) patterns. The request returns doc values for field
      * names matching these patterns in the hits.fields property of the response.
      */
-    docvalue_fields?: DocValueField[]
+    docvalue_fields?: FieldAndFormat[]
     /**
      * Minimum _score for matching documents. Documents with a lower _score are
      * not included in the search results.

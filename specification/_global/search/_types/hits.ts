@@ -35,7 +35,7 @@ import { ScriptField } from '@_types/Scripting'
 import { FieldCollapse } from './FieldCollapse'
 import { Highlight } from './highlighting'
 import { Sort, SortResults } from './sort'
-import { SourceConfig, SourceFilter } from './SourceFilter'
+import { SourceConfig } from './SourceFilter'
 import { FieldAndFormat } from '@_types/query_dsl/abstractions'
 
 export class Hit<TDocument> {

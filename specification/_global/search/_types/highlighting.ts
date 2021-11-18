@@ -76,6 +76,7 @@ export type HighlighterType = BuiltinHighlighterType | string
 
 export enum BuiltinHighlighterType {
   plain = 0,
+  /** @codegen_name fast_vector */
   fvh = 1,
   unified = 2
 }

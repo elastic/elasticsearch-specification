@@ -484,7 +484,7 @@ export interface KnnSearchRequest extends RequestBase {
   routing?: Routing
   body?: {
     _source?: SearchSourceConfig
-    docvalue_fields?: (SearchDocValueField | Field)[]
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     stored_fields?: Fields
     fields?: Fields
     knn: KnnSearchQuery
@@ -1000,7 +1000,7 @@ export interface SearchRequest extends RequestBase {
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: (SearchDocValueField | Field)[]
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
@@ -1161,11 +1161,6 @@ export interface SearchDirectGenerator {
   prefix_length?: integer
   size?: integer
   suggest_mode?: SuggestMode
-}
-
-export interface SearchDocValueField {
-  field: Field
-  format?: string
 }
 
 export interface SearchFetchProfile {
@@ -5694,7 +5689,7 @@ export interface AsyncSearchSubmitRequest extends RequestBase {
     highlight?: SearchHighlight
     track_total_hits?: SearchTrackHits
     indices_boost?: Record<IndexName, double>[]
-    docvalue_fields?: (SearchDocValueField | Field)[]
+    docvalue_fields?: (QueryDslFieldAndFormat | Field)[]
     min_score?: double
     post_filter?: QueryDslQueryContainer
     profile?: boolean
