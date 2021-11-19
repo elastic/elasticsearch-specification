@@ -114937,7 +114937,48 @@
         "CommonQueryParameters"
       ],
       "body": {
-        "kind": "no_body"
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Refer to the description for the `allow_no_match` query parameter.",
+            "name": "allow_no_match",
+            "required": false,
+            "serverDefault": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the descriptiion for the `force` query parameter.",
+            "name": "force",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "internal"
+              }
+            }
+          },
+          {
+            "description": "Refer to the description for the `timeout` query parameter.",
+            "name": "timeout",
+            "required": false,
+            "serverDefault": "30m",
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Time",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
       },
       "description": "Closes one or more anomaly detection jobs.\nA job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.\nWhen you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.\nIf you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.\nWhen a datafeed that has a specified end date stops, it automatically closes its associated job.",
       "inherits": {
@@ -120188,7 +120229,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Controls the time to wait until a job has opened.",
+            "description": "Refer to the description for the `timeout` query parameter.",
             "name": "timeout",
             "required": false,
             "serverDefault": "30m",
@@ -120228,7 +120269,21 @@
           }
         }
       ],
-      "query": []
+      "query": [
+        {
+          "description": "Controls the time to wait until a job has opened.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30m",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Time",
+              "namespace": "_types"
+            }
+          }
+        }
+      ]
     },
     {
       "body": {

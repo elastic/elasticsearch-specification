@@ -42,9 +42,16 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
-  body: {
+  query_parameters: {
     /**
      * Controls the time to wait until a job has opened.
+     * @server_default 30m
+     */
+    timeout?: Time
+  }
+  body: {
+    /**
+     * Refer to the description for the `timeout` query parameter.
      * @server_default 30m
      */
     timeout?: Time

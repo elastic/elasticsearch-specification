@@ -11698,6 +11698,11 @@ export interface MlCloseJobRequest extends RequestBase {
   allow_no_match?: boolean
   force?: boolean
   timeout?: Time
+  body?: {
+    allow_no_match?: boolean
+    force?: boolean
+    timeout?: Time
+  }
 }
 
 export interface MlCloseJobResponse {
@@ -12291,6 +12296,7 @@ export interface MlInfoResponse {
 
 export interface MlOpenJobRequest extends RequestBase {
   job_id: Id
+  timeout?: Time
   body?: {
     timeout?: Time
   }
