@@ -26,7 +26,6 @@ import { CatRequestBase } from '@cat/_types/CatBase'
  */
 export interface Request extends CatRequestBase {
   query_parameters: {
-    include_timestamp?: boolean
     ts?: boolean
   }
 }

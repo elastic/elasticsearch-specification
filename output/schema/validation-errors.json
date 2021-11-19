@@ -108,7 +108,6 @@
     },
     "cat.health": {
       "request": [
-        "Request: query parameter 'include_timestamp' does not exist in the json spec",
         "Request: missing json spec query parameter 'format'",
         "Request: missing json spec query parameter 'h'",
         "Request: missing json spec query parameter 'help'",
@@ -1028,9 +1027,7 @@
     },
     "indices.simulate_index_template": {
       "request": [
-        "Request: missing json spec query parameter 'create'",
-        "Request: missing json spec query parameter 'cause'",
-        "Request: missing json spec query parameter 'master_timeout'"
+        "Request: missing json spec query parameter 'cause'"
       ],
       "response": []
     },
@@ -1435,8 +1432,7 @@
     },
     "nodes.hot_threads": {
       "request": [
-        "Request: query parameter 'thread_type' does not exist in the json spec",
-        "Request: missing json spec query parameter 'type'",
+        "Request: query parameter 'master_timeout' does not exist in the json spec",
         "Request: missing json spec query parameter 'sort'",
         "Request: should not have a body"
       ],
@@ -2048,13 +2044,6 @@
     "watcher.get_watch": {
       "request": [
         "Request: should not have a body"
-      ],
-      "response": []
-    },
-    "watcher.put_watch": {
-      "request": [
-        "Request: query parameter 'if_sequence_number' does not exist in the json spec",
-        "Request: missing json spec query parameter 'if_seq_no'"
       ],
       "response": []
     },

@@ -33,6 +33,10 @@ export interface Request extends RequestBase {
     calendar_id: Id
   }
   body: {
+    /**
+     * An array of anomaly detection job identifiers.
+     */
+    job_ids?: Id[]
     /** A description of the calendar. */
     description?: string
   }

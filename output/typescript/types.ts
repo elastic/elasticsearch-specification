@@ -5925,7 +5925,6 @@ export interface CatHealthHealthRecord {
 }
 
 export interface CatHealthRequest extends CatCatRequestBase {
-  include_timestamp?: boolean
   ts?: boolean
 }
 
@@ -9065,11 +9064,6 @@ export interface IndicesNumericFielddata {
 
 export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
-export interface IndicesOverlappingIndexTemplate {
-  name: Name
-  index_patterns?: IndexName[]
-}
-
 export type IndicesSegmentSortMissing = '_last' | '_first'
 
 export type IndicesSegmentSortMode = 'min' | 'max'
@@ -10007,11 +10001,17 @@ export interface IndicesShrinkResponse extends AcknowledgedResponseBase {
 
 export interface IndicesSimulateIndexTemplateRequest extends RequestBase {
   name: Name
+  create?: boolean
+  master_timeout?: Time
   body?: {
-    index_patterns?: IndexName[]
+    allow_auto_create?: boolean
+    index_patterns?: Indices
     composed_of?: Name[]
-    overlapping?: IndicesOverlappingIndexTemplate[]
-    template?: IndicesTemplateMapping
+    template?: IndicesPutIndexTemplateIndexTemplateMapping
+    data_stream?: IndicesDataStream
+    priority?: integer
+    version?: VersionNumber
+    _meta?: Metadata
   }
 }
 
@@ -11923,7 +11923,7 @@ export interface MlExplainDataFrameAnalyticsRequest extends RequestBase {
   body?: {
     source?: MlDataframeAnalyticsSource
     dest?: MlDataframeAnalyticsDestination
-    analysis: MlDataframeAnalysisContainer
+    analysis?: MlDataframeAnalysisContainer
     description?: string
     model_memory_limit?: string
     max_num_threads?: integer
@@ -12361,6 +12361,7 @@ export interface MlPreviewDatafeedResponse<TDocument = unknown> {
 export interface MlPutCalendarRequest extends RequestBase {
   calendar_id: Id
   body?: {
+    job_ids?: Id[]
     description?: string
   }
 }
@@ -13098,9 +13099,10 @@ export interface NodesHotThreadsRequest extends RequestBase {
   ignore_idle_threads?: boolean
   interval?: Time
   snapshots?: long
+  master_timeout?: Time
   threads?: long
-  thread_type?: ThreadType
   timeout?: Time
+  type?: ThreadType
 }
 
 export interface NodesHotThreadsResponse {
@@ -13875,6 +13877,7 @@ export interface SecurityChangePasswordRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     password?: Password
+    password_hash?: string
   }
 }
 
@@ -15847,7 +15850,7 @@ export interface WatcherPutWatchRequest extends RequestBase {
   id: Id
   active?: boolean
   if_primary_term?: long
-  if_sequence_number?: long
+  if_seq_no?: SequenceNumber
   version?: VersionNumber
   body?: {
     actions?: Record<string, WatcherAction>

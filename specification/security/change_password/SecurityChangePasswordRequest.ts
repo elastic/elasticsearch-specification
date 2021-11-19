@@ -27,12 +27,26 @@ import { Password, Refresh, Username } from '@_types/common'
  */
 export interface Request extends RequestBase {
   path_parts: {
+    /**
+     * The user whose password you want to change. If you do not specify this
+     * parameter, the password is changed for the current user.
+     */
     username?: Username
   }
   query_parameters: {
     refresh?: Refresh
   }
   body: {
+    /**
+     * The new password value. Passwords must be at least 6 characters long.
+     */
     password?: Password
+    /**
+     * A hash of the new password value. This must be produced using the same
+     * hashing algorithm as has been configured for password storage. For more details,
+     * see the explanation of the `xpack.security.authc.password_hashing.algorithm`
+     * setting.
+     */
+    password_hash?: string
   }
 }
