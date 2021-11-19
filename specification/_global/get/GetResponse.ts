@@ -19,6 +19,6 @@
 
 import { GetResult } from '@global/get/types'
 
-export class Response<TDocument> extends GetResult<TDocument> {
-  body: {}
+export class Response<TDocument> {
+  body: GetResult<TDocument>
 }

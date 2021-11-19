@@ -384,8 +384,7 @@ export interface GetRequest extends RequestBase {
   version_type?: VersionType
 }
 
-export interface GetResponse<TDocument = unknown> extends GetGetResult<TDocument> {
-}
+export type GetResponse<TDocument = unknown> = GetGetResult<TDocument>
 
 export interface GetScriptRequest extends RequestBase {
   id: Id

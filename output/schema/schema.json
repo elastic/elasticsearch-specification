@@ -16344,8 +16344,23 @@
     },
     {
       "body": {
-        "kind": "properties",
-        "properties": []
+        "kind": "value",
+        "value": {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "TDocument",
+                "namespace": "_global.get"
+              }
+            }
+          ],
+          "kind": "instance_of",
+          "type": {
+            "name": "GetResult",
+            "namespace": "_global.get"
+          }
+        }
       },
       "generics": [
         {
@@ -16353,21 +16368,6 @@
           "namespace": "_global.get"
         }
       ],
-      "inherits": {
-        "generics": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "TDocument",
-              "namespace": "_global.get"
-            }
-          }
-        ],
-        "type": {
-          "name": "GetResult",
-          "namespace": "_global.get"
-        }
-      },
       "kind": "response",
       "name": {
         "name": "Response",
